@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ScoreCard from '../../components/ScoreCard.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../../lib/paths';
+import { layerLabel, countryLabel } from '../../lib/display';
 import sources from '../../data/sources.json';
 
 export async function getStaticPaths() {
@@ -16,7 +17,7 @@ const peers = d.competitors.map(id => allCompanies.find(c => c.id === id)).filte
 const companySources = sources.filter(source => d.sourceIds.includes(source.id));
 const scoreLabels: Record<string, string> = { aiExposure:'AI感応度', rateSensitivity:'金利感応度', cyclicality:'景気循環性', moat:'競争優位' };
 const metricLabels: Record<string, string> = { peTTM:'PER TTM', peFY1:'PER FY1', pb:'PBR', roic:'ROIC', operatingMargin:'営業利益率', revenueGrowth:'売上高成長率（前年同期比）' };
-const statusLabels: Record<string, string> = { verified:'検証済み', provisional:'暫定', pending:'確認待ち', 'ir-hub-only':'IR入口のみ登録' };
+const statusLabels: Record<string, string> = { verified:'検証済み', partial:'一部検証済み', placeholder:'未検証' };
 const sourceById = new Map(sources.map(source => [source.id, source]));
 ---
 <BaseLayout title={d.japaneseName || d.name} description={d.summary} indexable>
@@ -26,7 +27,7 @@ const sourceById = new Map(sources.map(source => [source.id, source]));
     <span hidden data-pagefind-meta={`ticker:${d.ticker}`}></span>
     <div class="shell company-hero">
       <div>
-        <div class="breadcrumb"><a href={withBase('companies/')}>企業一覧</a> / {d.primaryLayer}</div>
+        <div class="breadcrumb"><a href={withBase('companies/')}>企業一覧</a> / {layerLabel(d.primaryLayer)}</div>
         <div class="company-title-line"><h1>{d.japaneseName || d.name}</h1><span class="ticker">{d.ticker}</span></div>
         <div class="company-ja">{d.name} · 読み：{d.reading}</div>
         <p class="lead">{d.summary}</p>
@@ -34,8 +35,8 @@ const sourceById = new Map(sources.map(source => [source.id, source]));
       </div>
       <dl class="snapshot">
         <div class="snapshot-row"><dt>上場市場</dt><dd>{d.exchange}</dd></div>
-        <div class="snapshot-row"><dt>国・地域</dt><dd>{d.country}</dd></div>
-        <div class="snapshot-row"><dt>主レイヤー</dt><dd>{d.primaryLayer}</dd></div>
+        <div class="snapshot-row"><dt>国・地域</dt><dd>{countryLabel(d.country)}</dd></div>
+        <div class="snapshot-row"><dt>主レイヤー</dt><dd>{layerLabel(d.primaryLayer)}</dd></div>
         <div class="snapshot-row"><dt>情報確認状況</dt><dd>{statusLabels[d.sourceStatus] ?? d.sourceStatus}</dd></div>
         <div class="snapshot-row"><dt>最終レビュー</dt><dd>{d.lastReviewed}</dd></div>
       </dl>
@@ -97,7 +98,7 @@ const sourceById = new Map(sources.map(source => [source.id, source]));
         </section>
         <section class="panel">
           <h3>所属レイヤー</h3>
-          <div class="tags">{d.layers.map(layer => <span class="tag">{layer}</span>)}</div>
+          <div class="tags">{d.layers.map(layer => <span class="tag">{layerLabel(layer)}</span>)}</div>
         </section>
         <section class="panel">
           <h3>競合・比較対象</h3>
