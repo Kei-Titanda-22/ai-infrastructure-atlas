@@ -3,8 +3,8 @@
 ## Release phase
 
 - **v0.1 — Complete**: 20社・静的データ・公開URL
-- **v0.2 — In progress**: 100社化・セクターマップ
-- v0.3 — 企業比較の本格化
+- **v0.2 — Complete**: 100社・セクターマップ
+- **v0.3 — Next**: 企業比較の本格化
 - v0.4 — 決算データの時系列化
 - v0.5 — 許可済みSourceのみ自動更新
 - v1.0 — AI Infrastructure Atlas
@@ -20,8 +20,8 @@
 
 ## Current database
 
-- companies: **60**（v0.1 Core 20 + v0.2 Batch A/B/C/D 各10社）
-- v0.2 company target: 100
+- companies: **100**（v0.1 Core 20 + v0.2 Batch A〜H）
+- v0.2 company target: **100 / 100 achieved**
 - value-chain layers: 9
 - value-chain stages: 9 including AI demand
 - verified common financial metric audits: 14
@@ -29,46 +29,25 @@
 - project constitution articles: 9
 - real-time stock-price distribution: disabled
 
-## v0.1 completion basis
+## v0.2 completion basis
 
-v0.1の完成条件は「20社の静的データを公開URL上で閲覧・検索できること」。この条件は達成済み。
+100社の静的プロフィールを、工程・技術・地域から横断検索できる公開サイトとして提供する条件を達成。各新規企業は一次情報入口を登録し、未監査の財務値は意図的に未収録としている。
 
-現在すでに存在する比較・財務・監査機能は先行実装として維持し、v0.2以降で対象企業数と品質を段階的に拡張する。
+Batch E: Tesla / Mobileye / Aptiv / DENSO / Bosch / KEYENCE / Yaskawa / SMC / OMRON / Hexagon
 
-## v0.2 Batch A
+Batch F: Infineon / STMicroelectronics / NXP / Renesas / Texas Instruments / Analog Devices / Monolithic Power Systems / onsemi / ROHM / Mitsubishi Electric
 
-AMD / Intel / Marvell Technology / Arm / Qualcomm / MediaTek / ASM International / KOKUSAI ELECTRIC / SCREEN Holdings / Lasertec
+Batch G: GlobalFoundries / UMC / Tower Semiconductor / SMIC / ASE Technology / Amkor / JCET / Unimicron / Kinsus / Nan Ya PCB
 
-公式IR入口を確認した静的プロフィール、工程分類、技術タグ、主力製品を追加。財務数値は未監査のため意図的に未収録。
+Batch H: Western Digital / Sandisk / Seagate / Synopsys / Cadence / Entegris / Air Liquide / Linde / Canon / Nikon
 
-## v0.2 Batch B
+## Next milestone — v0.3
 
-Besi / ASMPT / HANMI Semiconductor / イビデン / 新光電気工業 / 味の素ファインテクノ / レゾナック・ホールディングス / 信越化学工業 / SUMCO / GlobalWafers
-
-後工程装置、パッケージ基板、ABF、シリコンウェハ、実装材料を追加し、「半導体材料・基板」を独立レイヤーとして新設。新光電気工業と味の素ファインテクノは非上場企業としてTickerを付与しない。
-
-## v0.2 Batch C
-
-Coherent / Lumentum / Ciena / Cisco / Credo / 古河電気工業 / 住友電気工業 / Corning / Amphenol / TE Connectivity
-
-光トランシーバー、コヒーレント光、AEC、光ファイバ、高速コネクタ、電力ケーブルなど、AIクラスタ内外の接続インフラを拡張。各社の公式IR入口をSource Registryへ登録し、利用条件は未審査のため手動参照限定を維持する。
-
-## v0.2 Batch D
-
-Schneider Electric / Digital Realty / ABB / Siemens Energy / GE Vernova / Johnson Controls / Trane Technologies / Carrier / nVent / Legrand
-
-データセンターの建屋・コロケーションから、受配電、UPS、変圧器、系統設備、チラー、HVAC、液冷、ラック電源までを拡張。電力上流と施設内設備を同じデータセンター工程から辿れるようにした。新規企業の財務数値は未監査のため未収録。
-
-## v0.2 current work
-
-1. 60社 → 100社へ段階的に拡張
-2. セクター・工程・技術タグの再整理
-3. 技術名ごとに独立した検索リンクを持たせる
-4. 100社規模でも企業一覧・AND検索・複合フィルターを維持
-5. 新規企業にもSource / 基準日 / 定義 / 検証状態を適用
-6. 既存企業の財務監査は並行して継続
-
-追加候補群は `docs/v0.2-scope.md` で管理する。
+1. 比較対象3〜5社の選択UXを改善
+2. 比較指標の定義・期間整合性を強制
+3. セクター別比較テンプレートを追加
+4. 比較不能理由を明示
+5. 既存100社の静的データを壊さず維持
 
 ## Data quality policy
 
@@ -79,11 +58,3 @@ Schneider Electric / Digital Realty / ABB / Siemens Energy / GE Vernova / Johnso
 - 主観スコアは新規企業へ強制しない
 - 利用条件未確認Sourceは自動取得しない
 - APIキーをGitHubへ置かない
-
-## User input required later
-
-該当境界に到達した時だけ確認する。
-
-- paid/licensed market-data or consensus APIを許容するか
-- 公開・有料化前の法務・利用条件再レビュー
-- 主観評価を正式機能として残すか

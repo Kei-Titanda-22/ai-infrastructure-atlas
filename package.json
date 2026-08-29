@@ -3,21 +3,15 @@
   "version": "0.2.0",
   "private": true,
   "type": "module",
-  "engines": {
-    "node": ">=22.19.0"
-  },
+  "engines": {"node": ">=22.19.0"},
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "validate:data": "python scripts/validate-data.py && python scripts/validate-facilities.py && python scripts/validate-audits.py",
+    "validate:data": "python scripts/validate-data.py && python scripts/validate-facilities.py && python scripts/validate-audits.py && python scripts/validate-v02.py",
     "validate:secrets": "python scripts/check-secrets.py",
     "validate": "npm run validate:data && npm run validate:secrets"
   },
-  "dependencies": {
-    "astro": "7.2.9"
-  },
-  "devDependencies": {
-    "pagefind": "1.5.2"
-  }
+  "dependencies": {"astro": "7.2.9"},
+  "devDependencies": {"pagefind": "1.5.2"}
 }

@@ -2,8 +2,8 @@
 
 個人用の半導体・AIインフラ横断リサーチデータベース。
 
-**Current milestone: v0.2 — 100社化・セクターマップ**  
-**v0.1 completed: Core 20 / static data / public GitHub Pages site**
+**v0.2 completed: 100 companies / sector map / public GitHub Pages site**  
+**Next milestone: v0.3 — company comparison**
 
 ## Live site
 
@@ -28,18 +28,16 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 ## Release roadmap
 
 - v0.1 — 20社・静的データ **Complete**
-- v0.2 — 100社・セクターマップ **In progress**
-- v0.3 — 企業比較
+- v0.2 — 100社・セクターマップ **Complete**
+- v0.3 — 企業比較 **Next**
 - v0.4 — 決算データ
 - v0.5 — 自動更新
 - v1.0 — AI Infrastructure Atlas
 
-一部の後段機能は先行実装されていますが、バージョン番号は各段階の主目的と完成条件で管理します。詳細は [`docs/roadmap.md`](docs/roadmap.md) と [`docs/v0.2-scope.md`](docs/v0.2-scope.md) を参照してください。
-
 ## Current coverage
 
-- 60 companies after v0.2 Batch D
-- 9 value-chain layers
+- 100 companies
+- 9 value-chain layers / 9 stages including AI demand
 - searchable company directory
 - technology/process links
 - company detail research pages
@@ -48,7 +46,7 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 - Pagefind full-text search
 - GitHub Pages deployment
 
-v0.2 Batch Aでは計算半導体・製造装置、Batch Bでは後工程・基板・材料、Batch Cでは光通信・ネットワーク・電線、Batch Dではデータセンター・電力・冷却を中心に各10社を追加しています。新規企業の財務数値は監査前のため意図的に未収録です。
+新規企業の財務数値は監査前のため意図的に未収録です。Source利用条件未審査の資料は手動参照限定です。
 
 ## Stack
 
@@ -69,25 +67,11 @@ npm run build
 npm run preview
 ```
 
-`npm run validate` はSource・定義・利用条件・財務監査・Secret等の整合性を確認します。`npm run build` はAstro生成後にPagefind索引を作成します。
-
-## Data policy
-
-- Objective data and analyst judgment are stored separately.
-- Missing financial values are never silently converted to zero.
-- Numeric objective data requires provenance before publication.
-- Subjective scores are optional and are not forced onto new companies.
-- Unreviewed sources remain manual-reference-only.
-- Company relationships require evidence before being treated as verified facts.
-
 ## Documents
 
 - `docs/constitution.md` — binding governance rules
 - `docs/roadmap.md` — canonical release roadmap
-- `docs/v0.1-scope.md` — v0.1 completion basis
-- `docs/v0.2-scope.md` — current 100-company expansion plan
+- `docs/v0.2-scope.md` — completed 100-company expansion
 - `docs/data-model.md` — research data contract
 - `docs/design-system-v04.md` — UI design system
-- `docs/financial-audit-2026-08-30.md` — current financial audit log
 - `docs/status.md` — current implementation state
-- `docs/delivery-requirements.md` — browser deployment Definition of Done
