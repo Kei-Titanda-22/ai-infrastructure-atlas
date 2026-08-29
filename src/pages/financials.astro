@@ -2,6 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FinancialTrendChart from '../components/FinancialTrendChart.astro';
 import { getCollection } from 'astro:content';
+import sources from '../data/sources.json';
+import v02Sources from '../data/sources-v02.json';
 import documentSources from '../data/document-sources.json';
 import { withBase } from '../lib/paths';
 import {
@@ -15,7 +17,8 @@ import {
 
 const allCompanies = await getCollection('companies');
 const companyById = new Map(allCompanies.map(company => [company.id, company]));
-const sourceById = new Map(documentSources.map(source => [source.id, source]));
+const allSources = [...sources, ...v02Sources, ...documentSources];
+const sourceById = new Map(allSources.map(source => [source.id, source]));
 const coveredIds = [...new Set(financialHistory.map(record => record.companyId))];
 const coveredCompanies = coveredIds
   .map(id => companyById.get(id))
