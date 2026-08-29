@@ -1,0 +1,230 @@
+---
+import financialHistory from '../data/financial-history.json';
+import sources from '../data/sources.json';
+import v02Sources from '../data/sources-v02.json';
+import documentSources from '../data/document-sources.json';
+import { withBase } from '../lib/paths';
+
+const sourceById = new Map([...sources, ...v02Sources, ...documentSources].map(source => [source.id, source]));
+const payload = {
+  financialsBase: withBase('financials/'),
+  history: financialHistory.map(record => ({
+    id: record.id,
+    companyId: record.companyId,
+    periodType: record.periodType,
+    periodLabel: record.periodLabel,
+    endDate: record.endDate,
+    currency: record.currency,
+    unit: record.unit,
+    accountingBasis: record.accountingBasis,
+    verifiedAt: record.verifiedAt,
+    metrics: record.metrics,
+    source: (() => {
+      const source = sourceById.get(record.sourceId);
+      return source ? { title: source.title, url: source.url } : null;
+    })(),
+  })),
+};
+---
+<script id="v04-financial-compare-data" type="application/json" set:html={JSON.stringify(payload)}></script>
+<script is:inline>
+  (() => {
+    const compareRoot = document.querySelector('#compare-app');
+    const dataNode = document.querySelector('#v04-financial-compare-data');
+    if (!compareRoot || !dataNode) return;
+
+    const payload = JSON.parse(dataNode.textContent || '{}');
+    const history = Array.isArray(payload.history) ? payload.history : [];
+    const financialsBase = payload.financialsBase || './financials/';
+    const historyByCompany = new Map();
+    history.forEach(record => {
+      const list = historyByCompany.get(record.companyId) || [];
+      list.push(record);
+      historyByCompany.set(record.companyId, list);
+    });
+    historyByCompany.forEach(list => list.sort((a, b) => String(a.endDate).localeCompare(String(b.endDate))));
+
+    const amountMetrics = new Set(['revenue', 'operatingProfit', 'freeCashFlow', 'capex']);
+    const metricRows = [
+      ['売上高（最新収録期）', 'revenue'],
+      ['営業利益（最新収録期）', 'operatingProfit'],
+      ['営業利益率（最新収録期）', 'operatingMargin'],
+      ['FCF（最新収録期）', 'freeCashFlow'],
+      ['設備投資（最新収録期）', 'capex'],
+    ];
+
+    const text = (tag, value, className = '') => {
+      const node = document.createElement(tag);
+      node.textContent = value;
+      if (className) node.className = className;
+      return node;
+    };
+    const companyIdFromHeader = headerLink => {
+      const href = headerLink?.getAttribute('href') || '';
+      const match = href.match(/\/companies\/([^/]+)\/?/);
+      return match ? decodeURIComponent(match[1]) : null;
+    };
+    const latestRecord = companyId => {
+      const rows = historyByCompany.get(companyId) || [];
+      return rows.length ? rows[rows.length - 1] : null;
+    };
+    const unitText = record => {
+      if (!record) return '';
+      const suffix = record.unit === 'million' ? 'mn' : record.unit === 'billion' ? 'bn' : record.unit === 'trillion' ? 'tn' : record.unit;
+      return `${record.currency} ${suffix}`;
+    };
+    const formatValue = (record, metricId) => {
+      const metric = record?.metrics?.[metricId];
+      if (!metric || metric.value == null) return null;
+      const value = Number(metric.value);
+      if (metricId === 'operatingMargin') return `${value.toLocaleString('ja-JP', { maximumFractionDigits: 2 })}%`;
+      return `${value.toLocaleString('ja-JP', { maximumFractionDigits: 2 })} ${unitText(record)}`;
+    };
+    const statusLabel = status => ({
+      verified: '検証済み',
+      'source-linked': '一次資料紐付け済み',
+      'needs-review': '要再検証',
+      'not-collected': '未収録',
+      'primary-source-unchecked': '一次資料未確認',
+      'not-calculable': '算出不能',
+      'not-disclosed': '非開示',
+      'not-applicable': '対象外',
+    })[status] || status || '未収録';
+    const comparisonState = (metricId, picked) => {
+      const entries = picked.map(item => {
+        const record = latestRecord(item.companyId);
+        const metric = record?.metrics?.[metricId];
+        return { ...item, record, metric };
+      }).filter(item => item.metric?.value != null);
+
+      if (entries.length < 2) return { code: 'blocked', label: '比較不能', reasons: ['2社以上に値がありません'] };
+      const reasons = [];
+      if (entries.length < picked.length) reasons.push(`${picked.length - entries.length}社が未収録`);
+
+      const periodTypes = new Set(entries.map(item => item.record.periodType));
+      if (periodTypes.size > 1) return { code: 'blocked', label: '比較不能', reasons: ['四半期と通期が混在しています'] };
+
+      if (amountMetrics.has(metricId)) {
+        const currencies = new Set(entries.map(item => item.record.currency));
+        const units = new Set(entries.map(item => item.record.unit));
+        if (currencies.size > 1) return { code: 'blocked', label: '比較不能', reasons: ['報告通貨が異なります'] };
+        if (units.size > 1) return { code: 'blocked', label: '比較不能', reasons: ['金額単位が異なります'] };
+      }
+
+      if (metricId === 'freeCashFlow' || metricId === 'capex') {
+        const definitions = new Set(entries.map(item => String(item.metric.basis || '').trim()));
+        if (definitions.size > 1) return { code: 'blocked', label: '比較不能', reasons: [`${metricId === 'freeCashFlow' ? 'FCF' : '設備投資'}の定義が異なります`] };
+      }
+
+      const accounting = new Set(entries.map(item => item.record.accountingBasis));
+      if (accounting.size > 1) reasons.push('会計基準が異なる');
+      const periods = new Set(entries.map(item => `${item.record.periodLabel}|${item.record.endDate}`));
+      if (periods.size > 1) reasons.push('最新収録期間が異なる');
+      if (entries.some(item => item.metric.status !== 'verified')) reasons.push('未検証値を含む');
+      return reasons.length
+        ? { code: 'caution', label: '条件注意', reasons }
+        : { code: 'ok', label: '比較可', reasons: ['期間・通貨・定義が一致'] };
+    };
+    const makeCell = (companyId, metricId) => {
+      const record = latestRecord(companyId);
+      const metric = record?.metrics?.[metricId];
+      const wrap = document.createElement('div');
+      wrap.className = 'compare-metric-cell';
+      const shown = formatValue(record, metricId);
+      if (!record || !metric || shown == null) {
+        wrap.append(text('div', metric ? statusLabel(metric.status) : '時系列未収録', 'compare-missing'));
+      } else {
+        wrap.append(text('div', shown, 'compare-value mono'));
+        wrap.append(text('div', `${record.periodLabel} · 期末 ${record.endDate}`, 'compare-cell-meta'));
+        wrap.append(text('div', `基準：${record.accountingBasis}`, 'compare-cell-basis'));
+        wrap.append(text('div', `定義：${metric.basis}`, 'compare-cell-basis'));
+        wrap.append(text('div', statusLabel(metric.status), `compare-verification compare-verification-${metric.status === 'verified' ? 'verified' : 'review'}`));
+        if (record.source?.url) {
+          const source = document.createElement('a');
+          source.href = record.source.url;
+          source.target = '_blank';
+          source.rel = 'noopener noreferrer';
+          source.className = 'source-link compare-source';
+          source.textContent = '一次資料';
+          source.title = record.source.title || '一次資料';
+          wrap.append(source);
+        }
+      }
+      if (historyByCompany.has(companyId)) {
+        const historyLink = document.createElement('a');
+        historyLink.href = `${financialsBase}?company=${encodeURIComponent(companyId)}`;
+        historyLink.className = 'text-link compare-history-link';
+        historyLink.textContent = '履歴';
+        wrap.append(historyLink);
+      }
+      return wrap;
+    };
+
+    const renderBridge = () => {
+      const tbody = compareRoot.querySelector('#compare-table tbody');
+      const headLinks = [...compareRoot.querySelectorAll('#compare-head a.compare-company-head')];
+      if (!tbody || !headLinks.length || tbody.querySelector('[data-v04-history-section]')) return;
+      const picked = headLinks.map(link => ({ companyId: companyIdFromHeader(link), label: link.textContent || '' })).filter(item => item.companyId);
+      if (!picked.length) return;
+
+      const section = document.createElement('tr');
+      section.className = 'compare-section-row';
+      section.setAttribute('data-v04-history-section', '');
+      const sectionHead = document.createElement('th');
+      sectionHead.colSpan = picked.length + 1;
+      sectionHead.textContent = '決算時系列（v0.4 正規化）';
+      section.append(sectionHead);
+      tbody.append(section);
+
+      const periodRow = document.createElement('tr');
+      periodRow.className = 'compare-history-period-row';
+      const periodHead = document.createElement('th');
+      periodHead.append(text('div', '最新収録期間', 'compare-row-label'));
+      periodHead.append(text('div', '各社の正規化履歴で最も新しい期間。期間区分が混ざる場合は金額比較しません。', 'compare-row-definition'));
+      periodRow.append(periodHead);
+      picked.forEach(item => {
+        const td = document.createElement('td');
+        const record = latestRecord(item.companyId);
+        if (!record) td.append(text('div', '時系列未収録', 'compare-missing'));
+        else {
+          td.append(text('div', record.periodLabel, 'compare-value'));
+          td.append(text('div', `期末 ${record.endDate}`, 'compare-cell-meta'));
+          td.append(text('div', `${record.accountingBasis} · ${unitText(record)}`, 'compare-cell-basis'));
+        }
+        periodRow.append(td);
+      });
+      tbody.append(periodRow);
+
+      metricRows.forEach(([label, metricId]) => {
+        const state = comparisonState(metricId, picked);
+        const tr = document.createElement('tr');
+        tr.className = 'compare-history-metric-row';
+        const th = document.createElement('th');
+        th.append(text('div', label, 'compare-row-label'));
+        th.append(text('div', state.label, `compare-row-state compare-row-state-${state.code}`));
+        th.append(text('div', state.reasons.join(' / '), 'compare-row-note'));
+        tr.append(th);
+        picked.forEach(item => {
+          const td = document.createElement('td');
+          td.append(makeCell(item.companyId, metricId));
+          tr.append(td);
+        });
+        tbody.append(tr);
+      });
+    };
+
+    const tbody = compareRoot.querySelector('#compare-table tbody');
+    if (!tbody) return;
+    let scheduled = false;
+    const scheduleRender = () => {
+      if (scheduled) return;
+      scheduled = true;
+      queueMicrotask(() => {
+        scheduled = false;
+        renderBridge();
+      });
+    };
+    new MutationObserver(scheduleRender).observe(tbody, { childList: true });
+    scheduleRender();
+  })();
+</script>
