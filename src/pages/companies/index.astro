@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CompanyCard from '../../components/CompanyCard.astro';
+import { getCollection } from 'astro:content';
+const companies = (await getCollection('companies')).sort((a,b) => a.data.name.localeCompare(b.data.name));
+const layers = [...new Set(companies.map(c => c.data.primaryLayer))].sort();
+const countries = [...new Set(companies.map(c => c.data.country))].sort();
+---
+<BaseLayout title="Companies">
+  <header class="page-head">
+    <div class="shell">
+      <div class="eyebrow">Research universe</div>
+      <h1>Companies</h1>
+      <p class="lead">企業名・ティッカー・Primary Layer・国で絞り込み。v0.1ではCore 20を対象とし、各社の事業構造と比較画面を優先して整備します。</p>
+    </div>
+  </header>
+  <div class="shell section" id="companies-app">
+    <div class="toolbar">
+      <input id="company-search" class="control" type="search" placeholder="NVIDIA / 8035 / HBM ..." aria-label="企業検索" />
+      <select id="layer-filter" class="control" aria-label="レイヤーで絞り込み">
+        <option value="">All layers</option>
+        {layers.map(layer => <option value={layer}>{layer}</option>)}
+      </select>
+      <select id="country-filter" class="control" aria-label="国で絞り込み">
+        <option value="">All countries</option>
+        {countries.map(country => <option value={country}>{country}</option>)}
+      </select>
+    </div>
+    <p class="result-count" id="result-count">{companies.length} companies</p>
+    <div class="grid company-grid" id="company-grid">
+      {companies.map(company => <CompanyCard company={company} />)}
+    </div>
+  </div>
+  <script is:inline>
+    const root = document.querySelector('#companies-app');
+    if (root) {
+      const input = root.querySelector('#company-search');
+      const layer = root.querySelector('#layer-filter');
+      const country = root.querySelector('#country-filter');
+      const cards = [...root.querySelectorAll('[data-company-card]')];
+      const count = root.querySelector('#result-count');
+      const params = new URLSearchParams(location.search);
+      if (input instanceof HTMLInputElement && params.get('q')) input.value = params.get('q') || '';
+      if (layer instanceof HTMLSelectElement && params.get('layer')) layer.value = params.get('layer') || '';
+      if (country instanceof HTMLSelectElement && params.get('country')) country.value = params.get('country') || '';
+      const apply = () => {
+        const q = input instanceof HTMLInputElement ? input.value.trim().toLowerCase() : '';
+        const l = layer instanceof HTMLSelectElement ? layer.value : '';
+        const c = country instanceof HTMLSelectElement ? country.value : '';
+        let visible = 0;
+        cards.forEach(card => {
+          const hit = (!q || (card.dataset.name || '').includes(q)) && (!l || card.dataset.layer === l) && (!c || card.dataset.country === c);
+          card.hidden = !hit;
+          if (hit) visible++;
+        });
+        if (count) count.textContent = `${visible} companies`;
+      };
+      input?.addEventListener('input', apply);
+      layer?.addEventListener('change', apply);
+      country?.addEventListener('change', apply);
+      apply();
+    }
+  </script>
+</BaseLayout>

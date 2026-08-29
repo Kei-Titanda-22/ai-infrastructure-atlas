@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import layers from '../data/layers.json';
+import { withBase } from '../lib/paths';
+const companies = await getCollection('companies');
+---
+<BaseLayout title="Atlas" indexable>
+  <header class="page-head">
+    <div class="shell">
+      <div class="eyebrow">Industry map</div>
+      <h1>Atlas</h1>
+      <p class="lead">AI需要を、計算半導体だけでなく製造・記憶・接続・電力・冷却・現実空間まで辿る。v0.1はレイヤー表示、v0.2以降で検証済み企業間Relationshipを重ねます。</p>
+    </div>
+  </header>
+  <div class="shell section">
+    <div class="atlas-lanes">
+      {layers.map((layer, index) => {
+        const members = companies.filter(c => c.data.layers.includes(layer.name));
+        return (
+          <section class="atlas-lane">
+            <div class="atlas-lane-head">
+              <span class="num">LAYER {String(index+1).padStart(2,'0')}</span>
+              <h3>{layer.name}</h3>
+              <p>{layer.description}</p>
+            </div>
+            <div class="atlas-companies">
+              {members.map(c => <a class="atlas-company" href={withBase(`companies/${c.id}/`)}>{c.data.name} <span class="ticker">{c.data.ticker}</span></a>)}
+            </div>
+          </section>
+        )
+      })}
+    </div>
+  </div>
+</BaseLayout>

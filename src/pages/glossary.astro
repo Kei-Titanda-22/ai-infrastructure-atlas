@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import glossary from '../data/glossary.json';
+---
+<BaseLayout title="Glossary" indexable>
+  <header class="page-head"><div class="shell"><div class="eyebrow">Technical vocabulary</div><h1>Glossary</h1><p class="lead">企業比較で頻出する技術・財務用語。</p></div></header>
+  <div class="shell section method-grid">
+    {glossary.map(item => <article class="method-card"><div class="ticker">{item.term}</div><h3>{item.name}</h3><p>{item.reading}</p><p>{item.definition}</p></article>)}
+  </div>
+</BaseLayout>

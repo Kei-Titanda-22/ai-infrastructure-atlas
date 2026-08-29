@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CompanyCard from '../components/CompanyCard.astro';
+import { getCollection } from 'astro:content';
+import layers from '../data/layers.json';
+import { withBase } from '../lib/paths';
+
+const companies = await getCollection('companies');
+const featuredIds = ['nvidia','tsmc','sk-hynix','asml','tokyo-electron','arista','vertiv','fanuc'];
+const featured = featuredIds.map(id => companies.find(c => c.id === id)).filter(Boolean);
+---
+<BaseLayout>
+  <div class="shell">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Semiconductor → Data Center → Physical AI</div>
+        <h1>AI Infrastructure<br />Atlas</h1>
+        <p>半導体、製造装置、メモリ、ネットワーク、光通信、データセンター、電力・冷却、Physical AIを一つのバリューチェーンとして追跡する個人用リサーチ基盤。</p>
+        <form class="search-box" action={withBase('companies/')} method="get">
+          <input class="control" type="search" name="q" placeholder="企業名・ティッカー・製品で検索" aria-label="企業を検索" />
+          <button class="primary-button" type="submit">Companiesを検索</button>
+        </form>
+      </div>
+      <div class="hero-stats" aria-label="Atlas status">
+        <div class="hero-stat"><span class="stat-value">20</span><span class="stat-label">Core companies</span></div>
+        <div class="hero-stat"><span class="stat-value">8</span><span class="stat-label">Value-chain layers</span></div>
+        <div class="hero-stat"><span class="stat-value">4</span><span class="stat-label">Compare slots</span></div>
+        <div class="hero-stat"><span class="stat-value">v0.1</span><span class="stat-label">Static prototype</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div><span class="eyebrow">Value chain</span><h2>AI投資がどこへ伝播するか</h2></div>
+        <p>業種分類よりも「AI設備投資の伝播経路」を優先。企業は複数レイヤーに所属可能とし、Primary Layerだけを一覧整理に使用します。</p>
+      </div>
+      <div class="chain">
+        {layers.map((layer, index) => (
+          <a class="chain-card" href={`${withBase('companies/')}?layer=${encodeURIComponent(layer.name)}`}>
+            <span class="chain-index">0{index + 1}</span>
+            <h3>{layer.name}</h3>
+            <p>{layer.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading">
+        <div><span class="eyebrow">Core 20</span><h2>横断比較の起点</h2></div>
+        <p>v0.1では20社でデータモデルを検証します。財務数値は取得パイプライン完成前のため未入力とし、推測値を表示しません。</p>
+      </div>
+      <div class="grid company-grid">
+        {featured.map(company => <CompanyCard company={company} />)}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="notice">現在のAI感応度・金利感応度などのスコアはUI検証用の暫定値です。最終評価軸と判断はMethodology確定後に固定します。PER/PBR/ROIC等は出典・基準日・期間を伴うデータだけを掲載します。</div>
+    </section>
+  </div>
+</BaseLayout>
