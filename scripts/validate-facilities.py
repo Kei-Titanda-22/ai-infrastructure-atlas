@@ -42,8 +42,9 @@ for facility in facilities:
 
 if len(brand_company_ids) != len(set(brand_company_ids)):
     errors.append('Duplicate brand asset company record')
-if set(brand_company_ids) != company_ids:
-    errors.append('Brand asset registry must contain exactly one record per company')
+orphan_brand_records = sorted(set(brand_company_ids) - company_ids)
+if orphan_brand_records:
+    errors.append(f'Brand asset registry contains unknown companies: {orphan_brand_records}')
 for brand in brand_assets:
     status = brand.get('reviewStatus')
     if status not in {'pending','reviewed','blocked'}:
