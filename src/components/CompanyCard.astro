@@ -6,12 +6,12 @@ const { company } = Astro.props;
 const d = company.data ?? company;
 const id = company.id;
 const companyFacilities = facilities.filter(facility => facility.companyId === id);
-const cityText = companyFacilities.map(facility => `${facility.city} ${facility.region}`).join(' ');
+const locationText = companyFacilities.map(facility => `${facility.city} ${facility.region}`).join(' ');
 ---
 <article
   class="company-card"
   data-company-card
-  data-name={`${d.name} ${d.japaneseName} ${d.reading} ${d.ticker} ${d.tags.join(' ')} ${d.products.join(' ')} ${cityText}`.toLowerCase()}
+  data-name={`${d.name} ${d.japaneseName} ${d.reading} ${d.ticker} ${d.tags.join(' ')} ${d.products.join(' ')} ${locationText}`.toLowerCase()}
   data-tags={d.tags.join('|')}
   data-layer={d.primaryLayer}
   data-country={d.country}
@@ -28,8 +28,6 @@ const cityText = companyFacilities.map(facility => `${facility.city} ${facility.
     <a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a>
     <span>·</span>
     <a class="filter-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a>
-    <span>·</span>
-    <span>AI感応度 {d.scores.aiExposure.value}/5</span>
   </div>
   <div class="tags tag-links" aria-label="企業タグ">
     {d.tags.slice(0, 4).map(tag => (
