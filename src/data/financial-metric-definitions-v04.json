@@ -1,0 +1,32 @@
+[
+  {
+    "id": "revenue",
+    "name": "売上高",
+    "definition": "対象期間の連結売上高または売上収益。会社の一次財務資料上の報告通貨・報告単位を維持し、通貨換算は行わない。",
+    "kind": "currency"
+  },
+  {
+    "id": "operatingProfit",
+    "name": "営業利益",
+    "definition": "対象期間のGAAP・IFRS・各国会計基準上の営業利益。調整後営業利益は混在させず、採用基準をperiod recordのaccountingBasisとbasisに明示する。",
+    "kind": "currency"
+  },
+  {
+    "id": "operatingMargin",
+    "name": "営業利益率",
+    "definition": "対象期間の営業利益を売上高で除した値。会社開示値を優先し、Atlas算出の場合は営業利益 ÷ 売上高 × 100で再計算する。",
+    "kind": "percent"
+  },
+  {
+    "id": "freeCashFlow",
+    "name": "FCF",
+    "definition": "Atlas統一定義を適用できる場合のみ掲載する。原則として営業活動によるキャッシュフローから設備投資に係る現金支出を控除するが、会社固有の定義を使用する場合はbasisで区別する。",
+    "kind": "currency"
+  },
+  {
+    "id": "capex",
+    "name": "設備投資",
+    "definition": "対象期間の設備投資額。発生額とキャッシュ支出を混同せず、一次資料の定義をbasisに明示する。比較不能な定義は無理に正規化しない。",
+    "kind": "currency"
+  }
+]

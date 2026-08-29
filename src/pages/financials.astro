@@ -1,0 +1,155 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FinancialTrendChart from '../components/FinancialTrendChart.astro';
+import { getCollection } from 'astro:content';
+import sources from '../data/sources.json';
+import v02Sources from '../data/sources-v02.json';
+import documentSources from '../data/document-sources.json';
+import { withBase } from '../lib/paths';
+import {
+  financialHistory,
+  financialCoverage,
+  getFinancialHistory,
+  formatFinancialMetric,
+  financialStatusLabel,
+  unitLabel,
+} from '../lib/financial-history';
+
+const allCompanies = await getCollection('companies');
+const companyById = new Map(allCompanies.map(company => [company.id, company]));
+const allSources = [...sources, ...v02Sources, ...documentSources];
+const sourceById = new Map(allSources.map(source => [source.id, source]));
+const coveredIds = [...new Set(financialHistory.map(record => record.companyId))];
+const coveredCompanies = coveredIds
+  .map(id => companyById.get(id))
+  .filter(Boolean)
+  .sort((a, b) => (a!.data.japaneseName || a!.data.name).localeCompare(b!.data.japaneseName || b!.data.name, 'ja'));
+const coverage = financialCoverage();
+const initialCompanyId = coveredIds.includes('nvidia') ? 'nvidia' : coveredIds[0];
+
+const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'operatingMargin' | 'freeCashFlow' | 'capex') => {
+  const metric = record.metrics[metricId];
+  const value = formatFinancialMetric(record, metricId);
+  return { metric, value };
+};
+---
+<BaseLayout title="決算データ" description="AI Infrastructure Atlasの検証済み決算時系列データ" indexable>
+  <header class="page-head">
+    <div class="shell">
+      <span class="eyebrow">v0.4 FINANCIAL HISTORY</span>
+      <h1>決算データ</h1>
+      <p class="lead">四半期・通期の売上高、営業利益、営業利益率を一次資料単位で正規化します。通貨換算や異なる会計基準の機械的な混在は行いません。FCF・設備投資は定義を確認できた期間から順次収録します。</p>
+    </div>
+  </header>
+
+  <div class="shell section">
+    <div class="financial-summary" aria-label="決算データ収録状況">
+      <div><span>収録企業</span><strong>{coverage.companies}</strong><small>/ 100社</small></div>
+      <div><span>決算期間</span><strong>{coverage.periods}</strong><small>件</small></div>
+      <div><span>四半期</span><strong>{coverage.quarterly}</strong><small>件</small></div>
+      <div><span>通期</span><strong>{coverage.annual}</strong><small>件</small></div>
+      <div><span>検証済み指標</span><strong>{coverage.verifiedMetrics}</strong><small>件</small></div>
+    </div>
+
+    <div class="financial-selector">
+      <label for="financial-company">企業</label>
+      <select id="financial-company" class="control">
+        {coveredCompanies.map(company => <option value={company!.id} selected={company!.id === initialCompanyId}>{company!.data.japaneseName || company!.data.name}</option>)}
+      </select>
+      <p>現段階では既存の一次資料監査済み企業から収録しています。未収録企業の数値を推定で補いません。</p>
+    </div>
+
+    {coveredCompanies.map(company => {
+      const history = getFinancialHistory(company!.id);
+      const quarterly = history.filter(record => record.periodType === 'quarterly');
+      const annual = history.filter(record => record.periodType === 'annual');
+      return (
+        <section class="financial-company" data-financial-company={company!.id} hidden={company!.id !== initialCompanyId}>
+          <div class="section-heading financial-company-heading">
+            <div>
+              <span class="eyebrow">{company!.data.ticker || 'PRIVATE'}</span>
+              <h2>{company!.data.japaneseName || company!.data.name}</h2>
+            </div>
+            <p><a class="text-link" href={withBase(`companies/${company!.id}/`)}>企業調査ページを開く →</a></p>
+          </div>
+
+          {quarterly.length > 0 && (
+            <div class="financial-period-block">
+              <div class="financial-period-head"><h3>四半期</h3><span>{quarterly.length}期間</span></div>
+              <div class="financial-chart-grid">
+                <FinancialTrendChart records={quarterly} metricId="revenue" title="売上高" />
+                <FinancialTrendChart records={quarterly} metricId="operatingMargin" title="営業利益率" />
+              </div>
+            </div>
+          )}
+
+          {annual.length > 0 && (
+            <div class="financial-period-block">
+              <div class="financial-period-head"><h3>通期</h3><span>{annual.length}期間</span></div>
+              <div class="financial-chart-grid">
+                <FinancialTrendChart records={annual} metricId="revenue" title="売上高" />
+                <FinancialTrendChart records={annual} metricId="operatingMargin" title="営業利益率" />
+              </div>
+            </div>
+          )}
+
+          <div class="table-scroll financial-history-table-wrap">
+            <table class="metrics-table financial-history-table">
+              <thead>
+                <tr><th>期間</th><th>売上高</th><th>営業利益</th><th>営業利益率</th><th>FCF</th><th>設備投資</th><th>基準・単位</th><th>一次資料</th></tr>
+              </thead>
+              <tbody>
+                {[...history].reverse().map(record => {
+                  const revenue = metricCell(record, 'revenue');
+                  const operatingProfit = metricCell(record, 'operatingProfit');
+                  const margin = metricCell(record, 'operatingMargin');
+                  const fcf = metricCell(record, 'freeCashFlow');
+                  const capex = metricCell(record, 'capex');
+                  const source = sourceById.get(record.sourceId);
+                  const renderMetric = (cell: any) => cell.value != null
+                    ? <>{cell.value}<span class="metric-provenance">{financialStatusLabel(cell.metric.status)}</span></>
+                    : <span class="financial-missing">{financialStatusLabel(cell.metric.status)}</span>;
+                  return (
+                    <tr>
+                      <th>{record.periodLabel}<span class="metric-provenance">期末 {record.endDate}</span></th>
+                      <td class="table-number">{renderMetric(revenue)}</td>
+                      <td class="table-number">{renderMetric(operatingProfit)}</td>
+                      <td class="table-number">{renderMetric(margin)}</td>
+                      <td>{renderMetric(fcf)}</td>
+                      <td>{renderMetric(capex)}</td>
+                      <td>{record.accountingBasis}<span class="metric-provenance">{unitLabel(record)}</span></td>
+                      <td>{source ? <a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a> : '—'}<span class="metric-provenance">検証 {record.verifiedAt}</span></td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p class="financial-definition-note">グラフは同一企業・同一報告通貨の期間推移です。企業間で棒・線の高さを直接比較する用途には使用しません。営業利益率は会社開示値または一次資料からのAtlas再計算値です。</p>
+        </section>
+      );
+    })}
+  </div>
+
+  <script is:inline define:vars={{ initialCompanyId }}>
+    const selector = document.querySelector('#financial-company');
+    const sections = [...document.querySelectorAll('[data-financial-company]')];
+    if (selector instanceof HTMLSelectElement) {
+      const params = new URLSearchParams(location.search);
+      const requested = params.get('company');
+      const validIds = new Set(sections.map(section => section.getAttribute('data-financial-company')));
+      if (requested && validIds.has(requested)) selector.value = requested;
+      else selector.value = initialCompanyId;
+      const applyCompany = () => {
+        sections.forEach(section => {
+          if (section instanceof HTMLElement) section.hidden = section.dataset.financialCompany !== selector.value;
+        });
+        const next = new URLSearchParams(location.search);
+        next.set('company', selector.value);
+        history.replaceState(null, '', `${location.pathname}?${next.toString()}`);
+      };
+      selector.addEventListener('change', applyCompany);
+      applyCompany();
+    }
+  </script>
+</BaseLayout>

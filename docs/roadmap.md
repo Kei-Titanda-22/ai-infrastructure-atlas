@@ -53,17 +53,20 @@ Completion criteria:
 
 ## v0.4 — 決算データ
 
-Status: **Next**
+Status: **In progress**
 
 Primary target:
 
-- quarterly and annual financial history
-- revenue / operating profit / operating margin / FCF / Capex
-- PER / PBR / ROIC only where source and definition requirements are satisfied
-- in-house generated charts
-- earnings update history
-- document-level primary-source provenance
-- comparison page consumes normalized historical financial data without changing the v0.3 URL contract
+- [x] normalized quarterly / annual financial-history schema
+- [x] first audited-history migration and v0.4 validator
+- [x] in-house generated financial-history charts
+- [ ] broaden quarterly and annual financial history
+- [ ] revenue / operating profit / operating margin / FCF / Capex coverage
+- [ ] PER / PBR / ROIC only where source and definition requirements are satisfied
+- [ ] earnings update history
+- [ ] document-level primary-source provenance across the expanded history
+- [ ] company detail pages consume historical financial data
+- [ ] comparison page consumes normalized historical financial data without changing the v0.3 URL contract
 
 ## v0.5 — 自動更新
 
