@@ -1,0 +1,20 @@
+{
+  "name": "ai-infrastructure-atlas",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "validate:data": "python scripts/validate-data.py",
+    "validate:secrets": "python scripts/check-secrets.py",
+    "validate": "npm run validate:data && npm run validate:secrets"
+  },
+  "dependencies": {
+    "astro": "7.2.9"
+  },
+  "devDependencies": {
+    "pagefind": "1.5.2"
+  }
+}
