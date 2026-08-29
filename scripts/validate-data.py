@@ -17,6 +17,7 @@ sector_kpi_definitions = json.loads((DATA / 'sector-kpi-definitions.json').read_
 sector_kpis = json.loads((DATA / 'sector-kpis.json').read_text(encoding='utf-8'))
 score_definitions = json.loads((DATA / 'score-definitions.json').read_text(encoding='utf-8'))
 governance = json.loads((DATA / 'governance.json').read_text(encoding='utf-8'))
+valuation_policy = json.loads((DATA / 'valuation-policy.json').read_text(encoding='utf-8'))
 
 errors = []
 ids = [c['id'] for c in companies]
@@ -46,6 +47,12 @@ if set(policy_ids) != source_ids:
         errors.append(f'Sources missing policy records: {missing}')
     if orphan:
         errors.append(f'Orphan source policy records: {orphan}')
+
+for gate in ('marketPrice', 'forwardConsensus', 'roic'):
+    if gate not in valuation_policy:
+        errors.append(f'valuation-policy missing gate: {gate}')
+    elif 'allowedPublication' not in valuation_policy[gate] or 'rule' not in valuation_policy[gate]:
+        errors.append(f'valuation-policy incomplete gate: {gate}')
 
 allowed_policy_states = {'pending', 'reviewed', 'blocked'}
 allowed_terms_states = {'unknown', 'allowed', 'restricted', 'prohibited', 'not-applicable'}
@@ -102,6 +109,14 @@ for company in companies:
             if not metric['definitionId']:
                 errors.append(f'{cid}: {metric_name} has value but no definitionId')
 
+    if not valuation_policy.get('marketPrice', {}).get('allowedPublication', False):
+        for locked_metric in ('peTTM', 'pb'):
+            if company['metrics'][locked_metric]['value'] is not None:
+                errors.append(f'{cid}: {locked_metric} published while market-price gate is closed')
+    if not valuation_policy.get('forwardConsensus', {}).get('allowedPublication', False):
+        if company['metrics']['peFY1']['value'] is not None:
+            errors.append(f'{cid}: peFY1 published while forward-consensus gate is closed')
+
 kpi_ids = [k['id'] for k in sector_kpis]
 if len(kpi_ids) != len(set(kpi_ids)):
     errors.append('Duplicate sector KPI id detected')
@@ -135,5 +150,5 @@ print(
     f'{len(all_sources)} sources / {len(all_source_policies)} source policies ({pending} pending) / '
     f'{verified_metrics} populated common metrics / {len(sector_kpis)} verified sector KPIs / '
     f'{len(metric_definitions)} common metric definitions / {len(sector_kpi_definitions)} sector KPI definitions / '
-    f'9 constitutional articles'
+    f'valuation gates enforced / 9 constitutional articles'
 )
