@@ -5,11 +5,12 @@ import { financialHistory, financialStatusLabel } from '../../lib/financial-hist
 import sources from '../../data/sources.json';
 import v02Sources from '../../data/sources-v02.json';
 import documentSources from '../../data/document-sources.json';
+import v04DocumentSources from '../../data/document-sources-v04.json';
 import { withBase } from '../../lib/paths';
 
 const companies = await getCollection('companies');
 const companyById = new Map(companies.map(company => [company.id, company]));
-const sourceById = new Map([...sources, ...v02Sources, ...documentSources].map(source => [source.id, source]));
+const sourceById = new Map([...sources, ...v02Sources, ...documentSources, ...v04DocumentSources].map(source => [source.id, source]));
 const metricLabels: Record<string, string> = {
   revenue: '売上高',
   operatingProfit: '営業利益',
