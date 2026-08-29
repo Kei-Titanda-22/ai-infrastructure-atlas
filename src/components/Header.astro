@@ -2,20 +2,20 @@
 import { withBase } from '../lib/paths';
 const path = Astro.url.pathname;
 const nav = [
-  ['Atlas','atlas/'],
-  ['Companies','companies/'],
-  ['Compare','compare/'],
-  ['Search','search/'],
-  ['Methodology','methodology/'],
+  ['全体マップ','atlas/'],
+  ['企業一覧','companies/'],
+  ['企業比較','compare/'],
+  ['全文検索','search/'],
+  ['評価基準','methodology/'],
 ];
 ---
 <header class="site-header">
   <div class="shell header-inner">
     <a class="brand" href={withBase('/')}>
       <span class="brand-mark">AI</span>
-      <span>INFRASTRUCTURE ATLAS</span>
+      <span>AI INFRASTRUCTURE ATLAS</span>
     </a>
-    <nav class="nav" aria-label="Primary navigation">
+    <nav class="nav" aria-label="主要ナビゲーション">
       {nav.map(([label, href]) => {
         const target = withBase(href);
         const active = path.startsWith(target);
