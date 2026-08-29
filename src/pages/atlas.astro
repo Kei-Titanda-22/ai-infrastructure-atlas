@@ -9,27 +9,27 @@ const companies = await getCollection('companies');
 <BaseLayout title="全体マップ" indexable>
   <header class="page-head">
     <div class="shell">
-      <div class="eyebrow">産業構造マップ</div>
+      <span class="eyebrow">産業構造マップ</span>
       <h1>全体マップ</h1>
-      <p class="lead">AI需要を、計算半導体だけでなく製造・記憶・接続・電力・冷却・現実空間まで辿ります。現在はレイヤー構造を表示し、検証済みの企業間関係を順次重ねていきます。</p>
+      <p class="lead">AI需要を、計算半導体から製造、記憶、接続、データセンター設備、フィジカルAIまで工程順に辿ります。現在は企業配置を示し、検証済みの企業間関係を順次追加します。</p>
     </div>
   </header>
   <div class="shell section">
-    <div class="atlas-lanes">
+    <div class="atlas-flow" aria-label="AIインフラ産業構造">
       {layers.map((layer, index) => {
         const members = companies.filter(c => c.data.layers.includes(layer.name));
         return (
-          <section class="atlas-lane">
-            <div class="atlas-lane-head">
-              <span class="num">レイヤー {String(index+1).padStart(2,'0')}</span>
+          <section class="atlas-row">
+            <div class="atlas-index">{String(index+1).padStart(2,'0')}</div>
+            <div class="atlas-head">
               <h3>{layerLabel(layer.name)}</h3>
               <p>{layer.description}</p>
             </div>
-            <div class="atlas-companies">
+            <div class="atlas-members">
               {members.map(c => <a class="atlas-company" href={withBase(`companies/${c.id}/`)}>{c.data.japaneseName || c.data.name} <span class="ticker">{c.data.ticker}</span></a>)}
             </div>
           </section>
-        )
+        );
       })}
     </div>
   </div>

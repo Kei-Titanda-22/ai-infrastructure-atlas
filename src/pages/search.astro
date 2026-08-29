@@ -7,14 +7,14 @@ const basePath = withBase('');
 <BaseLayout title="全文検索">
   <header class="page-head">
     <div class="shell">
-      <div class="eyebrow">サイト内全文検索</div>
+      <span class="eyebrow">サイト内全文検索</span>
       <h1>全文検索</h1>
-      <p class="lead">企業名だけでなく、製品、強み、リスク、AI上の役割、技術用語まで検索できます。</p>
+      <p class="lead">企業名、製品、工程、主要拠点、競争上の論点、リスク、技術用語を横断して検索します。</p>
     </div>
   </header>
   <div class="shell section" id="search-app" data-pagefind-path={pagefindPath} data-base-path={basePath}>
     <form class="search-box" id="full-search-form">
-      <input id="full-search-input" class="control" type="search" placeholder="HBM / 露光 / 冷却 / NVIDIA ..." aria-label="全文検索" />
+      <input id="full-search-input" class="control" type="search" placeholder="HBM / 露光 / 冷却 / 四日市 / NVIDIA ..." aria-label="全文検索" />
       <button class="primary-button" type="submit">検索</button>
     </form>
     <p class="result-count" id="search-status">検索語を入力してください。</p>

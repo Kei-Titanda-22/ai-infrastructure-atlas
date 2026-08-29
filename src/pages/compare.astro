@@ -24,13 +24,13 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron'];
 <BaseLayout title="企業比較">
   <header class="page-head">
     <div class="shell">
-      <div class="eyebrow">企業横断比較</div>
+      <span class="eyebrow">企業横断比較</span>
       <h1>企業比較</h1>
-      <p class="lead">最大4社を同時比較します。主観的な5段階スコアは表示せず、確認できた財務数値と業種固有KPIを中心に並べます。</p>
+      <p class="lead">最大4社を同時比較します。主観的な点数は使わず、確認できた財務数値と業種固有KPIを同じ列位置で並べます。</p>
     </div>
   </header>
   <div class="shell section" id="compare-app">
-    <div class="notice">異業種間ではPERや利益率だけで単純な優劣を付けません。業種固有KPIは、その企業がAI設備投資のどこから売上を得ているかを補足するための指標です。</div>
+    <p class="meta">異業種間ではPERや利益率だけで単純な優劣を付けません。業種固有KPIは、各社がAI設備投資のどこから売上を得ているかを確認する補助指標です。</p>
     <div class="compare-picks">
       {[0,1,2,3].map((slot) => (
         <label>比較企業 {slot+1}
@@ -42,7 +42,10 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron'];
       ))}
     </div>
     <div class="table-scroll">
-      <table class="compare-table" id="compare-table"><tbody></tbody></table>
+      <table class="compare-table" id="compare-table">
+        <thead><tr id="compare-head"><th>指標</th></tr></thead>
+        <tbody></tbody>
+      </table>
     </div>
     <script id="compare-data" type="application/json" set:html={JSON.stringify({ companies: compact, definitions })}></script>
   </div>
@@ -56,9 +59,10 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron'];
       const byId = new Map(companies.map(c => [c.id, c]));
       const selects = [...root.querySelectorAll('.compare-select')];
       const tbody = root.querySelector('#compare-table tbody');
+      const theadRow = root.querySelector('#compare-head');
       const metricText = (metric, suffix='') => {
         if (!metric || metric.value == null) return 'N/A';
-        const date = metric.asOf ? ` · ${metric.asOf}` : '';
+        const date = metric.asOf ? `\n基準日 ${metric.asOf}` : '';
         return `${metric.value}${suffix}${date}`;
       };
       const kpiText = kpi => {
@@ -71,11 +75,11 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron'];
         else if (kpi.unit === 'JPY bn') shown = `${(value * 10).toLocaleString('ja-JP', { maximumFractionDigits:1 })}億円`;
         else if (kpi.unit === 'systems') shown = `${value.toLocaleString('ja-JP')}台`;
         else if (kpi.unit === 'connections') shown = `${value.toLocaleString('ja-JP')}件`;
+        else if (kpi.unit === 'fibers') shown = `${value.toLocaleString('ja-JP')}心`;
         else shown = `${value.toLocaleString('ja-JP')} ${kpi.unit}`;
-        return `${shown} · ${kpi.asOf}`;
+        return `${shown}\n基準日 ${kpi.asOf}`;
       };
       const baseRows = [
-        ['企業', c => `${c.japaneseName || c.name} (${c.ticker})`],
         ['主領域', c => c.primaryLayer],
         ['国・地域', c => c.country],
         ['PER（実績）', c => metricText(c.metrics.peTTM, '倍')],
@@ -93,6 +97,7 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron'];
         tr.append(th);
         picked.forEach(c => {
           const td = document.createElement('td');
+          td.style.whiteSpace = 'pre-line';
           td.textContent = getter(c);
           tr.append(td);
         });
@@ -100,8 +105,16 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron'];
       };
       const render = () => {
         const picked = selects.map(s => byId.get(s.value)).filter(Boolean);
-        if (!tbody) return;
+        if (!tbody || !theadRow) return;
         tbody.replaceChildren();
+        theadRow.replaceChildren();
+        const lead = document.createElement('th'); lead.textContent = '指標'; theadRow.append(lead);
+        picked.forEach(c => {
+          const th = document.createElement('th');
+          th.textContent = `${c.japaneseName || c.name}\n${c.ticker}`;
+          th.style.whiteSpace = 'pre-line';
+          theadRow.append(th);
+        });
         baseRows.forEach(([label, getter]) => addRow(label, getter, picked));
 
         const definitionIds = [...new Set(picked.flatMap(c => (c.kpis || []).map(kpi => kpi.definitionId)))];
