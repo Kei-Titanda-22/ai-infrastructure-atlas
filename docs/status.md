@@ -1,5 +1,19 @@
 # v0.1 Implementation Status — 2026-08-29
 
+## Delivery status
+
+- [x] Public GitHub repository created
+- [x] GitHub Pages configured to deploy with GitHub Actions
+- [x] Real dependency installation completed in GitHub Actions
+- [x] Constitutional data validation completed in GitHub Actions
+- [x] Astro build completed successfully
+- [x] Pagefind indexing completed successfully
+- [x] GitHub Pages artifact uploaded successfully
+- [x] GitHub Pages deployment completed successfully
+- [x] Browser delivery URL issued: https://kei-titanda-22.github.io/ai-infrastructure-atlas/
+
+The v0.1 browser-delivery requirement is therefore satisfied. GitHub remains the source-control and CI/CD platform; the GitHub Pages URL is the deployed product surface.
+
 ## Implemented
 
 - [x] Astro + TypeScript static-site skeleton
@@ -40,15 +54,29 @@ Financial slots remain `null` and render as `N/A`. No synthetic market values ar
 - companies: 20
 - primary value-chain layers: 8
 - official IR hub sources: 20
+- source-policy records: 20
+- metric definitions: 6
+- constitutional articles: 9
 - provisional score objects: 80
 - non-null universal financial metric values: 0
 - relationship edges: 0
+- generated company detail pages: 20
 
-## Build-validation limitation
+## Build validation
 
-Repository structure, JSON data, relative imports, CSS brace structure, GitHub Actions YAML, and custom data integrity rules were checked in the authoring environment.
+The original authoring sandbox could not resolve the npm registry reliably, so the first local package installation was not representative. This limitation has now been superseded by the deployed GitHub Actions run.
 
-A real `astro build` / Pagefind build has **not** been executed here because the sandbox could not reliably resolve the npm registry, so Astro/Pagefind dependencies could not be installed. This is the remaining technical verification before calling v0.1 deployable rather than deploy-ready source.
+On 2026-08-29, GitHub Actions successfully executed:
+
+1. dependency installation;
+2. constitutional data validation;
+3. Astro production build;
+4. Pagefind production indexing;
+5. Pages configuration;
+6. Pages artifact upload; and
+7. deployment to the live GitHub Pages URL.
+
+The deployed artifact contains Home, Atlas, Companies, Compare, Search, Methodology, Glossary, all 20 company detail pages, and the Pagefind search index.
 
 ## Next research work that does not require user input
 
@@ -56,12 +84,13 @@ A real `astro build` / Pagefind build has **not** been executed here because the
 2. financial ingestion contract and normalized metric files;
 3. sector-KPI schema by layer;
 4. evidence model for relationships;
-5. first verified data population.
+5. first verified data population;
+6. source-terms review for the 20 registered IR sources.
 
 ## User input required later
 
 Only when crossing the relevant boundary:
 
-- **GitHub publication:** repository/account connection or destination repository.
 - **Market-data automation:** whether automation must be free/public-source only or may use a paid/licensed market-data API.
 - **Final scoring:** approval/revision of score definitions and final values; provisional values must not silently become the user's judgment.
+- **Public/commercial expansion:** legal and policy re-review required under Constitution Article 9 before monetization or materially broader public use.
