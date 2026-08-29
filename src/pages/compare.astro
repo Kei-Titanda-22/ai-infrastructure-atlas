@@ -2,7 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { layerLabel, countryLabel } from '../lib/display';
+import sectorKpis from '../data/sector-kpis.json';
+import sectorKpiDefinitions from '../data/sector-kpi-definitions.json';
+
 const companies = (await getCollection('companies')).sort((a,b) => a.data.name.localeCompare(b.data.name));
+const kpisByCompany = new Map();
+for (const kpi of sectorKpis) {
+  const list = kpisByCompany.get(kpi.companyId) ?? [];
+  list.push(kpi);
+  kpisByCompany.set(kpi.companyId, list);
+}
 const compact = companies.map(c => ({
   id:c.id, name:c.data.name, japaneseName:c.data.japaneseName, ticker:c.data.ticker,
   country:countryLabel(c.data.country), primaryLayer:layerLabel(c.data.primaryLayer),
@@ -12,20 +21,22 @@ const compact = companies.map(c => ({
     cyclicality:{ value:c.data.scores.cyclicality.value, direction:c.data.scores.cyclicality.direction },
     moat:{ value:c.data.scores.moat.value, direction:c.data.scores.moat.direction },
   },
-  metrics:c.data.metrics
+  metrics:c.data.metrics,
+  kpis:kpisByCompany.get(c.id) ?? []
 }));
-const defaults = ['nvidia','tsmc','asml','vertiv'];
+const definitions = Object.fromEntries(sectorKpiDefinitions.map(d => [d.id, d]));
+const defaults = ['nvidia','tsmc','asml','tokyo-electron'];
 ---
 <BaseLayout title="企業比較">
   <header class="page-head">
     <div class="shell">
       <div class="eyebrow">企業横断比較</div>
       <h1>企業比較</h1>
-      <p class="lead">最大4社を同時比較します。異業種でも共通指標は同じ行で比較し、業種固有KPIは別枠で扱います。</p>
+      <p class="lead">最大4社を同時比較します。共通財務指標に加え、各企業で確認できた業種固有KPIも同じ画面で確認できます。</p>
     </div>
   </header>
   <div class="shell section" id="compare-app">
-    <div class="notice">EquinixのようなREITと一般事業会社をPERだけで単純比較しない設計です。FFO/AFFOなど、業種ごとに意味のある指標を別途追加します。</div>
+    <div class="notice">異業種間ではPERや利益率だけで単純な優劣を付けません。業種固有KPIは、その企業がAI設備投資のどこから売上を得ているかを補足するための指標です。</div>
     <div class="compare-picks">
       {[0,1,2,3].map((slot) => (
         <label>比較企業 {slot+1}
@@ -39,13 +50,15 @@ const defaults = ['nvidia','tsmc','asml','vertiv'];
     <div class="table-scroll">
       <table class="compare-table" id="compare-table"><tbody></tbody></table>
     </div>
-    <script id="compare-data" type="application/json" set:html={JSON.stringify(compact)}></script>
+    <script id="compare-data" type="application/json" set:html={JSON.stringify({ companies: compact, definitions })}></script>
   </div>
   <script is:inline>
     const root = document.querySelector('#compare-app');
     const dataNode = document.querySelector('#compare-data');
     if (root && dataNode) {
-      const companies = JSON.parse(dataNode.textContent || '[]');
+      const payload = JSON.parse(dataNode.textContent || '{}');
+      const companies = payload.companies || [];
+      const definitions = payload.definitions || {};
       const byId = new Map(companies.map(c => [c.id, c]));
       const selects = [...root.querySelectorAll('.compare-select')];
       const tbody = root.querySelector('#compare-table tbody');
@@ -56,7 +69,20 @@ const defaults = ['nvidia','tsmc','asml','vertiv'];
         const date = metric.asOf ? ` · ${metric.asOf}` : '';
         return `${metric.value}${suffix}${date}`;
       };
-      const rows = [
+      const kpiText = kpi => {
+        if (!kpi) return 'N/A';
+        const value = Number(kpi.value);
+        let shown;
+        if (kpi.unit === '%') shown = `${value.toLocaleString('ja-JP', { maximumFractionDigits:2 })}%`;
+        else if (kpi.unit === 'USD bn') shown = `${value.toLocaleString('ja-JP', { maximumFractionDigits:3 })}十億ドル`;
+        else if (kpi.unit === 'EUR bn') shown = `${value.toLocaleString('ja-JP', { maximumFractionDigits:3 })}十億ユーロ`;
+        else if (kpi.unit === 'JPY bn') shown = `${(value * 10).toLocaleString('ja-JP', { maximumFractionDigits:1 })}億円`;
+        else if (kpi.unit === 'systems') shown = `${value.toLocaleString('ja-JP')}台`;
+        else if (kpi.unit === 'connections') shown = `${value.toLocaleString('ja-JP')}件`;
+        else shown = `${value.toLocaleString('ja-JP')} ${kpi.unit}`;
+        return `${shown} · ${kpi.asOf}`;
+      };
+      const baseRows = [
         ['企業', c => `${c.japaneseName || c.name} (${c.ticker})`],
         ['主レイヤー', c => c.primaryLayer],
         ['国・地域', c => c.country],
@@ -64,23 +90,43 @@ const defaults = ['nvidia','tsmc','asml','vertiv'];
         ['金利感応度', c => scoreText(c.scores.rateSensitivity)],
         ['景気循環性', c => scoreText(c.scores.cyclicality)],
         ['競争優位', c => scoreText(c.scores.moat)],
-        ['PER TTM', c => metricText(c.metrics.peTTM, '倍')],
-        ['PER FY1', c => metricText(c.metrics.peFY1, '倍')],
+        ['PER（実績）', c => metricText(c.metrics.peTTM, '倍')],
+        ['PER（予想1期先）', c => metricText(c.metrics.peFY1, '倍')],
         ['PBR', c => metricText(c.metrics.pb, '倍')],
         ['ROIC', c => metricText(c.metrics.roic, '%')],
         ['営業利益率', c => metricText(c.metrics.operatingMargin, '%')],
         ['売上高成長率（前年同期比）', c => metricText(c.metrics.revenueGrowth, '%')],
       ];
+      const addRow = (label, getter, picked, className='') => {
+        const tr = document.createElement('tr');
+        if (className) tr.className = className;
+        const th = document.createElement('th');
+        th.textContent = label;
+        tr.append(th);
+        picked.forEach(c => {
+          const td = document.createElement('td');
+          td.textContent = getter(c);
+          tr.append(td);
+        });
+        tbody.append(tr);
+      };
       const render = () => {
         const picked = selects.map(s => byId.get(s.value)).filter(Boolean);
         if (!tbody) return;
         tbody.replaceChildren();
-        rows.forEach(([label, getter]) => {
-          const tr = document.createElement('tr');
-          const th = document.createElement('th'); th.textContent = label; tr.append(th);
-          picked.forEach(c => { const td = document.createElement('td'); td.textContent = getter(c); tr.append(td); });
-          tbody.append(tr);
-        });
+        baseRows.forEach(([label, getter]) => addRow(label, getter, picked));
+
+        const definitionIds = [...new Set(picked.flatMap(c => (c.kpis || []).map(kpi => kpi.definitionId)))];
+        if (definitionIds.length) {
+          addRow('業種固有KPI', () => '—', picked, 'compare-section-row');
+          definitionIds.forEach(definitionId => {
+            const definition = definitions[definitionId];
+            addRow(definition?.name || definitionId, c => {
+              const kpi = (c.kpis || []).find(item => item.definitionId === definitionId);
+              return kpiText(kpi);
+            }, picked);
+          });
+        }
       };
       selects.forEach(s => s.addEventListener('change', render));
       render();
