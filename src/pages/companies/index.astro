@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CompanyCard from '../../components/CompanyCard.astro';
 import { getCollection } from 'astro:content';
+import { layerLabel, countryLabel } from '../../lib/display';
 const companies = (await getCollection('companies')).sort((a,b) => a.data.name.localeCompare(b.data.name));
 const layers = [...new Set(companies.map(c => c.data.primaryLayer))].sort();
 const countries = [...new Set(companies.map(c => c.data.country))].sort();
@@ -19,11 +20,11 @@ const countries = [...new Set(companies.map(c => c.data.country))].sort();
       <input id="company-search" class="control" type="search" placeholder="NVIDIA / 8035 / HBM ..." aria-label="企業検索" />
       <select id="layer-filter" class="control" aria-label="レイヤーで絞り込み">
         <option value="">すべてのレイヤー</option>
-        {layers.map(layer => <option value={layer}>{layer}</option>)}
+        {layers.map(layer => <option value={layer}>{layerLabel(layer)}</option>)}
       </select>
       <select id="country-filter" class="control" aria-label="国で絞り込み">
         <option value="">すべての国</option>
-        {countries.map(country => <option value={country}>{country}</option>)}
+        {countries.map(country => <option value={country}>{countryLabel(country)}</option>)}
       </select>
     </div>
     <p class="result-count" id="result-count">{companies.length}社</p>
