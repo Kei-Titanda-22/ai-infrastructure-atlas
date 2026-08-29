@@ -33,5 +33,16 @@ const pageTitle = title === 'AI Infrastructure Atlas' ? title : `${title} | AI I
       <slot />
     </main>
     <Footer />
+    <script is:inline>
+      const companyToc = document.querySelector('.company-toc');
+      const advantagesSection = document.querySelector('#advantages');
+      if (companyToc && advantagesSection && !companyToc.querySelector('a[href="#advantages"]')) {
+        const link = document.createElement('a');
+        link.href = '#advantages';
+        link.textContent = '競争優位';
+        const facilitiesLink = companyToc.querySelector('a[href="#facilities"]');
+        companyToc.insertBefore(link, facilitiesLink || null);
+      }
+    </script>
   </body>
 </html>
