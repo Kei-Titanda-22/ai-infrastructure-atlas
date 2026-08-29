@@ -1,5 +1,6 @@
 ---
 import { withBase } from '../lib/paths';
+import { layerLabel, countryLabel } from '../lib/display';
 const { company } = Astro.props;
 const d = company.data ?? company;
 const id = company.id;
@@ -14,15 +15,15 @@ const id = company.id;
 >
   <div class="company-card-top">
     <div>
-      <h3>{d.name}</h3>
-      <span class="meta">{d.japaneseName}</span>
+      <h3>{d.japaneseName || d.name}</h3>
+      <span class="meta">{d.name}</span>
     </div>
     <span class="ticker">{d.ticker}</span>
   </div>
   <p>{d.summary}</p>
   <div class="tags">
-    <span class="tag">{d.primaryLayer}</span>
-    <span class="tag">AI {d.scores.aiExposure.value}/5</span>
-    <span class="tag">{d.country}</span>
+    <span class="tag">{layerLabel(d.primaryLayer)}</span>
+    <span class="tag">AI感応度 {d.scores.aiExposure.value}/5</span>
+    <span class="tag">{countryLabel(d.country)}</span>
   </div>
 </a>
