@@ -5,6 +5,7 @@ import { withBase } from '../../lib/paths';
 import { layerLabel, countryLabel, tagLabel, facilityTypeLabel, productInfo } from '../../lib/display';
 import { getMetricAudit, getMetricState, formatMetricValue, auditFormula } from '../../lib/metrics';
 import sources from '../../data/sources.json';
+import v02Sources from '../../data/sources-v02.json';
 import documentSources from '../../data/document-sources.json';
 import facilitySources from '../../data/facility-sources.json';
 import facilities from '../../data/facilities.json';
@@ -23,7 +24,7 @@ export async function getStaticPaths() {
 const { company } = Astro.props;
 const d = company.data;
 const allCompanies = await getCollection('companies');
-const allSources = [...sources, ...documentSources, ...facilitySources];
+const allSources = [...sources, ...v02Sources, ...documentSources, ...facilitySources];
 const sourceById = new Map(allSources.map(source => [source.id, source]));
 const metricDefinitionById = new Map(metricDefinitions.map(definition => [definition.id, definition]));
 const peers = d.competitors.map(id => allCompanies.find(c => c.id === id)).filter(Boolean);
@@ -59,7 +60,7 @@ const formatRoicValue = (value: any) => {
   return `${Number(value.value).toLocaleString('ja-JP', { maximumFractionDigits: 1 })} ${value.unit}`;
 };
 const toc = [
-  ['overview','概要'],['position','バリューチェーン'],['products','主力製品'],['evidence','主張と根拠'],
+  ['overview','概要'],['position','バリューチェーン'],['products','主力製品'],['evidence','主張と根拠'],['advantages','競争優位'],
   ['facilities','主要拠点'],['financials','財務'],['kpi','業種固有KPI'],['competitors','競合'],['risks','リスク'],['sources','出典']
 ].filter(([id]) => {
   if (id === 'evidence') return companyClaims.length > 0;

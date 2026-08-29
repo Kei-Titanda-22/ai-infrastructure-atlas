@@ -21,7 +21,7 @@ const compact = companies.map(c => ({
   products:c.data.products.map(product => productInfo(product).label), technologies:c.data.tags.map(tagLabel),
   facilities:(facilitiesByCompany.get(c.id) ?? []).map(site => `${site.city}（${site.region}）`),
   metrics:Object.fromEntries(Object.entries(c.data.metrics).map(([key, metric]) => [key, { ...metric, display:formatMetricValue(metric), state:getMetricState(c.id,key,metric,key === 'roic' && verifiedRoic.has(c.id)) }])),
-  scores:c.data.scores,
+  scores:c.data.scores ?? null,
   kpis:kpisByCompany.get(c.id) ?? []
 }));
 const definitions = Object.fromEntries(sectorKpiDefinitions.map(d => [d.id, d]));
@@ -31,7 +31,7 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
 <BaseLayout title="企業比較">
   <header class="page-head"><div class="shell"><span class="eyebrow">企業横断比較</span><h1>企業比較</h1><p class="lead">最大5社を横並びで比較します。財務数値は期間・定義・検証状態を併記し、欠損や比較条件の違いを隠しません。</p></div></header>
   <div class="shell section" id="compare-app">
-    <p class="meta">主観評価は客観データと分離し、表の最下段に「分析」として表示します。決算期間や算出基準が揃わない場合は、行見出しに比較上の注意を表示します。</p>
+    <p class="meta">主観評価は客観データと分離し、表の最下段に「分析」として表示します。未評価の企業は無理に点数を付けず「未評価」と表示します。</p>
     <div class="compare-picks">
       {[0,1,2,3,4].map((slot) => <label>比較企業 {slot+1}<select class="control compare-select" data-slot={slot}><option value="">— 未選択 —</option>{companies.map(c => <option value={c.id} selected={c.id === defaults[slot]}>{c.data.japaneseName || c.data.name} ({c.data.ticker})</option>)}</select></label>)}
     </div>
@@ -72,7 +72,10 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
         else shown = `${value.toLocaleString('ja-JP')} ${kpi.unit}`;
         return `${shown}\n${kpi.period}\n状態：検証済み`;
       };
-      const scoreText = score => `${score.value}/5\n方向：${({positive:'正',negative:'逆',mixed:'混合',neutral:'中立'})[score.direction] || score.direction}\n暫定分析`;
+      const scoreText = score => {
+        if (!score) return '未評価';
+        return `${score.value}/5\n方向：${({positive:'正',negative:'逆',mixed:'混合',neutral:'中立'})[score.direction] || score.direction}\n暫定分析`;
+      };
       const metricRows = [
         { label:'売上高', key:null, getter:()=> '未収録' },
         { label:'FCF', key:null, getter:()=> '未収録' },
@@ -118,7 +121,9 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
         const definitionIds=[...new Set(picked.flatMap(c=>(c.kpis||[]).map(kpi=>kpi.definitionId)))];
         if(definitionIds.length){sectionRow('業種固有KPI',picked);definitionIds.forEach(id=>addRow(definitions[id]?.name||id,c=>kpiText((c.kpis||[]).find(item=>item.definitionId===id)),picked,'',definitions[id]?.description||''));}
         sectionRow('編集上の評価（分析）',picked);
-        addRow('AI需要感応度',c=>scoreText(c.scores.aiExposure),picked);addRow('金利感応度',c=>scoreText(c.scores.rateSensitivity),picked);addRow('景気循環性',c=>scoreText(c.scores.cyclicality),picked);
+        addRow('AI需要感応度',c=>scoreText(c.scores?.aiExposure),picked);
+        addRow('金利感応度',c=>scoreText(c.scores?.rateSensitivity),picked);
+        addRow('景気循環性',c=>scoreText(c.scores?.cyclicality),picked);
         updateUrl(picked);
       };
       selects.forEach(s=>s.addEventListener('change',render)); render();

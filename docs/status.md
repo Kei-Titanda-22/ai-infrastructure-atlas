@@ -20,7 +20,8 @@
 
 ## Current database
 
-- companies: 20
+- companies: **30**（v0.1 Core 20 + v0.2 Batch A 10）
+- v0.2 company target: 100
 - value-chain layers: 8
 - value-chain stages: 8 including AI demand
 - verified common financial metric audits: 14
@@ -34,16 +35,24 @@ v0.1の完成条件は「20社の静的データを公開URL上で閲覧・検�
 
 現在すでに存在する比較・財務・監査機能は先行実装として維持し、v0.2以降で対象企業数と品質を段階的に拡張する。
 
+## v0.2 Batch A
+
+追加企業:
+
+AMD / Intel / Marvell Technology / Arm / Qualcomm / MediaTek / ASM International / KOKUSAI ELECTRIC / SCREEN Holdings / Lasertec
+
+公開対象は公式IR入口を確認した静的プロフィール、工程分類、技術タグ、主力製品、編集上の強み・リスク。財務数値は未監査のため意図的に未収録。
+
 ## v0.2 current work
 
-1. 20社 → 100社へ段階的に拡張
+1. 30社 → 100社へ段階的に拡張
 2. セクター・工程・技術タグの再整理
 3. 技術名ごとに独立した検索リンクを持たせる
 4. 100社規模でも企業一覧・AND検索・複合フィルターを維持
 5. 新規企業にもSource / 基準日 / 定義 / 検証状態を適用
 6. 既存企業の財務監査は並行して継続
 
-最初の追加候補群は `docs/v0.2-scope.md` で管理する。
+追加候補群は `docs/v0.2-scope.md` で管理する。
 
 ## Data quality policy
 
@@ -51,6 +60,7 @@ v0.1の完成条件は「20社の静的データを公開URL上で閲覧・検�
 - 数字にSource / 基準日 / 決算期間 / 定義 / 検証状態を付与
 - 欠損を未収録 / 一次資料未確認 / 算出不能 / 非開示 / 対象外に区別
 - AI分析と客観データを分離
+- 主観スコアは新規企業へ強制しない
 - 利用条件未確認Sourceは自動取得しない
 - APIキーをGitHubへ置かない
 

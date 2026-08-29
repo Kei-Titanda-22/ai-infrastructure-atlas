@@ -1,18 +1,19 @@
-# AI Infrastructure Atlas v0.1
+# AI Infrastructure Atlas
 
-個人用の半導体・AIインフラ横断リサーチサイト。
+個人用の半導体・AIインフラ横断リサーチデータベース。
+
+**Current milestone: v0.2 — 100社化・セクターマップ**  
+**v0.1 completed: Core 20 / static data / public GitHub Pages site**
 
 ## Live site
 
 https://kei-titanda-22.github.io/ai-infrastructure-atlas/
 
-GitHub is the source-control and CI/CD platform. The browser-accessible GitHub Pages site above is the v0.1 delivery surface.
+GitHub is the source-control and CI/CD platform. The browser-accessible GitHub Pages site above is the delivery surface.
 
 ## Project Constitution
 
 このプロジェクトの最上位ルールは [`docs/constitution.md`](docs/constitution.md) の9原則です。UI、データ取得、自動化、公開方法が憲法と衝突する場合は憲法を優先します。
-
-要約：
 
 1. 企業IR、公的機関、業界団体を一次情報源にする。
 2. すべての数字にSource・基準日・定義を付ける。
@@ -24,34 +25,38 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 8. APIキー・秘密情報をGitHubに置かない。
 9. 公開・有料化等の段階で法務・規制・プライバシーを再レビューする。
 
-## Delivery requirement
+## Release roadmap
 
-GitHub is the source-control and CI/CD platform, not the final deliverable. **v0.1 is complete only when the site is actually deployed and reachable through a browser-accessible HTTPS URL.** A ZIP, local folder, or GitHub repository alone is an intermediate artifact.
+- v0.1 — 20社・静的データ **Complete**
+- v0.2 — 100社・セクターマップ **In progress**
+- v0.3 — 企業比較
+- v0.4 — 決算データ
+- v0.5 — 自動更新
+- v1.0 — AI Infrastructure Atlas
 
-The binding delivery criteria are defined in [`docs/delivery-requirements.md`](docs/delivery-requirements.md).
+一部の後段機能は先行実装されていますが、バージョン番号は各段階の主目的と完成条件で管理します。詳細は [`docs/roadmap.md`](docs/roadmap.md) と [`docs/v0.2-scope.md`](docs/v0.2-scope.md) を参照してください。
 
-## v0.1 scope
+## Current coverage
 
-- Core 20 companies
-- 8 value-chain layers
-- Atlas view
-- Company directory + client-side filters
-- Company detail pages
-- 4-company comparison
-- Pagefind full-text search after build
-- GitHub Pages deployment workflow
-- Schema-validated company data
-- Source Policy Registry
-- Metric Definition Registry
-- Financial metrics intentionally `N/A` until verified ingestion is implemented
+- 30 companies after v0.2 Batch A
+- 8 internal value-chain layers
+- searchable company directory
+- technology/process links
+- company detail research pages
+- comparison prototype
+- financial provenance and verification states
+- Pagefind full-text search
+- GitHub Pages deployment
+
+v0.2 Batch Aでは AMD、Intel、Marvell、Arm、Qualcomm、MediaTek、ASM International、KOKUSAI ELECTRIC、SCREEN Holdings、Lasertec を追加しています。新規企業の財務数値は監査前のため意図的に未収録です。
 
 ## Stack
 
 - Astro 7
 - TypeScript
-- Astro Content Collections + Zod schema validation
+- Astro Content Collections + Zod
 - Pagefind 1.5
-- Vanilla JavaScript for lightweight client interactions
+- Vanilla JavaScript
 - GitHub Pages + GitHub Actions
 
 ## Commands
@@ -64,37 +69,25 @@ npm run build
 npm run preview
 ```
 
-`npm run validate` enforces core constitutional data invariants before deployment. `npm run build` runs Astro first and Pagefind second. Pagefind therefore works in the built site, not the plain Astro development server.
-
-## GitHub Pages
-
-`.github/workflows/deploy.yml` uses GitHub Pages Actions to install, validate, build, index, upload, and deploy the static site. `astro.config.mjs` derives the GitHub owner/repository at build time, so a normal project Pages repository does not require hardcoding the username or repository name.
-
-The 2026-08-29 GitHub Actions deployment completed successfully, including dependency installation, constitutional data validation, Astro build, Pagefind build, Pages configuration, artifact upload, and deployment.
-
-This prototype currently uses `npm install` because a trustworthy `package-lock.json` was not generated in the original sandbox. Once dependencies are intentionally locked, commit the lockfile and switch the workflow install step to `npm ci`.
-
-For a custom domain, set `SITE_URL` and optionally `BASE_PATH` in the workflow/environment and add the domain configuration separately.
+`npm run validate` はSource・定義・利用条件・財務監査・Secret等の整合性を確認します。`npm run build` はAstro生成後にPagefind索引を作成します。
 
 ## Data policy
 
-1. Objective data and analyst judgment are stored separately.
-2. Missing financial values are `null`, never `0`.
-3. Numeric objective data requires `sourceId`, `asOf`, and `definitionId` before a non-null value can pass validation.
-4. Analysis scores require `assessmentSource`, `asOf`, and `definitionId` and are not represented as objective facts.
-5. Source usage terms are stored separately in `src/data/source-policies.json`.
-6. A source with pending terms review remains manual-reference-only; automation/republication is not inferred to be allowed.
-7. Provisional scores are UI-validation data and are not final investment ratings.
-8. Company relationships are not published until source verification is completed.
-9. API keys and secrets are excluded from Git and checked heuristically in CI.
+- Objective data and analyst judgment are stored separately.
+- Missing financial values are never silently converted to zero.
+- Numeric objective data requires provenance before publication.
+- Subjective scores are optional and are not forced onto new companies.
+- Unreviewed sources remain manual-reference-only.
+- Company relationships require evidence before being treated as verified facts.
 
-## Design documents
+## Documents
 
-- `docs/constitution.md` — binding project governance rules
-- `docs/v0.1-scope.md` — v0.1 boundaries and exit criteria
-- `docs/wireframes.md` — page-level UX wireframes
+- `docs/constitution.md` — binding governance rules
+- `docs/roadmap.md` — canonical release roadmap
+- `docs/v0.1-scope.md` — v0.1 completion basis
+- `docs/v0.2-scope.md` — current 100-company expansion plan
 - `docs/data-model.md` — research data contract
-- `docs/repository-structure.md` — code/data ownership boundaries
-- `docs/architecture.md` — build, security, and future automation architecture
-- `docs/roadmap.md` — staged expansion and review gates
-- `docs/delivery-requirements.md` — browser deployment and v0.1 Definition of Done
+- `docs/design-system-v04.md` — UI design system
+- `docs/financial-audit-2026-08-30.md` — current financial audit log
+- `docs/status.md` — current implementation state
+- `docs/delivery-requirements.md` — browser deployment Definition of Done
