@@ -4,7 +4,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'src/data'
-companies = json.loads((DATA / 'companies.json').read_text(encoding='utf-8'))
+companies = [json.loads(p.read_text(encoding='utf-8')) for p in sorted((DATA / 'companies').glob('*.json'))]
 layers = json.loads((DATA / 'layers.json').read_text(encoding='utf-8'))
 sources = json.loads((DATA / 'sources.json').read_text(encoding='utf-8'))
 source_policies = json.loads((DATA / 'source-policies.json').read_text(encoding='utf-8'))
