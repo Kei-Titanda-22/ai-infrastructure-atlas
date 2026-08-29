@@ -38,3 +38,27 @@ Non-GAAP営業利益1,326,216百万円は使用していない。
 - 判定: `verified`
 
 数値は異常値に見えるが、決算短信の開示値および会社のQ1高収益率ガイダンスと整合するため、誤抽出として修正しない。
+
+## 共通財務監査 第1バッチ
+
+以下の6社について、既存の営業利益率・売上高成長率を各社の公式決算資料に戻って再確認した。いずれも既存表示値と整合したため、数値そのものは変更せず `metric-audits.json` に元数値・算式を登録して `verified` に昇格した。
+
+| 企業 | 対象期間 | 営業利益率 | 売上高成長率 | 判定 |
+| --- | --- | ---: | ---: | --- |
+| NVIDIA | Q2 FY2027 | 66.2% | 106.0% | verified |
+| TSMC | Q2 2026 | 60.3% | 36.0% | verified |
+| SK hynix | Q2 2026 | 76.0% | 257.0% | verified |
+| Micron Technology | Q3 FY2026 | 80.4% | 345.7% | verified |
+| ASML | Q2 2026 | 37.1% | 21.2% | verified |
+| 東京エレクトロン | FY2027 Q1 | 28.9% | 33.3% | verified |
+
+### 監査時の注意点
+
+- NVIDIAはGAAP operating incomeとrevenueから営業利益率を再計算した。
+- TSMCはTIFRS consolidatedのnet revenueとincome from operationsを使用した。
+- SK hynixは元数値からの再計算では約76.33%だが、会社資料が整数76%で表示しているためAtlas表示も会社開示の丸めに合わせた。
+- MicronはGAAP operating income / revenueを用いた。
+- ASMLは公式Q2 Investor Relations Presentation内のUS GAAP財務表を使用した。既存Source IDをそのまま使用し、同資料に掲載されたtotal net salesとincome from operationsを根拠とした。
+- 東京エレクトロンは日本基準の営業利益 / 売上高を使用した。
+
+この監査は会社プロフィール全体のレビューを意味しないため、企業データの `lastReviewed` は財務2項目だけを理由に更新しない。
