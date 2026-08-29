@@ -20,10 +20,10 @@
 
 ## Current database
 
-- companies: **30**（v0.1 Core 20 + v0.2 Batch A 10）
+- companies: **40**（v0.1 Core 20 + v0.2 Batch A 10 + Batch B 10）
 - v0.2 company target: 100
-- value-chain layers: 8
-- value-chain stages: 8 including AI demand
+- value-chain layers: 9
+- value-chain stages: 9 including AI demand
 - verified common financial metric audits: 14
 - registered facilities: 17
 - project constitution articles: 9
@@ -37,15 +37,19 @@ v0.1の完成条件は「20社の静的データを公開URL上で閲覧・検�
 
 ## v0.2 Batch A
 
-追加企業:
-
 AMD / Intel / Marvell Technology / Arm / Qualcomm / MediaTek / ASM International / KOKUSAI ELECTRIC / SCREEN Holdings / Lasertec
 
-公開対象は公式IR入口を確認した静的プロフィール、工程分類、技術タグ、主力製品、編集上の強み・リスク。財務数値は未監査のため意図的に未収録。
+公式IR入口を確認した静的プロフィール、工程分類、技術タグ、主力製品を追加。財務数値は未監査のため意図的に未収録。
+
+## v0.2 Batch B
+
+Besi / ASMPT / HANMI Semiconductor / イビデン / 新光電気工業 / 味の素ファインテクノ / レゾナック・ホールディングス / 信越化学工業 / SUMCO / GlobalWafers
+
+後工程装置、パッケージ基板、ABF、シリコンウェハ、実装材料を追加し、「半導体材料・基板」を独立レイヤーとして新設。新光電気工業と味の素ファインテクノは非上場企業としてTickerを付与しない。
 
 ## v0.2 current work
 
-1. 30社 → 100社へ段階的に拡張
+1. 40社 → 100社へ段階的に拡張
 2. セクター・工程・技術タグの再整理
 3. 技術名ごとに独立した検索リンクを持たせる
 4. 100社規模でも企業一覧・AND検索・複合フィルターを維持
