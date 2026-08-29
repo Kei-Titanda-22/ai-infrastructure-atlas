@@ -1,6 +1,8 @@
-import financialHistory from '../data/financial-history.json';
+import baseFinancialHistory from '../data/financial-history.json';
+import equipmentFinancialHistory from '../data/financial-history-v04-batch2.json';
 import metricDefinitions from '../data/financial-metric-definitions-v04.json';
 
+export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory];
 export type FinancialRecord = (typeof financialHistory)[number];
 export type FinancialMetricId = keyof FinancialRecord['metrics'];
 
@@ -55,5 +57,3 @@ export function financialStatusLabel(status: string) {
   };
   return labels[status] ?? status;
 }
-
-export { financialHistory };
