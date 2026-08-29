@@ -38,7 +38,7 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 
 ## Current coverage
 
-- 50 companies after v0.2 Batch C
+- 60 companies after v0.2 Batch D
 - 9 value-chain layers
 - searchable company directory
 - technology/process links
@@ -48,7 +48,7 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 - Pagefind full-text search
 - GitHub Pages deployment
 
-v0.2 Batch Aでは計算半導体・製造装置、Batch Bでは後工程・基板・材料、Batch Cでは光通信・ネットワーク・電線を中心に各10社を追加しています。新規企業の財務数値は監査前のため意図的に未収録です。
+v0.2 Batch Aでは計算半導体・製造装置、Batch Bでは後工程・基板・材料、Batch Cでは光通信・ネットワーク・電線、Batch Dではデータセンター・電力・冷却を中心に各10社を追加しています。新規企業の財務数値は監査前のため意図的に未収録です。
 
 ## Stack
 

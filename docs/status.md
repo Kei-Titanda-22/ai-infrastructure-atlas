@@ -20,7 +20,7 @@
 
 ## Current database
 
-- companies: **50**（v0.1 Core 20 + v0.2 Batch A/B/C 各10社）
+- companies: **60**（v0.1 Core 20 + v0.2 Batch A/B/C/D 各10社）
 - v0.2 company target: 100
 - value-chain layers: 9
 - value-chain stages: 9 including AI demand
@@ -53,9 +53,15 @@ Coherent / Lumentum / Ciena / Cisco / Credo / 古河電気工業 / 住友電気�
 
 光トランシーバー、コヒーレント光、AEC、光ファイバ、高速コネクタ、電力ケーブルなど、AIクラスタ内外の接続インフラを拡張。各社の公式IR入口をSource Registryへ登録し、利用条件は未審査のため手動参照限定を維持する。
 
+## v0.2 Batch D
+
+Schneider Electric / Digital Realty / ABB / Siemens Energy / GE Vernova / Johnson Controls / Trane Technologies / Carrier / nVent / Legrand
+
+データセンターの建屋・コロケーションから、受配電、UPS、変圧器、系統設備、チラー、HVAC、液冷、ラック電源までを拡張。電力上流と施設内設備を同じデータセンター工程から辿れるようにした。新規企業の財務数値は未監査のため未収録。
+
 ## v0.2 current work
 
-1. 50社 → 100社へ段階的に拡張
+1. 60社 → 100社へ段階的に拡張
 2. セクター・工程・技術タグの再整理
 3. 技術名ごとに独立した検索リンクを持たせる
 4. 100社規模でも企業一覧・AND検索・複合フィルターを維持
