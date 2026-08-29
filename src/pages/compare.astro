@@ -29,9 +29,9 @@ const commonDefinitions = Object.fromEntries(metricDefinitions.map(d => [d.id, d
 const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
 ---
 <BaseLayout title="企業比較">
-  <header class="page-head"><div class="shell"><span class="eyebrow">企業横断比較</span><h1>企業比較</h1><p class="lead">最大5社を横並びで比較します。財務数値は期間・定義・検証状態を併記し、欠損や比較不能を隠しません。</p></div></header>
+  <header class="page-head"><div class="shell"><span class="eyebrow">企業横断比較</span><h1>企業比較</h1><p class="lead">最大5社を横並びで比較します。財務数値は期間・定義・検証状態を併記し、欠損や比較条件の違いを隠しません。</p></div></header>
   <div class="shell section" id="compare-app">
-    <p class="meta">主観評価は客観データと分離し、表の最下段に「分析」として表示します。異業種間では同じ指標名でも意味が異なる場合があります。</p>
+    <p class="meta">主観評価は客観データと分離し、表の最下段に「分析」として表示します。決算期間や算出基準が揃わない場合は、行見出しに比較上の注意を表示します。</p>
     <div class="compare-picks">
       {[0,1,2,3,4].map((slot) => <label>比較企業 {slot+1}<select class="control compare-select" data-slot={slot}><option value="">— 未選択 —</option>{companies.map(c => <option value={c.id} selected={c.id === defaults[slot]}>{c.data.japaneseName || c.data.name} ({c.data.ticker})</option>)}</select></label>)}
     </div>
@@ -74,8 +74,15 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
       };
       const scoreText = score => `${score.value}/5\n方向：${({positive:'正',negative:'逆',mixed:'混合',neutral:'中立'})[score.direction] || score.direction}\n暫定分析`;
       const metricRows = [
-        ['売上高', ()=>'未収録'],['FCF', ()=>'未収録'],['設備投資額（Capex）', ()=>'未収録'],
-        ['PER（実績）', c=>metricText(c.metrics.peTTM)],['PER（予想1期先）', c=>metricText(c.metrics.peFY1)],['PBR', c=>metricText(c.metrics.pb)],['ROIC', c=>metricText(c.metrics.roic)],['営業利益率', c=>metricText(c.metrics.operatingMargin)],['売上高成長率（前年同期比）', c=>metricText(c.metrics.revenueGrowth)]
+        { label:'売上高', key:null, getter:()=> '未収録' },
+        { label:'FCF', key:null, getter:()=> '未収録' },
+        { label:'設備投資額（Capex）', key:null, getter:()=> '未収録' },
+        { label:'PER（実績）', key:'peTTM', getter:c=>metricText(c.metrics.peTTM) },
+        { label:'PER（予想1期先）', key:'peFY1', getter:c=>metricText(c.metrics.peFY1) },
+        { label:'PBR', key:'pb', getter:c=>metricText(c.metrics.pb) },
+        { label:'ROIC', key:'roic', getter:c=>metricText(c.metrics.roic) },
+        { label:'営業利益率', key:'operatingMargin', getter:c=>metricText(c.metrics.operatingMargin) },
+        { label:'売上高成長率（前年同期比）', key:'revenueGrowth', getter:c=>metricText(c.metrics.revenueGrowth) },
       ];
       const addRow = (label,getter,picked,className='',note='') => {
         const tr=document.createElement('tr'); if(className) tr.className=className;
@@ -84,6 +91,18 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
       };
       const sectionRow = (label,picked) => addRow(label,()=> '—',picked,'compare-section-row');
       const updateUrl = picked => { const next = new URLSearchParams(); if(picked.length) next.set('ids',picked.map(c=>c.id).join(',')); history.replaceState(null,'',`${location.pathname}${next.toString()?`?${next}`:''}`); };
+      const comparisonNote = (key,picked) => {
+        if (!key) return '現在は未収録';
+        const definition = commonDefinitions[key]?.definition || '';
+        const populated = picked.map(c=>c.metrics[key]).filter(m=>m && m.value != null);
+        if (populated.length < 2) return definition;
+        const periods = new Set(populated.map(m=>m.period).filter(Boolean));
+        const bases = new Set(populated.map(m=>m.basis).filter(Boolean));
+        const cautions = [];
+        if (periods.size > 1) cautions.push('決算期間が異なる');
+        if (bases.size > 1) cautions.push('算出基準が異なる');
+        return [definition, cautions.length ? `比較注意：${cautions.join('・')}` : '比較条件：期間・定義一致'].filter(Boolean).join('\n');
+      };
       const render = () => {
         const picked=selects.map(s=>byId.get(s.value)).filter(Boolean); if(!tbody||!theadRow)return;
         tbody.replaceChildren(); theadRow.replaceChildren();
@@ -95,7 +114,7 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
         addRow('主要技術',c=>(c.technologies||[]).slice(0,5).join(' / ')||'未収録',picked);
         addRow('主要拠点',c=>(c.facilities||[]).slice(0,4).join('\n')||'未収録',picked);
         sectionRow('共通財務',picked);
-        metricRows.forEach(([label,getter])=>{const key=label==='PER（実績）'?'peTTM':label==='PER（予想1期先）'?'peFY1':label==='PBR'?'pb':label==='ROIC'?'roic':label==='営業利益率'?'operatingMargin':label==='売上高成長率（前年同期比）'?'revenueGrowth':null;const note=key&&commonDefinitions[key]?.definition?commonDefinitions[key].definition:'';addRow(label,getter,picked,'',note);});
+        metricRows.forEach(row=>addRow(row.label,row.getter,picked,'',comparisonNote(row.key,picked)));
         const definitionIds=[...new Set(picked.flatMap(c=>(c.kpis||[]).map(kpi=>kpi.definitionId)))];
         if(definitionIds.length){sectionRow('業種固有KPI',picked);definitionIds.forEach(id=>addRow(definitions[id]?.name||id,c=>kpiText((c.kpis||[]).find(item=>item.definitionId===id)),picked,'',definitions[id]?.description||''));}
         sectionRow('編集上の評価（分析）',picked);
