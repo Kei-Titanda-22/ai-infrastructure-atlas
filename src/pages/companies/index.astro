@@ -21,7 +21,7 @@ const stageIdsForLayers = (companyLayers: string[]) => {
   const ids = new Set<string>();
   if (companyLayers.includes('Compute & Silicon')) ids.add('compute');
   if (companyLayers.includes('Memory')) ids.add('memory');
-  if (companyLayers.includes('Materials & Substrates')) ids.add('materials');
+  if (companyLayers.includes('半導体材料・基板')) ids.add('materials');
   if (companyLayers.includes('Foundry & Logic Manufacturing') || companyLayers.includes('Wafer Fab Equipment')) ids.add('manufacturing');
   if (companyLayers.includes('Test & Back-end')) ids.add('backend');
   if (companyLayers.includes('Network & Optical')) ids.add('interconnect');
