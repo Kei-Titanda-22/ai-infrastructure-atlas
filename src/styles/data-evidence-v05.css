@@ -1,4 +1,4 @@
-/* Phase v0.5: evidence, scale and value-chain affordances. Keeps the v0.4 design system intact. */
+/* Evidence, scale and value-chain affordances. Keeps the core research-database design system intact. */
 
 /* restrained sector accents */
 .sector-page { --sector-accent:#8b949e; }
@@ -19,20 +19,34 @@
 .db-status dd { margin:2px 0 0; font-weight:750; }
 .update-table { min-width:760px; }
 
-.home-value-chain { display:grid; grid-template-columns:repeat(7,minmax(155px,1fr)); border:1px solid var(--border); background:var(--surface); overflow-x:auto; }
+.home-value-chain { display:grid; grid-template-columns:repeat(8,minmax(155px,1fr)); border:1px solid var(--border); background:var(--surface); overflow-x:auto; }
 .home-stage { min-width:155px; padding:13px 12px; border-right:1px solid var(--border); border-top:3px solid #a7afb6; }
 .home-stage:last-child { border-right:0; }
 .home-stage-title { display:grid; gap:3px; color:var(--text); font-weight:750; text-decoration:none; }
 .home-stage-title:hover { color:var(--link); text-decoration:underline; }
 .home-stage-links { display:grid; gap:3px; margin-top:9px; font-size:12px; line-height:1.55; }
 .home-stage-links a { display:block; width:fit-content; text-decoration:underline; }
-.vc-compute { border-top-color:#8798b0; }.vc-memory { border-top-color:#82937e; }.vc-manufacturing { border-top-color:#9a8d79; }.vc-backend { border-top-color:#938299; }.vc-interconnect { border-top-color:#739795; }.vc-datacenter { border-top-color:#988b75; }.vc-physical { border-top-color:#898e9b; }
+.vc-compute { border-top-color:#8798b0; }
+.vc-memory { border-top-color:#82937e; }
+.vc-materials { border-top-color:#958f75; }
+.vc-manufacturing { border-top-color:#9a8d79; }
+.vc-backend { border-top-color:#938299; }
+.vc-interconnect { border-top-color:#739795; }
+.vc-datacenter { border-top-color:#988b75; }
+.vc-physical { border-top-color:#898e9b; }
 
 /* real value-chain map */
 .map-note { max-width:92ch; margin:0 0 16px; padding-left:12px; border-left:3px solid var(--border-strong); color:var(--muted); font-size:13px; }
 .value-chain-map { max-width:980px; border-top:1px solid var(--border); }
 .value-chain-stage { position:relative; display:grid; grid-template-columns:210px minmax(260px,1fr) minmax(260px,1.2fr); gap:20px; padding:18px 12px 24px; border-bottom:1px solid var(--border); border-left:4px solid #a7afb6; background:var(--surface); }
-.value-chain-stage.vc-compute { border-left-color:#8798b0; }.value-chain-stage.vc-memory { border-left-color:#82937e; }.value-chain-stage.vc-manufacturing { border-left-color:#9a8d79; }.value-chain-stage.vc-backend { border-left-color:#938299; }.value-chain-stage.vc-interconnect { border-left-color:#739795; }.value-chain-stage.vc-datacenter { border-left-color:#988b75; }.value-chain-stage.vc-physical { border-left-color:#898e9b; }
+.value-chain-stage.vc-compute { border-left-color:#8798b0; }
+.value-chain-stage.vc-memory { border-left-color:#82937e; }
+.value-chain-stage.vc-materials { border-left-color:#958f75; }
+.value-chain-stage.vc-manufacturing { border-left-color:#9a8d79; }
+.value-chain-stage.vc-backend { border-left-color:#938299; }
+.value-chain-stage.vc-interconnect { border-left-color:#739795; }
+.value-chain-stage.vc-datacenter { border-left-color:#988b75; }
+.value-chain-stage.vc-physical { border-left-color:#898e9b; }
 .value-chain-stage-head { display:grid; grid-template-columns:38px 1fr; align-items:start; color:var(--text); text-decoration:none; }
 .value-chain-stage-head:hover .value-chain-title { color:var(--link); text-decoration:underline; }
 .value-chain-number { color:var(--muted); font-family:var(--mono); font-size:12px; }
@@ -45,7 +59,7 @@
 /* table scalability */
 .company-table-scroll { max-height:none; }
 .company-index-table { min-width:1180px; }
-.company-index-table thead th { position:sticky; top:58px; z-index:6; box-shadow:0 1px 0 var(--border); }
+.company-index-table thead th { position:sticky; top:0; z-index:6; box-shadow:0 1px 0 var(--border); }
 .company-index-table .company-col { min-width:235px; width:235px; }
 .company-index-table tbody .company-col { z-index:3; }
 .company-index-products { max-width:250px; line-height:1.45; }
@@ -53,6 +67,7 @@
 .company-index-sites { max-width:205px; line-height:1.45; }
 .table-more { color:var(--muted); font-size:11px; white-space:nowrap; }
 .active-filter { display:flex; align-items:center; gap:12px; margin:10px 0; padding:6px 0; border-bottom:1px solid var(--border); font-size:13px; }
+.active-filter[hidden] { display:none; }
 .active-filter button { padding:0; border:0; background:transparent; color:var(--link); text-decoration:underline; cursor:pointer; }
 
 /* evidence and metric state */
@@ -95,11 +110,10 @@
 @media (max-width:1100px) {
   .db-status { grid-template-columns:repeat(3,minmax(120px,1fr)); }
   .db-status > div { border-bottom:1px solid var(--border); }
-  .home-value-chain { grid-template-columns:repeat(7,170px); }
+  .home-value-chain { grid-template-columns:repeat(8,170px); }
   .compare-picks { grid-template-columns:repeat(3,minmax(0,1fr)); }
 }
 @media (max-width:820px) {
-  .company-index-table thead th { top:98px; }
   .company-toc { position:static; }
   .value-chain-stage { grid-template-columns:150px minmax(230px,1fr) minmax(260px,1fr); min-width:760px; }
   .value-chain-map { overflow-x:auto; }
@@ -111,8 +125,3 @@
   .claim-row { grid-template-columns:1fr; gap:4px; }
   .source-row { grid-template-columns:1fr; gap:3px; }
 }
-
-/* company index sticky-header hotfix */
-.company-index-table thead th { top:0; }
-.active-filter[hidden] { display:none; }
-@media (max-width:820px) { .company-index-table thead th { top:0; } }
