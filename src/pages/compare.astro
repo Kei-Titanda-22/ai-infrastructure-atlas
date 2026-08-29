@@ -3,41 +3,112 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { layerLabel, countryLabel, tagLabel, productInfo } from '../lib/display-v02';
 import { getMetricState, formatMetricValue } from '../lib/metrics';
+import { withBase } from '../lib/paths';
 import facilities from '../data/facilities.json';
 import sectorKpis from '../data/sector-kpis.json';
 import sectorKpiDefinitions from '../data/sector-kpi-definitions.json';
 import metricDefinitions from '../data/metric-definitions.json';
 import roicCalculations from '../data/roic-calculations.json';
+import comparisonTemplates from '../data/comparison-templates.json';
+import sources from '../data/sources.json';
+import v02Sources from '../data/sources-v02.json';
+import documentSources from '../data/document-sources.json';
+import '../styles/compare-v03.css';
 
-const companies = (await getCollection('companies')).sort((a,b) => a.data.name.localeCompare(b.data.name));
+const companies = (await getCollection('companies')).sort((a,b) => (a.data.japaneseName || a.data.name).localeCompare(b.data.japaneseName || b.data.name, 'ja'));
 const kpisByCompany = new Map();
 for (const kpi of sectorKpis) { const list = kpisByCompany.get(kpi.companyId) ?? []; list.push(kpi); kpisByCompany.set(kpi.companyId, list); }
 const facilitiesByCompany = new Map();
 for (const facility of facilities) { const list = facilitiesByCompany.get(facility.companyId) ?? []; list.push(facility); facilitiesByCompany.set(facility.companyId, list); }
 const verifiedRoic = new Set(roicCalculations.filter(calc => calc.status === 'verified').map(calc => calc.companyId));
+const allSources = [...sources, ...v02Sources, ...documentSources];
+const sourceMap = Object.fromEntries(allSources.map(source => [source.id, { title: source.title, url: source.url, type: source.sourceType }]));
 const compact = companies.map(c => ({
-  id:c.id, name:c.data.name, japaneseName:c.data.japaneseName, ticker:c.data.ticker ?? '非上場',
-  country:countryLabel(c.data.country), primaryLayer:layerLabel(c.data.primaryLayer),
-  products:c.data.products.map(product => productInfo(product).label), technologies:c.data.tags.map(tagLabel),
+  id:c.id,
+  href:withBase(`companies/${c.id}/`),
+  name:c.data.name,
+  japaneseName:c.data.japaneseName,
+  ticker:c.data.ticker ?? '非上場',
+  country:countryLabel(c.data.country),
+  primaryLayer:layerLabel(c.data.primaryLayer),
+  products:c.data.products.map(product => productInfo(product).label),
+  technologies:c.data.tags.map(tagLabel),
   facilities:(facilitiesByCompany.get(c.id) ?? []).map(site => `${site.city}（${site.region}）`),
   metrics:Object.fromEntries(Object.entries(c.data.metrics).map(([key, metric]) => [key, { ...metric, display:formatMetricValue(metric), state:getMetricState(c.id,key,metric,key === 'roic' && verifiedRoic.has(c.id)) }])),
   scores:c.data.scores ?? null,
-  kpis:kpisByCompany.get(c.id) ?? []
+  kpis:kpisByCompany.get(c.id) ?? [],
+  searchText:[c.data.name,c.data.japaneseName,c.data.reading,c.data.ticker,c.data.country,layerLabel(c.data.primaryLayer),...c.data.products.map(product => productInfo(product).label),...c.data.tags.map(tagLabel)].filter(Boolean).join(' ').toLowerCase()
 }));
 const definitions = Object.fromEntries(sectorKpiDefinitions.map(d => [d.id, d]));
 const commonDefinitions = Object.fromEntries(metricDefinitions.map(d => [d.id, d]));
-const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
+const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-materials','lam-research','tokyo-electron','kla'];
 ---
 <BaseLayout title="企業比較">
-  <header class="page-head"><div class="shell"><span class="eyebrow">企業横断比較</span><h1>企業比較</h1><p class="lead">最大5社を横並びで比較します。財務数値は期間・定義・検証状態を併記し、欠損や比較条件の違いを隠しません。</p></div></header>
-  <div class="shell section" id="compare-app">
-    <p class="meta">主観評価は客観データと分離し、表の最下段に「分析」として表示します。未評価の企業は無理に点数を付けず「未評価」と表示します。</p>
-    <div class="compare-picks">
-      {[0,1,2,3,4].map((slot) => <label>比較企業 {slot+1}<select class="control compare-select" data-slot={slot}><option value="">— 未選択 —</option>{companies.map(c => <option value={c.id} selected={c.id === defaults[slot]}>{c.data.japaneseName || c.data.name} ({c.data.ticker ?? '非上場'})</option>)}</select></label>)}
+  <header class="page-head">
+    <div class="shell">
+      <span class="eyebrow">企業横断比較</span>
+      <h1>企業比較</h1>
+      <p class="lead">100社から最大5社を選び、事業・技術・拠点・財務・業種固有KPIを横並びで確認します。財務指標は比較条件を自動判定し、期間や定義が揃わない場合は理由を表示します。</p>
     </div>
-    <div class="table-scroll compare-scroll"><table class="compare-table" id="compare-table"><thead><tr id="compare-head"><th>指標</th></tr></thead><tbody></tbody></table></div>
-    <script id="compare-data" type="application/json" set:html={JSON.stringify({ companies: compact, definitions, commonDefinitions })}></script>
+  </header>
+
+  <div class="shell section" id="compare-app">
+    <section class="compare-builder" aria-labelledby="compare-builder-title">
+      <div class="compare-builder-head">
+        <div>
+          <span class="eyebrow">比較セット</span>
+          <h2 id="compare-builder-title">比較する企業を選ぶ</h2>
+          <p class="meta">3〜5社を推奨。2社でも比較できます。同じ企業の重複追加はできません。</p>
+        </div>
+        <button class="text-button" id="copy-compare-url" type="button">比較URLをコピー</button>
+      </div>
+
+      <label class="compare-search-label" for="compare-company-search">企業を追加</label>
+      <input class="control" id="compare-company-search" type="search" placeholder="企業名・Ticker・製品・技術・領域で検索" autocomplete="off" aria-controls="compare-suggestions" aria-expanded="false" />
+      <div class="compare-suggestions" id="compare-suggestions" role="listbox" hidden></div>
+
+      <div class="compare-template-list" aria-label="比較テンプレート">
+        <span class="compare-template-label">比較テンプレート</span>
+        {comparisonTemplates.map(template => (
+          <button class="text-button compare-template-button" type="button" data-template={template.id} data-ids={template.companyIds.join(',')} title={template.description}>{template.name}</button>
+        ))}
+      </div>
+
+      <div class="compare-selected-wrap">
+        <div class="compare-selected-title">選択中</div>
+        <div id="compare-selected" class="compare-selected" aria-live="polite"></div>
+        <p id="compare-selection-status" class="meta"></p>
+      </div>
+    </section>
+
+    <dl class="compare-quality-summary" id="compare-quality-summary" aria-label="比較品質の概要">
+      <div><dt>比較対象</dt><dd id="summary-companies">0社</dd></div>
+      <div><dt>比較可</dt><dd id="summary-ok">0</dd></div>
+      <div><dt>条件注意</dt><dd id="summary-caution">0</dd></div>
+      <div><dt>比較不能</dt><dd id="summary-blocked">0</dd></div>
+    </dl>
+
+    <div class="table-scroll compare-scroll">
+      <table class="compare-table" id="compare-table">
+        <thead><tr id="compare-head"><th>指標</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <details class="compare-analysis" id="compare-analysis">
+      <summary>編集上の評価（参考）</summary>
+      <p class="meta">客観データとは別管理の暫定分析です。未評価の企業には点数を補完しません。</p>
+      <div class="table-scroll">
+        <table class="compare-table compare-analysis-table">
+          <thead><tr id="analysis-head"><th>分析項目</th></tr></thead>
+          <tbody id="analysis-body"></tbody>
+        </table>
+      </div>
+    </details>
+
+    <script id="compare-data" type="application/json" set:html={JSON.stringify({ companies: compact, definitions, commonDefinitions, sourceMap, defaults })}></script>
   </div>
+
   <script is:inline>
     const root = document.querySelector('#compare-app');
     const dataNode = document.querySelector('#compare-data');
@@ -46,87 +117,258 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
       const companies = payload.companies || [];
       const definitions = payload.definitions || {};
       const commonDefinitions = payload.commonDefinitions || {};
+      const sourceMap = payload.sourceMap || {};
+      const defaults = payload.defaults || [];
       const byId = new Map(companies.map(c => [c.id, c]));
-      const selects = [...root.querySelectorAll('.compare-select')];
+      const searchInput = root.querySelector('#compare-company-search');
+      const suggestions = root.querySelector('#compare-suggestions');
+      const selectedRoot = root.querySelector('#compare-selected');
+      const selectionStatus = root.querySelector('#compare-selection-status');
       const tbody = root.querySelector('#compare-table tbody');
       const theadRow = root.querySelector('#compare-head');
+      const analysisBody = root.querySelector('#analysis-body');
+      const analysisHead = root.querySelector('#analysis-head');
+      const analysisDetails = root.querySelector('#compare-analysis');
+      const copyButton = root.querySelector('#copy-compare-url');
       const params = new URLSearchParams(location.search);
-      const requested = (params.get('ids') || '').split(',').filter(Boolean).slice(0,5);
-      requested.forEach((id,index) => { if (selects[index]) selects[index].value = id; });
+      const requested = (params.get('ids') || '').split(',').filter(id => byId.has(id)).slice(0,5);
+      let selectedIds = requested.length ? requested : defaults.filter(id => byId.has(id)).slice(0,5);
+      let currentSuggestions = [];
 
-      const metricText = metric => {
-        if (!metric || metric.value == null) return metric?.state?.label || '未収録';
-        const parts = [metric.display || String(metric.value), metric.period || '', `状態：${metric.state?.label || '要再検証'}`];
-        return parts.filter(Boolean).join('\n');
+      const normalize = value => String(value || '').trim().toLowerCase().normalize('NFKC');
+      const periodKind = metric => {
+        const text = normalize(metric?.period);
+        if (!text) return 'unknown';
+        if (/ttm|trailing|12.?month/.test(text)) return 'ttm';
+        if (/q[1-4]|quarter|四半期/.test(text)) return 'quarter';
+        if (/fy|fiscal year|year ended|通期|年度/.test(text)) return 'annual';
+        if (/as of|基準日|latest/.test(text)) return 'point';
+        return 'unknown';
       };
-      const kpiText = kpi => {
-        if (!kpi) return '対象外／未収録';
-        const value = Number(kpi.value); let shown;
-        if (kpi.unit === '%') shown = `${value.toLocaleString('ja-JP',{maximumFractionDigits:2})}%`;
-        else if (kpi.unit === 'USD bn') shown = `${value.toLocaleString('ja-JP',{maximumFractionDigits:3})}十億ドル`;
-        else if (kpi.unit === 'EUR bn') shown = `${value.toLocaleString('ja-JP',{maximumFractionDigits:3})}十億ユーロ`;
-        else if (kpi.unit === 'JPY bn') shown = `${(value*10).toLocaleString('ja-JP',{maximumFractionDigits:1})}億円`;
-        else if (kpi.unit === 'systems') shown = `${value.toLocaleString('ja-JP')}台`;
-        else if (kpi.unit === 'connections') shown = `${value.toLocaleString('ja-JP')}件`;
-        else if (kpi.unit === 'fibers') shown = `${value.toLocaleString('ja-JP')}心`;
-        else shown = `${value.toLocaleString('ja-JP')} ${kpi.unit}`;
-        return `${shown}\n${kpi.period}\n状態：検証済み`;
+      const basisFamily = metric => {
+        const text = normalize(metric?.basis);
+        if (!text) return '未記録';
+        if (/non.?gaap|adjusted|調整後/.test(text)) return '調整後';
+        if (/ifrs/.test(text)) return 'IFRS';
+        if (/gaap/.test(text)) return 'GAAP';
+        if (/atlas/.test(text)) return 'Atlas計算';
+        if (/reported|company disclosed|会社開示/.test(text)) return '会社開示';
+        return text;
       };
-      const scoreText = score => {
-        if (!score) return '未評価';
-        return `${score.value}/5\n方向：${({positive:'正',negative:'逆',mixed:'混合',neutral:'中立'})[score.direction] || score.direction}\n暫定分析`;
+      const comparisonState = (key, picked) => {
+        const entries = picked.map(c => c.metrics?.[key]).filter(metric => metric && metric.value != null);
+        if (entries.length < 2) return { code:'blocked', label:'比較不能', reasons:['2社以上に値がありません'] };
+        const definitionIds = new Set(entries.map(metric => metric.definitionId).filter(Boolean));
+        if (definitionIds.size > 1) return { code:'blocked', label:'比較不能', reasons:['指標定義が異なります'] };
+        const kinds = new Set(entries.map(periodKind).filter(kind => kind !== 'unknown'));
+        if (kinds.size > 1) return { code:'blocked', label:'比較不能', reasons:['四半期・通期・TTMなど期間区分が混在しています'] };
+        const reasons = [];
+        const periods = new Set(entries.map(metric => metric.period).filter(Boolean));
+        if (periods.size > 1) reasons.push('決算期間が異なる');
+        const bases = new Set(entries.map(basisFamily));
+        if (bases.size > 1) reasons.push('算出基準・会計基準が異なる');
+        if (['peTTM','peFY1','pb'].includes(key)) {
+          const asOfDates = new Set(entries.map(metric => metric.asOf).filter(Boolean));
+          if (asOfDates.size > 1) reasons.push('基準日が異なる');
+        }
+        if (entries.some(metric => metric.state?.kind !== 'verified')) reasons.push('未再計算・未検証の値を含む');
+        return reasons.length ? { code:'caution', label:'条件注意', reasons } : { code:'ok', label:'比較可', reasons:['期間・定義・算出基準が一致'] };
+      };
+      const kpiComparisonState = (definitionId, picked) => {
+        const entries = picked.map(c => (c.kpis || []).find(item => item.definitionId === definitionId)).filter(Boolean);
+        if (entries.length < 2) return { code:'reference', label:'参照のみ', reasons:['同一定義のKPIが2社以上ありません'] };
+        const kinds = new Set(entries.map(periodKind).filter(kind => kind !== 'unknown'));
+        if (kinds.size > 1) return { code:'blocked', label:'比較不能', reasons:['KPIの期間区分が異なります'] };
+        const reasons = [];
+        const periods = new Set(entries.map(item => item.period).filter(Boolean));
+        if (periods.size > 1) reasons.push('決算期間が異なる');
+        const bases = new Set(entries.map(basisFamily));
+        if (bases.size > 1) reasons.push('算出基準が異なる');
+        return reasons.length ? { code:'caution', label:'条件注意', reasons } : { code:'ok', label:'比較可', reasons:['同一定義・同一期間'] };
       };
       const metricRows = [
-        { label:'売上高', key:null, getter:()=> '未収録' },
-        { label:'FCF', key:null, getter:()=> '未収録' },
-        { label:'設備投資額（Capex）', key:null, getter:()=> '未収録' },
-        { label:'PER（実績）', key:'peTTM', getter:c=>metricText(c.metrics.peTTM) },
-        { label:'PER（予想1期先）', key:'peFY1', getter:c=>metricText(c.metrics.peFY1) },
-        { label:'PBR', key:'pb', getter:c=>metricText(c.metrics.pb) },
-        { label:'ROIC', key:'roic', getter:c=>metricText(c.metrics.roic) },
-        { label:'営業利益率', key:'operatingMargin', getter:c=>metricText(c.metrics.operatingMargin) },
-        { label:'売上高成長率（前年同期比）', key:'revenueGrowth', getter:c=>metricText(c.metrics.revenueGrowth) },
+        { label:'PER（実績）', key:'peTTM' },
+        { label:'PER（予想1期先）', key:'peFY1' },
+        { label:'PBR', key:'pb' },
+        { label:'ROIC', key:'roic' },
+        { label:'営業利益率', key:'operatingMargin' },
+        { label:'売上高成長率（前年同期比）', key:'revenueGrowth' },
       ];
-      const addRow = (label,getter,picked,className='',note='') => {
-        const tr=document.createElement('tr'); if(className) tr.className=className;
-        const th=document.createElement('th'); th.textContent=note?`${label}\n${note}`:label; th.style.whiteSpace='pre-line'; tr.append(th);
-        picked.forEach(c=>{const td=document.createElement('td');td.style.whiteSpace='pre-line';td.textContent=getter(c);tr.append(td);}); tbody.append(tr);
+      const scoreRows = [
+        { label:'AI需要感応度', key:'aiExposure' },
+        { label:'金利感応度', key:'rateSensitivity' },
+        { label:'景気循環性', key:'cyclicality' },
+      ];
+
+      const clear = node => node && node.replaceChildren();
+      const text = (tag, value, className='') => { const el=document.createElement(tag); el.textContent=value; if(className) el.className=className; return el; };
+      const sectionRow = (label, picked) => {
+        const tr=document.createElement('tr'); tr.className='compare-section-row';
+        const th=document.createElement('th'); th.colSpan=picked.length+1; th.textContent=label; tr.append(th); tbody.append(tr);
       };
-      const sectionRow = (label,picked) => addRow(label,()=> '—',picked,'compare-section-row');
-      const updateUrl = picked => { const next = new URLSearchParams(); if(picked.length) next.set('ids',picked.map(c=>c.id).join(',')); history.replaceState(null,'',`${location.pathname}${next.toString()?`?${next}`:''}`); };
-      const comparisonNote = (key,picked) => {
-        if (!key) return '現在は未収録';
-        const definition = commonDefinitions[key]?.definition || '';
-        const populated = picked.map(c=>c.metrics[key]).filter(m=>m && m.value != null);
-        if (populated.length < 2) return definition;
-        const periods = new Set(populated.map(m=>m.period).filter(Boolean));
-        const bases = new Set(populated.map(m=>m.basis).filter(Boolean));
-        const cautions = [];
-        if (periods.size > 1) cautions.push('決算期間が異なる');
-        if (bases.size > 1) cautions.push('算出基準が異なる');
-        return [definition, cautions.length ? `比較注意：${cautions.join('・')}` : '比較条件：期間・定義一致'].filter(Boolean).join('\n');
+      const appendValue = (td, value) => {
+        if (value instanceof Node) td.append(value); else td.textContent=value;
       };
-      const render = () => {
-        const picked=selects.map(s=>byId.get(s.value)).filter(Boolean); if(!tbody||!theadRow)return;
-        tbody.replaceChildren(); theadRow.replaceChildren();
-        const lead=document.createElement('th');lead.textContent='指標';theadRow.append(lead);
-        picked.forEach(c=>{const th=document.createElement('th');th.textContent=`${c.japaneseName||c.name}\n${c.ticker || '非上場'}`;th.style.whiteSpace='pre-line';theadRow.append(th);});
+      const addRow = (label, renderer, picked, options={}) => {
+        const tr=document.createElement('tr'); if(options.className) tr.className=options.className;
+        const th=document.createElement('th');
+        const heading=text('div',label,'compare-row-label'); th.append(heading);
+        if(options.state){ const status=text('div',options.state.label,`compare-row-state compare-row-state-${options.state.code}`); th.append(status); }
+        if(options.note){ th.append(text('div',options.note,'compare-row-note')); }
+        if(options.definition){ th.append(text('div',options.definition,'compare-row-definition')); }
+        tr.append(th);
+        picked.forEach(c=>{ const td=document.createElement('td'); appendValue(td,renderer(c)); tr.append(td); });
+        tbody.append(tr);
+      };
+      const makeMetricCell = metric => {
+        const wrap=document.createElement('div'); wrap.className='compare-metric-cell';
+        if(!metric || metric.value == null){
+          wrap.append(text('div',metric?.state?.label || '未収録','compare-missing'));
+          return wrap;
+        }
+        wrap.append(text('div',metric.display || String(metric.value),'compare-value mono'));
+        if(metric.period) wrap.append(text('div',metric.period,'compare-cell-meta'));
+        if(metric.basis) wrap.append(text('div',`算出：${metric.basis}`,'compare-cell-basis'));
+        wrap.append(text('div',metric.state?.label || '要再検証',`compare-verification compare-verification-${metric.state?.kind || 'review'}`));
+        const source=metric.sourceId ? sourceMap[metric.sourceId] : null;
+        if(source?.url){ const a=document.createElement('a'); a.href=source.url; a.target='_blank'; a.rel='noopener noreferrer'; a.className='source-link compare-source'; a.textContent='一次資料'; a.title=source.title || '一次資料'; wrap.append(a); }
+        return wrap;
+      };
+      const makeKpiCell = kpi => {
+        const wrap=document.createElement('div'); wrap.className='compare-metric-cell';
+        if(!kpi){ wrap.append(text('div','対象外／未収録','compare-missing')); return wrap; }
+        const value=Number(kpi.value); let shown;
+        if(kpi.unit==='%') shown=`${value.toLocaleString('ja-JP',{maximumFractionDigits:2})}%`;
+        else if(kpi.unit==='USD bn') shown=`${value.toLocaleString('ja-JP',{maximumFractionDigits:3})}十億ドル`;
+        else if(kpi.unit==='EUR bn') shown=`${value.toLocaleString('ja-JP',{maximumFractionDigits:3})}十億ユーロ`;
+        else if(kpi.unit==='JPY bn') shown=`${(value*10).toLocaleString('ja-JP',{maximumFractionDigits:1})}億円`;
+        else if(kpi.unit==='systems') shown=`${value.toLocaleString('ja-JP')}台`;
+        else if(kpi.unit==='connections') shown=`${value.toLocaleString('ja-JP')}件`;
+        else if(kpi.unit==='fibers') shown=`${value.toLocaleString('ja-JP')}心`;
+        else shown=`${value.toLocaleString('ja-JP')} ${kpi.unit}`;
+        wrap.append(text('div',shown,'compare-value mono'));
+        if(kpi.period) wrap.append(text('div',kpi.period,'compare-cell-meta'));
+        if(kpi.basis) wrap.append(text('div',`算出：${kpi.basis}`,'compare-cell-basis'));
+        wrap.append(text('div','検証済み','compare-verification compare-verification-verified'));
+        const source=sourceMap[kpi.sourceId];
+        if(source?.url){ const a=document.createElement('a'); a.href=source.url; a.target='_blank'; a.rel='noopener noreferrer'; a.className='source-link compare-source'; a.textContent='一次資料'; a.title=source.title || '一次資料'; wrap.append(a); }
+        return wrap;
+      };
+      const scoreText = score => {
+        if(!score) return '未評価';
+        const direction=({positive:'正',negative:'逆',mixed:'混合',neutral:'中立'})[score.direction] || score.direction;
+        return `${score.value}/5\n方向：${direction}`;
+      };
+      const pickedCompanies = () => selectedIds.map(id=>byId.get(id)).filter(Boolean);
+      const updateUrl = () => {
+        const next=new URLSearchParams(location.search);
+        if(selectedIds.length) next.set('ids',selectedIds.join(',')); else next.delete('ids');
+        history.replaceState(null,'',`${location.pathname}${next.toString()?`?${next}`:''}`);
+      };
+      const renderSelected = () => {
+        clear(selectedRoot);
+        const picked=pickedCompanies();
+        if(!picked.length){ selectedRoot.append(text('p','比較企業が未選択です。','meta')); }
+        picked.forEach((company,index)=>{
+          const row=document.createElement('div'); row.className='compare-selected-row';
+          const indexEl=text('span',String(index+1).padStart(2,'0'),'compare-selected-index mono'); row.append(indexEl);
+          const info=document.createElement('div'); info.className='compare-selected-info';
+          const a=document.createElement('a'); a.href=company.href; a.className='company-link'; a.textContent=company.japaneseName || company.name; info.append(a);
+          info.append(text('span',`${company.ticker} · ${company.primaryLayer}`,'compare-selected-meta')); row.append(info);
+          const remove=document.createElement('button'); remove.type='button'; remove.className='text-button compare-remove'; remove.textContent='外す'; remove.dataset.removeId=company.id; row.append(remove);
+          selectedRoot.append(row);
+        });
+        selectionStatus.textContent=`${picked.length}/5社を選択中${picked.length<3 ? ' — 3〜5社での比較を推奨' : ''}`;
+      };
+      const candidateMatches = query => {
+        const tokens=normalize(query).split(/\s+/).filter(Boolean);
+        if(!tokens.length) return [];
+        return companies.filter(company => !selectedIds.includes(company.id) && tokens.every(token => company.searchText.includes(token))).slice(0,10);
+      };
+      const renderSuggestions = () => {
+        const matches=candidateMatches(searchInput.value); currentSuggestions=matches; clear(suggestions);
+        if(!matches.length){ suggestions.hidden=true; searchInput.setAttribute('aria-expanded','false'); return; }
+        matches.forEach(company=>{
+          const button=document.createElement('button'); button.type='button'; button.className='compare-suggestion'; button.dataset.addId=company.id; button.setAttribute('role','option');
+          const name=text('span',company.japaneseName || company.name,'compare-suggestion-name'); button.append(name);
+          button.append(text('span',`${company.ticker} · ${company.country} · ${company.primaryLayer}`,'compare-suggestion-meta'));
+          suggestions.append(button);
+        });
+        suggestions.hidden=false; searchInput.setAttribute('aria-expanded','true');
+      };
+      const addCompany = id => {
+        if(!byId.has(id) || selectedIds.includes(id) || selectedIds.length>=5) return;
+        selectedIds.push(id); searchInput.value=''; suggestions.hidden=true; searchInput.setAttribute('aria-expanded','false'); render(); searchInput.focus();
+      };
+      const removeCompany = id => { selectedIds=selectedIds.filter(item=>item!==id); render(); };
+      const applyTemplate = ids => { selectedIds=ids.filter(id=>byId.has(id)).slice(0,5); render(); };
+      const renderQualitySummary = states => {
+        root.querySelector('#summary-companies').textContent=`${selectedIds.length}社`;
+        root.querySelector('#summary-ok').textContent=String(states.filter(state=>state.code==='ok').length);
+        root.querySelector('#summary-caution').textContent=String(states.filter(state=>state.code==='caution').length);
+        root.querySelector('#summary-blocked').textContent=String(states.filter(state=>state.code==='blocked').length);
+      };
+      const renderAnalysis = picked => {
+        clear(analysisHead); clear(analysisBody);
+        const lead=text('th','分析項目'); analysisHead.append(lead);
+        picked.forEach(company=>{ const th=document.createElement('th'); const a=document.createElement('a'); a.href=company.href; a.textContent=company.japaneseName || company.name; a.className='company-link'; th.append(a); analysisHead.append(th); });
+        const hasAnyScore=picked.some(company=>company.scores && Object.keys(company.scores).length);
+        analysisDetails.hidden=!hasAnyScore;
+        if(!hasAnyScore) return;
+        scoreRows.forEach(row=>{
+          const tr=document.createElement('tr'); tr.append(text('th',row.label));
+          picked.forEach(company=>{ const td=document.createElement('td'); td.style.whiteSpace='pre-line'; td.textContent=scoreText(company.scores?.[row.key]); tr.append(td); }); analysisBody.append(tr);
+        });
+      };
+      const renderTable = () => {
+        const picked=pickedCompanies(); clear(tbody); clear(theadRow);
+        const lead=text('th','指標'); theadRow.append(lead);
+        picked.forEach(company=>{
+          const th=document.createElement('th');
+          const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-company-head'; a.textContent=company.japaneseName || company.name; th.append(a);
+          th.append(text('span',`${company.ticker} · ${company.country}`,'compare-company-sub')); theadRow.append(th);
+        });
+        if(!picked.length){ const tr=document.createElement('tr'); const td=document.createElement('td'); td.colSpan=1; td.textContent='企業を追加すると比較表が表示されます。'; tr.append(td); tbody.append(tr); renderQualitySummary([]); renderAnalysis([]); return; }
         sectionRow('事業・技術',picked);
-        addRow('主領域',c=>c.primaryLayer,picked); addRow('国・地域',c=>c.country,picked);
+        addRow('主領域',c=>c.primaryLayer,picked);
+        addRow('国・地域',c=>c.country,picked);
         addRow('主力製品',c=>(c.products||[]).slice(0,4).join('\n')||'未収録',picked);
-        addRow('主要技術',c=>(c.technologies||[]).slice(0,5).join(' / ')||'未収録',picked);
+        addRow('主要技術',c=>(c.technologies||[]).slice(0,6).join(' / ')||'未収録',picked);
         addRow('主要拠点',c=>(c.facilities||[]).slice(0,4).join('\n')||'未収録',picked);
+
         sectionRow('共通財務',picked);
-        metricRows.forEach(row=>addRow(row.label,row.getter,picked,'',comparisonNote(row.key,picked)));
+        const states=[];
+        metricRows.forEach(row=>{
+          const state=comparisonState(row.key,picked); states.push(state);
+          addRow(row.label,c=>makeMetricCell(c.metrics?.[row.key]),picked,{state,note:state.reasons.join(' / '),definition:commonDefinitions[row.key]?.definition || ''});
+        });
+
         const definitionIds=[...new Set(picked.flatMap(c=>(c.kpis||[]).map(kpi=>kpi.definitionId)))];
-        if(definitionIds.length){sectionRow('業種固有KPI',picked);definitionIds.forEach(id=>addRow(definitions[id]?.name||id,c=>kpiText((c.kpis||[]).find(item=>item.definitionId===id)),picked,'',definitions[id]?.description||''));}
-        sectionRow('編集上の評価（分析）',picked);
-        addRow('AI需要感応度',c=>scoreText(c.scores?.aiExposure),picked);
-        addRow('金利感応度',c=>scoreText(c.scores?.rateSensitivity),picked);
-        addRow('景気循環性',c=>scoreText(c.scores?.cyclicality),picked);
-        updateUrl(picked);
+        if(definitionIds.length){
+          sectionRow('業種固有KPI',picked);
+          definitionIds.forEach(id=>{
+            const state=kpiComparisonState(id,picked);
+            addRow(definitions[id]?.name||id,c=>makeKpiCell((c.kpis||[]).find(item=>item.definitionId===id)),picked,{state,note:state.reasons.join(' / '),definition:definitions[id]?.description||''});
+          });
+        }
+        renderQualitySummary(states); renderAnalysis(picked);
       };
-      selects.forEach(s=>s.addEventListener('change',render)); render();
+      const render = () => { renderSelected(); renderTable(); updateUrl(); };
+
+      searchInput.addEventListener('input',renderSuggestions);
+      searchInput.addEventListener('keydown',event=>{
+        if(event.key==='Enter' && currentSuggestions[0]){ event.preventDefault(); addCompany(currentSuggestions[0].id); }
+        if(event.key==='Escape'){ suggestions.hidden=true; searchInput.setAttribute('aria-expanded','false'); }
+      });
+      suggestions.addEventListener('click',event=>{ const button=event.target.closest('[data-add-id]'); if(button) addCompany(button.dataset.addId); });
+      selectedRoot.addEventListener('click',event=>{ const button=event.target.closest('[data-remove-id]'); if(button) removeCompany(button.dataset.removeId); });
+      root.querySelectorAll('.compare-template-button').forEach(button=>button.addEventListener('click',()=>applyTemplate((button.dataset.ids||'').split(',').filter(Boolean))));
+      copyButton.addEventListener('click',async()=>{
+        try { await navigator.clipboard.writeText(location.href); copyButton.textContent='コピーしました'; setTimeout(()=>copyButton.textContent='比較URLをコピー',1600); }
+        catch { copyButton.textContent='URL欄からコピーしてください'; setTimeout(()=>copyButton.textContent='比較URLをコピー',2200); }
+      });
+      document.addEventListener('click',event=>{ if(!root.querySelector('.compare-search-label')?.contains(event.target) && event.target!==searchInput && !suggestions.contains(event.target)){ suggestions.hidden=true; searchInput.setAttribute('aria-expanded','false'); } });
+      render();
     }
   </script>
 </BaseLayout>
