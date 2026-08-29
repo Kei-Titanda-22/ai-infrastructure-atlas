@@ -1,0 +1,4 @@
+/* v0.2 expansion-only compatibility rules. */
+.company-meta-line .mono:empty::after { content:"非上場"; }
+.company-meta-line > span:nth-child(3):empty { display:none; }
+.company-meta-line > span:nth-child(3):empty + span { display:none; }
