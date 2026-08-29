@@ -1,96 +1,90 @@
-# v0.1 Implementation Status — 2026-08-29
+# AI Infrastructure Atlas Status — 2026-08-29
 
 ## Delivery status
 
-- [x] Public GitHub repository created
-- [x] GitHub Pages configured to deploy with GitHub Actions
-- [x] Real dependency installation completed in GitHub Actions
-- [x] Constitutional data validation completed in GitHub Actions
-- [x] Astro build completed successfully
-- [x] Pagefind indexing completed successfully
-- [x] GitHub Pages artifact uploaded successfully
-- [x] GitHub Pages deployment completed successfully
-- [x] Browser delivery URL issued: https://kei-titanda-22.github.io/ai-infrastructure-atlas/
+- [x] Public GitHub repository
+- [x] GitHub Pages + GitHub Actions deployment
+- [x] Live browser URL: https://kei-titanda-22.github.io/ai-infrastructure-atlas/
+- [x] Dependency installation / constitutional validation / Astro build / Pagefind / deployment verified in CI
 
-The v0.1 browser-delivery requirement is therefore satisfied. GitHub remains the source-control and CI/CD platform; the GitHub Pages URL is the deployed product surface.
+## UI / UX
 
-## Implemented
+- [x] Dark background removed; light, high-contrast theme adopted
+- [x] Japanese-first navigation and page labels
+- [x] English retained only where natural: company names, tickers, HBM, PER, PBR, ROIC, etc.
+- [x] Internal taxonomy keys kept stable while display labels are localized
+- [x] Objective metrics show value + as-of date + period + basis + Source
+- [x] Analyst scores remain visually and structurally separated from objective data
 
-- [x] Astro + TypeScript static-site skeleton
-- [x] GitHub Pages base-path aware configuration
-- [x] GitHub Pages Actions deployment workflow
-- [x] 8-layer AI infrastructure taxonomy
-- [x] Core 20 company records
-- [x] stable company IDs and static company routes
-- [x] official IR hub Source IDs for all Core 20 companies
-- [x] Astro Content Collection + Zod schema contract
-- [x] Home
-- [x] Atlas
-- [x] Companies directory
-- [x] instant company filtering by text/layer/country
-- [x] company detail pages
-- [x] 4-company comparison
-- [x] score direction + magnitude display
-- [x] Pagefind post-build full-text search integration
-- [x] Methodology
-- [x] Glossary
-- [x] data integrity validation script
-- [x] page wireframes and repository ownership documentation
-
-## Deliberately not populated yet
-
-- [ ] verified PER TTM / PER FY1 / PBR
-- [ ] Atlas-normalized ROIC
-- [ ] verified operating margin / revenue growth snapshots
-- [ ] quarterly earnings time series
-- [ ] sector-specific KPIs
-- [ ] evidence-backed supplier/customer relationship graph
-- [ ] final user-owned sensitivity / moat scores
-
-Financial slots remain `null` and render as `N/A`. No synthetic market values are included merely to make the prototype appear complete.
-
-## Validation snapshot
+## Core research coverage
 
 - companies: 20
-- primary value-chain layers: 8
-- official IR hub sources: 20
-- source-policy records: 20
-- metric definitions: 6
-- constitutional articles: 9
-- provisional score objects: 80
-- non-null universal financial metric values: 0
-- relationship edges: 0
-- generated company detail pages: 20
+- value-chain layers: 8
+- registered Sources: 39
+- Source Policy records: 39
+- Source Policy review state: 39 pending / manual-reference-only
+- populated common objective metrics: 38
+- companies with verified revenue growth + operating margin: 19 / 20
+- verified sector-specific KPIs: 11
+- common metric definitions: 6
+- sector KPI definitions: 10
+- constitutional articles enforced by CI: 9
+- evidence-backed relationship edges: 0
 
-## Build validation
+### Common metric coverage
 
-The original authoring sandbox could not resolve the npm registry reliably, so the first local package installation was not representative. This limitation has now been superseded by the deployed GitHub Actions run.
+19 companies currently have a latest-quarter revenue-growth snapshot and operating-margin snapshot tied to a primary-source document. Fujikura remains `N/A` because the current FY2026 Q1 material is visible on the official IR site but a stable document-level source URL has not yet been reliably retrieved. Older documents are not substituted merely to fill the slot.
 
-On 2026-08-29, GitHub Actions successfully executed:
+### Still intentionally N/A
 
-1. dependency installation;
-2. constitutional data validation;
-3. Astro production build;
-4. Pagefind production indexing;
-5. Pages configuration;
-6. Pages artifact upload; and
-7. deployment to the live GitHub Pages URL.
+- PER TTM
+- PER FY1
+- PBR
+- Atlas-normalized ROIC
 
-The deployed artifact contains Home, Atlas, Companies, Compare, Search, Methodology, Glossary, all 20 company detail pages, and the Pagefind search index.
+These fields are not populated from arbitrary finance websites. PER/PBR require an approved market-price source with terms review; FY1 PER additionally requires a licensed/approved forward-consensus source. ROIC will be calculated from primary financial statements under an Atlas-normalized definition.
 
-## Next research work that does not require user input
+## Sector KPI examples now live
 
-1. document-level source verification for the 20 company profiles;
-2. financial ingestion contract and normalized metric files;
-3. sector-KPI schema by layer;
-4. evidence model for relationships;
-5. first verified data population;
-6. source-terms review for the 20 registered IR sources.
+- NVIDIA: Data Center revenue growth
+- TSMC: advanced-technology wafer revenue share
+- Micron: Cloud Memory / Core Data Center revenue
+- Broadcom: AI semiconductor revenue and YoY growth
+- Vertiv / Eaton: organic sales growth
+- Equinix: recurring-revenue growth and net interconnection additions
+- FANUC: robot-segment revenue growth
+
+## Data architecture added in v0.2
+
+- document-level Source registry separated from IR-hub registry
+- matching document Source Policy registry
+- sector KPI definition registry
+- verified sector KPI records
+- CI validation for company IDs, Source IDs, policy completeness, metric definitions, KPI definitions, provenance metadata, and verified publication status
+
+## Current validation snapshot
+
+Latest successful CI validation:
+
+`20 companies / 8 layers / 39 sources / 39 source policies / 38 populated common metrics / 11 verified sector KPIs / 6 common metric definitions / 10 sector KPI definitions / 9 constitutional articles`
+
+Secret scan, Astro production build, Japanese Pagefind indexing, artifact upload, and GitHub Pages deployment all succeeded.
+
+## Next phase
+
+1. freeze the valuation and ROIC methodology;
+2. build primary-statement input records for normalized ROIC;
+3. define the approved market-price-source contract for PER TTM and PBR;
+4. keep FY1 PER N/A until a licensed/approved consensus source is selected;
+5. add quarterly time-series records and self-generated charts;
+6. continue sector KPI expansion by layer;
+7. begin evidence-backed supplier/customer relationship edges;
+8. review Source usage terms before any automated retrieval is enabled.
 
 ## User input required later
 
 Only when crossing the relevant boundary:
 
-- **Market-data automation:** whether automation must be free/public-source only or may use a paid/licensed market-data API.
-- **Final scoring:** approval/revision of score definitions and final values; provisional values must not silently become the user's judgment.
-- **Public/commercial expansion:** legal and policy re-review required under Constitution Article 9 before monetization or materially broader public use.
+- whether paid/licensed market-data or consensus APIs are allowed;
+- final approval/revision of subjective score definitions and values;
+- legal/policy re-review before monetization or materially broader public use under Constitution Article 9.
