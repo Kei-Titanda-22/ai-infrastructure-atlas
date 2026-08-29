@@ -3,52 +3,51 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import scoreDefinitions from '../data/score-definitions.json';
 import governance from '../data/governance.json';
 ---
-<BaseLayout title="Methodology" indexable>
+<BaseLayout title="評価基準" indexable>
   <header class="page-head">
     <div class="shell">
-      <div class="eyebrow">Definitions before opinions</div>
-      <h1>Methodology</h1>
-      <p class="lead">「数字」「事実」「推定」「主観評価」を分離し、異なる企業を同じルールで比較できるようにするための基準ページ。</p>
+      <div class="eyebrow">意見より先に定義を固定する</div>
+      <h1>評価基準</h1>
+      <p class="lead">「数字」「事実」「推定」「主観評価」を分離し、異なる企業を同じルールで比較するための基準ページです。</p>
     </div>
   </header>
   <div class="shell section">
     <section class="panel">
-      <h2>Data classes</h2>
+      <h2>データ区分</h2>
       <table class="metrics-table">
         <tbody>
-          <tr><th>Profile</th><td>事業・製品・技術。低頻度更新。</td></tr>
-          <tr><th>Financials</th><td>PL / BS / CF。決算ごとに更新。</td></tr>
-          <tr><th>Market</th><td>株価、時価総額、PER/PBR等。基準日を必須化。</td></tr>
-          <tr><th>Sector KPI</th><td>HBM、WFE、バックログ、FFO/AFFO等。業種別。</td></tr>
-          <tr><th>Analysis</th><td>強み、リスク、AI上の位置づけ。人間がレビュー。</td></tr>
-          <tr><th>Scores</th><td>比較用スコア。最終定義・判断はユーザー管理。</td></tr>
+          <tr><th>企業情報</th><td>事業・製品・技術。低頻度更新。</td></tr>
+          <tr><th>財務</th><td>損益計算書・貸借対照表・キャッシュフロー。決算ごとに更新。</td></tr>
+          <tr><th>市場データ</th><td>株価、時価総額、PER/PBR等。基準日を必須化。</td></tr>
+          <tr><th>業種固有KPI</th><td>HBM、WFE、バックログ、FFO/AFFO等。業種別に管理。</td></tr>
+          <tr><th>分析</th><td>強み、リスク、AI上の位置づけ。人間がレビュー。</td></tr>
+          <tr><th>比較スコア</th><td>AI感応度などの比較用評価。客観数値とは別管理。</td></tr>
         </tbody>
       </table>
     </section>
 
-
     <section class="section">
-      <div class="section-heading"><div><span class="eyebrow">Project constitution</span><h2>9つの固定原則</h2></div><p>機能追加や自動化より上位に置くガバナンスルール。詳細はリポジトリの <code>docs/constitution.md</code> を正本とします。</p></div>
+      <div class="section-heading"><div><span class="eyebrow">プロジェクト憲法</span><h2>9つの固定原則</h2></div><p>機能追加や自動化より上位に置くガバナンスルールです。詳細はリポジトリの <code>docs/constitution.md</code> を正本とします。</p></div>
       <div class="method-grid">
-        {governance.map(rule => <article class="method-card"><span class="ticker">Article {rule.id}</span><h3>{rule.title}</h3><p>{rule.text}</p></article>)}
+        {governance.map(rule => <article class="method-card"><span class="ticker">第{rule.id}条</span><h3>{rule.title}</h3><p>{rule.text}</p></article>)}
       </div>
     </section>
 
     <section class="section">
-      <div class="section-heading"><div><span class="eyebrow">Score definitions</span><h2>暫定評価軸</h2></div><p>v0.1の数値はUI検証用。評価軸自体を外部データ化しているため、定義変更時に画面コードを書き直しません。</p></div>
+      <div class="section-heading"><div><span class="eyebrow">評価軸</span><h2>感応度・競争力の定義</h2></div><p>評価軸そのものをデータ化しているため、定義変更時に画面コードを書き直しません。</p></div>
       <div class="method-grid">
-        {scoreDefinitions.map(s => <article class="method-card"><h3>{s.name}</h3><span class="ticker">{s.scale}</span><p>{s.meaning}</p><p><strong>Rule:</strong> {s.rule}</p><div class="tags"><span class="tag">Final owner: {s.owner}</span><span class="tag">Current: {s.current}</span></div></article>)}
+        {scoreDefinitions.map(s => <article class="method-card"><h3>{s.name}</h3><span class="ticker">{s.scale}</span><p>{s.meaning}</p><p><strong>判定ルール：</strong> {s.rule}</p><div class="tags"><span class="tag">最終判断：{s.owner}</span><span class="tag">現在：{s.current}</span></div></article>)}
       </div>
     </section>
 
     <section class="panel">
-      <h2>Financial normalization</h2>
+      <h2>財務指標の統一ルール</h2>
       <ul class="bullet-list">
         <li>欠損値は0ではなくN/A。</li>
         <li>PERはTTMとFY1を別指標として保持。</li>
-        <li>非nullの客観数値には sourceId、asOf、definitionId を必須化。</li>
+        <li>非nullの客観数値にはSource ID、基準日、定義IDを必須化。</li>
         <li>ROICはAtlas側の統一定義を持ち、外部サイトの算出値を混在させない。</li>
-        <li>REIT等はFFO/AFFOなどSector KPIを別比較し、一般企業との単純PER比較を避ける。</li>
+        <li>REIT等はFFO/AFFOなど業種固有KPIを別比較し、一般企業との単純PER比較を避ける。</li>
       </ul>
     </section>
   </div>
