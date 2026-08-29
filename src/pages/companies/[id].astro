@@ -24,14 +24,18 @@ const companyKpis = sectorKpis.filter(kpi => kpi.companyId === company.id);
 const companyRoic = roicCalculations.find(calc => calc.companyId === company.id && d.metrics.roic.calculationId === calc.id);
 const kpiDefinitionById = new Map(sectorKpiDefinitions.map(definition => [definition.id, definition]));
 const scoreLabels: Record<string, string> = { aiExposure:'AI感応度', rateSensitivity:'金利感応度', cyclicality:'景気循環性', moat:'競争優位' };
-const metricLabels: Record<string, string> = { peTTM:'PER TTM', peFY1:'PER FY1', pb:'PBR', roic:'ROIC', operatingMargin:'営業利益率', revenueGrowth:'売上高成長率（前年同期比）' };
+const metricLabels: Record<string, string> = { peTTM:'PER（実績）', peFY1:'PER（予想1期先）', pb:'PBR', roic:'ROIC', operatingMargin:'営業利益率', revenueGrowth:'売上高成長率（前年同期比）' };
 const statusLabels: Record<string, string> = { verified:'検証済み', partial:'一部検証済み', placeholder:'未検証' };
 const sourceById = new Map(allSources.map(source => [source.id, source]));
 const formatKpi = (kpi: any) => {
-  if (kpi.unit === '%') return `${kpi.value}%`;
-  if (kpi.unit === 'USD bn') return `$${kpi.value}B`;
-  if (kpi.unit === 'connections') return `${Number(kpi.value).toLocaleString('ja-JP')}件`;
-  return `${kpi.value} ${kpi.unit}`;
+  const value = Number(kpi.value);
+  if (kpi.unit === '%') return `${value.toLocaleString('ja-JP', { maximumFractionDigits: 2 })}%`;
+  if (kpi.unit === 'USD bn') return `${value.toLocaleString('ja-JP', { maximumFractionDigits: 3 })}十億ドル`;
+  if (kpi.unit === 'EUR bn') return `${value.toLocaleString('ja-JP', { maximumFractionDigits: 3 })}十億ユーロ`;
+  if (kpi.unit === 'JPY bn') return `${(value * 10).toLocaleString('ja-JP', { maximumFractionDigits: 1 })}億円`;
+  if (kpi.unit === 'systems') return `${value.toLocaleString('ja-JP')}台`;
+  if (kpi.unit === 'connections') return `${value.toLocaleString('ja-JP')}件`;
+  return `${value.toLocaleString('ja-JP')} ${kpi.unit}`;
 };
 const formatRoicValue = (value: any) => {
   if (value.unit === '%') return `${Number(value.value).toLocaleString('ja-JP', { maximumFractionDigits: 2 })}%`;
@@ -81,7 +85,7 @@ const formatRoicValue = (value: any) => {
         </section>
         <section class="panel">
           <h2>共通財務指標</h2>
-          <div class="notice" style="margin-bottom:12px">数値はSource・基準日・定義が揃ったものだけを掲載します。欠損は0ではなくN/Aです。</div>
+          <div class="notice" style="margin-bottom:12px">数値は出典・基準日・定義が揃ったものだけを掲載します。欠損は0ではなくN/Aです。</div>
           <table class="metrics-table">
             <tbody>
               {Object.entries(d.metrics).map(([key, metric]) => {
@@ -93,8 +97,8 @@ const formatRoicValue = (value: any) => {
                       {metric.value === null ? 'N/A' : `${metric.value}${metric.unit === 'x' ? '倍' : metric.unit}`}
                       {metric.value !== null && (
                         <span class="metric-provenance">
-                          基準日：{metric.asOf || '未設定'} · 対象期間：{metric.period || '未設定'} · 基準：{metric.basis || '未設定'}
-                          {source ? <> · <a href={source.url} target="_blank" rel="noreferrer">Source ↗</a></> : null}
+                          基準日：{metric.asOf || '未設定'} · 対象期間：{metric.period || '未設定'} · 算出基準：{metric.basis || '未設定'}
+                          {source ? <> · <a href={source.url} target="_blank" rel="noreferrer">出典 ↗</a></> : null}
                           {metric.calculationId ? <> · <a href="#roic-calculation">計算根拠 ↓</a></> : null}
                         </span>
                       )}
@@ -159,8 +163,8 @@ const formatRoicValue = (value: any) => {
                       <td>
                         {formatKpi(kpi)}
                         <span class="metric-provenance">
-                          基準日：{kpi.asOf} · 対象期間：{kpi.period} · 基準：{kpi.basis}
-                          {source ? <> · <a href={source.url} target="_blank" rel="noreferrer">Source ↗</a></> : null}
+                          基準日：{kpi.asOf} · 対象期間：{kpi.period} · 算出基準：{kpi.basis}
+                          {source ? <> · <a href={source.url} target="_blank" rel="noreferrer">出典 ↗</a></> : null}
                         </span>
                       </td>
                     </tr>
@@ -191,7 +195,7 @@ const formatRoicValue = (value: any) => {
         <section class="panel">
           <h3>一次情報源</h3>
           {companySources.map(source => <p style="margin:8px 0"><a class="tag" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a></p>)}
-          <p class="meta">IRトップだけでなく、決算資料・法定開示など文書単位のSource IDを順次追加します。</p>
+          <p class="meta">IRトップだけでなく、決算資料・法定開示など文書単位の出典IDを順次追加します。</p>
         </section>
       </aside>
     </div>
