@@ -49,7 +49,7 @@ const companies = defineCollection({
       rateSensitivity: directionalScore,
       cyclicality: directionalScore,
       moat: directionalScore,
-    }),
+    }).optional(),
     metrics: z.object({
       peTTM: nullableMetric,
       peFY1: nullableMetric,
