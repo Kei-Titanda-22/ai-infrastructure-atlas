@@ -55,9 +55,5 @@ const featured = featuredIds.map(id => companies.find(c => c.id === id)).filter(
         {featured.map(company => <CompanyCard company={company} />)}
       </div>
     </section>
-
-    <section class="section">
-      <div class="notice">このサイトでは、根拠が薄い主観点数を前面には出しません。企業ページは事業構造、製品、拠点、決算数値、業種固有KPI、一次資料を中心に構成します。</div>
-    </section>
   </div>
 </BaseLayout>
