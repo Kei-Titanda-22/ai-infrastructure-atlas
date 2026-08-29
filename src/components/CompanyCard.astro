@@ -1,29 +1,39 @@
 ---
 import { withBase } from '../lib/paths';
-import { layerLabel, countryLabel } from '../lib/display';
+import { layerLabel, countryLabel, tagLabel } from '../lib/display';
+import facilities from '../data/facilities.json';
 const { company } = Astro.props;
 const d = company.data ?? company;
 const id = company.id;
+const companyFacilities = facilities.filter(facility => facility.companyId === id);
+const cityText = companyFacilities.map(facility => `${facility.city} ${facility.region}`).join(' ');
 ---
-<a
+<article
   class="company-card"
-  href={withBase(`companies/${id}/`)}
   data-company-card
-  data-name={`${d.name} ${d.japaneseName} ${d.reading} ${d.ticker} ${d.tags.join(' ')} ${d.products.join(' ')}`.toLowerCase()}
+  data-name={`${d.name} ${d.japaneseName} ${d.reading} ${d.ticker} ${d.tags.join(' ')} ${d.products.join(' ')} ${cityText}`.toLowerCase()}
+  data-tags={d.tags.join('|')}
   data-layer={d.primaryLayer}
   data-country={d.country}
 >
   <div class="company-card-top">
     <div>
-      <h3>{d.japaneseName || d.name}</h3>
+      <h3><a class="company-link" href={withBase(`companies/${id}/`)}>{d.japaneseName || d.name}</a></h3>
       <span class="meta">{d.name}</span>
     </div>
     <span class="ticker">{d.ticker}</span>
   </div>
   <p>{d.summary}</p>
-  <div class="tags">
-    <span class="tag">{layerLabel(d.primaryLayer)}</span>
-    <span class="tag">AI感応度 {d.scores.aiExposure.value}/5</span>
-    <span class="tag">{countryLabel(d.country)}</span>
+  <div class="card-meta-line">
+    <a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a>
+    <span>·</span>
+    <a class="filter-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a>
+    <span>·</span>
+    <span>AI感応度 {d.scores.aiExposure.value}/5</span>
   </div>
-</a>
+  <div class="tags tag-links" aria-label="企業タグ">
+    {d.tags.slice(0, 4).map(tag => (
+      <a class="tag tag-link" href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a>
+    ))}
+  </div>
+</article>
