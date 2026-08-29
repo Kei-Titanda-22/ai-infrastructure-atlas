@@ -60,6 +60,21 @@ const isComparePage = Astro.url.pathname.includes('/compare');
       const basePrefix = sectionIndex >= 0 ? pathname.slice(0, sectionIndex + 1) : pathname.endsWith('/') ? pathname : pathname.replace(/[^/]*$/, '');
       const companyMatch = pathname.match(/\/companies\/([^/]+)\/?$/);
 
+      if (/\/financials\/?$/.test(pathname)) {
+        const summary = document.querySelector('.financial-summary');
+        if (summary && !document.querySelector('[data-earnings-update-ledger-link]')) {
+          const entry = document.createElement('p');
+          entry.className = 'financial-ledger-entry';
+          entry.setAttribute('data-earnings-update-ledger-link', '');
+          const anchor = document.createElement('a');
+          anchor.className = 'text-link';
+          anchor.href = `${basePrefix}financials/updates/`;
+          anchor.textContent = '企業・決算期間・一次資料別の更新履歴を見る →';
+          entry.append(anchor);
+          summary.insertAdjacentElement('afterend', entry);
+        }
+      }
+
       if (companyMatch) {
         const companyId = decodeURIComponent(companyMatch[1]);
         const financialSection = document.querySelector('#financials');
