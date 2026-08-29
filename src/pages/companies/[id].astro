@@ -5,6 +5,7 @@ import { getCollection } from 'astro:content';
 import { withBase } from '../../lib/paths';
 import { layerLabel, countryLabel } from '../../lib/display';
 import sources from '../../data/sources.json';
+import documentSources from '../../data/document-sources.json';
 import sectorKpis from '../../data/sector-kpis.json';
 import sectorKpiDefinitions from '../../data/sector-kpi-definitions.json';
 
@@ -15,14 +16,15 @@ export async function getStaticPaths() {
 const { company } = Astro.props;
 const d = company.data;
 const allCompanies = await getCollection('companies');
+const allSources = [...sources, ...documentSources];
 const peers = d.competitors.map(id => allCompanies.find(c => c.id === id)).filter(Boolean);
-const companySources = sources.filter(source => d.sourceIds.includes(source.id));
+const companySources = allSources.filter(source => d.sourceIds.includes(source.id));
 const companyKpis = sectorKpis.filter(kpi => kpi.companyId === company.id);
 const kpiDefinitionById = new Map(sectorKpiDefinitions.map(definition => [definition.id, definition]));
 const scoreLabels: Record<string, string> = { aiExposure:'AI感応度', rateSensitivity:'金利感応度', cyclicality:'景気循環性', moat:'競争優位' };
 const metricLabels: Record<string, string> = { peTTM:'PER TTM', peFY1:'PER FY1', pb:'PBR', roic:'ROIC', operatingMargin:'営業利益率', revenueGrowth:'売上高成長率（前年同期比）' };
 const statusLabels: Record<string, string> = { verified:'検証済み', partial:'一部検証済み', placeholder:'未検証' };
-const sourceById = new Map(sources.map(source => [source.id, source]));
+const sourceById = new Map(allSources.map(source => [source.id, source]));
 const formatKpi = (kpi: any) => {
   if (kpi.unit === '%') return `${kpi.value}%`;
   if (kpi.unit === 'USD bn') return `$${kpi.value}B`;
