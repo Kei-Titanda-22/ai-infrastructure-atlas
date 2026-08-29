@@ -2,7 +2,7 @@ import {
   layerLabel as baseLayerLabel,
   countryLabel as baseCountryLabel,
   tagLabel as baseTagLabel,
-  facilityTypeLabel,
+  facilityTypeLabel as baseFacilityTypeLabel,
   productInfo as baseProductInfo,
   joinJapanese,
 } from './display';
