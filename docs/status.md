@@ -20,7 +20,7 @@
 
 ## Current database
 
-- companies: **40**（v0.1 Core 20 + v0.2 Batch A 10 + Batch B 10）
+- companies: **50**（v0.1 Core 20 + v0.2 Batch A/B/C 各10社）
 - v0.2 company target: 100
 - value-chain layers: 9
 - value-chain stages: 9 including AI demand
@@ -47,9 +47,15 @@ Besi / ASMPT / HANMI Semiconductor / イビデン / 新光電気工業 / 味の�
 
 後工程装置、パッケージ基板、ABF、シリコンウェハ、実装材料を追加し、「半導体材料・基板」を独立レイヤーとして新設。新光電気工業と味の素ファインテクノは非上場企業としてTickerを付与しない。
 
+## v0.2 Batch C
+
+Coherent / Lumentum / Ciena / Cisco / Credo / 古河電気工業 / 住友電気工業 / Corning / Amphenol / TE Connectivity
+
+光トランシーバー、コヒーレント光、AEC、光ファイバ、高速コネクタ、電力ケーブルなど、AIクラスタ内外の接続インフラを拡張。各社の公式IR入口をSource Registryへ登録し、利用条件は未審査のため手動参照限定を維持する。
+
 ## v0.2 current work
 
-1. 40社 → 100社へ段階的に拡張
+1. 50社 → 100社へ段階的に拡張
 2. セクター・工程・技術タグの再整理
 3. 技術名ごとに独立した検索リンクを持たせる
 4. 100社規模でも企業一覧・AND検索・複合フィルターを維持
