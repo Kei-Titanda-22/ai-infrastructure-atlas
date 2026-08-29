@@ -1,9 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import ScoreCard from '../../components/ScoreCard.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../../lib/paths';
-import { layerLabel, countryLabel, tagLabel, facilityTypeLabel } from '../../lib/display';
+import { layerLabel, countryLabel, tagLabel, facilityTypeLabel, productInfo, joinJapanese } from '../../lib/display';
 import sources from '../../data/sources.json';
 import documentSources from '../../data/document-sources.json';
 import facilitySources from '../../data/facility-sources.json';
@@ -17,6 +16,7 @@ export async function getStaticPaths() {
   const companies = await getCollection('companies');
   return companies.map(company => ({ params: { id: company.id }, props: { company } }));
 }
+
 const { company } = Astro.props;
 const d = company.data;
 const allCompanies = await getCollection('companies');
@@ -29,10 +29,15 @@ const brandAsset = brandAssets.find(asset => asset.companyId === company.id);
 const companyKpis = sectorKpis.filter(kpi => kpi.companyId === company.id);
 const companyRoic = roicCalculations.find(calc => calc.companyId === company.id && d.metrics.roic.calculationId === calc.id);
 const kpiDefinitionById = new Map(sectorKpiDefinitions.map(definition => [definition.id, definition]));
-const scoreLabels: Record<string, string> = { aiExposure:'AI感応度', rateSensitivity:'金利感応度', cyclicality:'景気循環性', moat:'競争優位' };
-const metricLabels: Record<string, string> = { peTTM:'PER（実績）', peFY1:'PER（予想1期先）', pb:'PBR', roic:'ROIC', operatingMargin:'営業利益率', revenueGrowth:'売上高成長率（前年同期比）' };
+const metricLabels: Record<string, string> = {
+  peTTM:'PER（実績）', peFY1:'PER（予想1期先）', pb:'PBR', roic:'ROIC',
+  operatingMargin:'営業利益率', revenueGrowth:'売上高成長率（前年同期比）'
+};
 const statusLabels: Record<string, string> = { verified:'検証済み', partial:'一部検証済み', placeholder:'未検証' };
 const sourceById = new Map(allSources.map(source => [source.id, source]));
+const strengthText = joinJapanese(d.strengths);
+const riskText = joinJapanese(d.risks);
+
 const formatKpi = (kpi: any) => {
   const value = Number(kpi.value);
   if (kpi.unit === '%') return `${value.toLocaleString('ja-JP', { maximumFractionDigits: 2 })}%`;
@@ -53,6 +58,7 @@ const formatRoicValue = (value: any) => {
     <span hidden data-pagefind-filter={`layer:${d.primaryLayer}`}></span>
     <span hidden data-pagefind-filter={`country:${d.country}`}></span>
     <span hidden data-pagefind-meta={`ticker:${d.ticker}`}></span>
+
     <div class="shell company-hero">
       <div>
         <div class="breadcrumb"><a href={withBase('companies/')}>企業一覧</a> / {layerLabel(d.primaryLayer)}</div>
@@ -78,38 +84,42 @@ const formatRoicValue = (value: any) => {
     </div>
 
     <div class="shell detail-grid section">
-      <div>
-        <section class="panel">
-          <div class="eyebrow">AIインフラ上の位置</div>
-          <h2>AI需要との関係</h2>
-          <p class="lead">{d.aiRole}</p>
+      <div class="company-research">
+        <section class="company-section company-overview">
+          <h2>事業構造と競争上の位置</h2>
+          <p>{d.aiRole}</p>
+          <p><strong>競争力の源泉：</strong>{strengthText}。</p>
+          <p><strong>主な確認点：</strong>{riskText}。</p>
         </section>
-        <section class="panel">
-          <h2>主要製品・技術</h2>
-          <ul class="bullet-list">{d.products.map(x => <li>{x}</li>)}</ul>
+
+        <section class="company-section">
+          <h2>主力製品と役割</h2>
+          <p class="section-intro">製品名だけではなく、AIインフラや半導体製造の中で何を担うのかを併記します。</p>
+          <dl class="product-list">
+            {d.products.map(product => {
+              const info = productInfo(product);
+              return <div class="product-row"><dt>{info.label}</dt><dd>{info.description}</dd></div>;
+            })}
+          </dl>
         </section>
-        <section class="panel">
-          <h2>強み</h2>
-          <ul class="bullet-list">{d.strengths.map(x => <li>{x}</li>)}</ul>
-        </section>
-        <section class="panel">
-          <h2>リスク・監視点</h2>
-          <ul class="bullet-list">{d.risks.map(x => <li>{x}</li>)}</ul>
-        </section>
+
         {companyFacilities.length > 0 && (
-          <section class="panel">
+          <section class="company-section">
             <h2>主要製造・研究拠点</h2>
-            <p class="meta">一次情報で確認できた主要拠点のみ掲載しています。網羅的な全拠点一覧ではありません。</p>
+            <p class="section-intro">一次情報で確認できた主要拠点のみ掲載しています。網羅的な全拠点一覧ではありません。</p>
             <div class="table-scroll">
               <table class="metrics-table facilities-table">
-                <thead><tr><th>拠点</th><th>都市・地域</th><th>種別</th><th>主な役割</th></tr></thead>
+                <thead><tr><th>拠点</th><th>所在地</th><th>種別</th><th>主な役割</th></tr></thead>
                 <tbody>
                   {companyFacilities.map(facility => {
                     const source = sourceById.get(facility.sourceId);
                     return (
                       <tr>
                         <td>{facility.name}</td>
-                        <td><a class="text-link" href={`${withBase('companies/')}?q=${encodeURIComponent(facility.city)}`}>{facility.city}</a><span class="metric-provenance">{facility.region} · {facility.country}</span></td>
+                        <td>
+                          {facility.city}
+                          <span class="metric-provenance"><a class="text-link" href={`${withBase('companies/')}?q=${encodeURIComponent(facility.region)}`}>{facility.region}</a> · {countryLabel(facility.country)}</span>
+                        </td>
                         <td>{facilityTypeLabel(facility.facilityType)}</td>
                         <td>{facility.role}{source ? <span class="metric-provenance"><a class="source-link" href={source.url} target="_blank" rel="noreferrer">出典 ↗</a></span> : null}</td>
                       </tr>
@@ -120,119 +130,124 @@ const formatRoicValue = (value: any) => {
             </div>
           </section>
         )}
-        <section class="panel">
+
+        <section class="company-section">
           <h2>共通財務指標</h2>
-          <div class="notice" style="margin-bottom:12px">数値は出典・基準日・定義が揃ったものだけを掲載します。欠損は0ではなくN/Aです。</div>
-          <table class="metrics-table">
-            <tbody>
-              {Object.entries(d.metrics).map(([key, metric]) => {
-                const source = metric.sourceId ? sourceById.get(metric.sourceId) : undefined;
-                return (
-                  <tr>
-                    <th>{metricLabels[key]}</th>
-                    <td>
-                      {metric.value === null ? 'N/A' : `${metric.value}${metric.unit === 'x' ? '倍' : metric.unit}`}
-                      {metric.value !== null && (
-                        <span class="metric-provenance">
-                          基準日：{metric.asOf || '未設定'} · 対象期間：{metric.period || '未設定'} · 算出基準：{metric.basis || '未設定'}
-                          {source ? <> · <a class="source-link" href={source.url} target="_blank" rel="noreferrer">出典 ↗</a></> : null}
-                          {metric.calculationId ? <> · <a class="text-link" href="#roic-calculation">計算根拠 ↓</a></> : null}
-                        </span>
-                      )}
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </section>
-        {companyRoic && (
-          <section class="panel" id="roic-calculation">
-            <div class="eyebrow">Atlas自前計算</div>
-            <h2>ROIC計算根拠</h2>
-            <p class="meta">{companyRoic.period} · 単位 {companyRoic.currency}。一次財務諸表の入力値からCIでも再計算しています。</p>
+          <p class="section-intro">出典・基準日・定義が揃った数字だけを掲載します。欠損は0ではなくN/Aです。</p>
+          <div class="table-scroll">
             <table class="metrics-table">
               <tbody>
-                <tr><th>実効税率</th><td>{formatRoicValue(companyRoic.outputs.effectiveTaxRate)}<span class="metric-provenance">{companyRoic.outputs.effectiveTaxRate.basis}</span></td></tr>
-                <tr><th>NOPAT</th><td>{formatRoicValue(companyRoic.outputs.nopat)}<span class="metric-provenance">{companyRoic.outputs.nopat.basis}</span></td></tr>
-                <tr><th>期首投下資本</th><td>{formatRoicValue(companyRoic.outputs.beginningInvestedCapital)}<span class="metric-provenance">{companyRoic.outputs.beginningInvestedCapital.basis}</span></td></tr>
-                <tr><th>期末投下資本</th><td>{formatRoicValue(companyRoic.outputs.endingInvestedCapital)}<span class="metric-provenance">{companyRoic.outputs.endingInvestedCapital.basis}</span></td></tr>
-                <tr><th>平均投下資本</th><td>{formatRoicValue(companyRoic.outputs.averageInvestedCapital)}<span class="metric-provenance">{companyRoic.outputs.averageInvestedCapital.basis}</span></td></tr>
-                <tr><th>ROIC</th><td><strong>{formatRoicValue(companyRoic.outputs.roic)}</strong><span class="metric-provenance">{companyRoic.outputs.roic.basis}</span></td></tr>
-              </tbody>
-            </table>
-            <details style="margin-top:14px">
-              <summary style="cursor:pointer;font-weight:700">入力値と一次資料を確認</summary>
-              <table class="metrics-table" style="margin-top:10px">
-                <tbody>
-                  {Object.entries(companyRoic.inputs).map(([name, input]: [string, any]) => (
-                    <tr>
-                      <th>{name}</th>
-                      <td>
-                        {formatRoicValue(input)}
-                        <span class="metric-provenance">
-                          {input.period} · {input.basis}
-                          {input.sourceIds.map((sourceId: string) => {
-                            const source = sourceById.get(sourceId);
-                            return source ? <> · <a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a></> : null;
-                          })}
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </details>
-          </section>
-        )}
-        {companyKpis.length > 0 && (
-          <section class="panel">
-            <h2>業種固有KPI</h2>
-            <p class="meta">共通指標では捉えにくい、各業種・企業固有の重要指標です。</p>
-            <table class="metrics-table">
-              <tbody>
-                {companyKpis.map(kpi => {
-                  const definition = kpiDefinitionById.get(kpi.definitionId);
-                  const source = sourceById.get(kpi.sourceId);
+                {Object.entries(d.metrics).map(([key, metric]) => {
+                  const source = metric.sourceId ? sourceById.get(metric.sourceId) : undefined;
                   return (
                     <tr>
-                      <th>{definition?.name ?? kpi.definitionId}</th>
+                      <th>{metricLabels[key]}</th>
                       <td>
-                        {formatKpi(kpi)}
-                        <span class="metric-provenance">
-                          基準日：{kpi.asOf} · 対象期間：{kpi.period} · 算出基準：{kpi.basis}
-                          {source ? <> · <a class="source-link" href={source.url} target="_blank" rel="noreferrer">出典 ↗</a></> : null}
-                        </span>
+                        {metric.value === null ? 'N/A' : `${metric.value}${metric.unit === 'x' ? '倍' : metric.unit}`}
+                        {metric.value !== null && (
+                          <span class="metric-provenance">
+                            基準日：{metric.asOf || '未設定'} · 対象期間：{metric.period || '未設定'} · 算出基準：{metric.basis || '未設定'}
+                            {source ? <> · <a class="source-link" href={source.url} target="_blank" rel="noreferrer">出典 ↗</a></> : null}
+                            {metric.calculationId ? <> · <a class="text-link" href="#roic-calculation">計算根拠 ↓</a></> : null}
+                          </span>
+                        )}
                       </td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
+          </div>
+        </section>
+
+        {companyRoic && (
+          <section class="company-section" id="roic-calculation">
+            <h2>ROIC計算根拠</h2>
+            <p class="section-intro">{companyRoic.period} · 単位 {companyRoic.currency}。一次財務諸表の入力値からAtlas側で再計算しています。</p>
+            <div class="table-scroll">
+              <table class="metrics-table">
+                <tbody>
+                  <tr><th>実効税率</th><td>{formatRoicValue(companyRoic.outputs.effectiveTaxRate)}<span class="metric-provenance">{companyRoic.outputs.effectiveTaxRate.basis}</span></td></tr>
+                  <tr><th>NOPAT</th><td>{formatRoicValue(companyRoic.outputs.nopat)}<span class="metric-provenance">{companyRoic.outputs.nopat.basis}</span></td></tr>
+                  <tr><th>期首投下資本</th><td>{formatRoicValue(companyRoic.outputs.beginningInvestedCapital)}<span class="metric-provenance">{companyRoic.outputs.beginningInvestedCapital.basis}</span></td></tr>
+                  <tr><th>期末投下資本</th><td>{formatRoicValue(companyRoic.outputs.endingInvestedCapital)}<span class="metric-provenance">{companyRoic.outputs.endingInvestedCapital.basis}</span></td></tr>
+                  <tr><th>平均投下資本</th><td>{formatRoicValue(companyRoic.outputs.averageInvestedCapital)}<span class="metric-provenance">{companyRoic.outputs.averageInvestedCapital.basis}</span></td></tr>
+                  <tr><th>ROIC</th><td><strong>{formatRoicValue(companyRoic.outputs.roic)}</strong><span class="metric-provenance">{companyRoic.outputs.roic.basis}</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+            <details class="calculation-details">
+              <summary>入力値と一次資料を確認</summary>
+              <div class="table-scroll">
+                <table class="metrics-table">
+                  <tbody>
+                    {Object.entries(companyRoic.inputs).map(([name, input]: [string, any]) => (
+                      <tr>
+                        <th>{name}</th>
+                        <td>
+                          {formatRoicValue(input)}
+                          <span class="metric-provenance">
+                            {input.period} · {input.basis}
+                            {input.sourceIds.map((sourceId: string) => {
+                              const source = sourceById.get(sourceId);
+                              return source ? <> · <a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a></> : null;
+                            })}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          </section>
+        )}
+
+        {companyKpis.length > 0 && (
+          <section class="company-section">
+            <h2>業種固有KPI</h2>
+            <p class="section-intro">共通財務指標だけでは見えにくい、事業固有の重要数字です。</p>
+            <div class="table-scroll">
+              <table class="metrics-table">
+                <tbody>
+                  {companyKpis.map(kpi => {
+                    const definition = kpiDefinitionById.get(kpi.definitionId);
+                    const source = sourceById.get(kpi.sourceId);
+                    return (
+                      <tr>
+                        <th>{definition?.name ?? kpi.definitionId}</th>
+                        <td>
+                          {formatKpi(kpi)}
+                          <span class="metric-provenance">
+                            基準日：{kpi.asOf} · 対象期間：{kpi.period} · 算出基準：{kpi.basis}
+                            {source ? <> · <a class="source-link" href={source.url} target="_blank" rel="noreferrer">出典 ↗</a></> : null}
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
           </section>
         )}
       </div>
-      <aside>
-        <section class="panel">
-          <div class="kicker">分析・判断データ</div>
-          <h2 style="margin-top:14px">感応度・競争力</h2>
-          <div class="score-grid">
-            {Object.entries(d.scores).map(([key, score]) => <ScoreCard name={scoreLabels[key]} score={score} />)}
-          </div>
-          <p class="source-note">このスコアは客観的な決算数値とは別管理です。暫定評価を事実データとして扱いません。</p>
-        </section>
-        <section class="panel">
+
+      <aside class="company-sidebar">
+        <section class="sidebar-section">
           <h3>所属領域</h3>
           <div class="tags">{d.layers.map(layer => <a class="tag tag-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(layer)}`}>{layerLabel(layer)}</a>)}</div>
         </section>
-        <section class="panel">
+        <section class="sidebar-section">
           <h3>競合・比較対象</h3>
           {peers.length ? <div class="link-list">{peers.map(peer => <a class="text-link" href={withBase(`companies/${peer.id}/`)}>{peer.data.japaneseName || peer.data.name}</a>)}</div> : <p class="meta">一次情報の検証待ちです。</p>}
         </section>
-        <section class="panel">
+        <section class="sidebar-section">
           <h3>一次情報源</h3>
-          <div class="link-list">{companySources.map(source => <a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a>)}</div>
-          <p class="meta">IRトップだけでなく、決算資料・法定開示・拠点情報など文書単位の出典IDを順次追加します。</p>
+          <div class="source-list">
+            {companySources.map(source => <a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a>)}
+          </div>
+          <p class="meta">決算資料・法定開示・公式拠点情報など、文書単位の出典を優先します。</p>
         </section>
       </aside>
     </div>
