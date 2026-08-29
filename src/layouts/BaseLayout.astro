@@ -3,6 +3,7 @@ import '../styles/global.css';
 import '../styles/data-evidence-v05.css';
 import '../styles/v02-expansion.css';
 import '../styles/financial-v04.css';
+import financialHistory from '../data/financial-history.json';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -17,6 +18,7 @@ const {
   indexable = false,
 } = Astro.props;
 const pageTitle = title === 'AI Infrastructure Atlas' ? title : `${title} | AI Infrastructure Atlas`;
+const financialCompanyIds = [...new Set(financialHistory.map(record => record.companyId))].join(',');
 ---
 <!doctype html>
 <html lang="ja">
@@ -31,7 +33,7 @@ const pageTitle = title === 'AI Infrastructure Atlas' ? title : `${title} | AI I
   </head>
   <body>
     <Header />
-    <main class="site-main" data-pagefind-body={indexable || undefined}>
+    <main class="site-main" data-pagefind-body={indexable || undefined} data-financial-company-ids={financialCompanyIds}>
       <slot />
     </main>
     <Footer />
@@ -44,6 +46,58 @@ const pageTitle = title === 'AI Infrastructure Atlas' ? title : `${title} | AI I
         link.textContent = '競争優位';
         const facilitiesLink = companyToc.querySelector('a[href="#facilities"]');
         companyToc.insertBefore(link, facilitiesLink || null);
+      }
+
+      const siteMain = document.querySelector('.site-main');
+      const financialIds = new Set((siteMain?.getAttribute('data-financial-company-ids') || '').split(',').filter(Boolean));
+      const pathname = location.pathname;
+      const sectionMarkers = ['/companies/', '/compare/', '/financials/', '/atlas/', '/search/', '/methodology/', '/glossary/'];
+      const sectionIndexes = sectionMarkers.map(marker => pathname.indexOf(marker)).filter(index => index >= 0);
+      const sectionIndex = sectionIndexes.length ? Math.min(...sectionIndexes) : -1;
+      const basePrefix = sectionIndex >= 0 ? pathname.slice(0, sectionIndex + 1) : pathname.endsWith('/') ? pathname : pathname.replace(/[^/]*$/, '');
+      const companyMatch = pathname.match(/\/companies\/([^/]+)\/?$/);
+
+      if (companyMatch) {
+        const companyId = decodeURIComponent(companyMatch[1]);
+        const financialSection = document.querySelector('#financials');
+        if (financialIds.has(companyId) && financialSection && !financialSection.querySelector('[data-financial-history-jump]')) {
+          const jump = document.createElement('p');
+          jump.className = 'section-intro';
+          jump.setAttribute('data-financial-history-jump', '');
+          const anchor = document.createElement('a');
+          anchor.className = 'text-link';
+          anchor.href = `${basePrefix}financials/?company=${encodeURIComponent(companyId)}`;
+          anchor.textContent = '四半期・通期の決算推移を見る →';
+          jump.append(anchor);
+          const intro = financialSection.querySelector('.section-intro');
+          if (intro) intro.insertAdjacentElement('afterend', jump);
+          else financialSection.querySelector('h2')?.insertAdjacentElement('afterend', jump);
+        }
+      }
+
+      const attachCompareFinancialLinks = () => {
+        const compareHead = document.querySelector('#compare-head');
+        if (!compareHead) return;
+        compareHead.querySelectorAll('a.compare-company-head').forEach(companyLink => {
+          const href = companyLink.getAttribute('href') || '';
+          const match = href.match(/\/companies\/([^/]+)\/?/);
+          if (!match) return;
+          const companyId = decodeURIComponent(match[1]);
+          const parent = companyLink.parentElement;
+          if (!parent || !financialIds.has(companyId) || parent.querySelector('[data-compare-financial-link]')) return;
+          const anchor = document.createElement('a');
+          anchor.className = 'text-link compare-company-sub';
+          anchor.setAttribute('data-compare-financial-link', '');
+          anchor.href = `${basePrefix}financials/?company=${encodeURIComponent(companyId)}`;
+          anchor.textContent = '決算履歴 →';
+          parent.append(anchor);
+        });
+      };
+
+      const compareHead = document.querySelector('#compare-head');
+      if (compareHead) {
+        attachCompareFinancialLinks();
+        new MutationObserver(attachCompareFinancialLinks).observe(compareHead, { childList: true, subtree: true });
       }
     </script>
   </body>

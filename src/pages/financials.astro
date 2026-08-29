@@ -38,7 +38,7 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
     <div class="shell">
       <span class="eyebrow">v0.4 FINANCIAL HISTORY</span>
       <h1>決算データ</h1>
-      <p class="lead">四半期・通期の売上高、営業利益、営業利益率を一次資料単位で正規化します。通貨換算や異なる会計基準の機械的な混在は行いません。FCF・設備投資は定義を確認できた期間から順次収録します。</p>
+      <p class="lead">四半期・通期の売上高、営業利益、営業利益率、FCF、設備投資を一次資料単位で正規化します。通貨換算や異なる会計基準の機械的な混在は行いません。FCF・設備投資は定義を確認できた期間だけ収録します。</p>
     </div>
   </header>
 
@@ -63,6 +63,10 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
       const history = getFinancialHistory(company!.id);
       const quarterly = history.filter(record => record.periodType === 'quarterly');
       const annual = history.filter(record => record.periodType === 'annual');
+      const quarterlyHasFcf = quarterly.some(record => record.metrics.freeCashFlow.value != null);
+      const quarterlyHasCapex = quarterly.some(record => record.metrics.capex.value != null);
+      const annualHasFcf = annual.some(record => record.metrics.freeCashFlow.value != null);
+      const annualHasCapex = annual.some(record => record.metrics.capex.value != null);
       return (
         <section class="financial-company" data-financial-company={company!.id} hidden={company!.id !== initialCompanyId}>
           <div class="section-heading financial-company-heading">
@@ -79,6 +83,8 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
               <div class="financial-chart-grid">
                 <FinancialTrendChart records={quarterly} metricId="revenue" title="売上高" />
                 <FinancialTrendChart records={quarterly} metricId="operatingMargin" title="営業利益率" />
+                {quarterlyHasFcf ? <FinancialTrendChart records={quarterly} metricId="freeCashFlow" title="FCF" /> : null}
+                {quarterlyHasCapex ? <FinancialTrendChart records={quarterly} metricId="capex" title="設備投資" /> : null}
               </div>
             </div>
           )}
@@ -89,6 +95,8 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
               <div class="financial-chart-grid">
                 <FinancialTrendChart records={annual} metricId="revenue" title="売上高" />
                 <FinancialTrendChart records={annual} metricId="operatingMargin" title="営業利益率" />
+                {annualHasFcf ? <FinancialTrendChart records={annual} metricId="freeCashFlow" title="FCF" /> : null}
+                {annualHasCapex ? <FinancialTrendChart records={annual} metricId="capex" title="設備投資" /> : null}
               </div>
             </div>
           )}
@@ -115,8 +123,8 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
                       <td class="table-number">{renderMetric(revenue)}</td>
                       <td class="table-number">{renderMetric(operatingProfit)}</td>
                       <td class="table-number">{renderMetric(margin)}</td>
-                      <td>{renderMetric(fcf)}</td>
-                      <td>{renderMetric(capex)}</td>
+                      <td class="table-number">{renderMetric(fcf)}</td>
+                      <td class="table-number">{renderMetric(capex)}</td>
                       <td>{record.accountingBasis}<span class="metric-provenance">{unitLabel(record)}</span></td>
                       <td>{source ? <a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a> : '—'}<span class="metric-provenance">検証 {record.verifiedAt}</span></td>
                     </tr>
@@ -125,7 +133,7 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
               </tbody>
             </table>
           </div>
-          <p class="financial-definition-note">グラフは同一企業・同一報告通貨の期間推移です。企業間で棒・線の高さを直接比較する用途には使用しません。営業利益率は会社開示値または一次資料からのAtlas再計算値です。</p>
+          <p class="financial-definition-note">グラフは同一企業・同一報告通貨の期間推移です。企業間で線の高さを直接比較する用途には使用しません。FCFはAtlas統一定義または会社開示のNon-GAAP定義をbasisで区別し、設備投資もキャッシュ支出・会社定義を明示します。</p>
         </section>
       );
     })}

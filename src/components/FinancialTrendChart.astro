@@ -19,12 +19,13 @@ const padBottom = 52;
 const usableWidth = width - padX * 2;
 const usableHeight = height - padTop - padBottom;
 const values = points.map(record => Number(record.metrics[metricId].value));
-const maxValue = Math.max(...values, 1);
-const minValue = metricId === 'operatingMargin' ? Math.min(...values, 0) : 0;
+const maxValue = Math.max(...values, 0, 1);
+const minValue = Math.min(...values, 0);
 const range = Math.max(maxValue - minValue, 1);
 const xFor = (index: number) => points.length <= 1 ? width / 2 : padX + (usableWidth * index) / (points.length - 1);
 const yFor = (value: number) => padTop + usableHeight - ((value - minValue) / range) * usableHeight;
 const polyline = points.map((record, index) => `${xFor(index)},${yFor(Number(record.metrics[metricId].value))}`).join(' ');
+const zeroY = yFor(0);
 ---
 <figure class="financial-chart">
   <figcaption>{title}</figcaption>
@@ -32,16 +33,17 @@ const polyline = points.map((record, index) => `${xFor(index)},${yFor(Number(rec
     <p class="financial-chart-empty">表示できる検証済みデータがありません。</p>
   ) : (
     <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`${title}の推移`}>
-      <line class="chart-axis" x1={padX} y1={padTop + usableHeight} x2={width - padX} y2={padTop + usableHeight} />
+      <line class="chart-axis" x1={padX} y1={zeroY} x2={width - padX} y2={zeroY} />
       <polyline class="chart-trend-line" points={polyline} />
       {points.map((record, index) => {
         const value = Number(record.metrics[metricId].value);
         const x = xFor(index);
         const y = yFor(value);
+        const labelY = value < 0 ? Math.min(height - padBottom + 18, y + 18) : Math.max(14, y - 10);
         return (
           <g>
             <circle class="chart-point" cx={x} cy={y} r="4" />
-            <text class="chart-value" x={x} y={Math.max(14, y - 10)} text-anchor="middle">{formatFinancialMetric(record, metricId)}</text>
+            <text class="chart-value" x={x} y={labelY} text-anchor="middle">{formatFinancialMetric(record, metricId)}</text>
             <text class="chart-period" x={x} y={height - 18} text-anchor="middle">{record.periodLabel}</text>
           </g>
         );
