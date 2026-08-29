@@ -1,36 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-import layers from '../data/layers.json';
+import valueChain from '../data/value-chain.json';
 import { withBase } from '../lib/paths';
-import { layerLabel } from '../lib/display';
-const companies = await getCollection('companies');
+
+const stageHref = (stage: any) => stage.id === 'demand'
+  ? `${withBase('companies/')}?q=${encodeURIComponent('AI')}`
+  : `${withBase('companies/')}?stage=${encodeURIComponent(stage.id)}`;
+const linkHref = (link: any) => link.tag
+  ? `${withBase('companies/')}?tag=${encodeURIComponent(link.tag)}`
+  : `${withBase('companies/')}?q=${encodeURIComponent(link.query)}`;
 ---
 <BaseLayout title="全体マップ" indexable>
   <header class="page-head">
     <div class="shell">
-      <span class="eyebrow">産業構造マップ</span>
+      <span class="eyebrow">産業バリューチェーン</span>
       <h1>全体マップ</h1>
-      <p class="lead">AI需要を、計算半導体から製造、記憶、接続、データセンター設備、フィジカルAIまで工程順に辿ります。現在は企業配置を示し、検証済みの企業間関係を順次追加します。</p>
+      <p class="lead">AI需要が、半導体・メモリ・製造工程・接続・データセンター設備へどう伝わるかを工程順に辿ります。工程名・技術名は企業一覧の絞り込みへ接続します。</p>
     </div>
   </header>
+
   <div class="shell section">
-    <div class="atlas-flow" aria-label="AIインフラ産業構造">
-      {layers.map((layer, index) => {
-        const members = companies.filter(c => c.data.layers.includes(layer.name));
-        return (
-          <section class="atlas-row">
-            <div class="atlas-index">{String(index+1).padStart(2,'0')}</div>
-            <div class="atlas-head">
-              <h3>{layerLabel(layer.name)}</h3>
-              <p>{layer.description}</p>
-            </div>
-            <div class="atlas-members">
-              {members.map(c => <a class="atlas-company" href={withBase(`companies/${c.id}/`)}>{c.data.japaneseName || c.data.name} <span class="ticker">{c.data.ticker}</span></a>)}
-            </div>
-          </section>
-        );
-      })}
+    <div class="map-note">読み方：縦方向は需要・製品の流れを簡略化したものです。半導体製造装置はファウンドリとメモリ製造を支える「製造側の入力」であり、すべての工程が完全な直列関係にあることを意味しません。</div>
+    <div class="value-chain-map" aria-label="AIインフラのバリューチェーン工程図">
+      {valueChain.map((stage, index) => (
+        <div class={`value-chain-stage vc-${stage.id}`}>
+          <a class="value-chain-stage-head" href={stageHref(stage)}>
+            <span class="value-chain-number">{stage.number}</span>
+            <span class="value-chain-title">{stage.name}</span>
+          </a>
+          <p>{stage.description}</p>
+          <div class="value-chain-links">
+            {stage.links.map(link => <a href={linkHref(link)}>{link.label}</a>)}
+          </div>
+          {index < valueChain.length - 1 && <div class="value-chain-arrow" aria-hidden="true">↓</div>}
+        </div>
+      ))}
     </div>
   </div>
 </BaseLayout>

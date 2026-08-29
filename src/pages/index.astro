@@ -2,20 +2,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../lib/paths';
-import { layerLabel, countryLabel, tagLabel } from '../lib/display';
+import valueChain from '../data/value-chain.json';
+import updateLog from '../data/update-log.json';
+import metricAudits from '../data/metric-audits.json';
+import sectorKpis from '../data/sector-kpis.json';
+import roicCalculations from '../data/roic-calculations.json';
 
 const companies = await getCollection('companies');
-const featuredIds = ['nvidia','tsmc','sk-hynix','asml','tokyo-electron','arista','vertiv','fanuc'];
-const featured = featuredIds.map(id => companies.find(c => c.id === id)).filter(Boolean);
-
-const valueStages = [
-  { code:'01 COMPUTE', title:'計算半導体', tags:['GPU','ASIC','AI accelerator'] },
-  { code:'02 MEMORY', title:'メモリ', tags:['HBM','DRAM','NAND','SSD'] },
-  { code:'03 MANUFACTURING', title:'半導体製造', tags:['lithography','deposition','etch','cleaning','inspection','ATE'] },
-  { code:'04 INTERCONNECT', title:'接続・光通信', tags:['Ethernet','optical fiber','data center cable','interconnection'] },
-  { code:'05 DATA CENTER', title:'電力・冷却・施設', tags:['power distribution','UPS','cooling','colocation'] },
-  { code:'06 PHYSICAL AI', title:'フィジカルAI', tags:['industrial robot','CNC','factory automation'] },
-];
+const companyById = new Map(companies.map(company => [company.id, company]));
+const verifiedCompanyIds = new Set([
+  ...metricAudits.filter(audit => audit.verificationStatus === 'verified').map(audit => audit.companyId),
+  ...sectorKpis.filter(kpi => kpi.status === 'verified').map(kpi => kpi.companyId),
+  ...roicCalculations.filter(calc => calc.status === 'verified').map(calc => calc.companyId),
+]);
+const countryCount = new Set(companies.map(company => company.data.country)).size;
+const processCount = valueChain.filter(stage => stage.id !== 'demand').length;
+const lastDbUpdate = updateLog[0]?.date ?? '—';
+const linkHref = (link: any) => link.tag ? `${withBase('companies/')}?tag=${encodeURIComponent(link.tag)}` : `${withBase('companies/')}?q=${encodeURIComponent(link.query)}`;
 ---
 <BaseLayout>
   <div class="shell">
@@ -27,65 +30,46 @@ const valueStages = [
         <input class="control" type="search" name="q" placeholder="企業・製品・工程・主要拠点を検索" aria-label="企業・製品・工程・主要拠点を検索" />
         <button class="primary-button" type="submit">検索</button>
       </form>
-      <div class="home-status" aria-label="収録状況">
-        <span>収録企業 20社</span>
-        <span>産業領域 8</span>
-        <span>一次情報を優先</span>
-        <span>リアルタイム株価なし</span>
-      </div>
+      <dl class="db-status" aria-label="データベース収録状況">
+        <div><dt>収録企業</dt><dd>{companies.length}社</dd></div>
+        <div><dt>検証済み数値あり</dt><dd>{verifiedCompanyIds.size}社</dd></div>
+        <div><dt>対応国・地域</dt><dd>{countryCount}</dd></div>
+        <div><dt>工程区分</dt><dd>{processCount}</dd></div>
+        <div><dt>最終DB更新</dt><dd class="mono">{lastDbUpdate}</dd></div>
+      </dl>
     </section>
 
     <section class="section">
       <div class="section-heading">
-        <div>
-          <span class="eyebrow">バリューチェーン</span>
-          <h2>AIインフラの主要工程</h2>
-        </div>
-        <p>青字の技術名から、その属性を持つ企業へ直接絞り込めます。内部の8領域分類は維持しつつ、入口では6段の産業フローに整理しています。</p>
+        <div><span class="eyebrow">バリューチェーン</span><h2>AIインフラの主要工程</h2></div>
+        <p>技術名から企業を直接絞り込めます。詳細な工程関係は<a href={withBase('atlas/')}>全体マップ</a>で確認できます。</p>
       </div>
-      <div class="value-chain" aria-label="AIインフラのバリューチェーン">
-        {valueStages.map(stage => (
-          <section class="value-stage">
-            <span class="value-stage-code">{stage.code}</span>
-            <h3>{stage.title}</h3>
-            <div class="value-stage-links">
-              {stage.tags.map(tag => <a href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a>)}
-            </div>
-          </section>
+      <div class="home-value-chain" aria-label="AIインフラ主要工程">
+        {valueChain.filter(stage => stage.id !== 'demand').map(stage => (
+          <div class={`home-stage vc-${stage.id}`}>
+            <a class="home-stage-title" href={`${withBase('companies/')}?stage=${encodeURIComponent(stage.id)}`}><span class="value-stage-code">{stage.number}</span>{stage.name}</a>
+            <div class="home-stage-links">{stage.links.slice(0,4).map(link => <a href={linkHref(link)}>{link.label}</a>)}</div>
+          </div>
         ))}
       </div>
     </section>
 
     <section class="section">
       <div class="section-heading">
-        <div>
-          <span class="eyebrow">調査対象</span>
-          <h2>中核企業</h2>
-        </div>
-        <p>同種情報をカードではなく固定列で表示します。企業名、国・地域、主領域、主要技術、更新日を同じ位置で追えます。</p>
+        <div><span class="eyebrow">更新履歴</span><h2>最近の更新</h2></div>
+        <p>企業の数を並べるのではなく、現在このDBで何が検証・更新されているかを記録します。</p>
       </div>
       <div class="table-scroll">
-        <table class="data-table">
-          <thead>
-            <tr><th>企業</th><th>国・地域</th><th>主領域</th><th>主要技術</th><th>更新日</th></tr>
-          </thead>
+        <table class="data-table update-table">
+          <thead><tr><th>日付</th><th>対象</th><th>更新内容</th><th>詳細</th></tr></thead>
           <tbody>
-            {featured.map(company => {
-              const d = company.data;
-              return (
-                <tr>
-                  <td><a class="company-link" href={withBase(`companies/${company.id}/`)}>{d.japaneseName || d.name}</a><span class="company-index-en">{d.ticker} · {d.name}</span></td>
-                  <td>{countryLabel(d.country)}</td>
-                  <td><a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></td>
-                  <td class="table-links">{d.tags.slice(0,3).map(tag => <a href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a>)}</td>
-                  <td class="mono">{d.lastReviewed}</td>
-                </tr>
-              );
+            {updateLog.map(entry => {
+              const company = entry.companyId ? companyById.get(entry.companyId) : null;
+              return <tr><td class="mono">{entry.date}</td><td>{company ? <a href={withBase(`companies/${company.id}/`)}>{company.data.japaneseName || company.data.name}</a> : 'データベース'}</td><td>{entry.title}</td><td>{entry.detail}</td></tr>;
             })}
           </tbody>
         </table>
       </div>
-      <p class="meta" style="margin-top:10px"><a href={withBase('companies/')}>全20社の企業一覧を見る</a></p>
     </section>
   </div>
 </BaseLayout>

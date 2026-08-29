@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import metricDefinitions from '../data/metric-definitions.json';
 import valuationPolicy from '../data/valuation-policy.json';
 import governance from '../data/governance.json';
+import metricStatusPolicy from '../data/metric-status-policy.json';
 const valuationCards = [
   ['PER（実績） / PBR', valuationPolicy.marketPrice.status, valuationPolicy.marketPrice.rule],
   ['PER（予想1期先）', valuationPolicy.forwardConsensus.status, valuationPolicy.forwardConsensus.rule],
@@ -15,68 +16,39 @@ const statusLabels: Record<string,string> = {
 };
 ---
 <BaseLayout title="データ基準" indexable>
-  <header class="page-head">
-    <div class="shell">
-      <div class="eyebrow">数字の出どころと算出方法を揃える</div>
-      <h1>データ基準</h1>
-      <p class="lead">数字、事実、編集上の解釈を混ぜないための基準ページです。比較しやすさより、出典と定義が追えることを優先します。</p>
-    </div>
-  </header>
+  <header class="page-head"><div class="shell"><div class="eyebrow">数字の出どころと算出方法を揃える</div><h1>データ基準</h1><p class="lead">数字、事実、編集上の解釈を混ぜないための基準ページです。比較しやすさより、出典と定義が追えることを優先します。</p></div></header>
   <div class="shell section">
-    <section class="company-section">
-      <h2>データ区分</h2>
-      <div class="table-scroll">
-        <table class="metrics-table">
-          <tbody>
-            <tr><th>企業情報</th><td>事業、製品、技術、主要拠点。公式資料を中心に低頻度で更新。</td></tr>
-            <tr><th>財務</th><td>損益計算書、貸借対照表、キャッシュフロー。決算ごとに更新。</td></tr>
-            <tr><th>市場データ</th><td>株価、時価総額、PER、PBR等。必ず基準日を持たせる。</td></tr>
-            <tr><th>業種固有KPI</th><td>HBM、装置売上構成、データセンター売上など、企業の実態を見るための個別指標。</td></tr>
-            <tr><th>編集ノート</th><td>事業の位置づけ、競争上のポイント、注意点。客観数値とは別に扱う。</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+    <section class="company-section"><h2>データ区分</h2><div class="table-scroll"><table class="metrics-table"><tbody>
+      <tr><th>企業情報</th><td>事業、製品、技術、主要拠点。公式資料を中心に低頻度で更新。</td></tr>
+      <tr><th>財務</th><td>損益計算書、貸借対照表、キャッシュフロー。決算ごとに更新。</td></tr>
+      <tr><th>市場データ</th><td>株価、時価総額、PER、PBR等。必ず基準日を持たせる。</td></tr>
+      <tr><th>業種固有KPI</th><td>HBM、装置売上構成、データセンター売上など、企業の実態を見るための個別指標。</td></tr>
+      <tr><th>編集ノート</th><td>事業の位置づけ、競争上のポイント、注意点。客観数値とは別に扱う。</td></tr>
+    </tbody></table></div></section>
 
-    <section class="company-section">
-      <h2>主観スコアは現在表示しない</h2>
-      <p>AI感応度、金利感応度、競争優位などを1〜5点で表示する方式は、現段階ではサイト上から外しています。点数は比較しやすい一方、根拠より結論が先に見えやすく、企業調査ページとしては情報を単純化しすぎるためです。</p>
-      <p>将来この種の評価を戻す場合も、売上構成、受注、設備投資、顧客構成など観測可能な根拠を先に示し、その後に分類や評価を置きます。</p>
-    </section>
+    <section class="company-section"><h2>財務数値の検証状態</h2><p>一次資料へのリンクがあることと、Atlas側で数値を再計算・再照合したことは同義ではありません。公開画面では次の状態を区別します。</p><div class="table-scroll"><table class="metrics-table"><tbody>
+      {Object.entries(metricStatusPolicy.verificationLabels).map(([key,label]) => <tr><th>{label}</th><td>{key === 'verified' ? '一次資料の元数値と算式を再確認済み。' : key === 'source-linked' ? '一次資料Source IDは登録済みだが、Atlas側の独立再計算・再照合は未完了。' : '出典または定義の再確認が必要。'}</td></tr>)}
+    </tbody></table></div></section>
 
-    <section class="company-section">
-      <h2>バリュエーション・資本効率の公開条件</h2>
-      <p class="section-intro">出典や定義が不十分な状態で数字だけを埋めないため、公開可否をデータとして管理し、CIでも確認します。</p>
-      <div class="method-grid">
-        {valuationCards.map(([name,status,rule]) => <article class="method-card"><h3>{name}</h3><span class="tag">{statusLabels[status] ?? status}</span><p>{rule}</p></article>)}
-      </div>
-    </section>
+    <section class="company-section"><h2>欠損理由を隠さない</h2><p>値がない場合、一律の「N/A」にはしません。欠損の理由そのものをデータ品質として保持します。</p><div class="table-scroll"><table class="metrics-table"><tbody>
+      {Object.entries(metricStatusPolicy.missingReasons).map(([key,label]) => <tr><th>{label}</th><td>{key === 'not-collected' ? 'まだDBへ収録していない。' : key === 'primary-source-unchecked' ? '候補値はあっても一次資料の確認が終わっていない。' : key === 'not-calculable' ? '分母が0以下、必要入力不足など定義上算出できない。' : key === 'not-disclosed' ? '会社が対象値を開示していない。' : '当該企業・業種にはその指標を適用しない。'}</td></tr>)}
+    </tbody></table></div></section>
 
-    <section class="company-section">
-      <h2>共通指標の定義</h2>
-      <p class="section-intro">同じ名称でも外部サービスごとに算式が違う問題を避けるため、Atlas側の定義を固定します。</p>
-      <div class="method-grid">
-        {metricDefinitions.map(m => <article class="method-card"><h3>{m.name}</h3><span class="ticker">単位 {m.unit}</span><p>{m.definition}</p></article>)}
-      </div>
-    </section>
+    <section class="company-section"><h2>主観評価の扱い</h2><p>AI感応度、金利感応度、景気循環性などの1〜5点評価は個社ページでは表示しません。企業比較でのみ、客観財務・KPIとは別の「編集上の評価（分析）」区画に暫定値として表示します。</p><p>点数自体を事実として扱わず、将来は売上構成、受注、設備投資、顧客構成など観測可能な根拠へ段階的に置き換えます。</p></section>
 
-    <section class="company-section">
-      <h2>プロジェクト憲法</h2>
-      <p class="section-intro">機能追加や自動化より上位に置く固定ルールです。正本はリポジトリの <code>docs/constitution.md</code> です。</p>
-      <div class="method-grid">
-        {governance.map(rule => <article class="method-card"><span class="ticker">第{rule.id}条</span><h3>{rule.title}</h3><p>{rule.text}</p></article>)}
-      </div>
-    </section>
+    <section class="company-section"><h2>バリュエーション・資本効率の公開条件</h2><p class="section-intro">出典や定義が不十分な状態で数字だけを埋めないため、公開可否をデータとして管理し、CIでも確認します。</p><div class="method-grid">{valuationCards.map(([name,status,rule]) => <article class="method-card"><h3>{name}</h3><span class="tag">{statusLabels[status] ?? status}</span><p>{rule}</p></article>)}</div></section>
 
-    <section class="company-section">
-      <h2>財務指標の統一ルール</h2>
-      <ul class="bullet-list">
-        <li>欠損値は0ではなくN/A。</li>
-        <li>PERは実績と予想1期先を別指標として保持。</li>
-        <li>非nullの客観数値には出典ID、基準日、定義IDを必須化。</li>
-        <li>ROICはAtlas側の統一定義を持ち、外部サイトの算出値を混在させない。</li>
-        <li>REIT等はFFO/AFFOなど業種固有KPIを別比較し、一般企業との単純PER比較を避ける。</li>
-      </ul>
-    </section>
+    <section class="company-section"><h2>共通指標の定義</h2><p class="section-intro">同じ名称でも外部サービスごとに算式が違う問題を避けるため、Atlas側の定義を固定します。</p><div class="method-grid">{metricDefinitions.map(m => <article class="method-card"><h3>{m.name}</h3><span class="ticker">単位 {m.unit}</span><p>{m.definition}</p></article>)}</div></section>
+
+    <section class="company-section"><h2>プロジェクト憲法</h2><p class="section-intro">機能追加や自動化より上位に置く固定ルールです。正本はリポジトリの <code>docs/constitution.md</code> です。</p><div class="method-grid">{governance.map(rule => <article class="method-card"><span class="ticker">第{rule.id}条</span><h3>{rule.title}</h3><p>{rule.text}</p></article>)}</div></section>
+
+    <section class="company-section"><h2>財務指標の統一ルール</h2><ul class="bullet-list">
+      <li>欠損値は0にせず、未収録・一次資料未確認・算出不能・非開示・対象外を区別する。</li>
+      <li>PERは実績と予想1期先を別指標として保持。</li>
+      <li>非nullの客観数値には出典ID、基準日、定義IDを必須化。</li>
+      <li>一次資料を紐付けた値でも、再計算未了なら「検証済み」と表示しない。</li>
+      <li>ROICはAtlas側の統一定義を持ち、外部サイトの算出値を混在させない。</li>
+      <li>REIT等はFFO/AFFOなど業種固有KPIを別比較し、一般企業との単純PER比較を避ける。</li>
+    </ul></section>
   </div>
 </BaseLayout>
