@@ -15,12 +15,6 @@ for (const kpi of sectorKpis) {
 const compact = companies.map(c => ({
   id:c.id, name:c.data.name, japaneseName:c.data.japaneseName, ticker:c.data.ticker,
   country:countryLabel(c.data.country), primaryLayer:layerLabel(c.data.primaryLayer),
-  scores:{
-    aiExposure:{ value:c.data.scores.aiExposure.value, direction:c.data.scores.aiExposure.direction },
-    rateSensitivity:{ value:c.data.scores.rateSensitivity.value, direction:c.data.scores.rateSensitivity.direction },
-    cyclicality:{ value:c.data.scores.cyclicality.value, direction:c.data.scores.cyclicality.direction },
-    moat:{ value:c.data.scores.moat.value, direction:c.data.scores.moat.direction },
-  },
   metrics:c.data.metrics,
   kpis:kpisByCompany.get(c.id) ?? []
 }));
@@ -32,7 +26,7 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron'];
     <div class="shell">
       <div class="eyebrow">企業横断比較</div>
       <h1>企業比較</h1>
-      <p class="lead">最大4社を同時比較します。共通財務指標に加え、各企業で確認できた業種固有KPIも同じ画面で確認できます。</p>
+      <p class="lead">最大4社を同時比較します。主観的な5段階スコアは表示せず、確認できた財務数値と業種固有KPIを中心に並べます。</p>
     </div>
   </header>
   <div class="shell section" id="compare-app">
@@ -62,8 +56,6 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron'];
       const byId = new Map(companies.map(c => [c.id, c]));
       const selects = [...root.querySelectorAll('.compare-select')];
       const tbody = root.querySelector('#compare-table tbody');
-      const directionLabels = { positive:'正方向', negative:'逆方向', mixed:'混合', neutral:'中立' };
-      const scoreText = score => `${score.value}/5 · ${directionLabels[score.direction] || score.direction}`;
       const metricText = (metric, suffix='') => {
         if (!metric || metric.value == null) return 'N/A';
         const date = metric.asOf ? ` · ${metric.asOf}` : '';
@@ -84,12 +76,8 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron'];
       };
       const baseRows = [
         ['企業', c => `${c.japaneseName || c.name} (${c.ticker})`],
-        ['主レイヤー', c => c.primaryLayer],
+        ['主領域', c => c.primaryLayer],
         ['国・地域', c => c.country],
-        ['AI感応度', c => scoreText(c.scores.aiExposure)],
-        ['金利感応度', c => scoreText(c.scores.rateSensitivity)],
-        ['景気循環性', c => scoreText(c.scores.cyclicality)],
-        ['競争優位', c => scoreText(c.scores.moat)],
         ['PER（実績）', c => metricText(c.metrics.peTTM, '倍')],
         ['PER（予想1期先）', c => metricText(c.metrics.peFY1, '倍')],
         ['PBR', c => metricText(c.metrics.pb, '倍')],
