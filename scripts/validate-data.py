@@ -7,7 +7,11 @@ DATA = ROOT / 'src/data'
 companies = [json.loads(p.read_text(encoding='utf-8')) for p in sorted((DATA / 'companies').glob('*.json'))]
 layers = json.loads((DATA / 'layers.json').read_text(encoding='utf-8'))
 sources = json.loads((DATA / 'sources.json').read_text(encoding='utf-8'))
+document_sources = json.loads((DATA / 'document-sources.json').read_text(encoding='utf-8'))
 source_policies = json.loads((DATA / 'source-policies.json').read_text(encoding='utf-8'))
+document_source_policies = json.loads((DATA / 'document-source-policies.json').read_text(encoding='utf-8'))
+all_sources = sources + document_sources
+all_source_policies = source_policies + document_source_policies
 metric_definitions = json.loads((DATA / 'metric-definitions.json').read_text(encoding='utf-8'))
 sector_kpi_definitions = json.loads((DATA / 'sector-kpi-definitions.json').read_text(encoding='utf-8'))
 sector_kpis = json.loads((DATA / 'sector-kpis.json').read_text(encoding='utf-8'))
@@ -18,8 +22,9 @@ errors = []
 ids = [c['id'] for c in companies]
 id_set = set(ids)
 layer_set = {l['name'] for l in layers}
-source_ids = {s['id'] for s in sources}
-policy_ids = [p['sourceId'] for p in source_policies]
+source_ids_list = [s['id'] for s in all_sources]
+source_ids = set(source_ids_list)
+policy_ids = [p['sourceId'] for p in all_source_policies]
 metric_definition_ids = {m['id'] for m in metric_definitions}
 sector_kpi_definition_ids = {m['id'] for m in sector_kpi_definitions}
 score_definition_ids = {s['id'] for s in score_definitions}
@@ -28,6 +33,8 @@ if len(companies) != 20:
     errors.append(f'Expected 20 companies, found {len(companies)}')
 if len(id_set) != len(ids):
     errors.append('Duplicate company id detected')
+if len(source_ids_list) != len(source_ids):
+    errors.append('Duplicate source id detected across source registries')
 if len(governance) != 9 or [r.get('id') for r in governance] != list(range(1, 10)):
     errors.append('Project constitution mirror must contain exactly Articles 1-9')
 if len(policy_ids) != len(set(policy_ids)):
@@ -42,7 +49,7 @@ if set(policy_ids) != source_ids:
 
 allowed_policy_states = {'pending', 'reviewed', 'blocked'}
 allowed_terms_states = {'unknown', 'allowed', 'restricted', 'prohibited', 'not-applicable'}
-for p in source_policies:
+for p in all_source_policies:
     if p.get('reviewStatus') not in allowed_policy_states:
         errors.append(f"{p.get('sourceId')}: invalid policy reviewStatus")
     for key in ('automatedRetrieval', 'redistribution', 'commercialUse', 'attributionRequirement'):
@@ -121,11 +128,11 @@ if errors:
         print(' -', error)
     raise SystemExit(1)
 
-pending = sum(1 for p in source_policies if p['reviewStatus'] == 'pending')
+pending = sum(1 for p in all_source_policies if p['reviewStatus'] == 'pending')
 verified_metrics = sum(1 for c in companies for m in c['metrics'].values() if m['value'] is not None)
 print(
     f'Validation OK: {len(companies)} companies / {len(layers)} layers / '
-    f'{len(sources)} sources / {len(source_policies)} source policies ({pending} pending) / '
+    f'{len(all_sources)} sources / {len(all_source_policies)} source policies ({pending} pending) / '
     f'{verified_metrics} populated common metrics / {len(sector_kpis)} verified sector KPIs / '
     f'{len(metric_definitions)} common metric definitions / {len(sector_kpi_definitions)} sector KPI definitions / '
     f'9 constitutional articles'
