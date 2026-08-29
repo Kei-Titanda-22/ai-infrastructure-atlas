@@ -6,6 +6,7 @@ import '../styles/financial-v04.css';
 import financialHistory from '../data/financial-history.json';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import FinancialCompareBridge from '../components/FinancialCompareBridge.astro';
 
 interface Props {
   title?: string;
@@ -19,6 +20,7 @@ const {
 } = Astro.props;
 const pageTitle = title === 'AI Infrastructure Atlas' ? title : `${title} | AI Infrastructure Atlas`;
 const financialCompanyIds = [...new Set(financialHistory.map(record => record.companyId))].join(',');
+const isComparePage = Astro.url.pathname.includes('/compare');
 ---
 <!doctype html>
 <html lang="ja">
@@ -37,6 +39,7 @@ const financialCompanyIds = [...new Set(financialHistory.map(record => record.co
       <slot />
     </main>
     <Footer />
+    {isComparePage ? <FinancialCompareBridge /> : null}
     <script is:inline>
       const companyToc = document.querySelector('.company-toc');
       const advantagesSection = document.querySelector('#advantages');
