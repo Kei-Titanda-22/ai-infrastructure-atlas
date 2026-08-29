@@ -75,6 +75,7 @@ const stageIdsForLayers = (companyLayers: string[]) => {
             const sites = facilitiesByCompany.get(company.id) ?? [];
             const productLabels = d.products.map(product => productInfo(product).label);
             const stageIds = stageIdsForLayers(d.layers);
+            const visibleTags = d.tags.slice(0,3);
             const searchText = [
               d.name, d.japaneseName, d.reading, d.ticker ?? '', d.country, countryLabel(d.country),
               d.primaryLayer, layerLabel(d.primaryLayer), d.summary, d.aiRole,
@@ -87,7 +88,7 @@ const stageIdsForLayers = (companyLayers: string[]) => {
                 <td><a class="filter-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a></td>
                 <td><a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></td>
                 <td class="company-index-products">{productLabels.slice(0,2).join(' / ')}{productLabels.length > 2 ? <span class="table-more"> +{productLabels.length - 2}</span> : null}</td>
-                <td class="company-index-tags table-links">{d.tags.slice(0,3).map(tag => <a href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a>)}{d.tags.length > 3 ? <span class="table-more">+{d.tags.length - 3}</span> : null}</td>
+                <td class="company-index-tags">{visibleTags.map((tag, index) => <>{index > 0 ? <span> / </span> : null}<a href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a></>)}{d.tags.length > 3 ? <span class="table-more"> +{d.tags.length - 3}</span> : null}</td>
                 <td class="company-index-sites">{sites.length ? <>{sites[0].city}（<a class="filter-link" href={`${withBase('companies/')}?q=${encodeURIComponent(sites[0].region)}`}>{sites[0].region}</a>）{sites.length > 1 ? <span class="table-more"> +{sites.length - 1}</span> : null}</> : '—'}</td>
                 <td class="mono">{d.lastReviewed}</td>
               </tr>
