@@ -1,30 +1,39 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import CompanyCard from '../../components/CompanyCard.astro';
 import { getCollection } from 'astro:content';
-import { layerLabel, countryLabel, tagLabel } from '../../lib/display';
-const companies = (await getCollection('companies')).sort((a,b) => a.data.name.localeCompare(b.data.name));
+import facilities from '../../data/facilities.json';
+import { layerLabel, countryLabel, tagLabel, productInfo } from '../../lib/display';
+import { withBase } from '../../lib/paths';
+
+const companies = (await getCollection('companies')).sort((a,b) => (a.data.japaneseName || a.data.name).localeCompare(b.data.japaneseName || b.data.name, 'ja'));
 const layers = [...new Set(companies.map(c => c.data.primaryLayer))].sort();
 const countries = [...new Set(companies.map(c => c.data.country))].sort();
 const tags = [...new Set(companies.flatMap(c => c.data.tags))].sort((a,b) => tagLabel(a).localeCompare(tagLabel(b), 'ja'));
+const facilitiesByCompany = new Map();
+for (const facility of facilities) {
+  const list = facilitiesByCompany.get(facility.companyId) ?? [];
+  list.push(facility);
+  facilitiesByCompany.set(facility.companyId, list);
+}
 ---
 <BaseLayout title="企業一覧">
   <header class="page-head">
     <div class="shell">
-      <div class="eyebrow">調査対象企業</div>
+      <span class="eyebrow">COMPANY DIRECTORY</span>
       <h1>企業一覧</h1>
-      <p class="lead">企業名・ティッカー・事業領域・国・技術タグで絞り込めます。拠点都市名でも検索できます。</p>
+      <p class="lead">企業名・ティッカー・事業領域・国・技術タグ・主要拠点で絞り込みます。同じ列を固定して、企業間を視線移動だけで比較できる構成です。</p>
     </div>
   </header>
+
   <div class="shell section" id="companies-app">
-    <div class="toolbar toolbar-four">
-      <input id="company-search" class="control" type="search" placeholder="NVIDIA / 8035 / 四日市 ..." aria-label="企業検索" />
-      <select id="layer-filter" class="control" aria-label="レイヤーで絞り込み">
+    <div class="toolbar">
+      <input id="company-search" class="control" type="search" placeholder="NVIDIA / 8035 / HBM / 三重県 ..." aria-label="企業検索" />
+      <select id="layer-filter" class="control" aria-label="領域で絞り込み">
         <option value="">すべての領域</option>
         {layers.map(layer => <option value={layer}>{layerLabel(layer)}</option>)}
       </select>
-      <select id="country-filter" class="control" aria-label="国で絞り込み">
-        <option value="">すべての国</option>
+      <select id="country-filter" class="control" aria-label="国・地域で絞り込み">
+        <option value="">すべての国・地域</option>
         {countries.map(country => <option value={country}>{countryLabel(country)}</option>)}
       </select>
       <select id="tag-filter" class="control" aria-label="技術タグで絞り込み">
@@ -32,11 +41,60 @@ const tags = [...new Set(companies.flatMap(c => c.data.tags))].sort((a,b) => tag
         {tags.map(tag => <option value={tag}>{tagLabel(tag)}</option>)}
       </select>
     </div>
+
     <p class="result-count" id="result-count">{companies.length}社</p>
-    <div class="grid company-grid" id="company-grid">
-      {companies.map(company => <CompanyCard company={company} />)}
+
+    <div class="table-scroll">
+      <table class="data-table company-index-table" id="company-table">
+        <thead>
+          <tr>
+            <th class="company-col" data-sort-header="name" aria-sort="ascending"><button class="sort-button" type="button" data-sort="name">企業 <span class="sort-indicator">↑</span></button></th>
+            <th data-sort-header="country"><button class="sort-button" type="button" data-sort="country">国・地域 <span class="sort-indicator">↕</span></button></th>
+            <th data-sort-header="layer"><button class="sort-button" type="button" data-sort="layer">主領域 <span class="sort-indicator">↕</span></button></th>
+            <th>主力製品</th>
+            <th>主要技術</th>
+            <th>主要拠点</th>
+            <th data-sort-header="updated"><button class="sort-button" type="button" data-sort="updated">更新日 <span class="sort-indicator">↕</span></button></th>
+          </tr>
+        </thead>
+        <tbody id="company-tbody">
+          {companies.map(company => {
+            const d = company.data;
+            const sites = facilitiesByCompany.get(company.id) ?? [];
+            const productLabels = d.products.slice(0, 2).map(product => productInfo(product).label);
+            const searchText = [d.name, d.japaneseName, d.reading, d.ticker, ...d.tags, ...d.products, ...sites.flatMap(site => [site.city, site.region])].join(' ').toLowerCase();
+            return (
+              <tr
+                data-company-row
+                data-search={searchText}
+                data-tags={d.tags.join('|')}
+                data-layer={d.primaryLayer}
+                data-country={d.country}
+                data-sort-name={d.japaneseName || d.name}
+                data-sort-country={countryLabel(d.country)}
+                data-sort-layer={layerLabel(d.primaryLayer)}
+                data-sort-updated={d.lastReviewed}
+              >
+                <td class="company-col">
+                  <span class="company-index-name"><a href={withBase(`companies/${company.id}/`)}>{d.japaneseName || d.name}</a></span>
+                  <span class="company-index-en">{d.ticker} · {d.name}</span>
+                </td>
+                <td><a class="filter-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a></td>
+                <td><a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></td>
+                <td class="company-index-products">{productLabels.join(' / ')}</td>
+                <td class="company-index-tags table-links">{d.tags.slice(0, 4).map(tag => <a href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a>)}</td>
+                <td class="company-index-sites">
+                  {sites.length ? sites.slice(0,2).map((site, index) => <span>{index ? ' / ' : ''}{site.city}（<a class="filter-link" href={`${withBase('companies/')}?q=${encodeURIComponent(site.region)}`}>{site.region}</a>）</span>) : '—'}
+                </td>
+                <td class="mono">{d.lastReviewed}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   </div>
+
   <script is:inline>
     const root = document.querySelector('#companies-app');
     if (root) {
@@ -44,9 +102,14 @@ const tags = [...new Set(companies.flatMap(c => c.data.tags))].sort((a,b) => tag
       const layer = root.querySelector('#layer-filter');
       const country = root.querySelector('#country-filter');
       const tag = root.querySelector('#tag-filter');
-      const cards = [...root.querySelectorAll('[data-company-card]')];
+      const tbody = root.querySelector('#company-tbody');
+      const rows = [...root.querySelectorAll('[data-company-row]')];
       const count = root.querySelector('#result-count');
+      const sortButtons = [...root.querySelectorAll('[data-sort]')];
       const params = new URLSearchParams(location.search);
+      let sortKey = 'name';
+      let sortDirection = 1;
+
       if (input instanceof HTMLInputElement && params.get('q')) input.value = params.get('q') || '';
       if (layer instanceof HTMLSelectElement && params.get('layer')) layer.value = params.get('layer') || '';
       if (country instanceof HTMLSelectElement && params.get('country')) country.value = params.get('country') || '';
@@ -62,25 +125,46 @@ const tags = [...new Set(companies.flatMap(c => c.data.tags))].sort((a,b) => tag
         history.replaceState(null, '', `${location.pathname}${qs ? `?${qs}` : ''}`);
       };
 
+      const sortRows = () => {
+        if (!tbody) return;
+        const key = `sort${sortKey.charAt(0).toUpperCase()}${sortKey.slice(1)}`;
+        rows.sort((a, b) => (a.dataset[key] || '').localeCompare(b.dataset[key] || '', 'ja', { numeric: true }) * sortDirection);
+        rows.forEach(row => tbody.append(row));
+        root.querySelectorAll('[data-sort-header]').forEach(header => {
+          const active = header.dataset.sortHeader === sortKey;
+          header.setAttribute('aria-sort', active ? (sortDirection === 1 ? 'ascending' : 'descending') : 'none');
+          const indicator = header.querySelector('.sort-indicator');
+          if (indicator) indicator.textContent = active ? (sortDirection === 1 ? '↑' : '↓') : '↕';
+        });
+      };
+
       const apply = () => {
         const q = input instanceof HTMLInputElement ? input.value.trim().toLowerCase() : '';
         const l = layer instanceof HTMLSelectElement ? layer.value : '';
         const c = country instanceof HTMLSelectElement ? country.value : '';
         const t = tag instanceof HTMLSelectElement ? tag.value : '';
         let visible = 0;
-        cards.forEach(card => {
-          const cardTags = (card.dataset.tags || '').split('|').filter(Boolean);
-          const hit = (!q || (card.dataset.name || '').includes(q)) && (!l || card.dataset.layer === l) && (!c || card.dataset.country === c) && (!t || cardTags.includes(t));
-          card.hidden = !hit;
+        rows.forEach(row => {
+          const rowTags = (row.dataset.tags || '').split('|').filter(Boolean);
+          const hit = (!q || (row.dataset.search || '').includes(q)) && (!l || row.dataset.layer === l) && (!c || row.dataset.country === c) && (!t || rowTags.includes(t));
+          row.hidden = !hit;
           if (hit) visible++;
         });
-        if (count) count.textContent = `${visible}社`;
+        if (count) count.textContent = `${visible}社 / 全${rows.length}社`;
         updateUrl();
       };
+
+      sortButtons.forEach(button => button.addEventListener('click', () => {
+        const nextKey = button.dataset.sort || 'name';
+        if (sortKey === nextKey) sortDirection *= -1;
+        else { sortKey = nextKey; sortDirection = 1; }
+        sortRows();
+      }));
       input?.addEventListener('input', apply);
       layer?.addEventListener('change', apply);
       country?.addEventListener('change', apply);
       tag?.addEventListener('change', apply);
+      sortRows();
       apply();
     }
   </script>
