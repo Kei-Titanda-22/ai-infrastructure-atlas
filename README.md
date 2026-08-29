@@ -38,8 +38,8 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 
 ## Current coverage
 
-- 30 companies after v0.2 Batch A
-- 8 internal value-chain layers
+- 40 companies after v0.2 Batch B
+- 9 value-chain layers
 - searchable company directory
 - technology/process links
 - company detail research pages
@@ -48,7 +48,7 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 - Pagefind full-text search
 - GitHub Pages deployment
 
-v0.2 Batch Aでは AMD、Intel、Marvell、Arm、Qualcomm、MediaTek、ASM International、KOKUSAI ELECTRIC、SCREEN Holdings、Lasertec を追加しています。新規企業の財務数値は監査前のため意図的に未収録です。
+v0.2 Batch Aでは計算半導体・製造装置を中心に10社、Batch Bでは後工程装置・パッケージ基板・半導体材料を中心に10社を追加しています。新規企業の財務数値は監査前のため意図的に未収録です。
 
 ## Stack
 
