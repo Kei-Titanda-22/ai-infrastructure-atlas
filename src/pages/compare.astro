@@ -1,9 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { layerLabel, countryLabel } from '../lib/display';
 const companies = (await getCollection('companies')).sort((a,b) => a.data.name.localeCompare(b.data.name));
 const compact = companies.map(c => ({
-  id:c.id, name:c.data.name, japaneseName:c.data.japaneseName, ticker:c.data.ticker, country:c.data.country, primaryLayer:c.data.primaryLayer,
+  id:c.id, name:c.data.name, japaneseName:c.data.japaneseName, ticker:c.data.ticker,
+  country:countryLabel(c.data.country), primaryLayer:layerLabel(c.data.primaryLayer),
   scores:{
     aiExposure:{ value:c.data.scores.aiExposure.value, direction:c.data.scores.aiExposure.direction },
     rateSensitivity:{ value:c.data.scores.rateSensitivity.value, direction:c.data.scores.rateSensitivity.direction },
@@ -47,7 +49,7 @@ const defaults = ['nvidia','tsmc','asml','vertiv'];
       const byId = new Map(companies.map(c => [c.id, c]));
       const selects = [...root.querySelectorAll('.compare-select')];
       const tbody = root.querySelector('#compare-table tbody');
-      const directionLabels = { Positive:'正方向', Negative:'逆方向', Mixed:'混合', Neutral:'中立' };
+      const directionLabels = { positive:'正方向', negative:'逆方向', mixed:'混合', neutral:'中立' };
       const scoreText = score => `${score.value}/5 · ${directionLabels[score.direction] || score.direction}`;
       const metricText = (metric, suffix='') => {
         if (!metric || metric.value == null) return 'N/A';
