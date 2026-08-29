@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'src' / 'data'
 
-history_files = ['financial-history.json', 'financial-history-v04-batch2.json']
+history_files = ['financial-history.json', 'financial-history-v04-batch2.json', 'financial-history-v04-batch3.json']
 history = []
 for filename in history_files:
     history.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
@@ -32,7 +32,7 @@ for override in overrides:
     target.update({key: value for key, value in override.items() if key not in {'id', 'metrics'}})
     target['metrics'].update(override_metrics)
 
-source_files = ['sources.json', 'sources-v02.json', 'document-sources.json']
+source_files = ['sources.json', 'sources-v02.json', 'document-sources.json', 'document-sources-v04.json']
 sources = []
 for filename in source_files:
     sources.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
@@ -40,6 +40,23 @@ audits = json.loads((DATA / 'metric-audits.json').read_text(encoding='utf-8'))
 company_files = list((DATA / 'companies').glob('*.json'))
 company_ids = {path.stem for path in company_files}
 source_by_id = {item['id']: item for item in sources}
+
+v04_sources = json.loads((DATA / 'document-sources-v04.json').read_text(encoding='utf-8'))
+v04_policies = json.loads((DATA / 'document-source-policies-v04.json').read_text(encoding='utf-8'))
+v04_source_ids = {item['id'] for item in v04_sources}
+v04_policy_ids = {item['sourceId'] for item in v04_policies}
+if v04_source_ids != v04_policy_ids:
+    errors.append(
+        f'v0.4 source-policy mismatch: missing policies={sorted(v04_source_ids - v04_policy_ids)}, '
+        f'orphan policies={sorted(v04_policy_ids - v04_source_ids)}'
+    )
+for policy in v04_policies:
+    if policy.get('reviewStatus') != 'pending':
+        errors.append(f'{policy.get("sourceId")}: new v0.4 source policy must remain pending until terms review')
+    if policy.get('automatedRetrieval') != 'unknown':
+        errors.append(f'{policy.get("sourceId")}: automated retrieval must remain unknown before review')
+    if policy.get('internalPolicy') != 'manual-reference-only-until-reviewed':
+        errors.append(f'{policy.get("sourceId")}: unexpected internalPolicy {policy.get("internalPolicy")}')
 
 required_metrics = {'revenue', 'operatingProfit', 'operatingMargin', 'freeCashFlow', 'capex'}
 allowed_period_types = {'quarterly', 'annual'}
@@ -160,17 +177,17 @@ cashflow_periods = sum(
     if record['metrics']['freeCashFlow']['value'] is not None and record['metrics']['capex']['value'] is not None
 )
 
-# v0.4 cash-flow-completion regression floor. Future expansion may exceed these counts.
-if len(history) < 38:
-    errors.append(f'v0.4 history regression: expected at least 38 periods, got {len(history)}')
-if len(covered_companies) < 13:
-    errors.append(f'v0.4 coverage regression: expected at least 13 companies, got {len(covered_companies)}')
-if len(multi_period_companies) < 11:
-    errors.append(f'v0.4 history regression: expected at least 11 multi-period companies, got {len(multi_period_companies)}')
-if verified_metrics < 166:
-    errors.append(f'v0.4 history regression: expected at least 166 verified metrics, got {verified_metrics}')
-if cashflow_periods < 26:
-    errors.append(f'v0.4 cash-flow regression: expected at least 26 FCF/Capex periods, got {cashflow_periods}')
+# v0.4 compute/network/data-center regression floor. Future expansion may exceed these counts.
+if len(history) < 47:
+    errors.append(f'v0.4 history regression: expected at least 47 periods, got {len(history)}')
+if len(covered_companies) < 17:
+    errors.append(f'v0.4 coverage regression: expected at least 17 companies, got {len(covered_companies)}')
+if len(multi_period_companies) < 15:
+    errors.append(f'v0.4 history regression: expected at least 15 multi-period companies, got {len(multi_period_companies)}')
+if verified_metrics < 203:
+    errors.append(f'v0.4 history regression: expected at least 203 verified metrics, got {verified_metrics}')
+if cashflow_periods < 31:
+    errors.append(f'v0.4 cash-flow regression: expected at least 31 FCF/Capex periods, got {cashflow_periods}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')
@@ -183,5 +200,5 @@ print(
     f'{len(history)} periods / {len(covered_companies)} companies / '
     f'{len(multi_period_companies)} multi-period companies / '
     f'{verified_metrics} verified metrics / {cashflow_periods} FCF+Capex periods / '
-    f'{len(overrides)} cash-flow overrides'
+    f'{len(overrides)} cash-flow overrides / {len(v04_sources)} v0.4 document sources+policies'
 )
