@@ -1,10 +1,10 @@
 ---
 const { name, score } = Astro.props;
 const directionLabels: Record<string, string> = {
-  Positive: '正方向',
-  Negative: '逆方向',
-  Mixed: '混合',
-  Neutral: '中立',
+  positive: '正方向',
+  negative: '逆方向',
+  mixed: '混合',
+  neutral: '中立',
 };
 const direction = directionLabels[score.direction] ?? score.direction;
 ---
