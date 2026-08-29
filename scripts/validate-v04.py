@@ -11,6 +11,27 @@ history = []
 for filename in history_files:
     history.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
 
+overrides = json.loads((DATA / 'financial-history-v04-cashflow-overrides.json').read_text(encoding='utf-8'))
+history_by_id = {record['id']: record for record in history}
+seen_override_ids = set()
+errors = []
+for override in overrides:
+    rid = override.get('id')
+    if not rid or rid in seen_override_ids:
+        errors.append(f'duplicate or missing cash-flow override id: {rid}')
+        continue
+    seen_override_ids.add(rid)
+    target = history_by_id.get(rid)
+    if target is None:
+        errors.append(f'cash-flow override references unknown history record: {rid}')
+        continue
+    override_metrics = override.get('metrics', {})
+    invalid_metric_ids = set(override_metrics) - {'freeCashFlow', 'capex'}
+    if invalid_metric_ids:
+        errors.append(f'{rid}: cash-flow override may only patch FCF/Capex, got {sorted(invalid_metric_ids)}')
+    target.update({key: value for key, value in override.items() if key not in {'id', 'metrics'}})
+    target['metrics'].update(override_metrics)
+
 source_files = ['sources.json', 'sources-v02.json', 'document-sources.json']
 sources = []
 for filename in source_files:
@@ -25,7 +46,6 @@ allowed_period_types = {'quarterly', 'annual'}
 value_statuses = {'verified', 'source-linked', 'needs-review'}
 missing_statuses = {'not-collected', 'primary-source-unchecked', 'not-calculable', 'not-disclosed', 'not-applicable'}
 allowed_statuses = value_statuses | missing_statuses
-errors = []
 seen_ids = set()
 seen_period_keys = set()
 
@@ -140,17 +160,17 @@ cashflow_periods = sum(
     if record['metrics']['freeCashFlow']['value'] is not None and record['metrics']['capex']['value'] is not None
 )
 
-# v0.4 equipment-history regression floor. Future expansion may exceed these counts.
+# v0.4 cash-flow-completion regression floor. Future expansion may exceed these counts.
 if len(history) < 38:
     errors.append(f'v0.4 history regression: expected at least 38 periods, got {len(history)}')
 if len(covered_companies) < 13:
     errors.append(f'v0.4 coverage regression: expected at least 13 companies, got {len(covered_companies)}')
 if len(multi_period_companies) < 11:
     errors.append(f'v0.4 history regression: expected at least 11 multi-period companies, got {len(multi_period_companies)}')
-if verified_metrics < 156:
-    errors.append(f'v0.4 history regression: expected at least 156 verified metrics, got {verified_metrics}')
-if cashflow_periods < 21:
-    errors.append(f'v0.4 cash-flow regression: expected at least 21 FCF/Capex periods, got {cashflow_periods}')
+if verified_metrics < 166:
+    errors.append(f'v0.4 history regression: expected at least 166 verified metrics, got {verified_metrics}')
+if cashflow_periods < 26:
+    errors.append(f'v0.4 cash-flow regression: expected at least 26 FCF/Capex periods, got {cashflow_periods}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')
@@ -162,5 +182,6 @@ print(
     f'v0.4 financial-history validation OK: '
     f'{len(history)} periods / {len(covered_companies)} companies / '
     f'{len(multi_period_companies)} multi-period companies / '
-    f'{verified_metrics} verified metrics / {cashflow_periods} FCF+Capex periods'
+    f'{verified_metrics} verified metrics / {cashflow_periods} FCF+Capex periods / '
+    f'{len(overrides)} cash-flow overrides'
 )
