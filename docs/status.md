@@ -1,90 +1,63 @@
-# AI Infrastructure Atlas Status — 2026-08-29
+# AI Infrastructure Atlas Status — 2026-08-30
+
+## Release phase
+
+- **v0.1 — Complete**: 20社・静的データ・公開URL
+- **v0.2 — In progress**: 100社化・セクターマップ
+- v0.3 — 企業比較の本格化
+- v0.4 — 決算データの時系列化
+- v0.5 — 許可済みSourceのみ自動更新
+- v1.0 — AI Infrastructure Atlas
+
+後段機能の一部は先行実装済みだが、バージョン番号は各段階の主目的と完成条件で管理する。
 
 ## Delivery status
 
 - [x] Public GitHub repository
 - [x] GitHub Pages + GitHub Actions deployment
 - [x] Live browser URL: https://kei-titanda-22.github.io/ai-infrastructure-atlas/
-- [x] Dependency installation / constitutional validation / Astro build / Pagefind / deployment verified in CI
+- [x] Constitutional validation / audit validation / Astro build / Pagefind / deployment verified in CI
 
-## UI / UX
-
-- [x] Dark background removed; light, high-contrast theme adopted
-- [x] Japanese-first navigation and page labels
-- [x] English retained only where natural: company names, tickers, HBM, PER, PBR, ROIC, etc.
-- [x] Internal taxonomy keys kept stable while display labels are localized
-- [x] Objective metrics show value + as-of date + period + basis + Source
-- [x] Analyst scores remain visually and structurally separated from objective data
-
-## Core research coverage
+## Current database
 
 - companies: 20
 - value-chain layers: 8
-- registered Sources: 39
-- Source Policy records: 39
-- Source Policy review state: 39 pending / manual-reference-only
-- populated common objective metrics: 38
-- companies with verified revenue growth + operating margin: 19 / 20
-- verified sector-specific KPIs: 11
-- common metric definitions: 6
-- sector KPI definitions: 10
-- constitutional articles enforced by CI: 9
-- evidence-backed relationship edges: 0
+- value-chain stages: 8 including AI demand
+- verified common financial metric audits: 14
+- registered facilities: 17
+- project constitution articles: 9
+- real-time stock-price distribution: disabled
 
-### Common metric coverage
+## v0.1 completion basis
 
-19 companies currently have a latest-quarter revenue-growth snapshot and operating-margin snapshot tied to a primary-source document. Fujikura remains `N/A` because the current FY2026 Q1 material is visible on the official IR site but a stable document-level source URL has not yet been reliably retrieved. Older documents are not substituted merely to fill the slot.
+v0.1の完成条件は「20社の静的データを公開URL上で閲覧・検索できること」。この条件は達成済み。
 
-### Still intentionally N/A
+現在すでに存在する比較・財務・監査機能は先行実装として維持し、v0.2以降で対象企業数と品質を段階的に拡張する。
 
-- PER TTM
-- PER FY1
-- PBR
-- Atlas-normalized ROIC
+## v0.2 current work
 
-These fields are not populated from arbitrary finance websites. PER/PBR require an approved market-price source with terms review; FY1 PER additionally requires a licensed/approved forward-consensus source. ROIC will be calculated from primary financial statements under an Atlas-normalized definition.
+1. 20社 → 100社へ段階的に拡張
+2. セクター・工程・技術タグの再整理
+3. 技術名ごとに独立した検索リンクを持たせる
+4. 100社規模でも企業一覧・AND検索・複合フィルターを維持
+5. 新規企業にもSource / 基準日 / 定義 / 検証状態を適用
+6. 既存企業の財務監査は並行して継続
 
-## Sector KPI examples now live
+最初の追加候補群は `docs/v0.2-scope.md` で管理する。
 
-- NVIDIA: Data Center revenue growth
-- TSMC: advanced-technology wafer revenue share
-- Micron: Cloud Memory / Core Data Center revenue
-- Broadcom: AI semiconductor revenue and YoY growth
-- Vertiv / Eaton: organic sales growth
-- Equinix: recurring-revenue growth and net interconnection additions
-- FANUC: robot-segment revenue growth
+## Data quality policy
 
-## Data architecture added in v0.2
-
-- document-level Source registry separated from IR-hub registry
-- matching document Source Policy registry
-- sector KPI definition registry
-- verified sector KPI records
-- CI validation for company IDs, Source IDs, policy completeness, metric definitions, KPI definitions, provenance metadata, and verified publication status
-
-## Current validation snapshot
-
-Latest successful CI validation:
-
-`20 companies / 8 layers / 39 sources / 39 source policies / 38 populated common metrics / 11 verified sector KPIs / 6 common metric definitions / 10 sector KPI definitions / 9 constitutional articles`
-
-Secret scan, Astro production build, Japanese Pagefind indexing, artifact upload, and GitHub Pages deployment all succeeded.
-
-## Next phase
-
-1. freeze the valuation and ROIC methodology;
-2. build primary-statement input records for normalized ROIC;
-3. define the approved market-price-source contract for PER TTM and PBR;
-4. keep FY1 PER N/A until a licensed/approved consensus source is selected;
-5. add quarterly time-series records and self-generated charts;
-6. continue sector KPI expansion by layer;
-7. begin evidence-backed supplier/customer relationship edges;
-8. review Source usage terms before any automated retrieval is enabled.
+- 一次資料を優先
+- 数字にSource / 基準日 / 決算期間 / 定義 / 検証状態を付与
+- 欠損を未収録 / 一次資料未確認 / 算出不能 / 非開示 / 対象外に区別
+- AI分析と客観データを分離
+- 利用条件未確認Sourceは自動取得しない
+- APIキーをGitHubへ置かない
 
 ## User input required later
 
-Only when crossing the relevant boundary:
+該当境界に到達した時だけ確認する。
 
-- whether paid/licensed market-data or consensus APIs are allowed;
-- final approval/revision of subjective score definitions and values;
-- legal/policy re-review before monetization or materially broader public use under Constitution Article 9.
+- paid/licensed market-data or consensus APIを許容するか
+- 公開・有料化前の法務・利用条件再レビュー
+- 主観評価を正式機能として残すか
