@@ -1,6 +1,6 @@
 {
   "name": "ai-infrastructure-atlas",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "engines": {
@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "validate:data": "python scripts/validate-data.py && python scripts/validate-facilities.py",
+    "validate:data": "python scripts/validate-data.py && python scripts/validate-facilities.py && python scripts/validate-audits.py",
     "validate:secrets": "python scripts/check-secrets.py",
     "validate": "npm run validate:data && npm run validate:secrets"
   },
