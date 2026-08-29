@@ -9,6 +9,8 @@ layers = json.loads((DATA / 'layers.json').read_text(encoding='utf-8'))
 sources = json.loads((DATA / 'sources.json').read_text(encoding='utf-8'))
 source_policies = json.loads((DATA / 'source-policies.json').read_text(encoding='utf-8'))
 metric_definitions = json.loads((DATA / 'metric-definitions.json').read_text(encoding='utf-8'))
+sector_kpi_definitions = json.loads((DATA / 'sector-kpi-definitions.json').read_text(encoding='utf-8'))
+sector_kpis = json.loads((DATA / 'sector-kpis.json').read_text(encoding='utf-8'))
 score_definitions = json.loads((DATA / 'score-definitions.json').read_text(encoding='utf-8'))
 governance = json.loads((DATA / 'governance.json').read_text(encoding='utf-8'))
 
@@ -19,6 +21,7 @@ layer_set = {l['name'] for l in layers}
 source_ids = {s['id'] for s in sources}
 policy_ids = [p['sourceId'] for p in source_policies]
 metric_definition_ids = {m['id'] for m in metric_definitions}
+sector_kpi_definition_ids = {m['id'] for m in sector_kpi_definitions}
 score_definition_ids = {s['id'] for s in score_definitions}
 
 if len(companies) != 20:
@@ -82,7 +85,6 @@ for company in companies:
             continue
         if metric['definitionId'] != metric_name or metric['definitionId'] not in metric_definition_ids:
             errors.append(f'{cid}: {metric_name} missing/incorrect metric definition')
-        # Constitution Article 2: a published numeric value cannot exist without provenance.
         if metric['value'] is not None:
             if not metric['sourceId']:
                 errors.append(f'{cid}: {metric_name} has value but no sourceId')
@@ -93,6 +95,26 @@ for company in companies:
             if not metric['definitionId']:
                 errors.append(f'{cid}: {metric_name} has value but no definitionId')
 
+kpi_ids = [k['id'] for k in sector_kpis]
+if len(kpi_ids) != len(set(kpi_ids)):
+    errors.append('Duplicate sector KPI id detected')
+for kpi in sector_kpis:
+    kid = kpi.get('id', '<missing>')
+    required = {'id', 'companyId', 'definitionId', 'value', 'unit', 'basis', 'asOf', 'period', 'sourceId', 'status'}
+    if set(kpi) != required:
+        errors.append(f'{kid}: sector KPI keys differ from constitution policy')
+        continue
+    if kpi['companyId'] not in id_set:
+        errors.append(f'{kid}: unknown companyId {kpi["companyId"]}')
+    if kpi['definitionId'] not in sector_kpi_definition_ids:
+        errors.append(f'{kid}: unknown sector KPI definition {kpi["definitionId"]}')
+    if kpi['sourceId'] not in source_ids:
+        errors.append(f'{kid}: unknown sourceId {kpi["sourceId"]}')
+    if not kpi['asOf'] or not kpi['period'] or not kpi['basis']:
+        errors.append(f'{kid}: missing provenance metadata')
+    if kpi['status'] != 'verified':
+        errors.append(f'{kid}: published sector KPI must be verified')
+
 if errors:
     print('Validation FAILED')
     for error in errors:
@@ -100,8 +122,11 @@ if errors:
     raise SystemExit(1)
 
 pending = sum(1 for p in source_policies if p['reviewStatus'] == 'pending')
+verified_metrics = sum(1 for c in companies for m in c['metrics'].values() if m['value'] is not None)
 print(
     f'Validation OK: {len(companies)} companies / {len(layers)} layers / '
     f'{len(sources)} sources / {len(source_policies)} source policies ({pending} pending) / '
-    f'{len(metric_definitions)} metric definitions / 9 constitutional articles'
+    f'{verified_metrics} populated common metrics / {len(sector_kpis)} verified sector KPIs / '
+    f'{len(metric_definitions)} common metric definitions / {len(sector_kpi_definitions)} sector KPI definitions / '
+    f'9 constitutional articles'
 )
