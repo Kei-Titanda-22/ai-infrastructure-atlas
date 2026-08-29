@@ -1,7 +1,19 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import scoreDefinitions from '../data/score-definitions.json';
+import metricDefinitions from '../data/metric-definitions.json';
+import valuationPolicy from '../data/valuation-policy.json';
 import governance from '../data/governance.json';
+const valuationCards = [
+  ['PER TTM / PBR', valuationPolicy.marketPrice.status, valuationPolicy.marketPrice.rule],
+  ['PER FY1', valuationPolicy.forwardConsensus.status, valuationPolicy.forwardConsensus.rule],
+  ['ROIC', valuationPolicy.roic.status, valuationPolicy.roic.rule],
+];
+const statusLabels: Record<string,string> = {
+  'source-not-approved':'Source利用条件レビュー待ち',
+  'source-not-selected':'Source未選定',
+  'atlas-calculated':'Atlas自前計算',
+};
 ---
 <BaseLayout title="評価基準" indexable>
   <header class="page-head">
@@ -24,6 +36,20 @@ import governance from '../data/governance.json';
           <tr><th>比較スコア</th><td>AI感応度などの比較用評価。客観数値とは別管理。</td></tr>
         </tbody>
       </table>
+    </section>
+
+    <section class="section">
+      <div class="section-heading"><div><span class="eyebrow">バリュエーション・資本効率</span><h2>公開ゲート</h2></div><p>Sourceや定義が不十分な状態で数字だけを埋めないため、公開可否をデータとして管理しCIでも強制します。</p></div>
+      <div class="method-grid">
+        {valuationCards.map(([name,status,rule]) => <article class="method-card"><h3>{name}</h3><span class="tag">{statusLabels[status] ?? status}</span><p>{rule}</p></article>)}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-heading"><div><span class="eyebrow">共通指標</span><h2>定義</h2></div><p>同名でも外部サービスごとに算式が違う問題を避けるため、Atlas側の定義を固定します。</p></div>
+      <div class="method-grid">
+        {metricDefinitions.map(m => <article class="method-card"><h3>{m.name}</h3><span class="ticker">単位 {m.unit}</span><p>{m.definition}</p></article>)}
+      </div>
     </section>
 
     <section class="section">
