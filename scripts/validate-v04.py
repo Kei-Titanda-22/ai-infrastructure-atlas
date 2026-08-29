@@ -6,7 +6,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'src' / 'data'
 
-history = json.loads((DATA / 'financial-history.json').read_text(encoding='utf-8'))
+history_files = ['financial-history.json', 'financial-history-v04-batch2.json']
+history = []
+for filename in history_files:
+    history.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
+
 source_files = ['sources.json', 'sources-v02.json', 'document-sources.json']
 sources = []
 for filename in source_files:
@@ -136,15 +140,17 @@ cashflow_periods = sum(
     if record['metrics']['freeCashFlow']['value'] is not None and record['metrics']['capex']['value'] is not None
 )
 
-# v0.4 expanded-history regression floor. Future expansion may exceed these counts.
-if len(history) < 22:
-    errors.append(f'v0.4 history regression: expected at least 22 periods, got {len(history)}')
-if len(multi_period_companies) < 5:
-    errors.append(f'v0.4 history regression: expected at least 5 multi-period companies, got {len(multi_period_companies)}')
-if verified_metrics < 84:
-    errors.append(f'v0.4 history regression: expected at least 84 verified metrics, got {verified_metrics}')
-if cashflow_periods < 9:
-    errors.append(f'v0.4 cash-flow regression: expected at least 9 FCF/Capex periods, got {cashflow_periods}')
+# v0.4 equipment-history regression floor. Future expansion may exceed these counts.
+if len(history) < 38:
+    errors.append(f'v0.4 history regression: expected at least 38 periods, got {len(history)}')
+if len(covered_companies) < 13:
+    errors.append(f'v0.4 coverage regression: expected at least 13 companies, got {len(covered_companies)}')
+if len(multi_period_companies) < 11:
+    errors.append(f'v0.4 history regression: expected at least 11 multi-period companies, got {len(multi_period_companies)}')
+if verified_metrics < 156:
+    errors.append(f'v0.4 history regression: expected at least 156 verified metrics, got {verified_metrics}')
+if cashflow_periods < 21:
+    errors.append(f'v0.4 cash-flow regression: expected at least 21 FCF/Capex periods, got {cashflow_periods}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')
