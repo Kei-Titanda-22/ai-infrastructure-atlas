@@ -76,7 +76,8 @@ const stageIdsForLayers = (companyLayers: string[]) => {
             const stageIds = stageIdsForLayers(d.layers);
             const searchText = [
               d.name, d.japaneseName, d.reading, d.ticker, d.country, countryLabel(d.country),
-              d.primaryLayer, layerLabel(d.primaryLayer), ...d.tags, ...d.tags.map(tagLabel), ...d.products, ...productLabels,
+              d.primaryLayer, layerLabel(d.primaryLayer), d.summary, d.aiRole,
+              ...d.tags, ...d.tags.map(tagLabel), ...d.products, ...productLabels,
               ...stageIds.map(id => stageLabelById.get(id) || id), ...sites.flatMap(site => [site.city, site.region, site.country])
             ].join(' ').toLowerCase();
             return (
