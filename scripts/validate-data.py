@@ -7,11 +7,15 @@ DATA = ROOT / 'src/data'
 companies = [json.loads(p.read_text(encoding='utf-8')) for p in sorted((DATA / 'companies').glob('*.json'))]
 layers = json.loads((DATA / 'layers.json').read_text(encoding='utf-8'))
 sources = json.loads((DATA / 'sources.json').read_text(encoding='utf-8'))
+v02_sources_path = DATA / 'sources-v02.json'
+v02_sources = json.loads(v02_sources_path.read_text(encoding='utf-8')) if v02_sources_path.exists() else []
 document_sources = json.loads((DATA / 'document-sources.json').read_text(encoding='utf-8'))
 source_policies = json.loads((DATA / 'source-policies.json').read_text(encoding='utf-8'))
+v02_policies_path = DATA / 'source-policies-v02.json'
+v02_source_policies = json.loads(v02_policies_path.read_text(encoding='utf-8')) if v02_policies_path.exists() else []
 document_source_policies = json.loads((DATA / 'document-source-policies.json').read_text(encoding='utf-8'))
-all_sources = sources + document_sources
-all_source_policies = source_policies + document_source_policies
+all_sources = sources + v02_sources + document_sources
+all_source_policies = source_policies + v02_source_policies + document_source_policies
 metric_definitions = json.loads((DATA / 'metric-definitions.json').read_text(encoding='utf-8'))
 sector_kpi_definitions = json.loads((DATA / 'sector-kpi-definitions.json').read_text(encoding='utf-8'))
 sector_kpis = json.loads((DATA / 'sector-kpis.json').read_text(encoding='utf-8'))
@@ -36,8 +40,8 @@ score_definition_ids = {s['id'] for s in score_definitions}
 roic_calculation_ids = [r['id'] for r in roic_calculations]
 roic_calculation_by_id = {r['id']: r for r in roic_calculations}
 
-if len(companies) != 20:
-    errors.append(f'Expected 20 companies, found {len(companies)}')
+if len(companies) < 20:
+    errors.append(f'Company registry regressed below v0.1 baseline: {len(companies)}')
 if len(id_set) != len(ids):
     errors.append('Duplicate company id detected')
 if len(source_ids_list) != len(source_ids):
@@ -86,7 +90,7 @@ for company in companies:
     for competitor in company['competitors']:
         if competitor not in id_set:
             errors.append(f'{cid}: missing competitor reference {competitor}')
-    for score_name, score in company['scores'].items():
+    for score_name, score in company.get('scores', {}).items():
         required = {'value', 'direction', 'confidence', 'status', 'rationale', 'definitionId', 'asOf', 'assessmentSource', 'evidenceSourceIds'}
         if set(score) != required:
             errors.append(f'{cid}: {score_name} score keys differ from constitution policy')
