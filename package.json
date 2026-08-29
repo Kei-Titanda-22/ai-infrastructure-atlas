@@ -10,7 +10,7 @@
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "validate:data": "python scripts/validate-data.py",
+    "validate:data": "python scripts/validate-data.py && python scripts/validate-facilities.py",
     "validate:secrets": "python scripts/check-secrets.py",
     "validate": "npm run validate:data && npm run validate:secrets"
   },
