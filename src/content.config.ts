@@ -22,6 +22,7 @@ const nullableMetric = z.object({
   asOf: z.string().nullable(),
   period: z.string().nullable(),
   sourceId: z.string().nullable(),
+  calculationId: z.string().nullable().optional(),
 });
 
 const companies = defineCollection({
