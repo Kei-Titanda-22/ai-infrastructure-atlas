@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import '../styles/readability.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -22,6 +23,8 @@ const pageTitle = title === 'AI Infrastructure Atlas' ? title : `${title} | AI I
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#ffffff" />
     <title>{pageTitle}</title>
   </head>
   <body>
