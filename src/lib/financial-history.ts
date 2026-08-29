@@ -1,8 +1,22 @@
 import baseFinancialHistory from '../data/financial-history.json';
 import equipmentFinancialHistory from '../data/financial-history-v04-batch2.json';
+import cashFlowOverrides from '../data/financial-history-v04-cashflow-overrides.json';
 import metricDefinitions from '../data/financial-metric-definitions-v04.json';
 
-export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory];
+const overrideById = new Map(cashFlowOverrides.map(item => [item.id, item]));
+
+export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory].map(record => {
+  const override = overrideById.get(record.id);
+  if (!override) return record;
+  return {
+    ...record,
+    ...override,
+    metrics: {
+      ...record.metrics,
+      ...override.metrics,
+    },
+  };
+});
 export type FinancialRecord = (typeof financialHistory)[number];
 export type FinancialMetricId = keyof FinancialRecord['metrics'];
 
