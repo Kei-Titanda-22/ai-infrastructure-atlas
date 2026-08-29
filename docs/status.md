@@ -20,6 +20,7 @@
 - [x] v0.4 normalized financial history connected to comparison — Run #115
 - [x] v0.4 core equipment / semiconductor history batch deployed — Run #118
 - [x] v0.4 TSMC / Kioxia / Tokyo Electron cash-flow completion deployed — Run #121
+- [x] v0.4 earnings update ledger deployed — Run #124
 
 ## Current database
 
@@ -33,6 +34,7 @@
 - verified normalized historical metrics: **166**
 - periods with both FCF and Capex: **26**
 - audited cash-flow overrides: **5**
+- earnings update ledger: **38 normalized records / 13 companies**
 - registered facilities: 17
 - project constitution articles: 9
 - real-time stock-price distribution: disabled
@@ -51,20 +53,21 @@ TSMCは会社開示のOperating Cash Flow / Capital Expenditures / Free Cash Flo
 
 `/financials/` は13社を企業切替対象とし、四半期・通期を分離した自前SVG推移図と、一次資料・会計基準・検証状態付き決算表を表示する。FCF / Capexが存在する企業では追加グラフを表示し、負のFCFにも対応する。
 
+`/financials/updates/` は正規化履歴から直接生成する決算更新台帳。1行を「1企業 × 1決算期間 × 1一次資料」とし、検証日、企業、期間、検証済み指標、一次資料、状態を表示する。企業と四半期/通期で絞り込みでき、フィルタはURLの `company` / `type` に保存する。別の手入力イベントログを持たないため、履歴と更新台帳の二重管理を避ける。
+
 履歴収録済み13社の個社ページでは財務セクションから決算履歴へ直接移動できる。企業比較画面でも履歴収録済み企業の列見出しから決算履歴へ移動できる。
 
 企業比較本体もv0.4正規化履歴を消費する。v0.3の `?ids=` 比較URL契約は維持しつつ、比較表末尾へ「決算時系列（v0.4 正規化）」を追加する。選択企業ごとの最新収録期間と、売上高・営業利益・営業利益率・FCF・設備投資を表示する。金額は報告通貨・単位が異なれば比較不能、四半期/通期が混在すれば比較不能、FCF/設備投資はbasis定義が異なれば比較不能とする。会計基準や最新収録期間の差は条件注意として残し、各セルから一次資料と全履歴へ遷移できる。
 
 `scripts/validate-v04.py` は複数履歴バッチとcash-flow overrideを結合したうえで、Source/company対応、ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt、営業利益率再計算、Capex符号、Atlas算出FCFの入力値・算式、既存監査済み企業の移行漏れを検査する。現在の回帰下限は38期間 / 13社 / 複数期間企業11社 / 166検証済み指標 / FCF+Capex 26期間。
 
-Run #121では `v0.4 financial-history validation OK: 38 periods / 13 companies / 11 multi-period companies / 166 verified metrics / 26 FCF+Capex periods / 5 cash-flow overrides` を確認した。Astroは108ページ、Pagefindは104ページ / 2,633語を生成し、GitHub Pages deployも成功した。配布artifactでもTSMC 287.36、キオクシア 813,935、東京エレクトロン 84,441のFCFと各Capexがfinancials/compareへ反映され、3社の個社ページに履歴導線が存在することを確認した。
+Run #124では同じv0.4品質ゲートを再通過し、Astroは**109ページ**、Pagefindは**105ページ / 2,651語**を生成した。`/financials/updates/index.html` の生成を確認し、GitHub Pages deployは `Reported success!`。配布artifactでも更新履歴ページ、38行の台帳、企業/期間フィルタ、`/financials/`からの導線を確認し、financials本体とupdatesページの生成済みインラインJavaScript **4本**を `node --check` で構文確認した。
 
 ## Remaining v0.4 work
 
 1. Compute / Memory / Network / Data Center側の主要企業へ時系列履歴を拡張する
-2. 決算更新履歴を企業・期間・Source単位で体系化する
-3. PER / PBR / ROICはSource・利用条件・定義要件を満たしたものだけ掲載する
-4. v0.4完了判定前に主要企業の履歴カバレッジと比較可能性を再監査する
+2. PER / PBR / ROICはSource・利用条件・定義要件を満たしたものだけ掲載する
+3. v0.4完了判定前に主要企業の履歴カバレッジと比較可能性を再監査する
 
 ## Data quality policy
 
