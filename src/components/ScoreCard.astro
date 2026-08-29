@@ -1,11 +1,18 @@
 ---
 const { name, score } = Astro.props;
+const directionLabels: Record<string, string> = {
+  Positive: '正方向',
+  Negative: '逆方向',
+  Mixed: '混合',
+  Neutral: '中立',
+};
+const direction = directionLabels[score.direction] ?? score.direction;
 ---
 <div class="score-card">
   <div class="score-top">
     <div class="score-heading">
       <span class="score-name">{name}</span>
-      <span class="score-direction">{score.direction}</span>
+      <span class="score-direction">{direction}</span>
     </div>
     <span class="score-value">{score.value}<small style="font-size:11px;color:var(--muted)">/5</small></span>
   </div>
