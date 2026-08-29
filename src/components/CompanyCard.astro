@@ -1,0 +1,28 @@
+---
+import { withBase } from '../lib/paths';
+const { company } = Astro.props;
+const d = company.data ?? company;
+const id = company.id;
+---
+<a
+  class="company-card"
+  href={withBase(`companies/${id}/`)}
+  data-company-card
+  data-name={`${d.name} ${d.japaneseName} ${d.reading} ${d.ticker} ${d.tags.join(' ')} ${d.products.join(' ')}`.toLowerCase()}
+  data-layer={d.primaryLayer}
+  data-country={d.country}
+>
+  <div class="company-card-top">
+    <div>
+      <h3>{d.name}</h3>
+      <span class="meta">{d.japaneseName}</span>
+    </div>
+    <span class="ticker">{d.ticker}</span>
+  </div>
+  <p>{d.summary}</p>
+  <div class="tags">
+    <span class="tag">{d.primaryLayer}</span>
+    <span class="tag">AI {d.scores.aiExposure.value}/5</span>
+    <span class="tag">{d.country}</span>
+  </div>
+</a>

@@ -1,0 +1,26 @@
+---
+import { withBase } from '../lib/paths';
+const path = Astro.url.pathname;
+const nav = [
+  ['Atlas','atlas/'],
+  ['Companies','companies/'],
+  ['Compare','compare/'],
+  ['Search','search/'],
+  ['Methodology','methodology/'],
+];
+---
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href={withBase('/')}>
+      <span class="brand-mark">AI</span>
+      <span>INFRASTRUCTURE ATLAS</span>
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      {nav.map(([label, href]) => {
+        const target = withBase(href);
+        const active = path.startsWith(target);
+        return <a href={target} aria-current={active ? 'page' : undefined}>{label}</a>;
+      })}
+    </nav>
+  </div>
+</header>
