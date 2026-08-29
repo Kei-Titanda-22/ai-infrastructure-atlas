@@ -5,6 +5,8 @@ import { getCollection } from 'astro:content';
 import { withBase } from '../../lib/paths';
 import { layerLabel, countryLabel } from '../../lib/display';
 import sources from '../../data/sources.json';
+import sectorKpis from '../../data/sector-kpis.json';
+import sectorKpiDefinitions from '../../data/sector-kpi-definitions.json';
 
 export async function getStaticPaths() {
   const companies = await getCollection('companies');
@@ -15,10 +17,18 @@ const d = company.data;
 const allCompanies = await getCollection('companies');
 const peers = d.competitors.map(id => allCompanies.find(c => c.id === id)).filter(Boolean);
 const companySources = sources.filter(source => d.sourceIds.includes(source.id));
+const companyKpis = sectorKpis.filter(kpi => kpi.companyId === company.id);
+const kpiDefinitionById = new Map(sectorKpiDefinitions.map(definition => [definition.id, definition]));
 const scoreLabels: Record<string, string> = { aiExposure:'AI感応度', rateSensitivity:'金利感応度', cyclicality:'景気循環性', moat:'競争優位' };
 const metricLabels: Record<string, string> = { peTTM:'PER TTM', peFY1:'PER FY1', pb:'PBR', roic:'ROIC', operatingMargin:'営業利益率', revenueGrowth:'売上高成長率（前年同期比）' };
 const statusLabels: Record<string, string> = { verified:'検証済み', partial:'一部検証済み', placeholder:'未検証' };
 const sourceById = new Map(sources.map(source => [source.id, source]));
+const formatKpi = (kpi: any) => {
+  if (kpi.unit === '%') return `${kpi.value}%`;
+  if (kpi.unit === 'USD bn') return `$${kpi.value}B`;
+  if (kpi.unit === 'connections') return `${Number(kpi.value).toLocaleString('ja-JP')}件`;
+  return `${kpi.value} ${kpi.unit}`;
+};
 ---
 <BaseLayout title={d.japaneseName || d.name} description={d.summary} indexable>
   <article>
@@ -86,6 +96,32 @@ const sourceById = new Map(sources.map(source => [source.id, source]));
             </tbody>
           </table>
         </section>
+        {companyKpis.length > 0 && (
+          <section class="panel">
+            <h2>業種固有KPI</h2>
+            <p class="meta">共通指標では捉えにくい、各業種・企業固有の重要指標です。</p>
+            <table class="metrics-table">
+              <tbody>
+                {companyKpis.map(kpi => {
+                  const definition = kpiDefinitionById.get(kpi.definitionId);
+                  const source = sourceById.get(kpi.sourceId);
+                  return (
+                    <tr>
+                      <th>{definition?.name ?? kpi.definitionId}</th>
+                      <td>
+                        {formatKpi(kpi)}
+                        <span class="metric-provenance">
+                          基準日：{kpi.asOf} · 対象期間：{kpi.period} · 基準：{kpi.basis}
+                          {source ? <> · <a href={source.url} target="_blank" rel="noreferrer">Source ↗</a></> : null}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </section>
+        )}
       </div>
       <aside>
         <section class="panel">
