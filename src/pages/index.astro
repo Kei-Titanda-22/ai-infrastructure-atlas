@@ -4,6 +4,7 @@ import CompanyCard from '../components/CompanyCard.astro';
 import { getCollection } from 'astro:content';
 import layers from '../data/layers.json';
 import { withBase } from '../lib/paths';
+import { layerLabel } from '../lib/display';
 
 const companies = await getCollection('companies');
 const featuredIds = ['nvidia','tsmc','sk-hynix','asml','tokyo-electron','arista','vertiv','fanuc'];
@@ -38,7 +39,7 @@ const featured = featuredIds.map(id => companies.find(c => c.id === id)).filter(
         {layers.map((layer, index) => (
           <a class="chain-card" href={`${withBase('companies/')}?layer=${encodeURIComponent(layer.name)}`}>
             <span class="chain-index">0{index + 1}</span>
-            <h3>{layer.name}</h3>
+            <h3>{layerLabel(layer.name)}</h3>
             <p>{layer.description}</p>
           </a>
         ))}
