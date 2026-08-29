@@ -6,7 +6,7 @@ export const layerLabels: Record<string, string> = {
   'Test & Back-end': 'テスト・後工程',
   'Network & Optical': 'ネットワーク・光通信',
   'Data Center & Facilities': 'データセンター・電力・冷却',
-  'Physical AI': 'Physical AI',
+  'Physical AI': 'フィジカルAI',
 };
 
 export const countryLabels: Record<string, string> = {
@@ -39,6 +39,27 @@ export const tagLabels: Record<string, string> = {
   'power distribution': '配電',
   'cooling': '冷却',
   'robotics': 'ロボット',
+  'industrial robot': '産業用ロボット',
+  'factory automation': 'FA',
+  'materials engineering': '材料工学',
+  'semiconductor equipment': '半導体製造装置',
+  'inspection': '検査',
+  'metrology': '計測',
+  'process control': 'プロセス制御',
+  'memory equipment': 'メモリ向け装置',
+  'dicing': 'ダイシング',
+  'grinding': '研削',
+  'wafer thinning': 'ウェハ薄化',
+  'power management': '電力管理',
+  'data center power': 'データセンター電源',
+  'electrical': '電気設備',
+  'colocation': 'コロケーション',
+  'interconnection': '相互接続',
+  'AI infrastructure': 'AIインフラ',
+  'networking': 'ネットワーク',
+  'switch': 'スイッチ',
+  'SoC test': 'SoCテスト',
+  'memory test': 'メモリテスト',
 };
 
 export const facilityTypeLabels: Record<string, string> = {
@@ -49,7 +70,69 @@ export const facilityTypeLabels: Record<string, string> = {
   works: '事業所',
 };
 
+type ProductInfo = { label: string; description: string };
+
+const productInfoMap: Record<string, ProductInfo> = {
+  'Data center GPU / accelerator': { label: 'データセンター向けGPU・アクセラレータ', description: 'AIの学習・推論を担う計算処理の中核。' },
+  'AI systems and networking': { label: 'AIシステム・ネットワーク', description: 'GPU、CPU、ネットワークを組み合わせたAI計算基盤。' },
+  'CUDA software ecosystem': { label: 'CUDAソフトウェア基盤', description: 'GPUを利用する開発環境・ライブラリ群。' },
+  'Custom accelerators / ASIC': { label: 'カスタムAIアクセラレータ・ASIC', description: '大手顧客向けに用途を最適化した専用半導体。' },
+  'Ethernet switching silicon': { label: 'Ethernetスイッチ半導体', description: 'AIクラスタ内の大容量通信を処理するネットワーク半導体。' },
+  'Connectivity semiconductors': { label: '接続用半導体', description: 'サーバーやネットワーク機器間の高速接続を支える半導体。' },
+  'Advanced-node foundry': { label: '先端プロセスの半導体受託製造', description: '高性能CPU・GPUなどを先端世代で量産する。' },
+  'Specialty nodes': { label: '特殊プロセス', description: '用途別に最適化した成熟・特殊プロセスの受託製造。' },
+  'Advanced packaging': { label: '先端パッケージング', description: '複数チップやHBMを高密度に接続・実装する工程。' },
+  'DRAM / HBM': { label: 'DRAM・HBM', description: 'AIアクセラレータやサーバーで使われる主記憶・高帯域メモリ。' },
+  'HBM / DRAM': { label: 'HBM・DRAM', description: 'AIアクセラレータやサーバー向けの高性能メモリ。' },
+  'HBM': { label: 'HBM', description: 'GPUなどと組み合わせる高帯域・積層型メモリ。' },
+  'DRAM': { label: 'DRAM', description: 'サーバーやPCなどで使われる揮発性主記憶。' },
+  'NAND flash': { label: 'NANDフラッシュメモリ', description: 'SSDなどに使われる不揮発性メモリ。' },
+  'Foundry services': { label: '半導体受託製造（ファウンドリ）', description: '他社が設計した半導体を製造する事業。' },
+  'Data-center memory and storage': { label: 'データセンター向けメモリ・ストレージ', description: 'AIサーバーやクラウド基盤向けの記憶製品。' },
+  'Enterprise SSD': { label: 'エンタープライズSSD', description: 'サーバー・データセンター向けの高信頼SSD。' },
+  'Client / embedded flash': { label: 'クライアント・組み込み向けフラッシュメモリ', description: 'PCや組み込み機器向けのフラッシュ記憶製品。' },
+  'EUV lithography': { label: 'EUV露光装置', description: '最先端半導体の微細パターン形成に使う露光装置。' },
+  'DUV lithography': { label: 'DUV露光装置', description: '幅広い半導体工程で使われる深紫外線露光装置。' },
+  'Metrology / computational lithography related offerings': { label: '計測・計算リソグラフィ関連製品', description: '露光工程の精度管理とプロセス最適化を支える製品群。' },
+  'Deposition': { label: '成膜装置', description: 'ウェハ上に薄膜を形成する前工程装置。' },
+  'Materials engineering systems': { label: '材料工学関連装置', description: '材料の形成・改質・加工を通じて半導体性能を高める装置群。' },
+  'Packaging-related equipment': { label: 'パッケージング関連装置', description: 'チップ実装や先端パッケージ工程に使う装置。' },
+  'Etch': { label: 'エッチング装置', description: 'ウェハ上の材料を選択的に削り微細構造を形成する装置。' },
+  'Wafer cleaning related systems': { label: 'ウェハ洗浄関連装置', description: '工程中の微粒子や残留物を除去する装置。' },
+  'Coater / developer': { label: '塗布・現像装置', description: '露光前後のレジスト塗布・現像を行う装置。' },
+  'Cleaning': { label: '洗浄装置', description: 'ウェハ表面の汚染物・残渣を除去する装置。' },
+  'Wafer inspection': { label: 'ウェハ検査装置', description: '欠陥や異物を検出し製造歩留まりを管理する装置。' },
+  'Metrology': { label: '計測装置', description: '寸法や膜厚などを測定し工程のばらつきを管理する。' },
+  'Process control software / systems': { label: 'プロセス制御ソフトウェア・システム', description: '検査・計測データを用いて製造工程を最適化する。' },
+  'SoC testers': { label: 'SoCテスタ', description: 'CPU、GPU、ASICなどの動作・性能を量産時に検査する装置。' },
+  'Memory testers': { label: 'メモリテスタ', description: 'DRAM、HBMなどのメモリを高速・高精度に検査する装置。' },
+  'Test handlers / related systems': { label: 'テストハンドラ・周辺システム', description: '半導体をテスタへ搬送し量産検査を自動化する周辺装置。' },
+  'Dicing saws': { label: 'ダイシングソー', description: 'ウェハを個々のチップへ高精度に切断する装置。' },
+  'Grinding systems': { label: '研削装置', description: 'ウェハを薄化・平坦化する精密加工装置。' },
+  'Polishing / precision processing': { label: '研磨・精密加工装置', description: '半導体材料を高精度に研磨・加工する装置群。' },
+  'Data-center Ethernet switches': { label: 'データセンター向けEthernetスイッチ', description: 'AIクラスタ内のサーバー間通信を高速に中継する装置。' },
+  'Network operating software': { label: 'ネットワークOS', description: '大規模ネットワークの設定・制御・運用を担うソフトウェア。' },
+  'AI cluster networking': { label: 'AIクラスタ向けネットワーク', description: '多数のGPUを低遅延・大容量で接続するネットワーク基盤。' },
+  'Optical fiber / cable': { label: '光ファイバ・光ケーブル', description: 'データセンターや通信網で大容量データを伝送する媒体。' },
+  'Optical connectivity': { label: '光接続部品・ソリューション', description: '光ファイバ同士や機器との高密度接続を実現する製品。' },
+  'High-density data-center wiring': { label: 'データセンター向け高密度配線', description: '高密度化するサーバー設備内の光配線を省スペース化する。' },
+  'Thermal management': { label: '熱管理・冷却システム', description: '高発熱なAIサーバーから熱を除去し安定稼働を支える。' },
+  'UPS and power systems': { label: 'UPS・電源システム', description: '停電や電源品質の変動からデータセンター設備を守る。' },
+  'Data-center infrastructure services': { label: 'データセンター設備サービス', description: '電源・冷却設備の導入、保守、運用を支援する。' },
+  'Power distribution': { label: '受配電機器', description: '大容量電力をデータセンター内へ安全に分配する設備。' },
+  'Electrical protection': { label: '電気保護機器', description: '過電流・短絡などから電気設備を保護する機器。' },
+  'Power management systems': { label: '電力管理システム', description: '電力使用状況を監視・制御し設備効率を管理する。' },
+  'Colocation data centers': { label: 'コロケーション型データセンター', description: '顧客のサーバーやネットワーク機器を収容するデータセンター。' },
+  'Interconnection services': { label: '相互接続サービス', description: '企業・クラウド・通信事業者をデータセンター内で直接接続する。' },
+  'Digital infrastructure real estate': { label: 'デジタルインフラ不動産', description: 'データセンター資産の保有・運営を通じて利用料を得る。' },
+  'Industrial robots': { label: '産業用ロボット', description: '搬送、溶接、組立など製造現場の作業を自動化する。' },
+  'CNC systems': { label: 'CNCシステム', description: '工作機械の位置・速度を数値制御する中核システム。' },
+  'Factory automation': { label: 'FA（工場自動化）', description: '製造設備の制御・自動化を支える機器・システム。' },
+};
+
 export const layerLabel = (value: string) => layerLabels[value] ?? value;
 export const countryLabel = (value: string) => countryLabels[value] ?? value;
 export const tagLabel = (value: string) => tagLabels[value] ?? value;
 export const facilityTypeLabel = (value: string) => facilityTypeLabels[value] ?? value;
+export const productInfo = (value: string): ProductInfo => productInfoMap[value] ?? { label: value, description: '詳細説明を整備中。' };
+export const joinJapanese = (items: string[]) => items.filter(Boolean).join('、');
