@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/paths';
+const pagefindPath = withBase('pagefind/pagefind.js');
+const basePath = withBase('');
+---
+<BaseLayout title="Search">
+  <header class="page-head">
+    <div class="shell">
+      <div class="eyebrow">Full-text index</div>
+      <h1>Search</h1>
+      <p class="lead">ビルド後にPagefindが静的HTMLを索引化します。企業名だけでなく、製品、強み、リスク、AI上の役割まで全文検索できます。</p>
+    </div>
+  </header>
+  <div class="shell section" id="search-app" data-pagefind-path={pagefindPath} data-base-path={basePath}>
+    <form class="search-box" id="full-search-form">
+      <input id="full-search-input" class="control" type="search" placeholder="HBM / lithography / cooling ..." aria-label="全文検索" />
+      <button class="primary-button" type="submit">Search</button>
+    </form>
+    <p class="result-count" id="search-status">検索語を入力してください。</p>
+    <div class="search-results" id="search-results" aria-live="polite"></div>
+  </div>
+  <script is:inline>
+    const root = document.querySelector('#search-app');
+    if (root) {
+      const form = root.querySelector('#full-search-form');
+      const input = root.querySelector('#full-search-input');
+      const status = root.querySelector('#search-status');
+      const results = root.querySelector('#search-results');
+      const pagefindPath = root.dataset.pagefindPath;
+      const basePath = root.dataset.basePath || '/';
+      let pagefind;
+      const load = async () => {
+        if (pagefind) return pagefind;
+        if (!pagefindPath) throw new Error('Pagefind path missing');
+        pagefind = await import(pagefindPath);
+        return pagefind;
+      };
+      form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const q = input instanceof HTMLInputElement ? input.value.trim() : '';
+        if (!q || !results || !status) return;
+        status.textContent = 'Searching…'; results.replaceChildren();
+        try {
+          const pf = await load();
+          const search = await pf.search(q);
+          status.textContent = `${search.results.length} results`;
+          for (const ref of search.results.slice(0,30)) {
+            const item = await ref.data();
+            const a = document.createElement('a'); a.className = 'search-result';
+            let url = item.url || '';
+            if (basePath !== '/' && !url.startsWith(basePath)) url = `${basePath.replace(/\/$/,'')}${url}`;
+            a.href = url;
+            const h = document.createElement('h3'); h.textContent = item.meta?.title || item.url;
+            const p = document.createElement('p'); p.innerHTML = item.excerpt || '';
+            a.append(h,p); results.append(a);
+          }
+        } catch (error) {
+          status.textContent = 'Pagefind index is available after `npm run build`. During Astro dev, use Companies filtering.';
+        }
+      });
+    }
+  </script>
+</BaseLayout>

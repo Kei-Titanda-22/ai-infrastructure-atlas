@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+const companies = (await getCollection('companies')).sort((a,b) => a.data.name.localeCompare(b.data.name));
+const compact = companies.map(c => ({
+  id:c.id, name:c.data.name, ticker:c.data.ticker, country:c.data.country, primaryLayer:c.data.primaryLayer,
+  scores:{
+    aiExposure:{ value:c.data.scores.aiExposure.value, direction:c.data.scores.aiExposure.direction },
+    rateSensitivity:{ value:c.data.scores.rateSensitivity.value, direction:c.data.scores.rateSensitivity.direction },
+    cyclicality:{ value:c.data.scores.cyclicality.value, direction:c.data.scores.cyclicality.direction },
+    moat:{ value:c.data.scores.moat.value, direction:c.data.scores.moat.direction },
+  },
+  metrics:Object.fromEntries(Object.entries(c.data.metrics).map(([k,v]) => [k, v.value]))
+}));
+const defaults = ['nvidia','tsmc','asml','vertiv'];
+---
+<BaseLayout title="Compare">
+  <header class="page-head">
+    <div class="shell">
+      <div class="eyebrow">Cross-sector comparison</div>
+      <h1>Compare</h1>
+      <p class="lead">最大4社。異業種でもUniversal Metricsは同じ行で比較し、セクター固有KPIは将来別ブロックに分離します。</p>
+    </div>
+  </header>
+  <div class="shell section" id="compare-app">
+    <div class="notice">EquinixのようなREITと一般事業会社をPERだけで単純比較しない前提です。v0.1では構造比較を先行し、FFO/AFFO等のSector KPIは次段階で追加します。</div>
+    <div class="compare-picks">
+      {[0,1,2,3].map((slot) => (
+        <label>Company {slot+1}
+          <select class="control compare-select" data-slot={slot}>
+            <option value="">—</option>
+            {companies.map(c => <option value={c.id} selected={c.id === defaults[slot]}>{c.data.name} ({c.data.ticker})</option>)}
+          </select>
+        </label>
+      ))}
+    </div>
+    <div class="table-scroll">
+      <table class="compare-table" id="compare-table"><tbody></tbody></table>
+    </div>
+    <script id="compare-data" type="application/json" set:html={JSON.stringify(compact)}></script>
+  </div>
+  <script is:inline>
+    const root = document.querySelector('#compare-app');
+    const dataNode = document.querySelector('#compare-data');
+    if (root && dataNode) {
+      const companies = JSON.parse(dataNode.textContent || '[]');
+      const byId = new Map(companies.map(c => [c.id, c]));
+      const selects = [...root.querySelectorAll('.compare-select')];
+      const tbody = root.querySelector('#compare-table tbody');
+      const rows = [
+        ['Company', c => `${c.name} (${c.ticker})`],
+        ['Primary layer', c => c.primaryLayer],
+        ['Country', c => c.country],
+        ['AI exposure', c => `${c.scores.aiExposure.value}/5 · ${c.scores.aiExposure.direction}`],
+        ['Rate sensitivity', c => `${c.scores.rateSensitivity.value}/5 · ${c.scores.rateSensitivity.direction}`],
+        ['Cyclicality', c => `${c.scores.cyclicality.value}/5 · ${c.scores.cyclicality.direction}`],
+        ['Moat', c => `${c.scores.moat.value}/5 · ${c.scores.moat.direction}`],
+        ['PER TTM', c => c.metrics.peTTM ?? 'N/A'],
+        ['PER FY1', c => c.metrics.peFY1 ?? 'N/A'],
+        ['PBR', c => c.metrics.pb ?? 'N/A'],
+        ['ROIC', c => c.metrics.roic == null ? 'N/A' : `${c.metrics.roic}%`],
+        ['Operating margin', c => c.metrics.operatingMargin == null ? 'N/A' : `${c.metrics.operatingMargin}%`],
+        ['Revenue growth YoY', c => c.metrics.revenueGrowth == null ? 'N/A' : `${c.metrics.revenueGrowth}%`],
+      ];
+      const render = () => {
+        const picked = selects.map(s => byId.get(s.value)).filter(Boolean);
+        if (!tbody) return;
+        tbody.replaceChildren();
+        rows.forEach(([label, getter]) => {
+          const tr = document.createElement('tr');
+          const th = document.createElement('th'); th.textContent = label; tr.append(th);
+          picked.forEach(c => { const td = document.createElement('td'); td.textContent = getter(c); tr.append(td); });
+          tbody.append(tr);
+        });
+      };
+      selects.forEach(s => s.addEventListener('change', render));
+      render();
+    }
+  </script>
+</BaseLayout>

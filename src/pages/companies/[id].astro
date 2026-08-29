@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ScoreCard from '../../components/ScoreCard.astro';
+import { getCollection } from 'astro:content';
+import { withBase } from '../../lib/paths';
+import sources from '../../data/sources.json';
+
+export async function getStaticPaths() {
+  const companies = await getCollection('companies');
+  return companies.map(company => ({ params: { id: company.id }, props: { company } }));
+}
+const { company } = Astro.props;
+const d = company.data;
+const allCompanies = await getCollection('companies');
+const peers = d.competitors.map(id => allCompanies.find(c => c.id === id)).filter(Boolean);
+const companySources = sources.filter(source => d.sourceIds.includes(source.id));
+const scoreLabels: Record<string, string> = { aiExposure:'AI感応度', rateSensitivity:'金利感応度', cyclicality:'景気循環性', moat:'競争優位' };
+const metricLabels: Record<string, string> = { peTTM:'PER TTM', peFY1:'PER FY1', pb:'PBR', roic:'ROIC', operatingMargin:'Operating Margin', revenueGrowth:'Revenue Growth YoY' };
+---
+<BaseLayout title={d.name} description={d.summary} indexable>
+  <article>
+    <span hidden data-pagefind-filter={`layer:${d.primaryLayer}`}></span>
+    <span hidden data-pagefind-filter={`country:${d.country}`}></span>
+    <span hidden data-pagefind-meta={`ticker:${d.ticker}`}></span>
+    <div class="shell company-hero">
+      <div>
+        <div class="breadcrumb"><a href={withBase('companies/')}>Companies</a> / {d.primaryLayer}</div>
+        <div class="company-title-line"><h1>{d.name}</h1><span class="ticker">{d.ticker}</span></div>
+        <div class="company-ja">{d.japaneseName} · 読み: {d.reading}</div>
+        <p class="lead">{d.summary}</p>
+        <div class="tags">{d.tags.map(tag => <span class="tag">{tag}</span>)}</div>
+      </div>
+      <dl class="snapshot">
+        <div class="snapshot-row"><dt>Exchange</dt><dd>{d.exchange}</dd></div>
+        <div class="snapshot-row"><dt>Country</dt><dd>{d.country}</dd></div>
+        <div class="snapshot-row"><dt>Primary layer</dt><dd>{d.primaryLayer}</dd></div>
+        <div class="snapshot-row"><dt>Source status</dt><dd>{d.sourceStatus}</dd></div>
+        <div class="snapshot-row"><dt>Reviewed</dt><dd>{d.lastReviewed}</dd></div>
+      </dl>
+    </div>
+
+    <div class="shell detail-grid section">
+      <div>
+        <section class="panel">
+          <div class="eyebrow">AI position</div>
+          <h2>AIインフラ上の役割</h2>
+          <p class="lead">{d.aiRole}</p>
+        </section>
+        <section class="panel">
+          <h2>Products / Technologies</h2>
+          <ul class="bullet-list">{d.products.map(x => <li>{x}</li>)}</ul>
+        </section>
+        <section class="panel">
+          <h2>Strengths</h2>
+          <ul class="bullet-list">{d.strengths.map(x => <li>{x}</li>)}</ul>
+        </section>
+        <section class="panel">
+          <h2>Risks / Watchpoints</h2>
+          <ul class="bullet-list">{d.risks.map(x => <li>{x}</li>)}</ul>
+        </section>
+        <section class="panel">
+          <h2>Universal metrics</h2>
+          <div class="notice" style="margin-bottom:12px">財務・バリュエーションは出典、基準日、期間が揃うまで値を表示しません。0は欠損値として使用しません。</div>
+          <table class="metrics-table">
+            <tbody>
+              {Object.entries(d.metrics).map(([key, metric]) => (
+                <tr><th>{metricLabels[key]}</th><td>{metric.value === null ? 'N/A' : `${metric.value}${metric.unit}`}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </section>
+      </div>
+      <aside>
+        <section class="panel">
+          <div class="kicker"><span class="dot"></span> provisional scores</div>
+          <h2 style="margin-top:14px">Sensitivity map</h2>
+          <div class="score-grid">
+            {Object.entries(d.scores).map(([key, score]) => <ScoreCard name={scoreLabels[key]} score={score} />)}
+          </div>
+        </section>
+        <section class="panel">
+          <h3>Layers</h3>
+          <div class="tags">{d.layers.map(layer => <span class="tag">{layer}</span>)}</div>
+        </section>
+        <section class="panel">
+          <h3>Competitors / Peers</h3>
+          {peers.length ? <div class="tags">{peers.map(peer => <a class="tag" href={withBase(`companies/${peer.id}/`)}>{peer.data.name}</a>)}</div> : <p class="meta">v0.1 source verification pending.</p>}
+        </section>
+        <section class="panel">
+          <h3>Official sources</h3>
+          {companySources.map(source => <p style="margin:8px 0"><a class="tag" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a></p>)}
+          <p class="meta">IR hub registered. Individual product/earnings claims will receive document-level Source IDs during verification.</p>
+        </section>
+      </aside>
+    </div>
+  </article>
+</BaseLayout>
