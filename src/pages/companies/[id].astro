@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../../lib/paths';
-import { layerLabel, countryLabel, tagLabel, facilityTypeLabel, productInfo } from '../../lib/display';
+import { layerLabel, countryLabel, tagLabel, facilityTypeLabel, productInfo } from '../../lib/display-v02';
 import { getMetricAudit, getMetricState, formatMetricValue, auditFormula } from '../../lib/metrics';
 import sources from '../../data/sources.json';
 import v02Sources from '../../data/sources-v02.json';
@@ -73,7 +73,7 @@ const toc = [
   <article class={`sector-page sector-${d.primaryLayer.replace(/[^a-zA-Z]/g,'-').toLowerCase()}`}>
     <span hidden data-pagefind-filter={`layer:${d.primaryLayer}`}></span>
     <span hidden data-pagefind-filter={`country:${d.country}`}></span>
-    <span hidden data-pagefind-meta={`ticker:${d.ticker}`}></span>
+    {d.ticker ? <span hidden data-pagefind-meta={`ticker:${d.ticker}`}></span> : null}
 
     <div class="shell company-hero">
       <div>
@@ -82,7 +82,10 @@ const toc = [
           {brandAsset?.displayAllowed && brandAsset.assetUrl ? <img class="company-logo" src={brandAsset.assetUrl} alt={`${d.name} ロゴ`} /> : null}
           <div>
             <div class="company-title-line"><h1>{d.japaneseName || d.name}</h1></div>
-            <div class="company-meta-line"><span class="mono">{d.ticker}</span><span>·</span><span>{d.exchange}</span><span>·</span><a href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a></div>
+            <div class="company-meta-line">
+              {d.ticker ? <><span class="mono">{d.ticker}</span><span>·</span><span>{d.exchange}</span><span>·</span></> : <><span>非上場</span><span>·</span></>}
+              <a href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a>
+            </div>
             <div class="company-ja">{d.officialName} · 読み：{d.reading}</div>
           </div>
         </div>
