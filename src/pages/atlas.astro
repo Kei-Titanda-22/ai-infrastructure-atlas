@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import layers from '../data/layers.json';
 import { withBase } from '../lib/paths';
+import { layerLabel } from '../lib/display';
 const companies = await getCollection('companies');
 ---
 <BaseLayout title="全体マップ" indexable>
@@ -21,7 +22,7 @@ const companies = await getCollection('companies');
           <section class="atlas-lane">
             <div class="atlas-lane-head">
               <span class="num">レイヤー {String(index+1).padStart(2,'0')}</span>
-              <h3>{layer.name}</h3>
+              <h3>{layerLabel(layer.name)}</h3>
               <p>{layer.description}</p>
             </div>
             <div class="atlas-companies">
