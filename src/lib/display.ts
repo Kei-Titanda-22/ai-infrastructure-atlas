@@ -11,6 +11,7 @@ export const layerLabels: Record<string, string> = {
 
 export const countryLabels: Record<string, string> = {
   'United States': '米国',
+  'United Kingdom': '英国',
   'Japan': '日本',
   'Taiwan': '台湾',
   'South Korea': '韓国',
@@ -60,6 +61,17 @@ export const tagLabels: Record<string, string> = {
   'switch': 'スイッチ',
   'SoC test': 'SoCテスト',
   'memory test': 'メモリテスト',
+  'chip IP': '半導体設計IP',
+  'edge AI': 'エッジAI',
+  'SoC': 'SoC',
+  'automotive': '車載',
+  'connectivity': '接続半導体',
+  'mobile': 'モバイル',
+  'ALD': 'ALD',
+  'epitaxy': 'エピタキシー',
+  'batch furnace': 'バッチ炉',
+  'thermal processing': '熱処理',
+  'EUV mask': 'EUVマスク',
 };
 
 export const facilityTypeLabels: Record<string, string> = {
@@ -128,6 +140,36 @@ const productInfoMap: Record<string, ProductInfo> = {
   'Industrial robots': { label: '産業用ロボット', description: '搬送、溶接、組立など製造現場の作業を自動化する。' },
   'CNC systems': { label: 'CNCシステム', description: '工作機械の位置・速度を数値制御する中核システム。' },
   'Factory automation': { label: 'FA（工場自動化）', description: '製造設備の制御・自動化を支える機器・システム。' },
+
+  'Data-center GPUs': { label: 'データセンター向けGPU', description: 'AI学習・推論や高性能計算を担うアクセラレータ。' },
+  'EPYC server CPUs': { label: 'EPYCサーバーCPU', description: 'データセンターやAIサーバーの汎用処理を担うCPU。' },
+  'Adaptive and embedded compute': { label: '適応型・組み込み計算製品', description: 'FPGAや組み込み向け計算製品で用途別の処理を実装する。' },
+  'Xeon server CPUs': { label: 'XeonサーバーCPU', description: 'サーバー・データセンター向けの汎用CPU。' },
+  'AI accelerators': { label: 'AIアクセラレータ', description: 'AI学習・推論処理を高速化する専用計算半導体。' },
+  'Custom AI accelerators / ASIC': { label: 'カスタムAIアクセラレータ・ASIC', description: 'クラウド事業者などの用途に合わせて設計する専用半導体。' },
+  'Data-center interconnect silicon': { label: 'データセンター向け接続半導体', description: 'AIサーバーやスイッチ間の高速データ伝送を支える半導体。' },
+  'Storage controllers': { label: 'ストレージコントローラ', description: 'SSDなどの記憶装置でデータ入出力を制御する半導体。' },
+  'CPU architecture and IP': { label: 'CPU設計資産・IP', description: 'CPUコアや命令セットに関する設計資産をライセンスする。' },
+  'Neoverse data-center CPU IP': { label: 'Neoverseデータセンター向けCPU IP', description: 'クラウド・サーバー向けに設計されたArm系CPU基盤。' },
+  'Compute subsystem IP': { label: '計算サブシステムIP', description: 'CPUや周辺機能を組み合わせた設計済み計算基盤。' },
+  'Snapdragon SoCs': { label: 'Snapdragon SoC', description: 'CPU、GPU、NPU、通信機能などを統合した端末向け半導体。' },
+  'AI / NPU platforms': { label: 'AI・NPU基盤', description: '端末上でAI推論を処理するNPUとソフトウェア基盤。' },
+  'Automotive compute platforms': { label: '車載計算基盤', description: '車載情報処理、運転支援、コックピット向けの計算半導体。' },
+  'Mobile SoCs': { label: 'モバイルSoC', description: 'スマートフォン向けに計算・通信機能を統合した半導体。' },
+  'Edge AI SoCs': { label: 'エッジAI SoC', description: '端末側でAI推論を実行する統合半導体。' },
+  'Connectivity chips': { label: '接続用半導体', description: 'Wi-Fi、Bluetoothなどの通信・接続機能を担う半導体。' },
+  'ALD deposition systems': { label: 'ALD成膜装置', description: '原子層単位で薄膜を形成し先端プロセスの材料制御を行う装置。' },
+  'Epitaxy systems': { label: 'エピタキシー成長装置', description: '単結晶薄膜を成長させデバイス構造を形成する装置。' },
+  'Vertical furnace / CVD systems': { label: '縦型炉・CVD装置', description: '複数ウェハの熱処理や成膜を行う前工程装置。' },
+  'Batch thermal processing systems': { label: 'バッチ式熱処理装置', description: '多数のウェハを一括で熱処理する量産向け装置。' },
+  'Deposition systems': { label: '成膜装置', description: 'ウェハ表面へ機能膜を形成する前工程装置。' },
+  'Treatment systems': { label: '表面処理装置', description: '熱・プラズマ等でウェハ表面や薄膜特性を調整する装置。' },
+  'Wafer cleaning systems': { label: 'ウェハ洗浄装置', description: 'ウェハ表面の微粒子や残渣を除去する装置。' },
+  'Coater / developer systems': { label: '塗布・現像装置', description: 'フォトレジストの塗布と露光後の現像を行う装置。' },
+  'Inspection / metrology systems': { label: '検査・計測装置', description: '欠陥や寸法を測定し製造工程を管理する装置。' },
+  'EUV mask inspection systems': { label: 'EUVマスク検査装置', description: 'EUV露光に用いるマスク・ブランクスの欠陥を検査する装置。' },
+  'Photomask inspection systems': { label: 'フォトマスク検査装置', description: '半導体回路パターン用マスクの欠陥を検出する装置。' },
+  'Semiconductor inspection / metrology systems': { label: '半導体検査・計測装置', description: '製造工程の欠陥・寸法・品質を確認する装置群。' },
 };
 
 export const layerLabel = (value: string) => layerLabels[value] ?? value;
