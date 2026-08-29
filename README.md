@@ -2,8 +2,8 @@
 
 個人用の半導体・AIインフラ横断リサーチデータベース。
 
-**v0.2 completed: 100 companies / sector map / public GitHub Pages site**  
-**Next milestone: v0.3 — company comparison**
+**v0.3 completed: 100 companies / sector map / company comparison**  
+**Next milestone: v0.4 — earnings and financial history**
 
 ## Live site
 
@@ -29,8 +29,8 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 
 - v0.1 — 20社・静的データ **Complete**
 - v0.2 — 100社・セクターマップ **Complete**
-- v0.3 — 企業比較 **Next**
-- v0.4 — 決算データ
+- v0.3 — 企業比較 **Complete**
+- v0.4 — 決算データ **Next**
 - v0.5 — 自動更新
 - v1.0 — AI Infrastructure Atlas
 
@@ -41,7 +41,9 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 - searchable company directory
 - technology/process links
 - company detail research pages
-- comparison prototype
+- searchable 2–5 company comparison workbench
+- 8 sector comparison presets
+- comparability states with period / basis / verification checks
 - financial provenance and verification states
 - Pagefind full-text search
 - GitHub Pages deployment
@@ -72,6 +74,7 @@ npm run preview
 - `docs/constitution.md` — binding governance rules
 - `docs/roadmap.md` — canonical release roadmap
 - `docs/v0.2-scope.md` — completed 100-company expansion
+- `docs/v0.3-scope.md` — completed company-comparison phase
 - `docs/data-model.md` — research data contract
 - `docs/design-system-v04.md` — UI design system
 - `docs/status.md` — current implementation state

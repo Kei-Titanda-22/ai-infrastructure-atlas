@@ -20,44 +20,50 @@ Completion criteria:
 - [x] project constitution and source registries
 - [x] no real-time stock-price distribution
 
-Extra functions such as comparison, financial tables and provenance validation were implemented early and remain in place.
-
 ## v0.2 — 100社・セクターマップ
 
-Status: **In progress**
+Status: **Complete**
 
-Primary target:
+Completion criteria:
 
-- expand from 20 to about 100 companies
-- strengthen process / technology / region taxonomy
-- build sector maps that make peer groups and upstream/downstream positioning visible
-- maintain fast search and filtering at 100-company scale
-- preserve existing company URLs and data contracts
-- apply Source / date / definition / verification-state rules to all new data
-
-Expansion details are tracked in `docs/v0.2-scope.md`.
+- [x] 100 companies
+- [x] process / technology / region taxonomy
+- [x] value-chain / sector-map navigation
+- [x] 100-company search and filtering
+- [x] existing company URLs preserved
+- [x] Source policy and provenance rules applied to new records
+- [x] CI regression guard for the 100-company baseline
 
 ## v0.3 — 企業比較
 
-Primary target:
+Status: **Complete**
 
-- mature the existing comparison prototype into a core workflow
-- 3–5 company comparison presets
-- comparable-period checks
-- product / technology / factory / financial comparison
-- sector-specific comparable metrics
-- explicit reasons when comparison is not valid
+Completion criteria:
+
+- [x] search and add companies from the 100-company universe
+- [x] 2–5 company comparison; 3–5 recommended
+- [x] 8 sector comparison presets
+- [x] comparison set stored in URL
+- [x] product / technology / facility comparison
+- [x] financial rows with period / basis / verification / source
+- [x] explicit `比較可 / 条件注意 / 比較不能` states
+- [x] sector-specific KPI comparison with `参照のみ` when peer data is insufficient
+- [x] subjective analysis separated from objective comparison
+- [x] v0.3 comparison-template CI validation
 
 ## v0.4 — 決算データ
 
+Status: **Next**
+
 Primary target:
 
-- quarterly financial history
-- revenue / operating profit / margin / FCF / Capex
-- PER / PBR / ROIC where source and definition requirements are satisfied
+- quarterly and annual financial history
+- revenue / operating profit / operating margin / FCF / Capex
+- PER / PBR / ROIC only where source and definition requirements are satisfied
 - in-house generated charts
 - earnings update history
 - document-level primary-source provenance
+- comparison page consumes normalized historical financial data without changing the v0.3 URL contract
 
 ## v0.5 — 自動更新
 
