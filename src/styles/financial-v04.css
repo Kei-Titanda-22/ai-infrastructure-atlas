@@ -65,6 +65,18 @@
 .financial-missing { color: var(--muted); font-size: 12px; white-space: nowrap; }
 .financial-definition-note { max-width: 90ch; margin-top: 10px; color: var(--muted); font-size: 12px; }
 
+/* v0.4 normalized-history bridge inside the v0.3 comparison workbench */
+a.text-link.compare-company-sub {
+  color: var(--link);
+  font-family: var(--sans);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: .16em;
+}
+.compare-history-link { width: fit-content; font-size: 11px; }
+.compare-history-period-row td,
+.compare-history-metric-row td { background: var(--surface); }
+
 @media (max-width: 980px) {
   .financial-summary { grid-template-columns: repeat(3, minmax(100px, 1fr)); }
   .financial-summary > div { border-bottom: 1px solid var(--border); }
