@@ -6,7 +6,10 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'src' / 'data'
 
 history = json.loads((DATA / 'financial-history.json').read_text(encoding='utf-8'))
-sources = json.loads((DATA / 'document-sources.json').read_text(encoding='utf-8'))
+source_files = ['sources.json', 'sources-v02.json', 'document-sources.json']
+sources = []
+for filename in source_files:
+    sources.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
 audits = json.loads((DATA / 'metric-audits.json').read_text(encoding='utf-8'))
 company_files = list((DATA / 'companies').glob('*.json'))
 company_ids = {path.stem for path in company_files}
@@ -40,7 +43,7 @@ for record in history:
     source = source_by_id.get(source_id)
     if source is None:
         errors.append(f'{rid}: unknown sourceId {source_id}')
-    elif source.get('companyId') != cid:
+    elif source.get('companyId') and source.get('companyId') != cid:
         errors.append(f'{rid}: source company mismatch {source.get("companyId")} != {cid}')
 
     metrics = record.get('metrics', {})
