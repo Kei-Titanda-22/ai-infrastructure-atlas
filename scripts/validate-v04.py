@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,6 +23,7 @@ missing_statuses = {'not-collected', 'primary-source-unchecked', 'not-calculable
 allowed_statuses = value_statuses | missing_statuses
 errors = []
 seen_ids = set()
+seen_period_keys = set()
 
 for record in history:
     rid = record.get('id')
@@ -32,12 +34,23 @@ for record in history:
 
     if cid not in company_ids:
         errors.append(f'{rid}: unknown companyId {cid}')
-    if record.get('periodType') not in allowed_period_types:
-        errors.append(f'{rid}: invalid periodType {record.get("periodType")}')
+    period_type = record.get('periodType')
+    if period_type not in allowed_period_types:
+        errors.append(f'{rid}: invalid periodType {period_type}')
     if not record.get('periodLabel') or not record.get('endDate'):
         errors.append(f'{rid}: periodLabel/endDate required')
+    else:
+        try:
+            date.fromisoformat(record['endDate'])
+        except ValueError:
+            errors.append(f'{rid}: invalid ISO endDate {record.get("endDate")}')
     if not record.get('currency') or not record.get('unit') or not record.get('accountingBasis'):
         errors.append(f'{rid}: currency/unit/accountingBasis required')
+
+    period_key = (cid, period_type, record.get('endDate'))
+    if period_key in seen_period_keys:
+        errors.append(f'{rid}: duplicate company/period/endDate {period_key}')
+    seen_period_keys.add(period_key)
 
     source_id = record.get('sourceId')
     source = source_by_id.get(source_id)
@@ -73,13 +86,33 @@ for record in history:
                 f'{rid}: operating margin mismatch: stored={operating_margin:.3f}, recomputed={recomputed:.3f}'
             )
 
+    capex = metrics['capex']['value']
+    if capex is not None and capex < 0:
+        errors.append(f'{rid}: capex must be stored as a positive expenditure magnitude')
+
+    cash_inputs = record.get('cashFlowInputs')
+    fcf = metrics['freeCashFlow']['value']
+    if cash_inputs:
+        operating_cash_flow = cash_inputs.get('operatingCashFlow')
+        capex_cash_outflow = cash_inputs.get('capexCashOutflow')
+        if operating_cash_flow is None or capex_cash_outflow is None:
+            errors.append(f'{rid}: cashFlowInputs requires operatingCashFlow and capexCashOutflow')
+        else:
+            if capex is None or abs(capex - capex_cash_outflow) > 0.01:
+                errors.append(f'{rid}: capex does not match cashFlowInputs capexCashOutflow')
+            expected_fcf = operating_cash_flow - capex_cash_outflow
+            if fcf is None or abs(fcf - expected_fcf) > 0.01:
+                errors.append(f'{rid}: FCF mismatch: stored={fcf}, expected={expected_fcf}')
+    elif fcf is not None and str(metrics['freeCashFlow'].get('basis', '')).startswith('Atlas算出'):
+        errors.append(f'{rid}: Atlas-calculated FCF requires cashFlowInputs')
+
     has_verified = any(metric.get('status') == 'verified' for metric in metrics.values())
     if has_verified and not record.get('verifiedAt'):
         errors.append(f'{rid}: verified metric requires verifiedAt')
 
 period_types = {record['periodType'] for record in history}
 if period_types != allowed_period_types:
-    errors.append(f'v0.4 seed must contain quarterly and annual records; got {period_types}')
+    errors.append(f'v0.4 history must contain quarterly and annual records; got {period_types}')
 
 covered_companies = {record['companyId'] for record in history}
 audited_companies = {
@@ -91,16 +124,37 @@ missing_audited = audited_companies - covered_companies
 if missing_audited:
     errors.append(f'verified operating-margin companies missing from history: {sorted(missing_audited)}')
 
+records_by_company = {}
+for record in history:
+    records_by_company.setdefault(record['companyId'], []).append(record)
+multi_period_companies = {cid for cid, rows in records_by_company.items() if len(rows) >= 2}
+verified_metrics = sum(
+    1 for record in history for metric in record['metrics'].values() if metric['status'] == 'verified'
+)
+cashflow_periods = sum(
+    1 for record in history
+    if record['metrics']['freeCashFlow']['value'] is not None and record['metrics']['capex']['value'] is not None
+)
+
+# v0.4 expanded-history regression floor. Future expansion may exceed these counts.
+if len(history) < 22:
+    errors.append(f'v0.4 history regression: expected at least 22 periods, got {len(history)}')
+if len(multi_period_companies) < 5:
+    errors.append(f'v0.4 history regression: expected at least 5 multi-period companies, got {len(multi_period_companies)}')
+if verified_metrics < 84:
+    errors.append(f'v0.4 history regression: expected at least 84 verified metrics, got {verified_metrics}')
+if cashflow_periods < 9:
+    errors.append(f'v0.4 cash-flow regression: expected at least 9 FCF/Capex periods, got {cashflow_periods}')
+
 if errors:
     print('v0.4 financial-history validation FAILED')
     for error in errors:
         print(f' - {error}')
     raise SystemExit(1)
 
-verified_metrics = sum(
-    1 for record in history for metric in record['metrics'].values() if metric['status'] == 'verified'
-)
 print(
     f'v0.4 financial-history validation OK: '
-    f'{len(history)} periods / {len(covered_companies)} companies / {verified_metrics} verified metrics'
+    f'{len(history)} periods / {len(covered_companies)} companies / '
+    f'{len(multi_period_companies)} multi-period companies / '
+    f'{verified_metrics} verified metrics / {cashflow_periods} FCF+Capex periods'
 )
