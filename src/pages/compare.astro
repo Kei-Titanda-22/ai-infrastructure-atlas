@@ -3,33 +3,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 const companies = (await getCollection('companies')).sort((a,b) => a.data.name.localeCompare(b.data.name));
 const compact = companies.map(c => ({
-  id:c.id, name:c.data.name, ticker:c.data.ticker, country:c.data.country, primaryLayer:c.data.primaryLayer,
+  id:c.id, name:c.data.name, japaneseName:c.data.japaneseName, ticker:c.data.ticker, country:c.data.country, primaryLayer:c.data.primaryLayer,
   scores:{
     aiExposure:{ value:c.data.scores.aiExposure.value, direction:c.data.scores.aiExposure.direction },
     rateSensitivity:{ value:c.data.scores.rateSensitivity.value, direction:c.data.scores.rateSensitivity.direction },
     cyclicality:{ value:c.data.scores.cyclicality.value, direction:c.data.scores.cyclicality.direction },
     moat:{ value:c.data.scores.moat.value, direction:c.data.scores.moat.direction },
   },
-  metrics:Object.fromEntries(Object.entries(c.data.metrics).map(([k,v]) => [k, v.value]))
+  metrics:c.data.metrics
 }));
 const defaults = ['nvidia','tsmc','asml','vertiv'];
 ---
-<BaseLayout title="Compare">
+<BaseLayout title="企業比較">
   <header class="page-head">
     <div class="shell">
-      <div class="eyebrow">Cross-sector comparison</div>
-      <h1>Compare</h1>
-      <p class="lead">最大4社。異業種でもUniversal Metricsは同じ行で比較し、セクター固有KPIは将来別ブロックに分離します。</p>
+      <div class="eyebrow">企業横断比較</div>
+      <h1>企業比較</h1>
+      <p class="lead">最大4社を同時比較します。異業種でも共通指標は同じ行で比較し、業種固有KPIは別枠で扱います。</p>
     </div>
   </header>
   <div class="shell section" id="compare-app">
-    <div class="notice">EquinixのようなREITと一般事業会社をPERだけで単純比較しない前提です。v0.1では構造比較を先行し、FFO/AFFO等のSector KPIは次段階で追加します。</div>
+    <div class="notice">EquinixのようなREITと一般事業会社をPERだけで単純比較しない設計です。FFO/AFFOなど、業種ごとに意味のある指標を別途追加します。</div>
     <div class="compare-picks">
       {[0,1,2,3].map((slot) => (
-        <label>Company {slot+1}
+        <label>比較企業 {slot+1}
           <select class="control compare-select" data-slot={slot}>
-            <option value="">—</option>
-            {companies.map(c => <option value={c.id} selected={c.id === defaults[slot]}>{c.data.name} ({c.data.ticker})</option>)}
+            <option value="">— 未選択 —</option>
+            {companies.map(c => <option value={c.id} selected={c.id === defaults[slot]}>{c.data.japaneseName || c.data.name} ({c.data.ticker})</option>)}
           </select>
         </label>
       ))}
@@ -47,20 +47,27 @@ const defaults = ['nvidia','tsmc','asml','vertiv'];
       const byId = new Map(companies.map(c => [c.id, c]));
       const selects = [...root.querySelectorAll('.compare-select')];
       const tbody = root.querySelector('#compare-table tbody');
+      const directionLabels = { Positive:'正方向', Negative:'逆方向', Mixed:'混合', Neutral:'中立' };
+      const scoreText = score => `${score.value}/5 · ${directionLabels[score.direction] || score.direction}`;
+      const metricText = (metric, suffix='') => {
+        if (!metric || metric.value == null) return 'N/A';
+        const date = metric.asOf ? ` · ${metric.asOf}` : '';
+        return `${metric.value}${suffix}${date}`;
+      };
       const rows = [
-        ['Company', c => `${c.name} (${c.ticker})`],
-        ['Primary layer', c => c.primaryLayer],
-        ['Country', c => c.country],
-        ['AI exposure', c => `${c.scores.aiExposure.value}/5 · ${c.scores.aiExposure.direction}`],
-        ['Rate sensitivity', c => `${c.scores.rateSensitivity.value}/5 · ${c.scores.rateSensitivity.direction}`],
-        ['Cyclicality', c => `${c.scores.cyclicality.value}/5 · ${c.scores.cyclicality.direction}`],
-        ['Moat', c => `${c.scores.moat.value}/5 · ${c.scores.moat.direction}`],
-        ['PER TTM', c => c.metrics.peTTM ?? 'N/A'],
-        ['PER FY1', c => c.metrics.peFY1 ?? 'N/A'],
-        ['PBR', c => c.metrics.pb ?? 'N/A'],
-        ['ROIC', c => c.metrics.roic == null ? 'N/A' : `${c.metrics.roic}%`],
-        ['Operating margin', c => c.metrics.operatingMargin == null ? 'N/A' : `${c.metrics.operatingMargin}%`],
-        ['Revenue growth YoY', c => c.metrics.revenueGrowth == null ? 'N/A' : `${c.metrics.revenueGrowth}%`],
+        ['企業', c => `${c.japaneseName || c.name} (${c.ticker})`],
+        ['主レイヤー', c => c.primaryLayer],
+        ['国・地域', c => c.country],
+        ['AI感応度', c => scoreText(c.scores.aiExposure)],
+        ['金利感応度', c => scoreText(c.scores.rateSensitivity)],
+        ['景気循環性', c => scoreText(c.scores.cyclicality)],
+        ['競争優位', c => scoreText(c.scores.moat)],
+        ['PER TTM', c => metricText(c.metrics.peTTM, '倍')],
+        ['PER FY1', c => metricText(c.metrics.peFY1, '倍')],
+        ['PBR', c => metricText(c.metrics.pb, '倍')],
+        ['ROIC', c => metricText(c.metrics.roic, '%')],
+        ['営業利益率', c => metricText(c.metrics.operatingMargin, '%')],
+        ['売上高成長率（前年同期比）', c => metricText(c.metrics.revenueGrowth, '%')],
       ];
       const render = () => {
         const picked = selects.map(s => byId.get(s.value)).filter(Boolean);
