@@ -2,8 +2,8 @@
 
 個人用の半導体・AIインフラ横断リサーチデータベース。
 
-**v0.3 completed: 100 companies / sector map / company comparison**  
-**Next milestone: v0.4 — earnings and financial history**
+**v0.1 / v0.2 / v0.3 completed**  
+**v0.4 in progress — earnings and normalized financial history**
 
 ## Live site
 
@@ -30,7 +30,7 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 - v0.1 — 20社・静的データ **Complete**
 - v0.2 — 100社・セクターマップ **Complete**
 - v0.3 — 企業比較 **Complete**
-- v0.4 — 決算データ **Next**
+- v0.4 — 決算データ **In progress**
 - v0.5 — 自動更新
 - v1.0 — AI Infrastructure Atlas
 
@@ -44,11 +44,13 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 - searchable 2–5 company comparison workbench
 - 8 sector comparison presets
 - comparability states with period / basis / verification checks
+- normalized quarterly / annual financial-history data model
+- v0.4 financial-history explorer with in-house SVG charts
 - financial provenance and verification states
 - Pagefind full-text search
 - GitHub Pages deployment
 
-新規企業の財務数値は監査前のため意図的に未収録です。Source利用条件未審査の資料は手動参照限定です。
+新規企業の財務数値は監査前のため意図的に未収録です。Source利用条件未審査の資料は手動参照限定です。v0.4ではFCF・設備投資も定義確認前に推定で補いません。
 
 ## Stack
 
@@ -75,6 +77,7 @@ npm run preview
 - `docs/roadmap.md` — canonical release roadmap
 - `docs/v0.2-scope.md` — completed 100-company expansion
 - `docs/v0.3-scope.md` — completed company-comparison phase
+- `docs/v0.4-scope.md` — financial-history phase and completion gate
 - `docs/data-model.md` — research data contract
 - `docs/design-system-v04.md` — UI design system
 - `docs/status.md` — current implementation state
