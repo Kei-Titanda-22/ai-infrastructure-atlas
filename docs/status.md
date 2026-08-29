@@ -17,6 +17,7 @@
 - [x] Constitutional validation / v0.2 baseline / v0.3 comparison validation / Astro build / Pagefind / deployment verified in CI
 - [x] v0.4 initial financial-history migration deployed — Run #112
 - [x] v0.4 expanded financial history / FCF / Capex deployed — Run #113
+- [x] v0.4 normalized financial history connected to comparison — Run #115
 
 ## Current database
 
@@ -43,18 +44,21 @@ FCF / Capexは定義確認済み期間だけ実データ化した。NVIDIA通期
 
 `/financials/` は企業を切り替え、四半期・通期を分離した自前SVG推移図と、一次資料・会計基準・検証状態付き決算表を表示する。FCF / Capexが存在する企業では追加グラフを表示し、負のFCFにも対応する。
 
-履歴収録済み企業の個社ページでは財務セクションから決算履歴へ直接移動できる。企業比較画面でも履歴収録済み企業の列見出しから決算履歴へ移動でき、既存の `?ids=` 比較URL契約は変更していない。
+履歴収録済み企業の個社ページでは財務セクションから決算履歴へ直接移動できる。企業比較画面でも履歴収録済み企業の列見出しから決算履歴へ移動できる。
+
+企業比較本体もv0.4正規化履歴を消費する。v0.3の `?ids=` 比較URL契約は維持しつつ、比較表末尾へ「決算時系列（v0.4 正規化）」を追加する。選択企業ごとの最新収録期間と、売上高・営業利益・営業利益率・FCF・設備投資を表示する。金額は報告通貨・単位が異なれば比較不能、四半期/通期が混在すれば比較不能、FCF/設備投資はbasis定義が異なれば比較不能とする。会計基準や最新収録期間の差は条件注意として残し、各セルから一次資料と全履歴へ遷移できる。
 
 `scripts/validate-v04.py` はSource/company対応、ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt、営業利益率再計算、Capex符号、Atlas算出FCFの入力値・算式、既存監査済み企業の移行漏れを検査する。さらに22期間 / 複数期間企業5社 / 84検証済み指標 / FCF+Capex 9期間を現在の回帰下限として固定した。
+
+Run #115ではvalidator、Astro 108ページ生成、Pagefind 104ページ / 2,590語、Pages deployが成功した。配布artifactの `compare/index.html` にv0.4履歴JSONと比較ブリッジが埋め込まれていることを確認し、生成された3本のインラインJavaScriptも `node --check` で構文確認済み。
 
 ## Remaining v0.4 work
 
 1. 7社から主要企業群へ時系列履歴を拡張し、各社で四半期・通期の連続性を高める
 2. TSMC・キオクシア・東京エレクトロン等のFCF / Capexを一次資料定義付きで追加する
-3. v0.3の `?ids=` 契約を維持したまま、比較表そのものが正規化時系列データを消費できるようにする
-4. 決算更新履歴を企業・期間・Source単位で体系化する
-5. PER / PBR / ROICはSource・利用条件・定義要件を満たしたものだけ掲載する
-6. v0.4完了判定前に主要企業の履歴カバレッジと比較可能性を再監査する
+3. 決算更新履歴を企業・期間・Source単位で体系化する
+4. PER / PBR / ROICはSource・利用条件・定義要件を満たしたものだけ掲載する
+5. v0.4完了判定前に主要企業の履歴カバレッジと比較可能性を再監査する
 
 ## Data quality policy
 
