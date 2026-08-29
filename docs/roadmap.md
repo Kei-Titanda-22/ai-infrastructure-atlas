@@ -1,75 +1,92 @@
-# Release rule
+# AI Infrastructure Atlas Roadmap
 
-Every milestone that is labeled a Web release must end with a browser-accessible deployed URL. Repository/ZIP completion alone does not close a release milestone.
+`docs/constitution.md` applies to every version. Each Web release must end with a browser-accessible deployed URL; repository or ZIP completion alone does not close a milestone.
 
-# Roadmap
+Version numbers represent the **main completion target of each phase**, not the first appearance of a feature. Some later-stage functions are already prototyped and remain available, but they do not cause the project to skip milestones.
 
-`docs/constitution.md` applies to every version. A version milestone cannot waive a constitutional rule for convenience.
+## v0.1 — 20社・静的データ
 
-## v0.1 — structure prototype
+Status: **Complete**
 
-- [x] taxonomy
-- [x] Core 20
-- [x] company schema
-- [x] Atlas page
+Completion criteria:
+
+- [x] Core 20 companies
+- [x] static company data
 - [x] company directory
-- [x] company detail route
-- [x] 4-company compare
-- [x] static full-text search integration
-- [x] GitHub Pages workflow
-- [x] official IR hub registry for Core 20
-- [x] Project Constitution Articles 1–9
-- [x] Source Policy Registry with conservative pending state
-- [x] Metric Definition Registry
-- [x] CI validation gate for provenance/policy invariants
-- [x] Git secret-exclusion policy + heuristic secret check
-- [ ] document-level source verification for Core 20 profiles
-- [ ] source-terms review for automated retrieval candidates
-- [ ] financial ingestion source decision
+- [x] company detail pages
+- [x] technology tags and search
+- [x] value-chain entry point
+- [x] browser-accessible GitHub Pages deployment
+- [x] project constitution and source registries
+- [x] no real-time stock-price distribution
 
-## v0.2 — verified company intelligence
+Extra functions such as comparison, financial tables and provenance validation were implemented early and remain in place.
 
-- extend IR hub registry to document-level source IDs
-- review and record source terms before any automated access
-- verify products / strengths / peer mapping
-- add relationship graph with evidence levels
-- add sector-specific KPI schemas using the same provenance contract
-- add earnings history data
-- generate financial and valuation charts in-house
-- expand to 40–60 companies
+## v0.2 — 100社・セクターマップ
 
-Priority additions:
+Status: **In progress**
 
-AMD, ASM International, KOKUSAI ELECTRIC, SCREEN, Lasertec, BESI, ASMPT, Hanmi Semiconductor, IBIDEN, Ajinomoto Fine-Techno, Furukawa Electric, Sumitomo Electric, Coherent, Lumentum, Schneider Electric, Digital Realty.
+Primary target:
 
-## v0.3 — automated updates
+- expand from 20 to about 100 companies
+- strengthen process / technology / region taxonomy
+- build sector maps that make peer groups and upstream/downstream positioning visible
+- maintain fast search and filtering at 100-company scale
+- preserve existing company URLs and data contracts
+- apply Source / date / definition / verification-state rules to all new data
+
+Expansion details are tracked in `docs/v0.2-scope.md`.
+
+## v0.3 — 企業比較
+
+Primary target:
+
+- mature the existing comparison prototype into a core workflow
+- 3–5 company comparison presets
+- comparable-period checks
+- product / technology / factory / financial comparison
+- sector-specific comparable metrics
+- explicit reasons when comparison is not valid
+
+## v0.4 — 決算データ
+
+Primary target:
+
+- quarterly financial history
+- revenue / operating profit / margin / FCF / Capex
+- PER / PBR / ROIC where source and definition requirements are satisfied
+- in-house generated charts
+- earnings update history
+- document-level primary-source provenance
+
+## v0.5 — 自動更新
 
 Automation begins only for sources whose policy record explicitly permits the intended use.
 
-- scheduled source retrieval
-- raw snapshots kept append-only where practical
-- normalization tests
-- metric freshness indicator
+Primary target:
+
+- scheduled retrieval for approved sources
+- append-only raw snapshots where practical
+- normalization and calculation tests
+- freshness state
 - build only after provenance/schema validation succeeds
-- change log for material KPI updates
-- no real-time stock-price distribution
+- material-change log
+- no real-time stock-price redistribution
+- API keys never committed to GitHub
 
-## v0.4 — research workflow
+## v1.0 — AI Infrastructure Atlas
 
-- watchlist
-- saved comparison presets
-- earnings-change view
-- thesis history / revision log
-- optional local notes layer
+Primary target:
 
-## Mandatory review gates before broader publication / monetization
+- 100+ company research database with stable taxonomy
+- value-chain and sector maps
+- mature company comparison
+- audited financial history
+- evidence-backed company claims and relationships
+- controlled automatic updates
+- consistent Japanese-first research UI
+- production-quality documentation and governance
 
-Before a public launch materially broader than a personal research site, and again before paid access or collection of personal data:
+## Review gate before broader publication / monetization
 
-- financial-regulation / investment-information review
-- Act on Specified Commercial Transactions review where applicable
-- privacy / personal-data review
-- source/API/content licensing and redistribution review
-- terms-of-service and disclaimer review
-
-The gate requires fresh review at that time; this roadmap does not pre-approve legal compliance.
+Before materially broader public distribution, paid access, or collection of personal information, re-review financial-regulation requirements, the Act on Specified Commercial Transactions where applicable, privacy/personal-data handling, source/API/content licensing and redistribution, terms of service, and disclaimers.
