@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { layerLabel, countryLabel, tagLabel, productInfo } from '../lib/display';
+import { layerLabel, countryLabel, tagLabel, productInfo } from '../lib/display-v02';
 import { getMetricState, formatMetricValue } from '../lib/metrics';
 import facilities from '../data/facilities.json';
 import sectorKpis from '../data/sector-kpis.json';
@@ -16,7 +16,7 @@ const facilitiesByCompany = new Map();
 for (const facility of facilities) { const list = facilitiesByCompany.get(facility.companyId) ?? []; list.push(facility); facilitiesByCompany.set(facility.companyId, list); }
 const verifiedRoic = new Set(roicCalculations.filter(calc => calc.status === 'verified').map(calc => calc.companyId));
 const compact = companies.map(c => ({
-  id:c.id, name:c.data.name, japaneseName:c.data.japaneseName, ticker:c.data.ticker,
+  id:c.id, name:c.data.name, japaneseName:c.data.japaneseName, ticker:c.data.ticker ?? '非上場',
   country:countryLabel(c.data.country), primaryLayer:layerLabel(c.data.primaryLayer),
   products:c.data.products.map(product => productInfo(product).label), technologies:c.data.tags.map(tagLabel),
   facilities:(facilitiesByCompany.get(c.id) ?? []).map(site => `${site.city}（${site.region}）`),
@@ -33,7 +33,7 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
   <div class="shell section" id="compare-app">
     <p class="meta">主観評価は客観データと分離し、表の最下段に「分析」として表示します。未評価の企業は無理に点数を付けず「未評価」と表示します。</p>
     <div class="compare-picks">
-      {[0,1,2,3,4].map((slot) => <label>比較企業 {slot+1}<select class="control compare-select" data-slot={slot}><option value="">— 未選択 —</option>{companies.map(c => <option value={c.id} selected={c.id === defaults[slot]}>{c.data.japaneseName || c.data.name} ({c.data.ticker})</option>)}</select></label>)}
+      {[0,1,2,3,4].map((slot) => <label>比較企業 {slot+1}<select class="control compare-select" data-slot={slot}><option value="">— 未選択 —</option>{companies.map(c => <option value={c.id} selected={c.id === defaults[slot]}>{c.data.japaneseName || c.data.name} ({c.data.ticker ?? '非上場'})</option>)}</select></label>)}
     </div>
     <div class="table-scroll compare-scroll"><table class="compare-table" id="compare-table"><thead><tr id="compare-head"><th>指標</th></tr></thead><tbody></tbody></table></div>
     <script id="compare-data" type="application/json" set:html={JSON.stringify({ companies: compact, definitions, commonDefinitions })}></script>
@@ -110,7 +110,7 @@ const defaults = ['nvidia','tsmc','asml','tokyo-electron',''];
         const picked=selects.map(s=>byId.get(s.value)).filter(Boolean); if(!tbody||!theadRow)return;
         tbody.replaceChildren(); theadRow.replaceChildren();
         const lead=document.createElement('th');lead.textContent='指標';theadRow.append(lead);
-        picked.forEach(c=>{const th=document.createElement('th');th.textContent=`${c.japaneseName||c.name}\n${c.ticker}`;th.style.whiteSpace='pre-line';theadRow.append(th);});
+        picked.forEach(c=>{const th=document.createElement('th');th.textContent=`${c.japaneseName||c.name}\n${c.ticker || '非上場'}`;th.style.whiteSpace='pre-line';theadRow.append(th);});
         sectionRow('事業・技術',picked);
         addRow('主領域',c=>c.primaryLayer,picked); addRow('国・地域',c=>c.country,picked);
         addRow('主力製品',c=>(c.products||[]).slice(0,4).join('\n')||'未収録',picked);
