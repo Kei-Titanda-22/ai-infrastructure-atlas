@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import facilities from '../../data/facilities.json';
 import valueChain from '../../data/value-chain.json';
-import { layerLabel, countryLabel, tagLabel, productInfo } from '../../lib/display';
+import { layerLabel, countryLabel, tagLabel, productInfo } from '../../lib/display-v02';
 import { withBase } from '../../lib/paths';
 
 const companies = (await getCollection('companies')).sort((a,b) => (a.data.japaneseName || a.data.name).localeCompare(b.data.japaneseName || b.data.name, 'ja'));
@@ -21,6 +21,7 @@ const stageIdsForLayers = (companyLayers: string[]) => {
   const ids = new Set<string>();
   if (companyLayers.includes('Compute & Silicon')) ids.add('compute');
   if (companyLayers.includes('Memory')) ids.add('memory');
+  if (companyLayers.includes('半導体材料・基板')) ids.add('materials');
   if (companyLayers.includes('Foundry & Logic Manufacturing') || companyLayers.includes('Wafer Fab Equipment')) ids.add('manufacturing');
   if (companyLayers.includes('Test & Back-end')) ids.add('backend');
   if (companyLayers.includes('Network & Optical')) ids.add('interconnect');
@@ -63,7 +64,7 @@ const stageIdsForLayers = (companyLayers: string[]) => {
           <tr>
             <th class="company-col" data-sort-header="name" aria-sort="ascending"><button class="sort-button" type="button" data-sort="name">企業 <span class="sort-indicator">↑</span></button></th>
             <th data-sort-header="country"><button class="sort-button" type="button" data-sort="country">国・地域 <span class="sort-indicator">↕</span></button></th>
-            <th data-sort-header="layer"><button class="sort-button" type="button" data-sort="layer">主領域 <span class="sort-indicator">↕</span></button></th>
+            <th>主領域</th>
             <th>主力製品</th><th>主要技術</th><th>主要拠点</th>
             <th data-sort-header="updated"><button class="sort-button" type="button" data-sort="updated">更新日 <span class="sort-indicator">↕</span></button></th>
           </tr>
@@ -75,14 +76,14 @@ const stageIdsForLayers = (companyLayers: string[]) => {
             const productLabels = d.products.map(product => productInfo(product).label);
             const stageIds = stageIdsForLayers(d.layers);
             const searchText = [
-              d.name, d.japaneseName, d.reading, d.ticker, d.country, countryLabel(d.country),
+              d.name, d.japaneseName, d.reading, d.ticker ?? '', d.country, countryLabel(d.country),
               d.primaryLayer, layerLabel(d.primaryLayer), d.summary, d.aiRole,
               ...d.tags, ...d.tags.map(tagLabel), ...d.products, ...productLabels,
               ...stageIds.map(id => stageLabelById.get(id) || id), ...sites.flatMap(site => [site.city, site.region, site.country])
             ].join(' ').toLowerCase();
             return (
-              <tr data-company-row data-search={searchText} data-tags={d.tags.join('|')} data-layer={d.primaryLayer} data-country={d.country} data-stages={stageIds.join('|')} data-sort-name={d.japaneseName || d.name} data-sort-country={countryLabel(d.country)} data-sort-layer={layerLabel(d.primaryLayer)} data-sort-updated={d.lastReviewed}>
-                <td class="company-col"><span class="company-index-name"><a href={withBase(`companies/${company.id}/`)}>{d.japaneseName || d.name}</a></span><span class="company-index-en"><span class="mono">{d.ticker}</span> · {d.name}</span></td>
+              <tr data-company-row data-search={searchText} data-tags={d.tags.join('|')} data-layer={d.primaryLayer} data-country={d.country} data-stages={stageIds.join('|')} data-sort-name={d.japaneseName || d.name} data-sort-country={countryLabel(d.country)} data-sort-updated={d.lastReviewed}>
+                <td class="company-col"><span class="company-index-name"><a href={withBase(`companies/${company.id}/`)}>{d.japaneseName || d.name}</a></span><span class="company-index-en">{d.ticker ? <><span class="mono">{d.ticker}</span> · </> : <span>非上場 · </span>}{d.name}</span></td>
                 <td><a class="filter-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a></td>
                 <td><a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></td>
                 <td class="company-index-products">{productLabels.slice(0,2).join(' / ')}{productLabels.length > 2 ? <span class="table-more"> +{productLabels.length - 2}</span> : null}</td>
@@ -112,9 +113,10 @@ const stageIdsForLayers = (companyLayers: string[]) => {
       const stageLabel = root.querySelector('#stage-filter-label');
       const stageClear = root.querySelector('#stage-filter-clear');
       const params = new URLSearchParams(location.search);
-      const stageNames = { compute:'計算半導体', memory:'メモリ・ストレージ', manufacturing:'半導体製造', backend:'テスト・後工程', interconnect:'ネットワーク・光通信', datacenter:'データセンター設備', physical:'フィジカルAI' };
+      const stageNames = { compute:'計算半導体', memory:'メモリ・ストレージ', materials:'半導体材料・基板', manufacturing:'半導体製造', backend:'テスト・後工程', interconnect:'ネットワーク・光通信', datacenter:'データセンター設備', physical:'フィジカルAI' };
       let stage = params.get('stage') || '';
-      let sortKey = params.get('sort') || 'name';
+      const allowedSorts = new Set(['name','country','updated']);
+      let sortKey = allowedSorts.has(params.get('sort') || '') ? (params.get('sort') || 'name') : 'name';
       let sortDirection = params.get('order') === 'desc' ? -1 : 1;
 
       if (input instanceof HTMLInputElement && params.get('q')) input.value = params.get('q') || '';
