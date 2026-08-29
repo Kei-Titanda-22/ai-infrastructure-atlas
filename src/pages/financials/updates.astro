@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { financialHistory, financialStatusLabel } from '../../lib/financial-history';
+import sources from '../../data/sources.json';
+import v02Sources from '../../data/sources-v02.json';
+import documentSources from '../../data/document-sources.json';
+import { withBase } from '../../lib/paths';
+
+const companies = await getCollection('companies');
+const companyById = new Map(companies.map(company => [company.id, company]));
+const sourceById = new Map([...sources, ...v02Sources, ...documentSources].map(source => [source.id, source]));
+const metricLabels: Record<string, string> = {
+  revenue: '売上高',
+  operatingProfit: '営業利益',
+  operatingMargin: '営業利益率',
+  freeCashFlow: 'FCF',
+  capex: '設備投資',
+};
+const rows = financialHistory
+  .map(record => ({
+    record,
+    company: companyById.get(record.companyId),
+    source: sourceById.get(record.sourceId),
+    verifiedMetricIds: Object.entries(record.metrics)
+      .filter(([, metric]) => metric.status === 'verified')
+      .map(([metricId]) => metricId),
+  }))
+  .sort((a, b) => b.record.verifiedAt.localeCompare(a.record.verifiedAt) || b.record.endDate.localeCompare(a.record.endDate) || a.record.companyId.localeCompare(b.record.companyId));
+const coveredCompanyIds = [...new Set(rows.map(row => row.record.companyId))].sort((a, b) => {
+  const aa = companyById.get(a)?.data.japaneseName || companyById.get(a)?.data.name || a;
+  const bb = companyById.get(b)?.data.japaneseName || companyById.get(b)?.data.name || b;
+  return aa.localeCompare(bb, 'ja');
+});
+---
+<BaseLayout title="決算更新履歴" description="AI Infrastructure Atlas v0.4の正規化決算レコード更新履歴" indexable>
+  <header class="page-head">
+    <div class="shell">
+      <span class="eyebrow">v0.4 EARNINGS UPDATE LEDGER</span>
+      <h1>決算更新履歴</h1>
+      <p class="lead">正規化された決算レコードを、企業・決算期間・一次資料・検証日単位で追跡します。更新履歴は財務履歴そのものから生成し、別管理による不整合を避けます。</p>
+    </div>
+  </header>
+
+  <div class="shell section" id="earnings-update-ledger">
+    <div class="financial-ledger-toolbar">
+      <label>企業
+        <select id="ledger-company" class="control">
+          <option value="">全収録企業</option>
+          {coveredCompanyIds.map(id => {
+            const company = companyById.get(id);
+            return <option value={id}>{company?.data.japaneseName || company?.data.name || id}</option>;
+          })}
+        </select>
+      </label>
+      <label>期間区分
+        <select id="ledger-period-type" class="control">
+          <option value="">四半期・通期</option>
+          <option value="quarterly">四半期</option>
+          <option value="annual">通期</option>
+        </select>
+      </label>
+      <div class="financial-ledger-summary"><strong id="ledger-count">{rows.length}</strong><span>件 / {coveredCompanyIds.length}社</span></div>
+      <a class="text-link financial-ledger-back" href={withBase('financials/')}>決算データへ戻る →</a>
+    </div>
+
+    <div class="table-scroll financial-ledger-table-wrap">
+      <table class="metrics-table financial-ledger-table">
+        <thead><tr><th>検証日</th><th>企業</th><th>決算期間</th><th>更新内容</th><th>一次資料</th><th>状態</th></tr></thead>
+        <tbody>
+          {rows.map(({ record, company, source, verifiedMetricIds }) => (
+            <tr data-ledger-row data-company={record.companyId} data-period-type={record.periodType}>
+              <td class="mono">{record.verifiedAt}</td>
+              <td><a class="text-link" href={withBase(`companies/${record.companyId}/`)}>{company?.data.japaneseName || company?.data.name || record.companyId}</a><span class="metric-provenance"><a class="text-link" href={`${withBase('financials/')}?company=${encodeURIComponent(record.companyId)}`}>全履歴</a></span></td>
+              <td><strong>{record.periodLabel}</strong><span class="metric-provenance">期末 {record.endDate} · {record.periodType === 'annual' ? '通期' : '四半期'}</span><span class="metric-provenance">{record.accountingBasis} · {record.currency} {record.unit}</span></td>
+              <td><div class="financial-ledger-metrics">{verifiedMetricIds.map(metricId => <span>{metricLabels[metricId] || metricId}</span>)}</div></td>
+              <td>{source ? <a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a> : <span class="financial-missing">Source Registry要確認</span>}</td>
+              <td><span class="metric-state metric-state-verified">{financialStatusLabel('verified')}</span><span class="metric-provenance">{verifiedMetricIds.length}/5指標</span></td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="financial-definition-note">この画面の1行は「1企業 × 1決算期間 × 1一次資料」の正規化レコードです。同じ検証日に複数行がある場合でも、企業・期間・Sourceを分離して追跡できます。</p>
+  </div>
+
+  <script is:inline>
+    const root = document.querySelector('#earnings-update-ledger');
+    if (root) {
+      const company = root.querySelector('#ledger-company');
+      const periodType = root.querySelector('#ledger-period-type');
+      const count = root.querySelector('#ledger-count');
+      const rows = [...root.querySelectorAll('[data-ledger-row]')];
+      const params = new URLSearchParams(location.search);
+      if (company instanceof HTMLSelectElement && params.get('company')) company.value = params.get('company') || '';
+      if (periodType instanceof HTMLSelectElement && params.get('type')) periodType.value = params.get('type') || '';
+      const apply = () => {
+        const companyValue = company instanceof HTMLSelectElement ? company.value : '';
+        const typeValue = periodType instanceof HTMLSelectElement ? periodType.value : '';
+        let visible = 0;
+        rows.forEach(row => {
+          const hit = (!companyValue || row.getAttribute('data-company') === companyValue) && (!typeValue || row.getAttribute('data-period-type') === typeValue);
+          if (row instanceof HTMLElement) row.hidden = !hit;
+          if (hit) visible++;
+        });
+        if (count) count.textContent = String(visible);
+        const next = new URLSearchParams();
+        if (companyValue) next.set('company', companyValue);
+        if (typeValue) next.set('type', typeValue);
+        history.replaceState(null, '', `${location.pathname}${next.size ? `?${next}` : ''}`);
+      };
+      company?.addEventListener('change', apply);
+      periodType?.addEventListener('change', apply);
+      apply();
+    }
+  </script>
+</BaseLayout>
