@@ -51,9 +51,10 @@ const financialCompanyIds = [...new Set(financialHistory.map(record => record.co
       const siteMain = document.querySelector('.site-main');
       const financialIds = new Set((siteMain?.getAttribute('data-financial-company-ids') || '').split(',').filter(Boolean));
       const pathname = location.pathname;
-      const companyMarker = '/companies/';
-      const companyMarkerIndex = pathname.indexOf(companyMarker);
-      const basePrefix = companyMarkerIndex >= 0 ? pathname.slice(0, companyMarkerIndex + 1) : pathname.replace(/[^/]*$/, '');
+      const sectionMarkers = ['/companies/', '/compare/', '/financials/', '/atlas/', '/search/', '/methodology/', '/glossary/'];
+      const sectionIndexes = sectionMarkers.map(marker => pathname.indexOf(marker)).filter(index => index >= 0);
+      const sectionIndex = sectionIndexes.length ? Math.min(...sectionIndexes) : -1;
+      const basePrefix = sectionIndex >= 0 ? pathname.slice(0, sectionIndex + 1) : pathname.endsWith('/') ? pathname : pathname.replace(/[^/]*$/, '');
       const companyMatch = pathname.match(/\/companies\/([^/]+)\/?$/);
 
       if (companyMatch) {
