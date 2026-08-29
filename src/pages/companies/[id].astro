@@ -8,6 +8,7 @@ import sources from '../../data/sources.json';
 import documentSources from '../../data/document-sources.json';
 import sectorKpis from '../../data/sector-kpis.json';
 import sectorKpiDefinitions from '../../data/sector-kpi-definitions.json';
+import roicCalculations from '../../data/roic-calculations.json';
 
 export async function getStaticPaths() {
   const companies = await getCollection('companies');
@@ -20,6 +21,7 @@ const allSources = [...sources, ...documentSources];
 const peers = d.competitors.map(id => allCompanies.find(c => c.id === id)).filter(Boolean);
 const companySources = allSources.filter(source => d.sourceIds.includes(source.id));
 const companyKpis = sectorKpis.filter(kpi => kpi.companyId === company.id);
+const companyRoic = roicCalculations.find(calc => calc.companyId === company.id && d.metrics.roic.calculationId === calc.id);
 const kpiDefinitionById = new Map(sectorKpiDefinitions.map(definition => [definition.id, definition]));
 const scoreLabels: Record<string, string> = { aiExposure:'AI感応度', rateSensitivity:'金利感応度', cyclicality:'景気循環性', moat:'競争優位' };
 const metricLabels: Record<string, string> = { peTTM:'PER TTM', peFY1:'PER FY1', pb:'PBR', roic:'ROIC', operatingMargin:'営業利益率', revenueGrowth:'売上高成長率（前年同期比）' };
@@ -30,6 +32,10 @@ const formatKpi = (kpi: any) => {
   if (kpi.unit === 'USD bn') return `$${kpi.value}B`;
   if (kpi.unit === 'connections') return `${Number(kpi.value).toLocaleString('ja-JP')}件`;
   return `${kpi.value} ${kpi.unit}`;
+};
+const formatRoicValue = (value: any) => {
+  if (value.unit === '%') return `${Number(value.value).toLocaleString('ja-JP', { maximumFractionDigits: 2 })}%`;
+  return `${Number(value.value).toLocaleString('ja-JP', { maximumFractionDigits: 1 })} ${value.unit}`;
 };
 ---
 <BaseLayout title={d.japaneseName || d.name} description={d.summary} indexable>
@@ -89,6 +95,7 @@ const formatKpi = (kpi: any) => {
                         <span class="metric-provenance">
                           基準日：{metric.asOf || '未設定'} · 対象期間：{metric.period || '未設定'} · 基準：{metric.basis || '未設定'}
                           {source ? <> · <a href={source.url} target="_blank" rel="noreferrer">Source ↗</a></> : null}
+                          {metric.calculationId ? <> · <a href="#roic-calculation">計算根拠 ↓</a></> : null}
                         </span>
                       )}
                     </td>
@@ -98,6 +105,45 @@ const formatKpi = (kpi: any) => {
             </tbody>
           </table>
         </section>
+        {companyRoic && (
+          <section class="panel" id="roic-calculation">
+            <div class="eyebrow">Atlas自前計算</div>
+            <h2>ROIC計算根拠</h2>
+            <p class="meta">{companyRoic.period} · 単位 {companyRoic.currency}。一次財務諸表の入力値からCIでも再計算しています。</p>
+            <table class="metrics-table">
+              <tbody>
+                <tr><th>実効税率</th><td>{formatRoicValue(companyRoic.outputs.effectiveTaxRate)}<span class="metric-provenance">{companyRoic.outputs.effectiveTaxRate.basis}</span></td></tr>
+                <tr><th>NOPAT</th><td>{formatRoicValue(companyRoic.outputs.nopat)}<span class="metric-provenance">{companyRoic.outputs.nopat.basis}</span></td></tr>
+                <tr><th>期首投下資本</th><td>{formatRoicValue(companyRoic.outputs.beginningInvestedCapital)}<span class="metric-provenance">{companyRoic.outputs.beginningInvestedCapital.basis}</span></td></tr>
+                <tr><th>期末投下資本</th><td>{formatRoicValue(companyRoic.outputs.endingInvestedCapital)}<span class="metric-provenance">{companyRoic.outputs.endingInvestedCapital.basis}</span></td></tr>
+                <tr><th>平均投下資本</th><td>{formatRoicValue(companyRoic.outputs.averageInvestedCapital)}<span class="metric-provenance">{companyRoic.outputs.averageInvestedCapital.basis}</span></td></tr>
+                <tr><th>ROIC</th><td><strong>{formatRoicValue(companyRoic.outputs.roic)}</strong><span class="metric-provenance">{companyRoic.outputs.roic.basis}</span></td></tr>
+              </tbody>
+            </table>
+            <details style="margin-top:14px">
+              <summary style="cursor:pointer;font-weight:700">入力値と一次資料を確認</summary>
+              <table class="metrics-table" style="margin-top:10px">
+                <tbody>
+                  {Object.entries(companyRoic.inputs).map(([name, input]: [string, any]) => (
+                    <tr>
+                      <th>{name}</th>
+                      <td>
+                        {formatRoicValue(input)}
+                        <span class="metric-provenance">
+                          {input.period} · {input.basis}
+                          {input.sourceIds.map((sourceId: string) => {
+                            const source = sourceById.get(sourceId);
+                            return source ? <> · <a href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a></> : null;
+                          })}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </details>
+          </section>
+        )}
         {companyKpis.length > 0 && (
           <section class="panel">
             <h2>業種固有KPI</h2>
