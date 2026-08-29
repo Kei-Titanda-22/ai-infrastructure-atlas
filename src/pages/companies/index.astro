@@ -6,27 +6,27 @@ const companies = (await getCollection('companies')).sort((a,b) => a.data.name.l
 const layers = [...new Set(companies.map(c => c.data.primaryLayer))].sort();
 const countries = [...new Set(companies.map(c => c.data.country))].sort();
 ---
-<BaseLayout title="Companies">
+<BaseLayout title="企業一覧">
   <header class="page-head">
     <div class="shell">
-      <div class="eyebrow">Research universe</div>
-      <h1>Companies</h1>
-      <p class="lead">企業名・ティッカー・Primary Layer・国で絞り込み。v0.1ではCore 20を対象とし、各社の事業構造と比較画面を優先して整備します。</p>
+      <div class="eyebrow">調査対象企業</div>
+      <h1>企業一覧</h1>
+      <p class="lead">企業名・ティッカー・主レイヤー・国で絞り込めます。中核20社から、事業構造・決算・業種固有KPIの整備を進めています。</p>
     </div>
   </header>
   <div class="shell section" id="companies-app">
     <div class="toolbar">
       <input id="company-search" class="control" type="search" placeholder="NVIDIA / 8035 / HBM ..." aria-label="企業検索" />
       <select id="layer-filter" class="control" aria-label="レイヤーで絞り込み">
-        <option value="">All layers</option>
+        <option value="">すべてのレイヤー</option>
         {layers.map(layer => <option value={layer}>{layer}</option>)}
       </select>
       <select id="country-filter" class="control" aria-label="国で絞り込み">
-        <option value="">All countries</option>
+        <option value="">すべての国</option>
         {countries.map(country => <option value={country}>{country}</option>)}
       </select>
     </div>
-    <p class="result-count" id="result-count">{companies.length} companies</p>
+    <p class="result-count" id="result-count">{companies.length}社</p>
     <div class="grid company-grid" id="company-grid">
       {companies.map(company => <CompanyCard company={company} />)}
     </div>
@@ -53,7 +53,7 @@ const countries = [...new Set(companies.map(c => c.data.country))].sort();
           card.hidden = !hit;
           if (hit) visible++;
         });
-        if (count) count.textContent = `${visible} companies`;
+        if (count) count.textContent = `${visible}社`;
       };
       input?.addEventListener('input', apply);
       layer?.addEventListener('change', apply);
