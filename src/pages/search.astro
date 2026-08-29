@@ -4,18 +4,18 @@ import { withBase } from '../lib/paths';
 const pagefindPath = withBase('pagefind/pagefind.js');
 const basePath = withBase('');
 ---
-<BaseLayout title="Search">
+<BaseLayout title="全文検索">
   <header class="page-head">
     <div class="shell">
-      <div class="eyebrow">Full-text index</div>
-      <h1>Search</h1>
-      <p class="lead">ビルド後にPagefindが静的HTMLを索引化します。企業名だけでなく、製品、強み、リスク、AI上の役割まで全文検索できます。</p>
+      <div class="eyebrow">サイト内全文検索</div>
+      <h1>全文検索</h1>
+      <p class="lead">企業名だけでなく、製品、強み、リスク、AI上の役割、技術用語まで検索できます。</p>
     </div>
   </header>
   <div class="shell section" id="search-app" data-pagefind-path={pagefindPath} data-base-path={basePath}>
     <form class="search-box" id="full-search-form">
-      <input id="full-search-input" class="control" type="search" placeholder="HBM / lithography / cooling ..." aria-label="全文検索" />
-      <button class="primary-button" type="submit">Search</button>
+      <input id="full-search-input" class="control" type="search" placeholder="HBM / 露光 / 冷却 / NVIDIA ..." aria-label="全文検索" />
+      <button class="primary-button" type="submit">検索</button>
     </form>
     <p class="result-count" id="search-status">検索語を入力してください。</p>
     <div class="search-results" id="search-results" aria-live="polite"></div>
@@ -40,11 +40,11 @@ const basePath = withBase('');
         event.preventDefault();
         const q = input instanceof HTMLInputElement ? input.value.trim() : '';
         if (!q || !results || !status) return;
-        status.textContent = 'Searching…'; results.replaceChildren();
+        status.textContent = '検索中…'; results.replaceChildren();
         try {
           const pf = await load();
           const search = await pf.search(q);
-          status.textContent = `${search.results.length} results`;
+          status.textContent = `${search.results.length}件`;
           for (const ref of search.results.slice(0,30)) {
             const item = await ref.data();
             const a = document.createElement('a'); a.className = 'search-result';
@@ -56,7 +56,7 @@ const basePath = withBase('');
             a.append(h,p); results.append(a);
           }
         } catch (error) {
-          status.textContent = 'Pagefind index is available after `npm run build`. During Astro dev, use Companies filtering.';
+          status.textContent = '検索索引を読み込めませんでした。企業一覧の絞り込みを利用してください。';
         }
       });
     }
