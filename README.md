@@ -2,6 +2,12 @@
 
 個人用の半導体・AIインフラ横断リサーチサイト。
 
+## Live site
+
+https://kei-titanda-22.github.io/ai-infrastructure-atlas/
+
+GitHub is the source-control and CI/CD platform. The browser-accessible GitHub Pages site above is the v0.1 delivery surface.
+
 ## Project Constitution
 
 このプロジェクトの最上位ルールは [`docs/constitution.md`](docs/constitution.md) の9原則です。UI、データ取得、自動化、公開方法が憲法と衝突する場合は憲法を優先します。
@@ -17,7 +23,6 @@
 7. 各データソースの利用条件をSource Policy Registryで管理する。
 8. APIキー・秘密情報をGitHubに置かない。
 9. 公開・有料化等の段階で法務・規制・プライバシーを再レビューする。
-
 
 ## Delivery requirement
 
@@ -65,7 +70,9 @@ npm run preview
 
 `.github/workflows/deploy.yml` uses GitHub Pages Actions to install, validate, build, index, upload, and deploy the static site. `astro.config.mjs` derives the GitHub owner/repository at build time, so a normal project Pages repository does not require hardcoding the username or repository name.
 
-This prototype intentionally uses `npm install` because a trustworthy `package-lock.json` could not be generated in the current sandbox. Once dependencies can be installed normally, generate and commit the lockfile and switch the workflow install step to `npm ci`.
+The 2026-08-29 GitHub Actions deployment completed successfully, including dependency installation, constitutional data validation, Astro build, Pagefind build, Pages configuration, artifact upload, and deployment.
+
+This prototype currently uses `npm install` because a trustworthy `package-lock.json` was not generated in the original sandbox. Once dependencies are intentionally locked, commit the lockfile and switch the workflow install step to `npm ci`.
 
 For a custom domain, set `SITE_URL` and optionally `BASE_PATH` in the workflow/environment and add the domain configuration separately.
 
