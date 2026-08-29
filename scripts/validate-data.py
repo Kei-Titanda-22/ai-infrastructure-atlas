@@ -15,6 +15,8 @@ all_source_policies = source_policies + document_source_policies
 metric_definitions = json.loads((DATA / 'metric-definitions.json').read_text(encoding='utf-8'))
 sector_kpi_definitions = json.loads((DATA / 'sector-kpi-definitions.json').read_text(encoding='utf-8'))
 sector_kpis = json.loads((DATA / 'sector-kpis.json').read_text(encoding='utf-8'))
+roic_component_definitions = json.loads((DATA / 'roic-component-definitions.json').read_text(encoding='utf-8'))
+roic_calculations = json.loads((DATA / 'roic-calculations.json').read_text(encoding='utf-8'))
 score_definitions = json.loads((DATA / 'score-definitions.json').read_text(encoding='utf-8'))
 governance = json.loads((DATA / 'governance.json').read_text(encoding='utf-8'))
 valuation_policy = json.loads((DATA / 'valuation-policy.json').read_text(encoding='utf-8'))
@@ -22,13 +24,17 @@ valuation_policy = json.loads((DATA / 'valuation-policy.json').read_text(encodin
 errors = []
 ids = [c['id'] for c in companies]
 id_set = set(ids)
+company_by_id = {c['id']: c for c in companies}
 layer_set = {l['name'] for l in layers}
 source_ids_list = [s['id'] for s in all_sources]
 source_ids = set(source_ids_list)
 policy_ids = [p['sourceId'] for p in all_source_policies]
 metric_definition_ids = {m['id'] for m in metric_definitions}
 sector_kpi_definition_ids = {m['id'] for m in sector_kpi_definitions}
+roic_component_definition_ids = {m['id'] for m in roic_component_definitions}
 score_definition_ids = {s['id'] for s in score_definitions}
+roic_calculation_ids = [r['id'] for r in roic_calculations]
+roic_calculation_by_id = {r['id']: r for r in roic_calculations}
 
 if len(companies) != 20:
     errors.append(f'Expected 20 companies, found {len(companies)}')
@@ -36,6 +42,8 @@ if len(id_set) != len(ids):
     errors.append('Duplicate company id detected')
 if len(source_ids_list) != len(source_ids):
     errors.append('Duplicate source id detected across source registries')
+if len(roic_calculation_ids) != len(set(roic_calculation_ids)):
+    errors.append('Duplicate ROIC calculation id detected')
 if len(governance) != 9 or [r.get('id') for r in governance] != list(range(1, 10)):
     errors.append('Project constitution mirror must contain exactly Articles 1-9')
 if len(policy_ids) != len(set(policy_ids)):
@@ -94,16 +102,26 @@ for company in companies:
                 errors.append(f'{cid}: {score_name} missing evidence source {source_id}')
     for metric_name, metric in company['metrics'].items():
         required = {'value', 'unit', 'basis', 'definitionId', 'asOf', 'period', 'sourceId'}
-        if set(metric) != required:
+        allowed = required | {'calculationId'}
+        if not required.issubset(metric) or set(metric) - allowed:
             errors.append(f'{cid}: {metric_name} metric keys differ from constitution policy')
             continue
         if metric['definitionId'] != metric_name or metric['definitionId'] not in metric_definition_ids:
             errors.append(f'{cid}: {metric_name} missing/incorrect metric definition')
         if metric['value'] is not None:
-            if not metric['sourceId']:
-                errors.append(f'{cid}: {metric_name} has value but no sourceId')
-            elif metric['sourceId'] not in source_ids:
-                errors.append(f'{cid}: {metric_name} references unknown sourceId {metric["sourceId"]}')
+            source_id = metric.get('sourceId')
+            calculation_id = metric.get('calculationId')
+            if source_id:
+                if source_id not in source_ids:
+                    errors.append(f'{cid}: {metric_name} references unknown sourceId {source_id}')
+            elif calculation_id:
+                calculation = roic_calculation_by_id.get(calculation_id)
+                if not calculation:
+                    errors.append(f'{cid}: {metric_name} references unknown calculationId {calculation_id}')
+                elif calculation.get('companyId') != cid:
+                    errors.append(f'{cid}: {metric_name} calculation belongs to another company')
+            else:
+                errors.append(f'{cid}: {metric_name} has value but no sourceId or calculationId')
             if not metric['asOf']:
                 errors.append(f'{cid}: {metric_name} has value but no asOf')
             if not metric['definitionId']:
@@ -137,6 +155,73 @@ for kpi in sector_kpis:
     if kpi['status'] != 'verified':
         errors.append(f'{kid}: published sector KPI must be verified')
 
+roic_value_required = {'value', 'unit', 'definitionId', 'asOf', 'period', 'basis', 'sourceIds'}
+for calc in roic_calculations:
+    calc_id = calc.get('id', '<missing>')
+    cid = calc.get('companyId')
+    if cid not in id_set:
+        errors.append(f'{calc_id}: unknown companyId {cid}')
+    if calc.get('status') != 'verified':
+        errors.append(f'{calc_id}: ROIC calculation must be verified before publication')
+    for group_name in ('inputs', 'outputs'):
+        group = calc.get(group_name, {})
+        if not group:
+            errors.append(f'{calc_id}: missing {group_name}')
+            continue
+        for component_name, component in group.items():
+            if set(component) != roic_value_required:
+                errors.append(f'{calc_id}: {group_name}.{component_name} provenance keys invalid')
+                continue
+            if component.get('definitionId') not in roic_component_definition_ids:
+                errors.append(f'{calc_id}: {group_name}.{component_name} has unknown definitionId')
+            if not isinstance(component.get('value'), (int, float)):
+                errors.append(f'{calc_id}: {group_name}.{component_name} value is not numeric')
+            if not component.get('asOf') or not component.get('period') or not component.get('basis'):
+                errors.append(f'{calc_id}: {group_name}.{component_name} missing provenance metadata')
+            if not component.get('sourceIds'):
+                errors.append(f'{calc_id}: {group_name}.{component_name} has no sourceIds')
+            for source_id in component.get('sourceIds', []):
+                if source_id not in source_ids:
+                    errors.append(f'{calc_id}: {group_name}.{component_name} unknown sourceId {source_id}')
+
+    try:
+        i = calc['inputs']
+        o = calc['outputs']
+        tax_rate = i['incomeTaxExpense']['value'] / i['pretaxIncome']['value']
+        nopat = i['operatingProfit']['value'] * (1 - tax_rate)
+        begin_ic = (
+            i['beginningShareholdersEquity']['value']
+            + i['beginningInterestBearingDebt']['value']
+            + i['beginningOperatingLeaseLiability']['value']
+            - i['beginningCashAndMarketableSecurities']['value']
+        )
+        end_ic = (
+            i['endingShareholdersEquity']['value']
+            + i['endingInterestBearingDebt']['value']
+            + i['endingOperatingLeaseLiability']['value']
+            - i['endingCashAndMarketableSecurities']['value']
+        )
+        avg_ic = (begin_ic + end_ic) / 2
+        roic = nopat / avg_ic * 100
+        checks = [
+            ('effectiveTaxRate', tax_rate * 100, 0.02),
+            ('nopat', nopat, 0.2),
+            ('beginningInvestedCapital', begin_ic, 0.1),
+            ('endingInvestedCapital', end_ic, 0.1),
+            ('averageInvestedCapital', avg_ic, 0.1),
+            ('roic', roic, 0.02),
+        ]
+        for output_name, expected, tolerance in checks:
+            actual = o[output_name]['value']
+            if abs(actual - expected) > tolerance:
+                errors.append(f'{calc_id}: {output_name} stored={actual} recomputed={expected:.4f}')
+        company_metric = company_by_id[cid]['metrics']['roic']
+        if company_metric.get('calculationId') == calc_id:
+            if company_metric['value'] is None or abs(company_metric['value'] - o['roic']['value']) > 0.01:
+                errors.append(f'{calc_id}: company ROIC metric does not match calculation output')
+    except (KeyError, TypeError, ZeroDivisionError) as exc:
+        errors.append(f'{calc_id}: ROIC recomputation failed: {exc}')
+
 if errors:
     print('Validation FAILED')
     for error in errors:
@@ -149,6 +234,7 @@ print(
     f'Validation OK: {len(companies)} companies / {len(layers)} layers / '
     f'{len(all_sources)} sources / {len(all_source_policies)} source policies ({pending} pending) / '
     f'{verified_metrics} populated common metrics / {len(sector_kpis)} verified sector KPIs / '
+    f'{len(roic_calculations)} verified ROIC calculations / '
     f'{len(metric_definitions)} common metric definitions / {len(sector_kpi_definitions)} sector KPI definitions / '
     f'valuation gates enforced / 9 constitutional articles'
 )
