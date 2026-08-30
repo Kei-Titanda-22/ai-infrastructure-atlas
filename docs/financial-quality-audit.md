@@ -2,7 +2,7 @@
 
 データ基準日: **2026-08-30**
 
-入力SHA-256: `2b1e858e9675907ed7aa2907f33e823a406692ebf8440dde325a2c06fe542a16`
+入力SHA-256: `e9b5f3b10bcebf4ca4258120e1a95f62277f999c79ac59a53aa26a0d7c95e86d`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
@@ -15,24 +15,24 @@
 | 企業 | 100 |
 | 期間 | 247 |
 | 指標 | 1235 |
-| cash-flow override | 8 |
+| cash-flow override | 10 |
 
 ## 指標の検証状態
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `verified` | 1094 | 一次資料と値・算式を検証済み |
-| `source-linked` | 5 | Sourceに紐付くがverifiedではない値 |
+| `verified` | 1098 | 一次資料と値・算式を検証済み |
+| `source-linked` | 3 | Sourceに紐付くがverifiedではない値 |
 | `needs-review` | 0 | 値はあるが再確認が必要 |
-| `missing` | 136 | 欠損理由ステータスを持つ値なし指標 |
+| `missing` | 134 | 欠損理由ステータスを持つ値なし指標 |
 
 ## FCF / Capex充足
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `both-present` | 179 | FCF and Capex both have values |
+| `both-present` | 181 | FCF and Capex both have values |
 | `fcf-missing-only` | 0 | FCF is missing while Capex has a value |
-| `capex-missing-only` | 2 | Capex is missing while FCF has a value |
+| `capex-missing-only` | 0 | Capex is missing while FCF has a value |
 | `both-missing` | 66 | FCF and Capex are both missing |
 
 ## Capex定義
@@ -40,11 +40,11 @@
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
 | `gross-ppe` | 49 | Gross/standard cash PP&E expenditure; no net, intangible, broader-asset, or real-estate qualifier detected |
-| `ppe-plus-intangible` | 69 | PP&E plus intangible assets or capitalized software/development |
+| `ppe-plus-intangible` | 71 | PP&E plus intangible assets or capitalized software/development |
 | `broader-non-current-assets` | 4 | A broader non-current/fixed/long-term asset cash-investment line |
 | `net-capex` | 27 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 6 | REIT or investment-property/real-estate investment definition |
-| `not-collected` | 64 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
+| `not-collected` | 62 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
 | `unclassified` | 28 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
@@ -62,26 +62,26 @@
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
 | `atlas-formula-aligned` | 8 | Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas |
-| `atlas-definition-difference` | 2 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
+| `atlas-definition-difference` | 0 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
 | `unresolved` | 0 | Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely |
-| `not-applicable` | 237 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
+| `not-applicable` | 239 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
 
 ## 特殊比較フラグ
 
 | フラグ | 期間数 | 定義 |
 | --- | ---: | --- |
 | `goodwill-impairment` | 2 | Reported result includes or discusses goodwill impairment |
-| `discontinued-operations` | 5 | Continuing/discontinued-operation boundaries affect comparison |
+| `discontinued-operations` | 6 | Continuing/discontinued-operation boundaries affect comparison |
 | `non-consolidated-subsidiary` | 2 | Non-consolidated subsidiary company-only disclosure |
 | `reit` | 2 | REIT financial/capital-investment structure |
 | `reconstructed-operating-income` | 7 | Operating income is reconstructed |
 | `net-basis-capex` | 27 | Capex is disclosed on a net basis |
 | `broad-capex` | 4 | Capex uses a broader non-current-asset definition |
-| `company-reported-fcf` | 21 | FCF value comes from a company-reported measure |
+| `company-reported-fcf` | 19 | FCF value comes from a company-reported measure |
 | `non-gaap-fcf-atlas-formula-aligned` | 8 | Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope |
-| `fcf-atlas-definition-difference` | 2 | FCF uses a definition that differs from Atlas gross cash-Capex normalization |
+| `fcf-atlas-definition-difference` | 0 | FCF uses a definition that differs from Atlas gross cash-Capex normalization |
 | `adjusted-or-non-gaap-fcf-unresolved` | 0 | Adjusted/Non-GAAP FCF formula cannot be closed from current basis text |
-| `cash-flow-inputs-missing` | 10 | A populated FCF record does not have complete cashFlowInputs |
+| `cash-flow-inputs-missing` | 8 | A populated FCF record does not have complete cashFlowInputs |
 | `fcf-capex-scope-mismatch` | 0 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
 | `derived-single-quarter` | 6 | A single-quarter value is derived from cumulative periods |
 | `unclassified-capex-definition` | 28 | A populated Capex value remains definition-unclassified |
@@ -89,14 +89,14 @@
 
 ## 要確認キュー
 
-- source-linked: `abb-q2-2025` (freeCashFlow), `abb-q2-2026` (freeCashFlow), `ajinomoto-fine-techno-fy2025` (revenue, operatingProfit, operatingMargin)
+- source-linked: `ajinomoto-fine-techno-fy2025` (revenue, operatingProfit, operatingMargin)
 - needs-review: なし
-- FCF/Capex片側欠損: `abb-q2-2025` (capex-missing-only), `abb-q2-2026` (capex-missing-only)
+- FCF/Capex片側欠損: なし
 - Capex定義未分類: `analog-devices-q3-fy2026`, `applied-materials-q3-fy2025`, `applied-materials-q3-fy2026`, `aptiv-fy2024`, `aptiv-fy2025`, `carrier-q2-2025`, `carrier-q2-2026`, `corning-fy2024`, `corning-fy2025`, `johnson-controls-fy2024`, `johnson-controls-fy2025`, `kla-q4-fy2025`, `kla-q4-fy2026`, `linde-fy2024`, `linde-fy2025`, `nvent-q2-2025`, `nvent-q2-2026`, `qualcomm-fy2024`, `qualcomm-fy2025`, `shin-etsu-chemical-q1-fy2025`, `shin-etsu-chemical-q1-fy2026`, `te-connectivity-fy2024`, `te-connectivity-fy2025`, `texas-instruments-q1-2026`, `texas-instruments-q2-2026`, `tsmc-q2-2025`, `tsmc-q1-2026`, `tsmc-q2-2026`
 - Non-GAAP表記・Atlas算式一致（値変更対象外）: `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
-- Atlas定義差あり（一次資料再確認）: `abb-q2-2025` (includes-asset-sale-proceeds), `abb-q2-2026` (includes-asset-sale-proceeds)
+- Atlas定義差あり（一次資料再確認）: なし
 - adjusted / Non-GAAP算式未解決: なし
-- cashFlowInputs未登録（FCF値あり）: `abb-q2-2025`, `abb-q2-2026`, `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
+- cashFlowInputs未登録（FCF値あり）: `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
 - FCF/Capex scope mismatch: なし
 
 ## 会社別監査
@@ -105,7 +105,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 
 | companyId | 企業 | 期間 | V | S | R | M | CF両方 | FCF欠 | Capex欠 | 両方欠 | 特殊フラグ |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| abb | ABB（エービービー） | 2 | 6 | 2 | 0 | 2 | 0 | 0 | 2 | 0 | discontinued-operations, company-reported-fcf, fcf-atlas-definition-difference, cash-flow-inputs-missing |
+| abb | ABB（エービービー） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | discontinued-operations |
 | advantest | アドバンテスト | 4 | 16 | 0 | 0 | 4 | 2 | 0 | 0 | 2 | — |
 | air-liquide | Air Liquide（エア・リキード） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | ajinomoto-fine-techno | 味の素ファインテクノ | 2 | 3 | 3 | 0 | 4 | 0 | 0 | 0 | 2 | non-consolidated-subsidiary |

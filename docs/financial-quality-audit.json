@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "classificationRuleVersion": 2,
   "dataAsOf": "2026-08-30",
-  "inputDigestSha256": "2b1e858e9675907ed7aa2907f33e823a406692ebf8440dde325a2c06fe542a16",
+  "inputDigestSha256": "e9b5f3b10bcebf4ca4258120e1a95f62277f999c79ac59a53aa26a0d7c95e86d",
   "inputs": {
     "historyFiles": [
       "src/data/financial-history.json",
@@ -44,7 +44,7 @@
       "src/data/financial-history-v04-batch37.json"
     ],
     "companyFiles": 100,
-    "cashFlowOverrides": 8
+    "cashFlowOverrides": 10
   },
   "definitions": {
     "cashFlowCoverage": {
@@ -99,31 +99,31 @@
     "periods": 247,
     "metrics": 1235,
     "metricStatusCounts": {
-      "verified": 1094,
-      "source-linked": 5,
+      "verified": 1098,
+      "source-linked": 3,
       "needs-review": 0,
-      "missing": 136
+      "missing": 134
     },
     "missingReasonCounts": {
-      "not-collected": 136,
+      "not-collected": 134,
       "primary-source-unchecked": 0,
       "not-calculable": 0,
       "not-disclosed": 0,
       "not-applicable": 0
     },
     "cashFlowCoverage": {
-      "both-present": 179,
+      "both-present": 181,
       "fcf-missing-only": 0,
-      "capex-missing-only": 2,
+      "capex-missing-only": 0,
       "both-missing": 66
     },
     "capexDefinitions": {
       "gross-ppe": 49,
-      "ppe-plus-intangible": 69,
+      "ppe-plus-intangible": 71,
       "broader-non-current-assets": 4,
       "net-capex": 27,
       "reit-or-real-estate-investment": 6,
-      "not-collected": 64,
+      "not-collected": 62,
       "unclassified": 28
     },
     "operatingProfitDefinitions": {
@@ -135,23 +135,23 @@
     },
     "adjustedNonGaapFcfAssessments": {
       "atlas-formula-aligned": 8,
-      "atlas-definition-difference": 2,
+      "atlas-definition-difference": 0,
       "unresolved": 0,
-      "not-applicable": 237
+      "not-applicable": 239
     },
     "specialFlags": {
       "goodwill-impairment": 2,
-      "discontinued-operations": 5,
+      "discontinued-operations": 6,
       "non-consolidated-subsidiary": 2,
       "reit": 2,
       "reconstructed-operating-income": 7,
       "net-basis-capex": 27,
       "broad-capex": 4,
-      "company-reported-fcf": 21,
+      "company-reported-fcf": 19,
       "non-gaap-fcf-atlas-formula-aligned": 8,
-      "fcf-atlas-definition-difference": 2,
+      "fcf-atlas-definition-difference": 0,
       "adjusted-or-non-gaap-fcf-unresolved": 0,
-      "cash-flow-inputs-missing": 10,
+      "cash-flow-inputs-missing": 8,
       "fcf-capex-scope-mismatch": 0,
       "derived-single-quarter": 6,
       "unclassified-capex-definition": 28,
@@ -160,18 +160,6 @@
   },
   "actionQueues": {
     "sourceLinked": [
-      {
-        "recordId": "abb-q2-2025",
-        "metrics": [
-          "freeCashFlow"
-        ]
-      },
-      {
-        "recordId": "abb-q2-2026",
-        "metrics": [
-          "freeCashFlow"
-        ]
-      },
       {
         "recordId": "ajinomoto-fine-techno-fy2025",
         "metrics": [
@@ -182,16 +170,7 @@
       }
     ],
     "needsReview": [],
-    "oneSidedCashFlow": [
-      {
-        "recordId": "abb-q2-2025",
-        "coverage": "capex-missing-only"
-      },
-      {
-        "recordId": "abb-q2-2026",
-        "coverage": "capex-missing-only"
-      }
-    ],
+    "oneSidedCashFlow": [],
     "unclassifiedCapexDefinition": [
       "analog-devices-q3-fy2026",
       "applied-materials-q3-fy2025",
@@ -320,36 +299,9 @@
         ]
       }
     ],
-    "adjustedNonGaapFcfAtlasDefinitionDifference": [
-      {
-        "recordId": "abb-q2-2025",
-        "companyId": "abb",
-        "periodLabel": "Q2 2025",
-        "value": 845,
-        "status": "source-linked",
-        "basis": "Company-reported non-GAAP free cash flow in Q2 2026 results. ABB defines FCF in its supplemental financial information as operating cash flow adjusted for PP&E/intangible purchases and PP&E sale proceeds; not Atlas-recomputed here because a matching single-quarter capex line is not in this source document",
-        "sourceId": "results-abb-2026-07-16-q2",
-        "reasons": [
-          "includes-asset-sale-proceeds"
-        ]
-      },
-      {
-        "recordId": "abb-q2-2026",
-        "companyId": "abb",
-        "periodLabel": "Q2 2026",
-        "value": 881,
-        "status": "source-linked",
-        "basis": "Company-reported non-GAAP free cash flow in Q2 2026 results. ABB defines FCF in its supplemental financial information as operating cash flow adjusted for PP&E/intangible purchases and PP&E sale proceeds; not Atlas-recomputed here because a matching single-quarter capex line is not in this source document",
-        "sourceId": "results-abb-2026-07-16-q2",
-        "reasons": [
-          "includes-asset-sale-proceeds"
-        ]
-      }
-    ],
+    "adjustedNonGaapFcfAtlasDefinitionDifference": [],
     "adjustedNonGaapFcfUnresolved": [],
     "cashFlowInputsMissing": [
-      "abb-q2-2025",
-      "abb-q2-2026",
       "amd-q2-2025",
       "amd-q1-2026",
       "amd-q2-2026",
@@ -368,24 +320,24 @@
       "japaneseName": "ABB（エービービー）",
       "periods": 2,
       "metricStatusCounts": {
-        "verified": 6,
-        "source-linked": 2,
+        "verified": 10,
+        "source-linked": 0,
         "needs-review": 0,
-        "missing": 2
+        "missing": 0
       },
       "cashFlowCoverage": {
-        "both-present": 0,
+        "both-present": 2,
         "fcf-missing-only": 0,
-        "capex-missing-only": 2,
+        "capex-missing-only": 0,
         "both-missing": 0
       },
       "capexDefinitions": {
         "gross-ppe": 0,
-        "ppe-plus-intangible": 0,
+        "ppe-plus-intangible": 2,
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 2,
+        "not-collected": 0,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
@@ -397,15 +349,12 @@
       },
       "adjustedNonGaapFcfAssessments": {
         "atlas-formula-aligned": 0,
-        "atlas-definition-difference": 2,
+        "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 0
+        "not-applicable": 2
       },
       "specialFlags": [
-        "discontinued-operations",
-        "company-reported-fcf",
-        "fcf-atlas-definition-difference",
-        "cash-flow-inputs-missing"
+        "discontinued-operations"
       ]
     },
     {
@@ -4570,26 +4519,19 @@
         "revenue": "verified",
         "operatingProfit": "verified",
         "operatingMargin": "verified",
-        "freeCashFlow": "source-linked",
-        "capex": "not-collected"
+        "freeCashFlow": "verified",
+        "capex": "verified"
       },
-      "missingMetrics": [
-        "capex"
-      ],
-      "cashFlowCoverage": "capex-missing-only",
-      "capexDefinition": "not-collected",
+      "missingMetrics": [],
+      "cashFlowCoverage": "both-present",
+      "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
-      "adjustedNonGaapFcfAssessment": "atlas-definition-difference",
-      "adjustedNonGaapFcfAssessmentReasons": [
-        "includes-asset-sale-proceeds"
-      ],
-      "cashFlowInputsStatus": "missing",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "discontinued-operations",
-        "company-reported-fcf",
-        "fcf-atlas-definition-difference",
-        "cash-flow-inputs-missing"
+        "discontinued-operations"
       ]
     },
     {
@@ -4602,25 +4544,19 @@
         "revenue": "verified",
         "operatingProfit": "verified",
         "operatingMargin": "verified",
-        "freeCashFlow": "source-linked",
-        "capex": "not-collected"
+        "freeCashFlow": "verified",
+        "capex": "verified"
       },
-      "missingMetrics": [
-        "capex"
-      ],
-      "cashFlowCoverage": "capex-missing-only",
-      "capexDefinition": "not-collected",
+      "missingMetrics": [],
+      "cashFlowCoverage": "both-present",
+      "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
-      "adjustedNonGaapFcfAssessment": "atlas-definition-difference",
-      "adjustedNonGaapFcfAssessmentReasons": [
-        "includes-asset-sale-proceeds"
-      ],
-      "cashFlowInputsStatus": "missing",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "company-reported-fcf",
-        "fcf-atlas-definition-difference",
-        "cash-flow-inputs-missing"
+        "discontinued-operations"
       ]
     },
     {

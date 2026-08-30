@@ -30,6 +30,7 @@
 - [x] 100-company financial-quality audit script / deterministic JSON + Markdown report / CI freshness gate
 - [x] adjusted / Non-GAAP FCF classification split / independent cashFlowInputs and FCF-Capex scope flags
 - [x] Micron Q3 FY2026 Atlas FCF normalization from gross PP&E cash expenditures
+- [x] Vertiv Q2 2025 / Q2 2026 and ABB Q2 2025 / Q2 2026 Atlas FCF normalization with audited cash-flow inputs
 
 ## Current database
 
@@ -38,26 +39,26 @@
 - comparison templates: **8**
 - normalized financial history: **247 periods / 100 companies**
 - multi-period financial-history companies: **100 / 100 companies**
-- verified normalized historical metrics: **1,094**
-- source-linked historical metrics: **5**
-- missing historical metrics: **136**
-- periods with both FCF and Capex: **179**
-- periods with only Capex missing: **2**
+- verified normalized historical metrics: **1,098**
+- source-linked historical metrics: **3**
+- missing historical metrics: **134**
+- periods with both FCF and Capex: **181**
+- periods with only Capex missing: **0**
 - periods with both FCF and Capex missing: **66**
 - adjusted / Non-GAAP FCF with Atlas-aligned formula: **8**
-- adjusted / Non-GAAP FCF with Atlas definition difference: **2**
-- populated FCF periods with cashFlowInputs missing: **10**
+- adjusted / Non-GAAP FCF with Atlas definition difference: **0**
+- populated FCF periods with cashFlowInputs missing: **8**
 - periods with FCF / Capex scope mismatch: **0**
-- audited cash-flow overrides: **8**
-- v0.4 document sources: **106**
-- v0.4 pending source policies: **106**
+- audited cash-flow overrides: **10**
+- v0.4 document sources: **107**
+- v0.4 pending source policies: **107**
 - earnings update ledger: **247 normalized records / 100 companies**
 - registered facilities: **17**
 - real-time stock-price distribution: disabled
 
-Run #202で `247 periods / 100 companies / 100 multi-period companies / 1094 verified metrics / 179 FCF+Capex periods / 5 cash-flow overrides / 106 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 3,007語を生成し、GitHub Pages deployまで成功した。
+今回のローカル検証で `247 periods / 100 companies / 100 multi-period companies / 1098 verified metrics / 181 FCF+Capex periods / 10 cash-flow overrides / 107 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 3,656語を生成した。
 
-`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。レビュー済みadjusted / Non-GAAP由来FCF 13期間は、旧表記のままAtlas算式一致8期間、Atlas正規化済み3期間（Micron 1期間、Vertiv 2期間）、Atlas定義差あり2期間（ABBのみ）となった。さらに、cashFlowInputs未登録10期間とFCF/Capex scope mismatch 0期間を独立軸で出力する。現状のその他の要確認キューは、source-linked 5指標、Capexのみ欠損2期間、両方欠損66期間、Capex定義未分類28期間。CIは `--check` でデータと監査結果の同期を検証する。
+`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。レビュー済みadjusted / Non-GAAP由来FCF 13期間は、旧表記のままAtlas算式一致8期間、Atlas正規化済み5期間（Micron 1期間、Vertiv 2期間、ABB 2期間）、Atlas定義差あり0期間となった。さらに、cashFlowInputs未登録8期間とFCF/Capex scope mismatch 0期間を独立軸で出力する。現状のその他の要確認キューは、source-linked 3指標、FCF/Capex片側欠損0期間、両方欠損66期間、Capex定義未分類28期間。CIは `--check` でデータと監査結果の同期を検証する。
 
 ## v0.4 implementation
 
@@ -120,7 +121,7 @@ Run #202で `247 periods / 100 companies / 100 multi-period companies / 1094 ver
 - ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt
 - 営業利益率再計算、Capex符号、Atlas FCF入力値・算式
 - 主要企業ごとの最低収録期間
-- continuity floor: **247 periods / 100 companies / 1,094 verified metrics / 179 FCF+Capex periods / 106 sources+policies**
+- continuity floor: **247 periods / 100 companies / 1,098 verified metrics / 181 FCF+Capex periods / 10 cash-flow overrides / 107 sources+policies**
 - Kinsus / Unimicronを含む100社カバレッジを維持し、Kinsus / Unimicronも各2期間以上を個別回帰ゲートで保持する。
 - 100社財務品質監査のJSON/Markdownが現在の履歴・override・会社分類と一致することを検査する。
 
@@ -128,12 +129,12 @@ Run #202で `247 periods / 100 companies / 100 multi-period companies / 1094 ver
 
 **100社の複数期間カバレッジ拡張は完了。** v0.4自体はまだ完了扱いにせず、次の品質・深度改善を残す。
 
-1. Micron Q3 FY2026はgross PP&E cash expendituresでAtlas正規化済み。残るAtlas定義差あり4期間を **Vertiv → ABB** の順に一次資料へ戻って再監査し、安全に再構成できる期間だけ別PRで修正する。Atlas算式一致のAMD / ASML 8期間は財務値を変更せず、必要な場合だけcashFlowInputsを別PRで構造化する。
+1. Micron Q3 FY2026、Vertiv Q2 2025 / Q2 2026、ABB Q2 2025 / Q2 2026はgross cash CapexでAtlas正規化済み。Atlas定義差ありキューは0期間。Atlas算式一致のAMD / ASML 8期間は財務値を変更せず、必要な場合だけcashFlowInputsを別PRで構造化する。
 2. Capex定義未分類28期間を一次資料とcash-flow lineへ戻って再監査し、gross PP&E / PP&E + intangible / net / broader definitionへ安全に構造化できるものだけ分類する。
 3. Kinsusなど、FCF / Capexが未収録の期間について一次資料でexact cash-Capex定義を安全に閉じられる場合のみ補完する。両方欠損66期間には単四半期CFを意図的に推定していない期間も含むため、一括補完しない。
 4. 主要企業の四半期連続性を伸ばし、通期2点だけの企業で比較深度を上げる。
 5. 会社間で異なるCapex / FCF / reported operating-profit定義を再監査し、比較画面で誤って同一定義と見なされないことを確認する。
-6. 106件のv0.4 Source Policyを順次レビューし、v0.5の自動取得対象へ昇格可能なSourceを選別する。
+6. 107件のv0.4 Source Policyを順次レビューし、v0.5の自動取得対象へ昇格可能なSourceを選別する。
 7. Ajinomoto Fine-Techno FY2025の一次官報PDF等、現在source-linkedに留めている値の一次資料を確保できればverifiedへ昇格する。
 8. v0.4完了条件を再監査し、履歴カバレッジだけでなくSource品質・比較可能性・欠損理由の整合性を満たした段階で完了判定する。
 
