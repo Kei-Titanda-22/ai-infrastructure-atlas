@@ -1,0 +1,142 @@
+---
+import { buildFinancialScale, formatFinancialAxisValue, type FinancialChartMetricId } from '../lib/financial-chart-format';
+import {
+  normalizeFinancialSeries,
+  type FinancialChartRecord,
+} from '../lib/financial-charts';
+
+interface Props {
+  records: FinancialChartRecord[];
+  metricId: FinancialChartMetricId;
+  title: string;
+  periodType: 'quarterly' | 'annual';
+}
+
+const { records, metricId, title, periodType } = Astro.props;
+const series = normalizeFinancialSeries(records, metricId);
+const { points, latest } = series;
+const isAnnual = periodType === 'annual';
+
+const fallbackWidth = 720;
+const fallbackHeight = 244;
+const fallbackPadding = { left: 64, right: 16, top: 16, bottom: 44 };
+const fallbackScale = buildFinancialScale(points.map(point => point.value));
+const fallbackPlotWidth = fallbackWidth - fallbackPadding.left - fallbackPadding.right;
+const fallbackPlotHeight = fallbackHeight - fallbackPadding.top - fallbackPadding.bottom;
+const fallbackX = (index: number) => points.length <= 1
+  ? fallbackPadding.left + fallbackPlotWidth / 2
+  : fallbackPadding.left + (fallbackPlotWidth * index) / (points.length - 1);
+const fallbackY = (value: number) => fallbackPadding.top
+  + fallbackPlotHeight
+  - ((value - fallbackScale.min) / Math.max(fallbackScale.max - fallbackScale.min, 1)) * fallbackPlotHeight;
+const fallbackPolyline = points.map((point, index) => `${fallbackX(index)},${fallbackY(point.value)}`).join(' ');
+
+const hasPositive = points.some(point => point.value > 0);
+const hasNegative = points.some(point => point.value < 0);
+const mixedSigns = hasPositive && hasNegative;
+const allNegative = hasNegative && !hasPositive;
+const largestAbsolute = Math.max(...points.map(point => Math.abs(point.value)), 1);
+const annualRows = points.map(point => {
+  const rawSize = (Math.abs(point.value) / largestAbsolute) * 100;
+  return {
+    ...point,
+    barSize: Math.max(point.value === 0 ? 0 : 4, mixedSigns ? rawSize / 2 : rawSize),
+  };
+});
+const serializedPoints = JSON.stringify(points);
+---
+<figure
+  class:list={[
+    'financial-chart',
+    isAnnual ? 'financial-chart--annual' : 'financial-chart--trend',
+  ]}
+>
+  <figcaption class="financial-chart-head">
+    <span class="financial-chart-heading">
+      <span class="financial-chart-title">{title}</span>
+      {series.unitText && <span class="financial-chart-unit">{series.unitText}</span>}
+    </span>
+    {latest && (
+      <span class="financial-chart-latest">
+        <strong>{latest.compactValue}</strong>
+        {latest.change ? (
+          <small class:list={['financial-chart-change', `is-${latest.change.direction}`]}>
+            {latest.change.label} {latest.change.text}
+          </small>
+        ) : (
+          <small>{latest.period}</small>
+        )}
+      </span>
+    )}
+  </figcaption>
+
+  {points.length === 0 ? (
+    <p class="financial-chart-empty">表示できる検証済みデータがありません。</p>
+  ) : isAnnual ? (
+    <div class:list={['financial-annual-comparison', mixedSigns && 'is-mixed', allNegative && 'is-all-negative']}>
+      {annualRows.map(point => (
+        <div class="financial-annual-row">
+          <span class="financial-annual-period">{point.period}</span>
+          <span class="financial-annual-track" aria-hidden="true">
+            <span
+              class:list={['financial-annual-bar', point.value < 0 && 'is-negative']}
+              style={`--bar-size:${point.barSize}%`}
+            ></span>
+          </span>
+          <span class="financial-annual-value" title={point.tooltipValue}>{point.compactValue}</span>
+        </div>
+      ))}
+      {latest?.change && (
+        <p class="financial-annual-summary">
+          {points.at(-2)?.period} → {latest.period}：
+          <strong class:list={[`is-${latest.change.direction}`]}>{latest.change.label} {latest.change.text}</strong>
+        </p>
+      )}
+    </div>
+  ) : (
+    <div
+      class="financial-chart-plot"
+      data-financial-trend
+      data-series={serializedPoints}
+      data-metric-id={metricId}
+      data-currency={series.currency}
+      data-unit={series.unit}
+      data-title={title}
+    >
+      <svg
+        class="financial-trend-svg"
+        viewBox={`0 0 ${fallbackWidth} ${fallbackHeight}`}
+        role="img"
+        aria-label={`${title}の${periodType === 'quarterly' ? '四半期' : '通期'}推移`}
+      >
+        {fallbackScale.ticks.map(tick => (
+          <g>
+            <line
+              class:list={['chart-grid', tick === 0 && 'chart-zero-line']}
+              x1={fallbackPadding.left}
+              y1={fallbackY(tick)}
+              x2={fallbackWidth - fallbackPadding.right}
+              y2={fallbackY(tick)}
+            />
+            <text class="chart-y-label" x={fallbackPadding.left - 8} y={fallbackY(tick) + 4} text-anchor="end">
+              {formatFinancialAxisValue(tick, metricId, series.currency, series.unit)}
+            </text>
+          </g>
+        ))}
+        <polyline class="chart-trend-line" points={fallbackPolyline} />
+        {points.map((point, index) => (
+          <g>
+            <circle class="chart-point" cx={fallbackX(index)} cy={fallbackY(point.value)} r="4" />
+            <text class="chart-period" x={fallbackX(index)} y={fallbackHeight - 15} text-anchor="middle">{point.period}</text>
+          </g>
+        ))}
+      </svg>
+      <div class="financial-chart-tooltip" role="status" hidden></div>
+    </div>
+  )}
+</figure>
+
+<script>
+  import { initializeFinancialCharts } from '../scripts/financial-charts';
+  initializeFinancialCharts();
+</script>

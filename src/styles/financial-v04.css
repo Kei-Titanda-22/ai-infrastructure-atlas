@@ -42,21 +42,159 @@
   border-bottom: 1px solid var(--border);
 }
 .financial-period-head span { color: var(--muted); font-family: var(--mono); font-size: 11px; }
-.financial-chart-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.financial-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(520px, 1fr));
+  gap: 12px;
+  align-items: start;
+}
 .financial-chart {
   margin: 0;
   min-width: 0;
-  padding: 12px 12px 8px;
+  padding: 14px 14px 12px;
   background: var(--surface);
   border: 1px solid var(--border);
 }
-.financial-chart figcaption { margin-bottom: 5px; color: var(--text); font-size: 13px; font-weight: 700; }
-.financial-chart svg { display: block; width: 100%; height: auto; overflow: visible; color: var(--link); }
-.chart-axis { stroke: var(--border-strong); stroke-width: 1; }
-.chart-trend-line { fill: none; stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; }
-.chart-point { fill: var(--surface); stroke: currentColor; stroke-width: 2; vector-effect: non-scaling-stroke; }
-.chart-value { fill: var(--text); font-family: var(--mono); font-size: 11px; }
-.chart-period { fill: var(--text); font-family: var(--mono); font-size: 12px; font-weight: 650; }
+.financial-chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  min-height: 51px;
+  margin-bottom: 7px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--border);
+}
+.financial-chart-heading { display: grid; gap: 2px; min-width: 0; }
+.financial-chart-title { color: var(--text); font-size: 15px; font-weight: 750; }
+.financial-chart-unit { color: var(--muted); font-size: 11px; font-weight: 500; }
+.financial-chart-latest { display: grid; gap: 1px; justify-items: end; text-align: right; white-space: nowrap; }
+.financial-chart-latest strong { color: var(--text); font-family: var(--mono); font-size: 18px; line-height: 1.25; }
+.financial-chart-latest small { color: var(--muted); font-size: 12px; font-weight: 600; }
+.financial-chart-change.is-positive,
+.financial-annual-summary .is-positive,
+.financial-chart-tooltip .is-positive { color: var(--positive); }
+.financial-chart-change.is-negative,
+.financial-annual-summary .is-negative,
+.financial-chart-tooltip .is-negative { color: var(--negative); }
+
+.financial-chart-plot { position: relative; min-height: 226px; }
+.financial-chart svg {
+  display: block;
+  width: 100%;
+  height: 240px;
+  overflow: visible;
+  color: var(--link);
+}
+.chart-grid { stroke: var(--border); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.chart-zero-line { stroke: var(--border-strong); stroke-width: 1.25; }
+.chart-trend-line {
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.chart-point {
+  fill: var(--surface);
+  stroke: currentColor;
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.chart-hit-area { fill: transparent; cursor: pointer; }
+.chart-point-group:focus { outline: none; }
+.chart-point-group:focus .chart-point,
+.chart-point-group:hover .chart-point { stroke-width: 3; }
+.chart-y-label {
+  fill: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+.chart-period {
+  fill: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-weight: 650;
+}
+.financial-chart-tooltip {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  display: grid;
+  gap: 2px;
+  width: max-content;
+  max-width: min(250px, calc(100% - 12px));
+  padding: 8px 9px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  font-size: 12px;
+  line-height: 1.45;
+  pointer-events: none;
+}
+.financial-chart-tooltip[hidden] { display: none; }
+.financial-chart-tooltip strong { font-family: var(--mono); font-size: 12px; }
+.financial-chart-tooltip span { overflow-wrap: anywhere; }
+.financial-chart-tooltip small { font-size: 11px; font-weight: 650; }
+
+.financial-annual-comparison { padding-top: 3px; }
+.financial-annual-row {
+  display: grid;
+  grid-template-columns: minmax(76px, auto) minmax(80px, 1fr) minmax(95px, auto);
+  gap: 10px;
+  align-items: center;
+  min-height: 43px;
+  border-bottom: 1px solid var(--border);
+}
+.financial-annual-period { font-family: var(--mono); font-size: 12px; font-weight: 650; }
+.financial-annual-track {
+  position: relative;
+  display: block;
+  height: 10px;
+  background: var(--surface-subtle);
+  border: 1px solid var(--border);
+}
+.financial-annual-track::before {
+  content: "";
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  left: 0;
+  width: 1px;
+  background: var(--border-strong);
+}
+.financial-annual-bar {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  left: 0;
+  width: var(--bar-size);
+  background: var(--link);
+}
+.financial-annual-bar.is-negative { background: var(--negative); }
+.financial-annual-comparison.is-mixed .financial-annual-track::before { left: 50%; }
+.financial-annual-comparison.is-mixed .financial-annual-bar:not(.is-negative) { left: 50%; }
+.financial-annual-comparison.is-mixed .financial-annual-bar.is-negative { right: 50%; left: auto; }
+.financial-annual-comparison.is-all-negative .financial-annual-track::before { right: 0; left: auto; }
+.financial-annual-comparison.is-all-negative .financial-annual-bar { right: 0; left: auto; }
+.financial-annual-value {
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+.financial-annual-summary {
+  margin: 11px 0 1px;
+  color: var(--muted);
+  font-size: 12px;
+  text-align: right;
+}
+.financial-annual-summary strong { font-weight: 700; }
 .financial-chart-empty { margin: 20px 0; color: var(--muted); font-size: 12px; }
 
 .financial-history-table { min-width: 1180px; }
@@ -124,6 +262,12 @@ a.text-link.compare-company-sub {
   .financial-summary > div:last-child { grid-column: 1 / -1; border-right: 0; }
   .financial-company-heading { grid-template-columns: 1fr; gap: 8px; }
   .financial-company-heading p { text-align: left; }
+  .financial-chart { padding: 12px 10px 10px; }
+  .financial-chart-head { gap: 10px; }
+  .financial-chart-latest strong { font-size: 16px; }
+  .financial-annual-row { grid-template-columns: 70px minmax(54px, 1fr) minmax(80px, auto); gap: 7px; }
+  .financial-annual-value { font-size: 12px; }
+  .financial-annual-summary { text-align: left; }
   .financial-ledger-toolbar { grid-template-columns: 1fr; }
   .financial-ledger-back { justify-self: start; }
   .financial-ledger-entry { text-align: left; }
