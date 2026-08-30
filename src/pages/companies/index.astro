@@ -3,12 +3,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import facilities from '../../data/facilities.json';
 import valueChain from '../../data/value-chain.json';
+import filterContract from '../../data/company-filter-contract.json';
 import { layerLabel, countryLabel, tagLabel, productInfo } from '../../lib/display-v02';
 import { withBase } from '../../lib/paths';
 
 const companies = (await getCollection('companies')).sort((a,b) => (a.data.japaneseName || a.data.name).localeCompare(b.data.japaneseName || b.data.name, 'ja'));
 const layers = [...new Set(companies.map(c => c.data.primaryLayer))].sort();
-const countries = [...new Set(companies.map(c => c.data.country))].sort();
+const presentCountries = new Set(companies.map(c => c.data.country));
+const countries = filterContract.canonicalCountries.filter(country => presentCountries.has(country));
+const countriesWithoutJapaneseLabels = countries.filter(country => countryLabel(country) === country);
+if (countriesWithoutJapaneseLabels.length > 0) {
+  throw new Error(`Missing Japanese country labels: ${countriesWithoutJapaneseLabels.join(', ')}`);
+}
 const tags = [...new Set(companies.flatMap(c => c.data.tags))].sort((a,b) => tagLabel(a).localeCompare(tagLabel(b), 'ja'));
 const facilitiesByCompany = new Map();
 for (const facility of facilities) {
@@ -17,18 +23,16 @@ for (const facility of facilities) {
   facilitiesByCompany.set(facility.companyId, list);
 }
 const stageLabelById = new Map(valueChain.map(stage => [stage.id, stage.name]));
+const stageNames = Object.fromEntries(valueChain.filter(stage => stage.id !== 'demand').map(stage => [stage.id, stage.name]));
+const technologyNames = Object.fromEntries(Object.entries(filterContract.technologyFilters).map(([id, filter]) => [id, filter.label]));
 const stageIdsForLayers = (companyLayers: string[]) => {
-  const ids = new Set<string>();
-  if (companyLayers.includes('Compute & Silicon')) ids.add('compute');
-  if (companyLayers.includes('Memory')) ids.add('memory');
-  if (companyLayers.includes('半導体材料・基板')) ids.add('materials');
-  if (companyLayers.includes('Foundry & Logic Manufacturing') || companyLayers.includes('Wafer Fab Equipment')) ids.add('manufacturing');
-  if (companyLayers.includes('Test & Back-end')) ids.add('backend');
-  if (companyLayers.includes('Network & Optical')) ids.add('interconnect');
-  if (companyLayers.includes('Data Center & Facilities')) ids.add('datacenter');
-  if (companyLayers.includes('Physical AI')) ids.add('physical');
-  return [...ids];
+  return Object.entries(filterContract.stageLayers)
+    .filter(([, stageLayers]) => stageLayers.some(layer => companyLayers.includes(layer)))
+    .map(([stageId]) => stageId);
 };
+const technologyIdsForTags = (companyTags: string[]) => Object.entries(filterContract.technologyFilters)
+  .filter(([, filter]) => filter.tags.some(tag => companyTags.includes(tag)))
+  .map(([technologyId]) => technologyId);
 ---
 <BaseLayout title="企業一覧">
   <header class="page-head">
@@ -39,7 +43,7 @@ const stageIdsForLayers = (companyLayers: string[]) => {
     </div>
   </header>
 
-  <div class="shell section" id="companies-app">
+  <div class="shell section" id="companies-app" data-stage-names={JSON.stringify(stageNames)} data-technology-names={JSON.stringify(technologyNames)}>
     <div class="toolbar">
       <input id="company-search" class="control" type="search" placeholder="HBM Korea / AI 電力 / 三重県 ..." aria-label="企業検索" />
       <select id="layer-filter" class="control" aria-label="領域で絞り込み">
@@ -55,7 +59,7 @@ const stageIdsForLayers = (companyLayers: string[]) => {
         {tags.map(tag => <option value={tag}>{tagLabel(tag)}</option>)}
       </select>
     </div>
-    <div id="stage-filter-note" class="active-filter" hidden><span id="stage-filter-label"></span><button type="button" id="stage-filter-clear">工程指定を解除</button></div>
+    <div id="route-filter-note" class="active-filter" hidden><span id="route-filter-label"></span><button type="button" id="route-filter-clear">工程・技術指定を解除</button></div>
     <p class="result-count" id="result-count">{companies.length}社</p>
 
     <div class="table-scroll company-table-scroll">
@@ -75,6 +79,7 @@ const stageIdsForLayers = (companyLayers: string[]) => {
             const sites = facilitiesByCompany.get(company.id) ?? [];
             const productLabels = d.products.map(product => productInfo(product).label);
             const stageIds = stageIdsForLayers(d.layers);
+            const technologyIds = technologyIdsForTags(d.tags);
             const visibleTags = d.tags.slice(0,3);
             const searchText = [
               d.name, d.japaneseName, d.reading, d.ticker ?? '', d.country, countryLabel(d.country),
@@ -83,7 +88,7 @@ const stageIdsForLayers = (companyLayers: string[]) => {
               ...stageIds.map(id => stageLabelById.get(id) || id), ...sites.flatMap(site => [site.city, site.region, site.country])
             ].join(' ').toLowerCase();
             return (
-              <tr data-company-row data-search={searchText} data-tags={d.tags.join('|')} data-layer={d.primaryLayer} data-country={d.country} data-stages={stageIds.join('|')} data-sort-name={d.japaneseName || d.name} data-sort-country={countryLabel(d.country)} data-sort-updated={d.lastReviewed}>
+              <tr data-company-row data-search={searchText} data-tags={d.tags.join('|')} data-layer={d.primaryLayer} data-country={d.country} data-stages={stageIds.join('|')} data-technologies={technologyIds.join('|')} data-sort-name={d.japaneseName || d.name} data-sort-country={countryLabel(d.country)} data-sort-updated={d.lastReviewed}>
                 <td class="company-col"><span class="company-index-name"><a href={withBase(`companies/${company.id}/`)}>{d.japaneseName || d.name}</a></span><span class="company-index-en">{d.ticker ? <><span class="mono">{d.ticker}</span> · </> : <span>非上場 · </span>}{d.name}</span></td>
                 <td><a class="filter-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a></td>
                 <td><a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></td>
@@ -110,25 +115,38 @@ const stageIdsForLayers = (companyLayers: string[]) => {
       const rows = [...root.querySelectorAll('[data-company-row]')];
       const count = root.querySelector('#result-count');
       const sortButtons = [...root.querySelectorAll('[data-sort]')];
-      const stageNote = root.querySelector('#stage-filter-note');
-      const stageLabel = root.querySelector('#stage-filter-label');
-      const stageClear = root.querySelector('#stage-filter-clear');
+      const routeNote = root.querySelector('#route-filter-note');
+      const routeLabel = root.querySelector('#route-filter-label');
+      const routeClear = root.querySelector('#route-filter-clear');
       const params = new URLSearchParams(location.search);
-      const stageNames = { compute:'計算半導体', memory:'メモリ・ストレージ', materials:'半導体材料・基板', manufacturing:'半導体製造', backend:'テスト・後工程', interconnect:'ネットワーク・光通信', datacenter:'データセンター設備', physical:'フィジカルAI' };
-      let stage = params.get('stage') || '';
+      const stageNames = JSON.parse(root.dataset.stageNames || '{}');
+      const technologyNames = JSON.parse(root.dataset.technologyNames || '{}');
+      const allowedStages = new Set(Object.keys(stageNames));
+      const requestedStage = params.get('stage') || '';
+      let stage = allowedStages.has(requestedStage) ? requestedStage : '';
+      const allowedTechnologies = new Set(Object.keys(technologyNames));
+      const requestedTechnology = params.get('technology') || '';
+      let technology = allowedTechnologies.has(requestedTechnology) ? requestedTechnology : '';
       const allowedSorts = new Set(['name','country','updated']);
       let sortKey = allowedSorts.has(params.get('sort') || '') ? (params.get('sort') || 'name') : 'name';
       let sortDirection = params.get('order') === 'desc' ? -1 : 1;
 
       if (input instanceof HTMLInputElement && params.get('q')) input.value = params.get('q') || '';
       if (layer instanceof HTMLSelectElement && params.get('layer')) layer.value = params.get('layer') || '';
-      if (country instanceof HTMLSelectElement && params.get('country')) country.value = params.get('country') || '';
+      if (country instanceof HTMLSelectElement && params.get('country')) {
+        const requestedCountry = params.get('country') || '';
+        const matchingOption = [...country.options].find(option => option.value.localeCompare(requestedCountry, 'en', { sensitivity: 'base' }) === 0);
+        if (matchingOption) country.value = matchingOption.value;
+      }
       if (tag instanceof HTMLSelectElement && params.get('tag')) tag.value = params.get('tag') || '';
 
-      const updateStageNote = () => {
-        if (!(stageNote instanceof HTMLElement)) return;
-        stageNote.hidden = !stage;
-        if (stageLabel) stageLabel.textContent = stage ? `工程：${stageNames[stage] || stage}` : '';
+      const updateRouteFilterNote = () => {
+        if (!(routeNote instanceof HTMLElement)) return;
+        const labels = [];
+        if (stage) labels.push(`工程：${stageNames[stage] || stage}`);
+        if (technology) labels.push(`技術：${technologyNames[technology] || technology}`);
+        routeNote.hidden = labels.length === 0;
+        if (routeLabel) routeLabel.textContent = labels.join(' / ');
       };
       const updateUrl = () => {
         const next = new URLSearchParams();
@@ -137,6 +155,7 @@ const stageIdsForLayers = (companyLayers: string[]) => {
         if (country instanceof HTMLSelectElement && country.value) next.set('country', country.value);
         if (tag instanceof HTMLSelectElement && tag.value) next.set('tag', tag.value);
         if (stage) next.set('stage', stage);
+        if (technology) next.set('technology', technology);
         if (sortKey !== 'name') next.set('sort', sortKey);
         if (sortDirection === -1) next.set('order', 'desc');
         const qs = next.toString();
@@ -165,16 +184,17 @@ const stageIdsForLayers = (companyLayers: string[]) => {
           const haystack = row.dataset.search || '';
           const rowTags = (row.dataset.tags || '').split('|').filter(Boolean);
           const rowStages = (row.dataset.stages || '').split('|').filter(Boolean);
-          const hit = tokens.every(token => haystack.includes(token)) && (!l || row.dataset.layer === l) && (!c || row.dataset.country === c) && (!t || rowTags.includes(t)) && (!stage || rowStages.includes(stage));
+          const rowTechnologies = (row.dataset.technologies || '').split('|').filter(Boolean);
+          const hit = tokens.every(token => haystack.includes(token)) && (!l || row.dataset.layer === l) && (!c || row.dataset.country === c) && (!t || rowTags.includes(t)) && (!stage || rowStages.includes(stage)) && (!technology || rowTechnologies.includes(technology));
           row.hidden = !hit;
           if (hit) visible++;
         });
         if (count) count.textContent = `${visible}社 / 全${rows.length}社`;
-        updateStageNote();
+        updateRouteFilterNote();
         updateUrl();
       };
       sortButtons.forEach(button => button.addEventListener('click', () => { const nextKey = button.dataset.sort || 'name'; if (sortKey === nextKey) sortDirection *= -1; else { sortKey = nextKey; sortDirection = 1; } sortRows(); updateUrl(); }));
-      stageClear?.addEventListener('click', () => { stage = ''; apply(); });
+      routeClear?.addEventListener('click', () => { stage = ''; technology = ''; apply(); });
       input?.addEventListener('input', apply);
       layer?.addEventListener('change', apply);
       country?.addEventListener('change', apply);

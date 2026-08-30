@@ -12,10 +12,13 @@ const extraLayerLabels: Record<string, string> = {
 };
 
 const extraCountryLabels: Record<string, string> = {
+  China: '中国',
+  Israel: 'イスラエル',
   Singapore: 'シンガポール',
   France: 'フランス',
   Switzerland: 'スイス',
   Germany: 'ドイツ',
+  Sweden: 'スウェーデン',
 };
 
 const extraTagLabels: Record<string, string> = {

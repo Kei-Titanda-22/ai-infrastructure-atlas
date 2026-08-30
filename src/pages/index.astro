@@ -18,7 +18,11 @@ const verifiedCompanyIds = new Set([
 const countryCount = new Set(companies.map(company => company.data.country)).size;
 const processCount = valueChain.filter(stage => stage.id !== 'demand').length;
 const lastDbUpdate = updateLog[0]?.date ?? '—';
-const linkHref = (link: any) => link.tag ? `${withBase('companies/')}?tag=${encodeURIComponent(link.tag)}` : `${withBase('companies/')}?q=${encodeURIComponent(link.query)}`;
+const linkHref = (link: any) => link.technology
+  ? `${withBase('companies/')}?technology=${encodeURIComponent(link.technology)}`
+  : link.tag
+    ? `${withBase('companies/')}?tag=${encodeURIComponent(link.tag)}`
+    : `${withBase('companies/')}?q=${encodeURIComponent(link.query)}`;
 ---
 <BaseLayout>
   <div class="shell">

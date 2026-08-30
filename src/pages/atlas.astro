@@ -6,9 +6,11 @@ import { withBase } from '../lib/paths';
 const stageHref = (stage: any) => stage.id === 'demand'
   ? `${withBase('companies/')}?q=${encodeURIComponent('AI')}`
   : `${withBase('companies/')}?stage=${encodeURIComponent(stage.id)}`;
-const linkHref = (link: any) => link.tag
-  ? `${withBase('companies/')}?tag=${encodeURIComponent(link.tag)}`
-  : `${withBase('companies/')}?q=${encodeURIComponent(link.query)}`;
+const linkHref = (link: any) => link.technology
+  ? `${withBase('companies/')}?technology=${encodeURIComponent(link.technology)}`
+  : link.tag
+    ? `${withBase('companies/')}?tag=${encodeURIComponent(link.tag)}`
+    : `${withBase('companies/')}?q=${encodeURIComponent(link.query)}`;
 ---
 <BaseLayout title="全体マップ" indexable>
   <header class="page-head">
