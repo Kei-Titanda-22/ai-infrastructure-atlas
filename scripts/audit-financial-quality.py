@@ -98,7 +98,6 @@ EXPECTED_ADJUSTED_NON_GAAP_FCF = {
     "atlas-definition-difference": {
         "abb-q2-2025",
         "abb-q2-2026",
-        "micron-q3-fy2026",
         "vertiv-q2-2025",
         "vertiv-q2-2026",
     },
