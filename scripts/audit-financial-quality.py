@@ -37,6 +37,7 @@ CASH_FLOW_CATEGORIES = (
     "both-missing",
 )
 CAPEX_CATEGORIES = (
+    "gross-productive-assets-cash-purchases",
     "gross-ppe-cash-purchases",
     "gross-ppe",
     "ppe-plus-intangible",
@@ -69,6 +70,7 @@ SPECIAL_FLAG_ORDER = (
     "broad-capex",
     "ppe-only",
     "government-incentive-netting-unresolved",
+    "company-fcf-formula-includes-asset-sale-proceeds",
     "company-reported-fcf",
     "non-gaap-fcf-atlas-formula-aligned",
     "fcf-atlas-definition-difference",
@@ -111,6 +113,10 @@ REVIEWED_CAPEX_DEFINITIONS = {
     "kla-q4-fy2025": "gross-ppe-cash-purchases",
     "kla-q4-fy2026": "gross-ppe-cash-purchases",
     "analog-devices-q3-fy2026": "net-capex",
+    "carrier-q2-2025": "gross-productive-assets-cash-purchases",
+    "carrier-q2-2026": "gross-productive-assets-cash-purchases",
+    "nvent-q2-2025": "gross-ppe-cash-purchases",
+    "nvent-q2-2026": "gross-ppe-cash-purchases",
 }
 
 # Reviewed classifications may need comparison flags or supplemental filing
@@ -124,6 +130,14 @@ REVIEWED_CAPEX_SPECIAL_FLAGS = {
         "ppe-only",
         "government-incentive-netting-unresolved",
     },
+    "nvent-q2-2025": {
+        "ppe-only",
+        "company-fcf-formula-includes-asset-sale-proceeds",
+    },
+    "nvent-q2-2026": {
+        "ppe-only",
+        "company-fcf-formula-includes-asset-sale-proceeds",
+    },
 }
 
 REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
@@ -133,6 +147,10 @@ REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
         "filing-analog-devices-2026-q3-fy2026-10q",
         "filing-analog-devices-2025-fy2025-10k",
     ],
+    "carrier-q2-2025": ["filing-carrier-2026-q2-10q"],
+    "carrier-q2-2026": ["filing-carrier-2026-q2-10q"],
+    "nvent-q2-2025": ["filing-nvent-2026-q2-10q"],
+    "nvent-q2-2026": ["filing-nvent-2026-q2-10q"],
 }
 
 REVIEWED_ATLAS_GROSS_CAPEX_UNRESOLVED_REASONS = {
@@ -150,6 +168,7 @@ CATEGORY_DESCRIPTIONS = {
         "both-missing": "FCF and Capex are both missing",
     },
     "capexDefinition": {
+        "gross-productive-assets-cash-purchases": "Primary-source-reviewed gross cash purchases of productive assets under SEC XBRL PaymentsToAcquireProductiveAssets; taxonomy scope includes PP&E, software, and other intangible assets",
         "gross-ppe-cash-purchases": "Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment",
         "gross-ppe": "Gross/standard cash PP&E expenditure; no net, intangible, broader-asset, or real-estate qualifier detected",
         "ppe-plus-intangible": "PP&E plus intangible assets or capitalized software/development",
@@ -182,6 +201,7 @@ CATEGORY_DESCRIPTIONS = {
         "broad-capex": "Capex uses a broader non-current-asset definition",
         "ppe-only": "Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases",
         "government-incentive-netting-unresolved": "Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved",
+        "company-fcf-formula-includes-asset-sale-proceeds": "Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected",
         "company-reported-fcf": "FCF value comes from a company-reported measure",
         "non-gaap-fcf-atlas-formula-aligned": "Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope",
         "fcf-atlas-definition-difference": "FCF uses a definition that differs from Atlas gross cash-Capex normalization",

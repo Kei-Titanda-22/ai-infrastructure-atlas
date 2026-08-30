@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "classificationRuleVersion": 4,
   "dataAsOf": "2026-08-30",
-  "inputDigestSha256": "55cc84bf2b610363d660b8d2f5e3df93671f3dd9c495b8fcbd90a56e1c0e0486",
+  "inputDigestSha256": "8a0f261311ea18ba5dab940b90a3712bac93f3a5e6f39af76547d643d179ae39",
   "inputs": {
     "historyFiles": [
       "src/data/financial-history.json",
@@ -44,7 +44,7 @@
       "src/data/financial-history-v04-batch37.json"
     ],
     "companyFiles": 100,
-    "cashFlowOverrides": 10
+    "cashFlowOverrides": 12
   },
   "definitions": {
     "cashFlowCoverage": {
@@ -54,6 +54,7 @@
       "both-missing": "FCF and Capex are both missing"
     },
     "capexDefinition": {
+      "gross-productive-assets-cash-purchases": "Primary-source-reviewed gross cash purchases of productive assets under SEC XBRL PaymentsToAcquireProductiveAssets; taxonomy scope includes PP&E, software, and other intangible assets",
       "gross-ppe-cash-purchases": "Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment",
       "gross-ppe": "Gross/standard cash PP&E expenditure; no net, intangible, broader-asset, or real-estate qualifier detected",
       "ppe-plus-intangible": "PP&E plus intangible assets or capitalized software/development",
@@ -86,6 +87,7 @@
       "broad-capex": "Capex uses a broader non-current-asset definition",
       "ppe-only": "Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases",
       "government-incentive-netting-unresolved": "Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved",
+      "company-fcf-formula-includes-asset-sale-proceeds": "Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected",
       "company-reported-fcf": "FCF value comes from a company-reported measure",
       "non-gaap-fcf-atlas-formula-aligned": "Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope",
       "fcf-atlas-definition-difference": "FCF uses a definition that differs from Atlas gross cash-Capex normalization",
@@ -121,14 +123,15 @@
       "both-missing": 66
     },
     "capexDefinitions": {
-      "gross-ppe-cash-purchases": 4,
+      "gross-productive-assets-cash-purchases": 2,
+      "gross-ppe-cash-purchases": 6,
       "gross-ppe": 49,
       "ppe-plus-intangible": 74,
       "broader-non-current-assets": 4,
       "net-capex": 28,
       "reit-or-real-estate-investment": 6,
       "not-collected": 62,
-      "unclassified": 20
+      "unclassified": 16
     },
     "operatingProfitDefinitions": {
       "direct-gaap-ifrs-operating-income": 227,
@@ -145,14 +148,15 @@
     },
     "specialFlags": {
       "goodwill-impairment": 2,
-      "discontinued-operations": 6,
+      "discontinued-operations": 8,
       "non-consolidated-subsidiary": 2,
       "reit": 2,
       "reconstructed-operating-income": 7,
       "net-basis-capex": 28,
       "broad-capex": 4,
-      "ppe-only": 54,
+      "ppe-only": 56,
       "government-incentive-netting-unresolved": 1,
+      "company-fcf-formula-includes-asset-sale-proceeds": 2,
       "company-reported-fcf": 16,
       "non-gaap-fcf-atlas-formula-aligned": 8,
       "fcf-atlas-definition-difference": 0,
@@ -160,7 +164,7 @@
       "cash-flow-inputs-missing": 8,
       "fcf-capex-scope-mismatch": 0,
       "derived-single-quarter": 8,
-      "unclassified-capex-definition": 20,
+      "unclassified-capex-definition": 16,
       "special-operating-profit-definition": 10
     }
   },
@@ -180,16 +184,12 @@
     "unclassifiedCapexDefinition": [
       "aptiv-fy2024",
       "aptiv-fy2025",
-      "carrier-q2-2025",
-      "carrier-q2-2026",
       "corning-fy2024",
       "corning-fy2025",
       "johnson-controls-fy2024",
       "johnson-controls-fy2025",
       "linde-fy2024",
       "linde-fy2025",
-      "nvent-q2-2025",
-      "nvent-q2-2026",
       "qualcomm-fy2024",
       "qualcomm-fy2025",
       "shin-etsu-chemical-q1-fy2025",
@@ -343,6 +343,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -387,6 +388,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -429,6 +431,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -471,6 +474,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -515,6 +519,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 3,
         "ppe-plus-intangible": 0,
@@ -562,6 +567,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -604,6 +610,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -648,6 +655,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -694,6 +702,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 2,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -738,6 +747,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -783,6 +793,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -825,6 +836,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -869,6 +881,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -913,6 +926,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -955,6 +969,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 5,
@@ -1001,6 +1016,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1045,6 +1061,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -1087,6 +1104,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1131,6 +1149,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 3,
         "ppe-plus-intangible": 0,
@@ -1175,6 +1194,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -1219,6 +1239,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -1261,6 +1282,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 2,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1268,7 +1290,7 @@
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
         "not-collected": 0,
-        "unclassified": 2
+        "unclassified": 0
       },
       "operatingProfitDefinitions": {
         "direct-gaap-ifrs-operating-income": 2,
@@ -1284,7 +1306,7 @@
         "not-applicable": 2
       },
       "specialFlags": [
-        "unclassified-capex-definition"
+        "discontinued-operations"
       ]
     },
     {
@@ -1305,6 +1327,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1347,6 +1370,7 @@
         "both-missing": 4
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1389,6 +1413,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -1433,6 +1458,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1477,6 +1503,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -1521,6 +1548,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1563,6 +1591,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1605,6 +1634,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -1647,6 +1677,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -1692,6 +1723,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 4,
         "ppe-plus-intangible": 0,
@@ -1736,6 +1768,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1780,6 +1813,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -1824,6 +1858,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -1866,6 +1901,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1908,6 +1944,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -1950,6 +1987,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -1992,6 +2030,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -2036,6 +2075,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -2078,6 +2118,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -2122,6 +2163,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -2166,6 +2208,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -2208,6 +2251,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -2250,6 +2294,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -2294,6 +2339,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -2339,6 +2385,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -2381,6 +2428,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -2423,6 +2471,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 7,
@@ -2468,6 +2517,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 2,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -2513,6 +2563,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -2555,6 +2606,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 5,
@@ -2597,6 +2649,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -2639,6 +2692,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -2681,6 +2735,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -2725,6 +2780,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -2770,6 +2826,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -2812,6 +2869,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -2854,6 +2912,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 1,
         "ppe-plus-intangible": 0,
@@ -2898,6 +2957,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -2940,6 +3000,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -2985,6 +3046,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -3027,6 +3089,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3069,6 +3132,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -3111,14 +3175,15 @@
         "both-missing": 0
       },
       "capexDefinitions": {
-        "gross-ppe-cash-purchases": 0,
+        "gross-productive-assets-cash-purchases": 0,
+        "gross-ppe-cash-purchases": 2,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
         "not-collected": 0,
-        "unclassified": 2
+        "unclassified": 0
       },
       "operatingProfitDefinitions": {
         "direct-gaap-ifrs-operating-income": 2,
@@ -3134,7 +3199,8 @@
         "not-applicable": 2
       },
       "specialFlags": [
-        "unclassified-capex-definition"
+        "ppe-only",
+        "company-fcf-formula-includes-asset-sale-proceeds"
       ]
     },
     {
@@ -3155,6 +3221,7 @@
         "both-missing": 3
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 3,
@@ -3197,6 +3264,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3241,6 +3309,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3285,6 +3354,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -3329,6 +3399,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3374,6 +3445,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -3416,6 +3488,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3458,6 +3531,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 2,
         "ppe-plus-intangible": 0,
@@ -3502,6 +3576,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3544,6 +3619,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3589,6 +3665,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3633,6 +3710,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -3675,6 +3753,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 4,
         "ppe-plus-intangible": 0,
@@ -3720,6 +3799,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3764,6 +3844,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -3806,6 +3887,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -3848,6 +3930,7 @@
         "both-missing": 3
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3892,6 +3975,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3934,6 +4018,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -3976,6 +4061,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4020,6 +4106,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4062,6 +4149,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4104,6 +4192,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4148,6 +4237,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4192,6 +4282,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4236,6 +4327,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4280,6 +4372,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 7,
         "ppe-plus-intangible": 0,
@@ -4326,6 +4419,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4370,6 +4464,7 @@
         "both-missing": 2
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4412,6 +4507,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 3,
@@ -4456,6 +4552,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 1,
         "ppe-plus-intangible": 1,
@@ -4500,6 +4597,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4542,6 +4640,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -4584,6 +4683,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -4628,6 +4728,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
+        "gross-productive-assets-cash-purchases": 0,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 2,
@@ -5963,14 +6064,17 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "unclassified",
+      "capexDefinition": "gross-productive-assets-cash-purchases",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "unclassified-capex-definition"
+        "discontinued-operations"
+      ],
+      "capexDefinitionEvidenceSourceIds": [
+        "filing-carrier-2026-q2-10q"
       ]
     },
     {
@@ -5988,14 +6092,17 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "unclassified",
+      "capexDefinition": "gross-productive-assets-cash-purchases",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "unclassified-capex-definition"
+        "discontinued-operations"
+      ],
+      "capexDefinitionEvidenceSourceIds": [
+        "filing-carrier-2026-q2-10q"
       ]
     },
     {
@@ -8634,14 +8741,18 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "unclassified",
+      "capexDefinition": "gross-ppe-cash-purchases",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "unclassified-capex-definition"
+        "ppe-only",
+        "company-fcf-formula-includes-asset-sale-proceeds"
+      ],
+      "capexDefinitionEvidenceSourceIds": [
+        "filing-nvent-2026-q2-10q"
       ]
     },
     {
@@ -8659,14 +8770,18 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "unclassified",
+      "capexDefinition": "gross-ppe-cash-purchases",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "unclassified-capex-definition"
+        "ppe-only",
+        "company-fcf-formula-includes-asset-sale-proceeds"
+      ],
+      "capexDefinitionEvidenceSourceIds": [
+        "filing-nvent-2026-q2-10q"
       ]
     },
     {

@@ -2,7 +2,7 @@
 
 データ基準日: **2026-08-30**
 
-入力SHA-256: `55cc84bf2b610363d660b8d2f5e3df93671f3dd9c495b8fcbd90a56e1c0e0486`
+入力SHA-256: `8a0f261311ea18ba5dab940b90a3712bac93f3a5e6f39af76547d643d179ae39`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
@@ -15,7 +15,7 @@
 | 企業 | 100 |
 | 期間 | 247 |
 | 指標 | 1235 |
-| cash-flow override | 10 |
+| cash-flow override | 12 |
 
 ## 指標の検証状態
 
@@ -39,14 +39,15 @@
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `gross-ppe-cash-purchases` | 4 | Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment |
+| `gross-productive-assets-cash-purchases` | 2 | Primary-source-reviewed gross cash purchases of productive assets under SEC XBRL PaymentsToAcquireProductiveAssets; taxonomy scope includes PP&E, software, and other intangible assets |
+| `gross-ppe-cash-purchases` | 6 | Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment |
 | `gross-ppe` | 49 | Gross/standard cash PP&E expenditure; no net, intangible, broader-asset, or real-estate qualifier detected |
 | `ppe-plus-intangible` | 74 | PP&E plus intangible assets or capitalized software/development |
 | `broader-non-current-assets` | 4 | A broader non-current/fixed/long-term asset cash-investment line |
 | `net-capex` | 28 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 6 | REIT or investment-property/real-estate investment definition |
 | `not-collected` | 62 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
-| `unclassified` | 20 | A value exists, but basis text does not safely map to another definition category |
+| `unclassified` | 16 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
 
@@ -72,14 +73,15 @@
 | フラグ | 期間数 | 定義 |
 | --- | ---: | --- |
 | `goodwill-impairment` | 2 | Reported result includes or discusses goodwill impairment |
-| `discontinued-operations` | 6 | Continuing/discontinued-operation boundaries affect comparison |
+| `discontinued-operations` | 8 | Continuing/discontinued-operation boundaries affect comparison |
 | `non-consolidated-subsidiary` | 2 | Non-consolidated subsidiary company-only disclosure |
 | `reit` | 2 | REIT financial/capital-investment structure |
 | `reconstructed-operating-income` | 7 | Operating income is reconstructed |
 | `net-basis-capex` | 28 | Capex is disclosed on a net basis |
 | `broad-capex` | 4 | Capex uses a broader non-current-asset definition |
-| `ppe-only` | 54 | Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases |
+| `ppe-only` | 56 | Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases |
 | `government-incentive-netting-unresolved` | 1 | Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved |
+| `company-fcf-formula-includes-asset-sale-proceeds` | 2 | Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected |
 | `company-reported-fcf` | 16 | FCF value comes from a company-reported measure |
 | `non-gaap-fcf-atlas-formula-aligned` | 8 | Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope |
 | `fcf-atlas-definition-difference` | 0 | FCF uses a definition that differs from Atlas gross cash-Capex normalization |
@@ -87,7 +89,7 @@
 | `cash-flow-inputs-missing` | 8 | A populated FCF record does not have complete cashFlowInputs |
 | `fcf-capex-scope-mismatch` | 0 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
 | `derived-single-quarter` | 8 | A single-quarter value is derived from cumulative periods |
-| `unclassified-capex-definition` | 20 | A populated Capex value remains definition-unclassified |
+| `unclassified-capex-definition` | 16 | A populated Capex value remains definition-unclassified |
 | `special-operating-profit-definition` | 10 | Operating-profit definition is classified as a special case |
 
 ## 要確認キュー
@@ -95,7 +97,7 @@
 - source-linked: `ajinomoto-fine-techno-fy2025` (revenue, operatingProfit, operatingMargin)
 - needs-review: なし
 - FCF/Capex片側欠損: なし
-- Capex定義未分類: `aptiv-fy2024`, `aptiv-fy2025`, `carrier-q2-2025`, `carrier-q2-2026`, `corning-fy2024`, `corning-fy2025`, `johnson-controls-fy2024`, `johnson-controls-fy2025`, `linde-fy2024`, `linde-fy2025`, `nvent-q2-2025`, `nvent-q2-2026`, `qualcomm-fy2024`, `qualcomm-fy2025`, `shin-etsu-chemical-q1-fy2025`, `shin-etsu-chemical-q1-fy2026`, `te-connectivity-fy2024`, `te-connectivity-fy2025`, `texas-instruments-q1-2026`, `texas-instruments-q2-2026`
+- Capex定義未分類: `aptiv-fy2024`, `aptiv-fy2025`, `corning-fy2024`, `corning-fy2025`, `johnson-controls-fy2024`, `johnson-controls-fy2025`, `linde-fy2024`, `linde-fy2025`, `qualcomm-fy2024`, `qualcomm-fy2025`, `shin-etsu-chemical-q1-fy2025`, `shin-etsu-chemical-q1-fy2026`, `te-connectivity-fy2024`, `te-connectivity-fy2025`, `texas-instruments-q1-2026`, `texas-instruments-q2-2026`
 - Non-GAAP表記・Atlas算式一致（値変更対象外）: `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
 - Atlas定義差あり（一次資料再確認）: なし
 - adjusted / Non-GAAP算式未解決: なし
@@ -130,7 +132,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | broadcom | Broadcom（ブロードコム） | 3 | 15 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | ppe-only |
 | cadence | Cadence（ケイデンス） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only |
 | canon | キヤノン | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
-| carrier | Carrier（キャリア） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | unclassified-capex-definition |
+| carrier | Carrier（キャリア） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | discontinued-operations |
 | ciena | Ciena（シエナ） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | cisco | Cisco（シスコ） | 4 | 12 | 0 | 0 | 8 | 0 | 0 | 0 | 4 | — |
 | coherent | Coherent（コヒレント） | 4 | 16 | 0 | 0 | 4 | 2 | 0 | 0 | 2 | ppe-only |
@@ -173,7 +175,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | monolithic-power | Monolithic Power Systems（モノリシック・パワー・システムズ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | nan-ya-pcb | Nan Ya PCB（南亜電路板） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | nikon | ニコン | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
-| nvent | nVent（エヌベント） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | unclassified-capex-definition |
+| nvent | nVent（エヌベント） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only, company-fcf-formula-includes-asset-sale-proceeds |
 | nvidia | NVIDIA（エヌビディア） | 6 | 24 | 0 | 0 | 6 | 3 | 0 | 0 | 3 | — |
 | nxp | NXP Semiconductors（NXPセミコンダクターズ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
 | omron | オムロン | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | discontinued-operations |
