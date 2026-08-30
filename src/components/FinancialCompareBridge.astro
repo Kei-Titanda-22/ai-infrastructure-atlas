@@ -1,12 +1,8 @@
 ---
 import { financialHistory } from '../lib/financial-history';
-import sources from '../data/sources.json';
-import v02Sources from '../data/sources-v02.json';
-import documentSources from '../data/document-sources.json';
-import v04DocumentSources from '../data/document-sources-v04.json';
+import { financialSourceById } from '../lib/financial-sources';
 import { withBase } from '../lib/paths';
 
-const sourceById = new Map([...sources, ...v02Sources, ...documentSources, ...v04DocumentSources].map(source => [source.id, source]));
 const payload = {
   financialsBase: withBase('financials/'),
   history: financialHistory.map(record => ({
@@ -21,7 +17,7 @@ const payload = {
     verifiedAt: record.verifiedAt,
     metrics: record.metrics,
     source: (() => {
-      const source = sourceById.get(record.sourceId);
+      const source = financialSourceById.get(record.sourceId);
       return source ? { title: source.title, url: source.url } : null;
     })(),
   })),
