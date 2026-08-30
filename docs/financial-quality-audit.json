@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "classificationRuleVersion": 2,
   "dataAsOf": "2026-08-30",
-  "inputDigestSha256": "49b0096106970d941967be5d9207db3f9ef2dd649e3f186b3b5ff80afcb8c680",
+  "inputDigestSha256": "9c99db4cb1bb5598a97f5638cc164fab35c4abfcee3bf81df8e563da1967e373",
   "inputs": {
     "historyFiles": [
       "src/data/financial-history.json",
@@ -44,7 +44,7 @@
       "src/data/financial-history-v04-batch37.json"
     ],
     "companyFiles": 100,
-    "cashFlowOverrides": 5
+    "cashFlowOverrides": 6
   },
   "definitions": {
     "cashFlowCoverage": {
@@ -118,10 +118,10 @@
       "both-missing": 66
     },
     "capexDefinitions": {
-      "gross-ppe": 48,
+      "gross-ppe": 49,
       "ppe-plus-intangible": 69,
       "broader-non-current-assets": 4,
-      "net-capex": 28,
+      "net-capex": 27,
       "reit-or-real-estate-investment": 6,
       "not-collected": 64,
       "unclassified": 28
@@ -135,9 +135,9 @@
     },
     "adjustedNonGaapFcfAssessments": {
       "atlas-formula-aligned": 8,
-      "atlas-definition-difference": 5,
+      "atlas-definition-difference": 4,
       "unresolved": 0,
-      "not-applicable": 234
+      "not-applicable": 235
     },
     "specialFlags": {
       "goodwill-impairment": 2,
@@ -145,13 +145,13 @@
       "non-consolidated-subsidiary": 2,
       "reit": 2,
       "reconstructed-operating-income": 7,
-      "net-basis-capex": 28,
+      "net-basis-capex": 27,
       "broad-capex": 4,
-      "company-reported-fcf": 24,
+      "company-reported-fcf": 23,
       "non-gaap-fcf-atlas-formula-aligned": 8,
-      "fcf-atlas-definition-difference": 5,
+      "fcf-atlas-definition-difference": 4,
       "adjusted-or-non-gaap-fcf-unresolved": 0,
-      "cash-flow-inputs-missing": 13,
+      "cash-flow-inputs-missing": 12,
       "fcf-capex-scope-mismatch": 2,
       "derived-single-quarter": 6,
       "unclassified-capex-definition": 28,
@@ -346,18 +346,6 @@
         ]
       },
       {
-        "recordId": "micron-q3-fy2026",
-        "companyId": "micron",
-        "periodLabel": "Q3 FY2026",
-        "value": 18300,
-        "status": "verified",
-        "basis": "company-reported adjusted free cash flow（Non-GAAP、約18.3bnドル）",
-        "sourceId": "earnings-micron-2026-06-24-q3-fy2026",
-        "reasons": [
-          "net-capex"
-        ]
-      },
-      {
         "recordId": "vertiv-q2-2025",
         "companyId": "vertiv",
         "periodLabel": "Q2 2025",
@@ -394,7 +382,6 @@
       "asml-q4-2025",
       "asml-q1-2026",
       "asml-q2-2026",
-      "micron-q3-fy2026",
       "vertiv-q2-2025",
       "vertiv-q2-2026"
     ],
@@ -2864,10 +2851,10 @@
         "both-missing": 2
       },
       "capexDefinitions": {
-        "gross-ppe": 0,
+        "gross-ppe": 1,
         "ppe-plus-intangible": 0,
         "broader-non-current-assets": 0,
-        "net-capex": 1,
+        "net-capex": 0,
         "reit-or-real-estate-investment": 0,
         "not-collected": 2,
         "unclassified": 0
@@ -2881,16 +2868,11 @@
       },
       "adjustedNonGaapFcfAssessments": {
         "atlas-formula-aligned": 0,
-        "atlas-definition-difference": 1,
+        "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 3
       },
-      "specialFlags": [
-        "net-basis-capex",
-        "company-reported-fcf",
-        "fcf-atlas-definition-difference",
-        "cash-flow-inputs-missing"
-      ]
+      "specialFlags": []
     },
     {
       "companyId": "mitsubishi-electric",
@@ -8278,20 +8260,13 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "net-capex",
+      "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
-      "adjustedNonGaapFcfAssessment": "atlas-definition-difference",
-      "adjustedNonGaapFcfAssessmentReasons": [
-        "net-capex"
-      ],
-      "cashFlowInputsStatus": "missing",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
-      "specialFlags": [
-        "net-basis-capex",
-        "company-reported-fcf",
-        "fcf-atlas-definition-difference",
-        "cash-flow-inputs-missing"
-      ]
+      "specialFlags": []
     },
     {
       "id": "mitsubishi-electric-fy2025",
