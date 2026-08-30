@@ -4,12 +4,13 @@ import computeNetworkDcHistory from '../data/financial-history-v04-batch3.json';
 import networkStorageHistory from '../data/financial-history-v04-batch4.json';
 import kioxiaHistory from '../data/financial-history-v04-batch5.json';
 import tokyoElectronHistory from '../data/financial-history-v04-batch6.json';
+import samsungMarvellCredoHistory from '../data/financial-history-v04-batch7.json';
 import cashFlowOverrides from '../data/financial-history-v04-cashflow-overrides.json';
 import metricDefinitions from '../data/financial-metric-definitions-v04.json';
 
 const overrideById = new Map(cashFlowOverrides.map(item => [item.id, item]));
 
-export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory].map(record => {
+export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory].map(record => {
   const override = overrideById.get(record.id);
   if (!override) return record;
   return {
