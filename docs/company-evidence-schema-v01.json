@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kei-titanda-22.github.io/ai-infrastructure-atlas/schema/company-evidence-v0.1.json",
+  "title": "AI Infrastructure Atlas Company Evidence Draft v0.1",
+  "description": "Phase 1 draft for five-company pilot validation. This is not the frozen production schema.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "claims", "evidence", "coverage"],
+  "properties": {
+    "schemaVersion": {
+      "const": "0.1"
+    },
+    "claims": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim" }
+    },
+    "evidence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidenceBinding" }
+    },
+    "coverage": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/coverageRecord" }
+    }
+  },
+  "$defs": {
+    "date": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "identifier": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "category": {
+      "enum": [
+        "company-overview",
+        "ai-infrastructure-role",
+        "products",
+        "technology",
+        "value-chain-position",
+        "manufacturing-facilities",
+        "capacity-expansion",
+        "customer-end-market",
+        "competitive-positioning",
+        "strategy",
+        "risks"
+      ]
+    },
+    "claim": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "companyId",
+        "category",
+        "claimType",
+        "priority",
+        "title",
+        "statement",
+        "evidenceIds",
+        "verificationStatus",
+        "asOf",
+        "lastVerified",
+        "nextReview"
+      ],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "companyId": { "$ref": "#/$defs/identifier" },
+        "category": { "$ref": "#/$defs/category" },
+        "subcategory": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "claimType": {
+          "enum": [
+            "fact",
+            "company-guidance",
+            "company-positioning",
+            "atlas-analysis",
+            "estimate"
+          ]
+        },
+        "priority": {
+          "enum": ["P1", "P2", "P3"]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 600
+        },
+        "evidenceIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/identifier" }
+        },
+        "verificationStatus": {
+          "enum": ["verified", "source-linked", "needs-review"]
+        },
+        "confidence": {
+          "enum": ["low", "medium", "high"]
+        },
+        "asOf": { "$ref": "#/$defs/date" },
+        "lastVerified": {
+          "oneOf": [
+            { "$ref": "#/$defs/date" },
+            { "type": "null" }
+          ]
+        },
+        "nextReview": {
+          "oneOf": [
+            { "$ref": "#/$defs/date" },
+            { "type": "null" }
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 1000
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "claimType": { "enum": ["atlas-analysis", "estimate"] }
+            },
+            "required": ["claimType"]
+          },
+          "then": {
+            "required": ["confidence"]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "verificationStatus": { "enum": ["verified", "source-linked"] }
+            },
+            "required": ["verificationStatus"]
+          },
+          "then": {
+            "properties": {
+              "evidenceIds": { "minItems": 1 },
+              "lastVerified": { "$ref": "#/$defs/date" }
+            }
+          }
+        }
+      ]
+    },
+    "evidenceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "claimId", "sourceId", "support", "locator", "lastChecked"],
+      "properties": {
+        "id": { "$ref": "#/$defs/identifier" },
+        "claimId": { "$ref": "#/$defs/identifier" },
+        "sourceId": { "$ref": "#/$defs/identifier" },
+        "support": {
+          "enum": ["supports", "context", "contradicts"]
+        },
+        "locator": { "$ref": "#/$defs/locator" },
+        "lastChecked": { "$ref": "#/$defs/date" },
+        "notes": {
+          "type": "string",
+          "maxLength": 1000
+        }
+      }
+    },
+    "locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "minProperties": 1,
+      "properties": {
+        "page": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "section": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "heading": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "table": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "note": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        },
+        "anchor": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "quotedLabel": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 160
+        }
+      }
+    },
+    "coverageRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "companyId",
+        "category",
+        "collectionStatus",
+        "lastReviewed",
+        "nextReview"
+      ],
+      "properties": {
+        "companyId": { "$ref": "#/$defs/identifier" },
+        "category": { "$ref": "#/$defs/category" },
+        "collectionStatus": {
+          "enum": ["complete", "partial", "not-started"]
+        },
+        "missingStatus": {
+          "enum": [
+            "not-collected",
+            "primary-source-unchecked",
+            "not-disclosed",
+            "not-applicable"
+          ]
+        },
+        "lastReviewed": {
+          "oneOf": [
+            { "$ref": "#/$defs/date" },
+            { "type": "null" }
+          ]
+        },
+        "nextReview": {
+          "oneOf": [
+            { "$ref": "#/$defs/date" },
+            { "type": "null" }
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 1000
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "collectionStatus": { "const": "not-started" }
+            },
+            "required": ["collectionStatus"]
+          },
+          "then": {
+            "required": ["missingStatus"]
+          }
+        }
+      ]
+    }
+  }
+}
