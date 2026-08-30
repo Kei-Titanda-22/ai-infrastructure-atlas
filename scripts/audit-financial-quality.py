@@ -37,6 +37,7 @@ CASH_FLOW_CATEGORIES = (
     "both-missing",
 )
 CAPEX_CATEGORIES = (
+    "gross-ppe-cash-purchases",
     "gross-ppe",
     "ppe-plus-intangible",
     "broader-non-current-assets",
@@ -66,6 +67,7 @@ SPECIAL_FLAG_ORDER = (
     "reconstructed-operating-income",
     "net-basis-capex",
     "broad-capex",
+    "ppe-only",
     "company-reported-fcf",
     "non-gaap-fcf-atlas-formula-aligned",
     "fcf-atlas-definition-difference",
@@ -99,6 +101,14 @@ EXPECTED_ADJUSTED_NON_GAAP_FCF = {
     "unresolved": set(),
 }
 
+# Generic "capital expenditures" wording is intentionally not enough for a
+# gross-PP&E classification. These records were traced to the SEC XBRL
+# PaymentsToAcquirePropertyPlantAndEquipment cash-flow fact.
+REVIEWED_CAPEX_DEFINITIONS = {
+    "applied-materials-q3-fy2025": "gross-ppe-cash-purchases",
+    "applied-materials-q3-fy2026": "gross-ppe-cash-purchases",
+}
+
 CATEGORY_DESCRIPTIONS = {
     "cashFlowCoverage": {
         "both-present": "FCF and Capex both have values",
@@ -107,6 +117,7 @@ CATEGORY_DESCRIPTIONS = {
         "both-missing": "FCF and Capex are both missing",
     },
     "capexDefinition": {
+        "gross-ppe-cash-purchases": "Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment",
         "gross-ppe": "Gross/standard cash PP&E expenditure; no net, intangible, broader-asset, or real-estate qualifier detected",
         "ppe-plus-intangible": "PP&E plus intangible assets or capitalized software/development",
         "broader-non-current-assets": "A broader non-current/fixed/long-term asset cash-investment line",
@@ -136,6 +147,7 @@ CATEGORY_DESCRIPTIONS = {
         "reconstructed-operating-income": "Operating income is reconstructed",
         "net-basis-capex": "Capex is disclosed on a net basis",
         "broad-capex": "Capex uses a broader non-current-asset definition",
+        "ppe-only": "Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases",
         "company-reported-fcf": "FCF value comes from a company-reported measure",
         "non-gaap-fcf-atlas-formula-aligned": "Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope",
         "fcf-atlas-definition-difference": "FCF uses a definition that differs from Atlas gross cash-Capex normalization",
@@ -249,6 +261,9 @@ def classify_capex(record: dict[str, Any], company: dict[str, Any]) -> str:
         return "reit-or-real-estate-investment"
     if capex.get("value") is None:
         return "not-collected"
+    reviewed_category = REVIEWED_CAPEX_DEFINITIONS.get(record["id"])
+    if reviewed_category:
+        return reviewed_category
     if has_any(
         text,
         (
@@ -429,6 +444,8 @@ def special_flags(
         flags.add("net-basis-capex")
     if capex_category == "broader-non-current-assets":
         flags.add("broad-capex")
+    if capex_category in {"gross-ppe-cash-purchases", "gross-ppe"}:
+        flags.add("ppe-only")
     if capex_category == "unclassified":
         flags.add("unclassified-capex-definition")
     if fcf.get("value") is not None and fcf_text.lstrip().startswith("company-reported"):
@@ -643,6 +660,15 @@ def build_report() -> dict[str, Any]:
                 f"reviewed adjusted/Non-GAAP FCF regression for {category}: "
                 f"expected={sorted(expected_ids)} observed={sorted(observed_ids)}"
             )
+    for record_id, expected_category in REVIEWED_CAPEX_DEFINITIONS.items():
+        observed_category = next(
+            audit["capexDefinition"] for audit in record_audits if audit["id"] == record_id
+        )
+        if observed_category != expected_category:
+            raise AssertionError(
+                f"reviewed Capex definition regression for {record_id}: "
+                f"expected={expected_category} observed={observed_category}"
+            )
 
     verified_dates = [record.get("verifiedAt") for record in records if record.get("verifiedAt")]
     history_paths = [
@@ -653,7 +679,7 @@ def build_report() -> dict[str, Any]:
     ]
     return {
         "schemaVersion": 2,
-        "classificationRuleVersion": 2,
+        "classificationRuleVersion": 3,
         "dataAsOf": max(verified_dates) if verified_dates else None,
         "inputDigestSha256": combined_input_digest(input_paths),
         "inputs": {
@@ -929,7 +955,8 @@ def print_summary(report: dict[str, Any]) -> None:
     print(
         "Independent cash-flow flags: "
         f"inputs-missing={summary['specialFlags']['cash-flow-inputs-missing']} / "
-        f"scope-mismatch={summary['specialFlags']['fcf-capex-scope-mismatch']}"
+        f"scope-mismatch={summary['specialFlags']['fcf-capex-scope-mismatch']} / "
+        f"ppe-only={summary['specialFlags']['ppe-only']}"
     )
 
 
