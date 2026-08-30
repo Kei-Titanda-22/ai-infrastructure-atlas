@@ -68,6 +68,7 @@ SPECIAL_FLAG_ORDER = (
     "net-basis-capex",
     "broad-capex",
     "ppe-only",
+    "government-incentive-netting-unresolved",
     "company-reported-fcf",
     "non-gaap-fcf-atlas-formula-aligned",
     "fcf-atlas-definition-difference",
@@ -107,6 +108,38 @@ EXPECTED_ADJUSTED_NON_GAAP_FCF = {
 REVIEWED_CAPEX_DEFINITIONS = {
     "applied-materials-q3-fy2025": "gross-ppe-cash-purchases",
     "applied-materials-q3-fy2026": "gross-ppe-cash-purchases",
+    "kla-q4-fy2025": "gross-ppe-cash-purchases",
+    "kla-q4-fy2026": "gross-ppe-cash-purchases",
+    "analog-devices-q3-fy2026": "net-capex",
+}
+
+# Reviewed classifications may need comparison flags or supplemental filing
+# provenance that cannot be derived safely from the generic basis wording.
+# Keep these controls record-specific and regression-protected rather than
+# applying company-wide exceptions.
+REVIEWED_CAPEX_SPECIAL_FLAGS = {
+    "kla-q4-fy2025": {"ppe-only"},
+    "kla-q4-fy2026": {"ppe-only"},
+    "analog-devices-q3-fy2026": {
+        "ppe-only",
+        "government-incentive-netting-unresolved",
+    },
+}
+
+REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
+    "kla-q4-fy2025": ["filing-kla-2026-fy2026-10k"],
+    "kla-q4-fy2026": ["filing-kla-2026-fy2026-10k"],
+    "analog-devices-q3-fy2026": [
+        "filing-analog-devices-2026-q3-fy2026-10q",
+        "filing-analog-devices-2025-fy2025-10k",
+    ],
+}
+
+REVIEWED_ATLAS_GROSS_CAPEX_UNRESOLVED_REASONS = {
+    "analog-devices-q3-fy2026": [
+        "company-discloses-additions-to-ppe-net",
+        "quarterly-government-incentive-netting-not-disclosed",
+    ],
 }
 
 CATEGORY_DESCRIPTIONS = {
@@ -148,6 +181,7 @@ CATEGORY_DESCRIPTIONS = {
         "net-basis-capex": "Capex is disclosed on a net basis",
         "broad-capex": "Capex uses a broader non-current-asset definition",
         "ppe-only": "Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases",
+        "government-incentive-netting-unresolved": "Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved",
         "company-reported-fcf": "FCF value comes from a company-reported measure",
         "non-gaap-fcf-atlas-formula-aligned": "Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope",
         "fcf-atlas-definition-difference": "FCF uses a definition that differs from Atlas gross cash-Capex normalization",
@@ -446,6 +480,7 @@ def special_flags(
         flags.add("broad-capex")
     if capex_category in {"gross-ppe-cash-purchases", "gross-ppe"}:
         flags.add("ppe-only")
+    flags.update(REVIEWED_CAPEX_SPECIAL_FLAGS.get(record["id"], set()))
     if capex_category == "unclassified":
         flags.add("unclassified-capex-definition")
     if fcf.get("value") is not None and fcf_text.lstrip().startswith("company-reported"):
@@ -504,6 +539,10 @@ def build_report() -> dict[str, Any]:
         adjusted_fcf_category, adjusted_fcf_reasons = adjusted_non_gaap_fcf_assessment(record)
         cash_inputs_status = cash_flow_inputs_status(record)
         scope_mismatch_reasons = fcf_capex_scope_mismatch_reasons(record)
+        capex_evidence_source_ids = REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS.get(record["id"], [])
+        atlas_gross_capex_unresolved_reasons = (
+            REVIEWED_ATLAS_GROSS_CAPEX_UNRESOLVED_REASONS.get(record["id"], [])
+        )
         flags = special_flags(
             record,
             company,
@@ -545,6 +584,10 @@ def build_report() -> dict[str, Any]:
             "fcfCapexScopeMismatchReasons": scope_mismatch_reasons,
             "specialFlags": flags,
         }
+        if capex_evidence_source_ids:
+            audit["capexDefinitionEvidenceSourceIds"] = capex_evidence_source_ids
+        if atlas_gross_capex_unresolved_reasons:
+            audit["atlasGrossCashCapexUnresolvedReasons"] = atlas_gross_capex_unresolved_reasons
         record_audits.append(audit)
         company_records[record["companyId"]].append(audit)
 
@@ -637,6 +680,15 @@ def build_report() -> dict[str, Any]:
         for audit in record_audits
         if audit["fcfCapexScopeMismatchReasons"]
     ]
+    atlas_gross_capex_unresolved = [
+        {
+            "recordId": audit["id"],
+            "reasons": audit.get("atlasGrossCashCapexUnresolvedReasons", []),
+            "evidenceSourceIds": audit.get("capexDefinitionEvidenceSourceIds", []),
+        }
+        for audit in record_audits
+        if audit.get("atlasGrossCashCapexUnresolvedReasons")
+    ]
 
     total_metrics = len(records) * len(METRIC_IDS)
     if sum(metric_status_counts.values()) != total_metrics:
@@ -661,13 +713,25 @@ def build_report() -> dict[str, Any]:
                 f"expected={sorted(expected_ids)} observed={sorted(observed_ids)}"
             )
     for record_id, expected_category in REVIEWED_CAPEX_DEFINITIONS.items():
-        observed_category = next(
-            audit["capexDefinition"] for audit in record_audits if audit["id"] == record_id
-        )
+        reviewed_audit = next(audit for audit in record_audits if audit["id"] == record_id)
+        observed_category = reviewed_audit["capexDefinition"]
         if observed_category != expected_category:
             raise AssertionError(
                 f"reviewed Capex definition regression for {record_id}: "
                 f"expected={expected_category} observed={observed_category}"
+            )
+        expected_flags = REVIEWED_CAPEX_SPECIAL_FLAGS.get(record_id, set())
+        if not expected_flags.issubset(reviewed_audit["specialFlags"]):
+            raise AssertionError(
+                f"reviewed Capex special-flag regression for {record_id}: "
+                f"expected={sorted(expected_flags)} observed={reviewed_audit['specialFlags']}"
+            )
+        expected_evidence = REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS.get(record_id, [])
+        if reviewed_audit.get("capexDefinitionEvidenceSourceIds", []) != expected_evidence:
+            raise AssertionError(
+                f"reviewed Capex evidence regression for {record_id}: "
+                f"expected={expected_evidence} "
+                f"observed={reviewed_audit.get('capexDefinitionEvidenceSourceIds', [])}"
             )
 
     verified_dates = [record.get("verifiedAt") for record in records if record.get("verifiedAt")]
@@ -679,7 +743,7 @@ def build_report() -> dict[str, Any]:
     ]
     return {
         "schemaVersion": 2,
-        "classificationRuleVersion": 3,
+        "classificationRuleVersion": 4,
         "dataAsOf": max(verified_dates) if verified_dates else None,
         "inputDigestSha256": combined_input_digest(input_paths),
         "inputs": {
@@ -716,6 +780,7 @@ def build_report() -> dict[str, Any]:
             "adjustedNonGaapFcfUnresolved": adjusted_fcf_queues["unresolved"],
             "cashFlowInputsMissing": cash_flow_inputs_missing,
             "fcfCapexScopeMismatch": fcf_capex_scope_mismatch,
+            "atlasGrossCashCapexUnresolved": atlas_gross_capex_unresolved,
         },
         "companies": company_audits,
         "records": record_audits,
@@ -869,6 +934,14 @@ def render_markdown(report: dict[str, Any]) -> str:
         lines.append(f"- FCF/Capex scope mismatch: {formatted}")
     else:
         lines.append("- FCF/Capex scope mismatch: なし")
+    if action_queues["atlasGrossCashCapexUnresolved"]:
+        formatted = ", ".join(
+            f"`{item['recordId']}` ({', '.join(item['reasons'])}; evidence: {', '.join(item['evidenceSourceIds'])})"
+            for item in action_queues["atlasGrossCashCapexUnresolved"]
+        )
+        lines.append(f"- Atlas gross cash Capex未解決: {formatted}")
+    else:
+        lines.append("- Atlas gross cash Capex未解決: なし")
     lines.append("")
 
     lines.extend(
@@ -911,6 +984,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "- CIは `--check` で入力SHA-256と全分類を再計算し、コミット済みレポートとの差分を検出する。",
             "- 分類は比較上の監査ラベルであり、各指標の一次根拠は引き続きレコードの `sourceId` と `basis` を正とする。",
             "- adjusted / Non-GAAPのAtlas定義判定、`cashFlowInputs` 登録状態、FCF/Capex scope一致は独立軸として扱う。",
+            "- Capex定義の分類済み状態とAtlas gross cash Capexとしての解決状態は独立軸として扱う。`net-capex`へ分類できても、期間固有のnetting額が閉じない場合は要確認キューに残す。",
             "- `unclassified`、`source-linked`、`needs-review` は隠さず、次の一次資料監査候補として扱う。",
             "",
         ]
@@ -956,7 +1030,11 @@ def print_summary(report: dict[str, Any]) -> None:
         "Independent cash-flow flags: "
         f"inputs-missing={summary['specialFlags']['cash-flow-inputs-missing']} / "
         f"scope-mismatch={summary['specialFlags']['fcf-capex-scope-mismatch']} / "
-        f"ppe-only={summary['specialFlags']['ppe-only']}"
+        f"ppe-only={summary['specialFlags']['ppe-only']} / "
+        f"government-netting-unresolved="
+        f"{summary['specialFlags']['government-incentive-netting-unresolved']} / "
+        f"Atlas-gross-Capex-unresolved="
+        f"{len(report['actionQueues']['atlasGrossCashCapexUnresolved'])}"
     )
 
 
