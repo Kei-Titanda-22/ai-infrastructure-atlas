@@ -41,6 +41,7 @@ CAPEX_CATEGORIES = (
     "gross-ppe-cash-purchases",
     "gross-ppe",
     "ppe-plus-intangible",
+    "company-reported-cash-capex",
     "broader-non-current-assets",
     "net-capex",
     "reit-or-real-estate-investment",
@@ -69,6 +70,9 @@ SPECIAL_FLAG_ORDER = (
     "net-basis-capex",
     "broad-capex",
     "ppe-only",
+    "asset-scope-unresolved",
+    "rounded-source-value",
+    "informal-comparative-source",
     "continuing-operations-cfo-reconstructed",
     "government-incentive-netting-unresolved",
     "company-fcf-formula-includes-asset-sale-proceeds",
@@ -122,6 +126,8 @@ REVIEWED_CAPEX_DEFINITIONS = {
     "linde-fy2025": "gross-ppe-cash-purchases",
     "qualcomm-fy2024": "gross-productive-assets-cash-purchases",
     "qualcomm-fy2025": "gross-productive-assets-cash-purchases",
+    "shin-etsu-chemical-q1-fy2025": "company-reported-cash-capex",
+    "shin-etsu-chemical-q1-fy2026": "company-reported-cash-capex",
 }
 
 # Reviewed classifications may need comparison flags or supplemental filing
@@ -150,6 +156,16 @@ REVIEWED_CAPEX_SPECIAL_FLAGS = {
         "continuing-operations-cfo-reconstructed",
     },
     "qualcomm-fy2025": {"broad-capex"},
+    "shin-etsu-chemical-q1-fy2025": {
+        "asset-scope-unresolved",
+        "rounded-source-value",
+        "informal-comparative-source",
+    },
+    "shin-etsu-chemical-q1-fy2026": {
+        "asset-scope-unresolved",
+        "rounded-source-value",
+        "informal-comparative-source",
+    },
 }
 
 REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
@@ -163,12 +179,26 @@ REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
     "carrier-q2-2026": ["filing-carrier-2026-q2-10q"],
     "nvent-q2-2025": ["filing-nvent-2026-q2-10q"],
     "nvent-q2-2026": ["filing-nvent-2026-q2-10q"],
+    "shin-etsu-chemical-q1-fy2025": [
+        "results-shin-etsu-2026-07-24-q1-fy2026"
+    ],
+    "shin-etsu-chemical-q1-fy2026": [
+        "results-shin-etsu-2026-07-24-q1-fy2026"
+    ],
 }
 
 REVIEWED_ATLAS_GROSS_CAPEX_UNRESOLVED_REASONS = {
     "analog-devices-q3-fy2026": [
         "company-discloses-additions-to-ppe-net",
         "quarterly-government-incentive-netting-not-disclosed",
+    ],
+    "shin-etsu-chemical-q1-fy2025": [
+        "formal-quarterly-cash-flow-statement-not-prepared",
+        "ppe-versus-ppe-plus-intangible-scope-not-disclosed",
+    ],
+    "shin-etsu-chemical-q1-fy2026": [
+        "formal-quarterly-cash-flow-statement-not-prepared",
+        "ppe-versus-ppe-plus-intangible-scope-not-disclosed",
     ],
 }
 
@@ -184,6 +214,7 @@ CATEGORY_DESCRIPTIONS = {
         "gross-ppe-cash-purchases": "Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment",
         "gross-ppe": "Gross/standard cash PP&E expenditure; no net, intangible, broader-asset, or real-estate qualifier detected",
         "ppe-plus-intangible": "PP&E plus intangible assets or capitalized software/development",
+        "company-reported-cash-capex": "A primary-source-reviewed company cash-Capex outflow whose underlying PP&E versus PP&E-plus-intangible asset scope is not separately disclosed",
         "broader-non-current-assets": "A broader non-current/fixed/long-term asset cash-investment line",
         "net-capex": "Capex or PP&E cash spending disclosed on a net basis",
         "reit-or-real-estate-investment": "REIT or investment-property/real-estate investment definition",
@@ -212,6 +243,9 @@ CATEGORY_DESCRIPTIONS = {
         "net-basis-capex": "Capex is disclosed on a net basis",
         "broad-capex": "Capex uses a broader non-current-asset definition",
         "ppe-only": "Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases",
+        "asset-scope-unresolved": "The company-reported cash-Capex outflow is classified, but primary sources do not close whether the asset scope is PP&E only or PP&E plus intangible assets; Atlas gross cash Capex remains review-required",
+        "rounded-source-value": "The stored JPY million value is a unit conversion from a company source reported in 0.1 billion JPY increments, not a precise JPY million cash-flow fact",
+        "informal-comparative-source": "The value comes from an issuer-prepared informal comparative cash-flow overview because no formal quarterly cash-flow statement was prepared",
         "continuing-operations-cfo-reconstructed": "Continuing-operations operating cash flow is reconstructed from consolidated operating cash flow and separately disclosed discontinued-operation operating cash flow; this is reviewed scope provenance, not a scope mismatch",
         "government-incentive-netting-unresolved": "Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved",
         "company-fcf-formula-includes-asset-sale-proceeds": "Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected",
@@ -776,7 +810,7 @@ def build_report() -> dict[str, Any]:
     ]
     return {
         "schemaVersion": 2,
-        "classificationRuleVersion": 4,
+        "classificationRuleVersion": 5,
         "dataAsOf": max(verified_dates) if verified_dates else None,
         "inputDigestSha256": combined_input_digest(input_paths),
         "inputs": {
