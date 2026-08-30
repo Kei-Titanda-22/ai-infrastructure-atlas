@@ -3,6 +3,7 @@ import '../styles/global.css';
 import '../styles/data-evidence-v05.css';
 import '../styles/v02-expansion.css';
 import '../styles/financial-v04.css';
+import '../styles/text-contrast.css';
 import { financialHistory } from '../lib/financial-history';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -41,6 +42,11 @@ const isComparePage = Astro.url.pathname.includes('/compare');
     <Footer />
     {isComparePage ? <FinancialCompareBridge /> : null}
     <script is:inline>
+      const companySearch = document.querySelector('#company-search');
+      if (companySearch instanceof HTMLInputElement) {
+        companySearch.placeholder = '企業名・ティッカー・製品・技術・地域を検索';
+      }
+
       const companyToc = document.querySelector('.company-toc');
       const advantagesSection = document.querySelector('#advantages');
       if (companyToc && advantagesSection && !companyToc.querySelector('a[href="#advantages"]')) {

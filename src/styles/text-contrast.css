@@ -1,0 +1,21 @@
+/* Site-wide text contrast policy: keep secondary text dark instead of gray. */
+:root {
+  --muted: var(--text);
+}
+
+.control::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: var(--text);
+  opacity: 1;
+}
+
+/* Legacy direct gray text declarations that do not use --muted. */
+.product-row dd {
+  color: var(--text);
+}
+
+/* Keep the homepage update log concise; the underlying update log remains intact. */
+.update-table tbody tr:nth-child(n + 6) {
+  display: none;
+}
