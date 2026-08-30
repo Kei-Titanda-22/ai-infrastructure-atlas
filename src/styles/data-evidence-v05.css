@@ -38,15 +38,16 @@
 /* real value-chain map */
 .map-note { max-width:92ch; margin:0 0 16px; padding-left:12px; border-left:3px solid var(--border-strong); color:var(--muted); font-size:13px; }
 .value-chain-map { max-width:980px; border-top:1px solid var(--border); }
-.value-chain-stage { position:relative; display:grid; grid-template-columns:210px minmax(260px,1fr) minmax(260px,1.2fr); gap:20px; padding:18px 12px 24px; border-bottom:1px solid var(--border); border-left:4px solid #a7afb6; background:var(--surface); }
-.value-chain-stage.vc-compute { border-left-color:#8798b0; }
-.value-chain-stage.vc-memory { border-left-color:#82937e; }
-.value-chain-stage.vc-materials { border-left-color:#958f75; }
-.value-chain-stage.vc-manufacturing { border-left-color:#9a8d79; }
-.value-chain-stage.vc-backend { border-left-color:#938299; }
-.value-chain-stage.vc-interconnect { border-left-color:#739795; }
-.value-chain-stage.vc-datacenter { border-left-color:#988b75; }
-.value-chain-stage.vc-physical { border-left-color:#898e9b; }
+.value-chain-stage { position:relative; display:grid; grid-template-columns:210px minmax(260px,1fr) minmax(260px,1.2fr); gap:20px; padding:18px 12px 24px; border-bottom:1px solid var(--border); border-left:6px solid #5d7185; background:var(--surface); }
+.value-chain-stage.vc-demand { border-left-color:#4f6f91; }
+.value-chain-stage.vc-compute { border-left-color:#4f76b5; }
+.value-chain-stage.vc-memory { border-left-color:#4f8b5d; }
+.value-chain-stage.vc-materials { border-left-color:#a3832f; }
+.value-chain-stage.vc-manufacturing { border-left-color:#a76b38; }
+.value-chain-stage.vc-backend { border-left-color:#8b5aa2; }
+.value-chain-stage.vc-interconnect { border-left-color:#2f8d89; }
+.value-chain-stage.vc-datacenter { border-left-color:#a8742f; }
+.value-chain-stage.vc-physical { border-left-color:#626b91; }
 .value-chain-stage-head { display:grid; grid-template-columns:38px 1fr; align-items:start; color:var(--text); text-decoration:none; }
 .value-chain-stage-head:hover .value-chain-title { color:var(--link); text-decoration:underline; }
 .value-chain-number { color:var(--muted); font-family:var(--mono); font-size:12px; }
