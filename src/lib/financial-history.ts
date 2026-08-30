@@ -6,12 +6,13 @@ import kioxiaHistory from '../data/financial-history-v04-batch5.json';
 import tokyoElectronHistory from '../data/financial-history-v04-batch6.json';
 import samsungMarvellCredoHistory from '../data/financial-history-v04-batch7.json';
 import westernDigitalHistory from '../data/financial-history-v04-batch8.json';
+import foundryAnalogHistory from '../data/financial-history-v04-batch9.json';
 import cashFlowOverrides from '../data/financial-history-v04-cashflow-overrides.json';
 import metricDefinitions from '../data/financial-metric-definitions-v04.json';
 
 const overrideById = new Map(cashFlowOverrides.map(item => [item.id, item]));
 
-export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory].map(record => {
+export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory].map(record => {
   const override = overrideById.get(record.id);
   if (!override) return record;
   return {
