@@ -158,6 +158,26 @@ for record in history:
     if any(metric.get('status') == 'verified' for metric in metrics.values()) and not record.get('verifiedAt'):
         errors.append(f'{rid}: verified metric requires verifiedAt')
 
+expected_carrier_cash_flow = {
+    'carrier-q2-2025': {'operatingCashFlow': 264, 'capexCashOutflow': 81, 'freeCashFlow': 183, 'capex': 81},
+    'carrier-q2-2026': {'operatingCashFlow': 888, 'capexCashOutflow': 117, 'freeCashFlow': 771, 'capex': 117},
+}
+for rid, expected in expected_carrier_cash_flow.items():
+    record = history_by_id[rid]
+    if record.get('sourceId') != 'earnings-carrier-2026-07-28-q2':
+        errors.append(f'{rid}: Carrier earnings sourceId must remain unchanged')
+    cash_inputs = record.get('cashFlowInputs', {})
+    for field in ('operatingCashFlow', 'capexCashOutflow'):
+        if cash_inputs.get(field) != expected[field]:
+            errors.append(f'{rid}: expected {field}={expected[field]}, got {cash_inputs.get(field)}')
+    for metric_id in ('freeCashFlow', 'capex'):
+        metric = record['metrics'][metric_id]
+        if metric.get('value') != expected[metric_id] or metric.get('status') != 'verified':
+            errors.append(
+                f'{rid}: expected verified {metric_id}={expected[metric_id]}, '
+                f'got value={metric.get("value")} status={metric.get("status")}'
+            )
+
 period_types = {record['periodType'] for record in history}
 if period_types != allowed_period_types:
     errors.append(f'v0.4 history must contain quarterly and annual records; got {period_types}')
@@ -225,10 +245,10 @@ if verified_metrics < 1098:
     errors.append(f'v0.4 history regression: expected at least 1098 verified metrics, got {verified_metrics}')
 if cashflow_periods < 181:
     errors.append(f'v0.4 cash-flow regression: expected at least 181 FCF/Capex periods, got {cashflow_periods}')
-if len(overrides) < 10:
-    errors.append(f'v0.4 cash-flow override regression: expected at least 10 overrides, got {len(overrides)}')
-if len(v04_sources) < 114:
-    errors.append(f'v0.4 source regression: expected at least 114 document sources+policies, got {len(v04_sources)}')
+if len(overrides) < 12:
+    errors.append(f'v0.4 cash-flow override regression: expected at least 12 overrides, got {len(overrides)}')
+if len(v04_sources) < 116:
+    errors.append(f'v0.4 source regression: expected at least 116 document sources+policies, got {len(v04_sources)}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')

@@ -1,4 +1,4 @@
-# AI Infrastructure Atlas Status — 2026-08-30
+# AI Infrastructure Atlas Status — 2026-08-31
 
 ## Release phase
 
@@ -33,6 +33,7 @@
 - [x] Vertiv Q2 2025 / Q2 2026 and ABB Q2 2025 / Q2 2026 Atlas FCF normalization with audited cash-flow inputs
 - [x] TSMC Q2 2025 / Q1 2026 / Q2 2026 gross PP&E + intangible cash-Capex normalization; Applied Materials gross PP&E classification
 - [x] KLA Q4 FY2025 / Q4 FY2026 gross PP&E classification; Analog Devices Q3 FY2026 net-Capex classification with unresolved government-incentive netting provenance
+- [x] Carrier Q2 2025 / Q2 2026 continuing-operations FCF normalization; Carrier productive-assets and nVent gross PP&E Capex classification
 
 ## Current database
 
@@ -51,16 +52,16 @@
 - adjusted / Non-GAAP FCF with Atlas definition difference: **0**
 - populated FCF periods with cashFlowInputs missing: **8**
 - periods with FCF / Capex scope mismatch: **0**
-- audited cash-flow overrides: **10**
-- v0.4 document sources: **114**
-- v0.4 pending source policies: **114**
+- audited cash-flow overrides: **12**
+- v0.4 document sources: **116**
+- v0.4 pending source policies: **116**
 - earnings update ledger: **247 normalized records / 100 companies**
 - registered facilities: **17**
 - real-time stock-price distribution: disabled
 
-今回のローカル検証で `247 periods / 100 companies / 100 multi-period companies / 1098 verified metrics / 181 FCF+Capex periods / 10 cash-flow overrides / 114 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 3,659語を生成した。
+今回のローカル検証で `247 periods / 100 companies / 100 multi-period companies / 1098 verified metrics / 181 FCF+Capex periods / 12 cash-flow overrides / 116 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 3,660語を生成した。
 
-`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。レビュー済みadjusted / Non-GAAP由来FCF 13期間は、旧表記のままAtlas算式一致8期間、Atlas正規化済み5期間（Micron 1期間、Vertiv 2期間、ABB 2期間）、Atlas定義差あり0期間となった。さらに、cashFlowInputs未登録8期間、FCF/Capex scope mismatch 0期間、PP&E-only 54期間を独立軸で出力する。TSMC 3期間は`ppe-plus-intangible`、Applied Materials 2期間とKLA 2期間は一次資料監査済みの`gross-ppe-cash-purchases`として分類する。Analog Devices Q3 FY2026は`net-capex`へ分類する一方、期間固有の政府支援相殺額が未開示のため`government-incentive-netting-unresolved`およびAtlas gross cash Capex未解決queueに残す。現状のその他の要確認キューは、source-linked 3指標、FCF/Capex片側欠損0期間、両方欠損66期間、Capex定義未分類20期間。CIは `--check` でデータと監査結果の同期を検証する。
+`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。レビュー済みadjusted / Non-GAAP由来FCF 13期間は、旧表記のままAtlas算式一致8期間、Atlas正規化済み5期間（Micron 1期間、Vertiv 2期間、ABB 2期間）、Atlas定義差あり0期間となった。さらに、cashFlowInputs未登録8期間、FCF/Capex scope mismatch 0期間、PP&E-only 56期間を独立軸で出力する。Carrier 2期間は別途、continuing-operations OCFへ統一し、`gross-productive-assets-cash-purchases`として分類する。TSMC 3期間は`ppe-plus-intangible`、Applied Materials 2期間、KLA 2期間、nVent 2期間は一次資料監査済みの`gross-ppe-cash-purchases`として分類する。nVentの会社FCFはPP&E sale proceedsを加算するが対象2期間はゼロのためAtlas値へ影響しない。Analog Devices Q3 FY2026は`net-capex`へ分類する一方、期間固有の政府支援相殺額が未開示のため`government-incentive-netting-unresolved`およびAtlas gross cash Capex未解決queueに残す。現状のその他の要確認キューは、source-linked 3指標、FCF/Capex片側欠損0期間、両方欠損66期間、Capex定義未分類16期間。CIは `--check` でデータと監査結果の同期を検証する。
 
 ## v0.4 implementation
 
@@ -123,7 +124,7 @@
 - ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt
 - 営業利益率再計算、Capex符号、Atlas FCF入力値・算式
 - 主要企業ごとの最低収録期間
-- continuity floor: **247 periods / 100 companies / 1,098 verified metrics / 181 FCF+Capex periods / 10 cash-flow overrides / 114 sources+policies**
+- continuity floor: **247 periods / 100 companies / 1,098 verified metrics / 181 FCF+Capex periods / 12 cash-flow overrides / 116 sources+policies**
 - Kinsus / Unimicronを含む100社カバレッジを維持し、Kinsus / Unimicronも各2期間以上を個別回帰ゲートで保持する。
 - 100社財務品質監査のJSON/Markdownが現在の履歴・override・会社分類と一致することを検査する。
 
@@ -132,11 +133,11 @@
 **100社の複数期間カバレッジ拡張は完了。** v0.4自体はまだ完了扱いにせず、次の品質・深度改善を残す。
 
 1. Micron Q3 FY2026、Vertiv Q2 2025 / Q2 2026、ABB Q2 2025 / Q2 2026はgross cash CapexでAtlas正規化済み。Atlas定義差ありキューは0期間。Atlas算式一致のAMD / ASML 8期間は財務値を変更せず、必要な場合だけcashFlowInputsを別PRで構造化する。
-2. Capex定義未分類23期間を一次資料とcash-flow lineへ戻って再監査し、gross PP&E / PP&E + intangible / net / broader definitionへ安全に構造化できるものだけ分類する。TSMC 3期間とApplied Materials 2期間は今回解消済み。
+2. Capex定義未分類16期間を一次資料とcash-flow lineへ戻って再監査し、gross PP&E / productive assets / PP&E + intangible / net / broader definitionへ安全に構造化できるものだけ分類する。TSMC 3期間、Applied Materials 2期間、KLA 2期間、Analog Devices 1期間、Carrier 2期間、nVent 2期間は解消済み。
 3. Kinsusなど、FCF / Capexが未収録の期間について一次資料でexact cash-Capex定義を安全に閉じられる場合のみ補完する。両方欠損66期間には単四半期CFを意図的に推定していない期間も含むため、一括補完しない。
 4. 主要企業の四半期連続性を伸ばし、通期2点だけの企業で比較深度を上げる。
 5. 会社間で異なるCapex / FCF / reported operating-profit定義を再監査し、比較画面で誤って同一定義と見なされないことを確認する。
-6. 111件のv0.4 Source Policyを順次レビューし、v0.5の自動取得対象へ昇格可能なSourceを選別する。
+6. 116件のv0.4 Source Policyを順次レビューし、v0.5の自動取得対象へ昇格可能なSourceを選別する。
 7. Ajinomoto Fine-Techno FY2025の一次官報PDF等、現在source-linkedに留めている値の一次資料を確保できればverifiedへ昇格する。
 8. v0.4完了条件を再監査し、履歴カバレッジだけでなくSource品質・比較可能性・欠損理由の整合性を満たした段階で完了判定する。
 
