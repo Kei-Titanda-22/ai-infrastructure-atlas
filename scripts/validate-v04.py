@@ -188,12 +188,12 @@ cashflow_periods = sum(
 )
 
 # Continuity regression floor. Future expansion may exceed these counts.
-if len(history) < 149:
-    errors.append(f'v0.4 history regression: expected at least 149 periods, got {len(history)}')
-if len(covered_companies) < 53:
-    errors.append(f'v0.4 coverage regression: expected at least 53 companies, got {len(covered_companies)}')
-if len(multi_period_companies) < 53:
-    errors.append(f'v0.4 history regression: expected all 53 covered companies to be multi-period, got {len(multi_period_companies)}')
+if len(history) < 155:
+    errors.append(f'v0.4 history regression: expected at least 155 periods, got {len(history)}')
+if len(covered_companies) < 56:
+    errors.append(f'v0.4 coverage regression: expected at least 56 companies, got {len(covered_companies)}')
+if len(multi_period_companies) < 56:
+    errors.append(f'v0.4 history regression: expected all 56 covered companies to be multi-period, got {len(multi_period_companies)}')
 if len(records_by_company.get('kioxia', [])) < 7:
     errors.append(f'v0.4 Kioxia regression: expected at least 7 periods, got {len(records_by_company.get("kioxia", []))}')
 if sum(1 for row in records_by_company.get('kioxia', []) if row['periodType'] == 'quarterly') < 5:
@@ -209,16 +209,17 @@ for cid, minimum in [
     ('ase-technology', 3), ('amkor', 2), ('ibiden', 2), ('nan-ya-pcb', 2),
     ('shin-etsu-chemical', 2), ('entegris', 4), ('globalwafers', 2), ('resonac-holdings', 2),
     ('ge-vernova', 2), ('nvent', 2), ('abb', 2), ('carrier', 2), ('trane-technologies', 2), ('legrand', 2),
-    ('schneider-electric', 2), ('siemens-energy', 2), ('shinko-electric', 2), ('jcet', 2), ('sumco', 2)
+    ('schneider-electric', 2), ('siemens-energy', 2), ('shinko-electric', 2), ('jcet', 2), ('sumco', 2),
+    ('synopsys', 2), ('cadence', 2), ('onsemi', 2)
 ]:
     if len(records_by_company.get(cid, [])) < minimum:
         errors.append(f'v0.4 {cid} regression: expected at least {minimum} periods, got {len(records_by_company.get(cid, []))}')
-if verified_metrics < 651:
-    errors.append(f'v0.4 history regression: expected at least 651 verified metrics, got {verified_metrics}')
-if cashflow_periods < 103:
-    errors.append(f'v0.4 cash-flow regression: expected at least 103 FCF/Capex periods, got {cashflow_periods}')
-if len(v04_sources) < 54:
-    errors.append(f'v0.4 source regression: expected at least 54 document sources+policies, got {len(v04_sources)}')
+if verified_metrics < 681:
+    errors.append(f'v0.4 history regression: expected at least 681 verified metrics, got {verified_metrics}')
+if cashflow_periods < 109:
+    errors.append(f'v0.4 cash-flow regression: expected at least 109 FCF/Capex periods, got {cashflow_periods}')
+if len(v04_sources) < 57:
+    errors.append(f'v0.4 source regression: expected at least 57 document sources+policies, got {len(v04_sources)}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')
