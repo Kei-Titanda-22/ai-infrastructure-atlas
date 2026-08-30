@@ -33,6 +33,8 @@
 - [x] v0.4 Power Infrastructure history batch deployed — Run #147
 - [x] v0.4 Carrier / Trane Power-HVAC history batch deployed — Run #149
 - [x] v0.4 Legrand annual history deployed — Run #151
+- [x] v0.4 Schneider Electric / Siemens Energy annual history deployed — Run #153
+- [x] v0.4 Shinko Electric / JCET / SUMCO history batch deployed — Run #154
 
 ## Current database
 
@@ -41,71 +43,75 @@
 - value-chain stages: 9 including AI demand
 - comparison templates: 8
 - verified common financial metric audits: 14
-- normalized financial history: **139 periods / 48 companies**
-- multi-period financial-history companies: **48 / 48 covered companies**
-- verified normalized historical metrics: **605**
-- periods with both FCF and Capex: **95**
+- normalized financial history: **149 periods / 53 companies**
+- multi-period financial-history companies: **53 / 53 covered companies**
+- verified normalized historical metrics: **651**
+- periods with both FCF and Capex: **103**
 - audited cash-flow overrides: **5**
-- v0.4 exact document sources: **49**
-- v0.4 pending source policies: **49**
-- earnings update ledger: **139 normalized records / 48 companies**
+- v0.4 exact document sources: **54**
+- v0.4 pending source policies: **54**
+- earnings update ledger: **149 normalized records / 53 companies**
 - registered facilities: 17
 - project constitution articles: 9
 - real-time stock-price distribution: disabled
 
 ## v0.4 current implementation
 
-時系列財務は `src/data/financial-history.json` と `financial-history-v04-batch2.json` 〜 `batch15.json`、監査済みcash-flow overrideを `src/lib/financial-history.ts` で統合した配列を正規化履歴として扱う。各期間に四半期/通期、期末日、通貨・単位、会計基準、一次資料、検証日を持たせ、売上高・営業利益・営業利益率・FCF・設備投資を `value / status / basis` で管理する。
+時系列財務は `src/data/financial-history.json` と `financial-history-v04-batch2.json` 〜 `batch17.json`、監査済みcash-flow overrideを `src/lib/financial-history.ts` で統合した配列を正規化履歴として扱う。各期間に四半期/通期、期末日、通貨・単位、会計基準、一次資料、検証日を持たせ、売上高・営業利益・営業利益率・FCF・設備投資を `value / status / basis` で管理する。
 
-現在の履歴対象は48社・139期間で、48社すべてが2期間以上を持つ。Run #145〜#151では、OSAT / パッケージ基板、半導体材料、電力インフラ、データセンターHVACの主要企業を追加した。
+現在の履歴対象は53社・149期間で、53社すべてが2期間以上を持つ。直近Run #145〜#154では、OSAT / パッケージ基板、半導体材料、電力インフラ、データセンターHVACを重点的に拡張した。
 
 ### OSAT / パッケージ基板
 
-ASE Technology、Amkor、IBIDEN、Nan Ya PCBの9期間を追加した。ASE 3期間とIBIDEN 2期間は一次資料の単四半期営業CFとPP&E支出からAtlas FCFを算出する。AmkorとNan Ya PCBは対象資料のCF表が累計値のため、単四半期FCF / Capexを推定しない。Run #145で117期間 / 38社 / 511検証済み指標 / FCF+Capex 81期間を確認した。
+ASE Technology、Amkor、IBIDEN、Nan Ya PCBに加え、Shinko ElectricとJCETを収録した。ASE 3期間、IBIDEN 2期間、Shinko Electric 2通期、JCET 2四半期は一次資料の営業CFとcash CapexからAtlas FCFを算出する。AmkorとNan Ya PCBは対象資料のCF表が累計値のため、単四半期FCF / Capexを推定しない。
+
+Shinko Electricは上場廃止前のFY2024公式決算資料の比較列を使用し、FY2023 / FY2024の売上高・営業利益・営業利益率・営業CF・PP&E/無形資産取得支出を収録する。JCETはPRC GAAPのQ1 2024公式報告書からQ1 2023 / Q1 2024を収録し、元の人民元値をCNY millionへ単位スケールのみ変換する。Run #154でShinko / JCET / SUMCOを含む149期間版を検証した。
 
 ### 半導体材料
 
-信越化学工業、Entegris、GlobalWafers、レゾナック・ホールディングスの10期間を追加した。信越化学は公式Appendixの比較CFを使用し、四半期法定CFではないことと0.1十億円単位から百万円へ換算したことをbasisに保持する。Entegrisは4期間すべて単四半期の営業CFとPP&E取得支出からAtlas FCFを算出する。GlobalWafersは監査レビュー済みQ1財務諸表の厳密値を採用し、丸め値との混在を避ける。レゾナックはIFRSのconsolidated operating profitを使用し、core operating profitと区別する。Q1 CF非開示のためFCF / Capexを推定しない。SUMCOは2026四半期一次資料の安定した直接参照を確保できなかったため保留。Run #146で127期間 / 42社 / 557検証済み指標 / FCF+Capex 89期間を確認した。
+信越化学工業、Entegris、GlobalWafers、レゾナック・ホールディングス、SUMCOを収録する。Entegrisは4期間すべて単四半期の営業CFとPP&E取得支出からAtlas FCFを算出する。GlobalWafersは監査レビュー済みQ1財務諸表の厳密値を採用し、丸め値との混在を避ける。レゾナックはIFRS consolidated operating profitを使用し、core operating profitと区別する。
+
+SUMCOは公式株主総会関連資料からFY2024 / FY2025の売上高・営業利益・営業利益率を収録した。対応するAtlas cash-Capex定義を同一資料で閉じられないため、FCF / Capexは推定せず `not-collected` とする。
 
 ### 電力インフラ / HVAC
 
-GE Vernova、nVent、ABB、Carrier、Trane Technologies、Legrandを追加した。GE VernovaはQ2 2026 Form 10-Qの三か月値を採用し、CF表が6か月累計のため単四半期FCF / Capexを推定しない。nVentはSEC提出済み決算資料の単四半期営業CFとCapexからAtlas FCFを算出し、2期間とも全5指標を収録する。ABBはRoboticsの非継続事業化後にQ2 2026資料で再表示されたQ2 2025比較値を使用する。ABBのFCFは会社開示Non-GAAP値を `source-linked` として保持し、同一資料に対応CapexがないためAtlas再計算はしない。Run #147で133期間 / 45社 / 579検証済み指標 / FCF+Capex 91期間を確認した。
+GE Vernova、nVent、ABB、Carrier、Trane Technologies、Legrand、Schneider Electric、Siemens Energyを収録する。GE Vernovaは10-Qの三か月値を採用し、CF表が累計のため単四半期FCF / Capexを推定しない。nVentとCarrierは単四半期CFO−CapexでAtlas FCFを算出する。ABBはRobotics非継続事業化後の再表示比較値を使用し、会社開示Non-GAAP FCFを `source-linked` として保持する。
 
-CarrierはQ2 2025 / Q2 2026の2期間で売上高・GAAP営業利益・営業利益率・営業CF・Capexが同一SEC提出資料に揃うため、FCFを `operating cash flow − capital expenditures` として再計算し全5指標を収録する。Trane TechnologiesはQ2 2025 / Q2 2026の売上高・GAAP営業利益・営業利益率を収録するが、CF開示がYTDのため単四半期FCF / Capexを推定しない。Run #149で137期間 / 47社 / 595検証済み指標 / FCF+Capex 93期間を確認した。
+LegrandはFY2023 / FY2024のIFRS通期を収録し、Atlas FCFは営業CF−gross capital expenditureとする。Schneider ElectricはAdjusted EBITAではなくIFRS consolidated Operating incomeを採用し、Atlas FCFは営業CF−gross PPE/intangible purchasesとする。Siemens EnergyはProfit before Special ItemsではなくIFRS Operating income (loss)を採用し、Atlas FCFは営業CF−intangible/PP&E purchasesとする。Run #153でSchneider Electric / Siemens Energyを追加し、正規化履歴が50社へ到達した。
 
-LegrandはFY2023 / FY2024のIFRS通期を追加した。公式2024通期リリースの比較列から売上高・営業利益・営業利益率・営業CF・設備投資を収録し、Atlas FCFは `営業活動CF − capital expenditure（capitalized development costs含む）` とした。会社開示FCFは固定・金融資産売却収入を含むため、FY2023で1.7百万ユーロ、FY2024で6.8百万ユーロの差があることをbasisに明示する。Run #151で139期間 / 48社 / 605検証済み指標 / FCF+Capex 95期間を確認した。
+### 既存の重要な定義差
 
-Coherent通期は営業活動CFとPP&E追加額からAtlas FCFを算出する。Lumentum通期はSEC 10-Kの営業活動CFとPP&E取得支出から算出する一方、Q4の会社開示は丸められたGAAP営業利益率までのため営業利益額を逆算しない。Cienaは決算資料のCF表が6か月累計のため単四半期FCF / Capexを推定しない。
+Coherent通期は営業活動CFとPP&E追加額からAtlas FCFを算出する。Lumentum通期はSEC 10-Kの営業活動CFとPP&E取得支出から算出する一方、Q4の会社開示は丸められたGAAP営業利益率までのため営業利益額を逆算しない。CienaはCF表が6か月累計のため単四半期FCF / Capexを推定しない。
 
-Amphenolの会社開示FCFはPP&E売却収入を控除項目へ含むため、Atlas側は `Operating Cash Flow − gross capital expenditures` を使用する。Eatonはsegment marginを連結営業利益として流用せず、連結損益計算書の `net sales − cost of products sold − selling and administrative expense − R&D` で営業利益を再構成し、basisに明示する。
+Amphenolの会社開示FCFはPP&E売却収入を含むため、Atlas側は `Operating Cash Flow − gross capital expenditures` を使用する。Eatonはsegment marginを連結営業利益として流用せず、連結損益行から営業利益を再構成してbasisに明示する。
 
-GlobalFoundriesとTexas Instrumentsでは会社Non-GAAP FCFに政府補助金・CHIPS Act incentiveが加算されるため、Atlas側は補助金を足さず `営業活動CF − 設備投資` を採用する。UMCも会社開示FCFとPP&E-only Atlas定義で差があるため、会社値を機械的に流用せずbasisに差異を明記する。Analog DevicesとNXPは会社開示FCFとAtlas再計算が整合する。
+GlobalFoundriesとTexas Instrumentsでは会社Non-GAAP FCFに政府補助金・CHIPS Act incentiveが加算されるため、Atlas側は補助金を足さず `営業活動CF − 設備投資` を採用する。UMCも会社開示FCFとPP&E-only Atlas定義の差をbasisに保持する。Western DigitalはFY2025の会社固有Flash Ventures調整を除外し、Atlas統一定義を使う。
 
-Western DigitalはFY2025の会社開示FCFにpre-Separation Flash Ventures活動が含まれるため、その会社固有調整を除外し、Atlas統一定義 `営業活動CF − PP&E取得支出` を使用する。
+キオクシアは5四半期＋2通期、東京エレクトロンも5四半期＋2通期を保持する。両社とも累計値を差分で単四半期化した期間は一次資料で整合性を確認し、FCF / Capexの定義もbasisに保持する。
 
-キオクシアはFY2026 Q1 / Q2 / Q3 / Q4とFY2027 Q1の5四半期、FY2025 / FY2026の2通期を収録する。Q2〜Q4は公式決算短信の累計値を差分で単四半期化し、営業CF・設備投資・FCFも各期間で検証済み。東京エレクトロンも同様に5四半期＋2通期を保持し、Capex定義は `有形固定資産の取得による現金支出` へ統一する。
+## Data plumbing / UI contracts
 
 FCF / Capexは定義確認済み期間だけ実データ化する。会社間の定義差は `basis` に保持し、比較時に同一定義とみなさない。既存period recordの補完には `src/data/financial-history-v04-cashflow-overrides.json` を監査済み差分層として使い、overrideはFCF / Capex以外を変更できないようvalidatorで制限する。
 
 一次資料の検索は `src/lib/financial-sources.ts` に集約し、`/financials/`、`/financials/updates/`、企業比較が同じSource Registryを消費する。文書Source / Policyはbatch単位の分割ファイルで追加し、validatorで重複IDとSource/Policyの1対1対応を検査する。
 
-`/financials/` は48社を企業切替対象とし、四半期・通期を分離した自前SVG推移図と、一次資料・会計基準・検証状態付き決算表を表示する。FCF / Capexが存在する企業では追加グラフを表示し、負のFCFにも対応する。決算グラフはPR #32の大型化をロールバック済みで、PR #32直前の表示状態を維持している。
+`/financials/` は53社を企業切替対象とし、四半期・通期を分離した自前SVG推移図と、一次資料・会計基準・検証状態付き決算表を表示する。FCF / Capexが存在する企業では追加グラフを表示し、負のFCFにも対応する。決算グラフはPR #32の大型化をロールバック済みで、PR #32直前の表示状態を維持する。
 
 全体マップの工程別縦カラーラインは6px・高彩度を維持し、ホームの「AIインフラの主要工程」カラーラインも同じ工程色を使用する。
 
-`/financials/updates/` は正規化履歴から直接生成する決算更新台帳。現在139レコード / 48社を、1行「1企業 × 1決算期間 × 1一次資料」として表示する。履歴収録済み48社の個社ページでは財務セクションから決算履歴へ直接移動できる。企業比較画面もv0.4正規化履歴を消費し、v0.3の `?ids=` 比較URL契約を維持する。
+`/financials/updates/` は正規化履歴から直接生成する決算更新台帳。現在149レコード / 53社を、1行「1企業 × 1決算期間 × 1一次資料」として表示する。企業比較画面はv0.4正規化履歴を消費し、v0.3の `?ids=` 比較URL契約を維持する。
 
-`scripts/validate-v04.py` は `financial-history-v04-batch*.json`、v0.4 Document Source、Source Policyを自動検出する。Source/company対応、ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt、営業利益率再計算、Capex符号、Atlas算出FCFの入力値・算式、Source/Policy対応、主要企業ごとの最低収録数を検査する。Run #151以降の回帰下限は139期間 / 48社 / 605検証済み指標 / FCF+Capex 95期間 / Source 49件で、Legrandも2期間以上を個別ゲートで保持する。
+`scripts/validate-v04.py` は `financial-history-v04-batch*.json`、v0.4 Document Source、Source Policyを自動検出する。Source/company対応、ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt、営業利益率再計算、Capex符号、Atlas算出FCFの入力値・算式、Source/Policy対応、主要企業ごとの最低収録数を検査する。Run #154以降の回帰下限は149期間 / 53社 / 651検証済み指標 / FCF+Capex 103期間 / Source 54件で、Schneider Electric / Siemens Energy / Shinko Electric / JCET / SUMCOも各2期間以上を個別ゲートで保持する。
 
-Run #151では `v0.4 financial-history validation OK: 139 periods / 48 companies / 48 multi-period companies / 605 verified metrics / 95 FCF+Capex periods / 5 cash-flow overrides / 49 v0.4 document sources+policies` を確認した。Astroは**109ページ**、Pagefindは**105ページ / 2,808語**を生成し、GitHub Pages deployまで成功した。
+Run #154では `v0.4 financial-history validation OK: 149 periods / 53 companies / 53 multi-period companies / 651 verified metrics / 103 FCF+Capex periods / 5 cash-flow overrides / 54 v0.4 document sources+policies` を確認した。Astroは**109ページ**、Pagefindは**105ページ / 2,830語**を生成し、GitHub Pages deployまで成功した。
 
 ## Remaining v0.4 work
 
-1. 正規化履歴カバレッジを現在の48社から100社DB内の次の主要企業群へ拡張する
-2. 電力インフラのSchneider Electric / Siemens Energy等、未収録の主要企業を追加する
-3. OSAT / 基板ではJCET / Unimicron / Kinsus / Shinko Electric等の追加・連続性拡張を検討する
-4. SUMCOやJohnson Controlsなど、比較可能な連結営業利益または安定した一次資料参照を確保できていない企業は条件を満たしてから収録する
-5. 既存48社について必要に応じて四半期の連続性をさらに伸ばす
+1. 正規化履歴カバレッジを現在の53社から100社DB内の主要未収録企業へ拡張する
+2. OSAT / 基板ではKinsus / Unimicronの一次資料PDFを安定取得できる経路を確保してから収録する
+3. Johnson Controlsは連結損益計算書に直接のOperating income行がないため、再構成値を採用するかの定義方針を決めるまで保留する
+4. EDA、半導体装置、電力半導体、Physical AI等の未収録主要企業を優先度順に複数期間化する
+5. 既存53社について必要に応じて四半期の連続性をさらに伸ばす
 6. PER / PBR / ROICはSource・利用条件・定義要件を満たしたものだけ掲載する
 7. v0.4完了判定前に主要企業の履歴カバレッジと比較可能性を再監査する
 
