@@ -24,12 +24,18 @@ roic_calculations = json.loads((DATA / 'roic-calculations.json').read_text(encod
 score_definitions = json.loads((DATA / 'score-definitions.json').read_text(encoding='utf-8'))
 governance = json.loads((DATA / 'governance.json').read_text(encoding='utf-8'))
 valuation_policy = json.loads((DATA / 'valuation-policy.json').read_text(encoding='utf-8'))
+value_chain = json.loads((DATA / 'value-chain.json').read_text(encoding='utf-8'))
+filter_contract = json.loads((DATA / 'company-filter-contract.json').read_text(encoding='utf-8'))
 
 errors = []
 ids = [c['id'] for c in companies]
 id_set = set(ids)
 company_by_id = {c['id']: c for c in companies}
 layer_set = {l['name'] for l in layers}
+canonical_countries = filter_contract.get('canonicalCountries', [])
+canonical_country_set = set(canonical_countries)
+stage_layers = filter_contract.get('stageLayers', {})
+technology_filters = filter_contract.get('technologyFilters', {})
 source_ids_list = [s['id'] for s in all_sources]
 source_ids = set(source_ids_list)
 policy_ids = [p['sourceId'] for p in all_source_policies]
@@ -60,6 +66,67 @@ if set(policy_ids) != source_ids:
     if orphan:
         errors.append(f'Orphan source policy records: {orphan}')
 
+if canonical_countries != sorted(canonical_countries):
+    errors.append('Canonical country names must be sorted')
+if len(canonical_country_set) != len(canonical_countries):
+    errors.append('Duplicate canonical country name detected')
+country_values = [company['country'] for company in companies]
+if set(country_values) != canonical_country_set:
+    missing = sorted(canonical_country_set - set(country_values))
+    unknown = sorted(set(country_values) - canonical_country_set)
+    if missing:
+        errors.append(f'Canonical countries without companies: {missing}')
+    if unknown:
+        errors.append(f'Non-canonical company country values: {unknown}')
+casefolded_countries = {}
+for country in canonical_countries:
+    casefolded_countries.setdefault(country.casefold(), []).append(country)
+for variants in casefolded_countries.values():
+    if len(variants) > 1:
+        errors.append(f'Case-insensitive duplicate canonical countries: {variants}')
+
+stage_ids = [stage['id'] for stage in value_chain]
+if len(stage_ids) != len(set(stage_ids)):
+    errors.append('Duplicate value-chain stage id detected')
+filter_stage_ids = set(stage_ids) - {'demand'}
+if set(stage_layers) != filter_stage_ids:
+    errors.append(
+        f'Company stage filter contract mismatch: expected={sorted(filter_stage_ids)} '
+        f'actual={sorted(stage_layers)}'
+    )
+for stage_id, mapped_layers in stage_layers.items():
+    unknown_layers = sorted(set(mapped_layers) - layer_set)
+    if unknown_layers:
+        errors.append(f'{stage_id}: stage filter references unknown layers {unknown_layers}')
+    if not any(set(company['layers']) & set(mapped_layers) for company in companies):
+        errors.append(f'{stage_id}: stage filter matches no companies')
+
+company_tags = {tag for company in companies for tag in company['tags']}
+for technology_id, technology_filter in technology_filters.items():
+    filter_tags = technology_filter.get('tags', [])
+    if not technology_filter.get('label') or not filter_tags:
+        errors.append(f'{technology_id}: incomplete technology filter contract')
+    unknown_tags = sorted(set(filter_tags) - company_tags)
+    if unknown_tags:
+        errors.append(f'{technology_id}: technology filter references unknown tags {unknown_tags}')
+    if not any(set(company['tags']) & set(filter_tags) for company in companies):
+        errors.append(f'{technology_id}: technology filter matches no companies')
+for stage in value_chain:
+    for link in stage.get('links', []):
+        has_tag = bool(link.get('tag'))
+        has_query = bool(link.get('query'))
+        has_technology = bool(link.get('technology'))
+        if sum((has_tag, has_query, has_technology)) != 1:
+            errors.append(f"{stage['id']}/{link.get('label')}: value-chain link must define exactly one of tag/query/technology")
+        elif has_tag and link['tag'] not in company_tags:
+            errors.append(
+                f"{stage['id']}/{link.get('label')}: value-chain tag filter matches no company tag: {link['tag']}"
+            )
+        elif has_technology and link['technology'] not in technology_filters:
+            errors.append(
+                f"{stage['id']}/{link.get('label')}: unknown technology filter: {link['technology']}"
+            )
+
 for gate in ('marketPrice', 'forwardConsensus', 'roic'):
     if gate not in valuation_policy:
         errors.append(f'valuation-policy missing gate: {gate}')
@@ -79,6 +146,8 @@ for p in all_source_policies:
 
 for company in companies:
     cid = company['id']
+    if company['country'] not in canonical_country_set:
+        errors.append(f"{cid}: non-canonical country {company['country']}")
     if company['primaryLayer'] not in layer_set:
         errors.append(f'{cid}: unknown primary layer')
     for layer in company['layers']:
@@ -236,6 +305,8 @@ pending = sum(1 for p in all_source_policies if p['reviewStatus'] == 'pending')
 verified_metrics = sum(1 for c in companies for m in c['metrics'].values() if m['value'] is not None)
 print(
     f'Validation OK: {len(companies)} companies / {len(layers)} layers / '
+    f'{len(canonical_countries)} canonical countries / {len(stage_layers)} stage filters / '
+    f'{len(technology_filters)} technology filters / '
     f'{len(all_sources)} sources / {len(all_source_policies)} source policies ({pending} pending) / '
     f'{verified_metrics} populated common metrics / {len(sector_kpis)} verified sector KPIs / '
     f'{len(roic_calculations)} verified ROIC calculations / '

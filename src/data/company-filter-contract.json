@@ -1,0 +1,34 @@
+{
+  "canonicalCountries": [
+    "China",
+    "France",
+    "Germany",
+    "Ireland",
+    "Israel",
+    "Japan",
+    "Netherlands",
+    "Singapore",
+    "South Korea",
+    "Sweden",
+    "Switzerland",
+    "Taiwan",
+    "United Kingdom",
+    "United States"
+  ],
+  "stageLayers": {
+    "compute": ["Compute & Silicon"],
+    "memory": ["Memory"],
+    "materials": ["半導体材料・基板"],
+    "manufacturing": ["Foundry & Logic Manufacturing", "Wafer Fab Equipment"],
+    "backend": ["Test & Back-end"],
+    "interconnect": ["Network & Optical"],
+    "datacenter": ["Data Center & Facilities"],
+    "physical": ["Physical AI"]
+  },
+  "technologyFilters": {
+    "semiconductor-test": {
+      "label": "半導体テスト",
+      "tags": ["半導体テスト", "SoC test", "memory test"]
+    }
+  }
+}
