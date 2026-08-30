@@ -43,11 +43,12 @@
 | `gross-ppe-cash-purchases` | 8 | Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment |
 | `gross-ppe` | 49 | Gross/standard cash PP&E expenditure; no net, intangible, broader-asset, or real-estate qualifier detected |
 | `ppe-plus-intangible` | 74 | PP&E plus intangible assets or capitalized software/development |
+| `company-reported-cash-capex` | 2 | A primary-source-reviewed company cash-Capex outflow whose underlying PP&E versus PP&E-plus-intangible asset scope is not separately disclosed |
 | `broader-non-current-assets` | 4 | A broader non-current/fixed/long-term asset cash-investment line |
 | `net-capex` | 28 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 6 | REIT or investment-property/real-estate investment definition |
 | `not-collected` | 62 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
-| `unclassified` | 12 | A value exists, but basis text does not safely map to another definition category |
+| `unclassified` | 10 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
 
@@ -80,6 +81,9 @@
 | `net-basis-capex` | 28 | Capex is disclosed on a net basis |
 | `broad-capex` | 6 | Capex uses a broader non-current-asset definition |
 | `ppe-only` | 58 | Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases |
+| `asset-scope-unresolved` | 2 | The company-reported cash-Capex outflow is classified, but primary sources do not close whether the asset scope is PP&E only or PP&E plus intangible assets; Atlas gross cash Capex remains review-required |
+| `rounded-source-value` | 2 | The stored JPY million value is a unit conversion from a company source reported in 0.1 billion JPY increments, not a precise JPY million cash-flow fact |
+| `informal-comparative-source` | 2 | The value comes from an issuer-prepared informal comparative cash-flow overview because no formal quarterly cash-flow statement was prepared |
 | `continuing-operations-cfo-reconstructed` | 1 | Continuing-operations operating cash flow is reconstructed from consolidated operating cash flow and separately disclosed discontinued-operation operating cash flow; this is reviewed scope provenance, not a scope mismatch |
 | `government-incentive-netting-unresolved` | 1 | Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved |
 | `company-fcf-formula-includes-asset-sale-proceeds` | 2 | Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected |
@@ -90,7 +94,7 @@
 | `cash-flow-inputs-missing` | 8 | A populated FCF record does not have complete cashFlowInputs |
 | `fcf-capex-scope-mismatch` | 0 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
 | `derived-single-quarter` | 8 | A single-quarter value is derived from cumulative periods |
-| `unclassified-capex-definition` | 12 | A populated Capex value remains definition-unclassified |
+| `unclassified-capex-definition` | 10 | A populated Capex value remains definition-unclassified |
 | `special-operating-profit-definition` | 10 | Operating-profit definition is classified as a special case |
 
 ## 要確認キュー
@@ -98,13 +102,13 @@
 - source-linked: `ajinomoto-fine-techno-fy2025` (revenue, operatingProfit, operatingMargin)
 - needs-review: なし
 - FCF/Capex片側欠損: なし
-- Capex定義未分類: `aptiv-fy2024`, `aptiv-fy2025`, `corning-fy2024`, `corning-fy2025`, `johnson-controls-fy2024`, `johnson-controls-fy2025`, `shin-etsu-chemical-q1-fy2025`, `shin-etsu-chemical-q1-fy2026`, `te-connectivity-fy2024`, `te-connectivity-fy2025`, `texas-instruments-q1-2026`, `texas-instruments-q2-2026`
+- Capex定義未分類: `aptiv-fy2024`, `aptiv-fy2025`, `corning-fy2024`, `corning-fy2025`, `johnson-controls-fy2024`, `johnson-controls-fy2025`, `te-connectivity-fy2024`, `te-connectivity-fy2025`, `texas-instruments-q1-2026`, `texas-instruments-q2-2026`
 - Non-GAAP表記・Atlas算式一致（値変更対象外）: `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
 - Atlas定義差あり（一次資料再確認）: なし
 - adjusted / Non-GAAP算式未解決: なし
 - cashFlowInputs未登録（FCF値あり）: `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
 - FCF/Capex scope mismatch: なし
-- Atlas gross cash Capex未解決: `analog-devices-q3-fy2026` (company-discloses-additions-to-ppe-net, quarterly-government-incentive-netting-not-disclosed; evidence: filing-analog-devices-2026-q3-fy2026-10q, filing-analog-devices-2025-fy2025-10k)
+- Atlas gross cash Capex未解決: `analog-devices-q3-fy2026` (company-discloses-additions-to-ppe-net, quarterly-government-incentive-netting-not-disclosed; evidence: filing-analog-devices-2026-q3-fy2026-10q, filing-analog-devices-2025-fy2025-10k), `shin-etsu-chemical-q1-fy2025` (formal-quarterly-cash-flow-statement-not-prepared, ppe-versus-ppe-plus-intangible-scope-not-disclosed; evidence: results-shin-etsu-2026-07-24-q1-fy2026), `shin-etsu-chemical-q1-fy2026` (formal-quarterly-cash-flow-statement-not-prepared, ppe-versus-ppe-plus-intangible-scope-not-disclosed; evidence: results-shin-etsu-2026-07-24-q1-fy2026)
 
 ## 会社別監査
 
@@ -190,7 +194,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | schneider-electric | Schneider Electric（シュナイダーエレクトリック） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
 | screen-holdings | SCREENホールディングス | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | seagate | Seagate（シーゲイト） | 4 | 20 | 0 | 0 | 0 | 4 | 0 | 0 | 0 | ppe-only, company-reported-fcf |
-| shin-etsu-chemical | 信越化学工業 | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | unclassified-capex-definition |
+| shin-etsu-chemical | 信越化学工業 | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | asset-scope-unresolved, rounded-source-value, informal-comparative-source |
 | shinko-electric | 新光電気工業 | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | siemens-energy | Siemens Energy（シーメンス・エナジー） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | sk-hynix | SK hynix（SKハイニックス） | 3 | 9 | 0 | 0 | 6 | 0 | 0 | 0 | 3 | special-operating-profit-definition |
