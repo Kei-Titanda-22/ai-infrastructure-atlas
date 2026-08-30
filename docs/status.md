@@ -28,38 +28,40 @@
 - [x] Corning / TE Connectivity / Equinix / Digital Realty — Run #169
 - [x] Tesla / Mobileye — Run #171
 - [x] Aptiv — Run #172
+- [x] FANUC / Yaskawa industrial-automation history — deployed and revalidated in Run #175
+- [x] OMRON continuing-operations history — Run #175
 
 ## Current database
 
 - companies: **100**
 - value-chain layers / stages: **9 / 9**
 - comparison templates: **8**
-- normalized financial history: **199 periods / 76 companies**
-- multi-period financial-history companies: **76 / 76 covered companies**
-- verified normalized historical metrics: **889**
-- periods with both FCF and Capex: **147**
+- normalized financial history: **205 periods / 79 companies**
+- multi-period financial-history companies: **79 / 79 covered companies**
+- verified normalized historical metrics: **915**
+- periods with both FCF and Capex: **151**
 - audited cash-flow overrides: **5**
-- v0.4 exact document sources: **81**
-- v0.4 pending source policies: **81**
-- earnings update ledger: **199 normalized records / 76 companies**
+- v0.4 exact document sources: **84**
+- v0.4 pending source policies: **84**
+- earnings update ledger: **205 normalized records / 79 companies**
 - registered facilities: **17**
 - real-time stock-price distribution: disabled
 
 ## v0.4 implementation
 
-`src/data/financial-history.json` と `financial-history-v04-batch2.json` 〜 `batch26.json` を `src/lib/financial-history.ts` で統合する。各期間に四半期/通期、期末日、通貨・単位、会計基準、一次資料、検証日を持たせ、売上高・営業利益・営業利益率・FCF・設備投資を `value / status / basis` で管理する。
+`src/data/financial-history.json` と `financial-history-v04-batch2.json` 〜 `batch28.json` を `src/lib/financial-history.ts` で統合する。各期間に四半期/通期、期末日、通貨・単位、会計基準、一次資料、検証日を持たせ、売上高・営業利益・営業利益率・FCF・設備投資を `value / status / basis` で管理する。
 
 一次資料は `src/lib/financial-sources.ts` へ集約し、`/financials/`、`/financials/updates/`、企業比較が同じSource Registryを消費する。Document Source / Policyはbatch単位で追加し、Source/Policyの1対1対応、重複ID、会社対応をvalidatorで検査する。
 
-### Latest Physical AI expansion
+### Latest Physical AI / industrial automation expansion
 
-Tesla、Mobileye、AptivをFY2024 / FY2025の2通期ずつ追加した。6期間すべてUS GAAPの売上高・reported operating income/loss・営業利益率・営業CF・cash Capexを一次資料から収録する。
+Tesla、Mobileye、Aptivに続き、FANUC、Yaskawa、OMRONを複数期間化した。
 
-- **Tesla**: Atlas FCF = GAAP operating cash flow − purchases of property and equipment excluding finance leases, net of sales。
-- **Mobileye**: Atlas Capexはcash purchase of PP&Eのみ。non-cash PP&E purchaseは除外する。FY2024はgoodwill impairment 2,695百万ドルを含むGAAP operating loss -3,225百万ドルを保持し、Adjusted Operating Incomeへ置換しない。
-- **Aptiv**: Atlas FCF = GAAP operating cash flow − capital expenditures。FY2025はgoodwill impairment 648百万ドルを含むGAAP operating income 1,184百万ドルを保持し、adjusted operating incomeへ置換しない。
+- **FANUC**: FY2024 / FY2025をJapanese GAAPで収録。Atlas FCFは `operating cash flow − purchases of property, plant and equipment`。大口の定期預金入出金を含むtotal investing CFは使用しない。
+- **Yaskawa**: FY2024 / FY2025をIFRSで収録。Atlas FCFは `operating cash flow − purchase of property, plant and equipment, and intangible assets`。投資有価証券や持分法株式売却を含むtotal investing CFは流用しない。
+- **OMRON**: DMBが非継続事業へ分類されたため、FY2024 / FY2025の売上高・営業利益はcontinuing operationsベースで収録。連結CF表は継続・非継続事業を分離していないため、FCF / Capexを按分・推定しない。
 
-Run #172で `199 periods / 76 companies / 76 multi-period companies / 889 verified metrics / 147 FCF+Capex periods / 5 cash-flow overrides / 81 v0.4 document sources+policies` を確認し、GitHub Pages deployまで成功した。
+Run #175で `205 periods / 79 companies / 79 multi-period companies / 915 verified metrics / 151 FCF+Capex periods / 5 cash-flow overrides / 84 v0.4 document sources+policies` を確認し、GitHub Pages deployまで成功した。
 
 ### Definition safeguards
 
@@ -69,7 +71,7 @@ Run #172で `199 periods / 76 companies / 76 multi-period companies / 889 verifi
 - company-reported FCFに資産売却、政府補助金、M&A、広義investing CFなどが混在する場合はAtlas値へ流用しない。
 - 単四半期CFが累計値しかない場合、差分算出の根拠を一次資料で安全に検証できない限り推定しない。
 - REITの開発・不動産投資は製造業のcash Capexと同一定義扱いしない。Equinix / Digital RealtyのFCF / Capexは理由付き `not-collected` を維持する。
-- ASMPTはNEXX非継続事業を含む全社CFから継続事業FCF / Capexを按分しない。
+- 非継続事業が全社CFへ混在する場合、継続事業FCF / Capexを按分しない。ASMPT / OMRONでこの原則を適用する。
 - Kioxia / Tokyo Electronの累計値差分による単四半期化は、一次資料の整合性確認済み期間だけ保持する。
 
 ## UI contracts
@@ -89,15 +91,15 @@ Run #172で `199 periods / 76 companies / 76 multi-period companies / 889 verifi
 - ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt
 - 営業利益率再計算、Capex符号、Atlas FCF入力値・算式
 - 主要企業ごとの最低収録期間
-- continuity floor: **199 periods / 76 companies / 889 verified metrics / 147 FCF+Capex periods / 81 sources+policies**
+- continuity floor: **205 periods / 79 companies / 915 verified metrics / 151 FCF+Capex periods / 84 sources+policies**
 
 ## Remaining v0.4 work
 
-1. 正規化履歴カバレッジを現在の76社から100社DB内の主要未収録企業へ拡張する。
-2. Physical AI / 産業オートメーションを優先し、DENSO / FANUC / Yaskawa / Keyence / OMRON / SMC / Mitsubishi Electric等を一次資料の安定性順に複数期間化する。
+1. 正規化履歴カバレッジを現在の79社から100社DB内の主要未収録企業へ拡張する。
+2. Physical AI / 産業オートメーションではDENSO / Keyence / SMC / Mitsubishi Electric等を一次資料の安定性順に複数期間化する。
 3. OSAT / 基板のKinsus / Unimicronは一次資料PDFの安定取得経路を確保してから収録する。
 4. Johnson Controlsは連結Operating incomeの定義方針を確定するまで保留する。
-5. 既存76社について必要に応じて四半期の連続性を伸ばす。
+5. 既存79社について必要に応じて四半期の連続性を伸ばす。
 6. PER / PBR / ROICはSource・利用条件・定義要件を満たしたものだけ掲載する。
 7. v0.4完了判定前に主要企業の履歴カバレッジと比較可能性を再監査する。
 
