@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'src' / 'data'
 
-history_files = ['financial-history.json', 'financial-history-v04-batch2.json', 'financial-history-v04-batch3.json', 'financial-history-v04-batch4.json', 'financial-history-v04-batch5.json', 'financial-history-v04-batch6.json', 'financial-history-v04-batch7.json']
+history_files = ['financial-history.json', 'financial-history-v04-batch2.json', 'financial-history-v04-batch3.json', 'financial-history-v04-batch4.json', 'financial-history-v04-batch5.json', 'financial-history-v04-batch6.json', 'financial-history-v04-batch7.json', 'financial-history-v04-batch8.json']
 history = []
 for filename in history_files:
     history.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
@@ -178,12 +178,12 @@ cashflow_periods = sum(
 )
 
 # Continuity regression floor. Future expansion may exceed these counts.
-if len(history) < 79:
-    errors.append(f'v0.4 history regression: expected at least 79 periods, got {len(history)}')
-if len(covered_companies) < 23:
-    errors.append(f'v0.4 coverage regression: expected at least 23 companies, got {len(covered_companies)}')
-if len(multi_period_companies) < 23:
-    errors.append(f'v0.4 history regression: expected all 23 covered companies to be multi-period, got {len(multi_period_companies)}')
+if len(history) < 84:
+    errors.append(f'v0.4 history regression: expected at least 84 periods, got {len(history)}')
+if len(covered_companies) < 24:
+    errors.append(f'v0.4 coverage regression: expected at least 24 companies, got {len(covered_companies)}')
+if len(multi_period_companies) < 24:
+    errors.append(f'v0.4 history regression: expected all 24 covered companies to be multi-period, got {len(multi_period_companies)}')
 if len(records_by_company.get('kioxia', [])) < 7:
     errors.append(f'v0.4 Kioxia regression: expected at least 7 periods, got {len(records_by_company.get("kioxia", []))}')
 if sum(1 for row in records_by_company.get('kioxia', []) if row['periodType'] == 'quarterly') < 5:
@@ -192,15 +192,15 @@ if len(records_by_company.get('tokyo-electron', [])) < 7:
     errors.append(f'v0.4 Tokyo Electron regression: expected at least 7 periods, got {len(records_by_company.get("tokyo-electron", []))}')
 if sum(1 for row in records_by_company.get('tokyo-electron', []) if row['periodType'] == 'quarterly') < 5:
     errors.append('v0.4 Tokyo Electron regression: expected at least 5 quarterly periods')
-for cid, minimum in [('samsung-electronics', 2), ('marvell', 2), ('credo', 4)]:
+for cid, minimum in [('samsung-electronics', 2), ('marvell', 2), ('credo', 4), ('western-digital', 5)]:
     if len(records_by_company.get(cid, [])) < minimum:
         errors.append(f'v0.4 {cid} regression: expected at least {minimum} periods, got {len(records_by_company.get(cid, []))}')
-if verified_metrics < 337:
-    errors.append(f'v0.4 history regression: expected at least 337 verified metrics, got {verified_metrics}')
-if cashflow_periods < 53:
-    errors.append(f'v0.4 cash-flow regression: expected at least 53 FCF/Capex periods, got {cashflow_periods}')
-if len(v04_sources) < 20:
-    errors.append(f'v0.4 source regression: expected at least 20 document sources+policies, got {len(v04_sources)}')
+if verified_metrics < 368:
+    errors.append(f'v0.4 history regression: expected at least 368 verified metrics, got {verified_metrics}')
+if cashflow_periods < 58:
+    errors.append(f'v0.4 cash-flow regression: expected at least 58 FCF/Capex periods, got {cashflow_periods}')
+if len(v04_sources) < 21:
+    errors.append(f'v0.4 source regression: expected at least 21 document sources+policies, got {len(v04_sources)}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')
