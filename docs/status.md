@@ -27,6 +27,7 @@
 - [x] Ajinomoto Fine-Techno / Bosch annual history and source-linked ledger support — Runs #197–#198
 - [x] Fujikura / Johnson Controls annual history — Run #200
 - [x] **Kinsus / Unimicron annual history; 100-company multi-period coverage milestone — Run #202**
+- [x] 100-company financial-quality audit script / deterministic JSON + Markdown report / CI freshness gate
 
 ## Current database
 
@@ -36,7 +37,11 @@
 - normalized financial history: **247 periods / 100 companies**
 - multi-period financial-history companies: **100 / 100 companies**
 - verified normalized historical metrics: **1,094**
+- source-linked historical metrics: **5**
+- missing historical metrics: **136**
 - periods with both FCF and Capex: **179**
+- periods with only Capex missing: **2**
+- periods with both FCF and Capex missing: **66**
 - audited cash-flow overrides: **5**
 - v0.4 document sources: **106**
 - v0.4 pending source policies: **106**
@@ -45,6 +50,8 @@
 - real-time stock-price distribution: disabled
 
 Run #202で `247 periods / 100 companies / 100 multi-period companies / 1094 verified metrics / 179 FCF+Capex periods / 5 cash-flow overrides / 106 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 3,007語を生成し、GitHub Pages deployまで成功した。
+
+`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。現状の要確認キューは、source-linked 5指標、Capexのみ欠損2期間、両方欠損66期間、Capex定義未分類28期間、adjusted / Non-GAAP FCF 13期間。CIは `--check` でデータと監査結果の同期を検証する。
 
 ## v0.4 implementation
 
@@ -109,17 +116,20 @@ Run #202で `247 periods / 100 companies / 100 multi-period companies / 1094 ver
 - 主要企業ごとの最低収録期間
 - continuity floor: **247 periods / 100 companies / 1,094 verified metrics / 179 FCF+Capex periods / 106 sources+policies**
 - Kinsus / Unimicronを含む100社カバレッジを維持し、Kinsus / Unimicronも各2期間以上を個別回帰ゲートで保持する。
+- 100社財務品質監査のJSON/Markdownが現在の履歴・override・会社分類と一致することを検査する。
 
 ## Remaining v0.4 work
 
 **100社の複数期間カバレッジ拡張は完了。** v0.4自体はまだ完了扱いにせず、次の品質・深度改善を残す。
 
-1. Kinsusなど、FCF / Capexが未収録の期間について一次資料でexact cash-Capex定義を安全に閉じられる場合のみ補完する。
-2. 主要企業の四半期連続性を伸ばし、通期2点だけの企業で比較深度を上げる。
-3. 会社間で異なるCapex / FCF / reported operating-profit定義を再監査し、比較画面で誤って同一定義と見なされないことを確認する。
-4. 106件のv0.4 Source Policyを順次レビューし、v0.5の自動取得対象へ昇格可能なSourceを選別する。
-5. Ajinomoto Fine-Techno FY2025の一次官報PDF等、現在source-linkedに留めている値の一次資料を確保できればverifiedへ昇格する。
-6. v0.4完了条件を再監査し、履歴カバレッジだけでなくSource品質・比較可能性・欠損理由の整合性を満たした段階で完了判定する。
+1. adjusted / Non-GAAP FCF 13期間を一次資料へ戻って再監査し、Atlas FCFへ安全に再構成できる期間と明示的な定義差として残す期間を分ける。
+2. Capex定義未分類28期間を一次資料とcash-flow lineへ戻って再監査し、gross PP&E / PP&E + intangible / net / broader definitionへ安全に構造化できるものだけ分類する。
+3. Kinsusなど、FCF / Capexが未収録の期間について一次資料でexact cash-Capex定義を安全に閉じられる場合のみ補完する。両方欠損66期間には単四半期CFを意図的に推定していない期間も含むため、一括補完しない。
+4. 主要企業の四半期連続性を伸ばし、通期2点だけの企業で比較深度を上げる。
+5. 会社間で異なるCapex / FCF / reported operating-profit定義を再監査し、比較画面で誤って同一定義と見なされないことを確認する。
+6. 106件のv0.4 Source Policyを順次レビューし、v0.5の自動取得対象へ昇格可能なSourceを選別する。
+7. Ajinomoto Fine-Techno FY2025の一次官報PDF等、現在source-linkedに留めている値の一次資料を確保できればverifiedへ昇格する。
+8. v0.4完了条件を再監査し、履歴カバレッジだけでなくSource品質・比較可能性・欠損理由の整合性を満たした段階で完了判定する。
 
 ## Data quality policy
 
