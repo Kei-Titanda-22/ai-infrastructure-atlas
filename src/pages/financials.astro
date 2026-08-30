@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import FinancialTrendChart from '../components/FinancialTrendChart.astro';
+import FinancialChart from '../components/FinancialChart.astro';
 import { getCollection } from 'astro:content';
 import { financialSourceById } from '../lib/financial-sources';
 import { withBase } from '../lib/paths';
@@ -77,10 +77,10 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
             <div class="financial-period-block">
               <div class="financial-period-head"><h3>四半期</h3><span>{quarterly.length}期間</span></div>
               <div class="financial-chart-grid">
-                <FinancialTrendChart records={quarterly} metricId="revenue" title="売上高" />
-                <FinancialTrendChart records={quarterly} metricId="operatingMargin" title="営業利益率" />
-                {quarterlyHasFcf ? <FinancialTrendChart records={quarterly} metricId="freeCashFlow" title="FCF" /> : null}
-                {quarterlyHasCapex ? <FinancialTrendChart records={quarterly} metricId="capex" title="設備投資" /> : null}
+                <FinancialChart records={quarterly} metricId="revenue" title="売上高" periodType="quarterly" />
+                <FinancialChart records={quarterly} metricId="operatingMargin" title="営業利益率" periodType="quarterly" />
+                {quarterlyHasFcf ? <FinancialChart records={quarterly} metricId="freeCashFlow" title="FCF" periodType="quarterly" /> : null}
+                {quarterlyHasCapex ? <FinancialChart records={quarterly} metricId="capex" title="設備投資" periodType="quarterly" /> : null}
               </div>
             </div>
           )}
@@ -89,10 +89,10 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
             <div class="financial-period-block">
               <div class="financial-period-head"><h3>通期</h3><span>{annual.length}期間</span></div>
               <div class="financial-chart-grid">
-                <FinancialTrendChart records={annual} metricId="revenue" title="売上高" />
-                <FinancialTrendChart records={annual} metricId="operatingMargin" title="営業利益率" />
-                {annualHasFcf ? <FinancialTrendChart records={annual} metricId="freeCashFlow" title="FCF" /> : null}
-                {annualHasCapex ? <FinancialTrendChart records={annual} metricId="capex" title="設備投資" /> : null}
+                <FinancialChart records={annual} metricId="revenue" title="売上高" periodType="annual" />
+                <FinancialChart records={annual} metricId="operatingMargin" title="営業利益率" periodType="annual" />
+                {annualHasFcf ? <FinancialChart records={annual} metricId="freeCashFlow" title="FCF" periodType="annual" /> : null}
+                {annualHasCapex ? <FinancialChart records={annual} metricId="capex" title="設備投資" periodType="annual" /> : null}
               </div>
             </div>
           )}
