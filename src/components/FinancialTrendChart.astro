@@ -12,10 +12,10 @@ const points = records
   .filter(record => record.metrics?.[metricId]?.value != null)
   .sort((a, b) => a.endDate.localeCompare(b.endDate));
 const width = 720;
-const height = 230;
-const padX = 58;
-const padTop = 24;
-const padBottom = 52;
+const height = 270;
+const padX = 76;
+const padTop = 40;
+const padBottom = 72;
 const usableWidth = width - padX * 2;
 const usableHeight = height - padTop - padBottom;
 const values = points.map(record => Number(record.metrics[metricId].value));
@@ -33,18 +33,19 @@ const zeroY = yFor(0);
     <p class="financial-chart-empty">表示できる検証済みデータがありません。</p>
   ) : (
     <svg viewBox={`0 0 ${width} ${height}`} role="img" aria-label={`${title}の推移`}>
+      <title>{title}の推移</title>
       <line class="chart-axis" x1={padX} y1={zeroY} x2={width - padX} y2={zeroY} />
       <polyline class="chart-trend-line" points={polyline} />
       {points.map((record, index) => {
         const value = Number(record.metrics[metricId].value);
         const x = xFor(index);
         const y = yFor(value);
-        const labelY = value < 0 ? Math.min(height - padBottom + 18, y + 18) : Math.max(14, y - 10);
+        const labelY = value < 0 ? Math.min(height - padBottom + 28, y + 24) : Math.max(22, y - 16);
         return (
           <g>
-            <circle class="chart-point" cx={x} cy={y} r="4" />
+            <circle class="chart-point" cx={x} cy={y} r="5" />
             <text class="chart-value" x={x} y={labelY} text-anchor="middle">{formatFinancialMetric(record, metricId)}</text>
-            <text class="chart-period" x={x} y={height - 18} text-anchor="middle">{record.periodLabel}</text>
+            <text class="chart-period" x={x} y={height - 22} text-anchor="middle">{record.periodLabel}</text>
           </g>
         );
       })}

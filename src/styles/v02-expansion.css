@@ -1,21 +1,9 @@
-/* v0.2 expansion compatibility rules and shared value-chain accents. */
+/* v0.2 expansion compatibility rules. Shared colors live in ui-tokens.css. */
 .company-meta-line .mono:empty::after { content:"非上場"; }
 .company-meta-line > span:nth-child(3):empty { display:none; }
 .company-meta-line > span:nth-child(3):empty + span { display:none; }
 
 /* Keep the home value-chain line colors identical to the atlas vertical lines. */
-:root {
-  --vc-demand:#4f6f91;
-  --vc-compute:#4f76b5;
-  --vc-memory:#4f8b5d;
-  --vc-materials:#a3832f;
-  --vc-manufacturing:#a76b38;
-  --vc-backend:#8b5aa2;
-  --vc-interconnect:#2f8d89;
-  --vc-datacenter:#a8742f;
-  --vc-physical:#626b91;
-}
-
 .home-stage.vc-compute { border-top-color:var(--vc-compute); }
 .home-stage.vc-memory { border-top-color:var(--vc-memory); }
 .home-stage.vc-materials { border-top-color:var(--vc-materials); }
