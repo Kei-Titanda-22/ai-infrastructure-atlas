@@ -6,10 +6,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'src' / 'data'
 
-history_files = ['financial-history.json', 'financial-history-v04-batch2.json', 'financial-history-v04-batch3.json', 'financial-history-v04-batch4.json', 'financial-history-v04-batch5.json', 'financial-history-v04-batch6.json', 'financial-history-v04-batch7.json', 'financial-history-v04-batch8.json', 'financial-history-v04-batch9.json', 'financial-history-v04-batch10.json', 'financial-history-v04-batch11.json', 'financial-history-v04-batch12.json']
-history = []
-for filename in history_files:
-    history.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
+
+def load_many(paths):
+    rows = []
+    for path in paths:
+        rows.extend(json.loads(path.read_text(encoding='utf-8')))
+    return rows
+
+
+history_paths = [DATA / 'financial-history.json', *sorted(DATA.glob('financial-history-v04-batch*.json'))]
+history = load_many(history_paths)
 
 overrides = json.loads((DATA / 'financial-history-v04-cashflow-overrides.json').read_text(encoding='utf-8'))
 history_by_id = {record['id']: record for record in history}
@@ -32,21 +38,17 @@ for override in overrides:
     target.update({key: value for key, value in override.items() if key not in {'id', 'metrics'}})
     target['metrics'].update(override_metrics)
 
-source_files = ['sources.json', 'sources-v02.json', 'document-sources.json', 'document-sources-v04.json', 'document-sources-v04-batch10.json', 'document-sources-v04-batch11.json', 'document-sources-v04-batch12.json']
-sources = []
-for filename in source_files:
-    sources.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
+v04_source_paths = sorted(DATA.glob('document-sources-v04*.json'))
+v04_policy_paths = sorted(DATA.glob('document-source-policies-v04*.json'))
+source_paths = [DATA / 'sources.json', DATA / 'sources-v02.json', DATA / 'document-sources.json', *v04_source_paths]
+sources = load_many(source_paths)
 audits = json.loads((DATA / 'metric-audits.json').read_text(encoding='utf-8'))
 company_files = list((DATA / 'companies').glob('*.json'))
 company_ids = {path.stem for path in company_files}
 source_by_id = {item['id']: item for item in sources}
 
-v04_sources = []
-for filename in ['document-sources-v04.json', 'document-sources-v04-batch10.json', 'document-sources-v04-batch11.json', 'document-sources-v04-batch12.json']:
-    v04_sources.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
-v04_policies = []
-for filename in ['document-source-policies-v04.json', 'document-source-policies-v04-batch10.json', 'document-source-policies-v04-batch11.json', 'document-source-policies-v04-batch12.json']:
-    v04_policies.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
+v04_sources = load_many(v04_source_paths)
+v04_policies = load_many(v04_policy_paths)
 v04_source_ids = {item['id'] for item in v04_sources}
 v04_policy_ids = {item['sourceId'] for item in v04_policies}
 if len(v04_source_ids) != len(v04_sources):
@@ -186,12 +188,12 @@ cashflow_periods = sum(
 )
 
 # Continuity regression floor. Future expansion may exceed these counts.
-if len(history) < 127:
-    errors.append(f'v0.4 history regression: expected at least 127 periods, got {len(history)}')
-if len(covered_companies) < 42:
-    errors.append(f'v0.4 coverage regression: expected at least 42 companies, got {len(covered_companies)}')
-if len(multi_period_companies) < 42:
-    errors.append(f'v0.4 history regression: expected all 42 covered companies to be multi-period, got {len(multi_period_companies)}')
+if len(history) < 133:
+    errors.append(f'v0.4 history regression: expected at least 133 periods, got {len(history)}')
+if len(covered_companies) < 45:
+    errors.append(f'v0.4 coverage regression: expected at least 45 companies, got {len(covered_companies)}')
+if len(multi_period_companies) < 45:
+    errors.append(f'v0.4 history regression: expected all 45 covered companies to be multi-period, got {len(multi_period_companies)}')
 if len(records_by_company.get('kioxia', [])) < 7:
     errors.append(f'v0.4 Kioxia regression: expected at least 7 periods, got {len(records_by_company.get("kioxia", []))}')
 if sum(1 for row in records_by_company.get('kioxia', []) if row['periodType'] == 'quarterly') < 5:
@@ -205,16 +207,17 @@ for cid, minimum in [
     ('globalfoundries', 2), ('umc', 2), ('texas-instruments', 2), ('analog-devices', 2), ('nxp', 2),
     ('coherent', 4), ('lumentum', 4), ('ciena', 2), ('amphenol', 2), ('eaton', 2),
     ('ase-technology', 3), ('amkor', 2), ('ibiden', 2), ('nan-ya-pcb', 2),
-    ('shin-etsu-chemical', 2), ('entegris', 4), ('globalwafers', 2), ('resonac-holdings', 2)
+    ('shin-etsu-chemical', 2), ('entegris', 4), ('globalwafers', 2), ('resonac-holdings', 2),
+    ('ge-vernova', 2), ('nvent', 2), ('abb', 2)
 ]:
     if len(records_by_company.get(cid, [])) < minimum:
         errors.append(f'v0.4 {cid} regression: expected at least {minimum} periods, got {len(records_by_company.get(cid, []))}')
-if verified_metrics < 557:
-    errors.append(f'v0.4 history regression: expected at least 557 verified metrics, got {verified_metrics}')
-if cashflow_periods < 89:
-    errors.append(f'v0.4 cash-flow regression: expected at least 89 FCF/Capex periods, got {cashflow_periods}')
-if len(v04_sources) < 43:
-    errors.append(f'v0.4 source regression: expected at least 43 document sources+policies, got {len(v04_sources)}')
+if verified_metrics < 579:
+    errors.append(f'v0.4 history regression: expected at least 579 verified metrics, got {verified_metrics}')
+if cashflow_periods < 91:
+    errors.append(f'v0.4 cash-flow regression: expected at least 91 FCF/Capex periods, got {cashflow_periods}')
+if len(v04_sources) < 46:
+    errors.append(f'v0.4 source regression: expected at least 46 document sources+policies, got {len(v04_sources)}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')
