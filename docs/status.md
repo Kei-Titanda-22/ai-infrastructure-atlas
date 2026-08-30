@@ -17,78 +17,71 @@
 - [x] Foundry / Analog / Memory / Network / Optical / Data Center Power expansion
 - [x] OSAT / Package Substrate / Semiconductor Materials expansion — Runs #145–#146
 - [x] Power Infrastructure / HVAC expansion — Runs #147–#153
-- [x] Shinko Electric / JCET / SUMCO — Run #154
-- [x] Site-wide dark text / company-search wording / compact home updates — Run #156
-- [x] Synopsys / Cadence / onsemi — Run #157
-- [x] STMicroelectronics / Renesas / ROHM / Infineon — Run #159
-- [x] ASM International / Advantest / SCREEN / DISCO — Run #161
-- [x] KOKUSAI ELECTRIC / Canon / Nikon — Run #163
-- [x] Besi / ASMPT — Run #165
-- [x] Lasertec / HANMI Semiconductor — Runs #167–#168
-- [x] Corning / TE Connectivity / Equinix / Digital Realty — Run #169
-- [x] Tesla / Mobileye / Aptiv — Runs #171–#172
-- [x] FANUC / Yaskawa / OMRON — through Run #175
-- [x] 90-company normalized-history milestone reached and deployed — Run #180
+- [x] EDA / Power Semiconductor / Semiconductor Equipment expansion — Runs #157–#168
+- [x] Interconnect / Data Center / Physical AI expansion — Runs #169–#175
+- [x] 90-company normalized-history milestone — Run #180
+- [x] MediaTek / SMIC annual history — Run #184
+- [x] Company-page TOC overlap fix / competitor relationship audit and bidirectional display — Runs #188–#191
+- [x] Full-text search copy broadened from local examples to capability-oriented wording — deployed before Run #195 and included in Run #195 production build
+- [x] Air Liquide / Hexagon annual history — Run #195
 
 ## Current database
 
 - companies: **100**
 - value-chain layers / stages: **9 / 9**
 - comparison templates: **8**
-- normalized financial history: **227 periods / 90 companies**
-- multi-period financial-history companies: **90 / 90 covered companies**
-- verified normalized historical metrics: **1,005**
-- periods with both FCF and Capex: **163**
+- normalized financial history: **235 periods / 94 companies**
+- multi-period financial-history companies: **94 / 94 covered companies**
+- verified normalized historical metrics: **1,045**
+- periods with both FCF and Capex: **171**
 - audited cash-flow overrides: **5**
-- v0.4 exact document sources: **95**
-- v0.4 pending source policies: **95**
-- earnings update ledger: **227 normalized records / 90 companies**
+- v0.4 exact document sources: **99**
+- v0.4 pending source policies: **99**
+- earnings update ledger: **235 normalized records / 94 companies**
 - registered facilities: **17**
 - real-time stock-price distribution: disabled
 
+Run #195で `235 periods / 94 companies / 94 multi-period companies / 1045 verified metrics / 171 FCF+Capex periods / 5 cash-flow overrides / 99 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 2,980語を生成し、GitHub Pages deployまで成功した。
+
 ## v0.4 implementation
 
-`src/data/financial-history.json` と `financial-history-v04-batch2.json` 〜 `batch32.json` を `src/lib/financial-history.ts` で統合する。各期間に四半期/通期、期末日、通貨・単位、会計基準、一次資料、検証日を持たせ、売上高・営業利益・営業利益率・FCF・設備投資を `value / status / basis` で管理する。
+`src/data/financial-history.json` と `financial-history-v04-batch2.json` 〜 `batch34.json` を `src/lib/financial-history.ts` で統合する。各期間に四半期/通期、期末日、通貨・単位、会計基準、一次資料、検証日を持たせ、売上高・営業利益・営業利益率・FCF・設備投資を `value / status / basis` で管理する。
 
-一次資料は `src/lib/financial-sources.ts` へ集約し、`/financials/`、`/financials/updates/`、企業比較が同じSource Registryを消費する。Document Source / Policyはbatch単位で追加し、Source/Policyの1対1対応、重複ID、会社対応をvalidatorで検査する。
+一次資料は `src/lib/financial-sources.ts` に集約し、`/financials/`、`/financials/updates/`、企業比較が同じSource Registryを消費する。Document Source / Policyはbatch単位で追加し、Source/Policyの1対1対応、重複ID、会社対応をvalidatorで検査する。
 
-### 79社 → 90社 expansion
+### Recent coverage expansion
 
-90社到達のため、以下11社を2期間以上へ拡張した。
+90社到達後、以下4社を2期間以上へ追加した。
 
-- **Mitsubishi Electric**: FY2025 / FY2026をIFRSで収録。Atlas FCFは `operating cash flow − cash purchases of PP&E − cash purchases of intangible assets`。M&A・有価証券・売却収入を含むtotal investing CFは使わない。
-- **ARM**: FY2025 / FY2026をUS GAAPで収録。Atlas FCFはCFO−PP&E purchases。
-- **Qualcomm**: FY2024 / FY2025をUS GAAP continuing operationsベースで収録。FY2024は非継続事業の営業CFが一次資料で別掲されているため、継続事業CFOを明示的に再構成してAtlas FCFを算出する。
-- **Monolithic Power Systems**: FY2024 / FY2025をUS GAAPで収録。cash CapexはPP&E＋intangible asset purchases。
-- **Linde**: FY2024 / FY2025をUS GAAPで収録。adjusted operating profitではなくreported operating profitを使用する。
-- **Tower Semiconductor**: FY2024 / FY2025をUS GAAPで収録。cash-flow statementのproperty/equipment investmentを使用し、別掲の資産売却収入はAtlas FCFへ足さない。
-- **DENSO**: FY2025 / FY2026をIFRSで収録。公式財務ページの設備投資額はcash-flow Capex定義と同一視せず、FCF / Capexは未収録のまま保持する。
-- **Sumitomo Electric**: FY2024 / FY2025をJapanese GAAPで収録。固定資産投資額をcash Capexへ自動変換しない。
-- **KEYENCE**: FY2024 / FY2025をJapanese GAAPで収録。期末日は法定会計期間に合わせ3月20日。公式ハイライトから売上高・営業利益・営業利益率を収録し、FCF / Capexは推定しない。
-- **SMC**: FY2024 / FY2025をJapanese GAAPで収録。売上高・営業利益・営業利益率を収録し、exact cash Capex未確認のためFCF / Capexは未収録。
-- **Furukawa Electric**: FY2023 / FY2024をJapanese GAAPで収録。公式FY2024決算PDFの比較列を画像でも確認し、売上高・営業利益・営業利益率を収録。total investing CFからFCFを推定しない。
+- **MediaTek**: FY2024 / FY2025を監査済み連結財務諸表から収録。Atlas FCFは `operating cash flow − PP&E purchases − intangible asset purchases`。
+- **SMIC**: FY2024 / FY2025を年次報告書から収録。Atlas cash Capexは `PP&E + intangible assets + land-use-right purchases`。大型設備投資によりAtlas FCFがマイナスとなる期間もそのまま保持する。
+- **Air Liquide**: FY2024 / FY2025をIFRS consolidatedで収録。`Operating Income Recurring`ではなくreported `Operating Income`を使用し、Atlas FCFは `operating cash flow − PP&E/intangible asset purchases`。
+- **Hexagon**: FY2024 / FY2025をreported `Operating earnings`で収録し、adjusted EBIT1を代用しない。会社資料のCapital expendituresは有形資産部分が**net basis**のため、gross PP&E cash Capexではないことを各periodの`basis`へ明示する。
 
-Run #180で `227 periods / 90 companies / 90 multi-period companies / 1005 verified metrics / 163 FCF+Capex periods / 5 cash-flow overrides / 95 v0.4 document sources+policies` を確認し、Astro build、Pagefind、GitHub Pages deployまで成功した。
-
-### Definition safeguards
+## Definition safeguards
 
 - native reporting currency / unitを保持し、FX換算しない。
 - consolidated GAAP / IFRS reported operating profitを優先し、adjusted / segment profitを自動代用しない。
 - Atlas FCFは定義を閉じられる期間だけ算出し、原則 `operating cash flow − cash Capex` とする。
 - company-reported FCFに資産売却、政府補助金、M&A、広義investing CFなどが混在する場合はAtlas値へ流用しない。
 - 単四半期CFが累計値しかない場合、差分算出の根拠を一次資料で安全に検証できない限り推定しない。
-- management Capex / fixed-asset investmentをcash-flow Capexと同一視しない。
-- REITの開発・不動産投資は製造業のcash Capexと同一定義扱いしない。Equinix / Digital RealtyのFCF / Capexは理由付き `not-collected` を維持する。
-- 非継続事業が全社CFへ混在する場合、継続事業FCF / Capexを按分しない。ASMPT / OMRONでこの原則を適用する。
-- Kioxia / Tokyo Electronの累計値差分による単四半期化は、一次資料の整合性確認済み期間だけ保持する。
+- management Capex / fixed-asset investmentをcash-flow Capexと自動的に同一視しない。
+- Capex定義がnet basis等でgross cash Capexと異なる場合は値を隠さず、`basis`で定義差を明示する。
+- REITの開発・不動産投資は製造業のcash Capexと同一定義扱いしない。
+- 非継続事業が全社CFへ混在する場合、継続事業FCF / Capexを按分しない。
 
-## UI contracts
+## Company-page / search contracts
 
+- 企業ページの競合関係は、保存データが片方向でも画面上では双方向に解決する。これによりA→Bだけ登録された関係でもBページからAを確認できる。
+- `scripts/audit-company-relations.py` をCIへ組み込み、explicit competitor配列、実効競合0件、片方向リンクを監査する。
+- Run #191時点で実効競合0件は14社まで縮小。直接競合が100社母集団内に存在しない可能性がある企業へ、空欄解消だけを目的とした関係は追加しない。
+- 企業ページ右サイドバーは全体をsticky化し、内部スクロールに変更。目次と所属領域・最終確認日の文字がスクロール時に重ならない構造とする。1020px以下では通常配置へ戻す。
+- 企業一覧検索窓: `企業名・ティッカー・製品・技術・地域を検索`
+- 全文検索窓: `企業名・技術・製品・工程・地域・財務指標・リスクなどを検索`
+- 全文検索は企業ページ、決算データ、製品・技術、バリューチェーン、主要拠点、財務指標、競争優位、リスクなどAtlas内情報を横断する。
 - compare URL contract `?ids=...` を維持する。
 - 決算グラフはPR #32の大型化をロールバック済み。再導入しない。
-- 全体マップの工程別縦カラーラインは6px・高彩度。ホームの工程色も同一色を使用する。
-- サイト全体で灰色の文字を使わず、`--muted` は本文色へ統合。灰色の枠線・背景は可。
-- 企業一覧検索窓: `企業名・ティッカー・製品・技術・地域を検索`
+- サイト全体で灰色の文字を使わず、灰色は枠線・背景に限定する。
 - ホームの「最近の更新」はupdate-log本体を削らず最新5件だけ表示する。
 
 ## Validation baseline
@@ -99,24 +92,21 @@ Run #180で `227 periods / 90 companies / 90 multi-period companies / 1005 verif
 - ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt
 - 営業利益率再計算、Capex符号、Atlas FCF入力値・算式
 - 主要企業ごとの最低収録期間
-- continuity floor: **227 periods / 90 companies / 1,005 verified metrics / 163 FCF+Capex periods / 95 sources+policies**
+- continuity floor: **235 periods / 94 companies / 1,045 verified metrics / 171 FCF+Capex periods / 99 sources+policies**
+- MediaTek / SMIC / Air Liquide / Hexagonは各2期間以上を個別回帰ゲートで保持する。
 
 ## Remaining v0.4 work
 
-100社DBのうち、正規化時系列が未収録なのは残り10社。
+100社DBのうち、正規化時系列が未収録なのは残り**6社**。
 
-- Air Liquide
 - Ajinomoto Fine-Techno
 - Bosch
 - Fujikura
-- Hexagon
 - Johnson Controls
 - Kinsus
-- MediaTek
-- SMIC
 - Unimicron
 
-次段階では、一次資料の定義と取得安定性を確認できる企業から90→100社へ進める。Kinsus / Unimicronは一次資料PDFの安定取得経路、Johnson Controlsは連結Operating incomeの定義方針を確定してから収録する。
+以後も**2社単位**で追加する。一次資料の定義と取得安定性を優先し、Kinsus / Unimicronは一次資料PDFの安定取得経路、Johnson Controlsは連結Operating incomeの定義方針を確定してから収録する。
 
 ## Data quality policy
 
