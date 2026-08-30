@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "classificationRuleVersion": 2,
   "dataAsOf": "2026-08-30",
-  "inputDigestSha256": "9c99db4cb1bb5598a97f5638cc164fab35c4abfcee3bf81df8e563da1967e373",
+  "inputDigestSha256": "2b1e858e9675907ed7aa2907f33e823a406692ebf8440dde325a2c06fe542a16",
   "inputs": {
     "historyFiles": [
       "src/data/financial-history.json",
@@ -44,7 +44,7 @@
       "src/data/financial-history-v04-batch37.json"
     ],
     "companyFiles": 100,
-    "cashFlowOverrides": 6
+    "cashFlowOverrides": 8
   },
   "definitions": {
     "cashFlowCoverage": {
@@ -135,9 +135,9 @@
     },
     "adjustedNonGaapFcfAssessments": {
       "atlas-formula-aligned": 8,
-      "atlas-definition-difference": 4,
+      "atlas-definition-difference": 2,
       "unresolved": 0,
-      "not-applicable": 235
+      "not-applicable": 237
     },
     "specialFlags": {
       "goodwill-impairment": 2,
@@ -147,12 +147,12 @@
       "reconstructed-operating-income": 7,
       "net-basis-capex": 27,
       "broad-capex": 4,
-      "company-reported-fcf": 23,
+      "company-reported-fcf": 21,
       "non-gaap-fcf-atlas-formula-aligned": 8,
-      "fcf-atlas-definition-difference": 4,
+      "fcf-atlas-definition-difference": 2,
       "adjusted-or-non-gaap-fcf-unresolved": 0,
-      "cash-flow-inputs-missing": 12,
-      "fcf-capex-scope-mismatch": 2,
+      "cash-flow-inputs-missing": 10,
+      "fcf-capex-scope-mismatch": 0,
       "derived-single-quarter": 6,
       "unclassified-capex-definition": 28,
       "special-operating-profit-definition": 10
@@ -344,30 +344,6 @@
         "reasons": [
           "includes-asset-sale-proceeds"
         ]
-      },
-      {
-        "recordId": "vertiv-q2-2025",
-        "companyId": "vertiv",
-        "periodLabel": "Q2 2025",
-        "value": 277.0,
-        "status": "verified",
-        "basis": "company-reported adjusted free cash flow = operating cash flow − capital expenditures − investments in capitalized software",
-        "sourceId": "earnings-vertiv-2026-07-29-q2-2026",
-        "reasons": [
-          "capitalized-software-outside-capex"
-        ]
-      },
-      {
-        "recordId": "vertiv-q2-2026",
-        "companyId": "vertiv",
-        "periodLabel": "Q2 2026",
-        "value": 925.3,
-        "status": "verified",
-        "basis": "company-reported adjusted free cash flow = operating cash flow − capital expenditures − investments in capitalized software",
-        "sourceId": "earnings-vertiv-2026-07-29-q2-2026",
-        "reasons": [
-          "capitalized-software-outside-capex"
-        ]
       }
     ],
     "adjustedNonGaapFcfUnresolved": [],
@@ -381,24 +357,9 @@
       "asml-q3-2025",
       "asml-q4-2025",
       "asml-q1-2026",
-      "asml-q2-2026",
-      "vertiv-q2-2025",
-      "vertiv-q2-2026"
+      "asml-q2-2026"
     ],
-    "fcfCapexScopeMismatch": [
-      {
-        "recordId": "vertiv-q2-2025",
-        "reasons": [
-          "fcf-includes-capitalized-software-capex-excludes-it"
-        ]
-      },
-      {
-        "recordId": "vertiv-q2-2026",
-        "reasons": [
-          "fcf-includes-capitalized-software-capex-excludes-it"
-        ]
-      }
-    ]
+    "fcfCapexScopeMismatch": []
   },
   "companies": [
     {
@@ -4507,16 +4468,11 @@
       },
       "adjustedNonGaapFcfAssessments": {
         "atlas-formula-aligned": 0,
-        "atlas-definition-difference": 2,
+        "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 0
+        "not-applicable": 2
       },
-      "specialFlags": [
-        "company-reported-fcf",
-        "fcf-atlas-definition-difference",
-        "cash-flow-inputs-missing",
-        "fcf-capex-scope-mismatch"
-      ]
+      "specialFlags": []
     },
     {
       "companyId": "western-digital",
@@ -10537,20 +10493,11 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
-      "adjustedNonGaapFcfAssessment": "atlas-definition-difference",
-      "adjustedNonGaapFcfAssessmentReasons": [
-        "capitalized-software-outside-capex"
-      ],
-      "cashFlowInputsStatus": "missing",
-      "fcfCapexScopeMismatchReasons": [
-        "fcf-includes-capitalized-software-capex-excludes-it"
-      ],
-      "specialFlags": [
-        "company-reported-fcf",
-        "fcf-atlas-definition-difference",
-        "cash-flow-inputs-missing",
-        "fcf-capex-scope-mismatch"
-      ]
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "vertiv-q2-2026",
@@ -10569,20 +10516,11 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
-      "adjustedNonGaapFcfAssessment": "atlas-definition-difference",
-      "adjustedNonGaapFcfAssessmentReasons": [
-        "capitalized-software-outside-capex"
-      ],
-      "cashFlowInputsStatus": "missing",
-      "fcfCapexScopeMismatchReasons": [
-        "fcf-includes-capitalized-software-capex-excludes-it"
-      ],
-      "specialFlags": [
-        "company-reported-fcf",
-        "fcf-atlas-definition-difference",
-        "cash-flow-inputs-missing",
-        "fcf-capex-scope-mismatch"
-      ]
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "western-digital-fy2025",

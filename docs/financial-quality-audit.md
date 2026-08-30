@@ -2,7 +2,7 @@
 
 データ基準日: **2026-08-30**
 
-入力SHA-256: `9c99db4cb1bb5598a97f5638cc164fab35c4abfcee3bf81df8e563da1967e373`
+入力SHA-256: `2b1e858e9675907ed7aa2907f33e823a406692ebf8440dde325a2c06fe542a16`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
@@ -15,7 +15,7 @@
 | 企業 | 100 |
 | 期間 | 247 |
 | 指標 | 1235 |
-| cash-flow override | 6 |
+| cash-flow override | 8 |
 
 ## 指標の検証状態
 
@@ -62,9 +62,9 @@
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
 | `atlas-formula-aligned` | 8 | Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas |
-| `atlas-definition-difference` | 4 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
+| `atlas-definition-difference` | 2 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
 | `unresolved` | 0 | Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely |
-| `not-applicable` | 235 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
+| `not-applicable` | 237 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
 
 ## 特殊比較フラグ
 
@@ -77,12 +77,12 @@
 | `reconstructed-operating-income` | 7 | Operating income is reconstructed |
 | `net-basis-capex` | 27 | Capex is disclosed on a net basis |
 | `broad-capex` | 4 | Capex uses a broader non-current-asset definition |
-| `company-reported-fcf` | 23 | FCF value comes from a company-reported measure |
+| `company-reported-fcf` | 21 | FCF value comes from a company-reported measure |
 | `non-gaap-fcf-atlas-formula-aligned` | 8 | Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope |
-| `fcf-atlas-definition-difference` | 4 | FCF uses a definition that differs from Atlas gross cash-Capex normalization |
+| `fcf-atlas-definition-difference` | 2 | FCF uses a definition that differs from Atlas gross cash-Capex normalization |
 | `adjusted-or-non-gaap-fcf-unresolved` | 0 | Adjusted/Non-GAAP FCF formula cannot be closed from current basis text |
-| `cash-flow-inputs-missing` | 12 | A populated FCF record does not have complete cashFlowInputs |
-| `fcf-capex-scope-mismatch` | 2 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
+| `cash-flow-inputs-missing` | 10 | A populated FCF record does not have complete cashFlowInputs |
+| `fcf-capex-scope-mismatch` | 0 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
 | `derived-single-quarter` | 6 | A single-quarter value is derived from cumulative periods |
 | `unclassified-capex-definition` | 28 | A populated Capex value remains definition-unclassified |
 | `special-operating-profit-definition` | 10 | Operating-profit definition is classified as a special case |
@@ -94,10 +94,10 @@
 - FCF/Capex片側欠損: `abb-q2-2025` (capex-missing-only), `abb-q2-2026` (capex-missing-only)
 - Capex定義未分類: `analog-devices-q3-fy2026`, `applied-materials-q3-fy2025`, `applied-materials-q3-fy2026`, `aptiv-fy2024`, `aptiv-fy2025`, `carrier-q2-2025`, `carrier-q2-2026`, `corning-fy2024`, `corning-fy2025`, `johnson-controls-fy2024`, `johnson-controls-fy2025`, `kla-q4-fy2025`, `kla-q4-fy2026`, `linde-fy2024`, `linde-fy2025`, `nvent-q2-2025`, `nvent-q2-2026`, `qualcomm-fy2024`, `qualcomm-fy2025`, `shin-etsu-chemical-q1-fy2025`, `shin-etsu-chemical-q1-fy2026`, `te-connectivity-fy2024`, `te-connectivity-fy2025`, `texas-instruments-q1-2026`, `texas-instruments-q2-2026`, `tsmc-q2-2025`, `tsmc-q1-2026`, `tsmc-q2-2026`
 - Non-GAAP表記・Atlas算式一致（値変更対象外）: `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
-- Atlas定義差あり（一次資料再確認）: `abb-q2-2025` (includes-asset-sale-proceeds), `abb-q2-2026` (includes-asset-sale-proceeds), `vertiv-q2-2025` (capitalized-software-outside-capex), `vertiv-q2-2026` (capitalized-software-outside-capex)
+- Atlas定義差あり（一次資料再確認）: `abb-q2-2025` (includes-asset-sale-proceeds), `abb-q2-2026` (includes-asset-sale-proceeds)
 - adjusted / Non-GAAP算式未解決: なし
-- cashFlowInputs未登録（FCF値あり）: `abb-q2-2025`, `abb-q2-2026`, `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`, `vertiv-q2-2025`, `vertiv-q2-2026`
-- FCF/Capex scope mismatch: `vertiv-q2-2025` (fcf-includes-capitalized-software-capex-excludes-it), `vertiv-q2-2026` (fcf-includes-capitalized-software-capex-excludes-it)
+- cashFlowInputs未登録（FCF値あり）: `abb-q2-2025`, `abb-q2-2026`, `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
+- FCF/Capex scope mismatch: なし
 
 ## 会社別監査
 
@@ -202,7 +202,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | tsmc | TSMC（台湾積体電路製造） | 3 | 15 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | company-reported-fcf, unclassified-capex-definition |
 | umc | UMC（聯華電子） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | unimicron | Unimicron（欣興電子） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
-| vertiv | Vertiv（ヴァーティブ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | company-reported-fcf, fcf-atlas-definition-difference, cash-flow-inputs-missing, fcf-capex-scope-mismatch |
+| vertiv | Vertiv（ヴァーティブ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | western-digital | Western Digital（ウエスタンデジタル） | 5 | 25 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | net-basis-capex |
 | yaskawa | 安川電機 | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 
