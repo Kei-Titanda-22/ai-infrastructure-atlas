@@ -38,6 +38,7 @@
 - [x] Site-wide dark text / company-search wording / compact home updates deployed — Run #156
 - [x] v0.4 Synopsys / Cadence / onsemi history batch deployed — Run #157
 - [x] v0.4 STMicroelectronics / Renesas / ROHM / Infineon history batch deployed — Run #159
+- [x] v0.4 ASM International / Advantest / SCREEN / DISCO equipment history batch deployed — Run #161
 
 ## Current database
 
@@ -46,23 +47,23 @@
 - value-chain stages: 9 including AI demand
 - comparison templates: 8
 - verified common financial metric audits: 14
-- normalized financial history: **163 periods / 60 companies**
-- multi-period financial-history companies: **60 / 60 covered companies**
-- verified normalized historical metrics: **721**
-- periods with both FCF and Capex: **117**
+- normalized financial history: **171 periods / 62 companies**
+- multi-period financial-history companies: **62 / 62 covered companies**
+- verified normalized historical metrics: **761**
+- periods with both FCF and Capex: **125**
 - audited cash-flow overrides: **5**
-- v0.4 exact document sources: **61**
-- v0.4 pending source policies: **61**
-- earnings update ledger: **163 normalized records / 60 companies**
+- v0.4 exact document sources: **65**
+- v0.4 pending source policies: **65**
+- earnings update ledger: **171 normalized records / 62 companies**
 - registered facilities: 17
 - project constitution articles: 9
 - real-time stock-price distribution: disabled
 
 ## v0.4 current implementation
 
-時系列財務は `src/data/financial-history.json` と `financial-history-v04-batch2.json` 〜 `batch19.json`、監査済みcash-flow overrideを `src/lib/financial-history.ts` で統合した配列を正規化履歴として扱う。各期間に四半期/通期、期末日、通貨・単位、会計基準、一次資料、検証日を持たせ、売上高・営業利益・営業利益率・FCF・設備投資を `value / status / basis` で管理する。
+時系列財務は `src/data/financial-history.json` と `financial-history-v04-batch2.json` 〜 `batch20.json`、監査済みcash-flow overrideを `src/lib/financial-history.ts` で統合した配列を正規化履歴として扱う。各期間に四半期/通期、期末日、通貨・単位、会計基準、一次資料、検証日を持たせ、売上高・営業利益・営業利益率・FCF・設備投資を `value / status / basis` で管理する。
 
-現在の履歴対象は60社・163期間で、60社すべてが2期間以上を持つ。直近Run #145〜#159では、OSAT / パッケージ基板、半導体材料、電力インフラ、データセンターHVAC、EDA、電力半導体を重点的に拡張した。
+現在の履歴対象は62社・171期間で、62社すべてが2期間以上を持つ。直近Run #145〜#161では、OSAT / パッケージ基板、半導体材料、電力インフラ、データセンターHVAC、EDA、電力半導体、半導体装置を重点的に拡張した。
 
 ### OSAT / パッケージ基板
 
@@ -93,7 +94,16 @@ STMicroelectronics、Renesas Electronics、ROHM、Infineonも各2通期を追加
 - ROHMはJapanese GAAPのreported operating profitを使用し、FY2026の減価償却方法変更を過去値へ遡及調整しない。
 - InfineonはSegment ResultではなくIFRS Operating profitを使用し、Atlas FCFを `CFO − PP&E/intangible acquisition payments` とする。会社FCFに含まれる広義投資・M&A影響は混在させない。
 
-Run #159で163期間 / 60社 / 721検証済み指標 / FCF+Capex 117期間を確認した。
+### 半導体装置
+
+Run #161でASM International、Advantest、SCREEN Holdings、DISCOの8通期を追加・拡張した。4社8期間すべて売上高・営業利益・営業利益率・営業CF・cash Capexを一次資料で収録し、Atlas FCFを `営業活動CF − gross cash Capex` で再計算する。このバッチは既収録企業の履歴延長も含むため、企業カバレッジの純増は4社ではなく2社である。
+
+- ASM Internationalはadjusted operating resultではなくIFRS reported operating resultを使用する。Atlas CapexはPP&E、capitalized development expenditure、intangible asset capexの現金支出を合算し、会社non-IFRS FCFに含まれるその他投資CFを混在させない。
+- AdvantestはIFRS operating incomeを使用し、Atlas CapexをPP&E＋intangible asset purchasesとする。
+- SCREEN HoldingsはJapanese GAAP operating incomeを使用し、会社サイトのtotal investing CFベースFCFを流用しない。
+- DISCOはJapanese GAAP operating incomeを使用する。会社FCFに含まれる投資CF、特にFY2025の定期預金支出をAtlas Capexへ混在させない。
+
+Run #161で171期間 / 62社 / 761検証済み指標 / FCF+Capex 125期間を確認した。
 
 ### 既存の重要な定義差
 
@@ -111,25 +121,25 @@ FCF / Capexは定義確認済み期間だけ実データ化する。会社間の
 
 一次資料の検索は `src/lib/financial-sources.ts` に集約し、`/financials/`、`/financials/updates/`、企業比較が同じSource Registryを消費する。文書Source / Policyはbatch単位の分割ファイルで追加し、validatorで重複IDとSource/Policyの1対1対応を検査する。
 
-`/financials/` は60社を企業切替対象とし、四半期・通期を分離した自前SVG推移図と、一次資料・会計基準・検証状態付き決算表を表示する。FCF / Capexが存在する企業では追加グラフを表示し、負のFCFにも対応する。決算グラフはPR #32の大型化をロールバック済みで、PR #32直前の表示状態を維持する。
+`/financials/` は62社を企業切替対象とし、四半期・通期を分離した自前SVG推移図と、一次資料・会計基準・検証状態付き決算表を表示する。FCF / Capexが存在する企業では追加グラフを表示し、負のFCFにも対応する。決算グラフはPR #32の大型化をロールバック済みで、PR #32直前の表示状態を維持する。
 
 全体マップの工程別縦カラーラインは6px・高彩度を維持し、ホームの「AIインフラの主要工程」カラーラインも同じ工程色を使用する。
 
 Run #156でサイト全体の補助文字色を本文色へ統一し、灰色の文字を使わない表示へ変更した。枠線・背景の灰色と、検証状態など意味を持つ緑・黄・赤は維持する。企業一覧の検索窓は `企業名・ティッカー・製品・技術・地域を検索` と表示し、ホームの「最近の更新」はupdate-log本体を削らず最新5件だけ表示する。
 
-`/financials/updates/` は正規化履歴から直接生成する決算更新台帳。現在163レコード / 60社を、1行「1企業 × 1決算期間 × 1一次資料」として表示する。企業比較画面はv0.4正規化履歴を消費し、v0.3の `?ids=` 比較URL契約を維持する。
+`/financials/updates/` は正規化履歴から直接生成する決算更新台帳。現在171レコード / 62社を、1行「1企業 × 1決算期間 × 1一次資料」として表示する。企業比較画面はv0.4正規化履歴を消費し、v0.3の `?ids=` 比較URL契約を維持する。
 
-`scripts/validate-v04.py` は `financial-history-v04-batch*.json`、v0.4 Document Source、Source Policyを自動検出する。Source/company対応、ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt、営業利益率再計算、Capex符号、Atlas算出FCFの入力値・算式、Source/Policy対応、主要企業ごとの最低収録数を検査する。Run #159以降の回帰下限は163期間 / 60社 / 721検証済み指標 / FCF+Capex 117期間 / Source 61件で、STMicroelectronics / Renesas / ROHM / Infineonも各2期間以上を個別ゲートで保持する。
+`scripts/validate-v04.py` は `financial-history-v04-batch*.json`、v0.4 Document Source、Source Policyを自動検出する。Source/company対応、ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt、営業利益率再計算、Capex符号、Atlas算出FCFの入力値・算式、Source/Policy対応、主要企業ごとの最低収録数を検査する。Run #161以降の回帰下限は171期間 / 62社 / 761検証済み指標 / FCF+Capex 125期間 / Source 65件で、ASM International / Advantest / SCREEN Holdings / DISCOも各2期間以上を個別ゲートで保持する。
 
-Run #159では `v0.4 financial-history validation OK: 163 periods / 60 companies / 60 multi-period companies / 721 verified metrics / 117 FCF+Capex periods / 5 cash-flow overrides / 61 v0.4 document sources+policies` を確認した。Astroは**109ページ**、Pagefindは**105ページ / 2,851語**を生成し、GitHub Pages deployまで成功した。
+Run #161では `v0.4 financial-history validation OK: 171 periods / 62 companies / 62 multi-period companies / 761 verified metrics / 125 FCF+Capex periods / 5 cash-flow overrides / 65 v0.4 document sources+policies` を確認した。Astroは**109ページ**、Pagefindは**105ページ / 2,866語**を生成し、GitHub Pages deployまで成功した。
 
 ## Remaining v0.4 work
 
-1. 正規化履歴カバレッジを現在の60社から100社DB内の主要未収録企業へ拡張する
+1. 正規化履歴カバレッジを現在の62社から100社DB内の主要未収録企業へ拡張する
 2. OSAT / 基板ではKinsus / Unimicronの一次資料PDFを安定取得できる経路を確保してから収録する
 3. Johnson Controlsは連結損益計算書に直接のOperating income行がないため、再構成値を採用するかの定義方針を決めるまで保留する
 4. 残りの半導体装置、ネットワーク、ストレージ、Physical AI等の未収録主要企業を優先度順に複数期間化する
-5. 既存60社について必要に応じて四半期の連続性をさらに伸ばす
+5. 既存62社について必要に応じて四半期の連続性をさらに伸ばす
 6. PER / PBR / ROICはSource・利用条件・定義要件を満たしたものだけ掲載する
 7. v0.4完了判定前に主要企業の履歴カバレッジと比較可能性を再監査する
 
