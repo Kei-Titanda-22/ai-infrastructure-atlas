@@ -1,0 +1,154 @@
+---
+interface Props {
+  claims: any[];
+  evidence: any[];
+  sources: any[];
+  coverage?: any[];
+  categories: string[];
+}
+
+const { claims, evidence, sources, coverage = [], categories } = Astro.props;
+const sourceById = new Map(sources.map(source => [source.id, source]));
+const evidenceById = new Map(evidence.map(binding => [binding.id, binding]));
+const visibleClaims = claims.filter(claim => categories.includes(claim.category));
+const primaryClaims = visibleClaims.filter(claim => claim.priority === 'P1');
+const secondaryClaims = visibleClaims.filter(claim => claim.priority !== 'P1');
+const relevantCoverage = coverage.filter(item => categories.includes(item.category));
+
+const claimTypeLabels: Record<string, string> = {
+  fact: '事実',
+  'company-guidance': '会社見通し',
+  'company-positioning': '会社説明',
+  'atlas-analysis': 'Atlas分析',
+  estimate: '推定'
+};
+const verificationLabels: Record<string, string> = {
+  verified: '根拠確認済み',
+  'source-linked': '一次資料紐付け済み・確認未了',
+  'needs-review': '要再検証'
+};
+const categoryLabels: Record<string, string> = {
+  'company-overview': '企業概要',
+  'ai-infrastructure-role': 'AIインフラ上の役割',
+  products: '製品',
+  technology: '技術',
+  'value-chain-position': 'バリューチェーン',
+  'manufacturing-facilities': '製造・拠点',
+  'capacity-expansion': '能力・増強',
+  'customer-end-market': '顧客・用途市場',
+  'competitive-positioning': '競争上の位置付け',
+  strategy: '戦略',
+  risks: 'リスク'
+};
+const missingLabels: Record<string, string> = {
+  'not-collected': '未収集',
+  'primary-source-unchecked': '一次資料未確認',
+  'not-disclosed': '非開示',
+  'not-applicable': '対象外'
+};
+const locatorLabels: Record<string, string> = {
+  page: 'ページ', section: 'セクション', heading: '見出し', table: '表', note: '注記', anchor: 'アンカー', quotedLabel: '検索語'
+};
+const freshness = (claim: any) => {
+  if (!claim.nextReview) return { key: 'not-applicable', label: '更新対象外' };
+  const review = Date.parse(`${claim.nextReview}T00:00:00Z`);
+  const now = Date.parse('2026-08-31T00:00:00Z');
+  if (now <= review) return { key: 'current', label: '更新期限内' };
+  if (now <= review + 90 * 86400000) return { key: 'review-due', label: '再確認期限超過' };
+  return { key: 'stale', label: '情報が古い可能性' };
+};
+const evidenceFor = (claim: any) => claim.evidenceIds.map((id: string) => evidenceById.get(id)).filter(Boolean);
+---
+
+{(visibleClaims.length > 0 || relevantCoverage.some(item => item.collectionStatus !== 'complete')) && (
+  <div class="pilot-claims" data-company-evidence-claims>
+    <div class="pilot-claim-stack">
+      {primaryClaims.map(claim => {
+        const bindings = evidenceFor(claim);
+        const fresh = freshness(claim);
+        return (
+          <article class:list={['pilot-claim', { 'pilot-claim-analysis': ['atlas-analysis', 'estimate'].includes(claim.claimType) }]} aria-label={`${claimTypeLabels[claim.claimType]}: ${claim.title}`}>
+            <div class="pilot-claim-topline">
+              <span class={`claim-kind claim-kind-${claim.claimType}`}>{claimTypeLabels[claim.claimType]}</span>
+              <span class="claim-priority">{claim.priority}</span>
+            </div>
+            <h3>{claim.title}</h3>
+            <p>{claim.statement}</p>
+            <button class="evidence-badge" type="button" data-evidence-open={`evidence-${claim.id}`} aria-haspopup="dialog">
+              根拠 {bindings.length} · {verificationLabels[claim.verificationStatus]}
+            </button>
+            <dialog class="evidence-drawer" id={`evidence-${claim.id}`} aria-labelledby={`evidence-title-${claim.id}`}>
+              <div class="drawer-header">
+                <div><span class="drawer-kicker">{claimTypeLabels[claim.claimType]} · {claim.priority}</span><h3 id={`evidence-title-${claim.id}`}>{claim.title}</h3></div>
+                <button type="button" class="drawer-close" data-evidence-close aria-label="根拠パネルを閉じる">閉じる</button>
+              </div>
+              <p class="drawer-statement">{claim.statement}</p>
+              <dl class="drawer-meta">
+                <div><dt>検証状態</dt><dd>{verificationLabels[claim.verificationStatus]}</dd></div>
+                <div><dt>基準日</dt><dd>{claim.asOf}</dd></div>
+                <div><dt>鮮度</dt><dd><span class={`freshness freshness-${fresh.key}`}>{fresh.label}</span> · 次回 {claim.nextReview ?? '—'}</dd></div>
+                {claim.confidence && <div><dt>確信度</dt><dd>{claim.confidence}</dd></div>}
+              </dl>
+              <div class="drawer-sources">
+                {bindings.map((binding: any) => {
+                  const source = sourceById.get(binding.sourceId) as any;
+                  return source ? (
+                    <article class="drawer-source-card">
+                      <div class="source-publisher">{source.publisher}</div>
+                      <h4>{source.title}</h4>
+                      <dl class="source-locator">
+                        {Object.entries(binding.locator).map(([key, value]) => <div><dt>{locatorLabels[key] ?? key}</dt><dd>{String(value)}</dd></div>)}
+                      </dl>
+                      <p class="source-dates">公開 {source.publishedAt ?? '日付不明'} · 取得 {source.retrievedAt} · Locator確認 {binding.lastChecked}</p>
+                      <a class="source-open" href={source.url} target="_blank" rel="noreferrer">一次資料を開く ↗</a>
+                    </article>
+                  ) : null;
+                })}
+              </div>
+            </dialog>
+          </article>
+        );
+      })}
+    </div>
+
+    {secondaryClaims.length > 0 && (
+      <details class="secondary-claims">
+        <summary>詳細claim（P2 / P3）を表示 <span>{secondaryClaims.length}件</span></summary>
+        <div class="pilot-claim-stack secondary-stack">
+          {secondaryClaims.map(claim => {
+            const bindings = evidenceFor(claim);
+            const fresh = freshness(claim);
+            return (
+              <article class:list={['pilot-claim', { 'pilot-claim-analysis': ['atlas-analysis', 'estimate'].includes(claim.claimType) }]} aria-label={`${claimTypeLabels[claim.claimType]}: ${claim.title}`}>
+                <div class="pilot-claim-topline"><span class={`claim-kind claim-kind-${claim.claimType}`}>{claimTypeLabels[claim.claimType]}</span><span class="claim-priority">{claim.priority}</span></div>
+                <h3>{claim.title}</h3><p>{claim.statement}</p>
+                <button class="evidence-badge" type="button" data-evidence-open={`evidence-${claim.id}`} aria-haspopup="dialog">根拠 {bindings.length} · {verificationLabels[claim.verificationStatus]}</button>
+                <dialog class="evidence-drawer" id={`evidence-${claim.id}`} aria-labelledby={`evidence-title-${claim.id}`}>
+                  <div class="drawer-header"><div><span class="drawer-kicker">{claimTypeLabels[claim.claimType]} · {claim.priority}</span><h3 id={`evidence-title-${claim.id}`}>{claim.title}</h3></div><button type="button" class="drawer-close" data-evidence-close aria-label="根拠パネルを閉じる">閉じる</button></div>
+                  <p class="drawer-statement">{claim.statement}</p>
+                  <dl class="drawer-meta"><div><dt>検証状態</dt><dd>{verificationLabels[claim.verificationStatus]}</dd></div><div><dt>基準日</dt><dd>{claim.asOf}</dd></div><div><dt>鮮度</dt><dd><span class={`freshness freshness-${fresh.key}`}>{fresh.label}</span> · 次回 {claim.nextReview ?? '—'}</dd></div>{claim.confidence && <div><dt>確信度</dt><dd>{claim.confidence}</dd></div>}</dl>
+                  <div class="drawer-sources">{bindings.map((binding: any) => { const source = sourceById.get(binding.sourceId) as any; return source ? <article class="drawer-source-card"><div class="source-publisher">{source.publisher}</div><h4>{source.title}</h4><dl class="source-locator">{Object.entries(binding.locator).map(([key, value]) => <div><dt>{locatorLabels[key] ?? key}</dt><dd>{String(value)}</dd></div>)}</dl><p class="source-dates">公開 {source.publishedAt ?? '日付不明'} · 取得 {source.retrievedAt} · Locator確認 {binding.lastChecked}</p><a class="source-open" href={source.url} target="_blank" rel="noreferrer">一次資料を開く ↗</a></article> : null; })}</div>
+                </dialog>
+              </article>
+            );
+          })}
+        </div>
+      </details>
+    )}
+
+    {relevantCoverage.some(item => item.collectionStatus !== 'complete') && (
+      <div class="coverage-notices" aria-label="未収録・部分収録情報">
+        {relevantCoverage.filter(item => item.collectionStatus !== 'complete').map(item => (
+          <p><strong>{categoryLabels[item.category]}</strong>：{item.collectionStatus === 'partial' ? '一部収録' : missingLabels[item.missingStatus]}{item.missingStatus && item.collectionStatus === 'partial' ? `（${missingLabels[item.missingStatus]}）` : ''}{item.notes ? ` — ${item.notes}` : ''}</p>
+        ))}
+      </div>
+    )}
+  </div>
+)}
+
+<style>
+  .pilot-claim-stack{display:grid;gap:1rem}.pilot-claim{border:1px solid var(--line,#d8dee7);border-left:4px solid #396a93;border-radius:.7rem;padding:1rem;background:var(--surface,#fff)}
+  .pilot-claim-analysis{border-left-color:#a15c13;background:color-mix(in srgb,#fff8eb 75%,var(--surface,#fff))}.pilot-claim-topline{display:flex;gap:.5rem;align-items:center;margin-bottom:.4rem}.claim-kind,.claim-priority{font-size:.75rem;font-weight:700;letter-spacing:.04em;padding:.2rem .45rem;border-radius:999px;background:#e8eef5;color:#173750}.claim-kind-atlas-analysis,.claim-kind-estimate{background:#fff0d8;color:#6d3a00}.claim-priority{background:#f1f3f5;color:#505b65}.pilot-claim h3{font-size:1.05rem;margin:.25rem 0}.pilot-claim p{margin:.4rem 0 .8rem}.evidence-badge{border:1px solid #396a93;background:#f5faff;color:#154b72;border-radius:999px;padding:.45rem .7rem;font:inherit;font-size:.82rem;font-weight:700;cursor:pointer}.evidence-badge:hover,.evidence-badge:focus-visible{background:#dfefff;outline:3px solid color-mix(in srgb,#397fb2 30%,transparent);outline-offset:2px}.secondary-claims{margin-top:1rem;border-top:1px solid var(--line,#d8dee7);padding-top:.8rem}.secondary-claims>summary{cursor:pointer;font-weight:700}.secondary-claims>summary span{font-weight:400;color:var(--muted,#667)}.secondary-stack{margin-top:1rem}.coverage-notices{margin-top:1rem;padding:.8rem 1rem;border-radius:.6rem;background:#f6f7f9;border:1px dashed #a9b1ba}.coverage-notices p{font-size:.86rem;margin:.3rem 0}
+  .evidence-drawer{position:fixed;inset:0 0 0 auto;width:min(38rem,92vw);height:100dvh;max-height:none;margin:0;padding:1.25rem;border:0;border-left:1px solid #cad2dc;background:var(--surface,#fff);color:inherit;overflow:auto}.evidence-drawer::backdrop{background:rgba(8,20,32,.55)}.drawer-header{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;position:sticky;top:-1.25rem;background:var(--surface,#fff);padding:1.25rem 0 .8rem;z-index:1}.drawer-header h3{margin:.25rem 0}.drawer-kicker{font-size:.78rem;font-weight:700;color:#496274}.drawer-close{border:1px solid #7b8793;border-radius:.45rem;background:transparent;color:inherit;padding:.45rem .65rem;cursor:pointer}.drawer-close:focus-visible,.source-open:focus-visible{outline:3px solid #72aee6;outline-offset:3px}.drawer-statement{font-size:1.03rem}.drawer-meta{display:grid;gap:.45rem;margin:1rem 0}.drawer-meta div,.source-locator div{display:grid;grid-template-columns:7rem 1fr;gap:.6rem}.drawer-meta dt,.source-locator dt{font-size:.78rem;color:#65727f}.drawer-meta dd,.source-locator dd{margin:0}.freshness{font-weight:700}.drawer-sources{display:grid;gap:1rem}.drawer-source-card{border:1px solid #d8dee7;border-radius:.65rem;padding:1rem}.drawer-source-card h4{margin:.25rem 0 .8rem}.source-publisher,.source-dates{font-size:.78rem;color:#65727f}.source-locator{display:grid;gap:.35rem}.source-open{display:inline-flex;margin-top:.6rem;font-weight:700;color:#155c8b}
+  @media(max-width:600px){.evidence-drawer{width:100vw}.drawer-meta div,.source-locator div{grid-template-columns:1fr}.pilot-claim{padding:.85rem}.evidence-badge{width:100%;text-align:left}}
+</style>
