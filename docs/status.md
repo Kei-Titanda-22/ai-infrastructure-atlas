@@ -32,6 +32,7 @@
 - [x] Micron Q3 FY2026 Atlas FCF normalization from gross PP&E cash expenditures
 - [x] Vertiv Q2 2025 / Q2 2026 and ABB Q2 2025 / Q2 2026 Atlas FCF normalization with audited cash-flow inputs
 - [x] TSMC Q2 2025 / Q1 2026 / Q2 2026 gross PP&E + intangible cash-Capex normalization; Applied Materials gross PP&E classification
+- [x] KLA Q4 FY2025 / Q4 FY2026 gross PP&E classification; Analog Devices Q3 FY2026 net-Capex classification with unresolved government-incentive netting provenance
 
 ## Current database
 
@@ -51,15 +52,15 @@
 - populated FCF periods with cashFlowInputs missing: **8**
 - periods with FCF / Capex scope mismatch: **0**
 - audited cash-flow overrides: **10**
-- v0.4 document sources: **111**
-- v0.4 pending source policies: **111**
+- v0.4 document sources: **114**
+- v0.4 pending source policies: **114**
 - earnings update ledger: **247 normalized records / 100 companies**
 - registered facilities: **17**
 - real-time stock-price distribution: disabled
 
-今回のローカル検証で `247 periods / 100 companies / 100 multi-period companies / 1098 verified metrics / 181 FCF+Capex periods / 10 cash-flow overrides / 111 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 3,659語を生成した。
+今回のローカル検証で `247 periods / 100 companies / 100 multi-period companies / 1098 verified metrics / 181 FCF+Capex periods / 10 cash-flow overrides / 114 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 3,659語を生成した。
 
-`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。レビュー済みadjusted / Non-GAAP由来FCF 13期間は、旧表記のままAtlas算式一致8期間、Atlas正規化済み5期間（Micron 1期間、Vertiv 2期間、ABB 2期間）、Atlas定義差あり0期間となった。さらに、cashFlowInputs未登録8期間、FCF/Capex scope mismatch 0期間、PP&E-only 51期間を独立軸で出力する。TSMC 3期間は`ppe-plus-intangible`、Applied Materials 2期間は一次資料監査済みの`gross-ppe-cash-purchases`として分類する。現状のその他の要確認キューは、source-linked 3指標、FCF/Capex片側欠損0期間、両方欠損66期間、Capex定義未分類23期間。CIは `--check` でデータと監査結果の同期を検証する。
+`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。レビュー済みadjusted / Non-GAAP由来FCF 13期間は、旧表記のままAtlas算式一致8期間、Atlas正規化済み5期間（Micron 1期間、Vertiv 2期間、ABB 2期間）、Atlas定義差あり0期間となった。さらに、cashFlowInputs未登録8期間、FCF/Capex scope mismatch 0期間、PP&E-only 54期間を独立軸で出力する。TSMC 3期間は`ppe-plus-intangible`、Applied Materials 2期間とKLA 2期間は一次資料監査済みの`gross-ppe-cash-purchases`として分類する。Analog Devices Q3 FY2026は`net-capex`へ分類する一方、期間固有の政府支援相殺額が未開示のため`government-incentive-netting-unresolved`およびAtlas gross cash Capex未解決queueに残す。現状のその他の要確認キューは、source-linked 3指標、FCF/Capex片側欠損0期間、両方欠損66期間、Capex定義未分類20期間。CIは `--check` でデータと監査結果の同期を検証する。
 
 ## v0.4 implementation
 
@@ -122,7 +123,7 @@
 - ISO期末日、会社・期間重複、5指標スキーマ、欠損理由、verifiedAt
 - 営業利益率再計算、Capex符号、Atlas FCF入力値・算式
 - 主要企業ごとの最低収録期間
-- continuity floor: **247 periods / 100 companies / 1,098 verified metrics / 181 FCF+Capex periods / 10 cash-flow overrides / 111 sources+policies**
+- continuity floor: **247 periods / 100 companies / 1,098 verified metrics / 181 FCF+Capex periods / 10 cash-flow overrides / 114 sources+policies**
 - Kinsus / Unimicronを含む100社カバレッジを維持し、Kinsus / Unimicronも各2期間以上を個別回帰ゲートで保持する。
 - 100社財務品質監査のJSON/Markdownが現在の履歴・override・会社分類と一致することを検査する。
 
