@@ -11,6 +11,10 @@ const companies = (await getCollection('companies')).sort((a,b) => (a.data.japan
 const layers = [...new Set(companies.map(c => c.data.primaryLayer))].sort();
 const presentCountries = new Set(companies.map(c => c.data.country));
 const countries = filterContract.canonicalCountries.filter(country => presentCountries.has(country));
+const countriesWithoutJapaneseLabels = countries.filter(country => countryLabel(country) === country);
+if (countriesWithoutJapaneseLabels.length > 0) {
+  throw new Error(`Missing Japanese country labels: ${countriesWithoutJapaneseLabels.join(', ')}`);
+}
 const tags = [...new Set(companies.flatMap(c => c.data.tags))].sort((a,b) => tagLabel(a).localeCompare(tagLabel(b), 'ja'));
 const facilitiesByCompany = new Map();
 for (const facility of facilities) {
@@ -48,7 +52,7 @@ const technologyIdsForTags = (companyTags: string[]) => Object.entries(filterCon
       </select>
       <select id="country-filter" class="control" aria-label="国・地域で絞り込み">
         <option value="">すべての国・地域</option>
-        {countries.map(country => <option value={country}>{country}</option>)}
+        {countries.map(country => <option value={country}>{countryLabel(country)}</option>)}
       </select>
       <select id="tag-filter" class="control" aria-label="技術タグで絞り込み">
         <option value="">すべての技術タグ</option>
@@ -84,9 +88,9 @@ const technologyIdsForTags = (companyTags: string[]) => Object.entries(filterCon
               ...stageIds.map(id => stageLabelById.get(id) || id), ...sites.flatMap(site => [site.city, site.region, site.country])
             ].join(' ').toLowerCase();
             return (
-              <tr data-company-row data-search={searchText} data-tags={d.tags.join('|')} data-layer={d.primaryLayer} data-country={d.country} data-stages={stageIds.join('|')} data-technologies={technologyIds.join('|')} data-sort-name={d.japaneseName || d.name} data-sort-country={d.country} data-sort-updated={d.lastReviewed}>
+              <tr data-company-row data-search={searchText} data-tags={d.tags.join('|')} data-layer={d.primaryLayer} data-country={d.country} data-stages={stageIds.join('|')} data-technologies={technologyIds.join('|')} data-sort-name={d.japaneseName || d.name} data-sort-country={countryLabel(d.country)} data-sort-updated={d.lastReviewed}>
                 <td class="company-col"><span class="company-index-name"><a href={withBase(`companies/${company.id}/`)}>{d.japaneseName || d.name}</a></span><span class="company-index-en">{d.ticker ? <><span class="mono">{d.ticker}</span> · </> : <span>非上場 · </span>}{d.name}</span></td>
-                <td><a class="filter-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{d.country}</a></td>
+                <td><a class="filter-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a></td>
                 <td><a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></td>
                 <td class="company-index-products">{productLabels.slice(0,2).join(' / ')}{productLabels.length > 2 ? <span class="table-more"> +{productLabels.length - 2}</span> : null}</td>
                 <td class="company-index-tags">{visibleTags.map((tag, index) => <>{index > 0 ? <span> / </span> : null}<a href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a></>)}{d.tags.length > 3 ? <span class="table-more"> +{d.tags.length - 3}</span> : null}</td>
