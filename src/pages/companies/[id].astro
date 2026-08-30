@@ -27,7 +27,11 @@ const allCompanies = await getCollection('companies');
 const allSources = [...sources, ...v02Sources, ...documentSources, ...facilitySources];
 const sourceById = new Map(allSources.map(source => [source.id, source]));
 const metricDefinitionById = new Map(metricDefinitions.map(definition => [definition.id, definition]));
-const peers = d.competitors.map(id => allCompanies.find(c => c.id === id)).filter(Boolean);
+const peerIds = new Set<string>(d.competitors);
+for (const candidate of allCompanies) {
+  if (candidate.id !== company.id && candidate.data.competitors.includes(company.id)) peerIds.add(candidate.id);
+}
+const peers = [...peerIds].map(id => allCompanies.find(c => c.id === id)).filter(Boolean);
 const companyFacilities = facilities.filter(facility => facility.companyId === company.id);
 const facilitySourceIds = new Set(companyFacilities.map(facility => facility.sourceId));
 const companyClaims = claims.filter(claim => claim.companyId === company.id);
