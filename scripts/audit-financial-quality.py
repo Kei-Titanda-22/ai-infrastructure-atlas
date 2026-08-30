@@ -70,6 +70,7 @@ SPECIAL_FLAG_ORDER = (
     "net-basis-capex",
     "broad-capex",
     "ppe-only",
+    "continuing-operations-scope",
     "asset-scope-unresolved",
     "rounded-source-value",
     "informal-comparative-source",
@@ -77,6 +78,7 @@ SPECIAL_FLAG_ORDER = (
     "government-incentive-excluded-from-fcf",
     "government-incentive-netting-unresolved",
     "company-fcf-formula-includes-asset-sale-proceeds",
+    "company-net-capex-fcf-not-used",
     "adjusted-company-fcf-not-used",
     "company-reported-fcf",
     "non-gaap-fcf-atlas-formula-aligned",
@@ -136,6 +138,10 @@ REVIEWED_CAPEX_DEFINITIONS = {
     "aptiv-fy2025": "gross-productive-assets-cash-purchases",
     "corning-fy2024": "gross-ppe-cash-purchases",
     "corning-fy2025": "gross-ppe-cash-purchases",
+    "johnson-controls-fy2024": "gross-productive-assets-cash-purchases",
+    "johnson-controls-fy2025": "gross-productive-assets-cash-purchases",
+    "te-connectivity-fy2024": "gross-ppe-cash-purchases",
+    "te-connectivity-fy2025": "gross-ppe-cash-purchases",
 }
 
 # Reviewed classifications may need comparison flags or supplemental filing
@@ -192,6 +198,22 @@ REVIEWED_CAPEX_SPECIAL_FLAGS = {
         "ppe-only",
         "adjusted-company-fcf-not-used",
     },
+    "johnson-controls-fy2024": {
+        "broad-capex",
+        "continuing-operations-scope",
+    },
+    "johnson-controls-fy2025": {
+        "broad-capex",
+        "continuing-operations-scope",
+    },
+    "te-connectivity-fy2024": {
+        "ppe-only",
+        "company-net-capex-fcf-not-used",
+    },
+    "te-connectivity-fy2025": {
+        "ppe-only",
+        "company-net-capex-fcf-not-used",
+    },
 }
 
 REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
@@ -217,6 +239,10 @@ REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
     "aptiv-fy2025": ["sec-aptiv-2025-10k"],
     "corning-fy2024": ["sec-corning-2025-10k"],
     "corning-fy2025": ["sec-corning-2025-10k"],
+    "johnson-controls-fy2024": ["sec-johnson-controls-2025-10k"],
+    "johnson-controls-fy2025": ["sec-johnson-controls-2025-10k"],
+    "te-connectivity-fy2024": ["sec-te-connectivity-2025-10k"],
+    "te-connectivity-fy2025": ["sec-te-connectivity-2025-10k"],
 }
 
 REVIEWED_ATLAS_GROSS_CAPEX_UNRESOLVED_REASONS = {
@@ -275,6 +301,7 @@ CATEGORY_DESCRIPTIONS = {
         "net-basis-capex": "Capex is disclosed on a net basis",
         "broad-capex": "Capex uses a broader non-current-asset definition",
         "ppe-only": "Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases",
+        "continuing-operations-scope": "Operating cash flow, cash Capex, and Atlas FCF are primary-source-reviewed on a continuing-operations scope, with discontinued-operation cash flows presented separately",
         "asset-scope-unresolved": "The company-reported cash-Capex outflow is classified, but primary sources do not close whether the asset scope is PP&E only or PP&E plus intangible assets; Atlas gross cash Capex remains review-required",
         "rounded-source-value": "The stored JPY million value is a unit conversion from a company source reported in 0.1 billion JPY increments, not a precise JPY million cash-flow fact",
         "informal-comparative-source": "The value comes from an issuer-prepared informal comparative cash-flow overview because no formal quarterly cash-flow statement was prepared",
@@ -282,6 +309,7 @@ CATEGORY_DESCRIPTIONS = {
         "government-incentive-excluded-from-fcf": "Government-incentive cash proceeds are disclosed separately from gross cash Capex and are excluded from the stored Atlas FCF, even when the company adds them to its Non-GAAP FCF",
         "government-incentive-netting-unresolved": "Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved",
         "company-fcf-formula-includes-asset-sale-proceeds": "Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected",
+        "company-net-capex-fcf-not-used": "The company FCF formula uses net Capex after PP&E sale proceeds, while Atlas retains gross PP&E cash purchases and excludes sale proceeds from FCF",
         "adjusted-company-fcf-not-used": "The company reports an adjusted FCF based on adjusted operating cash flow, but Atlas retains GAAP operating cash flow minus gross cash Capex",
         "company-reported-fcf": "FCF value comes from a company-reported measure",
         "non-gaap-fcf-atlas-formula-aligned": "Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope",
@@ -844,7 +872,7 @@ def build_report() -> dict[str, Any]:
     ]
     return {
         "schemaVersion": 2,
-        "classificationRuleVersion": 7,
+        "classificationRuleVersion": 8,
         "dataAsOf": max(verified_dates) if verified_dates else None,
         "inputDigestSha256": combined_input_digest(input_paths),
         "inputs": {

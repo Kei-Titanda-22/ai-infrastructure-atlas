@@ -39,8 +39,8 @@
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `gross-productive-assets-cash-purchases` | 6 | Primary-source-reviewed gross cash purchases of productive assets under SEC XBRL PaymentsToAcquireProductiveAssets; taxonomy scope includes PP&E, software, and other intangible assets |
-| `gross-ppe-cash-purchases` | 12 | Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment and reviewed property/PP&E capital improvements reported under PaymentsForCapitalImprovements |
+| `gross-productive-assets-cash-purchases` | 8 | Primary-source-reviewed gross cash purchases of productive assets under SEC XBRL PaymentsToAcquireProductiveAssets; taxonomy scope includes PP&E, software, and other intangible assets |
+| `gross-ppe-cash-purchases` | 14 | Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment and reviewed property/PP&E capital improvements reported under PaymentsForCapitalImprovements |
 | `gross-ppe` | 49 | Gross/standard cash PP&E expenditure; no net, intangible, broader-asset, or real-estate qualifier detected |
 | `ppe-plus-intangible` | 74 | PP&E plus intangible assets or capitalized software/development |
 | `company-reported-cash-capex` | 2 | A primary-source-reviewed company cash-Capex outflow whose underlying PP&E versus PP&E-plus-intangible asset scope is not separately disclosed |
@@ -48,7 +48,7 @@
 | `net-capex` | 28 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 6 | REIT or investment-property/real-estate investment definition |
 | `not-collected` | 62 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
-| `unclassified` | 4 | A value exists, but basis text does not safely map to another definition category |
+| `unclassified` | 0 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
 
@@ -79,8 +79,9 @@
 | `reit` | 2 | REIT financial/capital-investment structure |
 | `reconstructed-operating-income` | 7 | Operating income is reconstructed |
 | `net-basis-capex` | 28 | Capex is disclosed on a net basis |
-| `broad-capex` | 8 | Capex uses a broader non-current-asset definition |
-| `ppe-only` | 62 | Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases |
+| `broad-capex` | 10 | Capex uses a broader non-current-asset definition |
+| `ppe-only` | 64 | Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases |
+| `continuing-operations-scope` | 2 | Operating cash flow, cash Capex, and Atlas FCF are primary-source-reviewed on a continuing-operations scope, with discontinued-operation cash flows presented separately |
 | `asset-scope-unresolved` | 2 | The company-reported cash-Capex outflow is classified, but primary sources do not close whether the asset scope is PP&E only or PP&E plus intangible assets; Atlas gross cash Capex remains review-required |
 | `rounded-source-value` | 2 | The stored JPY million value is a unit conversion from a company source reported in 0.1 billion JPY increments, not a precise JPY million cash-flow fact |
 | `informal-comparative-source` | 2 | The value comes from an issuer-prepared informal comparative cash-flow overview because no formal quarterly cash-flow statement was prepared |
@@ -88,6 +89,7 @@
 | `government-incentive-excluded-from-fcf` | 2 | Government-incentive cash proceeds are disclosed separately from gross cash Capex and are excluded from the stored Atlas FCF, even when the company adds them to its Non-GAAP FCF |
 | `government-incentive-netting-unresolved` | 1 | Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved |
 | `company-fcf-formula-includes-asset-sale-proceeds` | 2 | Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected |
+| `company-net-capex-fcf-not-used` | 2 | The company FCF formula uses net Capex after PP&E sale proceeds, while Atlas retains gross PP&E cash purchases and excludes sale proceeds from FCF |
 | `adjusted-company-fcf-not-used` | 2 | The company reports an adjusted FCF based on adjusted operating cash flow, but Atlas retains GAAP operating cash flow minus gross cash Capex |
 | `company-reported-fcf` | 16 | FCF value comes from a company-reported measure |
 | `non-gaap-fcf-atlas-formula-aligned` | 8 | Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope |
@@ -96,7 +98,7 @@
 | `cash-flow-inputs-missing` | 8 | A populated FCF record does not have complete cashFlowInputs |
 | `fcf-capex-scope-mismatch` | 0 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
 | `derived-single-quarter` | 8 | A single-quarter value is derived from cumulative periods |
-| `unclassified-capex-definition` | 4 | A populated Capex value remains definition-unclassified |
+| `unclassified-capex-definition` | 0 | A populated Capex value remains definition-unclassified |
 | `special-operating-profit-definition` | 10 | Operating-profit definition is classified as a special case |
 
 ## 要確認キュー
@@ -104,7 +106,7 @@
 - source-linked: `ajinomoto-fine-techno-fy2025` (revenue, operatingProfit, operatingMargin)
 - needs-review: なし
 - FCF/Capex片側欠損: なし
-- Capex定義未分類: `johnson-controls-fy2024`, `johnson-controls-fy2025`, `te-connectivity-fy2024`, `te-connectivity-fy2025`
+- Capex定義未分類: なし
 - Non-GAAP表記・Atlas算式一致（値変更対象外）: `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
 - Atlas定義差あり（一次資料再確認）: なし
 - adjusted / Non-GAAP算式未解決: なし
@@ -163,7 +165,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | infineon | Infineon（インフィニオン） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | intel | Intel（インテル） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | jcet | JCET（長電科技） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | broad-capex |
-| johnson-controls | Johnson Controls（ジョンソンコントロールズ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | reconstructed-operating-income, unclassified-capex-definition |
+| johnson-controls | Johnson Controls（ジョンソンコントロールズ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | reconstructed-operating-income, broad-capex, continuing-operations-scope |
 | keyence | キーエンス | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | kinsus | Kinsus（景碩科技） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | kioxia | キオクシアホールディングス | 7 | 35 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | derived-single-quarter, special-operating-profit-definition |
@@ -206,7 +208,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | sumco | SUMCO | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | sumitomo-electric | 住友電気工業 | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | synopsys | Synopsys（シノプシス） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
-| te-connectivity | TE Connectivity（TEコネクティビティ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | unclassified-capex-definition |
+| te-connectivity | TE Connectivity（TEコネクティビティ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only, company-net-capex-fcf-not-used |
 | tesla | Tesla（テスラ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
 | texas-instruments | Texas Instruments（テキサス・インスツルメンツ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only, government-incentive-excluded-from-fcf |
 | tokyo-electron | 東京エレクトロン | 7 | 35 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | ppe-only, derived-single-quarter, special-operating-profit-definition |
