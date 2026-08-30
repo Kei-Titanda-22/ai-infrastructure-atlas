@@ -39,15 +39,15 @@
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `gross-productive-assets-cash-purchases` | 2 | Primary-source-reviewed gross cash purchases of productive assets under SEC XBRL PaymentsToAcquireProductiveAssets; taxonomy scope includes PP&E, software, and other intangible assets |
-| `gross-ppe-cash-purchases` | 6 | Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment |
+| `gross-productive-assets-cash-purchases` | 4 | Primary-source-reviewed gross cash purchases of productive assets under SEC XBRL PaymentsToAcquireProductiveAssets; taxonomy scope includes PP&E, software, and other intangible assets |
+| `gross-ppe-cash-purchases` | 8 | Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment |
 | `gross-ppe` | 49 | Gross/standard cash PP&E expenditure; no net, intangible, broader-asset, or real-estate qualifier detected |
 | `ppe-plus-intangible` | 74 | PP&E plus intangible assets or capitalized software/development |
 | `broader-non-current-assets` | 4 | A broader non-current/fixed/long-term asset cash-investment line |
 | `net-capex` | 28 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 6 | REIT or investment-property/real-estate investment definition |
 | `not-collected` | 62 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
-| `unclassified` | 16 | A value exists, but basis text does not safely map to another definition category |
+| `unclassified` | 12 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
 
@@ -78,8 +78,9 @@
 | `reit` | 2 | REIT financial/capital-investment structure |
 | `reconstructed-operating-income` | 7 | Operating income is reconstructed |
 | `net-basis-capex` | 28 | Capex is disclosed on a net basis |
-| `broad-capex` | 4 | Capex uses a broader non-current-asset definition |
-| `ppe-only` | 56 | Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases |
+| `broad-capex` | 6 | Capex uses a broader non-current-asset definition |
+| `ppe-only` | 58 | Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases |
+| `continuing-operations-cfo-reconstructed` | 1 | Continuing-operations operating cash flow is reconstructed from consolidated operating cash flow and separately disclosed discontinued-operation operating cash flow; this is reviewed scope provenance, not a scope mismatch |
 | `government-incentive-netting-unresolved` | 1 | Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved |
 | `company-fcf-formula-includes-asset-sale-proceeds` | 2 | Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected |
 | `company-reported-fcf` | 16 | FCF value comes from a company-reported measure |
@@ -89,7 +90,7 @@
 | `cash-flow-inputs-missing` | 8 | A populated FCF record does not have complete cashFlowInputs |
 | `fcf-capex-scope-mismatch` | 0 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
 | `derived-single-quarter` | 8 | A single-quarter value is derived from cumulative periods |
-| `unclassified-capex-definition` | 16 | A populated Capex value remains definition-unclassified |
+| `unclassified-capex-definition` | 12 | A populated Capex value remains definition-unclassified |
 | `special-operating-profit-definition` | 10 | Operating-profit definition is classified as a special case |
 
 ## 要確認キュー
@@ -97,7 +98,7 @@
 - source-linked: `ajinomoto-fine-techno-fy2025` (revenue, operatingProfit, operatingMargin)
 - needs-review: なし
 - FCF/Capex片側欠損: なし
-- Capex定義未分類: `aptiv-fy2024`, `aptiv-fy2025`, `corning-fy2024`, `corning-fy2025`, `johnson-controls-fy2024`, `johnson-controls-fy2025`, `linde-fy2024`, `linde-fy2025`, `qualcomm-fy2024`, `qualcomm-fy2025`, `shin-etsu-chemical-q1-fy2025`, `shin-etsu-chemical-q1-fy2026`, `te-connectivity-fy2024`, `te-connectivity-fy2025`, `texas-instruments-q1-2026`, `texas-instruments-q2-2026`
+- Capex定義未分類: `aptiv-fy2024`, `aptiv-fy2025`, `corning-fy2024`, `corning-fy2025`, `johnson-controls-fy2024`, `johnson-controls-fy2025`, `shin-etsu-chemical-q1-fy2025`, `shin-etsu-chemical-q1-fy2026`, `te-connectivity-fy2024`, `te-connectivity-fy2025`, `texas-instruments-q1-2026`, `texas-instruments-q2-2026`
 - Non-GAAP表記・Atlas算式一致（値変更対象外）: `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
 - Atlas定義差あり（一次資料再確認）: なし
 - adjusted / Non-GAAP算式未解決: なし
@@ -165,7 +166,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | lam-research | Lam Research（ラムリサーチ） | 5 | 25 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | — |
 | lasertec | レーザーテック | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | legrand | Legrand（ルグラン） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
-| linde | Linde（リンデ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | unclassified-capex-definition |
+| linde | Linde（リンデ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only |
 | lumentum | Lumentum（ルメンタム） | 4 | 14 | 0 | 0 | 6 | 2 | 0 | 0 | 2 | ppe-only, special-operating-profit-definition |
 | marvell | Marvell Technology（マーベル・テクノロジー） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | mediatek | MediaTek（メディアテック） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
@@ -180,7 +181,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | nxp | NXP Semiconductors（NXPセミコンダクターズ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
 | omron | オムロン | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | discontinued-operations |
 | onsemi | onsemi（オンセミ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only |
-| qualcomm | Qualcomm（クアルコム） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | reconstructed-operating-income, unclassified-capex-definition |
+| qualcomm | Qualcomm（クアルコム） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | reconstructed-operating-income, broad-capex, continuing-operations-cfo-reconstructed |
 | renesas | ルネサス エレクトロニクス | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | resonac-holdings | レゾナック・ホールディングス | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | rohm | ローム | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only |

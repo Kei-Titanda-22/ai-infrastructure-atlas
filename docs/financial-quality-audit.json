@@ -86,6 +86,7 @@
       "net-basis-capex": "Capex is disclosed on a net basis",
       "broad-capex": "Capex uses a broader non-current-asset definition",
       "ppe-only": "Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases",
+      "continuing-operations-cfo-reconstructed": "Continuing-operations operating cash flow is reconstructed from consolidated operating cash flow and separately disclosed discontinued-operation operating cash flow; this is reviewed scope provenance, not a scope mismatch",
       "government-incentive-netting-unresolved": "Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved",
       "company-fcf-formula-includes-asset-sale-proceeds": "Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected",
       "company-reported-fcf": "FCF value comes from a company-reported measure",
@@ -123,15 +124,15 @@
       "both-missing": 66
     },
     "capexDefinitions": {
-      "gross-productive-assets-cash-purchases": 2,
-      "gross-ppe-cash-purchases": 6,
+      "gross-productive-assets-cash-purchases": 4,
+      "gross-ppe-cash-purchases": 8,
       "gross-ppe": 49,
       "ppe-plus-intangible": 74,
       "broader-non-current-assets": 4,
       "net-capex": 28,
       "reit-or-real-estate-investment": 6,
       "not-collected": 62,
-      "unclassified": 16
+      "unclassified": 12
     },
     "operatingProfitDefinitions": {
       "direct-gaap-ifrs-operating-income": 227,
@@ -153,8 +154,9 @@
       "reit": 2,
       "reconstructed-operating-income": 7,
       "net-basis-capex": 28,
-      "broad-capex": 4,
-      "ppe-only": 56,
+      "broad-capex": 6,
+      "ppe-only": 58,
+      "continuing-operations-cfo-reconstructed": 1,
       "government-incentive-netting-unresolved": 1,
       "company-fcf-formula-includes-asset-sale-proceeds": 2,
       "company-reported-fcf": 16,
@@ -164,7 +166,7 @@
       "cash-flow-inputs-missing": 8,
       "fcf-capex-scope-mismatch": 0,
       "derived-single-quarter": 8,
-      "unclassified-capex-definition": 16,
+      "unclassified-capex-definition": 12,
       "special-operating-profit-definition": 10
     }
   },
@@ -188,10 +190,6 @@
       "corning-fy2025",
       "johnson-controls-fy2024",
       "johnson-controls-fy2025",
-      "linde-fy2024",
-      "linde-fy2025",
-      "qualcomm-fy2024",
-      "qualcomm-fy2025",
       "shin-etsu-chemical-q1-fy2025",
       "shin-etsu-chemical-q1-fy2026",
       "te-connectivity-fy2024",
@@ -2736,14 +2734,14 @@
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
-        "gross-ppe-cash-purchases": 0,
+        "gross-ppe-cash-purchases": 2,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
         "not-collected": 0,
-        "unclassified": 2
+        "unclassified": 0
       },
       "operatingProfitDefinitions": {
         "direct-gaap-ifrs-operating-income": 2,
@@ -2759,7 +2757,7 @@
         "not-applicable": 2
       },
       "specialFlags": [
-        "unclassified-capex-definition"
+        "ppe-only"
       ]
     },
     {
@@ -3399,7 +3397,7 @@
         "both-missing": 0
       },
       "capexDefinitions": {
-        "gross-productive-assets-cash-purchases": 0,
+        "gross-productive-assets-cash-purchases": 2,
         "gross-ppe-cash-purchases": 0,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
@@ -3407,7 +3405,7 @@
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
         "not-collected": 0,
-        "unclassified": 2
+        "unclassified": 0
       },
       "operatingProfitDefinitions": {
         "direct-gaap-ifrs-operating-income": 1,
@@ -3424,7 +3422,8 @@
       },
       "specialFlags": [
         "reconstructed-operating-income",
-        "unclassified-capex-definition"
+        "broad-capex",
+        "continuing-operations-cfo-reconstructed"
       ]
     },
     {
@@ -8167,14 +8166,14 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "unclassified",
+      "capexDefinition": "gross-ppe-cash-purchases",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "unclassified-capex-definition"
+        "ppe-only"
       ]
     },
     {
@@ -8192,14 +8191,14 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "unclassified",
+      "capexDefinition": "gross-ppe-cash-purchases",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "unclassified-capex-definition"
+        "ppe-only"
       ]
     },
     {
@@ -9102,7 +9101,7 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "unclassified",
+      "capexDefinition": "gross-productive-assets-cash-purchases",
       "operatingProfitDefinition": "reconstructed-operating-income",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
@@ -9110,7 +9109,8 @@
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "reconstructed-operating-income",
-        "unclassified-capex-definition"
+        "broad-capex",
+        "continuing-operations-cfo-reconstructed"
       ]
     },
     {
@@ -9128,14 +9128,14 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "unclassified",
+      "capexDefinition": "gross-productive-assets-cash-purchases",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "unclassified-capex-definition"
+        "broad-capex"
       ]
     },
     {

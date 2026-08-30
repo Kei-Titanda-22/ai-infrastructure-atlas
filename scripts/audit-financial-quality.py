@@ -69,6 +69,7 @@ SPECIAL_FLAG_ORDER = (
     "net-basis-capex",
     "broad-capex",
     "ppe-only",
+    "continuing-operations-cfo-reconstructed",
     "government-incentive-netting-unresolved",
     "company-fcf-formula-includes-asset-sale-proceeds",
     "company-reported-fcf",
@@ -117,6 +118,10 @@ REVIEWED_CAPEX_DEFINITIONS = {
     "carrier-q2-2026": "gross-productive-assets-cash-purchases",
     "nvent-q2-2025": "gross-ppe-cash-purchases",
     "nvent-q2-2026": "gross-ppe-cash-purchases",
+    "linde-fy2024": "gross-ppe-cash-purchases",
+    "linde-fy2025": "gross-ppe-cash-purchases",
+    "qualcomm-fy2024": "gross-productive-assets-cash-purchases",
+    "qualcomm-fy2025": "gross-productive-assets-cash-purchases",
 }
 
 # Reviewed classifications may need comparison flags or supplemental filing
@@ -138,6 +143,13 @@ REVIEWED_CAPEX_SPECIAL_FLAGS = {
         "ppe-only",
         "company-fcf-formula-includes-asset-sale-proceeds",
     },
+    "linde-fy2024": {"ppe-only"},
+    "linde-fy2025": {"ppe-only"},
+    "qualcomm-fy2024": {
+        "broad-capex",
+        "continuing-operations-cfo-reconstructed",
+    },
+    "qualcomm-fy2025": {"broad-capex"},
 }
 
 REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
@@ -200,6 +212,7 @@ CATEGORY_DESCRIPTIONS = {
         "net-basis-capex": "Capex is disclosed on a net basis",
         "broad-capex": "Capex uses a broader non-current-asset definition",
         "ppe-only": "Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases",
+        "continuing-operations-cfo-reconstructed": "Continuing-operations operating cash flow is reconstructed from consolidated operating cash flow and separately disclosed discontinued-operation operating cash flow; this is reviewed scope provenance, not a scope mismatch",
         "government-incentive-netting-unresolved": "Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved",
         "company-fcf-formula-includes-asset-sale-proceeds": "Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected",
         "company-reported-fcf": "FCF value comes from a company-reported measure",
