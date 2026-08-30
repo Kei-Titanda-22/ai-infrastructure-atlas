@@ -2,10 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FinancialTrendChart from '../components/FinancialTrendChart.astro';
 import { getCollection } from 'astro:content';
-import sources from '../data/sources.json';
-import v02Sources from '../data/sources-v02.json';
-import documentSources from '../data/document-sources.json';
-import v04DocumentSources from '../data/document-sources-v04.json';
+import { financialSourceById } from '../lib/financial-sources';
 import { withBase } from '../lib/paths';
 import {
   financialHistory,
@@ -18,8 +15,6 @@ import {
 
 const allCompanies = await getCollection('companies');
 const companyById = new Map(allCompanies.map(company => [company.id, company]));
-const allSources = [...sources, ...v02Sources, ...documentSources, ...v04DocumentSources];
-const sourceById = new Map(allSources.map(source => [source.id, source]));
 const coveredIds = [...new Set(financialHistory.map(record => record.companyId))];
 const coveredCompanies = coveredIds
   .map(id => companyById.get(id))
@@ -114,7 +109,7 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
                   const margin = metricCell(record, 'operatingMargin');
                   const fcf = metricCell(record, 'freeCashFlow');
                   const capex = metricCell(record, 'capex');
-                  const source = sourceById.get(record.sourceId);
+                  const source = financialSourceById.get(record.sourceId);
                   const renderMetric = (cell: any) => cell.value != null
                     ? <>{cell.value}<span class="metric-provenance">{financialStatusLabel(cell.metric.status)}</span></>
                     : <span class="financial-missing">{financialStatusLabel(cell.metric.status)}</span>;
