@@ -28,6 +28,7 @@
 - [x] Fujikura / Johnson Controls annual history — Run #200
 - [x] **Kinsus / Unimicron annual history; 100-company multi-period coverage milestone — Run #202**
 - [x] 100-company financial-quality audit script / deterministic JSON + Markdown report / CI freshness gate
+- [x] adjusted / Non-GAAP FCF classification split / independent cashFlowInputs and FCF-Capex scope flags
 
 ## Current database
 
@@ -42,6 +43,10 @@
 - periods with both FCF and Capex: **179**
 - periods with only Capex missing: **2**
 - periods with both FCF and Capex missing: **66**
+- adjusted / Non-GAAP FCF with Atlas-aligned formula: **8**
+- adjusted / Non-GAAP FCF with Atlas definition difference: **5**
+- populated FCF periods with cashFlowInputs missing: **13**
+- periods with FCF / Capex scope mismatch: **2**
 - audited cash-flow overrides: **5**
 - v0.4 document sources: **106**
 - v0.4 pending source policies: **106**
@@ -51,7 +56,7 @@
 
 Run #202で `247 periods / 100 companies / 100 multi-period companies / 1094 verified metrics / 179 FCF+Capex periods / 5 cash-flow overrides / 106 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 3,007語を生成し、GitHub Pages deployまで成功した。
 
-`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。現状の要確認キューは、source-linked 5指標、Capexのみ欠損2期間、両方欠損66期間、Capex定義未分類28期間、adjusted / Non-GAAP FCF 13期間。CIは `--check` でデータと監査結果の同期を検証する。
+`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。adjusted / Non-GAAP FCF 13期間は、Atlas算式一致8期間とAtlas定義差あり5期間へ分離した。さらに、cashFlowInputs未登録13期間とFCF/Capex scope mismatch 2期間を独立軸で出力する。現状のその他の要確認キューは、source-linked 5指標、Capexのみ欠損2期間、両方欠損66期間、Capex定義未分類28期間。CIは `--check` でデータと監査結果の同期を検証する。
 
 ## v0.4 implementation
 
@@ -122,7 +127,7 @@ Run #202で `247 periods / 100 companies / 100 multi-period companies / 1094 ver
 
 **100社の複数期間カバレッジ拡張は完了。** v0.4自体はまだ完了扱いにせず、次の品質・深度改善を残す。
 
-1. adjusted / Non-GAAP FCF 13期間を一次資料へ戻って再監査し、Atlas FCFへ安全に再構成できる期間と明示的な定義差として残す期間を分ける。
+1. Atlas定義差あり5期間を **Micron → Vertiv → ABB** の順に一次資料へ戻って再監査し、gross cash Capexと営業CFを安全に再構成できる期間だけ別PRで修正する。Atlas算式一致のAMD / ASML 8期間は財務値を変更せず、必要な場合だけcashFlowInputsを別PRで構造化する。
 2. Capex定義未分類28期間を一次資料とcash-flow lineへ戻って再監査し、gross PP&E / PP&E + intangible / net / broader definitionへ安全に構造化できるものだけ分類する。
 3. Kinsusなど、FCF / Capexが未収録の期間について一次資料でexact cash-Capex定義を安全に閉じられる場合のみ補完する。両方欠損66期間には単四半期CFを意図的に推定していない期間も含むため、一括補完しない。
 4. 主要企業の四半期連続性を伸ばし、通期2点だけの企業で比較深度を上げる。

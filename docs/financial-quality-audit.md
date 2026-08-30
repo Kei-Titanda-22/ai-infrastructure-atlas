@@ -57,6 +57,15 @@
 | `source-linked` | 1 | Value is retained as source-linked rather than verified |
 | `special-case` | 10 | Missing, period-derived, or otherwise not safely classified as a direct reported measure |
 
+## Adjusted / Non-GAAP FCF判定
+
+| 分類 | 件数 | 定義 |
+| --- | ---: | --- |
+| `atlas-formula-aligned` | 8 | Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas |
+| `atlas-definition-difference` | 5 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
+| `unresolved` | 0 | Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely |
+| `not-applicable` | 234 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
+
 ## 特殊比較フラグ
 
 | フラグ | 期間数 | 定義 |
@@ -69,7 +78,11 @@
 | `net-basis-capex` | 28 | Capex is disclosed on a net basis |
 | `broad-capex` | 4 | Capex uses a broader non-current-asset definition |
 | `company-reported-fcf` | 24 | FCF value comes from a company-reported measure |
-| `adjusted-or-non-gaap-fcf` | 13 | Company-reported FCF is adjusted or Non-GAAP |
+| `non-gaap-fcf-atlas-formula-aligned` | 8 | Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope |
+| `fcf-atlas-definition-difference` | 5 | FCF uses a definition that differs from Atlas gross cash-Capex normalization |
+| `adjusted-or-non-gaap-fcf-unresolved` | 0 | Adjusted/Non-GAAP FCF formula cannot be closed from current basis text |
+| `cash-flow-inputs-missing` | 13 | A populated FCF record does not have complete cashFlowInputs |
+| `fcf-capex-scope-mismatch` | 2 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
 | `derived-single-quarter` | 6 | A single-quarter value is derived from cumulative periods |
 | `unclassified-capex-definition` | 28 | A populated Capex value remains definition-unclassified |
 | `special-operating-profit-definition` | 10 | Operating-profit definition is classified as a special case |
@@ -80,7 +93,11 @@
 - needs-review: なし
 - FCF/Capex片側欠損: `abb-q2-2025` (capex-missing-only), `abb-q2-2026` (capex-missing-only)
 - Capex定義未分類: `analog-devices-q3-fy2026`, `applied-materials-q3-fy2025`, `applied-materials-q3-fy2026`, `aptiv-fy2024`, `aptiv-fy2025`, `carrier-q2-2025`, `carrier-q2-2026`, `corning-fy2024`, `corning-fy2025`, `johnson-controls-fy2024`, `johnson-controls-fy2025`, `kla-q4-fy2025`, `kla-q4-fy2026`, `linde-fy2024`, `linde-fy2025`, `nvent-q2-2025`, `nvent-q2-2026`, `qualcomm-fy2024`, `qualcomm-fy2025`, `shin-etsu-chemical-q1-fy2025`, `shin-etsu-chemical-q1-fy2026`, `te-connectivity-fy2024`, `te-connectivity-fy2025`, `texas-instruments-q1-2026`, `texas-instruments-q2-2026`, `tsmc-q2-2025`, `tsmc-q1-2026`, `tsmc-q2-2026`
-- adjusted / Non-GAAP FCF: `abb-q2-2025`, `abb-q2-2026`, `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`, `micron-q3-fy2026`, `vertiv-q2-2025`, `vertiv-q2-2026`
+- Non-GAAP表記・Atlas算式一致（値変更対象外）: `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`
+- Atlas定義差あり（一次資料再確認）: `abb-q2-2025` (includes-asset-sale-proceeds), `abb-q2-2026` (includes-asset-sale-proceeds), `micron-q3-fy2026` (net-capex), `vertiv-q2-2025` (capitalized-software-outside-capex), `vertiv-q2-2026` (capitalized-software-outside-capex)
+- adjusted / Non-GAAP算式未解決: なし
+- cashFlowInputs未登録（FCF値あり）: `abb-q2-2025`, `abb-q2-2026`, `amd-q2-2025`, `amd-q1-2026`, `amd-q2-2026`, `asml-q2-2025`, `asml-q3-2025`, `asml-q4-2025`, `asml-q1-2026`, `asml-q2-2026`, `micron-q3-fy2026`, `vertiv-q2-2025`, `vertiv-q2-2026`
+- FCF/Capex scope mismatch: `vertiv-q2-2025` (fcf-includes-capitalized-software-capex-excludes-it), `vertiv-q2-2026` (fcf-includes-capitalized-software-capex-excludes-it)
 
 ## 会社別監査
 
@@ -88,11 +105,11 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 
 | companyId | 企業 | 期間 | V | S | R | M | CF両方 | FCF欠 | Capex欠 | 両方欠 | 特殊フラグ |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| abb | ABB（エービービー） | 2 | 6 | 2 | 0 | 2 | 0 | 0 | 2 | 0 | discontinued-operations, company-reported-fcf, adjusted-or-non-gaap-fcf |
+| abb | ABB（エービービー） | 2 | 6 | 2 | 0 | 2 | 0 | 0 | 2 | 0 | discontinued-operations, company-reported-fcf, fcf-atlas-definition-difference, cash-flow-inputs-missing |
 | advantest | アドバンテスト | 4 | 16 | 0 | 0 | 4 | 2 | 0 | 0 | 2 | — |
 | air-liquide | Air Liquide（エア・リキード） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | ajinomoto-fine-techno | 味の素ファインテクノ | 2 | 3 | 3 | 0 | 4 | 0 | 0 | 0 | 2 | non-consolidated-subsidiary |
-| amd | AMD（アドバンスト・マイクロ・デバイセズ） | 3 | 15 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | company-reported-fcf, adjusted-or-non-gaap-fcf |
+| amd | AMD（アドバンスト・マイクロ・デバイセズ） | 3 | 15 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | company-reported-fcf, non-gaap-fcf-atlas-formula-aligned, cash-flow-inputs-missing |
 | amkor | Amkor Technology（アムコー・テクノロジー） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | amphenol | Amphenol（アンフェノール） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | analog-devices | Analog Devices（アナログ・デバイセズ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex, unclassified-capex-definition |
@@ -102,7 +119,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | arm | Arm（アーム） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | ase-technology | ASE Technology（ASEテクノロジー） | 3 | 15 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | net-basis-capex |
 | asm-international | ASM International（ASMインターナショナル） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
-| asml | ASML（エーエスエムエル） | 5 | 25 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | company-reported-fcf, adjusted-or-non-gaap-fcf |
+| asml | ASML（エーエスエムエル） | 5 | 25 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | company-reported-fcf, non-gaap-fcf-atlas-formula-aligned, cash-flow-inputs-missing |
 | asmpt | ASMPT（エーエスエムピーティー） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | discontinued-operations |
 | besi | Besi（BEセミコンダクター・インダストリーズ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | bosch | Bosch（ボッシュ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | broad-capex |
@@ -146,7 +163,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | lumentum | Lumentum（ルメンタム） | 4 | 14 | 0 | 0 | 6 | 2 | 0 | 0 | 2 | special-operating-profit-definition |
 | marvell | Marvell Technology（マーベル・テクノロジー） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | mediatek | MediaTek（メディアテック） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
-| micron | Micron Technology（マイクロン・テクノロジー） | 3 | 11 | 0 | 0 | 4 | 1 | 0 | 0 | 2 | net-basis-capex, company-reported-fcf, adjusted-or-non-gaap-fcf |
+| micron | Micron Technology（マイクロン・テクノロジー） | 3 | 11 | 0 | 0 | 4 | 1 | 0 | 0 | 2 | net-basis-capex, company-reported-fcf, fcf-atlas-definition-difference, cash-flow-inputs-missing |
 | mitsubishi-electric | 三菱電機 | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | mobileye | Mobileye（モービルアイ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | goodwill-impairment |
 | monolithic-power | Monolithic Power Systems（モノリシック・パワー・システムズ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
@@ -185,7 +202,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | tsmc | TSMC（台湾積体電路製造） | 3 | 15 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | company-reported-fcf, unclassified-capex-definition |
 | umc | UMC（聯華電子） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | unimicron | Unimicron（欣興電子） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
-| vertiv | Vertiv（ヴァーティブ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | company-reported-fcf, adjusted-or-non-gaap-fcf |
+| vertiv | Vertiv（ヴァーティブ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | company-reported-fcf, fcf-atlas-definition-difference, cash-flow-inputs-missing, fcf-capex-scope-mismatch |
 | western-digital | Western Digital（ウエスタンデジタル） | 5 | 25 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | net-basis-capex |
 | yaskawa | 安川電機 | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 
@@ -194,4 +211,5 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 - 財務履歴、cash-flow override、会社メタデータが変わったら `--write` でJSON/Markdownを再生成する。
 - CIは `--check` で入力SHA-256と全分類を再計算し、コミット済みレポートとの差分を検出する。
 - 分類は比較上の監査ラベルであり、各指標の一次根拠は引き続きレコードの `sourceId` と `basis` を正とする。
+- adjusted / Non-GAAPのAtlas定義判定、`cashFlowInputs` 登録状態、FCF/Capex scope一致は独立軸として扱う。
 - `unclassified`、`source-linked`、`needs-review` は隠さず、次の一次資料監査候補として扱う。
