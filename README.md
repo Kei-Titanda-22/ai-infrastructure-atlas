@@ -66,6 +66,8 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 ```bash
 npm install
 npm run validate
+npm run audit:financial-quality
+npm run audit:financial-quality:write
 npm run dev
 npm run build
 npm run preview
@@ -78,6 +80,7 @@ npm run preview
 - `docs/v0.2-scope.md` — completed 100-company expansion
 - `docs/v0.3-scope.md` — completed company-comparison phase
 - `docs/v0.4-scope.md` — financial-history phase and completion gate
+- `docs/financial-quality-audit.md` — deterministic 100-company financial-quality audit
 - `docs/data-model.md` — research data contract
 - `docs/design-system-v04.md` — UI design system
 - `docs/status.md` — current implementation state
