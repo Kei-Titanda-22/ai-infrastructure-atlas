@@ -11,12 +11,13 @@ import opticalPowerHistory from '../data/financial-history-v04-batch10.json';
 import osatSubstrateHistory from '../data/financial-history-v04-batch11.json';
 import materialsHistory from '../data/financial-history-v04-batch12.json';
 import powerInfrastructureHistory from '../data/financial-history-v04-batch13.json';
+import powerHvacHistory from '../data/financial-history-v04-batch14.json';
 import cashFlowOverrides from '../data/financial-history-v04-cashflow-overrides.json';
 import metricDefinitions from '../data/financial-metric-definitions-v04.json';
 
 const overrideById = new Map(cashFlowOverrides.map(item => [item.id, item]));
 
-export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory].map(record => {
+export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory].map(record => {
   const override = overrideById.get(record.id);
   if (!override) return record;
   return {
