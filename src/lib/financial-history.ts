@@ -16,12 +16,13 @@ import legrandHistory from '../data/financial-history-v04-batch15.json';
 import schneiderSiemensEnergyHistory from '../data/financial-history-v04-batch16.json';
 import osatMaterialsHistory from '../data/financial-history-v04-batch17.json';
 import edaPowerSemisHistory from '../data/financial-history-v04-batch18.json';
+import powerSemiconductorHistory from '../data/financial-history-v04-batch19.json';
 import cashFlowOverrides from '../data/financial-history-v04-cashflow-overrides.json';
 import metricDefinitions from '../data/financial-metric-definitions-v04.json';
 
 const overrideById = new Map(cashFlowOverrides.map(item => [item.id, item]));
 
-export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory, ...legrandHistory, ...schneiderSiemensEnergyHistory, ...osatMaterialsHistory, ...edaPowerSemisHistory].map(record => {
+export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory, ...legrandHistory, ...schneiderSiemensEnergyHistory, ...osatMaterialsHistory, ...edaPowerSemisHistory, ...powerSemiconductorHistory].map(record => {
   const override = overrideById.get(record.id);
   if (!override) return record;
   return {
