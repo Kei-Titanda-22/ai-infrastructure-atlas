@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CompanyEvidenceClaims from '../../components/CompanyEvidenceClaims.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../../lib/paths';
 import { layerLabel, countryLabel, tagLabel, facilityTypeLabel, productInfo } from '../../lib/display-v02';
@@ -7,6 +8,7 @@ import { getMetricAudit, getMetricState, formatMetricValue, auditFormula } from 
 import sources from '../../data/sources.json';
 import v02Sources from '../../data/sources-v02.json';
 import documentSources from '../../data/document-sources.json';
+import pilotDocumentSources from '../../data/document-sources-pilot-v01.json';
 import facilitySources from '../../data/facility-sources.json';
 import facilities from '../../data/facilities.json';
 import brandAssets from '../../data/brand-assets.json';
@@ -15,6 +17,7 @@ import sectorKpis from '../../data/sector-kpis.json';
 import sectorKpiDefinitions from '../../data/sector-kpi-definitions.json';
 import roicCalculations from '../../data/roic-calculations.json';
 import metricDefinitions from '../../data/metric-definitions.json';
+import companyEvidencePilot from '../../data/company-evidence-pilot-v01.json';
 
 export async function getStaticPaths() {
   const companies = await getCollection('companies');
@@ -24,7 +27,7 @@ export async function getStaticPaths() {
 const { company } = Astro.props;
 const d = company.data;
 const allCompanies = await getCollection('companies');
-const allSources = [...sources, ...v02Sources, ...documentSources, ...facilitySources];
+const allSources = [...sources, ...v02Sources, ...documentSources, ...facilitySources, ...pilotDocumentSources];
 const sourceById = new Map(allSources.map(source => [source.id, source]));
 const metricDefinitionById = new Map(metricDefinitions.map(definition => [definition.id, definition]));
 const peerIds = new Set<string>(d.competitors);
@@ -36,7 +39,14 @@ const companyFacilities = facilities.filter(facility => facility.companyId === c
 const facilitySourceIds = new Set(companyFacilities.map(facility => facility.sourceId));
 const companyClaims = claims.filter(claim => claim.companyId === company.id);
 const claimSourceIds = new Set(companyClaims.flatMap(claim => claim.sourceIds));
-const companySources = allSources.filter(source => d.sourceIds.includes(source.id) || facilitySourceIds.has(source.id) || claimSourceIds.has(source.id));
+const pilotCompanyIds = new Set(['nvidia', 'tsmc', 'applied-materials', 'fujikura', 'vertiv']);
+const isEvidencePilot = pilotCompanyIds.has(company.id);
+const pilotClaims = isEvidencePilot ? companyEvidencePilot.claims.filter(claim => claim.companyId === company.id) : [];
+const pilotEvidenceIds = new Set(pilotClaims.flatMap(claim => claim.evidenceIds));
+const pilotEvidence = companyEvidencePilot.evidence.filter(binding => pilotEvidenceIds.has(binding.id));
+const pilotCoverage = isEvidencePilot ? companyEvidencePilot.coverage.filter(item => item.companyId === company.id) : [];
+const pilotSourceIds = new Set(pilotEvidence.map(binding => binding.sourceId));
+const companySources = allSources.filter(source => d.sourceIds.includes(source.id) || facilitySourceIds.has(source.id) || claimSourceIds.has(source.id) || pilotSourceIds.has(source.id));
 const brandAsset = brandAssets.find(asset => asset.companyId === company.id);
 const companyKpis = sectorKpis.filter(kpi => kpi.companyId === company.id);
 const companyRoic = roicCalculations.find(calc => calc.companyId === company.id && d.metrics.roic.calculationId === calc.id);
@@ -67,8 +77,8 @@ const toc = [
   ['overview','概要'],['position','バリューチェーン'],['products','主力製品'],['evidence','主張と根拠'],['advantages','競争優位'],
   ['facilities','主要拠点'],['financials','財務'],['kpi','業種固有KPI'],['competitors','競合'],['risks','リスク'],['sources','出典']
 ].filter(([id]) => {
-  if (id === 'evidence') return companyClaims.length > 0;
-  if (id === 'facilities') return companyFacilities.length > 0;
+  if (id === 'evidence') return !isEvidencePilot && companyClaims.length > 0;
+  if (id === 'facilities') return isEvidencePilot || companyFacilities.length > 0;
   if (id === 'kpi') return companyKpis.length > 0;
   return true;
 });
@@ -109,21 +119,27 @@ const toc = [
         <section class="company-section" id="overview">
           <div class="section-classification">編集情報</div>
           <h2>概要</h2>
-          <p class="lead">{d.summary}</p>
+          {isEvidencePilot
+            ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['company-overview']} />
+            : <p class="lead">{d.summary}</p>}
         </section>
 
         <section class="company-section" id="position">
           <div class="section-classification analysis-label">分析</div>
           <h2>バリューチェーン上の位置</h2>
-          <p>{d.aiRole}</p>
+          {isEvidencePilot
+            ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['ai-infrastructure-role','value-chain-position']} />
+            : <p>{d.aiRole}</p>}
         </section>
 
         <section class="company-section" id="products">
           <div class="section-classification">企業・製品情報</div>
           <h2>主力製品</h2>
-          <dl class="product-list">
+          {isEvidencePilot
+            ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['products','technology','customer-end-market']} />
+            : <dl class="product-list">
             {d.products.map(product => { const info = productInfo(product); return <div class="product-row"><dt>{info.label}</dt><dd>{info.description}</dd></div>; })}
-          </dl>
+          </dl>}
         </section>
 
         {companyClaims.length > 0 && (
@@ -148,14 +164,17 @@ const toc = [
         <section class="company-section" id="advantages">
           <div class="section-classification analysis-label">分析</div>
           <h2>競争優位</h2>
-          <ul class="research-list">{d.strengths.map(item => <li>{item}</li>)}</ul>
+          {isEvidencePilot
+            ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['competitive-positioning','strategy']} />
+            : <ul class="research-list">{d.strengths.map(item => <li>{item}</li>)}</ul>}
         </section>
 
-        {companyFacilities.length > 0 && (
+        {(isEvidencePilot || companyFacilities.length > 0) && (
           <section class="company-section" id="facilities">
             <div class="section-classification">一次資料</div>
             <h2>主要拠点</h2>
-            <p class="section-intro">一次情報で確認できた主要製造・研究拠点のみ掲載しています。全拠点の網羅表ではありません。</p>
+            {isEvidencePilot && <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['manufacturing-facilities','capacity-expansion']} />}
+            {companyFacilities.length > 0 && <><p class="section-intro">一次情報で確認できた主要製造・研究拠点のみ掲載しています。全拠点の網羅表ではありません。</p>
             <div class="table-scroll">
               <table class="metrics-table facilities-table">
                 <thead><tr><th>拠点</th><th>所在地</th><th>種別</th><th>主な役割</th></tr></thead>
@@ -163,7 +182,7 @@ const toc = [
                   {companyFacilities.map(facility => { const source = sourceById.get(facility.sourceId); return <tr><td>{facility.name}</td><td>{facility.city} · <a class="text-link" href={`${withBase('companies/')}?q=${encodeURIComponent(facility.region)}`}>{facility.region}</a><br /><span class="table-muted">{countryLabel(facility.country)}</span></td><td>{facilityTypeLabel(facility.facilityType)}</td><td>{facility.role}{source ? <span class="metric-provenance"><a class="source-link" href={source.url} target="_blank" rel="noreferrer">一次資料 ↗</a></span> : null}</td></tr>; })}
                 </tbody>
               </table>
-            </div>
+            </div></>}
           </section>
         )}
 
@@ -230,7 +249,7 @@ const toc = [
 
         <section class="company-section" id="competitors"><div class="section-classification">比較対象</div><h2>競合</h2>{peers.length ? <div class="link-list">{peers.map(peer => <a class="text-link" href={withBase(`companies/${peer.id}/`)}>{peer.data.japaneseName || peer.data.name}</a>)}</div> : <p>競合関係は一次資料の確認後に追加します。</p>}</section>
 
-        <section class="company-section" id="risks"><div class="section-classification analysis-label">分析</div><h2>リスク・確認点</h2><ul class="research-list">{d.risks.map(item => <li>{item}</li>)}</ul></section>
+        <section class="company-section" id="risks"><div class="section-classification analysis-label">分析</div><h2>リスク・確認点</h2>{isEvidencePilot ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['risks']} /> : <ul class="research-list">{d.risks.map(item => <li>{item}</li>)}</ul>}</section>
 
         <section class="company-section" id="sources"><div class="section-classification">証拠管理</div><h2>出典</h2><div class="source-table">{companySources.map(source => <div class="source-row"><span class="source-class">一次資料</span><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><span class="table-muted">取得 {source.retrievedAt}</span></div>)}</div><p class="section-intro">最終確認日：{d.lastReviewed}</p></section>
       </div>
@@ -242,4 +261,32 @@ const toc = [
       </aside>
     </div>
   </article>
+  {isEvidencePilot && <script is:inline>
+    (() => {
+      const returnFocus = new WeakMap();
+      document.querySelectorAll('[data-evidence-open]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const dialog = document.getElementById(trigger.getAttribute('data-evidence-open'));
+          if (!(dialog instanceof HTMLDialogElement)) return;
+          returnFocus.set(dialog, trigger);
+          dialog.showModal();
+          dialog.querySelector('[data-evidence-close]')?.focus();
+        });
+      });
+      document.querySelectorAll('.evidence-drawer').forEach((dialog) => {
+        if (!(dialog instanceof HTMLDialogElement)) return;
+        dialog.querySelector('[data-evidence-close]')?.addEventListener('click', () => dialog.close());
+        dialog.addEventListener('click', (event) => {
+          if (event.target === dialog) dialog.close();
+        });
+        dialog.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            event.preventDefault();
+            dialog.close();
+          }
+        });
+        dialog.addEventListener('close', () => returnFocus.get(dialog)?.focus());
+      });
+    })();
+  </script>}
 </BaseLayout>
