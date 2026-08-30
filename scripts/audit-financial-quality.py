@@ -82,8 +82,8 @@ SPECIAL_FLAG_ORDER = (
 NON_CONSOLIDATED_SUBSIDIARIES = {"ajinomoto-fine-techno"}
 
 # These are regression expectations, not classification inputs. The classifier
-# must derive the result from basis text; CI then protects the reviewed 13-period
-# split from silently regressing when the rules change.
+# must derive the result from basis text; CI then protects the remaining
+# company-reported adjusted/Non-GAAP records after Atlas normalization.
 EXPECTED_ADJUSTED_NON_GAAP_FCF = {
     "atlas-formula-aligned": {
         "amd-q2-2025",
@@ -98,8 +98,6 @@ EXPECTED_ADJUSTED_NON_GAAP_FCF = {
     "atlas-definition-difference": {
         "abb-q2-2025",
         "abb-q2-2026",
-        "vertiv-q2-2025",
-        "vertiv-q2-2026",
     },
     "unresolved": set(),
 }

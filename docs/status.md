@@ -45,10 +45,10 @@
 - periods with only Capex missing: **2**
 - periods with both FCF and Capex missing: **66**
 - adjusted / Non-GAAP FCF with Atlas-aligned formula: **8**
-- adjusted / Non-GAAP FCF with Atlas definition difference: **4**
-- populated FCF periods with cashFlowInputs missing: **12**
-- periods with FCF / Capex scope mismatch: **2**
-- audited cash-flow overrides: **6**
+- adjusted / Non-GAAP FCF with Atlas definition difference: **2**
+- populated FCF periods with cashFlowInputs missing: **10**
+- periods with FCF / Capex scope mismatch: **0**
+- audited cash-flow overrides: **8**
 - v0.4 document sources: **106**
 - v0.4 pending source policies: **106**
 - earnings update ledger: **247 normalized records / 100 companies**
@@ -57,7 +57,7 @@
 
 Run #202で `247 periods / 100 companies / 100 multi-period companies / 1094 verified metrics / 179 FCF+Capex periods / 5 cash-flow overrides / 106 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 3,007語を生成し、GitHub Pages deployまで成功した。
 
-`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。レビュー済みadjusted / Non-GAAP FCF 13期間は、Atlas算式一致8期間、Micron Atlas正規化済み1期間、Atlas定義差あり4期間となった。さらに、cashFlowInputs未登録12期間とFCF/Capex scope mismatch 2期間を独立軸で出力する。現状のその他の要確認キューは、source-linked 5指標、Capexのみ欠損2期間、両方欠損66期間、Capex定義未分類28期間。CIは `--check` でデータと監査結果の同期を検証する。
+`scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。レビュー済みadjusted / Non-GAAP由来FCF 13期間は、旧表記のままAtlas算式一致8期間、Atlas正規化済み3期間（Micron 1期間、Vertiv 2期間）、Atlas定義差あり2期間（ABBのみ）となった。さらに、cashFlowInputs未登録10期間とFCF/Capex scope mismatch 0期間を独立軸で出力する。現状のその他の要確認キューは、source-linked 5指標、Capexのみ欠損2期間、両方欠損66期間、Capex定義未分類28期間。CIは `--check` でデータと監査結果の同期を検証する。
 
 ## v0.4 implementation
 
