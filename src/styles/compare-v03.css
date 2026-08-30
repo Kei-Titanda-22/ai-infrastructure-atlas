@@ -56,7 +56,7 @@
 .compare-suggestion:hover,
 .compare-suggestion:focus-visible { background: #f3f6f8; }
 .compare-suggestion-name { color: var(--link); font-weight: 700; text-decoration: underline; }
-.compare-suggestion-meta { color: var(--muted); font-size: var(--research-meta-size); white-space: nowrap; }
+.compare-suggestion-meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
 .compare-template-list {
   display: flex;
   flex-wrap: wrap;
@@ -76,11 +76,11 @@
   min-height: 43px;
   border-bottom: 1px solid var(--border);
 }
-.compare-selected-index { color: var(--muted); font-size: var(--research-meta-size); }
+.compare-selected-index { color: var(--muted); font-size: 11px; }
 .compare-selected-info { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: baseline; min-width: 0; }
 .compare-selected-info a { font-weight: 700; }
-.compare-selected-meta { color: var(--muted); font-size: var(--research-meta-size); }
-.compare-remove { font-size: var(--research-meta-size); }
+.compare-selected-meta { color: var(--muted); font-size: 12px; }
+.compare-remove { font-size: 12px; }
 .compare-quality-summary {
   display: flex;
   flex-wrap: wrap;
@@ -95,8 +95,8 @@
   padding: 8px 22px 8px 0;
   margin-right: 22px;
 }
-.compare-quality-summary dt { color: var(--muted); font-size: var(--research-meta-size); }
-.compare-quality-summary dd { margin: 0; color: var(--text); font-family: var(--mono); font-size: var(--research-meta-size); font-weight: 700; }
+.compare-quality-summary dt { color: var(--muted); font-size: 12px; }
+.compare-quality-summary dd { margin: 0; color: var(--text); font-family: var(--mono); font-size: 12px; font-weight: 700; }
 .compare-scroll {
   max-height: 72vh;
   overflow: auto;
@@ -141,25 +141,25 @@
   letter-spacing: .01em;
 }
 .compare-company-head { display: block; white-space: normal; line-height: 1.45; }
-.compare-company-sub { display: block; margin-top: 2px; color: var(--muted); font-family: var(--mono); font-size: var(--research-meta-size); font-weight: 500; white-space: normal; }
+.compare-company-sub { display: block; margin-top: 2px; color: var(--muted); font-family: var(--mono); font-size: 10px; font-weight: 500; white-space: normal; }
 .compare-row-label { font-weight: 750; }
-.compare-row-state { margin-top: 5px; padding-left: 7px; border-left: 3px solid var(--border-strong); font-size: var(--research-meta-size); line-height: 1.5; }
+.compare-row-state { margin-top: 5px; padding-left: 7px; border-left: 3px solid var(--border-strong); font-size: 11px; line-height: 1.45; }
 .compare-row-state-ok { color: var(--positive); border-left-color: var(--positive); }
 .compare-row-state-caution { color: var(--warning); border-left-color: var(--warning); }
 .compare-row-state-blocked { color: var(--negative); border-left-color: var(--negative); }
 .compare-row-state-reference { color: var(--muted); border-left-color: var(--border-strong); }
-.compare-row-note { margin-top: 4px; color: var(--muted); font-size: var(--research-meta-size); line-height: 1.55; font-weight: 500; }
-.compare-row-definition { margin-top: 6px; color: var(--muted); font-size: var(--research-meta-size); line-height: 1.55; font-weight: 400; }
+.compare-row-note { margin-top: 4px; color: var(--muted); font-size: 11px; line-height: 1.5; font-weight: 500; }
+.compare-row-definition { margin-top: 6px; color: var(--muted); font-size: 10px; line-height: 1.5; font-weight: 400; }
 .compare-metric-cell { display: grid; gap: 4px; }
 .compare-value { color: var(--text); font-size: 14px; font-weight: 750; }
 .compare-cell-meta,
-.compare-cell-basis { color: var(--muted); font-size: var(--research-meta-size); line-height: 1.55; }
+.compare-cell-basis { color: var(--muted); font-size: 10px; line-height: 1.5; }
 .compare-cell-basis { overflow-wrap: anywhere; }
-.compare-verification { font-size: var(--research-meta-size); font-weight: 700; }
+.compare-verification { font-size: 10px; font-weight: 700; }
 .compare-verification-verified { color: var(--positive); }
 .compare-verification-review { color: var(--warning); }
-.compare-missing { color: var(--muted); font-size: var(--research-meta-size); }
-.compare-source { width: fit-content; font-size: var(--research-meta-size); }
+.compare-missing { color: var(--muted); font-size: 12px; }
+.compare-source { width: fit-content; font-size: 11px; }
 .compare-analysis {
   margin-top: 20px;
   padding-top: 16px;
