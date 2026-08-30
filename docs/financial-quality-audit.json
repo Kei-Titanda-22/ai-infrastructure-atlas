@@ -1,6 +1,6 @@
 {
-  "schemaVersion": 1,
-  "classificationRuleVersion": 1,
+  "schemaVersion": 2,
+  "classificationRuleVersion": 2,
   "dataAsOf": "2026-08-30",
   "inputDigestSha256": "49b0096106970d941967be5d9207db3f9ef2dd649e3f186b3b5ff80afcb8c680",
   "inputs": {
@@ -69,6 +69,12 @@
       "source-linked": "Value is retained as source-linked rather than verified",
       "special-case": "Missing, period-derived, or otherwise not safely classified as a direct reported measure"
     },
+    "adjustedNonGaapFcfAssessment": {
+      "atlas-formula-aligned": "Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas",
+      "atlas-definition-difference": "Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component",
+      "unresolved": "Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely",
+      "not-applicable": "The record is not a populated company-reported adjusted/Non-GAAP FCF"
+    },
     "specialFlags": {
       "goodwill-impairment": "Reported result includes or discusses goodwill impairment",
       "discontinued-operations": "Continuing/discontinued-operation boundaries affect comparison",
@@ -78,7 +84,11 @@
       "net-basis-capex": "Capex is disclosed on a net basis",
       "broad-capex": "Capex uses a broader non-current-asset definition",
       "company-reported-fcf": "FCF value comes from a company-reported measure",
-      "adjusted-or-non-gaap-fcf": "Company-reported FCF is adjusted or Non-GAAP",
+      "non-gaap-fcf-atlas-formula-aligned": "Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope",
+      "fcf-atlas-definition-difference": "FCF uses a definition that differs from Atlas gross cash-Capex normalization",
+      "adjusted-or-non-gaap-fcf-unresolved": "Adjusted/Non-GAAP FCF formula cannot be closed from current basis text",
+      "cash-flow-inputs-missing": "A populated FCF record does not have complete cashFlowInputs",
+      "fcf-capex-scope-mismatch": "The populated FCF subtracts a cash-investment component outside the stored Capex value's scope",
       "derived-single-quarter": "A single-quarter value is derived from cumulative periods",
       "unclassified-capex-definition": "A populated Capex value remains definition-unclassified",
       "special-operating-profit-definition": "Operating-profit definition is classified as a special case"
@@ -123,6 +133,12 @@
       "source-linked": 1,
       "special-case": 10
     },
+    "adjustedNonGaapFcfAssessments": {
+      "atlas-formula-aligned": 8,
+      "atlas-definition-difference": 5,
+      "unresolved": 0,
+      "not-applicable": 234
+    },
     "specialFlags": {
       "goodwill-impairment": 2,
       "discontinued-operations": 5,
@@ -132,7 +148,11 @@
       "net-basis-capex": 28,
       "broad-capex": 4,
       "company-reported-fcf": 24,
-      "adjusted-or-non-gaap-fcf": 13,
+      "non-gaap-fcf-atlas-formula-aligned": 8,
+      "fcf-atlas-definition-difference": 5,
+      "adjusted-or-non-gaap-fcf-unresolved": 0,
+      "cash-flow-inputs-missing": 13,
+      "fcf-capex-scope-mismatch": 2,
       "derived-single-quarter": 6,
       "unclassified-capex-definition": 28,
       "special-operating-profit-definition": 10
@@ -202,7 +222,168 @@
       "tsmc-q1-2026",
       "tsmc-q2-2026"
     ],
-    "adjustedOrNonGaapFcf": [
+    "nonGaapFcfAtlasFormulaAligned": [
+      {
+        "recordId": "amd-q2-2025",
+        "companyId": "amd",
+        "periodLabel": "Q2 2025",
+        "value": 1180,
+        "status": "verified",
+        "basis": "company-reported non-GAAP free cash flow = GAAP operating cash flow from continuing operations − purchases of property and equipment",
+        "sourceId": "earnings-amd-2026-08-04-q2-2026",
+        "reasons": [
+          "operating-cash-flow-minus-cash-capex"
+        ]
+      },
+      {
+        "recordId": "amd-q1-2026",
+        "companyId": "amd",
+        "periodLabel": "Q1 2026",
+        "value": 2566,
+        "status": "verified",
+        "basis": "company-reported non-GAAP free cash flow = GAAP operating cash flow from continuing operations − purchases of property and equipment",
+        "sourceId": "earnings-amd-2026-08-04-q2-2026",
+        "reasons": [
+          "operating-cash-flow-minus-cash-capex"
+        ]
+      },
+      {
+        "recordId": "amd-q2-2026",
+        "companyId": "amd",
+        "periodLabel": "Q2 2026",
+        "value": 1558,
+        "status": "verified",
+        "basis": "company-reported non-GAAP free cash flow = GAAP operating cash flow from continuing operations − purchases of property and equipment",
+        "sourceId": "earnings-amd-2026-08-04-q2-2026",
+        "reasons": [
+          "operating-cash-flow-minus-cash-capex"
+        ]
+      },
+      {
+        "recordId": "asml-q2-2025",
+        "companyId": "asml",
+        "periodLabel": "Q2 2025",
+        "value": 319,
+        "status": "verified",
+        "basis": "company-reported non-GAAP FCF = operating cash flow − purchases of PP&E and intangible assets",
+        "sourceId": "earnings-asml-2026-07-15-q2-2026",
+        "reasons": [
+          "operating-cash-flow-minus-cash-capex"
+        ]
+      },
+      {
+        "recordId": "asml-q3-2025",
+        "companyId": "asml",
+        "periodLabel": "Q3 2025",
+        "value": 244,
+        "status": "verified",
+        "basis": "company-reported non-GAAP FCF = operating cash flow − purchases of PP&E and intangible assets",
+        "sourceId": "earnings-asml-2026-07-15-q2-2026",
+        "reasons": [
+          "operating-cash-flow-minus-cash-capex"
+        ]
+      },
+      {
+        "recordId": "asml-q4-2025",
+        "companyId": "asml",
+        "periodLabel": "Q4 2025",
+        "value": 10940,
+        "status": "verified",
+        "basis": "company-reported non-GAAP FCF = operating cash flow − purchases of PP&E and intangible assets",
+        "sourceId": "earnings-asml-2026-07-15-q2-2026",
+        "reasons": [
+          "operating-cash-flow-minus-cash-capex"
+        ]
+      },
+      {
+        "recordId": "asml-q1-2026",
+        "companyId": "asml",
+        "periodLabel": "Q1 2026",
+        "value": -2608,
+        "status": "verified",
+        "basis": "company-reported non-GAAP FCF = operating cash flow − purchases of PP&E and intangible assets",
+        "sourceId": "earnings-asml-2026-07-15-q2-2026",
+        "reasons": [
+          "operating-cash-flow-minus-cash-capex"
+        ]
+      },
+      {
+        "recordId": "asml-q2-2026",
+        "companyId": "asml",
+        "periodLabel": "Q2 2026",
+        "value": 1317,
+        "status": "verified",
+        "basis": "company-reported non-GAAP FCF = operating cash flow − purchases of PP&E and intangible assets",
+        "sourceId": "earnings-asml-2026-07-15-q2-2026",
+        "reasons": [
+          "operating-cash-flow-minus-cash-capex"
+        ]
+      }
+    ],
+    "adjustedNonGaapFcfAtlasDefinitionDifference": [
+      {
+        "recordId": "abb-q2-2025",
+        "companyId": "abb",
+        "periodLabel": "Q2 2025",
+        "value": 845,
+        "status": "source-linked",
+        "basis": "Company-reported non-GAAP free cash flow in Q2 2026 results. ABB defines FCF in its supplemental financial information as operating cash flow adjusted for PP&E/intangible purchases and PP&E sale proceeds; not Atlas-recomputed here because a matching single-quarter capex line is not in this source document",
+        "sourceId": "results-abb-2026-07-16-q2",
+        "reasons": [
+          "includes-asset-sale-proceeds"
+        ]
+      },
+      {
+        "recordId": "abb-q2-2026",
+        "companyId": "abb",
+        "periodLabel": "Q2 2026",
+        "value": 881,
+        "status": "source-linked",
+        "basis": "Company-reported non-GAAP free cash flow in Q2 2026 results. ABB defines FCF in its supplemental financial information as operating cash flow adjusted for PP&E/intangible purchases and PP&E sale proceeds; not Atlas-recomputed here because a matching single-quarter capex line is not in this source document",
+        "sourceId": "results-abb-2026-07-16-q2",
+        "reasons": [
+          "includes-asset-sale-proceeds"
+        ]
+      },
+      {
+        "recordId": "micron-q3-fy2026",
+        "companyId": "micron",
+        "periodLabel": "Q3 FY2026",
+        "value": 18300,
+        "status": "verified",
+        "basis": "company-reported adjusted free cash flow（Non-GAAP、約18.3bnドル）",
+        "sourceId": "earnings-micron-2026-06-24-q3-fy2026",
+        "reasons": [
+          "net-capex"
+        ]
+      },
+      {
+        "recordId": "vertiv-q2-2025",
+        "companyId": "vertiv",
+        "periodLabel": "Q2 2025",
+        "value": 277.0,
+        "status": "verified",
+        "basis": "company-reported adjusted free cash flow = operating cash flow − capital expenditures − investments in capitalized software",
+        "sourceId": "earnings-vertiv-2026-07-29-q2-2026",
+        "reasons": [
+          "capitalized-software-outside-capex"
+        ]
+      },
+      {
+        "recordId": "vertiv-q2-2026",
+        "companyId": "vertiv",
+        "periodLabel": "Q2 2026",
+        "value": 925.3,
+        "status": "verified",
+        "basis": "company-reported adjusted free cash flow = operating cash flow − capital expenditures − investments in capitalized software",
+        "sourceId": "earnings-vertiv-2026-07-29-q2-2026",
+        "reasons": [
+          "capitalized-software-outside-capex"
+        ]
+      }
+    ],
+    "adjustedNonGaapFcfUnresolved": [],
+    "cashFlowInputsMissing": [
       "abb-q2-2025",
       "abb-q2-2026",
       "amd-q2-2025",
@@ -216,6 +397,20 @@
       "micron-q3-fy2026",
       "vertiv-q2-2025",
       "vertiv-q2-2026"
+    ],
+    "fcfCapexScopeMismatch": [
+      {
+        "recordId": "vertiv-q2-2025",
+        "reasons": [
+          "fcf-includes-capitalized-software-capex-excludes-it"
+        ]
+      },
+      {
+        "recordId": "vertiv-q2-2026",
+        "reasons": [
+          "fcf-includes-capitalized-software-capex-excludes-it"
+        ]
+      }
     ]
   },
   "companies": [
@@ -252,10 +447,17 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 2,
+        "unresolved": 0,
+        "not-applicable": 0
+      },
       "specialFlags": [
         "discontinued-operations",
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "fcf-atlas-definition-difference",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -290,6 +492,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 4
       },
       "specialFlags": []
     },
@@ -326,6 +534,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -360,6 +574,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 1,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "non-consolidated-subsidiary"
@@ -398,9 +618,16 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 3,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 0
+      },
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "non-gaap-fcf-atlas-formula-aligned",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -435,6 +662,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -471,6 +704,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -505,6 +744,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "net-basis-capex",
@@ -544,6 +789,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -580,6 +831,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "goodwill-impairment",
@@ -619,6 +876,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -654,6 +917,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -688,6 +957,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 3
       },
       "specialFlags": [
         "net-basis-capex"
@@ -726,6 +1001,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -761,9 +1042,16 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 5,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 0
+      },
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "non-gaap-fcf-atlas-formula-aligned",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -798,6 +1086,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "discontinued-operations"
@@ -836,6 +1130,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -870,6 +1170,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "broad-capex"
@@ -908,6 +1214,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 3
+      },
       "specialFlags": []
     },
     {
@@ -942,6 +1254,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -978,6 +1296,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1012,6 +1336,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "unclassified-capex-definition"
@@ -1050,6 +1380,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1084,6 +1420,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 4
       },
       "specialFlags": []
     },
@@ -1120,6 +1462,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 4
+      },
       "specialFlags": []
     },
     {
@@ -1154,6 +1502,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "unclassified-capex-definition"
@@ -1192,6 +1546,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 4
+      },
       "specialFlags": []
     },
     {
@@ -1226,6 +1586,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -1262,6 +1628,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1297,6 +1669,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 4
+      },
       "specialFlags": []
     },
     {
@@ -1331,6 +1709,12 @@
         "reconstructed-operating-income": 2,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "reconstructed-operating-income"
@@ -1369,6 +1753,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 4
+      },
       "specialFlags": []
     },
     {
@@ -1403,6 +1793,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "reit"
@@ -1441,6 +1837,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1475,6 +1877,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -1511,6 +1919,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1545,6 +1959,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -1581,6 +2001,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1615,6 +2041,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -1651,6 +2083,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1685,6 +2123,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "net-basis-capex"
@@ -1723,6 +2167,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1757,6 +2207,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -1793,6 +2249,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1827,6 +2289,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "broad-capex"
@@ -1864,6 +2332,12 @@
         "reconstructed-operating-income": 2,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "reconstructed-operating-income",
@@ -1903,6 +2377,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1938,6 +2418,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -1972,6 +2458,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 3
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 7
       },
       "specialFlags": [
         "derived-single-quarter",
@@ -2011,6 +2503,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": [
         "reconstructed-operating-income",
         "unclassified-capex-definition"
@@ -2049,6 +2547,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2083,6 +2587,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 5
       },
       "specialFlags": []
     },
@@ -2119,6 +2629,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2154,6 +2670,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2188,6 +2710,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "unclassified-capex-definition"
@@ -2226,6 +2754,12 @@
         "source-linked": 0,
         "special-case": 2
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 4
+      },
       "specialFlags": [
         "special-operating-profit-definition"
       ]
@@ -2263,6 +2797,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2297,6 +2837,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -2333,10 +2879,17 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 1,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": [
         "net-basis-capex",
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "fcf-atlas-definition-difference",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -2372,6 +2925,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2406,6 +2965,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "goodwill-impairment"
@@ -2444,6 +3009,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2478,6 +3049,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -2514,6 +3091,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2548,6 +3131,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "unclassified-capex-definition"
@@ -2586,6 +3175,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 6
+      },
       "specialFlags": []
     },
     {
@@ -2620,6 +3215,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "net-basis-capex"
@@ -2658,6 +3259,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": [
         "discontinued-operations"
       ]
@@ -2695,6 +3302,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2729,6 +3342,12 @@
         "reconstructed-operating-income": 1,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "reconstructed-operating-income",
@@ -2768,6 +3387,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2802,6 +3427,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -2838,6 +3469,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2873,6 +3510,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -2907,6 +3550,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 4
       },
       "specialFlags": [
         "net-basis-capex",
@@ -2946,6 +3595,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -2983,6 +3638,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -3017,6 +3678,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 4
       },
       "specialFlags": [
         "company-reported-fcf"
@@ -3055,6 +3722,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -3092,6 +3765,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -3127,6 +3806,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -3161,6 +3846,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 2
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 3
       },
       "specialFlags": [
         "special-operating-profit-definition"
@@ -3199,6 +3890,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -3234,6 +3931,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -3268,6 +3971,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "net-basis-capex"
@@ -3306,6 +4015,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -3341,6 +4056,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -3375,6 +4096,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "net-basis-capex"
@@ -3413,6 +4140,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -3449,6 +4182,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": [
         "net-basis-capex"
@@ -3487,6 +4226,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -3523,6 +4268,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 3
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 7
       },
       "specialFlags": [
         "derived-single-quarter",
@@ -3562,6 +4313,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -3599,6 +4356,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -3633,6 +4396,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 3
       },
       "specialFlags": [
         "company-reported-fcf",
@@ -3672,6 +4441,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     },
     {
@@ -3706,6 +4481,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
       },
       "specialFlags": []
     },
@@ -3742,9 +4523,17 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 2,
+        "unresolved": 0,
+        "not-applicable": 0
+      },
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "fcf-atlas-definition-difference",
+        "cash-flow-inputs-missing",
+        "fcf-capex-scope-mismatch"
       ]
     },
     {
@@ -3779,6 +4568,12 @@
         "reconstructed-operating-income": 0,
         "source-linked": 0,
         "special-case": 0
+      },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 5
       },
       "specialFlags": [
         "net-basis-capex"
@@ -3817,6 +4612,12 @@
         "source-linked": 0,
         "special-case": 0
       },
+      "adjustedNonGaapFcfAssessments": {
+        "atlas-formula-aligned": 0,
+        "atlas-definition-difference": 0,
+        "unresolved": 0,
+        "not-applicable": 2
+      },
       "specialFlags": []
     }
   ],
@@ -3840,10 +4641,17 @@
       "cashFlowCoverage": "capex-missing-only",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-definition-difference",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "includes-asset-sale-proceeds"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "discontinued-operations",
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "fcf-atlas-definition-difference",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -3865,9 +4673,16 @@
       "cashFlowCoverage": "capex-missing-only",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-definition-difference",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "includes-asset-sale-proceeds"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "fcf-atlas-definition-difference",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -3887,6 +4702,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -3909,6 +4728,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -3928,6 +4751,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -3950,6 +4777,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -3969,6 +4800,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -3988,6 +4823,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4010,6 +4849,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "source-linked",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "non-consolidated-subsidiary"
       ]
@@ -4034,6 +4877,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "non-consolidated-subsidiary"
       ]
@@ -4055,9 +4902,16 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-formula-aligned",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "operating-cash-flow-minus-cash-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "non-gaap-fcf-atlas-formula-aligned",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -4077,9 +4931,16 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-formula-aligned",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "operating-cash-flow-minus-cash-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "non-gaap-fcf-atlas-formula-aligned",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -4099,9 +4960,16 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-formula-aligned",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "operating-cash-flow-minus-cash-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "non-gaap-fcf-atlas-formula-aligned",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -4124,6 +4992,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4146,6 +5018,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4165,6 +5041,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4184,6 +5064,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4203,6 +5087,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -4224,6 +5112,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -4245,6 +5137,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -4266,6 +5162,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -4287,6 +5187,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -4308,6 +5212,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "goodwill-impairment",
         "unclassified-capex-definition"
@@ -4333,6 +5241,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4355,6 +5267,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4374,6 +5290,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4393,6 +5313,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4412,6 +5336,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -4433,6 +5361,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -4454,6 +5386,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -4475,6 +5411,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4494,6 +5434,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4513,9 +5457,16 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-formula-aligned",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "operating-cash-flow-minus-cash-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "non-gaap-fcf-atlas-formula-aligned",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -4535,9 +5486,16 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-formula-aligned",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "operating-cash-flow-minus-cash-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "non-gaap-fcf-atlas-formula-aligned",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -4557,9 +5515,16 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-formula-aligned",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "operating-cash-flow-minus-cash-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "non-gaap-fcf-atlas-formula-aligned",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -4579,9 +5544,16 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-formula-aligned",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "operating-cash-flow-minus-cash-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "non-gaap-fcf-atlas-formula-aligned",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -4601,9 +5573,16 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-formula-aligned",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "operating-cash-flow-minus-cash-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "non-gaap-fcf-atlas-formula-aligned",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -4626,6 +5605,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "discontinued-operations"
       ]
@@ -4650,6 +5633,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "discontinued-operations"
       ]
@@ -4671,6 +5658,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4690,6 +5681,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4709,6 +5704,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "broader-non-current-assets",
       "operatingProfitDefinition": "ebit",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "broad-capex"
       ]
@@ -4730,6 +5729,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "broader-non-current-assets",
       "operatingProfitDefinition": "ebit",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "broad-capex"
       ]
@@ -4751,6 +5754,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4770,6 +5777,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4789,6 +5800,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4808,6 +5823,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4827,6 +5846,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4846,6 +5869,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4865,6 +5892,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4884,6 +5915,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -4905,6 +5940,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -4929,6 +5968,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4951,6 +5994,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4973,6 +6020,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -4995,6 +6046,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5017,6 +6072,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5039,6 +6098,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5058,6 +6121,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5080,6 +6147,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5099,6 +6170,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5121,6 +6196,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5140,6 +6219,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -5161,6 +6244,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -5182,6 +6269,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5204,6 +6295,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5223,6 +6318,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5245,6 +6344,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5267,6 +6370,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5289,6 +6396,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5311,6 +6422,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "reit-or-real-estate-investment",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5333,6 +6448,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "reit-or-real-estate-investment",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5352,6 +6471,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5374,6 +6497,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5393,6 +6520,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5415,6 +6546,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5434,6 +6569,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "reconstructed-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "reconstructed-operating-income"
       ]
@@ -5455,6 +6594,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "reconstructed-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "reconstructed-operating-income"
       ]
@@ -5476,6 +6619,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5495,6 +6642,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5514,6 +6665,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5533,6 +6688,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5555,6 +6714,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "reit-or-real-estate-investment",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "reit"
       ]
@@ -5579,6 +6742,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "reit-or-real-estate-investment",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "reit"
       ]
@@ -5600,6 +6767,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5619,6 +6790,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5638,6 +6813,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5657,6 +6836,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5679,6 +6862,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5701,6 +6888,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5723,6 +6914,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5745,6 +6940,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5764,6 +6963,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5783,6 +6986,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5802,6 +7009,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5821,6 +7032,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5840,6 +7055,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5859,6 +7078,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5878,6 +7101,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -5899,6 +7126,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -5920,6 +7151,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5939,6 +7174,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5958,6 +7197,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5977,6 +7220,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -5999,6 +7246,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6021,6 +7272,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6040,6 +7295,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "broader-non-current-assets",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "broad-capex"
       ]
@@ -6061,6 +7320,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "broader-non-current-assets",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "broad-capex"
       ]
@@ -6082,6 +7345,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "reconstructed-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "reconstructed-operating-income",
         "unclassified-capex-definition"
@@ -6104,6 +7371,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "reconstructed-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "reconstructed-operating-income",
         "unclassified-capex-definition"
@@ -6129,6 +7400,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6151,6 +7426,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6173,6 +7452,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6195,6 +7478,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6214,6 +7501,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6233,6 +7524,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6252,6 +7547,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "derived-single-quarter",
         "special-operating-profit-definition"
@@ -6274,6 +7573,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "derived-single-quarter",
         "special-operating-profit-definition"
@@ -6296,6 +7599,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6315,6 +7622,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "derived-single-quarter",
         "special-operating-profit-definition"
@@ -6337,6 +7648,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6356,6 +7671,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "reconstructed-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "reconstructed-operating-income",
         "unclassified-capex-definition"
@@ -6378,6 +7697,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "reconstructed-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "reconstructed-operating-income",
         "unclassified-capex-definition"
@@ -6400,6 +7723,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6419,6 +7746,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6438,6 +7769,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6457,6 +7792,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6476,6 +7815,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6495,6 +7838,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6514,6 +7861,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6533,6 +7884,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6552,6 +7907,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6571,6 +7930,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6590,6 +7953,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6609,6 +7976,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -6630,6 +8001,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -6651,6 +8026,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6674,6 +8053,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "special-operating-profit-definition"
       ]
@@ -6695,6 +8078,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6718,6 +8105,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "special-operating-profit-definition"
       ]
@@ -6742,6 +8133,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6764,6 +8159,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6783,6 +8182,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6802,6 +8205,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6824,6 +8231,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6846,6 +8257,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6865,10 +8280,17 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-definition-difference",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "net-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex",
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "fcf-atlas-definition-difference",
+        "cash-flow-inputs-missing"
       ]
     },
     {
@@ -6888,6 +8310,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6907,6 +8333,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6926,6 +8356,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "goodwill-impairment"
       ]
@@ -6947,6 +8381,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6966,6 +8404,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -6985,6 +8427,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7007,6 +8453,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7029,6 +8479,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7048,6 +8502,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7067,6 +8525,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7086,6 +8548,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -7107,6 +8573,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -7128,6 +8598,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7147,6 +8621,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7169,6 +8647,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7188,6 +8670,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7210,6 +8696,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7232,6 +8722,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7251,6 +8745,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -7272,6 +8770,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -7296,6 +8798,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "discontinued-operations"
       ]
@@ -7320,6 +8826,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "discontinued-operations"
       ]
@@ -7341,6 +8851,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7360,6 +8874,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7379,6 +8897,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "reconstructed-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "reconstructed-operating-income",
         "unclassified-capex-definition"
@@ -7401,6 +8923,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -7422,6 +8948,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7441,6 +8971,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7463,6 +8997,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7485,6 +9023,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7504,6 +9046,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7523,6 +9069,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7545,6 +9095,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7567,6 +9121,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7586,6 +9144,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex",
         "company-reported-fcf"
@@ -7608,6 +9170,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex",
         "company-reported-fcf"
@@ -7630,6 +9196,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex",
         "company-reported-fcf"
@@ -7652,6 +9222,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex",
         "company-reported-fcf"
@@ -7674,6 +9248,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -7695,6 +9273,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -7716,6 +9298,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7735,6 +9321,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7754,6 +9344,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf"
       ]
@@ -7775,6 +9369,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf"
       ]
@@ -7796,6 +9394,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf"
       ]
@@ -7817,6 +9419,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf"
       ]
@@ -7838,6 +9444,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -7859,6 +9469,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -7880,6 +9494,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7899,6 +9517,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7918,6 +9540,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7937,6 +9563,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -7959,6 +9589,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "special-operating-profit-definition"
       ]
@@ -7983,6 +9617,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "special-operating-profit-definition"
       ]
@@ -8007,6 +9645,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8029,6 +9671,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8051,6 +9697,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8070,6 +9720,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8089,6 +9743,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8108,6 +9766,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8129,6 +9791,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8153,6 +9819,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8175,6 +9845,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8197,6 +9871,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8219,6 +9897,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8238,6 +9920,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8259,6 +9945,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8280,6 +9970,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -8301,6 +9995,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -8322,6 +10020,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8343,6 +10045,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8364,6 +10070,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -8385,6 +10095,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "unclassified-capex-definition"
       ]
@@ -8406,6 +10120,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8425,6 +10143,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8444,6 +10166,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "derived-single-quarter",
         "special-operating-profit-definition"
@@ -8466,6 +10192,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "derived-single-quarter",
         "special-operating-profit-definition"
@@ -8488,6 +10218,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8507,6 +10241,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "derived-single-quarter",
         "special-operating-profit-definition"
@@ -8529,6 +10267,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8548,6 +10290,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8569,6 +10315,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8593,6 +10343,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8615,6 +10369,10 @@
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8634,6 +10392,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
         "unclassified-capex-definition"
@@ -8656,6 +10418,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
         "unclassified-capex-definition"
@@ -8678,6 +10444,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "unclassified",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "company-reported-fcf",
         "unclassified-capex-definition"
@@ -8700,6 +10470,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8719,6 +10493,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "gross-ppe",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8738,6 +10516,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "reit-or-real-estate-investment",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8757,6 +10539,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "reit-or-real-estate-investment",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8776,9 +10562,19 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-definition-difference",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "capitalized-software-outside-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [
+        "fcf-includes-capitalized-software-capex-excludes-it"
+      ],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "fcf-atlas-definition-difference",
+        "cash-flow-inputs-missing",
+        "fcf-capex-scope-mismatch"
       ]
     },
     {
@@ -8798,9 +10594,19 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "atlas-definition-difference",
+      "adjustedNonGaapFcfAssessmentReasons": [
+        "capitalized-software-outside-capex"
+      ],
+      "cashFlowInputsStatus": "missing",
+      "fcfCapexScopeMismatchReasons": [
+        "fcf-includes-capitalized-software-capex-excludes-it"
+      ],
       "specialFlags": [
         "company-reported-fcf",
-        "adjusted-or-non-gaap-fcf"
+        "fcf-atlas-definition-difference",
+        "cash-flow-inputs-missing",
+        "fcf-capex-scope-mismatch"
       ]
     },
     {
@@ -8820,6 +10626,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8841,6 +10651,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8862,6 +10676,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8883,6 +10701,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8904,6 +10726,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "net-capex",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
         "net-basis-capex"
       ]
@@ -8925,6 +10751,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },
     {
@@ -8944,6 +10774,10 @@
       "cashFlowCoverage": "both-present",
       "capexDefinition": "ppe-plus-intangible",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     }
   ]

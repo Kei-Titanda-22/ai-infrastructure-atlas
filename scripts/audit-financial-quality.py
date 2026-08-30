@@ -52,6 +52,12 @@ OPERATING_PROFIT_CATEGORIES = (
     "source-linked",
     "special-case",
 )
+ADJUSTED_NON_GAAP_FCF_ASSESSMENTS = (
+    "atlas-formula-aligned",
+    "atlas-definition-difference",
+    "unresolved",
+    "not-applicable",
+)
 SPECIAL_FLAG_ORDER = (
     "goodwill-impairment",
     "discontinued-operations",
@@ -61,7 +67,11 @@ SPECIAL_FLAG_ORDER = (
     "net-basis-capex",
     "broad-capex",
     "company-reported-fcf",
-    "adjusted-or-non-gaap-fcf",
+    "non-gaap-fcf-atlas-formula-aligned",
+    "fcf-atlas-definition-difference",
+    "adjusted-or-non-gaap-fcf-unresolved",
+    "cash-flow-inputs-missing",
+    "fcf-capex-scope-mismatch",
     "derived-single-quarter",
     "unclassified-capex-definition",
     "special-operating-profit-definition",
@@ -70,6 +80,30 @@ SPECIAL_FLAG_ORDER = (
 # Entity structure is not yet normalized in company JSON. Keep the comparison
 # control explicit rather than inferring a subsidiary from generic prose.
 NON_CONSOLIDATED_SUBSIDIARIES = {"ajinomoto-fine-techno"}
+
+# These are regression expectations, not classification inputs. The classifier
+# must derive the result from basis text; CI then protects the reviewed 13-period
+# split from silently regressing when the rules change.
+EXPECTED_ADJUSTED_NON_GAAP_FCF = {
+    "atlas-formula-aligned": {
+        "amd-q2-2025",
+        "amd-q1-2026",
+        "amd-q2-2026",
+        "asml-q2-2025",
+        "asml-q3-2025",
+        "asml-q4-2025",
+        "asml-q1-2026",
+        "asml-q2-2026",
+    },
+    "atlas-definition-difference": {
+        "abb-q2-2025",
+        "abb-q2-2026",
+        "micron-q3-fy2026",
+        "vertiv-q2-2025",
+        "vertiv-q2-2026",
+    },
+    "unresolved": set(),
+}
 
 CATEGORY_DESCRIPTIONS = {
     "cashFlowCoverage": {
@@ -94,6 +128,12 @@ CATEGORY_DESCRIPTIONS = {
         "source-linked": "Value is retained as source-linked rather than verified",
         "special-case": "Missing, period-derived, or otherwise not safely classified as a direct reported measure",
     },
+    "adjustedNonGaapFcfAssessment": {
+        "atlas-formula-aligned": "Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas",
+        "atlas-definition-difference": "Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component",
+        "unresolved": "Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely",
+        "not-applicable": "The record is not a populated company-reported adjusted/Non-GAAP FCF",
+    },
     "specialFlags": {
         "goodwill-impairment": "Reported result includes or discusses goodwill impairment",
         "discontinued-operations": "Continuing/discontinued-operation boundaries affect comparison",
@@ -103,7 +143,11 @@ CATEGORY_DESCRIPTIONS = {
         "net-basis-capex": "Capex is disclosed on a net basis",
         "broad-capex": "Capex uses a broader non-current-asset definition",
         "company-reported-fcf": "FCF value comes from a company-reported measure",
-        "adjusted-or-non-gaap-fcf": "Company-reported FCF is adjusted or Non-GAAP",
+        "non-gaap-fcf-atlas-formula-aligned": "Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope",
+        "fcf-atlas-definition-difference": "FCF uses a definition that differs from Atlas gross cash-Capex normalization",
+        "adjusted-or-non-gaap-fcf-unresolved": "Adjusted/Non-GAAP FCF formula cannot be closed from current basis text",
+        "cash-flow-inputs-missing": "A populated FCF record does not have complete cashFlowInputs",
+        "fcf-capex-scope-mismatch": "The populated FCF subtracts a cash-investment component outside the stored Capex value's scope",
         "derived-single-quarter": "A single-quarter value is derived from cumulative periods",
         "unclassified-capex-definition": "A populated Capex value remains definition-unclassified",
         "special-operating-profit-definition": "Operating-profit definition is classified as a special case",
@@ -278,11 +322,97 @@ def classify_operating_profit(record: dict[str, Any]) -> str:
     return "special-case"
 
 
+def is_adjusted_or_non_gaap_fcf(record: dict[str, Any]) -> bool:
+    fcf = record["metrics"]["freeCashFlow"]
+    text = str(fcf.get("basis", "")).lower().lstrip()
+    return fcf.get("value") is not None and has_any(
+        text,
+        (
+            r"^company-reported.*\bnon-gaap\b",
+            r"^company-reported.*\badjusted (?:fcf|free cash flow)\b",
+        ),
+    )
+
+
+def adjusted_non_gaap_fcf_assessment(record: dict[str, Any]) -> tuple[str, list[str]]:
+    if not is_adjusted_or_non_gaap_fcf(record):
+        return "not-applicable", []
+
+    fcf_text = str(record["metrics"]["freeCashFlow"].get("basis", "")).lower()
+    capex_text = str(record["metrics"]["capex"].get("basis", "")).lower()
+    combined = f"{fcf_text} {capex_text}"
+    difference_reasons: list[str] = []
+
+    if has_any(combined, (r"\bnet capital expenditures?\b", r"\bcapital expenditures?, net\b")):
+        difference_reasons.append("net-capex")
+    if has_any(fcf_text, (r"\bsale proceeds\b", r"\bproceeds from (?:the )?sale\b")):
+        difference_reasons.append("includes-asset-sale-proceeds")
+    if has_any(fcf_text, (r"\bgovernment incentives?\b", r"\bgovernment subsidies\b")):
+        difference_reasons.append("includes-government-incentives")
+    if has_any(fcf_text, (r"\bcapitalized software\b",)) and has_any(
+        capex_text,
+        (r"別途.*capitalized software", r"capitalized software.*(?:separate|別途|exclude)"),
+    ):
+        difference_reasons.append("capitalized-software-outside-capex")
+
+    if difference_reasons:
+        return "atlas-definition-difference", difference_reasons
+
+    has_operating_cash_flow = has_any(
+        fcf_text,
+        (
+            r"\boperating cash flow\b",
+            r"\bcash flow from operating activities\b",
+            r"\bnet cash provided by operating activities\b",
+        ),
+    )
+    has_cash_capex = has_any(
+        fcf_text,
+        (
+            r"\bpurchases? of (?:property(?:, plant)? and equipment|pp&e)",
+            r"\bcapital expenditures?\b",
+        ),
+    )
+    has_subtraction = has_any(fcf_text, (r"\s[−-]\s", r"\bminus\b"))
+    if has_operating_cash_flow and has_cash_capex and has_subtraction:
+        return "atlas-formula-aligned", ["operating-cash-flow-minus-cash-capex"]
+
+    return "unresolved", ["formula-not-closed-from-basis"]
+
+
+def cash_flow_inputs_status(record: dict[str, Any]) -> str:
+    if record["metrics"]["freeCashFlow"].get("value") is None:
+        return "not-applicable"
+    cash_inputs = record.get("cashFlowInputs")
+    if not isinstance(cash_inputs, dict):
+        return "missing"
+    required = ("operatingCashFlow", "capexCashOutflow")
+    return "complete" if all(cash_inputs.get(key) is not None for key in required) else "missing"
+
+
+def fcf_capex_scope_mismatch_reasons(record: dict[str, Any]) -> list[str]:
+    metrics = record["metrics"]
+    if metrics["freeCashFlow"].get("value") is None or metrics["capex"].get("value") is None:
+        return []
+    fcf_text = str(metrics["freeCashFlow"].get("basis", "")).lower()
+    capex_text = str(metrics["capex"].get("basis", "")).lower()
+    reasons: list[str] = []
+    if has_any(fcf_text, (r"\bcapitalized software\b",)) and has_any(
+        capex_text,
+        (r"別途.*capitalized software", r"capitalized software.*(?:separate|別途|exclude)"),
+    ):
+        reasons.append("fcf-includes-capitalized-software-capex-excludes-it")
+    return reasons
+
+
 def special_flags(
     record: dict[str, Any],
     company: dict[str, Any],
     capex_category: str,
     operating_profit_category: str,
+    adjusted_fcf_assessment: str,
+    cash_inputs_status: str,
+    scope_mismatch_reasons: list[str],
 ) -> list[str]:
     text = basis_text(record)
     fcf = record["metrics"]["freeCashFlow"]
@@ -309,11 +439,17 @@ def special_flags(
         flags.add("unclassified-capex-definition")
     if fcf.get("value") is not None and fcf_text.lstrip().startswith("company-reported"):
         flags.add("company-reported-fcf")
-    if fcf.get("value") is not None and has_any(
-        fcf_text,
-        (r"^company-reported.*\bnon-gaap\b", r"^company-reported.*\badjusted (?:fcf|free cash flow)\b"),
-    ):
-        flags.add("adjusted-or-non-gaap-fcf")
+    assessment_flags = {
+        "atlas-formula-aligned": "non-gaap-fcf-atlas-formula-aligned",
+        "atlas-definition-difference": "fcf-atlas-definition-difference",
+        "unresolved": "adjusted-or-non-gaap-fcf-unresolved",
+    }
+    if adjusted_fcf_assessment in assessment_flags:
+        flags.add(assessment_flags[adjusted_fcf_assessment])
+    if cash_inputs_status == "missing":
+        flags.add("cash-flow-inputs-missing")
+    if scope_mismatch_reasons:
+        flags.add("fcf-capex-scope-mismatch")
     if has_any(text, (r"単四半期化", r"\bsingle-quarter.*derived\b", r"\bcumulative difference\b")):
         flags.add("derived-single-quarter")
 
@@ -334,6 +470,7 @@ def status_bucket(status: str) -> str:
 
 def build_report() -> dict[str, Any]:
     records, company_by_id, input_paths, override_count = load_inputs()
+    record_by_id = {record["id"]: record for record in records}
     missing_companies = sorted({record["companyId"] for record in records} - set(company_by_id))
     if missing_companies:
         raise ValueError(f"history references unknown companies: {missing_companies}")
@@ -343,6 +480,7 @@ def build_report() -> dict[str, Any]:
     cash_flow_counts: Counter[str] = Counter()
     capex_counts: Counter[str] = Counter()
     operating_profit_counts: Counter[str] = Counter()
+    adjusted_fcf_assessment_counts: Counter[str] = Counter()
     special_flag_counts: Counter[str] = Counter()
     company_records: dict[str, list[dict[str, Any]]] = defaultdict(list)
     record_audits: list[dict[str, Any]] = []
@@ -352,7 +490,18 @@ def build_report() -> dict[str, Any]:
         cash_flow_category = classify_cash_flow(record)
         capex_category = classify_capex(record, company)
         operating_profit_category = classify_operating_profit(record)
-        flags = special_flags(record, company, capex_category, operating_profit_category)
+        adjusted_fcf_category, adjusted_fcf_reasons = adjusted_non_gaap_fcf_assessment(record)
+        cash_inputs_status = cash_flow_inputs_status(record)
+        scope_mismatch_reasons = fcf_capex_scope_mismatch_reasons(record)
+        flags = special_flags(
+            record,
+            company,
+            capex_category,
+            operating_profit_category,
+            adjusted_fcf_category,
+            cash_inputs_status,
+            scope_mismatch_reasons,
+        )
         metric_statuses = {metric_id: record["metrics"][metric_id]["status"] for metric_id in METRIC_IDS}
         missing_metrics = [
             metric_id for metric_id in METRIC_IDS if record["metrics"][metric_id].get("value") is None
@@ -365,6 +514,7 @@ def build_report() -> dict[str, Any]:
         cash_flow_counts[cash_flow_category] += 1
         capex_counts[capex_category] += 1
         operating_profit_counts[operating_profit_category] += 1
+        adjusted_fcf_assessment_counts[adjusted_fcf_category] += 1
         special_flag_counts.update(flags)
 
         audit = {
@@ -378,6 +528,10 @@ def build_report() -> dict[str, Any]:
             "cashFlowCoverage": cash_flow_category,
             "capexDefinition": capex_category,
             "operatingProfitDefinition": operating_profit_category,
+            "adjustedNonGaapFcfAssessment": adjusted_fcf_category,
+            "adjustedNonGaapFcfAssessmentReasons": adjusted_fcf_reasons,
+            "cashFlowInputsStatus": cash_inputs_status,
+            "fcfCapexScopeMismatchReasons": scope_mismatch_reasons,
             "specialFlags": flags,
         }
         record_audits.append(audit)
@@ -390,12 +544,14 @@ def build_report() -> dict[str, Any]:
         cash_counts: Counter[str] = Counter()
         capex_definition_counts: Counter[str] = Counter()
         operating_definition_counts: Counter[str] = Counter()
+        adjusted_fcf_counts: Counter[str] = Counter()
         flags: set[str] = set()
         for audit in audits:
             status_counts.update(status_bucket(status) for status in audit["metricStatuses"].values())
             cash_counts[audit["cashFlowCoverage"]] += 1
             capex_definition_counts[audit["capexDefinition"]] += 1
             operating_definition_counts[audit["operatingProfitDefinition"]] += 1
+            adjusted_fcf_counts[audit["adjustedNonGaapFcfAssessment"]] += 1
             flags.update(audit["specialFlags"])
         company = company_by_id[company_id]
         company_audits.append(
@@ -409,6 +565,9 @@ def build_report() -> dict[str, Any]:
                 "capexDefinitions": ordered_counts(capex_definition_counts, CAPEX_CATEGORIES),
                 "operatingProfitDefinitions": ordered_counts(
                     operating_definition_counts, OPERATING_PROFIT_CATEGORIES
+                ),
+                "adjustedNonGaapFcfAssessments": ordered_counts(
+                    adjusted_fcf_counts, ADJUSTED_NON_GAAP_FCF_ASSESSMENTS
                 ),
                 "specialFlags": [flag for flag in SPECIAL_FLAG_ORDER if flag in flags],
             }
@@ -438,10 +597,34 @@ def build_report() -> dict[str, Any]:
     unclassified_capex = [
         audit["id"] for audit in record_audits if audit["capexDefinition"] == "unclassified"
     ]
-    adjusted_or_non_gaap_fcf = [
-        audit["id"]
+    adjusted_fcf_queues = {
+        category: [
+            {
+                "recordId": audit["id"],
+                "companyId": audit["companyId"],
+                "periodLabel": audit["periodLabel"],
+                "value": record_by_id[audit["id"]]["metrics"]["freeCashFlow"]["value"],
+                "status": record_by_id[audit["id"]]["metrics"]["freeCashFlow"]["status"],
+                "basis": record_by_id[audit["id"]]["metrics"]["freeCashFlow"]["basis"],
+                "sourceId": record_by_id[audit["id"]]["sourceId"],
+                "reasons": audit["adjustedNonGaapFcfAssessmentReasons"],
+            }
+            for audit in record_audits
+            if audit["adjustedNonGaapFcfAssessment"] == category
+        ]
+        for category in (
+            "atlas-formula-aligned",
+            "atlas-definition-difference",
+            "unresolved",
+        )
+    }
+    cash_flow_inputs_missing = [
+        audit["id"] for audit in record_audits if audit["cashFlowInputsStatus"] == "missing"
+    ]
+    fcf_capex_scope_mismatch = [
+        {"recordId": audit["id"], "reasons": audit["fcfCapexScopeMismatchReasons"]}
         for audit in record_audits
-        if "adjusted-or-non-gaap-fcf" in audit["specialFlags"]
+        if audit["fcfCapexScopeMismatchReasons"]
     ]
 
     total_metrics = len(records) * len(METRIC_IDS)
@@ -453,6 +636,19 @@ def build_report() -> dict[str, Any]:
         raise AssertionError("Capex definition classification does not cover every period")
     if sum(operating_profit_counts.values()) != len(records):
         raise AssertionError("operating-profit classification does not cover every period")
+    if sum(adjusted_fcf_assessment_counts.values()) != len(records):
+        raise AssertionError("adjusted/Non-GAAP FCF assessment does not cover every period")
+    for category, expected_ids in EXPECTED_ADJUSTED_NON_GAAP_FCF.items():
+        observed_ids = {
+            audit["id"]
+            for audit in record_audits
+            if audit["adjustedNonGaapFcfAssessment"] == category
+        }
+        if observed_ids != expected_ids:
+            raise AssertionError(
+                f"reviewed adjusted/Non-GAAP FCF regression for {category}: "
+                f"expected={sorted(expected_ids)} observed={sorted(observed_ids)}"
+            )
 
     verified_dates = [record.get("verifiedAt") for record in records if record.get("verifiedAt")]
     history_paths = [
@@ -462,8 +658,8 @@ def build_report() -> dict[str, Any]:
         or re.fullmatch(r"financial-history-v04-batch\d+\.json", path.name)
     ]
     return {
-        "schemaVersion": 1,
-        "classificationRuleVersion": 1,
+        "schemaVersion": 2,
+        "classificationRuleVersion": 2,
         "dataAsOf": max(verified_dates) if verified_dates else None,
         "inputDigestSha256": combined_input_digest(input_paths),
         "inputs": {
@@ -483,6 +679,9 @@ def build_report() -> dict[str, Any]:
             "operatingProfitDefinitions": ordered_counts(
                 operating_profit_counts, OPERATING_PROFIT_CATEGORIES
             ),
+            "adjustedNonGaapFcfAssessments": ordered_counts(
+                adjusted_fcf_assessment_counts, ADJUSTED_NON_GAAP_FCF_ASSESSMENTS
+            ),
             "specialFlags": ordered_counts(special_flag_counts, SPECIAL_FLAG_ORDER),
         },
         "actionQueues": {
@@ -490,7 +689,13 @@ def build_report() -> dict[str, Any]:
             "needsReview": needs_review,
             "oneSidedCashFlow": one_sided_cash_flow,
             "unclassifiedCapexDefinition": unclassified_capex,
-            "adjustedOrNonGaapFcf": adjusted_or_non_gaap_fcf,
+            "nonGaapFcfAtlasFormulaAligned": adjusted_fcf_queues["atlas-formula-aligned"],
+            "adjustedNonGaapFcfAtlasDefinitionDifference": adjusted_fcf_queues[
+                "atlas-definition-difference"
+            ],
+            "adjustedNonGaapFcfUnresolved": adjusted_fcf_queues["unresolved"],
+            "cashFlowInputsMissing": cash_flow_inputs_missing,
+            "fcfCapexScopeMismatch": fcf_capex_scope_mismatch,
         },
         "companies": company_audits,
         "records": record_audits,
@@ -565,6 +770,13 @@ def render_markdown(report: dict[str, Any]) -> str:
             report["definitions"]["operatingProfitDefinition"],
         )
     )
+    lines.extend(
+        render_count_table(
+            "Adjusted / Non-GAAP FCF判定",
+            summary["adjustedNonGaapFcfAssessments"],
+            report["definitions"]["adjustedNonGaapFcfAssessment"],
+        )
+    )
 
     lines.extend(["## 特殊比較フラグ", "", "| フラグ | 期間数 | 定義 |", "| --- | ---: | --- |"])
     for flag, count in summary["specialFlags"].items():
@@ -601,11 +813,42 @@ def render_markdown(report: dict[str, Any]) -> str:
         lines.append(f"- Capex定義未分類: {formatted}")
     else:
         lines.append("- Capex定義未分類: なし")
-    if action_queues["adjustedOrNonGaapFcf"]:
-        formatted = ", ".join(f"`{record_id}`" for record_id in action_queues["adjustedOrNonGaapFcf"])
-        lines.append(f"- adjusted / Non-GAAP FCF: {formatted}")
+    if action_queues["nonGaapFcfAtlasFormulaAligned"]:
+        formatted = ", ".join(
+            f"`{item['recordId']}`" for item in action_queues["nonGaapFcfAtlasFormulaAligned"]
+        )
+        lines.append(f"- Non-GAAP表記・Atlas算式一致（値変更対象外）: {formatted}")
     else:
-        lines.append("- adjusted / Non-GAAP FCF: なし")
+        lines.append("- Non-GAAP表記・Atlas算式一致（値変更対象外）: なし")
+    if action_queues["adjustedNonGaapFcfAtlasDefinitionDifference"]:
+        formatted = ", ".join(
+            f"`{item['recordId']}` ({', '.join(item['reasons'])})"
+            for item in action_queues["adjustedNonGaapFcfAtlasDefinitionDifference"]
+        )
+        lines.append(f"- Atlas定義差あり（一次資料再確認）: {formatted}")
+    else:
+        lines.append("- Atlas定義差あり（一次資料再確認）: なし")
+    if action_queues["adjustedNonGaapFcfUnresolved"]:
+        formatted = ", ".join(
+            f"`{item['recordId']}` ({', '.join(item['reasons'])})"
+            for item in action_queues["adjustedNonGaapFcfUnresolved"]
+        )
+        lines.append(f"- adjusted / Non-GAAP算式未解決: {formatted}")
+    else:
+        lines.append("- adjusted / Non-GAAP算式未解決: なし")
+    if action_queues["cashFlowInputsMissing"]:
+        formatted = ", ".join(f"`{record_id}`" for record_id in action_queues["cashFlowInputsMissing"])
+        lines.append(f"- cashFlowInputs未登録（FCF値あり）: {formatted}")
+    else:
+        lines.append("- cashFlowInputs未登録（FCF値あり）: なし")
+    if action_queues["fcfCapexScopeMismatch"]:
+        formatted = ", ".join(
+            f"`{item['recordId']}` ({', '.join(item['reasons'])})"
+            for item in action_queues["fcfCapexScopeMismatch"]
+        )
+        lines.append(f"- FCF/Capex scope mismatch: {formatted}")
+    else:
+        lines.append("- FCF/Capex scope mismatch: なし")
     lines.append("")
 
     lines.extend(
@@ -647,6 +890,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "- 財務履歴、cash-flow override、会社メタデータが変わったら `--write` でJSON/Markdownを再生成する。",
             "- CIは `--check` で入力SHA-256と全分類を再計算し、コミット済みレポートとの差分を検出する。",
             "- 分類は比較上の監査ラベルであり、各指標の一次根拠は引き続きレコードの `sourceId` と `basis` を正とする。",
+            "- adjusted / Non-GAAPのAtlas定義判定、`cashFlowInputs` 登録状態、FCF/Capex scope一致は独立軸として扱う。",
             "- `unclassified`、`source-linked`、`needs-review` は隠さず、次の一次資料監査候補として扱う。",
             "",
         ]
@@ -680,6 +924,18 @@ def print_summary(report: dict[str, Any]) -> None:
         "Definition queues: "
         f"unclassified-capex={summary['capexDefinitions']['unclassified']} / "
         f"special-operating-profit={summary['operatingProfitDefinitions']['special-case']}"
+    )
+    adjusted = summary["adjustedNonGaapFcfAssessments"]
+    print(
+        "Adjusted/Non-GAAP FCF: "
+        f"Atlas-aligned={adjusted['atlas-formula-aligned']} / "
+        f"definition-difference={adjusted['atlas-definition-difference']} / "
+        f"unresolved={adjusted['unresolved']}"
+    )
+    print(
+        "Independent cash-flow flags: "
+        f"inputs-missing={summary['specialFlags']['cash-flow-inputs-missing']} / "
+        f"scope-mismatch={summary['specialFlags']['fcf-capex-scope-mismatch']}"
     )
 
 
