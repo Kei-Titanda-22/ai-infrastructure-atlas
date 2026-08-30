@@ -221,12 +221,14 @@ for cid, minimum in [
 ]:
     if len(records_by_company.get(cid, [])) < minimum:
         errors.append(f'v0.4 {cid} regression: expected at least {minimum} periods, got {len(records_by_company.get(cid, []))}')
-if verified_metrics < 1094:
-    errors.append(f'v0.4 history regression: expected at least 1094 verified metrics, got {verified_metrics}')
-if cashflow_periods < 179:
-    errors.append(f'v0.4 cash-flow regression: expected at least 179 FCF/Capex periods, got {cashflow_periods}')
-if len(v04_sources) < 106:
-    errors.append(f'v0.4 source regression: expected at least 106 document sources+policies, got {len(v04_sources)}')
+if verified_metrics < 1098:
+    errors.append(f'v0.4 history regression: expected at least 1098 verified metrics, got {verified_metrics}')
+if cashflow_periods < 181:
+    errors.append(f'v0.4 cash-flow regression: expected at least 181 FCF/Capex periods, got {cashflow_periods}')
+if len(overrides) < 10:
+    errors.append(f'v0.4 cash-flow override regression: expected at least 10 overrides, got {len(overrides)}')
+if len(v04_sources) < 107:
+    errors.append(f'v0.4 source regression: expected at least 107 document sources+policies, got {len(v04_sources)}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')

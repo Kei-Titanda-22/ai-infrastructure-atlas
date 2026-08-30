@@ -95,10 +95,7 @@ EXPECTED_ADJUSTED_NON_GAAP_FCF = {
         "asml-q1-2026",
         "asml-q2-2026",
     },
-    "atlas-definition-difference": {
-        "abb-q2-2025",
-        "abb-q2-2026",
-    },
+    "atlas-definition-difference": set(),
     "unresolved": set(),
 }
 
