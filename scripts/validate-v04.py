@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / 'src' / 'data'
 
-history_files = ['financial-history.json', 'financial-history-v04-batch2.json', 'financial-history-v04-batch3.json', 'financial-history-v04-batch4.json']
+history_files = ['financial-history.json', 'financial-history-v04-batch2.json', 'financial-history-v04-batch3.json', 'financial-history-v04-batch4.json', 'financial-history-v04-batch5.json']
 history = []
 for filename in history_files:
     history.extend(json.loads((DATA / filename).read_text(encoding='utf-8')))
@@ -177,19 +177,23 @@ cashflow_periods = sum(
     if record['metrics']['freeCashFlow']['value'] is not None and record['metrics']['capex']['value'] is not None
 )
 
-# v0.4 network/storage regression floor. Future expansion may exceed these counts.
-if len(history) < 59:
-    errors.append(f'v0.4 history regression: expected at least 59 periods, got {len(history)}')
+# Kioxia-continuity regression floor. Future expansion may exceed these counts.
+if len(history) < 65:
+    errors.append(f'v0.4 history regression: expected at least 65 periods, got {len(history)}')
 if len(covered_companies) < 20:
     errors.append(f'v0.4 coverage regression: expected at least 20 companies, got {len(covered_companies)}')
-if len(multi_period_companies) < 18:
-    errors.append(f'v0.4 history regression: expected at least 18 multi-period companies, got {len(multi_period_companies)}')
-if verified_metrics < 255:
-    errors.append(f'v0.4 history regression: expected at least 255 verified metrics, got {verified_metrics}')
-if cashflow_periods < 39:
-    errors.append(f'v0.4 cash-flow regression: expected at least 39 FCF/Capex periods, got {cashflow_periods}')
-if len(v04_sources) < 7:
-    errors.append(f'v0.4 source regression: expected at least 7 document sources+policies, got {len(v04_sources)}')
+if len(multi_period_companies) < 19:
+    errors.append(f'v0.4 history regression: expected at least 19 multi-period companies, got {len(multi_period_companies)}')
+if len(records_by_company.get('kioxia', [])) < 7:
+    errors.append(f'v0.4 Kioxia regression: expected at least 7 periods, got {len(records_by_company.get("kioxia", []))}')
+if sum(1 for row in records_by_company.get('kioxia', []) if row['periodType'] == 'quarterly') < 5:
+    errors.append('v0.4 Kioxia regression: expected at least 5 quarterly periods')
+if verified_metrics < 285:
+    errors.append(f'v0.4 history regression: expected at least 285 verified metrics, got {verified_metrics}')
+if cashflow_periods < 45:
+    errors.append(f'v0.4 cash-flow regression: expected at least 45 FCF/Capex periods, got {cashflow_periods}')
+if len(v04_sources) < 11:
+    errors.append(f'v0.4 source regression: expected at least 11 document sources+policies, got {len(v04_sources)}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')
