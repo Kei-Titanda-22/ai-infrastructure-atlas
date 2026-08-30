@@ -28,12 +28,13 @@ import industrialAutomationHistory from '../data/financial-history-v04-batch27.j
 import omronHistory from '../data/financial-history-v04-batch28.json';
 import mitsubishiElectricHistory from '../data/financial-history-v04-batch29.json';
 import secExpansionHistory from '../data/financial-history-v04-batch30.json';
+import japanExpansionHistory from '../data/financial-history-v04-batch31.json';
 import cashFlowOverrides from '../data/financial-history-v04-cashflow-overrides.json';
 import metricDefinitions from '../data/financial-metric-definitions-v04.json';
 
 const overrideById = new Map(cashFlowOverrides.map(item => [item.id, item]));
 
-export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory, ...legrandHistory, ...schneiderSiemensEnergyHistory, ...osatMaterialsHistory, ...edaPowerSemisHistory, ...powerSemiconductorHistory, ...equipmentExpansionHistory, ...equipmentContinuationHistory, ...equipmentPackagingHistory, ...equipmentInspectionHistory, ...equipmentBondingHistory, ...interconnectDataCenterHistory, ...physicalAiHistory, ...industrialAutomationHistory, ...omronHistory, ...mitsubishiElectricHistory, ...secExpansionHistory].map(record => {
+export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory, ...legrandHistory, ...schneiderSiemensEnergyHistory, ...osatMaterialsHistory, ...edaPowerSemisHistory, ...powerSemiconductorHistory, ...equipmentExpansionHistory, ...equipmentContinuationHistory, ...equipmentPackagingHistory, ...equipmentInspectionHistory, ...equipmentBondingHistory, ...interconnectDataCenterHistory, ...physicalAiHistory, ...industrialAutomationHistory, ...omronHistory, ...mitsubishiElectricHistory, ...secExpansionHistory, ...japanExpansionHistory].map(record => {
   const override = overrideById.get(record.id);
   if (!override) return record;
   return {
