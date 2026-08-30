@@ -21,12 +21,13 @@ import equipmentExpansionHistory from '../data/financial-history-v04-batch20.jso
 import equipmentContinuationHistory from '../data/financial-history-v04-batch21.json';
 import equipmentPackagingHistory from '../data/financial-history-v04-batch22.json';
 import equipmentInspectionHistory from '../data/financial-history-v04-batch23.json';
+import interconnectDataCenterHistory from '../data/financial-history-v04-batch24.json';
 import cashFlowOverrides from '../data/financial-history-v04-cashflow-overrides.json';
 import metricDefinitions from '../data/financial-metric-definitions-v04.json';
 
 const overrideById = new Map(cashFlowOverrides.map(item => [item.id, item]));
 
-export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory, ...legrandHistory, ...schneiderSiemensEnergyHistory, ...osatMaterialsHistory, ...edaPowerSemisHistory, ...powerSemiconductorHistory, ...equipmentExpansionHistory, ...equipmentContinuationHistory, ...equipmentPackagingHistory, ...equipmentInspectionHistory].map(record => {
+export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory, ...legrandHistory, ...schneiderSiemensEnergyHistory, ...osatMaterialsHistory, ...edaPowerSemisHistory, ...powerSemiconductorHistory, ...equipmentExpansionHistory, ...equipmentContinuationHistory, ...equipmentPackagingHistory, ...equipmentInspectionHistory, ...interconnectDataCenterHistory].map(record => {
   const override = overrideById.get(record.id);
   if (!override) return record;
   return {
