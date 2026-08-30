@@ -19,12 +19,13 @@ import edaPowerSemisHistory from '../data/financial-history-v04-batch18.json';
 import powerSemiconductorHistory from '../data/financial-history-v04-batch19.json';
 import equipmentExpansionHistory from '../data/financial-history-v04-batch20.json';
 import equipmentContinuationHistory from '../data/financial-history-v04-batch21.json';
+import equipmentPackagingHistory from '../data/financial-history-v04-batch22.json';
 import cashFlowOverrides from '../data/financial-history-v04-cashflow-overrides.json';
 import metricDefinitions from '../data/financial-metric-definitions-v04.json';
 
 const overrideById = new Map(cashFlowOverrides.map(item => [item.id, item]));
 
-export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory, ...legrandHistory, ...schneiderSiemensEnergyHistory, ...osatMaterialsHistory, ...edaPowerSemisHistory, ...powerSemiconductorHistory, ...equipmentExpansionHistory, ...equipmentContinuationHistory].map(record => {
+export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory, ...legrandHistory, ...schneiderSiemensEnergyHistory, ...osatMaterialsHistory, ...edaPowerSemisHistory, ...powerSemiconductorHistory, ...equipmentExpansionHistory, ...equipmentContinuationHistory, ...equipmentPackagingHistory].map(record => {
   const override = overrideById.get(record.id);
   if (!override) return record;
   return {
@@ -64,7 +65,7 @@ export function financialCoverage() {
 }
 
 export function unitLabel(record: FinancialRecord) {
-  const currency: Record<string, string> = { USD: '米ドル', JPY: '円', TWD: '台湾ドル', KRW: '韓国ウォン', EUR: 'ユーロ', CNY: '人民元' };
+  const currency: Record<string, string> = { USD: '米ドル', JPY: '円', TWD: '台湾ドル', KRW: '韓国ウォン', EUR: 'ユーロ', CNY: '人民元', HKD: '香港ドル' };
   const scale: Record<string, string> = { million: '百万', billion: '十億', trillion: '兆' };
   return `${currency[record.currency] ?? record.currency}・${scale[record.unit] ?? record.unit}`;
 }
