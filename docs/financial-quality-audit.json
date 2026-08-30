@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "classificationRuleVersion": 5,
+  "classificationRuleVersion": 6,
   "dataAsOf": "2026-08-30",
   "inputDigestSha256": "8a0f261311ea18ba5dab940b90a3712bac93f3a5e6f39af76547d643d179ae39",
   "inputs": {
@@ -91,6 +91,7 @@
       "rounded-source-value": "The stored JPY million value is a unit conversion from a company source reported in 0.1 billion JPY increments, not a precise JPY million cash-flow fact",
       "informal-comparative-source": "The value comes from an issuer-prepared informal comparative cash-flow overview because no formal quarterly cash-flow statement was prepared",
       "continuing-operations-cfo-reconstructed": "Continuing-operations operating cash flow is reconstructed from consolidated operating cash flow and separately disclosed discontinued-operation operating cash flow; this is reviewed scope provenance, not a scope mismatch",
+      "government-incentive-excluded-from-fcf": "Government-incentive cash proceeds are disclosed separately from gross cash Capex and are excluded from the stored Atlas FCF, even when the company adds them to its Non-GAAP FCF",
       "government-incentive-netting-unresolved": "Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved",
       "company-fcf-formula-includes-asset-sale-proceeds": "Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected",
       "company-reported-fcf": "FCF value comes from a company-reported measure",
@@ -129,7 +130,7 @@
     },
     "capexDefinitions": {
       "gross-productive-assets-cash-purchases": 4,
-      "gross-ppe-cash-purchases": 8,
+      "gross-ppe-cash-purchases": 10,
       "gross-ppe": 49,
       "ppe-plus-intangible": 74,
       "company-reported-cash-capex": 2,
@@ -137,7 +138,7 @@
       "net-capex": 28,
       "reit-or-real-estate-investment": 6,
       "not-collected": 62,
-      "unclassified": 10
+      "unclassified": 8
     },
     "operatingProfitDefinitions": {
       "direct-gaap-ifrs-operating-income": 227,
@@ -160,11 +161,12 @@
       "reconstructed-operating-income": 7,
       "net-basis-capex": 28,
       "broad-capex": 6,
-      "ppe-only": 58,
+      "ppe-only": 60,
       "asset-scope-unresolved": 2,
       "rounded-source-value": 2,
       "informal-comparative-source": 2,
       "continuing-operations-cfo-reconstructed": 1,
+      "government-incentive-excluded-from-fcf": 2,
       "government-incentive-netting-unresolved": 1,
       "company-fcf-formula-includes-asset-sale-proceeds": 2,
       "company-reported-fcf": 16,
@@ -174,7 +176,7 @@
       "cash-flow-inputs-missing": 8,
       "fcf-capex-scope-mismatch": 0,
       "derived-single-quarter": 8,
-      "unclassified-capex-definition": 10,
+      "unclassified-capex-definition": 8,
       "special-operating-profit-definition": 10
     }
   },
@@ -199,9 +201,7 @@
       "johnson-controls-fy2024",
       "johnson-controls-fy2025",
       "te-connectivity-fy2024",
-      "te-connectivity-fy2025",
-      "texas-instruments-q1-2026",
-      "texas-instruments-q2-2026"
+      "te-connectivity-fy2025"
     ],
     "nonGaapFcfAtlasFormulaAligned": [
       {
@@ -4445,7 +4445,7 @@
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
-        "gross-ppe-cash-purchases": 0,
+        "gross-ppe-cash-purchases": 2,
         "gross-ppe": 0,
         "ppe-plus-intangible": 0,
         "company-reported-cash-capex": 0,
@@ -4453,7 +4453,7 @@
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
         "not-collected": 0,
-        "unclassified": 2
+        "unclassified": 0
       },
       "operatingProfitDefinitions": {
         "direct-gaap-ifrs-operating-income": 2,
@@ -4469,7 +4469,8 @@
         "not-applicable": 2
       },
       "specialFlags": [
-        "unclassified-capex-definition"
+        "ppe-only",
+        "government-incentive-excluded-from-fcf"
       ]
     },
     {
@@ -10429,14 +10430,18 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "unclassified",
+      "capexDefinition": "gross-ppe-cash-purchases",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "unclassified-capex-definition"
+        "ppe-only",
+        "government-incentive-excluded-from-fcf"
+      ],
+      "capexDefinitionEvidenceSourceIds": [
+        "filing-ti-2026-q1-10q"
       ]
     },
     {
@@ -10454,14 +10459,18 @@
       },
       "missingMetrics": [],
       "cashFlowCoverage": "both-present",
-      "capexDefinition": "unclassified",
+      "capexDefinition": "gross-ppe-cash-purchases",
       "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "complete",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "unclassified-capex-definition"
+        "ppe-only",
+        "government-incentive-excluded-from-fcf"
+      ],
+      "capexDefinitionEvidenceSourceIds": [
+        "filing-ti-2026-q2-10q"
       ]
     },
     {
