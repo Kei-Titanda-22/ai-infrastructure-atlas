@@ -77,6 +77,7 @@ SPECIAL_FLAG_ORDER = (
     "government-incentive-excluded-from-fcf",
     "government-incentive-netting-unresolved",
     "company-fcf-formula-includes-asset-sale-proceeds",
+    "adjusted-company-fcf-not-used",
     "company-reported-fcf",
     "non-gaap-fcf-atlas-formula-aligned",
     "fcf-atlas-definition-difference",
@@ -131,6 +132,10 @@ REVIEWED_CAPEX_DEFINITIONS = {
     "shin-etsu-chemical-q1-fy2026": "company-reported-cash-capex",
     "texas-instruments-q1-2026": "gross-ppe-cash-purchases",
     "texas-instruments-q2-2026": "gross-ppe-cash-purchases",
+    "aptiv-fy2024": "gross-productive-assets-cash-purchases",
+    "aptiv-fy2025": "gross-productive-assets-cash-purchases",
+    "corning-fy2024": "gross-ppe-cash-purchases",
+    "corning-fy2025": "gross-ppe-cash-purchases",
 }
 
 # Reviewed classifications may need comparison flags or supplemental filing
@@ -177,6 +182,16 @@ REVIEWED_CAPEX_SPECIAL_FLAGS = {
         "ppe-only",
         "government-incentive-excluded-from-fcf",
     },
+    "aptiv-fy2024": {"broad-capex"},
+    "aptiv-fy2025": {"broad-capex"},
+    "corning-fy2024": {
+        "ppe-only",
+        "adjusted-company-fcf-not-used",
+    },
+    "corning-fy2025": {
+        "ppe-only",
+        "adjusted-company-fcf-not-used",
+    },
 }
 
 REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
@@ -198,6 +213,10 @@ REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
     ],
     "texas-instruments-q1-2026": ["filing-ti-2026-q1-10q"],
     "texas-instruments-q2-2026": ["filing-ti-2026-q2-10q"],
+    "aptiv-fy2024": ["sec-aptiv-2025-10k"],
+    "aptiv-fy2025": ["sec-aptiv-2025-10k"],
+    "corning-fy2024": ["sec-corning-2025-10k"],
+    "corning-fy2025": ["sec-corning-2025-10k"],
 }
 
 REVIEWED_ATLAS_GROSS_CAPEX_UNRESOLVED_REASONS = {
@@ -224,7 +243,7 @@ CATEGORY_DESCRIPTIONS = {
     },
     "capexDefinition": {
         "gross-productive-assets-cash-purchases": "Primary-source-reviewed gross cash purchases of productive assets under SEC XBRL PaymentsToAcquireProductiveAssets; taxonomy scope includes PP&E, software, and other intangible assets",
-        "gross-ppe-cash-purchases": "Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment",
+        "gross-ppe-cash-purchases": "Primary-source-reviewed gross cash purchases of PP&E, including SEC XBRL PaymentsToAcquirePropertyPlantAndEquipment and reviewed property/PP&E capital improvements reported under PaymentsForCapitalImprovements",
         "gross-ppe": "Gross/standard cash PP&E expenditure; no net, intangible, broader-asset, or real-estate qualifier detected",
         "ppe-plus-intangible": "PP&E plus intangible assets or capitalized software/development",
         "company-reported-cash-capex": "A primary-source-reviewed company cash-Capex outflow whose underlying PP&E versus PP&E-plus-intangible asset scope is not separately disclosed",
@@ -263,6 +282,7 @@ CATEGORY_DESCRIPTIONS = {
         "government-incentive-excluded-from-fcf": "Government-incentive cash proceeds are disclosed separately from gross cash Capex and are excluded from the stored Atlas FCF, even when the company adds them to its Non-GAAP FCF",
         "government-incentive-netting-unresolved": "Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved",
         "company-fcf-formula-includes-asset-sale-proceeds": "Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected",
+        "adjusted-company-fcf-not-used": "The company reports an adjusted FCF based on adjusted operating cash flow, but Atlas retains GAAP operating cash flow minus gross cash Capex",
         "company-reported-fcf": "FCF value comes from a company-reported measure",
         "non-gaap-fcf-atlas-formula-aligned": "Adjusted/Non-GAAP wording is present, but the disclosed formula matches Atlas FCF scope",
         "fcf-atlas-definition-difference": "FCF uses a definition that differs from Atlas gross cash-Capex normalization",
@@ -824,7 +844,7 @@ def build_report() -> dict[str, Any]:
     ]
     return {
         "schemaVersion": 2,
-        "classificationRuleVersion": 6,
+        "classificationRuleVersion": 7,
         "dataAsOf": max(verified_dates) if verified_dates else None,
         "inputDigestSha256": combined_input_digest(input_paths),
         "inputs": {
