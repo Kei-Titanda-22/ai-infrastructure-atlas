@@ -247,8 +247,8 @@ if cashflow_periods < 181:
     errors.append(f'v0.4 cash-flow regression: expected at least 181 FCF/Capex periods, got {cashflow_periods}')
 if len(overrides) < 12:
     errors.append(f'v0.4 cash-flow override regression: expected at least 12 overrides, got {len(overrides)}')
-if len(v04_sources) < 116:
-    errors.append(f'v0.4 source regression: expected at least 116 document sources+policies, got {len(v04_sources)}')
+if len(v04_sources) < 118:
+    errors.append(f'v0.4 source regression: expected at least 118 document sources+policies, got {len(v04_sources)}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')

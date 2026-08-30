@@ -74,6 +74,7 @@ SPECIAL_FLAG_ORDER = (
     "rounded-source-value",
     "informal-comparative-source",
     "continuing-operations-cfo-reconstructed",
+    "government-incentive-excluded-from-fcf",
     "government-incentive-netting-unresolved",
     "company-fcf-formula-includes-asset-sale-proceeds",
     "company-reported-fcf",
@@ -128,6 +129,8 @@ REVIEWED_CAPEX_DEFINITIONS = {
     "qualcomm-fy2025": "gross-productive-assets-cash-purchases",
     "shin-etsu-chemical-q1-fy2025": "company-reported-cash-capex",
     "shin-etsu-chemical-q1-fy2026": "company-reported-cash-capex",
+    "texas-instruments-q1-2026": "gross-ppe-cash-purchases",
+    "texas-instruments-q2-2026": "gross-ppe-cash-purchases",
 }
 
 # Reviewed classifications may need comparison flags or supplemental filing
@@ -166,6 +169,14 @@ REVIEWED_CAPEX_SPECIAL_FLAGS = {
         "rounded-source-value",
         "informal-comparative-source",
     },
+    "texas-instruments-q1-2026": {
+        "ppe-only",
+        "government-incentive-excluded-from-fcf",
+    },
+    "texas-instruments-q2-2026": {
+        "ppe-only",
+        "government-incentive-excluded-from-fcf",
+    },
 }
 
 REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
@@ -185,6 +196,8 @@ REVIEWED_CAPEX_EVIDENCE_SOURCE_IDS = {
     "shin-etsu-chemical-q1-fy2026": [
         "results-shin-etsu-2026-07-24-q1-fy2026"
     ],
+    "texas-instruments-q1-2026": ["filing-ti-2026-q1-10q"],
+    "texas-instruments-q2-2026": ["filing-ti-2026-q2-10q"],
 }
 
 REVIEWED_ATLAS_GROSS_CAPEX_UNRESOLVED_REASONS = {
@@ -247,6 +260,7 @@ CATEGORY_DESCRIPTIONS = {
         "rounded-source-value": "The stored JPY million value is a unit conversion from a company source reported in 0.1 billion JPY increments, not a precise JPY million cash-flow fact",
         "informal-comparative-source": "The value comes from an issuer-prepared informal comparative cash-flow overview because no formal quarterly cash-flow statement was prepared",
         "continuing-operations-cfo-reconstructed": "Continuing-operations operating cash flow is reconstructed from consolidated operating cash flow and separately disclosed discontinued-operation operating cash flow; this is reviewed scope provenance, not a scope mismatch",
+        "government-incentive-excluded-from-fcf": "Government-incentive cash proceeds are disclosed separately from gross cash Capex and are excluded from the stored Atlas FCF, even when the company adds them to its Non-GAAP FCF",
         "government-incentive-netting-unresolved": "Company policy permits government incentives to be netted against PP&E additions, but the period-specific netting amount is not disclosed; the source-verified value is retained while Atlas gross cash Capex remains unresolved",
         "company-fcf-formula-includes-asset-sale-proceeds": "Company FCF formula adds PP&E sale proceeds; the reviewed period has zero proceeds, so the stored Atlas value is unaffected",
         "company-reported-fcf": "FCF value comes from a company-reported measure",
@@ -810,7 +824,7 @@ def build_report() -> dict[str, Any]:
     ]
     return {
         "schemaVersion": 2,
-        "classificationRuleVersion": 5,
+        "classificationRuleVersion": 6,
         "dataAsOf": max(verified_dates) if verified_dates else None,
         "inputDigestSha256": combined_input_digest(input_paths),
         "inputs": {
