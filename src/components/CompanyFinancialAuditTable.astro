@@ -1,0 +1,26 @@
+---
+interface Props {
+  rows: any[];
+  interactive?: boolean;
+}
+
+const { rows, interactive = false } = Astro.props;
+---
+
+<div class="table-scroll" tabindex={interactive ? '0' : undefined} role={interactive ? 'region' : undefined} aria-label={interactive ? '財務表（横にスクロールできます）' : undefined}>
+  <table class="metrics-table financial-audit-table">
+    <thead><tr><th>指標</th><th>値</th><th>決算期間・基準日</th><th>計算式・定義</th><th>一次資料</th><th>検証状態</th></tr></thead>
+    <tbody>
+      {rows.map(row => (
+        <tr>
+          <th>{row.label}</th>
+          <td class="provenance-value">{row.value ?? row.state.label}</td>
+          <td class="provenance-detail">{row.metric.value == null ? '—' : <>{row.metric.period}<br /><span class="table-muted">基準日 {row.metric.asOf}</span></>}</td>
+          <td class="provenance-detail">{row.metric.value == null ? '—' : <>{row.formula || row.metric.basis}<br /><span class="table-muted">定義：{row.definition?.definition || row.metric.definitionId}</span></>}</td>
+          <td class="provenance-detail">{row.source ? <a class="source-link" href={row.source.url} target="_blank" rel="noreferrer">{row.source.title} ↗</a> : row.metric.calculationId ? <a class="text-link" href="#roic-calculation">Atlas計算根拠</a> : '—'}</td>
+          <td><span class={`metric-state metric-state-${row.state.kind}`}>{row.state.label}</span>{row.audit ? <span class="metric-provenance">再検証日 {row.audit.verifiedAt}</span> : null}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
