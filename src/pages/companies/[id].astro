@@ -5,11 +5,7 @@ import { getCollection } from 'astro:content';
 import { withBase } from '../../lib/paths';
 import { layerLabel, countryLabel, tagLabel, facilityTypeLabel, productInfo } from '../../lib/display-v02';
 import { getMetricAudit, getMetricState, formatMetricValue, auditFormula } from '../../lib/metrics';
-import sources from '../../data/sources.json';
-import v02Sources from '../../data/sources-v02.json';
-import documentSources from '../../data/document-sources.json';
-import pilotDocumentSources from '../../data/document-sources-pilot-v01.json';
-import facilitySources from '../../data/facility-sources.json';
+import { allSources, resolveSources, sourceById } from '../../lib/source-registry';
 import facilities from '../../data/facilities.json';
 import brandAssets from '../../data/brand-assets.json';
 import claims from '../../data/claims.json';
@@ -17,7 +13,7 @@ import sectorKpis from '../../data/sector-kpis.json';
 import sectorKpiDefinitions from '../../data/sector-kpi-definitions.json';
 import roicCalculations from '../../data/roic-calculations.json';
 import metricDefinitions from '../../data/metric-definitions.json';
-import companyEvidencePilot from '../../data/company-evidence-pilot-v01.json';
+import companyEvidencePilot from '../../data/company-evidence-pilot-v02.json';
 
 export async function getStaticPaths() {
   const companies = await getCollection('companies');
@@ -27,8 +23,6 @@ export async function getStaticPaths() {
 const { company } = Astro.props;
 const d = company.data;
 const allCompanies = await getCollection('companies');
-const allSources = [...sources, ...v02Sources, ...documentSources, ...facilitySources, ...pilotDocumentSources];
-const sourceById = new Map(allSources.map(source => [source.id, source]));
 const metricDefinitionById = new Map(metricDefinitions.map(definition => [definition.id, definition]));
 const peerIds = new Set<string>(d.competitors);
 for (const candidate of allCompanies) {
@@ -50,6 +44,20 @@ const companySources = allSources.filter(source => d.sourceIds.includes(source.i
 const brandAsset = brandAssets.find(asset => asset.companyId === company.id);
 const companyKpis = sectorKpis.filter(kpi => kpi.companyId === company.id);
 const companyRoic = roicCalculations.find(calc => calc.companyId === company.id && d.metrics.roic.calculationId === calc.id);
+const pilotFacilityClaims = pilotClaims.filter(claim => ['manufacturing-facilities','capacity-expansion'].includes(claim.category));
+const pilotRiskClaims = pilotClaims.filter(claim => claim.category === 'risks');
+const showFacilities = isEvidencePilot ? pilotFacilityClaims.length > 0 || companyFacilities.length > 0 : companyFacilities.length > 0;
+const claimSources = resolveSources(pilotSourceIds);
+const claimSourceSet = new Set(claimSources.map(source => source.id));
+const financialSourceIds = new Set([
+  ...Object.values(d.metrics).map((metric: any) => metric.sourceId).filter(Boolean),
+  ...companyKpis.map(kpi => kpi.sourceId),
+  ...Object.values(companyRoic?.inputs ?? {}).flatMap((input: any) => input.sourceIds ?? []),
+]);
+const financialSources = resolveSources(financialSourceIds).filter(source => !claimSourceSet.has(source.id));
+const primarySourceIds = new Set([...claimSourceSet, ...financialSources.map(source => source.id), ...facilitySourceIds]);
+const facilityDisplaySources = resolveSources(facilitySourceIds).filter(source => !claimSourceSet.has(source.id) && !financialSourceIds.has(source.id));
+const otherRegisteredSources = companySources.filter(source => !primarySourceIds.has(source.id));
 const kpiDefinitionById = new Map(sectorKpiDefinitions.map(definition => [definition.id, definition]));
 const metricLabels: Record<string, string> = {
   peTTM:'PER（実績）', peFY1:'PER（予想1期先）', pb:'PBR', roic:'ROIC',
@@ -57,6 +65,7 @@ const metricLabels: Record<string, string> = {
 };
 const statusLabels: Record<string, string> = { verified:'検証済み', partial:'一部検証済み', placeholder:'未検証' };
 const claimTypeLabels: Record<string,string> = { fact:'事実', analysis:'分析', estimate:'推定' };
+const pilotCategories = ['company-overview','ai-infrastructure-role','products','technology','value-chain-position','manufacturing-facilities','capacity-expansion','customer-end-market','competitive-positioning','strategy','risks'];
 
 const formatKpi = (kpi: any) => {
   const value = Number(kpi.value);
@@ -73,18 +82,22 @@ const formatRoicValue = (value: any) => {
   if (value.unit === '%') return `${Number(value.value).toLocaleString('ja-JP', { maximumFractionDigits: 2 })}%`;
   return `${Number(value.value).toLocaleString('ja-JP', { maximumFractionDigits: 1 })} ${value.unit}`;
 };
-const toc = [
+const toc = (isEvidencePilot ? [
+  ['overview','30秒でわかる'],['products','製品詳細'],['advantages','競争ポジション'],
+  ...(showFacilities ? [['facilities','主要拠点']] : []),['financials','財務・KPI'],
+  ...(pilotRiskClaims.length > 0 ? [['risks','リスク']] : []),['coverage','収録状況'],['sources','出典']
+] : [
   ['overview','概要'],['position','バリューチェーン'],['products','主力製品'],['evidence','主張と根拠'],['advantages','競争優位'],
   ['facilities','主要拠点'],['financials','財務'],['kpi','業種固有KPI'],['competitors','競合'],['risks','リスク'],['sources','出典']
-].filter(([id]) => {
+]).filter(([id]) => {
   if (id === 'evidence') return !isEvidencePilot && companyClaims.length > 0;
-  if (id === 'facilities') return isEvidencePilot || companyFacilities.length > 0;
+  if (id === 'facilities') return showFacilities;
   if (id === 'kpi') return companyKpis.length > 0;
   return true;
 });
 ---
 <BaseLayout title={d.japaneseName || d.name} description={d.summary} indexable>
-  <article class={`sector-page sector-${d.primaryLayer.replace(/[^a-zA-Z]/g,'-').toLowerCase()}`}>
+  <article class:list={[`sector-page sector-${d.primaryLayer.replace(/[^a-zA-Z]/g,'-').toLowerCase()}`, { 'evidence-pilot': isEvidencePilot }]}>
     <span hidden data-pagefind-filter={`layer:${d.primaryLayer}`}></span>
     <span hidden data-pagefind-filter={`country:${d.country}`}></span>
     {d.ticker ? <span hidden data-pagefind-meta={`ticker:${d.ticker}`}></span> : null}
@@ -109,34 +122,38 @@ const toc = [
       </div>
       <dl class="snapshot">
         <div class="snapshot-row"><dt>主領域</dt><dd><a class="text-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></dd></div>
-        <div class="snapshot-row"><dt>情報確認状況</dt><dd>{statusLabels[d.sourceStatus] ?? d.sourceStatus}</dd></div>
+        {!isEvidencePilot && <div class="snapshot-row"><dt>情報確認状況</dt><dd>{statusLabels[d.sourceStatus] ?? d.sourceStatus}</dd></div>}
         <div class="snapshot-row"><dt>最終確認日</dt><dd class="mono">{d.lastReviewed}</dd></div>
       </dl>
     </div>
 
     <div class="shell detail-grid section">
       <div class="company-research">
+        {isEvidencePilot && <nav class="pilot-mobile-toc" aria-label="ページ内セクション"><span>ページ内</span>{toc.map(([id,label]) => <a href={`#${id}`}>{label}</a>)}</nav>}
         <section class="company-section" id="overview">
-          <div class="section-classification">編集情報</div>
-          <h2>概要</h2>
+          <div class="section-classification">30秒でわかる</div>
+          <h2>{isEvidencePilot ? '会社・製品・競争力' : '概要'}</h2>
           {isEvidencePilot
-            ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['company-overview']} />
+            ? <div class="pilot-summary-grid">
+                <section class="pilot-summary-unit"><h3>何をする会社か</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} categories={['company-overview']} priorities={['P1']} showCoverage={false} compact /></section>
+                <section class="pilot-summary-unit pilot-summary-position"><h3>AIインフラでの位置</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} categories={['ai-infrastructure-role','value-chain-position']} priorities={['P1']} showCoverage={false} compact /></section>
+                <section class="pilot-summary-unit"><h3>主力製品・技術</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} categories={['products']} priorities={['P1']} showCoverage={false} compact /></section>
+                <section class="pilot-summary-unit"><h3>なぜ競争上重要か</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} categories={['competitive-positioning','technology']} priorities={['P1']} showCoverage={false} compact /></section>
+              </div>
             : <p class="lead">{d.summary}</p>}
         </section>
 
-        <section class="company-section" id="position">
+        {!isEvidencePilot && <section class="company-section" id="position">
           <div class="section-classification analysis-label">分析</div>
           <h2>バリューチェーン上の位置</h2>
-          {isEvidencePilot
-            ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['ai-infrastructure-role','value-chain-position']} />
-            : <p>{d.aiRole}</p>}
-        </section>
+          <p>{d.aiRole}</p>
+        </section>}
 
         <section class="company-section" id="products">
           <div class="section-classification">企業・製品情報</div>
-          <h2>主力製品</h2>
+          <h2>{isEvidencePilot ? '製品・技術の詳細' : '主力製品'}</h2>
           {isEvidencePilot
-            ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['products','technology','customer-end-market']} />
+            ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['products','technology','customer-end-market']} priorities={['P2','P3']} />
             : <dl class="product-list">
             {d.products.map(product => { const info = productInfo(product); return <div class="product-row"><dt>{info.label}</dt><dd>{info.description}</dd></div>; })}
           </dl>}
@@ -163,17 +180,18 @@ const toc = [
 
         <section class="company-section" id="advantages">
           <div class="section-classification analysis-label">分析</div>
-          <h2>競争優位</h2>
+          <h2>{isEvidencePilot ? '競争ポジション' : '競争優位'}</h2>
           {isEvidencePilot
-            ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['competitive-positioning','strategy']} />
+            ? <><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['competitive-positioning','strategy']} priorities={['P2','P3']} />
+                <div class="pilot-competitors"><h3>主な比較対象</h3>{peers.length ? <div class="link-list">{peers.map(peer => <a class="text-link" href={withBase(`companies/${peer.id}/`)}>{peer.data.japaneseName || peer.data.name}</a>)}</div> : <p>比較対象は一次資料の確認後に追加します。</p>}</div></>
             : <ul class="research-list">{d.strengths.map(item => <li>{item}</li>)}</ul>}
         </section>
 
-        {(isEvidencePilot || companyFacilities.length > 0) && (
+        {showFacilities && (
           <section class="company-section" id="facilities">
             <div class="section-classification">一次資料</div>
             <h2>主要拠点</h2>
-            {isEvidencePilot && <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['manufacturing-facilities','capacity-expansion']} />}
+            {isEvidencePilot && <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['manufacturing-facilities','capacity-expansion']} priorities={['P2','P3']} />}
             {companyFacilities.length > 0 && <><p class="section-intro">一次情報で確認できた主要製造・研究拠点のみ掲載しています。全拠点の網羅表ではありません。</p>
             <div class="table-scroll">
               <table class="metrics-table facilities-table">
@@ -188,9 +206,9 @@ const toc = [
 
         <section class="company-section" id="financials">
           <div class="section-classification">客観データ</div>
-          <h2>財務</h2>
+          <h2>{isEvidencePilot ? '財務・主要KPI' : '財務'}</h2>
           <p class="section-intro">値だけでなく、決算期間・基準日・定義・一次資料・検証状態を一体で表示します。欠損も理由を隠しません。</p>
-          <div class="table-scroll">
+          <div class="table-scroll" tabindex={isEvidencePilot ? '0' : undefined} role={isEvidencePilot ? 'region' : undefined} aria-label={isEvidencePilot ? '財務表（横にスクロールできます）' : undefined}>
             <table class="metrics-table financial-audit-table">
               <thead><tr><th>指標</th><th>値</th><th>決算期間・基準日</th><th>計算式・定義</th><th>一次資料</th><th>検証状態</th></tr></thead>
               <tbody>
@@ -216,6 +234,9 @@ const toc = [
               </tbody>
             </table>
           </div>
+          {isEvidencePilot && companyKpis.length > 0 && <div class="pilot-kpi-subsection" id="kpi"><h3>業種固有KPI</h3><div class="table-scroll" tabindex="0" role="region" aria-label="業種固有KPI表（横にスクロールできます）"><table class="metrics-table provenance-table"><thead><tr><th>指標</th><th>値</th><th>基準日・決算期間</th><th>一次資料・定義</th></tr></thead><tbody>
+            {companyKpis.map(kpi => { const definition = kpiDefinitionById.get(kpi.definitionId); const source = sourceById.get(kpi.sourceId); return <tr><th>{definition?.name ?? kpi.definitionId}</th><td class="provenance-value">{formatKpi(kpi)}</td><td class="provenance-detail">{kpi.period}<br /><span class="table-muted">基準日 {kpi.asOf}</span></td><td class="provenance-detail">{definition?.description || kpi.basis}{source ? <><br /><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a></> : null}</td></tr>; })}
+          </tbody></table></div></div>}
         </section>
 
         {companyRoic && (
@@ -237,7 +258,7 @@ const toc = [
           </section>
         )}
 
-        {companyKpis.length > 0 && (
+        {!isEvidencePilot && companyKpis.length > 0 && (
           <section class="company-section" id="kpi">
             <div class="section-classification">客観データ</div>
             <h2>業種固有KPI</h2>
@@ -247,17 +268,24 @@ const toc = [
           </section>
         )}
 
-        <section class="company-section" id="competitors"><div class="section-classification">比較対象</div><h2>競合</h2>{peers.length ? <div class="link-list">{peers.map(peer => <a class="text-link" href={withBase(`companies/${peer.id}/`)}>{peer.data.japaneseName || peer.data.name}</a>)}</div> : <p>競合関係は一次資料の確認後に追加します。</p>}</section>
+        {!isEvidencePilot && <section class="company-section" id="competitors"><div class="section-classification">比較対象</div><h2>競合</h2>{peers.length ? <div class="link-list">{peers.map(peer => <a class="text-link" href={withBase(`companies/${peer.id}/`)}>{peer.data.japaneseName || peer.data.name}</a>)}</div> : <p>競合関係は一次資料の確認後に追加します。</p>}</section>}
 
-        <section class="company-section" id="risks"><div class="section-classification analysis-label">分析</div><h2>リスク・確認点</h2>{isEvidencePilot ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['risks']} /> : <ul class="research-list">{d.risks.map(item => <li>{item}</li>)}</ul>}</section>
+        {(!isEvidencePilot || pilotRiskClaims.length > 0) && <section class="company-section" id="risks"><div class="section-classification analysis-label">分析</div><h2>リスク・確認点</h2>{isEvidencePilot ? <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={['risks']} priorities={['P2','P3']} /> : <ul class="research-list">{d.risks.map(item => <li>{item}</li>)}</ul>}</section>}
 
-        <section class="company-section" id="sources"><div class="section-classification">証拠管理</div><h2>出典</h2><div class="source-table">{companySources.map(source => <div class="source-row"><span class="source-class">一次資料</span><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><span class="table-muted">取得 {source.retrievedAt}</span></div>)}</div><p class="section-intro">最終確認日：{d.lastReviewed}</p></section>
+        {isEvidencePilot && <section class="company-section" id="coverage"><div class="section-classification">データ品質</div><h2>収録状況</h2><p class="section-intro">不足理由を隠さず、詳細は必要なときだけ確認できます。</p><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} coverage={pilotCoverage} categories={pilotCategories} priorities={[]} /></section>}
+
+        <section class="company-section" id="sources"><div class="section-classification">証拠管理</div><h2>出典</h2>{isEvidencePilot ? <details class="source-disclosure"><summary>このページで使う出典 {claimSources.length + financialSources.length + facilityDisplaySources.length}件</summary><div class="source-groups">
+          {claimSources.length > 0 && <section><h3>Claimの根拠</h3><div class="source-table">{claimSources.map(source => <div class="source-row"><span class="source-class">Claim</span><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><span class="table-muted">取得 {source.retrievedAt}</span></div>)}</div></section>}
+          {financialSources.length > 0 && <section><h3>財務・KPI</h3><div class="source-table">{financialSources.map(source => <div class="source-row"><span class="source-class">財務/KPI</span><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><span class="table-muted">取得 {source.retrievedAt}</span></div>)}</div></section>}
+          {facilityDisplaySources.length > 0 && <section><h3>拠点</h3><div class="source-table">{facilityDisplaySources.map(source => <div class="source-row"><span class="source-class">拠点</span><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><span class="table-muted">取得 {source.retrievedAt}</span></div>)}</div></section>}
+          {otherRegisteredSources.length > 0 && <details class="other-sources"><summary>その他の登録Source {otherRegisteredSources.length}件</summary><div class="source-table">{otherRegisteredSources.map(source => <div class="source-row"><span class="source-class">登録のみ</span><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><span class="table-muted">取得 {source.retrievedAt}</span></div>)}</div></details>}
+        </div></details> : <div class="source-table">{companySources.map(source => <div class="source-row"><span class="source-class">一次資料</span><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><span class="table-muted">取得 {source.retrievedAt}</span></div>)}</div>}<p class="section-intro">最終確認日：{d.lastReviewed}</p></section>
       </div>
 
       <aside class="company-sidebar">
         <nav class="company-toc" aria-label="この企業ページの目次"><div class="toc-title">このページ</div>{toc.map(([id,label]) => <a href={`#${id}`}>{label}</a>)}</nav>
-        <section class="sidebar-section"><h3>所属領域</h3><div class="tags">{d.layers.map(layer => <a class="tag-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(layer)}`}>{layerLabel(layer)}</a>)}</div></section>
-        <section class="sidebar-section"><h3>最終確認日</h3><p class="mono">{d.lastReviewed}</p></section>
+        {!isEvidencePilot && <><section class="sidebar-section"><h3>所属領域</h3><div class="tags">{d.layers.map(layer => <a class="tag-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(layer)}`}>{layerLabel(layer)}</a>)}</div></section>
+        <section class="sidebar-section"><h3>最終確認日</h3><p class="mono">{d.lastReviewed}</p></section></>}
       </aside>
     </div>
   </article>
