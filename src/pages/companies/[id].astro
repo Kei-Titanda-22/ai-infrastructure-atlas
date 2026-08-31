@@ -79,6 +79,7 @@ const metricLabels: Record<string, string> = {
 const statusLabels: Record<string, string> = { verified:'検証済み', partial:'一部検証済み', placeholder:'未検証' };
 const claimTypeLabels: Record<string,string> = { fact:'事実', analysis:'分析', estimate:'推定' };
 const pilotCategories = ['company-overview','ai-infrastructure-role','products','technology','value-chain-position','manufacturing-facilities','capacity-expansion','customer-end-market','competitive-positioning','strategy','risks'];
+const hasAtlasAnalysis = (categories: string[], priorities: string[]) => pilotClaims.some(claim => categories.includes(claim.category) && priorities.includes(claim.priority) && claim.claimType === 'atlas-analysis');
 
 const formatKpi = (kpi: any) => {
   const value = Number(kpi.value);
@@ -161,19 +162,19 @@ const toc = (isEvidencePilot ? [
         <section class="company-section" id={isEvidencePilot ? 'research' : 'overview'}>
           {isEvidencePilot ? <h2>企業リサーチ</h2> : <><div class="section-classification">編集情報</div><h2>概要</h2></>}
           {isEvidencePilot
-            ? <><p class="pilot-analysis-legend"><span aria-hidden="true"></span>左罫線はAtlasによる分析</p><div class="pilot-summary-grid">
-                <section class="pilot-summary-unit pilot-summary-position"><h3>AIインフラでの位置</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['ai-infrastructure-role','value-chain-position']} priorities={['P1']} showCoverage={false} compact /></section>
-                <section class="pilot-summary-unit"><h3>競争優位</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['competitive-positioning','technology']} priorities={['P1']} showCoverage={false} compact /></section>
-                <section class="pilot-summary-unit"><h3>主要製品・技術</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['products']} priorities={['P1']} showCoverage={false} compact /></section>
-                {pilotMainRiskClaims.length > 0 && <section class="pilot-summary-unit pilot-risk-summary"><h3>リスク・確認点</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['risks']} priorities={['P1','P2']} showCoverage={false} compact flattenSecondary /></section>}
+            ? <><div class="pilot-summary-grid">
+                <section class="pilot-summary-unit pilot-summary-position"><h3>AIインフラでの位置</h3>{hasAtlasAnalysis(['ai-infrastructure-role','value-chain-position'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['ai-infrastructure-role','value-chain-position']} priorities={['P1']} showCoverage={false} compact /></section>
+                <section class="pilot-summary-unit"><h3>競争優位</h3>{hasAtlasAnalysis(['competitive-positioning','technology'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['competitive-positioning','technology']} priorities={['P1']} showCoverage={false} compact /></section>
+                <section class="pilot-summary-unit"><h3>主要製品・技術</h3>{hasAtlasAnalysis(['products'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['products']} priorities={['P1']} showCoverage={false} compact /></section>
+                {pilotMainRiskClaims.length > 0 && <section class="pilot-summary-unit pilot-risk-summary"><h3>リスク・確認点</h3>{hasAtlasAnalysis(['risks'], ['P1','P2']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['risks']} priorities={['P1','P2']} showCoverage={false} compact flattenSecondary /></section>}
               </div></>
             : <p class="lead">{d.summary}</p>}
           {isEvidencePilot && <details class="pilot-research-supplement">
             <summary>補足リサーチ</summary>
             <div class="pilot-supplement-grid">
-              <section><h3>製品・技術・顧客</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} coverage={pilotCoverage} categories={['products','technology','customer-end-market']} priorities={['P2','P3']} showCoverage={false} flattenSecondary /></section>
-              <section><h3>競争・戦略</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} coverage={pilotCoverage} categories={['competitive-positioning','strategy']} priorities={['P2','P3']} showCoverage={false} flattenSecondary /></section>
-              {pilotSupplementRiskClaims.length > 0 && <section><h3>リスク・確認点</h3><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} coverage={pilotCoverage} categories={['risks']} priorities={['P3']} showCoverage={false} flattenSecondary /></section>}
+              <section><h3>製品・技術・顧客</h3>{hasAtlasAnalysis(['products','technology','customer-end-market'], ['P2','P3']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} coverage={pilotCoverage} categories={['products','technology','customer-end-market']} priorities={['P2','P3']} showCoverage={false} flattenSecondary /></section>
+              <section><h3>競争・戦略</h3>{hasAtlasAnalysis(['competitive-positioning','strategy'], ['P2','P3']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} coverage={pilotCoverage} categories={['competitive-positioning','strategy']} priorities={['P2','P3']} showCoverage={false} flattenSecondary /></section>
+              {pilotSupplementRiskClaims.length > 0 && <section><h3>リスク・確認点</h3>{hasAtlasAnalysis(['risks'], ['P3']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} coverage={pilotCoverage} categories={['risks']} priorities={['P3']} showCoverage={false} flattenSecondary /></section>}
             </div>
           </details>}
         </section>
@@ -221,6 +222,7 @@ const toc = (isEvidencePilot ? [
           <section class="company-section" id="facilities">
             <div class="section-classification">一次資料</div>
             <h2>主要拠点</h2>
+            {isEvidencePilot && hasAtlasAnalysis(['manufacturing-facilities','capacity-expansion'], ['P2','P3']) && <p class="pilot-analysis-label">Atlasによる分析</p>}
             {isEvidencePilot && <CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} coverage={pilotCoverage} categories={['manufacturing-facilities','capacity-expansion']} priorities={['P2','P3']} showCoverage={false} flattenSecondary />}
             {companyFacilities.length > 0 && <><p class="section-intro">一次情報で確認できた主要製造・研究拠点のみ掲載しています。全拠点の網羅表ではありません。</p>
             <div class="table-scroll">
