@@ -4,6 +4,7 @@ import '../styles/data-evidence-v05.css';
 import '../styles/v02-expansion.css';
 import '../styles/financial-v04.css';
 import '../styles/text-contrast.css';
+import '../styles/global-visual-v01.css';
 import '../styles/company-evidence-v02.css';
 import { financialHistory } from '../lib/financial-history';
 import Header from '../components/Header.astro';
@@ -14,11 +15,13 @@ interface Props {
   title?: string;
   description?: string;
   indexable?: boolean;
+  pageClass?: string;
 }
 const {
   title = 'AI Infrastructure Atlas',
   description = '半導体・AIインフラ企業を横断的に調査・比較する個人用リサーチデータベース',
   indexable = false,
+  pageClass,
 } = Astro.props;
 const pageTitle = title === 'AI Infrastructure Atlas' ? title : `${title} | AI Infrastructure Atlas`;
 const financialCompanyIds = [...new Set(financialHistory.map(record => record.companyId))].join(',');
@@ -37,7 +40,7 @@ const isComparePage = Astro.url.pathname.includes('/compare');
   </head>
   <body>
     <Header />
-    <main class="site-main" data-pagefind-body={indexable || undefined} data-financial-company-ids={financialCompanyIds}>
+    <main class:list={['site-main', pageClass]} data-pagefind-body={indexable || undefined} data-financial-company-ids={financialCompanyIds}>
       <slot />
     </main>
     <Footer />

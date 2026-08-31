@@ -34,7 +34,7 @@ const technologyIdsForTags = (companyTags: string[]) => Object.entries(filterCon
   .filter(([, filter]) => filter.tags.some(tag => companyTags.includes(tag)))
   .map(([technologyId]) => technologyId);
 ---
-<BaseLayout title="企業一覧">
+<BaseLayout title="企業一覧" pageClass="global-visual-pilot global-visual-companies">
   <header class="page-head">
     <div class="shell">
       <span class="eyebrow">企業データベース</span>
