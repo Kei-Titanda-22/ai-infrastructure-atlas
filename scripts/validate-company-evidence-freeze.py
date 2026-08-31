@@ -263,7 +263,7 @@ def main() -> int:
         if hook not in company_page:
             fail(errors, f"Evidence drawer interaction hook is missing: {hook}")
 
-    page_hooks = ["source-bibliography", "pilot-snapshot-rail", "pilot-analysis-label", "Atlasによる分析"]
+    page_hooks = ["source-bibliography", "pilot-competitors", "pilot-analysis-label", "Atlasによる分析"]
     for hook in page_hooks:
         if hook not in company_page and hook not in pilot_style:
             fail(errors, f"frozen Company page hook is missing: {hook}")

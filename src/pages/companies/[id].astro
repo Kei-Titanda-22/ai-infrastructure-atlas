@@ -141,6 +141,7 @@ const toc = (isEvidencePilot ? [
               {d.ticker ? <><span class="mono">{d.ticker}</span><span>·</span><span>{d.exchange}</span><span>·</span></> : <><span>非上場</span><span>·</span></>}
               <a href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a>
               {isEvidencePilot && <><span>·</span><a href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></>}
+              {isEvidencePilot && <><span>·</span><span class="company-last-reviewed">最終確認 {d.lastReviewed}</span></>}
             </div>
             <div class="company-ja">{d.officialName} · 読み：{d.reading}</div>
           </div>
@@ -172,7 +173,7 @@ const toc = (isEvidencePilot ? [
           {isEvidencePilot
             ? <><div class="pilot-summary-grid">
                 <section class="pilot-summary-unit pilot-summary-position"><h3>AIインフラでの位置</h3>{hasAtlasAnalysis(['ai-infrastructure-role','value-chain-position'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['ai-infrastructure-role','value-chain-position']} priorities={['P1']} showCoverage={false} compact /></section>
-                <section class="pilot-summary-unit"><h3>競争優位</h3>{hasAtlasAnalysis(['competitive-positioning','technology'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['competitive-positioning','technology']} priorities={['P1']} showCoverage={false} compact /></section>
+                <section class="pilot-summary-unit"><h3>競争優位</h3>{hasAtlasAnalysis(['competitive-positioning','technology'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['competitive-positioning','technology']} priorities={['P1']} showCoverage={false} compact />{peers.length > 0 && <div class="pilot-competitors"><h4>主要比較対象</h4><div class="link-list">{peers.map(peer => <a class="text-link" href={withBase(`companies/${peer.id}/`)}>{peer.data.japaneseName || peer.data.name}</a>)}</div></div>}</section>
                 <section class="pilot-summary-unit"><h3>主要製品・技術</h3>{hasAtlasAnalysis(['products'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['products']} priorities={['P1']} showCoverage={false} compact /></section>
                 {pilotMainRiskClaims.length > 0 && <section class="pilot-summary-unit pilot-risk-summary"><h3>リスク・確認点</h3>{hasAtlasAnalysis(['risks'], ['P1','P2']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['risks']} priorities={['P1','P2']} showCoverage={false} compact flattenSecondary /></section>}
               </div></>
@@ -309,21 +310,11 @@ const toc = (isEvidencePilot ? [
         </> : <><div class="source-table">{companySources.map(source => <div class="source-row"><span class="source-class">一次資料</span><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><span class="table-muted">取得 {source.retrievedAt}</span></div>)}</div><p class="section-intro">最終確認日：{d.lastReviewed}</p></>}</section>
       </div>
 
-      <aside class="company-sidebar">
-        {isEvidencePilot ? <section class="pilot-snapshot-rail" aria-labelledby="pilot-snapshot-title">
-          <h2 id="pilot-snapshot-title">企業スナップショット</h2>
-          <dl>
-            <div><dt>主領域</dt><dd><a class="text-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></dd></div>
-            <div><dt>市場</dt><dd>{d.ticker ? d.exchange : '非上場'}</dd></div>
-            <div><dt>Ticker</dt><dd class="mono">{d.ticker || '—'}</dd></div>
-            <div><dt>本社国</dt><dd><a class="text-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a></dd></div>
-            <div><dt>最終確認</dt><dd class="mono">{d.lastReviewed}</dd></div>
-          </dl>
-          {peers.length > 0 && <div class="pilot-snapshot-peers"><h3>主要比較対象</h3><div class="link-list">{peers.map(peer => <a class="text-link" href={withBase(`companies/${peer.id}/`)}>{peer.data.japaneseName || peer.data.name}</a>)}</div></div>}
-        </section> : <nav class="company-toc" aria-label="この企業ページの目次"><div class="toc-title">このページ</div>{toc.map(([id,label]) => <a href={`#${id}`}>{label}</a>)}</nav>}
-        {!isEvidencePilot && <><section class="sidebar-section"><h3>所属領域</h3><div class="tags">{d.layers.map(layer => <a class="tag-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(layer)}`}>{layerLabel(layer)}</a>)}</div></section>
-        <section class="sidebar-section"><h3>最終確認日</h3><p class="mono">{d.lastReviewed}</p></section></>}
-      </aside>
+      {!isEvidencePilot && <aside class="company-sidebar">
+        <nav class="company-toc" aria-label="この企業ページの目次"><div class="toc-title">このページ</div>{toc.map(([id,label]) => <a href={`#${id}`}>{label}</a>)}</nav>
+        <section class="sidebar-section"><h3>所属領域</h3><div class="tags">{d.layers.map(layer => <a class="tag-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(layer)}`}>{layerLabel(layer)}</a>)}</div></section>
+        <section class="sidebar-section"><h3>最終確認日</h3><p class="mono">{d.lastReviewed}</p></section>
+      </aside>}
     </div>
     <DisplayTerminologyHelper />
   </article>

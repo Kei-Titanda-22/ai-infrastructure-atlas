@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import DisplayTerminologyHelper from '../components/DisplayTerminologyHelper.astro';
 import valueChain from '../data/value-chain.json';
 import { withBase } from '../lib/paths';
 
@@ -21,7 +22,7 @@ const linkHref = (link: any) => link.technology
     </div>
   </header>
 
-  <div class="shell section">
+  <div class="shell section" data-terminology-scope>
     <div class="map-note">読み方：縦方向は需要・製品の流れを簡略化したものです。半導体製造装置はファウンドリとメモリ製造を支える「製造側の入力」であり、すべての工程が完全な直列関係にあることを意味しません。</div>
     <div class="value-chain-map" aria-label="AIインフラのバリューチェーン工程図">
       {valueChain.map((stage, index) => (
@@ -38,5 +39,6 @@ const linkHref = (link: any) => link.technology
         </div>
       ))}
     </div>
+    <DisplayTerminologyHelper />
   </div>
 </BaseLayout>
