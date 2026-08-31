@@ -1,0 +1,66 @@
+/* Global Visual System Correction Pass v0.2: presentation-only reading fixes. */
+
+.page-head .lead {
+  max-width: 88ch;
+  color: var(--text);
+  line-height: 1.68;
+  text-wrap: pretty;
+}
+
+.home-intro-copy,
+.section-heading p,
+.map-note,
+.company-section p,
+.method-card p {
+  text-wrap: pretty;
+}
+
+.global-visual-pilot .page-head .lead,
+.global-visual-pilot .section-heading p,
+.global-visual-pilot .map-note,
+.global-visual-financials .financial-selector p {
+  color: var(--text);
+}
+
+.data-table th,
+.data-table td,
+.metrics-table th,
+.metrics-table td,
+.compare-table th,
+.compare-table td {
+  padding: 7px 9px;
+}
+
+.company-index-table thead th,
+.metrics-table thead th,
+.compare-table thead th,
+.compare-table tbody th,
+.compare-section-row th,
+.compare-section-row td {
+  background: var(--surface) !important;
+}
+
+.table-number,
+.provenance-value,
+.compare-value,
+.financial-chart-value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.company-last-reviewed {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 620px) {
+  .page-head .lead { line-height: 1.62; }
+  .data-table th,
+  .data-table td,
+  .metrics-table th,
+  .metrics-table td,
+  .compare-table th,
+  .compare-table td { padding: 7px 8px; }
+}

@@ -12,7 +12,7 @@ import { displayTerminology } from '../lib/display-terminology';
     if (!article) return;
 
     const terms = JSON.parse(config.dataset.displayTerminology || '[]') as Array<{ term: string; description: string }>;
-    const scopes = article.querySelectorAll<HTMLElement>('.pilot-hero-thesis, .company-research');
+    const scopes = article.querySelectorAll<HTMLElement>('.pilot-hero-thesis, .company-research, .value-chain-stage p, .value-chain-links');
 
     for (const item of terms) {
       let annotated = false;
@@ -27,6 +27,17 @@ import { displayTerminology } from '../lib/display-terminology';
           const value = node.data;
           const index = value.indexOf(item.term);
           const inClosedDisclosure = parent?.closest('details:not([open])');
+
+          const termLink = parent?.closest<HTMLAnchorElement>('a');
+
+          if (parent && termLink && index >= 0 && !inClosedDisclosure) {
+            termLink.classList.add('display-term-link');
+            termLink.title = item.description;
+            termLink.dataset.description = item.description;
+            termLink.setAttribute('aria-label', `${termLink.textContent?.trim()}：${item.description}`);
+            annotated = true;
+            break;
+          }
 
           if (parent && index >= 0 && !parent.closest(blockedSelector) && !inClosedDisclosure) {
             const abbreviation = document.createElement('abbr');
@@ -54,7 +65,8 @@ import { displayTerminology } from '../lib/display-terminology';
 </script>
 
 <style>
-  :global(.display-term) {
+  :global(.display-term),
+  :global(.display-term-link) {
     position: relative;
     border-bottom: 1px dotted currentColor;
     text-decoration: none;
@@ -62,13 +74,16 @@ import { displayTerminology } from '../lib/display-terminology';
     cursor: help;
   }
 
-  :global(.display-term:focus-visible) {
+  :global(.display-term:focus-visible),
+  :global(.display-term-link:focus-visible) {
     outline: 2px solid var(--focus, #0057b8);
     outline-offset: 2px;
   }
 
   :global(.display-term:hover::after),
-  :global(.display-term:focus-visible::after) {
+  :global(.display-term:focus-visible::after),
+  :global(.display-term-link:hover::after),
+  :global(.display-term-link:focus-visible::after) {
     position: absolute;
     top: calc(100% + 4px);
     left: 0;
@@ -89,7 +104,9 @@ import { displayTerminology } from '../lib/display-terminology';
 
   @media (max-width: 520px) {
     :global(.display-term:hover::after),
-    :global(.display-term:focus-visible::after) {
+    :global(.display-term:focus-visible::after),
+    :global(.display-term-link:hover::after),
+    :global(.display-term-link:focus-visible::after) {
       position: fixed;
       inset: auto 16px 16px;
       z-index: 100;
