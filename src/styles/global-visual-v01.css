@@ -1,0 +1,332 @@
+/* Global Visual System v0.1 pilot.
+   Scope is intentionally limited to the five representative routes that opt in
+   through BaseLayout.pageClass. Company Evidence and Compare remain untouched. */
+
+.global-visual-pilot {
+  --max: 1180px;
+  --muted: #59616a;
+  --visual-rule: #cfd4d8;
+  --visual-control-height: 44px;
+  --visual-space-section: 32px;
+}
+
+.global-visual-pilot .page-head {
+  padding: 23px 0 16px;
+}
+
+.global-visual-pilot .page-head h1 {
+  margin-bottom: 5px;
+  font-size: clamp(29px, 3.4vw, 39px);
+}
+
+.global-visual-pilot .page-head .lead {
+  max-width: 82ch;
+  font-size: 15px;
+  line-height: 1.72;
+}
+
+.global-visual-pilot .section {
+  padding: var(--visual-space-section) 0 38px;
+}
+
+.global-visual-pilot .section-heading {
+  gap: 32px;
+  margin-bottom: 15px;
+}
+
+.global-visual-pilot .section-heading p {
+  max-width: 68ch;
+  line-height: 1.65;
+}
+
+.global-visual-pilot .control,
+.global-visual-pilot .primary-button {
+  min-height: var(--visual-control-height);
+}
+
+.global-visual-pilot .primary-button {
+  background: #26313a;
+  border-color: #26313a;
+}
+
+.global-visual-pilot .primary-button:hover {
+  background: #101820;
+  border-color: #101820;
+}
+
+.global-visual-pilot .eyebrow,
+.global-visual-pilot .mono,
+.global-visual-pilot .table-number,
+.global-visual-pilot .financial-summary strong,
+.global-visual-pilot .financial-chart-latest strong {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Home: compact opening statement and keep the value-chain visualization flat. */
+.global-visual-home .home-intro {
+  padding: 29px 0 22px;
+}
+
+.global-visual-home .home-intro h1 {
+  margin-bottom: 4px;
+  font-size: clamp(31px, 3.9vw, 42px);
+}
+
+.global-visual-home .home-intro-copy {
+  margin-bottom: 15px;
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.global-visual-home .db-status {
+  max-width: none;
+  margin-top: 15px;
+}
+
+.global-visual-home .db-status > div {
+  padding: 8px 10px;
+}
+
+.global-visual-home .home-value-chain {
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  background: transparent;
+}
+
+.global-visual-home .home-stage {
+  min-width: 0;
+  padding: 11px 10px 12px;
+}
+
+.global-visual-home .home-stage-links {
+  gap: 2px;
+  margin-top: 7px;
+}
+
+.global-visual-home .home-stage-links a,
+.global-visual-atlas .value-chain-links a {
+  color: #345774;
+  text-decoration: none;
+}
+
+.global-visual-home .home-stage-links a:hover,
+.global-visual-home .home-stage-links a:focus-visible,
+.global-visual-atlas .value-chain-links a:hover,
+.global-visual-atlas .value-chain-links a:focus-visible {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.global-visual-home .table-scroll {
+  background: transparent;
+  border-right: 0;
+  border-left: 0;
+}
+
+.global-visual-home .update-table th,
+.global-visual-home .update-table td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* Companies: the filter toolbar is a control row, not a framed application card. */
+.global-visual-companies .toolbar {
+  padding: 12px 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--visual-rule);
+  border-bottom: 1px solid var(--visual-rule);
+}
+
+.global-visual-companies .company-table-scroll {
+  background: transparent;
+  border-right: 0;
+  border-left: 0;
+}
+
+.global-visual-companies .company-index-table thead th {
+  box-shadow: none;
+}
+
+.global-visual-companies .company-index-table th,
+.global-visual-companies .company-index-table td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+/* Atlas: keep the map semantics, but remove quote/callout styling. */
+.global-visual-atlas .map-note {
+  max-width: 96ch;
+  margin-bottom: 14px;
+  padding: 9px 0;
+  border: 0;
+  border-top: 1px solid var(--visual-rule);
+  border-bottom: 1px solid var(--visual-rule);
+  line-height: 1.65;
+}
+
+.global-visual-atlas .value-chain-map {
+  max-width: none;
+}
+
+.global-visual-atlas .value-chain-stage {
+  grid-template-columns: 190px minmax(240px, .9fr) minmax(260px, 1.1fr);
+  gap: 22px;
+  padding: 16px 10px 21px;
+  border-left-width: 3px;
+  background: transparent;
+}
+
+.global-visual-atlas .value-chain-arrow {
+  left: 18px;
+}
+
+/* Financials: data strips and ruled figures replace dashboard-style frames. */
+.global-visual-financials .financial-summary {
+  margin-bottom: 15px;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--visual-rule);
+  border-bottom: 1px solid var(--visual-rule);
+}
+
+.global-visual-financials .financial-summary > div {
+  min-height: 70px;
+  padding: 10px 13px;
+}
+
+.global-visual-financials .financial-summary strong {
+  font-size: 22px;
+}
+
+.global-visual-financials .financial-selector {
+  padding: 12px 0;
+  margin-bottom: 24px;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--visual-rule);
+  border-bottom: 1px solid var(--visual-rule);
+}
+
+.global-visual-financials .financial-period-block {
+  margin: 19px 0 26px;
+}
+
+.global-visual-financials .financial-chart-grid {
+  gap: 24px;
+}
+
+.global-visual-financials .financial-chart {
+  padding: 13px 0 11px;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--visual-rule);
+  border-bottom: 1px solid var(--visual-rule);
+}
+
+.global-visual-financials .financial-chart-head {
+  min-height: 48px;
+}
+
+/* Search: one compact research query field with a calm empty state. */
+.global-visual-search .section {
+  padding-top: 24px;
+}
+
+.global-visual-search .search-box {
+  max-width: 720px;
+}
+
+.global-visual-search .result-count {
+  margin: 11px 0 0;
+  padding-top: 9px;
+  border-top: 1px solid var(--visual-rule);
+}
+
+@media (max-width: 820px) {
+  .global-visual-pilot {
+    --visual-space-section: 26px;
+  }
+
+  .global-visual-pilot .page-head {
+    padding: 19px 0 14px;
+  }
+
+  .global-visual-pilot .page-head .lead {
+    font-size: 14px;
+    line-height: 1.65;
+  }
+
+  .global-visual-home .home-value-chain {
+    grid-template-columns: repeat(8, 152px);
+  }
+
+  .global-visual-home .home-stage {
+    min-width: 152px;
+  }
+
+  .global-visual-atlas .value-chain-stage {
+    grid-template-columns: 120px minmax(0, 1fr);
+    gap: 8px 14px;
+    padding: 14px 8px 19px;
+  }
+
+  .global-visual-atlas .value-chain-links {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .global-visual-home .home-intro {
+    padding: 23px 0 18px;
+  }
+
+  .global-visual-home .home-intro-copy {
+    font-size: 15px;
+  }
+
+  .global-visual-home .db-status {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .global-visual-home .db-status > div {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .global-visual-home .db-status > div:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .global-visual-home .db-status > div:last-child {
+    grid-column: 1 / -1;
+    border-bottom: 0;
+  }
+
+  .global-visual-companies .toolbar {
+    gap: 9px;
+  }
+
+  .global-visual-financials .financial-summary > div {
+    min-height: 64px;
+    padding: 8px 10px;
+  }
+
+  .global-visual-financials .financial-summary strong {
+    font-size: 20px;
+  }
+
+  .global-visual-financials .financial-selector {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .global-visual-financials .financial-selector p {
+    grid-column: auto;
+  }
+
+  .global-visual-financials .financial-chart {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}

@@ -12,7 +12,7 @@ const linkHref = (link: any) => link.technology
     ? `${withBase('companies/')}?tag=${encodeURIComponent(link.tag)}`
     : `${withBase('companies/')}?q=${encodeURIComponent(link.query)}`;
 ---
-<BaseLayout title="全体マップ" indexable>
+<BaseLayout title="全体マップ" indexable pageClass="global-visual-pilot global-visual-atlas">
   <header class="page-head">
     <div class="shell">
       <span class="eyebrow">産業バリューチェーン</span>
