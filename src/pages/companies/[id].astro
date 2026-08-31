@@ -136,9 +136,9 @@ const toc = (isEvidencePilot ? [
             <div class="company-ja">{d.officialName} · 読み：{d.reading}</div>
           </div>
         </div>
-        <div class="tags tag-links" aria-label="技術タグ" hidden={isEvidencePilot}>
+        {!isEvidencePilot && <div class="tags tag-links" aria-label="技術タグ">
           {d.tags.map(tag => <a class="tag-link" href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a>)}
-        </div>
+        </div>}
       </div>
       {isEvidencePilot && pilotOverviewClaim && <div class="pilot-hero-thesis">
         <span class="pilot-hero-kicker">概要</span>
@@ -147,11 +147,11 @@ const toc = (isEvidencePilot ? [
       {isEvidencePilot && <div class="tags tag-links pilot-hero-tags" aria-label="技術タグ">
         {d.tags.map(tag => <a class="tag-link" href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a>)}
       </div>}
-      <dl class="snapshot" hidden={isEvidencePilot}>
+      {!isEvidencePilot && <dl class="snapshot">
         <div class="snapshot-row"><dt>主領域</dt><dd><a class="text-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></dd></div>
         {!isEvidencePilot && <div class="snapshot-row"><dt>情報確認状況</dt><dd>{statusLabels[d.sourceStatus] ?? d.sourceStatus}</dd></div>}
         <div class="snapshot-row"><dt>最終確認日</dt><dd class="mono">{d.lastReviewed}</dd></div>
-      </dl>
+      </dl>}
     </div>
 
     {isEvidencePilot && <nav class="pilot-section-nav shell" aria-label="ページ内セクション"><span>ページ内</span>{toc.map(([id,label]) => <a href={`#${id}`}>{label}</a>)}</nav>}
