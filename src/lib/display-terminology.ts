@@ -1,0 +1,22 @@
+export const displayTerminology = [
+  { term: 'AIアクセラレータ', description: 'AI計算を高速化する専用半導体' },
+  { term: 'AI accelerator', description: 'AI計算を高速化する専用半導体' },
+  { term: 'advanced packaging', description: '複数チップを高密度に接続・実装する技術' },
+  { term: '先端パッケージ', description: '複数チップを高密度に接続・実装する技術' },
+  { term: 'scale-across', description: '複数ラックや拠点間へ接続を拡張する考え方' },
+  { term: 'scale-out', description: '複数サーバーやラックへ計算資源を拡張する考え方' },
+  { term: 'scale-up', description: 'サーバー内で計算資源を拡張する考え方' },
+  { term: 'liquid cooling', description: '冷却液でサーバーの熱を取り除く方式' },
+  { term: 'TCボンディング', description: '熱と圧力で半導体を接合する技術' },
+  { term: 'Spectrum-X', description: 'AI向けEthernetネットワーク基盤' },
+  { term: 'SuperNIC', description: 'AIクラスタ向けの高性能ネットワーク接続機器' },
+  { term: 'NVLink', description: 'GPU同士を高速接続する技術' },
+  { term: 'fabless', description: '自社工場を持たず半導体設計を主業とする事業形態' },
+  { term: 'OSAT', description: '半導体の組立・パッケージ・テストを受託する企業' },
+  { term: 'DPU', description: 'データ処理やネットワーク処理を担う専用プロセッサ' },
+  { term: 'HBM', description: 'AI計算向けの広帯域メモリ' },
+  { term: 'EDA', description: '半導体設計を支援するソフトウェア' },
+  { term: 'ASIC', description: '特定用途向けに設計した専用半導体' },
+  { term: 'GPU', description: '画像・AI計算を並列処理するプロセッサ' },
+] as const;
+

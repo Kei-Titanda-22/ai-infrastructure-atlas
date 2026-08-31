@@ -1,8 +1,8 @@
 # Global Visual System v0.1
 
-- Status: Pilot
-- Applies to: Home / Companies / Atlas / Financials / Search opt-in routes
-- Does not apply to: Compare、Company Evidence pages、その他未採択route
+- Status: Pilot / Correction Pass
+- Applies to: Home / Companies / Atlas / Financials / Search opt-in routes。Correction Passのreading width、terminology、missing-data、Side rail規則はcompany pageの表示層にも適用
+- Does not apply to: Compare、その他未採択routeのvisual rollout
 - Semantic change: 0
 
 ## 1. Design position
@@ -23,7 +23,8 @@ AI Infrastructure Atlasは、AI SaaSの操作画面ではなく、企業リサ�
 | Token | Value | Purpose |
 |---|---|---|
 | `--max` | `1180px` | research pageの本文最大幅 |
-| `--muted` | `#59616a` | secondary text / metadata |
+| `--visual-secondary` / Pilot `--muted` | `#3f4850` | 読む必要があるsecondary text / label |
+| `--visual-metadata` | `#59616a` | timestamp、footnote、non-critical provenance |
 | `--visual-rule` | `#cfd4d8` | section / data stripの区切り |
 | `--visual-control-height` | `44px` | touch / keyboard target |
 | `--visual-space-section` | desktop `32px`, mobile `26px` | major section rhythm |
@@ -36,7 +37,9 @@ AI Infrastructure Atlasは、AI SaaSの操作画面ではなく、企業リサ�
 - Lead: desktop 15px / 1.72、mobile 14px / 1.65、最大82ch。
 - Eyebrow: 既存mono 11pxを維持。badge化しない。
 - Numbers: monoまたは数値セルに`tabular-nums`。
-- Secondary text: `#59616a`。本文より小さく、背景・pill・iconを付けない。
+- Secondary text: `#3f4850`。section label、category、stage description、Snapshot label、filter labelへ使う。
+- Muted metadata: `#59616a`。timestamp、footnote metadata、non-critical provenance、disabled stateだけに使う。
+- Research本文のmeasureは最大`48rem`を基本とし、wideで長すぎず、mediumでSide railに圧縮されない幅を優先する。
 
 ## 4. Layout and spacing
 
@@ -76,8 +79,15 @@ AI Infrastructure Atlasは、AI SaaSの操作画面ではなく、企業リサ�
 ### Home: entry + status + map + log
 
 - openingは検索とDB状況をfirst screen内で把握できる高さへ圧縮。
-- value chainはdesktopで8工程を1行表示、mobileだけ内部horizontal scrollを許容。
+- value chainは工程titleの可読幅を8列固定より優先する。`>= 1360px`は8列、`821–1359px`は4列×2行、`<= 820px`は2列。360pxも読みやすい2列とし、内部horizontal scrollを作らない。
+- 01–08の順序、リンク、filter contractを維持し、各工程に短い表示用descriptorを付ける。descriptorはvalue-chain dataへ混ぜない。
 - 工程色はsemantic accentとして維持。
+
+### Company page: research + compact snapshot
+
+- `>= 1200px`だけMainとSide railを横配置する。Mainは`minmax(0, 1fr)`、Side railは`280–300px`を目安とする。
+- `< 1200px`ではSnapshotをHero直下・Research前へstackし、Main本文の幅を奪わない。
+- sticky要素の優先順位は`dialog (100) > site header (30) > page nav (20) > sticky rail (10) > normal content`とする。native modal dialogのtop layerも維持する。
 
 ### Companies: filter row + research table
 
@@ -111,7 +121,7 @@ AI Infrastructure Atlasは、AI SaaSの操作画面ではなく、企業リサ�
 
 - 360 × 800でdocument overflow 0。
 - control height 44px以上。
-- Homeの工程だけ、意味上妥当な内部horizontal scrollを許容。
+- Homeの工程は2列representationとし、工程gridのhorizontal scrollを作らない。
 - CompaniesとFinancialsの正式表は既存の`.table-scroll`内だけでscroll可能。document自体を拡張しない。
 - Atlasはscrollに逃がさずresponsive representationへ変更。
 - reduced motion contractを維持する。
@@ -122,9 +132,44 @@ AI Infrastructure Atlasは、AI SaaSの操作画面ではなく、企業リサ�
 - focus-visible、Escape、focus return、Evidence 2-click contractを維持。
 - 色だけでactive/filter/statusを伝えない。
 - muted textは通常本文より弱くしてよいが、背景`#f6f6f3` / `#fff`上で可読な濃度を使う。
-- DOM order、visible text、data attributes、URLs、source markerをpresentation都合で変えない。
+- Claim本文、Evidence本文、Source本文、data attributes、URLs、source markerをpresentation都合で変えない。短い表示用descriptor、terminology annotation、missing指標の集約表記はこのCorrection Passで許可した説明UIに限定する。
 
-## 10. Rollout gate
+### Display terminology helper
+
+- Company Research内の専門語はClaim本文を書き換えず、最初の出現だけ`<abbr>`で意味を確認可能にする。
+- `title`、説明を含む`aria-label`、`tabindex="0"`を持たせ、keyboardとscreen readerで取得できるようにする。
+- desktopはcompact inline tooltip、360pxではviewport内の固定注記として表示し、document overflowを発生させない。
+- dictionaryはSchema、Source、claim dataから分離したpresentation helperとする。badge、pill、icon、巨大tooltip cardは使わない。
+
+### Missing-data presentation
+
+- missingである事実は保持するが、primary contentより目立たせない。
+- 値がある指標だけをprimary KPI tableへ表示する。値がないPER、予想PER、PBR等はprimary tableから除外し、`データ品質・収録状況` disclosureで一覧化する。
+- Valuation指標が全件missingなら空groupを表示しない。一部取得済みなら取得済み指標だけを表示する。
+- underlying value、missing state、source、status、Schemaは変更しない。nested disclosureは作らない。
+
+## 10. Correction Pass measurements
+
+公開PR #114版をBefore、Correction Passのlocal buildをAfterとして計測した。
+
+| Check | Before | After |
+|---|---:|---:|
+| Home title wrap count / 1440px | 1 | 0 |
+| Home title wrap count / 1024px | 4 | 0 |
+| Home stage average width / 1280px | 147px | 295px |
+| Home stage grid / 1280px | 8列×1行 | 4列×2行 |
+| Home stage grid / 360px | 横scroll内8列 | 2列×4行 |
+| NVIDIA Main / Rail width / 1280px | 785px / 392px | 885px / 300px |
+| NVIDIA Main / Rail width / 1024px | 614px / 307px、横配置 | 969px / 969px、stack |
+| Pilot muted computed color | `rgb(89, 97, 106)` | `rgb(63, 72, 80)` |
+| NVIDIA primary missing KPI rows | 3 | 0 |
+| document overflow / tested widths | 0 | 0 |
+| header overlap | 0 | 0 |
+| nested disclosure | 0 | 0 |
+
+QA widthsは1440 / 1280 / 1024 / 768 / 360px。Home、Companies、Atlas、Financials、Search、Pilot 5社、Kioxia、Advantestを確認した。
+
+## 11. Rollout gate
 
 Full-siteへ展開するには次を別PR前に満たす。
 
@@ -135,4 +180,3 @@ Full-siteへ展開するには次を別PR前に満たす。
 5. Company Evidence Freeze validatorとEvidence interaction回帰。
 
 この文書はFull-site rolloutまたはCompany Evidence 100-company rolloutの承認ではない。
-

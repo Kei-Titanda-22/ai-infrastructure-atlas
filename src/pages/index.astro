@@ -18,6 +18,16 @@ const verifiedCompanyIds = new Set([
 const countryCount = new Set(companies.map(company => company.data.country)).size;
 const processCount = valueChain.filter(stage => stage.id !== 'demand').length;
 const lastDbUpdate = updateLog[0]?.date ?? '—';
+const stageDescriptors: Record<string, string> = {
+  compute: 'AIの計算を担うチップ',
+  memory: '計算中・保存用のデータを保持',
+  materials: 'チップを作る素材と実装基板',
+  manufacturing: '設計されたチップを製造',
+  backend: '検査・パッケージング',
+  interconnect: 'サーバーやラック間を高速接続',
+  datacenter: '電源・冷却・受配電',
+  physical: '現実世界で動くAI',
+};
 const linkHref = (link: any) => link.technology
   ? `${withBase('companies/')}?technology=${encodeURIComponent(link.technology)}`
   : link.tag
@@ -52,6 +62,7 @@ const linkHref = (link: any) => link.technology
         {valueChain.filter(stage => stage.id !== 'demand').map(stage => (
           <div class={`home-stage vc-${stage.id}`}>
             <a class="home-stage-title" href={`${withBase('companies/')}?stage=${encodeURIComponent(stage.id)}`}><span class="value-stage-code">{stage.number}</span>{stage.name}</a>
+            <p class="home-stage-description">{stageDescriptors[stage.id]}</p>
             <div class="home-stage-links">{stage.links.slice(0,4).map(link => <a href={linkHref(link)}>{link.label}</a>)}</div>
           </div>
         ))}
