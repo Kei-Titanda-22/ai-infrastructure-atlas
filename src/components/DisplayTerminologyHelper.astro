@@ -1,0 +1,100 @@
+---
+import { displayTerminology } from '../lib/display-terminology';
+---
+
+<span class="display-terminology-config" data-display-terminology={JSON.stringify(displayTerminology)} hidden></span>
+
+<script>
+  const blockedSelector = 'abbr, a, button, summary, script, style, dialog, [hidden]';
+
+  document.querySelectorAll<HTMLElement>('[data-display-terminology]').forEach(config => {
+    const article = config.closest<HTMLElement>('[data-terminology-scope]');
+    if (!article) return;
+
+    const terms = JSON.parse(config.dataset.displayTerminology || '[]') as Array<{ term: string; description: string }>;
+    const scopes = article.querySelectorAll<HTMLElement>('.pilot-hero-thesis, .company-research');
+
+    for (const item of terms) {
+      let annotated = false;
+
+      for (const scope of scopes) {
+        if (annotated) break;
+        const walker = document.createTreeWalker(scope, NodeFilter.SHOW_TEXT);
+        let node = walker.nextNode() as Text | null;
+
+        while (node) {
+          const parent = node.parentElement;
+          const value = node.data;
+          const index = value.indexOf(item.term);
+          const inClosedDisclosure = parent?.closest('details:not([open])');
+
+          if (parent && index >= 0 && !parent.closest(blockedSelector) && !inClosedDisclosure) {
+            const abbreviation = document.createElement('abbr');
+            abbreviation.className = 'display-term';
+            abbreviation.textContent = item.term;
+            abbreviation.title = item.description;
+            abbreviation.dataset.description = item.description;
+            abbreviation.tabIndex = 0;
+            abbreviation.setAttribute('aria-label', `${item.term}：${item.description}`);
+
+            const fragment = document.createDocumentFragment();
+            fragment.append(value.slice(0, index), abbreviation, value.slice(index + item.term.length));
+            node.replaceWith(fragment);
+            annotated = true;
+            break;
+          }
+
+          node = walker.nextNode() as Text | null;
+        }
+      }
+    }
+
+    config.remove();
+  });
+</script>
+
+<style>
+  :global(.display-term) {
+    position: relative;
+    border-bottom: 1px dotted currentColor;
+    text-decoration: none;
+    text-underline-offset: 3px;
+    cursor: help;
+  }
+
+  :global(.display-term:focus-visible) {
+    outline: 2px solid var(--focus, #0057b8);
+    outline-offset: 2px;
+  }
+
+  :global(.display-term:hover::after),
+  :global(.display-term:focus-visible::after) {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    z-index: 60;
+    width: max-content;
+    max-width: min(16rem, calc(100vw - 32px));
+    padding: 5px 7px;
+    color: #17191c;
+    background: #ffffff;
+    border: 1px solid #aeb5bc;
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.45;
+    white-space: normal;
+    content: attr(data-description);
+  }
+
+  @media (max-width: 520px) {
+    :global(.display-term:hover::after),
+    :global(.display-term:focus-visible::after) {
+      position: fixed;
+      inset: auto 16px 16px;
+      z-index: 100;
+      width: auto;
+      max-width: none;
+    }
+  }
+</style>

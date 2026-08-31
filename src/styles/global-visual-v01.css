@@ -1,13 +1,24 @@
-/* Global Visual System v0.1 pilot.
-   Scope is intentionally limited to the five representative routes that opt in
-   through BaseLayout.pageClass. Company Evidence and Compare remain untouched. */
+/* Global Visual System v0.1 pilot plus correction pass.
+   Five representative routes still opt in through BaseLayout.pageClass;
+   Company Evidence corrections remain scoped in company-evidence-v02.css. */
 
 .global-visual-pilot {
   --max: 1180px;
-  --muted: #59616a;
+  --muted: #3f4850;
+  --visual-secondary: #3f4850;
+  --visual-metadata: #59616a;
   --visual-rule: #cfd4d8;
   --visual-control-height: 44px;
   --visual-space-section: 32px;
+}
+
+.global-visual-pilot .eyebrow,
+.global-visual-pilot .section-classification,
+.global-visual-pilot .section-heading p,
+.global-visual-pilot .financial-selector p,
+.global-visual-pilot .value-chain-stage p,
+.global-visual-pilot .result-count {
+  color: var(--visual-secondary);
 }
 
 .global-visual-pilot .page-head {
@@ -87,19 +98,61 @@
   padding: 8px 10px;
 }
 
+.global-visual-home .db-status dt {
+  color: var(--visual-secondary);
+  font-weight: 600;
+}
+
 .global-visual-home .home-value-chain {
-  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   background: transparent;
+  overflow: visible;
 }
 
 .global-visual-home .home-stage {
   min-width: 0;
   padding: 11px 10px 12px;
+  border-right: 0;
+  border-bottom: 0;
+}
+
+.global-visual-home .home-stage:not(:nth-child(4n)) { border-right: 1px solid var(--border); }
+.global-visual-home .home-stage:nth-child(-n + 4) { border-bottom: 1px solid var(--border); }
+
+.global-visual-home .home-stage-title {
+  line-break: strict;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.global-visual-home .home-stage-description {
+  margin: 7px 0 0;
+  color: var(--visual-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 .global-visual-home .home-stage-links {
   gap: 2px;
-  margin-top: 7px;
+  margin-top: 9px;
+}
+
+@media (min-width: 1360px) {
+  .global-visual-home .home-value-chain {
+    position: relative;
+    left: 50%;
+    width: min(calc(100vw - 40px), 1320px);
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    transform: translateX(-50%);
+  }
+
+  .global-visual-home .home-stage {
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .global-visual-home .home-stage:not(:last-child) { border-right: 1px solid var(--border); }
 }
 
 .global-visual-home .home-stage-links a,
@@ -257,12 +310,17 @@
   }
 
   .global-visual-home .home-value-chain {
-    grid-template-columns: repeat(8, 152px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .global-visual-home .home-stage {
-    min-width: 152px;
+    min-width: 0;
+    border-right: 0;
+    border-bottom: 0;
   }
+
+  .global-visual-home .home-stage:nth-child(odd) { border-right: 1px solid var(--border); }
+  .global-visual-home .home-stage:nth-child(-n + 6) { border-bottom: 1px solid var(--border); }
 
   .global-visual-atlas .value-chain-stage {
     grid-template-columns: 120px minmax(0, 1fr);

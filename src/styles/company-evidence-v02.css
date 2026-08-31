@@ -88,14 +88,25 @@
 .pilot-section-nav a:focus-visible { color: var(--link); text-decoration: underline; text-underline-offset: 3px; }
 
 .evidence-pilot .detail-grid {
-  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 300px);
   grid-template-areas: "research rail";
-  gap: 48px;
+  gap: 40px;
   align-items: start;
 }
 
 .evidence-pilot .company-research { grid-area: research; }
-.evidence-pilot .company-sidebar { grid-area: rail; }
+.evidence-pilot .company-sidebar {
+  grid-area: rail;
+  width: 100%;
+  max-width: 300px;
+  justify-self: end;
+  z-index: 10;
+}
+
+.evidence-pilot .pilot-section-nav {
+  position: relative;
+  z-index: 20;
+}
 
 .evidence-pilot .company-section {
   padding: 24px 0 28px;
@@ -143,8 +154,9 @@
 
 .evidence-pilot .pilot-analysis-label {
   margin: -3px 0 9px;
-  color: #59616a;
+  color: #3f4850;
   font-size: 11px;
+  font-weight: 600;
   line-height: 1.4;
 }
 
@@ -235,10 +247,10 @@
   padding: 9px 0;
   border-top: 1px solid var(--research-rule);
 }
-.pilot-snapshot-rail dt { color: var(--muted); font-size: 11px; }
+.pilot-snapshot-rail dt { color: #3f4850; font-size: 11px; font-weight: 600; }
 .pilot-snapshot-rail dd { margin: 0; font-size: 12px; overflow-wrap: anywhere; }
 .pilot-snapshot-peers { margin-top: 18px; padding-top: 12px; border-top: 1px solid var(--research-rule); }
-.pilot-snapshot-peers h3 { margin: 0 0 8px; color: var(--muted); font-size: 11px; }
+.pilot-snapshot-peers h3 { margin: 0 0 8px; color: #3f4850; font-size: 11px; font-weight: 600; }
 .pilot-snapshot-peers .link-list { display: grid; gap: 5px; }
 
 .source-bibliography {
@@ -362,12 +374,33 @@
   font-variant-numeric: tabular-nums;
 }
 .pilot-kpi-details { display: none; }
+.pilot-missing-metrics,
+.company-financial-quality p {
+  margin: 9px 0 0;
+  color: #3f4850;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.company-financial-quality {
+  margin-top: 12px;
+  padding-top: 2px;
+}
+.company-financial-quality > summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  width: fit-content;
+  color: var(--link);
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
 .financial-audit-details .table-scroll { margin-top: 10px; }
 .pilot-roic-details .section-intro { margin: 9px 0 7px; }
 .pilot-roic-inputs { margin-top: 14px; }
 .pilot-roic-inputs h4 { margin: 0 0 7px; font-family: var(--serif); font-size: 15px; }
 
-@media (max-width: 1020px) {
+@media (max-width: 1199px) {
   .evidence-pilot .detail-grid {
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "rail" "research";
@@ -375,9 +408,17 @@
   }
   .evidence-pilot .company-sidebar {
     display: block;
+    position: static;
+    width: auto;
+    max-width: none;
+    max-height: none;
+    overflow: visible;
+    justify-self: stretch;
     padding: 0 0 14px;
     border: 0;
     border-bottom: 1px solid var(--research-rule);
+    scrollbar-gutter: auto;
+    z-index: 10;
   }
   .pilot-snapshot-rail dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 22px; }
 }

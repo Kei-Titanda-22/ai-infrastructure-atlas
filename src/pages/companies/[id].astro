@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import CompanyEvidenceClaims from '../../components/CompanyEvidenceClaims.astro';
 import CompanyFinancialAuditTable from '../../components/CompanyFinancialAuditTable.astro';
+import DisplayTerminologyHelper from '../../components/DisplayTerminologyHelper.astro';
 import FinancialChart from '../../components/FinancialChart.astro';
 import { getCollection } from 'astro:content';
 import { withBase } from '../../lib/paths';
@@ -103,6 +104,13 @@ const financialAuditRows = Object.entries(d.metrics).map(([key, metric]) => {
   const definition = metricDefinitionById.get(metric.definitionId);
   return { key, label: metricLabels[key], metric, source, audit, state, definition, formula: auditFormula(audit), value: formatMetricValue(metric) };
 });
+const visibleFinancialAuditRows = financialAuditRows.filter(row => row.metric.value != null);
+const missingFinancialAuditRows = financialAuditRows.filter(row => row.metric.value == null);
+const missingMetricLabels: Record<string, string> = {
+  peTTM: 'PER', peFY1: '予想PER', pb: 'PBR', roic: 'ROIC',
+  operatingMargin: '営業利益率', revenueGrowth: '売上高成長率',
+};
+const missingFinancialLabel = missingFinancialAuditRows.map(row => missingMetricLabels[row.key] ?? row.label).join('、');
 const toc = (isEvidencePilot ? [
   ['research','企業リサーチ'],
   ...(showFacilities ? [['facilities','主要拠点']] : []),['financials','財務・KPI'],['sources','出典']
@@ -117,7 +125,7 @@ const toc = (isEvidencePilot ? [
 });
 ---
 <BaseLayout title={d.japaneseName || d.name} description={d.summary} indexable>
-  <article class:list={[`sector-page sector-${d.primaryLayer.replace(/[^a-zA-Z]/g,'-').toLowerCase()}`, { 'evidence-pilot': isEvidencePilot }]}>
+  <article class:list={[`sector-page sector-${d.primaryLayer.replace(/[^a-zA-Z]/g,'-').toLowerCase()}`, { 'evidence-pilot': isEvidencePilot }]} data-terminology-scope>
     <span hidden data-pagefind-filter={`layer:${d.primaryLayer}`}></span>
     <span hidden data-pagefind-filter={`country:${d.country}`}></span>
     {d.ticker ? <span hidden data-pagefind-meta={`ticker:${d.ticker}`}></span> : null}
@@ -244,12 +252,12 @@ const toc = (isEvidencePilot ? [
             <FinancialChart records={pilotChartHistory} metricId="revenue" title="売上高" periodType={pilotChartPeriodType} />
             <FinancialChart records={pilotChartHistory} metricId="operatingMargin" title="営業利益率" periodType={pilotChartPeriodType} />
           </div>}
-          {isEvidencePilot && <div class="table-scroll pilot-financial-brief-wrap" aria-label="主要財務指標の要約表"><table class="metrics-table pilot-financial-brief"><thead><tr><th>指標</th><th>値</th><th>期間・基準日</th></tr></thead><tbody>
-            {financialAuditRows.map(row => <tr><th>{row.label}</th><td class="provenance-value">{row.value ?? row.state.label}</td><td class="provenance-detail">{row.metric.value == null ? '—' : <>{row.metric.period}<br /><span class="table-muted">{row.metric.asOf}</span></>}</td></tr>)}
+          {isEvidencePilot && visibleFinancialAuditRows.length > 0 && <div class="table-scroll pilot-financial-brief-wrap" aria-label="主要財務指標の要約表"><table class="metrics-table pilot-financial-brief"><thead><tr><th>指標</th><th>値</th><th>期間・基準日</th></tr></thead><tbody>
+            {visibleFinancialAuditRows.map(row => <tr><th>{row.label}</th><td class="provenance-value">{row.value}</td><td class="provenance-detail">{row.metric.period}<br /><span class="table-muted">{row.metric.asOf}</span></td></tr>)}
           </tbody></table></div>}
           {isEvidencePilot
-            ? <details class="financial-audit-details is-pilot"><summary>定義・一次資料・検証状態を確認</summary><CompanyFinancialAuditTable rows={financialAuditRows} interactive /></details>
-            : <CompanyFinancialAuditTable rows={financialAuditRows} />}
+            ? visibleFinancialAuditRows.length > 0 && <details class="financial-audit-details is-pilot"><summary>定義・一次資料・検証状態を確認</summary><CompanyFinancialAuditTable rows={visibleFinancialAuditRows} interactive /></details>
+            : <>{visibleFinancialAuditRows.length > 0 && <CompanyFinancialAuditTable rows={visibleFinancialAuditRows} />}{missingFinancialAuditRows.length > 0 && <details class="company-financial-quality"><summary>データ品質・収録状況</summary><p>未収録指標：{missingFinancialLabel}</p></details>}</>}
           {isEvidencePilot && companyKpis.length > 0 && <div class="pilot-kpi-subsection" id="kpi"><h3>業種固有KPI</h3><div class="table-scroll pilot-kpi-table-wrap" aria-label="業種固有KPI表"><table class="metrics-table provenance-table pilot-kpi-table"><thead><tr><th>指標</th><th>値</th><th>基準日・決算期間</th><th>一次資料・定義</th></tr></thead><tbody>
             {companyKpis.map(kpi => { const definition = kpiDefinitionById.get(kpi.definitionId); const source = sourceById.get(kpi.sourceId); return <tr><th>{definition?.name ?? kpi.definitionId}</th><td class="provenance-value">{formatKpi(kpi)}</td><td class="provenance-detail">{kpi.period}<br /><span class="table-muted">基準日 {kpi.asOf}</span></td><td class="provenance-detail">{definition?.description || kpi.basis}{source ? <><br /><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a></> : null}</td></tr>; })}
           </tbody></table></div><details class="pilot-kpi-details"><summary>基準日・定義・一次資料</summary><dl>{companyKpis.map(kpi => { const definition = kpiDefinitionById.get(kpi.definitionId); const source = sourceById.get(kpi.sourceId); return <div><dt>{definition?.name ?? kpi.definitionId}</dt><dd><span>{kpi.period} · 基準日 {kpi.asOf}</span><span>{definition?.description || kpi.basis}</span>{source ? <a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a> : null}</dd></div>; })}</dl></details></div>}
@@ -297,7 +305,7 @@ const toc = (isEvidencePilot ? [
           </ol>
           {otherRegisteredSources.length > 0 && <details class="other-sources"><summary>その他の資料 {otherRegisteredSources.length}件</summary><ul class="registered-source-list">{otherRegisteredSources.map(source => <li><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.publisher} — {source.title} ↗</a></li>)}</ul></details>}
           <p class="section-intro source-last-reviewed">最終確認日：{d.lastReviewed}</p>
-          <details class="source-quality"><summary>データ品質・収録状況</summary><CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} coverage={pilotCoverage} categories={pilotCategories} priorities={[]} coverageMode="static" /></details>
+          <details class="source-quality"><summary>データ品質・収録状況</summary>{missingFinancialAuditRows.length > 0 && <p class="pilot-missing-metrics">未収録指標：{missingFinancialLabel}</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} coverage={pilotCoverage} categories={pilotCategories} priorities={[]} coverageMode="static" /></details>
         </> : <><div class="source-table">{companySources.map(source => <div class="source-row"><span class="source-class">一次資料</span><a class="source-link" href={source.url} target="_blank" rel="noreferrer">{source.title} ↗</a><span class="table-muted">取得 {source.retrievedAt}</span></div>)}</div><p class="section-intro">最終確認日：{d.lastReviewed}</p></>}</section>
       </div>
 
@@ -317,6 +325,7 @@ const toc = (isEvidencePilot ? [
         <section class="sidebar-section"><h3>最終確認日</h3><p class="mono">{d.lastReviewed}</p></section></>}
       </aside>
     </div>
+    <DisplayTerminologyHelper />
   </article>
   {isEvidencePilot && <script is:inline>
     (() => {
