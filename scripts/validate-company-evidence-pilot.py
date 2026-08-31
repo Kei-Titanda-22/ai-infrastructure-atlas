@@ -10,7 +10,12 @@ from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PILOT = ROOT / "src/data/company-evidence-pilot-v01.json"
+PILOT = ROOT / "src/data/company-evidence-pilot-v02.json"
+SCHEMA = ROOT / "docs/company-evidence-schema-v02.json"
+SOURCE_MANIFEST = ROOT / "src/data/source-registry-manifest.json"
+SOURCE_RESOLVER = ROOT / "src/lib/source-registry.ts"
+FRESHNESS_HELPER = ROOT / "src/lib/evidence-freshness.ts"
+EVIDENCE_COMPONENT = ROOT / "src/components/CompanyEvidenceClaim.astro"
 PILOT_COMPANIES = {"nvidia", "tsmc", "applied-materials", "fujikura", "vertiv"}
 CATEGORIES = {
     "company-overview", "ai-infrastructure-role", "products", "technology",
@@ -56,12 +61,30 @@ def main() -> int:
     coverage = data.get("coverage", [])
     pilot_source_ids = {binding.get("sourceId") for binding in evidence if binding.get("sourceId")}
 
-    if data.get("schemaVersion") != "0.1":
-        fail(errors, "schemaVersion must remain 0.1 during the Pilot")
+    if data.get("schemaVersion") != "0.2":
+        fail(errors, "schemaVersion must be 0.2 for the Pilot revision")
+    schema = load(SCHEMA)
+    if schema.get("properties", {}).get("schemaVersion", {}).get("const") != "0.2":
+        fail(errors, "v0.2 schema must require schemaVersion 0.2")
+
+    manifest = load(SOURCE_MANIFEST)
+    manifest_shards = manifest.get("shards", [])
+    expected_shards = sorted(path.name for path in (ROOT / "src/data").glob("*sources*.json") if "policies" not in path.name)
+    if sorted(manifest_shards) != expected_shards:
+        fail(errors, f"Source Registry manifest mismatch: missing={sorted(set(expected_shards) - set(manifest_shards))}, extra={sorted(set(manifest_shards) - set(expected_shards))}")
+    if not SOURCE_RESOLVER.exists() or "source-registry-manifest.json" not in SOURCE_RESOLVER.read_text(encoding="utf-8"):
+        fail(errors, "shared Source resolver must load the Source Registry manifest")
+    freshness_text = FRESHNESS_HELPER.read_text(encoding="utf-8") if FRESHNESS_HELPER.exists() else ""
+    component_text = EVIDENCE_COMPONENT.read_text(encoding="utf-8") if EVIDENCE_COMPONENT.exists() else ""
+    if "deriveEvidenceFreshness" not in freshness_text or "deriveEvidenceFreshness" not in component_text:
+        fail(errors, "Evidence freshness must be derived by the shared helper")
+    if "2026-08-31T00:00:00Z" in component_text:
+        fail(errors, "Evidence component must not contain a component-local reference date")
 
     company_ids = {path.stem for path in (ROOT / "src/data/companies").glob("*.json")}
     source_ids: set[str] = set()
-    duplicate_sources: set[str] = set()
+    source_records: dict[str, dict] = {}
+    conflicting_sources: set[str] = set()
     for path in (ROOT / "src/data").glob("*sources*.json"):
         if "policies" in path.name:
             continue
@@ -74,12 +97,14 @@ def main() -> int:
         for record in records:
             source_id = record.get("id") if isinstance(record, dict) else None
             if source_id:
-                if source_id in source_ids:
-                    duplicate_sources.add(source_id)
+                previous = source_records.get(source_id)
+                if previous and (previous.get("url") != record.get("url") or previous.get("companyId") != record.get("companyId")):
+                    conflicting_sources.add(source_id)
+                source_records[source_id] = record
                 source_ids.add(source_id)
-    pilot_duplicate_sources = duplicate_sources & pilot_source_ids
-    if pilot_duplicate_sources:
-        fail(errors, f"Pilot uses duplicate source IDs: {sorted(pilot_duplicate_sources)}")
+    pilot_conflicting_sources = conflicting_sources & pilot_source_ids
+    if pilot_conflicting_sources:
+        fail(errors, f"Pilot uses conflicting duplicate source IDs: {sorted(pilot_conflicting_sources)}")
 
     policies: dict[str, dict] = {}
     for path in (ROOT / "src/data").glob("*policies*.json"):
@@ -103,6 +128,15 @@ def main() -> int:
 
     if {claim.get("companyId") for claim in claims} != PILOT_COMPANIES:
         fail(errors, "claims must cover exactly the five fixed Pilot companies")
+    priority_counts = Counter(claim.get("priority") for claim in claims)
+    if priority_counts != Counter({"P1": 25, "P2": 9, "P3": 4}):
+        fail(errors, f"unexpected v0.2 priority counts: {dict(priority_counts)}")
+    for company_id in PILOT_COMPANIES:
+        company_p1 = [claim for claim in claims if claim.get("companyId") == company_id and claim.get("priority") == "P1"]
+        if len(company_p1) != 5:
+            fail(errors, f"{company_id}: expected five P1 claims after revision")
+        if not any(claim.get("category") in {"competitive-positioning", "technology"} and claim.get("claimType") == "company-positioning" for claim in company_p1):
+            fail(errors, f"{company_id}: P1 must include an explicitly labeled company-positioning claim")
 
     for claim in claims:
         cid = claim.get("id", "<missing>")
@@ -171,6 +205,8 @@ def main() -> int:
             fail(errors, f"{key}: invalid missingStatus")
         if item.get("collectionStatus") == "not-started" and item.get("missingStatus") not in MISSING:
             fail(errors, f"{key}: not-started requires missingStatus")
+        if item.get("collectionStatus") == "partial" and item.get("missingStatus") is not None and not item.get("notes"):
+            fail(errors, f"{key}: partial + missingStatus requires explanatory notes")
     expected_coverage = {(company_id, category) for company_id in PILOT_COMPANIES for category in CATEGORIES}
     if coverage_keys != expected_coverage:
         fail(errors, f"coverage must contain all 55 company/category pairs; missing={sorted(expected_coverage - coverage_keys)}")
@@ -193,7 +229,7 @@ def main() -> int:
         for error in errors:
             print(f"- {error}", file=sys.stderr)
         return 1
-    print(f"Company Evidence Pilot validation passed: {len(claims)} claims, {len(evidence)} evidence bindings, {len(coverage)} coverage records, {len(pilot_source_ids)} sources")
+    print(f"Company Evidence v0.2 Pilot validation passed: {len(claims)} claims, {len(evidence)} evidence bindings, {len(coverage)} coverage records, {len(pilot_source_ids)} sources, P1/P2/P3={priority_counts['P1']}/{priority_counts['P2']}/{priority_counts['P3']}")
     return 0
 
 
