@@ -10,6 +10,7 @@ interface Props {
   priorities?: string[];
   showCoverage?: boolean;
   coverageMode?: 'disclosure' | 'static';
+  flattenSecondary?: boolean;
   compact?: boolean;
   sourceNumberById?: Record<string, number>;
 }
@@ -23,6 +24,7 @@ const {
   priorities = ['P1', 'P2', 'P3'],
   showCoverage = true,
   coverageMode = 'disclosure',
+  flattenSecondary = false,
   compact = false,
   sourceNumberById = {},
 } = Astro.props;
@@ -66,7 +68,12 @@ const coverageSummary = [partialCount ? `一部収録 ${partialCount}` : '', mis
         {primaryClaims.map(claim => <CompanyEvidenceClaim claim={claim} evidence={evidence} sources={sources} compact={compact} sourceNumberById={sourceNumberById} />)}
       </div>
     )}
-    {secondaryClaims.length > 0 && (
+    {secondaryClaims.length > 0 && flattenSecondary && (
+      <div class="pilot-claim-stack secondary-stack pilot-claim-stack-flat">
+        {secondaryClaims.map(claim => <CompanyEvidenceClaim claim={claim} evidence={evidence} sources={sources} compact={false} staticProvenance sourceNumberById={sourceNumberById} />)}
+      </div>
+    )}
+    {secondaryClaims.length > 0 && !flattenSecondary && (
       <details class="secondary-claims">
         <summary>詳細を見る <span>{secondaryClaims.length}件</span></summary>
         <div class="pilot-claim-stack secondary-stack">
