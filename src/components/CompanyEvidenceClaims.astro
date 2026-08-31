@@ -9,6 +9,7 @@ interface Props {
   categories: string[];
   priorities?: string[];
   showCoverage?: boolean;
+  coverageMode?: 'disclosure' | 'static';
   compact?: boolean;
   sourceNumberById?: Record<string, number>;
 }
@@ -21,6 +22,7 @@ const {
   categories,
   priorities = ['P1', 'P2', 'P3'],
   showCoverage = true,
+  coverageMode = 'disclosure',
   compact = false,
   sourceNumberById = {},
 } = Astro.props;
@@ -72,7 +74,7 @@ const coverageSummary = [partialCount ? `一部収録 ${partialCount}` : '', mis
         </div>
       </details>
     )}
-    {showCoverage && relevantCoverage.length > 0 && (
+    {showCoverage && relevantCoverage.length > 0 && coverageMode === 'disclosure' && (
       <details class="coverage-notices" data-coverage-notice>
         <summary>収録状況：{coverageSummary}</summary>
         <div class="coverage-notice-list">
@@ -82,10 +84,17 @@ const coverageSummary = [partialCount ? `一部収録 ${partialCount}` : '', mis
         </div>
       </details>
     )}
+    {showCoverage && relevantCoverage.length > 0 && coverageMode === 'static' && (
+      <div class="coverage-notice-list coverage-notice-list-static" data-coverage-notice>
+        {relevantCoverage.map(item => (
+          <p><strong>{categoryLabels[item.category]}</strong><span>{coverageLabel(item)}</span>{item.notes && <small>{item.notes}</small>}</p>
+        ))}
+      </div>
+    )}
   </div>
 )}
 
 <style>
-  .pilot-claim-stack{display:grid;gap:0}.pilot-claim-stack>:global(.pilot-claim)+:global(.pilot-claim){margin-top:.65rem;padding-top:.8rem;border-top:1px solid var(--line,#d8dee7)}.secondary-claims{margin-top:.75rem;padding:.65rem 0;border-top:1px solid var(--line,#d8dee7);border-bottom:1px solid var(--line,#d8dee7)}.secondary-claims>summary,.coverage-notices>summary{width:fit-content;cursor:pointer;color:var(--link,#0057b8);font-size:.79rem;font-weight:700;text-decoration:underline}.secondary-claims>summary span{font-weight:400;color:var(--muted,#667)}.secondary-stack{margin-top:.8rem}.coverage-notices{margin-top:.7rem;padding:.6rem 0;border-top:1px solid #c5cbd1;border-bottom:1px solid #c5cbd1}.coverage-notices>summary{color:#4a5966;text-decoration:none}.coverage-notice-list{display:grid;gap:.4rem;margin-top:.65rem}.coverage-notice-list p{display:grid;grid-template-columns:minmax(7.5rem,auto) 1fr;gap:.15rem .65rem;margin:0;font-size:.78rem}.coverage-notice-list small{grid-column:2;color:var(--muted,#667);font-size:.74rem}.pilot-claims-compact .pilot-claim-stack{gap:0}
+  .pilot-claim-stack{display:grid;gap:0}.pilot-claim-stack>:global(.pilot-claim)+:global(.pilot-claim){margin-top:.65rem;padding-top:.8rem;border-top:1px solid var(--line,#d8dee7)}.secondary-claims{margin-top:.75rem;padding:.65rem 0;border-top:1px solid var(--line,#d8dee7);border-bottom:1px solid var(--line,#d8dee7)}.secondary-claims>summary,.coverage-notices>summary{width:fit-content;cursor:pointer;color:var(--link,#0057b8);font-size:.79rem;font-weight:700;text-decoration:underline}.secondary-claims>summary span{font-weight:400;color:var(--muted,#667)}.secondary-stack{margin-top:.8rem}.coverage-notices{margin-top:.7rem;padding:.6rem 0;border-top:1px solid #c5cbd1;border-bottom:1px solid #c5cbd1}.coverage-notices>summary{color:#4a5966;text-decoration:none}.coverage-notice-list{display:grid;gap:.4rem;margin-top:.65rem}.coverage-notice-list-static{margin-top:.25rem}.coverage-notice-list p{display:grid;grid-template-columns:minmax(7.5rem,auto) 1fr;gap:.15rem .65rem;margin:0;font-size:.78rem}.coverage-notice-list small{grid-column:2;color:var(--muted,#667);font-size:.74rem}.pilot-claims-compact .pilot-claim-stack{gap:0}
   @media(max-width:600px){.coverage-notice-list p{grid-template-columns:1fr}.coverage-notice-list small{grid-column:1}}
 </style>
