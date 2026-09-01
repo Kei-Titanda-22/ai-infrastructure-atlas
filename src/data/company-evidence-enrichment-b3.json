@@ -1,0 +1,2940 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "trane-technologies-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Trane Technologies（トレイン・テクノロジーズ）は、Traneブランドを中心に大型空調、チラー、熱管理などを展開する気候制御・冷却企業。",
+      "evidenceIds": [
+        "trane-technologies-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "trane-technologies"
+    },
+    {
+      "id": "trane-technologies-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではTrane Technologies（トレイン・テクノロジーズ）を、AIデータセンターの発熱密度上昇に伴う大型チラー、空調、熱管理設備の需要増加に接続する企業と位置付ける。",
+      "evidenceIds": [
+        "trane-technologies-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "trane-technologies",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "trane-technologies-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Trane Technologies（トレイン・テクノロジーズ）は、Commercial chillers、Data center cooling systems、Building HVAC controlsを提供する。",
+      "evidenceIds": [
+        "trane-technologies-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "trane-technologies"
+    },
+    {
+      "id": "trane-technologies-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Commercial chillers、Data center cooling systems、Building HVAC controlsという製品構成を、data center、cooling、HVACに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "trane-technologies-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "trane-technologies",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "trane-technologies-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Data Center & Facilitiesの供給層",
+      "statement": "AtlasではTrane Technologies（トレイン・テクノロジーズ）を「Data Center & Facilities」に位置し、AIデータセンターの発熱密度上昇に伴う大型チラー、空調、熱管理設備の需要増加に接続する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "trane-technologies-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "trane-technologies",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "trane-technologies-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、大型商業施設向けチラー・空調技術、高効率冷却と建物制御の組合せ、グローバルなサービス・保守基盤を、Trane Technologies（トレイン・テクノロジーズ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "trane-technologies-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "trane-technologies",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "trane-technologies-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、建設・設備投資サイクル、液冷など新冷却方式への対応速度、Johnson ControlsやCarrier等との競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "trane-technologies-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "trane-technologies",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "umc-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "UMC（聯華電子）は、成熟・特殊プロセスを中心とする台湾の大手半導体受託製造会社。",
+      "evidenceIds": [
+        "umc-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "umc"
+    },
+    {
+      "id": "umc-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではUMC（聯華電子）を、AIインフラ周辺の電源、接続、制御等に使われる多様な半導体の量産を担う企業と位置付ける。",
+      "evidenceIds": [
+        "umc-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "umc",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "umc-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "UMC（聯華電子）は、成熟プロセスの半導体受託製造、特殊プロセス、300mm量産サービスを提供する。",
+      "evidenceIds": [
+        "umc-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "umc"
+    },
+    {
+      "id": "umc-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、成熟プロセスの半導体受託製造、特殊プロセス、300mm量産サービスという製品構成を、ファウンドリ、成熟プロセス、特殊プロセスに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "umc-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "umc",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "umc-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Foundry & Logic Manufacturingの供給層",
+      "statement": "AtlasではUMC（聯華電子）を「Foundry & Logic Manufacturing」に位置し、AIインフラ周辺の電源、接続、制御等に使われる多様な半導体の量産を担う役割を担う企業と整理する。",
+      "evidenceIds": [
+        "umc-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "umc",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "umc-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、大規模な成熟プロセス供給力、台湾・海外の製造拠点、長期顧客関係を、UMC（聯華電子）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "umc-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "umc",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "umc-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、成熟ノードの価格競争、中国ファウンドリとの競争、景気循環を主要な確認点として整理する。",
+      "evidenceIds": [
+        "umc-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "umc",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "analog-devices-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Analog Devices（アナログ・デバイセズ）は、高性能アナログ、データコンバータ、電源管理、センサ関連半導体を展開する。",
+      "evidenceIds": [
+        "analog-devices-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "analog-devices"
+    },
+    {
+      "id": "analog-devices-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではAnalog Devices（アナログ・デバイセズ）を、AI設備と産業システムでアナログ信号をデジタル世界へ接続し、電源・計測・通信を支える企業と位置付ける。",
+      "evidenceIds": [
+        "analog-devices-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "analog-devices",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "analog-devices-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Analog Devices（アナログ・デバイセズ）は、高性能データコンバータ、電源管理IC、アナログ・RF半導体を提供する。",
+      "evidenceIds": [
+        "analog-devices-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "analog-devices"
+    },
+    {
+      "id": "analog-devices-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、高性能データコンバータ、電源管理IC、アナログ・RF半導体という製品構成を、アナログ半導体、データコンバータ、電源管理に関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "analog-devices-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "analog-devices",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "analog-devices-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Compute & Siliconの供給層",
+      "statement": "AtlasではAnalog Devices（アナログ・デバイセズ）を「Compute & Silicon」に位置し、AI設備と産業システムでアナログ信号をデジタル世界へ接続し、電源・計測・通信を支える役割を担う企業と整理する。",
+      "evidenceIds": [
+        "analog-devices-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "analog-devices",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "analog-devices-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、高性能アナログの技術蓄積、産業・通信顧客への深い組込み、長い製品寿命を、Analog Devices（アナログ・デバイセズ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "analog-devices-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "analog-devices",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "analog-devices-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、産業需要の循環、在庫調整、買収後ポートフォリオ管理を主要な確認点として整理する。",
+      "evidenceIds": [
+        "analog-devices-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "analog-devices",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "cadence-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Cadence（ケイデンス）は、半導体・電子システム向けEDA、IP、解析ソフトウェアを提供する。",
+      "evidenceIds": [
+        "cadence-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cadence"
+    },
+    {
+      "id": "cadence-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではCadence（ケイデンス）を、AI半導体と先端パッケージの設計・検証・システム解析を支える企業と位置付ける。",
+      "evidenceIds": [
+        "cadence-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cadence",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "cadence-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Cadence（ケイデンス）は、EDA設計・検証ソフトウェア、半導体設計IP、マルチフィジックス解析を提供する。",
+      "evidenceIds": [
+        "cadence-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cadence"
+    },
+    {
+      "id": "cadence-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、EDA設計・検証ソフトウェア、半導体設計IP、マルチフィジックス解析という製品構成を、EDA、半導体設計、システム設計に関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "cadence-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cadence",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "cadence-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Compute & Siliconの供給層",
+      "statement": "AtlasではCadence（ケイデンス）を「Compute & Silicon」に位置し、AI半導体と先端パッケージの設計・検証・システム解析を支える役割を担う企業と整理する。",
+      "evidenceIds": [
+        "cadence-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cadence",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "cadence-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、先端IC設計の統合ツール群、ファウンドリ・顧客との深い連携、システム設計への拡張を、Cadence（ケイデンス）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "cadence-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cadence",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "cadence-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、顧客設計投資、輸出規制、Synopsys等との競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "cadence-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cadence",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "canon-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "キヤノンは、半導体露光装置やナノインプリント装置を含む精密機器を展開する。",
+      "evidenceIds": [
+        "canon-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon"
+    },
+    {
+      "id": "canon-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "Atlasではキヤノンを、露光・ナノインプリント技術を通じて半導体製造装置市場に関与する企業と位置付ける。",
+      "evidenceIds": [
+        "canon-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "canon-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "キヤノンは、半導体露光装置、ナノインプリントリソグラフィ装置、FPD露光装置を提供する。",
+      "evidenceIds": [
+        "canon-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon"
+    },
+    {
+      "id": "canon-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、半導体露光装置、ナノインプリントリソグラフィ装置、FPD露光装置という製品構成を、半導体露光、ナノインプリント、リソグラフィに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "canon-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "canon-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Wafer Fab Equipmentの供給層",
+      "statement": "Atlasではキヤノンを「Wafer Fab Equipment」に位置し、露光・ナノインプリント技術を通じて半導体製造装置市場に関与する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "canon-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "canon-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、光学・精密位置決め技術、ナノインプリントの独自技術、幅広い精密機器事業を、キヤノンの競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "canon-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "canon-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、先端露光でのASML優位、ナノインプリント普及速度、半導体設備投資サイクルを主要な確認点として整理する。",
+      "evidenceIds": [
+        "canon-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "infineon-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Infineon（インフィニオン）は、パワー半導体、車載・産業向けマイコン、セキュリティ半導体を展開する。",
+      "evidenceIds": [
+        "infineon-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon"
+    },
+    {
+      "id": "infineon-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではInfineon（インフィニオン）を、AIデータセンターの電源変換効率向上に必要なSiC・GaN・パワー半導体を供給する企業と位置付ける。",
+      "evidenceIds": [
+        "infineon-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "infineon-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Infineon（インフィニオン）は、SiC・GaNパワー半導体、IGBT・MOSFET、車載・産業向けマイコンを提供する。",
+      "evidenceIds": [
+        "infineon-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon"
+    },
+    {
+      "id": "infineon-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、SiC・GaNパワー半導体、IGBT・MOSFET、車載・産業向けマイコンという製品構成を、パワー半導体、SiC、GaNに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "infineon-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "infineon-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Compute & Siliconの供給層",
+      "statement": "AtlasではInfineon（インフィニオン）を「Compute & Silicon」に位置し、AIデータセンターの電源変換効率向上に必要なSiC・GaN・パワー半導体を供給する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "infineon-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "infineon-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、パワー半導体の製品幅、SiC・GaNへの投資、車載・産業の大規模顧客基盤を、Infineon（インフィニオン）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "infineon-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "infineon-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、パワー半導体需給、自動車・産業景気、大型設備投資負担を主要な確認点として整理する。",
+      "evidenceIds": [
+        "infineon-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "mitsubishi-electric-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "三菱電機は、パワー半導体、FA、電力機器、空調などを幅広く手掛ける総合電機企業。",
+      "evidenceIds": [
+        "mitsubishi-electric-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mitsubishi-electric"
+    },
+    {
+      "id": "mitsubishi-electric-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "Atlasでは三菱電機を、SiCパワーモジュールと電力・FA機器を通じてAI設備の電源効率とPhysical AI双方に関与する企業と位置付ける。",
+      "evidenceIds": [
+        "mitsubishi-electric-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mitsubishi-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "mitsubishi-electric-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "三菱電機は、SiCパワーモジュール、産業用パワー半導体、FA・電力変換機器を提供する。",
+      "evidenceIds": [
+        "mitsubishi-electric-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mitsubishi-electric"
+    },
+    {
+      "id": "mitsubishi-electric-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、SiCパワーモジュール、産業用パワー半導体、FA・電力変換機器という製品構成を、パワー半導体、SiC、FAに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "mitsubishi-electric-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mitsubishi-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "mitsubishi-electric-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Compute & Siliconの供給層",
+      "statement": "Atlasでは三菱電機を「Compute & Silicon」に位置し、SiCパワーモジュールと電力・FA機器を通じてAI設備の電源効率とPhysical AI双方に関与する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "mitsubishi-electric-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mitsubishi-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "mitsubishi-electric-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、パワー半導体と装置の両面展開、産業・インフラ顧客基盤、SiC技術を、三菱電機の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "mitsubishi-electric-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mitsubishi-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "mitsubishi-electric-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、総合電機ゆえAI感応度の希薄化、設備投資サイクル、品質・ガバナンス課題を主要な確認点として整理する。",
+      "evidenceIds": [
+        "mitsubishi-electric-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mitsubishi-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "monolithic-power-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Monolithic Power Systems（モノリシック・パワー・システムズ）は、高効率な電源管理ICとパワーモジュールを展開する。",
+      "evidenceIds": [
+        "monolithic-power-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "monolithic-power"
+    },
+    {
+      "id": "monolithic-power-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではMonolithic Power Systems（モノリシック・パワー・システムズ）を、GPU・AIサーバーの高電流・高密度電源変換を半導体レベルで支える企業と位置付ける。",
+      "evidenceIds": [
+        "monolithic-power-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "monolithic-power",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "monolithic-power-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Monolithic Power Systems（モノリシック・パワー・システムズ）は、DC-DC電源管理IC、AIサーバー向けパワーソリューション、電源モジュールを提供する。",
+      "evidenceIds": [
+        "monolithic-power-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "monolithic-power"
+    },
+    {
+      "id": "monolithic-power-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、DC-DC電源管理IC、AIサーバー向けパワーソリューション、電源モジュールという製品構成を、電源管理IC、AIサーバー電源、DC-DCに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "monolithic-power-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "monolithic-power",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "monolithic-power-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Compute & Siliconの供給層",
+      "statement": "AtlasではMonolithic Power Systems（モノリシック・パワー・システムズ）を「Compute & Silicon」に位置し、GPU・AIサーバーの高電流・高密度電源変換を半導体レベルで支える役割を担う企業と整理する。",
+      "evidenceIds": [
+        "monolithic-power-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "monolithic-power",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "monolithic-power-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、高効率電源設計、AI・データセンター向け高成長用途、ファブレスモデルを、Monolithic Power Systems（モノリシック・パワー・システムズ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "monolithic-power-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "monolithic-power",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "monolithic-power-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、顧客集中、競合電源IC企業、AI設備投資の変動を主要な確認点として整理する。",
+      "evidenceIds": [
+        "monolithic-power-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "monolithic-power",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "onsemi-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "onsemi（オンセミ）は、パワー半導体、SiC、イメージセンサなどを車載・産業向けに展開する。",
+      "evidenceIds": [
+        "onsemi-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "onsemi"
+    },
+    {
+      "id": "onsemi-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "Atlasではonsemi（オンセミ）を、電源効率、モータ制御、センシングを通じてデータセンター周辺設備とPhysical AIを支える企業と位置付ける。",
+      "evidenceIds": [
+        "onsemi-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "onsemi",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "onsemi-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "onsemi（オンセミ）は、SiC・パワー半導体、インテリジェントパワー製品、イメージセンサを提供する。",
+      "evidenceIds": [
+        "onsemi-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "onsemi"
+    },
+    {
+      "id": "onsemi-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、SiC・パワー半導体、インテリジェントパワー製品、イメージセンサという製品構成を、パワー半導体、SiC、センサに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "onsemi-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "onsemi",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "onsemi-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Compute & Siliconの供給層",
+      "statement": "Atlasではonsemi（オンセミ）を「Compute & Silicon」に位置し、電源効率、モータ制御、センシングを通じてデータセンター周辺設備とPhysical AIを支える役割を担う企業と整理する。",
+      "evidenceIds": [
+        "onsemi-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "onsemi",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "onsemi-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、車載・産業の電力制御技術、SiC垂直統合、センサとパワーの組合せを、onsemi（オンセミ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "onsemi-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "onsemi",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "onsemi-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、EV・産業需要、SiC供給過剰、工場稼働率を主要な確認点として整理する。",
+      "evidenceIds": [
+        "onsemi-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "onsemi",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "qualcomm-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Qualcomm（クアルコム）は、スマートフォン向けSoCを中核に、端末AI、自動車、接続用半導体へ事業を広げる。",
+      "evidenceIds": [
+        "qualcomm-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "qualcomm"
+    },
+    {
+      "id": "qualcomm-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではQualcomm（クアルコム）を、SnapdragonのNPUを中心に、クラウド外で動作するエッジAIの計算基盤を供給する企業と位置付ける。",
+      "evidenceIds": [
+        "qualcomm-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "qualcomm",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "qualcomm-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Qualcomm（クアルコム）は、Snapdragon SoCs、AI / NPU platforms、Automotive compute platformsを提供する。",
+      "evidenceIds": [
+        "qualcomm-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "qualcomm"
+    },
+    {
+      "id": "qualcomm-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Snapdragon SoCs、AI / NPU platforms、Automotive compute platformsという製品構成を、SoC、edge AI、automotiveに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "qualcomm-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "qualcomm",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "qualcomm-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Compute & Siliconの供給層",
+      "statement": "AtlasではQualcomm（クアルコム）を「Compute & Silicon」に位置し、SnapdragonのNPUを中心に、クラウド外で動作するエッジAIの計算基盤を供給する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "qualcomm-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "qualcomm",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "qualcomm-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、モバイルSoCの大規模な採用基盤、通信技術と計算処理の統合、端末AI・自動車への展開を、Qualcomm（クアルコム）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "qualcomm-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "qualcomm",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "qualcomm-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、スマートフォン市場への依存、主要顧客の内製半導体化、ライセンス事業を巡る規制・交渉リスクを主要な確認点として整理する。",
+      "evidenceIds": [
+        "qualcomm-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "qualcomm",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "trane-technologies-overview-e1",
+      "claimId": "trane-technologies-overview",
+      "sourceId": "sec-trane-technologies-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "global climate innovator"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "trane-technologies-ai-role-e1",
+      "claimId": "trane-technologies-ai-role",
+      "sourceId": "sec-trane-technologies-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and services",
+        "quotedLabel": "HVAC and custom refrigeration solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "trane-technologies-products-e1",
+      "claimId": "trane-technologies-products",
+      "sourceId": "sec-trane-technologies-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and services",
+        "quotedLabel": "HVAC and custom refrigeration solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "trane-technologies-technology-e1",
+      "claimId": "trane-technologies-technology",
+      "sourceId": "sec-trane-technologies-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and services",
+        "quotedLabel": "HVAC and custom refrigeration solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "trane-technologies-value-chain-e1",
+      "claimId": "trane-technologies-value-chain",
+      "sourceId": "sec-trane-technologies-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and services",
+        "quotedLabel": "HVAC and custom refrigeration solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "trane-technologies-positioning-e1",
+      "claimId": "trane-technologies-positioning",
+      "sourceId": "sec-trane-technologies-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "industry leader and installed base"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "trane-technologies-risks-e1",
+      "claimId": "trane-technologies-risks",
+      "sourceId": "sec-trane-technologies-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "markets and supply chain"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "umc-overview-e1",
+      "claimId": "umc-overview",
+      "sourceId": "annual-umc-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations Overview",
+        "heading": "Business scope",
+        "quotedLabel": "semiconductor foundry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "umc-ai-role-e1",
+      "claimId": "umc-ai-role",
+      "sourceId": "annual-umc-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations Overview",
+        "heading": "Products and technologies",
+        "quotedLabel": "logic and specialty technologies"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "umc-products-e1",
+      "claimId": "umc-products",
+      "sourceId": "annual-umc-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations Overview",
+        "heading": "Products and technologies",
+        "quotedLabel": "logic and specialty technologies"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "umc-technology-e1",
+      "claimId": "umc-technology",
+      "sourceId": "annual-umc-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations Overview",
+        "heading": "Products and technologies",
+        "quotedLabel": "logic and specialty technologies"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "umc-value-chain-e1",
+      "claimId": "umc-value-chain",
+      "sourceId": "annual-umc-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations Overview",
+        "heading": "Products and technologies",
+        "quotedLabel": "logic and specialty technologies"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "umc-positioning-e1",
+      "claimId": "umc-positioning",
+      "sourceId": "annual-umc-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations Overview",
+        "heading": "Competitive position",
+        "quotedLabel": "manufacturing solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "umc-risks-e1",
+      "claimId": "umc-risks",
+      "sourceId": "annual-umc-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Review of Financial Position, Operating Results, Risk Management",
+        "heading": "Risk management",
+        "quotedLabel": "semiconductor cycle"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "analog-devices-overview-e1",
+      "claimId": "analog-devices-overview",
+      "sourceId": "filing-analog-devices-2025-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "analog, mixed signal and digital signal processing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "analog-devices-ai-role-e1",
+      "claimId": "analog-devices-ai-role",
+      "sourceId": "filing-analog-devices-2025-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "signal processing and power management"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "analog-devices-products-e1",
+      "claimId": "analog-devices-products",
+      "sourceId": "filing-analog-devices-2025-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "signal processing and power management"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "analog-devices-technology-e1",
+      "claimId": "analog-devices-technology",
+      "sourceId": "filing-analog-devices-2025-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "signal processing and power management"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "analog-devices-value-chain-e1",
+      "claimId": "analog-devices-value-chain",
+      "sourceId": "filing-analog-devices-2025-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "signal processing and power management"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "analog-devices-positioning-e1",
+      "claimId": "analog-devices-positioning",
+      "sourceId": "filing-analog-devices-2025-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "competitive"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "analog-devices-risks-e1",
+      "claimId": "analog-devices-risks",
+      "sourceId": "filing-analog-devices-2025-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "cyclical semiconductor industry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cadence-overview-e1",
+      "claimId": "cadence-overview",
+      "sourceId": "sec-cadence-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "computational software"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cadence-ai-role-e1",
+      "claimId": "cadence-ai-role",
+      "sourceId": "sec-cadence-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and Services",
+        "quotedLabel": "EDA and system design"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cadence-products-e1",
+      "claimId": "cadence-products",
+      "sourceId": "sec-cadence-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and Services",
+        "quotedLabel": "EDA and system design"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cadence-technology-e1",
+      "claimId": "cadence-technology",
+      "sourceId": "sec-cadence-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and Services",
+        "quotedLabel": "EDA and system design"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cadence-value-chain-e1",
+      "claimId": "cadence-value-chain",
+      "sourceId": "sec-cadence-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and Services",
+        "quotedLabel": "EDA and system design"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cadence-positioning-e1",
+      "claimId": "cadence-positioning",
+      "sourceId": "sec-cadence-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "competitive"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cadence-risks-e1",
+      "claimId": "cadence-risks",
+      "sourceId": "sec-cadence-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "technology changes"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-overview-e1",
+      "claimId": "canon-overview",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "20-35",
+        "section": "Business Strategy",
+        "heading": "Industrial group",
+        "quotedLabel": "semiconductor lithography equipment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-ai-role-e1",
+      "claimId": "canon-ai-role",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "50-57",
+        "section": "Business Overview",
+        "heading": "Industrial",
+        "quotedLabel": "lithography systems"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-products-e1",
+      "claimId": "canon-products",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "50-57",
+        "section": "Business Overview",
+        "heading": "Industrial",
+        "quotedLabel": "lithography systems"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-technology-e1",
+      "claimId": "canon-technology",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "50-57",
+        "section": "Business Overview",
+        "heading": "Industrial",
+        "quotedLabel": "lithography systems"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-value-chain-e1",
+      "claimId": "canon-value-chain",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "50-57",
+        "section": "Business Overview",
+        "heading": "Industrial",
+        "quotedLabel": "lithography systems"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-positioning-e1",
+      "claimId": "canon-positioning",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "50-57",
+        "section": "Business Overview",
+        "heading": "Strategy",
+        "quotedLabel": "nanoimprint lithography"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-risks-e1",
+      "claimId": "canon-risks",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "86-93",
+        "section": "Risk Management",
+        "heading": "Business risks",
+        "quotedLabel": "market demand"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-overview-e1",
+      "claimId": "infineon-overview",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "20-35",
+        "section": "Group fundamentals",
+        "heading": "Business model",
+        "quotedLabel": "semiconductor solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-ai-role-e1",
+      "claimId": "infineon-ai-role",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "36-55",
+        "section": "Segments",
+        "heading": "Product portfolio",
+        "quotedLabel": "power semiconductors"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-products-e1",
+      "claimId": "infineon-products",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "36-55",
+        "section": "Segments",
+        "heading": "Product portfolio",
+        "quotedLabel": "power semiconductors"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-technology-e1",
+      "claimId": "infineon-technology",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "36-55",
+        "section": "Segments",
+        "heading": "Product portfolio",
+        "quotedLabel": "power semiconductors"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-value-chain-e1",
+      "claimId": "infineon-value-chain",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "36-55",
+        "section": "Segments",
+        "heading": "Product portfolio",
+        "quotedLabel": "power semiconductors"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-positioning-e1",
+      "claimId": "infineon-positioning",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "36-55",
+        "section": "Segments",
+        "heading": "Market position",
+        "quotedLabel": "technology portfolio"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-risks-e1",
+      "claimId": "infineon-risks",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "90-110",
+        "section": "Risk and opportunity report",
+        "heading": "Risks",
+        "quotedLabel": "market and supply"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mitsubishi-electric-overview-e1",
+      "claimId": "mitsubishi-electric-overview",
+      "sourceId": "mitsubishi-electric-annual-securities-report-fy2026",
+      "support": "supports",
+      "locator": {
+        "section": "Business Overview",
+        "heading": "Business segments",
+        "quotedLabel": "factory automation and power devices",
+        "page": "20-45"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mitsubishi-electric-ai-role-e1",
+      "claimId": "mitsubishi-electric-ai-role",
+      "sourceId": "mitsubishi-electric-annual-securities-report-fy2026",
+      "support": "supports",
+      "locator": {
+        "section": "Business Overview",
+        "heading": "Products",
+        "quotedLabel": "power devices and factory automation",
+        "page": "20-45"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mitsubishi-electric-products-e1",
+      "claimId": "mitsubishi-electric-products",
+      "sourceId": "mitsubishi-electric-annual-securities-report-fy2026",
+      "support": "supports",
+      "locator": {
+        "section": "Business Overview",
+        "heading": "Products",
+        "quotedLabel": "power devices and factory automation",
+        "page": "20-45"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mitsubishi-electric-technology-e1",
+      "claimId": "mitsubishi-electric-technology",
+      "sourceId": "mitsubishi-electric-annual-securities-report-fy2026",
+      "support": "supports",
+      "locator": {
+        "section": "Business Overview",
+        "heading": "Products",
+        "quotedLabel": "power devices and factory automation",
+        "page": "20-45"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mitsubishi-electric-value-chain-e1",
+      "claimId": "mitsubishi-electric-value-chain",
+      "sourceId": "mitsubishi-electric-annual-securities-report-fy2026",
+      "support": "supports",
+      "locator": {
+        "section": "Business Overview",
+        "heading": "Products",
+        "quotedLabel": "power devices and factory automation",
+        "page": "20-45"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mitsubishi-electric-positioning-e1",
+      "claimId": "mitsubishi-electric-positioning",
+      "sourceId": "mitsubishi-electric-annual-securities-report-fy2026",
+      "support": "supports",
+      "locator": {
+        "section": "Management Strategy",
+        "heading": "Competitive strengths",
+        "quotedLabel": "integrated manufacturing technology",
+        "page": "10-19"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mitsubishi-electric-risks-e1",
+      "claimId": "mitsubishi-electric-risks",
+      "sourceId": "mitsubishi-electric-annual-securities-report-fy2026",
+      "support": "supports",
+      "locator": {
+        "section": "Business Risks",
+        "heading": "Major risks",
+        "quotedLabel": "market and supply chain",
+        "page": "46-58"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "monolithic-power-overview-e1",
+      "claimId": "monolithic-power-overview",
+      "sourceId": "sec-monolithic-power-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "high-performance power solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "monolithic-power-ai-role-e1",
+      "claimId": "monolithic-power-ai-role",
+      "sourceId": "sec-monolithic-power-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "power management solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "monolithic-power-products-e1",
+      "claimId": "monolithic-power-products",
+      "sourceId": "sec-monolithic-power-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "power management solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "monolithic-power-technology-e1",
+      "claimId": "monolithic-power-technology",
+      "sourceId": "sec-monolithic-power-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "power management solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "monolithic-power-value-chain-e1",
+      "claimId": "monolithic-power-value-chain",
+      "sourceId": "sec-monolithic-power-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "power management solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "monolithic-power-positioning-e1",
+      "claimId": "monolithic-power-positioning",
+      "sourceId": "sec-monolithic-power-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "competitive"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "monolithic-power-risks-e1",
+      "claimId": "monolithic-power-risks",
+      "sourceId": "sec-monolithic-power-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "customer and market concentration"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "onsemi-overview-e1",
+      "claimId": "onsemi-overview",
+      "sourceId": "sec-onsemi-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "intelligent power and sensing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "onsemi-ai-role-e1",
+      "claimId": "onsemi-ai-role",
+      "sourceId": "sec-onsemi-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "power semiconductors and sensors"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "onsemi-products-e1",
+      "claimId": "onsemi-products",
+      "sourceId": "sec-onsemi-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "power semiconductors and sensors"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "onsemi-technology-e1",
+      "claimId": "onsemi-technology",
+      "sourceId": "sec-onsemi-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "power semiconductors and sensors"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "onsemi-value-chain-e1",
+      "claimId": "onsemi-value-chain",
+      "sourceId": "sec-onsemi-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "power semiconductors and sensors"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "onsemi-positioning-e1",
+      "claimId": "onsemi-positioning",
+      "sourceId": "sec-onsemi-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "competitive"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "onsemi-risks-e1",
+      "claimId": "onsemi-risks",
+      "sourceId": "sec-onsemi-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "semiconductor demand"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "qualcomm-overview-e1",
+      "claimId": "qualcomm-overview",
+      "sourceId": "sec-qualcomm-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "wireless technology"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "qualcomm-ai-role-e1",
+      "claimId": "qualcomm-ai-role",
+      "sourceId": "sec-qualcomm-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "QCT",
+        "quotedLabel": "Snapdragon platforms"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "qualcomm-products-e1",
+      "claimId": "qualcomm-products",
+      "sourceId": "sec-qualcomm-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "QCT",
+        "quotedLabel": "Snapdragon platforms"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "qualcomm-technology-e1",
+      "claimId": "qualcomm-technology",
+      "sourceId": "sec-qualcomm-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "QCT",
+        "quotedLabel": "Snapdragon platforms"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "qualcomm-value-chain-e1",
+      "claimId": "qualcomm-value-chain",
+      "sourceId": "sec-qualcomm-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "QCT",
+        "quotedLabel": "Snapdragon platforms"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "qualcomm-positioning-e1",
+      "claimId": "qualcomm-positioning",
+      "sourceId": "sec-qualcomm-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "competitive"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "qualcomm-risks-e1",
+      "claimId": "qualcomm-risks",
+      "sourceId": "sec-qualcomm-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "customer concentration and licensing"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": [
+    {
+      "companyId": "trane-technologies",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "trane-technologies",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "trane-technologies",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "trane-technologies",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "trane-technologies",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "trane-technologies",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "trane-technologies",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "trane-technologies",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "trane-technologies",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "trane-technologies",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "trane-technologies",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "umc",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "umc",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "umc",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "umc",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "umc",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "umc",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "umc",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "umc",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "umc",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "umc",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "umc",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "analog-devices",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cadence",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cadence",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cadence",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cadence",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cadence",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cadence",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "cadence",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "cadence",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "cadence",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cadence",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "cadence",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "canon",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "canon",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "canon",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "canon",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "canon",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "canon",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "canon",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "canon",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "canon",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "canon",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "canon",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "infineon",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "infineon",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "infineon",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "infineon",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "infineon",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "infineon",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "infineon",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "infineon",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "infineon",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "infineon",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "infineon",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "mitsubishi-electric",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "monolithic-power",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "onsemi",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "qualcomm",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    }
+  ]
+}

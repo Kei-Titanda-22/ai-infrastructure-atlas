@@ -15,7 +15,8 @@
 | A3 | ABB, AMD, Amphenol, Arista, ASMPT, Besi | merged / Pages checked | [#124](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/124) | `35fe57e5e7bce7e112fd6831eeab0bbf409d209e` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33468227767) |
 | A4 | Lasertec, Lumentum, SMIC, TE Connectivity, Tower Semiconductor | merged / Pages checked | [#125](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/125) | `adef2e6a895740fd2097f2f535c50ab1da02b00a` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33468866902) |
 | B1 | Broadcom, Carrier, Ciena, Cisco, Coherent, Furukawa Electric, GlobalFoundries, Intel, KOKUSAI ELECTRIC, Lam Research | merged / Pages checked | [#127](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/127) | `b39af00cc17bfb4d5a630e2b702a80577ad255a4` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33470734645) |
-| B2 | Legrand, Marvell, Micron, nVent, Samsung Electronics, Sandisk, Schneider Electric, SCREEN Holdings, SK hynix, Sumitomo Electric | ready for PR | pending | pending | pending |
+| B2 | Legrand, Marvell, Micron, nVent, Samsung Electronics, Sandisk, Schneider Electric, SCREEN Holdings, SK hynix, Sumitomo Electric | merged / Pages checked | [#128](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/128) | `5a2c3423f07779232372b3f85fca5b64b988eadd` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33471460749) |
+| B3 | Trane Technologies, UMC, Analog Devices, Cadence, Canon, Infineon, Mitsubishi Electric, Monolithic Power Systems, onsemi, Qualcomm | ready for PR | pending | pending | pending |
 
 ## Batch A2
 
@@ -168,8 +169,26 @@
 - Browser QA: all ten companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source links, and `44 × 44px` marker targets confirmed. Marvell and SCREEN Holdings passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
 - Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
 - Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- Result: merged; main Actions success; public Pages checked
+
+## Batch B3
+
+- Baseline main: `5a2c3423f07779232372b3f85fca5b64b988eadd`
+- Companies: Trane Technologies, UMC, Analog Devices, Cadence, Canon, Infineon, Mitsubishi Electric, Monolithic Power Systems, onsemi, Qualcomm
+- Claims / Evidence / structured Locators: `70 / 70 / 70`
+- Priority: P1 `50` / P2 `20` / P3 `0`
+- Verification: `source-linked 70`; `verified 0`; policy approval changes `0`
+- Sources: existing Shared Sources reused `8`; added `2`; duplicate Source IDs `0`
+- Batch coverage delta: complete `+30`; partial `-10`; not-started `-20`
+- Global coverage: `153 / 501 / 446 → 183 / 491 / 426`
+- Global maturity: L1 `53 → 43`; L4 `44 → 54`
+- SOFT DEFER: `80` unresolved Category records (`40` partial + `40` not-started)
+- HARD STOP: `0`
+- Browser QA: all ten companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source links, and `44 × 44px` marker targets confirmed. Trane Technologies and Infineon passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
+- Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
+- Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - Result: ready for PR; merge / Actions / Pages pending
 
 ## Resume marker
 
-All A2–A4 and B1 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B2 validation or the first later batch not marked merged; never rerun a completed batch.
+All A2–A4 and B1–B2 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B3 validation or the first later batch not marked merged; never rerun a completed batch.
