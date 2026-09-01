@@ -1,0 +1,86 @@
+/* Global Visual System Correction Pass v0.3: effective width and wrapping. */
+
+.global-visual-pilot { --max: 1240px; }
+
+.page-head .lead,
+.global-visual-pilot .page-head .lead {
+  max-width: min(100%, 112ch);
+  line-height: 1.66;
+}
+
+.home-intro-copy { max-width: 94ch; }
+
+.company-heading-wrap,
+.company-heading-wrap > div,
+.company-title-line { min-width: 0; }
+
+.company-hero .lead,
+.company-section p { max-width: min(100%, 900px); }
+
+.evidence-pilot .pilot-hero-thesis { max-width: 900px; }
+.evidence-pilot .pilot-hero-thesis .claim-statement { max-width: 880px; }
+.evidence-pilot .company-research .claim-statement { max-width: min(100%, 900px); }
+
+.global-visual-companies .company-index-table { min-width: 1205px; }
+.global-visual-companies .company-index-table .company-col {
+  width: 260px;
+  min-width: 260px;
+}
+.global-visual-companies .company-index-table th,
+.global-visual-companies .company-index-table td {
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.company-index-name {
+  display: block;
+  line-height: 1.35;
+  overflow-wrap: normal;
+  word-break: normal;
+  text-wrap: balance;
+}
+.company-index-name a { display: block; }
+.company-index-local {
+  display: block;
+  margin-top: 3px;
+  color: var(--text);
+  font-size: 11px;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+.company-index-meta {
+  display: block;
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+@media (max-width: 1199px) {
+  .sector-page:not(.evidence-pilot) .detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+  .sector-page:not(.evidence-pilot) .company-sidebar {
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    padding: 22px 0 0;
+  }
+}
+
+@media (max-width: 1100px) {
+  .sector-page:not(.evidence-pilot) .company-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+  }
+  .sector-page:not(.evidence-pilot) .snapshot { max-width: 720px; }
+}
+
+@media (max-width: 820px) {
+  .page-head .lead { line-height: 1.6; }
+  .company-hero .lead,
+  .company-section p,
+  .evidence-pilot .pilot-hero-thesis,
+  .evidence-pilot .pilot-hero-thesis .claim-statement,
+  .evidence-pilot .company-research .claim-statement { max-width: 100%; }
+}
