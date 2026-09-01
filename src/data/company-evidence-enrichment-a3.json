@@ -1,0 +1,2162 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "abb-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "電化・モーション・自動化の技術企業",
+      "statement": "ABBは電化、モーション、自動化を事業領域とし、工学とデジタル技術を組み合わせて産業の効率、生産性、持続可能性を支えるグローバル技術企業である.",
+      "evidenceIds": [
+        "abb-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "abb"
+    },
+    {
+      "id": "abb-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIデータセンターの受配電・電力制御層",
+      "statement": "AtlasではABBを、データセンターへ電力を引き込み、変圧・配電・保護・制御する電化インフラを担う企業と位置付ける。",
+      "evidenceIds": [
+        "abb-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "abb",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "abb-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "配電・モーター・ドライブ・制御システム",
+      "statement": "ABBの主要製品群には、中低圧配電機器、モーターとドライブ、計測・制御システム、産業向けデジタルソリューションが含まれる。",
+      "evidenceIds": [
+        "abb-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "abb"
+    },
+    {
+      "id": "abb-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "電化機器と制御・デジタル技術を接続",
+      "statement": "ABBは電化と自動化の機器群に、制御、ソフトウェア、デジタル化の専門性を組み合わせて産業システムを構成する。",
+      "evidenceIds": [
+        "abb-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "abb"
+    },
+    {
+      "id": "abb-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "データセンター設備の電力供給・制御側",
+      "statement": "ABBは発電設備そのものや計算半導体ではなく、施設内外の受配電、電力品質、モーター駆動、運用制御を通じてデータセンター設備層に位置する。",
+      "evidenceIds": [
+        "abb-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "abb"
+    },
+    {
+      "id": "abb-facilities",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要市場でlocal-for-local生産",
+      "statement": "ABBは主要市場の顧客に近い場所で設計・生産するlocal-for-local方針を掲げ、地域分散型の事業・供給体制を構築している。",
+      "evidenceIds": [
+        "abb-facilities-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "abb"
+    },
+    {
+      "id": "abb-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "データセンターを含む産業・インフラ顧客",
+      "statement": "ABBの電化・自動化事業は、データセンター、建物、公共インフラ、製造業、プロセス産業など幅広い顧客市場を対象とする。",
+      "evidenceIds": [
+        "abb-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "abb"
+    },
+    {
+      "id": "abb-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "電化と自動化のtechnology leaderと説明",
+      "statement": "ABBは自社を電化と自動化のグローバルtechnology leaderと位置付け、両分野を横断する技術ポートフォリオを強みとして説明している。",
+      "evidenceIds": [
+        "abb-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "abb"
+    },
+    {
+      "id": "abb-strategy",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "電化需要とenergy efficiencyを成長軸に設定",
+      "statement": "ABBは電力需要拡大、energy efficiency、自動化を構造的な成長領域と捉え、分権型ABB Wayとportfolio managementを通じた成長方針を示している。",
+      "evidenceIds": [
+        "abb-strategy-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "abb"
+    },
+    {
+      "id": "abb-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "景気・供給網・地政学・競争の影響",
+      "statement": "ABBは事業リスクとして景気循環、原材料と部品の供給、地政学・規制、技術変化および競争などを開示している。",
+      "evidenceIds": [
+        "abb-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "abb"
+    },
+    {
+      "id": "amd-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "高性能・適応型コンピューティング企業",
+      "statement": "AMDはデータセンター、クライアント、ゲーム、組み込み向けにCPU、GPU、AI accelerator、DPU、FPGA、adaptive SoCを提供する半導体企業である。",
+      "evidenceIds": [
+        "amd-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amd"
+    },
+    {
+      "id": "amd-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AI計算・ホストCPU・ネットワークを供給",
+      "statement": "AtlasではAMDを、AI clusterのaccelerator、server CPU、DPU・AI NICを供給し、計算と接続を担う半導体設計企業と位置付ける。",
+      "evidenceIds": [
+        "amd-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amd",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "amd-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "EPYC・Instinct・Pensando・FPGA",
+      "statement": "AMDのデータセンター製品にはEPYC server CPU、Instinct GPU、Pensando DPU・AI NIC、FPGA・adaptive SoCが含まれる。",
+      "evidenceIds": [
+        "amd-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amd"
+    },
+    {
+      "id": "amd-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "CPU・GPU・networkingのrack-scale統合",
+      "statement": "AMDはCPU、GPU、networkingを組み合わせたHelios AI rack-scale platformを提示し、AI計算需要を複数の半導体・software要素で扱う。",
+      "evidenceIds": [
+        "amd-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amd"
+    },
+    {
+      "id": "amd-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "設計からAI server platformへ接続",
+      "statement": "AMDはAI用半導体とsoftware stackを設計し、hyperscaler、OEM、ODMが構築するserver・rack・clusterへ製品を供給する位置にある。",
+      "evidenceIds": [
+        "amd-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amd"
+    },
+    {
+      "id": "amd-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "hyperscaler・OEM・ODM・enterprise",
+      "statement": "AMDのデータセンター製品はhyperscale cloud、OEM、ODM、enterprise、HPC顧客のAI・cloud workloadを対象とする。",
+      "evidenceIds": [
+        "amd-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amd"
+    },
+    {
+      "id": "amd-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "annual cadenceのAI GPU roadmap",
+      "statement": "AMDはInstinct solutionで年次cadenceのleadership roadmapを進め、EPYCとnetworkingを含むportfolioでAI data centerを展開すると説明している。",
+      "evidenceIds": [
+        "amd-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amd"
+    },
+    {
+      "id": "amd-strategy",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "Data CenterとAI成長を最優先",
+      "statement": "AMDはData Center segmentの成長加速を優先し、AI GPU roadmap、networking、rack-scale solution、software能力への投資を継続する方針を示す。",
+      "evidenceIds": [
+        "amd-strategy-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amd"
+    },
+    {
+      "id": "amd-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "競争・輸出規制・外部製造への依存",
+      "statement": "AMDはIntelやNVIDIA等との競争、AI GPUへの輸出規制、第三者foundry・assemblyへの依存を主要な事業リスクとして開示する。",
+      "evidenceIds": [
+        "amd-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amd"
+    },
+    {
+      "id": "amphenol-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "接続・ケーブル・アンテナ・sensor企業",
+      "statement": "Amphenolはconnector、interconnect system、cable、antenna、sensorを設計・製造し、通信・IT・産業など多様な市場へ供給する。",
+      "evidenceIds": [
+        "amphenol-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amphenol"
+    },
+    {
+      "id": "amphenol-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AI server内外の高速・電力・光接続",
+      "statement": "AtlasではAmphenolを、AI server・switch・storage間の高速電気／光接続、power interconnect、cable assemblyを担う接続部品企業と位置付ける。",
+      "evidenceIds": [
+        "amphenol-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amphenol",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "amphenol-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "高速・光・RF・power interconnect",
+      "statement": "Amphenolの製品群にはhigh-speed、fiber-optic、radio-frequency、power connector、cable assembly、antenna、sensorが含まれる。",
+      "evidenceIds": [
+        "amphenol-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amphenol"
+    },
+    {
+      "id": "amphenol-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "customer設計段階から高性能接続を開発",
+      "statement": "Amphenolは顧客の設計段階から協働し、high-speed、fiber optics、power、RF、sensor分野のperformance-enhancing solutionを開発する。",
+      "evidenceIds": [
+        "amphenol-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amphenol"
+    },
+    {
+      "id": "amphenol-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "半導体・system間を結ぶinterconnect層",
+      "statement": "Amphenolは半導体そのものではなく、server、network switch、storage、通信機器内外で電力・信号・光を接続するcomponentとassemblyを供給する。",
+      "evidenceIds": [
+        "amphenol-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amphenol"
+    },
+    {
+      "id": "amphenol-facilities",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "世界各地域の分散製造基盤",
+      "statement": "Amphenolは米国、中国、その他地域に製造・事業資産を分散し、多国籍顧客へ地域横断で供給する体制を持つ。",
+      "evidenceIds": [
+        "amphenol-facilities-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amphenol"
+    },
+    {
+      "id": "amphenol-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "IT datacom・通信・産業などへ分散",
+      "statement": "AmphenolはIT datacom、communications networks、industrial、automotive、aerospace、defense等の市場へ供給し、AI関連需要はIT datacomに含まれる。",
+      "evidenceIds": [
+        "amphenol-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amphenol"
+    },
+    {
+      "id": "amphenol-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "広いtechnology portfolioとglobal presence",
+      "statement": "Amphenolは高性能interconnectの幅広いtechnology portfolio、顧客との設計協業、global presenceを競争上の利点として説明する。",
+      "evidenceIds": [
+        "amphenol-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amphenol"
+    },
+    {
+      "id": "amphenol-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "需要変動・顧客集中・供給網・競争",
+      "statement": "Amphenolは最終市場需要の変動、顧客・supplier関係、原材料・component供給、買収統合、競争などをリスクとして開示する。",
+      "evidenceIds": [
+        "amphenol-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "amphenol"
+    },
+    {
+      "id": "arista-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "cloud・AI向けdata-driven networking企業",
+      "statement": "Arista Networksは大規模data center、campus、routing環境向けにnetwork switch、router、software、serviceを提供するnetworking企業である。",
+      "evidenceIds": [
+        "arista-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "arista"
+    },
+    {
+      "id": "arista-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AI clusterのscale-up・scale-out接続",
+      "statement": "AtlasではAristaを、AI accelerator群とfront-end／back-end networkをEthernetで接続し、AI jobの通信効率を支えるnetworking layerの企業と位置付ける。",
+      "evidenceIds": [
+        "arista-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "arista",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "arista-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "Ethernet platform・EOS・CloudVision",
+      "statement": "Aristaの主要製品・技術にはEthernet switch/router platform、Extensible Operating System（EOS）、CloudVision、AI networking solutionが含まれる。",
+      "evidenceIds": [
+        "arista-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "arista"
+    },
+    {
+      "id": "arista-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "単一EOSとdata-driven automation",
+      "statement": "Aristaは複数hardware platformで共通のEOSを用い、network stateの可視化、自動化、telemetryをsoftwareで統合する。",
+      "evidenceIds": [
+        "arista-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "arista"
+    },
+    {
+      "id": "arista-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "XPU間とAI data center fabricを接続",
+      "statement": "AristaはAI acceleratorを製造せず、XPU間、cluster内、front-end、data center間のtrafficを運ぶnetwork fabricを提供する。",
+      "evidenceIds": [
+        "arista-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "arista"
+    },
+    {
+      "id": "arista-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "cloud titan・enterprise・service provider",
+      "statement": "Aristaは大規模cloud customer、enterprise、service provider等へ販売し、AI・cloud・data center networking需要を対象とする。",
+      "evidenceIds": [
+        "arista-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "arista"
+    },
+    {
+      "id": "arista-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "AI Centerの統一network architecture",
+      "statement": "AristaはAI Centerを、異なるconnectivity layerを統合してtime-to-first-job、job completion、XPU利用効率を最適化するarchitectureと説明している。",
+      "evidenceIds": [
+        "arista-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "arista"
+    },
+    {
+      "id": "arista-strategy",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "AI・cloud・data center市場を拡張",
+      "statement": "AristaはAI、cloud、data center networking、routing、campus、softwareとserviceを既存・新規市場の成長領域として掲げる。",
+      "evidenceIds": [
+        "arista-strategy-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "arista"
+    },
+    {
+      "id": "arista-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "顧客集中・外部製造・component供給",
+      "statement": "Aristaは少数customer・resellerへの集中、第三者contract manufacturerへの依存、component供給制約、競争を主要リスクとして開示する。",
+      "evidenceIds": [
+        "arista-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "arista"
+    },
+    {
+      "id": "asmpt-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "半導体・electronics製造装置企業",
+      "statement": "ASMPTは半導体assembly・packagingとsurface mount technology向けのhardwareおよびsoftware solutionを提供する製造装置企業である。",
+      "evidenceIds": [
+        "asmpt-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "asmpt"
+    },
+    {
+      "id": "asmpt-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AI chipのadvanced packagingとserver実装工程",
+      "statement": "AtlasではASMPTを、GPU・memory等のchipletを接合・封止するadvanced packagingと、AI server boardを実装するSMT工程の装置企業と位置付ける。",
+      "evidenceIds": [
+        "asmpt-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "asmpt",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "asmpt-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "TCB・die bonding・molding・SMT・MES",
+      "statement": "ASMPTの製品群にはthermo-compression bonding、die・flip-chip bonding、wire bonding、molding、SMT line equipment、manufacturing execution softwareが含まれる。",
+      "evidenceIds": [
+        "asmpt-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "asmpt"
+    },
+    {
+      "id": "asmpt-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "fine-pitch TCBとchiplet integration",
+      "statement": "ASMPTはfine-pitch thermo-compression bondingやplasma AORを含むadvanced packaging solutionを展開し、chiplet integrationの高密度接続へ対応する。",
+      "evidenceIds": [
+        "asmpt-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "asmpt"
+    },
+    {
+      "id": "asmpt-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "wafer後工程からboard実装までを担当",
+      "statement": "ASMPTはwafer deposition後からbonding、molding、package形成、さらにelectronics boardへのSMT実装までの製造工程に装置を供給する。",
+      "evidenceIds": [
+        "asmpt-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "asmpt"
+    },
+    {
+      "id": "asmpt-facilities",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Asia・Europeを含む製造・R&D拠点",
+      "statement": "ASMPTはSingaporeを本社とし、中国・香港・欧州等に製造、R&D、software開発の事業拠点を持つ。",
+      "evidenceIds": [
+        "asmpt-facilities-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "asmpt"
+    },
+    {
+      "id": "asmpt-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "IDM・OSAT・electronics manufacturer",
+      "statement": "ASMPTのsolutionはIDM、OSAT、foundry関連顧客、electronics manufacturerが行うlogic、memory、photonics、server等の製造に使われる。",
+      "evidenceIds": [
+        "asmpt-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "asmpt"
+    },
+    {
+      "id": "asmpt-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "advanced packagingのtechnology leadership",
+      "statement": "ASMPTはadvanced packagingでのtechnology leadership、幅広いSEMI・SMT portfolio、顧客との共同開発を競争上の位置付けとして説明する。",
+      "evidenceIds": [
+        "asmpt-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "asmpt"
+    },
+    {
+      "id": "asmpt-strategy",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "AI需要とadvanced packagingを成長軸に設定",
+      "statement": "ASMPTはAI用途の投資がSEMI・SMT需要を支えると見込み、TCB等のadvanced packagingとR&D能力への継続投資を方針として示す。",
+      "evidenceIds": [
+        "asmpt-strategy-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "asmpt"
+    },
+    {
+      "id": "asmpt-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "半導体cycle・顧客投資・供給網・競争",
+      "statement": "ASMPTは半導体・electronics設備投資のcycle、customer concentration、supply chain、技術転換、競争等の事業リスクを開示する。",
+      "evidenceIds": [
+        "asmpt-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "asmpt"
+    },
+    {
+      "id": "besi-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "半導体assembly equipment企業",
+      "statement": "Besiはleadframe、substrate、wafer-level packaging向けのassembly processとequipmentを開発する後工程装置企業である。",
+      "evidenceIds": [
+        "besi-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi"
+    },
+    {
+      "id": "besi-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AI chipletの高密度接合工程",
+      "statement": "AtlasではBesiを、2.5D・3D packageやchipletでdie・waferを高精度に接合するhybrid bonding、die attach、TCB装置の企業と位置付ける。",
+      "evidenceIds": [
+        "besi-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "besi-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "hybrid bonding・die attach・molding",
+      "statement": "Besiの製品portfolioにはhybrid bonding、flip-chip・die attach、thermo-compression、molding、trim-and-form、plating solutionが含まれる。",
+      "evidenceIds": [
+        "besi-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi"
+    },
+    {
+      "id": "besi-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "wafer-level assemblyとTC Next",
+      "statement": "Besiはwafer-level assembly技術としてhybrid bondingとTC Next systemの開発・製品化を進めている。",
+      "evidenceIds": [
+        "besi-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi"
+    },
+    {
+      "id": "besi-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "wafer製造後のassembly・packaging工程",
+      "statement": "Besiの装置はwafer前工程の後に、dieを切り出し、接合・封止・基板接続するassembly・packaging工程へ位置する。",
+      "evidenceIds": [
+        "besi-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi"
+    },
+    {
+      "id": "besi-facilities",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Europe設計とAsia生産・support体制",
+      "statement": "BesiはEuropeのtechnology・engineering拠点とAsiaの製造・customer support基盤を組み合わせてassembly equipmentを供給する。",
+      "evidenceIds": [
+        "besi-facilities-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi"
+    },
+    {
+      "id": "besi-capacity",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "cleanroom capacityを拡張",
+      "statement": "Besiは将来のadvanced packaging成長に備え、cleanroom capacityとAsiaのsupport capabilityを拡張する計画を示している。",
+      "evidenceIds": [
+        "besi-capacity-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi"
+    },
+    {
+      "id": "besi-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "AI computing・data center・photonics",
+      "statement": "Besiのassembly equipmentはAI関連computing、2.5D data center、photonicsに加え、mobile、automotive、industrial等の市場を対象とする。",
+      "evidenceIds": [
+        "besi-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi"
+    },
+    {
+      "id": "besi-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "assembly equipmentのindustry leaderと説明",
+      "statement": "Besiはadvanced packagingの長期成長とwafer-level assemblyを背景に、自社をassembly equipment分野のindustry leaderと説明している。",
+      "evidenceIds": [
+        "besi-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi"
+    },
+    {
+      "id": "besi-strategy",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "advanced packagingとAI向け新製品を拡大",
+      "statement": "Besiはhybrid bonding・TC Nextの進展、AI向け新製品、cleanroom能力拡張をstrategic planの重点項目に置いている。",
+      "evidenceIds": [
+        "besi-strategy-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi"
+    },
+    {
+      "id": "besi-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "設備投資cycleと採用timing",
+      "statement": "Besiの開示ではmainstream mobile・automotive・industrial市場の弱さが残り、advanced packaging需要やhybrid bonding採用時期の変動が業績に影響し得る。",
+      "evidenceIds": [
+        "besi-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "besi"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "abb-overview-e1",
+      "claimId": "abb-overview",
+      "sourceId": "annual-report-abb-2025",
+      "support": "supports",
+      "locator": {
+        "page": "16",
+        "section": "Introduction — About ABB",
+        "heading": "Our purpose",
+        "quotedLabel": "technology leadership in electrification and automation"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "abb-ai-role-e1",
+      "claimId": "abb-ai-role",
+      "sourceId": "annual-report-abb-2025",
+      "support": "supports",
+      "locator": {
+        "page": "42",
+        "section": "Electrification business area",
+        "heading": "Market segments",
+        "quotedLabel": "data centers; power distribution and management"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "abb-products-e1",
+      "claimId": "abb-products",
+      "sourceId": "annual-report-abb-2025",
+      "support": "supports",
+      "locator": {
+        "page": "18",
+        "section": "About ABB",
+        "heading": "Our business areas and divisions",
+        "quotedLabel": "Electrification, Motion and Automation"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "abb-technology-e1",
+      "claimId": "abb-technology",
+      "sourceId": "annual-report-abb-2025",
+      "support": "supports",
+      "locator": {
+        "page": "1",
+        "section": "Integrated Report 2025",
+        "heading": "About ABB",
+        "quotedLabel": "connecting its engineering and digitalization expertise"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "abb-value-chain-e1",
+      "claimId": "abb-value-chain",
+      "sourceId": "annual-report-abb-2025",
+      "support": "supports",
+      "locator": {
+        "page": "42",
+        "section": "Electrification business area",
+        "heading": "Portfolio and end markets",
+        "quotedLabel": "distribution solutions; smart power; smart buildings"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "abb-facilities-e1",
+      "claimId": "abb-facilities",
+      "sourceId": "annual-report-abb-2025",
+      "support": "supports",
+      "locator": {
+        "page": "10",
+        "section": "Chairman's letter",
+        "heading": "Confidence in ABB's prospects",
+        "quotedLabel": "designing and producing close to our customers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "abb-customer-e1",
+      "claimId": "abb-customer",
+      "sourceId": "annual-report-abb-2025",
+      "support": "supports",
+      "locator": {
+        "page": "42",
+        "section": "Electrification business area",
+        "heading": "Market segments",
+        "quotedLabel": "data centers, buildings, infrastructure and industry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "abb-positioning-e1",
+      "claimId": "abb-positioning",
+      "sourceId": "annual-report-abb-2025",
+      "support": "supports",
+      "locator": {
+        "page": "1",
+        "section": "Integrated Report 2025",
+        "heading": "About ABB",
+        "quotedLabel": "global technology leader in electrification and automation"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "abb-strategy-e1",
+      "claimId": "abb-strategy",
+      "sourceId": "annual-report-abb-2025",
+      "support": "supports",
+      "locator": {
+        "page": "12",
+        "section": "CEO Q&A",
+        "heading": "Strategy and markets",
+        "quotedLabel": "electrification, energy efficiency and automation"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "abb-risks-e1",
+      "claimId": "abb-risks",
+      "sourceId": "annual-report-abb-2025",
+      "support": "supports",
+      "locator": {
+        "page": "101",
+        "section": "Risk overview",
+        "heading": "Principal risks",
+        "quotedLabel": "market, supply chain, geopolitical and technology risks"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amd-overview-e1",
+      "claimId": "amd-overview",
+      "sourceId": "sec-amd-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Our Business",
+        "quotedLabel": "high-performance and adaptive computing products"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amd-ai-role-e1",
+      "claimId": "amd-ai-role",
+      "sourceId": "sec-amd-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Data Center Segment",
+        "quotedLabel": "AI accelerators, CPUs for servers, DPUs and AI NICs"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amd-products-e1",
+      "claimId": "amd-products",
+      "sourceId": "sec-amd-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Data Center Products",
+        "quotedLabel": "EPYC; Instinct MI350; Pensando; FPGA and adaptive SoC"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amd-technology-e1",
+      "claimId": "amd-technology",
+      "sourceId": "sec-amd-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 7. MD&A",
+        "heading": "2025 product execution",
+        "quotedLabel": "Helios AI rack-scale platform solution incorporates CPUs, GPUs and Networking"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amd-value-chain-e1",
+      "claimId": "amd-value-chain",
+      "sourceId": "sec-amd-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Data Center Market",
+        "quotedLabel": "large hyperscale customers, OEMs and ODMs deployed MI350X"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amd-customer-e1",
+      "claimId": "amd-customer",
+      "sourceId": "sec-amd-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Data Center Market",
+        "quotedLabel": "AI, cloud and enterprise workloads"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amd-positioning-e1",
+      "claimId": "amd-positioning",
+      "sourceId": "sec-amd-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 7. MD&A",
+        "heading": "Business highlights",
+        "quotedLabel": "annual cadence of leadership for AMD Instinct solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amd-strategy-e1",
+      "claimId": "amd-strategy",
+      "sourceId": "sec-amd-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 7. MD&A",
+        "heading": "Business highlights",
+        "quotedLabel": "priority was accelerating growth in the Data Center segment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amd-risks-e1",
+      "claimId": "amd-risks",
+      "sourceId": "sec-amd-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Competition, export controls and manufacturing",
+        "quotedLabel": "export controls; third-party manufacturers; intense competition"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amphenol-overview-e1",
+      "claimId": "amphenol-overview",
+      "sourceId": "sec-amphenol-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "2",
+        "section": "Item 1. Business",
+        "heading": "Reportable Business Segments",
+        "quotedLabel": "Communications Solutions, Harsh Environment Solutions, Interconnect and Sensor Systems"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amphenol-ai-role-e1",
+      "claimId": "amphenol-ai-role",
+      "sourceId": "sec-amphenol-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "7",
+        "section": "Item 1. Business",
+        "heading": "Information Technology and Data Communications",
+        "quotedLabel": "servers, networking equipment, cloud storage and AI-related applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amphenol-products-e1",
+      "claimId": "amphenol-products",
+      "sourceId": "sec-amphenol-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "2",
+        "section": "Item 1. Business",
+        "heading": "Communications Solutions",
+        "quotedLabel": "high speed, radio frequency, power, fiber optic and other interconnect products"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amphenol-technology-e1",
+      "claimId": "amphenol-technology",
+      "sourceId": "sec-amphenol-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "4",
+        "section": "Item 1. Business",
+        "heading": "Business Strategy",
+        "quotedLabel": "works closely with customers at the design stage"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amphenol-value-chain-e1",
+      "claimId": "amphenol-value-chain",
+      "sourceId": "sec-amphenol-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "7",
+        "section": "Item 1. Business",
+        "heading": "Information Technology and Data Communications",
+        "quotedLabel": "networking equipment, servers, cloud storage and peripherals"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amphenol-facilities-e1",
+      "claimId": "amphenol-facilities",
+      "sourceId": "sec-amphenol-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "8",
+        "section": "Item 1. Business",
+        "heading": "Global Presence",
+        "quotedLabel": "global presence; quality products on a timely and worldwide basis"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amphenol-customer-e1",
+      "claimId": "amphenol-customer",
+      "sourceId": "sec-amphenol-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "3",
+        "section": "Item 1. Business",
+        "heading": "End Markets",
+        "quotedLabel": "Information Technology and Data Communications; Communications Networks; Industrial"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amphenol-positioning-e1",
+      "claimId": "amphenol-positioning",
+      "sourceId": "sec-amphenol-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "4",
+        "section": "Item 1. Business",
+        "heading": "Business Strategy",
+        "quotedLabel": "technology leadership; preferred supplier relationships; global presence"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "amphenol-risks-e1",
+      "claimId": "amphenol-risks",
+      "sourceId": "sec-amphenol-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "13",
+        "section": "Item 1A. Risk Factors",
+        "heading": "Business and operational risks",
+        "quotedLabel": "customer demand, supply chain, acquisitions and competition"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "arista-overview-e1",
+      "claimId": "arista-overview",
+      "sourceId": "sec-arista-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "data-driven, client-to-cloud networking for large AI, data center, campus and routing environments"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "arista-ai-role-e1",
+      "claimId": "arista-ai-role",
+      "sourceId": "sec-arista-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking at Scale for the AI Center",
+        "quotedLabel": "integrates distinct connectivity layers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "arista-products-e1",
+      "claimId": "arista-products",
+      "sourceId": "sec-arista-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and Services",
+        "quotedLabel": "switching and routing platforms; EOS; CloudVision"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "arista-technology-e1",
+      "claimId": "arista-technology",
+      "sourceId": "sec-arista-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Extensible Operating System",
+        "quotedLabel": "single software image across platforms; programmable and modular"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "arista-value-chain-e1",
+      "claimId": "arista-value-chain",
+      "sourceId": "sec-arista-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking at Scale for the AI Center",
+        "quotedLabel": "XPU Scale-Up, Scale-Out and AI Center interconnect"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "arista-customer-e1",
+      "claimId": "arista-customer",
+      "sourceId": "sec-arista-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Customers",
+        "quotedLabel": "large cloud customers, enterprises and service providers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "arista-positioning-e1",
+      "claimId": "arista-positioning",
+      "sourceId": "sec-arista-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking at Scale for the AI Center",
+        "quotedLabel": "optimize time-to-first-job, AI job completion times and XPU utilization"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "arista-strategy-e1",
+      "claimId": "arista-strategy",
+      "sourceId": "sec-arista-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Special Note Regarding Forward-Looking Statements",
+        "heading": "Growth strategy",
+        "quotedLabel": "expand into AI, cloud, data center networking, routing, campus, software and services"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "arista-risks-e1",
+      "claimId": "arista-risks",
+      "sourceId": "sec-arista-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Manufacturing and customer concentration",
+        "quotedLabel": "third-party contract manufacturers; customer concentration; component supply"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "asmpt-overview-e1",
+      "claimId": "asmpt-overview",
+      "sourceId": "annual-report-asmpt-2025",
+      "support": "supports",
+      "locator": {
+        "page": "1",
+        "section": "Welcome",
+        "heading": "ASMPT Limited",
+        "quotedLabel": "hardware and software solutions for the manufacture of semiconductors and electronics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "asmpt-ai-role-e1",
+      "claimId": "asmpt-ai-role",
+      "sourceId": "annual-report-asmpt-2025",
+      "support": "supports",
+      "locator": {
+        "page": "10",
+        "section": "Management Discussion and Analysis",
+        "heading": "2025 performance",
+        "quotedLabel": "SEMI and SMT segments benefited from investment in AI applications and infrastructure"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "asmpt-products-e1",
+      "claimId": "asmpt-products",
+      "sourceId": "annual-report-asmpt-2025",
+      "support": "supports",
+      "locator": {
+        "page": "1",
+        "section": "Welcome",
+        "heading": "Business scope",
+        "quotedLabel": "semiconductor assembly and packaging, and SMT industries"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "asmpt-technology-e1",
+      "claimId": "asmpt-technology",
+      "sourceId": "annual-report-asmpt-2025",
+      "support": "supports",
+      "locator": {
+        "page": "13",
+        "section": "Management Discussion and Analysis",
+        "heading": "Advanced Packaging",
+        "quotedLabel": "TCB; ultrafine pitch; proprietary plasma AOR"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "asmpt-value-chain-e1",
+      "claimId": "asmpt-value-chain",
+      "sourceId": "annual-report-asmpt-2025",
+      "support": "supports",
+      "locator": {
+        "page": "1",
+        "section": "Welcome",
+        "heading": "Business scope",
+        "quotedLabel": "from wafer deposition to organise, assemble and package electronic components"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "asmpt-facilities-e1",
+      "claimId": "asmpt-facilities",
+      "sourceId": "annual-report-asmpt-2025",
+      "support": "supports",
+      "locator": {
+        "page": "165",
+        "section": "Notes to the Consolidated Financial Statements",
+        "heading": "Principal subsidiaries",
+        "quotedLabel": "manufacture of semiconductor and surface mount technology equipment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "asmpt-customer-e1",
+      "claimId": "asmpt-customer",
+      "sourceId": "annual-report-asmpt-2025",
+      "support": "supports",
+      "locator": {
+        "page": "12",
+        "section": "Management Discussion and Analysis",
+        "heading": "Market applications",
+        "quotedLabel": "logic, memory, AI servers and photonics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "asmpt-positioning-e1",
+      "claimId": "asmpt-positioning",
+      "sourceId": "annual-report-asmpt-2025",
+      "support": "supports",
+      "locator": {
+        "page": "10",
+        "section": "Management Discussion and Analysis",
+        "heading": "CEO statement",
+        "quotedLabel": "technology leadership in advanced packaging"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "asmpt-strategy-e1",
+      "claimId": "asmpt-strategy",
+      "sourceId": "annual-report-asmpt-2025",
+      "support": "supports",
+      "locator": {
+        "page": "10",
+        "section": "Management Discussion and Analysis",
+        "heading": "CEO statement",
+        "quotedLabel": "continued investment in R&D and capabilities"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "asmpt-risks-e1",
+      "claimId": "asmpt-risks",
+      "sourceId": "annual-report-asmpt-2025",
+      "support": "supports",
+      "locator": {
+        "page": "53",
+        "section": "Corporate Governance Report",
+        "heading": "Principal risks",
+        "quotedLabel": "industry cycles, customers, supply chain, technology and competition"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-overview-e1",
+      "claimId": "besi-overview",
+      "sourceId": "ir-besi",
+      "support": "supports",
+      "locator": {
+        "section": "Corporate website",
+        "heading": "Welcome to the world of Besi",
+        "quotedLabel": "assembly processes and equipment for leadframe, substrate and wafer level packaging"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-ai-role-e1",
+      "claimId": "besi-ai-role",
+      "sourceId": "results-besi-q4-2025",
+      "support": "supports",
+      "locator": {
+        "page": "25",
+        "section": "Conclusion",
+        "heading": "Wafer level assembly",
+        "quotedLabel": "wafer level assembly for AI applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-products-e1",
+      "claimId": "besi-products",
+      "sourceId": "ir-besi",
+      "support": "supports",
+      "locator": {
+        "section": "Corporate website",
+        "heading": "Semiconductor Equipment",
+        "quotedLabel": "Datacon, Esec, Fico and Meco equipment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-technology-e1",
+      "claimId": "besi-technology",
+      "sourceId": "results-besi-q4-2025",
+      "support": "supports",
+      "locator": {
+        "page": "9",
+        "section": "2025 Strategic Highlights",
+        "heading": "Wafer level assembly agenda",
+        "quotedLabel": "hybrid bonding and TC Next systems"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-value-chain-e1",
+      "claimId": "besi-value-chain",
+      "sourceId": "results-besi-q4-2025",
+      "support": "supports",
+      "locator": {
+        "page": "25",
+        "section": "Conclusion",
+        "heading": "Assembly market",
+        "quotedLabel": "assembly market ever more critical in semiconductor value chain"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-facilities-e1",
+      "claimId": "besi-facilities",
+      "sourceId": "results-besi-q4-2025",
+      "support": "supports",
+      "locator": {
+        "page": "9",
+        "section": "2025 Strategic Highlights",
+        "heading": "Operations",
+        "quotedLabel": "Asian support capabilities"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-capacity-e1",
+      "claimId": "besi-capacity",
+      "sourceId": "results-besi-q4-2025",
+      "support": "supports",
+      "locator": {
+        "page": "9",
+        "section": "2025 Strategic Highlights",
+        "heading": "Operations",
+        "quotedLabel": "Expansion of cleanroom capacity and Asian support capabilities"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-customer-e1",
+      "claimId": "besi-customer",
+      "sourceId": "results-besi-q4-2025",
+      "support": "supports",
+      "locator": {
+        "page": "16",
+        "section": "Revenue / Order Trends",
+        "heading": "FY 2025 trends",
+        "quotedLabel": "AI-related computing; datacenter; photonics; mobile; automotive; industrial"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-positioning-e1",
+      "claimId": "besi-positioning",
+      "sourceId": "results-besi-q4-2025",
+      "support": "supports",
+      "locator": {
+        "page": "25",
+        "section": "Conclusion",
+        "heading": "Strategic position",
+        "quotedLabel": "disciplined strategic focus has created an industry leader"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-strategy-e1",
+      "claimId": "besi-strategy",
+      "sourceId": "results-besi-q4-2025",
+      "support": "supports",
+      "locator": {
+        "page": "9",
+        "section": "2025 Strategic Highlights",
+        "heading": "Strategic plan",
+        "quotedLabel": "new products for next gen AI applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "besi-risks-e1",
+      "claimId": "besi-risks",
+      "sourceId": "results-besi-q4-2025",
+      "support": "supports",
+      "locator": {
+        "page": "16",
+        "section": "Revenue / Order Trends",
+        "heading": "FY 2025 trends",
+        "quotedLabel": "ongoing weakness in mainstream mobile, automotive and industrial markets"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": [
+    {
+      "companyId": "abb",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "abb",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "abb",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "abb",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "abb",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "abb",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "abb",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "abb",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "abb",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "abb",
+      "category": "strategy",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "abb",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amd",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amd",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amd",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amd",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amd",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amd",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-applicable",
+      "notes": "第三者foundry・assemblyを利用する設計企業であり、委託先設備をAMDの製造拠点・capacityとして収録しない。"
+    },
+    {
+      "companyId": "amd",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-applicable",
+      "notes": "第三者foundry・assemblyを利用する設計企業であり、委託先設備をAMDの製造拠点・capacityとして収録しない。"
+    },
+    {
+      "companyId": "amd",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amd",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amd",
+      "category": "strategy",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amd",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "amphenol",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "arista",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "arista",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "arista",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "arista",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "arista",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "arista",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-applicable",
+      "notes": "第三者contract manufacturerへの依存が開示されており、委託先設備をAristaの製造拠点・capacityとして収録しない。"
+    },
+    {
+      "companyId": "arista",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-applicable",
+      "notes": "第三者contract manufacturerへの依存が開示されており、委託先設備をAristaの製造拠点・capacityとして収録しない。"
+    },
+    {
+      "companyId": "arista",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "arista",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "arista",
+      "category": "strategy",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "arista",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "strategy",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "asmpt",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "capacity-expansion",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "strategy",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "besi",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    }
+  ]
+}
+
