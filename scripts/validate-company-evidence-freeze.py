@@ -12,7 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 FREEZE_DOC = ROOT / "docs/company-evidence-freeze-v01.md"
 SCHEMA_PATH = ROOT / "docs/company-evidence-schema-v02.json"
-DATA_PATH = ROOT / "src/data/company-evidence-pilot-v02.json"
+EVIDENCE_MANIFEST_PATH = ROOT / "src/data/company-evidence-manifest.json"
+EVIDENCE_RESOLVER_PATH = ROOT / "src/lib/company-evidence.ts"
 MANIFEST_PATH = ROOT / "src/data/source-registry-manifest.json"
 RESOLVER_PATH = ROOT / "src/lib/source-registry.ts"
 FRESHNESS_PATH = ROOT / "src/lib/evidence-freshness.ts"
@@ -57,7 +58,7 @@ def enum(schema: dict, definition: str, property_name: str) -> set[str]:
 def main() -> int:
     errors: list[str] = []
     required_files = [
-        FREEZE_DOC, SCHEMA_PATH, DATA_PATH, MANIFEST_PATH, RESOLVER_PATH,
+        FREEZE_DOC, SCHEMA_PATH, EVIDENCE_MANIFEST_PATH, EVIDENCE_RESOLVER_PATH, MANIFEST_PATH, RESOLVER_PATH,
         FRESHNESS_PATH, CLAIM_COMPONENT_PATH, CLAIMS_COMPONENT_PATH,
         COMPANY_PAGE_PATH, PILOT_STYLE_PATH, *HUMAN_TEST_ASSETS,
     ]
@@ -69,7 +70,24 @@ def main() -> int:
 
     freeze_doc = FREEZE_DOC.read_text(encoding="utf-8")
     schema = load(SCHEMA_PATH)
-    data = load(DATA_PATH)
+    evidence_manifest = load(EVIDENCE_MANIFEST_PATH)
+    evidence_shards = evidence_manifest.get("shards", [])
+    evidence_payloads = []
+    for shard in evidence_shards:
+        path = ROOT / "src/data" / shard
+        if not path.exists():
+            fail(errors, f"Company Evidence shard is missing: {shard}")
+            continue
+        payload = load(path)
+        if payload.get("schemaVersion") != EXPECTED_SCHEMA_VERSION:
+            fail(errors, f"Company Evidence shard must use frozen Schema 0.2: {shard}")
+        evidence_payloads.append(payload)
+    data = {
+        "schemaVersion": EXPECTED_SCHEMA_VERSION,
+        "claims": [claim for payload in evidence_payloads for claim in payload.get("claims", [])],
+        "evidence": [binding for payload in evidence_payloads for binding in payload.get("evidence", [])],
+        "coverage": [record for payload in evidence_payloads for record in payload.get("coverage", [])],
+    }
 
     required_freeze_terms = [
         "Freeze decision: **YES**",
@@ -235,6 +253,11 @@ def main() -> int:
 
     if "source-registry-manifest.json" not in resolver or "publishedAt: source.publishedAt ?? null" not in resolver:
         fail(errors, "Shared Source resolver contract changed")
+    evidence_resolver = EVIDENCE_RESOLVER_PATH.read_text(encoding="utf-8")
+    if "company-evidence-manifest.json" not in evidence_resolver or "import.meta.glob" not in evidence_resolver:
+        fail(errors, "Company Evidence must resolve manifest shards generically")
+    if "companyEvidenceCompanyIds" not in company_page or "company-evidence-pilot-v02.json" in company_page:
+        fail(errors, "Company page must use the generic Company Evidence resolver")
     if "deriveEvidenceFreshness" not in freshness or "deriveEvidenceFreshness" not in claim_component:
         fail(errors, "Company Evidence must use the shared Freshness helper")
     if "2026-08-31T00:00:00Z" in claim_component:

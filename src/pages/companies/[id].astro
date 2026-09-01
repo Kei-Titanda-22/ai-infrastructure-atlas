@@ -17,7 +17,7 @@ import sectorKpis from '../../data/sector-kpis.json';
 import sectorKpiDefinitions from '../../data/sector-kpi-definitions.json';
 import roicCalculations from '../../data/roic-calculations.json';
 import metricDefinitions from '../../data/metric-definitions.json';
-import companyEvidencePilot from '../../data/company-evidence-pilot-v02.json';
+import { companyEvidence, companyEvidenceCompanyIds } from '../../lib/company-evidence';
 
 export async function getStaticPaths() {
   const companies = await getCollection('companies');
@@ -37,12 +37,11 @@ const companyFacilities = facilities.filter(facility => facility.companyId === c
 const facilitySourceIds = new Set(companyFacilities.map(facility => facility.sourceId));
 const companyClaims = claims.filter(claim => claim.companyId === company.id);
 const claimSourceIds = new Set(companyClaims.flatMap(claim => claim.sourceIds));
-const pilotCompanyIds = new Set(['nvidia', 'tsmc', 'applied-materials', 'fujikura', 'vertiv']);
-const isEvidencePilot = pilotCompanyIds.has(company.id);
-const pilotClaims = isEvidencePilot ? companyEvidencePilot.claims.filter(claim => claim.companyId === company.id) : [];
+const isEvidencePilot = companyEvidenceCompanyIds.has(company.id);
+const pilotClaims = isEvidencePilot ? companyEvidence.claims.filter(claim => claim.companyId === company.id) : [];
 const pilotEvidenceIds = new Set(pilotClaims.flatMap(claim => claim.evidenceIds));
-const pilotEvidence = companyEvidencePilot.evidence.filter(binding => pilotEvidenceIds.has(binding.id));
-const pilotCoverage = isEvidencePilot ? companyEvidencePilot.coverage.filter(item => item.companyId === company.id) : [];
+const pilotEvidence = companyEvidence.evidence.filter(binding => pilotEvidenceIds.has(binding.id));
+const pilotCoverage = isEvidencePilot ? companyEvidence.coverage.filter(item => item.companyId === company.id) : [];
 const pilotSourceIds = new Set(pilotEvidence.map(binding => binding.sourceId));
 const companySources = allSources.filter(source => d.sourceIds.includes(source.id) || facilitySourceIds.has(source.id) || claimSourceIds.has(source.id) || pilotSourceIds.has(source.id));
 const brandAsset = brandAssets.find(asset => asset.companyId === company.id);
