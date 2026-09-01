@@ -1,0 +1,2628 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "western-digital-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Western Digital（ウエスタンデジタル）は、HDDを中心とする大容量ストレージ企業。",
+      "evidenceIds": [
+        "western-digital-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "western-digital"
+    },
+    {
+      "id": "western-digital-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではWestern Digital（ウエスタンデジタル）を、AI学習データやクラウドデータの長期・大容量保存を担うデータセンターストレージ層に位置する企業と位置付ける。",
+      "evidenceIds": [
+        "western-digital-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "western-digital",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "western-digital-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Western Digital（ウエスタンデジタル）は、データセンター向けHDD、大容量エンタープライズHDD、クラウド向けストレージ製品を提供する。",
+      "evidenceIds": [
+        "western-digital-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "western-digital"
+    },
+    {
+      "id": "western-digital-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、データセンター向けHDD、大容量エンタープライズHDD、クラウド向けストレージ製品という製品構成を、HDD、データセンターストレージ、大容量ストレージに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "western-digital-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "western-digital",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "western-digital-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Memoryの供給層",
+      "statement": "AtlasではWestern Digital（ウエスタンデジタル）を「Memory」に位置し、AI学習データやクラウドデータの長期・大容量保存を担うデータセンターストレージ層に位置する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "western-digital-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "western-digital",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "western-digital-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、大容量HDDの技術・量産基盤、ハイパースケーラー向け供給実績、容量単価の低い大規模保存を、Western Digital（ウエスタンデジタル）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "western-digital-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "western-digital",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "western-digital-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、HDD需要サイクル、フラッシュとの代替関係、顧客集中を主要な確認点として整理する。",
+      "evidenceIds": [
+        "western-digital-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "western-digital",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "shinko-electric-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "新光電気工業は、半導体パッケージ、リードフレーム、ICアセンブリなどを手掛ける日本の半導体後工程・基板企業。",
+      "evidenceIds": [
+        "shinko-electric-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "shinko-electric"
+    },
+    {
+      "id": "shinko-electric-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "Atlasでは新光電気工業を、高性能半導体の大型・高密度パッケージ化に伴う基板・放熱・実装需要に接続する企業と位置付ける。",
+      "evidenceIds": [
+        "shinko-electric-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "shinko-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "shinko-electric-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "新光電気工業は、プラスチックラミネートパッケージ、リードフレーム、ICアセンブリを提供する。",
+      "evidenceIds": [
+        "shinko-electric-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "shinko-electric"
+    },
+    {
+      "id": "shinko-electric-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、プラスチックラミネートパッケージ、リードフレーム、ICアセンブリという製品構成を、パッケージ基板、leadframe、advanced packagingに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "shinko-electric-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "shinko-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "shinko-electric-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "半導体材料・基板の供給層",
+      "statement": "Atlasでは新光電気工業を「半導体材料・基板」に位置し、高性能半導体の大型・高密度パッケージ化に伴う基板・放熱・実装需要に接続する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "shinko-electric-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "shinko-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "shinko-electric-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、半導体パッケージ基板と実装技術の蓄積、基板から組立までの後工程対応力、日本国内の複数製造拠点を、新光電気工業の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "shinko-electric-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "shinko-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "shinko-electric-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、先端パッケージ需要の変動、顧客製品サイクルへの依存、非上場化後の公開情報量の低下を主要な確認点として整理する。",
+      "evidenceIds": [
+        "shinko-electric-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "shinko-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "aptiv-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Aptiv（アプティブ）は、車載電装、接続、ソフトウェア、先進運転支援向けシステムを提供する。",
+      "evidenceIds": [
+        "aptiv-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "aptiv"
+    },
+    {
+      "id": "aptiv-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではAptiv（アプティブ）を、車両の電気・電子アーキテクチャを通じてセンサ、計算機、電源、ネットワークを接続する企業と位置付ける。",
+      "evidenceIds": [
+        "aptiv-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "aptiv",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "aptiv-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Aptiv（アプティブ）は、車載電気・電子アーキテクチャ、ADAS関連システム、車載接続・配電製品を提供する。",
+      "evidenceIds": [
+        "aptiv-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "aptiv"
+    },
+    {
+      "id": "aptiv-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、車載電気・電子アーキテクチャ、ADAS関連システム、車載接続・配電製品という製品構成を、ADAS、車載ネットワーク、電装に関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "aptiv-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "aptiv",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "aptiv-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Physical AIの供給層",
+      "statement": "AtlasではAptiv（アプティブ）を「Physical AI」に位置し、車両の電気・電子アーキテクチャを通じてセンサ、計算機、電源、ネットワークを接続する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "aptiv-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "aptiv",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "aptiv-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、車両全体の電装アーキテクチャ知見、グローバルOEM顧客基盤、高電圧化・ソフトウェア化への対応を、Aptiv（アプティブ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "aptiv-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "aptiv",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "aptiv-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動車生産の変動、OEM価格交渉、地域別需要と供給網を主要な確認点として整理する。",
+      "evidenceIds": [
+        "aptiv-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "aptiv",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "bosch-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Bosch（ボッシュ）は、自動車、産業機器、センサ、半導体、建築設備などを手掛ける非上場の総合技術企業。",
+      "evidenceIds": [
+        "bosch-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch"
+    },
+    {
+      "id": "bosch-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではBosch（ボッシュ）を、MEMSセンサ、車載電子、産業自動化を通じてPhysical AIのセンシングと制御を支える企業と位置付ける。",
+      "evidenceIds": [
+        "bosch-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "bosch-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Bosch（ボッシュ）は、MEMS・車載センサ、車載計算・制御システム、産業自動化技術を提供する。",
+      "evidenceIds": [
+        "bosch-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch"
+    },
+    {
+      "id": "bosch-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、MEMS・車載センサ、車載計算・制御システム、産業自動化技術という製品構成を、MEMS、車載センサ、産業自動化に関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "bosch-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "bosch-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Physical AIの供給層",
+      "statement": "AtlasではBosch（ボッシュ）を「Physical AI」に位置し、MEMSセンサ、車載電子、産業自動化を通じてPhysical AIのセンシングと制御を支える役割を担う企業と整理する。",
+      "evidenceIds": [
+        "bosch-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "bosch-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、車載・産業の広い顧客基盤、センサから制御までの技術蓄積、大規模な研究開発基盤を、Bosch（ボッシュ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "bosch-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "bosch-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動車・産業景気、非上場ゆえ市場指標比較に制約、事業ポートフォリオの複雑さを主要な確認点として整理する。",
+      "evidenceIds": [
+        "bosch-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "equinix-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Equinix（エクイニクス）は、コロケーションと相互接続を中心にデータセンター網を運営するREIT。",
+      "evidenceIds": [
+        "equinix-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "equinix"
+    },
+    {
+      "id": "equinix-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではEquinix（エクイニクス）を、AI向け計算・ネットワーク需要の増加は追い風だが、REITとして資本コストや金利の影響も大きい企業と位置付ける。",
+      "evidenceIds": [
+        "equinix-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "equinix",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "equinix-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Equinix（エクイニクス）は、Colocation data centers、Interconnection services、Digital infrastructure real estateを提供する。",
+      "evidenceIds": [
+        "equinix-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "equinix"
+    },
+    {
+      "id": "equinix-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Colocation data centers、Interconnection services、Digital infrastructure real estateという製品構成を、REIT、colocation、interconnectionに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "equinix-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "equinix",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "equinix-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Data Center & Facilitiesの供給層",
+      "statement": "AtlasではEquinix（エクイニクス）を「Data Center & Facilities」に位置し、AI向け計算・ネットワーク需要の増加は追い風だが、REITとして資本コストや金利の影響も大きい役割を担う企業と整理する。",
+      "evidenceIds": [
+        "equinix-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "equinix",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "equinix-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、大規模な接続エコシステム、主要都市での拠点網、相互接続によるネットワーク効果を、Equinix（エクイニクス）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "equinix-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "equinix",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "equinix-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、金利・資本コスト、電力確保、AI向け高密度設備への追加投資を主要な確認点として整理する。",
+      "evidenceIds": [
+        "equinix-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "equinix",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "kinsus-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Kinsus（景碩科技）は、半導体IC基板・パッケージ基板を生産する台湾企業。",
+      "evidenceIds": [
+        "kinsus-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus"
+    },
+    {
+      "id": "kinsus-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではKinsus（景碩科技）を、高性能計算半導体やネットワーク半導体を実装するパッケージ基板を供給する企業と位置付ける。",
+      "evidenceIds": [
+        "kinsus-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "kinsus-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Kinsus（景碩科技）は、ICパッケージ基板、FC-BGA基板、高密度基板を提供する。",
+      "evidenceIds": [
+        "kinsus-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus"
+    },
+    {
+      "id": "kinsus-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、ICパッケージ基板、FC-BGA基板、高密度基板という製品構成を、パッケージ基板、ABF基板、FC-BGAに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "kinsus-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "kinsus-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "半導体材料・基板の供給層",
+      "statement": "AtlasではKinsus（景碩科技）を「半導体材料・基板」に位置し、高性能計算半導体やネットワーク半導体を実装するパッケージ基板を供給する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "kinsus-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "kinsus-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、パッケージ基板量産技術、台湾半導体供給網との近接、高性能用途への対応を、Kinsus（景碩科技）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "kinsus-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "kinsus-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、基板市況、顧客集中、設備投資負担を主要な確認点として整理する。",
+      "evidenceIds": [
+        "kinsus-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "linde-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Linde（リンデ）は、世界大手の産業ガス企業で、半導体向け高純度ガスとオンサイト供給を行う。",
+      "evidenceIds": [
+        "linde-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "linde"
+    },
+    {
+      "id": "linde-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではLinde（リンデ）を、半導体製造のプロセスガスと工場インフラを長期契約型で支える企業と位置付ける。",
+      "evidenceIds": [
+        "linde-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "linde",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "linde-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Linde（リンデ）は、半導体用高純度ガス、特殊ガス、オンサイトガス供給設備を提供する。",
+      "evidenceIds": [
+        "linde-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "linde"
+    },
+    {
+      "id": "linde-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、半導体用高純度ガス、特殊ガス、オンサイトガス供給設備という製品構成を、半導体ガス、高純度ガス、オンサイト供給に関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "linde-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "linde",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "linde-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "半導体材料・基板の供給層",
+      "statement": "AtlasではLinde（リンデ）を「半導体材料・基板」に位置し、半導体製造のプロセスガスと工場インフラを長期契約型で支える役割を担う企業と整理する。",
+      "evidenceIds": [
+        "linde-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "linde",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "linde-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、グローバルな産業ガス供給網、長期契約型ビジネス、高純度・安定供給能力を、Linde（リンデ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "linde-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "linde",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "linde-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、エネルギー価格、大型プロジェクト実行、設備投資需要を主要な確認点として整理する。",
+      "evidenceIds": [
+        "linde-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "linde",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "mobileye-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Mobileye（モービルアイ）は、先進運転支援システムと自動運転向けの車載計算・認識技術を提供する。",
+      "evidenceIds": [
+        "mobileye-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mobileye"
+    },
+    {
+      "id": "mobileye-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではMobileye（モービルアイ）を、カメラ認識、車載SoC、地図情報を統合し、自動車向けPhysical AIの中核を担う企業と位置付ける。",
+      "evidenceIds": [
+        "mobileye-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mobileye",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "mobileye-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Mobileye（モービルアイ）は、EyeQ車載プロセッサ、ADAS・自動運転ソフトウェア、REMマッピングを提供する。",
+      "evidenceIds": [
+        "mobileye-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mobileye"
+    },
+    {
+      "id": "mobileye-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、EyeQ車載プロセッサ、ADAS・自動運転ソフトウェア、REMマッピングという製品構成を、ADAS、自動運転、車載SoCに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "mobileye-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mobileye",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "mobileye-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Physical AIの供給層",
+      "statement": "AtlasではMobileye（モービルアイ）を「Physical AI」に位置し、カメラ認識、車載SoC、地図情報を統合し、自動車向けPhysical AIの中核を担う役割を担う企業と整理する。",
+      "evidenceIds": [
+        "mobileye-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mobileye",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "mobileye-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、車載向け専用計算基盤、長年のADAS量産実績、認識・地図・SoCの統合を、Mobileye（モービルアイ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "mobileye-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mobileye",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "mobileye-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動車生産サイクル、OEM内製化、自動運転の実装時期を主要な確認点として整理する。",
+      "evidenceIds": [
+        "mobileye-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mobileye",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "tesla-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Tesla（テスラ）は、電気自動車、エネルギー貯蔵、自動運転・AI関連ソフトウェアを展開する。",
+      "evidenceIds": [
+        "tesla-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tesla"
+    },
+    {
+      "id": "tesla-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではTesla（テスラ）を、車載AIとロボットを実世界へ展開するPhysical AI企業であり、推論計算・センサ・電力設備の需要にも関係する企業と位置付ける。",
+      "evidenceIds": [
+        "tesla-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tesla",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "tesla-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Tesla（テスラ）は、自動運転・運転支援システム、ヒューマノイドロボット、定置用蓄電システムを提供する。",
+      "evidenceIds": [
+        "tesla-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tesla"
+    },
+    {
+      "id": "tesla-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、自動運転・運転支援システム、ヒューマノイドロボット、定置用蓄電システムという製品構成を、自動運転、ロボット、AI計算に関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "tesla-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tesla",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "tesla-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Physical AIの供給層",
+      "statement": "AtlasではTesla（テスラ）を「Physical AI」に位置し、車載AIとロボットを実世界へ展開するPhysical AI企業であり、推論計算・センサ・電力設備の需要にも関係する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "tesla-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tesla",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "tesla-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、車両・AI・エネルギーをまたぐ垂直統合、大規模な実走行データ基盤、蓄電設備まで含む事業範囲を、Tesla（テスラ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "tesla-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tesla",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "tesla-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動運転規制と安全性、自動車需要の循環、大型設備投資と価格競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "tesla-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tesla",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "western-digital-overview-e1",
+      "claimId": "western-digital-overview",
+      "sourceId": "annual-report-western-digital-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "data storage"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "western-digital-ai-role-e1",
+      "claimId": "western-digital-ai-role",
+      "sourceId": "annual-report-western-digital-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "hard disk drives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "western-digital-products-e1",
+      "claimId": "western-digital-products",
+      "sourceId": "annual-report-western-digital-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "hard disk drives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "western-digital-technology-e1",
+      "claimId": "western-digital-technology",
+      "sourceId": "annual-report-western-digital-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "hard disk drives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "western-digital-value-chain-e1",
+      "claimId": "western-digital-value-chain",
+      "sourceId": "annual-report-western-digital-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "hard disk drives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "western-digital-positioning-e1",
+      "claimId": "western-digital-positioning",
+      "sourceId": "annual-report-western-digital-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "technology and scale"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "western-digital-risks-e1",
+      "claimId": "western-digital-risks",
+      "sourceId": "annual-report-western-digital-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "demand and manufacturing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "shinko-electric-overview-e1",
+      "claimId": "shinko-electric-overview",
+      "sourceId": "integrated-shinko-electric-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Business Overview",
+        "heading": "At a glance",
+        "quotedLabel": "semiconductor packages"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "shinko-electric-ai-role-e1",
+      "claimId": "shinko-electric-ai-role",
+      "sourceId": "integrated-shinko-electric-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Business Strategy",
+        "heading": "Products",
+        "quotedLabel": "flip-chip packages and substrates"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "shinko-electric-products-e1",
+      "claimId": "shinko-electric-products",
+      "sourceId": "integrated-shinko-electric-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Business Strategy",
+        "heading": "Products",
+        "quotedLabel": "flip-chip packages and substrates"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "shinko-electric-technology-e1",
+      "claimId": "shinko-electric-technology",
+      "sourceId": "integrated-shinko-electric-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Business Strategy",
+        "heading": "Products",
+        "quotedLabel": "flip-chip packages and substrates"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "shinko-electric-value-chain-e1",
+      "claimId": "shinko-electric-value-chain",
+      "sourceId": "integrated-shinko-electric-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Business Strategy",
+        "heading": "Products",
+        "quotedLabel": "flip-chip packages and substrates"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "shinko-electric-positioning-e1",
+      "claimId": "shinko-electric-positioning",
+      "sourceId": "integrated-shinko-electric-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Value Creation",
+        "heading": "Strengths",
+        "quotedLabel": "packaging technology"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "shinko-electric-risks-e1",
+      "claimId": "shinko-electric-risks",
+      "sourceId": "integrated-shinko-electric-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Risk Management",
+        "heading": "Business risks",
+        "quotedLabel": "market and capacity"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "aptiv-overview-e1",
+      "claimId": "aptiv-overview",
+      "sourceId": "sec-aptiv-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "vehicle technology"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "aptiv-ai-role-e1",
+      "claimId": "aptiv-ai-role",
+      "sourceId": "sec-aptiv-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Segments",
+        "quotedLabel": "signal and power solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "aptiv-products-e1",
+      "claimId": "aptiv-products",
+      "sourceId": "sec-aptiv-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Segments",
+        "quotedLabel": "signal and power solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "aptiv-technology-e1",
+      "claimId": "aptiv-technology",
+      "sourceId": "sec-aptiv-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Segments",
+        "quotedLabel": "signal and power solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "aptiv-value-chain-e1",
+      "claimId": "aptiv-value-chain",
+      "sourceId": "sec-aptiv-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Segments",
+        "quotedLabel": "signal and power solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "aptiv-positioning-e1",
+      "claimId": "aptiv-positioning",
+      "sourceId": "sec-aptiv-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "architecture and software"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "aptiv-risks-e1",
+      "claimId": "aptiv-risks",
+      "sourceId": "sec-aptiv-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "automotive markets"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "bosch-overview-e1",
+      "claimId": "bosch-overview",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Management Report",
+        "heading": "Business sectors",
+        "quotedLabel": "mobility and industrial technology"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "bosch-ai-role-e1",
+      "claimId": "bosch-ai-role",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Mobility",
+        "heading": "Products and solutions",
+        "quotedLabel": "sensors and vehicle electronics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "bosch-products-e1",
+      "claimId": "bosch-products",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Mobility",
+        "heading": "Products and solutions",
+        "quotedLabel": "sensors and vehicle electronics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "bosch-technology-e1",
+      "claimId": "bosch-technology",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Mobility",
+        "heading": "Products and solutions",
+        "quotedLabel": "sensors and vehicle electronics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "bosch-value-chain-e1",
+      "claimId": "bosch-value-chain",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Mobility",
+        "heading": "Products and solutions",
+        "quotedLabel": "sensors and vehicle electronics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "bosch-positioning-e1",
+      "claimId": "bosch-positioning",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy",
+        "heading": "Innovation",
+        "quotedLabel": "software and electronics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "bosch-risks-e1",
+      "claimId": "bosch-risks",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Risk Report",
+        "heading": "Risks",
+        "quotedLabel": "markets and supply chain"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "equinix-overview-e1",
+      "claimId": "equinix-overview",
+      "sourceId": "sec-equinix-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "digital infrastructure"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "equinix-ai-role-e1",
+      "claimId": "equinix-ai-role",
+      "sourceId": "sec-equinix-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Platform Equinix",
+        "quotedLabel": "data centers and interconnection"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "equinix-products-e1",
+      "claimId": "equinix-products",
+      "sourceId": "sec-equinix-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Platform Equinix",
+        "quotedLabel": "data centers and interconnection"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "equinix-technology-e1",
+      "claimId": "equinix-technology",
+      "sourceId": "sec-equinix-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Platform Equinix",
+        "quotedLabel": "data centers and interconnection"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "equinix-value-chain-e1",
+      "claimId": "equinix-value-chain",
+      "sourceId": "sec-equinix-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Platform Equinix",
+        "quotedLabel": "data centers and interconnection"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "equinix-positioning-e1",
+      "claimId": "equinix-positioning",
+      "sourceId": "sec-equinix-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "global platform"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "equinix-risks-e1",
+      "claimId": "equinix-risks",
+      "sourceId": "sec-equinix-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "capacity and power"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-overview-e1",
+      "claimId": "kinsus-overview",
+      "sourceId": "kinsus-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations",
+        "heading": "Business overview",
+        "quotedLabel": "IC substrates"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-ai-role-e1",
+      "claimId": "kinsus-ai-role",
+      "sourceId": "kinsus-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations",
+        "heading": "Products",
+        "quotedLabel": "package substrates"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-products-e1",
+      "claimId": "kinsus-products",
+      "sourceId": "kinsus-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations",
+        "heading": "Products",
+        "quotedLabel": "package substrates"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-technology-e1",
+      "claimId": "kinsus-technology",
+      "sourceId": "kinsus-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations",
+        "heading": "Products",
+        "quotedLabel": "package substrates"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-value-chain-e1",
+      "claimId": "kinsus-value-chain",
+      "sourceId": "kinsus-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations",
+        "heading": "Products",
+        "quotedLabel": "package substrates"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-positioning-e1",
+      "claimId": "kinsus-positioning",
+      "sourceId": "kinsus-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations",
+        "heading": "Competitive strengths",
+        "quotedLabel": "substrate technology"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-risks-e1",
+      "claimId": "kinsus-risks",
+      "sourceId": "kinsus-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Risk Management",
+        "heading": "Risks",
+        "quotedLabel": "market and capacity"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "linde-overview-e1",
+      "claimId": "linde-overview",
+      "sourceId": "sec-linde-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "industrial gases"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "linde-ai-role-e1",
+      "claimId": "linde-ai-role",
+      "sourceId": "sec-linde-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and markets",
+        "quotedLabel": "electronic specialty gases"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "linde-products-e1",
+      "claimId": "linde-products",
+      "sourceId": "sec-linde-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and markets",
+        "quotedLabel": "electronic specialty gases"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "linde-technology-e1",
+      "claimId": "linde-technology",
+      "sourceId": "sec-linde-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and markets",
+        "quotedLabel": "electronic specialty gases"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "linde-value-chain-e1",
+      "claimId": "linde-value-chain",
+      "sourceId": "sec-linde-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and markets",
+        "quotedLabel": "electronic specialty gases"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "linde-positioning-e1",
+      "claimId": "linde-positioning",
+      "sourceId": "sec-linde-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "network and customer integration"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "linde-risks-e1",
+      "claimId": "linde-risks",
+      "sourceId": "sec-linde-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "energy and supply"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mobileye-overview-e1",
+      "claimId": "mobileye-overview",
+      "sourceId": "sec-mobileye-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "driver assistance"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mobileye-ai-role-e1",
+      "claimId": "mobileye-ai-role",
+      "sourceId": "sec-mobileye-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Solutions",
+        "quotedLabel": "EyeQ and autonomous driving"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mobileye-products-e1",
+      "claimId": "mobileye-products",
+      "sourceId": "sec-mobileye-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Solutions",
+        "quotedLabel": "EyeQ and autonomous driving"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mobileye-technology-e1",
+      "claimId": "mobileye-technology",
+      "sourceId": "sec-mobileye-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Solutions",
+        "quotedLabel": "EyeQ and autonomous driving"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mobileye-value-chain-e1",
+      "claimId": "mobileye-value-chain",
+      "sourceId": "sec-mobileye-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Solutions",
+        "quotedLabel": "EyeQ and autonomous driving"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mobileye-positioning-e1",
+      "claimId": "mobileye-positioning",
+      "sourceId": "sec-mobileye-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "computer vision and mapping"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mobileye-risks-e1",
+      "claimId": "mobileye-risks",
+      "sourceId": "sec-mobileye-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "automotive adoption"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tesla-overview-e1",
+      "claimId": "tesla-overview",
+      "sourceId": "sec-tesla-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "electric vehicles and energy"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tesla-ai-role-e1",
+      "claimId": "tesla-ai-role",
+      "sourceId": "sec-tesla-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "vehicles, energy storage and AI"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tesla-products-e1",
+      "claimId": "tesla-products",
+      "sourceId": "sec-tesla-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "vehicles, energy storage and AI"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tesla-technology-e1",
+      "claimId": "tesla-technology",
+      "sourceId": "sec-tesla-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "vehicles, energy storage and AI"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tesla-value-chain-e1",
+      "claimId": "tesla-value-chain",
+      "sourceId": "sec-tesla-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "vehicles, energy storage and AI"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tesla-positioning-e1",
+      "claimId": "tesla-positioning",
+      "sourceId": "sec-tesla-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Technology",
+        "quotedLabel": "vertical integration"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tesla-risks-e1",
+      "claimId": "tesla-risks",
+      "sourceId": "sec-tesla-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "manufacturing and demand"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": [
+    {
+      "companyId": "western-digital",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "western-digital",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "western-digital",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "western-digital",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "western-digital",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "western-digital",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "western-digital",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "western-digital",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "western-digital",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "western-digital",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "western-digital",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "shinko-electric",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "aptiv",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "bosch",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "bosch",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "bosch",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "bosch",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "bosch",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "bosch",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "bosch",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "bosch",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "bosch",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "bosch",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "bosch",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "equinix",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "equinix",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "equinix",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "equinix",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "equinix",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "equinix",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "equinix",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "equinix",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "equinix",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "equinix",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "equinix",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "kinsus",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "linde",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "linde",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "linde",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "linde",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "linde",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "linde",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "linde",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "linde",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "linde",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "linde",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "linde",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "mobileye",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tesla",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tesla",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tesla",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tesla",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tesla",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tesla",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "tesla",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "tesla",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "tesla",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tesla",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "tesla",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    }
+  ]
+}
