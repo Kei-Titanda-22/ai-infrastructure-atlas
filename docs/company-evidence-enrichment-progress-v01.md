@@ -311,4 +311,19 @@
 
 ## Resume marker
 
-All A2–A4 and B1–B8 batches are `merged / Actions success / Pages checked`. Priority B cohort is complete. Resume only from a separately approved remaining-company pass; never rerun a completed batch.
+All A2–A4 and B1–B8 batches are `merged / Actions success / Pages checked`. Priority A/B initial enrichment is complete and must not be rerun.
+
+## Evidence Gap Final Triage & Closure Phase
+
+- Baseline main: `b6c43183b6d7c91107c1b8122fc7e0bdd9c08349`
+- Initial gaps: `779` (`partial 442` + `not-started 337`)
+- Initial triage: ACTIONABLE `10`; SUFFICIENT_PARTIAL `436`; NOT_DISCLOSED `5`; NOT_APPLICABLE `28`; DEFERRED `300`; REVIEW_REQUIRED `0`
+- ACTIONABLE cohort: `10` Category records / `9` companies
+- Companies: Advantest, Applied Materials, Fujikura, Intel, Kioxia, Micron, Tokyo Electron, TSMC, Vertiv
+- ACTIONABLE completed: `0 / 10`
+- Triage foundation PR / merge / Actions / Pages: pending
+- HARD STOP: `0`
+
+## Resume marker
+
+Resume from the Triage foundation full gate and PR. After merge, process only the fixed ACTIONABLE cohort above as one 9-company batch. Do not investigate SUFFICIENT_PARTIAL / NOT_DISCLOSED / NOT_APPLICABLE / DEFERRED records.
