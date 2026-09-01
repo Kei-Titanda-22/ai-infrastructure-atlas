@@ -1,0 +1,946 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "hanmi-semiconductor-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "次世代HBM向け第7工場を建設",
+      "statement": "Hanmi Semiconductorは次世代premium HBM向けhybrid bonder専用の第7工場へ578.24億wonを投じ、2026年11月末までの建設を計画している。",
+      "evidenceIds": [
+        "hanmi-semiconductor-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-12",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "hanmi-semiconductor",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "hanmi-semiconductor-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "memory・OSAT・device企業へ装置を供給",
+      "statement": "Hanmi SemiconductorはSK hynix、Micronなどのmemory企業、ASE、Amkor、JCETなどのOSAT、Infineon、STMicroelectronicsなどのdevice企業を主要顧客として開示している。",
+      "evidenceIds": [
+        "hanmi-semiconductor-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "hanmi-semiconductor"
+    },
+    {
+      "id": "hanmi-semiconductor-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "micro SAW工場・bonder工場・第7工場",
+      "statement": "Hanmi Semiconductorは2021年にmicro SAW工場、2023年にbonder工場を整備し、次世代HBM向けhybrid bonder専用の第7工場を追加する計画を開示している。",
+      "evidenceIds": [
+        "hanmi-semiconductor-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-12",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "hanmi-semiconductor"
+    },
+    {
+      "id": "hanmi-semiconductor-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "WIDE TC bonder・hybrid bonderを開発",
+      "statement": "Hanmi Semiconductorは垂直統合した製造体制を基盤に、HBM向けWIDE TC bonder、hybrid bonder、2.5D BIG DIE TC bonderを戦略製品として開発・展開する方針を示している。",
+      "evidenceIds": [
+        "hanmi-semiconductor-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "hanmi-semiconductor",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "hexagon-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "manufacturing・electronics・自動車等へ展開",
+      "statement": "HexagonのManufacturing Intelligence事業は設計、製造process、品質管理を支えるhardware・softwareを、electronics、general manufacturing、自動車などの市場へ提供している。",
+      "evidenceIds": [
+        "hexagon-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "hexagon"
+    },
+    {
+      "id": "hexagon-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "32のmanufacturing sites",
+      "statement": "Hexagonは2024年末時点で、globalに32のmanufacturing sitesを運用していると開示している。",
+      "evidenceIds": [
+        "hexagon-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2024-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "hexagon"
+    },
+    {
+      "id": "hexagon-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-positioning",
+      "priority": "P2",
+      "title": "precision measurement・positioning・autonomyへ集中",
+      "statement": "Hexagonはprecision measurement、positioning、autonomous solutionsを中核技術領域とし、manufacturing、construction、aerospace、agriculture、mining等のproductivity・quality・safety向上へ展開していると位置付けている。",
+      "evidenceIds": [
+        "hexagon-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-09-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "hexagon"
+    },
+    {
+      "id": "ibiden-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "IC package基板の生産能力を増強",
+      "statement": "イビデンはAI server向けを含むIC package基板需要へ対応するため、growth investmentを通じて生産能力を増強する方針を示している。",
+      "evidenceIds": [
+        "ibiden-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-10-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ibiden",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "ibiden-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "AI server・general server・PC向け基板",
+      "statement": "イビデンはIC package基板の主要市場としてAI server、general server、PCを開示している。",
+      "evidenceIds": [
+        "ibiden-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ibiden"
+    },
+    {
+      "id": "ibiden-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "大垣地区を中心とする国内5生産拠点",
+      "statement": "イビデンはIC package基板等の国内生産拠点として、大垣、大垣中央、青柳、大野、河間の5事業場を開示している。",
+      "evidenceIds": [
+        "ibiden-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ibiden"
+    },
+    {
+      "id": "ibiden-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "先端IC package基板へgrowth investment",
+      "statement": "イビデンはAI server等で用いる高機能・高信頼性の先端IC package基板を成長領域とし、技術開発と供給能力への投資を継続する方針を示している。",
+      "evidenceIds": [
+        "ibiden-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ibiden",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "infineon-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "Dresden Smart Power Fabを整備",
+      "statement": "InfineonはDresdenにSmart Power Fabを建設し、power semiconductorとanalog/mixed-signal製品の300 mm生産能力を拡張する計画を進めている。",
+      "evidenceIds": [
+        "infineon-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "infineon-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "4つの主要target market",
+      "statement": "InfineonはAutomotive、Industrial & Infrastructure、Consumer、Computing & Communicationを主要target marketとして開示している。",
+      "evidenceIds": [
+        "infineon-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon"
+    },
+    {
+      "id": "infineon-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Europe・米州・Asiaの製造network",
+      "statement": "InfineonはDresden、Villach、Regensburg、Kulim、Melaka、Singapore、Mesaなど、Europe・米州・Asiaにfront-endおよびback-end製造拠点を展開している。",
+      "evidenceIds": [
+        "infineon-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon"
+    },
+    {
+      "id": "infineon-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "decarbonization・digitalizationを成長軸に設定",
+      "statement": "Infineonはdecarbonizationとdigitalizationを長期的な構造成長要因と位置付け、差別化したsemiconductor solutionでprofitable growthを追求する方針を示している。",
+      "evidenceIds": [
+        "infineon-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "infineon",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "intel-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Arizonaの2新fabで製造資産を稼働",
+      "statement": "IntelはArizonaで2つの新fabを建設中で、2025年に最初の製造資産を稼働可能な状態へ移し、2026年のIntel 18A量産に向けて立ち上げている。",
+      "evidenceIds": [
+        "intel-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "intel"
+    },
+    {
+      "id": "intel-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "OEM・ODM・CSP・産業通信機器企業",
+      "statement": "Intelは主要顧客層としてOEM、ODM、cloud service provider、industrial・communications equipment manufacturerを開示している。",
+      "evidenceIds": [
+        "intel-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "intel"
+    },
+    {
+      "id": "intel-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "x86再活性化・external foundry・ASIC/GPUを優先",
+      "statement": "Intelはcustomer centricなculture、x86 franchiseの再活性化、external foundry businessの拡大、purpose-built ASIC・GPUへの投資を4つの戦略優先事項として示している。",
+      "evidenceIds": [
+        "intel-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "intel",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "jcet-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "Shanghaiの車載chip後工程拠点を建設",
+      "statement": "JCETは2024年末時点でShanghaiのAutomotive Chip Back-End Manufacturing Baseの躯体工事を完了し、2025年下期の稼働開始を計画していた。",
+      "evidenceIds": [
+        "jcet-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2024-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "jcet",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "jcet-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "automotive・AI/HPC・storage・communications向け",
+      "statement": "JCETは半導体assembly・test solutionのapplicationとしてAutomotive、Computing、Storage、Edge AI、Power & Energyを掲げ、HPCのcomputing・storage・connectivity・power management向け量産solutionを提供している。",
+      "evidenceIds": [
+        "jcet-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-09-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "jcet"
+    },
+    {
+      "id": "jcet-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "中国・韓国・Singaporeの8製造拠点",
+      "statement": "JCETは中国、韓国、Singaporeに合計8つの製造拠点を持つglobalなassembly・test networkを開示している。",
+      "evidenceIds": [
+        "jcet-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-09-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "jcet"
+    },
+    {
+      "id": "jcet-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "advanced packagingと高付加価値分野へ移行",
+      "statement": "JCETはadvanced packagingへの投資を拡大し、AI/HPC、automotive等の高付加価値applicationへbusiness structureを移行する方針を示している。",
+      "evidenceIds": [
+        "jcet-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2024-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "jcet",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "johnson-controls-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "欧州・中東のdata center冷却供給を拡張",
+      "statement": "Johnson ControlsはEurope・Middle EastでYORK YVAM chillerを発売し、域内製造能力を追加してhyperscale・colocation data center向けの供給を拡張している。",
+      "evidenceIds": [
+        "johnson-controls-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-05-02",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "johnson-controls",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "johnson-controls-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "約60カ国・約23 million平方footの事業拠点",
+      "statement": "Johnson Controlsは約60カ国で約23 million平方footのpropertyを運用し、主にmanufacturing、sales・service、R&D、monitoring、assembly・warehouseへ使用している。",
+      "evidenceIds": [
+        "johnson-controls-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "johnson-controls"
+    },
+    {
+      "id": "keyence-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "350,000社超・幅広い産業へ展開",
+      "statement": "キーエンスは自動車、半導体、LCD、電子device、IT・通信、鉄鋼、食品、医薬、logistics等の幅広いindustryで、世界350,000社超に製品が利用されていると開示している。",
+      "evidenceIds": [
+        "keyence-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-09-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "keyence"
+    },
+    {
+      "id": "keyence-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "direct salesで潜在needsを捉えstandard product化",
+      "statement": "キーエンスはdirect salesで顧客現場の潜在needsを把握し、特定顧客向けcustom品ではなく、幅広い産業で使えるworld-first・industry-firstのstandard productsを企画・開発する方針を示している。",
+      "evidenceIds": [
+        "keyence-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-09-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "keyence",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "kinsus-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "Xing-Feng高度化・Youth工場を拡張",
+      "statement": "Kinsusは2026年のABF substrate市場回復とAI substrate需要へ備え、Xing-Feng Factoryの技術高度化とYouth Factoryの拡張を進め、Youth拡張設備の計画どおりの稼働開始を短期優先事項としている。",
+      "evidenceIds": [
+        "kinsus-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "kinsus-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "AI data center・cloud・server向け高end chip",
+      "statement": "KinsusはFCBGA substrateのapplicationとしてAI data center、cloud infrastructure、server、enterprise switch、およびGPU・CPU等の高end chipを挙げている。",
+      "evidenceIds": [
+        "kinsus-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-09-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus"
+    },
+    {
+      "id": "kinsus-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "台湾4工場・Suzhou 2拠点",
+      "statement": "KinsusはTaiwanでShih-Lei、Tsing-Hua、Xing-Feng、Youthの4工場、中国SuzhouでKinsus Interconnect Technology SuZhouとPiotek Computerの2拠点を開示している。",
+      "evidenceIds": [
+        "kinsus-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-09-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus"
+    },
+    {
+      "id": "kinsus-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "高end FCBGA・SiPへfocus",
+      "statement": "Kinsusはproduct portfolioを最適化し、operational coreを高end FCBGA・SiP substrateへ集中する方針を示している。",
+      "evidenceIds": [
+        "kinsus-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kinsus",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "kioxia-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "北上工場Fab2を稼働",
+      "statement": "KioxiaとSandiskは2025年9月に北上工場Fab2の稼働を開始し、第8世代218層BiCS FLASH等の生産能力を市場動向に応じて段階的に立ち上げている。",
+      "evidenceIds": [
+        "kioxia-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kioxia"
+    },
+    {
+      "id": "kioxia-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "PC・data center・enterprise・smart device向け",
+      "statement": "キオクシアはSSD & Storageの用途としてPC、data center、enterpriseを、Smart Devices等の用途としてsmartphone、tablet、TV、automotive、industrialを開示している。",
+      "evidenceIds": [
+        "kioxia-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kioxia"
+    },
+    {
+      "id": "kioxia-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "AI向けNAND・SSD solutionを強化",
+      "statement": "キオクシアはtechnology leadership、NANDの製造scale、customer partnershipを成長基盤とし、生成AI向け次世代NANDと高性能・大容量・低消費電力SSD solutionの開発を強化する方針を示している。",
+      "evidenceIds": [
+        "kioxia-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kioxia",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "hanmi-semiconductor-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "hanmi-semiconductor-capacity-expansion-triage-remediation-v02",
+      "sourceId": "krx-hanmi-semiconductor-fy2025-business-report",
+      "support": "supports",
+      "locator": {
+        "section": "Ⅱ. 事業の内容 / 7. その他 참고사항 / 생산설비의 신설・매입 계획",
+        "heading": "제7공장 신축 및 시설투자",
+        "quotedLabel": "차세대 프리미엄 HBM 전용 하이브리드 본더 공장 / 578.24억원 / 2026년 11월 30일"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "hanmi-semiconductor-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "hanmi-semiconductor-customer-end-market-triage-remediation-v02",
+      "sourceId": "krx-hanmi-semiconductor-fy2025-business-report",
+      "support": "supports",
+      "locator": {
+        "section": "Ⅱ. 事業の内容 / 4. 매출 및 수주상황",
+        "heading": "주요 고객",
+        "quotedLabel": "SK하이닉스・Micron・ASE・Amkor・JCET・Infineon・STMicroelectronics 등"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "hanmi-semiconductor-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "hanmi-semiconductor-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "krx-hanmi-semiconductor-fy2025-business-report",
+      "support": "supports",
+      "locator": {
+        "section": "Ⅰ. 회사의 개요 / 연혁・Ⅱ. 사업의 내용 / 생산설비 계획",
+        "heading": "micro SAW 공장・본더 공장・제7공장",
+        "quotedLabel": "2021 micro SAW 공장 / 2023 본더 공장 / 차세대 HBM 하이브리드 본더 제7공장"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "hanmi-semiconductor-strategy-triage-remediation-v02-e1",
+      "claimId": "hanmi-semiconductor-strategy-triage-remediation-v02",
+      "sourceId": "krx-hanmi-semiconductor-fy2025-business-report",
+      "support": "supports",
+      "locator": {
+        "section": "Ⅱ. 事業の内容 / 5. 위험관리 및 파생거래・6. 주요계약 및 연구개발활동",
+        "heading": "전략제품 및 수직계열화",
+        "quotedLabel": "WIDE TC Bonder / Hybrid Bonder / 2.5D BIG DIE TC Bonder / 수직계열화"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "hexagon-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "hexagon-customer-end-market-triage-remediation-v02",
+      "sourceId": "hexagon-fy2025-year-end-report",
+      "support": "supports",
+      "locator": {
+        "section": "Business overview / Manufacturing Intelligence",
+        "heading": "Market and customer exposure",
+        "quotedLabel": "design and engineering / production and quality / electronics / general manufacturing / automotive"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "hexagon-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "hexagon-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "official-hexagon-annual-2024",
+      "support": "supports",
+      "locator": {
+        "section": "Sustainability / Environmental indicators",
+        "heading": "Number of manufacturing sites",
+        "quotedLabel": "Number of manufacturing sites: 32"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "hexagon-strategy-triage-remediation-v02-e1",
+      "claimId": "hexagon-strategy-triage-remediation-v02",
+      "sourceId": "official-hexagon-about-2026",
+      "support": "supports",
+      "locator": {
+        "section": "Measurement is only the beginning",
+        "heading": "Precision measurement, positioning, and autonomous solutions",
+        "quotedLabel": "manufacturing / construction / aerospace / agriculture / mining"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ibiden-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "ibiden-capacity-expansion-triage-remediation-v02",
+      "sourceId": "integrated-ibiden-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Growth Strategy / Electronics Business",
+        "heading": "Capital investment to expand IC package substrate capacity",
+        "quotedLabel": "growth investment / expand production capacity / IC package substrates"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ibiden-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "ibiden-customer-end-market-triage-remediation-v02",
+      "sourceId": "integrated-ibiden-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Business Overview / Electronics Business",
+        "heading": "Main markets",
+        "quotedLabel": "AI servers / general-purpose servers / PCs"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ibiden-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "ibiden-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "integrated-ibiden-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Business Overview / Electronics Business",
+        "heading": "Major production bases in Japan",
+        "quotedLabel": "Ogaki / Ogaki Central / Aoyanagi / Ono / Gama"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ibiden-strategy-triage-remediation-v02-e1",
+      "claimId": "ibiden-strategy-triage-remediation-v02",
+      "sourceId": "integrated-ibiden-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Growth Strategy / Electronics Business",
+        "heading": "IC package substrate growth investment",
+        "quotedLabel": "high-functionality and highly reliable substrates / proactive investment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "infineon-capacity-expansion-triage-remediation-v02",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "section": "The Infineon Group / Manufacturing",
+        "heading": "Smart Power Fab in Dresden",
+        "quotedLabel": "300-millimeter manufacturing / power semiconductors / analog and mixed-signal components"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "infineon-customer-end-market-triage-remediation-v02",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "section": "The Infineon Group / Target markets",
+        "heading": "Target markets",
+        "quotedLabel": "Automotive / Industrial & Infrastructure / Consumer / Computing & Communication"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "infineon-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "section": "The Infineon Group / Sites",
+        "heading": "Manufacturing sites by region",
+        "quotedLabel": "Dresden / Villach / Regensburg / Kulim / Melaka / Singapore / Mesa"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "infineon-strategy-triage-remediation-v02-e1",
+      "claimId": "infineon-strategy-triage-remediation-v02",
+      "sourceId": "annual-report-infineon-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Group strategy",
+        "heading": "Decarbonization and digitalization",
+        "quotedLabel": "structural drivers / decarbonization / digitalization / profitable growth"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "intel-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "intel-capacity-expansion-triage-remediation-v02",
+      "sourceId": "sec-intel-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 8. Financial Statements / Property, plant and equipment",
+        "heading": "Arizona manufacturing expansion",
+        "quotedLabel": "two new wafer fabrication facilities / first tranche placed in service in 2025 / production in 2026"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "intel-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "intel-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-intel-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Customers",
+        "quotedLabel": "OEMs / ODMs / cloud service providers / industrial and communications equipment manufacturers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "intel-strategy-triage-remediation-v02-e1",
+      "claimId": "intel-strategy-triage-remediation-v02",
+      "sourceId": "sec-intel-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Strategy",
+        "quotedLabel": "customer-centric culture / revitalize x86 / external foundry / purpose-built ASICs and GPUs"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "jcet-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "jcet-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-jcet-2024-annual-release",
+      "support": "supports",
+      "locator": {
+        "section": "Major Projects",
+        "heading": "Automotive Chip Back-End Manufacturing Base in Shanghai",
+        "quotedLabel": "completed structural topping-out / expected to begin operations in the second half of 2025"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "jcet-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "jcet-customer-end-market-triage-remediation-v02",
+      "sourceId": "official-jcet-home-2026",
+      "support": "supports",
+      "locator": {
+        "section": "Applications / Advanced Packaging and Test",
+        "heading": "Automotive / Computing / Storage / Edge AI / Power & Energy",
+        "quotedLabel": "turnkey assembly and test / high-performance computing / storage / connectivity / power management"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "jcet-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "jcet-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "official-jcet-home-2026",
+      "support": "supports",
+      "locator": {
+        "section": "Global Manufacturing Footprint",
+        "heading": "Eight-site manufacturing powerhouse",
+        "quotedLabel": "8 manufacturing sites / China / Korea / Singapore"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "jcet-strategy-triage-remediation-v02-e1",
+      "claimId": "jcet-strategy-triage-remediation-v02",
+      "sourceId": "official-jcet-2024-annual-release",
+      "support": "supports",
+      "locator": {
+        "section": "Business Overview / CEO statement",
+        "heading": "Transition toward advanced packaging and high value-added segments",
+        "quotedLabel": "advanced packaging accounted for over 72% / high value-added segments / technological innovation"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "johnson-controls-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "johnson-controls-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-johnson-controls-yvam-2025",
+      "support": "supports",
+      "locator": {
+        "section": "One design, any location",
+        "heading": "Accelerating deployment and efficiency for data centers across Europe and the Middle East",
+        "quotedLabel": "new production capabilities / launched in Europe and the Middle East / added manufacturing capacity"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "johnson-controls-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "johnson-controls-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "sec-johnson-controls-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 2. Properties",
+        "heading": "Properties by use and geography",
+        "quotedLabel": "almost 60 countries / approximately 23 million square feet / manufacturing / R&D / assembly and warehouse"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "keyence-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "keyence-customer-end-market-triage-remediation-v02",
+      "sourceId": "official-keyence-materiality-2026",
+      "support": "supports",
+      "locator": {
+        "section": "A Broad Customer Base",
+        "heading": "A Range of Products Used in a Wide Variety of Applications",
+        "quotedLabel": "automobiles / semiconductors / IT / telecommunications / food / medicine / logistics / more than 350,000 companies"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "keyence-strategy-triage-remediation-v02-e1",
+      "claimId": "keyence-strategy-triage-remediation-v02",
+      "sourceId": "official-keyence-materiality-2026",
+      "support": "supports",
+      "locator": {
+        "section": "KEYENCE’s Materiality",
+        "heading": "Planning and development proficiency / Customer proposal skills",
+        "quotedLabel": "direct sales / potential needs / world-first and industry-first / standard products"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "kinsus-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-kinsus-chairman-2025",
+      "support": "supports",
+      "locator": {
+        "section": "AI Applications and Strategic Transformation / Looking Ahead",
+        "heading": "Capacity deployment for 2026",
+        "quotedLabel": "technological upgrades at Xing-Feng / expansion at Youth / scheduled commencement of operations"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "kinsus-customer-end-market-triage-remediation-v02",
+      "sourceId": "official-kinsus-products-2026",
+      "support": "supports",
+      "locator": {
+        "section": "Our Products",
+        "heading": "FCBGA",
+        "quotedLabel": "AI data centers / cloud infrastructure / servers / enterprise switches / GPUs / CPUs"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "kinsus-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "official-kinsus-global-locations-2026",
+      "support": "supports",
+      "locator": {
+        "section": "Global Locations",
+        "heading": "Taiwan factories and Suzhou locations",
+        "quotedLabel": "Shih-Lei / Tsing-Hua / Xing-Feng / Youth / Kinsus SuZhou / Piotek Su Zhou"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kinsus-strategy-triage-remediation-v02-e1",
+      "claimId": "kinsus-strategy-triage-remediation-v02",
+      "sourceId": "official-kinsus-chairman-2025",
+      "support": "supports",
+      "locator": {
+        "section": "AI Applications and Strategic Transformation",
+        "heading": "High-end FCBGA and SiP substrates",
+        "quotedLabel": "optimized its product portfolio / strategically focused its operational core"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kioxia-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "kioxia-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-kioxia-kitakami-fab2-2025",
+      "support": "supports",
+      "locator": {
+        "section": "News release",
+        "heading": "Beginning of Operation of Fab2 at Kitakami Plant",
+        "quotedLabel": "start of operation / 218-layer 3D flash memory / capacity will ramp up in stages"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kioxia-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "kioxia-customer-end-market-triage-remediation-v02",
+      "sourceId": "earnings-kioxia-2025-08-08-q1-fy2026",
+      "support": "supports",
+      "locator": {
+        "section": "補足情報 / 売上収益の用途別内訳",
+        "heading": "SSD & Storage / Smart Devices and Others",
+        "quotedLabel": "PC / data center / enterprise / smartphone / tablet / TV / automotive / industrial"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kioxia-strategy-triage-remediation-v02-e1",
+      "claimId": "kioxia-strategy-triage-remediation-v02",
+      "sourceId": "integrated-kioxia-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Message from the Executive Chairman / Technology",
+        "heading": "Leading through Competitive Strengths / AI storage innovation",
+        "quotedLabel": "technology leadership / manufacturing scale / customer-centricity / next-generation NAND and SSD solutions for generative AI"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": []
+}
