@@ -445,5 +445,25 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Browser QA: DISCO and GlobalWafers passed complete drawer, Primary Source, Escape, focus return, bibliography, `44 × 44px` marker target, and document overflow `0`; both companies also passed light checks at `1024px` and `360px`.
 - Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR: [#143](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/143)
+- Merge SHA: `0a3b8b82cf9a0183328ac6a161e68e08286b0343`
+- Actions: [run 33496407750](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33496407750) success
+- Pages: GlobalWafersの追加Claim・bibliography・overflowを公開環境で確認
+- HARD STOP: `0`
+
+## Triage Remediation Enrichment B04
+
+- Baseline main: `0a3b8b82cf9a0183328ac6a161e68e08286b0343`
+- Companies: HANMI Semiconductor, Hexagon, IBIDEN, Infineon, Intel, JCET, Johnson Controls, KEYENCE, Kinsus, Kioxia
+- ACTIONABLE processed: `33` Category records / `10` companies
+- Claims / Evidence / structured Locators: `33 / 33 / 33`
+- Claim types: fact `18`; company-guidance `14`; company-positioning `1`; atlas-analysis `0`; estimate `0`
+- Verification: `source-linked 33`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `7`; added `11`; new Source Policies remain `pending`
+- Coverage: `321 / 550 / 229 → 321 / 583 / 196` (complete / partial / not-started)
+- Triage: ACTIONABLE pending `189 → 156`; current SUFFICIENT_PARTIAL `546 → 579`; REVIEW_REQUIRED `0`
+- Browser QA: HANMI Semiconductor and Kinsus passed at `1024px` and `360px`; document overflow `0`, added Claims and bibliography links visible, Evidence marker target `44 × 44px`. HANMI Semiconductor desktop and Kinsus mobile passed drawer, Primary Source, Escape, and focus return.
+- Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - PR / merge / Actions / Pages: pending publication
 - HARD STOP: `0`
