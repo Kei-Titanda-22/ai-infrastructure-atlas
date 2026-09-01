@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "0.1",
+  "entityType": "technology",
+  "records": [
+    {
+      "id": "technology-accelerated-computing-architecture",
+      "entityType": "technology",
+      "canonicalName": "Accelerated computing architecture",
+      "displayNames": { "ja": "アクセラレーテッド・コンピューティング・アーキテクチャ" },
+      "aliases": ["Accelerated computing"],
+      "status": "active",
+      "replacedBy": null,
+      "technologyKind": "architecture"
+    },
+    {
+      "id": "technology-ethernet-networking",
+      "entityType": "technology",
+      "canonicalName": "Ethernet networking",
+      "displayNames": { "ja": "Ethernetネットワーキング" },
+      "aliases": ["Ethernet"],
+      "status": "active",
+      "replacedBy": null,
+      "technologyKind": "protocol"
+    },
+    {
+      "id": "technology-semiconductor-coating-development",
+      "entityType": "technology",
+      "canonicalName": "Semiconductor coating and development process",
+      "displayNames": { "ja": "半導体塗布・現像プロセス" },
+      "aliases": ["Coater/developer process"],
+      "status": "active",
+      "replacedBy": null,
+      "technologyKind": "manufacturing-process"
+    },
+    {
+      "id": "technology-semiconductor-deposition",
+      "entityType": "technology",
+      "canonicalName": "Semiconductor deposition process",
+      "displayNames": { "ja": "半導体成膜プロセス" },
+      "aliases": ["Deposition"],
+      "status": "active",
+      "replacedBy": null,
+      "technologyKind": "manufacturing-process"
+    },
+    {
+      "id": "technology-semiconductor-etching",
+      "entityType": "technology",
+      "canonicalName": "Semiconductor etching process",
+      "displayNames": { "ja": "半導体エッチングプロセス" },
+      "aliases": ["Etch"],
+      "status": "active",
+      "replacedBy": null,
+      "technologyKind": "manufacturing-process"
+    },
+    {
+      "id": "technology-semiconductor-materials-engineering",
+      "entityType": "technology",
+      "canonicalName": "Semiconductor materials engineering",
+      "displayNames": { "ja": "半導体材料工学" },
+      "aliases": ["Materials engineering"],
+      "status": "active",
+      "replacedBy": null,
+      "technologyKind": "material-technology"
+    },
+    {
+      "id": "technology-semiconductor-metrology",
+      "entityType": "technology",
+      "canonicalName": "Semiconductor metrology",
+      "displayNames": { "ja": "半導体計測" },
+      "aliases": ["Metrology"],
+      "status": "active",
+      "replacedBy": null,
+      "technologyKind": "process-technology"
+    },
+    {
+      "id": "technology-wafer-cleaning",
+      "entityType": "technology",
+      "canonicalName": "Wafer cleaning process",
+      "displayNames": { "ja": "ウェーハ洗浄プロセス" },
+      "aliases": ["Wafer cleaning"],
+      "status": "active",
+      "replacedBy": null,
+      "technologyKind": "manufacturing-process"
+    }
+  ]
+}
