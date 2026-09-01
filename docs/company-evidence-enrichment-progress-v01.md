@@ -320,10 +320,36 @@ All A2–A4 and B1–B8 batches are `merged / Actions success / Pages checked`. 
 - Initial triage: ACTIONABLE `10`; SUFFICIENT_PARTIAL `436`; NOT_DISCLOSED `5`; NOT_APPLICABLE `28`; DEFERRED `300`; REVIEW_REQUIRED `0`
 - ACTIONABLE cohort: `10` Category records / `9` companies
 - Companies: Advantest, Applied Materials, Fujikura, Intel, Kioxia, Micron, Tokyo Electron, TSMC, Vertiv
-- ACTIONABLE completed: `0 / 10`
-- Triage foundation PR / merge / Actions / Pages: pending
+- ACTIONABLE completed: `10 / 10`; pending `0`
+- Current triage: ACTIONABLE `0`; SUFFICIENT_PARTIAL `446`; NOT_DISCLOSED `5`; NOT_APPLICABLE `28`; DEFERRED `300`; REVIEW_REQUIRED `0`
+- Triage foundation PR: [#136](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/136)
+- Triage foundation merge SHA: `faf79b372b0f60e4470ee7ee8cfdac4efb65b40c`
+- Triage foundation Actions: [run 33477434783](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33477434783) success
+- Triage foundation result: merged; main Actions success; public Pages checked
+- HARD STOP: `0`
+
+## Evidence Gap Closure Batch B1
+
+- Baseline main: `faf79b372b0f60e4470ee7ee8cfdac4efb65b40c`
+- Fixed cohort: `10` ACTIONABLE Category records / `9` companies
+- Companies: Advantest, Applied Materials, Fujikura, Intel, Kioxia, Micron, Tokyo Electron, TSMC, Vertiv
+- Claims / Evidence / structured Locators: `12 / 13 / 13`
+- Claim types: fact `10`; company-guidance `1`; company-positioning `1`; atlas-analysis `0`; estimate `0`
+- Priority: P1 `1` / P2 `11` / P3 `0`
+- Verification: `source-linked 12`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `9`; added `3`; duplicate Source IDs `0`
+- Batch coverage delta: complete `0`; partial `+9`; not-started `-9`
+- Global coverage: `321 / 442 / 337 → 321 / 451 / 328`
+- Triage: ACTIONABLE `10 → 0`; SUFFICIENT_PARTIAL `436 → 446`; REVIEW_REQUIRED `0`
+- ACTIONABLE processed / completed / pending: `10 / 10 / 0`
+- Locator coverage: `13 / 13` (`100%`)
+- Browser QA: all nine companies passed at `1024px` and `360px`; document overflow `0`, all added Claims visible, bibliography Source links present, and Evidence marker target minimum `44 × 44px`. TSMC mobile and Applied Materials desktop passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
+- Protection: financial / company legacy content / facilities / relationships / Global Visual System / Evidence Schema diff `0`; existing Source Policy approval changes `0`; unrelated Company Evidence diff `0`.
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR: [#137](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/137)
+- Merge / main Actions / public Pages: pending
 - HARD STOP: `0`
 
 ## Resume marker
 
-Resume from the Triage foundation full gate and PR. After merge, process only the fixed ACTIONABLE cohort above as one 9-company batch. Do not investigate SUFFICIENT_PARTIAL / NOT_DISCLOSED / NOT_APPLICABLE / DEFERRED records.
+Evidence Gap Closure Batch B1 is locally complete with ACTIONABLE pending `0`. Resume from PR #137 merge, main Actions, and public Pages verification only. Do not investigate SUFFICIENT_PARTIAL / NOT_DISCLOSED / NOT_APPLICABLE / DEFERRED records.
