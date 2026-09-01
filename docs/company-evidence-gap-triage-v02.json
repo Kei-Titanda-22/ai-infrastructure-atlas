@@ -5,7 +5,7 @@
   "supersedes": "docs/company-evidence-gap-triage-v01.json",
   "reviewedAt": "2026-09-01",
   "semanticDecisionDigest": "sha256:4781f9c870d755a9262a824c3606034161d90937162b3264440ec3cde824e3af",
-  "coverageInputDigest": "sha256:fc0ce4ee1cfacf52ce7a418771f83da1fdd8df737a4f4c09d7c80b83facf7c79",
+  "coverageInputDigest": "sha256:995c56a3df6349206db4f6f9f0f065f30e7be3a0f61d15ee9c545fda2f8b1aaf",
   "coverageBaseline": {
     "complete": 321,
     "partial": 451,
@@ -14,8 +14,8 @@
   },
   "coverageCurrent": {
     "complete": 321,
-    "partial": 680,
-    "notStarted": 99,
+    "partial": 715,
+    "notStarted": 64,
     "gaps": 779
   },
   "reviewScopeSummary": {
@@ -38,8 +38,8 @@
     "REVIEW_REQUIRED": 0
   },
   "currentDistribution": {
-    "ACTIONABLE": 59,
-    "SUFFICIENT_PARTIAL": 676,
+    "ACTIONABLE": 24,
+    "SUFFICIENT_PARTIAL": 711,
     "NOT_DISCLOSED": 4,
     "NOT_APPLICABLE": 30,
     "DEFERRED": 10,
@@ -48,10 +48,10 @@
   "actionable": {
     "reviewedRecords": 289,
     "reviewedCompanies": 88,
-    "pendingRecords": 59,
-    "pendingCompanies": 18,
-    "completedRecords": 230,
-    "completedCompanies": 70
+    "pendingRecords": 24,
+    "pendingCompanies": 8,
+    "completedRecords": 265,
+    "completedCompanies": 80
   },
   "categorySummary": [
     {
@@ -70,8 +70,8 @@
       "category": "capacity-expansion",
       "total": 97,
       "distribution": {
-        "ACTIONABLE": 13,
-        "SUFFICIENT_PARTIAL": 59,
+        "ACTIONABLE": 5,
+        "SUFFICIENT_PARTIAL": 67,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 15,
         "DEFERRED": 10,
@@ -106,8 +106,8 @@
       "category": "customer-end-market",
       "total": 100,
       "distribution": {
-        "ACTIONABLE": 15,
-        "SUFFICIENT_PARTIAL": 81,
+        "ACTIONABLE": 6,
+        "SUFFICIENT_PARTIAL": 90,
         "NOT_DISCLOSED": 4,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -118,8 +118,8 @@
       "category": "manufacturing-facilities",
       "total": 87,
       "distribution": {
-        "ACTIONABLE": 14,
-        "SUFFICIENT_PARTIAL": 58,
+        "ACTIONABLE": 6,
+        "SUFFICIENT_PARTIAL": 66,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 15,
         "DEFERRED": 0,
@@ -142,8 +142,8 @@
       "category": "strategy",
       "total": 100,
       "distribution": {
-        "ACTIONABLE": 17,
-        "SUFFICIENT_PARTIAL": 83,
+        "ACTIONABLE": 7,
+        "SUFFICIENT_PARTIAL": 93,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -1128,8 +1128,8 @@
       "companyId": "siemens-energy",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -1140,8 +1140,8 @@
       "companyId": "sk-hynix",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -1152,8 +1152,8 @@
       "companyId": "smc",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 3,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 7,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 1,
@@ -1176,8 +1176,8 @@
       "companyId": "stmicroelectronics",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -1188,8 +1188,8 @@
       "companyId": "sumco",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -1200,8 +1200,8 @@
       "companyId": "sumitomo-electric",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -1212,8 +1212,8 @@
       "companyId": "synopsys",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 2,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 6,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 2,
         "DEFERRED": 0,
@@ -1224,8 +1224,8 @@
       "companyId": "te-connectivity",
       "total": 7,
       "distribution": {
-        "ACTIONABLE": 2,
-        "SUFFICIENT_PARTIAL": 5,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 7,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -1236,8 +1236,8 @@
       "companyId": "tesla",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -1248,8 +1248,8 @@
       "companyId": "texas-instruments",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -23273,15 +23273,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "siemens-energy:competitive-positioning",
@@ -23345,15 +23345,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "siemens-energy:manufacturing-facilities",
@@ -23386,15 +23386,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "siemens-energy:risks",
@@ -23458,15 +23458,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "siemens-energy:technology",
@@ -23561,15 +23561,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sk-hynix:competitive-positioning",
@@ -23633,15 +23633,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sk-hynix:manufacturing-facilities",
@@ -23674,15 +23674,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sk-hynix:risks",
@@ -23746,15 +23746,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sk-hynix:technology",
@@ -23919,15 +23919,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "smc:manufacturing-facilities",
@@ -23960,15 +23960,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "smc:risks",
@@ -24032,15 +24032,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "smc:technology",
@@ -24321,15 +24321,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "stmicroelectronics:competitive-positioning",
@@ -24393,15 +24393,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "stmicroelectronics:manufacturing-facilities",
@@ -24434,15 +24434,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "stmicroelectronics:risks",
@@ -24506,15 +24506,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "stmicroelectronics:technology",
@@ -24609,15 +24609,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sumco:competitive-positioning",
@@ -24681,15 +24681,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sumco:manufacturing-facilities",
@@ -24722,15 +24722,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sumco:risks",
@@ -24794,15 +24794,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sumco:technology",
@@ -24897,15 +24897,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sumitomo-electric:competitive-positioning",
@@ -24969,15 +24969,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sumitomo-electric:manufacturing-facilities",
@@ -25010,15 +25010,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sumitomo-electric:risks",
@@ -25082,15 +25082,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "sumitomo-electric:technology",
@@ -25247,15 +25247,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "synopsys:manufacturing-facilities",
@@ -25350,15 +25350,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "synopsys:technology",
@@ -25453,15 +25453,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "te-connectivity:competitive-positioning",
@@ -25587,15 +25587,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "te-connectivity:technology",
@@ -25690,15 +25690,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "tesla:competitive-positioning",
@@ -25762,15 +25762,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "tesla:manufacturing-facilities",
@@ -25803,15 +25803,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "tesla:risks",
@@ -25875,15 +25875,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "tesla:technology",
@@ -25978,15 +25978,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "texas-instruments:competitive-positioning",
@@ -26050,15 +26050,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "texas-instruments:manufacturing-facilities",
@@ -26091,15 +26091,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "texas-instruments:risks",
@@ -26163,15 +26163,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "texas-instruments:technology",
