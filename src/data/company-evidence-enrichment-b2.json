@@ -1,0 +1,2933 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "legrand-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Legrand（ルグラン）は、データセンター向けのUPS、変圧器、バスウェイ、PDU、ラック、冷却、構内配線まで幅広く提供するフランスの電気・デジタルインフラ企業。",
+      "evidenceIds": [
+        "legrand-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2024-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "legrand"
+    },
+    {
+      "id": "legrand-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではLegrand（ルグラン）を、AIデータセンターの高密度化に伴うラック単位の配電、バスウェイ、PDU、冷却、構内配線需要を幅広く取り込む企業と位置付ける。",
+      "evidenceIds": [
+        "legrand-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2024-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "legrand",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "legrand-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Legrand（ルグラン）は、Data center busway and PDU、UPS and transformers、Racks cooling and structured cablingを提供する。",
+      "evidenceIds": [
+        "legrand-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2024-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "legrand"
+    },
+    {
+      "id": "legrand-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Data center busway and PDU、UPS and transformers、Racks cooling and structured cablingという製品構成を、data center、power distribution、UPSに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "legrand-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2024-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "legrand",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "legrand-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Data Center & Facilitiesの供給層",
+      "statement": "AtlasではLegrand（ルグラン）を「Data Center & Facilities」に位置し、AIデータセンターの高密度化に伴うラック単位の配電、バスウェイ、PDU、冷却、構内配線需要を幅広く取り込む役割を担う企業と整理する。",
+      "evidenceIds": [
+        "legrand-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2024-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "legrand",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "legrand-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、データセンターの電力・ラック・配線を横断する幅広い製品群、高密度電力供給に対応するバスウェイ・PDU製品、複数の専門ブランドを組み合わせたデータセンター提案力を、Legrand（ルグラン）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "legrand-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2024-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "legrand",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "legrand-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、データセンター建設サイクル、M&Aによる製品統合・収益性管理、Schneider ElectricやnVent等との競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "legrand-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2024-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "legrand",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "marvell-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Marvell Technology（マーベル・テクノロジー）は、データセンター向けのカスタム半導体、接続、ネットワーク、ストレージ関連半導体を展開する。",
+      "evidenceIds": [
+        "marvell-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-01-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "marvell"
+    },
+    {
+      "id": "marvell-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではMarvell Technology（マーベル・テクノロジー）を、カスタムAIアクセラレータと高速接続半導体を通じ、AIクラスタの計算と通信の両方に関与する企業と位置付ける。",
+      "evidenceIds": [
+        "marvell-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-01-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "marvell",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "marvell-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Marvell Technology（マーベル・テクノロジー）は、Custom AI accelerators / ASIC、Data-center interconnect silicon、Storage controllersを提供する。",
+      "evidenceIds": [
+        "marvell-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-01-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "marvell"
+    },
+    {
+      "id": "marvell-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Custom AI accelerators / ASIC、Data-center interconnect silicon、Storage controllersという製品構成を、AI accelerator、AI networking、data centerに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "marvell-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-01-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "marvell",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "marvell-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Compute & Siliconの供給層",
+      "statement": "AtlasではMarvell Technology（マーベル・テクノロジー）を「Compute & Silicon」に位置し、カスタムAIアクセラレータと高速接続半導体を通じ、AIクラスタの計算と通信の両方に関与する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "marvell-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-01-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "marvell",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "marvell-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、カスタム半導体設計への対応力、高速接続とネットワーク半導体の製品群、クラウド顧客向けインフラ半導体への集中を、Marvell Technology（マーベル・テクノロジー）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "marvell-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-01-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "marvell",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "marvell-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、大口顧客への売上集中、カスタムASIC案件の立ち上がり変動、Broadcomなどとの設計獲得競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "marvell-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-01-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "marvell",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "micron-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Micron Technology（マイクロン・テクノロジー）は、DRAM・NANDを中心とする米国メモリメーカー。",
+      "evidenceIds": [
+        "micron-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-08-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "micron"
+    },
+    {
+      "id": "micron-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではMicron Technology（マイクロン・テクノロジー）を、HBM・データセンターDRAM・SSD需要を通じてAIインフラ投資の影響を受ける企業と位置付ける。",
+      "evidenceIds": [
+        "micron-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-08-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "micron",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "micron-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Micron Technology（マイクロン・テクノロジー）は、HBM / DRAM、NAND flash、Data-center memory and storageを提供する。",
+      "evidenceIds": [
+        "micron-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-08-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "micron"
+    },
+    {
+      "id": "micron-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、HBM / DRAM、NAND flash、Data-center memory and storageという製品構成を、HBM、DRAM、NANDに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "micron-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-08-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "micron",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "micron-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Memoryの供給層",
+      "statement": "AtlasではMicron Technology（マイクロン・テクノロジー）を「Memory」に位置し、HBM・データセンターDRAM・SSD需要を通じてAIインフラ投資の影響を受ける役割を担う企業と整理する。",
+      "evidenceIds": [
+        "micron-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-08-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "micron",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "micron-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、先端メモリ開発、DRAMとNAND双方の製品群、AI向け高付加価値製品への転換余地を、Micron Technology（マイクロン・テクノロジー）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "micron-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-08-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "micron",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "micron-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、メモリ価格サイクル、巨額設備投資、製品世代・歩留まり競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "micron-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-08-28",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "micron",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "nvent-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "nVent（エヌベント）は、電気接続・保護に加え、データセンター向けラック、電力分配、液冷ソリューションを展開する企業。",
+      "evidenceIds": [
+        "nvent-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent"
+    },
+    {
+      "id": "nvent-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではnVent（エヌベント）を、AI・HPC向け高密度ラックの液冷、PDU、ラック・筐体インフラを通じてAIデータセンター設備投資に直接接続する企業と位置付ける。",
+      "evidenceIds": [
+        "nvent-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "nvent-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "nVent（エヌベント）は、Data center liquid cooling、High-density power distribution、Racks and electrical enclosuresを提供する。",
+      "evidenceIds": [
+        "nvent-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent"
+    },
+    {
+      "id": "nvent-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Data center liquid cooling、High-density power distribution、Racks and electrical enclosuresという製品構成を、data center、liquid cooling、power distributionに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "nvent-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "nvent-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Data Center & Facilitiesの供給層",
+      "statement": "AtlasではnVent（エヌベント）を「Data Center & Facilities」に位置し、AI・HPC向け高密度ラックの液冷、PDU、ラック・筐体インフラを通じてAIデータセンター設備投資に直接接続する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "nvent-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "nvent-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、液冷と高密度電力を同一データセンター基盤で扱う製品群、ラック・筐体・電気接続までの広い対応範囲、AI/HPC向け冷却能力の増産投資を、nVent（エヌベント）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "nvent-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "nvent-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、AIデータセンター設備投資の変動、液冷方式・標準の変化、VertivやLegrand等との競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "nvent-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "samsung-electronics-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Samsung Electronics（サムスン電子）は、DRAM・NAND・ロジック製造など複数領域を持つ総合半導体・電子企業。",
+      "evidenceIds": [
+        "samsung-electronics-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "samsung-electronics"
+    },
+    {
+      "id": "samsung-electronics-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではSamsung Electronics（サムスン電子）を、HBM/DRAM、NAND、先端ロジック製造の複数チャネルからAIインフラ投資に接続する企業と位置付ける。",
+      "evidenceIds": [
+        "samsung-electronics-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "samsung-electronics",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "samsung-electronics-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Samsung Electronics（サムスン電子）は、DRAM / HBM、NAND flash、Foundry servicesを提供する。",
+      "evidenceIds": [
+        "samsung-electronics-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "samsung-electronics"
+    },
+    {
+      "id": "samsung-electronics-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、DRAM / HBM、NAND flash、Foundry servicesという製品構成を、DRAM、HBM、NANDに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "samsung-electronics-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "samsung-electronics",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "samsung-electronics-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Memoryの供給層",
+      "statement": "AtlasではSamsung Electronics（サムスン電子）を「Memory」に位置し、HBM/DRAM、NAND、先端ロジック製造の複数チャネルからAIインフラ投資に接続する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "samsung-electronics-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "samsung-electronics",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "samsung-electronics-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、メモリの大規模生産、複数半導体領域を跨ぐ垂直性、製造投資余力を、Samsung Electronics（サムスン電子）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "samsung-electronics-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "samsung-electronics",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "samsung-electronics-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、メモリ価格変動、ファウンドリ競争、巨額CAPEXと稼働率リスクを主要な確認点として整理する。",
+      "evidenceIds": [
+        "samsung-electronics-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "samsung-electronics",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sandisk-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Sandisk（サンディスク）は、NANDフラッシュメモリとSSDを展開する独立系ストレージ企業。",
+      "evidenceIds": [
+        "sandisk-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sandisk"
+    },
+    {
+      "id": "sandisk-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではSandisk（サンディスク）を、AI・データ集約型用途向けにNANDとSSDを供給し、キオクシアとの共同生産にも関係する企業と位置付ける。",
+      "evidenceIds": [
+        "sandisk-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sandisk",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sandisk-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Sandisk（サンディスク）は、NANDフラッシュメモリ、エンタープライズSSD、クライアント・組み込みフラッシュを提供する。",
+      "evidenceIds": [
+        "sandisk-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sandisk"
+    },
+    {
+      "id": "sandisk-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、NANDフラッシュメモリ、エンタープライズSSD、クライアント・組み込みフラッシュという製品構成を、NAND、SSD、フラッシュメモリに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "sandisk-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sandisk",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sandisk-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Memoryの供給層",
+      "statement": "AtlasではSandisk（サンディスク）を「Memory」に位置し、AI・データ集約型用途向けにNANDとSSDを供給し、キオクシアとの共同生産にも関係する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "sandisk-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sandisk",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sandisk-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、NAND技術と製品ブランド、キオクシアとの共同製造基盤、データセンターから端末までの製品幅を、Sandisk（サンディスク）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "sandisk-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sandisk",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sandisk-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、NAND価格サイクル、共同生産パートナー依存、設備投資と需給調整を主要な確認点として整理する。",
+      "evidenceIds": [
+        "sandisk-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sandisk",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "schneider-electric-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Schneider Electric（シュナイダーエレクトリック）は、受配電、UPS、データセンター電源、冷却、建物・エネルギー管理を幅広く提供するフランスのエネルギー技術企業。",
+      "evidenceIds": [
+        "schneider-electric-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "schneider-electric"
+    },
+    {
+      "id": "schneider-electric-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではSchneider Electric（シュナイダーエレクトリック）を、AIデータセンターの高電力密度化に伴う受配電・UPS・冷却・運用管理の設備投資を広く取り込む企業と位置付ける。",
+      "evidenceIds": [
+        "schneider-electric-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "schneider-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "schneider-electric-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Schneider Electric（シュナイダーエレクトリック）は、Data center power distribution、UPS and secure power、Cooling and data center managementを提供する。",
+      "evidenceIds": [
+        "schneider-electric-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "schneider-electric"
+    },
+    {
+      "id": "schneider-electric-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Data center power distribution、UPS and secure power、Cooling and data center managementという製品構成を、data center、power distribution、UPSに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "schneider-electric-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "schneider-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "schneider-electric-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Data Center & Facilitiesの供給層",
+      "statement": "AtlasではSchneider Electric（シュナイダーエレクトリック）を「Data Center & Facilities」に位置し、AIデータセンターの高電力密度化に伴う受配電・UPS・冷却・運用管理の設備投資を広く取り込む役割を担う企業と整理する。",
+      "evidenceIds": [
+        "schneider-electric-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "schneider-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "schneider-electric-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、受配電からUPS・冷却・管理ソフトまでの広いデータセンター製品群、グローバルな販売・サービス網、電化とエネルギー管理を統合する事業基盤を、Schneider Electric（シュナイダーエレクトリック）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "schneider-electric-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "schneider-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "schneider-electric-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、大型データセンター投資サイクル、電機・受配電市場の競争、地域別設備投資と為替の変動を主要な確認点として整理する。",
+      "evidenceIds": [
+        "schneider-electric-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "schneider-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "screen-holdings-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "SCREENホールディングスは、洗浄装置を中心に、半導体前工程の複数装置を展開する日本の製造装置グループ。",
+      "evidenceIds": [
+        "screen-holdings-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "screen-holdings"
+    },
+    {
+      "id": "screen-holdings-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではSCREENホールディングスを、先端ロジック・メモリの工程数増加と清浄度要求の上昇を通じ、AI向け半導体設備投資に関与する企業と位置付ける。",
+      "evidenceIds": [
+        "screen-holdings-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "screen-holdings",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "screen-holdings-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "SCREENホールディングスは、Wafer cleaning systems、Coater / developer systems、Inspection / metrology systemsを提供する。",
+      "evidenceIds": [
+        "screen-holdings-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "screen-holdings"
+    },
+    {
+      "id": "screen-holdings-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Wafer cleaning systems、Coater / developer systems、Inspection / metrology systemsという製品構成を、cleaning、inspection、coater developerに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "screen-holdings-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "screen-holdings",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "screen-holdings-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Wafer Fab Equipmentの供給層",
+      "statement": "AtlasではSCREENホールディングスを「Wafer Fab Equipment」に位置し、先端ロジック・メモリの工程数増加と清浄度要求の上昇を通じ、AI向け半導体設備投資に関与する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "screen-holdings-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "screen-holdings",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "screen-holdings-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、ウェハ洗浄工程の製品基盤、複数前工程への展開、半導体メーカーの量産工程への設置実績を、SCREENホールディングスの競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "screen-holdings-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "screen-holdings",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "screen-holdings-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、WFEサイクル、洗浄工程でのシェア競争、先端顧客の設備投資変動を主要な確認点として整理する。",
+      "evidenceIds": [
+        "screen-holdings-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "screen-holdings",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sk-hynix-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "SK hynix（SKハイニックス）は、DRAMを中心にHBMやNANDを手掛けるメモリ大手。",
+      "evidenceIds": [
+        "sk-hynix-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sk-hynix"
+    },
+    {
+      "id": "sk-hynix-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではSK hynix（SKハイニックス）を、AIアクセラレータ向けHBM需要への感応度が高い企業と位置付ける。",
+      "evidenceIds": [
+        "sk-hynix-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sk-hynix",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sk-hynix-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "SK hynix（SKハイニックス）は、HBM、DRAM、NAND flashを提供する。",
+      "evidenceIds": [
+        "sk-hynix-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sk-hynix"
+    },
+    {
+      "id": "sk-hynix-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、HBM、DRAM、NAND flashという製品構成を、HBM、DRAM、NANDに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "sk-hynix-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sk-hynix",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sk-hynix-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Memoryの供給層",
+      "statement": "AtlasではSK hynix（SKハイニックス）を「Memory」に位置し、AIアクセラレータ向けHBM需要への感応度が高い役割を担う企業と整理する。",
+      "evidenceIds": [
+        "sk-hynix-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sk-hynix",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sk-hynix-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、高帯域メモリ分野の製品競争力、DRAM量産力、AI向け高付加価値ミックスを、SK hynix（SKハイニックス）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "sk-hynix-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sk-hynix",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sk-hynix-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、メモリ価格サイクル、顧客認定・世代移行、設備投資と需給の振れを主要な確認点として整理する。",
+      "evidenceIds": [
+        "sk-hynix-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sk-hynix",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sumitomo-electric-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "住友電気工業は、光ファイバ・通信部品、電力ケーブル、自動車用ワイヤーハーネスなどを展開する総合電線メーカー。",
+      "evidenceIds": [
+        "sumitomo-electric-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sumitomo-electric"
+    },
+    {
+      "id": "sumitomo-electric-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "Atlasでは住友電気工業を、AIデータセンターでは高速光通信と大容量電力供給の両面からインフラ増設に関与する企業と位置付ける。",
+      "evidenceIds": [
+        "sumitomo-electric-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sumitomo-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sumitomo-electric-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "住友電気工業は、Optical fiber and cable、Optical communication devices、Power cables and systemsを提供する。",
+      "evidenceIds": [
+        "sumitomo-electric-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sumitomo-electric"
+    },
+    {
+      "id": "sumitomo-electric-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Optical fiber and cable、Optical communication devices、Power cables and systemsという製品構成を、optical fiber、data center cable、power cableに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "sumitomo-electric-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sumitomo-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sumitomo-electric-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Network & Opticalの供給層",
+      "statement": "Atlasでは住友電気工業を「Network & Optical」に位置し、AIデータセンターでは高速光通信と大容量電力供給の両面からインフラ増設に関与する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "sumitomo-electric-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sumitomo-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sumitomo-electric-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、光通信と電力ケーブルを併せ持つ総合的な技術基盤、光ファイバから光部品までの広い通信製品群、大容量送電・配電向けケーブル技術を、住友電気工業の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "sumitomo-electric-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sumitomo-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "sumitomo-electric-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動車を含む非AI事業の影響が大きい事業構成、通信・電力設備投資サイクル、原材料・為替変動を主要な確認点として整理する。",
+      "evidenceIds": [
+        "sumitomo-electric-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "sumitomo-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "legrand-overview-e1",
+      "claimId": "legrand-overview",
+      "sourceId": "annual-legrand-2024-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Integrated report",
+        "heading": "Group activities",
+        "quotedLabel": "electrical and digital building infrastructures"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "legrand-ai-role-e1",
+      "claimId": "legrand-ai-role",
+      "sourceId": "annual-legrand-2024-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Group activities",
+        "heading": "Data centers",
+        "quotedLabel": "busways, UPS, PDU, racks and cooling"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "legrand-products-e1",
+      "claimId": "legrand-products",
+      "sourceId": "annual-legrand-2024-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Group activities",
+        "heading": "Data centers",
+        "quotedLabel": "busways, UPS, PDU, racks and cooling"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "legrand-technology-e1",
+      "claimId": "legrand-technology",
+      "sourceId": "annual-legrand-2024-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Group activities",
+        "heading": "Data centers",
+        "quotedLabel": "busways, UPS, PDU, racks and cooling"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "legrand-value-chain-e1",
+      "claimId": "legrand-value-chain",
+      "sourceId": "annual-legrand-2024-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Group activities",
+        "heading": "Data centers",
+        "quotedLabel": "busways, UPS, PDU, racks and cooling"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "legrand-positioning-e1",
+      "claimId": "legrand-positioning",
+      "sourceId": "annual-legrand-2024-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy",
+        "heading": "Data centers",
+        "quotedLabel": "complete solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "legrand-risks-e1",
+      "claimId": "legrand-risks",
+      "sourceId": "annual-legrand-2024-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Risk factors",
+        "heading": "Operational and market risks",
+        "quotedLabel": "construction and investment cycles"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "marvell-overview-e1",
+      "claimId": "marvell-overview",
+      "sourceId": "sec-marvell-2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Our Markets and Products",
+        "quotedLabel": "data infrastructure"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "marvell-ai-role-e1",
+      "claimId": "marvell-ai-role",
+      "sourceId": "sec-marvell-2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Our Markets and Products",
+        "quotedLabel": "compute, networking, interconnects, and storage"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "marvell-products-e1",
+      "claimId": "marvell-products",
+      "sourceId": "sec-marvell-2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Our Markets and Products",
+        "quotedLabel": "compute, networking, interconnects, and storage"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "marvell-technology-e1",
+      "claimId": "marvell-technology",
+      "sourceId": "sec-marvell-2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Our Markets and Products",
+        "quotedLabel": "compute, networking, interconnects, and storage"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "marvell-value-chain-e1",
+      "claimId": "marvell-value-chain",
+      "sourceId": "sec-marvell-2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Our Markets and Products",
+        "quotedLabel": "compute, networking, interconnects, and storage"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "marvell-positioning-e1",
+      "claimId": "marvell-positioning",
+      "sourceId": "sec-marvell-2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "custom semiconductor solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "marvell-risks-e1",
+      "claimId": "marvell-risks",
+      "sourceId": "sec-marvell-2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "customer concentration"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "micron-overview-e1",
+      "claimId": "micron-overview",
+      "sourceId": "sec-micron-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "memory and storage solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "micron-ai-role-e1",
+      "claimId": "micron-ai-role",
+      "sourceId": "sec-micron-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and Markets",
+        "quotedLabel": "DRAM, NAND and HBM"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "micron-products-e1",
+      "claimId": "micron-products",
+      "sourceId": "sec-micron-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and Markets",
+        "quotedLabel": "DRAM, NAND and HBM"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "micron-technology-e1",
+      "claimId": "micron-technology",
+      "sourceId": "sec-micron-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and Markets",
+        "quotedLabel": "DRAM, NAND and HBM"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "micron-value-chain-e1",
+      "claimId": "micron-value-chain",
+      "sourceId": "sec-micron-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products and Markets",
+        "quotedLabel": "DRAM, NAND and HBM"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "micron-positioning-e1",
+      "claimId": "micron-positioning",
+      "sourceId": "sec-micron-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "technology and manufacturing capability"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "micron-risks-e1",
+      "claimId": "micron-risks",
+      "sourceId": "sec-micron-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "cyclical industry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-overview-e1",
+      "claimId": "nvent-overview",
+      "sourceId": "sec-nvent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Company Overview",
+        "quotedLabel": "electrical connection and protection solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-ai-role-e1",
+      "claimId": "nvent-ai-role",
+      "sourceId": "sec-nvent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Company Overview",
+        "quotedLabel": "liquid and air cooling, power distribution and enclosures"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-products-e1",
+      "claimId": "nvent-products",
+      "sourceId": "sec-nvent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Company Overview",
+        "quotedLabel": "liquid and air cooling, power distribution and enclosures"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-technology-e1",
+      "claimId": "nvent-technology",
+      "sourceId": "sec-nvent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Company Overview",
+        "quotedLabel": "liquid and air cooling, power distribution and enclosures"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-value-chain-e1",
+      "claimId": "nvent-value-chain",
+      "sourceId": "sec-nvent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Company Overview",
+        "quotedLabel": "liquid and air cooling, power distribution and enclosures"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-positioning-e1",
+      "claimId": "nvent-positioning",
+      "sourceId": "sec-nvent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "quality, reliability and innovation"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-risks-e1",
+      "claimId": "nvent-risks",
+      "sourceId": "sec-nvent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "data center investment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "samsung-electronics-overview-e1",
+      "claimId": "samsung-electronics-overview",
+      "sourceId": "business-report-samsung-electronics-2025",
+      "support": "supports",
+      "locator": {
+        "section": "2025 Full year",
+        "heading": "Business Overview",
+        "quotedLabel": "Device Solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "samsung-electronics-ai-role-e1",
+      "claimId": "samsung-electronics-ai-role",
+      "sourceId": "business-report-samsung-electronics-2025",
+      "support": "supports",
+      "locator": {
+        "section": "2025 Full year",
+        "heading": "Main products and services",
+        "quotedLabel": "DRAM, NAND and foundry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "samsung-electronics-products-e1",
+      "claimId": "samsung-electronics-products",
+      "sourceId": "business-report-samsung-electronics-2025",
+      "support": "supports",
+      "locator": {
+        "section": "2025 Full year",
+        "heading": "Main products and services",
+        "quotedLabel": "DRAM, NAND and foundry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "samsung-electronics-technology-e1",
+      "claimId": "samsung-electronics-technology",
+      "sourceId": "business-report-samsung-electronics-2025",
+      "support": "supports",
+      "locator": {
+        "section": "2025 Full year",
+        "heading": "Main products and services",
+        "quotedLabel": "DRAM, NAND and foundry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "samsung-electronics-value-chain-e1",
+      "claimId": "samsung-electronics-value-chain",
+      "sourceId": "business-report-samsung-electronics-2025",
+      "support": "supports",
+      "locator": {
+        "section": "2025 Full year",
+        "heading": "Main products and services",
+        "quotedLabel": "DRAM, NAND and foundry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "samsung-electronics-positioning-e1",
+      "claimId": "samsung-electronics-positioning",
+      "sourceId": "business-report-samsung-electronics-2025",
+      "support": "supports",
+      "locator": {
+        "section": "2025 Full year",
+        "heading": "Business conditions",
+        "quotedLabel": "technology and manufacturing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "samsung-electronics-risks-e1",
+      "claimId": "samsung-electronics-risks",
+      "sourceId": "business-report-samsung-electronics-2025",
+      "support": "supports",
+      "locator": {
+        "section": "2025 Full year",
+        "heading": "Risk management",
+        "quotedLabel": "semiconductor market volatility"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sandisk-overview-e1",
+      "claimId": "sandisk-overview",
+      "sourceId": "sec-sandisk-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "flash data storage products and solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sandisk-ai-role-e1",
+      "claimId": "sandisk-ai-role",
+      "sourceId": "sec-sandisk-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "NAND flash and solid-state drives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sandisk-products-e1",
+      "claimId": "sandisk-products",
+      "sourceId": "sec-sandisk-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "NAND flash and solid-state drives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sandisk-technology-e1",
+      "claimId": "sandisk-technology",
+      "sourceId": "sec-sandisk-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "NAND flash and solid-state drives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sandisk-value-chain-e1",
+      "claimId": "sandisk-value-chain",
+      "sourceId": "sec-sandisk-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "NAND flash and solid-state drives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sandisk-positioning-e1",
+      "claimId": "sandisk-positioning",
+      "sourceId": "sec-sandisk-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Manufacturing",
+        "quotedLabel": "joint ventures with Kioxia"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sandisk-risks-e1",
+      "claimId": "sandisk-risks",
+      "sourceId": "sec-sandisk-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "cyclical supply and demand"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "schneider-electric-overview-e1",
+      "claimId": "schneider-electric-overview",
+      "sourceId": "annual-schneider-electric-2025-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Group profile",
+        "heading": "Energy Technology",
+        "quotedLabel": "electrification, automation and digitalization"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "schneider-electric-ai-role-e1",
+      "claimId": "schneider-electric-ai-role",
+      "sourceId": "annual-schneider-electric-2025-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Products and solutions",
+        "heading": "Data centers",
+        "quotedLabel": "power distribution, secure power, cooling and management"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "schneider-electric-products-e1",
+      "claimId": "schneider-electric-products",
+      "sourceId": "annual-schneider-electric-2025-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Products and solutions",
+        "heading": "Data centers",
+        "quotedLabel": "power distribution, secure power, cooling and management"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "schneider-electric-technology-e1",
+      "claimId": "schneider-electric-technology",
+      "sourceId": "annual-schneider-electric-2025-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Products and solutions",
+        "heading": "Data centers",
+        "quotedLabel": "power distribution, secure power, cooling and management"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "schneider-electric-value-chain-e1",
+      "claimId": "schneider-electric-value-chain",
+      "sourceId": "annual-schneider-electric-2025-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Products and solutions",
+        "heading": "Data centers",
+        "quotedLabel": "power distribution, secure power, cooling and management"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "schneider-electric-positioning-e1",
+      "claimId": "schneider-electric-positioning",
+      "sourceId": "annual-schneider-electric-2025-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy",
+        "heading": "Data centers and networks",
+        "quotedLabel": "integrated portfolio"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "schneider-electric-risks-e1",
+      "claimId": "schneider-electric-risks",
+      "sourceId": "annual-schneider-electric-2025-urd",
+      "support": "supports",
+      "locator": {
+        "section": "Risk factors",
+        "heading": "Operational risks",
+        "quotedLabel": "market and supply chain"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "screen-holdings-overview-e1",
+      "claimId": "screen-holdings-overview",
+      "sourceId": "integrated-screen-holdings-2025",
+      "support": "supports",
+      "locator": {
+        "page": "10-17",
+        "section": "Value Creation",
+        "heading": "Business portfolio",
+        "quotedLabel": "Semiconductor Production Equipment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "screen-holdings-ai-role-e1",
+      "claimId": "screen-holdings-ai-role",
+      "sourceId": "integrated-screen-holdings-2025",
+      "support": "supports",
+      "locator": {
+        "page": "34-39",
+        "section": "Business Strategies",
+        "heading": "Semiconductor Production Equipment",
+        "quotedLabel": "wafer cleaning equipment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "screen-holdings-products-e1",
+      "claimId": "screen-holdings-products",
+      "sourceId": "integrated-screen-holdings-2025",
+      "support": "supports",
+      "locator": {
+        "page": "34-39",
+        "section": "Business Strategies",
+        "heading": "Semiconductor Production Equipment",
+        "quotedLabel": "wafer cleaning equipment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "screen-holdings-technology-e1",
+      "claimId": "screen-holdings-technology",
+      "sourceId": "integrated-screen-holdings-2025",
+      "support": "supports",
+      "locator": {
+        "page": "34-39",
+        "section": "Business Strategies",
+        "heading": "Semiconductor Production Equipment",
+        "quotedLabel": "wafer cleaning equipment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "screen-holdings-value-chain-e1",
+      "claimId": "screen-holdings-value-chain",
+      "sourceId": "integrated-screen-holdings-2025",
+      "support": "supports",
+      "locator": {
+        "page": "34-39",
+        "section": "Business Strategies",
+        "heading": "Semiconductor Production Equipment",
+        "quotedLabel": "wafer cleaning equipment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "screen-holdings-positioning-e1",
+      "claimId": "screen-holdings-positioning",
+      "sourceId": "integrated-screen-holdings-2025",
+      "support": "supports",
+      "locator": {
+        "page": "34-39",
+        "section": "Business Strategies",
+        "heading": "Competitive strengths",
+        "quotedLabel": "cleaning technology"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "screen-holdings-risks-e1",
+      "claimId": "screen-holdings-risks",
+      "sourceId": "integrated-screen-holdings-2025",
+      "support": "supports",
+      "locator": {
+        "page": "60-65",
+        "section": "Risk Management",
+        "heading": "Major risks",
+        "quotedLabel": "semiconductor market"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sk-hynix-overview-e1",
+      "claimId": "sk-hynix-overview",
+      "sourceId": "dart-sk-hynix-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "section": "II. Business Description",
+        "heading": "Business overview",
+        "quotedLabel": "memory semiconductor"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sk-hynix-ai-role-e1",
+      "claimId": "sk-hynix-ai-role",
+      "sourceId": "dart-sk-hynix-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "section": "II. Business Description",
+        "heading": "Main products and services",
+        "quotedLabel": "DRAM, HBM and NAND"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sk-hynix-products-e1",
+      "claimId": "sk-hynix-products",
+      "sourceId": "dart-sk-hynix-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "section": "II. Business Description",
+        "heading": "Main products and services",
+        "quotedLabel": "DRAM, HBM and NAND"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sk-hynix-technology-e1",
+      "claimId": "sk-hynix-technology",
+      "sourceId": "dart-sk-hynix-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "section": "II. Business Description",
+        "heading": "Main products and services",
+        "quotedLabel": "DRAM, HBM and NAND"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sk-hynix-value-chain-e1",
+      "claimId": "sk-hynix-value-chain",
+      "sourceId": "dart-sk-hynix-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "section": "II. Business Description",
+        "heading": "Main products and services",
+        "quotedLabel": "DRAM, HBM and NAND"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sk-hynix-positioning-e1",
+      "claimId": "sk-hynix-positioning",
+      "sourceId": "dart-sk-hynix-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "section": "II. Business Description",
+        "heading": "Research and development activities",
+        "quotedLabel": "technology competitiveness"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sk-hynix-risks-e1",
+      "claimId": "sk-hynix-risks",
+      "sourceId": "dart-sk-hynix-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "section": "II. Business Description",
+        "heading": "Risk management",
+        "quotedLabel": "market and financial risks"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sumitomo-electric-overview-e1",
+      "claimId": "sumitomo-electric-overview",
+      "sourceId": "integrated-sumitomo-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "8-17",
+        "section": "Value Creation",
+        "heading": "Business portfolio",
+        "quotedLabel": "Info-communications and Environment & Energy"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sumitomo-electric-ai-role-e1",
+      "claimId": "sumitomo-electric-ai-role",
+      "sourceId": "integrated-sumitomo-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "42-49",
+        "section": "Business Strategies",
+        "heading": "Info-communications",
+        "quotedLabel": "optical fiber, cable and devices"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sumitomo-electric-products-e1",
+      "claimId": "sumitomo-electric-products",
+      "sourceId": "integrated-sumitomo-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "42-49",
+        "section": "Business Strategies",
+        "heading": "Info-communications",
+        "quotedLabel": "optical fiber, cable and devices"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sumitomo-electric-technology-e1",
+      "claimId": "sumitomo-electric-technology",
+      "sourceId": "integrated-sumitomo-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "42-49",
+        "section": "Business Strategies",
+        "heading": "Info-communications",
+        "quotedLabel": "optical fiber, cable and devices"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sumitomo-electric-value-chain-e1",
+      "claimId": "sumitomo-electric-value-chain",
+      "sourceId": "integrated-sumitomo-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "42-49",
+        "section": "Business Strategies",
+        "heading": "Info-communications",
+        "quotedLabel": "optical fiber, cable and devices"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sumitomo-electric-positioning-e1",
+      "claimId": "sumitomo-electric-positioning",
+      "sourceId": "integrated-sumitomo-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "42-49",
+        "section": "Business Strategies",
+        "heading": "Growth strategy",
+        "quotedLabel": "data centers and related equipment"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "sumitomo-electric-risks-e1",
+      "claimId": "sumitomo-electric-risks",
+      "sourceId": "integrated-sumitomo-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "76-81",
+        "section": "Risk Management",
+        "heading": "Major risks",
+        "quotedLabel": "market, raw materials and foreign exchange"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": [
+    {
+      "companyId": "legrand",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "legrand",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "legrand",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "legrand",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "legrand",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "legrand",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "legrand",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "legrand",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "legrand",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "legrand",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "legrand",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "marvell",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "marvell",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "marvell",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "marvell",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "marvell",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "marvell",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "marvell",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "marvell",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "marvell",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "marvell",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "marvell",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "micron",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "micron",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "micron",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "micron",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "micron",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "micron",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "micron",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "micron",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "micron",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "micron",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "micron",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "nvent",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "nvent",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "nvent",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "nvent",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "nvent",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "nvent",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "nvent",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "nvent",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "nvent",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "nvent",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "nvent",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "samsung-electronics",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sandisk",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "schneider-electric",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "screen-holdings",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sk-hynix",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    }
+  ]
+}
