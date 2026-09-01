@@ -206,8 +206,29 @@
 - Browser QA: all ten companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source links, and `44 × 44px` marker targets confirmed. Amkor and IBIDEN passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
 - Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
 - Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR: [#130](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/130)
+- Merge SHA: `ce49adf542b4cd7da67b6217bd64b1a79b74f889`
+- Actions: [run 33472292585](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33472292585) success
+- Result: merged; main Actions success; public Pages checked
+
+## Batch B5
+
+- Baseline main: `ce49adf542b4cd7da67b6217bd64b1a79b74f889`
+- Companies: JCET, MediaTek, Nikon, NXP, Renesas, Resonac Holdings, ROHM, Seagate, Texas Instruments
+- Claims / Evidence / structured Locators: `63 / 63 / 63`
+- Priority: P1 `45` / P2 `18` / P3 `0`
+- Verification: `source-linked 63`; `verified 0`; policy approval changes `0`
+- Sources: existing Shared Sources reused `0`; added `9`; duplicate Source IDs `0`
+- Batch coverage delta: complete `+27`; partial `-9`; not-started `-18`
+- Global coverage: `213 / 481 / 406 → 240 / 472 / 388`
+- Global maturity: L1 `33 → 24`; L4 `64 → 73`
+- SOFT DEFER: `72` unresolved Category records (`36` partial + `36` not-started)
+- HARD STOP: `0`
+- Browser QA: all nine companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source links, and `44 × 44px` marker targets confirmed. JCET and Texas Instruments passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
+- Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
+- Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - Result: ready for PR; merge / Actions / Pages pending
 
 ## Resume marker
 
-All A2–A4 and B1–B3 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B4 validation or the first later batch not marked merged; never rerun a completed batch.
+All A2–A4 and B1–B4 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B5 validation or the first later batch not marked merged; never rerun a completed batch.
