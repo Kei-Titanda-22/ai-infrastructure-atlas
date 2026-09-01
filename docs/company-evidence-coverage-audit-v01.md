@@ -1,7 +1,7 @@
 # 100-company Company Evidence Coverage Audit v0.1
 
 - Data as of: `2026-09-01`
-- Input digest: `sha256:b859e37107da9ff3600d5132011918c8818ec3b062c2313b742ecf536fbc7f81`
+- Input digest: `sha256:20782cd58ce7025bd3e6618d35a385bf5f288b120f4528398e2dc9c4c7354811`
 - Scope: 100 companies × 11 categories = 1,100 pairs
 - Company Evidence enrichment: **Arm / ASML only**
 - This is a coverage audit, not a Company Evaluation Score.
@@ -10,13 +10,13 @@
 
 Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監査した。Pilot 5社の既存Coverage Recordを維持し、Batch 01のArm / ASMLはmanifest経由のCoverage Recordを正とする。残る93社ではlegacy本文や汎用IR Sourceだけをcompleteへ昇格していない。
 
-結果はcomplete **321**、partial **451**、not-started **328**。低CoverageはCI failureにせず、次の一次資料補強順を作るbaselineとして固定する。
+結果はcomplete **321**、partial **482**、not-started **297**。低CoverageはCI failureにせず、次の一次資料補強順を作るbaselineとして固定する。
 
 ## 100-company totals
 
 | Companies | Categories | Pairs | Complete | Partial | Not-started |
 | ---: | ---: | ---: | ---: | ---: | ---: |
-| 100 | 11 | 1,100 | 321 | 451 | 328 |
+| 100 | 11 | 1,100 | 321 | 482 | 297 |
 
 ## Category coverage
 
@@ -27,18 +27,18 @@ Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監�
 | `products` | 100 | 0 | 0 | 100 | 100 | 0 |
 | `technology` | 1 | 99 | 0 | 100 | 100 | 0 |
 | `value-chain-position` | 100 | 0 | 0 | 100 | 100 | 0 |
-| `manufacturing-facilities` | 13 | 7 | 80 | 20 | 20 | 0 |
-| `capacity-expansion` | 3 | 8 | 89 | 11 | 11 | 0 |
-| `customer-end-market` | 0 | 24 | 76 | 20 | 20 | 0 |
+| `manufacturing-facilities` | 13 | 14 | 73 | 27 | 27 | 0 |
+| `capacity-expansion` | 3 | 17 | 80 | 20 | 20 | 0 |
+| `customer-end-market` | 0 | 31 | 69 | 27 | 27 | 0 |
 | `competitive-positioning` | 0 | 100 | 0 | 100 | 100 | 0 |
-| `strategy` | 0 | 17 | 83 | 17 | 17 | 0 |
+| `strategy` | 0 | 25 | 75 | 25 | 25 | 0 |
 | `risks` | 0 | 100 | 0 | 99 | 99 | 1 |
 
 ## Missing status
 
 | Status | Pairs |
 | --- | ---: |
-| `not-collected` | 318 |
+| `not-collected` | 287 |
 | `primary-source-unchecked` | 1 |
 | `not-disclosed` | 5 |
 | `not-applicable` | 9 |
@@ -56,10 +56,10 @@ Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監�
 A/B/C/D/Eを別集計した結果：
 
 - Company-level Sourceあり: 100 companies
-- Category-direct Sourceあり: 767 pairs
-- Claim-level Evidence Bindingあり: 767 pairs
-- Structured Locatorあり: 767 pairs
-- Freeze Schemaでそのまま移行可能: 767 pairs
+- Category-direct Sourceあり: 798 pairs
+- Claim-level Evidence Bindingあり: 798 pairs
+- Structured Locatorあり: 798 pairs
+- Freeze Schemaでそのまま移行可能: 798 pairs
 
 ## Field-level legacy provenance
 
@@ -73,7 +73,7 @@ A/B/C/D/Eを別集計した結果：
 
 ## Source quality
 
-- Registry records / unique Sources: 306 / 304
+- Registry records / unique Sources: 310 / 308
 - Company `sourceIds` references / resolved: 121 / 121
 - Financial Source references / resolved: 124 / 124
 - Orphan Source references: 0
@@ -82,21 +82,21 @@ A/B/C/D/Eを別集計した結果：
 - Conflicting duplicate Source IDs: 0
 - Duplicate URLs across distinct IDs: 1
 - `publishedAt: null`: 261 unique Sources
-- stale-ish (publishedAtがdataAsOfより730日超前): 1 unique Sources
+- stale-ish (publishedAtがdataAsOfより730日超前): 2 unique Sources
 
 ### Locator audit
 
-Bindings 770 / valid Locators 770 / missing 0 / invalid 0。
+Bindings 801 / valid Locators 801 / missing 0 / invalid 0。
 
 | Locator field | Uses |
 | --- | ---: |
-| `page` | 159 |
-| `section` | 732 |
-| `heading` | 758 |
+| `page` | 162 |
+| `section` | 762 |
+| `heading` | 786 |
 | `table` | 2 |
 | `note` | 0 |
 | `anchor` | 0 |
-| `quotedLabel` | 742 |
+| `quotedLabel` | 773 |
 
 ## Pilot baseline
 
@@ -104,7 +104,7 @@ Pilot 5社はFreeze baselineを変更せず、既存55 Coverage Recordと整合�
 
 | Company | Complete | Partial | Not-started | Claims | Evidence | Locators | Maturity |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Applied Materials（アプライド・マテリアルズ） | 4 | 6 | 1 | 9 | 9 | 9 | L4 |
+| Applied Materials（アプライド・マテリアルズ） | 4 | 7 | 0 | 10 | 10 | 10 | L4 |
 | フジクラ | 4 | 6 | 1 | 8 | 8 | 8 | L4 |
 | NVIDIA（エヌビディア） | 4 | 4 | 3 | 7 | 7 | 7 | L4 |
 | TSMC（台湾積体電路製造） | 5 | 5 | 1 | 10 | 11 | 11 | L4 |
@@ -128,10 +128,10 @@ PriorityはCoverage不足を主軸に、既存のAI重要度signal、複数Categ
 
 | Category | Not-started | Partial |
 | --- | ---: | ---: |
-| `capacity-expansion` | 89 | 8 |
-| `strategy` | 83 | 17 |
-| `manufacturing-facilities` | 80 | 7 |
-| `customer-end-market` | 76 | 24 |
+| `capacity-expansion` | 80 | 17 |
+| `strategy` | 75 | 25 |
+| `manufacturing-facilities` | 73 | 14 |
+| `customer-end-market` | 69 | 31 |
 | `ai-infrastructure-role` | 0 | 95 |
 | `company-overview` | 0 | 1 |
 | `competitive-positioning` | 0 | 100 |
@@ -177,19 +177,19 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 
 | Company | Maturity | Complete | Partial | Not-started | Sources | Claims | Evidence | Locators | Priority |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| ABB（エービービー） | L4 | 4 | 6 | 1 | 1 | 10 | 10 | 10 | C |
-| アドバンテスト | L4 | 3 | 5 | 3 | 2 | 8 | 8 | 8 | B |
-| Air Liquide（エア・リキード） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
-| 味の素ファインテクノ | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
+| ABB（エービービー） | L4 | 4 | 7 | 0 | 1 | 11 | 11 | 11 | C |
+| アドバンテスト | L4 | 3 | 8 | 0 | 2 | 11 | 11 | 11 | B |
+| Air Liquide（エア・リキード） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
+| 味の素ファインテクノ | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | AMD（アドバンスト・マイクロ・デバイセズ） | L4 | 3 | 6 | 2 | 1 | 9 | 9 | 9 | B |
-| Amkor Technology（アムコー・テクノロジー） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
-| Amphenol（アンフェノール） | L4 | 4 | 5 | 2 | 1 | 9 | 9 | 9 | C |
-| Analog Devices（アナログ・デバイセズ） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
-| Applied Materials（アプライド・マテリアルズ） | L4 | 4 | 6 | 1 | 2 | 9 | 9 | 9 | C |
-| Aptiv（アプティブ） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
+| Amkor Technology（アムコー・テクノロジー） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
+| Amphenol（アンフェノール） | L4 | 4 | 7 | 0 | 1 | 11 | 11 | 11 | C |
+| Analog Devices（アナログ・デバイセズ） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
+| Applied Materials（アプライド・マテリアルズ） | L4 | 4 | 7 | 0 | 2 | 10 | 10 | 10 | C |
+| Aptiv（アプティブ） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | Arista Networks（アリスタ・ネットワークス） | L4 | 3 | 6 | 2 | 2 | 9 | 9 | 9 | B |
 | Arm（アーム） | L4 | 3 | 6 | 2 | 1 | 9 | 9 | 9 | B |
-| ASE Technology（ASEテクノロジー） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
+| ASE Technology（ASEテクノロジー） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | ASM International（ASMインターナショナル） | L4 | 4 | 7 | 0 | 1 | 11 | 11 | 11 | C |
 | ASML（エーエスエムエル） | L4 | 4 | 7 | 0 | 2 | 11 | 11 | 11 | C |
 | ASMPT（エーエスエムピーティー） | L4 | 4 | 6 | 1 | 1 | 10 | 10 | 10 | C |

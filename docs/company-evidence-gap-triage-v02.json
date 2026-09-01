@@ -5,7 +5,7 @@
   "supersedes": "docs/company-evidence-gap-triage-v01.json",
   "reviewedAt": "2026-09-01",
   "semanticDecisionDigest": "sha256:4781f9c870d755a9262a824c3606034161d90937162b3264440ec3cde824e3af",
-  "coverageInputDigest": "sha256:b859e37107da9ff3600d5132011918c8818ec3b062c2313b742ecf536fbc7f81",
+  "coverageInputDigest": "sha256:20782cd58ce7025bd3e6618d35a385bf5f288b120f4528398e2dc9c4c7354811",
   "coverageBaseline": {
     "complete": 321,
     "partial": 451,
@@ -14,8 +14,8 @@
   },
   "coverageCurrent": {
     "complete": 321,
-    "partial": 451,
-    "notStarted": 328,
+    "partial": 482,
+    "notStarted": 297,
     "gaps": 779
   },
   "reviewScopeSummary": {
@@ -38,8 +38,8 @@
     "REVIEW_REQUIRED": 0
   },
   "currentDistribution": {
-    "ACTIONABLE": 289,
-    "SUFFICIENT_PARTIAL": 446,
+    "ACTIONABLE": 258,
+    "SUFFICIENT_PARTIAL": 477,
     "NOT_DISCLOSED": 4,
     "NOT_APPLICABLE": 30,
     "DEFERRED": 10,
@@ -48,10 +48,10 @@
   "actionable": {
     "reviewedRecords": 289,
     "reviewedCompanies": 88,
-    "pendingRecords": 289,
-    "pendingCompanies": 88,
-    "completedRecords": 0,
-    "completedCompanies": 0
+    "pendingRecords": 258,
+    "pendingCompanies": 78,
+    "completedRecords": 31,
+    "completedCompanies": 10
   },
   "categorySummary": [
     {
@@ -70,8 +70,8 @@
       "category": "capacity-expansion",
       "total": 97,
       "distribution": {
-        "ACTIONABLE": 64,
-        "SUFFICIENT_PARTIAL": 8,
+        "ACTIONABLE": 55,
+        "SUFFICIENT_PARTIAL": 17,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 15,
         "DEFERRED": 10,
@@ -106,8 +106,8 @@
       "category": "customer-end-market",
       "total": 100,
       "distribution": {
-        "ACTIONABLE": 76,
-        "SUFFICIENT_PARTIAL": 20,
+        "ACTIONABLE": 69,
+        "SUFFICIENT_PARTIAL": 27,
         "NOT_DISCLOSED": 4,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -118,8 +118,8 @@
       "category": "manufacturing-facilities",
       "total": 87,
       "distribution": {
-        "ACTIONABLE": 65,
-        "SUFFICIENT_PARTIAL": 7,
+        "ACTIONABLE": 58,
+        "SUFFICIENT_PARTIAL": 14,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 15,
         "DEFERRED": 0,
@@ -142,8 +142,8 @@
       "category": "strategy",
       "total": 100,
       "distribution": {
-        "ACTIONABLE": 83,
-        "SUFFICIENT_PARTIAL": 17,
+        "ACTIONABLE": 75,
+        "SUFFICIENT_PARTIAL": 25,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -168,8 +168,8 @@
       "companyId": "abb",
       "total": 7,
       "distribution": {
-        "ACTIONABLE": 1,
-        "SUFFICIENT_PARTIAL": 6,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 7,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -180,8 +180,8 @@
       "companyId": "advantest",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 3,
-        "SUFFICIENT_PARTIAL": 5,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -192,8 +192,8 @@
       "companyId": "air-liquide",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -204,8 +204,8 @@
       "companyId": "ajinomoto-fine-techno",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -228,8 +228,8 @@
       "companyId": "amkor",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -240,8 +240,8 @@
       "companyId": "amphenol",
       "total": 7,
       "distribution": {
-        "ACTIONABLE": 2,
-        "SUFFICIENT_PARTIAL": 5,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 7,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -252,8 +252,8 @@
       "companyId": "analog-devices",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -264,8 +264,8 @@
       "companyId": "applied-materials",
       "total": 7,
       "distribution": {
-        "ACTIONABLE": 1,
-        "SUFFICIENT_PARTIAL": 5,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 6,
         "NOT_DISCLOSED": 1,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -276,8 +276,8 @@
       "companyId": "aptiv",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -312,8 +312,8 @@
       "companyId": "ase-technology",
       "total": 8,
       "distribution": {
-        "ACTIONABLE": 4,
-        "SUFFICIENT_PARTIAL": 4,
+        "ACTIONABLE": 0,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
@@ -1428,15 +1428,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "abb:competitive-positioning",
@@ -1655,15 +1655,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "advantest:competitive-positioning",
@@ -1727,15 +1727,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "advantest:manufacturing-facilities",
@@ -1832,15 +1832,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "advantest:technology",
@@ -1935,15 +1935,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "air-liquide:competitive-positioning",
@@ -2007,15 +2007,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "air-liquide:manufacturing-facilities",
@@ -2048,15 +2048,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "air-liquide:risks",
@@ -2120,15 +2120,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "air-liquide:technology",
@@ -2223,15 +2223,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "ajinomoto-fine-techno:competitive-positioning",
@@ -2295,15 +2295,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "ajinomoto-fine-techno:manufacturing-facilities",
@@ -2336,15 +2336,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "ajinomoto-fine-techno:risks",
@@ -2408,15 +2408,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "ajinomoto-fine-techno:technology",
@@ -2759,15 +2759,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "amkor:competitive-positioning",
@@ -2831,15 +2831,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "amkor:manufacturing-facilities",
@@ -2872,15 +2872,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "amkor:risks",
@@ -2944,15 +2944,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "amkor:technology",
@@ -3047,15 +3047,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "amphenol:competitive-positioning",
@@ -3181,15 +3181,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "amphenol:technology",
@@ -3284,15 +3284,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "analog-devices:competitive-positioning",
@@ -3356,15 +3356,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "analog-devices:manufacturing-facilities",
@@ -3397,15 +3397,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "analog-devices:risks",
@@ -3469,15 +3469,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "analog-devices:technology",
@@ -3636,15 +3636,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "applied-materials:risks",
@@ -3801,15 +3801,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "aptiv:competitive-positioning",
@@ -3873,15 +3873,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "aptiv:manufacturing-facilities",
@@ -3914,15 +3914,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "aptiv:risks",
@@ -3986,15 +3986,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "aptiv:technology",
@@ -4585,15 +4585,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "manufacturing expansion、new factory/fab、production capacityまたはplant investmentの一次開示を確認し、単なるCapex増加ではないprojectとして判定した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "ase-technology:competitive-positioning",
@@ -4657,15 +4657,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Business、Markets、Applications、Segment informationまたはcustomer concentrationの一次開示を確認し、顧客名の有無をACTIONABLE条件にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "ase-technology:manufacturing-facilities",
@@ -4698,15 +4698,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Properties、Manufacturing、Facilities、LocationsまたはProduction sitesの公式記述を確認し、officeだけではなく事業提供に使う生産・運用資産であることを確認した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "ase-technology:risks",
@@ -4770,15 +4770,15 @@
         "secondarySourcesUsed": false
       },
       "reviewerBasis": "Strategy、management priorities、medium-term plan、Investor Dayまたはstrategic initiativesの会社公式記述を確認し、generic IR top pageだけを根拠にしなかった。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "ase-technology:technology",

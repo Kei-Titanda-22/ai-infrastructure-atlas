@@ -393,3 +393,19 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Coverage unchanged at re-triage: complete `321`; partial `451`; not-started `328`
 - Production Evidence / financial / UI / Schema / Freeze changes in re-triage: `0`
 - Company Evidence v1 Coverage Close: **NO** (ACTIONABLE remediation and Validation v0.2 pending)
+
+## Triage Remediation Enrichment B01
+
+- Baseline main: `3336ad562968672a5450e5d5d7e78e9a35384b45`
+- Companies: ABB, Advantest, Air Liquide, Ajinomoto Fine-Techno, Amkor, Amphenol, Analog Devices, Applied Materials, Aptiv, ASE Technology
+- ACTIONABLE processed: `31` Category records / `10` companies
+- Claims / Evidence / structured Locators: `31 / 31 / 31`
+- Verification: `source-linked 31`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `10`; added `4`; new Source Policies remain `pending`
+- Coverage: `321 / 451 / 328 → 321 / 482 / 297` (complete / partial / not-started)
+- Triage: ACTIONABLE pending `289 → 258`; current SUFFICIENT_PARTIAL `446 → 477`; REVIEW_REQUIRED `0`
+- Browser QA: Advantest and Applied Materials passed complete drawer, Primary Source, Escape, focus return, bibliography, `44 × 44px` marker target, and document overflow `0`; both companies also passed light checks at `1024px` and `360px`.
+- Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR / merge / Actions / Pages: pending publication
+- HARD STOP: `0`
