@@ -2,7 +2,7 @@
   "schemaVersion": "0.1",
   "generatedAt": "2026-09-01T00:00:00Z",
   "dataAsOf": "2026-09-01",
-  "inputDigest": "sha256:b859e37107da9ff3600d5132011918c8818ec3b062c2313b742ecf536fbc7f81",
+  "inputDigest": "sha256:20782cd58ce7025bd3e6618d35a385bf5f288b120f4528398e2dc9c4c7354811",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,16 +27,16 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 208
+    "inputFileCount": 210
   },
   "summary": {
     "coverage": {
       "complete": 321,
-      "partial": 451,
-      "not-started": 328
+      "partial": 482,
+      "not-started": 297
     },
     "missingStatus": {
-      "not-collected": 318,
+      "not-collected": 287,
       "primary-source-unchecked": 1,
       "not-disclosed": 5,
       "not-applicable": 9
@@ -50,10 +50,10 @@
     },
     "evidenceMaturityDimensions": {
       "companyLevelSourceCompanies": 100,
-      "directCategorySourcePairs": 767,
-      "claimEvidenceBindingPairs": 767,
-      "structuredLocatorPairs": 767,
-      "freezeReadyPairs": 767
+      "directCategorySourcePairs": 798,
+      "claimEvidenceBindingPairs": 798,
+      "structuredLocatorPairs": 798,
+      "freezeReadyPairs": 798
     },
     "fieldLevelLegacy": {
       "summary": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 306,
-      "uniqueSourceCount": 304,
+      "registryRecordCount": 310,
+      "uniqueSourceCount": 308,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -113,32 +113,32 @@
         }
       ],
       "publishedAtNullUniqueSources": 261,
-      "staleIshUniqueSources": 1,
+      "staleIshUniqueSources": 2,
       "staleIshThresholdDays": 730,
       "companySourceIdReferences": 121,
       "companySourceIdResolved": 121,
       "orphanSourceIdReferences": 0,
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 250,
-      "staleIshReferences": 1,
+      "staleIshReferences": 2,
       "financialSourceReferences": 124,
       "financialSourceResolved": 124
     },
     "locatorAudit": {
-      "bindingCount": 770,
-      "validLocatorCount": 770,
+      "bindingCount": 801,
+      "validLocatorCount": 801,
       "missingLocatorCount": 0,
       "missingLocatorBindingIds": [],
       "invalidLocatorCount": 0,
       "invalidLocators": [],
       "fieldUsage": {
-        "page": 159,
-        "section": 732,
-        "heading": 758,
+        "page": 162,
+        "section": 762,
+        "heading": 786,
         "table": 2,
         "note": 0,
         "anchor": 0,
-        "quotedLabel": 742
+        "quotedLabel": 773
       }
     },
     "priorityBands": {
@@ -156,12 +156,6 @@
     "lowestCoverage": {
       "score": 10,
       "companyIds": [
-        "air-liquide",
-        "ajinomoto-fine-techno",
-        "amkor",
-        "analog-devices",
-        "aptiv",
-        "ase-technology",
         "bosch",
         "broadcom",
         "cadence",
@@ -279,28 +273,28 @@
     {
       "category": "manufacturing-facilities",
       "completeCompanies": 13,
-      "partialCompanies": 7,
+      "partialCompanies": 14,
+      "notStartedCompanies": 73,
+      "directSourceCompanies": 27,
+      "claimEvidenceCompanies": 27,
+      "migrationCandidateCompanies": 0
+    },
+    {
+      "category": "capacity-expansion",
+      "completeCompanies": 3,
+      "partialCompanies": 17,
       "notStartedCompanies": 80,
       "directSourceCompanies": 20,
       "claimEvidenceCompanies": 20,
       "migrationCandidateCompanies": 0
     },
     {
-      "category": "capacity-expansion",
-      "completeCompanies": 3,
-      "partialCompanies": 8,
-      "notStartedCompanies": 89,
-      "directSourceCompanies": 11,
-      "claimEvidenceCompanies": 11,
-      "migrationCandidateCompanies": 0
-    },
-    {
       "category": "customer-end-market",
       "completeCompanies": 0,
-      "partialCompanies": 24,
-      "notStartedCompanies": 76,
-      "directSourceCompanies": 20,
-      "claimEvidenceCompanies": 20,
+      "partialCompanies": 31,
+      "notStartedCompanies": 69,
+      "directSourceCompanies": 27,
+      "claimEvidenceCompanies": 27,
       "migrationCandidateCompanies": 0
     },
     {
@@ -315,10 +309,10 @@
     {
       "category": "strategy",
       "completeCompanies": 0,
-      "partialCompanies": 17,
-      "notStartedCompanies": 83,
-      "directSourceCompanies": 17,
-      "claimEvidenceCompanies": 17,
+      "partialCompanies": 25,
+      "notStartedCompanies": 75,
+      "directSourceCompanies": 25,
+      "claimEvidenceCompanies": 25,
       "migrationCandidateCompanies": 0
     },
     {
@@ -443,37 +437,37 @@
     {
       "category": "capacity-expansion",
       "completeCompanies": 3,
-      "partialCompanies": 8,
-      "notStartedCompanies": 89,
-      "directSourceCompanies": 11,
-      "claimEvidenceCompanies": 11,
-      "migrationCandidateCompanies": 0
-    },
-    {
-      "category": "strategy",
-      "completeCompanies": 0,
       "partialCompanies": 17,
-      "notStartedCompanies": 83,
-      "directSourceCompanies": 17,
-      "claimEvidenceCompanies": 17,
-      "migrationCandidateCompanies": 0
-    },
-    {
-      "category": "manufacturing-facilities",
-      "completeCompanies": 13,
-      "partialCompanies": 7,
       "notStartedCompanies": 80,
       "directSourceCompanies": 20,
       "claimEvidenceCompanies": 20,
       "migrationCandidateCompanies": 0
     },
     {
+      "category": "strategy",
+      "completeCompanies": 0,
+      "partialCompanies": 25,
+      "notStartedCompanies": 75,
+      "directSourceCompanies": 25,
+      "claimEvidenceCompanies": 25,
+      "migrationCandidateCompanies": 0
+    },
+    {
+      "category": "manufacturing-facilities",
+      "completeCompanies": 13,
+      "partialCompanies": 14,
+      "notStartedCompanies": 73,
+      "directSourceCompanies": 27,
+      "claimEvidenceCompanies": 27,
+      "migrationCandidateCompanies": 0
+    },
+    {
       "category": "customer-end-market",
       "completeCompanies": 0,
-      "partialCompanies": 24,
-      "notStartedCompanies": 76,
-      "directSourceCompanies": 20,
-      "claimEvidenceCompanies": 20,
+      "partialCompanies": 31,
+      "notStartedCompanies": 69,
+      "directSourceCompanies": 27,
+      "claimEvidenceCompanies": 27,
       "migrationCandidateCompanies": 0
     },
     {
@@ -631,19 +625,19 @@
       "resolvedSourceCount": 1,
       "registrySourceCount": 4,
       "financialSourceCount": 1,
-      "claimCount": 10,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 10,
-      "locatorCount": 10,
-      "directCategorySourcePairCount": 10,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 4,
-        "partial": 6,
-        "not-started": 1
+        "partial": 7,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -744,17 +738,19 @@
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-abb-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "customer-end-market",
@@ -869,9 +865,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "C",
-      "priorityScore": 102,
+      "priorityScore": 92,
       "priorityInputs": {
-        "coverageDeficit": 8,
+        "coverageDeficit": 7,
         "aiInfrastructureImportance": 5,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
@@ -910,21 +906,21 @@
       "primaryLayer": "Test & Back-end",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 4,
+      "registrySourceCount": 5,
       "financialSourceCount": 2,
-      "claimCount": 8,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 8,
-      "locatorCount": 8,
-      "directCategorySourcePairCount": 8,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 5,
-        "not-started": 3
+        "partial": 8,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -1025,31 +1021,35 @@
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-advantest-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "customer-end-market",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-advantest-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "competitive-positioning",
@@ -1069,17 +1069,19 @@
         },
         {
           "category": "strategy",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-advantest-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "risks",
@@ -1147,9 +1149,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 132,
+      "priorityScore": 102,
       "priorityInputs": {
-        "coverageDeficit": 11,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 5,
         "importanceBasis": "existing provisional aiExposure used only as a priority aid",
         "multiCategorySourceLeverage": 1,
@@ -1164,7 +1166,7 @@
           "earnings-advantest-2026-07-29-q1-fy2026",
           "ir-advantest"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 5,
         "financialSourceIds": [
           "earnings-advantest-2026-07-29-q1-fy2026",
           "financial-results-advantest-fy2025"
@@ -1195,19 +1197,19 @@
       "resolvedSourceCount": 1,
       "registrySourceCount": 2,
       "financialSourceCount": 1,
-      "claimCount": 7,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
-      "directCategorySourcePairCount": 7,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 8,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -1292,45 +1294,51 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "air-liquide-fy2025-performance-report"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "air-liquide-fy2025-performance-report"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "customer-end-market",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "air-liquide-fy2025-performance-report"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "competitive-positioning",
@@ -1350,17 +1358,19 @@
         },
         {
           "category": "strategy",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "air-liquide-fy2025-performance-report"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "risks",
@@ -1428,9 +1438,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 134,
+      "priorityScore": 94,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 3,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
@@ -1469,21 +1479,21 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
+      "registrySourceCount": 4,
       "financialSourceCount": 2,
-      "claimCount": 7,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
-      "directCategorySourcePairCount": 7,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 8,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -1568,45 +1578,51 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "official-ajinomoto-aft-new-factory-2026"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "official-ajinomoto-aft-new-factory-2026"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "customer-end-market",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "corporate-ajinomoto-fine-techno"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "competitive-positioning",
@@ -1626,17 +1642,19 @@
         },
         {
           "category": "strategy",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "official-ajinomoto-aft-new-factory-2026"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "risks",
@@ -1704,9 +1722,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 134,
+      "priorityScore": 94,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 3,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
@@ -1719,7 +1737,7 @@
         "resolvedSourceIds": [
           "corporate-ajinomoto-fine-techno"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 4,
         "financialSourceIds": [
           "ajinomoto-aft-merger-policy-2026",
           "catr-aft-fy2025-official-gazette-transcription"
@@ -2030,19 +2048,19 @@
       "resolvedSourceCount": 1,
       "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 7,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
-      "directCategorySourcePairCount": 7,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 8,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -2127,45 +2145,51 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-amkor-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-amkor-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "customer-end-market",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-amkor-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "competitive-positioning",
@@ -2185,17 +2209,19 @@
         },
         {
           "category": "strategy",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-amkor-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "risks",
@@ -2263,9 +2289,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 140,
+      "priorityScore": 100,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 2,
@@ -2305,21 +2331,21 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
+      "registrySourceCount": 4,
       "financialSourceCount": 1,
-      "claimCount": 9,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 9,
-      "locatorCount": 9,
-      "directCategorySourcePairCount": 9,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 4,
-        "partial": 5,
-        "not-started": 2
+        "partial": 7,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -2420,17 +2446,19 @@
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "official-amphenol-mesa-facility-2024"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "customer-end-market",
@@ -2466,17 +2494,19 @@
         },
         {
           "category": "strategy",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-amphenol-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "risks",
@@ -2543,9 +2573,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "C",
-      "priorityScore": 114,
+      "priorityScore": 94,
       "priorityInputs": {
-        "coverageDeficit": 9,
+        "coverageDeficit": 7,
         "aiInfrastructureImportance": 5,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 2,
@@ -2558,7 +2588,7 @@
         "resolvedSourceIds": [
           "ir-amphenol"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 4,
         "financialSourceIds": [
           "earnings-amphenol-2026-07-29-q2-2026"
         ],
@@ -2568,7 +2598,9 @@
           "earnings-amphenol-2026-07-29-q2-2026",
           "ir-amphenol"
         ],
-        "staleIshSourceIds": [],
+        "staleIshSourceIds": [
+          "official-amphenol-mesa-facility-2024"
+        ],
         "multiCategorySourceIds": [
           "ir-amphenol",
           "sec-amphenol-2025-10k"
@@ -2587,19 +2619,19 @@
       "resolvedSourceCount": 1,
       "registrySourceCount": 5,
       "financialSourceCount": 2,
-      "claimCount": 7,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
-      "directCategorySourcePairCount": 7,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 8,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -2684,45 +2716,51 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "filing-analog-devices-2025-fy2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "filing-analog-devices-2025-fy2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "customer-end-market",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "filing-analog-devices-2025-fy2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "competitive-positioning",
@@ -2742,17 +2780,19 @@
         },
         {
           "category": "strategy",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "filing-analog-devices-2025-fy2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "risks",
@@ -2820,9 +2860,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 140,
+      "priorityScore": 100,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 2,
@@ -2865,21 +2905,21 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 5,
+      "registrySourceCount": 6,
       "financialSourceCount": 1,
-      "claimCount": 9,
+      "claimCount": 10,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 9,
-      "locatorCount": 9,
-      "directCategorySourcePairCount": 9,
+      "evidenceBindingCount": 10,
+      "locatorCount": 10,
+      "directCategorySourcePairCount": 10,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 4,
-        "partial": 6,
-        "not-started": 1
+        "partial": 7,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -2964,17 +3004,19 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-applied-materials-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "capacity-expansion",
@@ -3103,12 +3145,12 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "C",
-      "priorityScore": 100,
+      "priorityScore": 92,
       "priorityInputs": {
-        "coverageDeficit": 8,
+        "coverageDeficit": 7,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "existing provisional aiExposure used only as a priority aid",
-        "multiCategorySourceLeverage": 2,
+        "multiCategorySourceLeverage": 3,
         "migrationEaseCandidates": 0
       },
       "sourceQuality": {
@@ -3120,7 +3162,7 @@
           "earnings-applied-materials-2026-08-13-q3-fy2026",
           "ir-applied-materials"
         ],
-        "registrySourceCount": 5,
+        "registrySourceCount": 6,
         "financialSourceIds": [
           "earnings-applied-materials-2026-08-13-q3-fy2026"
         ],
@@ -3137,7 +3179,8 @@
         ],
         "multiCategorySourceIds": [
           "corporate-applied-materials-about-2026",
-          "ir-applied-materials"
+          "ir-applied-materials",
+          "sec-applied-materials-2025-10k"
         ]
       },
       "notes": [
@@ -3153,19 +3196,19 @@
       "resolvedSourceCount": 1,
       "registrySourceCount": 2,
       "financialSourceCount": 1,
-      "claimCount": 7,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
-      "directCategorySourcePairCount": 7,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 8,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -3250,45 +3293,51 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-aptiv-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-aptiv-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "customer-end-market",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-aptiv-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "competitive-positioning",
@@ -3308,17 +3357,19 @@
         },
         {
           "category": "strategy",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-aptiv-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "risks",
@@ -3386,9 +3437,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 136,
+      "priorityScore": 96,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 3,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 2,
@@ -3995,19 +4046,19 @@
       "resolvedSourceCount": 1,
       "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 7,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
-      "directCategorySourcePairCount": 7,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 8,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -4092,45 +4143,51 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-ase-technology-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-ase-technology-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "customer-end-market",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-ase-technology-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "competitive-positioning",
@@ -4150,17 +4207,19 @@
         },
         {
           "category": "strategy",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-ase-technology-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Triage remediation v0.2でSource-linked Claimとstructured Locatorを追加。主要範囲を完全に閉じたとは扱わずpartialを維持。"
         },
         {
           "category": "risks",
@@ -4228,9 +4287,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 138,
+      "priorityScore": 98,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
