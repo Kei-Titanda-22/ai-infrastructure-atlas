@@ -80,11 +80,11 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
 
       <div class="compare-selected-wrap">
         <div class="compare-selected-head">
-          <div>
-            <div class="compare-selected-title">選択中</div>
+          <div class="compare-selected-title">選択中</div>
+          <div class="compare-selected-status-row">
             <p id="compare-selection-status" class="meta"></p>
+            <button class="text-button compare-clear" id="clear-compare" type="button" hidden>すべて解除</button>
           </div>
-          <button class="text-button compare-clear" id="clear-compare" type="button">すべて解除</button>
         </div>
         <div id="compare-selected" class="compare-selected" aria-live="polite"></div>
       </div>
@@ -99,13 +99,17 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
 
     <div class="compare-table-intro">
       <h2>比較表</h2>
-      <p>5社比較では表を横へスクロールできます。指標名は左側に固定されます。</p>
+      <p>表示幅が足りない場合は表を横へスクロールできます。指標名は左側に固定されます。</p>
     </div>
     <div class="table-scroll compare-scroll" tabindex="0" aria-label="企業比較表。横方向にスクロールできます">
       <table class="compare-table" id="compare-table">
         <thead><tr id="compare-head"><th>指標</th></tr></thead>
         <tbody></tbody>
       </table>
+    </div>
+
+    <div class="compare-missing-summary" id="compare-missing-summary" hidden>
+      <p><strong>未収録・比較対象外：</strong><span id="compare-missing-metrics"></span></p>
     </div>
 
     <details class="compare-analysis" id="compare-analysis">
@@ -144,6 +148,8 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
       const analysisDetails = root.querySelector('#compare-analysis');
       const copyButton = root.querySelector('#copy-compare-url');
       const clearButton = root.querySelector('#clear-compare');
+      const missingSummary = root.querySelector('#compare-missing-summary');
+      const missingMetrics = root.querySelector('#compare-missing-metrics');
       const params = new URLSearchParams(location.search);
       const requested = (params.get('ids') || '').split(',').filter(id => byId.has(id)).slice(0,5);
       let selectedIds = params.has('ids') ? requested : defaults.filter(id => byId.has(id)).slice(0,5);
@@ -201,9 +207,9 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
         return reasons.length ? { code:'caution', label:'条件注意', reasons } : { code:'ok', label:'比較可', reasons:['同一定義・同一期間'] };
       };
       const metricRows = [
-        { label:'PER（実績）', key:'peTTM' },
-        { label:'PER（予想1期先）', key:'peFY1' },
-        { label:'PBR', key:'pb' },
+        { label:'PER（実績）', summaryLabel:'PER', key:'peTTM' },
+        { label:'PER（予想1期先）', summaryLabel:'予想PER', key:'peFY1' },
+        { label:'PBR', summaryLabel:'PBR', key:'pb' },
         { label:'ROIC', key:'roic' },
         { label:'営業利益率', key:'operatingMargin' },
         { label:'売上高成長率（前年同期比）', key:'revenueGrowth' },
@@ -225,6 +231,7 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
       };
       const addRow = (label, renderer, picked, options={}) => {
         const tr=document.createElement('tr'); if(options.className) tr.className=options.className;
+        if(options.metricKey) tr.dataset.metricKey=options.metricKey;
         const th=document.createElement('th');
         const heading=text('div',label,'compare-row-label'); th.append(heading);
         if(options.state){ const status=text('div',options.state.label,`compare-row-state compare-row-state-${options.state.code}`); th.append(status); }
@@ -283,6 +290,9 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
           ? japanese.slice(wrappedPrefix.length,-1)
           : japanese;
       };
+      const tableCompanyName = company => company.country === '日本'
+        ? (localCompanyName(company) || company.name)
+        : company.name;
       const updateUrl = () => {
         const next=new URLSearchParams(location.search);
         next.set('ids',selectedIds.join(','));
@@ -303,8 +313,9 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
           selectedRoot.append(row);
         });
         selectionStatus.textContent=`${picked.length}/5社を選択中${picked.length<3 ? ' — 3〜5社での比較を推奨' : ''}`;
-        clearButton.textContent=picked.length===5 ? '全5社を解除' : 'すべて解除';
-        clearButton.disabled=!picked.length;
+        clearButton.textContent='すべて解除';
+        clearButton.hidden=picked.length<2;
+        clearButton.disabled=picked.length<2;
       };
       const candidateMatches = query => {
         const tokens=normalize(query).split(/\s+/).filter(Boolean);
@@ -346,16 +357,19 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
           picked.forEach(company=>{ const td=document.createElement('td'); td.style.whiteSpace='pre-line'; td.textContent=scoreText(company.scores?.[row.key]); tr.append(td); }); analysisBody.append(tr);
         });
       };
+      const renderMissingSummary = labels => {
+        missingMetrics.textContent=labels.join('、');
+        missingSummary.hidden=!labels.length;
+      };
       const renderTable = () => {
         const picked=pickedCompanies(); clear(tbody); clear(theadRow);
         const lead=text('th','指標'); theadRow.append(lead);
         picked.forEach(company=>{
           const th=document.createElement('th');
-          const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-company-head'; a.textContent=company.name; th.append(a);
-          const localName=localCompanyName(company); if(localName) th.append(text('span',localName,'compare-company-local'));
+          const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-company-head'; a.textContent=tableCompanyName(company); a.setAttribute('aria-label',company.japaneseName || company.name); th.append(a);
           th.append(text('span',`${company.ticker} · ${company.country}`,'compare-company-sub')); theadRow.append(th);
         });
-        if(!picked.length){ const tr=document.createElement('tr'); const td=document.createElement('td'); td.colSpan=1; td.textContent='企業を追加すると比較表が表示されます。'; tr.append(td); tbody.append(tr); renderQualitySummary([]); renderAnalysis([]); return; }
+        if(!picked.length){ const tr=document.createElement('tr'); const td=document.createElement('td'); td.colSpan=1; td.textContent='企業を追加すると比較表が表示されます。'; tr.append(td); tbody.append(tr); renderQualitySummary([]); renderAnalysis([]); renderMissingSummary([]); return; }
         sectionRow('事業・技術',picked);
         addRow('主領域',c=>c.primaryLayer,picked);
         addRow('国・地域',c=>c.country,picked);
@@ -365,10 +379,14 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
 
         sectionRow('共通財務',picked);
         const states=[];
+        const allMissingLabels=[];
         metricRows.forEach(row=>{
           const state=comparisonState(row.key,picked); states.push(state);
-          addRow(row.label,c=>makeMetricCell(c.metrics?.[row.key]),picked,{state,note:state.reasons.join(' / '),definition:commonDefinitions[row.key]?.definition || ''});
+          const allMissing=picked.every(company=>company.metrics?.[row.key]?.value == null);
+          if(allMissing){ allMissingLabels.push(row.summaryLabel || row.label); return; }
+          addRow(row.label,c=>makeMetricCell(c.metrics?.[row.key]),picked,{state,note:state.reasons.join(' / '),definition:commonDefinitions[row.key]?.definition || '',metricKey:row.key});
         });
+        renderMissingSummary(allMissingLabels);
 
         const definitionIds=[...new Set(picked.flatMap(c=>(c.kpis||[]).map(kpi=>kpi.definitionId)))];
         if(definitionIds.length){
