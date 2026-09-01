@@ -2,16 +2,16 @@
 
 - Baseline main: `b6c43183b6d7c91107c1b8122fc7e0bdd9c08349`
 - Initial gaps: `779` (`partial 442` + `not-started 337`)
-- Current gaps: `779` (`partial 442` + `not-started 337`)
-- ACTIONABLE pending: `10` records / `9` companies
+- Current gaps: `779` (`partial 451` + `not-started 328`)
+- ACTIONABLE pending: `0` records / `0` companies
 - CoverageとTriageは別管理。SUFFICIENT_PARTIALはCoverage上partialのままでよい。
 
 ## Distribution
 
 | Classification | Initial | Current gaps |
 | --- | ---: | ---: |
-| ACTIONABLE | 10 | 10 |
-| SUFFICIENT_PARTIAL | 436 | 436 |
+| ACTIONABLE | 10 | 0 |
+| SUFFICIENT_PARTIAL | 436 | 446 |
 | NOT_DISCLOSED | 5 | 5 |
 | NOT_APPLICABLE | 28 | 28 |
 | DEFERRED | 300 | 300 |
@@ -35,16 +35,16 @@
 
 | Company | Category | Status | Target Source | Rationale |
 | --- | --- | --- | --- | --- |
-| アドバンテスト | manufacturing-facilities | pending | facilities-advantest-japan-2026 | 公式国内拠点ページと既存Facility recordがあり、主要生産・R&D拠点を直接確認できる。 |
-| Applied Materials（アプライド・マテリアルズ） | capacity-expansion | pending | official-applied-materials-epic-center | 会社の公式R&D施設投資発表という具体的projectを1件確認すれば、generic Capexと分離して改善できる。 |
-| フジクラ | manufacturing-facilities | pending | facilities-fujikura-profile-2026 | 既存の公式会社概要が国内主要拠点を列挙し、1 Sourceで施設Categoryを安全に改善できる。 |
-| Intel（インテル） | manufacturing-facilities | pending | sec-intel-2025-10k | 年次Form 10-KのProperties/Manufacturing開示で主要fab footprintを確認でき、AI供給上の重要度が高い。 |
-| キオクシアホールディングス | manufacturing-facilities | pending | facilities-kioxia-corporate-profile-2026 | 公式会社案内が四日市・北上の量産拠点を直接示し、Atlas利用価値が高い。 |
-| Micron Technology（マイクロン・テクノロジー） | manufacturing-facilities | pending | sec-micron-2025-10k | 年次Form 10-KのManufacturing/Properties開示で主要メモリ製造拠点を確認できる。 |
-| 東京エレクトロン | manufacturing-facilities | pending | facilities-tel-technology-solutions-2026, facilities-tel-miyagi-2026, facilities-tel-kyushu-2026 | 公式拠点ページ群が装置別の開発・製造機能を直接示し、少数Sourceで主要範囲を改善できる。 |
-| TSMC（台湾積体電路製造） | competitive-positioning | pending | corporate-tsmc-annual-report-2025-ch5 | 公式年次報告書のtechnology leadership開示からCompany positioningをAtlas分析と分離して追加できる。 |
-| TSMC（台湾積体電路製造） | risks | pending | official-tsmc-annual-report-2025 | 公式年次報告書のRisk Factorsを1 Sourceで確認でき、P1企業の未着手gapとして利用価値が高い。 |
-| Vertiv（ヴァーティブ） | capacity-expansion | pending | official-vertiv-capacity-expansion | 会社の公式manufacturing-capacity発表が期待でき、AIデータセンター供給制約の理解に直接寄与する。 |
+| アドバンテスト | manufacturing-facilities | completed | facilities-advantest-japan-2026 | 公式国内拠点ページと既存Facility recordがあり、主要生産・R&D拠点を直接確認できる。 |
+| Applied Materials（アプライド・マテリアルズ） | capacity-expansion | completed | official-applied-materials-epic-center | 会社の公式R&D施設投資発表という具体的projectを1件確認すれば、generic Capexと分離して改善できる。 |
+| フジクラ | manufacturing-facilities | completed | facilities-fujikura-profile-2026 | 既存の公式会社概要が国内主要拠点を列挙し、1 Sourceで施設Categoryを安全に改善できる。 |
+| Intel（インテル） | manufacturing-facilities | completed | sec-intel-2025-10k | 年次Form 10-KのProperties/Manufacturing開示で主要fab footprintを確認でき、AI供給上の重要度が高い。 |
+| キオクシアホールディングス | manufacturing-facilities | completed | facilities-kioxia-corporate-profile-2026 | 公式会社案内が四日市・北上の量産拠点を直接示し、Atlas利用価値が高い。 |
+| Micron Technology（マイクロン・テクノロジー） | manufacturing-facilities | completed | sec-micron-2025-10k | 年次Form 10-KのManufacturing/Properties開示で主要メモリ製造拠点を確認できる。 |
+| 東京エレクトロン | manufacturing-facilities | completed | facilities-tel-technology-solutions-2026, facilities-tel-miyagi-2026, facilities-tel-kyushu-2026 | 公式拠点ページ群が装置別の開発・製造機能を直接示し、少数Sourceで主要範囲を改善できる。 |
+| TSMC（台湾積体電路製造） | competitive-positioning | completed | corporate-tsmc-annual-report-2025-ch5 | 公式年次報告書のtechnology leadership開示からCompany positioningをAtlas分析と分離して追加できる。 |
+| TSMC（台湾積体電路製造） | risks | completed | official-tsmc-annual-report-2025 | 公式年次報告書のRisk Factorsを1 Sourceで確認でき、P1企業の未着手gapとして利用価値が高い。 |
+| Vertiv（ヴァーティブ） | capacity-expansion | completed | official-vertiv-capacity-expansion | 会社の公式manufacturing-capacity発表が期待でき、AIデータセンター供給制約の理解に直接寄与する。 |
 
 ## Company summary
 

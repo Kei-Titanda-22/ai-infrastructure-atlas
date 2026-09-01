@@ -2,7 +2,7 @@
   "schemaVersion": "0.1",
   "generatedAt": "2026-09-01T00:00:00Z",
   "dataAsOf": "2026-09-01",
-  "inputDigest": "sha256:f70e085f466803c0fc2d5c685a86115d11b5a2768f759211687eb3f1fa2608f0",
+  "inputDigest": "sha256:b859e37107da9ff3600d5132011918c8818ec3b062c2313b742ecf536fbc7f81",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,17 +27,17 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 206
+    "inputFileCount": 208
   },
   "summary": {
     "coverage": {
       "complete": 321,
-      "partial": 442,
-      "not-started": 337
+      "partial": 451,
+      "not-started": 328
     },
     "missingStatus": {
-      "not-collected": 324,
-      "primary-source-unchecked": 4,
+      "not-collected": 318,
+      "primary-source-unchecked": 1,
       "not-disclosed": 5,
       "not-applicable": 9
     },
@@ -50,10 +50,10 @@
     },
     "evidenceMaturityDimensions": {
       "companyLevelSourceCompanies": 100,
-      "directCategorySourcePairs": 761,
-      "claimEvidenceBindingPairs": 757,
-      "structuredLocatorPairs": 757,
-      "freezeReadyPairs": 757
+      "directCategorySourcePairs": 767,
+      "claimEvidenceBindingPairs": 767,
+      "structuredLocatorPairs": 767,
+      "freezeReadyPairs": 767
     },
     "fieldLevelLegacy": {
       "summary": {
@@ -79,22 +79,22 @@
       },
       "strengths": {
         "contentPresent": 100,
+        "directEvidenceAvailable": 100,
+        "claimLevelBindingAvailable": 100,
+        "migrationCandidate": 0,
+        "evidenceGap": 0
+      },
+      "risks": {
+        "contentPresent": 100,
         "directEvidenceAvailable": 99,
         "claimLevelBindingAvailable": 99,
         "migrationCandidate": 1,
         "evidenceGap": 1
-      },
-      "risks": {
-        "contentPresent": 100,
-        "directEvidenceAvailable": 98,
-        "claimLevelBindingAvailable": 98,
-        "migrationCandidate": 2,
-        "evidenceGap": 2
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 303,
-      "uniqueSourceCount": 301,
+      "registryRecordCount": 306,
+      "uniqueSourceCount": 304,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -113,32 +113,32 @@
         }
       ],
       "publishedAtNullUniqueSources": 261,
-      "staleIshUniqueSources": 0,
+      "staleIshUniqueSources": 1,
       "staleIshThresholdDays": 730,
       "companySourceIdReferences": 121,
       "companySourceIdResolved": 121,
       "orphanSourceIdReferences": 0,
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 250,
-      "staleIshReferences": 0,
+      "staleIshReferences": 1,
       "financialSourceReferences": 124,
       "financialSourceResolved": 124
     },
     "locatorAudit": {
-      "bindingCount": 757,
-      "validLocatorCount": 757,
+      "bindingCount": 770,
+      "validLocatorCount": 770,
       "missingLocatorCount": 0,
       "missingLocatorBindingIds": [],
       "invalidLocatorCount": 0,
       "invalidLocators": [],
       "fieldUsage": {
-        "page": 155,
-        "section": 725,
-        "heading": 747,
-        "table": 1,
+        "page": 159,
+        "section": 732,
+        "heading": 758,
+        "table": 2,
         "note": 0,
         "anchor": 0,
-        "quotedLabel": 730
+        "quotedLabel": 742
       }
     },
     "priorityBands": {
@@ -156,7 +156,6 @@
     "lowestCoverage": {
       "score": 10,
       "companyIds": [
-        "advantest",
         "air-liquide",
         "ajinomoto-fine-techno",
         "amkor",
@@ -185,18 +184,15 @@
         "hexagon",
         "ibiden",
         "infineon",
-        "intel",
         "jcet",
         "keyence",
         "kinsus",
-        "kioxia",
         "kokusai-electric",
         "lam-research",
         "legrand",
         "linde",
         "marvell",
         "mediatek",
-        "micron",
         "mitsubishi-electric",
         "mobileye",
         "monolithic-power",
@@ -226,7 +222,6 @@
         "synopsys",
         "tesla",
         "texas-instruments",
-        "tokyo-electron",
         "trane-technologies",
         "umc",
         "unimicron",
@@ -284,19 +279,19 @@
     {
       "category": "manufacturing-facilities",
       "completeCompanies": 13,
-      "partialCompanies": 2,
-      "notStartedCompanies": 85,
-      "directSourceCompanies": 18,
-      "claimEvidenceCompanies": 14,
+      "partialCompanies": 7,
+      "notStartedCompanies": 80,
+      "directSourceCompanies": 20,
+      "claimEvidenceCompanies": 20,
       "migrationCandidateCompanies": 0
     },
     {
       "category": "capacity-expansion",
       "completeCompanies": 3,
-      "partialCompanies": 6,
-      "notStartedCompanies": 91,
-      "directSourceCompanies": 9,
-      "claimEvidenceCompanies": 9,
+      "partialCompanies": 8,
+      "notStartedCompanies": 89,
+      "directSourceCompanies": 11,
+      "claimEvidenceCompanies": 11,
       "migrationCandidateCompanies": 0
     },
     {
@@ -311,11 +306,11 @@
     {
       "category": "competitive-positioning",
       "completeCompanies": 0,
-      "partialCompanies": 99,
-      "notStartedCompanies": 1,
-      "directSourceCompanies": 99,
-      "claimEvidenceCompanies": 99,
-      "migrationCandidateCompanies": 1
+      "partialCompanies": 100,
+      "notStartedCompanies": 0,
+      "directSourceCompanies": 100,
+      "claimEvidenceCompanies": 100,
+      "migrationCandidateCompanies": 0
     },
     {
       "category": "strategy",
@@ -329,26 +324,26 @@
     {
       "category": "risks",
       "completeCompanies": 0,
-      "partialCompanies": 99,
-      "notStartedCompanies": 1,
-      "directSourceCompanies": 98,
-      "claimEvidenceCompanies": 98,
-      "migrationCandidateCompanies": 2
+      "partialCompanies": 100,
+      "notStartedCompanies": 0,
+      "directSourceCompanies": 99,
+      "claimEvidenceCompanies": 99,
+      "migrationCandidateCompanies": 1
     }
   ],
   "priorityBands": {
     "A": [
-      "advantest",
       "broadcom",
       "carrier",
       "ciena",
       "cisco",
       "coherent",
-      "intel",
+      "furukawa-electric",
+      "globalfoundries",
+      "kokusai-electric",
       "lam-research",
       "legrand",
       "marvell",
-      "micron",
       "nvent",
       "sandisk",
       "schneider-electric",
@@ -356,6 +351,7 @@
       "umc"
     ],
     "B": [
+      "advantest",
       "air-liquide",
       "ajinomoto-fine-techno",
       "amd",
@@ -375,23 +371,22 @@
       "entegris",
       "equinix",
       "fanuc",
-      "furukawa-electric",
       "ge-vernova",
-      "globalfoundries",
       "globalwafers",
       "hanmi-semiconductor",
       "hexagon",
       "ibiden",
       "infineon",
+      "intel",
       "jcet",
       "johnson-controls",
       "keyence",
       "kinsus",
       "kioxia",
-      "kokusai-electric",
       "lasertec",
       "linde",
       "mediatek",
+      "micron",
       "mitsubishi-electric",
       "mobileye",
       "monolithic-power",
@@ -448,19 +443,10 @@
     {
       "category": "capacity-expansion",
       "completeCompanies": 3,
-      "partialCompanies": 6,
-      "notStartedCompanies": 91,
-      "directSourceCompanies": 9,
-      "claimEvidenceCompanies": 9,
-      "migrationCandidateCompanies": 0
-    },
-    {
-      "category": "manufacturing-facilities",
-      "completeCompanies": 13,
-      "partialCompanies": 2,
-      "notStartedCompanies": 85,
-      "directSourceCompanies": 18,
-      "claimEvidenceCompanies": 14,
+      "partialCompanies": 8,
+      "notStartedCompanies": 89,
+      "directSourceCompanies": 11,
+      "claimEvidenceCompanies": 11,
       "migrationCandidateCompanies": 0
     },
     {
@@ -473,6 +459,15 @@
       "migrationCandidateCompanies": 0
     },
     {
+      "category": "manufacturing-facilities",
+      "completeCompanies": 13,
+      "partialCompanies": 7,
+      "notStartedCompanies": 80,
+      "directSourceCompanies": 20,
+      "claimEvidenceCompanies": 20,
+      "migrationCandidateCompanies": 0
+    },
+    {
       "category": "customer-end-market",
       "completeCompanies": 0,
       "partialCompanies": 24,
@@ -480,24 +475,6 @@
       "directSourceCompanies": 20,
       "claimEvidenceCompanies": 20,
       "migrationCandidateCompanies": 0
-    },
-    {
-      "category": "competitive-positioning",
-      "completeCompanies": 0,
-      "partialCompanies": 99,
-      "notStartedCompanies": 1,
-      "directSourceCompanies": 99,
-      "claimEvidenceCompanies": 99,
-      "migrationCandidateCompanies": 1
-    },
-    {
-      "category": "risks",
-      "completeCompanies": 0,
-      "partialCompanies": 99,
-      "notStartedCompanies": 1,
-      "directSourceCompanies": 98,
-      "claimEvidenceCompanies": 98,
-      "migrationCandidateCompanies": 2
     },
     {
       "category": "ai-infrastructure-role",
@@ -518,6 +495,15 @@
       "migrationCandidateCompanies": 0
     },
     {
+      "category": "competitive-positioning",
+      "completeCompanies": 0,
+      "partialCompanies": 100,
+      "notStartedCompanies": 0,
+      "directSourceCompanies": 100,
+      "claimEvidenceCompanies": 100,
+      "migrationCandidateCompanies": 0
+    },
+    {
       "category": "products",
       "completeCompanies": 100,
       "partialCompanies": 0,
@@ -525,6 +511,15 @@
       "directSourceCompanies": 100,
       "claimEvidenceCompanies": 100,
       "migrationCandidateCompanies": 0
+    },
+    {
+      "category": "risks",
+      "completeCompanies": 0,
+      "partialCompanies": 100,
+      "notStartedCompanies": 0,
+      "directSourceCompanies": 99,
+      "claimEvidenceCompanies": 99,
+      "migrationCandidateCompanies": 1
     },
     {
       "category": "technology",
@@ -597,16 +592,6 @@
       ]
     },
     {
-      "companyId": "intel",
-      "companyName": "Intel（インテル）",
-      "reasons": [
-        "Coverage gap: 4 not-started / 4 partial",
-        "AI Infrastructure importance aid: 5/5",
-        "Source leverage: 2 broad primary Sources",
-        "Migration ease: 0 legacy-field candidates"
-      ]
-    },
-    {
       "companyId": "lam-research",
       "companyName": "Lam Research（ラムリサーチ）",
       "reasons": [
@@ -619,6 +604,16 @@
     {
       "companyId": "legrand",
       "companyName": "Legrand（ルグラン）",
+      "reasons": [
+        "Coverage gap: 4 not-started / 4 partial",
+        "AI Infrastructure importance aid: 5/5",
+        "Source leverage: 2 broad primary Sources",
+        "Migration ease: 0 legacy-field candidates"
+      ]
+    },
+    {
+      "companyId": "marvell",
+      "companyName": "Marvell Technology（マーベル・テクノロジー）",
       "reasons": [
         "Coverage gap: 4 not-started / 4 partial",
         "AI Infrastructure importance aid: 5/5",
@@ -917,10 +912,10 @@
       "resolvedSourceCount": 2,
       "registrySourceCount": 4,
       "financialSourceCount": 2,
-      "claimCount": 7,
+      "claimCount": 8,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
+      "evidenceBindingCount": 8,
+      "locatorCount": 8,
       "directCategorySourcePairCount": 8,
       "maturity": {
         "level": "L4",
@@ -928,8 +923,8 @@
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 5,
+        "not-started": 3
       },
       "categoryCoverage": [
         {
@@ -1014,19 +1009,19 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
+          "collectionStatus": "partial",
+          "missingStatus": null,
           "directSourceCount": 1,
           "directSourceIds": [
             "facilities-advantest-japan-2026"
           ],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "公式拠点一覧から群馬工場と群馬R&Dセンタを収録。全世界の製造拠点・機能は網羅していない。"
         },
         {
           "category": "capacity-expansion",
@@ -1151,10 +1146,10 @@
         "risks"
       ],
       "migrationCandidates": [],
-      "priorityBand": "A",
-      "priorityScore": 142,
+      "priorityBand": "B",
+      "priorityScore": 132,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 11,
         "aiInfrastructureImportance": 5,
         "importanceBasis": "existing provisional aiExposure used only as a priority aid",
         "multiCategorySourceLeverage": 1,
@@ -2870,21 +2865,21 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 4,
+      "registrySourceCount": 5,
       "financialSourceCount": 1,
-      "claimCount": 8,
+      "claimCount": 9,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 8,
-      "locatorCount": 8,
-      "directCategorySourcePairCount": 8,
+      "evidenceBindingCount": 9,
+      "locatorCount": 9,
+      "directCategorySourcePairCount": 9,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 4,
-        "partial": 5,
-        "not-started": 2
+        "partial": 6,
+        "not-started": 1
       },
       "categoryCoverage": [
         {
@@ -2983,17 +2978,19 @@
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "primary-source-unchecked",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "release-applied-materials-epic-center-2023"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
+          "freezeSchemaReady": true,
+          "notes": "EPIC Centerの会社guidanceを収録。計画完了や実績投資額としては扱わない。"
         },
         {
           "category": "customer-end-market",
@@ -3106,9 +3103,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "C",
-      "priorityScore": 110,
+      "priorityScore": 100,
       "priorityInputs": {
-        "coverageDeficit": 9,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "existing provisional aiExposure used only as a priority aid",
         "multiCategorySourceLeverage": 2,
@@ -3123,7 +3120,7 @@
           "earnings-applied-materials-2026-08-13-q3-fy2026",
           "ir-applied-materials"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 5,
         "financialSourceIds": [
           "earnings-applied-materials-2026-08-13-q3-fy2026"
         ],
@@ -3135,7 +3132,9 @@
           "earnings-applied-materials-2026-08-13-q3-fy2026",
           "ir-applied-materials"
         ],
-        "staleIshSourceIds": [],
+        "staleIshSourceIds": [
+          "release-applied-materials-epic-center-2023"
+        ],
         "multiCategorySourceIds": [
           "corporate-applied-materials-about-2026",
           "ir-applied-materials"
@@ -10158,10 +10157,10 @@
       "resolvedSourceCount": 1,
       "registrySourceCount": 5,
       "financialSourceCount": 2,
-      "claimCount": 7,
+      "claimCount": 8,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
+      "evidenceBindingCount": 8,
+      "locatorCount": 8,
       "directCategorySourcePairCount": 8,
       "maturity": {
         "level": "L4",
@@ -10262,13 +10261,13 @@
           "directSourceIds": [
             "facilities-fujikura-profile-2026"
           ],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
+          "freezeSchemaReady": true,
+          "notes": "公式会社概要の国内事業所を収録。各拠点の全製造機能までは開示範囲外。"
         },
         {
           "category": "capacity-expansion",
@@ -10674,7 +10673,7 @@
         "risks"
       ],
       "migrationCandidates": [],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 142,
       "priorityInputs": {
         "coverageDeficit": 12,
@@ -11227,7 +11226,7 @@
         "risks"
       ],
       "migrationCandidates": [],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 142,
       "priorityInputs": {
         "coverageDeficit": 12,
@@ -12652,19 +12651,19 @@
       "resolvedSourceCount": 1,
       "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 7,
+      "claimCount": 8,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
-      "directCategorySourcePairCount": 7,
+      "evidenceBindingCount": 8,
+      "locatorCount": 8,
+      "directCategorySourcePairCount": 8,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 5,
+        "not-started": 3
       },
       "categoryCoverage": [
         {
@@ -12749,17 +12748,19 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-intel-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Form 10-Kの社内製造ネットワーク開示を収録。個別fab一覧と能力値は網羅していない。"
         },
         {
           "category": "capacity-expansion",
@@ -12884,10 +12885,10 @@
         "risks"
       ],
       "migrationCandidates": [],
-      "priorityBand": "A",
-      "priorityScore": 144,
+      "priorityBand": "B",
+      "priorityScore": 134,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 11,
         "aiInfrastructureImportance": 5,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 2,
@@ -14040,10 +14041,10 @@
       "resolvedSourceCount": 2,
       "registrySourceCount": 7,
       "financialSourceCount": 5,
-      "claimCount": 7,
+      "claimCount": 8,
       "legacyClaimCount": 3,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
+      "evidenceBindingCount": 8,
+      "locatorCount": 8,
       "directCategorySourcePairCount": 8,
       "maturity": {
         "level": "L4",
@@ -14051,8 +14052,8 @@
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 5,
+        "not-started": 3
       },
       "categoryCoverage": [
         {
@@ -14138,19 +14139,19 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
+          "collectionStatus": "partial",
+          "missingStatus": null,
           "directSourceCount": 1,
           "directSourceIds": [
             "facilities-kioxia-corporate-profile-2026"
           ],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "公式会社案内から四日市・北上の主要製造拠点を収録。製造能力の定量値は含めない。"
         },
         {
           "category": "capacity-expansion",
@@ -14276,9 +14277,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 140,
+      "priorityScore": 130,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 11,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "existing provisional aiExposure used only as a priority aid",
         "multiCategorySourceLeverage": 2,
@@ -14846,7 +14847,7 @@
         "risks"
       ],
       "migrationCandidates": [],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 142,
       "priorityInputs": {
         "coverageDeficit": 12,
@@ -16845,19 +16846,19 @@
       "resolvedSourceCount": 2,
       "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 7,
+      "claimCount": 8,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
-      "directCategorySourcePairCount": 7,
+      "evidenceBindingCount": 8,
+      "locatorCount": 8,
+      "directCategorySourcePairCount": 8,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 5,
+        "not-started": 3
       },
       "categoryCoverage": [
         {
@@ -16942,17 +16943,19 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-micron-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Form 10-Kのprincipal propertiesを収録。各拠点の能力値や全施設は網羅していない。"
         },
         {
           "category": "capacity-expansion",
@@ -17077,10 +17080,10 @@
         "risks"
       ],
       "migrationCandidates": [],
-      "priorityBand": "A",
-      "priorityScore": 144,
+      "priorityBand": "B",
+      "priorityScore": 134,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 11,
         "aiInfrastructureImportance": 5,
         "importanceBasis": "existing provisional aiExposure used only as a priority aid",
         "multiCategorySourceLeverage": 2,
@@ -26002,10 +26005,10 @@
       "resolvedSourceCount": 2,
       "registrySourceCount": 9,
       "financialSourceCount": 5,
-      "claimCount": 7,
+      "claimCount": 10,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 7,
-      "locatorCount": 7,
+      "evidenceBindingCount": 10,
+      "locatorCount": 10,
       "directCategorySourcePairCount": 8,
       "maturity": {
         "level": "L4",
@@ -26013,8 +26016,8 @@
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 4,
-        "not-started": 4
+        "partial": 5,
+        "not-started": 3
       },
       "categoryCoverage": [
         {
@@ -26099,21 +26102,21 @@
         },
         {
           "category": "manufacturing-facilities",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
+          "collectionStatus": "partial",
+          "missingStatus": null,
           "directSourceCount": 3,
           "directSourceIds": [
             "facilities-tel-kyushu-2026",
             "facilities-tel-miyagi-2026",
             "facilities-tel-technology-solutions-2026"
           ],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "claimCount": 3,
+          "evidenceBindingCount": 3,
+          "locatorCount": 3,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "公式拠点ページから主要な国内開発・製造機能を収録。全世界の拠点網は網羅していない。"
         },
         {
           "category": "capacity-expansion",
@@ -26239,9 +26242,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 142,
+      "priorityScore": 132,
       "priorityInputs": {
-        "coverageDeficit": 12,
+        "coverageDeficit": 11,
         "aiInfrastructureImportance": 5,
         "importanceBasis": "existing provisional aiExposure used only as a priority aid",
         "multiCategorySourceLeverage": 1,
@@ -26853,21 +26856,21 @@
       "primaryLayer": "Foundry & Logic Manufacturing",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 9,
+      "registrySourceCount": 10,
       "financialSourceCount": 1,
-      "claimCount": 8,
+      "claimCount": 10,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 8,
-      "locatorCount": 8,
-      "directCategorySourcePairCount": 8,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 10,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 5,
-        "partial": 3,
-        "not-started": 3
+        "partial": 5,
+        "not-started": 1
       },
       "categoryCoverage": [
         {
@@ -27001,17 +27004,20 @@
         },
         {
           "category": "competitive-positioning",
-          "collectionStatus": "not-started",
-          "missingStatus": "primary-source-unchecked",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 2,
+          "directSourceIds": [
+            "corporate-tsmc-annual-report-2025-ch5",
+            "sec-tsmc-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 2,
+          "locatorCount": 2,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Form 20-Fと年次報告書で会社自身のpositioningを収録。第三者market share評価は追加していない。"
         },
         {
           "category": "strategy",
@@ -27029,17 +27035,19 @@
         },
         {
           "category": "risks",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-tsmc-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Form 20-Fの主要risk factorsを要約。全リスク項目の網羅ではない。"
         }
       ],
       "legacyContentState": {
@@ -27066,17 +27074,17 @@
         },
         "strengths": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "risks": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         }
       },
       "evidenceGaps": [
@@ -27087,18 +27095,15 @@
         "strategy",
         "risks"
       ],
-      "migrationCandidates": [
-        "competitive-positioning",
-        "risks"
-      ],
+      "migrationCandidates": [],
       "priorityBand": "C",
-      "priorityScore": 118,
+      "priorityScore": 96,
       "priorityInputs": {
-        "coverageDeficit": 9,
+        "coverageDeficit": 7,
         "aiInfrastructureImportance": 5,
         "importanceBasis": "existing provisional aiExposure used only as a priority aid",
         "multiCategorySourceLeverage": 3,
-        "migrationEaseCandidates": 2
+        "migrationEaseCandidates": 0
       },
       "sourceQuality": {
         "sourceIds": [
@@ -27109,7 +27114,7 @@
           "earnings-tsmc-2026-07-16-q2-2026",
           "ir-tsmc"
         ],
-        "registrySourceCount": 9,
+        "registrySourceCount": 10,
         "financialSourceIds": [
           "earnings-tsmc-2026-07-16-q2-2026"
         ],
@@ -27693,21 +27698,21 @@
       "primaryLayer": "Data Center & Facilities",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 4,
+      "registrySourceCount": 5,
       "financialSourceCount": 1,
-      "claimCount": 8,
+      "claimCount": 9,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 8,
-      "locatorCount": 8,
-      "directCategorySourcePairCount": 8,
+      "evidenceBindingCount": 9,
+      "locatorCount": 9,
+      "directCategorySourcePairCount": 9,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 4,
-        "partial": 5,
-        "not-started": 2
+        "partial": 6,
+        "not-started": 1
       },
       "categoryCoverage": [
         {
@@ -27806,17 +27811,19 @@
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "primary-source-unchecked",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "release-vertiv-manufacturing-capacity-2026"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
+          "freezeSchemaReady": true,
+          "notes": "米州4拠点の公式発表を収録。全世界のcapacity計画を網羅するものではない。"
         },
         {
           "category": "customer-end-market",
@@ -27929,9 +27936,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "C",
-      "priorityScore": 114,
+      "priorityScore": 104,
       "priorityInputs": {
-        "coverageDeficit": 9,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 5,
         "importanceBasis": "existing provisional aiExposure used only as a priority aid",
         "multiCategorySourceLeverage": 2,
@@ -27946,7 +27953,7 @@
           "earnings-vertiv-2026-07-29-q2-2026",
           "ir-vertiv"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 5,
         "financialSourceIds": [
           "earnings-vertiv-2026-07-29-q2-2026"
         ],

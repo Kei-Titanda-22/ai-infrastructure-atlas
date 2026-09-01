@@ -3,7 +3,7 @@
   "phase": "Evidence Gap Final Triage & Closure Phase",
   "baselineMain": "b6c43183b6d7c91107c1b8122fc7e0bdd9c08349",
   "reviewedAt": "2026-09-01",
-  "coverageInputDigest": "sha256:f70e085f466803c0fc2d5c685a86115d11b5a2768f759211687eb3f1fa2608f0",
+  "coverageInputDigest": "sha256:b859e37107da9ff3600d5132011918c8818ec3b062c2313b742ecf536fbc7f81",
   "coverageBaseline": {
     "complete": 321,
     "partial": 442,
@@ -12,8 +12,8 @@
   },
   "coverageCurrent": {
     "complete": 321,
-    "partial": 442,
-    "notStarted": 337,
+    "partial": 451,
+    "notStarted": 328,
     "gaps": 779
   },
   "initialDistribution": {
@@ -25,8 +25,8 @@
     "REVIEW_REQUIRED": 0
   },
   "currentDistribution": {
-    "ACTIONABLE": 10,
-    "SUFFICIENT_PARTIAL": 436,
+    "ACTIONABLE": 0,
+    "SUFFICIENT_PARTIAL": 446,
     "NOT_DISCLOSED": 5,
     "NOT_APPLICABLE": 28,
     "DEFERRED": 300,
@@ -35,10 +35,10 @@
   "actionable": {
     "initialRecords": 10,
     "initialCompanies": 9,
-    "pendingRecords": 10,
-    "pendingCompanies": 9,
-    "completedRecords": 0,
-    "completedCompanies": 0
+    "pendingRecords": 0,
+    "pendingCompanies": 0,
+    "completedRecords": 10,
+    "completedCompanies": 9
   },
   "categorySummary": [
     {
@@ -1657,15 +1657,15 @@
         "facilities-advantest-japan-2026"
       ],
       "reviewedAt": "2026-09-01",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "advantest:risks",
@@ -2985,15 +2985,15 @@
         "official-applied-materials-epic-center"
       ],
       "reviewedAt": "2026-09-01",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "primary-source-unchecked",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "applied-materials:competitive-positioning",
@@ -8319,13 +8319,13 @@
       "reviewedAt": "2026-09-01",
       "currentCoverageStatus": "partial",
       "currentMissingStatus": null,
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "fujikura:risks",
@@ -10165,15 +10165,15 @@
         "sec-intel-2025-10k"
       ],
       "reviewedAt": "2026-09-01",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "intel:risks",
@@ -11207,15 +11207,15 @@
         "facilities-kioxia-corporate-profile-2026"
       ],
       "reviewedAt": "2026-09-01",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "kioxia:risks",
@@ -13237,15 +13237,15 @@
         "sec-micron-2025-10k"
       ],
       "reviewedAt": "2026-09-01",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "micron:risks",
@@ -20001,15 +20001,15 @@
         "facilities-tel-kyushu-2026"
       ],
       "reviewedAt": "2026-09-01",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 3,
+      "currentEvidenceBindingCount": 3,
+      "currentLocatorCount": 3,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 3
     },
     {
       "id": "tokyo-electron:risks",
@@ -20497,15 +20497,15 @@
         "corporate-tsmc-annual-report-2025-ch5"
       ],
       "reviewedAt": "2026-09-01",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "primary-source-unchecked",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 2,
+      "currentLocatorCount": 2,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 2
     },
     {
       "id": "tsmc:customer-end-market",
@@ -20551,15 +20551,15 @@
         "official-tsmc-annual-report-2025"
       ],
       "reviewedAt": "2026-09-01",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "tsmc:strategy",
@@ -21047,15 +21047,15 @@
         "official-vertiv-capacity-expansion"
       ],
       "reviewedAt": "2026-09-01",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "primary-source-unchecked",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "ACTIONABLE",
-      "actionStatus": "pending",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "vertiv:competitive-positioning",
