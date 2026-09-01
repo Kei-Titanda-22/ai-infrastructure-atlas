@@ -1,0 +1,1860 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "lasertec-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "光応用の検査・計測装置企業",
+      "statement": "レーザーテックは光応用技術を核に、半導体用mask blank・photomask・waferの検査・計測装置を開発・製造する企業である。",
+      "evidenceIds": [
+        "lasertec-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lasertec"
+    },
+    {
+      "id": "lasertec-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "EUV量産のmask検査工程",
+      "statement": "Atlasではレーザーテックを、AI向け先端半導体の微細化に使うEUV lithographyで、mask blank・patterned maskの欠陥検査を担うprocess control企業と位置付ける。",
+      "evidenceIds": [
+        "lasertec-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lasertec",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "lasertec-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "ACTIS・ABICS・MATRICS・MAGICS",
+      "statement": "レーザーテックの半導体関連製品にはEUV patterned mask検査のACTIS、mask blank検査のABICS、mask検査のMATRICS、blank検査のMAGICS、wafer検査装置が含まれる。",
+      "evidenceIds": [
+        "lasertec-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lasertec"
+    },
+    {
+      "id": "lasertec-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "EUV・DUV・confocal optics",
+      "statement": "レーザーテックはEUV/DUV optics、confocal optics、interferometry、画像処理を組み合わせ、微小欠陥の検出と寸法・形状計測を行う。",
+      "evidenceIds": [
+        "lasertec-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lasertec"
+    },
+    {
+      "id": "lasertec-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "wafer露光前後の品質保証を担当",
+      "statement": "レーザーテックの装置はphotomask shopとwafer fabで、maskの製造、受入、定期検査を通じてlithographyの歩留まりを支える。",
+      "evidenceIds": [
+        "lasertec-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lasertec"
+    },
+    {
+      "id": "lasertec-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "mask shop・wafer fab・材料企業",
+      "statement": "レーザーテックは半導体mask shop、leading-edge wafer fab、mask blank・wafer材料企業などの検査・品質保証需要を対象とする。",
+      "evidenceIds": [
+        "lasertec-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lasertec"
+    },
+    {
+      "id": "lasertec-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "EUV mask blank検査のde facto standard",
+      "statement": "レーザーテックは自社のEUV mask blank検査装置をde facto standard、先端lithography向けmask検査を高い市場shareを持つ事業と説明している。",
+      "evidenceIds": [
+        "lasertec-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lasertec"
+    },
+    {
+      "id": "lasertec-strategy",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "EUV微細化と新材料・構造に検査を展開",
+      "statement": "レーザーテックはEUV量産、IC微細化、新材料・新構造で増える検査・計測需要に対し、光応用技術を組み合わせた新製品を継続投入する方針を示す。",
+      "evidenceIds": [
+        "lasertec-strategy-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lasertec"
+    },
+    {
+      "id": "lasertec-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "顧客投資・技術開発・供給網への依存",
+      "statement": "レーザーテックは半導体設備投資の変動、少数顧客への依存、研究開発の成否、部材調達、為替などを事業リスクとして開示する。",
+      "evidenceIds": [
+        "lasertec-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lasertec"
+    },
+    {
+      "id": "lumentum-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "光通信・photonics・industrial laser企業",
+      "statement": "Lumentumはcloud・AI、telecom、enterprise向けのoptical component・module・systemと、製造向けindustrial laserを提供するphotonics企業である。",
+      "evidenceIds": [
+        "lumentum-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum"
+    },
+    {
+      "id": "lumentum-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AI clusterとDCIの光接続層",
+      "statement": "AtlasではLumentumを、AI accelerator・server・switch間のscale-up／scale-out光接続とdata center interconnectを支えるphotonics企業と位置付ける。",
+      "evidenceIds": [
+        "lumentum-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "lumentum-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "transceiver・laser・PIC・optical switch",
+      "statement": "Lumentumの製品にはhigh-speed optical transceiver、laser transmitter、photonic integrated circuit、photodiode、coherent component、ROADM、optical amplifier、optical circuit switchが含まれる。",
+      "evidenceIds": [
+        "lumentum-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum"
+    },
+    {
+      "id": "lumentum-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "scale-up／scale-out向け高速photonics",
+      "statement": "Lumentumは200G lane部品、coherent optics、ultra-narrow-linewidth laser、integrated photonics、co-packaged optics向けpackage技術を展開する。",
+      "evidenceIds": [
+        "lumentum-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum"
+    },
+    {
+      "id": "lumentum-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "optical engineからnetwork systemまで供給",
+      "statement": "Lumentumはtransceiver内部のlaser・PIC等のcomponentからpluggable module、optical transport・switching systemまで、光接続の複数階層へ供給する。",
+      "evidenceIds": [
+        "lumentum-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum"
+    },
+    {
+      "id": "lumentum-facilities",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "内製拠点と外部委託を併用",
+      "statement": "Lumentumは自社製造lineとcontract manufacturerを併用し、2026年にはNorth Carolina州Greensboroのwafer manufacturing facilityを取得した。",
+      "evidenceIds": [
+        "lumentum-facilities-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum"
+    },
+    {
+      "id": "lumentum-capacity",
+      "category": "capacity-expansion",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "AI・cloud需要へ製造能力を拡張",
+      "statement": "LumentumはAI・cloud向け光部品需要に対応するため製造lineとsupply chainへの投資を進め、Greensboro facility取得を通じてwafer生産基盤を追加した。",
+      "evidenceIds": [
+        "lumentum-capacity-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum"
+    },
+    {
+      "id": "lumentum-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "cloud・AI infrastructure・NEM・通信事業者",
+      "statement": "Lumentumの顧客にはcloud・network service provider、AI infrastructure provider、network equipment manufacturerが含まれる。",
+      "evidenceIds": [
+        "lumentum-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum"
+    },
+    {
+      "id": "lumentum-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "optical networkingでleading positionと説明",
+      "statement": "Lumentumはoptical networking市場で幅広いportfolioと主要顧客との関係を通じてleading market positionを維持していると説明する。",
+      "evidenceIds": [
+        "lumentum-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum"
+    },
+    {
+      "id": "lumentum-strategy",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "技術・cost・vertical integrationを重視",
+      "statement": "Lumentumはoptical networkingでinnovation、cost leadership、functional・vertical integrationを戦略の軸とし、cloud・AI顧客との共同開発を進める。",
+      "evidenceIds": [
+        "lumentum-strategy-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum"
+    },
+    {
+      "id": "lumentum-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "顧客集中・需要変動・歩留まり・供給網",
+      "statement": "Lumentumは顧客集中、cloud・telecom需要変動、新製品立上げ、manufacturing yield、contract manufacturer・component供給、地政学を主要リスクとして開示する。",
+      "evidenceIds": [
+        "lumentum-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lumentum"
+    },
+    {
+      "id": "smic-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "8-inch・12-inchのpure-play foundry",
+      "statement": "SMICは複数technology nodeとplatformで8-inch・12-inch waferのIC foundry、design・IP support、photomask等を提供する。",
+      "evidenceIds": [
+        "smic-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic"
+    },
+    {
+      "id": "smic-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "中国本土のlogic・specialty wafer製造",
+      "statement": "AtlasではSMICを、AI systemに使われるlogic、power・analog、RF、memory、image sensor等をwafer製造する中国本土のfoundry企業と位置付ける。",
+      "evidenceIds": [
+        "smic-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "smic-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "logic・power/analog・RF・memory・CIS platform",
+      "statement": "SMICはlogic IC、power/analog、高電圧display driver、embedded・stand-alone non-volatile memory、mixed-signal/RF、CMOS image sensor等のplatformを量産する。",
+      "evidenceIds": [
+        "smic-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic"
+    },
+    {
+      "id": "smic-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "8-inch・12-inchの多様なprocess platform",
+      "statement": "SMICは8-inchと12-inchの多様なprocess platform、PDK、IP support、mask製造を組み合わせて製品導入から量産までを支援する。",
+      "evidenceIds": [
+        "smic-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic"
+    },
+    {
+      "id": "smic-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "fabless・IDM向けwafer manufacturing",
+      "statement": "SMICはchip設計後のphotomask・wafer processを受託し、assembly・testより前のfront-end manufacturingを担う。",
+      "evidenceIds": [
+        "smic-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic"
+    },
+    {
+      "id": "smic-facilities",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "上海・北京・天津・深圳のfab network",
+      "statement": "SMICは上海、北京、天津、深圳など中国本土に8-inch・12-inchのwafer fabと関連施設を展開する。",
+      "evidenceIds": [
+        "smic-facilities-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic"
+    },
+    {
+      "id": "smic-capacity",
+      "category": "capacity-expansion",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "月産100万枚超の8-inch換算能力",
+      "statement": "SMICの2025年末の月間能力はstandard logic 8-inch equivalentで100万枚を超え、同年も段階的にcapacity expansionを進めた。",
+      "evidenceIds": [
+        "smic-capacity-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic"
+    },
+    {
+      "id": "smic-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "通信・consumer・industrial・automotive",
+      "statement": "SMICのwafer foundryは通信、consumer electronics、industrial・automotive、display、power management等の半導体顧客を対象とする。",
+      "evidenceIds": [
+        "smic-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic"
+    },
+    {
+      "id": "smic-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "世界第2位のpure-play foundryと説明",
+      "statement": "SMICは2025年売上に基づき世界第2位、中国本土第1位のpure-play wafer foundryと説明している。",
+      "evidenceIds": [
+        "smic-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic"
+    },
+    {
+      "id": "smic-strategy",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "wafer manufacturing深化とcapacity拡張",
+      "statement": "SMICはwafer manufacturingを深耕し、market需要に合わせたtechnology roadmap、R&D、人材、段階的なcapacity expansionを継続する方針を示す。",
+      "evidenceIds": [
+        "smic-strategy-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic"
+    },
+    {
+      "id": "smic-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "技術開発・輸出規制・設備投資・供給網",
+      "statement": "SMICはprocess technology開発の不確実性、人材、国際貿易・輸出規制、巨額設備投資、需要・価格、原材料・装置供給をリスクとして開示する。",
+      "evidenceIds": [
+        "smic-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "smic"
+    },
+    {
+      "id": "te-connectivity-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "connectivity・sensorの産業技術企業",
+      "statement": "TE Connectivityはpower、signal、dataを伝えるconnector・componentとsensor solutionを世界のtransportation、industry、energy、data centerへ提供する。",
+      "evidenceIds": [
+        "te-connectivity-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "te-connectivity"
+    },
+    {
+      "id": "te-connectivity-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AI data centerの高速・電力接続",
+      "statement": "AtlasではTE Connectivityを、AI data center内のserver・switch・power systemをつなぐ高速data、power、signal connectorとcable componentの供給企業と位置付ける。",
+      "evidenceIds": [
+        "te-connectivity-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "te-connectivity",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "te-connectivity-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "connector・terminal・cable・relay・sensor",
+      "statement": "TEの主要製品にはterminal、connector system、wire・cable、relay、heat-shrink tubing、filter、sensor、application toolingが含まれる。",
+      "evidenceIds": [
+        "te-connectivity-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "te-connectivity"
+    },
+    {
+      "id": "te-connectivity-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "power・signal・dataを高密度接続",
+      "statement": "TEは高密度・高速data transmission、電力配分、harsh environment対応、sensor技術を組み合わせて機器・system間を接続する。",
+      "evidenceIds": [
+        "te-connectivity-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "te-connectivity"
+    },
+    {
+      "id": "te-connectivity-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "chip・board・system間のcomponent層",
+      "statement": "TEは半導体やserver完成品ではなく、board、cable、rack、電力設備の間でdata・signal・powerを伝えるconnector・sensor componentを供給する。",
+      "evidenceIds": [
+        "te-connectivity-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "te-connectivity"
+    },
+    {
+      "id": "te-connectivity-facilities",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Americas・EMEA・Asiaの製造footprint",
+      "statement": "TEはAmericas、EMEA、Asia-Pacificに製造・engineering拠点を分散し、多様な最終市場へ地域横断で供給する。",
+      "evidenceIds": [
+        "te-connectivity-facilities-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "te-connectivity"
+    },
+    {
+      "id": "te-connectivity-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "digital data network・automation・energy等",
+      "statement": "TEのIndustrial Solutionsはdigital data networks、automation and connected living、aerospace・defense・marine、energy、medical等を対象とする。",
+      "evidenceIds": [
+        "te-connectivity-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "te-connectivity"
+    },
+    {
+      "id": "te-connectivity-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "trusted innovation partnerと説明",
+      "statement": "TEは幅広いconnectivity・sensor portfolio、engineering、customer co-developmentを基盤に自社をtrusted innovation partnerと位置付ける。",
+      "evidenceIds": [
+        "te-connectivity-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "te-connectivity"
+    },
+    {
+      "id": "te-connectivity-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "需要cycle・原材料・顧客・競争・規制",
+      "statement": "TEは最終市場需要、原材料・component供給、customer concentration、価格・競争、買収、地政学・規制を主要リスクとして開示する。",
+      "evidenceIds": [
+        "te-connectivity-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "te-connectivity"
+    },
+    {
+      "id": "tower-semiconductor-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "specialty analogのpure-play foundry",
+      "statement": "Tower Semiconductorはanalog・mixed-signalを中心とするspecialty process technologyでwafer foundryとdesign supportを提供する。",
+      "evidenceIds": [
+        "tower-semiconductor-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor"
+    },
+    {
+      "id": "tower-semiconductor-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AI光通信向けSiPho・SiGe wafer製造",
+      "statement": "AtlasではTowerを、AI data centerのoptical transceiverに使うsilicon photonics PICとSiGe EICをwafer製造するspecialty foundryと位置付ける。",
+      "evidenceIds": [
+        "tower-semiconductor-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor",
+      "confidence": "high",
+      "notes": "一次資料の製品・用途記述を入力にしたAtlas分類。"
+    },
+    {
+      "id": "tower-semiconductor-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "SiPho・SiGe・RF SOI・power・CIS",
+      "statement": "Towerのprocess portfolioにはsilicon photonics、SiGe BiCMOS、RF CMOS・SOI、analog・mixed-signal、power management、CMOS image sensor等が含まれる。",
+      "evidenceIds": [
+        "tower-semiconductor-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor"
+    },
+    {
+      "id": "tower-semiconductor-technology",
+      "category": "technology",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "specialty CMOSに光・RF・analogを統合",
+      "statement": "Towerはspecialty CMOS processにoptical component、advanced passive、high-voltage、RF、analog deviceを統合し、用途別platformを提供する。",
+      "evidenceIds": [
+        "tower-semiconductor-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor"
+    },
+    {
+      "id": "tower-semiconductor-value-chain",
+      "category": "value-chain-position",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "fabless・IDMのspecialty waferを受託製造",
+      "statement": "Towerはfabless semiconductor companyとIDMから設計を受け、qualificationを経てspecialty analog・photonics waferを量産する。",
+      "evidenceIds": [
+        "tower-semiconductor-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor"
+    },
+    {
+      "id": "tower-semiconductor-facilities",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Israel・米国・Italy・日本のfab network",
+      "statement": "TowerはIsrael、米国、Italy、日本に200mm・300mmを含む複数fabの製造networkを持つ。",
+      "evidenceIds": [
+        "tower-semiconductor-facilities-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor"
+    },
+    {
+      "id": "tower-semiconductor-capacity",
+      "category": "capacity-expansion",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "SiPho・SiGe等へ9.2億ドル投資計画",
+      "statement": "Towerは直近2年間に総額9.2億ドルの設備投資計画を開始し、Fab 2・3・7・9のSiPho・SiGeとpower等の能力拡張を進める。",
+      "evidenceIds": [
+        "tower-semiconductor-capacity-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor"
+    },
+    {
+      "id": "tower-semiconductor-customer",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "fabless・IDM、AI通信・mobile・industrial",
+      "statement": "Towerはfabless・IDMへwaferを供給し、AI/data center通信、mobile RF、power、industrial、automotive、medical、consumer用途を対象とする。",
+      "evidenceIds": [
+        "tower-semiconductor-customer-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor"
+    },
+    {
+      "id": "tower-semiconductor-positioning",
+      "category": "competitive-positioning",
+      "claimType": "company-positioning",
+      "priority": "P1",
+      "title": "high-value analogのleading foundryを志向",
+      "statement": "Towerはadvanced specialty technology、設計支援、customer collaborationを通じてhigh-value analog semiconductor solutionのleading foundryを目指すと説明する。",
+      "evidenceIds": [
+        "tower-semiconductor-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor"
+    },
+    {
+      "id": "tower-semiconductor-strategy",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "specialty platform深化とcapacity拡張",
+      "statement": "TowerはSiPho、SiGe、power等の高成長specialty platformへR&Dとcapacityを集中し、design winと顧客baseの拡大を進める。",
+      "evidenceIds": [
+        "tower-semiconductor-strategy-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor"
+    },
+    {
+      "id": "tower-semiconductor-risks",
+      "category": "risks",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "fab稼働率・投資回収・顧客集中・地政学",
+      "statement": "Towerは高固定費のfab稼働率、capacity投資の回収、顧客集中、technology transition、設備・材料供給、Israelを含む地政学を主要リスクとして開示する。",
+      "evidenceIds": [
+        "tower-semiconductor-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "tower-semiconductor"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "lasertec-overview-e1",
+      "claimId": "lasertec-overview",
+      "sourceId": "corporate-lasertec-business",
+      "support": "supports",
+      "locator": {
+        "section": "第一部 企業情報",
+        "heading": "事業の内容",
+        "quotedLabel": "半導体関連装置、FPD関連装置、レーザー顕微鏡"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lasertec-ai-role-e1",
+      "claimId": "lasertec-ai-role",
+      "sourceId": "corporate-lasertec-business",
+      "support": "supports",
+      "locator": {
+        "section": "第一部 企業情報",
+        "heading": "事業の内容",
+        "quotedLabel": "EUVマスク関連検査装置"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lasertec-products-e1",
+      "claimId": "lasertec-products",
+      "sourceId": "product-lasertec-semiconductor",
+      "support": "supports",
+      "locator": {
+        "section": "製品情報",
+        "heading": "半導体関連",
+        "quotedLabel": "ACTIS, ABICS, MATRICS, MAGICS and wafer-related systems"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lasertec-technology-e1",
+      "claimId": "lasertec-technology",
+      "sourceId": "corporate-lasertec-business",
+      "support": "supports",
+      "locator": {
+        "section": "企業情報",
+        "heading": "事業・コア技術",
+        "quotedLabel": "applied optics; confocal optics; DUV/EUV optics; interferometry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lasertec-value-chain-e1",
+      "claimId": "lasertec-value-chain",
+      "sourceId": "product-lasertec-semiconductor",
+      "support": "supports",
+      "locator": {
+        "section": "製品情報",
+        "heading": "ACTIS applications",
+        "quotedLabel": "mask manufacturing; incoming and periodic inspection at wafer fabs"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lasertec-customer-e1",
+      "claimId": "lasertec-customer",
+      "sourceId": "edinet-lasertec-fy2025-annual-securities-report",
+      "support": "supports",
+      "locator": {
+        "section": "第一部 企業情報",
+        "heading": "事業の状況",
+        "quotedLabel": "半導体メーカー、マスクメーカー、材料メーカー"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lasertec-positioning-e1",
+      "claimId": "lasertec-positioning",
+      "sourceId": "corporate-lasertec-business",
+      "support": "supports",
+      "locator": {
+        "section": "企業情報",
+        "heading": "事業・コア技術",
+        "quotedLabel": "de facto standard tool; large market share in leading-edge lithography"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lasertec-strategy-e1",
+      "claimId": "lasertec-strategy",
+      "sourceId": "edinet-lasertec-fy2025-annual-securities-report",
+      "support": "supports",
+      "locator": {
+        "section": "第一部 企業情報",
+        "heading": "経営方針、経営環境及び対処すべき課題等",
+        "quotedLabel": "EUV、微細化、新材料・新構造への検査計測需要"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lasertec-risks-e1",
+      "claimId": "lasertec-risks",
+      "sourceId": "edinet-lasertec-fy2025-annual-securities-report",
+      "support": "supports",
+      "locator": {
+        "section": "第一部 企業情報",
+        "heading": "事業等のリスク",
+        "quotedLabel": "設備投資動向、顧客集中、研究開発、部材調達、為替"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-overview-e1",
+      "claimId": "lumentum-overview",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "optical and photonic components, modules and subsystems; industrial lasers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-ai-role-e1",
+      "claimId": "lumentum-ai-role",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Markets",
+        "quotedLabel": "high-speed interconnection across servers, AI accelerators, storage and switches"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-products-e1",
+      "claimId": "lumentum-products",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Offerings",
+        "quotedLabel": "transceivers, laser transmitters, photonic integrated circuits, ROADMs and optical circuit switches"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-technology-e1",
+      "claimId": "lumentum-technology",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Offerings",
+        "quotedLabel": "200G lane; coherent; ultra-narrow linewidth laser; co-packaged optics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-value-chain-e1",
+      "claimId": "lumentum-value-chain",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Offerings",
+        "quotedLabel": "components, modules, subsystems and complete systems"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-facilities-e1",
+      "claimId": "lumentum-facilities",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 8. Financial Statements",
+        "heading": "Manufacturing Facility Acquisition",
+        "quotedLabel": "acquired a manufacturing facility in Greensboro, North Carolina"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-capacity-e1",
+      "claimId": "lumentum-capacity",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 7. MD&A",
+        "heading": "Manufacturing capacity",
+        "quotedLabel": "capacity investments for cloud and AI demand; Greensboro facility"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-customer-e1",
+      "claimId": "lumentum-customer",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Markets",
+        "quotedLabel": "cloud and network service providers, AI infrastructure providers and NEMs"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-positioning-e1",
+      "claimId": "lumentum-positioning",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Markets",
+        "quotedLabel": "leading market positions; extensive product and technology portfolio"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-strategy-e1",
+      "claimId": "lumentum-strategy",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Strategy",
+        "quotedLabel": "technology leadership, cost leadership and functional and vertical integration"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lumentum-risks-e1",
+      "claimId": "lumentum-risks",
+      "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Business and operational risks",
+        "quotedLabel": "customer concentration, demand, yields, suppliers and geopolitical risks"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-overview-e1",
+      "claimId": "smic-overview",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "19",
+        "section": "Management Discussion and Analysis",
+        "heading": "Major business model",
+        "quotedLabel": "IC foundry; design services and IP support; photomask manufacturing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-ai-role-e1",
+      "claimId": "smic-ai-role",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "21",
+        "section": "Management Discussion and Analysis",
+        "heading": "Business overview",
+        "quotedLabel": "logic, power/analog, mixed-signal/RF, memory and CMOS image sensor"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-products-e1",
+      "claimId": "smic-products",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "21",
+        "section": "Management Discussion and Analysis",
+        "heading": "Technology platforms",
+        "quotedLabel": "logic IC, power/analog, eNVM, NVM, mixed signal/RF and CMOS image sensor"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-technology-e1",
+      "claimId": "smic-technology",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "22",
+        "section": "Management Discussion and Analysis",
+        "heading": "Core technologies and R&D progress",
+        "quotedLabel": "diverse technology platforms for 8-inch and 12-inch; one-stop services"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-value-chain-e1",
+      "claimId": "smic-value-chain",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "19",
+        "section": "Management Discussion and Analysis",
+        "heading": "Major business model",
+        "quotedLabel": "IC foundry business and supporting services"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-facilities-e1",
+      "claimId": "smic-facilities",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "35",
+        "section": "Management Discussion and Analysis",
+        "heading": "Production facilities",
+        "quotedLabel": "Shanghai, Beijing, Tianjin and Shenzhen production bases"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-capacity-e1",
+      "claimId": "smic-capacity",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "11",
+        "section": "Letter to Shareholders",
+        "heading": "2025 performance",
+        "quotedLabel": "monthly capacity scale exceeded 1 million standard logic 8-inch equivalent wafers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-customer-e1",
+      "claimId": "smic-customer",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "21",
+        "section": "Management Discussion and Analysis",
+        "heading": "Applications",
+        "quotedLabel": "communications, consumer, industrial and automotive applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-positioning-e1",
+      "claimId": "smic-positioning",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "20",
+        "section": "Management Discussion and Analysis",
+        "heading": "Industry position",
+        "quotedLabel": "ranks second globally and first in Chinese Mainland"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-strategy-e1",
+      "claimId": "smic-strategy",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "11",
+        "section": "Letter to Shareholders",
+        "heading": "Long-term strategy",
+        "quotedLabel": "deeply engaging in wafer manufacturing; capacity expansion in a steady manner"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smic-risks-e1",
+      "claimId": "smic-risks",
+      "sourceId": "hkex-smic-2025-annual-report",
+      "support": "supports",
+      "locator": {
+        "page": "24",
+        "section": "Management Discussion and Analysis",
+        "heading": "Risk factors",
+        "quotedLabel": "technology R&D, trade controls, capital intensity and supply risks"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "te-connectivity-overview-e1",
+      "claimId": "te-connectivity-overview",
+      "sourceId": "sec-te-connectivity-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "1",
+        "section": "Item 1. Business",
+        "heading": "General",
+        "quotedLabel": "connectivity and sensor solutions enable distribution of power, signal and data"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "te-connectivity-ai-role-e1",
+      "claimId": "te-connectivity-ai-role",
+      "sourceId": "sec-te-connectivity-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "1",
+        "section": "Item 1. Business",
+        "heading": "General",
+        "quotedLabel": "data centers enabling artificial intelligence"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "te-connectivity-products-e1",
+      "claimId": "te-connectivity-products",
+      "sourceId": "sec-te-connectivity-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "3",
+        "section": "Item 1. Business",
+        "heading": "Industrial Solutions",
+        "quotedLabel": "terminals, connectors, wire and cable, relays, filters and sensors"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "te-connectivity-technology-e1",
+      "claimId": "te-connectivity-technology",
+      "sourceId": "sec-te-connectivity-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "3",
+        "section": "Item 1. Business",
+        "heading": "Industrial Solutions",
+        "quotedLabel": "connect and distribute power, data and signals"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "te-connectivity-value-chain-e1",
+      "claimId": "te-connectivity-value-chain",
+      "sourceId": "sec-te-connectivity-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "1",
+        "section": "Item 1. Business",
+        "heading": "General",
+        "quotedLabel": "distribution of power, signal and data"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "te-connectivity-facilities-e1",
+      "claimId": "te-connectivity-facilities",
+      "sourceId": "sec-te-connectivity-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "22",
+        "section": "Item 2. Properties",
+        "heading": "Manufacturing footprint",
+        "quotedLabel": "manufacturing facilities across the Americas, EMEA and Asia-Pacific"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "te-connectivity-customer-e1",
+      "claimId": "te-connectivity-customer",
+      "sourceId": "sec-te-connectivity-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "3",
+        "section": "Item 1. Business",
+        "heading": "Industrial Solutions",
+        "quotedLabel": "digital data networks; automation; aerospace; energy; medical"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "te-connectivity-positioning-e1",
+      "claimId": "te-connectivity-positioning",
+      "sourceId": "sec-te-connectivity-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "1",
+        "section": "Item 1. Business",
+        "heading": "General",
+        "quotedLabel": "trusted innovation partner; broad range of connectivity and sensor solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "te-connectivity-risks-e1",
+      "claimId": "te-connectivity-risks",
+      "sourceId": "sec-te-connectivity-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "7",
+        "section": "Item 1A. Risk Factors",
+        "heading": "Business and operational risks",
+        "quotedLabel": "market demand, supply, customers, competition and regulation"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-overview-e1",
+      "claimId": "tower-semiconductor-overview",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Business overview",
+        "quotedLabel": "specialty analog and mixed-signal semiconductor foundry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-ai-role-e1",
+      "claimId": "tower-semiconductor-ai-role",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Silicon Photonics",
+        "quotedLabel": "AI and data center communications; silicon photonics ICs and SiGe EICs"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-products-e1",
+      "claimId": "tower-semiconductor-products",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Specialty process technologies",
+        "quotedLabel": "SiPho, SiGe, RF SOI, analog, power and CMOS image sensors"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-technology-e1",
+      "claimId": "tower-semiconductor-technology",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Research and development",
+        "quotedLabel": "integration in specialized CMOS processes"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-value-chain-e1",
+      "claimId": "tower-semiconductor-value-chain",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Customers, Marketing and Sales",
+        "quotedLabel": "primary customers are fabless semiconductor companies and IDMs"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-facilities-e1",
+      "claimId": "tower-semiconductor-facilities",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Manufacturing facilities",
+        "quotedLabel": "fabs in Israel, Italy, the United States and Japan"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-capacity-e1",
+      "claimId": "tower-semiconductor-capacity",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 5. Operating and Financial Review",
+        "heading": "Investment in capacity growth",
+        "quotedLabel": "$920 million; expand SiPho and SiGe capacity at Fabs 2, 3, 7 and 9"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-customer-e1",
+      "claimId": "tower-semiconductor-customer",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Applications and customers",
+        "quotedLabel": "AI and data center communications, RF, power, industrial, automotive and medical"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-positioning-e1",
+      "claimId": "tower-semiconductor-positioning",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Customers, Marketing and Sales",
+        "quotedLabel": "leading foundry for high-value analog semiconductor solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-strategy-e1",
+      "claimId": "tower-semiconductor-strategy",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 5. Operating and Financial Review",
+        "heading": "Growth strategy",
+        "quotedLabel": "technology investment, capacity growth and design wins"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "tower-semiconductor-risks-e1",
+      "claimId": "tower-semiconductor-risks",
+      "sourceId": "sec-tower-fy2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 3.D. Risk Factors",
+        "heading": "Operational and geopolitical risks",
+        "quotedLabel": "capacity utilization, capital investment, customers, supply and Israel risks"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": [
+    {
+      "companyId": "lasertec",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lasertec",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lasertec",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lasertec",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lasertec",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lasertec",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "lasertec",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "lasertec",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lasertec",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lasertec",
+      "category": "strategy",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lasertec",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "capacity-expansion",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "strategy",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lumentum",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "capacity-expansion",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "strategy",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "smic",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "te-connectivity",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "capacity-expansion",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "customer-end-market",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "strategy",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    }
+  ]
+}
