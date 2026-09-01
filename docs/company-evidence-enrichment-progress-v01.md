@@ -13,7 +13,7 @@
 | --- | --- | --- | --- | --- | --- |
 | A2 | ASM International, KLA, Corning, Credo, Digital Realty, Johnson Controls | merged / Pages checked | [#123](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/123) | `74d93a355af9234f7b25ad0e858b4558d82b0524` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33467217195) |
 | A3 | ABB, AMD, Amphenol, Arista, ASMPT, Besi | merged / Pages checked | [#124](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/124) | `35fe57e5e7bce7e112fd6831eeab0bbf409d209e` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33468227767) |
-| A4 | Lasertec, Lumentum, SMIC, TE Connectivity, Tower Semiconductor | in progress | pending | pending | pending |
+| A4 | Lasertec, Lumentum, SMIC, TE Connectivity, Tower Semiconductor | merged / Pages checked | [#125](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/125) | `adef2e6a895740fd2097f2f535c50ab1da02b00a` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33468866902) |
 
 ## Batch A2
 
@@ -76,7 +76,7 @@
 - Baseline coverage per company: complete `0` / partial `5` / not-started `6`
 - Baseline maturity per company: `L1`
 - Sources: existing Shared Sources reused `5`; added `2`; duplicate Source IDs `0`
-- Result: local full gate passed; PR / merge / deployment pending
+- Result: merged; main Actions success; public Pages checked
 
 | Company | Before | After | Claims / Evidence / Locators | P1 / P2 / P3 | Remaining gaps |
 | --- | --- | --- | --- | --- | --- |
@@ -97,6 +97,21 @@
 - Browser QA: all five companies passed at `1024px` and `360px`; document overflow `0`, Evidence marker and Source link present, visible Evidence targets `44 × 44px`. Lumentum and Tower Semiconductor passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks.
 - Protection: financial diff `0`; Pilot 5 and Arm / ASML source diff `0`; generated HTML hashes unchanged; earlier enrichment shards and unrelated company Evidence diff `0`.
 
+## Completion summary
+
+- Priority A target companies completed: `17 / 17`
+- Total Claims / Evidence / structured Locators: `167 / 167 / 167`
+- Total priority: P1 `85` / P2 `80` / P3 `2`
+- Verification: `source-linked 167`; `verified 0`; Source Policy approvals `0`
+- Sources: existing Shared Sources reused `15`; added `6`; duplicate Source IDs `0`
+- Coverage: `28 / 504 / 568 → 93 / 521 / 486` (complete / partial / not-started)
+- Maturity: L1 `90 → 73`; L4 `7 → 24`
+- SOFT DEFER across target companies: `122` Category records (`102` partial + `20` not-started)
+- HARD STOP: `0`
+- Batch PRs: [#123](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/123), [#124](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/124), [#125](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/125)
+- Ready for Priority B autonomous enrichment: **YES**
+- Priority B execution started: **NO**
+
 ## Resume marker
 
-Resume from the first batch whose status is not `merged / Actions success / Pages checked`. Within that batch, compare its Evidence shard against this section and resume at the first company without a complete recorded result. Never rerun a completed batch from an older branch.
+All A2–A4 batches are `merged / Actions success / Pages checked`. If a later run starts Priority B, begin from latest `main`, follow the Runbook, and do not rerun A2–A4 from an older branch.
