@@ -248,8 +248,29 @@
 - Browser QA: all nine companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source links, and `44 × 44px` marker targets confirmed. Western Digital and Equinix passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
 - Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
 - Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR: [#132](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/132)
+- Merge SHA: `49d2ba0a1aded5b4791c60c06ab6bf2bcc8c8062`
+- Actions: [run 33473236747](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33473236747) success
+- Result: merged; main Actions success; public Pages checked
+
+## Batch B7
+
+- Baseline main: `49d2ba0a1aded5b4791c60c06ab6bf2bcc8c8062`
+- Companies: Unimicron, Air Liquide, Ajinomoto Fine-Techno, DENSO, Entegris, FANUC, GlobalWafers, Hexagon, KEYENCE
+- Claims / Evidence / structured Locators: `63 / 63 / 63`
+- Priority: P1 `45` / P2 `18` / P3 `0`
+- Verification: `source-linked 63`; `verified 0`; policy approval changes `0`
+- Sources: existing Shared Sources reused `9`; added `0`; duplicate Source IDs `0`
+- Batch coverage delta: complete `+27`; partial `-9`; not-started `-18`
+- Global coverage: `267 / 463 / 370 → 294 / 454 / 352`
+- Global maturity: L1 `15 → 6`; L4 `82 → 91`
+- SOFT DEFER: `72` unresolved Category records (`36` partial + `36` not-started)
+- HARD STOP: `0`
+- Browser QA: all nine companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source links, and `44 × 44px` marker targets confirmed. Unimicron and KEYENCE passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
+- Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
+- Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - Result: ready for PR; merge / Actions / Pages pending
 
 ## Resume marker
 
-All A2–A4 and B1–B5 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B6 validation or the first later batch not marked merged; never rerun a completed batch.
+All A2–A4 and B1–B6 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B7 validation or the first later batch not marked merged; never rerun a completed batch.
