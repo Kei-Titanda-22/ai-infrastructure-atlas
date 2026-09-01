@@ -407,5 +407,24 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Browser QA: Advantest and Applied Materials passed complete drawer, Primary Source, Escape, focus return, bibliography, `44 × 44px` marker target, and document overflow `0`; both companies also passed light checks at `1024px` and `360px`.
 - Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR: [#141](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/141)
+- Merge SHA: `1da5a4f9e59d17725881f536c4dae793ed337a9b`
+- Actions: [run 33494335297](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33494335297) success
+- Pages: Advantestの追加Claim・bibliography・overflowを公開環境で確認
+- HARD STOP: `0`
+
+## Triage Remediation Enrichment B02
+
+- Baseline main: `1da5a4f9e59d17725881f536c4dae793ed337a9b`
+- Companies: Bosch, Broadcom, Cadence, Canon, Carrier, Ciena, Cisco, Coherent, Corning, DENSO
+- ACTIONABLE processed: `31` Category records / `10` companies
+- Claims / Evidence / structured Locators: `31 / 31 / 31`
+- Verification: `source-linked 31`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `10`; added `4`; new Source Policies remain `pending`
+- Coverage: `321 / 482 / 297 → 321 / 513 / 266` (complete / partial / not-started)
+- Triage: ACTIONABLE pending `258 → 227`; current SUFFICIENT_PARTIAL `477 → 508`; REVIEW_REQUIRED `0`
+- Browser QA: Broadcom and DENSO passed complete drawer, Primary Source, Escape, focus return, bibliography, `44 × 44px` marker target, and document overflow `0`; both companies also passed light checks at `1024px` and `360px`.
+- Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - PR / merge / Actions / Pages: pending publication
 - HARD STOP: `0`
