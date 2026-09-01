@@ -503,5 +503,25 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Browser QA: Nan Ya PCB and nVent passed at `1024px` and `360px`; document overflow `0`, added Claims and bibliography links visible, Evidence marker target `44 × 44px`. Both companies passed drawer, Primary Source, Escape, and focus return at desktop and mobile widths.
 - Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR: [#146](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/146)
+- Merge SHA: `3433349305016322be4a923bd4f463e410127785`
+- Actions: [run 33501540893](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33501540893) success
+- Pages: Nan Ya PCBの追加Claim・bibliography・overflowを公開環境で確認
+- HARD STOP: `0`
+
+## Triage Remediation Enrichment B07
+
+- Baseline main: `3433349305016322be4a923bd4f463e410127785`
+- Companies: Renesas, Resonac Holdings, ROHM, Samsung Electronics, SanDisk, Schneider Electric, SCREEN Holdings, Seagate, Shin-Etsu Chemical, Shinko Electric
+- ACTIONABLE processed: `40` Category records / `10` companies
+- Claims / Evidence / structured Locators: `40 / 40 / 40`
+- Claim types: fact `22`; company-guidance `14`; company-positioning `4`; atlas-analysis `0`; estimate `0`
+- Verification: `source-linked 40`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `10`; added `7`; new Source Policies remain `pending`
+- Coverage: `321 / 640 / 139 → 321 / 680 / 99` (complete / partial / not-started)
+- Triage: ACTIONABLE pending `99 → 59`; current SUFFICIENT_PARTIAL `636 → 676`; REVIEW_REQUIRED `0`
+- Browser QA: ROHM and Seagate passed at `1024px` and `360px`; document overflow `0`, added Claims and bibliography links visible, Evidence marker target `44 × 44px`. Both companies passed drawer, Primary Source, Escape, and focus return at desktop; mobile display passed the same claim, bibliography, target, and overflow checks.
+- Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed. Validation v0.1 remains the recorded pre-remediation HARD STOP and is not treated as the v0.2 close gate.
 - PR / merge / Actions / Pages: pending publication
 - HARD STOP: `0`
