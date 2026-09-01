@@ -8,7 +8,7 @@
 
 ## Decision
 
-Phase 8ではCompany、Company Evidence、Shared Source、Financial history、Facility、Value Chainの既存正本を再利用する。Product、Technology、Marketは現在canonical entityではないため、文字列からRelationを自動生成しない。新たに永続化する対象は、scope、方向、時間、Evidenceを必要とする関係だけとする。
+Phase 8ではCompany、Company Evidence、Shared Source、Financial history、Facility、Value Chainの既存正本を再利用する。Product、Technology、Marketは現在canonical entityではないため、文字列からRelationを自動生成しない。全件registryを先行作成せず、Pilot Relationのendpointまたはscopeに必要な最小canonical entityだけを登録する。新たに永続化する対象は、scope、方向、時間、Evidenceを必要とする関係だけとする。
 
 `src/data/relationships.json`は空配列であり、現行の競合・所属・製品・技術関係は複数fieldとUI logicへ分散している。Company Evidence v1 Closeは成立しているが、Relation graphが完成していることを意味しない。
 
@@ -84,7 +84,7 @@ Phase 8ではCompany、Company Evidence、Shared Source、Financial history、Fa
 
 ### Alias方針への含意
 
-Companyのidentity fieldsは検索aliasとして利用できる。Product、Technology、Marketでは、canonical ID、canonical name、locale別display name、alias、deprecated alias、`replacedBy`を持つ小さなregistryが必要である。既存literalをaliasとして一括採択せず、人手reviewした値だけを紐付ける。
+Companyのidentity fieldsは検索aliasとして利用できる。Product、Technology、Marketでは、canonical ID、canonical name、locale別display name、alias、deprecated alias、`replacedBy`を持つ小さなregistryが必要である。初回registryはPilot Relationのendpointまたはscopeに必要なentityだけに限定する。既存literalをaliasとして一括採択せず、人手reviewした値だけを紐付ける。
 
 ## 5. 暗黙Relation inventory
 
@@ -149,12 +149,12 @@ Phase 8 MVPで永続化価値があるのは、複数画面で同じ意味を使
 - Company `PRODUCES` Product。
 - Company `DEVELOPS` Technology。
 - CompanyまたはProduct `USES` Technology。
-- Product `ENABLES` Technology。
-- Company `SUPPLIES_TO` CompanyまたはMarket。ただしnamed edgeは直接Evidence必須。
+- Product `ENABLES` Technology。guarded typeとし、direct Evidence、structured Locator、scopeが揃う場合だけ公開する。
+- Company `SUPPLIES_TO` CompanyまたはMarket。guarded typeとし、direct Evidence、structured Locator、scopeが揃う場合だけ公開する。
 - scoped Company `COMPETES_WITH` Company。
 - Company `OPERATES` Facility。
 
-詳細は[Atlas Relation Schema v0.1](./atlas-relation-schema-v01.md)で定義する。
+この8種をSchema上の候補として採択する。`SUBSTITUTES`、`EXPANDS`、`EXPOSED_TO`はDeferredを維持する。Relation authoring recordはSource / Evidence IDを重複保持せず、Relation Evidence Bindingをprovenanceの正本とし、resolved read modelで`evidenceIds`と`sourceIds`を導出する。Relationの`freshnessStatus`は`current`、`review-due`、`stale`だけをderived fieldとして持ち、`not-applicable`はCoverage slot側で扱う。詳細は[Atlas Relation Schema v0.1](./atlas-relation-schema-v01.md)で定義する。
 
 ## 10. Phase 8 MVPには不要なもの
 
@@ -251,12 +251,14 @@ Capacity / Roadmapは最初のCompare Pilotでは既存Claimを表示し、Capac
 
 - Compare PilotはCompany Evidenceを直接読むだけでも開始できるが、Relation navigation公開には新Relation正本が必要になる。
 - Existing competitor UIはbackward compatibilityとして残るが、Phase 8 Relationとは別表示になる。
-- Product / Technology / Market registryの採択がValue Chain / Technology Pilotの前提になる。
+- Product / Technology / Market registryはPilotに必要な最小集合から始め、Value Chain / Technology Pilot時にreview済みentityだけを追加する。
+- `view=evidence` opt-in Pilotを採択し、既存CompareはFreezeまで既定動作として維持する。
 - staleなstatus文書は別PRで同期する必要があるが、この設計PRでは変更しない。
+
+採択済み実装順序は、(a) Pilot用Minimal Product / Technology / Market Registry、(b) Relation executable foundation（production Relation 0）、(c) Pilot Relation / projection data、(d) Set A / B両対応のGeneric Company Compare UI、(e) Information reduction correction、(f) Compare / Relation Freezeとする。
 
 ## Open questions
 
 1. Company Layerを長期的にID参照へ移行するか、name参照のcompatibility adapterを恒久維持するか。
-2. Product registryをcompany-specific product familyに限定するか、generic product categoryも同じEntityで扱うか。
-3. Market taxonomyをPhase 8 Priority 1 rollout前に作るか、Technology Pilot後までdeferするか。
-4. legacy competitor表示をRelation Freeze後に置き換えるか、明示的に「比較対象」として併存させるか。
+2. Pilot最小registryでProductをcompany-specific product familyに限定するか、review済みgeneric product categoryも同じEntityで扱うか。
+3. legacy competitor表示をRelation Freeze後に置き換えるか、明示的に「比較対象」として併存させるか。

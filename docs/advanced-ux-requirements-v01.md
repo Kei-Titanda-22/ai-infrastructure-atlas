@@ -8,7 +8,7 @@
 
 ## Decision
 
-Phase 8の中心ユースケースをCompany Compare、Value Chain Navigation、Technology Navigationの3つに固定する。3機能は別々のデータ解釈を持たず、同じCompany Evidence、Shared Source、将来の共通Relation read modelを利用する。
+Phase 8の中心ユースケースをCompany Compare、Value Chain Navigation、Technology Navigationの3つに固定する。3機能は別々のデータ解釈を持たず、同じCompany Evidence、Shared Source、将来の共通Relation read modelを利用する。Relation typeはSchema上の候補として8種を採択し、`SUBSTITUTES`、`EXPANDS`、`EXPOSED_TO`はDeferredを維持する。`ENABLES`と`SUPPLIES_TO`はguarded typeであり、direct Evidence、structured Locator、scopeが揃う場合だけ公開できる。
 
 初期表示は、利用者が60～90秒以内に主要な差異、Value Chain上の位置、関係の根拠を把握できる範囲に限定する。追加情報はP2/P3、詳細なprovenance、履歴の順で展開し、Claim本文やEvidenceを要約のために改変しない。
 
@@ -38,7 +38,7 @@ Phase 8の中心ユースケースをCompany Compare、Value Chain Navigation、
 5. **Evidence**: footnote-style markerからEvidence drawerへ進む。
 6. **Primary Source**: drawer内のPrimary Source actionから開く。
 
-`Company Claim → Evidence Binding → Shared Source Registry`は変更しない。Relation導入後も`Relation → Relation Evidence Binding → Shared Source Registry`を別系列として保持する。
+`Company Claim → Evidence Binding → Shared Source Registry`は変更しない。Relation導入後も`Relation → Relation Evidence Binding → Shared Source Registry`を別系列として保持する。authoring Relationは`evidenceIds` / `sourceIds`を持たず、Relation Evidence Bindingをprovenanceの正本とする。resolved read modelだけが両IDと`freshnessStatus`をderived fieldとして生成する。
 
 ## 3. Epistemic表示
 
@@ -72,7 +72,7 @@ Epistemic種別と時間軸は別軸である。
 | P2 | 比較・判断を補う | 原則として1回のDisclosure内 |
 | P3 | 詳細、例外、方法 | P2と同じ展開面の後段 |
 
-Compareでは必須dimensionにP1がない場合だけ、最高priorityのP2を1件まで初期表示へ投影できる。この場合も保存priorityは変更せず、`補足`であることを表示し、Evidenceと内部priorityをdrawerで保持する。P3は初期表示へ出さない。
+CompareではTechnology / Moat、Capacity / Roadmap、Key Risksの3 dimensionsにP1がない場合だけ、各dimensionで最高priorityのP2を1件まで初期表示へ投影できる。`補足`であることを表示し、保存priority、Coverage、statement、Evidence Bindingを変更しない。P3の初期表示は0件とする。他のdimensionsへP2初期投影を拡張しない。
 
 ## 6. Use case A — Company Compare
 
@@ -110,6 +110,8 @@ Compareでは必須dimensionにP1がない場合だけ、最高priorityのP2を1
 - Evidence drawerのAdvanced provenance。
 
 主観scoreは既定表示へ含めない。財務値はnative currency / unitを保持し、FX換算や欠損補完を行わない。
+
+PilotのSet A（NVIDIA / Broadcom）とSet B（Applied Materials / Lam Research / Tokyo Electron）は同じgeneric UIで検証する。Set Bのabsolute financial historyはexpandedへ置き、initial Financialは既存logicで比較可能なratioを中心とする。FX換算、ranking、差分率計算を行わない。
 
 ## 7. Use case B — Value Chain Navigation
 
@@ -180,10 +182,10 @@ Company CompareとRelation viewでも、Freeze済みの2-click contractを維持
 
 ## 10. URL共有と状態復元
 
-既存Compareの`?ids=` contractを保持する。Phase 8のCompany Compareは次を提案する。
+既存Compareの`?ids=` contractを保持する。Phase 8のCompany Compareは次を採択する。
 
 - `ids=<company-id,...>`: 順序を保持した2～4社。既存URLとの互換性を維持する。
-- `view=evidence`: Phase 8 Pilotへのopt-in。未指定時は既存Compareを維持する。
+- `view=evidence`: Phase 8 Pilotへのopt-inとして採択。未指定時はFreezeまで既存Compareを既定動作として維持する。
 - `detail=summary|expanded`: 情報密度。
 - `section=<stable-section-id>`: 共有時の対象section。
 - Evidence drawerのopen状態、keyboard focus、scroll位置はURLへ保存しない。
@@ -203,6 +205,8 @@ Value Chainは`/atlas/<value-chain-node-id>/`、Technologyは`/technologies/<tec
 | Stale | shared freshness helperの結果と基準日を表示。誤りや削除とは扱わない |
 | Incomparable | period、currency、unit、definition、scopeの差を理由として表示。rankingしない |
 | Error | unknown ID、orphan、resolver不整合は黙って欠落させない。build-timeはfail、runtimeは対象と復帰手段を表示 |
+
+Relationの`freshnessStatus`は`current`、`review-due`、`stale`だけを使用する。`not-applicable`はRelation freshnessではなくCoverage slotのmissing reasonとして扱う。
 
 ## 12. Desktop / Mobile
 
@@ -246,7 +250,7 @@ Value Chainは`/atlas/<value-chain-node-id>/`、Technologyは`/technologies/<tec
 ### Company Compare
 
 - canonical Company IDを使う2～4社の順序付きselectionをreload後も復元する。
-- 必須8 dimensionを表示し、P2初期投影は必須dimensionにつき最大1件である。
+- 必須8 dimensionを表示し、P2初期投影はTechnology / Moat、Capacity / Roadmap、Key Risksに限ってdimensionごとに最大1件、P3初期表示は0件である。
 - 全社missing行はprimary matrixに0件、一部missing行は理由付きで残る。
 - financial comparison判定とnative currency / unitが既存contractから変化しない。
 
@@ -287,13 +291,13 @@ Company Evidence v1は100社でEvidenceとLocatorを持つが、現行Compareは
 ## Consequences
 
 - Phase 8実装はまずopt-in Pilotとして既存Compareと並存する。
-- Product、Technology、Marketのcanonical IDがない領域は、Relationとして公開する前にregistryとalias方針が必要になる。
+- Product、Technology、Marketは全件registryを先行作成せず、Pilot Relationのendpointまたはscopeに必要な最小canonical entityだけを最初に登録する。
 - Compare固有のP2初期投影にはvalidatorが必要になる。
 - Value Chainの編集順は利用できるが、Factのsupplier/customer graphとして扱えない。
 
+採択済み実装順序は、(a) Pilot用Minimal Product / Technology / Market Registry、(b) Relation executable foundation（production Relation 0）、(c) Pilot Relation / projection data、(d) Set A / B両対応のGeneric Company Compare UI、(e) Information reduction correction、(f) Compare / Relation Freezeとする。
+
 ## Open questions
 
-1. `view=evidence`によるopt-inを採択し、既存CompareをFreezeまで維持するか。
-2. 必須dimensionに限るP2の初期投影を採択するか。
-3. Value Chain / Technologyの最終route名を、Pilot前に固定するか、Pilot後のURL Freezeで固定するか。
-4. 60～90秒Acceptanceを実参加者テストとmoderated internal reviewのどちらで最終判定するか。
+1. Value Chain / Technologyの最終route名を、Pilot前に固定するか、Pilot後のURL Freezeで固定するか。
+2. 60～90秒Acceptanceを実参加者テストとmoderated internal reviewのどちらで最終判定するか。

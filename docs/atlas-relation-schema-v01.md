@@ -8,7 +8,7 @@
 
 ## Decision
 
-Compare、Value Chain Navigation、Technology Navigationは1つのcommon Relation modelを利用する。MVPの採択候補は次の8 typesとする。
+Compare、Value Chain Navigation、Technology Navigationは1つのcommon Relation modelを利用する。v0.1 authoring schemaへ導入する候補として次の8 typesを採択する。
 
 1. `PRODUCES`
 2. `DEVELOPS`
@@ -19,9 +19,9 @@ Compare、Value Chain Navigation、Technology Navigationは1つのcommon Relatio
 7. `OPERATES`
 8. `POSITIONED_IN`
 
-`SUBSTITUTES`、`EXPANDS`、`EXPOSED_TO`は表現可能性を評価するが、v0.1 MVPのauthoring enumへは採択しない。Capacity / Roadmapは既存Company Evidence Claimを利用し、専用event modelが必要かをCompare Pilot後に再評価する。
+`SUBSTITUTES`、`EXPANDS`、`EXPOSED_TO`はDeferredを維持し、v0.1 MVPのauthoring enumへは採択しない。`ENABLES`と`SUPPLIES_TO`はguarded typeであり、Pilotで無条件にauthoringしない。direct Evidence、structured Locator、scopeが揃う場合だけ公開可能とする。Capacity / Roadmapは既存Company Evidence Claimを利用し、専用event modelが必要かをCompare Pilot後に再評価する。
 
-RelationはCompany Evidenceから独立したrecordであり、EvidenceとSourceを埋め込まない。canonical flowは次とする。
+RelationはCompany Evidenceから独立したrecordであり、EvidenceとSourceを埋め込まない。authoring Relationには`evidenceIds`と`sourceIds`を保存せず、Relation Evidence Bindingをprovenanceの正本とする。resolved read modelだけがBindingsから両fieldを導出する。canonical flowは次とする。
 
 `Relation → Relation Evidence Binding → Shared Source Registry`
 
@@ -47,8 +47,8 @@ Company classification Layerはbackward compatibilityのため維持するが、
 | `PRODUCES` | Company → Product | many-to-many | `producedBy`をread modelで生成 | Product endpointが粒度を定義。任意でMarket / geography scope |
 | `DEVELOPS` | Company → Technology | many-to-many | `developedBy` | joint developmentは複数Relationで表現 |
 | `USES` | CompanyまたはProduct → Technology | many-to-many | `usedBy` | named adoptionは直接Evidence必須 |
-| `ENABLES` | Product → Technology | many-to-many | `enabledBy` | 因果表現のためscopeとclaimType必須 |
-| `SUPPLIES_TO` | Company → CompanyまたはMarket | many-to-many | `suppliedBy` | named Company edgeはproduct / technology / geography等のscope必須 |
+| `ENABLES` | Product → Technology | many-to-many | `enabledBy` | guarded。direct Evidence、structured Locator、scope必須 |
+| `SUPPLIES_TO` | Company → CompanyまたはMarket | many-to-many | `suppliedBy` | guarded。direct Evidence、structured Locator、scope必須 |
 | `COMPETES_WITH` | Company → Company | many-to-many、対称 | 同じrecordを両側へ投影 | scope最低1項目、Evidence必須 |
 | `OPERATES` | Company → Facility | one Company to many Facilities。joint operation可 | `operatedBy` | ownershipを意味しない |
 | `POSITIONED_IN` | Company、Product、Technology → ValueChainNode | many-to-many | `contains`ではなく`participants` | 通常`atlas-analysis`。Atlas編集分類と明示 |
@@ -62,8 +62,8 @@ Company classification Layerはbackward compatibilityのため維持するが、
 | `PRODUCES` | ADOPT | Company CompareとTechnology roleの基本 |
 | `DEVELOPS` | ADOPT | Developer roleを`PRODUCES`から分離 |
 | `USES` | ADOPT | User / Adopter roleを明示できる |
-| `ENABLES` | ADOPT WITH GUARD | Equipment / Material supplierをTechnologyへ接続する。因果推論防止が必要 |
-| `SUPPLIES_TO` | ADOPT WITH GUARD | Market supplyとnamed supplyを同型で扱えるが、named edgeは厳格Evidenceが必要 |
+| `ENABLES` | ADOPT WITH GUARD | Pilotで無条件にauthoringしない。direct Evidence、structured Locator、scopeが揃う場合だけ公開 |
+| `SUPPLIES_TO` | ADOPT WITH GUARD | Pilotで無条件にauthoringしない。direct Evidence、structured Locator、scopeが揃う場合だけ公開 |
 | `COMPETES_WITH` | ADOPT WITH GUARD | Company Compareに必要。scopeなしは禁止 |
 | `SUBSTITUTES` | DEFER | direction、性能世代、部分代替、geographyをMVPで安全に閉じられない |
 | `OPERATES` | ADOPT | Existing FacilityをCompanyへ接続できる。ownershipと区別 |
@@ -71,11 +71,11 @@ Company classification Layerはbackward compatibilityのため維持するが、
 | `EXPOSED_TO` | DEFER | broad analytical edgeになりやすい。現行end-market Claimで足りる |
 | `POSITIONED_IN` | ADOPT | Value Chain Navigationの最小edge。Atlas編集分類として種別を明示可能 |
 
-## 4. Common Relation record
+## 4. Authoring Relationとresolved read model
 
-### Required fields
+### Authoring Relation required fields
 
-resolved Relation envelopeでは次をすべて必須keyとする。nullable fieldもkey自体は保持する。
+authoring Relationでは次を必須keyとする。nullable fieldもkey自体は保持する。`evidenceIds`、`sourceIds`、`freshnessStatus`はauthoring schemaに含めない。
 
 | Field | Type | Rule |
 | --- | --- | --- |
@@ -88,18 +88,29 @@ resolved Relation envelopeでは次をすべて必須keyとする。nullable fie
 | `scope` | object | 常に存在。guarded typeでは最低1 dimension |
 | `statement` | string | atomic、600文字以内、表示可能な関係説明 |
 | `claimType` | enum | frozen Company Evidence enumを再利用 |
-| `sourceIds` | unique identifier array | Relation Evidence Bindingから解決した集合と完全一致 |
-| `evidenceIds` | unique identifier array | Relation Evidence Binding 1件以上 |
 | `asOf` | ISO date | statementの情報時点 |
 | `lastVerified` | ISO date or null | public relationはnon-null |
 | `nextReview` | ISO date or null | shared freshness helperの入力 |
 | `importance` | `P1`, `P2`, `P3` | reading priority。truthやconfidenceではない |
 | `displayPriority` | integer 1–99 | 同じgroup内の安定sortのみ |
 | `confidence` | `low`, `medium`, `high`, null | Atlas Analysis / estimateはnon-null、Factはnull |
-| `freshnessStatus` | derived enum | `current`, `review-due`, `stale`, `not-applicable`。手入力しない |
 | `validFrom` | ISO date or null | Relationが有効になった日。未確認ならnull |
 | `validTo` | ISO date or null | 終了日。activeを推測せずnullを許容 |
 | `supersededBy` | relation ID or null | 後継Relation。自己参照・cycle禁止 |
+
+Relation Evidence BindingはRelation fileと別のauthoring recordとして保存し、`relationId`でRelationへ接続する。Relation authoring recordからBinding IDまたはSource IDを逆参照しない。
+
+### Resolved read model derived fields
+
+resolved read modelはauthoring Relationの全fieldを保持し、resolverが次を追加する。
+
+| Field | Type | Derivation rule |
+| --- | --- | --- |
+| `evidenceIds` | unique identifier array | 当該`relationId`を参照するRelation Evidence Binding IDをstable sort |
+| `sourceIds` | unique identifier array | derived `evidenceIds`のBindingsが参照するShared Source IDをdeduplicateしてstable sort |
+| `freshnessStatus` | derived enum | `nextReview`とreference dateから`current`, `review-due`, `stale`のいずれかを導出 |
+
+`not-applicable`はRelation freshnessではない。Categoryがbusiness model上適用されない状態はCoverage slotのmissing reasonとして扱い、Relation recordを作成しない。
 
 ### Scope object
 
@@ -143,13 +154,14 @@ Relation Evidence BindingはCompany Evidence Bindingと同じ分離原則を使�
 | `lastChecked` | ISO date |
 | `notes` | optional。support解釈だけに使用 |
 
-Relation recordの`sourceIds`はportable resolved envelope用の参照集合であり、provenanceの正本ではない。authoring / build時にBindingsから生成するか、validatorがBindingsのSource集合との完全一致を要求する。LocatorやSource metadataをRelationへcopyしない。
+Relation Evidence Bindingをprovenanceの唯一の正本とする。authoring Relationには`evidenceIds`と`sourceIds`を置かず、resolverがread modelへ両fieldを必ず導出する。validatorはderived ID集合とBinding / Source resolverの結果が一致することを検査する。LocatorやSource metadataをRelationへcopyしない。
 
-named Company relationのpublic表示には最低1件の`supports` Bindingとstructured Locatorが必要である。`context`だけでは公開しない。`contradicts`が未解決なら`needs-review`相当として公開を止める。
+named Company relationのpublic表示には最低1件のdirect `supports` Binding、structured Locator、required scopeが必要である。`ENABLES`と`SUPPLIES_TO`にも同じgateを適用し、Pilotで無条件にauthoringしない。`context`だけでは公開しない。`contradicts`が未解決なら`needs-review`相当として公開を止める。
 
 ## 7. Freshness、validity、supersession
 
-- `freshnessStatus`は`nextReview`とruntime / build reference dateからshared helperで導出する。
+- `freshnessStatus`は`nextReview`とruntime / build reference dateからshared helperで`current`、`review-due`、`stale`のいずれかを導出する。
+- `not-applicable`はCoverage slot側で扱い、Relation freshness enumへ含めない。
 - `stale`はRelationの削除やfalseを意味しない。
 - `validFrom` / `validTo`はSourceが期間を閉じる場合だけ入れる。
 - 新しいstatementが古いstatementを置き換える場合、古いrecordの`supersededBy`を新relationIdへ向ける。
@@ -179,16 +191,18 @@ Atlasが構造上の位置やenablementを整理する場合は`atlas-analysis`�
 - orphan Relation、Binding、Source、supersededByの拒否。
 - ISO date、date ordering、validity ordering。
 - claimType、importance、confidence、freshness enum。
-- Relationの`sourceIds`とBinding source setの一致。
+- authoring Relationに`evidenceIds`、`sourceIds`、`freshnessStatus`が存在しないこと。
+- resolved read modelの`evidenceIds` / `sourceIds`とBinding / Source resolver結果の一致。
+- resolved `freshnessStatus`が`current`、`review-due`、`stale`だけであること。
 
 ### Semantic guards
 
-- guarded typeにrequired scope dimensionがある。
+- guarded typeにrequired scope dimension、direct `supports` Binding、structured Locatorがある。
 - `COMPETES_WITH`のendpointは異なるCompanyである。
 - symmetric relationはcanonical endpoint orderで1件だけ。
 - `fact`はconfidence null、`atlas-analysis` / `estimate`はconfidence non-null。
-- public relationは`supports` Binding、Locator、`lastVerified`を持つ。
-- named `SUPPLIES_TO`はSourceが両社または明示された関係を識別する。
+- public relationはdirect `supports` Binding、structured Locator、`lastVerified`を持つ。
+- `ENABLES`とnamed `SUPPLIES_TO`はSourceが明示された関係を直接識別する。
 - `OPERATES`はownershipを暗示するstatementにしない。
 - `POSITIONED_IN`のAtlas編集mappingはFactに昇格しない。
 
@@ -211,7 +225,7 @@ logical signatureを次で作る。
 
 ## 10. Non-executable example
 
-次は形状説明だけの例であり、既存AMAT / TEL relationの追加、Evidence判定、migrationを意味しない。
+次はauthoring Relationの形状説明だけの例であり、既存AMAT / TEL relationの追加、Evidence判定、migrationを意味しない。
 
 ```json
 {
@@ -232,18 +246,26 @@ logical signatureを次で作る。
   },
   "statement": "Illustrative scoped competition statement; not production data.",
   "claimType": "company-positioning",
-  "sourceIds": ["source-example-scoped-competition"],
-  "evidenceIds": ["rel-evidence-example-scoped-competition"],
   "asOf": "2026-01-01",
   "lastVerified": "2026-01-01",
   "nextReview": "2027-01-01",
   "importance": "P1",
   "displayPriority": 10,
   "confidence": null,
-  "freshnessStatus": "current",
   "validFrom": null,
   "validTo": null,
   "supersededBy": null
+}
+```
+
+resolverは別authoring recordであるRelation Evidence Bindingを解決し、read modelへ次のderived fieldsを追加する。
+
+```json
+{
+  "relationId": "rel-applied-materials-competes-with-tokyo-electron-deposition",
+  "evidenceIds": ["rel-evidence-example-scoped-competition"],
+  "sourceIds": ["source-example-scoped-competition"],
+  "freshnessStatus": "current"
 }
 ```
 
@@ -251,7 +273,7 @@ logical signatureを次で作る。
 
 - IDはASCII lower kebab-caseでimmutableとする。
 - Company、Facility、ValueChainNodeは既存IDを再利用する。
-- Product、Technology、Marketはreview済みregistryが作られるまでRelation endpointに使わない。
+- Product、Technology、MarketはPilot Relationのendpointまたはscopeに必要な最小review済みregistryが作られるまでRelationに使わない。全件registryを先行作成しない。
 - entity registryは`canonicalName`、locale別display name、`aliases[]`、`status`、`replacedBy`を持つ候補とする。
 - aliasはlookup用であり、Relation recordはcanonical IDだけを保存する。
 - display label変更でIDを変更しない。
@@ -259,12 +281,16 @@ logical signatureを次で作る。
 
 ## 12. Migration方針
 
-1. このDraftでdesignをreviewする。実装しない。
-2. Product / Technology / Marketの最小registryとvalidatorを別PRで提案する。
-3. Relation schema、Relation Evidence Binding schema、empty manifest / resolver、validatorを別PRで導入する。
-4. 推奨Compare Pilot 2セットだけを既存Evidenceから人手reviewし、Relation candidateを作る。
-5. competitor配列、products、tagsはbackward-compatible fallbackとして維持する。
-6. Compare Pilot reviewとFreeze後にだけ、Priority 1 rolloutを検討する。
+このDraftのreview後は、次のPR順序を変更しない。
+
+1. Pilot用Minimal Product / Technology / Market Registry。Pilot Relationのendpointまたはscopeに必要なcanonical entityだけを追加する。
+2. Relation executable foundation。authoring schema、resolved schema、Relation Evidence Binding、empty manifest / resolver、validatorを導入し、production Relationは0件を維持する。
+3. Pilot Relation / projection data。Set A / Bだけを既存Evidenceから人手reviewする。
+4. Generic Company Compare UI。`view=evidence`でSet A / Bの両方へ対応する。
+5. Information reduction correction。
+6. Compare / Relation Freeze。
+
+competitor配列、products、tagsはbackward-compatible fallbackとして維持し、Freeze後にだけPriority 1 rolloutを検討する。
 
 自動text extraction、bulk slug migration、competitor copyは行わない。
 
@@ -275,7 +301,7 @@ logical signatureを次で作る。
 - Company JSON、Facility、financial schemaを変更しない。
 - Source Registryを共有するが、Source recordを複製しない。
 - Relation schemaは独立version `0.1`として追加する候補であり、Company Evidence versionと混同しない。
-- 既存Compareは`view=evidence` opt-inのFreezeまで既定動作を維持する。
+- `view=evidence` opt-in Pilotを採択し、既存CompareはFreezeまで既定動作を維持する。
 - `relationships.json`とlegacy competitor UIはmigration完了まで読み取り専用fallbackとする。
 
 ## Rationale
@@ -287,21 +313,19 @@ logical signatureを次で作る。
 - Compare、Value Chain、Technologyごとに別Schemaを作る案。relation semanticsが分岐するため却下。
 - 全11候補typeをv0.1で採択する案。`SUBSTITUTES`、`EXPANDS`、`EXPOSED_TO`の意味を安全に閉じられないため却下。
 - RelationへSource metadataとLocatorを埋め込む案。Shared Source分離に反するため却下。
-- `sourceIds`だけでEvidenceを表す案。support、Locator、lastCheckedを失うため却下。
+- authoring Relationに`sourceIds`または`evidenceIds`を保持する案。Bindingとの二重正本になるため却下。
 - unscoped Company competitionを許す案。Company Compareで誤読を生むため却下。
 - inverse relationをすべて保存する案。duplicateとstaleness divergenceを増やすため却下。
 
 ## Consequences
 
-- Relation実装前に3つのcanonical entity registryが必要になる。
+- Relation実装前に、Pilot endpoint / scopeだけを対象にした3つのminimal canonical entity registryが必要になる。
 - named supplier / competitor relationは既存Evidenceがあってもscope reviewを要する。
 - Capacity / RoadmapはCompare PilotではClaim projectionのままであり、graph queryの対象にならない。
 - Relation validatorはstructural checkだけでなくguarded semantic ruleを持つ必要がある。
 
 ## Open questions
 
-1. `sourceIds`をbuild時の完全derived fieldにするか、authoring recordに保持してstrict equalityを検査するか。推奨はderived field。
-2. Product entityをcompany-specific familyに限定し、generic categoryをTechnologyまたは別taxonomyへ置くか。
-3. `businessUnit`をfree textで暫定運用するか、Company scope registryを先に導入するか。推奨はPilotではfree textを使わずCompany全体だけに限定。
-4. `ENABLES`をMVPで採択する際、`atlas-analysis`以外のFact thresholdをどこまで認めるか。
-5. `SUBSTITUTES`、`EXPANDS`、`EXPOSED_TO`を追加する次versionのgateを何にするか。
+1. Pilot minimal registryでProduct entityをcompany-specific familyに限定するか、review済みgeneric categoryも同じEntityで扱うか。
+2. Pilot RelationでCompany未満のscopeが必要になった場合、`businessUnit`を使用せずdeferするか、最小Company scope registryを追加するか。
+3. bounded Evidence review後、`ENABLES`または`SUPPLIES_TO`でpublic gateを満たすPilot recordが存在するか。

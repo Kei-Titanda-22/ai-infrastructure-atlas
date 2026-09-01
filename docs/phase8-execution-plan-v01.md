@@ -7,7 +7,7 @@
 
 ## Decision
 
-Phase 8は12 stepsを順番に進める。UX、inventory、Relation contractを先に承認し、Company Compareで最小modelを検証してからValue Chain、Technology、Search、Priority 1 rolloutへ進む。
+Phase 8は12 stepsを順番に進める。UX、inventory、Relation contractを先に承認し、Company Compareで最小modelを検証してからValue Chain、Technology、Search、Priority 1 rolloutへ進む。Compare実装は、Pilot用Minimal Product / Technology / Market Registry、Relation executable foundation（production Relation 0）、Pilot Relation / projection data、Set A / B両対応のGeneric Company Compare UI、Information reduction correction、Compare / Relation Freezeの6 PR順序に固定する。
 
 本Draft PRはSteps 1～3の設計成果物とStep 4の実装契約だけを含む。merge、実装、data migration、deployは行わず、ユーザーレビューで停止する。
 
@@ -39,7 +39,7 @@ Phase 8は12 stepsを順番に進める。UX、inventory、Relation contractを�
 - **Work**: 3 use cases、60～90秒hierarchy、epistemic / temporal表示、responsive、accessibility、URL、state、non-goalsを定義。
 - **Output**: [`advanced-ux-requirements-v01.md`](./advanced-ux-requirements-v01.md)。
 - **Dependencies**: Company Evidence v1 Close = YES。
-- **Acceptance Criteria**: 3 use casesと必須項目が完全、Evidence 2-clickとfinancial contractに矛盾なし、実装を含まない。
+- **Acceptance Criteria**: 3 use casesと必須項目が完全、`view=evidence` opt-in、3 dimensionsだけのP2例外、Evidence 2-click、financial contractに矛盾なし、実装を含まない。
 - **Validator**: Markdown structure、required headings、relative links、terminology consistency。
 - **Browser QA**: 不要。文書のみ。
 - **Stop Condition**: 主要問い、初期 / 展開境界、stateのいずれかが未定義。
@@ -65,25 +65,25 @@ Phase 8は12 stepsを順番に進める。UX、inventory、Relation contractを�
 - **Work**: common entity / relation、direction、scope、Evidence、validity、freshness、inference guard、migration、backward compatibilityを設計。
 - **Output**: [`atlas-relation-schema-v01.md`](./atlas-relation-schema-v01.md)。採択後は別PRでexecutable schema、empty manifest / resolver、validator。
 - **Dependencies**: Inventoryのcanonical ID判定。
-- **Acceptance Criteria**: 3 use casesが1 modelで表現可能、unscoped competition禁止、11候補typeの採否が明示、Company Evidence v0.2に変更なし。
-- **Validator**: design key / enum / endpoint matrix check。実装PRではschema validation、duplicate、orphan、scope、binding tests。
+- **Acceptance Criteria**: 3 use casesが1 modelで表現可能、8 typesをSchema上の候補として採択、3 typesをDeferred、unscoped competition禁止、guarded `ENABLES` / `SUPPLIES_TO`はdirect Evidence・structured Locator・scope必須、authoring Relationに`evidenceIds` / `sourceIds`なし、resolved read modelで両IDをderived、resolved `freshnessStatus`は`current` / `review-due` / `stale`のみで`not-applicable`はCoverage側、Company Evidence v0.2に変更なし。
+- **Validator**: design key / enum / authoring-versus-resolved field / endpoint matrix check。実装PRではschema validation、duplicate、orphan、scope、binding、derived field tests。
 - **Browser QA**: design / empty foundationは不要。
-- **Stop Condition**: Product / Technology / Market identity方針または`sourceIds` derivation方針が未採択。
+- **Stop Condition**: Pilotに必要なProduct / Technology / Market canonical identityを安全に定義できない。
 - **HARD STOP**: Frozen Company Evidence Schemaを変更しないとRelationを表現できない。
-- **PR unit**: designは現在のDraft PR。採択後のexecutable foundationは1 PR、production Relation dataは含めない。
+- **PR unit**: designは現在のDraft PR。採択後は(a) Pilot minimal registry、(b) executable foundation（production Relation 0）の順で別PRにする。
 
 ## Step 4 — Company Compare Pilot
 
 - **Input**: 採択済みSteps 1～3、[`company-compare-pilot-contract-v01.md`](./company-compare-pilot-contract-v01.md)、既存Evidenceとfinancial data。
-- **Work**: opt-in Compare read model、推奨2 presets、Evidence drawer接続、missing / incomparable / URL stateを実装。必要なRelationだけを既存Evidenceから人手reviewする。
+- **Work**: `view=evidence` opt-in Compare read model、Set A / B両対応のgeneric UI、Evidence drawer接続、missing / incomparable / URL stateを実装。必要なRelationだけを既存Evidenceから人手reviewする。P2初期投影はTechnology / Moat、Capacity / Roadmap、Key Risksに限定し、Set Bのabsolute financial historyはexpandedへ置く。
 - **Output**: Pilot read model、最小Relation records、validator、2-set UI、QA report。
 - **Dependencies**: executable Relation foundation、canonical endpoint registry、contract承認。
-- **Acceptance Criteria**: 2～4社、8 dimensions、statement semantic diff 0、Evidence marker 100%、financial logic diff 0、60～90秒task準備完了。
+- **Acceptance Criteria**: Set A / Bを同じgeneric UIで表示、2～4社、8 dimensions、3 dimensionsだけP2最大1件と`補足`表示、P3初期0、statement semantic diff 0、Evidence marker 100%、ratio中心のinitial Financial、FX / ranking / 差分率計算0、financial logic diff 0、60～90秒task準備完了。
 - **Validator**: Company / Claim / Relation / Evidence / Source refs、priority projection、URL、all-missing、financial protection、secret scan、Astro / Pagefind。
 - **Browser QA**: 1280 / 1024 / 768 / 360px。selection、reload、back / forward、drawer、Primary Source、Escape、focus return、missing、incomparable、overflow。
 - **Stop Condition**: Pilot Relationにscopeまたはsupports Bindingが不足。
 - **HARD STOP**: named relationが既存Evidenceだけでは安全に成立せず、Web researchまたはSchema変更が必要。
-- **PR unit**: 4A Relation Pilot data / read model、4B Compare UI / interaction。semantic dataとpresentationを分ける。
+- **PR unit**: (c) Pilot Relation / projection data、(d) Set A / B両対応のGeneric Company Compare UI。semantic dataとpresentationを分ける。
 
 ## Step 5 — Compare UX Review / Information Reduction
 
@@ -191,13 +191,14 @@ Phase 8は12 stepsを順番に進める。UX、inventory、Relation contractを�
 
 ## 3. PR sequence after design approval
 
-推奨する次の順序は次のとおり。
+採択済みの順序は次のとおり。
 
-1. Relation v0.1 executable foundation。Schema、empty manifest / resolver、validatorのみ。
-2. Compare Pilot Relation / projection data。推奨2 sets、既存Evidenceのみ。
-3. Compare Pilot UI。`view=evidence` opt-in、Evidence drawer、URL state。
-4. Compare information reduction correction。
-5. Compare / Relation Freeze。
+1. Pilot用Minimal Product / Technology / Market Registry。Pilot Relationのendpointまたはscopeに必要なcanonical entityだけを追加する。
+2. Relation executable foundation。authoring / resolved schema、Relation Evidence Binding、empty manifest / resolver、validatorを追加し、production Relation 0を維持する。
+3. Pilot Relation / projection data。Set A / Bだけを既存Evidenceから人手reviewする。
+4. Generic Company Compare UI。`view=evidence`でSet A / Bの両方へ対応し、既存CompareはFreezeまで既定動作として維持する。
+5. Information reduction correction。
+6. Compare / Relation Freeze。
 
 各PRはlatest mainから開始し、merge後Actions / Pagesを確認して次へ進む。今回のDraft PRはこのsequenceを開始しない。
 
@@ -226,13 +227,13 @@ CompareはRelationの最小集合を検証でき、Value ChainとTechnologyよ�
 ## Consequences
 
 - Phase 8は複数gateとPRに分かれ、最短実装よりsemantic safetyを優先する。
-- Compare PilotでRelation typeを減らす可能性がある。
+- Compare Pilotでは採択済み8 typesのうち必要なsubsetだけをauthoringし、guarded typeを無条件に追加しない。Schema候補の変更は別change-controlとする。
 - Value Chain / TechnologyのrouteはCompare / Relation Freezeまで仮決定となる。
 - Priority 1 rolloutはcomplete relation数ではなく、追跡すべきrelation pending 0をclose条件にする。
 
 ## Open questions
 
-1. executable Relation foundationをCompare Pilot dataと別PRにする方針を採択するか。
-2. Compare Pilotの2 setsを同じUI PRに含めるか、2社setと3社setを連続PRに分けるか。推奨は同じcontract、連続2 PR。
-3. Step 7のrepresentative ValueChainNodeとStep 8のTechnologyを、Compare Freeze後に選ぶ方針でよいか。
-4. Step 11のindependent validation sample sizeとseverity gateをRelation corpus確定後に別contractで定義するか。
+1. Pilot minimal registryに必要なexact canonical entitiesを、Step 3のRelation candidate review前にどのfixtureで固定するか。
+2. bounded Evidence review後、guarded `ENABLES` / `SUPPLIES_TO`のうちpublic gateを満たすPilot recordが存在するか。
+3. Step 7のrepresentative ValueChainNodeとStep 8のTechnologyを、Compare Freeze後にどの基準で選ぶか。
+4. Step 11のindependent validation sample sizeとseverity gateをRelation corpus確定後にどう定義するか。
