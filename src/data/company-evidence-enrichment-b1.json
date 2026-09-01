@@ -1,0 +1,2940 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "broadcom-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Broadcom（ブロードコム）は、カスタム半導体、ネットワーク半導体、接続系製品を広く持つ複合半導体企業。",
+      "evidenceIds": [
+        "broadcom-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-02",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "broadcom"
+    },
+    {
+      "id": "broadcom-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではBroadcom（ブロードコム）を、AIクラスタのカスタム計算・スイッチング・接続需要に複数経路で関与する企業と位置付ける。",
+      "evidenceIds": [
+        "broadcom-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-02",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "broadcom",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "broadcom-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Broadcom（ブロードコム）は、Custom accelerators / ASIC、Ethernet switching silicon、Connectivity semiconductorsを提供する。",
+      "evidenceIds": [
+        "broadcom-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-02",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "broadcom"
+    },
+    {
+      "id": "broadcom-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Custom accelerators / ASIC、Ethernet switching silicon、Connectivity semiconductorsという製品構成を、ASIC、switch、networkingに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "broadcom-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-02",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "broadcom",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "broadcom-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Compute & Siliconの供給層",
+      "statement": "AtlasではBroadcom（ブロードコム）を「Compute & Silicon」に位置し、AIクラスタのカスタム計算・スイッチング・接続需要に複数経路で関与する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "broadcom-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-02",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "broadcom",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "broadcom-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、大型顧客向けカスタム設計力、ネットワークと計算の両面を持つ製品構成、高付加価値半導体ポートフォリオを、Broadcom（ブロードコム）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "broadcom-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-02",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "broadcom",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "broadcom-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、顧客集中、大型案件の世代交代リスク、半導体景気とAI投資の変動を主要な確認点として整理する。",
+      "evidenceIds": [
+        "broadcom-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-02",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "broadcom",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "carrier-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Carrier（キャリア）は、商業・産業施設向け空調、冷却、建物向けエネルギー管理を展開する米国企業。",
+      "evidenceIds": [
+        "carrier-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier"
+    },
+    {
+      "id": "carrier-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではCarrier（キャリア）を、データセンター向け冷却設備と建物制御を通じ、AIサーバーの発熱・電力密度上昇に対応する設備投資へ接続する企業と位置付ける。",
+      "evidenceIds": [
+        "carrier-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "carrier-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Carrier（キャリア）は、Commercial HVAC and chillers、Data center cooling solutions、Building controlsを提供する。",
+      "evidenceIds": [
+        "carrier-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier"
+    },
+    {
+      "id": "carrier-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Commercial HVAC and chillers、Data center cooling solutions、Building controlsという製品構成を、data center、cooling、HVACに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "carrier-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "carrier-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Data Center & Facilitiesの供給層",
+      "statement": "AtlasではCarrier（キャリア）を「Data Center & Facilities」に位置し、データセンター向け冷却設備と建物制御を通じ、AIサーバーの発熱・電力密度上昇に対応する設備投資へ接続する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "carrier-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "carrier-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、大型空調・冷却機器の幅広い製品群、建物向け制御・サービスとの組合せ、グローバルな設置・保守基盤を、Carrier（キャリア）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "carrier-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "carrier-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、建設・設備投資サイクル、冷却技術の転換、TraneやJohnson Controls等との競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "carrier-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "ciena-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Ciena（シエナ）は、光伝送システム、コヒーレント光技術、ネットワーク制御ソフトウェアを展開する通信インフラ企業。",
+      "evidenceIds": [
+        "ciena-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ciena"
+    },
+    {
+      "id": "ciena-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではCiena（シエナ）を、データセンター間や通信事業者網の大容量伝送を担い、分散AI基盤の長距離・広域接続を支える企業と位置付ける。",
+      "evidenceIds": [
+        "ciena-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ciena",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "ciena-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Ciena（シエナ）は、Coherent optical transport systems、WaveLogic coherent optics、Network control softwareを提供する。",
+      "evidenceIds": [
+        "ciena-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ciena"
+    },
+    {
+      "id": "ciena-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Coherent optical transport systems、WaveLogic coherent optics、Network control softwareという製品構成を、coherent optics、optical transport、data center interconnectに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "ciena-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ciena",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "ciena-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Network & Opticalの供給層",
+      "statement": "AtlasではCiena（シエナ）を「Network & Optical」に位置し、データセンター間や通信事業者網の大容量伝送を担い、分散AI基盤の長距離・広域接続を支える役割を担う企業と整理する。",
+      "evidenceIds": [
+        "ciena-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ciena",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "ciena-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、コヒーレント光伝送の技術蓄積、大容量データセンター間接続への強い製品ポジション、光伝送装置とネットワーク制御ソフトウェアの統合を、Ciena（シエナ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "ciena-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ciena",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "ciena-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、通信事業者の設備投資サイクル、競合ネットワーク機器企業との価格・技術競争、大口顧客の導入時期による売上変動を主要な確認点として整理する。",
+      "evidenceIds": [
+        "ciena-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-11-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ciena",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "cisco-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Cisco（シスコ）は、スイッチ、ルーター、ネットワーク用半導体、セキュリティなどを展開する大手ネットワーク企業。",
+      "evidenceIds": [
+        "cisco-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-07-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cisco"
+    },
+    {
+      "id": "cisco-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではCisco（シスコ）を、Silicon OneやEthernetスイッチを含むネットワーク基盤を通じ、AIクラスタのscale-up・scale-out接続を支える企業と位置付ける。",
+      "evidenceIds": [
+        "cisco-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-07-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cisco",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "cisco-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Cisco（シスコ）は、AI datacenter switching、Silicon One network silicon、Routing and network platformsを提供する。",
+      "evidenceIds": [
+        "cisco-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-07-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cisco"
+    },
+    {
+      "id": "cisco-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、AI datacenter switching、Silicon One network silicon、Routing and network platformsという製品構成を、Ethernet、AI networking、network siliconに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "cisco-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-07-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cisco",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "cisco-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Network & Opticalの供給層",
+      "statement": "AtlasではCisco（シスコ）を「Network & Optical」に位置し、Silicon OneやEthernetスイッチを含むネットワーク基盤を通じ、AIクラスタのscale-up・scale-out接続を支える役割を担う企業と整理する。",
+      "evidenceIds": [
+        "cisco-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-07-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cisco",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "cisco-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、Silicon Oneを含むネットワーク半導体からシステムまでの垂直展開、企業・通信事業者に広がる大規模な導入基盤、ネットワークとセキュリティを統合した製品群を、Cisco（シスコ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "cisco-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-07-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cisco",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "cisco-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、AristaなどとのAIデータセンターネットワーク競争、クラウド事業者による自社設計・ホワイトボックス化、大型ネットワーク更新サイクルの変動を主要な確認点として整理する。",
+      "evidenceIds": [
+        "cisco-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-07-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cisco",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "coherent-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Coherent（コヒレント）は、光トランシーバー、レーザー、光通信部品などを幅広く手掛けるフォトニクス企業。",
+      "evidenceIds": [
+        "coherent-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent"
+    },
+    {
+      "id": "coherent-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではCoherent（コヒレント）を、AIデータセンターの高速光接続で、トランシーバーからレーザー・受光素子・光部品まで供給する企業と位置付ける。",
+      "evidenceIds": [
+        "coherent-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "coherent-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Coherent（コヒレント）は、Datacenter optical transceivers、Optoelectronic devices and lasers、Optical circuit switchesを提供する。",
+      "evidenceIds": [
+        "coherent-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent"
+    },
+    {
+      "id": "coherent-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Datacenter optical transceivers、Optoelectronic devices and lasers、Optical circuit switchesという製品構成を、optical transceiver、coherent optics、silicon photonicsに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "coherent-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "coherent-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Network & Opticalの供給層",
+      "statement": "AtlasではCoherent（コヒレント）を「Network & Optical」に位置し、AIデータセンターの高速光接続で、トランシーバーからレーザー・受光素子・光部品まで供給する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "coherent-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "coherent-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、材料・デバイス・モジュール・システムまで跨る光技術の垂直統合、1.6T級を含むデータセンター向け光トランシーバーの製品幅、InP・VCSEL・シリコンフォトニクスなど複数方式を扱える技術基盤を、Coherent（コヒレント）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "coherent-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "coherent-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、AI向け光部品の急速な技術世代交代、大型顧客の設備投資・在庫調整、Lumentumなど光部品企業との競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "coherent-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "furukawa-electric-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "古河電気工業は、光ファイバ・光ケーブル、通信部品、電力ケーブルなどを展開する日本の電線・通信インフラ企業。",
+      "evidenceIds": [
+        "furukawa-electric-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "furukawa-electric"
+    },
+    {
+      "id": "furukawa-electric-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "Atlasでは古河電気工業を、AIデータセンターの光配線と電力インフラの双方に製品接点を持ち、通信量と電力需要の増加に接続する企業と位置付ける。",
+      "evidenceIds": [
+        "furukawa-electric-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "furukawa-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "furukawa-electric-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "古河電気工業は、Optical fiber and cable、Datacenter optical connectivity、Power cables and systemsを提供する。",
+      "evidenceIds": [
+        "furukawa-electric-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "furukawa-electric"
+    },
+    {
+      "id": "furukawa-electric-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Optical fiber and cable、Datacenter optical connectivity、Power cables and systemsという製品構成を、optical fiber、data center cable、power cableに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "furukawa-electric-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "furukawa-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "furukawa-electric-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Network & Opticalの供給層",
+      "statement": "Atlasでは古河電気工業を「Network & Optical」に位置し、AIデータセンターの光配線と電力インフラの双方に製品接点を持ち、通信量と電力需要の増加に接続する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "furukawa-electric-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "furukawa-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "furukawa-electric-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、光ファイバ・光ケーブルの材料から配線までの技術基盤、通信と電力の双方を持つ事業ポートフォリオ、データセンター向け高密度光配線への展開を、古河電気工業の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "furukawa-electric-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "furukawa-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "furukawa-electric-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、光通信・電力設備投資の変動、原材料価格と為替の影響、フジクラ・住友電工など国内外競合とのシェア競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "furukawa-electric-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "furukawa-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "globalfoundries-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "GlobalFoundries（グローバルファウンドリーズ）は、特殊・成熟プロセスを中心に世界各地で半導体受託製造を行う。",
+      "evidenceIds": [
+        "globalfoundries-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "globalfoundries"
+    },
+    {
+      "id": "globalfoundries-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではGlobalFoundries（グローバルファウンドリーズ）を、AIインフラ周辺の接続、電源、RF、シリコンフォトニクス向け半導体製造を担う企業と位置付ける。",
+      "evidenceIds": [
+        "globalfoundries-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "globalfoundries",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "globalfoundries-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "GlobalFoundries（グローバルファウンドリーズ）は、特殊プロセスの半導体受託製造、シリコンフォトニクス製造、先端パッケージ関連サービスを提供する。",
+      "evidenceIds": [
+        "globalfoundries-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "globalfoundries"
+    },
+    {
+      "id": "globalfoundries-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、特殊プロセスの半導体受託製造、シリコンフォトニクス製造、先端パッケージ関連サービスという製品構成を、ファウンドリ、特殊プロセス、シリコンフォトニクスに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "globalfoundries-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "globalfoundries",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "globalfoundries-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Foundry & Logic Manufacturingの供給層",
+      "statement": "AtlasではGlobalFoundries（グローバルファウンドリーズ）を「Foundry & Logic Manufacturing」に位置し、AIインフラ周辺の接続、電源、RF、シリコンフォトニクス向け半導体製造を担う役割を担う企業と整理する。",
+      "evidenceIds": [
+        "globalfoundries-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "globalfoundries",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "globalfoundries-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、米欧亜にまたがる製造拠点、特殊プロセスの長期供給、シリコンフォトニクス等の差別化技術を、GlobalFoundries（グローバルファウンドリーズ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "globalfoundries-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "globalfoundries",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "globalfoundries-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、先端ロジックでの競争範囲の制約、高い固定費、顧客需要変動を主要な確認点として整理する。",
+      "evidenceIds": [
+        "globalfoundries-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "globalfoundries",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "intel-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Intel（インテル）は、CPUを中核に、データセンター向け計算半導体と半導体受託製造の両方を展開する。",
+      "evidenceIds": [
+        "intel-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "intel"
+    },
+    {
+      "id": "intel-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではIntel（インテル）を、Xeon系CPU、AI向け計算製品、Intel Foundryを通じてAIサーバーと先端製造の双方に関与する企業と位置付ける。",
+      "evidenceIds": [
+        "intel-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "intel",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "intel-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Intel（インテル）は、Xeon server CPUs、AI accelerators、Foundry servicesを提供する。",
+      "evidenceIds": [
+        "intel-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "intel"
+    },
+    {
+      "id": "intel-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Xeon server CPUs、AI accelerators、Foundry servicesという製品構成を、CPU、GPU、foundryに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "intel-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "intel",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "intel-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Compute & Siliconの供給層",
+      "statement": "AtlasではIntel（インテル）を「Compute & Silicon」に位置し、Xeon系CPU、AI向け計算製品、Intel Foundryを通じてAIサーバーと先端製造の双方に関与する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "intel-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "intel",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "intel-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、CPUの大規模な導入基盤、設計と製造を併せ持つ事業構造、先端パッケージを含む製造技術を、Intel（インテル）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "intel-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "intel",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "intel-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、先端プロセス立ち上げの実行リスク、AMD・Arm系CPUとの競争、巨額設備投資とファウンドリ稼働率を主要な確認点として整理する。",
+      "evidenceIds": [
+        "intel-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "intel",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "kokusai-electric-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "KOKUSAI ELECTRIC（国際電気）は、バッチ式熱処理・成膜装置を中核とする日本の半導体製造装置メーカー。",
+      "evidenceIds": [
+        "kokusai-electric-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kokusai-electric"
+    },
+    {
+      "id": "kokusai-electric-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではKOKUSAI ELECTRIC（国際電気）を、DRAM、NAND、先端ロジックの成膜・熱処理工程を通じ、メモリとAI半導体の設備投資に接続する企業と位置付ける。",
+      "evidenceIds": [
+        "kokusai-electric-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kokusai-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "kokusai-electric-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "KOKUSAI ELECTRIC（国際電気）は、Batch thermal processing systems、Deposition systems、Treatment systemsを提供する。",
+      "evidenceIds": [
+        "kokusai-electric-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kokusai-electric"
+    },
+    {
+      "id": "kokusai-electric-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Batch thermal processing systems、Deposition systems、Treatment systemsという製品構成を、deposition、batch furnace、thermal processingに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "kokusai-electric-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kokusai-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "kokusai-electric-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Wafer Fab Equipmentの供給層",
+      "statement": "AtlasではKOKUSAI ELECTRIC（国際電気）を「Wafer Fab Equipment」に位置し、DRAM、NAND、先端ロジックの成膜・熱処理工程を通じ、メモリとAI半導体の設備投資に接続する役割を担う企業と整理する。",
+      "evidenceIds": [
+        "kokusai-electric-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kokusai-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "kokusai-electric-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、バッチ式熱処理装置の工程ノウハウ、メモリ量産工程との深い接点、成膜・熱処理を中心とした専門性を、KOKUSAI ELECTRIC（国際電気）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "kokusai-electric-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kokusai-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "kokusai-electric-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、メモリ設備投資サイクル、顧客集中、成膜・熱処理工程での競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "kokusai-electric-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "kokusai-electric",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "lam-research-overview",
+      "category": "company-overview",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "事業の概要",
+      "statement": "Lam Research（ラムリサーチ）は、エッチング・成膜などを中核とする半導体製造装置メーカー。",
+      "evidenceIds": [
+        "lam-research-overview-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-29",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lam-research"
+    },
+    {
+      "id": "lam-research-ai-role",
+      "category": "ai-infrastructure-role",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "AIインフラでの役割",
+      "statement": "AtlasではLam Research（ラムリサーチ）を、3D NAND・DRAM/HBM・先端ロジックの高アスペクト比工程や積層化の恩恵を受けやすい企業と位置付ける。",
+      "evidenceIds": [
+        "lam-research-ai-role-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-29",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lam-research",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "lam-research-products",
+      "category": "products",
+      "claimType": "fact",
+      "priority": "P1",
+      "title": "主要製品・サービス",
+      "statement": "Lam Research（ラムリサーチ）は、Etch、Deposition、Wafer cleaning related systemsを提供する。",
+      "evidenceIds": [
+        "lam-research-products-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-29",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lam-research"
+    },
+    {
+      "id": "lam-research-technology",
+      "category": "technology",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "製品を支える技術領域",
+      "statement": "Atlasでは、Etch、Deposition、Wafer cleaning related systemsという製品構成を、etch、deposition、memory equipmentに関わる技術基盤として整理する。",
+      "evidenceIds": [
+        "lam-research-technology-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-29",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lam-research",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "lam-research-value-chain",
+      "category": "value-chain-position",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "Wafer Fab Equipmentの供給層",
+      "statement": "AtlasではLam Research（ラムリサーチ）を「Wafer Fab Equipment」に位置し、3D NAND・DRAM/HBM・先端ロジックの高アスペクト比工程や積層化の恩恵を受けやすい役割を担う企業と整理する。",
+      "evidenceIds": [
+        "lam-research-value-chain-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-29",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lam-research",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "lam-research-positioning",
+      "category": "competitive-positioning",
+      "claimType": "atlas-analysis",
+      "priority": "P1",
+      "title": "競争上の特徴",
+      "statement": "Atlasでは、高難度エッチング工程、メモリ工程への強い露出、高い設置ベースを、Lam Research（ラムリサーチ）の競争上の重要な特徴として整理する。",
+      "evidenceIds": [
+        "lam-research-positioning-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-29",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lam-research",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    },
+    {
+      "id": "lam-research-risks",
+      "category": "risks",
+      "claimType": "atlas-analysis",
+      "priority": "P2",
+      "title": "主要な確認点",
+      "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、メモリWFEの変動、輸出規制、工程シェア競争を主要な確認点として整理する。",
+      "evidenceIds": [
+        "lam-research-risks-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-06-29",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "lam-research",
+      "confidence": "medium",
+      "notes": "一次資料の事業、製品、用途またはリスク開示と既存Atlas分類を入力にした分析。会社見解や検証済みFactとして扱わない。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "broadcom-overview-e1",
+      "claimId": "broadcom-overview",
+      "sourceId": "sec-broadcom-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "semiconductor and semiconductor-based solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "broadcom-ai-role-e1",
+      "claimId": "broadcom-ai-role",
+      "sourceId": "sec-broadcom-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Semiconductor Solutions",
+        "quotedLabel": "AI networking and connectivity"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "broadcom-products-e1",
+      "claimId": "broadcom-products",
+      "sourceId": "sec-broadcom-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Semiconductor Solutions",
+        "quotedLabel": "AI networking and connectivity"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "broadcom-technology-e1",
+      "claimId": "broadcom-technology",
+      "sourceId": "sec-broadcom-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Semiconductor Solutions",
+        "quotedLabel": "AI networking and connectivity"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "broadcom-value-chain-e1",
+      "claimId": "broadcom-value-chain",
+      "sourceId": "sec-broadcom-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Semiconductor Solutions",
+        "quotedLabel": "AI networking and connectivity"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "broadcom-positioning-e1",
+      "claimId": "broadcom-positioning",
+      "sourceId": "sec-broadcom-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "compete"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "broadcom-risks-e1",
+      "claimId": "broadcom-risks",
+      "sourceId": "sec-broadcom-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "customer concentration"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-overview-e1",
+      "claimId": "carrier-overview",
+      "sourceId": "sec-carrier-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "General",
+        "quotedLabel": "intelligent climate and energy solutions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-ai-role-e1",
+      "claimId": "carrier-ai-role",
+      "sourceId": "sec-carrier-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "HVAC",
+        "quotedLabel": "Carrier QuantumLeap"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-products-e1",
+      "claimId": "carrier-products",
+      "sourceId": "sec-carrier-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "HVAC",
+        "quotedLabel": "Carrier QuantumLeap"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-technology-e1",
+      "claimId": "carrier-technology",
+      "sourceId": "sec-carrier-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "HVAC",
+        "quotedLabel": "Carrier QuantumLeap"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-value-chain-e1",
+      "claimId": "carrier-value-chain",
+      "sourceId": "sec-carrier-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "HVAC",
+        "quotedLabel": "Carrier QuantumLeap"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-positioning-e1",
+      "claimId": "carrier-positioning",
+      "sourceId": "sec-carrier-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "compete"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-risks-e1",
+      "claimId": "carrier-risks",
+      "sourceId": "sec-carrier-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "construction activity"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ciena-overview-e1",
+      "claimId": "ciena-overview",
+      "sourceId": "sec-ciena-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "networking systems, services and software"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ciena-ai-role-e1",
+      "claimId": "ciena-ai-role",
+      "sourceId": "sec-ciena-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Converged Packet Optical",
+        "quotedLabel": "WaveLogic"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ciena-products-e1",
+      "claimId": "ciena-products",
+      "sourceId": "sec-ciena-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Converged Packet Optical",
+        "quotedLabel": "WaveLogic"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ciena-technology-e1",
+      "claimId": "ciena-technology",
+      "sourceId": "sec-ciena-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Converged Packet Optical",
+        "quotedLabel": "WaveLogic"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ciena-value-chain-e1",
+      "claimId": "ciena-value-chain",
+      "sourceId": "sec-ciena-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Converged Packet Optical",
+        "quotedLabel": "WaveLogic"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ciena-positioning-e1",
+      "claimId": "ciena-positioning",
+      "sourceId": "sec-ciena-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "competition"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ciena-risks-e1",
+      "claimId": "ciena-risks",
+      "sourceId": "sec-ciena-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "customer concentration"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cisco-overview-e1",
+      "claimId": "cisco-overview",
+      "sourceId": "sec-cisco-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Overview",
+        "quotedLabel": "networking"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cisco-ai-role-e1",
+      "claimId": "cisco-ai-role",
+      "sourceId": "sec-cisco-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking",
+        "quotedLabel": "Silicon One"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cisco-products-e1",
+      "claimId": "cisco-products",
+      "sourceId": "sec-cisco-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking",
+        "quotedLabel": "Silicon One"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cisco-technology-e1",
+      "claimId": "cisco-technology",
+      "sourceId": "sec-cisco-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking",
+        "quotedLabel": "Silicon One"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cisco-value-chain-e1",
+      "claimId": "cisco-value-chain",
+      "sourceId": "sec-cisco-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking",
+        "quotedLabel": "Silicon One"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cisco-positioning-e1",
+      "claimId": "cisco-positioning",
+      "sourceId": "sec-cisco-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "competitive"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cisco-risks-e1",
+      "claimId": "cisco-risks",
+      "sourceId": "sec-cisco-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "competition"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-overview-e1",
+      "claimId": "coherent-overview",
+      "sourceId": "sec-coherent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "The Company",
+        "quotedLabel": "materials, networking and lasers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-ai-role-e1",
+      "claimId": "coherent-ai-role",
+      "sourceId": "sec-coherent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking",
+        "quotedLabel": "datacenter communications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-products-e1",
+      "claimId": "coherent-products",
+      "sourceId": "sec-coherent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking",
+        "quotedLabel": "datacenter communications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-technology-e1",
+      "claimId": "coherent-technology",
+      "sourceId": "sec-coherent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking",
+        "quotedLabel": "datacenter communications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-value-chain-e1",
+      "claimId": "coherent-value-chain",
+      "sourceId": "sec-coherent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Networking",
+        "quotedLabel": "datacenter communications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-positioning-e1",
+      "claimId": "coherent-positioning",
+      "sourceId": "sec-coherent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "competitive"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-risks-e1",
+      "claimId": "coherent-risks",
+      "sourceId": "sec-coherent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "customer concentration"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "furukawa-electric-overview-e1",
+      "claimId": "furukawa-electric-overview",
+      "sourceId": "annual-furukawa-electric-fy2026",
+      "support": "supports",
+      "locator": {
+        "page": "54-63",
+        "section": "Business Overview",
+        "heading": "Results of Operations",
+        "quotedLabel": "Infrastructure"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "furukawa-electric-ai-role-e1",
+      "claimId": "furukawa-electric-ai-role",
+      "sourceId": "annual-furukawa-electric-fy2026",
+      "support": "supports",
+      "locator": {
+        "page": "183",
+        "section": "Segment information",
+        "heading": "Infrastructure",
+        "quotedLabel": "Optical fibers, optical fiber cables"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "furukawa-electric-products-e1",
+      "claimId": "furukawa-electric-products",
+      "sourceId": "annual-furukawa-electric-fy2026",
+      "support": "supports",
+      "locator": {
+        "page": "183",
+        "section": "Segment information",
+        "heading": "Infrastructure",
+        "quotedLabel": "Optical fibers, optical fiber cables"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "furukawa-electric-technology-e1",
+      "claimId": "furukawa-electric-technology",
+      "sourceId": "annual-furukawa-electric-fy2026",
+      "support": "supports",
+      "locator": {
+        "page": "183",
+        "section": "Segment information",
+        "heading": "Infrastructure",
+        "quotedLabel": "Optical fibers, optical fiber cables"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "furukawa-electric-value-chain-e1",
+      "claimId": "furukawa-electric-value-chain",
+      "sourceId": "annual-furukawa-electric-fy2026",
+      "support": "supports",
+      "locator": {
+        "page": "183",
+        "section": "Segment information",
+        "heading": "Infrastructure",
+        "quotedLabel": "Optical fibers, optical fiber cables"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "furukawa-electric-positioning-e1",
+      "claimId": "furukawa-electric-positioning",
+      "sourceId": "annual-furukawa-electric-fy2026",
+      "support": "supports",
+      "locator": {
+        "page": "17",
+        "section": "Management Policy",
+        "heading": "Business portfolio",
+        "quotedLabel": "optical fiber and cable business"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "furukawa-electric-risks-e1",
+      "claimId": "furukawa-electric-risks",
+      "sourceId": "annual-furukawa-electric-fy2026",
+      "support": "supports",
+      "locator": {
+        "page": "30-35",
+        "section": "Business-related risks",
+        "heading": "Risks and opportunities",
+        "quotedLabel": "supply chain disruption"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "globalfoundries-overview-e1",
+      "claimId": "globalfoundries-overview",
+      "sourceId": "sec-globalfoundries-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Business Overview",
+        "quotedLabel": "specialty foundry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "globalfoundries-ai-role-e1",
+      "claimId": "globalfoundries-ai-role",
+      "sourceId": "sec-globalfoundries-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Technology Portfolio",
+        "quotedLabel": "silicon photonics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "globalfoundries-products-e1",
+      "claimId": "globalfoundries-products",
+      "sourceId": "sec-globalfoundries-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Technology Portfolio",
+        "quotedLabel": "silicon photonics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "globalfoundries-technology-e1",
+      "claimId": "globalfoundries-technology",
+      "sourceId": "sec-globalfoundries-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Technology Portfolio",
+        "quotedLabel": "silicon photonics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "globalfoundries-value-chain-e1",
+      "claimId": "globalfoundries-value-chain",
+      "sourceId": "sec-globalfoundries-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Technology Portfolio",
+        "quotedLabel": "silicon photonics"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "globalfoundries-positioning-e1",
+      "claimId": "globalfoundries-positioning",
+      "sourceId": "sec-globalfoundries-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Competition",
+        "quotedLabel": "compete"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "globalfoundries-risks-e1",
+      "claimId": "globalfoundries-risks",
+      "sourceId": "sec-globalfoundries-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 3.D. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "capital intensive"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "intel-overview-e1",
+      "claimId": "intel-overview",
+      "sourceId": "sec-intel-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Our Business",
+        "quotedLabel": "Intel Products and Intel Foundry"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "intel-ai-role-e1",
+      "claimId": "intel-ai-role",
+      "sourceId": "sec-intel-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Intel Products",
+        "quotedLabel": "Xeon"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "intel-products-e1",
+      "claimId": "intel-products",
+      "sourceId": "sec-intel-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Intel Products",
+        "quotedLabel": "Xeon"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "intel-technology-e1",
+      "claimId": "intel-technology",
+      "sourceId": "sec-intel-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Intel Products",
+        "quotedLabel": "Xeon"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "intel-value-chain-e1",
+      "claimId": "intel-value-chain",
+      "sourceId": "sec-intel-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Intel Products",
+        "quotedLabel": "Xeon"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "intel-positioning-e1",
+      "claimId": "intel-positioning",
+      "sourceId": "sec-intel-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "competitive"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "intel-risks-e1",
+      "claimId": "intel-risks",
+      "sourceId": "sec-intel-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "manufacturing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kokusai-electric-overview-e1",
+      "claimId": "kokusai-electric-overview",
+      "sourceId": "integrated-kokusai-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "5-6",
+        "section": "At a Glance",
+        "heading": "Semiconductor manufacturing equipment",
+        "quotedLabel": "semiconductor manufacturing equipment business"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kokusai-electric-ai-role-e1",
+      "claimId": "kokusai-electric-ai-role",
+      "sourceId": "integrated-kokusai-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "20-22",
+        "section": "Business Strategy",
+        "heading": "Deposition and treatment equipment",
+        "quotedLabel": "deposition, treatment, oxidation, diffusion, and annealing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kokusai-electric-products-e1",
+      "claimId": "kokusai-electric-products",
+      "sourceId": "integrated-kokusai-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "20-22",
+        "section": "Business Strategy",
+        "heading": "Deposition and treatment equipment",
+        "quotedLabel": "deposition, treatment, oxidation, diffusion, and annealing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kokusai-electric-technology-e1",
+      "claimId": "kokusai-electric-technology",
+      "sourceId": "integrated-kokusai-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "20-22",
+        "section": "Business Strategy",
+        "heading": "Deposition and treatment equipment",
+        "quotedLabel": "deposition, treatment, oxidation, diffusion, and annealing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kokusai-electric-value-chain-e1",
+      "claimId": "kokusai-electric-value-chain",
+      "sourceId": "integrated-kokusai-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "20-22",
+        "section": "Business Strategy",
+        "heading": "Deposition and treatment equipment",
+        "quotedLabel": "deposition, treatment, oxidation, diffusion, and annealing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kokusai-electric-positioning-e1",
+      "claimId": "kokusai-electric-positioning",
+      "sourceId": "integrated-kokusai-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "20-22",
+        "section": "Business Strategy",
+        "heading": "Competitive advantages",
+        "quotedLabel": "batch processing"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "kokusai-electric-risks-e1",
+      "claimId": "kokusai-electric-risks",
+      "sourceId": "integrated-kokusai-electric-2025",
+      "support": "supports",
+      "locator": {
+        "page": "20-22",
+        "section": "Business Strategy",
+        "heading": "Business environment",
+        "quotedLabel": "semiconductor market"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lam-research-overview-e1",
+      "claimId": "lam-research-overview",
+      "sourceId": "sec-lam-research-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "4",
+        "section": "Item 1. Business",
+        "heading": "Business",
+        "quotedLabel": "wafer fabrication equipment and services"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lam-research-ai-role-e1",
+      "claimId": "lam-research-ai-role",
+      "sourceId": "sec-lam-research-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lam-research-products-e1",
+      "claimId": "lam-research-products",
+      "sourceId": "sec-lam-research-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lam-research-technology-e1",
+      "claimId": "lam-research-technology",
+      "sourceId": "sec-lam-research-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lam-research-value-chain-e1",
+      "claimId": "lam-research-value-chain",
+      "sourceId": "sec-lam-research-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lam-research-positioning-e1",
+      "claimId": "lam-research-positioning",
+      "sourceId": "sec-lam-research-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "10-11",
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "compete"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "lam-research-risks-e1",
+      "claimId": "lam-research-risks",
+      "sourceId": "sec-lam-research-2025-10k",
+      "support": "supports",
+      "locator": {
+        "page": "13-27",
+        "section": "Item 1A. Risk Factors",
+        "heading": "Risk Factors",
+        "quotedLabel": "semiconductor capital equipment industry"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": [
+    {
+      "companyId": "broadcom",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "broadcom",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "broadcom",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "broadcom",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "broadcom",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "broadcom",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "broadcom",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "broadcom",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "broadcom",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "broadcom",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "broadcom",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "carrier",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "carrier",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "carrier",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "carrier",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "carrier",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "carrier",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "carrier",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "carrier",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "carrier",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "carrier",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "carrier",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "ciena",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "ciena",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "ciena",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "ciena",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "ciena",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "ciena",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "ciena",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "ciena",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "ciena",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "ciena",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "ciena",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cisco",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cisco",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cisco",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cisco",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cisco",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cisco",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "cisco",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "cisco",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "cisco",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "cisco",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "cisco",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "coherent",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "coherent",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "coherent",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "coherent",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "coherent",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "coherent",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "coherent",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "coherent",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "coherent",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "coherent",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "coherent",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "furukawa-electric",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "globalfoundries",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "intel",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "intel",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "intel",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "intel",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "intel",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "intel",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "intel",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "intel",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "intel",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "intel",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "intel",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "kokusai-electric",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "company-overview",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "ai-infrastructure-role",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "products",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "technology",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "value-chain-position",
+      "collectionStatus": "complete",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "manufacturing-facilities",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "capacity-expansion",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "customer-end-market",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "competitive-positioning",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "strategy",
+      "collectionStatus": "not-started",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "missingStatus": "not-collected",
+      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+    },
+    {
+      "companyId": "lam-research",
+      "category": "risks",
+      "collectionStatus": "partial",
+      "lastReviewed": "2026-09-01",
+      "nextReview": "2027-06-30"
+    }
+  ]
+}
