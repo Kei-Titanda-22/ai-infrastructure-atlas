@@ -1,0 +1,147 @@
+/* Full-site Visual Rollout v0.1.
+   Scope: previously partial or unopted route families only. */
+
+.global-visual-methodology .section,
+.global-visual-glossary .section,
+.global-visual-financial-updates .section {
+  padding-top: 25px;
+}
+
+.global-visual-methodology .company-section {
+  padding: 22px 0 27px;
+}
+
+.global-visual-methodology .company-section:first-child {
+  padding-top: 0;
+}
+
+.global-visual-methodology .table-scroll,
+.global-visual-financial-updates .financial-ledger-table-wrap {
+  background: transparent;
+  border-right: 0;
+  border-left: 0;
+}
+
+.global-visual-methodology .method-grid,
+.global-visual-glossary.method-grid {
+  background: transparent;
+}
+
+.global-visual-methodology .method-card,
+.global-visual-glossary .method-card {
+  padding: 14px 0 15px;
+}
+
+.global-visual-methodology .method-card p,
+.global-visual-glossary .method-card p {
+  max-width: min(100%, 900px);
+  margin-bottom: 8px;
+}
+
+.global-visual-financial-updates .financial-ledger-toolbar {
+  padding: 12px 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--visual-rule);
+  border-bottom: 1px solid var(--visual-rule);
+}
+
+.global-visual-financial-updates .financial-ledger-toolbar label {
+  color: var(--text);
+}
+
+.global-visual-financial-updates .financial-ledger-summary strong,
+.global-visual-financial-updates .financial-ledger-table .mono {
+  font-variant-numeric: tabular-nums;
+}
+
+.global-visual-financial-updates .financial-ledger-table th,
+.global-visual-financial-updates .financial-ledger-table td {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.global-visual-company-legacy .company-hero {
+  gap: 30px;
+  padding-top: 23px;
+  padding-bottom: 19px;
+}
+
+.global-visual-company-legacy .company-title-line h1 {
+  font-size: clamp(30px, 3.5vw, 42px);
+}
+
+.global-visual-company-legacy .company-hero .tag-links {
+  margin-top: 7px;
+}
+
+.global-visual-company-legacy .company-hero .tag-link {
+  color: #345774;
+  text-decoration: none;
+}
+
+.global-visual-company-legacy .company-hero .tag-link:hover,
+.global-visual-company-legacy .company-hero .tag-link:focus-visible {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.global-visual-company-legacy .company-section {
+  padding-top: 23px;
+  padding-bottom: 27px;
+}
+
+.global-visual-company-legacy .company-section h2 {
+  margin-bottom: 13px;
+  padding-left: 0;
+  border-left: 0;
+}
+
+.global-visual-company-legacy .section-classification,
+.global-visual-company-legacy .company-sidebar h3,
+.global-visual-company-legacy .toc-title {
+  color: var(--text);
+}
+
+.global-visual-company-legacy .product-row {
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+
+.global-visual-company-legacy .source-row {
+  grid-template-columns: 80px minmax(0, 1fr) 110px;
+}
+
+@media (max-width: 1199px) {
+  .global-visual-company-legacy .company-sidebar {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 820px) {
+  .global-visual-methodology .company-section,
+  .global-visual-company-legacy .company-section {
+    padding-top: 19px;
+    padding-bottom: 22px;
+  }
+
+  .global-visual-financial-updates .financial-ledger-toolbar {
+    gap: 9px;
+  }
+}
+
+@media (max-width: 620px) {
+  .global-visual-company-legacy .company-hero {
+    padding-top: 17px;
+    padding-bottom: 15px;
+  }
+
+  .global-visual-company-legacy .company-title-line h1 {
+    font-size: clamp(28px, 9vw, 36px);
+  }
+
+  .global-visual-company-legacy .source-row {
+    grid-template-columns: 1fr;
+    gap: 3px;
+  }
+}
