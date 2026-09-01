@@ -1,0 +1,92 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "applied-materials-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "foundry・logic・memoryの設備投資需要",
+      "statement": "Applied Materialsのsemiconductor equipment顧客はfoundry、logic、memoryなどのchip marketsで事業を行い、その設備投資需要はsmartphone、PC、AI・data center server、automobile、clean energy、storageなどの最終需要に左右される。",
+      "evidenceIds": [
+        "applied-materials-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-10-26",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "applied-materials"
+    },
+    {
+      "id": "fujikura-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "hyperscale data center向け光配線",
+      "statement": "フジクラはhyperscale data center向けに13,824心SWR/WTCと関連成端部材を展開し、海外data centerへ納入して敷設を完了したと開示している。",
+      "evidenceIds": [
+        "fujikura-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-07-18",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "fujikura"
+    },
+    {
+      "id": "nvidia-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "cloud・AI開発・enterpriseの顧客層",
+      "statement": "NVIDIAのdata center顧客にはpublic・private cloud providers、AI model makers、enterprises、startups、public sector entitiesが含まれ、OEM、ODM、system integrator、distributorなどを通じて製品を市場へ提供している。",
+      "evidenceIds": [
+        "nvidia-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-01-25",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvidia"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "applied-materials-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "applied-materials-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-applied-materials-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 7. Management’s Discussion and Analysis",
+        "heading": "Semiconductor Systems — Industry Environment",
+        "quotedLabel": "foundry, logic, memory / smartphones / PCs / servers for AI and data centers / automobiles / storage"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "fujikura-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "fujikura-customer-end-market-triage-remediation-v02",
+      "sourceId": "official-fujikura-13824-swr-wtc-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Press release",
+        "heading": "World-first 13,824-fiber SWR/WTC sales launch",
+        "quotedLabel": "hyperscale data center / delivered overseas / laying work completed"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvidia-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "nvidia-customer-end-market-triage-remediation-v02",
+      "sourceId": "filing-nvidia-2026-02-25-fy2026-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Our Markets — Data Center",
+        "quotedLabel": "public and private cloud providers / AI model makers / enterprises and startups / public sector / OEMs / ODMs / system integrators / distributors"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": []
+}

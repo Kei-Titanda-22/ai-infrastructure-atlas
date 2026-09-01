@@ -2,7 +2,7 @@
   "schemaVersion": "0.1",
   "generatedAt": "2026-09-01T00:00:00Z",
   "dataAsOf": "2026-09-01",
-  "inputDigest": "sha256:55d054d3aa7d6f903f56653fa46c2706ac9ef4d6cb8e89a052ec123b3595d401",
+  "inputDigest": "sha256:d84d383aa477db70c627e557d3bf465fefab393ba7fdccc57fea307aee417fb3",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 226
+    "inputFileCount": 228
   },
   "summary": {
     "coverage": {
@@ -38,7 +38,7 @@
     "missingStatus": {
       "not-collected": 31,
       "primary-source-unchecked": 1,
-      "not-disclosed": 4,
+      "not-disclosed": 0,
       "not-applicable": 9
     },
     "maturity": {
@@ -50,10 +50,10 @@
     },
     "evidenceMaturityDimensions": {
       "companyLevelSourceCompanies": 100,
-      "directCategorySourcePairs": 1055,
-      "claimEvidenceBindingPairs": 1055,
-      "structuredLocatorPairs": 1055,
-      "freezeReadyPairs": 1055
+      "directCategorySourcePairs": 1058,
+      "claimEvidenceBindingPairs": 1058,
+      "structuredLocatorPairs": 1058,
+      "freezeReadyPairs": 1058
     },
     "fieldLevelLegacy": {
       "summary": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 368,
-      "uniqueSourceCount": 366,
+      "registryRecordCount": 369,
+      "uniqueSourceCount": 367,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -132,20 +132,20 @@
       "financialSourceResolved": 124
     },
     "locatorAudit": {
-      "bindingCount": 1058,
-      "validLocatorCount": 1058,
+      "bindingCount": 1061,
+      "validLocatorCount": 1061,
       "missingLocatorCount": 0,
       "missingLocatorBindingIds": [],
       "invalidLocatorCount": 0,
       "invalidLocators": [],
       "fieldUsage": {
         "page": 230,
-        "section": 1009,
-        "heading": 1043,
+        "section": 1012,
+        "heading": 1046,
         "table": 2,
         "note": 0,
         "anchor": 0,
-        "quotedLabel": 1030
+        "quotedLabel": 1033
       }
     },
     "priorityBands": {
@@ -250,8 +250,8 @@
       "completeCompanies": 0,
       "partialCompanies": 100,
       "notStartedCompanies": 0,
-      "directSourceCompanies": 96,
-      "claimEvidenceCompanies": 96,
+      "directSourceCompanies": 99,
+      "claimEvidenceCompanies": 99,
       "migrationCandidateCompanies": 0
     },
     {
@@ -441,8 +441,8 @@
       "completeCompanies": 0,
       "partialCompanies": 100,
       "notStartedCompanies": 0,
-      "directSourceCompanies": 96,
-      "claimEvidenceCompanies": 96,
+      "directSourceCompanies": 99,
+      "claimEvidenceCompanies": 99,
       "migrationCandidateCompanies": 0
     },
     {
@@ -2864,11 +2864,11 @@
       "resolvedSourceCount": 2,
       "registrySourceCount": 6,
       "financialSourceCount": 1,
-      "claimCount": 10,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 10,
-      "locatorCount": 10,
-      "directCategorySourcePairCount": 10,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
@@ -2994,16 +2994,18 @@
         {
           "category": "customer-end-market",
           "collectionStatus": "partial",
-          "missingStatus": "not-disclosed",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-applied-materials-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "用途市場は確認済み。個別顧客関係は非開示。"
+          "freezeSchemaReady": true,
+          "notes": "Triage Validation v0.2 remediationでfoundry・logic・memoryの顧客市場とAI/data center等のend marketをSource-linked Claim化。個別顧客名は推測しない。"
         },
         {
           "category": "competitive-positioning",
@@ -10275,13 +10277,13 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 7,
+      "registrySourceCount": 8,
       "financialSourceCount": 2,
-      "claimCount": 10,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 10,
-      "locatorCount": 10,
-      "directCategorySourcePairCount": 10,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
@@ -10408,16 +10410,18 @@
         {
           "category": "customer-end-market",
           "collectionStatus": "partial",
-          "missingStatus": "not-disclosed",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "official-fujikura-13824-swr-wtc-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "国内data center用途は開示。顧客名と採用量は非開示。"
+          "freezeSchemaReady": true,
+          "notes": "Triage Validation v0.2 remediationでhyperscale data center向けの公式納入開示をSource-linked Claim化。個別顧客名は推測しない。"
         },
         {
           "category": "competitive-positioning",
@@ -10531,7 +10535,7 @@
         "resolvedSourceIds": [
           "ir-fujikura"
         ],
-        "registrySourceCount": 7,
+        "registrySourceCount": 8,
         "financialSourceIds": [
           "jpx-fujikura-fy2026-financial-results",
           "product-fujikura-2026-03-09-4000-fiber-swr-wtc"
@@ -19105,11 +19109,11 @@
       "resolvedSourceCount": 4,
       "registrySourceCount": 6,
       "financialSourceCount": 3,
-      "claimCount": 8,
+      "claimCount": 9,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 8,
-      "locatorCount": 8,
-      "directCategorySourcePairCount": 8,
+      "evidenceBindingCount": 9,
+      "locatorCount": 9,
+      "directCategorySourcePairCount": 9,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
@@ -19232,16 +19236,18 @@
         {
           "category": "customer-end-market",
           "collectionStatus": "partial",
-          "missingStatus": "not-disclosed",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "filing-nvidia-2026-02-25-fy2026-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "用途は開示されるが個別関係は限定開示。"
+          "freezeSchemaReady": true,
+          "notes": "Triage Validation v0.2 remediationでcloud provider、AI model maker、enterprise等の顧客層をSource-linked Claim化。個別顧客名は推測しない。"
         },
         {
           "category": "competitive-positioning",
@@ -27512,7 +27518,7 @@
         {
           "category": "customer-end-market",
           "collectionStatus": "partial",
-          "missingStatus": "not-disclosed",
+          "missingStatus": null,
           "directSourceCount": 1,
           "directSourceIds": [
             "corporate-tsmc-about-2026"
@@ -27523,7 +27529,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": true,
-          "notes": "end marketと顧客数は開示。個別顧客名は本claimで扱わない。"
+          "notes": "既存Source-linked Claimが顧客数とHPC、smartphone、IoT、automotive等のend marketをCoverage。個別顧客名は本Categoryの必須条件としない。"
         },
         {
           "category": "competitive-positioning",

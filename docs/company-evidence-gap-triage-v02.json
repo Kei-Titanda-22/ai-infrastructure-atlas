@@ -4,8 +4,8 @@
   "baselineMain": "854f20bdc808323766f085f0c419d923753b93f5",
   "supersedes": "docs/company-evidence-gap-triage-v01.json",
   "reviewedAt": "2026-09-01",
-  "semanticDecisionDigest": "sha256:1d234c39299558b18052609d11a2139ff59e3a4e5c63476b2ba6611e1ecd3939",
-  "coverageInputDigest": "sha256:55d054d3aa7d6f903f56653fa46c2706ac9ef4d6cb8e89a052ec123b3595d401",
+  "semanticDecisionDigest": "sha256:eb7b7fdbfa620db5dd935019d999e3ffe77568772e84f0e7d380e6d30e20ed25",
+  "coverageInputDigest": "sha256:d84d383aa477db70c627e557d3bf465fefab393ba7fdccc57fea307aee417fb3",
   "coverageBaseline": {
     "complete": 321,
     "partial": 451,
@@ -30,27 +30,27 @@
     }
   },
   "semanticDecisionDistribution": {
-    "ACTIONABLE": 288,
-    "SUFFICIENT_PARTIAL": 446,
-    "NOT_DISCLOSED": 4,
+    "ACTIONABLE": 291,
+    "SUFFICIENT_PARTIAL": 447,
+    "NOT_DISCLOSED": 0,
     "NOT_APPLICABLE": 30,
     "DEFERRED": 11,
     "REVIEW_REQUIRED": 0
   },
   "currentDistribution": {
     "ACTIONABLE": 0,
-    "SUFFICIENT_PARTIAL": 734,
-    "NOT_DISCLOSED": 4,
+    "SUFFICIENT_PARTIAL": 738,
+    "NOT_DISCLOSED": 0,
     "NOT_APPLICABLE": 30,
     "DEFERRED": 11,
     "REVIEW_REQUIRED": 0
   },
   "actionable": {
-    "reviewedRecords": 288,
+    "reviewedRecords": 291,
     "reviewedCompanies": 88,
     "pendingRecords": 0,
     "pendingCompanies": 0,
-    "completedRecords": 288,
+    "completedRecords": 291,
     "completedCompanies": 88
   },
   "categorySummary": [
@@ -107,8 +107,8 @@
       "total": 100,
       "distribution": {
         "ACTIONABLE": 0,
-        "SUFFICIENT_PARTIAL": 96,
-        "NOT_DISCLOSED": 4,
+        "SUFFICIENT_PARTIAL": 100,
+        "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
         "REVIEW_REQUIRED": 0
@@ -265,8 +265,8 @@
       "total": 7,
       "distribution": {
         "ACTIONABLE": 0,
-        "SUFFICIENT_PARTIAL": 6,
-        "NOT_DISCLOSED": 1,
+        "SUFFICIENT_PARTIAL": 7,
+        "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
         "REVIEW_REQUIRED": 0
@@ -577,8 +577,8 @@
       "total": 7,
       "distribution": {
         "ACTIONABLE": 0,
-        "SUFFICIENT_PARTIAL": 6,
-        "NOT_DISCLOSED": 1,
+        "SUFFICIENT_PARTIAL": 7,
+        "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
         "REVIEW_REQUIRED": 0
@@ -949,8 +949,8 @@
       "total": 7,
       "distribution": {
         "ACTIONABLE": 0,
-        "SUFFICIENT_PARTIAL": 4,
-        "NOT_DISCLOSED": 1,
+        "SUFFICIENT_PARTIAL": 5,
+        "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 2,
         "DEFERRED": 0,
         "REVIEW_REQUIRED": 0
@@ -1297,8 +1297,8 @@
       "total": 6,
       "distribution": {
         "ACTIONABLE": 0,
-        "SUFFICIENT_PARTIAL": 5,
-        "NOT_DISCLOSED": 1,
+        "SUFFICIENT_PARTIAL": 6,
+        "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
         "DEFERRED": 0,
         "REVIEW_REQUIRED": 0
@@ -3585,25 +3585,35 @@
       "baselineClaimCount": 0,
       "baselineEvidenceBindingCount": 0,
       "baselineLocatorCount": 0,
-      "semanticClassification": "NOT_DISCLOSED",
-      "reasonCode": "explicit-non-disclosure",
-      "rationale": "既存一次資料確認で非開示が明示または合理的に確認済み。顧客名等を推測しない。",
-      "targetSourceIds": [],
-      "reviewScope": "v01-carried-forward-validated",
+      "semanticClassification": "ACTIONABLE",
+      "reasonCode": "official-end-market-disclosure",
+      "rationale": "Form 10-Kがsemiconductor equipment顧客のfoundry・logic・memory市場とAI/data center server等の最終需要を明示する。個別顧客名を推測せずともAtlas利用価値が高く、既存Source 1件でEvidence化できるためACTIONABLE。",
+      "targetSourceIds": [
+        "sec-applied-materials-2025-10k"
+      ],
+      "reviewScope": "validation-v02-remediation-cycle1",
       "reviewedAt": "2026-09-01",
-      "reviewedSourceIds": [],
-      "reviewMethod": "carried-forward-after-v01-independent-validation",
-      "sourceSearchBound": null,
-      "reviewerBasis": "Validation v0.1 found 24/24 SUFFICIENT_PARTIAL exact and independently reviewed all unaffected NOT_APPLICABLE/NOT_DISCLOSED records; only named errors were reopened.",
+      "reviewedSourceIds": [
+        "sec-applied-materials-2025-10k"
+      ],
+      "reviewMethod": "bounded-primary-source-review: existing Evidence/Shared Source; annual report or filing; targeted official source when needed",
+      "sourceSearchBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewerBasis": "Form 10-KのSemiconductor Systems industry environmentで顧客市場とend-market driverを確認した。顧客名の非開示はCategory全体をNOT_DISCLOSEDにする理由にならない。",
       "currentCoverageStatus": "partial",
-      "currentMissingStatus": "not-disclosed",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "NOT_DISCLOSED",
-      "actionStatus": "not-required",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "applied-materials:manufacturing-facilities",
@@ -10479,25 +10489,36 @@
       "baselineClaimCount": 0,
       "baselineEvidenceBindingCount": 0,
       "baselineLocatorCount": 0,
-      "semanticClassification": "NOT_DISCLOSED",
-      "reasonCode": "explicit-non-disclosure",
-      "rationale": "既存一次資料確認で非開示が明示または合理的に確認済み。顧客名等を推測しない。",
-      "targetSourceIds": [],
-      "reviewScope": "v01-carried-forward-validated",
+      "semanticClassification": "ACTIONABLE",
+      "reasonCode": "official-end-market-disclosure",
+      "rationale": "公式press releaseがhyperscale data center向け13,824心SWR/WTCの展開と海外data centerへの納入・敷設完了を明示する。個別顧客名を推測せず高価値の用途市場をEvidence化できるためACTIONABLE。",
+      "targetSourceIds": [
+        "official-fujikura-13824-swr-wtc-2025"
+      ],
+      "reviewScope": "validation-v02-remediation-cycle1",
       "reviewedAt": "2026-09-01",
-      "reviewedSourceIds": [],
-      "reviewMethod": "carried-forward-after-v01-independent-validation",
-      "sourceSearchBound": null,
-      "reviewerBasis": "Validation v0.1 found 24/24 SUFFICIENT_PARTIAL exact and independently reviewed all unaffected NOT_APPLICABLE/NOT_DISCLOSED records; only named errors were reopened.",
+      "reviewedSourceIds": [
+        "integrated-fujikura-2025",
+        "official-fujikura-13824-swr-wtc-2025"
+      ],
+      "reviewMethod": "bounded-primary-source-review: existing Evidence/Shared Source; annual report or filing; targeted official source when needed",
+      "sourceSearchBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewerBasis": "Integrated Reportと公式press releaseを確認し、data center end marketと納入実績を会社自身の開示から特定した。個別顧客名・採用量は推測しない。",
       "currentCoverageStatus": "partial",
-      "currentMissingStatus": "not-disclosed",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "NOT_DISCLOSED",
-      "actionStatus": "not-required",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "fujikura:manufacturing-facilities",
@@ -19049,25 +19070,35 @@
       "baselineClaimCount": 0,
       "baselineEvidenceBindingCount": 0,
       "baselineLocatorCount": 0,
-      "semanticClassification": "NOT_DISCLOSED",
-      "reasonCode": "explicit-non-disclosure",
-      "rationale": "既存一次資料確認で非開示が明示または合理的に確認済み。顧客名等を推測しない。",
-      "targetSourceIds": [],
-      "reviewScope": "v01-carried-forward-validated",
+      "semanticClassification": "ACTIONABLE",
+      "reasonCode": "official-end-market-disclosure",
+      "rationale": "Form 10-Kがcloud providers、AI model makers、enterprise、startup、public sectorおよびdirect channel categoriesを明示する。個別顧客名を推測せず顧客層をEvidence化できるためACTIONABLE。",
+      "targetSourceIds": [
+        "filing-nvidia-2026-02-25-fy2026-10k"
+      ],
+      "reviewScope": "validation-v02-remediation-cycle1",
       "reviewedAt": "2026-09-01",
-      "reviewedSourceIds": [],
-      "reviewMethod": "carried-forward-after-v01-independent-validation",
-      "sourceSearchBound": null,
-      "reviewerBasis": "Validation v0.1 found 24/24 SUFFICIENT_PARTIAL exact and independently reviewed all unaffected NOT_APPLICABLE/NOT_DISCLOSED records; only named errors were reopened.",
+      "reviewedSourceIds": [
+        "filing-nvidia-2026-02-25-fy2026-10k"
+      ],
+      "reviewMethod": "bounded-primary-source-review: existing Evidence/Shared Source; annual report or filing; targeted official source when needed",
+      "sourceSearchBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewerBasis": "FY2026 Form 10-KのOur Markets — Data CenterとConcentration of Revenueを確認し、顧客層・channelを公式開示から特定した。匿名集中顧客のidentityは推測しない。",
       "currentCoverageStatus": "partial",
-      "currentMissingStatus": "not-disclosed",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "NOT_DISCLOSED",
-      "actionStatus": "not-required",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "nvidia:manufacturing-facilities",
@@ -27035,23 +27066,32 @@
       "baselineClaimCount": 1,
       "baselineEvidenceBindingCount": 1,
       "baselineLocatorCount": 1,
-      "semanticClassification": "NOT_DISCLOSED",
-      "reasonCode": "explicit-non-disclosure",
-      "rationale": "既存一次資料確認で非開示が明示または合理的に確認済み。顧客名等を推測しない。",
+      "semanticClassification": "SUFFICIENT_PARTIAL",
+      "reasonCode": "major-claim-already-evidenced",
+      "rationale": "既存Source-linked Claimが2025年の顧客数とHPC、smartphone、IoT、automotive、digital consumer electronicsのend marketsをstructured Locator付きでCoverageしている。個別顧客名はCategoryの必須条件ではなく、追加調査の限界効用は低い。",
       "targetSourceIds": [],
-      "reviewScope": "v01-carried-forward-validated",
+      "reviewScope": "validation-v02-remediation-cycle1",
       "reviewedAt": "2026-09-01",
-      "reviewedSourceIds": [],
-      "reviewMethod": "carried-forward-after-v01-independent-validation",
-      "sourceSearchBound": null,
-      "reviewerBasis": "Validation v0.1 found 24/24 SUFFICIENT_PARTIAL exact and independently reviewed all unaffected NOT_APPLICABLE/NOT_DISCLOSED records; only named errors were reopened.",
+      "reviewedSourceIds": [
+        "corporate-tsmc-about-2026",
+        "corporate-tsmc-annual-report-2025-ch5"
+      ],
+      "reviewMethod": "bounded-primary-source-review: existing Evidence/Shared Source; annual report or filing; targeted official source when needed",
+      "sourceSearchBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewerBasis": "既存Claim tsmc-customer-marketとEvidence Binding tsmc-customer-market-e1を確認。Atlas利用に必要な主要end-market内容は既にEvidence化されている。",
       "currentCoverageStatus": "partial",
-      "currentMissingStatus": "not-disclosed",
+      "currentMissingStatus": null,
       "currentClaimCount": 1,
       "currentEvidenceBindingCount": 1,
       "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "NOT_DISCLOSED",
+      "currentClassification": "SUFFICIENT_PARTIAL",
       "actionStatus": "not-required",
       "actionEvidenceDelta": 0
     },
