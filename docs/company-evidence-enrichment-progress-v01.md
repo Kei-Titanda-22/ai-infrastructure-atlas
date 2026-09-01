@@ -484,5 +484,24 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Browser QA: Legrand and Mitsubishi Electric passed at `1024px` and `360px`; document overflow `0`, added Claims and bibliography links visible, Evidence marker target `44 × 44px`. Both companies passed drawer, Primary Source, Escape, and focus return at desktop and mobile widths.
 - Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR: [#145](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/145)
+- Merge SHA: `a3542b441f68666bcb0fbae2fad387b1bb5d3c3e`
+- Actions: [run 33500131923](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33500131923) success
+- Pages: Legrandの追加Claim・bibliography・overflowを公開環境で確認
+- HARD STOP: `0`
+
+## Triage Remediation Enrichment B06
+
+- Baseline main: `a3542b441f68666bcb0fbae2fad387b1bb5d3c3e`
+- Companies: Mobileye, Monolithic Power Systems, Nan Ya PCB, Nikon, nVent, NVIDIA, NXP, OMRON, onsemi, Qualcomm
+- ACTIONABLE processed: `28` Category records / `10` companies
+- Claims / Evidence / structured Locators: `28 / 28 / 28`
+- Verification: `source-linked 28`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `10`; added `3`; new Source Policies remain `pending`
+- Coverage: `321 / 612 / 167 → 321 / 640 / 139` (complete / partial / not-started)
+- Triage: ACTIONABLE pending `127 → 99`; current SUFFICIENT_PARTIAL `608 → 636`; REVIEW_REQUIRED `0`
+- Browser QA: Nan Ya PCB and nVent passed at `1024px` and `360px`; document overflow `0`, added Claims and bibliography links visible, Evidence marker target `44 × 44px`. Both companies passed drawer, Primary Source, Escape, and focus return at desktop and mobile widths.
+- Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - PR / merge / Actions / Pages: pending publication
 - HARD STOP: `0`

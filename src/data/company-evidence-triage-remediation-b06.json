@@ -1,0 +1,811 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "mobileye-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "vehicle OEM・Tier 1・mobility事業者向け",
+      "statement": "MobileyeはADAS solutionをvehicle OEMとTier 1 supplierへ提供し、AMaaS・robotaxiではvehicle manufacturer、fleet operator、transportation network company、mobility service providerを顧客・partner層としている。",
+      "evidenceIds": [
+        "mobileye-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mobileye"
+    },
+    {
+      "id": "mobileye-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "ADASから自動運転へmodularに拡張",
+      "statement": "MobileyeはCloud-Enhanced ADASとSuperVisionからChauffeur、Driveへ、共通のECU baselineを活用してeyes-off・hands-off機能を段階的かつmodularに拡張する方針を示している。",
+      "evidenceIds": [
+        "mobileye-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "mobileye",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "monolithic-power-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "enterprise data・storage/computing・車載等へ展開",
+      "statement": "Monolithic Power Systemsはstorage and computing、enterprise data、automotive、communications、consumer、industrialをend marketとし、enterprise dataにはAI system、cloud・on-premise CPU server、workstationを含めている。",
+      "evidenceIds": [
+        "monolithic-power-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "monolithic-power"
+    },
+    {
+      "id": "monolithic-power-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "power solutionのfamily拡張と新市場開拓",
+      "statement": "Monolithic Power Systemsは既存product familyの新製品開発と、新市場へ展開するinnovative productを成長方針とし、高性能analog・mixed-signal、独自process・packaging、集積化と効率を重点化している。",
+      "evidenceIds": [
+        "monolithic-power-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "monolithic-power",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "nan-ya-pcb-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Kunshan・ShulinでABF substrate lineを増設",
+      "statement": "Nan Ya PCBはKunshanのABF substrate production lineを2021年に、ShulinのABF substrate production lineを2022年にそれぞれ稼働させた。",
+      "evidenceIds": [
+        "nan-ya-pcb-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-04",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nan-ya-pcb"
+    },
+    {
+      "id": "nan-ya-pcb-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "data center・cloud/edge・AI networking用途",
+      "statement": "Nan Ya PCBはABF substrateの用途としてAI switch・router、server processor、transceiver chip、wireless・ADASを、conventional PCBではAI server cardとserver network cardを挙げている。",
+      "evidenceIds": [
+        "nan-ya-pcb-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-04",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nan-ya-pcb"
+    },
+    {
+      "id": "nan-ya-pcb-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Taiwan・Chinaのproduction network",
+      "statement": "Nan Ya PCBはTaiwanとChinaにproduction locationを置き、KunshanとShulinではABF substrate production lineを運用している。",
+      "evidenceIds": [
+        "nan-ya-pcb-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-04",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nan-ya-pcb"
+    },
+    {
+      "id": "nan-ya-pcb-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "高付加価値化・新技術・digital化を推進",
+      "statement": "Nan Ya PCBは高付加価値・差別化productと新applicationへの転換、新material・technology・productの開発、digital・AI operation、green energy・resource circulationを4つのtransformationとして掲げている。",
+      "evidenceIds": [
+        "nan-ya-pcb-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-04",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nan-ya-pcb",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "nikon-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "semiconductor前工程・後工程とFPD向け",
+      "statement": "ニコンはPrecision Equipment Businessでsemiconductor lithography systemを前工程・後工程向けに、FPD lithography systemをdisplay manufacturer向けに提供し、後工程ではAI・data center需要を機会としている。",
+      "evidenceIds": [
+        "nikon-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-08-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nikon"
+    },
+    {
+      "id": "nikon-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "production siteの柔軟性・効率を強化",
+      "statement": "ニコンは需要変動へ対応するためproduction siteを強化し、より柔軟で効率的なproduction structureの構築を進めている。",
+      "evidenceIds": [
+        "nikon-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-08-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nikon"
+    },
+    {
+      "id": "nikon-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "lithographyの顧客基盤維持と次世代技術開発",
+      "statement": "ニコンはsemiconductor lithographyでproduction・serviceの最適化と安定顧客基盤の維持を進め、後工程向けdigital lithographyと次世代ArF immersion lithographyの開発を成長施策としている。",
+      "evidenceIds": [
+        "nikon-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-08-01",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nikon",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "nvent-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "Eleanor工場を117,000平方foot拡張",
+      "statement": "nVentはWest Virginia州Eleanor工場を117,000平方foot拡張し、facility・equipmentを更新して100人のmanufacturing jobを追加する計画を発表した。拡張後は約250人を雇用する見込みである。",
+      "evidenceIds": [
+        "nvent-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "nvent-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "hyperscaler・utility・OEM・contractor向け",
+      "statement": "nVentはdata center・infrastructure・industrial・commercial用途で、hyperscaler、utility、OEM、panel builder、contractor等へenclosure、electrical connection、thermal management solutionを提供している。",
+      "evidenceIds": [
+        "nvent-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-02-17",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent"
+    },
+    {
+      "id": "nvent-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Eleanorでdata center enclosureを製造",
+      "statement": "nVentはWest Virginia州Eleanorで50年以上稼働するmanufacturing facilityを運用し、data centerのpower distributionを保護するTRACHTE large outdoor enclosureを製造している。",
+      "evidenceIds": [
+        "nvent-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-30",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent"
+    },
+    {
+      "id": "nvent-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "One nVent・digital・leanで高成長verticalを強化",
+      "statement": "nVentはOne nVentによるcommercial excellence、digital transformation、lean、supply resilienceを推進し、高成長vertical、新製品、global expansion、acquisitionを成長施策としている。",
+      "evidenceIds": [
+        "nvent-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-02-17",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvent",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "nvidia-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "end-to-end accelerated computing platformを拡張",
+      "statement": "NVIDIAはGPU、CPU、DPU、interconnect、system、softwareを統合するaccelerated computing platformを拡張し、developer ecosystem、NVIDIA AI Enterprise、DGX Cloudを通じてAI platform leadershipを伸ばす方針を示している。",
+      "evidenceIds": [
+        "nvidia-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nvidia",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "nxp-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "Singapore・Dresdenの300mm capacityへ参画",
+      "statement": "NXPはSingaporeのVSMC 300mm fab capacityの40%を確保し2027年のproduction開始を、DresdenのESMC 300mm fab capacityの10%を確保し2028年のproduction開始を見込んでいる。",
+      "evidenceIds": [
+        "nxp-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-04-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nxp",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "nxp-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Automotive・Industrial & IoT等の4市場",
+      "statement": "NXPはAutomotive、Industrial & IoT、Mobile、Communication Infrastructure & Otherを4つのprimary end marketとしている。Industrial & IoTにはfactory・building automation、energy、healthcare等を含む。",
+      "evidenceIds": [
+        "nxp-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-04-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nxp"
+    },
+    {
+      "id": "nxp-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "米国・Europe・Asiaのhybrid manufacturing network",
+      "statement": "NXPは米国、Netherlands、Malaysia、China、Thailand、Taiwanのowned manufacturing facilityに加え、SingaporeのSSMC joint ventureとthird-party foundry・assembly supplierを組み合わせている。",
+      "evidenceIds": [
+        "nxp-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-04-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nxp"
+    },
+    {
+      "id": "nxp-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "automotive・edge AIのsystem solutionを拡張",
+      "statement": "NXPはTTTech Auto、Aviva Links、Kinaraのacquisitionを通じ、software-defined vehicle、automotive networking、edge AIを補強し、AutomotiveとIndustrial & IoTのsystem solutionを拡張する方針を示している。",
+      "evidenceIds": [
+        "nxp-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-04-27",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "nxp",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "omron-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "semiconductor投資を含むmanufacturing automation向け",
+      "statement": "オムロンのIndustrial Automation BusinessはPLC、motion controller、sensor、camera・code reader、inspection・safety system、industrial robotをmanufacturing現場へ提供し、生成AI関連のsemiconductor投資需要を取り込んでいる。",
+      "evidenceIds": [
+        "omron-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "omron"
+    },
+    {
+      "id": "omron-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "Japan・China・Netherlandsのproduction facilities",
+      "statement": "オムロンはAyabe、Kusatsu、OMRON Aso、OMRON Switch & Devices、OMRON Relay & Devices、Shanghai、Netherlandsにproduction facilityを置いている。",
+      "evidenceIds": [
+        "omron-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "omron"
+    },
+    {
+      "id": "omron-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "IABを最優先としbusiness modelを転換",
+      "statement": "オムロンはSF 2nd StageでIndustrial Automation Businessを最優先領域とし、顧客起点のgrowth issue設定、earnings foundation・business portfolio・business modelの転換を進める方針を示している。",
+      "evidenceIds": [
+        "omron-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "omron",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "onsemi-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "automotive・industrial・AI data center等へ展開",
+      "statement": "onsemiはautomotiveとindustrialを主力end marketとし、その他市場にAI data centerを含むcomputing、networking、consumer、communicationsを含めている。",
+      "evidenceIds": [
+        "onsemi-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "onsemi"
+    },
+    {
+      "id": "onsemi-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "米国・Czech・Malaysia・Korea等のmanufacturing network",
+      "statement": "onsemiはEast Fishkill・Greshamの米国拠点、RožnovのCzech拠点、SerembanのMalaysia拠点、BucheonのKorea拠点等をmanufacturing facilityとして運用している。",
+      "evidenceIds": [
+        "onsemi-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "onsemi"
+    },
+    {
+      "id": "onsemi-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "差別化技術とmanufacturing footprint最適化",
+      "statement": "onsemiはautomotive、industrial、AI data center等へ差別化technologyを展開し、需要見通しに合わせたmanufacturing footprintの最適化によってgross marginとcash flowを高める方針を示している。",
+      "evidenceIds": [
+        "onsemi-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "onsemi",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "qualcomm-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "handset・automotive・consumer/industrial IoT向け",
+      "statement": "Qualcommはhandset、automotive、IoTを主要市場とし、automotiveではconnectivity・digital cockpit・ADAS、IoTではPC・XR、edge networking、mobile broadband、retail・logistics・utility等へplatformを提供している。",
+      "evidenceIds": [
+        "qualcomm-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "qualcomm"
+    },
+    {
+      "id": "qualcomm-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "intelligent computingをhandset外へ拡張",
+      "statement": "QualcommはSnapdragonをpremium handset・automotive・consumer IoTへ、Dragonwingをindustrial・edge networking IoTへ展開し、R&Dを通じてautomotiveとIoTのintelligent computingを拡大する方針を示している。",
+      "evidenceIds": [
+        "qualcomm-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "qualcomm",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "mobileye-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "mobileye-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-mobileye-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Customers and Go-to-market",
+        "quotedLabel": "vehicle OEMs / Tier 1 suppliers / vehicle manufacturers / fleet operators / mobility service providers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "mobileye-strategy-triage-remediation-v02-e1",
+      "claimId": "mobileye-strategy-triage-remediation-v02",
+      "sourceId": "sec-mobileye-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Mobileye SuperVision and Chauffeur",
+        "quotedLabel": "bridge / incremental and modular / path from ADAS to autonomous driving"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "monolithic-power-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "monolithic-power-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-monolithic-power-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "End Markets and Applications",
+        "quotedLabel": "storage and computing / enterprise data / AI systems / cloud and on-premise CPU servers / automotive / industrial"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "monolithic-power-strategy-triage-remediation-v02-e1",
+      "claimId": "monolithic-power-strategy-triage-remediation-v02",
+      "sourceId": "sec-monolithic-power-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "General / Our Strategy",
+        "quotedLabel": "new products within existing product families / innovative products that expand our market"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nan-ya-pcb-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "nan-ya-pcb-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-nan-ya-pcb-h1-2025-briefing",
+      "support": "supports",
+      "locator": {
+        "page": "5",
+        "section": "Company Profile",
+        "heading": "Milestone",
+        "quotedLabel": "Established ABF Substrate Production Line at Kun-shan / Shulin"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nan-ya-pcb-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "nan-ya-pcb-customer-end-market-triage-remediation-v02",
+      "sourceId": "official-nan-ya-pcb-h1-2025-briefing",
+      "support": "supports",
+      "locator": {
+        "page": "11-13",
+        "section": "Operational Performance / Future Prospects",
+        "heading": "Product applications and market demand",
+        "quotedLabel": "AI switches / routers / server processors / transceiver chips / AI server cards / server network cards"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nan-ya-pcb-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "nan-ya-pcb-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "official-nan-ya-pcb-h1-2025-briefing",
+      "support": "supports",
+      "locator": {
+        "page": "3, 5",
+        "section": "Company Profile",
+        "heading": "Production locations / Milestone",
+        "quotedLabel": "Production location: Taiwan and China / Kun-shan / Shulin"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nan-ya-pcb-strategy-triage-remediation-v02-e1",
+      "claimId": "nan-ya-pcb-strategy-triage-remediation-v02",
+      "sourceId": "official-nan-ya-pcb-h1-2025-briefing",
+      "support": "supports",
+      "locator": {
+        "page": "14",
+        "section": "Future Prospects",
+        "heading": "Four Transformations",
+        "quotedLabel": "high-value and differentiated products / new materials and technologies / digital and AI / green energy"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nikon-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "nikon-customer-end-market-triage-remediation-v02",
+      "sourceId": "integrated-nikon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "49-52",
+        "section": "Precision Equipment Business",
+        "heading": "Market environment and business strategy",
+        "quotedLabel": "Semiconductor Lithography / FPD Lithography / back-end processes / AI and data centers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nikon-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "nikon-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "integrated-nikon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "19",
+        "section": "Message from the CEO",
+        "heading": "Manufacturing",
+        "quotedLabel": "enhance our production sites / flexible and efficient production structure"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nikon-strategy-triage-remediation-v02-e1",
+      "claimId": "nikon-strategy-triage-remediation-v02",
+      "sourceId": "integrated-nikon-2025",
+      "support": "supports",
+      "locator": {
+        "page": "49-52",
+        "section": "Precision Equipment Business",
+        "heading": "Strategies and measures toward 2030",
+        "quotedLabel": "optimize production and service / stable customer base / digital lithography / next-generation ArF immersion"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "nvent-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-nvent-eleanor-expansion-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Press release",
+        "heading": "nVent to Bring 100 New Manufacturing Jobs to Eleanor, WV Facility",
+        "quotedLabel": "117,000 square-foot expansion / 100 new manufacturing jobs / approximately 250 employees"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "nvent-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-nvent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Systems Protection / Electrical Connections",
+        "quotedLabel": "hyperscalers / utilities / OEMs / panel builders / contractors / data centers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "nvent-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "official-nvent-eleanor-expansion-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Press release",
+        "heading": "Eleanor manufacturing facility",
+        "quotedLabel": "operated for more than 50 years / TRACHTE large outdoor enclosures / data center power distribution"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvent-strategy-triage-remediation-v02-e1",
+      "claimId": "nvent-strategy-triage-remediation-v02",
+      "sourceId": "sec-nvent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Our Strategy / 2026 Objectives",
+        "quotedLabel": "One nVent / digital transformation / higher-growth verticals / new products / global expansion / acquisitions"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nvidia-strategy-triage-remediation-v02-e1",
+      "claimId": "nvidia-strategy-triage-remediation-v02",
+      "sourceId": "filing-nvidia-2025-02-26-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Business Strategy",
+        "quotedLabel": "Extending our technology and platform leadership in AI / GPUs / CPUs / DPUs / interconnects / software"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nxp-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "nxp-capacity-expansion-triage-remediation-v02",
+      "sourceId": "sec-nxp-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Manufacturing / VSMC and ESMC",
+        "quotedLabel": "40% of VSMC capacity / production in 2027 / 10% of ESMC capacity / production in 2028"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nxp-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "nxp-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-nxp-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "End Market Exposure",
+        "quotedLabel": "Automotive / Industrial & IoT / Mobile / Communication Infrastructure & Other"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nxp-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "nxp-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "sec-nxp-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Manufacturing",
+        "quotedLabel": "United States / Netherlands / Malaysia / China / Thailand / Taiwan / SSMC / third-party suppliers"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "nxp-strategy-triage-remediation-v02-e1",
+      "claimId": "nxp-strategy-triage-remediation-v02",
+      "sourceId": "sec-nxp-2025-20f",
+      "support": "supports",
+      "locator": {
+        "section": "Item 4. Information on the Company",
+        "heading": "Strategy and Products / Acquisitions",
+        "quotedLabel": "TTTech Auto / Aviva Links / Kinara / software-defined vehicles / automotive networking / edge AI"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "omron-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "omron-customer-end-market-triage-remediation-v02",
+      "sourceId": "omron-financial-results-fy2025",
+      "support": "supports",
+      "locator": {
+        "section": "Business Results",
+        "heading": "Industrial Automation Business (IAB)",
+        "quotedLabel": "generative AI-related semiconductor investment / PLCs / sensors / inspection systems / industrial robots"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "omron-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "omron-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "official-omron-ia-facilities",
+      "support": "supports",
+      "locator": {
+        "section": "Corporate Profile",
+        "heading": "Production facilities",
+        "quotedLabel": "Ayabe / Kusatsu / OMRON Aso / Shanghai / Netherlands"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "omron-strategy-triage-remediation-v02-e1",
+      "claimId": "omron-strategy-triage-remediation-v02",
+      "sourceId": "omron-financial-results-fy2025",
+      "support": "supports",
+      "locator": {
+        "section": "Management Policy",
+        "heading": "SF 2nd Stage / Business portfolio",
+        "quotedLabel": "Industrial Automation Business / highest strategic priority / customer-driven / business model transformation"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "onsemi-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "onsemi-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-onsemi-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "End Markets",
+        "quotedLabel": "automotive / industrial / computing including AI data centers / networking / communications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "onsemi-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "onsemi-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "sec-onsemi-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 2. Properties",
+        "heading": "Manufacturing Facilities",
+        "quotedLabel": "East Fishkill / Gresham / Rožnov / Seremban / Bucheon"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "onsemi-strategy-triage-remediation-v02-e1",
+      "claimId": "onsemi-strategy-triage-remediation-v02",
+      "sourceId": "sec-onsemi-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "Business Strategy",
+        "quotedLabel": "differentiated technologies / automotive / industrial / AI data centers / optimize manufacturing footprint"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "qualcomm-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "qualcomm-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-qualcomm-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "QCT Product Platforms",
+        "quotedLabel": "Handsets / Automotive / Consumer IoT / Edge Networking IoT / Industrial IoT"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "qualcomm-strategy-triage-remediation-v02-e1",
+      "claimId": "qualcomm-strategy-triage-remediation-v02",
+      "sourceId": "sec-qualcomm-fy2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Item 1. Business",
+        "heading": "QCT Business / Research and Development",
+        "quotedLabel": "intelligent computing everywhere / Snapdragon / Dragonwing / Automotive / Internet of Things"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": []
+}
