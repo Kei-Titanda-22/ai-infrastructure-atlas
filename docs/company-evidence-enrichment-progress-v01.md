@@ -426,5 +426,24 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Browser QA: Broadcom and DENSO passed complete drawer, Primary Source, Escape, focus return, bibliography, `44 × 44px` marker target, and document overflow `0`; both companies also passed light checks at `1024px` and `360px`.
 - Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR: [#142](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/142)
+- Merge SHA: `b923c782d30a84c1b095734a9aab6f5b1b1fc3f1`
+- Actions: [run 33494885843](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33494885843) success
+- Pages: DENSOの追加Claim・bibliography・overflowを公開環境で確認
+- HARD STOP: `0`
+
+## Triage Remediation Enrichment B03
+
+- Baseline main: `b923c782d30a84c1b095734a9aab6f5b1b1fc3f1`
+- Companies: DISCO, Eaton, Entegris, Equinix, FANUC, Fujikura, Furukawa Electric, GE Vernova, GlobalFoundries, GlobalWafers
+- ACTIONABLE processed: `38` Category records / `10` companies
+- Claims / Evidence / structured Locators: `38 / 38 / 38`
+- Verification: `source-linked 38`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `4`; added `12`; new Source Policies remain `pending`
+- Coverage: `321 / 513 / 266 → 321 / 550 / 229` (complete / partial / not-started)
+- Triage: ACTIONABLE pending `227 → 189`; current SUFFICIENT_PARTIAL `508 → 546`; REVIEW_REQUIRED `0`
+- Browser QA: DISCO and GlobalWafers passed complete drawer, Primary Source, Escape, focus return, bibliography, `44 × 44px` marker target, and document overflow `0`; both companies also passed light checks at `1024px` and `360px`.
+- Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - PR / merge / Actions / Pages: pending publication
 - HARD STOP: `0`
