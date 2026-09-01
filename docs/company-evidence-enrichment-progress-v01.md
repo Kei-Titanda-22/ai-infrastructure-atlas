@@ -290,7 +290,10 @@
 - Browser QA: all nine companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source links, and `44 × 44px` marker targets confirmed. Nan Ya PCB and Kioxia passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
 - Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
 - Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
-- Result: ready for PR; merge / Actions / Pages pending
+- PR: [#134](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/134)
+- Merge SHA: `e5ce3cd816dee3b819632d56169706cf8ed62830`
+- Actions: [run 33473796190](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33473796190) success
+- Result: merged; main Actions success; public Pages checked
 
 ## Priority B completion summary
 
@@ -308,4 +311,4 @@
 
 ## Resume marker
 
-All A2–A4 and B1–B7 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B8 validation; never rerun a completed batch.
+All A2–A4 and B1–B8 batches are `merged / Actions success / Pages checked`. Priority B cohort is complete. Resume only from a separately approved remaining-company pass; never rerun a completed batch.
