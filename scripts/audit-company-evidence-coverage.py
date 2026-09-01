@@ -245,11 +245,13 @@ def build_report() -> dict[str, Any]:
     companies.sort(key=lambda item: item["id"])
     company_by_id = {company["id"]: company for company in companies}
 
-    pilot_path = DATA / "company-evidence-pilot-v02.json"
-    pilot = load_json(pilot_path)
-    claims = pilot["claims"]
-    evidence = pilot["evidence"]
-    coverage_records = pilot["coverage"]
+    evidence_manifest_path = DATA / "company-evidence-manifest.json"
+    evidence_manifest = load_json(evidence_manifest_path)
+    evidence_paths = [DATA / shard for shard in evidence_manifest["shards"]]
+    evidence_payloads = [load_json(path) for path in evidence_paths]
+    claims = [claim for payload in evidence_payloads for claim in payload["claims"]]
+    evidence = [binding for payload in evidence_payloads for binding in payload["evidence"]]
+    coverage_records = [record for payload in evidence_payloads for record in payload["coverage"]]
     pilot_claim_by_id = {claim["id"]: claim for claim in claims}
     evidence_by_claim: defaultdict[str, list[dict[str, Any]]] = defaultdict(list)
     for binding in evidence:
@@ -288,9 +290,9 @@ def build_report() -> dict[str, Any]:
             if isinstance(record, dict) and record.get("companyId") in company_by_id:
                 financial_source_ids[record["companyId"]].update(collect_source_ids(record))
 
-    input_paths = [*company_paths, pilot_path, manifest_path, facilities_path, legacy_claims_path, *shard_paths, *financial_paths]
+    input_paths = [*company_paths, evidence_manifest_path, *evidence_paths, manifest_path, facilities_path, legacy_claims_path, *shard_paths, *financial_paths]
     observation_dates: list[date] = []
-    for value in (companies, pilot, all_source_records, facilities, legacy_claims, financial_payloads):
+    for value in (companies, evidence_payloads, all_source_records, facilities, legacy_claims, financial_payloads):
         observation_dates.extend(collect_observation_dates(value))
     data_as_of_date = max(observation_dates)
     data_as_of = data_as_of_date.isoformat()
@@ -436,11 +438,11 @@ def build_report() -> dict[str, Any]:
             legacy_present = any(has_content(company.get(field)) for field in legacy_fields)
             migration_candidate = legacy_present and not pair_bindings and company_level_source_available
 
-            if company_id in PILOT_COMPANIES:
+            if pair in coverage_by_pair:
                 frozen = coverage_by_pair[pair]
                 status = frozen["collectionStatus"]
                 missing_status = frozen.get("missingStatus")
-                notes = frozen.get("notes", "Pilot Freeze baseline Coverage Recordをそのまま使用。")
+                notes = frozen.get("notes", "Frozen Schema v0.2 Coverage Recordをそのまま使用。")
             elif legacy_present or source_ids:
                 status = "partial"
                 missing_status = None
@@ -704,8 +706,8 @@ def build_report() -> dict[str, Any]:
         "pairCount": len(company_reports) * len(CATEGORIES),
         "categories": list(CATEGORIES),
         "auditMethodology": {
-            "pilotBaseline": "src/data/company-evidence-pilot-v02.json Coverage Records are authoritative for the five Pilot companies.",
-            "nonPilotRule": "Legacy content or an explicit typed/category Source yields partial, never complete; otherwise not-started/not-collected.",
+            "evidenceBaseline": "src/data/company-evidence-manifest.json resolves frozen Schema v0.2 Evidence shards; their Coverage Records are authoritative.",
+            "unenrichedRule": "For companies without a Coverage Record, legacy content or an explicit typed/category Source yields partial, never complete; otherwise not-started/not-collected.",
             "directSourceRule": "Only Claim Evidence, Facility references, and narrowly typed product/facility/profile Sources are category-direct.",
             "migrationCandidateRule": "Legacy content plus a resolved company-level primary Source and no Claim-level Evidence Binding; human category/Locator review is still required.",
             "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
@@ -738,7 +740,7 @@ def build_report() -> dict[str, Any]:
     return report
 
 
-def validate_report(report: dict[str, Any], pilot_coverage: dict[tuple[str, str], dict[str, Any]]) -> None:
+def validate_report(report: dict[str, Any], evidence_coverage: dict[tuple[str, str], dict[str, Any]]) -> None:
     errors: list[str] = []
     if report["companyCount"] != 100:
         errors.append(f"expected 100 companies, got {report['companyCount']}")
@@ -759,10 +761,11 @@ def validate_report(report: dict[str, Any], pilot_coverage: dict[tuple[str, str]
                 errors.append(f"not-started missingStatus absent: {company['companyId']} / {row['category']}")
             if row["collectionStatus"] == "partial" and row["missingStatus"] and not row["notes"]:
                 errors.append(f"partial missingStatus note absent: {company['companyId']} / {row['category']}")
-            if company["companyId"] in PILOT_COMPANIES:
-                frozen = pilot_coverage[(company["companyId"], row["category"])]
+            pair = (company["companyId"], row["category"])
+            if pair in evidence_coverage:
+                frozen = evidence_coverage[pair]
                 if row["collectionStatus"] != frozen["collectionStatus"] or row["missingStatus"] != frozen.get("missingStatus"):
-                    errors.append(f"Pilot baseline mismatch: {company['companyId']} / {row['category']}")
+                    errors.append(f"Evidence Coverage baseline mismatch: {company['companyId']} / {row['category']}")
     if sum(report["summary"]["coverage"].values()) != 1100:
         errors.append("coverage totals do not sum to 1100")
     if report["summary"]["sourceQuality"]["conflictingDuplicateSourceIdCount"]:
@@ -788,12 +791,12 @@ def render_markdown(report: dict[str, Any]) -> str:
         f"- Data as of: `{report['dataAsOf']}`",
         f"- Input digest: `{report['inputDigest']}`",
         f"- Scope: {report['companyCount']} companies × {report['categoryCount']} categories = {report['pairCount']:,} pairs",
-        "- Production data changes: **0**",
-        "- This is a coverage baseline, not Evidence enrichment or a Company Evaluation Score.",
+        "- Company Evidence enrichment: **Arm / ASML only**",
+        "- This is a coverage audit, not a Company Evaluation Score.",
         "",
         "## Executive summary",
         "",
-        f"Freeze Schema v0.2の11 Categoryを100社へ投影し、{report['pairCount']:,} pairを機械監査した。Pilot 5社は既存Coverage Recordをそのまま正とし、非Pilot 95社ではlegacy本文や汎用IR Sourceだけをcompleteへ昇格していない。",
+        f"Freeze Schema v0.2の11 Categoryを100社へ投影し、{report['pairCount']:,} pairを機械監査した。Pilot 5社の既存Coverage Recordを維持し、Batch 01のArm / ASMLはmanifest経由のCoverage Recordを正とする。残る93社ではlegacy本文や汎用IR Sourceだけをcompleteへ昇格していない。",
         "",
         f"結果はcomplete **{coverage['complete']}**、partial **{coverage['partial']}**、not-started **{coverage['not-started']}**。低CoverageはCI failureにせず、次の一次資料補強順を作るbaselineとして固定する。",
         "",
@@ -950,7 +953,7 @@ def render_markdown(report: dict[str, Any]) -> str:
             "",
             "## Next recommended batch",
             "",
-            "今回のaudit結果から、一次資料を最初に補強する候補を8社に限定した。Evidence追加はこのPRでは行わない。",
+            "更新後のaudit結果から、将来の一次資料補強候補を8社に限定した。この監査は次Batchを開始しない。",
             "",
             "| Company | Reasons |",
             "| --- | --- |",
@@ -984,8 +987,8 @@ def render_markdown(report: dict[str, Any]) -> str:
             "- `python scripts/audit-company-evidence-coverage.py --write` でJSON/Markdownを再生成する。",
             "- CIは `--check` でinput digestと完全な生成物一致を確認する。Coverageの低さ自体はfailureにしない。",
             "- 汎用IR、決算Source、legacy本文だけではCategoryをcompleteにしない。",
-            "- `not-started`の非Pilot不足理由は、dataset状態として安全な`not-collected`に限定する。`not-disclosed` / `not-applicable`は推定しない。",
-            "- Production UI、Company Evidence data、company JSON、Source Registry、Source Policy、financial data、facilities、relationshipsは変更していない。",
+            "- Evidence shardにCoverage Recordがない会社の`not-started`理由は、dataset状態として安全な`not-collected`に限定する。`not-disclosed` / `not-applicable`は推定しない。",
+            "- Batch 01はArm / ASMLのCompany Evidenceと必要最小限のShared Source / pending Source Policyのみを追加し、company JSON、financial data、facilities、relationshipsは変更しない。",
             "",
         ]
     )
