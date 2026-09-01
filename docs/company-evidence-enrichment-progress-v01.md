@@ -269,8 +269,43 @@
 - Browser QA: all nine companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source links, and `44 × 44px` marker targets confirmed. Unimicron and KEYENCE passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
 - Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
 - Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR: [#133](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/133)
+- Merge SHA: `1437482aff470d79befa94ec394477ecd0621a5d`
+- Actions: [run 33473480325](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33473480325) success
+- Result: merged; main Actions success; public Pages checked
+
+## Batch B8
+
+- Baseline main: `1437482aff470d79befa94ec394477ecd0621a5d`
+- Companies: Nan Ya PCB, OMRON, Shin-Etsu Chemical, SMC, SUMCO, Yaskawa, Advantest, Tokyo Electron, Kioxia
+- Claims / Evidence / structured Locators: `63 / 63 / 63`
+- Priority: P1 `45` / P2 `18` / P3 `0`
+- Verification: `source-linked 63`; `verified 0`; policy approval changes `0`
+- Sources: existing Shared Sources reused `9`; added `0`; duplicate Source IDs `0`
+- Batch coverage delta: complete `+27`; partial `-12`; not-started `-15`
+- Global coverage: `294 / 454 / 352 → 321 / 442 / 337`
+- Global maturity: L1 `6 → 0`; L2 `3 → 0`; L4 `91 → 100`
+- SOFT DEFER: `72` unresolved Category records (`36` partial + `36` not-started)
+- HARD STOP: `0`
+- Browser QA: all nine companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source links, and `44 × 44px` marker targets confirmed. Nan Ya PCB and Kioxia passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
+- Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
+- Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - Result: ready for PR; merge / Actions / Pages pending
+
+## Priority B completion summary
+
+- Target companies completed: `76 / 76`
+- Batches completed locally: `8 / 8`
+- Total Claims / Evidence / structured Locators: `532 / 532 / 532`
+- Total priority: P1 `380` / P2 `152` / P3 `0`
+- Verification: `source-linked 532`; `verified 0`; Source Policy approvals `0`
+- Sources: existing Shared Sources reused `37`; added `39`; duplicate Source IDs `0`
+- Coverage: `93 / 521 / 486 → 321 / 442 / 337` (complete / partial / not-started)
+- Maturity: L1 `73 → 0`; L2 `3 → 0`; L4 `24 → 100`
+- SOFT DEFER across target companies: `608` Category records (`304` partial + `304` not-started)
+- HARD STOP: `0`
+- Ready for final remaining-company pass: **YES**
 
 ## Resume marker
 
-All A2–A4 and B1–B6 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B7 validation or the first later batch not marked merged; never rerun a completed batch.
+All A2–A4 and B1–B7 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B8 validation; never rerun a completed batch.
