@@ -543,5 +543,26 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Browser QA: SMC and Texas Instruments passed at `1024px` and `360px`; document overflow `0`, added Claims and bibliography links visible, Evidence marker target `44 × 44px`. Both companies passed drawer, Primary Source, Escape, and focus return at desktop; mobile display passed the same claim, bibliography, target, and overflow checks.
 - Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed. Validation v0.1 remains the recorded pre-remediation HARD STOP and is not treated as the v0.2 close gate.
+- PR: [#148](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/148)
+- Merge SHA: `d1ae48dcb2f1d5a60e188100ecc22439cdcd48dc`
+- Actions: [run 33504969078](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33504969078) success
+- Pages: Texas Instrumentsの追加Claim・bibliography・overflowを公開環境で確認
+- HARD STOP: `0`
+
+## Triage Remediation Enrichment B09
+
+- Baseline main: `d1ae48dcb2f1d5a60e188100ecc22439cdcd48dc`
+- Companies: Tokyo Electron, Trane Technologies, TSMC, UMC, Unimicron, Vertiv, Western Digital, Yaskawa
+- ACTIONABLE processed: `23` Category records / `8` companies
+- Bounded-source correction: `unimicron:capacity-expansion` はgeneric Capexと分離できる具体的projectを確認できず、Evidenceを作らず `ACTIONABLE → DEFERRED`。semantic decision digestを更新。
+- Claims / Evidence / structured Locators: `23 / 23 / 23`
+- Claim types: fact `15`; company-guidance `3`; company-positioning `5`; atlas-analysis `0`; estimate `0`
+- Verification: `source-linked 23`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `2`; added `9`; new Source Policies remain `pending`
+- Coverage: `321 / 715 / 64 → 321 / 738 / 41` (complete / partial / not-started)
+- Triage: ACTIONABLE pending `24 → 0`; current SUFFICIENT_PARTIAL `711 → 734`; DEFERRED `10 → 11`; REVIEW_REQUIRED `0`
+- Browser QA: Unimicron and Yaskawa passed at `1024px` and `360px`; document overflow `0`, added Claims and bibliography links visible, Evidence marker target `44 × 44px`. Both companies passed drawer, Primary Source, Escape, and focus return at both widths.
+- Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed. Validation v0.1 remains the recorded pre-remediation HARD STOP and is not treated as the v0.2 close gate.
 - PR / merge / Actions / Pages: pending publication
 - HARD STOP: `0`
