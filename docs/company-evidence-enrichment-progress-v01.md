@@ -347,9 +347,12 @@ All A2–A4 and B1–B8 batches are `merged / Actions success / Pages checked`. 
 - Protection: financial / company legacy content / facilities / relationships / Global Visual System / Evidence Schema diff `0`; existing Source Policy approval changes `0`; unrelated Company Evidence diff `0`.
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - PR: [#137](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/137)
-- Merge / main Actions / public Pages: pending
+- Merge SHA: `70c49497416518360c193fdb0d6a02d5784e0cbe`
+- Actions: [run 33481857480](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33481857480) success (`build` / `deploy`)
+- Result: merged; main Actions success; public Pages checked across all nine companies at `1024px` and `360px`
 - HARD STOP: `0`
+- Ready for Company Evidence v1 coverage close: **YES**
 
 ## Resume marker
 
-Evidence Gap Closure Batch B1 is locally complete with ACTIONABLE pending `0`. Resume from PR #137 merge, main Actions, and public Pages verification only. Do not investigate SUFFICIENT_PARTIAL / NOT_DISCLOSED / NOT_APPLICABLE / DEFERRED records.
+Evidence Gap Final Triage & Closure Phase is complete: ACTIONABLE pending `0`, REVIEW_REQUIRED `0`, HARD STOP `0`. Do not rerun initial company enrichment or investigate SUFFICIENT_PARTIAL / NOT_DISCLOSED / NOT_APPLICABLE / DEFERRED records without a new approved phase.
