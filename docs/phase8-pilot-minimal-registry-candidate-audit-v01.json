@@ -1,0 +1,981 @@
+{
+  "schemaVersion": "0.1",
+  "baselineMain": "2801114077995e505334a2dca6f9e1312e23be50",
+  "auditScope": {
+    "pilotCompanies": [
+      "nvidia",
+      "broadcom",
+      "applied-materials",
+      "lam-research",
+      "tokyo-electron"
+    ],
+    "webResearchPerformed": false,
+    "relationRecordsCreated": 0
+  },
+  "inputDigests": {
+    "companyEvidenceCorpusSha256": "fe06b1da4f25e1ddd3593dfbc4913b005a378ac7e4301b37bbe4b5f8e7032412",
+    "sourceRegistryCorpusSha256": "69004e623840b97baebfe3e9fc2a500e6bfe84972d20a17fce6344424da190f8",
+    "pilotCompanyCorpusSha256": "e129b4a991a023a27c5b170e5376d720a651baea6d1f27d8df56459d1111c221",
+    "valueChainSha256": "738c1f293b60933feadb259f0eac101f972b74bc81a634646047d5cc5472828a",
+    "relationshipsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "candidates": [
+    {
+      "candidateId": "candidate-market-ai",
+      "proposedId": "market-ai",
+      "entityType": "market",
+      "canonicalName": "AI",
+      "aliases": [],
+      "companies": ["nvidia"],
+      "futureRelationTypes": ["SUPPLIES_TO"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-ai-role",
+          "evidenceBindingId": "nvidia-ai-role-e1",
+          "sourceId": "corporate-nvidia-data-center-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "reject",
+      "rationale": "Generic AI alone is explicitly prohibited as a Market identity and does not define an end market or demand domain."
+    },
+    {
+      "candidateId": "candidate-market-data-center",
+      "proposedId": "market-data-center",
+      "entityType": "market",
+      "canonicalName": "Data center",
+      "aliases": ["Data centers"],
+      "companies": ["applied-materials", "broadcom", "nvidia"],
+      "futureRelationTypes": ["SUPPLIES_TO"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "applied-materials",
+          "claimId": "applied-materials-customer-end-market-triage-remediation-v02",
+          "evidenceBindingId": "applied-materials-customer-end-market-triage-remediation-v02-e1",
+          "sourceId": "sec-applied-materials-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "broadcom",
+          "claimId": "broadcom-customer-end-market-triage-remediation-v02",
+          "evidenceBindingId": "broadcom-customer-end-market-triage-remediation-v02-e1",
+          "sourceId": "sec-broadcom-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-customer-end-market-triage-remediation-v02",
+          "evidenceBindingId": "nvidia-customer-end-market-triage-remediation-v02-e1",
+          "sourceId": "filing-nvidia-2026-02-25-fy2026-10k",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "defer",
+      "rationale": "The Pilot has no accepted Market endpoint or scope requirement yet, and the Claims mix customer classes, infrastructure use, and final demand."
+    },
+    {
+      "candidateId": "candidate-market-foundry-logic",
+      "proposedId": "market-foundry-logic",
+      "entityType": "market",
+      "canonicalName": "Foundry and logic",
+      "aliases": ["Logic and foundry"],
+      "companies": ["applied-materials", "lam-research", "tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "SUPPLIES_TO"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "applied-materials",
+          "claimId": "applied-materials-customer-end-market-triage-remediation-v02",
+          "evidenceBindingId": "applied-materials-customer-end-market-triage-remediation-v02-e1",
+          "sourceId": "sec-applied-materials-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-customer-end-market-triage-remediation-v02",
+          "evidenceBindingId": "lam-research-customer-end-market-triage-remediation-v02-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-customer-end-market-triage-remediation-v02",
+          "evidenceBindingId": "tokyo-electron-customer-end-market-triage-remediation-v02-e1",
+          "sourceId": "official-tel-integrated-report-2025",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "defer",
+      "rationale": "Foundry and logic are customer/business-model segments as well as demand categories; the Pilot does not require this unresolved Market boundary."
+    },
+    {
+      "candidateId": "candidate-market-memory-semiconductor",
+      "proposedId": "market-memory-semiconductor",
+      "entityType": "market",
+      "canonicalName": "Memory semiconductor",
+      "aliases": ["Memory"],
+      "companies": ["applied-materials", "lam-research", "tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "SUPPLIES_TO"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "applied-materials",
+          "claimId": "applied-materials-customer-end-market-triage-remediation-v02",
+          "evidenceBindingId": "applied-materials-customer-end-market-triage-remediation-v02-e1",
+          "sourceId": "sec-applied-materials-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-customer-end-market-triage-remediation-v02",
+          "evidenceBindingId": "lam-research-customer-end-market-triage-remediation-v02-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-customer-end-market-triage-remediation-v02",
+          "evidenceBindingId": "tokyo-electron-customer-end-market-triage-remediation-v02-e1",
+          "sourceId": "official-tel-integrated-report-2025",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "defer",
+      "rationale": "The Claims support memory exposure, but no Pilot Market endpoint or scope is required before Relation review; Product and process scope are sufficient."
+    },
+    {
+      "candidateId": "candidate-product-blackwell-gpu",
+      "proposedId": "product-category-blackwell-gpu",
+      "entityType": "product",
+      "canonicalName": "Blackwell GPU",
+      "aliases": ["Blackwell"],
+      "companies": ["nvidia"],
+      "futureRelationTypes": ["PRODUCES"],
+      "usage": ["endpoint"],
+      "grounding": [
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-products",
+          "evidenceBindingId": "nvidia-products-e1",
+          "sourceId": "corporate-nvidia-data-center-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "reject",
+      "rationale": "Blackwell is a company-specific named GPU family; the generic GPU category is registered instead."
+    },
+    {
+      "candidateId": "candidate-product-bluefield-dpu",
+      "proposedId": "product-category-bluefield-dpu",
+      "entityType": "product",
+      "canonicalName": "BlueField DPU",
+      "aliases": ["BlueField"],
+      "companies": ["nvidia"],
+      "futureRelationTypes": ["PRODUCES"],
+      "usage": ["endpoint"],
+      "grounding": [
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-products",
+          "evidenceBindingId": "nvidia-products-e1",
+          "sourceId": "corporate-nvidia-data-center-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "reject",
+      "rationale": "BlueField is a company-specific named DPU family; the generic DPU category is registered instead."
+    },
+    {
+      "candidateId": "candidate-product-coater-developer-equipment",
+      "proposedId": "product-category-coater-developer-equipment",
+      "entityType": "product",
+      "canonicalName": "Coater/developer equipment",
+      "aliases": ["Coater / developer"],
+      "companies": ["tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "ENABLES", "PRODUCES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-products",
+          "evidenceBindingId": "tokyo-electron-products-e1",
+          "sourceId": "ir-tokyo-electron",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The P1 Product Claim directly identifies a reusable equipment category and not a brand, SKU, or named family."
+    },
+    {
+      "candidateId": "candidate-product-connectivity-semiconductor",
+      "proposedId": "product-category-connectivity-semiconductor",
+      "entityType": "product",
+      "canonicalName": "Connectivity semiconductor",
+      "aliases": ["Connectivity semiconductors"],
+      "companies": ["broadcom"],
+      "futureRelationTypes": ["PRODUCES"],
+      "usage": ["endpoint"],
+      "grounding": [
+        {
+          "companyId": "broadcom",
+          "claimId": "broadcom-products",
+          "evidenceBindingId": "broadcom-products-e1",
+          "sourceId": "sec-broadcom-2025-10k",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The P1 Product Claim directly names a reusable generic semiconductor product category."
+    },
+    {
+      "candidateId": "candidate-product-cpu",
+      "proposedId": "product-category-cpu",
+      "entityType": "product",
+      "canonicalName": "Central processing unit",
+      "aliases": ["CPU"],
+      "companies": ["nvidia"],
+      "futureRelationTypes": ["PRODUCES"],
+      "usage": ["endpoint"],
+      "grounding": [
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-products",
+          "evidenceBindingId": "nvidia-products-e1",
+          "sourceId": "corporate-nvidia-data-center-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "CPU is the stable generic category contained in the named Grace CPU family shown by the P1 Claim."
+    },
+    {
+      "candidateId": "candidate-product-custom-accelerator-asic",
+      "proposedId": "product-category-custom-accelerator-asic",
+      "entityType": "product",
+      "canonicalName": "Custom accelerator ASIC",
+      "aliases": ["ASIC", "Custom accelerator", "Custom accelerators"],
+      "companies": ["broadcom"],
+      "futureRelationTypes": ["COMPETES_WITH", "PRODUCES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "broadcom",
+          "claimId": "broadcom-products",
+          "evidenceBindingId": "broadcom-products-e1",
+          "sourceId": "sec-broadcom-2025-10k",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The Claim presents custom accelerators and ASIC as one generic product category suitable for a PRODUCES endpoint and scoped comparison."
+    },
+    {
+      "candidateId": "candidate-product-data-center-networking-system",
+      "proposedId": "product-category-data-center-networking-system",
+      "entityType": "product",
+      "canonicalName": "Data center networking system",
+      "aliases": ["AI networking"],
+      "companies": ["broadcom", "nvidia"],
+      "futureRelationTypes": ["COMPETES_WITH", "PRODUCES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "broadcom",
+          "claimId": "broadcom-products",
+          "evidenceBindingId": "broadcom-products-e1",
+          "sourceId": "sec-broadcom-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-positioning",
+          "evidenceBindingId": "nvidia-positioning-e1",
+          "sourceId": "corporate-nvidia-networking-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "defer",
+      "rationale": "The proposed grain would mix switches, switching silicon, adapters, fabric, and named systems; Ethernet Technology provides a stable scope without inventing a broad Product."
+    },
+    {
+      "candidateId": "candidate-product-dpu",
+      "proposedId": "product-category-dpu",
+      "entityType": "product",
+      "canonicalName": "Data processing unit",
+      "aliases": ["DPU"],
+      "companies": ["nvidia"],
+      "futureRelationTypes": ["PRODUCES"],
+      "usage": ["endpoint"],
+      "grounding": [
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-products",
+          "evidenceBindingId": "nvidia-products-e1",
+          "sourceId": "corporate-nvidia-data-center-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "DPU is the stable generic category contained in the named BlueField DPU family shown by the P1 Claim."
+    },
+    {
+      "candidateId": "candidate-product-ethernet-switching-silicon",
+      "proposedId": "product-category-ethernet-switching-silicon",
+      "entityType": "product",
+      "canonicalName": "Ethernet switching silicon",
+      "aliases": ["Ethernet switch silicon"],
+      "companies": ["broadcom"],
+      "futureRelationTypes": ["COMPETES_WITH", "ENABLES", "PRODUCES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "broadcom",
+          "claimId": "broadcom-products",
+          "evidenceBindingId": "broadcom-products-e1",
+          "sourceId": "sec-broadcom-2025-10k",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The P1 Product Claim directly names a generic switching-silicon category that remains distinct from the Ethernet protocol Technology."
+    },
+    {
+      "candidateId": "candidate-product-gpu",
+      "proposedId": "product-category-gpu",
+      "entityType": "product",
+      "canonicalName": "Graphics processing unit",
+      "aliases": ["GPU"],
+      "companies": ["nvidia"],
+      "futureRelationTypes": ["COMPETES_WITH", "PRODUCES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-products",
+          "evidenceBindingId": "nvidia-products-e1",
+          "sourceId": "corporate-nvidia-data-center-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "GPU is the stable generic category contained in the named Blackwell GPU family shown by the P1 Claim."
+    },
+    {
+      "candidateId": "candidate-product-grace-cpu",
+      "proposedId": "product-category-grace-cpu",
+      "entityType": "product",
+      "canonicalName": "Grace CPU",
+      "aliases": ["Grace"],
+      "companies": ["nvidia"],
+      "futureRelationTypes": ["PRODUCES"],
+      "usage": ["endpoint"],
+      "grounding": [
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-products",
+          "evidenceBindingId": "nvidia-products-e1",
+          "sourceId": "corporate-nvidia-data-center-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "reject",
+      "rationale": "Grace is a company-specific named CPU family; the generic CPU category is registered instead."
+    },
+    {
+      "candidateId": "candidate-product-semiconductor-deposition-equipment",
+      "proposedId": "product-category-semiconductor-deposition-equipment",
+      "entityType": "product",
+      "canonicalName": "Semiconductor deposition equipment",
+      "aliases": ["Deposition equipment"],
+      "companies": ["applied-materials", "lam-research", "tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "ENABLES", "PRODUCES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "applied-materials",
+          "claimId": "applied-products",
+          "evidenceBindingId": "applied-products-e1",
+          "sourceId": "corporate-applied-materials-semiconductor-2026",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-products",
+          "evidenceBindingId": "lam-research-products-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-products",
+          "evidenceBindingId": "tokyo-electron-products-e1",
+          "sourceId": "ir-tokyo-electron",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "All three Set B Product Claims directly support the same reusable equipment category, suitable for endpoint and competition scope."
+    },
+    {
+      "candidateId": "candidate-product-semiconductor-etch-equipment",
+      "proposedId": "product-category-semiconductor-etch-equipment",
+      "entityType": "product",
+      "canonicalName": "Semiconductor etch equipment",
+      "aliases": ["Etch equipment"],
+      "companies": ["lam-research", "tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "ENABLES", "PRODUCES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-products",
+          "evidenceBindingId": "lam-research-products-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-products",
+          "evidenceBindingId": "tokyo-electron-products-e1",
+          "sourceId": "ir-tokyo-electron",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The two P1 Product Claims directly name a reusable equipment category, without inferring Applied Materials removal processes as etch."
+    },
+    {
+      "candidateId": "candidate-product-spectrum-x-networking",
+      "proposedId": "product-category-spectrum-x-networking",
+      "entityType": "product",
+      "canonicalName": "Spectrum-X networking",
+      "aliases": ["Spectrum-X"],
+      "companies": ["nvidia"],
+      "futureRelationTypes": ["PRODUCES"],
+      "usage": ["endpoint"],
+      "grounding": [
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-products",
+          "evidenceBindingId": "nvidia-products-e1",
+          "sourceId": "corporate-nvidia-data-center-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "reject",
+      "rationale": "Spectrum-X is a company-specific named product family; Ethernet networking is registered as Technology while no broad networking Product is inferred."
+    },
+    {
+      "candidateId": "candidate-product-wafer-cleaning-equipment",
+      "proposedId": "product-category-wafer-cleaning-equipment",
+      "entityType": "product",
+      "canonicalName": "Wafer cleaning equipment",
+      "aliases": [],
+      "companies": ["lam-research", "tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "ENABLES", "PRODUCES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-products",
+          "evidenceBindingId": "lam-research-products-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-products",
+          "evidenceBindingId": "tokyo-electron-products-e1",
+          "sourceId": "ir-tokyo-electron",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The two P1 Product Claims directly identify the same generic wafer-cleaning equipment category."
+    },
+    {
+      "candidateId": "candidate-product-wafer-fabrication-equipment",
+      "proposedId": "product-category-wafer-fabrication-equipment",
+      "entityType": "product",
+      "canonicalName": "Wafer fabrication equipment",
+      "aliases": ["WFE"],
+      "companies": ["applied-materials", "lam-research", "tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "ENABLES", "PRODUCES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "applied-materials",
+          "claimId": "applied-value-chain",
+          "evidenceBindingId": "applied-value-chain-e1",
+          "sourceId": "corporate-applied-materials-about-2026",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-overview",
+          "evidenceBindingId": "lam-research-overview-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-value-chain",
+          "evidenceBindingId": "tokyo-electron-value-chain-e1",
+          "sourceId": "ir-tokyo-electron",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The broad generic category is explicitly grounded for all Set B companies and provides a stable endpoint and top-level competition scope."
+    },
+    {
+      "candidateId": "candidate-technology-accelerated-computing-architecture",
+      "proposedId": "technology-accelerated-computing-architecture",
+      "entityType": "technology",
+      "canonicalName": "Accelerated computing architecture",
+      "aliases": ["Accelerated computing"],
+      "companies": ["nvidia"],
+      "futureRelationTypes": ["DEVELOPS", "ENABLES", "POSITIONED_IN"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-overview",
+          "evidenceBindingId": "nvidia-overview-e1",
+          "sourceId": "corporate-nvidia-data-center-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The P1 overview directly describes an accelerated-computing architecture composed of compute, networking, and software."
+    },
+    {
+      "candidateId": "candidate-technology-asic",
+      "proposedId": "technology-asic-architecture",
+      "entityType": "technology",
+      "canonicalName": "ASIC architecture",
+      "aliases": ["ASIC"],
+      "companies": ["broadcom"],
+      "futureRelationTypes": ["DEVELOPS"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "broadcom",
+          "claimId": "broadcom-technology",
+          "evidenceBindingId": "broadcom-technology-e1",
+          "sourceId": "sec-broadcom-2025-10k",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "defer",
+      "rationale": "ASIC is ambiguous between Product category and architecture in the current Claim; the reviewed Product category is included and the Technology identity is deferred."
+    },
+    {
+      "candidateId": "candidate-technology-custom-silicon-design",
+      "proposedId": "technology-custom-silicon-design",
+      "entityType": "technology",
+      "canonicalName": "Custom silicon design",
+      "aliases": ["Custom semiconductor design"],
+      "companies": ["broadcom"],
+      "futureRelationTypes": ["DEVELOPS"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "broadcom",
+          "claimId": "broadcom-positioning",
+          "evidenceBindingId": "broadcom-positioning-e1",
+          "sourceId": "sec-broadcom-2025-10k",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The positioning Claim explicitly grounds a company-wide custom-design capability without turning ASIC into a second cross-type entity."
+    },
+    {
+      "candidateId": "candidate-technology-ethernet-networking",
+      "proposedId": "technology-ethernet-networking",
+      "entityType": "technology",
+      "canonicalName": "Ethernet networking",
+      "aliases": ["Ethernet"],
+      "companies": ["broadcom", "nvidia"],
+      "futureRelationTypes": ["COMPETES_WITH", "DEVELOPS", "ENABLES", "USES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "broadcom",
+          "claimId": "broadcom-technology",
+          "evidenceBindingId": "broadcom-technology-e1",
+          "sourceId": "sec-broadcom-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-networking",
+          "evidenceBindingId": "nvidia-networking-e1",
+          "sourceId": "corporate-nvidia-networking-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "Ethernet is a stable protocol/network architecture grounded for both Set A companies and avoids inventing a broad networking Product."
+    },
+    {
+      "candidateId": "candidate-technology-high-aspect-ratio-processing",
+      "proposedId": "technology-high-aspect-ratio-processing",
+      "entityType": "technology",
+      "canonicalName": "High-aspect-ratio processing",
+      "aliases": ["High aspect ratio process"],
+      "companies": ["lam-research"],
+      "futureRelationTypes": ["DEVELOPS", "USES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-ai-role",
+          "evidenceBindingId": "lam-research-ai-role-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "defer",
+      "rationale": "The Atlas-analysis Claim indicates exposure but does not close a stable Technology identity or company-wide DEVELOPS/USES relation; semiconductor etching is sufficient for the Pilot."
+    },
+    {
+      "candidateId": "candidate-technology-integrated-materials-solution",
+      "proposedId": "technology-integrated-materials-solution",
+      "entityType": "technology",
+      "canonicalName": "Integrated Materials Solution",
+      "aliases": [],
+      "companies": ["applied-materials"],
+      "futureRelationTypes": ["DEVELOPS", "USES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "applied-materials",
+          "claimId": "applied-technology",
+          "evidenceBindingId": "applied-technology-e1",
+          "sourceId": "corporate-applied-materials-semiconductor-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "reject",
+      "rationale": "This is a company-specific named solution and marketing phrase; the underlying materials engineering and metrology concepts are registered separately."
+    },
+    {
+      "candidateId": "candidate-technology-nvlink",
+      "proposedId": "technology-nvlink",
+      "entityType": "technology",
+      "canonicalName": "NVLink",
+      "aliases": [],
+      "companies": ["nvidia"],
+      "futureRelationTypes": ["DEVELOPS", "USES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-networking",
+          "evidenceBindingId": "nvidia-networking-e1",
+          "sourceId": "corporate-nvidia-networking-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "defer",
+      "rationale": "NVLink is a valid protocol candidate but is not required for the initial Pilot Relation endpoint or scope; its company-specific identity can be reviewed in a later Technology expansion."
+    },
+    {
+      "candidateId": "candidate-technology-plasma-etching",
+      "proposedId": "technology-plasma-etching",
+      "entityType": "technology",
+      "canonicalName": "Plasma etching",
+      "aliases": ["Plasma etch"],
+      "companies": ["tokyo-electron"],
+      "futureRelationTypes": ["DEVELOPS", "USES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-manufacturing-facilities-gap-closure-miyagi",
+          "evidenceBindingId": "tokyo-electron-manufacturing-facilities-gap-closure-miyagi-e1",
+          "sourceId": "facilities-tel-miyagi-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "defer",
+      "rationale": "The grounding is a subsidiary/facility-specific development statement; v0.1 has no sub-Company scope, and generic semiconductor etching is sufficient."
+    },
+    {
+      "candidateId": "candidate-technology-semiconductor-coating-development",
+      "proposedId": "technology-semiconductor-coating-development",
+      "entityType": "technology",
+      "canonicalName": "Semiconductor coating and development process",
+      "aliases": ["Coater/developer process"],
+      "companies": ["tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "DEVELOPS", "ENABLES", "USES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-technology",
+          "evidenceBindingId": "tokyo-electron-technology-e1",
+          "sourceId": "ir-tokyo-electron",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The Technology Claim directly identifies the generic coating/development process without introducing a named product family."
+    },
+    {
+      "candidateId": "candidate-technology-semiconductor-deposition",
+      "proposedId": "technology-semiconductor-deposition",
+      "entityType": "technology",
+      "canonicalName": "Semiconductor deposition process",
+      "aliases": ["Deposition"],
+      "companies": ["applied-materials", "lam-research", "tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "DEVELOPS", "ENABLES", "USES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "applied-materials",
+          "claimId": "applied-products",
+          "evidenceBindingId": "applied-products-e1",
+          "sourceId": "corporate-applied-materials-semiconductor-2026",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-technology",
+          "evidenceBindingId": "lam-research-technology-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-technology",
+          "evidenceBindingId": "tokyo-electron-technology-e1",
+          "sourceId": "ir-tokyo-electron",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "Deposition is a stable semiconductor manufacturing process grounded across all Set B companies and usable as scoped competition Technology."
+    },
+    {
+      "candidateId": "candidate-technology-semiconductor-etching",
+      "proposedId": "technology-semiconductor-etching",
+      "entityType": "technology",
+      "canonicalName": "Semiconductor etching process",
+      "aliases": ["Etch"],
+      "companies": ["lam-research", "tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "DEVELOPS", "ENABLES", "USES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-technology",
+          "evidenceBindingId": "lam-research-technology-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-technology",
+          "evidenceBindingId": "tokyo-electron-technology-e1",
+          "sourceId": "ir-tokyo-electron",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "Etching is a stable semiconductor manufacturing process grounded for two Set B companies; Applied Materials removal is not inferred as etch."
+    },
+    {
+      "candidateId": "candidate-technology-semiconductor-materials-engineering",
+      "proposedId": "technology-semiconductor-materials-engineering",
+      "entityType": "technology",
+      "canonicalName": "Semiconductor materials engineering",
+      "aliases": ["Materials engineering"],
+      "companies": ["applied-materials"],
+      "futureRelationTypes": ["DEVELOPS"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "applied-materials",
+          "claimId": "applied-overview",
+          "evidenceBindingId": "applied-overview-e1",
+          "sourceId": "corporate-applied-materials-about-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The P1 overview directly identifies materials engineering as the stable material-technology concept behind the company offering."
+    },
+    {
+      "candidateId": "candidate-technology-semiconductor-metrology",
+      "proposedId": "technology-semiconductor-metrology",
+      "entityType": "technology",
+      "canonicalName": "Semiconductor metrology",
+      "aliases": ["Metrology"],
+      "companies": ["applied-materials"],
+      "futureRelationTypes": ["DEVELOPS", "ENABLES", "USES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "applied-materials",
+          "claimId": "applied-technology",
+          "evidenceBindingId": "applied-technology-e1",
+          "sourceId": "corporate-applied-materials-semiconductor-2026",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "The Technology Claim directly identifies metrology as a process technology while the named integrated solution itself is rejected."
+    },
+    {
+      "candidateId": "candidate-technology-wafer-cleaning",
+      "proposedId": "technology-wafer-cleaning",
+      "entityType": "technology",
+      "canonicalName": "Wafer cleaning process",
+      "aliases": ["Wafer cleaning"],
+      "companies": ["lam-research", "tokyo-electron"],
+      "futureRelationTypes": ["COMPETES_WITH", "DEVELOPS", "ENABLES", "USES"],
+      "usage": ["endpoint", "scope"],
+      "grounding": [
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-technology",
+          "evidenceBindingId": "lam-research-technology-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-technology",
+          "evidenceBindingId": "tokyo-electron-technology-e1",
+          "sourceId": "ir-tokyo-electron",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "include",
+      "rationale": "Wafer cleaning is a stable manufacturing process grounded for the two companies whose Claims explicitly identify cleaning systems."
+    },
+    {
+      "candidateId": "candidate-value-chain-node-compute",
+      "proposedId": "compute",
+      "entityType": "value-chain-node",
+      "canonicalName": "Compute",
+      "aliases": ["Compute & Silicon"],
+      "companies": ["broadcom", "nvidia"],
+      "futureRelationTypes": ["POSITIONED_IN"],
+      "usage": ["endpoint"],
+      "grounding": [
+        {
+          "companyId": "broadcom",
+          "claimId": "broadcom-value-chain",
+          "evidenceBindingId": "broadcom-value-chain-e1",
+          "sourceId": "sec-broadcom-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "nvidia",
+          "claimId": "nvidia-value-chain",
+          "evidenceBindingId": "nvidia-value-chain-e1",
+          "sourceId": "filing-nvidia-2026-02-25-fy2026-10k",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "reject",
+      "rationale": "No new registry record is allowed: the existing ValueChainNode ID compute is reused, and Company Layer remains a separate taxonomy."
+    },
+    {
+      "candidateId": "candidate-value-chain-node-manufacturing",
+      "proposedId": "manufacturing",
+      "entityType": "value-chain-node",
+      "canonicalName": "Semiconductor manufacturing",
+      "aliases": ["Wafer Fab Equipment"],
+      "companies": ["applied-materials", "lam-research", "tokyo-electron"],
+      "futureRelationTypes": ["POSITIONED_IN"],
+      "usage": ["endpoint"],
+      "grounding": [
+        {
+          "companyId": "applied-materials",
+          "claimId": "applied-value-chain",
+          "evidenceBindingId": "applied-value-chain-e1",
+          "sourceId": "corporate-applied-materials-about-2026",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "lam-research",
+          "claimId": "lam-research-value-chain",
+          "evidenceBindingId": "lam-research-value-chain-e1",
+          "sourceId": "sec-lam-research-2025-10k",
+          "locatorAvailable": true
+        },
+        {
+          "companyId": "tokyo-electron",
+          "claimId": "tokyo-electron-value-chain",
+          "evidenceBindingId": "tokyo-electron-value-chain-e1",
+          "sourceId": "ir-tokyo-electron",
+          "locatorAvailable": true
+        }
+      ],
+      "locatorAvailability": "complete",
+      "decision": "reject",
+      "rationale": "No new registry record is allowed: the existing ValueChainNode ID manufacturing is reused, and Wafer Fab Equipment remains a Company Layer and Product-category label."
+    }
+  ],
+  "summary": {
+    "totalCandidates": 36,
+    "decisionCounts": {
+      "include": 20,
+      "defer": 8,
+      "reject": 8
+    },
+    "includedRegistryCounts": {
+      "product": 11,
+      "technology": 9,
+      "market": 0
+    },
+    "includedGroundingCount": 31,
+    "includedLocatorCoverage": {
+      "available": 31,
+      "total": 31
+    }
+  }
+}

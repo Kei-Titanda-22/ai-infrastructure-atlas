@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "0.1",
+  "entityType": "product",
+  "records": [
+    {
+      "id": "product-category-coater-developer-equipment",
+      "entityType": "product",
+      "canonicalName": "Coater/developer equipment",
+      "displayNames": { "ja": "塗布現像装置" },
+      "aliases": ["Coater / developer"],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    },
+    {
+      "id": "product-category-connectivity-semiconductor",
+      "entityType": "product",
+      "canonicalName": "Connectivity semiconductor",
+      "displayNames": { "ja": "接続系半導体" },
+      "aliases": ["Connectivity semiconductors"],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    },
+    {
+      "id": "product-category-cpu",
+      "entityType": "product",
+      "canonicalName": "Central processing unit",
+      "displayNames": { "ja": "CPU" },
+      "aliases": ["CPU"],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    },
+    {
+      "id": "product-category-custom-accelerator-asic",
+      "entityType": "product",
+      "canonicalName": "Custom accelerator ASIC",
+      "displayNames": { "ja": "カスタムアクセラレータASIC" },
+      "aliases": ["ASIC", "Custom accelerator", "Custom accelerators"],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    },
+    {
+      "id": "product-category-dpu",
+      "entityType": "product",
+      "canonicalName": "Data processing unit",
+      "displayNames": { "ja": "DPU" },
+      "aliases": ["DPU"],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    },
+    {
+      "id": "product-category-ethernet-switching-silicon",
+      "entityType": "product",
+      "canonicalName": "Ethernet switching silicon",
+      "displayNames": { "ja": "Ethernetスイッチング半導体" },
+      "aliases": ["Ethernet switch silicon"],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    },
+    {
+      "id": "product-category-gpu",
+      "entityType": "product",
+      "canonicalName": "Graphics processing unit",
+      "displayNames": { "ja": "GPU" },
+      "aliases": ["GPU"],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    },
+    {
+      "id": "product-category-semiconductor-deposition-equipment",
+      "entityType": "product",
+      "canonicalName": "Semiconductor deposition equipment",
+      "displayNames": { "ja": "半導体成膜装置" },
+      "aliases": ["Deposition equipment"],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    },
+    {
+      "id": "product-category-semiconductor-etch-equipment",
+      "entityType": "product",
+      "canonicalName": "Semiconductor etch equipment",
+      "displayNames": { "ja": "半導体エッチング装置" },
+      "aliases": ["Etch equipment"],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    },
+    {
+      "id": "product-category-wafer-cleaning-equipment",
+      "entityType": "product",
+      "canonicalName": "Wafer cleaning equipment",
+      "displayNames": { "ja": "ウェーハ洗浄装置" },
+      "aliases": [],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    },
+    {
+      "id": "product-category-wafer-fabrication-equipment",
+      "entityType": "product",
+      "canonicalName": "Wafer fabrication equipment",
+      "displayNames": { "ja": "ウェーハ製造装置" },
+      "aliases": ["WFE"],
+      "status": "active",
+      "replacedBy": null,
+      "productKind": "generic-category"
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kei-titanda-22.github.io/ai-infrastructure-atlas/schemas/entity-registry-v01.json",
+  "title": "Atlas Pilot Canonical Entity Registry v0.1",
+  "oneOf": [
+    { "$ref": "#/$defs/productRegistry" },
+    { "$ref": "#/$defs/technologyRegistry" },
+    { "$ref": "#/$defs/marketRegistry" }
+  ],
+  "$defs": {
+    "displayNames": {
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": { "pattern": "^[a-z]{2}(?:-[A-Z]{2})?$" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "commonRecord": {
+      "type": "object",
+      "required": [
+        "id",
+        "entityType",
+        "canonicalName",
+        "displayNames",
+        "aliases",
+        "status",
+        "replacedBy"
+      ],
+      "properties": {
+        "id": { "type": "string" },
+        "entityType": { "enum": ["product", "technology", "market"] },
+        "canonicalName": { "type": "string", "minLength": 1 },
+        "displayNames": { "$ref": "#/$defs/displayNames" },
+        "aliases": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "status": { "enum": ["active", "deprecated"] },
+        "replacedBy": { "type": ["string", "null"] }
+      }
+    },
+    "productRecord": {
+      "allOf": [
+        { "$ref": "#/$defs/commonRecord" },
+        {
+          "type": "object",
+          "required": ["productKind"],
+          "properties": {
+            "id": { "pattern": "^product-category-[a-z0-9]+(?:-[a-z0-9]+)*$" },
+            "entityType": { "const": "product" },
+            "productKind": { "const": "generic-category" }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "technologyRecord": {
+      "allOf": [
+        { "$ref": "#/$defs/commonRecord" },
+        {
+          "type": "object",
+          "required": ["technologyKind"],
+          "properties": {
+            "id": { "pattern": "^technology-[a-z0-9]+(?:-[a-z0-9]+)*$" },
+            "entityType": { "const": "technology" },
+            "technologyKind": {
+              "enum": [
+                "architecture",
+                "manufacturing-process",
+                "protocol",
+                "material-technology",
+                "process-technology"
+              ]
+            }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "marketRecord": {
+      "allOf": [
+        { "$ref": "#/$defs/commonRecord" },
+        {
+          "type": "object",
+          "required": ["marketKind"],
+          "properties": {
+            "id": { "pattern": "^market-[a-z0-9]+(?:-[a-z0-9]+)*$" },
+            "entityType": { "const": "market" },
+            "marketKind": { "enum": ["end-market", "demand-domain"] }
+          },
+          "unevaluatedProperties": false
+        }
+      ]
+    },
+    "productRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "entityType", "records"],
+      "properties": {
+        "schemaVersion": { "const": "0.1" },
+        "entityType": { "const": "product" },
+        "records": { "type": "array", "items": { "$ref": "#/$defs/productRecord" } }
+      }
+    },
+    "technologyRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "entityType", "records"],
+      "properties": {
+        "schemaVersion": { "const": "0.1" },
+        "entityType": { "const": "technology" },
+        "records": { "type": "array", "items": { "$ref": "#/$defs/technologyRecord" } }
+      }
+    },
+    "marketRegistry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemaVersion", "entityType", "records"],
+      "properties": {
+        "schemaVersion": { "const": "0.1" },
+        "entityType": { "const": "market" },
+        "records": { "type": "array", "items": { "$ref": "#/$defs/marketRecord" } }
+      }
+    }
+  }
+}
