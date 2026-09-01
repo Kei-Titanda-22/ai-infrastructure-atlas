@@ -465,5 +465,24 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Browser QA: HANMI Semiconductor and Kinsus passed at `1024px` and `360px`; document overflow `0`, added Claims and bibliography links visible, Evidence marker target `44 × 44px`. HANMI Semiconductor desktop and Kinsus mobile passed drawer, Primary Source, Escape, and focus return.
 - Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- PR: [#144](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/144)
+- Merge SHA: `3d35f2f5989ff61f89d2207ef279998bf4a05f28`
+- Actions: [run 33498069524](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33498069524) success
+- Pages: Kinsusの追加Claim・bibliography・overflowを公開環境で確認
+- HARD STOP: `0`
+
+## Triage Remediation Enrichment B05
+
+- Baseline main: `3d35f2f5989ff61f89d2207ef279998bf4a05f28`
+- Companies: KLA, Kokusai Electric, Lam Research, Lasertec, Legrand, Linde, Marvell, MediaTek, Micron, Mitsubishi Electric
+- ACTIONABLE processed: `29` Category records / `10` companies
+- Claims / Evidence / structured Locators: `29 / 29 / 29`
+- Verification: `source-linked 29`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `10`; added `3`; new Source Policies remain `pending`
+- Coverage: `321 / 583 / 196 → 321 / 612 / 167` (complete / partial / not-started)
+- Triage: ACTIONABLE pending `156 → 127`; current SUFFICIENT_PARTIAL `579 → 608`; REVIEW_REQUIRED `0`
+- Browser QA: Legrand and Mitsubishi Electric passed at `1024px` and `360px`; document overflow `0`, added Claims and bibliography links visible, Evidence marker target `44 × 44px`. Both companies passed drawer, Primary Source, Escape, and focus return at desktop and mobile widths.
+- Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - PR / merge / Actions / Pages: pending publication
 - HARD STOP: `0`
