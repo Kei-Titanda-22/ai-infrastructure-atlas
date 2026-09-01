@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "legrand-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "Montbard拠点のindustrial capacity投資",
+      "statement": "Legrandはlocal industrial capacityへの投資を進め、latest-generation data center向けsteel wire-mesh cable trayを生産するFranceのMontbard拠点へ2,200万euroを投資すると公表している。",
+      "evidenceIds": [
+        "legrand-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-07-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "notes": "会社の一次資料に基づく投資計画の要約。完了実績やAtlas独自予測として扱わない。",
+      "companyId": "legrand"
+    },
+    {
+      "id": "smc-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "Vietnam工場の拡張計画",
+      "statement": "SMCはglobal supplyの安定化に向け、Vietnam工場を拡張して一部modelのmass-production機能を移管する計画を進めている。",
+      "evidenceIds": [
+        "smc-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-03-25",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "notes": "会社の一次資料に基づく拡張・移管計画の要約。完了実績やAtlas独自予測として扱わない。",
+      "companyId": "smc"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "legrand-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "legrand-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-legrand-h1-2025-results",
+      "support": "supports",
+      "locator": {
+        "section": "Active deployment of 2030 strategic roadmap",
+        "heading": "Numerous organic growth initiatives in the first half",
+        "quotedLabel": "invest in local industrial capacity / EUR 22 million / Montbard site / latest-generation datacenters"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "smc-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "smc-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-smc-integrated-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Manufacturing: Message from the Director",
+        "heading": "Building a more stable production system through the establishment of a global supply system",
+        "quotedLabel": "currently executing a plan to expand the Vietnam Factory and transfer part of that role"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": []
+}

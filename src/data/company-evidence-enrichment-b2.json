@@ -2126,11 +2126,11 @@
     {
       "companyId": "legrand",
       "category": "capacity-expansion",
-      "collectionStatus": "not-started",
+      "collectionStatus": "partial",
       "lastReviewed": "2026-09-01",
       "nextReview": "2027-06-30",
-      "missingStatus": "not-collected",
-      "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+      "missingStatus": null,
+      "notes": "Validation v0.2のaffected-stratum再監査でMontbard拠点へのlocal industrial capacity投資をSource-linked Claim化。単一ClaimでCategory全体をcompleteとは扱わずpartialとする。"
     },
     {
       "companyId": "legrand",

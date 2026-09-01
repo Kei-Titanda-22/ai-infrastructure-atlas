@@ -2,7 +2,7 @@
   "schemaVersion": "0.1",
   "generatedAt": "2026-09-01T00:00:00Z",
   "dataAsOf": "2026-09-01",
-  "inputDigest": "sha256:d84d383aa477db70c627e557d3bf465fefab393ba7fdccc57fea307aee417fb3",
+  "inputDigest": "sha256:14a8ebbd8465b0f091943cbed063b479dac1d56a7cd56734e62cab8f89fb4bab",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,16 +27,16 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 228
+    "inputFileCount": 230
   },
   "summary": {
     "coverage": {
       "complete": 321,
-      "partial": 738,
-      "not-started": 41
+      "partial": 740,
+      "not-started": 39
     },
     "missingStatus": {
-      "not-collected": 31,
+      "not-collected": 29,
       "primary-source-unchecked": 1,
       "not-disclosed": 0,
       "not-applicable": 9
@@ -50,10 +50,10 @@
     },
     "evidenceMaturityDimensions": {
       "companyLevelSourceCompanies": 100,
-      "directCategorySourcePairs": 1058,
-      "claimEvidenceBindingPairs": 1058,
-      "structuredLocatorPairs": 1058,
-      "freezeReadyPairs": 1058
+      "directCategorySourcePairs": 1060,
+      "claimEvidenceBindingPairs": 1060,
+      "structuredLocatorPairs": 1060,
+      "freezeReadyPairs": 1060
     },
     "fieldLevelLegacy": {
       "summary": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 369,
-      "uniqueSourceCount": 367,
+      "registryRecordCount": 371,
+      "uniqueSourceCount": 369,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -132,20 +132,20 @@
       "financialSourceResolved": 124
     },
     "locatorAudit": {
-      "bindingCount": 1061,
-      "validLocatorCount": 1061,
+      "bindingCount": 1063,
+      "validLocatorCount": 1063,
       "missingLocatorCount": 0,
       "missingLocatorBindingIds": [],
       "invalidLocatorCount": 0,
       "invalidLocators": [],
       "fieldUsage": {
         "page": 230,
-        "section": 1012,
-        "heading": 1046,
+        "section": 1014,
+        "heading": 1048,
         "table": 2,
         "note": 0,
         "anchor": 0,
-        "quotedLabel": 1033
+        "quotedLabel": 1035
       }
     },
     "priorityBands": {
@@ -239,10 +239,10 @@
     {
       "category": "capacity-expansion",
       "completeCompanies": 3,
-      "partialCompanies": 71,
-      "notStartedCompanies": 26,
-      "directSourceCompanies": 74,
-      "claimEvidenceCompanies": 74,
+      "partialCompanies": 73,
+      "notStartedCompanies": 24,
+      "directSourceCompanies": 76,
+      "claimEvidenceCompanies": 76,
       "migrationCandidateCompanies": 0
     },
     {
@@ -394,10 +394,10 @@
     {
       "category": "capacity-expansion",
       "completeCompanies": 3,
-      "partialCompanies": 71,
-      "notStartedCompanies": 26,
-      "directSourceCompanies": 74,
-      "claimEvidenceCompanies": 74,
+      "partialCompanies": 73,
+      "notStartedCompanies": 24,
+      "directSourceCompanies": 76,
+      "claimEvidenceCompanies": 76,
       "migrationCandidateCompanies": 0
     },
     {
@@ -15706,21 +15706,21 @@
       "primaryLayer": "Data Center & Facilities",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
+      "registrySourceCount": 4,
       "financialSourceCount": 1,
-      "claimCount": 10,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 10,
-      "locatorCount": 10,
-      "directCategorySourcePairCount": 10,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 7,
-        "not-started": 1
+        "partial": 8,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -15821,17 +15821,19 @@
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "official-legrand-h1-2025-results"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Validation v0.2のaffected-stratum再監査でMontbard拠点へのlocal industrial capacity投資をSource-linked Claim化。単一ClaimでCategory全体をcompleteとは扱わずpartialとする。"
         },
         {
           "category": "customer-end-market",
@@ -15947,9 +15949,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 114,
+      "priorityScore": 104,
       "priorityInputs": {
-        "coverageDeficit": 9,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 5,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 2,
@@ -15962,7 +15964,7 @@
         "resolvedSourceIds": [
           "ir-legrand"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 4,
         "financialSourceIds": [
           "earnings-legrand-2025-02-13-fy2024"
         ],
@@ -23959,21 +23961,21 @@
       "primaryLayer": "Physical AI",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
+      "registrySourceCount": 5,
       "financialSourceCount": 1,
-      "claimCount": 10,
+      "claimCount": 11,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 10,
-      "locatorCount": 10,
-      "directCategorySourcePairCount": 10,
+      "evidenceBindingCount": 11,
+      "locatorCount": 11,
+      "directCategorySourcePairCount": 11,
       "maturity": {
         "level": "L4",
         "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
         "complete": 3,
-        "partial": 7,
-        "not-started": 1
+        "partial": 8,
+        "not-started": 0
       },
       "categoryCoverage": [
         {
@@ -24074,17 +24076,19 @@
         },
         {
           "category": "capacity-expansion",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "official-smc-integrated-report-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
+          "freezeSchemaReady": true,
+          "notes": "Validation v0.2のaffected-stratum再監査でVietnam工場の拡張・mass-production機能移管計画をSource-linked Claim化。完了実績とは扱わずpartialとする。"
         },
         {
           "category": "customer-end-market",
@@ -24200,9 +24204,9 @@
       ],
       "migrationCandidates": [],
       "priorityBand": "B",
-      "priorityScore": 104,
+      "priorityScore": 94,
       "priorityInputs": {
-        "coverageDeficit": 9,
+        "coverageDeficit": 8,
         "aiInfrastructureImportance": 3,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
@@ -24215,7 +24219,7 @@
         "resolvedSourceIds": [
           "ir-smc"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 5,
         "financialSourceIds": [
           "smc-financial-results-fy2025"
         ],

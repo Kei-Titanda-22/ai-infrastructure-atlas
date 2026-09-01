@@ -2,8 +2,8 @@
 
 - Baseline main: `854f20bdc808323766f085f0c419d923753b93f5`
 - Supersedes: `docs/company-evidence-gap-triage-v01.json`
-- Semantic decision digest: `sha256:eb7b7fdbfa620db5dd935019d999e3ffe77568772e84f0e7d380e6d30e20ed25`
-- Current Coverage gaps: `779` (`partial 738` + `not-started 41`)
+- Semantic decision digest: `sha256:4c06c8522d17f20bb7b6c2aa3d168dcf93db83c8d2cb9b01501d2f6de9262714`
+- Current Coverage gaps: `779` (`partial 740` + `not-started 39`)
 - ACTIONABLE pending: `0` records / `0` companies
 - Coverage answers whether a Category is complete; Triage answers whether it should be pursued.
 
@@ -18,11 +18,11 @@
 
 | Classification | Reviewed decision | Current gap state |
 | --- | ---: | ---: |
-| ACTIONABLE | 291 | 0 |
-| SUFFICIENT_PARTIAL | 447 | 738 |
+| ACTIONABLE | 293 | 0 |
+| SUFFICIENT_PARTIAL | 447 | 740 |
 | NOT_DISCLOSED | 0 | 0 |
 | NOT_APPLICABLE | 30 | 30 |
-| DEFERRED | 11 | 11 |
+| DEFERRED | 9 | 9 |
 | REVIEW_REQUIRED | 0 | 0 |
 
 ## Category summary
@@ -30,7 +30,7 @@
 | Category | Gaps | Actionable | Sufficient partial | Not disclosed | Not applicable | Deferred | Review required |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | ai-infrastructure-role | 95 | 0 | 95 | 0 | 0 | 0 | 0 |
-| capacity-expansion | 97 | 0 | 71 | 0 | 15 | 11 | 0 |
+| capacity-expansion | 97 | 0 | 73 | 0 | 15 | 9 | 0 |
 | company-overview | 1 | 0 | 1 | 0 | 0 | 0 | 0 |
 | competitive-positioning | 100 | 0 | 100 | 0 | 0 | 0 | 0 |
 | customer-end-market | 100 | 0 | 100 | 0 | 0 | 0 | 0 |
@@ -51,11 +51,9 @@
 | `keyence:capacity-expansion` | NOT_APPLICABLE | corporate-keyence-fabless-model-2026 | キーエンスは自社production capacityを保有・増設するbusiness modelではなく、supplier capacityやproduct capacityを当該会社のcapacity-expansionとして推測しない。 |
 | `keyence:manufacturing-facilities` | NOT_APPLICABLE | corporate-keyence-fabless-model-2026 | キーエンスの一次資料は製造を外部委託するbusiness modelを示す。office/R&D拠点は存在しても、当該企業の製造facilityとして収録する自社生産拠点は確認されない。 |
 | `lasertec:capacity-expansion` | DEFERRED | edinet-lasertec-fy2025-annual-securities-report | レーザーテックの既存Source、年次報告・filing、対象を絞った公式情報を確認したが、generic Capex、最適化、製品容量またはR&D説明を超える具体的な現行production-capacity projectを確認できなかった。 |
-| `legrand:capacity-expansion` | DEFERRED | earnings-legrand-2025-02-13-fy2024 | Legrand（ルグラン）の既存Source、年次報告・filing、対象を絞った公式情報を確認したが、generic Capex、最適化、製品容量またはR&D説明を超える具体的な現行production-capacity projectを確認できなかった。 |
 | `nikon:capacity-expansion` | DEFERRED | integrated-nikon-2025 | ニコンの既存Source、年次報告・filing、対象を絞った公式情報を確認したが、generic Capex、最適化、製品容量またはR&D説明を超える具体的な現行production-capacity projectを確認できなかった。 |
 | `omron:capacity-expansion` | DEFERRED | omron-financial-results-fy2025 | オムロンの既存Source、年次報告・filing、対象を絞った公式情報を確認したが、generic Capex、最適化、製品容量またはR&D説明を超える具体的な現行production-capacity projectを確認できなかった。 |
 | `onsemi:capacity-expansion` | DEFERRED | sec-onsemi-2025-10k | onsemi（オンセミ）の既存Source、年次報告・filing、対象を絞った公式情報を確認したが、generic Capex、最適化、製品容量またはR&D説明を超える具体的な現行production-capacity projectを確認できなかった。 |
-| `smc:capacity-expansion` | DEFERRED | smc-financial-results-fy2025 | SMCの既存Source、年次報告・filing、対象を絞った公式情報を確認したが、generic Capex、最適化、製品容量またはR&D説明を超える具体的な現行production-capacity projectを確認できなかった。 |
 | `unimicron:capacity-expansion` | DEFERRED | corporate-unimicron, official-unimicron-annual-report-2025 | 2025 Annual Reportと既存公式Sourceをbounded reviewしたが、generic investment・技術capacityの記述から分離できる拠点、timeline、規模を備えた具体的capacity expansion projectを安全に確認できない。初回Atlas整備では追加探索の限界効用が低いためDEFERREDとする。 |
 | `western-digital:capacity-expansion` | DEFERRED | annual-report-western-digital-2025 | Western Digital（ウエスタンデジタル）の既存Source、年次報告・filing、対象を絞った公式情報を確認したが、generic Capex、最適化、製品容量またはR&D説明を超える具体的な現行production-capacity projectを確認できなかった。 |
 
