@@ -564,5 +564,27 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Browser QA: Unimicron and Yaskawa passed at `1024px` and `360px`; document overflow `0`, added Claims and bibliography links visible, Evidence marker target `44 × 44px`. Both companies passed drawer, Primary Source, Escape, and focus return at both widths.
 - Protection: financial diff `0`; unrelated Company Evidence diff `0`; company data / relationships / Global Visual System / Evidence Schema / Freeze contract diff `0`.
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed. Validation v0.1 remains the recorded pre-remediation HARD STOP and is not treated as the v0.2 close gate.
+- PR: [#149](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/149)
+- Merge SHA: `28b5dbd5dc6ce2c48461417cc77176d9e7180fcc`
+- Actions: [run 33506596330](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33506596330) success
+- Pages: Yaskawaの追加Claim・bibliography・overflowを公開環境で確認
+- HARD STOP: `0`
+
+## Triage Validation v0.2 remediation — Customer End Market B10
+
+- Baseline main: `28b5dbd5dc6ce2c48461417cc77176d9e7180fcc`
+- Trigger: independent Validation v0.2 cycle 0で、現行 `NOT_DISCLOSED` 4件が「個別顧客名がなくてもend-market / customer category開示は有効」というCategory基準と不整合と判定。
+- Records reclassified: `4` (`NVIDIA / Fujikura / Applied Materials: NOT_DISCLOSED → ACTIONABLE`; `TSMC: NOT_DISCLOSED → SUFFICIENT_PARTIAL`)
+- New ACTIONABLE found / processed: `3 / 3` Category records / `3` companies。affected stratumの全対象が3社のみのため8–12社batchの例外として局所処理。
+- Claims / Evidence / structured Locators: `3 / 3 / 3`
+- Verification: `source-linked 3`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `2`; added `1`; new Source Policy remains `pending`
+- Coverage: `321 / 738 / 41 → 321 / 738 / 41` (complete / partial / not-started)。3 recordsは既にCoverage上partialであり、Evidence BindingとLocatorを実追加してmissing statusを解消したためstatus countは水増ししない。
+- Triage semantic decisions: ACTIONABLE `288 → 291`; SUFFICIENT_PARTIAL `446 → 447`; NOT_DISCLOSED `4 → 0`; NOT_APPLICABLE `30`; DEFERRED `11`; REVIEW_REQUIRED `0`。
+- Current Triage: ACTIONABLE pending `0`; SUFFICIENT_PARTIAL `738`; NOT_DISCLOSED `0`; NOT_APPLICABLE `30`; DEFERRED `11`; REVIEW_REQUIRED `0`。
+- Protection: financial values / relationships / Global Visual System / Evidence Schema / Freeze contract変更 `0`。
+- Browser QA: NVIDIAとFujikuraを `1024px` / `360px` で確認。追加Claim・bibliography・Evidence marker `44 × 44px`・drawer・Primary Source・Escape・focus return・document overflow `0` を全条件で通過。
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages / semantic protection (`financialDiff 0`, `protectedSemanticDiff 0`) passed。
 - PR / merge / Actions / Pages: pending publication
+- Company Evidence v1 Coverage Close: **NO** (Validation v0.2 final gate pending)
 - HARD STOP: `0`

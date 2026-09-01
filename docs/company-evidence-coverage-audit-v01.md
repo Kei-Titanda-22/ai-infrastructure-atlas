@@ -1,7 +1,7 @@
 # 100-company Company Evidence Coverage Audit v0.1
 
 - Data as of: `2026-09-01`
-- Input digest: `sha256:55d054d3aa7d6f903f56653fa46c2706ac9ef4d6cb8e89a052ec123b3595d401`
+- Input digest: `sha256:d84d383aa477db70c627e557d3bf465fefab393ba7fdccc57fea307aee417fb3`
 - Scope: 100 companies × 11 categories = 1,100 pairs
 - Company Evidence enrichment: **Arm / ASML only**
 - This is a coverage audit, not a Company Evaluation Score.
@@ -29,7 +29,7 @@ Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監�
 | `value-chain-position` | 100 | 0 | 0 | 100 | 100 | 0 |
 | `manufacturing-facilities` | 13 | 72 | 15 | 85 | 85 | 0 |
 | `capacity-expansion` | 3 | 71 | 26 | 74 | 74 | 0 |
-| `customer-end-market` | 0 | 100 | 0 | 96 | 96 | 0 |
+| `customer-end-market` | 0 | 100 | 0 | 99 | 99 | 0 |
 | `competitive-positioning` | 0 | 100 | 0 | 100 | 100 | 0 |
 | `strategy` | 0 | 100 | 0 | 100 | 100 | 0 |
 | `risks` | 0 | 100 | 0 | 100 | 100 | 0 |
@@ -40,7 +40,7 @@ Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監�
 | --- | ---: |
 | `not-collected` | 31 |
 | `primary-source-unchecked` | 1 |
-| `not-disclosed` | 4 |
+| `not-disclosed` | 0 |
 | `not-applicable` | 9 |
 
 ## Evidence maturity
@@ -56,10 +56,10 @@ Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監�
 A/B/C/D/Eを別集計した結果：
 
 - Company-level Sourceあり: 100 companies
-- Category-direct Sourceあり: 1055 pairs
-- Claim-level Evidence Bindingあり: 1055 pairs
-- Structured Locatorあり: 1055 pairs
-- Freeze Schemaでそのまま移行可能: 1055 pairs
+- Category-direct Sourceあり: 1058 pairs
+- Claim-level Evidence Bindingあり: 1058 pairs
+- Structured Locatorあり: 1058 pairs
+- Freeze Schemaでそのまま移行可能: 1058 pairs
 
 ## Field-level legacy provenance
 
@@ -73,7 +73,7 @@ A/B/C/D/Eを別集計した結果：
 
 ## Source quality
 
-- Registry records / unique Sources: 368 / 366
+- Registry records / unique Sources: 369 / 367
 - Company `sourceIds` references / resolved: 121 / 121
 - Financial Source references / resolved: 124 / 124
 - Orphan Source references: 0
@@ -86,17 +86,17 @@ A/B/C/D/Eを別集計した結果：
 
 ### Locator audit
 
-Bindings 1058 / valid Locators 1058 / missing 0 / invalid 0。
+Bindings 1061 / valid Locators 1061 / missing 0 / invalid 0。
 
 | Locator field | Uses |
 | --- | ---: |
 | `page` | 230 |
-| `section` | 1009 |
-| `heading` | 1043 |
+| `section` | 1012 |
+| `heading` | 1046 |
 | `table` | 2 |
 | `note` | 0 |
 | `anchor` | 0 |
-| `quotedLabel` | 1030 |
+| `quotedLabel` | 1033 |
 
 ## Pilot baseline
 
@@ -104,9 +104,9 @@ Pilot 5社はFreeze baselineを変更せず、既存55 Coverage Recordと整合�
 
 | Company | Complete | Partial | Not-started | Claims | Evidence | Locators | Maturity |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| Applied Materials（アプライド・マテリアルズ） | 4 | 7 | 0 | 10 | 10 | 10 | L4 |
-| フジクラ | 4 | 7 | 0 | 10 | 10 | 10 | L4 |
-| NVIDIA（エヌビディア） | 4 | 5 | 2 | 8 | 8 | 8 | L4 |
+| Applied Materials（アプライド・マテリアルズ） | 4 | 7 | 0 | 11 | 11 | 11 | L4 |
+| フジクラ | 4 | 7 | 0 | 11 | 11 | 11 | L4 |
+| NVIDIA（エヌビディア） | 4 | 5 | 2 | 9 | 9 | 9 | L4 |
 | TSMC（台湾積体電路製造） | 5 | 6 | 0 | 11 | 12 | 12 | L4 |
 | Vertiv（ヴァーティブ） | 4 | 7 | 0 | 10 | 10 | 10 | L4 |
 
@@ -185,7 +185,7 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 | Amkor Technology（アムコー・テクノロジー） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | Amphenol（アンフェノール） | L4 | 4 | 7 | 0 | 1 | 11 | 11 | 11 | C |
 | Analog Devices（アナログ・デバイセズ） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
-| Applied Materials（アプライド・マテリアルズ） | L4 | 4 | 7 | 0 | 2 | 10 | 10 | 10 | C |
+| Applied Materials（アプライド・マテリアルズ） | L4 | 4 | 7 | 0 | 2 | 11 | 11 | 11 | C |
 | Aptiv（アプティブ） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | Arista Networks（アリスタ・ネットワークス） | L4 | 3 | 6 | 2 | 2 | 9 | 9 | 9 | A |
 | Arm（アーム） | L4 | 3 | 6 | 2 | 1 | 9 | 9 | 9 | A |
@@ -211,7 +211,7 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 | Entegris（インテグリス） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | Equinix（エクイニクス） | L4 | 3 | 8 | 0 | 2 | 11 | 11 | 11 | B |
 | ファナック | L4 | 3 | 8 | 0 | 2 | 11 | 11 | 11 | B |
-| フジクラ | L4 | 4 | 7 | 0 | 1 | 10 | 10 | 10 | C |
+| フジクラ | L4 | 4 | 7 | 0 | 1 | 11 | 11 | 11 | C |
 | 古河電気工業 | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | GE Vernova（GEベルノバ） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | GlobalFoundries（グローバルファウンドリーズ） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
@@ -242,7 +242,7 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 | Nan Ya PCB（南亜電路板） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | ニコン | L4 | 3 | 7 | 1 | 1 | 10 | 10 | 10 | B |
 | nVent（エヌベント） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
-| NVIDIA（エヌビディア） | L4 | 4 | 5 | 2 | 4 | 8 | 8 | 8 | C |
+| NVIDIA（エヌビディア） | L4 | 4 | 5 | 2 | 4 | 9 | 9 | 9 | C |
 | NXP Semiconductors（NXPセミコンダクターズ） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | オムロン | L4 | 3 | 7 | 1 | 1 | 10 | 10 | 10 | B |
 | onsemi（オンセミ） | L4 | 3 | 7 | 1 | 1 | 10 | 10 | 10 | B |

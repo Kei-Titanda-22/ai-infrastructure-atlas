@@ -2,7 +2,7 @@
 
 - Baseline main: `854f20bdc808323766f085f0c419d923753b93f5`
 - Supersedes: `docs/company-evidence-gap-triage-v01.json`
-- Semantic decision digest: `sha256:1d234c39299558b18052609d11a2139ff59e3a4e5c63476b2ba6611e1ecd3939`
+- Semantic decision digest: `sha256:eb7b7fdbfa620db5dd935019d999e3ffe77568772e84f0e7d380e6d30e20ed25`
 - Current Coverage gaps: `779` (`partial 738` + `not-started 41`)
 - ACTIONABLE pending: `0` records / `0` companies
 - Coverage answers whether a Category is complete; Triage answers whether it should be pursued.
@@ -18,9 +18,9 @@
 
 | Classification | Reviewed decision | Current gap state |
 | --- | ---: | ---: |
-| ACTIONABLE | 288 | 0 |
-| SUFFICIENT_PARTIAL | 446 | 734 |
-| NOT_DISCLOSED | 4 | 4 |
+| ACTIONABLE | 291 | 0 |
+| SUFFICIENT_PARTIAL | 447 | 738 |
+| NOT_DISCLOSED | 0 | 0 |
 | NOT_APPLICABLE | 30 | 30 |
 | DEFERRED | 11 | 11 |
 | REVIEW_REQUIRED | 0 | 0 |
@@ -33,7 +33,7 @@
 | capacity-expansion | 97 | 0 | 71 | 0 | 15 | 11 | 0 |
 | company-overview | 1 | 0 | 1 | 0 | 0 | 0 | 0 |
 | competitive-positioning | 100 | 0 | 100 | 0 | 0 | 0 | 0 |
-| customer-end-market | 100 | 0 | 96 | 4 | 0 | 0 | 0 |
+| customer-end-market | 100 | 0 | 100 | 0 | 0 | 0 | 0 |
 | manufacturing-facilities | 87 | 0 | 72 | 0 | 15 | 0 | 0 |
 | risks | 100 | 0 | 100 | 0 | 0 | 0 | 0 |
 | strategy | 100 | 0 | 100 | 0 | 0 | 0 | 0 |
