@@ -1,6 +1,6 @@
 # Entity / Relation Inventory v0.1
 
-- Status: Read-only inventory complete; design review pending
+- Status: Accepted baseline inventory
 - Baseline main: `95b33c6d45923595a71a7c60ea948f50f5b2ff50`
 - Inventory date: 2026-09-01
 - Web research performed: **NO**
@@ -11,6 +11,17 @@
 Phase 8ではCompany、Company Evidence、Shared Source、Financial history、Facility、Value Chainの既存正本を再利用する。Product、Technology、Marketは現在canonical entityではないため、文字列からRelationを自動生成しない。全件registryを先行作成せず、Pilot Relationのendpointまたはscopeに必要な最小canonical entityだけを登録する。新たに永続化する対象は、scope、方向、時間、Evidenceを必要とする関係だけとする。
 
 `src/data/relationships.json`は空配列であり、現行の競合・所属・製品・技術関係は複数fieldとUI logicへ分散している。Company Evidence v1 Closeは成立しているが、Relation graphが完成していることを意味しない。
+
+## Final adopted decisions
+
+- Pilot Product entityはreview済みgeneric product categoryだけとする。company-specific brand、SKU、named product familyはRelation endpointにせず、既存Company Evidence Claimで表示する。
+- v0.1 Pilotでfree-text `businessUnit`を使用しない。Company全体として成立しないRelationはdeferし、Company scope registryは実例発生時の別change-controlとする。
+- eligible P2は`displayPriority`昇順、`asOf`降順、`claimId`辞書順で1件を選ぶ。必要metadata欠落は対象外とし、3 dimensions限定、priority / Coverage不変、P3初期0を維持する。
+- initial FinancialはOperating MarginとRevenue Growthだけとする。ROIC、その他ratio、absolute financial historyはexpandedへ置き、比較不能ratioは理由付きでprimary comparisonから外す。FX換算、ranking、差分率計算を行わない。
+- guarded `ENABLES` / `SUPPLIES_TO`はbounded Evidence review後、direct `supports` Binding、structured Locator、required scopeを満たすrecordだけを採用する。該当0件は正常である。
+- Value Chain / Technologyの最終routeはCompare / Relation Freeze後に決定し、Independent Validationのsample size / severity gateはRelation corpus確定後の別contractで定義する。
+
+本Statusはbaseline inventoryの採択だけを意味し、実装開始、production Relation追加、migration、deployを意味しない。
 
 ## 1. Inventory方法
 
@@ -53,7 +64,7 @@ Phase 8ではCompany、Company Evidence、Shared Source、Financial history、Fa
 | Company | 100 JSON。identity、layers、products、tags、competitors、legacy narrative、metrics | file stem = `id`が100 / 100。`name`, `officialName`, `japaneseName`, `reading`, tickerがalias相当 | 多数のID参照先 | 既存正本を再利用 |
 | Evidence | Claim 1,062、Binding 1,063、structured Locator 1,063 | Claim ID / Evidence Binding IDはlower kebab-case | ClaimからSourceへsupport付きbinding | 既存正本を再利用 |
 | Source | resolved 369、全件company-scoped | stable `sourceId`。compatible duplicate occurrence 2、conflict 0 | Company、Evidence、Facility、financialから参照 | 既存resolverを再利用 |
-| Product | Company `products[]` 272 unique literal、Company Evidence `products` Claims | canonical Product IDなし。表示辞書は一部のみ | Company配列とClaim本文に埋め込み | registry作成後にRelation化 |
+| Product | Company `products[]` 272 unique literal、Company Evidence `products` Claims | canonical Product IDなし。表示辞書は一部のみ | Company配列とClaim本文に埋め込み | Pilot registryはreview済みgeneric product categoryだけ。brand / SKU / named familyはClaimに残す |
 | Technology | Company `tags[]` 205 unique literal、Company Evidence `technology` Claims | canonical Technology IDなし。filter IDは`semiconductor-test`のみ | tag filter、Claim本文、display辞書 | registry作成後にRelation化 |
 | Facility | 17 records。city、region、type、role、Source、status | stable facility IDあり。generic aliasなし | `companyId`と`sourceId` | 既存entityを再利用。Relation Evidenceは別途必要 |
 | Market / End Market | `customer-end-market` Claims 99件、legacy prose、tag | canonical Market IDなし | statement内のtext | Pilot CompareはClaimのまま。graph化は追加review後 |
@@ -84,7 +95,7 @@ Phase 8ではCompany、Company Evidence、Shared Source、Financial history、Fa
 
 ### Alias方針への含意
 
-Companyのidentity fieldsは検索aliasとして利用できる。Product、Technology、Marketでは、canonical ID、canonical name、locale別display name、alias、deprecated alias、`replacedBy`を持つ小さなregistryが必要である。初回registryはPilot Relationのendpointまたはscopeに必要なentityだけに限定する。既存literalをaliasとして一括採択せず、人手reviewした値だけを紐付ける。
+Companyのidentity fieldsは検索aliasとして利用できる。Product、Technology、Marketでは、canonical ID、canonical name、locale別display name、alias、deprecated alias、`replacedBy`を持つ小さなregistryが必要である。初回registryはPilot Relationのendpointまたはscopeに必要なentityだけに限定する。Product entityにはreview済みgeneric product categoryだけを登録し、company-specific brand、SKU、named product familyを同じentityまたはaliasへ混在させない。既存literalをaliasとして一括採択せず、人手reviewした値だけを紐付ける。
 
 ## 5. 暗黙Relation inventory
 
@@ -146,7 +157,7 @@ stage順からdirect upstream / downstreamをAtlas編集構造として安全に
 Phase 8 MVPで永続化価値があるのは、複数画面で同じ意味を使い、かつscope / Evidence / validityを失うと誤読する関係である。
 
 - Company `POSITIONED_IN` ValueChainNode。
-- Company `PRODUCES` Product。
+- Company `PRODUCES` review済みgeneric Product category。brand、SKU、named product familyは既存Claimで表示する。
 - Company `DEVELOPS` Technology。
 - CompanyまたはProduct `USES` Technology。
 - Product `ENABLES` Technology。guarded typeとし、direct Evidence、structured Locator、scopeが揃う場合だけ公開する。
@@ -214,7 +225,7 @@ Capacity / Roadmapは最初のCompare Pilotでは既存Claimを表示し、Capac
 
 ### 文書drift
 
-`docs/status.md`のCoverage / maturityは最新Close前の値である。Phase 8成果物は最新Close文書を正とし、status更新は本Draft PRの範囲外とする。
+`docs/status.md`のCoverage / maturityは最新Close前の値である。Phase 8成果物は最新Close文書を正とし、status更新はPR #153の範囲外とする。
 
 ## 14. 再利用可能な実装
 
@@ -260,5 +271,4 @@ Capacity / Roadmapは最初のCompare Pilotでは既存Claimを表示し、Capac
 ## Open questions
 
 1. Company Layerを長期的にID参照へ移行するか、name参照のcompatibility adapterを恒久維持するか。
-2. Pilot最小registryでProductをcompany-specific product familyに限定するか、review済みgeneric product categoryも同じEntityで扱うか。
-3. legacy competitor表示をRelation Freeze後に置き換えるか、明示的に「比較対象」として併存させるか。
+2. legacy competitor表示をRelation Freeze後に置き換えるか、明示的に「比較対象」として併存させるか。

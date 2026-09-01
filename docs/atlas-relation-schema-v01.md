@@ -1,6 +1,6 @@
 # Atlas Relation Schema v0.1 — Design Proposal
 
-- Status: Draft; non-executable design
+- Status: Accepted non-executable design
 - Baseline main: `95b33c6d45923595a71a7c60ea948f50f5b2ff50`
 - Company Evidence Schema changed: **NO**
 - Migration executed: **NO**
@@ -25,12 +25,23 @@ RelationはCompany Evidenceから独立したrecordであり、EvidenceとSource
 
 `Relation → Relation Evidence Binding → Shared Source Registry`
 
+## Final adopted decisions
+
+- Pilot Product entityはreview済みgeneric product categoryだけとする。company-specific brand、SKU、named product familyはRelation endpointにせず、既存Company Evidence Claimで表示する。
+- v0.1 Pilotでfree-text `businessUnit`を使用しない。Company全体として成立しないRelationはdeferし、Company scope registryは実例発生時の別change-controlとする。
+- eligible P2は`displayPriority`昇順、`asOf`降順、`claimId`辞書順で1件を選ぶ。必要metadata欠落は対象外とし、3 dimensions限定、priority / Coverage不変、P3初期0を維持する。
+- initial FinancialはOperating MarginとRevenue Growthだけとする。ROIC、その他ratio、absolute financial historyはexpandedへ置き、比較不能ratioは理由付きでprimary comparisonから外す。FX換算、ranking、差分率計算を行わない。
+- guarded `ENABLES` / `SUPPLIES_TO`はbounded Evidence review後、direct `supports` Binding、structured Locator、required scopeを満たすrecordだけを採用する。該当0件は正常である。
+- Value Chain / Technologyの最終routeはCompare / Relation Freeze後に決定し、Independent Validationのsample size / severity gateはRelation corpus確定後の別contractで定義する。
+
+本Statusはnon-executable designの採択だけを意味し、Schema実装、production Relation追加、migration、deployを意味しない。
+
 ## 1. Entity一覧と責務
 
 | Entity | 責務 | v0.1 identity | Relation endpoint |
 | --- | --- | --- | --- |
 | Company | 法人・上場主体・Atlas company scope | existing `companyId` | YES |
-| Product | company-specific product familyまたはreview済みproduct category | new canonical Product ID | YES |
+| Product | review済みgeneric product category。brand、SKU、named product familyを含めない | new canonical Product ID | YES |
 | Technology | process、architecture、protocol、material technology | new canonical Technology ID | YES |
 | ValueChainNode | Atlas編集構造上のstage | existing `value-chain.json` stage ID候補 | YES |
 | Facility | 製造・R&D・operating site | existing `facilityId` | YES |
@@ -44,7 +55,7 @@ Company classification Layerはbackward compatibilityのため維持するが、
 
 | Type | Subject → Object | Cardinality | Reverse view | Scope rule |
 | --- | --- | --- | --- | --- |
-| `PRODUCES` | Company → Product | many-to-many | `producedBy`をread modelで生成 | Product endpointが粒度を定義。任意でMarket / geography scope |
+| `PRODUCES` | Company → Product | many-to-many | `producedBy`をread modelで生成 | Product endpointはreview済みgeneric categoryだけ。named productはClaim表示 |
 | `DEVELOPS` | Company → Technology | many-to-many | `developedBy` | joint developmentは複数Relationで表現 |
 | `USES` | CompanyまたはProduct → Technology | many-to-many | `usedBy` | named adoptionは直接Evidence必須 |
 | `ENABLES` | Product → Technology | many-to-many | `enabledBy` | guarded。direct Evidence、structured Locator、scope必須 |
@@ -118,15 +129,17 @@ resolved read modelはauthoring Relationの全fieldを保持し、resolverが次
 
 | Field | Type | Purpose |
 | --- | --- | --- |
-| `productIds` | unique Product ID array | 製品family / category |
+| `productIds` | unique Product ID array | review済みgeneric product categoryだけ |
 | `technologyIds` | unique Technology ID array | process / architecture / protocol |
 | `valueChainNodeIds` | unique ValueChainNode ID array | 競争・供給が成立する工程 |
 | `marketIds` | unique Market ID array | end market / demand domain |
 | `geographies` | canonical geography ID array | 地域限定 |
-| `businessUnit` | string or null | legal Company内のsegment scope。free-form暫定値はreview必須 |
+| `businessUnit` | null in v0.1 | Pilotではfree textを禁止。Company全体で成立しないRelationはdefer |
 | `capacityBasis` | string or null | 将来eventを採択する場合だけ使用。generic Capexを入れない |
 
 `COMPETES_WITH`は`productIds`、`technologyIds`、`valueChainNodeIds`、`marketIds`のいずれか1つ以上を必須とする。`SUPPLIES_TO`でobjectがCompanyの場合も同じ条件を適用する。
+
+v0.1のCompany endpointはCompany全体だけを表す。Company未満のscopeが必要なRelationはauthoringせずdeferする。実例が発生した場合だけ、Company scope registryを別change-controlで設計する。
 
 ## 5. Claim type、importance、時間
 
@@ -138,7 +151,7 @@ Relationの`claimType`はCompany Evidence v0.2のenumをそのまま使う。
 - `atlas-analysis`: 複数の事実からAtlasが関係を整理する。
 - `estimate`: 明示的なAtlas推定。
 
-`importance`は既存P1 / P2 / P3のreading orderを再利用する。`displayPriority`は同priority内のsortであり、investment importance、evidence strength、confidenceを表さない。
+`importance`は既存P1 / P2 / P3のreading orderを再利用する。`displayPriority`は同priority内のsortであり、investment importance、evidence strength、confidenceを表さない。Compareのeligible P2は`displayPriority`昇順、`asOf`降順、`claimId`辞書順で1件を選び、`asOf`または必要metadata欠落は対象外とする。
 
 ## 6. Evidence Bindingとprovenance
 
@@ -194,6 +207,8 @@ Atlasが構造上の位置やenablementを整理する場合は`atlas-analysis`�
 - authoring Relationに`evidenceIds`、`sourceIds`、`freshnessStatus`が存在しないこと。
 - resolved read modelの`evidenceIds` / `sourceIds`とBinding / Source resolver結果の一致。
 - resolved `freshnessStatus`が`current`、`review-due`、`stale`だけであること。
+- Product endpoint / scope IDがreview済みgeneric categoryであり、brand、SKU、named product familyでないこと。
+- v0.1 `scope.businessUnit`が常にnullであること。Company未満のscopeをsilentにCompany全体へ昇格しないこと。
 
 ### Semantic guards
 
@@ -203,6 +218,7 @@ Atlasが構造上の位置やenablementを整理する場合は`atlas-analysis`�
 - `fact`はconfidence null、`atlas-analysis` / `estimate`はconfidence non-null。
 - public relationはdirect `supports` Binding、structured Locator、`lastVerified`を持つ。
 - `ENABLES`とnamed `SUPPLIES_TO`はSourceが明示された関係を直接識別する。
+- bounded reviewでpublic gateを満たす`ENABLES` / `SUPPLIES_TO`が0件でもvalidationを失敗させない。
 - `OPERATES`はownershipを暗示するstatementにしない。
 - `POSITIONED_IN`のAtlas編集mappingはFactに昇格しない。
 
@@ -273,7 +289,7 @@ resolverは別authoring recordであるRelation Evidence Bindingを解決し、r
 
 - IDはASCII lower kebab-caseでimmutableとする。
 - Company、Facility、ValueChainNodeは既存IDを再利用する。
-- Product、Technology、MarketはPilot Relationのendpointまたはscopeに必要な最小review済みregistryが作られるまでRelationに使わない。全件registryを先行作成しない。
+- Product、Technology、MarketはPilot Relationのendpointまたはscopeに必要な最小review済みregistryが作られるまでRelationに使わない。全件registryを先行作成しない。Productはgeneric categoryだけとし、company-specific brand、SKU、named product familyをentityまたはaliasへ混在させない。
 - entity registryは`canonicalName`、locale別display name、`aliases[]`、`status`、`replacedBy`を持つ候補とする。
 - aliasはlookup用であり、Relation recordはcanonical IDだけを保存する。
 - display label変更でIDを変更しない。
@@ -281,9 +297,9 @@ resolverは別authoring recordであるRelation Evidence Bindingを解決し、r
 
 ## 12. Migration方針
 
-このDraftのreview後は、次のPR順序を変更しない。
+Accepted designのmerge後は、次のPR順序を変更しない。
 
-1. Pilot用Minimal Product / Technology / Market Registry。Pilot Relationのendpointまたはscopeに必要なcanonical entityだけを追加する。
+1. Pilot用Minimal Product / Technology / Market Registry。Pilot Relationのendpointまたはscopeに必要なcanonical entityだけを追加し、Productはreview済みgeneric categoryに限定する。
 2. Relation executable foundation。authoring schema、resolved schema、Relation Evidence Binding、empty manifest / resolver、validatorを導入し、production Relationは0件を維持する。
 3. Pilot Relation / projection data。Set A / Bだけを既存Evidenceから人手reviewする。
 4. Generic Company Compare UI。`view=evidence`でSet A / Bの両方へ対応する。
@@ -319,13 +335,11 @@ competitor配列、products、tagsはbackward-compatible fallbackとして維持
 
 ## Consequences
 
-- Relation実装前に、Pilot endpoint / scopeだけを対象にした3つのminimal canonical entity registryが必要になる。
+- Relation実装前に、Pilot endpoint / scopeだけを対象にした3つのminimal canonical entity registryが必要になる。Productはreview済みgeneric categoryだけである。
 - named supplier / competitor relationは既存Evidenceがあってもscope reviewを要する。
 - Capacity / RoadmapはCompare PilotではClaim projectionのままであり、graph queryの対象にならない。
 - Relation validatorはstructural checkだけでなくguarded semantic ruleを持つ必要がある。
 
 ## Open questions
 
-1. Pilot minimal registryでProduct entityをcompany-specific familyに限定するか、review済みgeneric categoryも同じEntityで扱うか。
-2. Pilot RelationでCompany未満のscopeが必要になった場合、`businessUnit`を使用せずdeferするか、最小Company scope registryを追加するか。
-3. bounded Evidence review後、`ENABLES`または`SUPPLIES_TO`でpublic gateを満たすPilot recordが存在するか。
+1. bounded Evidence review後、`ENABLES`または`SUPPLIES_TO`でpublic gateを満たすPilot recordが存在するか。0件でも正常とする。

@@ -1,6 +1,6 @@
 # Advanced UX Requirements v0.1
 
-- Status: Draft for review
+- Status: Accepted design
 - Phase: 8 pre-implementation design
 - Baseline main: `95b33c6d45923595a71a7c60ea948f50f5b2ff50`
 - Scope: Company Compare / Value Chain Navigation / Technology Navigation
@@ -13,6 +13,17 @@ Phase 8の中心ユースケースをCompany Compare、Value Chain Navigation、
 初期表示は、利用者が60～90秒以内に主要な差異、Value Chain上の位置、関係の根拠を把握できる範囲に限定する。追加情報はP2/P3、詳細なprovenance、履歴の順で展開し、Claim本文やEvidenceを要約のために改変しない。
 
 本要件は[Company Evidence v1 Coverage Close](./company-evidence-v1-coverage-close.md)、[Company Evidence Freeze v0.1](./company-evidence-freeze-v01.md)、[Global Visual System v0.1](./global-visual-system-v01.md)、[Compare viewport correction v0.4](./compare-viewport-correction-v04.md)を前提とする。既存contractと異なる実装は、別のchange-control承認なしには行わない。
+
+## Final adopted decisions
+
+- Pilot Product entityはreview済みgeneric product categoryだけとする。company-specific brand、SKU、named product familyはRelation endpointにせず、既存Company Evidence Claimで表示する。
+- v0.1 Pilotでfree-text `businessUnit`を使用しない。Company全体として成立しないRelationはdeferし、Company scope registryは実例発生時の別change-controlとする。
+- eligible P2は`displayPriority`昇順、`asOf`降順、`claimId`辞書順で1件を選ぶ。必要metadata欠落は対象外とし、3 dimensions限定、priority / Coverage不変、P3初期0を維持する。
+- initial FinancialはOperating MarginとRevenue Growthだけとする。ROIC、その他ratio、absolute financial historyはexpandedへ置き、比較不能ratioは理由付きでprimary comparisonから外す。FX換算、ranking、差分率計算を行わない。
+- guarded `ENABLES` / `SUPPLIES_TO`はbounded Evidence review後、direct `supports` Binding、structured Locator、required scopeを満たすrecordだけを採用する。該当0件は正常である。
+- Value Chain / Technologyの最終routeはCompare / Relation Freeze後に決定し、Independent Validationのsample size / severity gateはRelation corpus確定後の別contractで定義する。
+
+本Statusは設計採択だけを意味し、実装開始、production Relation追加、migration、deployを意味しない。
 
 ## 1. 対象ユーザーと行動
 
@@ -72,7 +83,7 @@ Epistemic種別と時間軸は別軸である。
 | P2 | 比較・判断を補う | 原則として1回のDisclosure内 |
 | P3 | 詳細、例外、方法 | P2と同じ展開面の後段 |
 
-CompareではTechnology / Moat、Capacity / Roadmap、Key Risksの3 dimensionsにP1がない場合だけ、各dimensionで最高priorityのP2を1件まで初期表示へ投影できる。`補足`であることを表示し、保存priority、Coverage、statement、Evidence Bindingを変更しない。P3の初期表示は0件とする。他のdimensionsへP2初期投影を拡張しない。
+CompareではTechnology / Moat、Capacity / Roadmap、Key Risksの3 dimensionsにP1がない場合だけ、eligible P2を各dimensionで1件まで初期表示へ投影できる。選択順は`displayPriority`昇順、`asOf`降順、`claimId`辞書順とする。`asOf`または選択に必要なmetadataが欠けるClaimはeligibleにしない。`補足`であることを表示し、保存priority、Coverage、statement、Evidence Bindingを変更しない。P3の初期表示は0件とし、他のdimensionsへ例外を拡張しない。
 
 ## 6. Use case A — Company Compare
 
@@ -95,7 +106,7 @@ CompareではTechnology / Moat、Capacity / Roadmap、Key Risksの3 dimensions�
 4. Key Products。
 5. Technology / Moat。
 6. Capacity / Roadmap。
-7. Financialの主要比較可能指標。
+7. FinancialはOperating MarginとRevenue Growthのうち、2社以上でdefinition、period、basisが比較可能なratioだけ。
 8. Key Risks。
 9. 各可視statementのEvidence marker。
 
@@ -105,13 +116,13 @@ CompareではTechnology / Moat、Capacity / Roadmap、Key Risksの3 dimensions�
 
 - P2/P3 ClaimsとCoverage。
 - definition、period、basis、currency、verification status。
-- 追加のFinancial history。
+- ROIC、その他ratio、absolute Financial history。
 - Relation scope、validity、freshness、supersession。
 - Evidence drawerのAdvanced provenance。
 
 主観scoreは既定表示へ含めない。財務値はnative currency / unitを保持し、FX換算や欠損補完を行わない。
 
-PilotのSet A（NVIDIA / Broadcom）とSet B（Applied Materials / Lam Research / Tokyo Electron）は同じgeneric UIで検証する。Set Bのabsolute financial historyはexpandedへ置き、initial Financialは既存logicで比較可能なratioを中心とする。FX換算、ranking、差分率計算を行わない。
+PilotのSet A（NVIDIA / Broadcom）とSet B（Applied Materials / Lam Research / Tokyo Electron）は同じgeneric UIで検証する。initial FinancialはOperating MarginとRevenue Growthだけに固定し、2社以上でdefinition、period、basisが比較可能でないratioはprimary comparisonへ出さず、理由付きの比較不能またはData Qualityへ置く。ROIC、その他ratio、absolute financial historyはexpandedへ置く。FX換算、ranking、差分率計算を行わない。
 
 ## 7. Use case B — Value Chain Navigation
 
@@ -192,7 +203,7 @@ Company CompareとRelation viewでも、Freeze済みの2-click contractを維持
 
 unknown ID、duplicate ID、上限超過は安全に除外し、理由をinline statusで通知する。URL更新は履歴を不必要に増やさず、reloadとback / forwardで同じselectionとorderを復元する。
 
-Value Chainは`/atlas/<value-chain-node-id>/`、Technologyは`/technologies/<technology-id>/`を候補とする。最終routeはRelation Schemaと既存Pages base pathを確認してからFreezeする。
+Value Chainは`/atlas/<value-chain-node-id>/`、Technologyは`/technologies/<technology-id>/`を候補例としてのみ保持する。最終routeはCompare / Relation Freeze後に決定する。
 
 ## 11. 状態設計
 
@@ -250,9 +261,9 @@ Relationの`freshnessStatus`は`current`、`review-due`、`stale`だけを使用
 ### Company Compare
 
 - canonical Company IDを使う2～4社の順序付きselectionをreload後も復元する。
-- 必須8 dimensionを表示し、P2初期投影はTechnology / Moat、Capacity / Roadmap、Key Risksに限ってdimensionごとに最大1件、P3初期表示は0件である。
+- 必須8 dimensionを表示し、P2初期投影はTechnology / Moat、Capacity / Roadmap、Key Risksに限ってdimensionごとに最大1件、選択順は`displayPriority`昇順、`asOf`降順、`claimId`辞書順、metadata欠落は対象外、P3初期表示は0件である。
 - 全社missing行はprimary matrixに0件、一部missing行は理由付きで残る。
-- financial comparison判定とnative currency / unitが既存contractから変化しない。
+- initial Financialは比較可能なOperating MarginとRevenue Growthだけで、ROIC等はexpanded、financial comparison判定とnative currency / unitが既存contractから変化しない。
 
 ### Value Chain Navigation
 
@@ -299,5 +310,4 @@ Company Evidence v1は100社でEvidenceとLocatorを持つが、現行Compareは
 
 ## Open questions
 
-1. Value Chain / Technologyの最終route名を、Pilot前に固定するか、Pilot後のURL Freezeで固定するか。
-2. 60～90秒Acceptanceを実参加者テストとmoderated internal reviewのどちらで最終判定するか。
+1. 60～90秒Acceptanceを実参加者テストとmoderated internal reviewのどちらで最終判定するか。

@@ -1,10 +1,11 @@
 # Company Compare Pilot Implementation Contract v0.1
 
-- Status: Draft contract; implementation not started
+- Status: Accepted for phased implementation
 - Baseline main: `95b33c6d45923595a71a7c60ea948f50f5b2ff50`
 - Source review: existing repository Evidence only
 - Additional Web research: **NO**
 - Production UI / data changed by this contract: **NO**
+- Implementation started: **NO**
 
 ## Decision
 
@@ -15,9 +16,20 @@
 
 Set Aを2社表示とmissing / financial comparabilityの最小baseline、Set Bを3社表示とscoped process competition / Facility / mixed currencyのstress caseとする。実装時もCompany Evidence statement、Evidence Binding、Source、financial valueを変更しない。
 
-両セットは同じGeneric Company Compare UI PRで検証し、`view=evidence`をopt-in stateとして採択する。P2初期投影はTechnology / Moat、Capacity / Roadmap、Key Risksだけに限定する。Set Bのabsolute financial historyはexpandedへ置き、initial Financialは比較可能なratio中心とする。FX換算、ranking、差分率計算は行わない。
+両セットは同じGeneric Company Compare UI PRで検証し、`view=evidence`をopt-in stateとして採択する。P2初期投影はTechnology / Moat、Capacity / Roadmap、Key Risksだけに限定する。initial FinancialはOperating MarginとRevenue Growthだけとし、ROIC、その他ratio、Set Bを含むabsolute financial historyはexpandedへ置く。FX換算、ranking、差分率計算は行わない。
 
 Relation typeはSchema上の候補として採択済みの8種を使用し、`SUBSTITUTES`、`EXPANDS`、`EXPOSED_TO`はDeferredを維持する。guarded `ENABLES` / `SUPPLIES_TO`はdirect Evidence、structured Locator、scopeが揃う場合だけ公開でき、Pilotで無条件にauthoringしない。
+
+## Final adopted decisions
+
+- Pilot Product entityはreview済みgeneric product categoryだけとする。company-specific brand、SKU、named product familyはRelation endpointにせず、既存Company Evidence Claimで表示する。
+- v0.1 Pilotでfree-text `businessUnit`を使用しない。Company全体として成立しないRelationはdeferし、Company scope registryは実例発生時の別change-controlとする。
+- eligible P2は`displayPriority`昇順、`asOf`降順、`claimId`辞書順で1件を選ぶ。必要metadata欠落は対象外とし、3 dimensions限定、priority / Coverage不変、P3初期0を維持する。
+- initial FinancialはOperating MarginとRevenue Growthだけとする。ROIC、その他ratio、absolute financial historyはexpandedへ置き、比較不能ratioは理由付きでprimary comparisonから外す。FX換算、ranking、差分率計算を行わない。
+- guarded `ENABLES` / `SUPPLIES_TO`はbounded Evidence review後、direct `supports` Binding、structured Locator、required scopeを満たすrecordだけを採用する。該当0件は正常である。
+- Value Chain / Technologyの最終routeはCompare / Relation Freeze後に決定し、Independent Validationのsample size / severity gateはRelation corpus確定後の別contractで定義する。
+
+本Statusはphased implementation contractの採択だけを意味し、実装開始、production Relation追加、migration、deployを意味しない。
 
 ## 1. Candidate評価
 
@@ -36,7 +48,7 @@ Relation typeはSchema上の候補として採択済みの8種を使用し、`SU
 - 両社とも`Compute & Silicon`で、Company IDと法人scopeが一致する。
 - 5件ずつのP1があり、AI role、Value Chain、Products、competitionを初期表示できる。
 - 両社のoperating margin / revenue growthはUSD reportingのquarterly dataで、period差を既存logicの`条件注意`として説明できる。
-- NVIDIAだけROICがあり、partial-missingの正しい表示を検証できる。
+- NVIDIAだけROICがあり、expanded内のpartial-missingを正しく表示できる。
 - NVIDIAのcapacityはnot-started、Broadcomもnot-startedであり、missingを推論で埋めないcontractを検証できる。
 - platform companyとcustom silicon / networking companyの業態差がある。
 
@@ -68,11 +80,11 @@ Relation typeはSchema上の候補として採択済みの8種を使用し、`SU
 | Key Products | `products` Claim | P1 statement | Product details、P2/P3 |
 | Technology / Moat | `competitive-positioning`, `technology` Claims | competitive P1 + 必要時P2 1件 | all P2/P3、claim type、confidence |
 | Capacity / Roadmap | `capacity-expansion`, `strategy` Claims | highest-priority P2 1件またはmissing state | remaining Claims、dates、Coverage |
-| Financial | existing common metric / financial history | 比較可能なoperating margin、revenue growth、利用可能なROIC等のratioとcomparison state | absolute financial history、period、basis、currency、definition、history、Source |
+| Financial | existing common metric / financial history | 2社以上でdefinition、period、basisが比較可能なOperating Margin、Revenue Growthとcomparison state | ROIC、その他ratio、absolute financial history、period、basis、currency、definition、Source |
 | Key Risks | `risks` Claims | highest-priority P2 1件 | remaining Claims、Coverage |
 | Evidence | Evidence Binding / Shared Source | footnote marker | drawer Basic / Advanced provenance |
 
-初期表示へ投影するP2はTechnology / Moat、Capacity / Roadmap、Key Risksの各dimensionにつき最大1件である。保存priority、Coverage、statement、Evidence Bindingを変更せず、`補足`として識別する。P3の初期表示は0件とする。他のdimensionsへP2例外を拡張しない。
+初期表示へ投影するP2はTechnology / Moat、Capacity / Roadmap、Key Risksの各dimensionにつき最大1件である。eligible P2は`displayPriority`昇順、`asOf`降順、`claimId`辞書順で選ぶ。`asOf`または必要metadataが欠けるClaimは対象外とする。保存priority、Coverage、statement、Evidence Bindingを変更せず、`補足`として識別する。P3の初期表示は0件とし、他のdimensionsへ例外を拡張しない。
 
 ## 4. Information Architecture
 
@@ -123,7 +135,9 @@ Set Aのcapacity、Set BのROIC / valuation等を推測で補わない。Company
 - ratioでもdefinitionまたはscopeが異なる場合: `比較不能`または`条件注意`と理由を表示。
 - Relation scopeが異なるstatementを同じrowでrankingしない。
 
-Set BのUSD / JPY absolute financial historyはexpandedへ置く。並列表示する場合もFX換算、ranking、差分率、合計を計算しない。initial Financialは既存compatibility logicで比較可能と判定されたratioを中心とする。
+Set BのUSD / JPY absolute financial historyはexpandedへ置く。並列表示する場合もFX換算、ranking、差分率、合計を計算しない。initial Financialは既存compatibility logicで比較可能と判定されたOperating MarginとRevenue Growthだけとする。
+
+initial ratio setはOperating MarginとRevenue Growthだけである。2社以上でdefinition、period、basisが比較可能でないratioはprimary comparisonへ出さず、理由付きの`比較不能`またはData Qualityへ置く。
 
 ## 8. URL state
 
@@ -190,7 +204,7 @@ Relation statementを表示する場合はRelation Evidence drawerも同じinter
 - 既存Company Evidence statement、claimType、priority、Evidence、Sourceのsemantic diff 0。
 - financial value、history、definition、compatibility judgementのdiff 0。
 - visible cellがcanonical ClaimまたはRelation IDへtraceできる。
-- P2初期投影はTechnology / Moat、Capacity / Roadmap、Key Risksだけでdimensionごとに最大1件、`補足`表示、P3は0件。
+- P2初期投影はTechnology / Moat、Capacity / Roadmap、Key Risksだけでdimensionごとに最大1件、`displayPriority`昇順・`asOf`降順・`claimId`辞書順、metadata欠落は対象外、`補足`表示、P3は0件。
 - named Relationはscope、supports Evidence、Locator、asOfを持つ。
 
 ### UX
@@ -202,7 +216,7 @@ Relation statementを表示する場合はRelation Evidence drawerも同じinter
 - 1024pxでSet A / B header visibility 100%。
 - 360px document overflow 0、touch target violation 0。
 - Set A / Bを同じgeneric UI implementationで表示する。
-- Set Bのinitial Financialは比較可能なratio中心、absolute financial historyはexpanded、FX換算 / ranking / 差分率計算は0件。
+- initial Financialは比較可能なOperating MarginとRevenue Growthだけ、ROIC / その他ratio / absolute financial historyはexpanded、FX換算 / ranking / 差分率計算は0件。
 
 ### Interaction
 
@@ -218,7 +232,7 @@ future implementationは次を自動検査する。
 
 1. Pilot preset ID、2～4社、duplicate / unknown Company 0。
 2. Claim category / priority projectionと1 Claim 1 placement。
-3. P2 exception count、P3 initial count 0。
+3. P2 exception count、deterministic tie-break、required metadata、P3 initial count 0。
 4. Claim → Evidence → Source / Locator integrity。
 5. Relation endpoint、scope、Relation Evidence Binding、resolved `evidenceIds` / `sourceIds`、3-state freshness integrity。guarded typeはdirect Evidence、structured Locator、scope必須。
 6. all-selected-missing filteringがunderlying dataを削除しないこと。
@@ -255,7 +269,7 @@ future implementationは次を自動検査する。
 
 Contract採択後も1 PRへすべてを混在させず、次の順序に固定する。
 
-1. Pilot用Minimal Product / Technology / Market Registry。Pilot Relationのendpointまたはscopeに必要なcanonical entityだけを追加する。
+1. Pilot用Minimal Product / Technology / Market Registry。Pilot Relationのendpointまたはscopeに必要なcanonical entityだけを追加し、Productはreview済みgeneric categoryに限定する。
 2. Relation executable foundation。authoring / resolved schema、Relation Evidence Binding、empty manifest / resolver、validatorを追加し、production Relation 0を維持する。
 3. Pilot Relation / projection data。Set A / Bだけを既存Evidenceから人手reviewする。
 4. Generic Company Compare UI。`view=evidence`でSet A / Bの両方へ対応し、同じPRでbrowser QAする。
@@ -292,14 +306,12 @@ Set Aは同一currencyと2-columnの最小case、Set Bは3-column、process scop
 ## Consequences
 
 - Set Aでもcapacity missingが可視になり、completeに見える比較にはならない。
-- Set Bのabsolute financial historyはnative currencyのままexpandedへ置き、initial viewではratioを中心にする。
+- Set Bのabsolute financial historyはnative currencyのままexpandedへ置き、initial viewは比較可能なOperating MarginとRevenue Growthだけにする。
 - P2初期投影の表示規則を新validatorで固定する必要がある。
 - Evidence drawer interactionをshared化する場合、Company Page回帰QAが必要になる。
 - Candidateに含まれないCompanyへPilot codeをhard-codeしない設計が必要になる。
 
 ## Open questions
 
-1. Pilot minimal registryに含めるexact Product / Technology / Market entitiesを、どのreview fixtureで固定するか。
-2. bounded Evidence review後、guarded `ENABLES` / `SUPPLIES_TO`でpublic gateを満たすPilot recordが存在するか。
-3. 同priorityのP2候補が複数ある場合のdeterministic tie-breakを`displayPriority`だけで固定できるか。
-4. initial Financialへ含めるratioのexact metric setを、既存compatibility fixturesのどこまでに限定するか。
+1. Pilot minimal registry PRのbounded existing-Evidence inventoryで確定するexact Product / Technology / Market entities。
+2. bounded Evidence review後、guarded `ENABLES` / `SUPPLIES_TO`でpublic gateを満たすPilot recordが存在するか。0件でも正常とする。
