@@ -376,3 +376,20 @@ Evidence Gap Final Triage & Closure Phase is complete: ACTIONABLE pending `0`, R
 ## Resume marker
 
 Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation from this run. Re-evaluate only the affected strata after the HARD STOP is explicitly resolved; do not unconditionally reopen all 779 gaps.
+
+## Triage Validation v0.1 remediation — semantic re-review
+
+- Baseline main: `854f20bdc808323766f085f0c419d923753b93f5`
+- Validation v0.1 HARD STOP accepted: **YES**
+- Affected strata reopened: former DEFERRED `300` + Broadcom manufacturing/capacity `2` + Fujikura risks `1`
+- Former DEFERRED re-reviewed: `300 / 300`
+- Review method: existing Evidence / Shared Source → annual report or filing → targeted official Source up to `2`; secondary Source used `0`
+- Triage architecture: semantic decisions are persisted in `company-evidence-gap-triage-v02.json`; the audit script now checks provenance, digest, freshness, Coverage correspondence, and action completion without generating source meaning.
+- Reviewed distribution: ACTIONABLE `289`; SUFFICIENT_PARTIAL `446`; NOT_DISCLOSED `4`; NOT_APPLICABLE `30`; DEFERRED `10`; REVIEW_REQUIRED `0`
+- Broadcom: manufacturing-facilities `NOT_APPLICABLE → ACTIONABLE`; capacity-expansion `NOT_APPLICABLE → DEFERRED`
+- Fujikura risks: `NOT_DISCLOSED → ACTIONABLE`
+- Coarse `not-started → DEFERRED` and whole-company Broadcom asset-light fallbacks: removed
+- ACTIONABLE pending: `289` records / `88` companies
+- Coverage unchanged at re-triage: complete `321`; partial `451`; not-started `328`
+- Production Evidence / financial / UI / Schema / Freeze changes in re-triage: `0`
+- Company Evidence v1 Coverage Close: **NO** (ACTIONABLE remediation and Validation v0.2 pending)
