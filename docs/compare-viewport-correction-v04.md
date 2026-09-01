@@ -45,6 +45,8 @@ The primary matrix now uses a compact visible representation: company name follo
 
 The action is hidden and disabled at zero or one selected company. Individual `外す` actions remain available.
 
+Deployment QA after PR #118 found that the author-level `display: inline-flex` declaration overrode the user-agent styling of the `hidden` attribute. A scoped `[hidden]` rule was added in the immediate v0.4.1 follow-up so that the zero/one-company states are both non-visible and disabled as specified.
+
 ## All-missing presentation
 
 For the default five-company template, the primary matrix changed from four all-selected-missing rows to zero. The omitted rows are summarized below the matrix as:

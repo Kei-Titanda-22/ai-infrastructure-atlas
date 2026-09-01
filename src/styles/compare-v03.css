@@ -89,6 +89,7 @@
   min-height: 44px;
   font-size: 12px;
 }
+.compare-clear[hidden] { display: none; }
 .compare-clear:disabled { color: var(--muted); cursor: default; text-decoration: none; }
 .compare-selected {
   display: grid;
