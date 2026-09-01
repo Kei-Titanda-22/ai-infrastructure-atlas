@@ -1,7 +1,7 @@
 # 100-company Company Evidence Coverage Audit v0.1
 
 - Data as of: `2026-09-01`
-- Input digest: `sha256:42776fb5bf4c132eb715b8ad908662245556a4f86b2316ac8de397a5079a5afc`
+- Input digest: `sha256:2ae9d11f1c615250b9eb705e14977a38a70f1a4c923c4c73363bf167e90d75b8`
 - Scope: 100 companies × 11 categories = 1,100 pairs
 - Company Evidence enrichment: **Arm / ASML only**
 - This is a coverage audit, not a Company Evaluation Score.
@@ -10,35 +10,35 @@
 
 Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監査した。Pilot 5社の既存Coverage Recordを維持し、Batch 01のArm / ASMLはmanifest経由のCoverage Recordを正とする。残る93社ではlegacy本文や汎用IR Sourceだけをcompleteへ昇格していない。
 
-結果はcomplete **183**、partial **491**、not-started **426**。低CoverageはCI failureにせず、次の一次資料補強順を作るbaselineとして固定する。
+結果はcomplete **213**、partial **481**、not-started **406**。低CoverageはCI failureにせず、次の一次資料補強順を作るbaselineとして固定する。
 
 ## 100-company totals
 
 | Companies | Categories | Pairs | Complete | Partial | Not-started |
 | ---: | ---: | ---: | ---: | ---: | ---: |
-| 100 | 11 | 1,100 | 183 | 491 | 426 |
+| 100 | 11 | 1,100 | 213 | 481 | 406 |
 
 ## Category coverage
 
 | Category | Complete | Partial | Not-started | Direct Source | Claim + Evidence | Migration candidate |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| `company-overview` | 53 | 47 | 0 | 55 | 54 | 46 |
-| `ai-infrastructure-role` | 5 | 95 | 0 | 54 | 54 | 46 |
-| `products` | 54 | 46 | 0 | 54 | 54 | 46 |
-| `technology` | 1 | 53 | 46 | 54 | 54 | 0 |
-| `value-chain-position` | 54 | 0 | 46 | 54 | 54 | 0 |
+| `company-overview` | 63 | 37 | 0 | 65 | 64 | 36 |
+| `ai-infrastructure-role` | 5 | 95 | 0 | 64 | 64 | 36 |
+| `products` | 64 | 36 | 0 | 64 | 64 | 36 |
+| `technology` | 1 | 63 | 36 | 64 | 64 | 0 |
+| `value-chain-position` | 64 | 0 | 36 | 64 | 64 | 0 |
 | `manufacturing-facilities` | 13 | 5 | 82 | 18 | 14 | 0 |
 | `capacity-expansion` | 3 | 6 | 91 | 9 | 9 | 0 |
 | `customer-end-market` | 0 | 24 | 76 | 20 | 20 | 0 |
-| `competitive-positioning` | 0 | 99 | 1 | 53 | 53 | 47 |
+| `competitive-positioning` | 0 | 99 | 1 | 63 | 63 | 37 |
 | `strategy` | 0 | 17 | 83 | 17 | 17 | 0 |
-| `risks` | 0 | 99 | 1 | 52 | 52 | 48 |
+| `risks` | 0 | 99 | 1 | 62 | 62 | 38 |
 
 ## Missing status
 
 | Status | Pairs |
 | --- | ---: |
-| `not-collected` | 413 |
+| `not-collected` | 393 |
 | `primary-source-unchecked` | 4 |
 | `not-disclosed` | 5 |
 | `not-applicable` | 9 |
@@ -48,32 +48,32 @@ Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監�
 | Level | Meaning | Companies |
 | --- | --- | ---: |
 | L0 | legacy content only | 0 |
-| L1 | company-level Sources | 43 |
+| L1 | company-level Sources | 33 |
 | L2 | category-direct Sources | 3 |
 | L3 | Claim + Evidence | 0 |
-| L4 | Claim + Evidence + Locator | 54 |
+| L4 | Claim + Evidence + Locator | 64 |
 
 A/B/C/D/Eを別集計した結果：
 
 - Company-level Sourceあり: 100 companies
-- Category-direct Sourceあり: 440 pairs
-- Claim-level Evidence Bindingあり: 435 pairs
-- Structured Locatorあり: 435 pairs
-- Freeze Schemaでそのまま移行可能: 435 pairs
+- Category-direct Sourceあり: 510 pairs
+- Claim-level Evidence Bindingあり: 505 pairs
+- Structured Locatorあり: 505 pairs
+- Freeze Schemaでそのまま移行可能: 505 pairs
 
 ## Field-level legacy provenance
 
 | Field | Content present | Direct evidence | Claim binding | Migration candidate | Evidence gap |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| `summary` | 100 | 55 | 54 | 46 | 46 |
-| `aiRole` | 100 | 54 | 54 | 46 | 46 |
-| `products` | 100 | 54 | 54 | 46 | 46 |
-| `strengths` | 100 | 53 | 53 | 47 | 47 |
-| `risks` | 100 | 52 | 52 | 48 | 48 |
+| `summary` | 100 | 65 | 64 | 36 | 36 |
+| `aiRole` | 100 | 64 | 64 | 36 | 36 |
+| `products` | 100 | 64 | 64 | 36 | 36 |
+| `strengths` | 100 | 63 | 63 | 37 | 37 |
+| `risks` | 100 | 62 | 62 | 38 | 38 |
 
 ## Source quality
 
-- Registry records / unique Sources: 286 / 284
+- Registry records / unique Sources: 292 / 290
 - Company `sourceIds` references / resolved: 121 / 121
 - Financial Source references / resolved: 124 / 124
 - Orphan Source references: 0
@@ -81,22 +81,22 @@ A/B/C/D/Eを別集計した結果：
 - Compatible duplicate Source IDs: 2
 - Conflicting duplicate Source IDs: 0
 - Duplicate URLs across distinct IDs: 1
-- `publishedAt: null`: 260 unique Sources
+- `publishedAt: null`: 261 unique Sources
 - stale-ish (publishedAtがdataAsOfより730日超前): 0 unique Sources
 
 ### Locator audit
 
-Bindings 435 / valid Locators 435 / missing 0 / invalid 0。
+Bindings 505 / valid Locators 505 / missing 0 / invalid 0。
 
 | Locator field | Uses |
 | --- | ---: |
-| `page` | 134 |
-| `section` | 403 |
-| `heading` | 425 |
+| `page` | 148 |
+| `section` | 473 |
+| `heading` | 495 |
 | `table` | 1 |
 | `note` | 0 |
 | `anchor` | 0 |
-| `quotedLabel` | 408 |
+| `quotedLabel` | 478 |
 
 ## Pilot baseline
 
@@ -112,13 +112,13 @@ Pilot 5社はFreeze baselineを変更せず、既存55 Coverage Recordと整合�
 
 ## Priority A companies
 
-`amkor`, `ase-technology`, `disco`, `eaton`, `ge-vernova`, `hanmi-semiconductor`, `ibiden`, `jcet`, `mediatek`, `nikon`, `nxp`, `renesas`, `resonac-holdings`, `siemens-energy`, `stmicroelectronics`, `synopsys`
+`aptiv`, `bosch`, `equinix`, `jcet`, `kinsus`, `linde`, `mediatek`, `mobileye`, `nikon`, `nxp`, `renesas`, `resonac-holdings`, `rohm`, `seagate`, `texas-instruments`, `western-digital`
 
 PriorityはCoverage不足を主軸に、既存のAI重要度signal、複数Categoryへ使える一次Source、legacy migration候補を補助軸として決定した。会社規模・株価は使用していない。
 
 ## Priority B companies
 
-`advantest`, `air-liquide`, `ajinomoto-fine-techno`, `amd`, `analog-devices`, `aptiv`, `arista`, `arm`, `bosch`, `broadcom`, `cadence`, `canon`, `carrier`, `ciena`, `cisco`, `coherent`, `credo`, `denso`, `entegris`, `equinix`, `fanuc`, `furukawa-electric`, `globalfoundries`, `globalwafers`, `hexagon`, `infineon`, `intel`, `johnson-controls`, `keyence`, `kinsus`, `kioxia`, `kokusai-electric`, `lam-research`, `lasertec`, `legrand`, `linde`, `marvell`, `micron`, `mitsubishi-electric`, `mobileye`, `monolithic-power`, `nan-ya-pcb`, `nvent`, `omron`, `onsemi`, `qualcomm`, `rohm`, `samsung-electronics`, `sandisk`, `schneider-electric`, `screen-holdings`, `seagate`, `shin-etsu-chemical`, `shinko-electric`, `sk-hynix`, `smc`, `sumco`, `sumitomo-electric`, `tesla`, `texas-instruments`, `tokyo-electron`, `trane-technologies`, `umc`, `unimicron`, `western-digital`, `yaskawa`
+`advantest`, `air-liquide`, `ajinomoto-fine-techno`, `amd`, `amkor`, `analog-devices`, `arista`, `arm`, `ase-technology`, `broadcom`, `cadence`, `canon`, `carrier`, `ciena`, `cisco`, `coherent`, `credo`, `denso`, `disco`, `eaton`, `entegris`, `fanuc`, `furukawa-electric`, `ge-vernova`, `globalfoundries`, `globalwafers`, `hanmi-semiconductor`, `hexagon`, `ibiden`, `infineon`, `intel`, `johnson-controls`, `keyence`, `kioxia`, `kokusai-electric`, `lam-research`, `lasertec`, `legrand`, `marvell`, `micron`, `mitsubishi-electric`, `monolithic-power`, `nan-ya-pcb`, `nvent`, `omron`, `onsemi`, `qualcomm`, `samsung-electronics`, `sandisk`, `schneider-electric`, `screen-holdings`, `shin-etsu-chemical`, `shinko-electric`, `siemens-energy`, `sk-hynix`, `smc`, `stmicroelectronics`, `sumco`, `sumitomo-electric`, `synopsys`, `tesla`, `tokyo-electron`, `trane-technologies`, `umc`, `unimicron`, `yaskawa`
 
 ## Priority C companies
 
@@ -132,13 +132,13 @@ PriorityはCoverage不足を主軸に、既存のAI重要度signal、複数Categ
 | `strategy` | 83 | 17 |
 | `manufacturing-facilities` | 82 | 5 |
 | `customer-end-market` | 76 | 24 |
-| `technology` | 46 | 53 |
-| `value-chain-position` | 46 | 0 |
+| `technology` | 36 | 63 |
+| `value-chain-position` | 36 | 0 |
 | `competitive-positioning` | 1 | 99 |
 | `risks` | 1 | 99 |
 | `ai-infrastructure-role` | 0 | 95 |
-| `company-overview` | 0 | 47 |
-| `products` | 0 | 46 |
+| `company-overview` | 0 | 37 |
+| `products` | 0 | 36 |
 
 ## Migration candidates
 
@@ -146,17 +146,17 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 
 | Category | Candidate pairs |
 | --- | ---: |
-| `company-overview` | 46 |
-| `ai-infrastructure-role` | 46 |
-| `products` | 46 |
+| `company-overview` | 36 |
+| `ai-infrastructure-role` | 36 |
+| `products` | 36 |
 | `technology` | 0 |
 | `value-chain-position` | 0 |
 | `manufacturing-facilities` | 0 |
 | `capacity-expansion` | 0 |
 | `customer-end-market` | 0 |
-| `competitive-positioning` | 47 |
+| `competitive-positioning` | 37 |
 | `strategy` | 0 |
-| `risks` | 48 |
+| `risks` | 38 |
 
 ## Next recommended batch
 
@@ -164,14 +164,14 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 
 | Company | Reasons |
 | --- | --- |
-| Siemens Energy（シーメンス・エナジー） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 2 broad primary Sources; Migration ease: 5 legacy-field candidates |
-| STMicroelectronics（STマイクロエレクトロニクス） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 2 broad primary Sources; Migration ease: 5 legacy-field candidates |
-| Synopsys（シノプシス） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 2 broad primary Sources; Migration ease: 5 legacy-field candidates |
-| Amkor Technology（アムコー・テクノロジー） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
-| ASE Technology（ASEテクノロジー） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
-| ディスコ | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
-| Eaton（イートン） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
-| GE Vernova（GEベルノバ） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
+| JCET（長電科技） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
+| MediaTek（メディアテック） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
+| ニコン | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
+| NXP Semiconductors（NXPセミコンダクターズ） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
+| ルネサス エレクトロニクス | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
+| レゾナック・ホールディングス | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
+| ローム | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
+| Seagate（シーゲイト） | Coverage gap: 6 not-started / 5 partial; AI Infrastructure importance aid: 4/5; Source leverage: 1 broad primary Sources; Migration ease: 5 legacy-field candidates |
 
 ## Company table
 
@@ -182,19 +182,19 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 | Air Liquide（エア・リキード） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
 | 味の素ファインテクノ | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
 | AMD（アドバンスト・マイクロ・デバイセズ） | L4 | 3 | 6 | 2 | 1 | 9 | 9 | 9 | B |
-| Amkor Technology（アムコー・テクノロジー） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
+| Amkor Technology（アムコー・テクノロジー） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | Amphenol（アンフェノール） | L4 | 4 | 5 | 2 | 1 | 9 | 9 | 9 | C |
 | Analog Devices（アナログ・デバイセズ） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | Applied Materials（アプライド・マテリアルズ） | L4 | 4 | 5 | 2 | 2 | 8 | 8 | 8 | C |
-| Aptiv（アプティブ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
+| Aptiv（アプティブ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | Arista Networks（アリスタ・ネットワークス） | L4 | 3 | 6 | 2 | 2 | 9 | 9 | 9 | B |
 | Arm（アーム） | L4 | 3 | 6 | 2 | 1 | 9 | 9 | 9 | B |
-| ASE Technology（ASEテクノロジー） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
+| ASE Technology（ASEテクノロジー） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | ASM International（ASMインターナショナル） | L4 | 4 | 7 | 0 | 1 | 11 | 11 | 11 | C |
 | ASML（エーエスエムエル） | L4 | 4 | 7 | 0 | 2 | 11 | 11 | 11 | C |
 | ASMPT（エーエスエムピーティー） | L4 | 4 | 6 | 1 | 1 | 10 | 10 | 10 | C |
 | Besi（BEセミコンダクター・インダストリーズ） | L4 | 4 | 7 | 0 | 1 | 11 | 11 | 11 | C |
-| Bosch（ボッシュ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
+| Bosch（ボッシュ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | Broadcom（ブロードコム） | L4 | 3 | 4 | 4 | 2 | 7 | 7 | 7 | B |
 | Cadence（ケイデンス） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | キヤノン | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
@@ -206,38 +206,38 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 | Credo（クレド） | L4 | 3 | 6 | 2 | 1 | 9 | 9 | 9 | B |
 | デンソー | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
 | Digital Realty（デジタル・リアルティ） | L4 | 4 | 7 | 0 | 1 | 11 | 11 | 11 | C |
-| ディスコ | L1 | 0 | 5 | 6 | 2 | 0 | 0 | 0 | A |
-| Eaton（イートン） | L1 | 0 | 5 | 6 | 2 | 0 | 0 | 0 | A |
+| ディスコ | L4 | 3 | 4 | 4 | 2 | 7 | 7 | 7 | B |
+| Eaton（イートン） | L4 | 3 | 4 | 4 | 2 | 7 | 7 | 7 | B |
 | Entegris（インテグリス） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
-| Equinix（エクイニクス） | L1 | 0 | 5 | 6 | 2 | 0 | 0 | 0 | B |
+| Equinix（エクイニクス） | L1 | 0 | 5 | 6 | 2 | 0 | 0 | 0 | A |
 | ファナック | L1 | 0 | 5 | 6 | 2 | 0 | 0 | 0 | B |
 | フジクラ | L4 | 4 | 6 | 1 | 1 | 7 | 7 | 7 | C |
 | 古河電気工業 | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
-| GE Vernova（GEベルノバ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
+| GE Vernova（GEベルノバ） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | GlobalFoundries（グローバルファウンドリーズ） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | GlobalWafers（グローバルウェーハズ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
-| HANMI Semiconductor（ハンミ・セミコンダクター） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
+| HANMI Semiconductor（ハンミ・セミコンダクター） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | Hexagon（ヘキサゴン） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
-| イビデン | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
+| イビデン | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | Infineon（インフィニオン） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | Intel（インテル） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | JCET（長電科技） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | Johnson Controls（ジョンソンコントロールズ） | L4 | 3 | 6 | 2 | 1 | 9 | 9 | 9 | B |
 | キーエンス | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
-| Kinsus（景碩科技） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
+| Kinsus（景碩科技） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | キオクシアホールディングス | L2 | 0 | 6 | 5 | 2 | 0 | 0 | 0 | B |
 | KLA（ケーエルエー） | L4 | 4 | 5 | 2 | 2 | 9 | 9 | 9 | C |
 | KOKUSAI ELECTRIC（国際電気） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | Lam Research（ラムリサーチ） | L4 | 3 | 4 | 4 | 2 | 7 | 7 | 7 | B |
 | レーザーテック | L4 | 3 | 6 | 2 | 1 | 9 | 9 | 9 | B |
 | Legrand（ルグラン） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
-| Linde（リンデ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
+| Linde（リンデ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | Lumentum（ルメンタム） | L4 | 4 | 7 | 0 | 1 | 11 | 11 | 11 | C |
 | Marvell Technology（マーベル・テクノロジー） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | MediaTek（メディアテック） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | Micron Technology（マイクロン・テクノロジー） | L4 | 3 | 4 | 4 | 2 | 7 | 7 | 7 | B |
 | 三菱電機 | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
-| Mobileye（モービルアイ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
+| Mobileye（モービルアイ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | Monolithic Power Systems（モノリシック・パワー・システムズ） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | Nan Ya PCB（南亜電路板） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
 | ニコン | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
@@ -249,25 +249,25 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 | Qualcomm（クアルコム） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | ルネサス エレクトロニクス | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | レゾナック・ホールディングス | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
-| ローム | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
+| ローム | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | Samsung Electronics（サムスン電子） | L4 | 3 | 4 | 4 | 2 | 7 | 7 | 7 | B |
 | Sandisk（サンディスク） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | Schneider Electric（シュナイダーエレクトリック） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | SCREENホールディングス | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
-| Seagate（シーゲイト） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
+| Seagate（シーゲイト） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | 信越化学工業 | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
 | 新光電気工業 | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
-| Siemens Energy（シーメンス・エナジー） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
+| Siemens Energy（シーメンス・エナジー） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | SK hynix（SKハイニックス） | L4 | 3 | 4 | 4 | 2 | 7 | 7 | 7 | B |
 | SMC | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
 | SMIC（中芯国際） | L4 | 5 | 6 | 0 | 1 | 11 | 11 | 11 | C |
-| STMicroelectronics（STマイクロエレクトロニクス） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
+| STMicroelectronics（STマイクロエレクトロニクス） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | SUMCO | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
 | 住友電気工業 | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
-| Synopsys（シノプシス） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
+| Synopsys（シノプシス） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | TE Connectivity（TEコネクティビティ） | L4 | 4 | 5 | 2 | 1 | 9 | 9 | 9 | C |
 | Tesla（テスラ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
-| Texas Instruments（テキサス・インスツルメンツ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
+| Texas Instruments（テキサス・インスツルメンツ） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | 東京エレクトロン | L2 | 0 | 6 | 5 | 2 | 0 | 0 | 0 | B |
 | Tower Semiconductor（タワーセミコンダクター） | L4 | 5 | 6 | 0 | 1 | 11 | 11 | 11 | C |
 | Trane Technologies（トレイン・テクノロジーズ） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
@@ -275,7 +275,7 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 | UMC（聯華電子） | L4 | 3 | 4 | 4 | 1 | 7 | 7 | 7 | B |
 | Unimicron（欣興電子） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
 | Vertiv（ヴァーティブ） | L4 | 4 | 5 | 2 | 2 | 8 | 8 | 8 | C |
-| Western Digital（ウエスタンデジタル） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
+| Western Digital（ウエスタンデジタル） | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | A |
 | 安川電機 | L1 | 0 | 5 | 6 | 1 | 0 | 0 | 0 | B |
 
 ## Audit freshness and boundaries
