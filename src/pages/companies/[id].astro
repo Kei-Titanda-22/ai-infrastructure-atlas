@@ -124,7 +124,7 @@ const toc = (isEvidencePilot ? [
   return true;
 });
 ---
-<BaseLayout title={d.japaneseName || d.name} description={d.summary} indexable>
+<BaseLayout title={d.japaneseName || d.name} description={d.summary} indexable pageClass={isEvidencePilot ? undefined : 'global-visual-pilot global-visual-company-legacy'}>
   <article class:list={[`sector-page sector-${d.primaryLayer.replace(/[^a-zA-Z]/g,'-').toLowerCase()}`, { 'evidence-pilot': isEvidencePilot }]} data-terminology-scope>
     <span hidden data-pagefind-filter={`layer:${d.primaryLayer}`}></span>
     <span hidden data-pagefind-filter={`country:${d.country}`}></span>

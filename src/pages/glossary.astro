@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import glossary from '../data/glossary.json';
 ---
-<BaseLayout title="用語集" indexable>
+<BaseLayout title="用語集" indexable pageClass="global-visual-pilot global-visual-glossary">
   <header class="page-head"><div class="shell"><div class="eyebrow">技術・財務用語</div><h1>用語集</h1><p class="lead">企業比較で頻出する半導体・AIインフラ・財務の用語を整理します。</p></div></header>
   <div class="shell section method-grid">
     {glossary.map(item => <article class="method-card"><div class="ticker">{item.term}</div><h3>{item.name}</h3><p>{item.reading}</p><p>{item.definition}</p></article>)}
