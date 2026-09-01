@@ -63,21 +63,30 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
         <button class="text-button" id="copy-compare-url" type="button">比較URLをコピー</button>
       </div>
 
-      <label class="compare-search-label" for="compare-company-search">企業を追加</label>
-      <input class="control" id="compare-company-search" type="search" placeholder="企業名・Ticker・製品・技術・領域で検索" autocomplete="off" aria-controls="compare-suggestions" aria-expanded="false" />
-      <div class="compare-suggestions" id="compare-suggestions" role="listbox" hidden></div>
+      <div class="compare-add-controls">
+        <div class="compare-search-control">
+          <label class="compare-search-label" for="compare-company-search">企業を追加</label>
+          <input class="control" id="compare-company-search" type="search" placeholder="企業名・Ticker・製品・技術・領域で検索" autocomplete="off" aria-controls="compare-suggestions" aria-expanded="false" />
+          <div class="compare-suggestions" id="compare-suggestions" role="listbox" hidden></div>
+        </div>
 
-      <div class="compare-template-list" aria-label="比較テンプレート">
-        <span class="compare-template-label">比較テンプレート</span>
-        {comparisonTemplates.map(template => (
-          <button class="text-button compare-template-button" type="button" data-template={template.id} data-ids={template.companyIds.join(',')} title={template.description}>{template.name}</button>
-        ))}
+        <div class="compare-template-list" aria-label="比較テンプレート">
+          <span class="compare-template-label">比較テンプレート</span>
+          {comparisonTemplates.map(template => (
+            <button class="text-button compare-template-button" type="button" data-template={template.id} data-ids={template.companyIds.join(',')} title={template.description}>{template.name}</button>
+          ))}
+        </div>
       </div>
 
       <div class="compare-selected-wrap">
-        <div class="compare-selected-title">選択中</div>
+        <div class="compare-selected-head">
+          <div>
+            <div class="compare-selected-title">選択中</div>
+            <p id="compare-selection-status" class="meta"></p>
+          </div>
+          <button class="text-button compare-clear" id="clear-compare" type="button">すべて解除</button>
+        </div>
         <div id="compare-selected" class="compare-selected" aria-live="polite"></div>
-        <p id="compare-selection-status" class="meta"></p>
       </div>
     </section>
 
@@ -88,7 +97,11 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
       <div><dt>比較不能</dt><dd id="summary-blocked">0</dd></div>
     </dl>
 
-    <div class="table-scroll compare-scroll">
+    <div class="compare-table-intro">
+      <h2>比較表</h2>
+      <p>5社比較では表を横へスクロールできます。指標名は左側に固定されます。</p>
+    </div>
+    <div class="table-scroll compare-scroll" tabindex="0" aria-label="企業比較表。横方向にスクロールできます">
       <table class="compare-table" id="compare-table">
         <thead><tr id="compare-head"><th>指標</th></tr></thead>
         <tbody></tbody>
@@ -130,9 +143,10 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
       const analysisHead = root.querySelector('#analysis-head');
       const analysisDetails = root.querySelector('#compare-analysis');
       const copyButton = root.querySelector('#copy-compare-url');
+      const clearButton = root.querySelector('#clear-compare');
       const params = new URLSearchParams(location.search);
       const requested = (params.get('ids') || '').split(',').filter(id => byId.has(id)).slice(0,5);
-      let selectedIds = requested.length ? requested : defaults.filter(id => byId.has(id)).slice(0,5);
+      let selectedIds = params.has('ids') ? requested : defaults.filter(id => byId.has(id)).slice(0,5);
       let currentSuggestions = [];
 
       const normalize = value => String(value || '').trim().toLowerCase().normalize('NFKC');
@@ -260,9 +274,18 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
         return `${score.value}/5\n方向：${direction}`;
       };
       const pickedCompanies = () => selectedIds.map(id=>byId.get(id)).filter(Boolean);
+      const localCompanyName = company => {
+        const name=String(company?.name || '');
+        const japanese=String(company?.japaneseName || '');
+        if(!japanese || japanese===name) return '';
+        const wrappedPrefix=`${name}（`;
+        return japanese.startsWith(wrappedPrefix) && japanese.endsWith('）')
+          ? japanese.slice(wrappedPrefix.length,-1)
+          : japanese;
+      };
       const updateUrl = () => {
         const next=new URLSearchParams(location.search);
-        if(selectedIds.length) next.set('ids',selectedIds.join(',')); else next.delete('ids');
+        next.set('ids',selectedIds.join(','));
         history.replaceState(null,'',`${location.pathname}${next.toString()?`?${next}`:''}`);
       };
       const renderSelected = () => {
@@ -273,12 +296,15 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
           const row=document.createElement('div'); row.className='compare-selected-row';
           const indexEl=text('span',String(index+1).padStart(2,'0'),'compare-selected-index mono'); row.append(indexEl);
           const info=document.createElement('div'); info.className='compare-selected-info';
-          const a=document.createElement('a'); a.href=company.href; a.className='company-link'; a.textContent=company.japaneseName || company.name; info.append(a);
+          const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-selected-name'; a.textContent=company.name; info.append(a);
+          const localName=localCompanyName(company); if(localName) info.append(text('span',localName,'compare-selected-local'));
           info.append(text('span',`${company.ticker} · ${company.primaryLayer}`,'compare-selected-meta')); row.append(info);
           const remove=document.createElement('button'); remove.type='button'; remove.className='text-button compare-remove'; remove.textContent='外す'; remove.dataset.removeId=company.id; row.append(remove);
           selectedRoot.append(row);
         });
         selectionStatus.textContent=`${picked.length}/5社を選択中${picked.length<3 ? ' — 3〜5社での比較を推奨' : ''}`;
+        clearButton.textContent=picked.length===5 ? '全5社を解除' : 'すべて解除';
+        clearButton.disabled=!picked.length;
       };
       const candidateMatches = query => {
         const tokens=normalize(query).split(/\s+/).filter(Boolean);
@@ -325,7 +351,8 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
         const lead=text('th','指標'); theadRow.append(lead);
         picked.forEach(company=>{
           const th=document.createElement('th');
-          const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-company-head'; a.textContent=company.japaneseName || company.name; th.append(a);
+          const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-company-head'; a.textContent=company.name; th.append(a);
+          const localName=localCompanyName(company); if(localName) th.append(text('span',localName,'compare-company-local'));
           th.append(text('span',`${company.ticker} · ${company.country}`,'compare-company-sub')); theadRow.append(th);
         });
         if(!picked.length){ const tr=document.createElement('tr'); const td=document.createElement('td'); td.colSpan=1; td.textContent='企業を追加すると比較表が表示されます。'; tr.append(td); tbody.append(tr); renderQualitySummary([]); renderAnalysis([]); return; }
@@ -362,6 +389,7 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
       });
       suggestions.addEventListener('click',event=>{ const button=event.target.closest('[data-add-id]'); if(button) addCompany(button.dataset.addId); });
       selectedRoot.addEventListener('click',event=>{ const button=event.target.closest('[data-remove-id]'); if(button) removeCompany(button.dataset.removeId); });
+      clearButton.addEventListener('click',()=>{ selectedIds=[]; render(); searchInput.focus(); });
       root.querySelectorAll('.compare-template-button').forEach(button=>button.addEventListener('click',()=>applyTemplate((button.dataset.ids||'').split(',').filter(Boolean))));
       copyButton.addEventListener('click',async()=>{
         try { await navigator.clipboard.writeText(location.href); copyButton.textContent='コピーしました'; setTimeout(()=>copyButton.textContent='比較URLをコピー',1600); }
