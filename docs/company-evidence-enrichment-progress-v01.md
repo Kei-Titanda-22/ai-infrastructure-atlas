@@ -346,9 +346,10 @@ All A2–A4 and B1–B8 batches are `merged / Actions success / Pages checked`. 
 - Browser QA: all nine companies passed at `1024px` and `360px`; document overflow `0`, all added Claims visible, bibliography Source links present, and Evidence marker target minimum `44 × 44px`. TSMC mobile and Applied Materials desktop passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
 - Protection: financial / company legacy content / facilities / relationships / Global Visual System / Evidence Schema diff `0`; existing Source Policy approval changes `0`; unrelated Company Evidence diff `0`.
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
-- PR / merge / main Actions / public Pages: pending
+- PR: [#137](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/137)
+- Merge / main Actions / public Pages: pending
 - HARD STOP: `0`
 
 ## Resume marker
 
-Evidence Gap Closure Batch B1 is locally complete with ACTIONABLE pending `0`. Resume from PR, merge, main Actions, and public Pages verification only. Do not investigate SUFFICIENT_PARTIAL / NOT_DISCLOSED / NOT_APPLICABLE / DEFERRED records.
+Evidence Gap Closure Batch B1 is locally complete with ACTIONABLE pending `0`. Resume from PR #137 merge, main Actions, and public Pages verification only. Do not investigate SUFFICIENT_PARTIAL / NOT_DISCLOSED / NOT_APPLICABLE / DEFERRED records.
