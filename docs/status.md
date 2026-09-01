@@ -37,6 +37,7 @@
 - [x] Linde FY2024 / FY2025 gross PP&E and Qualcomm FY2024 / FY2025 gross productive-assets Capex classification; Qualcomm FY2024 continuing-operations CFO reconstruction provenance
 - [x] Shin-Etsu Chemical FY2025 Q1 / FY2026 Q1 company-reported cash-Capex classification with unresolved asset scope and 0.1bn JPY source-precision flags
 - [x] Johnson Controls FY2024 / FY2025 gross productive-assets and TE Connectivity FY2024 / FY2025 gross PP&E classification; 28-period Capex-definition classification phase complete
+- [x] 100-company Company Evidence Coverage Audit v0.1 — 11 Categories / 1,100 pairs / deterministic freshness gate
 
 ## Current database
 
@@ -62,11 +63,15 @@
 - v0.4 pending source policies: **118**
 - earnings update ledger: **247 normalized records / 100 companies**
 - registered facilities: **17**
+- Company Evidence Coverage Audit: **21 complete / 501 partial / 578 not-started pairs**
+- Company Evidence maturity: **L0 0 / L1 92 / L2 3 / L3 0 / L4 5 companies**
 - real-time stock-price distribution: disabled
 
 今回のローカル検証で `247 periods / 100 companies / 100 multi-period companies / 1098 verified metrics / 181 FCF+Capex periods / 12 cash-flow overrides / 118 v0.4 document sources+policies` を確認した。Astroは109ページ、Pagefindは105ページ / 3,659語を生成した。
 
 `scripts/audit-financial-quality.py` は247期間×5指標を横断し、検証状態、FCF/Capex充足、Capex定義、Operating Profit定義、特殊比較フラグを `docs/financial-quality-audit.json` / `.md` へ決定論的に出力する。レビュー済みadjusted / Non-GAAP由来FCF 13期間は、旧表記のままAtlas算式一致8期間、Atlas正規化済み5期間（Micron 1期間、Vertiv 2期間、ABB 2期間）、Atlas定義差あり0期間となった。さらに、cashFlowInputs未登録8期間、FCF/Capex scope mismatch 0期間、PP&E-only 64期間を独立軸で出力する。Carrier 2期間、Qualcomm 2期間、Aptiv 2期間、Johnson Controls 2期間は`gross-productive-assets-cash-purchases`、Linde 2期間、Applied Materials 2期間、KLA 2期間、nVent 2期間、Texas Instruments 2期間、Corning 2期間、TE Connectivity 2期間は一次資料監査済みの`gross-ppe-cash-purchases`として分類する。Johnson ControlsはOCF、Capex、Atlas FCFがcontinuing operationsで整合し、discontinued-operation cash flowsを別建てとするscope provenanceを`continuing-operations-scope`で保持する。TE Connectivityは会社FCFがPP&E sale proceeds控除後のnet Capexを用いる一方、Atlasはgross PP&E cash purchasesを維持するため`company-net-capex-fcf-not-used`で保持する。Aptivはproductive-assets tagの広いasset scopeを`broad-capex`で保持する。Corningはcompany adjusted FCFを流用せず、GAAP OCFからgross PP&E cash Capexを控除するAtlas方針を`adjusted-company-fcf-not-used`で保持する。TIのCHIPS Act incentive proceedsはgross PP&E Capexと別建てであり、会社Non-GAAP FCFには加算されるがAtlas FCFでは除外するため、`government-incentive-excluded-from-fcf`を保持する。信越化学2期間は簡略cash-flow概要の独立した設備投資支出として`company-reported-cash-capex`に分類する一方、正式Q1 CF表がなくPP&Eのみか無形資産込みかを閉じられないため、`asset-scope-unresolved`、`rounded-source-value`、`informal-comparative-source`を保持し、Atlas gross cash Capex未解決queueに残す。`rounded-source-value`は0.1bn JPY表示値をJPY millionへ換算した値であり、百万円精密値ではないことを示す。Qualcomm FY2024はcontinuing-operations OCF 12,293をconsolidated OCF 12,202とdiscontinued-operation OCF -91から再構成したscope provenanceを`continuing-operations-cfo-reconstructed`で保持し、scope mismatchには数えない。TSMC 3期間は`ppe-plus-intangible`として分類する。nVentの会社FCFはPP&E sale proceedsを加算するが対象2期間はゼロのためAtlas値へ影響しない。Analog Devices Q3 FY2026は`net-capex`へ分類する一方、期間固有の政府支援相殺額が未開示のため`government-incentive-netting-unresolved`およびAtlas gross cash Capex未解決queueに残す。現状のその他の要確認キューは、source-linked 3指標、FCF/Capex片側欠損0期間、両方欠損66期間、Capex定義未分類0期間。CIは `--check` でデータと監査結果の同期を検証する。
+
+`scripts/audit-company-evidence-coverage.py` はFreeze Schema v0.2の11 Categoryを100社へ投影し、1,100 Company/Category pairを決定論的に監査する。Pilot 5社は既存Coverage Recordを正とし、非Pilot 95社はlegacy本文や汎用IR Sourceだけでcompleteへ昇格しない。JSON / Markdown成果物は `docs/company-evidence-coverage-audit-v01.*`。CIの`--check`はproduction inputと成果物の同期だけを検証し、Coverage不足そのものをquality floorにしない。
 
 ## v0.4 implementation
 
