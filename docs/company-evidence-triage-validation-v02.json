@@ -1,0 +1,3930 @@
+{
+  "schemaVersion": "0.2",
+  "baselineMain": "d8b6e223ec49bd454a0fd1276989723b0810a2d0",
+  "triageInputDigest": "sha256:813dce0c46119d8144c9834036460f8a84aa6b338ca2a3ec555252318e9bcabb",
+  "sampleSeed": "triage-validation-v02",
+  "sampleMethod": "Sort ascending by sha256(companyId + ':' + category + ':' + sampleSeed), tie-break by record id; take fixed SUFFICIENT_PARTIAL category quotas, all remaining DEFERRED when under 24, all NOT_APPLICABLE and NOT_DISCLOSED, then six non-overlapping former-DEFERRED/current-SUFFICIENT_PARTIAL records per remediated category.",
+  "sampleCount": 87,
+  "strata": {
+    "SUFFICIENT_PARTIAL": 24,
+    "DEFERRED": 9,
+    "NOT_APPLICABLE": 30,
+    "NOT_DISCLOSED": 0,
+    "REMEDIATED_FORMER_DEFERRED": 24
+  },
+  "quotas": {
+    "SUFFICIENT_PARTIAL": {
+      "ai-infrastructure-role": 4,
+      "technology": 4,
+      "competitive-positioning": 4,
+      "risks": 4,
+      "customer-end-market": 2,
+      "strategy": 2,
+      "capacity-expansion": 2,
+      "company-overview": 1,
+      "manufacturing-facilities": 1
+    },
+    "DEFERRED": "all remaining when fewer than 24",
+    "NOT_APPLICABLE": "all",
+    "NOT_DISCLOSED": "all",
+    "REMEDIATED_FORMER_DEFERRED": {
+      "manufacturing-facilities": 6,
+      "capacity-expansion": 6,
+      "customer-end-market": 6,
+      "strategy": 6
+    }
+  },
+  "records": [
+    {
+      "sampleIndex": 1,
+      "sampleId": "bosch:ai-infrastructure-role",
+      "sampleHash": "0101a3daf49afc795c3ada01f019120401c8d4fbeb84408525b6ffc775e4f0c3",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "bosch",
+      "companyName": "Bosch（ボッシュ）",
+      "category": "ai-infrastructure-role",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Bosch（ボッシュ） operates in Physical AI; the ai-infrastructure-role judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "bosch-ai-role"
+        ],
+        "evidenceBindingIds": [
+          "bosch-ai-role-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "bosch-annual-report-2025",
+          "publisher": "Robert Bosch GmbH",
+          "title": "Bosch Annual Report 2025",
+          "url": "https://assets.bosch.com/media/global/bosch_group/our_figures/pdf/bosch-annual-report-2025.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing ai-infrastructure-role disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 2,
+      "sampleId": "onsemi:ai-infrastructure-role",
+      "sampleHash": "025088e6a069f59445a575cfccd0c516f01d763865c1afb1f9d2312686d6586b",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "onsemi",
+      "companyName": "onsemi（オンセミ）",
+      "category": "ai-infrastructure-role",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "onsemi（オンセミ） operates in Compute & Silicon; the ai-infrastructure-role judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "onsemi-ai-role"
+        ],
+        "evidenceBindingIds": [
+          "onsemi-ai-role-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-onsemi-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / onsemi",
+          "title": "onsemi Form 10-K for year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1097864/000109786426000006/on-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing ai-infrastructure-role disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 3,
+      "sampleId": "nan-ya-pcb:ai-infrastructure-role",
+      "sampleHash": "037169f3296558006f81485f4a49736685c58cfde454380fd356b6a382d5268f",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "nan-ya-pcb",
+      "companyName": "Nan Ya PCB（南亜電路板）",
+      "category": "ai-infrastructure-role",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Nan Ya PCB（南亜電路板） operates in 半導体材料・基板; the ai-infrastructure-role judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "nan-ya-pcb-ai-role"
+        ],
+        "evidenceBindingIds": [
+          "nan-ya-pcb-ai-role-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "corporate-nanya-pcb",
+          "publisher": "Nan Ya Printed Circuit Board Corporation",
+          "title": "Nan Ya PCB Corporate Site",
+          "url": "https://www.nanyapcb.com.tw/",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing ai-infrastructure-role disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 4,
+      "sampleId": "asm-international:ai-infrastructure-role",
+      "sampleHash": "03d119bc76361598088006c5a414c63d76c4d5b3da75032611b6ec9e5dae623d",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "asm-international",
+      "companyName": "ASM International（ASMインターナショナル）",
+      "category": "ai-infrastructure-role",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "ASM International（ASMインターナショナル） operates in Wafer Fab Equipment; the ai-infrastructure-role judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "asm-international-ai-role"
+        ],
+        "evidenceBindingIds": [
+          "asm-international-ai-role-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "annual-report-asm-2025",
+          "publisher": "ASM International N.V.",
+          "title": "ASM Annual Report 2025",
+          "url": "https://www.asm.com/media/3skhiimk/asm-2025-annual-report.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing ai-infrastructure-role disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 5,
+      "sampleId": "globalwafers:technology",
+      "sampleHash": "0e99f462748fe7c826bf1ee942cd569d17cf89a32c7ea1480ddb7515c7a2f7e5",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "globalwafers",
+      "companyName": "GlobalWafers（グローバルウェーハズ）",
+      "category": "technology",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "GlobalWafers（グローバルウェーハズ） operates in 半導体材料・基板; the technology judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "globalwafers-technology"
+        ],
+        "evidenceBindingIds": [
+          "globalwafers-technology-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "ir-globalwafers",
+          "publisher": "GlobalWafers Co., Ltd.",
+          "title": "GlobalWafers Financial Information / Investor",
+          "url": "https://www.sas-globalwafers.com/en/investor/financial-information_en/",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing technology disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 6,
+      "sampleId": "nikon:technology",
+      "sampleHash": "1176475625f26e2940aafbf5b31f906afe613657d3748c8560a9f4e82c5198bd",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "nikon",
+      "companyName": "ニコン",
+      "category": "technology",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "ニコン operates in Wafer Fab Equipment; the technology judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "nikon-technology"
+        ],
+        "evidenceBindingIds": [
+          "nikon-technology-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "integrated-nikon-2025",
+          "publisher": "Nikon Corporation",
+          "title": "NIKON REPORT 2025",
+          "url": "https://www.nikon.com/company/ir/management/nikon-report/pdf/2025/25nikonreport_e.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing technology disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 7,
+      "sampleId": "lumentum:technology",
+      "sampleHash": "15a162dfffcf45b9a10a6a641e12ae8a83083c94e7948d2d85b9d365a9dce863",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "lumentum",
+      "companyName": "Lumentum（ルメンタム）",
+      "category": "technology",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Lumentum（ルメンタム） operates in Network & Optical; the technology judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "lumentum-technology"
+        ],
+        "evidenceBindingIds": [
+          "lumentum-technology-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+          "publisher": "U.S. SEC / Lumentum Holdings Inc.",
+          "title": "Lumentum Form 10-K for Fiscal Year Ended June 27, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1633978/000162828026057358/lite-20260627.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing technology disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 8,
+      "sampleId": "hanmi-semiconductor:technology",
+      "sampleHash": "167c8230b110a250a863db81bbfa7ac7dbf9417213be41e322397c5fb5f65824",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "hanmi-semiconductor",
+      "companyName": "HANMI Semiconductor（ハンミ・セミコンダクター）",
+      "category": "technology",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "HANMI Semiconductor（ハンミ・セミコンダクター） operates in Test & Back-end; the technology judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "hanmi-semiconductor-technology"
+        ],
+        "evidenceBindingIds": [
+          "hanmi-semiconductor-technology-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "filing-hanmi-2026-03-12",
+          "publisher": "Korea Exchange / HANMI Semiconductor Co., Ltd.",
+          "title": "HANMI Semiconductor 2025 Annual Business Report",
+          "url": "https://kind.krx.co.kr/external/2026/03/12/002053/20260312004659/11011.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing technology disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 9,
+      "sampleId": "lam-research:competitive-positioning",
+      "sampleHash": "0169be35ff4f39aeaa0ca8ad665914a74e3eb9a067c192cf7430a32229a01fe0",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "lam-research",
+      "companyName": "Lam Research（ラムリサーチ）",
+      "category": "competitive-positioning",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Lam Research（ラムリサーチ） operates in Wafer Fab Equipment; the competitive-positioning judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "lam-research-positioning"
+        ],
+        "evidenceBindingIds": [
+          "lam-research-positioning-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-lam-research-2025-10k",
+          "publisher": "U.S. SEC / Lam Research Corporation",
+          "title": "Lam Research Corporation Form 10-K for Fiscal Year Ended June 29, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/707549/000070754925000075/lrcx-20250629.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing competitive-positioning disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 10,
+      "sampleId": "eaton:competitive-positioning",
+      "sampleHash": "030bbbca8f80e6486c78b1b59e094c77ba2a456653e2b35529d7826917e273a6",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "eaton",
+      "companyName": "Eaton（イートン）",
+      "category": "competitive-positioning",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Eaton（イートン） operates in Data Center & Facilities; the competitive-positioning judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "eaton-positioning"
+        ],
+        "evidenceBindingIds": [
+          "eaton-positioning-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-eaton-2025-10k",
+          "publisher": "U.S. SEC / Eaton Corporation plc",
+          "title": "Eaton Corporation plc Form 10-K for Year Ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1551182/000155118226000007/etn-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing competitive-positioning disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 11,
+      "sampleId": "screen-holdings:competitive-positioning",
+      "sampleHash": "03b78349ea184325a73995ded991ee98c34fe057c0768957099bd8cbd1709132",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "screen-holdings",
+      "companyName": "SCREENホールディングス",
+      "category": "competitive-positioning",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "SCREENホールディングス operates in Wafer Fab Equipment; the competitive-positioning judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "screen-holdings-positioning"
+        ],
+        "evidenceBindingIds": [
+          "screen-holdings-positioning-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "integrated-screen-holdings-2025",
+          "publisher": "SCREEN Holdings Co., Ltd.",
+          "title": "SCREEN Group Annual Report 2025",
+          "url": "https://hdjp-corporateweb-files.screen.co.jp/1917/5919/8747/SCREEN_ARE_2025_A4.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing competitive-positioning disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 12,
+      "sampleId": "lumentum:competitive-positioning",
+      "sampleHash": "061e93bc9334a937051833e1c93c0dbacdb1ee28f977d93f37a3e48eabe0eb6e",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "lumentum",
+      "companyName": "Lumentum（ルメンタム）",
+      "category": "competitive-positioning",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Lumentum（ルメンタム） operates in Network & Optical; the competitive-positioning judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "lumentum-positioning"
+        ],
+        "evidenceBindingIds": [
+          "lumentum-positioning-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "filing-lumentum-2026-08-24-fy2026-10k",
+          "publisher": "U.S. SEC / Lumentum Holdings Inc.",
+          "title": "Lumentum Form 10-K for Fiscal Year Ended June 27, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1633978/000162828026057358/lite-20260627.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing competitive-positioning disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 13,
+      "sampleId": "carrier:risks",
+      "sampleHash": "0096efca06271076eb3f0a331540d640089858aefb3877b36d78c9a892c1299b",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "carrier",
+      "companyName": "Carrier（キャリア）",
+      "category": "risks",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Carrier（キャリア） operates in Data Center & Facilities; the risks judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "carrier-risks"
+        ],
+        "evidenceBindingIds": [
+          "carrier-risks-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-carrier-2025-10k",
+          "publisher": "U.S. SEC / Carrier Global Corporation",
+          "title": "Carrier Global Corporation Form 10-K for Year Ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1783180/000178318026000008/carr-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing risks disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 14,
+      "sampleId": "unimicron:risks",
+      "sampleHash": "04cb19a5ab059800d17e19e1a3f9a43b5c589f684be08f65dcc33e03f2139269",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "unimicron",
+      "companyName": "Unimicron（欣興電子）",
+      "category": "risks",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Unimicron（欣興電子） operates in 半導体材料・基板; the risks judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "unimicron-risks"
+        ],
+        "evidenceBindingIds": [
+          "unimicron-risks-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "corporate-unimicron",
+          "publisher": "Unimicron Technology Corp.",
+          "title": "Unimicron Corporate Site",
+          "url": "https://www.unimicron.com/",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing risks disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 15,
+      "sampleId": "smc:risks",
+      "sampleHash": "063a5248d1a598bcbbfaa46472f9dc97f873630e1b5bb107464aa858e2f574e3",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "smc",
+      "companyName": "SMC",
+      "category": "risks",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "SMC operates in Physical AI; the risks judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "smc-risks"
+        ],
+        "evidenceBindingIds": [
+          "smc-risks-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "ir-smc",
+          "publisher": "SMC株式会社",
+          "title": "SMC IR情報",
+          "url": "https://www.smcworld.com/ir/ja-jp/",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing risks disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 16,
+      "sampleId": "asm-international:risks",
+      "sampleHash": "094a582c56dc30ff08a537fdb6e828b947aae761a83f33e4e483eaf42c6a5c86",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "asm-international",
+      "companyName": "ASM International（ASMインターナショナル）",
+      "category": "risks",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "ASM International（ASMインターナショナル） operates in Wafer Fab Equipment; the risks judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "asm-international-risks"
+        ],
+        "evidenceBindingIds": [
+          "asm-international-risks-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "annual-report-asm-2025",
+          "publisher": "ASM International N.V.",
+          "title": "ASM Annual Report 2025",
+          "url": "https://www.asm.com/media/3skhiimk/asm-2025-annual-report.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing risks disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 17,
+      "sampleId": "linde:customer-end-market",
+      "sampleHash": "00cae7a2a12525548920e769050e814558a60a452e2208b4cd6b14a08fa90e82",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "linde",
+      "companyName": "Linde（リンデ）",
+      "category": "customer-end-market",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Linde（リンデ） operates in 半導体材料・基板; the customer-end-market judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "linde-customer-end-market-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "linde-customer-end-market-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-linde-fy2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Linde plc",
+          "title": "Linde plc Form 10-K for year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1707925/000162828026011430/lin-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing customer-end-market disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 18,
+      "sampleId": "ge-vernova:customer-end-market",
+      "sampleHash": "02ab2eafa1c372bc832f789fa9ff0777a624c73659fceca42bce96a9da0b8103",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "ge-vernova",
+      "companyName": "GE Vernova（GEベルノバ）",
+      "category": "customer-end-market",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "GE Vernova（GEベルノバ） operates in Data Center & Facilities; the customer-end-market judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "ge-vernova-customer-end-market-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "ge-vernova-customer-end-market-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "annual-letter-ge-vernova-2025",
+          "publisher": "GE Vernova Inc.",
+          "title": "2025 Annual Report CEO Letter",
+          "url": "https://www.gevernova.com/investors/annual-report/ceo-letter",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing customer-end-market disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 19,
+      "sampleId": "intel:strategy",
+      "sampleHash": "023d6f4ff4f089a534cadea423c4fd271d5ba5f7fccc27510773c177e91bbbcb",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "intel",
+      "companyName": "Intel（インテル）",
+      "category": "strategy",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Intel（インテル） operates in Compute & Silicon; the strategy judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "intel-strategy-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "intel-strategy-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-intel-2025-10k",
+          "publisher": "U.S. SEC / Intel Corporation",
+          "title": "Intel Corporation Form 10-K for Fiscal Year Ended December 27, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing strategy disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 20,
+      "sampleId": "umc:strategy",
+      "sampleHash": "03c14c7cc4f927d0bf6a311d9bc294e7c32aa567a3e470053b39ebe2850cf618",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "umc",
+      "companyName": "UMC（聯華電子）",
+      "category": "strategy",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "UMC（聯華電子） operates in Foundry & Logic Manufacturing; the strategy judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "umc-strategy-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "umc-strategy-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-umc-annual-report-2025",
+          "publisher": "United Microelectronics Corporation",
+          "title": "2025 Annual Report",
+          "url": "https://www.umc.com/upload/media/08_Investors/Annual_Reports/annual_report_english_pdf/2025/2025AR_ENG_all.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing strategy disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 21,
+      "sampleId": "aptiv:capacity-expansion",
+      "sampleHash": "01c290457942764ebaa566944009426f503f2c508135a92147cce59ecac08ac7",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "aptiv",
+      "companyName": "Aptiv（アプティブ）",
+      "category": "capacity-expansion",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Aptiv（アプティブ） operates in Physical AI; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "aptiv-capacity-expansion-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "aptiv-capacity-expansion-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-aptiv-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Aptiv PLC",
+          "title": "Aptiv Form 10-K for year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1521332/000152133226000009/aptv-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing capacity-expansion disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 22,
+      "sampleId": "denso:capacity-expansion",
+      "sampleHash": "0348a6b18ce1a0a181a06d6567810b0c77f1531064e3d56e3897f2558efcb570",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "denso",
+      "companyName": "デンソー",
+      "category": "capacity-expansion",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "デンソー operates in Physical AI; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "denso-capacity-expansion-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "denso-capacity-expansion-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "integrated-denso-2025",
+          "publisher": "DENSO Corporation",
+          "title": "Integrated Report 2025",
+          "url": "https://www.denso.com/global/en/about-us/investors/annual-report/integrated-report-2025/",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing capacity-expansion disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 23,
+      "sampleId": "fujikura:company-overview",
+      "sampleHash": "1f5f5b32ec74647f6aa83187b1dba781ef3d7e209ec7a61169eba59875bc221f",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "fujikura",
+      "companyName": "フジクラ",
+      "category": "company-overview",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "フジクラ operates in Network & Optical; the company-overview judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "fujikura-overview"
+        ],
+        "evidenceBindingIds": [
+          "fujikura-overview-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "ir-fujikura",
+          "publisher": "Fujikura",
+          "title": "フジクラ 株主・投資家情報",
+          "url": "https://www.fujikura.co.jp/ir/",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing company-overview disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 24,
+      "sampleId": "hanmi-semiconductor:manufacturing-facilities",
+      "sampleHash": "104b16d19b29d13e99087eb118414c253e535a57ff84cbb18824048142a96ecd",
+      "stratum": "SUFFICIENT_PARTIAL",
+      "sampleRole": "base-stratified",
+      "companyId": "hanmi-semiconductor",
+      "companyName": "HANMI Semiconductor（ハンミ・セミコンダクター）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "HANMI Semiconductor（ハンミ・セミコンダクター） operates in Test & Back-end; the manufacturing-facilities judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "hanmi-semiconductor-manufacturing-facilities-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "hanmi-semiconductor-manufacturing-facilities-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "krx-hanmi-semiconductor-fy2025-business-report",
+          "publisher": "Korea Exchange KIND / HANMI Semiconductor Co., Ltd.",
+          "title": "HANMI Semiconductor FY2025 Annual Business Report",
+          "url": "https://kind.krx.co.kr/external/2026/03/12/002053/20260312004659/11011.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The existing manufacturing-facilities disclosure is represented by 1 source-linked Claim(s) and 1 structured Locator(s), covering the principal Atlas-use question. Bounded official-source review did not show a missing high-value addition that would change the present follow-up decision."
+    },
+    {
+      "sampleIndex": 25,
+      "sampleId": "asmpt:capacity-expansion",
+      "sampleHash": "2b183f818b2416cd1e3be650d84d06a0f2b073c358979bbf3cf5695fc9abfc1d",
+      "stratum": "DEFERRED",
+      "sampleRole": "all-remaining-if-under-24",
+      "companyId": "asmpt",
+      "companyName": "ASMPT（エーエスエムピーティー）",
+      "category": "capacity-expansion",
+      "originalClassification": "DEFERRED",
+      "independentClassification": "DEFERRED",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "ASMPT（エーエスエムピーティー） operates in Test & Back-end; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "annual-report-asmpt-2025",
+          "publisher": "ASMPT Limited",
+          "title": "ASMPT Annual Report 2025",
+          "url": "https://www.asmpt.com/site/assets/files/84854/e_00522ar-20260405.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed within the bounded official-source search for a concrete current production-capacity project."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "ASMPT's official annual material and targeted review did not identify a current, concrete production-capacity project; generic capacity planning and product demand do not meet the project threshold."
+    },
+    {
+      "sampleIndex": 26,
+      "sampleId": "unimicron:capacity-expansion",
+      "sampleHash": "30393993fdc040be8c81a80224b3f788f0818f5abc111d931619e0c31f97ca0d",
+      "stratum": "DEFERRED",
+      "sampleRole": "all-remaining-if-under-24",
+      "companyId": "unimicron",
+      "companyName": "Unimicron（欣興電子）",
+      "category": "capacity-expansion",
+      "originalClassification": "DEFERRED",
+      "independentClassification": "DEFERRED",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Unimicron（欣興電子） operates in 半導体材料・基板; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "corporate-unimicron",
+          "publisher": "Unimicron Technology Corp.",
+          "title": "Unimicron Corporate Site",
+          "url": "https://www.unimicron.com/",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Reviewed within the bounded official-source search for a concrete current production-capacity project."
+        },
+        {
+          "sourceId": "official-unimicron-annual-report-2025",
+          "publisher": "Unimicron Technology Corp.",
+          "title": "2025 Annual Report",
+          "url": "https://www.unimicron.com/money08.html",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed within the bounded official-source search for a concrete current production-capacity project."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Unimicron's official material reviewed within the bound did not separate a current site-, scale-, or timeline-specific production expansion from generic capital expenditure."
+    },
+    {
+      "sampleIndex": 27,
+      "sampleId": "nikon:capacity-expansion",
+      "sampleHash": "304b4dd89b069b4a46057be8fda37ed93f552dc9b4c02d6dacd55816280bab29",
+      "stratum": "DEFERRED",
+      "sampleRole": "all-remaining-if-under-24",
+      "companyId": "nikon",
+      "companyName": "ニコン",
+      "category": "capacity-expansion",
+      "originalClassification": "DEFERRED",
+      "independentClassification": "DEFERRED",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "ニコン operates in Wafer Fab Equipment; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "integrated-nikon-2025",
+          "publisher": "Nikon Corporation",
+          "title": "NIKON REPORT 2025",
+          "url": "https://www.nikon.com/company/ir/management/nikon-report/pdf/2025/25nikonreport_e.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed within the bounded official-source search for a concrete current production-capacity project."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Nikon discloses long-term production-site rebuilding and upgrades, but the reviewed material does not state an increase in production output; modernization is not treated as capacity expansion by inference."
+    },
+    {
+      "sampleIndex": 28,
+      "sampleId": "western-digital:capacity-expansion",
+      "sampleHash": "4aee3ea9f22db82c6c370e72fe695ee5a7f292092ade3cf65fd2db26de4f3c15",
+      "stratum": "DEFERRED",
+      "sampleRole": "all-remaining-if-under-24",
+      "companyId": "western-digital",
+      "companyName": "Western Digital（ウエスタンデジタル）",
+      "category": "capacity-expansion",
+      "originalClassification": "DEFERRED",
+      "independentClassification": "DEFERRED",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Western Digital（ウエスタンデジタル） operates in Memory; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "annual-report-western-digital-2025",
+          "publisher": "Western Digital Corporation",
+          "title": "Western Digital 2025 Annual Report",
+          "url": "https://investor.wdc.com/financial-information/annual-reports",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed within the bounded official-source search for a concrete current production-capacity project."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Western Digital's reviewed official material describes laboratory and qualification capability, not a current company production-capacity expansion project."
+    },
+    {
+      "sampleIndex": 29,
+      "sampleId": "onsemi:capacity-expansion",
+      "sampleHash": "615670301ca0a7c5a037bc6943b3a66d2f4c75fcd58341cb9799ca4798a4aad7",
+      "stratum": "DEFERRED",
+      "sampleRole": "all-remaining-if-under-24",
+      "companyId": "onsemi",
+      "companyName": "onsemi（オンセミ）",
+      "category": "capacity-expansion",
+      "originalClassification": "DEFERRED",
+      "independentClassification": "DEFERRED",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "onsemi（オンセミ） operates in Compute & Silicon; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-onsemi-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / onsemi",
+          "title": "onsemi Form 10-K for year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1097864/000109786426000006/on-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed within the bounded official-source search for a concrete current production-capacity project."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "onsemi's filing emphasizes manufacturing realignment and capacity reduction/optimization; generic future capacity-risk language is not a concrete expansion project."
+    },
+    {
+      "sampleIndex": 30,
+      "sampleId": "hexagon:capacity-expansion",
+      "sampleHash": "7a4b12135665988d9e6c68d02e72104985205829e503fa745ed6826a90cd5bcc",
+      "stratum": "DEFERRED",
+      "sampleRole": "all-remaining-if-under-24",
+      "companyId": "hexagon",
+      "companyName": "Hexagon（ヘキサゴン）",
+      "category": "capacity-expansion",
+      "originalClassification": "DEFERRED",
+      "independentClassification": "DEFERRED",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Hexagon（ヘキサゴン） operates in Physical AI; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "hexagon-fy2025-year-end-report",
+          "publisher": "Hexagon AB / Cision",
+          "title": "Hexagon Year-End Report 1 January - 31 December 2025",
+          "url": "https://mb.cision.com/Main/387/4300053/3907199.pdf",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Reviewed within the bounded official-source search for a concrete current production-capacity project."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Hexagon's official material addresses plant efficiency, digital twins, and energy performance rather than a current expansion of company production capacity."
+    },
+    {
+      "sampleIndex": 31,
+      "sampleId": "lasertec:capacity-expansion",
+      "sampleHash": "99c2c1c6c918b93acd60ea41f8dc3004ab834b0bfe0428ec9d135ed5888e31d3",
+      "stratum": "DEFERRED",
+      "sampleRole": "all-remaining-if-under-24",
+      "companyId": "lasertec",
+      "companyName": "レーザーテック",
+      "category": "capacity-expansion",
+      "originalClassification": "DEFERRED",
+      "independentClassification": "DEFERRED",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "レーザーテック operates in Wafer Fab Equipment; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "edinet-lasertec-fy2025-annual-securities-report",
+          "publisher": "Financial Services Agency EDINET / Lasertec Corporation",
+          "title": "Lasertec Corporation Annual Securities Report for FY2025",
+          "url": "https://info.gbiz.go.jp/hojin/edinetDownload?docId=S100WQ7F",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed within the bounded official-source search for a concrete current production-capacity project."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Lasertec's bounded primary-source review did not identify a current site-, scale-, or timeline-specific production-capacity project."
+    },
+    {
+      "sampleIndex": 32,
+      "sampleId": "omron:capacity-expansion",
+      "sampleHash": "a024df790d326314b3ae71254db4cd7d3b7fcaf96ec02d18013246cf79ffc7a4",
+      "stratum": "DEFERRED",
+      "sampleRole": "all-remaining-if-under-24",
+      "companyId": "omron",
+      "companyName": "オムロン",
+      "category": "capacity-expansion",
+      "originalClassification": "DEFERRED",
+      "independentClassification": "DEFERRED",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "オムロン operates in Physical AI; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "omron-financial-results-fy2025",
+          "publisher": "OMRON Corporation",
+          "title": "Consolidated Financial Results for the Fiscal Year Ended March 31, 2026",
+          "url": "https://www.omron.com/global/en/assets/file/ir/irlib/20260513_financial_results.pdf",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Reviewed within the bounded official-source search for a concrete current production-capacity project."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "OMRON's reviewed disclosures concern production optimization and restructuring, not a concrete current expansion of production output."
+    },
+    {
+      "sampleIndex": 33,
+      "sampleId": "broadcom:capacity-expansion",
+      "sampleHash": "d36ab5b52d92da0986e6e17a9567def7c84a3a06cad482140a7ef149c02cfe90",
+      "stratum": "DEFERRED",
+      "sampleRole": "all-remaining-if-under-24",
+      "companyId": "broadcom",
+      "companyName": "Broadcom（ブロードコム）",
+      "category": "capacity-expansion",
+      "originalClassification": "DEFERRED",
+      "independentClassification": "DEFERRED",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Broadcom（ブロードコム） operates in Compute & Silicon; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-broadcom-2025-10k",
+          "publisher": "U.S. SEC / Broadcom Inc.",
+          "title": "Broadcom Inc. Form 10-K for Fiscal Year Ended November 2, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1730168/000173016825000121/avgo-20251102.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed within the bounded official-source search for a concrete current production-capacity project."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Broadcom's filing confirms internal proprietary wafer fabrication, so the Category applies, but the bounded review found no current site-, scale-, or timeline-specific production-capacity expansion project."
+    },
+    {
+      "sampleIndex": 34,
+      "sampleId": "nvidia:manufacturing-facilities",
+      "sampleHash": "0218053200e07f742df7509204a1d4ca8915e4c659afeaaa6b17f7b10e5f3891",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "nvidia",
+      "companyName": "NVIDIA（エヌビディア）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "NVIDIA is a fabless platform and semiconductor designer that relies on third-party manufacturing; supplier fabs and capacity projects are not NVIDIA facilities.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "filing-nvidia-2026-02-25-fy2026-10k",
+          "publisher": "U.S. SEC / NVIDIA Corporation",
+          "title": "NVIDIA Form 10-K FY2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 35,
+      "sampleId": "cadence:manufacturing-facilities",
+      "sampleHash": "0efd5359627fef3394c928075707657a5a0c325cd361b6db972e8733919fb972",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "cadence",
+      "companyName": "Cadence（ケイデンス）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Cadence provides EDA software and semiconductor IP; the reviewed filing does not describe a company manufacturing operation to which these Categories apply.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-cadence-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Cadence Design Systems, Inc.",
+          "title": "Cadence Design Systems Form 10-K for year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/813672/000081367226000016/cdns-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 36,
+      "sampleId": "keyence:capacity-expansion",
+      "sampleHash": "1219734b0861a615968ec2dc6b7dcca9c2d3de95a02afb63aa2d5de9e8a8e6f2",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "keyence",
+      "companyName": "キーエンス",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "KEYENCE states that it is fabless, owns no production equipment, and outsources production; offices and R&D sites do not satisfy the manufacturing-facility definition.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "validation-keyence-business-model-2026",
+          "publisher": "KEYENCE CORPORATION",
+          "title": "ビジネスモデルと強み",
+          "url": "https://www.keyence.co.jp/investor/business-model/",
+          "sourceKind": "targeted-official-source",
+          "primarySource": true,
+          "reviewRole": "Confirmed the company's fabless model, absence of owned production equipment, and outsourced production for the applicability judgment."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 37,
+      "sampleId": "keyence:manufacturing-facilities",
+      "sampleHash": "5062e4aecce67e1698ee13a33b17617d0f7b5dee9fff674e12d191792b542934",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "keyence",
+      "companyName": "キーエンス",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "KEYENCE states that it is fabless, owns no production equipment, and outsources production; offices and R&D sites do not satisfy the manufacturing-facility definition.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "validation-keyence-business-model-2026",
+          "publisher": "KEYENCE CORPORATION",
+          "title": "ビジネスモデルと強み",
+          "url": "https://www.keyence.co.jp/investor/business-model/",
+          "sourceKind": "targeted-official-source",
+          "primarySource": true,
+          "reviewRole": "Confirmed the company's fabless model, absence of owned production equipment, and outsourced production for the applicability judgment."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 38,
+      "sampleId": "arista:manufacturing-facilities",
+      "sampleHash": "56a82962eb753155a360d77182b55af33f2cd4b498b76a8731b354676d2197da",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "arista",
+      "companyName": "Arista Networks（アリスタ・ネットワークス）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Arista is a networking systems company that uses contract manufacturers; its offices and laboratories do not establish company-owned manufacturing capacity.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-arista-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Arista Networks, Inc.",
+          "title": "Arista Networks Form 10-K for fiscal year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000013/anet-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 39,
+      "sampleId": "credo:manufacturing-facilities",
+      "sampleHash": "59b4a37142fc69381b046681da0b29b169e15719a3095087636c398466a5243c",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "credo",
+      "companyName": "Credo（クレド）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Credo is a fabless semiconductor company and outsources wafer fabrication, assembly, and test; supplier capacity is not company-owned capacity.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "filing-credo-2026-06-15-fy2026-10k",
+          "publisher": "U.S. SEC / Credo Technology Group Holding Ltd",
+          "title": "Credo Form 10-K for Fiscal Year Ended May 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1807794/000162828026043303/crdo-20260502.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 40,
+      "sampleId": "ciena:capacity-expansion",
+      "sampleHash": "5c8a27e2827ef4ee5c956b21b1386c9a3e623773b74f6d8fbbde6d47019b5dfe",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "ciena",
+      "companyName": "Ciena（シエナ）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Ciena designs networking systems and relies on third-party manufacturing; supplier production assets are outside the company-facility Category.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-ciena-2025-10k",
+          "publisher": "U.S. SEC / Ciena Corporation",
+          "title": "Ciena Corporation Form 10-K for Fiscal Year Ended November 1, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 41,
+      "sampleId": "marvell:capacity-expansion",
+      "sampleHash": "6a14d9e5cfe1fe63a58cb01d49645e62733a9402857655e2159f46ccde41bf4d",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "marvell",
+      "companyName": "Marvell Technology（マーベル・テクノロジー）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Marvell is a fabless semiconductor company that relies on foundries and outsourced assembly/test; those suppliers' facilities and expansions are not Marvell assets.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-marvell-2026-10k",
+          "publisher": "U.S. SEC / Marvell Technology, Inc.",
+          "title": "Marvell Technology, Inc. Form 10-K for Fiscal Year Ended January 31, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000011/mrvl-20260131.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 42,
+      "sampleId": "mediatek:manufacturing-facilities",
+      "sampleHash": "6a4b8dc16f49e7397bf7d5cff233de0e10d402f3d3f459ec1f3fc486a28a735e",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "mediatek",
+      "companyName": "MediaTek（メディアテック）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "MediaTek operates a fabless semiconductor model and relies on external foundry and back-end partners; supplier production sites are not company facilities.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "annual-report-mediatek-2025",
+          "publisher": "MediaTek Inc.",
+          "title": "MediaTek Annual Report 2025",
+          "url": "https://www.mediatek.com/hubfs/728015/MediaTek%20Assets/Pdfs/Annual%20Reports/2025-English-Annual-Report.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 43,
+      "sampleId": "ciena:manufacturing-facilities",
+      "sampleHash": "6de890c848ebaabbc4d89f2bc11b2e432e3de33c5acd99b909c05464ba09063b",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "ciena",
+      "companyName": "Ciena（シエナ）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Ciena designs networking systems and relies on third-party manufacturing; supplier production assets are outside the company-facility Category.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-ciena-2025-10k",
+          "publisher": "U.S. SEC / Ciena Corporation",
+          "title": "Ciena Corporation Form 10-K for Fiscal Year Ended November 1, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 44,
+      "sampleId": "monolithic-power:manufacturing-facilities",
+      "sampleHash": "73cb949de0d865d2883061835f7db9a8ca25840ca72d65ce91bfd21e14082647",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "monolithic-power",
+      "companyName": "Monolithic Power Systems（モノリシック・パワー・システムズ）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Monolithic Power Systems uses a fabless model with external wafer fabrication and assembly/test; supplier plants are outside this Category.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-monolithic-power-fy2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Monolithic Power Systems, Inc.",
+          "title": "Monolithic Power Systems Form 10-K for year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 45,
+      "sampleId": "marvell:manufacturing-facilities",
+      "sampleHash": "8c2c4318a212b2ecffe528fcfa4b7992e3674523536ffab6031c24b97fa62e35",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "marvell",
+      "companyName": "Marvell Technology（マーベル・テクノロジー）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Marvell is a fabless semiconductor company that relies on foundries and outsourced assembly/test; those suppliers' facilities and expansions are not Marvell assets.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-marvell-2026-10k",
+          "publisher": "U.S. SEC / Marvell Technology, Inc.",
+          "title": "Marvell Technology, Inc. Form 10-K for Fiscal Year Ended January 31, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1835632/000183563226000011/mrvl-20260131.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 46,
+      "sampleId": "monolithic-power:capacity-expansion",
+      "sampleHash": "8faa6c991c306e4d9b1be16eab9fb4ac6e1a4e4d8051202b55e11ceece48fdac",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "monolithic-power",
+      "companyName": "Monolithic Power Systems（モノリシック・パワー・システムズ）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Monolithic Power Systems uses a fabless model with external wafer fabrication and assembly/test; supplier plants are outside this Category.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-monolithic-power-fy2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Monolithic Power Systems, Inc.",
+          "title": "Monolithic Power Systems Form 10-K for year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1280452/000143774926006113/mpwr20251231_10k.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 47,
+      "sampleId": "qualcomm:manufacturing-facilities",
+      "sampleHash": "9c25371fa8435feefe7ce73e405afd83cdb1fa250db64eb0064403d233090289",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "qualcomm",
+      "companyName": "Qualcomm（クアルコム）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Qualcomm is a fabless semiconductor and licensing company that relies on third-party foundries and assembly/test providers; supplier assets are not Qualcomm facilities.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-qualcomm-fy2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / QUALCOMM Incorporated",
+          "title": "QUALCOMM Form 10-K for year ended September 28, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432825000085/qcom-20250928.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 48,
+      "sampleId": "amd:capacity-expansion",
+      "sampleHash": "9ed23079cda8236fcaa0d938a5db69c4137f6c9e04e36a215480aba07f1d346f",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "amd",
+      "companyName": "AMD（アドバンスト・マイクロ・デバイセズ）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "AMD is a fabless semiconductor designer whose filing describes reliance on third-party foundries and assembly/test providers; supplier factories are not AMD manufacturing facilities.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-amd-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Advanced Micro Devices, Inc.",
+          "title": "AMD Form 10-K for fiscal year ended December 27, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 49,
+      "sampleId": "credo:capacity-expansion",
+      "sampleHash": "a4d8f5fd37cb18826800eeb5a3f665ae5ea338b62f6722dc6f4eba1ff7fac232",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "credo",
+      "companyName": "Credo（クレド）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Credo is a fabless semiconductor company and outsources wafer fabrication, assembly, and test; supplier capacity is not company-owned capacity.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "filing-credo-2026-06-15-fy2026-10k",
+          "publisher": "U.S. SEC / Credo Technology Group Holding Ltd",
+          "title": "Credo Form 10-K for Fiscal Year Ended May 2, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1807794/000162828026043303/crdo-20260502.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 50,
+      "sampleId": "arista:capacity-expansion",
+      "sampleHash": "bb238c48ea0d49a64f3c2e8f31bbb97d474ae3d2d412f54df87b52f1f5abcde5",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "arista",
+      "companyName": "Arista Networks（アリスタ・ネットワークス）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Arista is a networking systems company that uses contract manufacturers; its offices and laboratories do not establish company-owned manufacturing capacity.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-arista-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Arista Networks, Inc.",
+          "title": "Arista Networks Form 10-K for fiscal year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1596532/000159653226000013/anet-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 51,
+      "sampleId": "cadence:capacity-expansion",
+      "sampleHash": "bd4b2598e6cb913e589a4cd127c0bc9080a617c677d08b3562f0c772d1f7de60",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "cadence",
+      "companyName": "Cadence（ケイデンス）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Cadence provides EDA software and semiconductor IP; the reviewed filing does not describe a company manufacturing operation to which these Categories apply.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-cadence-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Cadence Design Systems, Inc.",
+          "title": "Cadence Design Systems Form 10-K for year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/813672/000081367226000016/cdns-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 52,
+      "sampleId": "cisco:manufacturing-facilities",
+      "sampleHash": "bee0481aafb2b700cfc0108c4197e0d4e70dc4ea2b526c436ec115ac549c050a",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "cisco",
+      "companyName": "Cisco（シスコ）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Cisco designs and sells networking systems while relying substantially on contract manufacturers; supplier factories are not Cisco manufacturing facilities.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-cisco-2025-10k",
+          "publisher": "U.S. SEC / Cisco Systems, Inc.",
+          "title": "Cisco Systems, Inc. Form 10-K for Fiscal Year Ended July 26, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/858877/000085887725000111/csco-20250726.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 53,
+      "sampleId": "qualcomm:capacity-expansion",
+      "sampleHash": "c9d153f16255f4ec0dbb79eb21f4ca36d7151b26f852741fb1fc85d35124b143",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "qualcomm",
+      "companyName": "Qualcomm（クアルコム）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Qualcomm is a fabless semiconductor and licensing company that relies on third-party foundries and assembly/test providers; supplier assets are not Qualcomm facilities.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-qualcomm-fy2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / QUALCOMM Incorporated",
+          "title": "QUALCOMM Form 10-K for year ended September 28, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432825000085/qcom-20250928.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 54,
+      "sampleId": "amd:manufacturing-facilities",
+      "sampleHash": "d5d42feb5f149166da9b1a3fb0f9b212add9e416d9d7a5c16710968f3cd2db47",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "amd",
+      "companyName": "AMD（アドバンスト・マイクロ・デバイセズ）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "AMD is a fabless semiconductor designer whose filing describes reliance on third-party foundries and assembly/test providers; supplier factories are not AMD manufacturing facilities.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-amd-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Advanced Micro Devices, Inc.",
+          "title": "AMD Form 10-K for fiscal year ended December 27, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 55,
+      "sampleId": "synopsys:manufacturing-facilities",
+      "sampleHash": "daa4dc728f410b589caf9caced035524a25bdb9ae9fd045fe1e4d2e7d93005e9",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "synopsys",
+      "companyName": "Synopsys（シノプシス）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Synopsys provides EDA software and semiconductor IP rather than operating a manufacturing business; the Category does not apply to office or R&D locations.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-synopsys-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Synopsys, Inc.",
+          "title": "Synopsys Form 10-K for fiscal year ended October 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/883241/000088324125000028/snps-20251031.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 56,
+      "sampleId": "arm:manufacturing-facilities",
+      "sampleHash": "dbf4ec31ed34fb6c36a5ca5cc5eee24d236684efcfcab08bb254f643fa5261b5",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "arm",
+      "companyName": "Arm（アーム）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Arm licenses processor architecture and IP rather than manufacturing chips; foundry and device-maker assets belong to licensees and suppliers.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-arm-fy2026-20f",
+          "publisher": "U.S. Securities and Exchange Commission / Arm Holdings plc",
+          "title": "Arm Holdings plc Form 20-F for year ended March 31, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 57,
+      "sampleId": "arm:capacity-expansion",
+      "sampleHash": "dea02ee11a2b8dbdf01a2eea7c743bc86fac7bd1798743f8786c4363a97bb8a7",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "arm",
+      "companyName": "Arm（アーム）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Arm licenses processor architecture and IP rather than manufacturing chips; foundry and device-maker assets belong to licensees and suppliers.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-arm-fy2026-20f",
+          "publisher": "U.S. Securities and Exchange Commission / Arm Holdings plc",
+          "title": "Arm Holdings plc Form 20-F for year ended March 31, 2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 58,
+      "sampleId": "cisco:capacity-expansion",
+      "sampleHash": "df0847dd6241233b9453139ddb50bf3760ae5e8155432c42dcf4396930bf2e15",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "cisco",
+      "companyName": "Cisco（シスコ）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Cisco designs and sells networking systems while relying substantially on contract manufacturers; supplier factories are not Cisco manufacturing facilities.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-cisco-2025-10k",
+          "publisher": "U.S. SEC / Cisco Systems, Inc.",
+          "title": "Cisco Systems, Inc. Form 10-K for Fiscal Year Ended July 26, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/858877/000085887725000111/csco-20250726.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 59,
+      "sampleId": "synopsys:capacity-expansion",
+      "sampleHash": "e06e1ea81e5ce58592556224f0508b1998326cd65842063399d68d71b9a64d92",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "synopsys",
+      "companyName": "Synopsys（シノプシス）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Synopsys provides EDA software and semiconductor IP rather than operating a manufacturing business; the Category does not apply to office or R&D locations.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-synopsys-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Synopsys, Inc.",
+          "title": "Synopsys Form 10-K for fiscal year ended October 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/883241/000088324125000028/snps-20251031.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 60,
+      "sampleId": "mobileye:manufacturing-facilities",
+      "sampleHash": "e32dfa9aff5b84c90dcd721f7485a291de6096668e27f23c2b3f17cf294babbb",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "mobileye",
+      "companyName": "Mobileye（モービルアイ）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Mobileye develops chips, software, and autonomous-driving systems using external semiconductor manufacturing; supplier capacity is not Mobileye-owned capacity.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-mobileye-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Mobileye Global Inc.",
+          "title": "Mobileye Global Form 10-K for year ended December 27, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1910139/000110465926014300/mbly-20251227x10k.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes manufacturing-facilities inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 61,
+      "sampleId": "nvidia:capacity-expansion",
+      "sampleHash": "e4f4551658e63754d3e5d98f1dc4fa4915d4d0364402481bbbbd8d59a9d52675",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "nvidia",
+      "companyName": "NVIDIA（エヌビディア）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "NVIDIA is a fabless platform and semiconductor designer that relies on third-party manufacturing; supplier fabs and capacity projects are not NVIDIA facilities.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "filing-nvidia-2026-02-25-fy2026-10k",
+          "publisher": "U.S. SEC / NVIDIA Corporation",
+          "title": "NVIDIA Form 10-K FY2026",
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 62,
+      "sampleId": "mobileye:capacity-expansion",
+      "sampleHash": "f5cc94f0860535a7a15bf494c8374a722df0b4a5056bc5d05991d701235ada0b",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "mobileye",
+      "companyName": "Mobileye（モービルアイ）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Mobileye develops chips, software, and autonomous-driving systems using external semiconductor manufacturing; supplier capacity is not Mobileye-owned capacity.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-mobileye-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Mobileye Global Inc.",
+          "title": "Mobileye Global Form 10-K for year ended December 27, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1910139/000110465926014300/mbly-20251227x10k.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 63,
+      "sampleId": "mediatek:capacity-expansion",
+      "sampleHash": "fd0b86009b17b44d2656bf26fea050d35c9e7621b028b1bc6e1f34c7888b9835",
+      "stratum": "NOT_APPLICABLE",
+      "sampleRole": "all-records",
+      "companyId": "mediatek",
+      "companyName": "MediaTek（メディアテック）",
+      "category": "capacity-expansion",
+      "originalClassification": "NOT_APPLICABLE",
+      "independentClassification": "NOT_APPLICABLE",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "MediaTek operates a fabless semiconductor model and relies on external foundry and back-end partners; supplier production sites are not company facilities.",
+      "evidenceReviewed": {
+        "claimIds": [],
+        "evidenceBindingIds": [],
+        "structuredLocatorCount": 0
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "annual-report-mediatek-2025",
+          "publisher": "MediaTek Inc.",
+          "title": "MediaTek Annual Report 2025",
+          "url": "https://www.mediatek.com/hubfs/728015/MediaTek%20Assets/Pdfs/Annual%20Reports/2025-English-Annual-Report.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Reviewed the official annual filing/report for the operating model, ownership of manufacturing assets, and reliance on external production."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "The official business-model disclosure makes capacity-expansion inapplicable under the Atlas definition: company-owned production assets are absent, and supplier-owned production is not attributed to the company. Office, R&D, and logistics locations were not counted as manufacturing facilities."
+    },
+    {
+      "sampleIndex": 64,
+      "sampleId": "ajinomoto-fine-techno:manufacturing-facilities",
+      "sampleHash": "108dec0a3f07e0d574ee43006f1fb635b207001b7a21b916a68c5c9da904f133",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "ajinomoto-fine-techno",
+      "companyName": "味の素ファインテクノ",
+      "category": "manufacturing-facilities",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "味の素ファインテクノ operates in 半導体材料・基板; the manufacturing-facilities judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "ajinomoto-fine-techno-manufacturing-facilities-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "ajinomoto-fine-techno-manufacturing-facilities-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-ajinomoto-aft-new-factory-2026",
+          "publisher": "Ajinomoto Co., Inc.",
+          "title": "Ajinomoto and Ajinomoto Fine-Techno Acquire Site for New Factory",
+          "url": "https://news.ajinomoto.co.jp/2026/05/20260507-02.html",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source manufacturing-facilities disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 65,
+      "sampleId": "stmicroelectronics:manufacturing-facilities",
+      "sampleHash": "11c2aeab08c2e455f41ea1fe6844336fcaa9a6c137dfb4fe87a532e808370a2f",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "stmicroelectronics",
+      "companyName": "STMicroelectronics（STマイクロエレクトロニクス）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "STMicroelectronics（STマイクロエレクトロニクス） operates in Compute & Silicon; the manufacturing-facilities judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "stmicroelectronics-manufacturing-facilities-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "stmicroelectronics-manufacturing-facilities-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-st-manufacturing-reshape-2025",
+          "publisher": "STMicroelectronics N.V.",
+          "title": "STMicroelectronics details company-wide program to reshape manufacturing footprint and resize global cost base",
+          "url": "https://newsroom.st.com/media-center/press-item.html/c3330.html",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source manufacturing-facilities disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 66,
+      "sampleId": "amkor:manufacturing-facilities",
+      "sampleHash": "1331207e1760d09220a787efa0e061cd583be4fbf530baada23fd4f76ffa286e",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "amkor",
+      "companyName": "Amkor Technology（アムコー・テクノロジー）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Amkor Technology（アムコー・テクノロジー） operates in Test & Back-end; the manufacturing-facilities judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "amkor-manufacturing-facilities-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "amkor-manufacturing-facilities-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-amkor-2025-10k",
+          "publisher": "U.S. SEC / Amkor Technology, Inc.",
+          "title": "Amkor Technology, Inc. Form 10-K for Year Ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1047127/000104712726000014/amkr-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source manufacturing-facilities disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 67,
+      "sampleId": "sumco:manufacturing-facilities",
+      "sampleHash": "15b153c3acf73c7fa7534c8291d859cae7ccb2273b831e8cae4a3294969dbd42",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "sumco",
+      "companyName": "SUMCO",
+      "category": "manufacturing-facilities",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "SUMCO operates in 半導体材料・基板; the manufacturing-facilities judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "sumco-manufacturing-facilities-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "sumco-manufacturing-facilities-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-sumco-site-data-2025",
+          "publisher": "SUMCO CORPORATION",
+          "title": "Site Data (2025 results)",
+          "url": "https://www.sumcosi.com/english/csr/sitedata.html",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source manufacturing-facilities disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 68,
+      "sampleId": "sandisk:manufacturing-facilities",
+      "sampleHash": "19739be04e8d8b9551af924b1b2be5bef472862d291a3550facf34b5837f5c92",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "sandisk",
+      "companyName": "Sandisk（サンディスク）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Sandisk（サンディスク） operates in Memory; the manufacturing-facilities judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "sandisk-manufacturing-facilities-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "sandisk-manufacturing-facilities-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-sandisk-2025-10k",
+          "publisher": "U.S. SEC / Sandisk Corporation",
+          "title": "Sandisk Corporation Form 10-K for Fiscal Year Ended June 27, 2025",
+          "url": "https://investor.sandisk.com/sec-filings/sec-filing/10-k/0002023554-25-000034",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source manufacturing-facilities disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 69,
+      "sampleId": "siemens-energy:manufacturing-facilities",
+      "sampleHash": "211df187e2ceb90397bf49626802cdbabcc0802bd67827547d13b23c5b76915c",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "siemens-energy",
+      "companyName": "Siemens Energy（シーメンス・エナジー）",
+      "category": "manufacturing-facilities",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Siemens Energy（シーメンス・エナジー） operates in Data Center & Facilities; the manufacturing-facilities judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "siemens-energy-manufacturing-facilities-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "siemens-energy-manufacturing-facilities-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "annual-report-siemens-energy-2025",
+          "publisher": "Siemens Energy AG",
+          "title": "Siemens Energy Annual Report 2025 — Consolidated Financial Statements",
+          "url": "https://assets.siemens-energy.com/dam/32b27e9a-af91-4915-8b51-b3af012d0d98/A-Siemens_Energy_Annual_Report_2025-pdf_Original%20file.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source manufacturing-facilities disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 70,
+      "sampleId": "renesas:capacity-expansion",
+      "sampleHash": "1542b04f1ac176336c55fc58b9036a10025be62c01b7c0df4547763c6b59e30b",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "renesas",
+      "companyName": "ルネサス エレクトロニクス",
+      "category": "capacity-expansion",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "ルネサス エレクトロニクス operates in Compute & Silicon; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "renesas-capacity-expansion-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "renesas-capacity-expansion-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-renesas-kofu-operations-2024",
+          "publisher": "Renesas Electronics Corporation",
+          "title": "Renesas Commences Operations of Kofu Factory as Dedicated 300-mm Wafer Fab for Power Semiconductors",
+          "url": "https://www.renesas.com/en/about/newsroom/renesas-commences-operations-kofu-factory-dedicated-300-mm-wafer-fab-power-semiconductors",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source capacity-expansion disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 71,
+      "sampleId": "johnson-controls:capacity-expansion",
+      "sampleHash": "1574a3a906e8f08afd3771b5268704c1339c74baff57ec42568658b75d6091b9",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "johnson-controls",
+      "companyName": "Johnson Controls（ジョンソンコントロールズ）",
+      "category": "capacity-expansion",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Johnson Controls（ジョンソンコントロールズ） operates in Data Center & Facilities; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "johnson-controls-capacity-expansion-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "johnson-controls-capacity-expansion-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-johnson-controls-yvam-2025",
+          "publisher": "Johnson Controls International plc",
+          "title": "One design, any location: how the YORK YVAM performs across climates",
+          "url": "https://www.johnsoncontrols.com/building-insights/feature-story/one-design-any-location",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source capacity-expansion disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 72,
+      "sampleId": "seagate:capacity-expansion",
+      "sampleHash": "22596301b33a3b2f440ee09c190b7e4af5aa695d116b1b78684d81f644995c63",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "seagate",
+      "companyName": "Seagate（シーゲイト）",
+      "category": "capacity-expansion",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Seagate（シーゲイト） operates in Memory; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "seagate-capacity-expansion-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "seagate-capacity-expansion-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-seagate-ni-investment-2025",
+          "publisher": "Seagate Technology Holdings plc",
+          "title": "Seagate and Invest Northern Ireland Strengthen Collaboration to Spur Data Storage Innovation and Boost Economy",
+          "url": "https://www.seagate.com/em/en/stories/articles/innovation-spotlight-seagate-facility-in-northern-ireland/",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source capacity-expansion disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 73,
+      "sampleId": "kla:capacity-expansion",
+      "sampleHash": "228420214bb61656da4f621c7dac13bf1fe5e15b4911f0ef0f35ea6767be590b",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "kla",
+      "companyName": "KLA（ケーエルエー）",
+      "category": "capacity-expansion",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "KLA（ケーエルエー） operates in Wafer Fab Equipment; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "kla-capacity-expansion-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "kla-capacity-expansion-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-kla-wales-facility-2025",
+          "publisher": "KLA Corporation",
+          "title": "KLA Invests in Operations in Wales with the Opening of a $138 Million R&D and Manufacturing Facility",
+          "url": "https://ir.kla.com/news-events/press-releases/detail/498/kla-invests-in-operations-in-wales-with-the-opening-of-a",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source capacity-expansion disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 74,
+      "sampleId": "amphenol:capacity-expansion",
+      "sampleHash": "2b5bc32fcb78cfc5d12e7b5b89d4c97f2bedbaa179e04105e89c0194f5bb24cb",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "amphenol",
+      "companyName": "Amphenol（アンフェノール）",
+      "category": "capacity-expansion",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Amphenol（アンフェノール） operates in Network & Optical; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "amphenol-capacity-expansion-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "amphenol-capacity-expansion-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-amphenol-mesa-facility-2024",
+          "publisher": "Amphenol Corporation",
+          "title": "Amphenol Industrial Operations Commences Operations at Its U.S. Solar Manufacturing Facility",
+          "url": "https://www.amphenol.com/product-news/download/amphenol-industrial-operations-commences-operations-at-its-u-s-solar-manufacturing-facility-press-release",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source capacity-expansion disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 75,
+      "sampleId": "resonac-holdings:capacity-expansion",
+      "sampleHash": "2d61ee703595c4bb1a3a0952c383f1d1c3316e8c06c274068f716e5656eeb583",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "resonac-holdings",
+      "companyName": "レゾナック・ホールディングス",
+      "category": "capacity-expansion",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "レゾナック・ホールディングス operates in 半導体材料・基板; the capacity-expansion judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "resonac-holdings-capacity-expansion-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "resonac-holdings-capacity-expansion-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-resonac-ai-chip-material-capacity-2024",
+          "publisher": "Resonac Corporation",
+          "title": "Resonac Increases Capacity to Produce Materials for AI Chips",
+          "url": "https://eu.resonac.com/2903_24/",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 1,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source capacity-expansion disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 76,
+      "sampleId": "globalwafers:customer-end-market",
+      "sampleHash": "032b22866c143c41235bcd8af2a081239f266902493a6b6f455e8731ffa5292d",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "globalwafers",
+      "companyName": "GlobalWafers（グローバルウェーハズ）",
+      "category": "customer-end-market",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "GlobalWafers（グローバルウェーハズ） operates in 半導体材料・基板; the customer-end-market judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "globalwafers-customer-end-market-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "globalwafers-customer-end-market-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-globalwafers-micron-2026",
+          "publisher": "GlobalWafers Co., Ltd.",
+          "title": "GlobalWafers Deepens Long-Term Strategic Collaboration with Micron",
+          "url": "https://www.sas-globalwafers.com/en/gwc_news_en_20260709/",
+          "sourceKind": "existing-shared-source",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source customer-end-market disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 77,
+      "sampleId": "equinix:customer-end-market",
+      "sampleHash": "076d89cf31fee92de513ea7daa0c56cf95ee1e743c00995ab925cb08b056483d",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "equinix",
+      "companyName": "Equinix（エクイニクス）",
+      "category": "customer-end-market",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Equinix（エクイニクス） operates in Data Center & Facilities; the customer-end-market judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "equinix-customer-end-market-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "equinix-customer-end-market-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-equinix-2025-10k",
+          "publisher": "U.S. Securities and Exchange Commission / Equinix, Inc.",
+          "title": "Equinix Form 10-K for year ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source customer-end-market disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 78,
+      "sampleId": "mediatek:customer-end-market",
+      "sampleHash": "080da8108a0730551049d4f3fc67418a6bf17f138879d6e25566ca5bea4d5507",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "mediatek",
+      "companyName": "MediaTek（メディアテック）",
+      "category": "customer-end-market",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "MediaTek operates a fabless semiconductor model and relies on external foundry and back-end partners; supplier production sites are not company facilities.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "mediatek-customer-end-market-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "mediatek-customer-end-market-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "annual-report-mediatek-2025",
+          "publisher": "MediaTek Inc.",
+          "title": "MediaTek Annual Report 2025",
+          "url": "https://www.mediatek.com/hubfs/728015/MediaTek%20Assets/Pdfs/Annual%20Reports/2025-English-Annual-Report.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source customer-end-market disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 79,
+      "sampleId": "resonac-holdings:customer-end-market",
+      "sampleHash": "08a274c3f75c2537b9fd61da1c5c18279f2179d81d3088acd7c8e50f6865de7d",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "resonac-holdings",
+      "companyName": "レゾナック・ホールディングス",
+      "category": "customer-end-market",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "レゾナック・ホールディングス operates in 半導体材料・基板; the customer-end-market judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "resonac-holdings-customer-end-market-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "resonac-holdings-customer-end-market-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "integrated-resonac-2025",
+          "publisher": "Resonac Holdings Corporation",
+          "title": "RESONAC REPORT 2025",
+          "url": "https://www.resonac.com/sites/default/files/2025-09/pdf-sustainability-report-integratedreport-RESONAC25E.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source customer-end-market disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 80,
+      "sampleId": "ciena:customer-end-market",
+      "sampleHash": "0fe4e9e3f256634fe9180647c45a09408f3073b52f5bce7da65135b4ca9335ad",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "ciena",
+      "companyName": "Ciena（シエナ）",
+      "category": "customer-end-market",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Ciena designs networking systems and relies on third-party manufacturing; supplier production assets are outside the company-facility Category.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "ciena-customer-end-market-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "ciena-customer-end-market-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-ciena-2025-10k",
+          "publisher": "U.S. SEC / Ciena Corporation",
+          "title": "Ciena Corporation Form 10-K for Fiscal Year Ended November 1, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/936395/000162828025056698/cien-20251101.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source customer-end-market disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 81,
+      "sampleId": "ase-technology:customer-end-market",
+      "sampleHash": "11de68007d9d1b68522b69de3eb8d16cc225ea9dc24b09457878fb21814a50b7",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "ase-technology",
+      "companyName": "ASE Technology（ASEテクノロジー）",
+      "category": "customer-end-market",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "ASE Technology（ASEテクノロジー） operates in Test & Back-end; the customer-end-market judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "ase-technology-customer-end-market-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "ase-technology-customer-end-market-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-ase-technology-2025-20f",
+          "publisher": "U.S. SEC / ASE Technology Holding Co., Ltd.",
+          "title": "ASE Technology Holding Co., Ltd. Form 20-F for Year Ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1122411/000119312526135585/d50802d20f.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source customer-end-market disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 82,
+      "sampleId": "carrier:strategy",
+      "sampleHash": "0444a47a0bf90655583a300b8f2698f473a98b4ed10f739ccbeb2d312f188b73",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "carrier",
+      "companyName": "Carrier（キャリア）",
+      "category": "strategy",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "Carrier（キャリア） operates in Data Center & Facilities; the strategy judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "carrier-strategy-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "carrier-strategy-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "sec-carrier-2025-10k",
+          "publisher": "U.S. SEC / Carrier Global Corporation",
+          "title": "Carrier Global Corporation Form 10-K for Year Ended December 31, 2025",
+          "url": "https://www.sec.gov/Archives/edgar/data/1783180/000178318026000008/carr-20251231.htm",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source strategy disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 83,
+      "sampleId": "nikon:strategy",
+      "sampleHash": "0562f9725f7d1eb8eade4ecf5bf7282bc904e63dc4a859867cfb723b4e73c542",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "nikon",
+      "companyName": "ニコン",
+      "category": "strategy",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "ニコン operates in Wafer Fab Equipment; the strategy judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "nikon-strategy-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "nikon-strategy-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "integrated-nikon-2025",
+          "publisher": "Nikon Corporation",
+          "title": "NIKON REPORT 2025",
+          "url": "https://www.nikon.com/company/ir/management/nikon-report/pdf/2025/25nikonreport_e.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source strategy disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 84,
+      "sampleId": "ge-vernova:strategy",
+      "sampleHash": "08da9156121384b0c83170c992fde472199eca4ea5cb4750c84f4b5def33f094",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "ge-vernova",
+      "companyName": "GE Vernova（GEベルノバ）",
+      "category": "strategy",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "GE Vernova（GEベルノバ） operates in Data Center & Facilities; the strategy judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "ge-vernova-strategy-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "ge-vernova-strategy-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "annual-letter-ge-vernova-2025",
+          "publisher": "GE Vernova Inc.",
+          "title": "2025 Annual Report CEO Letter",
+          "url": "https://www.gevernova.com/investors/annual-report/ceo-letter",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source strategy disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 85,
+      "sampleId": "tsmc:strategy",
+      "sampleHash": "08e72e342deef5320e851df5bfb408ce1842335c691e22bf122906f0d5c2f2bd",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "tsmc",
+      "companyName": "TSMC（台湾積体電路製造）",
+      "category": "strategy",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "TSMC（台湾積体電路製造） operates in Foundry & Logic Manufacturing; the strategy judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "tsmc-strategy-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "tsmc-strategy-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "corporate-tsmc-annual-report-2025-ch5",
+          "publisher": "Taiwan Semiconductor Manufacturing Company Limited",
+          "title": "TSMC 2025 Annual Report — Chapter 5 Technology Leadership",
+          "url": "https://investor.tsmc.com/static/annualReports/2025/english/pdf/2025_tsmc_ar_e_ch5.pdf",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source strategy disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 86,
+      "sampleId": "denso:strategy",
+      "sampleHash": "0c7de69c6114219222a36c926b766dada222f1b29a687cc420356bda744ad500",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "denso",
+      "companyName": "デンソー",
+      "category": "strategy",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "デンソー operates in Physical AI; the strategy judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "denso-strategy-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "denso-strategy-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "integrated-denso-2025",
+          "publisher": "DENSO Corporation",
+          "title": "Integrated Report 2025",
+          "url": "https://www.denso.com/global/en/about-us/investors/annual-report/integrated-report-2025/",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source strategy disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    },
+    {
+      "sampleIndex": 87,
+      "sampleId": "jcet:strategy",
+      "sampleHash": "0d59df81fecf70217451286dea7de2206b4f99d7bddb37040ca2cdef4cdc4f63",
+      "stratum": "REMEDIATED_FORMER_DEFERRED",
+      "sampleRole": "post-remediation-representation",
+      "companyId": "jcet",
+      "companyName": "JCET（長電科技）",
+      "category": "strategy",
+      "originalClassification": "SUFFICIENT_PARTIAL",
+      "independentClassification": "SUFFICIENT_PARTIAL",
+      "matchStatus": "exact",
+      "severity": "NONE",
+      "businessModelAssessment": "JCET（長電科技） operates in Test & Back-end; the strategy judgment was checked against its operating model and company-owned disclosure scope.",
+      "evidenceReviewed": {
+        "claimIds": [
+          "jcet-strategy-triage-remediation-v02"
+        ],
+        "evidenceBindingIds": [
+          "jcet-strategy-triage-remediation-v02-e1"
+        ],
+        "structuredLocatorCount": 1
+      },
+      "sourcesChecked": [
+        {
+          "sourceId": "official-jcet-2024-annual-release",
+          "publisher": "JCET Group Co., Ltd.",
+          "title": "JCET Releases 2024 Annual Report, Achieves Record-High Revenue",
+          "url": "https://www.jcetglobal.com/kr/site/detailscon/928",
+          "sourceKind": "annual-report-or-filing",
+          "primarySource": true,
+          "reviewRole": "Independently reviewed the current Claim, Evidence Binding, structured Locator, and underlying official source for category fit and sufficiency."
+        }
+      ],
+      "sourceReviewBound": {
+        "existingEvidenceAndSharedSourcesChecked": true,
+        "annualReportOrFilingChecked": true,
+        "targetedOfficialSourcesChecked": 0,
+        "targetedOfficialSourceLimit": 2,
+        "secondarySourcesUsed": false
+      },
+      "reviewedAt": "2026-09-01",
+      "rationale": "Independent review confirmed that the official-source strategy disclosure added during remediation is bound to 1 Claim(s) with 1 structured Locator(s). It resolves the high-value gap; remaining detail is supplementary."
+    }
+  ],
+  "summary": {
+    "exactMatches": 87,
+    "minorMismatches": 0,
+    "materialMismatches": 0,
+    "criticalMismatches": 0
+  },
+  "materialMismatchCount": 0,
+  "criticalMismatchCount": 0,
+  "systemicPatterns": [],
+  "resolvedSystemicPatterns": [
+    {
+      "id": "customer-end-market-not-disclosed-threshold",
+      "finding": "Cycle 0 found all four remaining NOT_DISCLOSED records used an individual-customer-name threshold even though official end-market or customer-category disclosure satisfies the Category.",
+      "affectedRecords": [
+        "applied-materials:customer-end-market",
+        "fujikura:customer-end-market",
+        "nvidia:customer-end-market",
+        "tsmc:customer-end-market"
+      ],
+      "correction": "Three records were enriched from official sources and TSMC was reclassified to SUFFICIENT_PARTIAL on its existing evidence; no customer name was inferred.",
+      "verification": "The affected population was exhausted, ACTIONABLE pending returned to zero, and the final deterministic sample contains no NOT_DISCLOSED records."
+    },
+    {
+      "id": "remaining-deferred-capacity-expansion",
+      "finding": "Cycle 1 found two straightforward official production-capacity projects in the 11-record remaining DEFERRED capacity-expansion stratum.",
+      "affectedRecords": [
+        "legrand:capacity-expansion",
+        "smc:capacity-expansion"
+      ],
+      "correction": "All 11 records were re-reviewed; Legrand and SMC were enriched, while nine remained DEFERRED only after project-specific bounded review.",
+      "verification": "The final validation audits all nine remaining DEFERRED records, with exact independent classifications and no systemic pattern."
+    }
+  ],
+  "validationCycles": [
+    {
+      "cycle": 0,
+      "baselineMain": "28b5dbd5dc6ce2c48461417cc77176d9e7180fcc",
+      "sampleCount": 93,
+      "exactMatches": 89,
+      "minorMismatches": 0,
+      "materialMismatches": 4,
+      "criticalMismatches": 0,
+      "systemicPatterns": [
+        "customer-end-market-not-disclosed-threshold"
+      ],
+      "findings": [
+        {
+          "recordId": "applied-materials:customer-end-market",
+          "original": "NOT_DISCLOSED",
+          "independent": "ACTIONABLE",
+          "severity": "MATERIAL",
+          "sourceId": "sec-applied-materials-2025-10k"
+        },
+        {
+          "recordId": "fujikura:customer-end-market",
+          "original": "NOT_DISCLOSED",
+          "independent": "ACTIONABLE",
+          "severity": "MATERIAL",
+          "sourceId": "official-fujikura-13824-swr-wtc-2025"
+        },
+        {
+          "recordId": "nvidia:customer-end-market",
+          "original": "NOT_DISCLOSED",
+          "independent": "ACTIONABLE",
+          "severity": "MATERIAL",
+          "sourceId": "filing-nvidia-2026-02-25-fy2026-10k"
+        },
+        {
+          "recordId": "tsmc:customer-end-market",
+          "original": "NOT_DISCLOSED",
+          "independent": "SUFFICIENT_PARTIAL",
+          "severity": "MATERIAL",
+          "sourceId": "corporate-tsmc-about-2026"
+        }
+      ],
+      "decision": "REMEDIATE"
+    },
+    {
+      "cycle": 1,
+      "baselineMain": "edbd83155f7f8ddbe666198f402941bc627af818",
+      "sampleCount": 89,
+      "exactMatches": 87,
+      "minorMismatches": 0,
+      "materialMismatches": 2,
+      "criticalMismatches": 0,
+      "systemicPatterns": [
+        "remaining-deferred-capacity-expansion"
+      ],
+      "affectedStratumReviewed": [
+        "asmpt:capacity-expansion",
+        "unimicron:capacity-expansion",
+        "nikon:capacity-expansion",
+        "western-digital:capacity-expansion",
+        "onsemi:capacity-expansion",
+        "hexagon:capacity-expansion",
+        "lasertec:capacity-expansion",
+        "omron:capacity-expansion",
+        "broadcom:capacity-expansion",
+        "legrand:capacity-expansion",
+        "smc:capacity-expansion"
+      ],
+      "findings": [
+        {
+          "recordId": "legrand:capacity-expansion",
+          "original": "DEFERRED",
+          "independent": "ACTIONABLE",
+          "severity": "MATERIAL",
+          "sourceId": "official-legrand-h1-2025-results"
+        },
+        {
+          "recordId": "smc:capacity-expansion",
+          "original": "DEFERRED",
+          "independent": "ACTIONABLE",
+          "severity": "MATERIAL",
+          "sourceId": "official-smc-integrated-report-2025"
+        }
+      ],
+      "decision": "REMEDIATE"
+    },
+    {
+      "cycle": 2,
+      "baselineMain": "d8b6e223ec49bd454a0fd1276989723b0810a2d0",
+      "sampleCount": 87,
+      "exactMatches": 87,
+      "minorMismatches": 0,
+      "materialMismatches": 0,
+      "criticalMismatches": 0,
+      "systemicPatterns": [],
+      "decision": "PASS"
+    }
+  ],
+  "priorRemediation": {
+    "formerDeferredReReviewed": 300,
+    "knownCorrectionsReviewed": 3,
+    "actionableProcessed": 288,
+    "actionablePending": 0
+  },
+  "remediation": {
+    "required": true,
+    "cycles": 2,
+    "rulesCorrected": 2,
+    "ruleCorrections": [
+      "Customer/end-market disclosure is useful without named customers; nondisclosure cannot be assigned solely because names are absent.",
+      "Remaining DEFERRED capacity-expansion records require project-specific review; generic Capex, product capacity, labs, and modernization remain excluded."
+    ],
+    "recordsReclassified": 6,
+    "reclassifications": [
+      "applied-materials:customer-end-market NOT_DISCLOSED -> ACTIONABLE",
+      "fujikura:customer-end-market NOT_DISCLOSED -> ACTIONABLE",
+      "nvidia:customer-end-market NOT_DISCLOSED -> ACTIONABLE",
+      "tsmc:customer-end-market NOT_DISCLOSED -> SUFFICIENT_PARTIAL",
+      "legrand:capacity-expansion DEFERRED -> ACTIONABLE",
+      "smc:capacity-expansion DEFERRED -> ACTIONABLE"
+    ],
+    "newActionableFound": 5,
+    "newActionableProcessed": 5,
+    "claimsAdded": 5,
+    "evidenceAdded": 5,
+    "structuredLocatorsAdded": 5,
+    "sourcesReused": 4,
+    "sourcesAdded": 3,
+    "pullRequests": [
+      {
+        "number": 150,
+        "mergeSha": "edbd83155f7f8ddbe666198f402941bc627af818",
+        "actionsRun": 33509114335
+      },
+      {
+        "number": 151,
+        "mergeSha": "d8b6e223ec49bd454a0fd1276989723b0810a2d0",
+        "actionsRun": 33510578330
+      }
+    ]
+  },
+  "coverage": {
+    "beforeValidationRemediation": {
+      "complete": 321,
+      "partial": 738,
+      "notStarted": 41
+    },
+    "afterValidationRemediation": {
+      "complete": 321,
+      "partial": 740,
+      "notStarted": 39
+    }
+  },
+  "triageDistribution": {
+    "ACTIONABLE": 0,
+    "SUFFICIENT_PARTIAL": 740,
+    "NOT_DISCLOSED": 0,
+    "NOT_APPLICABLE": 30,
+    "DEFERRED": 9,
+    "REVIEW_REQUIRED": 0
+  },
+  "hardStop": {
+    "triggered": false,
+    "materialRate": 0.0,
+    "criticalCount": 0,
+    "materialCount": 0,
+    "unresolvedSystemicPatternCount": 0,
+    "reason": "Final cycle has no CRITICAL or MATERIAL mismatch and no unresolved systemic pattern."
+  },
+  "productionProtection": {
+    "financialDiff": 0,
+    "protectedSemanticDiff": 0,
+    "schemaChanged": false,
+    "freezeContractChanged": false,
+    "uiChanged": false
+  },
+  "finalDecision": "PASS"
+}
