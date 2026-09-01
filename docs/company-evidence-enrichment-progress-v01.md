@@ -14,7 +14,8 @@
 | A2 | ASM International, KLA, Corning, Credo, Digital Realty, Johnson Controls | merged / Pages checked | [#123](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/123) | `74d93a355af9234f7b25ad0e858b4558d82b0524` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33467217195) |
 | A3 | ABB, AMD, Amphenol, Arista, ASMPT, Besi | merged / Pages checked | [#124](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/124) | `35fe57e5e7bce7e112fd6831eeab0bbf409d209e` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33468227767) |
 | A4 | Lasertec, Lumentum, SMIC, TE Connectivity, Tower Semiconductor | merged / Pages checked | [#125](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/125) | `adef2e6a895740fd2097f2f535c50ab1da02b00a` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33468866902) |
-| B1 | Broadcom, Carrier, Ciena, Cisco, Coherent, Furukawa Electric, GlobalFoundries, Intel, KOKUSAI ELECTRIC, Lam Research | ready for PR | pending | pending | pending |
+| B1 | Broadcom, Carrier, Ciena, Cisco, Coherent, Furukawa Electric, GlobalFoundries, Intel, KOKUSAI ELECTRIC, Lam Research | merged / Pages checked | [#127](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/127) | `b39af00cc17bfb4d5a630e2b702a80577ad255a4` | [success](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33470734645) |
+| B2 | Legrand, Marvell, Micron, nVent, Samsung Electronics, Sandisk, Schneider Electric, SCREEN Holdings, SK hynix, Sumitomo Electric | ready for PR | pending | pending | pending |
 
 ## Batch A2
 
@@ -149,8 +150,26 @@
 - Browser QA: all ten companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source link, and `44 × 44px` marker target confirmed. Broadcom and Furukawa Electric passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
 - Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
 - Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
+- Result: merged; main Actions success; public Pages checked
+
+## Batch B2
+
+- Baseline main: `b39af00cc17bfb4d5a630e2b702a80577ad255a4`
+- Companies: Legrand, Marvell, Micron, nVent, Samsung Electronics, Sandisk, Schneider Electric, SCREEN Holdings, SK hynix, Sumitomo Electric
+- Claims / Evidence / structured Locators: `70 / 70 / 70`
+- Priority: P1 `50` / P2 `20` / P3 `0`
+- Verification: `source-linked 70`; `verified 0`; policy approval changes `0`
+- Sources: existing Shared Sources reused `0`; added `10`; duplicate Source IDs `0`
+- Batch coverage delta: complete `+30`; partial `-10`; not-started `-20`
+- Global coverage: `123 / 511 / 466 → 153 / 501 / 446`
+- Global maturity: L1 `63 → 53`; L4 `34 → 44`
+- SOFT DEFER: `80` unresolved Category records (`40` partial + `40` not-started)
+- HARD STOP: `0`
+- Browser QA: all ten companies passed at `1024px` and `360px`; document overflow `0`, seven Evidence markers, bibliography Source links, and `44 × 44px` marker targets confirmed. Marvell and SCREEN Holdings passed drawer, Primary Source, Escape, focus return, and Supplementary Research checks with nested disclosure `0`.
+- Protection: financial diff `0`; completed Company Evidence diff `0`; facilities / relationships / Global Visual System diff `0`; unrelated company Evidence diff `0`.
+- Validation: Company Evidence / Freeze / Coverage `--check` / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages passed.
 - Result: ready for PR; merge / Actions / Pages pending
 
 ## Resume marker
 
-All A2–A4 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B1 validation or the first later batch not marked merged; never rerun a completed batch.
+All A2–A4 and B1 batches are `merged / Actions success / Pages checked`. Priority B cohort is fixed above. Resume from B2 validation or the first later batch not marked merged; never rerun a completed batch.
