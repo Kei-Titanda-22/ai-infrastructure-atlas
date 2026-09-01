@@ -69,15 +69,26 @@
 .compare-template-label { color: var(--muted); font-weight: 700; }
 .compare-selected-wrap { margin-top: 17px; }
 .compare-selected-head {
+  display: grid;
+  gap: 0;
+  margin-bottom: 6px;
+}
+.compare-selected-title { font-size: 13px; font-weight: 700; }
+.compare-selected-status-row {
   display: flex;
   justify-content: space-between;
   gap: 18px;
-  align-items: end;
-  margin-bottom: 6px;
+  align-items: center;
+  min-height: 44px;
 }
-.compare-selected-title { margin-bottom: 6px; font-size: 13px; font-weight: 700; }
 .compare-selected-head .meta { margin: 0; }
-.compare-clear { flex: 0 0 auto; font-size: 12px; }
+.compare-clear {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  min-height: 44px;
+  font-size: 12px;
+}
 .compare-clear:disabled { color: var(--muted); cursor: default; text-decoration: none; }
 .compare-selected {
   display: grid;
@@ -120,9 +131,10 @@
 .compare-quality-summary dt { color: var(--muted); font-size: 12px; }
 .compare-quality-summary dd { margin: 0; color: var(--text); font-family: var(--mono); font-size: 12px; font-weight: 700; }
 .compare-scroll {
-  max-height: 72vh;
-  overflow: auto;
-  scrollbar-gutter: stable;
+  max-height: none;
+  overflow-x: auto;
+  overflow-y: visible;
+  container-type: inline-size;
 }
 .compare-scroll:focus-visible {
   outline: 2px solid var(--focus);
@@ -141,32 +153,32 @@
   border-top: 1px solid var(--border-strong);
 }
 .compare-table {
-  min-width: 1040px;
+  width: 100%;
+  min-width: 900px;
   table-layout: fixed;
 }
 .compare-table thead th {
   position: sticky;
   top: 0;
   z-index: 5;
-  min-width: 164px;
   border-right: 1px solid var(--border);
 }
 .compare-table thead th:first-child {
   left: 0;
   z-index: 7;
-  width: 220px;
-  min-width: 220px;
+  width: 170px;
+  min-width: 170px;
 }
 .compare-table tbody th {
   position: sticky;
   left: 0;
   z-index: 3;
-  width: 220px;
-  min-width: 220px;
+  width: 170px;
+  min-width: 170px;
   background: var(--surface-subtle);
   border-right: 1px solid var(--border);
 }
-.compare-table td { min-width: 164px; border-right: 1px solid var(--border); }
+.compare-table td { min-width: 0; border-right: 1px solid var(--border); }
 .compare-table tr > *:last-child { border-right: 0; }
 .compare-section-row th {
   position: static !important;
@@ -180,7 +192,6 @@
   letter-spacing: .01em;
 }
 .compare-company-head { display: block; line-height: 1.35; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
-.compare-company-local { display: block; margin-top: 3px; color: var(--text); font-size: 10px; font-weight: 500; line-height: 1.35; word-break: keep-all; }
 .compare-company-sub { display: block; margin-top: 2px; color: var(--muted); font-family: var(--mono); font-size: 10px; font-weight: 500; white-space: normal; }
 [data-compare-financial-link] { margin-top: 4px; font-family: var(--sans); }
 .compare-row-label { font-weight: 750; }
@@ -201,6 +212,13 @@
 .compare-verification-review { color: var(--warning); }
 .compare-missing { color: var(--muted); font-size: 12px; }
 .compare-source { width: fit-content; font-size: 11px; }
+.compare-missing-summary {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 1px solid var(--border);
+}
+.compare-missing-summary p { margin: 0; color: var(--text); font-size: 12px; line-height: 1.6; }
+.compare-missing-summary strong { font-weight: 700; }
 .compare-analysis {
   margin-top: 20px;
   padding-top: 16px;
@@ -221,7 +239,6 @@
   .compare-suggestion { grid-template-columns: 1fr; gap: 2px; }
   .compare-suggestion-meta { white-space: normal; }
   .compare-quality-summary > div { padding-right: 14px; margin-right: 14px; }
-  .compare-scroll { max-height: none; }
   .compare-table thead th { position: static; }
   .compare-table thead th:first-child { position: sticky; left: 0; z-index: 5; }
 }
@@ -242,7 +259,6 @@
   .compare-remove { grid-column: 3; grid-row: 1; align-self: center; }
   .compare-selected-local,
   .compare-selected-meta { font-size: 10px; }
-  .compare-selected-head { align-items: center; }
   .compare-clear,
   .compare-remove { display: inline-flex; align-items: center; min-height: 44px; }
 }
