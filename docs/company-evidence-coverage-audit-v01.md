@@ -1,7 +1,7 @@
 # 100-company Company Evidence Coverage Audit v0.1
 
 - Data as of: `2026-09-01`
-- Input digest: `sha256:d84d383aa477db70c627e557d3bf465fefab393ba7fdccc57fea307aee417fb3`
+- Input digest: `sha256:14a8ebbd8465b0f091943cbed063b479dac1d56a7cd56734e62cab8f89fb4bab`
 - Scope: 100 companies × 11 categories = 1,100 pairs
 - Company Evidence enrichment: **Arm / ASML only**
 - This is a coverage audit, not a Company Evaluation Score.
@@ -10,13 +10,13 @@
 
 Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監査した。Pilot 5社の既存Coverage Recordを維持し、Batch 01のArm / ASMLはmanifest経由のCoverage Recordを正とする。残る93社ではlegacy本文や汎用IR Sourceだけをcompleteへ昇格していない。
 
-結果はcomplete **321**、partial **738**、not-started **41**。低CoverageはCI failureにせず、次の一次資料補強順を作るbaselineとして固定する。
+結果はcomplete **321**、partial **740**、not-started **39**。低CoverageはCI failureにせず、次の一次資料補強順を作るbaselineとして固定する。
 
 ## 100-company totals
 
 | Companies | Categories | Pairs | Complete | Partial | Not-started |
 | ---: | ---: | ---: | ---: | ---: | ---: |
-| 100 | 11 | 1,100 | 321 | 738 | 41 |
+| 100 | 11 | 1,100 | 321 | 740 | 39 |
 
 ## Category coverage
 
@@ -28,7 +28,7 @@ Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監�
 | `technology` | 1 | 99 | 0 | 100 | 100 | 0 |
 | `value-chain-position` | 100 | 0 | 0 | 100 | 100 | 0 |
 | `manufacturing-facilities` | 13 | 72 | 15 | 85 | 85 | 0 |
-| `capacity-expansion` | 3 | 71 | 26 | 74 | 74 | 0 |
+| `capacity-expansion` | 3 | 73 | 24 | 76 | 76 | 0 |
 | `customer-end-market` | 0 | 100 | 0 | 99 | 99 | 0 |
 | `competitive-positioning` | 0 | 100 | 0 | 100 | 100 | 0 |
 | `strategy` | 0 | 100 | 0 | 100 | 100 | 0 |
@@ -38,7 +38,7 @@ Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監�
 
 | Status | Pairs |
 | --- | ---: |
-| `not-collected` | 31 |
+| `not-collected` | 29 |
 | `primary-source-unchecked` | 1 |
 | `not-disclosed` | 0 |
 | `not-applicable` | 9 |
@@ -56,10 +56,10 @@ Freeze Schema v0.2の11 Categoryを100社へ投影し、1,100 pairを機械監�
 A/B/C/D/Eを別集計した結果：
 
 - Company-level Sourceあり: 100 companies
-- Category-direct Sourceあり: 1058 pairs
-- Claim-level Evidence Bindingあり: 1058 pairs
-- Structured Locatorあり: 1058 pairs
-- Freeze Schemaでそのまま移行可能: 1058 pairs
+- Category-direct Sourceあり: 1060 pairs
+- Claim-level Evidence Bindingあり: 1060 pairs
+- Structured Locatorあり: 1060 pairs
+- Freeze Schemaでそのまま移行可能: 1060 pairs
 
 ## Field-level legacy provenance
 
@@ -73,7 +73,7 @@ A/B/C/D/Eを別集計した結果：
 
 ## Source quality
 
-- Registry records / unique Sources: 369 / 367
+- Registry records / unique Sources: 371 / 369
 - Company `sourceIds` references / resolved: 121 / 121
 - Financial Source references / resolved: 124 / 124
 - Orphan Source references: 0
@@ -86,17 +86,17 @@ A/B/C/D/Eを別集計した結果：
 
 ### Locator audit
 
-Bindings 1061 / valid Locators 1061 / missing 0 / invalid 0。
+Bindings 1063 / valid Locators 1063 / missing 0 / invalid 0。
 
 | Locator field | Uses |
 | --- | ---: |
 | `page` | 230 |
-| `section` | 1012 |
-| `heading` | 1046 |
+| `section` | 1014 |
+| `heading` | 1048 |
 | `table` | 2 |
 | `note` | 0 |
 | `anchor` | 0 |
-| `quotedLabel` | 1033 |
+| `quotedLabel` | 1035 |
 
 ## Pilot baseline
 
@@ -128,7 +128,7 @@ PriorityはCoverage不足を主軸に、既存のAI重要度signal、複数Categ
 
 | Category | Not-started | Partial |
 | --- | ---: | ---: |
-| `capacity-expansion` | 26 | 71 |
+| `capacity-expansion` | 24 | 73 |
 | `manufacturing-facilities` | 15 | 72 |
 | `ai-infrastructure-role` | 0 | 95 |
 | `company-overview` | 0 | 1 |
@@ -230,7 +230,7 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 | KOKUSAI ELECTRIC（国際電気） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | Lam Research（ラムリサーチ） | L4 | 3 | 8 | 0 | 2 | 11 | 11 | 11 | B |
 | レーザーテック | L4 | 3 | 7 | 1 | 1 | 10 | 10 | 10 | A |
-| Legrand（ルグラン） | L4 | 3 | 7 | 1 | 1 | 10 | 10 | 10 | B |
+| Legrand（ルグラン） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | Linde（リンデ） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | Lumentum（ルメンタム） | L4 | 4 | 7 | 0 | 1 | 11 | 11 | 11 | C |
 | Marvell Technology（マーベル・テクノロジー） | L4 | 3 | 6 | 2 | 1 | 9 | 9 | 9 | A |
@@ -259,7 +259,7 @@ Legacy contentとcompany-level一次Sourceがあり、Claim-level Evidence Bindi
 | 新光電気工業 | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | Siemens Energy（シーメンス・エナジー） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | SK hynix（SKハイニックス） | L4 | 3 | 8 | 0 | 2 | 11 | 11 | 11 | B |
-| SMC | L4 | 3 | 7 | 1 | 1 | 10 | 10 | 10 | B |
+| SMC | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | SMIC（中芯国際） | L4 | 5 | 6 | 0 | 1 | 11 | 11 | 11 | C |
 | STMicroelectronics（STマイクロエレクトロニクス） | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |
 | SUMCO | L4 | 3 | 8 | 0 | 1 | 11 | 11 | 11 | B |

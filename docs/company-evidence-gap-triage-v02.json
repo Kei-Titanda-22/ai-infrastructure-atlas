@@ -4,8 +4,8 @@
   "baselineMain": "854f20bdc808323766f085f0c419d923753b93f5",
   "supersedes": "docs/company-evidence-gap-triage-v01.json",
   "reviewedAt": "2026-09-01",
-  "semanticDecisionDigest": "sha256:eb7b7fdbfa620db5dd935019d999e3ffe77568772e84f0e7d380e6d30e20ed25",
-  "coverageInputDigest": "sha256:d84d383aa477db70c627e557d3bf465fefab393ba7fdccc57fea307aee417fb3",
+  "semanticDecisionDigest": "sha256:4c06c8522d17f20bb7b6c2aa3d168dcf93db83c8d2cb9b01501d2f6de9262714",
+  "coverageInputDigest": "sha256:14a8ebbd8465b0f091943cbed063b479dac1d56a7cd56734e62cab8f89fb4bab",
   "coverageBaseline": {
     "complete": 321,
     "partial": 451,
@@ -14,8 +14,8 @@
   },
   "coverageCurrent": {
     "complete": 321,
-    "partial": 738,
-    "notStarted": 41,
+    "partial": 740,
+    "notStarted": 39,
     "gaps": 779
   },
   "reviewScopeSummary": {
@@ -30,27 +30,27 @@
     }
   },
   "semanticDecisionDistribution": {
-    "ACTIONABLE": 291,
+    "ACTIONABLE": 293,
     "SUFFICIENT_PARTIAL": 447,
     "NOT_DISCLOSED": 0,
     "NOT_APPLICABLE": 30,
-    "DEFERRED": 11,
+    "DEFERRED": 9,
     "REVIEW_REQUIRED": 0
   },
   "currentDistribution": {
     "ACTIONABLE": 0,
-    "SUFFICIENT_PARTIAL": 738,
+    "SUFFICIENT_PARTIAL": 740,
     "NOT_DISCLOSED": 0,
     "NOT_APPLICABLE": 30,
-    "DEFERRED": 11,
+    "DEFERRED": 9,
     "REVIEW_REQUIRED": 0
   },
   "actionable": {
-    "reviewedRecords": 291,
+    "reviewedRecords": 293,
     "reviewedCompanies": 88,
     "pendingRecords": 0,
     "pendingCompanies": 0,
-    "completedRecords": 291,
+    "completedRecords": 293,
     "completedCompanies": 88
   },
   "categorySummary": [
@@ -71,10 +71,10 @@
       "total": 97,
       "distribution": {
         "ACTIONABLE": 0,
-        "SUFFICIENT_PARTIAL": 71,
+        "SUFFICIENT_PARTIAL": 73,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 15,
-        "DEFERRED": 11,
+        "DEFERRED": 9,
         "REVIEW_REQUIRED": 0
       }
     },
@@ -805,10 +805,10 @@
       "total": 8,
       "distribution": {
         "ACTIONABLE": 0,
-        "SUFFICIENT_PARTIAL": 7,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
-        "DEFERRED": 1,
+        "DEFERRED": 0,
         "REVIEW_REQUIRED": 0
       }
     },
@@ -1153,10 +1153,10 @@
       "total": 8,
       "distribution": {
         "ACTIONABLE": 0,
-        "SUFFICIENT_PARTIAL": 7,
+        "SUFFICIENT_PARTIAL": 8,
         "NOT_DISCLOSED": 0,
         "NOT_APPLICABLE": 0,
-        "DEFERRED": 1,
+        "DEFERRED": 0,
         "REVIEW_REQUIRED": 0
       }
     },
@@ -15746,14 +15746,18 @@
       "baselineClaimCount": 0,
       "baselineEvidenceBindingCount": 0,
       "baselineLocatorCount": 0,
-      "semanticClassification": "DEFERRED",
-      "reasonCode": "bounded-review-no-concrete-project",
-      "rationale": "Legrand（ルグラン）の既存Source、年次報告・filing、対象を絞った公式情報を確認したが、generic Capex、最適化、製品容量またはR&D説明を超える具体的な現行production-capacity projectを確認できなかった。",
-      "targetSourceIds": [],
+      "semanticClassification": "ACTIONABLE",
+      "reasonCode": "official-capacity-project",
+      "rationale": "2025 first-half resultsがlocal industrial capacityへの投資とFranceのMontbard拠点への2,200万euro投資を明示し、同拠点がlatest-generation data center向けsteel wire-mesh cable trayを生産すると説明する。拠点・規模・用途が揃う高レバレッジ一次資料1件でEvidence化できるためACTIONABLE。",
+      "targetSourceIds": [
+        "official-legrand-h1-2025-results"
+      ],
       "reviewScope": "systemic-remediation-v01",
+      "validationRemediationCycle": 2,
       "reviewedAt": "2026-09-01",
       "reviewedSourceIds": [
-        "earnings-legrand-2025-02-13-fy2024"
+        "earnings-legrand-2025-02-13-fy2024",
+        "official-legrand-h1-2025-results"
       ],
       "reviewMethod": "bounded-primary-source-review: existing Evidence/Shared Source; annual report or filing; targeted official source when needed",
       "sourceSearchBound": {
@@ -15763,16 +15767,16 @@
         "targetedOfficialSourceLimit": 2,
         "secondarySourcesUsed": false
       },
-      "reviewerBasis": "manufacturing expansion、new factory/fab、production capacity、plant investmentを確認し、拠点・規模・時期の少なくとも一つを伴う会社公式projectがないため追跡を保留した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "reviewerBasis": "Annual resultsに加え2025 first-half official releaseを確認し、local industrial capacity、Montbard、EUR 22 million、data center用途を同一資料で特定した。",
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "DEFERRED",
-      "actionStatus": "not-required",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "legrand:competitive-positioning",
@@ -23860,14 +23864,18 @@
       "baselineClaimCount": 0,
       "baselineEvidenceBindingCount": 0,
       "baselineLocatorCount": 0,
-      "semanticClassification": "DEFERRED",
-      "reasonCode": "bounded-review-no-concrete-project",
-      "rationale": "SMCの既存Source、年次報告・filing、対象を絞った公式情報を確認したが、generic Capex、最適化、製品容量またはR&D説明を超える具体的な現行production-capacity projectを確認できなかった。",
-      "targetSourceIds": [],
+      "semanticClassification": "ACTIONABLE",
+      "reasonCode": "official-capacity-project",
+      "rationale": "Integrated Report 2025がglobal stable supply systemの構築としてVietnam工場を拡張し、一部modelのmass-production機能を移管する進行中planを明示する。product capacityやgeneric Capexではなく特定production siteの拡張であり、一次資料1件でEvidence化できるためACTIONABLE。",
+      "targetSourceIds": [
+        "official-smc-integrated-report-2025"
+      ],
       "reviewScope": "systemic-remediation-v01",
+      "validationRemediationCycle": 2,
       "reviewedAt": "2026-09-01",
       "reviewedSourceIds": [
-        "smc-financial-results-fy2025"
+        "smc-financial-results-fy2025",
+        "official-smc-integrated-report-2025"
       ],
       "reviewMethod": "bounded-primary-source-review: existing Evidence/Shared Source; annual report or filing; targeted official source when needed",
       "sourceSearchBound": {
@@ -23877,16 +23885,16 @@
         "targetedOfficialSourceLimit": 2,
         "secondarySourcesUsed": false
       },
-      "reviewerBasis": "manufacturing expansion、new factory/fab、production capacity、plant investmentを確認し、拠点・規模・時期の少なくとも一つを伴う会社公式projectがないため追跡を保留した。",
-      "currentCoverageStatus": "not-started",
-      "currentMissingStatus": "not-collected",
-      "currentClaimCount": 0,
-      "currentEvidenceBindingCount": 0,
-      "currentLocatorCount": 0,
+      "reviewerBasis": "Financial resultsに加えIntegrated Report 2025のManufacturing sectionを確認し、Vietnam Factoryの拡張とmass-production role移管を会社計画として特定した。",
+      "currentCoverageStatus": "partial",
+      "currentMissingStatus": null,
+      "currentClaimCount": 1,
+      "currentEvidenceBindingCount": 1,
+      "currentLocatorCount": 1,
       "currentGap": true,
-      "currentClassification": "DEFERRED",
-      "actionStatus": "not-required",
-      "actionEvidenceDelta": 0
+      "currentClassification": "SUFFICIENT_PARTIAL",
+      "actionStatus": "completed",
+      "actionEvidenceDelta": 1
     },
     {
       "id": "smc:competitive-positioning",

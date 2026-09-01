@@ -585,6 +585,30 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Protection: financial values / relationships / Global Visual System / Evidence Schema / Freeze contract変更 `0`。
 - Browser QA: NVIDIAとFujikuraを `1024px` / `360px` で確認。追加Claim・bibliography・Evidence marker `44 × 44px`・drawer・Primary Source・Escape・focus return・document overflow `0` を全条件で通過。
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages / semantic protection (`financialDiff 0`, `protectedSemanticDiff 0`) passed。
-- PR / merge / Actions / Pages: pending publication
+- PR: [#150](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/150)
+- Merge SHA: `edbd83155f7f8ddbe666198f402941bc627af818`
+- Actions: [run 33509114335](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33509114335) success
+- Pages: NVIDIA（desktop）とFujikura（mobile）の追加Claim・bibliography・drawer・Primary Source・Escape・focus return・overflowを公開環境で再確認
 - Company Evidence v1 Coverage Close: **NO** (Validation v0.2 final gate pending)
+- HARD STOP: `0`
+
+## Triage Validation v0.2 remediation — Remaining DEFERRED Capacity B11
+
+- Baseline main: `edbd83155f7f8ddbe666198f402941bc627af818`
+- Trigger: Validation v0.2 cycle 1で残存DEFERRED capacity-expansion `11`件を全件再監査し、同一Categoryで公式のspecific production-capacity projectを2件検出。affected stratum MATERIAL率が5%を超えるためsystemic correctionとして処理。
+- Affected stratum reviewed: `11 / 11` remaining DEFERRED records
+- Records reclassified: `2` (`Legrand / SMC: DEFERRED → ACTIONABLE`)
+- New ACTIONABLE found / processed: `2 / 2` Category records / `2` companies。affected stratumで新たにACTIONABLEとなった全社を局所batchとして処理。
+- Claims / Evidence / structured Locators: `2 / 2 / 2`
+- Verification: `source-linked 2`; `verified 0`; Source Policy approval changes `0`
+- Sources: existing Shared Sources reused `2`; added `2`; new Source Policies remain `pending`
+- Coverage: `321 / 738 / 41 → 321 / 740 / 39` (complete / partial / not-started)
+- Triage semantic decisions: ACTIONABLE `291 → 293`; SUFFICIENT_PARTIAL `447`; NOT_DISCLOSED `0`; NOT_APPLICABLE `30`; DEFERRED `11 → 9`; REVIEW_REQUIRED `0`
+- Current Triage: ACTIONABLE pending `0`; SUFFICIENT_PARTIAL `740`; NOT_DISCLOSED `0`; NOT_APPLICABLE `30`; DEFERRED `9`; REVIEW_REQUIRED `0`
+- Bounded-source result: LegrandはMontbard拠点への2,200万euroのlocal industrial capacity投資、SMCはVietnam工場の拡張とmass-production機能移管を会社公式一次資料で確認。他9件はgeneric Capex、製品capacity、R&D/test lab、効率化または旧projectから安全に分離できる現行production-capacity projectがなくDEFERREDを維持。
+- Protection: financial values / relationships / Global Visual System / Evidence Schema / Freeze contract変更 `0`
+- Browser QA: Legrand（`1024px`）とSMC（`360px`）で追加Claim、bibliography、Evidence marker `44 × 44px`、drawer、Primary Source、Escape、focus return、document overflow `0` を確認
+- Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages / semantic protection (`financialDiff 0`, `protectedSemanticDiff 0`) passed
+- PR / merge / Actions / Pages: pending publication
+- Company Evidence v1 Coverage Close: **NO** (Validation v0.2 cycle 2 final gate pending)
 - HARD STOP: `0`
