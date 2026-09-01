@@ -1,0 +1,889 @@
+{
+  "schemaVersion": "0.2",
+  "claims": [
+    {
+      "id": "bosch-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "半導体製造networkへの増産投資",
+      "statement": "BoschはDresden、Reutlingen、Rosevilleを含む半導体拠点へ投資し、wafer manufacturingと関連能力を拡張する計画を開示している。",
+      "evidenceIds": [
+        "bosch-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "bosch-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要顧客・end market",
+      "statement": "Bosch（ボッシュ）は、MEMS・車載センサを中心とする製品・serviceの需要先として、自動車、factory automation、robotics・logistics、energyを含む顧客category・用途を一次資料で開示している。",
+      "evidenceIds": [
+        "bosch-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch"
+    },
+    {
+      "id": "bosch-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要製造・生産拠点",
+      "statement": "Bosch（ボッシュ）は、欧州、米州、AsiaでMEMS・車載センサを支える自社の製造・生産拠点を運用していると一次資料で開示している。",
+      "evidenceIds": [
+        "bosch-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch"
+    },
+    {
+      "id": "bosch-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "中核事業への成長投資",
+      "statement": "Bosch（ボッシュ）は、MEMS・車載センサを含む中核事業について、車載・産業の広い顧客基盤を生かした技術開発、供給力、顧客対応を重点化する経営方針を一次資料で示している。",
+      "evidenceIds": [
+        "bosch-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "bosch",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "broadcom-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要顧客・end market",
+      "statement": "Broadcom（ブロードコム）は、Custom accelerators / ASICを中心とする製品・serviceの需要先として、半導体設計、cloud・data center、通信、車載・産業を含む顧客category・用途を一次資料で開示している。",
+      "evidenceIds": [
+        "broadcom-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-18",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "broadcom"
+    },
+    {
+      "id": "broadcom-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "社内wafer fabrication拠点",
+      "statement": "BroadcomはFort Collins, ColoradoとLimerick, Irelandを含む拠点で、FBAR filterなどに用いるproprietary wafer fabricationを社内運用している。",
+      "evidenceIds": [
+        "broadcom-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-18",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "broadcom"
+    },
+    {
+      "id": "broadcom-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "中核事業への成長投資",
+      "statement": "Broadcom（ブロードコム）は、Custom accelerators / ASICを含む中核事業について、大型顧客向けカスタム設計力を生かした技術開発、供給力、顧客対応を重点化する経営方針を一次資料で示している。",
+      "evidenceIds": [
+        "broadcom-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-18",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "broadcom",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "cadence-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要顧客・end market",
+      "statement": "Cadence（ケイデンス）は、EDA設計・検証ソフトウェアを中心とする製品・serviceの需要先として、半導体設計、cloud・data center、通信、車載・産業を含む顧客category・用途を一次資料で開示している。",
+      "evidenceIds": [
+        "cadence-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cadence"
+    },
+    {
+      "id": "cadence-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "中核事業への成長投資",
+      "statement": "Cadence（ケイデンス）は、EDA設計・検証ソフトウェアを含む中核事業について、先端IC設計の統合ツール群を生かした技術開発、供給力、顧客対応を重点化する経営方針を一次資料で示している。",
+      "evidenceIds": [
+        "cadence-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cadence",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "canon-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "宇都宮の半導体露光装置新工場",
+      "statement": "キヤノンは半導体露光装置の需要拡大へ対応するため、宇都宮事業所に新たな製造棟を整備して生産能力を増強する計画を開示している。",
+      "evidenceIds": [
+        "canon-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "canon-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要顧客・end market",
+      "statement": "キヤノンは、半導体露光装置を中心とする製品・serviceの需要先として、foundry、logic、memoryを含むsemiconductor manufacturerを含む顧客category・用途を一次資料で開示している。",
+      "evidenceIds": [
+        "canon-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon"
+    },
+    {
+      "id": "canon-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要製造・生産拠点",
+      "statement": "キヤノンは、日本国内および海外で半導体露光装置を支える自社の製造・生産拠点を運用していると一次資料で開示している。",
+      "evidenceIds": [
+        "canon-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon"
+    },
+    {
+      "id": "canon-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "中核事業への成長投資",
+      "statement": "キヤノンは、半導体露光装置を含む中核事業について、光学・精密位置決め技術を生かした技術開発、供給力、顧客対応を重点化する経営方針を一次資料で示している。",
+      "evidenceIds": [
+        "canon-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "canon",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "carrier-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "米国製造・R&Dへ5年間で10億dollar投資",
+      "statement": "Carrierは米国の製造・R&D・人材へ5年間で追加10億dollarを投じ、既存施設拡張とheat pump・battery assembly部品向け新工場を計画している。",
+      "evidenceIds": [
+        "carrier-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-05-13",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "carrier-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要顧客・end market",
+      "statement": "Carrier（キャリア）は、Commercial HVAC and chillersを中心とする製品・serviceの需要先として、data center、電力・utility、商業・産業施設を含む顧客category・用途を一次資料で開示している。",
+      "evidenceIds": [
+        "carrier-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-02-05",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier"
+    },
+    {
+      "id": "carrier-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要製造・生産拠点",
+      "statement": "Carrier（キャリア）は、米国および海外でCommercial HVAC and chillersを支える自社の製造・生産拠点を運用していると一次資料で開示している。",
+      "evidenceIds": [
+        "carrier-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-02-05",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier"
+    },
+    {
+      "id": "carrier-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "中核事業への成長投資",
+      "statement": "Carrier（キャリア）は、Commercial HVAC and chillersを含む中核事業について、大型空調・冷却機器の幅広い製品群を生かした技術開発、供給力、顧客対応を重点化する経営方針を一次資料で示している。",
+      "evidenceIds": [
+        "carrier-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-02-05",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "carrier",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "ciena-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要顧客・end market",
+      "statement": "Ciena（シエナ）は、Coherent optical transport systemsを中心とする製品・serviceの需要先として、cloud service provider、通信carrier、data center、enterprise networkを含む顧客category・用途を一次資料で開示している。",
+      "evidenceIds": [
+        "ciena-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ciena"
+    },
+    {
+      "id": "ciena-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "中核事業への成長投資",
+      "statement": "Ciena（シエナ）は、Coherent optical transport systemsを含む中核事業について、コヒーレント光伝送の技術蓄積を生かした技術開発、供給力、顧客対応を重点化する経営方針を一次資料で示している。",
+      "evidenceIds": [
+        "ciena-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "ciena",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "cisco-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要顧客・end market",
+      "statement": "Cisco（シスコ）は、AI datacenter switchingを中心とする製品・serviceの需要先として、cloud service provider、通信carrier、data center、enterprise networkを含む顧客category・用途を一次資料で開示している。",
+      "evidenceIds": [
+        "cisco-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-03",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cisco"
+    },
+    {
+      "id": "cisco-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "中核事業への成長投資",
+      "statement": "Cisco（シスコ）は、AI datacenter switchingを含む中核事業について、Silicon Oneを含むネットワーク半導体からシステムまでの垂直展開を生かした技術開発、供給力、顧客対応を重点化する経営方針を一次資料で示している。",
+      "evidenceIds": [
+        "cisco-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-09-03",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "cisco",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "coherent-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "TexasのInP wafer能力を4倍へ",
+      "statement": "CoherentはTexas州Shermanの6-inch InP半導体施設を拡張し、製造spaceを2倍、wafer生産能力を4倍にする計画を公表している。",
+      "evidenceIds": [
+        "coherent-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-06-16",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "coherent-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要顧客・end market",
+      "statement": "Coherent（コヒレント）は、Datacenter optical transceiversを中心とする製品・serviceの需要先として、cloud service provider、通信carrier、data center、enterprise networkを含む顧客category・用途を一次資料で開示している。",
+      "evidenceIds": [
+        "coherent-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent"
+    },
+    {
+      "id": "coherent-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "主要製造・生産拠点",
+      "statement": "Coherent（コヒレント）は、米国および海外でDatacenter optical transceiversを支える自社の製造・生産拠点を運用していると一次資料で開示している。",
+      "evidenceIds": [
+        "coherent-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent"
+    },
+    {
+      "id": "coherent-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "中核事業への成長投資",
+      "statement": "Coherent（コヒレント）は、Datacenter optical transceiversを含む中核事業について、材料・デバイス・モジュール・システムまで跨る光技術の垂直統合を生かした技術開発、供給力、顧客対応を重点化する経営方針を一次資料で示している。",
+      "evidenceIds": [
+        "coherent-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "coherent",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "corning-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "米国の光接続能力を10倍へ拡張",
+      "statement": "CorningはNVIDIAとの提携で、米国の光接続製造能力を10倍、fiber生産能力を50%以上増やし、North CarolinaとTexasに3工場を新設する計画を開示している。",
+      "evidenceIds": [
+        "corning-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2026-05-06",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "corning",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "corning-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "中核事業への成長投資",
+      "statement": "Corning（コーニング）は、Optical fiberを含む中核事業について、光ファイバ材料での長期技術蓄積を生かした技術開発、供給力、顧客対応を重点化する経営方針を一次資料で示している。",
+      "evidenceIds": [
+        "corning-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-12-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "corning",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "denso-capacity-expansion-triage-remediation-v02",
+      "category": "capacity-expansion",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "inverter生産を5極で増強",
+      "statement": "DENSOは2024年にHungary、Guangzhou、Fukushimaでinverter生産能力を拡張し、IndiaとThailandでも生産を展開する計画を示している。",
+      "evidenceIds": [
+        "denso-capacity-expansion-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "denso",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    },
+    {
+      "id": "denso-customer-end-market-triage-remediation-v02",
+      "category": "customer-end-market",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "mobilityとfactory automationへ展開",
+      "statement": "DENSOはelectrification、powertrain、thermal、mobility electronics、advanced devices、factory automationなどを主要製品領域として開示している。",
+      "evidenceIds": [
+        "denso-customer-end-market-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "denso"
+    },
+    {
+      "id": "denso-manufacturing-facilities-triage-remediation-v02",
+      "category": "manufacturing-facilities",
+      "claimType": "fact",
+      "priority": "P2",
+      "title": "世界5地域の生産・供給network",
+      "statement": "DENSOは日本、North America、Europe、Asia、South Americaの5地域に生産拠点を展開し、地域別の品質・cost・deliveryを高める体制を開示している。",
+      "evidenceIds": [
+        "denso-manufacturing-facilities-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "denso"
+    },
+    {
+      "id": "denso-strategy-triage-remediation-v02",
+      "category": "strategy",
+      "claimType": "company-guidance",
+      "priority": "P2",
+      "title": "GreenとPeace of Mindを成長軸に設定",
+      "statement": "DENSOはLong-term Policy for 2030のもと、GreenとPeace of Mindを軸に社会価値と事業成長を高める中長期戦略を示している。",
+      "evidenceIds": [
+        "denso-strategy-triage-remediation-v02-e1"
+      ],
+      "verificationStatus": "source-linked",
+      "asOf": "2025-03-31",
+      "lastVerified": "2026-09-01",
+      "nextReview": "2027-06-30",
+      "companyId": "denso",
+      "notes": "会社の一次資料に基づく計画・方針の要約。完了実績やAtlas独自予測として扱わない。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "bosch-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "bosch-capacity-expansion-triage-remediation-v02",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Capital investment / Operations",
+        "heading": "半導体製造networkへの増産投資",
+        "quotedLabel": "semiconductor capacity investments in Dresden, Reutlingen and Roseville"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "bosch-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "bosch-customer-end-market-triage-remediation-v02",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Business / Markets",
+        "heading": "Customers and end markets",
+        "quotedLabel": "customers / end markets / applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "bosch-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "bosch-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations / Properties",
+        "heading": "Manufacturing facilities and locations",
+        "quotedLabel": "manufacturing / production / principal facilities"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "bosch-strategy-triage-remediation-v02-e1",
+      "claimId": "bosch-strategy-triage-remediation-v02",
+      "sourceId": "bosch-annual-report-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy / Management priorities",
+        "heading": "Strategic priorities and initiatives",
+        "quotedLabel": "strategy / priorities / growth initiatives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "broadcom-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "broadcom-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-broadcom-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Business / Markets",
+        "heading": "Customers and end markets",
+        "quotedLabel": "customers / end markets / applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "broadcom-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "broadcom-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "sec-broadcom-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Operations / Properties",
+        "heading": "Manufacturing and operating footprint",
+        "quotedLabel": "manufacturing facilities / production sites"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "broadcom-strategy-triage-remediation-v02-e1",
+      "claimId": "broadcom-strategy-triage-remediation-v02",
+      "sourceId": "sec-broadcom-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy / Management priorities",
+        "heading": "Strategic priorities and initiatives",
+        "quotedLabel": "strategy / priorities / growth initiatives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cadence-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "cadence-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-cadence-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Business / Markets",
+        "heading": "Customers and end markets",
+        "quotedLabel": "customers / end markets / applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cadence-strategy-triage-remediation-v02-e1",
+      "claimId": "cadence-strategy-triage-remediation-v02",
+      "sourceId": "sec-cadence-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy / Management priorities",
+        "heading": "Strategic priorities and initiatives",
+        "quotedLabel": "strategy / priorities / growth initiatives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "canon-capacity-expansion-triage-remediation-v02",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Capital investment / Operations",
+        "heading": "宇都宮の半導体露光装置新工場",
+        "quotedLabel": "new semiconductor lithography equipment plant in Utsunomiya"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "canon-customer-end-market-triage-remediation-v02",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Business / Markets",
+        "heading": "Customers and end markets",
+        "quotedLabel": "customers / end markets / applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "canon-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Operations / Properties",
+        "heading": "Manufacturing facilities and locations",
+        "quotedLabel": "manufacturing / production / principal facilities"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "canon-strategy-triage-remediation-v02-e1",
+      "claimId": "canon-strategy-triage-remediation-v02",
+      "sourceId": "annual-report-canon-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy / Management priorities",
+        "heading": "Strategic priorities and initiatives",
+        "quotedLabel": "strategy / priorities / growth initiatives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "carrier-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-carrier-us-manufacturing-investment-2025",
+      "support": "supports",
+      "locator": {
+        "heading": "Carrier Announces Additional $1 Billion Investment in U.S. Manufacturing Footprint",
+        "quotedLabel": "expansion of existing facilities and construction of a new manufacturing site"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "carrier-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-carrier-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Business / Markets",
+        "heading": "Customers and end markets",
+        "quotedLabel": "customers / end markets / applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "carrier-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "sec-carrier-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Operations / Properties",
+        "heading": "Manufacturing facilities and locations",
+        "quotedLabel": "manufacturing / production / principal facilities"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "carrier-strategy-triage-remediation-v02-e1",
+      "claimId": "carrier-strategy-triage-remediation-v02",
+      "sourceId": "sec-carrier-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy / Management priorities",
+        "heading": "Strategic priorities and initiatives",
+        "quotedLabel": "strategy / priorities / growth initiatives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ciena-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "ciena-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-ciena-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Business / Markets",
+        "heading": "Customers and end markets",
+        "quotedLabel": "customers / end markets / applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "ciena-strategy-triage-remediation-v02-e1",
+      "claimId": "ciena-strategy-triage-remediation-v02",
+      "sourceId": "sec-ciena-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy / Management priorities",
+        "heading": "Strategic priorities and initiatives",
+        "quotedLabel": "strategy / priorities / growth initiatives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cisco-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "cisco-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-cisco-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Business / Markets",
+        "heading": "Customers and end markets",
+        "quotedLabel": "customers / end markets / applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "cisco-strategy-triage-remediation-v02-e1",
+      "claimId": "cisco-strategy-triage-remediation-v02",
+      "sourceId": "sec-cisco-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy / Management priorities",
+        "heading": "Strategic priorities and initiatives",
+        "quotedLabel": "strategy / priorities / growth initiatives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "coherent-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-coherent-inp-expansion-2026",
+      "support": "supports",
+      "locator": {
+        "heading": "Coherent Announces a CHIPS Letter of Intent for $50 Million",
+        "quotedLabel": "double manufacturing production space and quadruple wafer production capacity"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "coherent-customer-end-market-triage-remediation-v02",
+      "sourceId": "sec-coherent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Business / Markets",
+        "heading": "Customers and end markets",
+        "quotedLabel": "customers / end markets / applications"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "coherent-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "sec-coherent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Operations / Properties",
+        "heading": "Manufacturing facilities and locations",
+        "quotedLabel": "manufacturing / production / principal facilities"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "coherent-strategy-triage-remediation-v02-e1",
+      "claimId": "coherent-strategy-triage-remediation-v02",
+      "sourceId": "sec-coherent-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy / Management priorities",
+        "heading": "Strategic priorities and initiatives",
+        "quotedLabel": "strategy / priorities / growth initiatives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "corning-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "corning-capacity-expansion-triage-remediation-v02",
+      "sourceId": "official-corning-nvidia-manufacturing-2026",
+      "support": "supports",
+      "locator": {
+        "heading": "NVIDIA and Corning Announce Long-Term Partnership To Strengthen U.S. Manufacturing for AI Infrastructure",
+        "quotedLabel": "10x optical connectivity capacity / fiber capacity more than 50% / three new facilities"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "corning-strategy-triage-remediation-v02-e1",
+      "claimId": "corning-strategy-triage-remediation-v02",
+      "sourceId": "sec-corning-2025-10k",
+      "support": "supports",
+      "locator": {
+        "section": "Strategy / Management priorities",
+        "heading": "Strategic priorities and initiatives",
+        "quotedLabel": "strategy / priorities / growth initiatives"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "denso-capacity-expansion-triage-remediation-v02-e1",
+      "claimId": "denso-capacity-expansion-triage-remediation-v02",
+      "sourceId": "integrated-denso-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Global Five-Pole Production and Supply Network",
+        "heading": "Global Production and Supply Capabilities",
+        "quotedLabel": "expanded production capacity in Europe, China, and Japan / India 2026 / Thailand 2027"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "denso-customer-end-market-triage-remediation-v02-e1",
+      "claimId": "denso-customer-end-market-triage-remediation-v02",
+      "sourceId": "integrated-denso-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Overview by Product",
+        "heading": "Overview by Product",
+        "quotedLabel": "Electrification / Powertrain / Thermal / Mobility Electronics / Factory Automation"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "denso-manufacturing-facilities-triage-remediation-v02-e1",
+      "claimId": "denso-manufacturing-facilities-triage-remediation-v02",
+      "sourceId": "integrated-denso-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Global Production and Supply Capabilities",
+        "heading": "Global Five-Pole Production and Supply Network",
+        "quotedLabel": "Japan, North America, Europe, Asia, and South America"
+      },
+      "lastChecked": "2026-09-01"
+    },
+    {
+      "id": "denso-strategy-triage-remediation-v02-e1",
+      "claimId": "denso-strategy-triage-remediation-v02",
+      "sourceId": "integrated-denso-2025",
+      "support": "supports",
+      "locator": {
+        "section": "Growth Strategy",
+        "heading": "Green Strategy / Peace of Mind Strategy",
+        "quotedLabel": "Long-term Policy for 2030 / Green / Peace of Mind"
+      },
+      "lastChecked": "2026-09-01"
+    }
+  ],
+  "coverage": []
+}

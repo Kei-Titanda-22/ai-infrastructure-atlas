@@ -3,8 +3,8 @@
 - Baseline main: `854f20bdc808323766f085f0c419d923753b93f5`
 - Supersedes: `docs/company-evidence-gap-triage-v01.json`
 - Semantic decision digest: `sha256:4781f9c870d755a9262a824c3606034161d90937162b3264440ec3cde824e3af`
-- Current Coverage gaps: `779` (`partial 482` + `not-started 297`)
-- ACTIONABLE pending: `258` records / `78` companies
+- Current Coverage gaps: `779` (`partial 513` + `not-started 266`)
+- ACTIONABLE pending: `227` records / `68` companies
 - Coverage answers whether a Category is complete; Triage answers whether it should be pursued.
 
 ## Remediation scope
@@ -18,8 +18,8 @@
 
 | Classification | Reviewed decision | Current gap state |
 | --- | ---: | ---: |
-| ACTIONABLE | 289 | 258 |
-| SUFFICIENT_PARTIAL | 446 | 477 |
+| ACTIONABLE | 289 | 227 |
+| SUFFICIENT_PARTIAL | 446 | 508 |
 | NOT_DISCLOSED | 4 | 4 |
 | NOT_APPLICABLE | 30 | 30 |
 | DEFERRED | 10 | 10 |
@@ -30,13 +30,13 @@
 | Category | Gaps | Actionable | Sufficient partial | Not disclosed | Not applicable | Deferred | Review required |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | ai-infrastructure-role | 95 | 0 | 95 | 0 | 0 | 0 | 0 |
-| capacity-expansion | 97 | 55 | 17 | 0 | 15 | 10 | 0 |
+| capacity-expansion | 97 | 49 | 23 | 0 | 15 | 10 | 0 |
 | company-overview | 1 | 0 | 1 | 0 | 0 | 0 | 0 |
 | competitive-positioning | 100 | 0 | 100 | 0 | 0 | 0 | 0 |
-| customer-end-market | 100 | 69 | 27 | 4 | 0 | 0 | 0 |
-| manufacturing-facilities | 87 | 58 | 14 | 0 | 15 | 0 | 0 |
+| customer-end-market | 100 | 60 | 36 | 4 | 0 | 0 | 0 |
+| manufacturing-facilities | 87 | 52 | 20 | 0 | 15 | 0 | 0 |
 | risks | 100 | 1 | 99 | 0 | 0 | 0 | 0 |
-| strategy | 100 | 75 | 25 | 0 | 0 | 0 | 0 |
+| strategy | 100 | 65 | 35 | 0 | 0 | 0 | 0 |
 | technology | 99 | 0 | 99 | 0 | 0 | 0 | 0 |
 
 ## Reviewed closure states
