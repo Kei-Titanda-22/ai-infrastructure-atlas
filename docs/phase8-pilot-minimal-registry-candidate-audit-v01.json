@@ -13,11 +13,20 @@
     "relationRecordsCreated": 0
   },
   "inputDigests": {
-    "companyEvidenceCorpusSha256": "fe06b1da4f25e1ddd3593dfbc4913b005a378ac7e4301b37bbe4b5f8e7032412",
-    "sourceRegistryCorpusSha256": "69004e623840b97baebfe3e9fc2a500e6bfe84972d20a17fce6344424da190f8",
-    "pilotCompanyCorpusSha256": "e129b4a991a023a27c5b170e5376d720a651baea6d1f27d8df56459d1111c221",
-    "valueChainSha256": "738c1f293b60933feadb259f0eac101f972b74bc81a634646047d5cc5472828a",
-    "relationshipsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    "pilotCompanyRecordsSha256": "fc9adc9c8c538411895bb9e31e24d2793be2de6f310f8f94f7d27753844d00a9",
+    "referencedClaimRecordsSha256": "5cc1c77333b13a29fed9d080e749dbe145cff9680002ee9b5f3be9cfdd184d63",
+    "referencedEvidenceBindingRecordsSha256": "81fcafb61445f6168daa73f4ca74a17c6ebbd00592334c4dacec11d2b5826d39",
+    "referencedSharedSourceRecordsSha256": "feae3d566c32eb19527939912f981618fd6002a1c4e265f6bf5322e4f4fd6e7c",
+    "valueChainRecordsSha256": "fbe01f8e14c421194c969a85034d2d6ebe5718a6787f0aa3a782dbf66f0149b1",
+    "relationshipsRecordsSha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "productCategoryHierarchyPolicy": {
+    "parentChildHierarchyImplemented": false,
+    "deriveNarrowRelationsFromWfe": false,
+    "deriveWfeRelationsFromNarrow": false,
+    "aggregationRollupOrDeduplication": false,
+    "implicitHierarchyInRelationFoundation": false,
+    "futureHierarchyRequiresSchemaChange": true
   },
   "candidates": [
     {
@@ -220,8 +229,8 @@
       "candidateId": "candidate-product-connectivity-semiconductor",
       "proposedId": "product-category-connectivity-semiconductor",
       "entityType": "product",
-      "canonicalName": "Connectivity semiconductor",
-      "aliases": ["Connectivity semiconductors"],
+      "canonicalName": "Connectivity semiconductors",
+      "aliases": ["Connectivity semiconductor"],
       "companies": ["broadcom"],
       "futureRelationTypes": ["PRODUCES"],
       "usage": ["endpoint"],
@@ -265,7 +274,7 @@
       "proposedId": "product-category-custom-accelerator-asic",
       "entityType": "product",
       "canonicalName": "Custom accelerator ASIC",
-      "aliases": ["ASIC", "Custom accelerator", "Custom accelerators"],
+      "aliases": ["Custom accelerator", "Custom accelerators"],
       "companies": ["broadcom"],
       "futureRelationTypes": ["COMPETES_WITH", "PRODUCES"],
       "usage": ["endpoint", "scope"],
@@ -520,7 +529,7 @@
       "proposedId": "product-category-wafer-fabrication-equipment",
       "entityType": "product",
       "canonicalName": "Wafer fabrication equipment",
-      "aliases": ["WFE"],
+      "aliases": ["Wafer fab equipment", "WFE"],
       "companies": ["applied-materials", "lam-research", "tokyo-electron"],
       "futureRelationTypes": ["COMPETES_WITH", "ENABLES", "PRODUCES"],
       "usage": ["endpoint", "scope"],
@@ -549,7 +558,7 @@
       ],
       "locatorAvailability": "complete",
       "decision": "include",
-      "rationale": "The broad generic category is explicitly grounded for all Set B companies and provides a stable endpoint and top-level competition scope."
+      "rationale": "The broad generic category is explicitly grounded for all Set B companies and provides a stable endpoint and top-level competition scope. It is independent from narrower equipment categories: neither direction implies Relation derivation, aggregation, roll-up, or deduplication."
     },
     {
       "candidateId": "candidate-technology-accelerated-computing-architecture",
@@ -614,8 +623,8 @@
         }
       ],
       "locatorAvailability": "complete",
-      "decision": "include",
-      "rationale": "The positioning Claim explicitly grounds a company-wide custom-design capability without turning ASIC into a second cross-type entity."
+      "decision": "defer",
+      "rationale": "The current support establishes custom-design capability rather than a stable architecture. v0.1 has no design-methodology or capability Technology kind, and the taxonomy is not expanded for this candidate."
     },
     {
       "candidateId": "candidate-technology-ethernet-networking",
@@ -963,19 +972,19 @@
   "summary": {
     "totalCandidates": 36,
     "decisionCounts": {
-      "include": 20,
-      "defer": 8,
+      "include": 19,
+      "defer": 9,
       "reject": 8
     },
     "includedRegistryCounts": {
       "product": 11,
-      "technology": 9,
+      "technology": 8,
       "market": 0
     },
-    "includedGroundingCount": 31,
+    "includedGroundingCount": 30,
     "includedLocatorCoverage": {
-      "available": 31,
-      "total": 31
+      "available": 30,
+      "total": 30
     }
   }
 }

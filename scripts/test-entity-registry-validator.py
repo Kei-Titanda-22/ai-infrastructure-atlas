@@ -33,6 +33,9 @@ baseline = load_payloads()
 baseline_errors = validator.validate_registry_payloads(baseline)
 if baseline_errors:
     raise AssertionError(f'Baseline registry fixture failed: {baseline_errors!r}')
+assert validator.normalize_label(' ＧＰＵ ') == 'gpu'
+assert validator.normalize_label('GpU') == 'gpu'
+assert validator.normalize_label(' 日本語label ') == '日本語label'
 
 invalid_product_kind = copy.deepcopy(baseline)
 invalid_product_kind['product']['records'][0]['productKind'] = 'named-family'
@@ -45,6 +48,10 @@ expect_error(unknown_field, 'record keys differ')
 cross_registry_collision = copy.deepcopy(baseline)
 cross_registry_collision['technology']['records'][0]['aliases'] = ['ＧＰＵ']
 expect_error(cross_registry_collision, 'cross-registry alias collision')
+
+unsupported_casefold_label = copy.deepcopy(baseline)
+unsupported_casefold_label['product']['records'][0]['aliases'] = ['Straße']
+expect_error(unsupported_casefold_label, 'unsupported label')
 
 unstable_order = copy.deepcopy(baseline)
 unstable_order['product']['records'] = list(reversed(unstable_order['product']['records']))
@@ -62,4 +69,4 @@ duplicate_id = copy.deepcopy(baseline)
 duplicate_id['technology']['records'][0]['id'] = duplicate_id['product']['records'][0]['id']
 expect_error(duplicate_id, 'duplicate global ID')
 
-print('Entity Registry validator tests OK: 1 valid fixture / 6 invalid invariants')
+print('Entity Registry validator tests OK: normalization fixtures / 1 valid registry / 7 invalid invariants')

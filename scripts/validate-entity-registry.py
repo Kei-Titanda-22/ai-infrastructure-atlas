@@ -107,21 +107,51 @@ def load_json(path: Path) -> Any:
 
 
 def normalize_label(value: str) -> str:
-    return unicodedata.normalize('NFKC', value).strip().casefold()
+    return unicodedata.normalize('NFKC', value).strip().lower()
+
+
+def label_uses_supported_lowercase(value: str) -> bool:
+    normalized = unicodedata.normalize('NFKC', value).strip()
+    return normalized.lower() == normalized.casefold()
+
+
+def validate_label_contract(value: str, label: str, errors: list[str]) -> None:
+    if not label_uses_supported_lowercase(value):
+        errors.append(
+            f'{label}: unsupported label because Unicode lower and casefold differ after NFKC'
+        )
 
 
 def stable_strings(values: Iterable[str]) -> list[str]:
     return sorted(values, key=lambda value: (normalize_label(value), value))
 
 
-def corpus_digest(paths: Iterable[Path]) -> str:
-    digest = hashlib.sha256()
-    for path in sorted(paths, key=lambda item: item.relative_to(ROOT).as_posix()):
-        digest.update(path.relative_to(ROOT).as_posix().encode('utf-8'))
-        digest.update(b'\0')
-        digest.update(path.read_bytes())
-        digest.update(b'\0')
-    return digest.hexdigest()
+def stable_json_digest(value: Any) -> str:
+    serialized = json.dumps(
+        value,
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(',', ':'),
+    )
+    return hashlib.sha256(serialized.encode('utf-8')).hexdigest()
+
+
+def stable_record_digest(records: Iterable[dict[str, Any]]) -> str:
+    return stable_json_digest(sorted(records, key=lambda record: record['id']))
+
+
+def index_records(records: Iterable[dict[str, Any]]) -> tuple[dict[str, Any], set[str]]:
+    index: dict[str, Any] = {}
+    duplicates: set[str] = set()
+    for record in records:
+        record_id = record.get('id') if isinstance(record, dict) else None
+        if not isinstance(record_id, str):
+            continue
+        if record_id in index:
+            duplicates.add(record_id)
+        else:
+            index[record_id] = record
+    return index, duplicates
 
 
 def is_nonempty_string(value: Any) -> bool:
@@ -143,14 +173,18 @@ def validate_string_array(
     *,
     allowed: set[str] | None = None,
     nonempty: bool = False,
+    enforce_label_contract: bool = False,
 ) -> list[str]:
     if not isinstance(values, list) or any(not is_nonempty_string(value) for value in values):
         errors.append(f'{label}: must be an array of non-empty strings')
         return []
     if nonempty and not values:
         errors.append(f'{label}: must not be empty')
+    if enforce_label_contract:
+        for index, value in enumerate(values):
+            validate_label_contract(value, f'{label}[{index}]', errors)
     if len({normalize_label(value) for value in values}) != len(values):
-        errors.append(f'{label}: contains an NFKC/casefold duplicate')
+        errors.append(f'{label}: contains an NFKC/lower duplicate')
     if values != stable_strings(values):
         errors.append(f'{label}: must use stable normalized ordering')
     if allowed is not None:
@@ -244,6 +278,8 @@ def validate_registry_payloads(payloads: dict[str, Any]) -> list[str]:
             canonical_name = record.get('canonicalName')
             if not is_nonempty_string(canonical_name):
                 errors.append(f'{record_label}: canonicalName must be non-empty')
+            else:
+                validate_label_contract(canonical_name, f'{record_label}.canonicalName', errors)
 
             display_names = record.get('displayNames')
             if not isinstance(display_names, dict) or not display_names:
@@ -255,8 +291,19 @@ def validate_registry_payloads(payloads: dict[str, Any]) -> list[str]:
                 for locale, display_name in display_names.items():
                     if not LOCALE_PATTERN.fullmatch(locale) or not is_nonempty_string(display_name):
                         errors.append(f'{record_label}: invalid displayNames entry {locale!r}')
+                    else:
+                        validate_label_contract(
+                            display_name,
+                            f'{record_label}.displayNames[{locale!r}]',
+                            errors,
+                        )
 
-            aliases = validate_string_array(record.get('aliases'), f'{record_label}.aliases', errors)
+            aliases = validate_string_array(
+                record.get('aliases'),
+                f'{record_label}.aliases',
+                errors,
+                enforce_label_contract=True,
+            )
             if is_nonempty_string(canonical_name):
                 canonical_key = normalize_label(canonical_name)
                 if canonical_key in {normalize_label(alias) for alias in aliases}:
@@ -326,29 +373,128 @@ def validate_registry_payloads(payloads: dict[str, Any]) -> list[str]:
     return errors
 
 
-def load_evidence_corpus() -> tuple[dict[str, Any], dict[str, Any], list[Path]]:
+def load_evidence_corpus() -> tuple[dict[str, Any], dict[str, Any], set[str], set[str]]:
     manifest = load_json(EVIDENCE_MANIFEST_PATH)
     paths = [EVIDENCE_MANIFEST_PATH] + [DATA / shard for shard in manifest['shards']]
-    claims: dict[str, Any] = {}
-    evidence: dict[str, Any] = {}
+    claim_records: list[dict[str, Any]] = []
+    evidence_records: list[dict[str, Any]] = []
     for path in paths[1:]:
         payload = load_json(path)
-        for claim in payload['claims']:
-            claims[claim['id']] = claim
-        for binding in payload['evidence']:
-            evidence[binding['id']] = binding
-    return claims, evidence, paths
+        claim_records.extend(payload['claims'])
+        evidence_records.extend(payload['evidence'])
+    claims, duplicate_claim_ids = index_records(claim_records)
+    evidence, duplicate_evidence_ids = index_records(evidence_records)
+    return claims, evidence, duplicate_claim_ids, duplicate_evidence_ids
 
 
-def load_source_ids() -> tuple[set[str], list[Path]]:
+def load_source_records() -> tuple[dict[str, Any], set[str]]:
     manifest = load_json(SOURCE_MANIFEST_PATH)
     paths = [SOURCE_MANIFEST_PATH] + [DATA / shard for shard in manifest['shards']]
-    source_ids: set[str] = set()
+    source_records: list[dict[str, Any]] = []
     for path in paths[1:]:
         payload = load_json(path)
         if isinstance(payload, list):
-            source_ids.update(record['id'] for record in payload)
-    return source_ids, paths
+            source_records.extend(payload)
+    return index_records(source_records)
+
+
+def load_pilot_company_records() -> tuple[dict[str, Any], set[str]]:
+    return index_records(
+        load_json(DATA / 'companies' / f'{company_id}.json')
+        for company_id in PILOT_COMPANIES
+    )
+
+
+def candidate_reference_ids(
+    candidates: Any,
+) -> tuple[set[str], set[str], set[str]]:
+    claim_ids: set[str] = set()
+    evidence_binding_ids: set[str] = set()
+    source_ids: set[str] = set()
+    if not isinstance(candidates, list):
+        return claim_ids, evidence_binding_ids, source_ids
+    for candidate in candidates:
+        if not isinstance(candidate, dict) or not isinstance(candidate.get('grounding'), list):
+            continue
+        for grounding in candidate['grounding']:
+            if not isinstance(grounding, dict):
+                continue
+            if isinstance(grounding.get('claimId'), str):
+                claim_ids.add(grounding['claimId'])
+            if isinstance(grounding.get('evidenceBindingId'), str):
+                evidence_binding_ids.add(grounding['evidenceBindingId'])
+            if isinstance(grounding.get('sourceId'), str):
+                source_ids.add(grounding['sourceId'])
+    return claim_ids, evidence_binding_ids, source_ids
+
+
+def targeted_input_digests(
+    candidates: Any,
+    claims: dict[str, Any],
+    evidence: dict[str, Any],
+    sources: dict[str, Any],
+    companies: dict[str, Any],
+    value_chain: Any,
+    relationships: Any,
+    *,
+    duplicate_claim_ids: set[str] | None = None,
+    duplicate_evidence_ids: set[str] | None = None,
+    duplicate_source_ids: set[str] | None = None,
+    duplicate_company_ids: set[str] | None = None,
+) -> dict[str, str]:
+    claim_ids, evidence_binding_ids, source_ids = candidate_reference_ids(candidates)
+    duplicate_claim_ids = duplicate_claim_ids or set()
+    duplicate_evidence_ids = duplicate_evidence_ids or set()
+    duplicate_source_ids = duplicate_source_ids or set()
+    duplicate_company_ids = duplicate_company_ids or set()
+    errors: list[str] = []
+
+    def require_unique_records(
+        label: str,
+        record_ids: set[str],
+        records: dict[str, Any],
+        duplicate_ids: set[str],
+    ) -> None:
+        unknown = sorted(record_ids - set(records))
+        duplicates = sorted(record_ids & duplicate_ids)
+        if unknown:
+            errors.append(f'unknown {label} references {unknown}')
+        if duplicates:
+            errors.append(f'duplicate {label} references {duplicates}')
+
+    require_unique_records('Claim', claim_ids, claims, duplicate_claim_ids)
+    require_unique_records(
+        'Evidence Binding',
+        evidence_binding_ids,
+        evidence,
+        duplicate_evidence_ids,
+    )
+    require_unique_records('Shared Source', source_ids, sources, duplicate_source_ids)
+    require_unique_records(
+        'Pilot Company',
+        set(PILOT_COMPANIES),
+        companies,
+        duplicate_company_ids,
+    )
+    if errors:
+        raise ValueError('; '.join(errors))
+
+    return {
+        'pilotCompanyRecordsSha256': stable_record_digest(
+            companies[company_id] for company_id in PILOT_COMPANIES
+        ),
+        'referencedClaimRecordsSha256': stable_record_digest(
+            claims[claim_id] for claim_id in claim_ids
+        ),
+        'referencedEvidenceBindingRecordsSha256': stable_record_digest(
+            evidence[evidence_id] for evidence_id in evidence_binding_ids
+        ),
+        'referencedSharedSourceRecordsSha256': stable_record_digest(
+            sources[source_id] for source_id in source_ids
+        ),
+        'valueChainRecordsSha256': stable_json_digest(value_chain),
+        'relationshipsRecordsSha256': stable_json_digest(relationships),
+    }
 
 
 def validate_candidate_audit(
@@ -361,6 +507,7 @@ def validate_candidate_audit(
         'baselineMain',
         'auditScope',
         'inputDigests',
+        'productCategoryHierarchyPolicy',
         'candidates',
         'summary',
     }
@@ -382,21 +529,22 @@ def validate_candidate_audit(
     if audit_scope != expected_scope:
         errors.append(f'candidate audit auditScope must be {expected_scope}')
 
-    claims, evidence, evidence_paths = load_evidence_corpus()
-    source_ids, source_paths = load_source_ids()
-    company_paths = [DATA / 'companies' / f'{company_id}.json' for company_id in PILOT_COMPANIES]
-    expected_digests = {
-        'companyEvidenceCorpusSha256': corpus_digest(evidence_paths),
-        'sourceRegistryCorpusSha256': corpus_digest(source_paths),
-        'pilotCompanyCorpusSha256': corpus_digest(company_paths),
-        'valueChainSha256': hashlib.sha256(VALUE_CHAIN_PATH.read_bytes()).hexdigest(),
-        'relationshipsSha256': hashlib.sha256(RELATIONSHIPS_PATH.read_bytes()).hexdigest(),
+    expected_hierarchy_policy = {
+        'parentChildHierarchyImplemented': False,
+        'deriveNarrowRelationsFromWfe': False,
+        'deriveWfeRelationsFromNarrow': False,
+        'aggregationRollupOrDeduplication': False,
+        'implicitHierarchyInRelationFoundation': False,
+        'futureHierarchyRequiresSchemaChange': True,
     }
-    digests = audit.get('inputDigests')
-    if digests != expected_digests:
-        errors.append('candidate audit inputDigests are stale or incomplete')
-    elif any(not SHA_PATTERN.fullmatch(value) for value in digests.values()):
-        errors.append('candidate audit inputDigests contain an invalid SHA-256')
+    if audit.get('productCategoryHierarchyPolicy') != expected_hierarchy_policy:
+        errors.append(
+            'candidate audit productCategoryHierarchyPolicy differs from the v0.1 contract'
+        )
+
+    claims, evidence, duplicate_claim_ids, duplicate_evidence_ids = load_evidence_corpus()
+    sources, duplicate_source_ids = load_source_records()
+    companies, duplicate_company_ids = load_pilot_company_records()
 
     relationships = load_json(RELATIONSHIPS_PATH)
     if relationships != []:
@@ -410,6 +558,28 @@ def validate_candidate_audit(
     candidates = audit.get('candidates')
     if not isinstance(candidates, list):
         return errors + ['candidate audit candidates must be an array']
+    try:
+        expected_digests = targeted_input_digests(
+            candidates,
+            claims,
+            evidence,
+            sources,
+            companies,
+            load_json(VALUE_CHAIN_PATH),
+            load_json(RELATIONSHIPS_PATH),
+            duplicate_claim_ids=duplicate_claim_ids,
+            duplicate_evidence_ids=duplicate_evidence_ids,
+            duplicate_source_ids=duplicate_source_ids,
+            duplicate_company_ids=duplicate_company_ids,
+        )
+    except ValueError as error:
+        errors.append(f'candidate audit targeted digest inputs invalid: {error}')
+    else:
+        digests = audit.get('inputDigests')
+        if digests != expected_digests:
+            errors.append('candidate audit targeted inputDigests are stale or incomplete')
+        elif any(not SHA_PATTERN.fullmatch(value) for value in digests.values()):
+            errors.append('candidate audit targeted inputDigests contain an invalid SHA-256')
     candidate_ids = [candidate.get('candidateId') for candidate in candidates if isinstance(candidate, dict)]
     if len(candidate_ids) != len(candidates):
         errors.append('every candidate must be an object with candidateId')
@@ -440,7 +610,18 @@ def validate_candidate_audit(
             errors.append(f'{candidate_id}: invalid entityType {entity_type!r}')
         if not is_nonempty_string(candidate.get('canonicalName')):
             errors.append(f'{candidate_id}: canonicalName must be non-empty')
-        aliases = validate_string_array(candidate.get('aliases'), f'{candidate_id}.aliases', errors)
+        else:
+            validate_label_contract(
+                candidate['canonicalName'],
+                f'{candidate_id}.canonicalName',
+                errors,
+            )
+        aliases = validate_string_array(
+            candidate.get('aliases'),
+            f'{candidate_id}.aliases',
+            errors,
+            enforce_label_contract=True,
+        )
         companies = validate_string_array(
             candidate.get('companies'),
             f'{candidate_id}.companies',
@@ -476,24 +657,44 @@ def validate_candidate_audit(
             grounding = []
         locator_count = 0
         grounding_companies: set[str] = set()
+        grounding_references: set[tuple[Any, Any, Any, Any]] = set()
         for grounding_index, item in enumerate(grounding):
             item_label = f'{candidate_id}.grounding[{grounding_index}]'
             if not isinstance(item, dict) or set(item) != GROUNDING_KEYS:
                 errors.append(f'{item_label}: grounding keys differ from contract')
                 continue
             company_id = item.get('companyId')
+            grounding_reference = (
+                company_id,
+                item.get('claimId'),
+                item.get('evidenceBindingId'),
+                item.get('sourceId'),
+            )
+            if grounding_reference in grounding_references:
+                errors.append(f'{item_label}: duplicate grounding reference')
+            else:
+                grounding_references.add(grounding_reference)
             grounding_companies.add(company_id)
-            claim = claims.get(item.get('claimId'))
-            binding = evidence.get(item.get('evidenceBindingId'))
+            claim_id = item.get('claimId')
+            evidence_binding_id = item.get('evidenceBindingId')
+            source_id = item.get('sourceId')
+            claim = claims.get(claim_id)
+            binding = evidence.get(evidence_binding_id)
             if company_id not in companies:
                 errors.append(f'{item_label}: companyId is not listed by the candidate')
             if claim is None:
-                errors.append(f'{item_label}: unknown Claim {item.get("claimId")}')
+                errors.append(f'{item_label}: unknown Claim {claim_id}')
+            elif claim_id in duplicate_claim_ids:
+                errors.append(f'{item_label}: duplicate Claim record {claim_id}')
             elif claim.get('companyId') != company_id:
                 errors.append(f'{item_label}: Claim companyId mismatch')
             if binding is None:
-                errors.append(f'{item_label}: unknown Evidence Binding {item.get("evidenceBindingId")}')
+                errors.append(f'{item_label}: unknown Evidence Binding {evidence_binding_id}')
             else:
+                if evidence_binding_id in duplicate_evidence_ids:
+                    errors.append(
+                        f'{item_label}: duplicate Evidence Binding record {evidence_binding_id}'
+                    )
                 if binding.get('claimId') != item.get('claimId'):
                     errors.append(f'{item_label}: Evidence Binding Claim mismatch')
                 if binding.get('sourceId') != item.get('sourceId'):
@@ -505,8 +706,10 @@ def validate_candidate_audit(
                     locator_count += 1
                 if decision == 'include' and binding.get('support') != 'supports':
                     errors.append(f'{item_label}: included candidates require a supports Binding')
-            if item.get('sourceId') not in source_ids:
-                errors.append(f'{item_label}: unknown Shared Source {item.get("sourceId")}')
+            if source_id not in sources:
+                errors.append(f'{item_label}: unknown Shared Source {source_id}')
+            elif source_id in duplicate_source_ids:
+                errors.append(f'{item_label}: duplicate Shared Source record {source_id}')
         if grounding_companies != set(companies):
             errors.append(f'{candidate_id}: every listed company must have grounding')
         expected_locator_status = 'complete' if locator_count == len(grounding) else 'partial'

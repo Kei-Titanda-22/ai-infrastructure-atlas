@@ -106,22 +106,25 @@ for (const entity of allCanonicalEntities) {
 export const entityById: ReadonlyMap<string, CanonicalEntity> = mutableById;
 
 export const normalizeEntityLookup = (value: string) =>
-  value.normalize('NFKC').trim().toLocaleLowerCase('en-US');
+  value.normalize('NFKC').trim().toLowerCase();
 
-const mutableAliasIndex = new Map<string, CanonicalEntity>();
-for (const entity of allCanonicalEntities) {
-  const labels = [entity.canonicalName, ...Object.values(entity.displayNames), ...entity.aliases];
-  for (const label of labels) {
-    const key = normalizeEntityLookup(label);
-    const previous = mutableAliasIndex.get(key);
-    if (previous && previous.id !== entity.id) {
-      throw new Error(`Canonical entity alias collision: ${label} (${previous.id}, ${entity.id})`);
+export const buildEntityAliasIndex = (entities: readonly CanonicalEntity[]) => {
+  const aliasIndex = new Map<string, CanonicalEntity>();
+  for (const entity of entities) {
+    const labels = [entity.canonicalName, ...Object.values(entity.displayNames), ...entity.aliases];
+    for (const label of labels) {
+      const key = normalizeEntityLookup(label);
+      const previous = aliasIndex.get(key);
+      if (previous && previous.id !== entity.id) {
+        throw new Error(`Canonical entity alias collision: ${label} (${previous.id}, ${entity.id})`);
+      }
+      aliasIndex.set(key, entity);
     }
-    mutableAliasIndex.set(key, entity);
   }
-}
+  return aliasIndex as ReadonlyMap<string, CanonicalEntity>;
+};
 
-export const entityByAlias: ReadonlyMap<string, CanonicalEntity> = mutableAliasIndex;
+export const entityByAlias = buildEntityAliasIndex(allCanonicalEntities);
 
 export const resolveEntity = (id: string) => entityById.get(id);
 

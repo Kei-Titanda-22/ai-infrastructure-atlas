@@ -12,9 +12,9 @@
 既存Company Evidence、Evidence Binding、Shared Source、Company JSON、Value Chainだけをbounded reviewし、将来のPilot Relation endpointまたはscopeに必要なcanonical identityを限定した。
 
 - Product: 11 include
-- Technology: 9 include
+- Technology: 8 include
 - Market: 0 include
-- Deferred: 8
+- Deferred: 9
 - Rejected: 8
 
 Productはreview済みgeneric product categoryだけである。brand、SKU、named product family、marketing phraseはregistryへ入れない。Marketは現在のPilot Relationにaccepted endpoint / scope requirementがないため、空registryを正式状態とする。
@@ -24,7 +24,7 @@ Productはreview済みgeneric product categoryだけである。brand、SKU、na
 | ID | Canonical name | Pilot companies | Intended use |
 | --- | --- | --- | --- |
 | `product-category-coater-developer-equipment` | Coater/developer equipment | Tokyo Electron | `PRODUCES`; competition scope |
-| `product-category-connectivity-semiconductor` | Connectivity semiconductor | Broadcom | `PRODUCES` endpoint |
+| `product-category-connectivity-semiconductor` | Connectivity semiconductors | Broadcom | `PRODUCES` endpoint |
 | `product-category-cpu` | Central processing unit | NVIDIA | `PRODUCES` endpoint |
 | `product-category-custom-accelerator-asic` | Custom accelerator ASIC | Broadcom | `PRODUCES`; competition scope |
 | `product-category-dpu` | Data processing unit | NVIDIA | `PRODUCES` endpoint |
@@ -40,7 +40,6 @@ Productはreview済みgeneric product categoryだけである。brand、SKU、na
 | ID | Kind | Pilot companies | Intended use |
 | --- | --- | --- | --- |
 | `technology-accelerated-computing-architecture` | architecture | NVIDIA | `DEVELOPS`; `POSITIONED_IN` candidate |
-| `technology-custom-silicon-design` | architecture | Broadcom | `DEVELOPS` candidate |
 | `technology-ethernet-networking` | protocol | Broadcom / NVIDIA | `DEVELOPS` / `USES`; competition scope |
 | `technology-semiconductor-coating-development` | manufacturing process | Tokyo Electron | `DEVELOPS` / `USES`; competition scope |
 | `technology-semiconductor-deposition` | manufacturing process | Applied Materials / Lam Research / Tokyo Electron | `DEVELOPS` / `USES`; competition scope |
@@ -62,6 +61,7 @@ None. The accepted Company Compare Pilot can use existing `customer-end-market` 
 | `market-memory-semiconductor` | Market | Product/process scope is sufficient for the Pilot; no Market endpoint is required. |
 | `product-category-data-center-networking-system` | Product | Would mix switches, silicon, fabric, adapters, and named systems at an unstable grain. |
 | `technology-asic-architecture` | Technology | Current Claims use ASIC as both Product and architecture; Product identity is adopted and cross-type duplication is avoided. |
+| `technology-custom-silicon-design` | Technology | Current support establishes a custom-design capability, not a stable architecture. v0.1 has no design-methodology/capability kind, and the taxonomy is not expanded for this candidate. |
 | `technology-high-aspect-ratio-processing` | Technology | Current Atlas-analysis Claim does not close a stable company-wide Technology relation. |
 | `technology-nvlink` | Technology | Valid protocol candidate but not needed by the initial Pilot Relation endpoint/scope. |
 | `technology-plasma-etching` | Technology | Existing support is subsidiary/facility-specific and v0.1 has no sub-Company scope. |
@@ -81,11 +81,41 @@ None. The accepted Company Compare Pilot can use existing `customer-end-market` 
 
 ## Evidence grounding
 
-The 20 included candidates have 31 Company-level grounding entries. Each entry resolves through:
+The 19 included candidates have 30 Company-level grounding entries. Each entry resolves through:
 
 `Claim → Evidence Binding → Shared Source`
 
-Structured Locator availability is 31 / 31. Registry records do not copy Company IDs, Source metadata, Locator, or Relation facts. Exact Claim, Binding, Source, and candidate decisions are retained only in the machine-readable audit.
+Structured Locator availability is 30 / 30. Registry records do not copy Company IDs, Source metadata, Locator, or Relation facts. Exact Claim, Binding, Source, and candidate decisions are retained only in the machine-readable audit.
+
+## Targeted input freshness
+
+Candidate audit freshness is not coupled to the full Company Evidence or Shared Source corpus. The validator hashes only:
+
+- the five Pilot Company JSON records;
+- every Claim record referenced by candidate grounding;
+- every Evidence Binding record referenced by candidate grounding;
+- every Shared Source record referenced by candidate grounding;
+- `value-chain.json`;
+- `relationships.json`.
+
+Claim, Binding, and Source records are sorted by ID and serialized with stable JSON key ordering before SHA-256 hashing. An unrelated company Evidence or Source change therefore does not stale this audit. Any change to a referenced record, including Claim statement/type/priority/as-of, Binding support/source/Locator/last-checked, or Source metadata, does stale it. Unknown or duplicate referenced records fail validation.
+
+## Broad / narrow Product boundary
+
+Wafer Fabrication Equipment (WFE) and narrower deposition, etch, cleaning, and coater/developer categories intentionally coexist as independent canonical identities.
+
+- No parent-child hierarchy is implemented in this PR.
+- A WFE Relation must not imply or generate a narrower equipment Relation.
+- A narrower equipment Relation must not imply or generate a WFE Relation.
+- No aggregation, roll-up, or deduplication is performed.
+- Relation executable foundation must not introduce an implicit hierarchy.
+- A future hierarchy requires a separate Schema change and change-control review.
+
+## Canonical label refinements
+
+- `product-category-custom-accelerator-asic` does not accept the overly broad alias `ASIC`; only `Custom accelerator` and `Custom accelerators` remain.
+- `product-category-connectivity-semiconductor` uses canonical name `Connectivity semiconductors`, Japanese display name `コネクティビティ半導体`, and singular alias `Connectivity semiconductor`.
+- `product-category-wafer-fabrication-equipment` uses Japanese display name `半導体前工程製造装置` and aliases `Wafer fab equipment` / `WFE`.
 
 ## Registry contract
 
@@ -97,7 +127,8 @@ Structured Locator availability is 31 / 31. Registry records do not copy Company
 - [`validate-entity-registry.py`](../scripts/validate-entity-registry.py) validates structure, collisions, replacements, audit grounding, input freshness, and registry/audit identity.
 - Validator and resolver behavior is fixed by [`test-entity-registry-validator.py`](../scripts/test-entity-registry-validator.py) and [`test-entity-registry-loader.mjs`](../scripts/test-entity-registry-loader.mjs).
 - IDs are immutable ASCII lower-kebab-case with entity prefixes.
-- Alias lookup is NFKC + case-insensitive; cross-registry collision is prohibited.
+- Label lookup is NFKC + trim + Unicode lowercase. Python uses `lower()` and TypeScript uses `toLowerCase()`.
+- The validator rejects canonical names, display names, and aliases where Python `lower()` and `casefold()` differ after NFKC. Cross-registry collision is prohibited after normalization.
 - Active records have `replacedBy: null`; replacement cycles are prohibited.
 
 ## Boundaries retained

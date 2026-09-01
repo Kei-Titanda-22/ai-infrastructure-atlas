@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://kei-titanda-22.github.io/ai-infrastructure-atlas/schemas/entity-registry-v01.json",
   "title": "Atlas Pilot Canonical Entity Registry v0.1",
+  "$comment": "Label lookup uses NFKC, trim, and Unicode lowercase. The validator rejects canonicalName, displayName, or alias values where Python lower() and casefold() differ after NFKC.",
   "oneOf": [
     { "$ref": "#/$defs/productRegistry" },
     { "$ref": "#/$defs/technologyRegistry" },
