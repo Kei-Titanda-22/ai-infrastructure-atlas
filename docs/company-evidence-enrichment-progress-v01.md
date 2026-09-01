@@ -609,6 +609,25 @@ Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation 
 - Protection: financial values / relationships / Global Visual System / Evidence Schema / Freeze contract変更 `0`
 - Browser QA: Legrand（`1024px`）とSMC（`360px`）で追加Claim、bibliography、Evidence marker `44 × 44px`、drawer、Primary Source、Escape、focus return、document overflow `0` を確認
 - Validation: Company Evidence / Freeze / Coverage / Triage / all validators / financial quality / secret scan / Astro `109` pages / Pagefind `105` pages / semantic protection (`financialDiff 0`, `protectedSemanticDiff 0`) passed
-- PR / merge / Actions / Pages: pending publication
+- PR: [#151](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/pull/151)
+- Merge SHA: `d8b6e223ec49bd454a0fd1276989723b0810a2d0`
+- Actions: [run 33510578330](https://github.com/Kei-Titanda-22/ai-infrastructure-atlas/actions/runs/33510578330) success
+- Pages: Legrand（desktop）とSMC（mobile）の追加Claim・bibliography・drawer・Primary Source・Escape・focus return・overflowを公開環境で再確認
 - Company Evidence v1 Coverage Close: **NO** (Validation v0.2 cycle 2 final gate pending)
+- HARD STOP: `0`
+
+## Triage Validation v0.2 Final Gate and Company Evidence v1 Coverage Close
+
+- Baseline main: `d8b6e223ec49bd454a0fd1276989723b0810a2d0`
+- Seed: `triage-validation-v02`
+- Final deterministic sample: `87` (`SUFFICIENT_PARTIAL 24`; remaining `DEFERRED 9 / 9`; `NOT_APPLICABLE 30 / 30`; `NOT_DISCLOSED 0 / 0`; former-DEFERRED representation `24`)
+- Validation cycles: cycle 0 found `4 MATERIAL` customer/end-market threshold mismatches; cycle 1 found `2 MATERIAL` capacity-expansion mismatches in the exhausted 11-record affected stratum; both patterns were remediated before cycle 2.
+- Final result: exact `87`; MINOR `0`; MATERIAL `0`; CRITICAL `0`; unresolved systemic patterns `0`; `PASS`
+- Validation remediation: records reclassified `6`; new ACTIONABLE found / processed `5 / 5`; Claims / Evidence / structured Locators `5 / 5 / 5`; Shared Sources reused / added `4 / 3`.
+- Coverage across validation remediation: `321 / 738 / 41 → 321 / 740 / 39` (complete / partial / not-started)
+- Final Triage: ACTIONABLE `0`; SUFFICIENT_PARTIAL `740`; NOT_DISCLOSED `0`; NOT_APPLICABLE `30`; DEFERRED `9`; REVIEW_REQUIRED `0`
+- Protection: final financial diff `0`; production semantic diff `0`; UI / Evidence Schema / Freeze contract変更 `0`
+- Browser QA: Evidence remediation PR #150 / #151で対象代表会社の `1024px` / `360px` QAとmerge後Pages確認を完了。final validation/closeはdocs/audit-onlyのため追加browser QA不要。
+- Audit: `scripts/audit-company-evidence-triage-validation-v02.py --check` がsample再現、quota、全residual strata、Evidence/Locator、一次Source、cycle、summary、freshness、PASS gateを検証。意味判定は生成しない。
+- Company Evidence v1 Coverage Close: **YES**
 - HARD STOP: `0`
