@@ -356,3 +356,23 @@ All A2–A4 and B1–B8 batches are `merged / Actions success / Pages checked`. 
 ## Resume marker
 
 Evidence Gap Final Triage & Closure Phase is complete: ACTIONABLE pending `0`, REVIEW_REQUIRED `0`, HARD STOP `0`. Do not rerun initial company enrichment or investigate SUFFICIENT_PARTIAL / NOT_DISCLOSED / NOT_APPLICABLE / DEFERRED records without a new approved phase.
+
+## Triage Validation Audit v0.1
+
+- This audit supersedes the prior `Ready for Company Evidence v1 coverage close: YES` readiness marker.
+- Baseline main: `fbe3981f132654658ec9c2c54594a520acde8f18`
+- Deterministic sample: `81` (`SUFFICIENT_PARTIAL 24` / `DEFERRED 24` / `NOT_APPLICABLE 28` / `NOT_DISCLOSED 5`)
+- Result: exact `59`; MINOR `0`; MATERIAL `22`; CRITICAL `0`
+- MATERIAL rate: `27.2%`
+- Systemic patterns: DEFERRED high-leverage primary sources; hybrid internal/outsourced manufacturing under NOT_APPLICABLE; category-incompatible NOT_DISCLOSED rationale
+- New ACTIONABLE found in sample: `21`
+- Remediation cycles / records reclassified / ACTIONABLE processed: `0 / 0 / 0`
+- Coverage remains: complete `321`; partial `451`; not-started `328`
+- Triage remains: ACTIONABLE `0`; SUFFICIENT_PARTIAL `446`; NOT_DISCLOSED `5`; NOT_APPLICABLE `28`; DEFERRED `300`; REVIEW_REQUIRED `0`
+- Production Evidence / financial / UI / Schema / Freeze changes: `0`
+- HARD STOP: `all-sample MATERIAL rate > 10%`
+- Ready for Company Evidence v1 coverage close: **NO**
+
+## Resume marker
+
+Do not create `docs/company-evidence-v1-coverage-close.md` or begin remediation from this run. Re-evaluate only the affected strata after the HARD STOP is explicitly resolved; do not unconditionally reopen all 779 gaps.
