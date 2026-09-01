@@ -2,7 +2,7 @@
   "schemaVersion": "0.1",
   "generatedAt": "2026-09-01T00:00:00Z",
   "dataAsOf": "2026-09-01",
-  "inputDigest": "sha256:2ae9d11f1c615250b9eb705e14977a38a70f1a4c923c4c73363bf167e90d75b8",
+  "inputDigest": "sha256:5da7731cd136024fdbece2b16c0e52e52dc4181d0efab97c0408ec2707015e3b",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,74 +27,74 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 198
+    "inputFileCount": 200
   },
   "summary": {
     "coverage": {
-      "complete": 213,
-      "partial": 481,
-      "not-started": 406
+      "complete": 240,
+      "partial": 472,
+      "not-started": 388
     },
     "missingStatus": {
-      "not-collected": 393,
+      "not-collected": 375,
       "primary-source-unchecked": 4,
       "not-disclosed": 5,
       "not-applicable": 9
     },
     "maturity": {
       "L0": 0,
-      "L1": 33,
+      "L1": 24,
       "L2": 3,
       "L3": 0,
-      "L4": 64
+      "L4": 73
     },
     "evidenceMaturityDimensions": {
       "companyLevelSourceCompanies": 100,
-      "directCategorySourcePairs": 510,
-      "claimEvidenceBindingPairs": 505,
-      "structuredLocatorPairs": 505,
-      "freezeReadyPairs": 505
+      "directCategorySourcePairs": 573,
+      "claimEvidenceBindingPairs": 568,
+      "structuredLocatorPairs": 568,
+      "freezeReadyPairs": 568
     },
     "fieldLevelLegacy": {
       "summary": {
         "contentPresent": 100,
-        "directEvidenceAvailable": 65,
-        "claimLevelBindingAvailable": 64,
-        "migrationCandidate": 36,
-        "evidenceGap": 36
+        "directEvidenceAvailable": 74,
+        "claimLevelBindingAvailable": 73,
+        "migrationCandidate": 27,
+        "evidenceGap": 27
       },
       "aiRole": {
         "contentPresent": 100,
-        "directEvidenceAvailable": 64,
-        "claimLevelBindingAvailable": 64,
-        "migrationCandidate": 36,
-        "evidenceGap": 36
+        "directEvidenceAvailable": 73,
+        "claimLevelBindingAvailable": 73,
+        "migrationCandidate": 27,
+        "evidenceGap": 27
       },
       "products": {
         "contentPresent": 100,
-        "directEvidenceAvailable": 64,
-        "claimLevelBindingAvailable": 64,
-        "migrationCandidate": 36,
-        "evidenceGap": 36
+        "directEvidenceAvailable": 73,
+        "claimLevelBindingAvailable": 73,
+        "migrationCandidate": 27,
+        "evidenceGap": 27
       },
       "strengths": {
         "contentPresent": 100,
-        "directEvidenceAvailable": 63,
-        "claimLevelBindingAvailable": 63,
-        "migrationCandidate": 37,
-        "evidenceGap": 37
+        "directEvidenceAvailable": 72,
+        "claimLevelBindingAvailable": 72,
+        "migrationCandidate": 28,
+        "evidenceGap": 28
       },
       "risks": {
         "contentPresent": 100,
-        "directEvidenceAvailable": 62,
-        "claimLevelBindingAvailable": 62,
-        "migrationCandidate": 38,
-        "evidenceGap": 38
+        "directEvidenceAvailable": 71,
+        "claimLevelBindingAvailable": 71,
+        "migrationCandidate": 29,
+        "evidenceGap": 29
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 292,
-      "uniqueSourceCount": 290,
+      "registryRecordCount": 301,
+      "uniqueSourceCount": 299,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -125,20 +125,20 @@
       "financialSourceResolved": 124
     },
     "locatorAudit": {
-      "bindingCount": 505,
-      "validLocatorCount": 505,
+      "bindingCount": 568,
+      "validLocatorCount": 568,
       "missingLocatorCount": 0,
       "missingLocatorBindingIds": [],
       "invalidLocatorCount": 0,
       "invalidLocators": [],
       "fieldUsage": {
-        "page": 148,
-        "section": 473,
-        "heading": 495,
+        "page": 155,
+        "section": 536,
+        "heading": 558,
         "table": 1,
         "note": 0,
         "anchor": 0,
-        "quotedLabel": 478
+        "quotedLabel": 541
       }
     },
     "priorityBands": {
@@ -166,26 +166,17 @@
         "fanuc",
         "globalwafers",
         "hexagon",
-        "jcet",
         "keyence",
         "kinsus",
         "linde",
-        "mediatek",
         "mobileye",
         "nan-ya-pcb",
-        "nikon",
-        "nxp",
         "omron",
-        "renesas",
-        "resonac-holdings",
-        "rohm",
-        "seagate",
         "shin-etsu-chemical",
         "shinko-electric",
         "smc",
         "sumco",
         "tesla",
-        "texas-instruments",
         "unimicron",
         "western-digital",
         "yaskawa"
@@ -195,47 +186,47 @@
   "categorySummary": [
     {
       "category": "company-overview",
-      "completeCompanies": 63,
-      "partialCompanies": 37,
+      "completeCompanies": 72,
+      "partialCompanies": 28,
       "notStartedCompanies": 0,
-      "directSourceCompanies": 65,
-      "claimEvidenceCompanies": 64,
-      "migrationCandidateCompanies": 36
+      "directSourceCompanies": 74,
+      "claimEvidenceCompanies": 73,
+      "migrationCandidateCompanies": 27
     },
     {
       "category": "ai-infrastructure-role",
       "completeCompanies": 5,
       "partialCompanies": 95,
       "notStartedCompanies": 0,
-      "directSourceCompanies": 64,
-      "claimEvidenceCompanies": 64,
-      "migrationCandidateCompanies": 36
+      "directSourceCompanies": 73,
+      "claimEvidenceCompanies": 73,
+      "migrationCandidateCompanies": 27
     },
     {
       "category": "products",
-      "completeCompanies": 64,
-      "partialCompanies": 36,
+      "completeCompanies": 73,
+      "partialCompanies": 27,
       "notStartedCompanies": 0,
-      "directSourceCompanies": 64,
-      "claimEvidenceCompanies": 64,
-      "migrationCandidateCompanies": 36
+      "directSourceCompanies": 73,
+      "claimEvidenceCompanies": 73,
+      "migrationCandidateCompanies": 27
     },
     {
       "category": "technology",
       "completeCompanies": 1,
-      "partialCompanies": 63,
-      "notStartedCompanies": 36,
-      "directSourceCompanies": 64,
-      "claimEvidenceCompanies": 64,
+      "partialCompanies": 72,
+      "notStartedCompanies": 27,
+      "directSourceCompanies": 73,
+      "claimEvidenceCompanies": 73,
       "migrationCandidateCompanies": 0
     },
     {
       "category": "value-chain-position",
-      "completeCompanies": 64,
+      "completeCompanies": 73,
       "partialCompanies": 0,
-      "notStartedCompanies": 36,
-      "directSourceCompanies": 64,
-      "claimEvidenceCompanies": 64,
+      "notStartedCompanies": 27,
+      "directSourceCompanies": 73,
+      "claimEvidenceCompanies": 73,
       "migrationCandidateCompanies": 0
     },
     {
@@ -270,9 +261,9 @@
       "completeCompanies": 0,
       "partialCompanies": 99,
       "notStartedCompanies": 1,
-      "directSourceCompanies": 63,
-      "claimEvidenceCompanies": 63,
-      "migrationCandidateCompanies": 37
+      "directSourceCompanies": 72,
+      "claimEvidenceCompanies": 72,
+      "migrationCandidateCompanies": 28
     },
     {
       "category": "strategy",
@@ -288,34 +279,32 @@
       "completeCompanies": 0,
       "partialCompanies": 99,
       "notStartedCompanies": 1,
-      "directSourceCompanies": 62,
-      "claimEvidenceCompanies": 62,
-      "migrationCandidateCompanies": 38
+      "directSourceCompanies": 71,
+      "claimEvidenceCompanies": 71,
+      "migrationCandidateCompanies": 29
     }
   ],
   "priorityBands": {
     "A": [
+      "air-liquide",
+      "ajinomoto-fine-techno",
       "aptiv",
       "bosch",
+      "denso",
+      "entegris",
       "equinix",
-      "jcet",
+      "fanuc",
+      "globalwafers",
       "kinsus",
       "linde",
-      "mediatek",
       "mobileye",
-      "nikon",
-      "nxp",
-      "renesas",
-      "resonac-holdings",
-      "rohm",
-      "seagate",
-      "texas-instruments",
+      "shinko-electric",
+      "tesla",
+      "unimicron",
       "western-digital"
     ],
     "B": [
       "advantest",
-      "air-liquide",
-      "ajinomoto-fine-techno",
       "amd",
       "amkor",
       "analog-devices",
@@ -330,20 +319,17 @@
       "cisco",
       "coherent",
       "credo",
-      "denso",
       "disco",
       "eaton",
-      "entegris",
-      "fanuc",
       "furukawa-electric",
       "ge-vernova",
       "globalfoundries",
-      "globalwafers",
       "hanmi-semiconductor",
       "hexagon",
       "ibiden",
       "infineon",
       "intel",
+      "jcet",
       "johnson-controls",
       "keyence",
       "kioxia",
@@ -352,20 +338,26 @@
       "lasertec",
       "legrand",
       "marvell",
+      "mediatek",
       "micron",
       "mitsubishi-electric",
       "monolithic-power",
       "nan-ya-pcb",
+      "nikon",
       "nvent",
+      "nxp",
       "omron",
       "onsemi",
       "qualcomm",
+      "renesas",
+      "resonac-holdings",
+      "rohm",
       "samsung-electronics",
       "sandisk",
       "schneider-electric",
       "screen-holdings",
+      "seagate",
       "shin-etsu-chemical",
-      "shinko-electric",
       "siemens-energy",
       "sk-hynix",
       "smc",
@@ -373,11 +365,10 @@
       "sumco",
       "sumitomo-electric",
       "synopsys",
-      "tesla",
+      "texas-instruments",
       "tokyo-electron",
       "trane-technologies",
       "umc",
-      "unimicron",
       "yaskawa"
     ],
     "C": [
@@ -441,19 +432,19 @@
     {
       "category": "technology",
       "completeCompanies": 1,
-      "partialCompanies": 63,
-      "notStartedCompanies": 36,
-      "directSourceCompanies": 64,
-      "claimEvidenceCompanies": 64,
+      "partialCompanies": 72,
+      "notStartedCompanies": 27,
+      "directSourceCompanies": 73,
+      "claimEvidenceCompanies": 73,
       "migrationCandidateCompanies": 0
     },
     {
       "category": "value-chain-position",
-      "completeCompanies": 64,
+      "completeCompanies": 73,
       "partialCompanies": 0,
-      "notStartedCompanies": 36,
-      "directSourceCompanies": 64,
-      "claimEvidenceCompanies": 64,
+      "notStartedCompanies": 27,
+      "directSourceCompanies": 73,
+      "claimEvidenceCompanies": 73,
       "migrationCandidateCompanies": 0
     },
     {
@@ -461,51 +452,51 @@
       "completeCompanies": 0,
       "partialCompanies": 99,
       "notStartedCompanies": 1,
-      "directSourceCompanies": 63,
-      "claimEvidenceCompanies": 63,
-      "migrationCandidateCompanies": 37
+      "directSourceCompanies": 72,
+      "claimEvidenceCompanies": 72,
+      "migrationCandidateCompanies": 28
     },
     {
       "category": "risks",
       "completeCompanies": 0,
       "partialCompanies": 99,
       "notStartedCompanies": 1,
-      "directSourceCompanies": 62,
-      "claimEvidenceCompanies": 62,
-      "migrationCandidateCompanies": 38
+      "directSourceCompanies": 71,
+      "claimEvidenceCompanies": 71,
+      "migrationCandidateCompanies": 29
     },
     {
       "category": "ai-infrastructure-role",
       "completeCompanies": 5,
       "partialCompanies": 95,
       "notStartedCompanies": 0,
-      "directSourceCompanies": 64,
-      "claimEvidenceCompanies": 64,
-      "migrationCandidateCompanies": 36
+      "directSourceCompanies": 73,
+      "claimEvidenceCompanies": 73,
+      "migrationCandidateCompanies": 27
     },
     {
       "category": "company-overview",
-      "completeCompanies": 63,
-      "partialCompanies": 37,
+      "completeCompanies": 72,
+      "partialCompanies": 28,
       "notStartedCompanies": 0,
-      "directSourceCompanies": 65,
-      "claimEvidenceCompanies": 64,
-      "migrationCandidateCompanies": 36
+      "directSourceCompanies": 74,
+      "claimEvidenceCompanies": 73,
+      "migrationCandidateCompanies": 27
     },
     {
       "category": "products",
-      "completeCompanies": 64,
-      "partialCompanies": 36,
+      "completeCompanies": 73,
+      "partialCompanies": 27,
       "notStartedCompanies": 0,
-      "directSourceCompanies": 64,
-      "claimEvidenceCompanies": 64,
-      "migrationCandidateCompanies": 36
+      "directSourceCompanies": 73,
+      "claimEvidenceCompanies": 73,
+      "migrationCandidateCompanies": 27
     }
   ],
   "nextRecommendedBatch": [
     {
-      "companyId": "jcet",
-      "companyName": "JCET（長電科技）",
+      "companyId": "western-digital",
+      "companyName": "Western Digital（ウエスタンデジタル）",
       "reasons": [
         "Coverage gap: 6 not-started / 5 partial",
         "AI Infrastructure importance aid: 4/5",
@@ -514,72 +505,72 @@
       ]
     },
     {
-      "companyId": "mediatek",
-      "companyName": "MediaTek（メディアテック）",
+      "companyId": "aptiv",
+      "companyName": "Aptiv（アプティブ）",
       "reasons": [
         "Coverage gap: 6 not-started / 5 partial",
-        "AI Infrastructure importance aid: 4/5",
-        "Source leverage: 1 broad primary Sources",
+        "AI Infrastructure importance aid: 3/5",
+        "Source leverage: 2 broad primary Sources",
         "Migration ease: 5 legacy-field candidates"
       ]
     },
     {
-      "companyId": "nikon",
-      "companyName": "ニコン",
+      "companyId": "bosch",
+      "companyName": "Bosch（ボッシュ）",
       "reasons": [
         "Coverage gap: 6 not-started / 5 partial",
-        "AI Infrastructure importance aid: 4/5",
-        "Source leverage: 1 broad primary Sources",
+        "AI Infrastructure importance aid: 3/5",
+        "Source leverage: 2 broad primary Sources",
         "Migration ease: 5 legacy-field candidates"
       ]
     },
     {
-      "companyId": "nxp",
-      "companyName": "NXP Semiconductors（NXPセミコンダクターズ）",
+      "companyId": "equinix",
+      "companyName": "Equinix（エクイニクス）",
       "reasons": [
         "Coverage gap: 6 not-started / 5 partial",
-        "AI Infrastructure importance aid: 4/5",
-        "Source leverage: 1 broad primary Sources",
+        "AI Infrastructure importance aid: 3/5",
+        "Source leverage: 2 broad primary Sources",
         "Migration ease: 5 legacy-field candidates"
       ]
     },
     {
-      "companyId": "renesas",
-      "companyName": "ルネサス エレクトロニクス",
+      "companyId": "kinsus",
+      "companyName": "Kinsus（景碩科技）",
       "reasons": [
         "Coverage gap: 6 not-started / 5 partial",
-        "AI Infrastructure importance aid: 4/5",
-        "Source leverage: 1 broad primary Sources",
+        "AI Infrastructure importance aid: 3/5",
+        "Source leverage: 2 broad primary Sources",
         "Migration ease: 5 legacy-field candidates"
       ]
     },
     {
-      "companyId": "resonac-holdings",
-      "companyName": "レゾナック・ホールディングス",
+      "companyId": "linde",
+      "companyName": "Linde（リンデ）",
       "reasons": [
         "Coverage gap: 6 not-started / 5 partial",
-        "AI Infrastructure importance aid: 4/5",
-        "Source leverage: 1 broad primary Sources",
+        "AI Infrastructure importance aid: 3/5",
+        "Source leverage: 2 broad primary Sources",
         "Migration ease: 5 legacy-field candidates"
       ]
     },
     {
-      "companyId": "rohm",
-      "companyName": "ローム",
+      "companyId": "mobileye",
+      "companyName": "Mobileye（モービルアイ）",
       "reasons": [
         "Coverage gap: 6 not-started / 5 partial",
-        "AI Infrastructure importance aid: 4/5",
-        "Source leverage: 1 broad primary Sources",
+        "AI Infrastructure importance aid: 3/5",
+        "Source leverage: 2 broad primary Sources",
         "Migration ease: 5 legacy-field candidates"
       ]
     },
     {
-      "companyId": "seagate",
-      "companyName": "Seagate（シーゲイト）",
+      "companyId": "shinko-electric",
+      "companyName": "新光電気工業",
       "reasons": [
         "Coverage gap: 6 not-started / 5 partial",
         "AI Infrastructure importance aid: 4/5",
-        "Source leverage: 1 broad primary Sources",
+        "Source leverage: 0 broad primary Sources",
         "Migration ease: 5 legacy-field candidates"
       ]
     }
@@ -1379,7 +1370,7 @@
         "competitive-positioning",
         "risks"
       ],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 189,
       "priorityInputs": {
         "coverageDeficit": 17,
@@ -1650,7 +1641,7 @@
         "competitive-positioning",
         "risks"
       ],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 189,
       "priorityInputs": {
         "coverageDeficit": 17,
@@ -8355,7 +8346,7 @@
         "competitive-positioning",
         "risks"
       ],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 189,
       "priorityInputs": {
         "coverageDeficit": 17,
@@ -9473,7 +9464,7 @@
         "competitive-positioning",
         "risks"
       ],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 189,
       "priorityInputs": {
         "coverageDeficit": 17,
@@ -10022,7 +10013,7 @@
         "competitive-positioning",
         "risks"
       ],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 189,
       "priorityInputs": {
         "coverageDeficit": 17,
@@ -11410,7 +11401,7 @@
         "competitive-positioning",
         "risks"
       ],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 189,
       "priorityInputs": {
         "coverageDeficit": 17,
@@ -12829,92 +12820,102 @@
       "primaryLayer": "Test & Back-end",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
+      "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 0,
+      "claimCount": 7,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 0,
-      "locatorCount": 0,
-      "directCategorySourcePairCount": 0,
+      "evidenceBindingCount": 7,
+      "locatorCount": 7,
+      "directCategorySourcePairCount": 7,
       "maturity": {
-        "level": "L1",
-        "label": "company-level Sources"
+        "level": "L4",
+        "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
-        "complete": 0,
-        "partial": 5,
-        "not-started": 6
+        "complete": 3,
+        "partial": 4,
+        "not-started": 4
       },
       "categoryCoverage": [
         {
           "category": "company-overview",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-jcet-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "ai-infrastructure-role",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-jcet-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "products",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-jcet-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "technology",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-jcet-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "value-chain-position",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "complete",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-jcet-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "manufacturing-facilities",
@@ -12928,7 +12929,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "capacity-expansion",
@@ -12942,7 +12943,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "customer-end-market",
@@ -12956,21 +12957,23 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "competitive-positioning",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-jcet-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "strategy",
@@ -12984,66 +12987,65 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "risks",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-jcet-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         }
       ],
       "legacyContentState": {
         "summary": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "aiRole": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "products": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "strengths": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "risks": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         }
       },
       "evidenceGaps": [
-        "company-overview",
         "ai-infrastructure-role",
-        "products",
         "technology",
-        "value-chain-position",
         "manufacturing-facilities",
         "capacity-expansion",
         "customer-end-market",
@@ -13051,21 +13053,15 @@
         "strategy",
         "risks"
       ],
-      "migrationCandidates": [
-        "company-overview",
-        "ai-infrastructure-role",
-        "products",
-        "competitive-positioning",
-        "risks"
-      ],
-      "priorityBand": "A",
-      "priorityScore": 193,
+      "migrationCandidates": [],
+      "priorityBand": "B",
+      "priorityScore": 140,
       "priorityInputs": {
-        "coverageDeficit": 17,
+        "coverageDeficit": 12,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
-        "multiCategorySourceLeverage": 1,
-        "migrationEaseCandidates": 5
+        "multiCategorySourceLeverage": 2,
+        "migrationEaseCandidates": 0
       },
       "sourceQuality": {
         "sourceIds": [
@@ -13074,7 +13070,7 @@
         "resolvedSourceIds": [
           "corporate-jcet"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 3,
         "financialSourceIds": [
           "report-jcet-2024-q1"
         ],
@@ -13086,6 +13082,7 @@
         ],
         "staleIshSourceIds": [],
         "multiCategorySourceIds": [
+          "annual-report-jcet-2025",
           "corporate-jcet"
         ]
       },
@@ -16444,92 +16441,102 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
+      "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 0,
+      "claimCount": 7,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 0,
-      "locatorCount": 0,
-      "directCategorySourcePairCount": 0,
+      "evidenceBindingCount": 7,
+      "locatorCount": 7,
+      "directCategorySourcePairCount": 7,
       "maturity": {
-        "level": "L1",
-        "label": "company-level Sources"
+        "level": "L4",
+        "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
-        "complete": 0,
-        "partial": 5,
-        "not-started": 6
+        "complete": 3,
+        "partial": 4,
+        "not-started": 4
       },
       "categoryCoverage": [
         {
           "category": "company-overview",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-mediatek-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "ai-infrastructure-role",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-mediatek-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "products",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-mediatek-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "technology",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-mediatek-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "value-chain-position",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "complete",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-mediatek-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "manufacturing-facilities",
@@ -16543,7 +16550,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "capacity-expansion",
@@ -16557,7 +16564,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "customer-end-market",
@@ -16571,21 +16578,23 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "competitive-positioning",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-mediatek-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "strategy",
@@ -16599,66 +16608,65 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "risks",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-mediatek-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         }
       ],
       "legacyContentState": {
         "summary": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "aiRole": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "products": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "strengths": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "risks": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         }
       },
       "evidenceGaps": [
-        "company-overview",
         "ai-infrastructure-role",
-        "products",
         "technology",
-        "value-chain-position",
         "manufacturing-facilities",
         "capacity-expansion",
         "customer-end-market",
@@ -16666,21 +16674,15 @@
         "strategy",
         "risks"
       ],
-      "migrationCandidates": [
-        "company-overview",
-        "ai-infrastructure-role",
-        "products",
-        "competitive-positioning",
-        "risks"
-      ],
-      "priorityBand": "A",
-      "priorityScore": 193,
+      "migrationCandidates": [],
+      "priorityBand": "B",
+      "priorityScore": 138,
       "priorityInputs": {
-        "coverageDeficit": 17,
+        "coverageDeficit": 12,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
-        "migrationEaseCandidates": 5
+        "migrationEaseCandidates": 0
       },
       "sourceQuality": {
         "sourceIds": [
@@ -16689,7 +16691,7 @@
         "resolvedSourceIds": [
           "ir-mediatek"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 3,
         "financialSourceIds": [
           "mediatek-q4-2025-consolidated-financial-statements"
         ],
@@ -18091,92 +18093,102 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
+      "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 0,
+      "claimCount": 7,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 0,
-      "locatorCount": 0,
-      "directCategorySourcePairCount": 0,
+      "evidenceBindingCount": 7,
+      "locatorCount": 7,
+      "directCategorySourcePairCount": 7,
       "maturity": {
-        "level": "L1",
-        "label": "company-level Sources"
+        "level": "L4",
+        "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
-        "complete": 0,
-        "partial": 5,
-        "not-started": 6
+        "complete": 3,
+        "partial": 4,
+        "not-started": 4
       },
       "categoryCoverage": [
         {
           "category": "company-overview",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-nikon-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "ai-infrastructure-role",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-nikon-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "products",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-nikon-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "technology",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-nikon-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "value-chain-position",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "complete",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-nikon-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "manufacturing-facilities",
@@ -18190,7 +18202,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "capacity-expansion",
@@ -18204,7 +18216,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "customer-end-market",
@@ -18218,21 +18230,23 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "competitive-positioning",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-nikon-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "strategy",
@@ -18246,66 +18260,65 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "risks",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-nikon-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         }
       ],
       "legacyContentState": {
         "summary": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "aiRole": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "products": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "strengths": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "risks": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         }
       },
       "evidenceGaps": [
-        "company-overview",
         "ai-infrastructure-role",
-        "products",
         "technology",
-        "value-chain-position",
         "manufacturing-facilities",
         "capacity-expansion",
         "customer-end-market",
@@ -18313,21 +18326,15 @@
         "strategy",
         "risks"
       ],
-      "migrationCandidates": [
-        "company-overview",
-        "ai-infrastructure-role",
-        "products",
-        "competitive-positioning",
-        "risks"
-      ],
-      "priorityBand": "A",
-      "priorityScore": 193,
+      "migrationCandidates": [],
+      "priorityBand": "B",
+      "priorityScore": 138,
       "priorityInputs": {
-        "coverageDeficit": 17,
+        "coverageDeficit": 12,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
-        "migrationEaseCandidates": 5
+        "migrationEaseCandidates": 0
       },
       "sourceQuality": {
         "sourceIds": [
@@ -18336,7 +18343,7 @@
         "resolvedSourceIds": [
           "ir-nikon"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 3,
         "financialSourceIds": [
           "financial-results-nikon-fy2026"
         ],
@@ -18929,92 +18936,102 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
+      "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 0,
+      "claimCount": 7,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 0,
-      "locatorCount": 0,
-      "directCategorySourcePairCount": 0,
+      "evidenceBindingCount": 7,
+      "locatorCount": 7,
+      "directCategorySourcePairCount": 7,
       "maturity": {
-        "level": "L1",
-        "label": "company-level Sources"
+        "level": "L4",
+        "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
-        "complete": 0,
-        "partial": 5,
-        "not-started": 6
+        "complete": 3,
+        "partial": 4,
+        "not-started": 4
       },
       "categoryCoverage": [
         {
           "category": "company-overview",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-nxp-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "ai-infrastructure-role",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-nxp-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "products",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-nxp-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "technology",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-nxp-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "value-chain-position",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "complete",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-nxp-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "manufacturing-facilities",
@@ -19028,7 +19045,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "capacity-expansion",
@@ -19042,7 +19059,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "customer-end-market",
@@ -19056,21 +19073,23 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "competitive-positioning",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-nxp-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "strategy",
@@ -19084,66 +19103,65 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "risks",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-nxp-2025-20f"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         }
       ],
       "legacyContentState": {
         "summary": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "aiRole": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "products": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "strengths": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "risks": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         }
       },
       "evidenceGaps": [
-        "company-overview",
         "ai-infrastructure-role",
-        "products",
         "technology",
-        "value-chain-position",
         "manufacturing-facilities",
         "capacity-expansion",
         "customer-end-market",
@@ -19151,21 +19169,15 @@
         "strategy",
         "risks"
       ],
-      "migrationCandidates": [
-        "company-overview",
-        "ai-infrastructure-role",
-        "products",
-        "competitive-positioning",
-        "risks"
-      ],
-      "priorityBand": "A",
-      "priorityScore": 193,
+      "migrationCandidates": [],
+      "priorityBand": "B",
+      "priorityScore": 138,
       "priorityInputs": {
-        "coverageDeficit": 17,
+        "coverageDeficit": 12,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
-        "migrationEaseCandidates": 5
+        "migrationEaseCandidates": 0
       },
       "sourceQuality": {
         "sourceIds": [
@@ -19174,7 +19186,7 @@
         "resolvedSourceIds": [
           "ir-nxp"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 3,
         "financialSourceIds": [
           "earnings-nxp-2026-07-28-q2-2026"
         ],
@@ -20025,92 +20037,102 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
+      "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 0,
+      "claimCount": 7,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 0,
-      "locatorCount": 0,
-      "directCategorySourcePairCount": 0,
+      "evidenceBindingCount": 7,
+      "locatorCount": 7,
+      "directCategorySourcePairCount": 7,
       "maturity": {
-        "level": "L1",
-        "label": "company-level Sources"
+        "level": "L4",
+        "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
-        "complete": 0,
-        "partial": 5,
-        "not-started": 6
+        "complete": 3,
+        "partial": 4,
+        "not-started": 4
       },
       "categoryCoverage": [
         {
           "category": "company-overview",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-securities-renesas-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "ai-infrastructure-role",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-securities-renesas-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "products",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-securities-renesas-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "technology",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-securities-renesas-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "value-chain-position",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "complete",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-securities-renesas-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "manufacturing-facilities",
@@ -20124,7 +20146,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "capacity-expansion",
@@ -20138,7 +20160,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "customer-end-market",
@@ -20152,21 +20174,23 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "competitive-positioning",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-securities-renesas-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "strategy",
@@ -20180,66 +20204,65 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "risks",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-securities-renesas-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         }
       ],
       "legacyContentState": {
         "summary": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "aiRole": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "products": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "strengths": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "risks": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         }
       },
       "evidenceGaps": [
-        "company-overview",
         "ai-infrastructure-role",
-        "products",
         "technology",
-        "value-chain-position",
         "manufacturing-facilities",
         "capacity-expansion",
         "customer-end-market",
@@ -20247,21 +20270,15 @@
         "strategy",
         "risks"
       ],
-      "migrationCandidates": [
-        "company-overview",
-        "ai-infrastructure-role",
-        "products",
-        "competitive-positioning",
-        "risks"
-      ],
-      "priorityBand": "A",
-      "priorityScore": 193,
+      "migrationCandidates": [],
+      "priorityBand": "B",
+      "priorityScore": 138,
       "priorityInputs": {
-        "coverageDeficit": 17,
+        "coverageDeficit": 12,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
-        "migrationEaseCandidates": 5
+        "migrationEaseCandidates": 0
       },
       "sourceQuality": {
         "sourceIds": [
@@ -20270,7 +20287,7 @@
         "resolvedSourceIds": [
           "ir-renesas"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 3,
         "financialSourceIds": [
           "financial-report-renesas-2025"
         ],
@@ -20296,92 +20313,102 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
+      "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 0,
+      "claimCount": 7,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 0,
-      "locatorCount": 0,
-      "directCategorySourcePairCount": 0,
+      "evidenceBindingCount": 7,
+      "locatorCount": 7,
+      "directCategorySourcePairCount": 7,
       "maturity": {
-        "level": "L1",
-        "label": "company-level Sources"
+        "level": "L4",
+        "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
-        "complete": 0,
-        "partial": 5,
-        "not-started": 6
+        "complete": 3,
+        "partial": 4,
+        "not-started": 4
       },
       "categoryCoverage": [
         {
           "category": "company-overview",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-resonac-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "ai-infrastructure-role",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-resonac-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "products",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-resonac-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "technology",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-resonac-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "value-chain-position",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "complete",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-resonac-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "manufacturing-facilities",
@@ -20395,7 +20422,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "capacity-expansion",
@@ -20409,7 +20436,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "customer-end-market",
@@ -20423,21 +20450,23 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "competitive-positioning",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-resonac-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "strategy",
@@ -20451,66 +20480,65 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "risks",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-resonac-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         }
       ],
       "legacyContentState": {
         "summary": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "aiRole": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "products": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "strengths": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "risks": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         }
       },
       "evidenceGaps": [
-        "company-overview",
         "ai-infrastructure-role",
-        "products",
         "technology",
-        "value-chain-position",
         "manufacturing-facilities",
         "capacity-expansion",
         "customer-end-market",
@@ -20518,21 +20546,15 @@
         "strategy",
         "risks"
       ],
-      "migrationCandidates": [
-        "company-overview",
-        "ai-infrastructure-role",
-        "products",
-        "competitive-positioning",
-        "risks"
-      ],
-      "priorityBand": "A",
-      "priorityScore": 193,
+      "migrationCandidates": [],
+      "priorityBand": "B",
+      "priorityScore": 138,
       "priorityInputs": {
-        "coverageDeficit": 17,
+        "coverageDeficit": 12,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
-        "migrationEaseCandidates": 5
+        "migrationEaseCandidates": 0
       },
       "sourceQuality": {
         "sourceIds": [
@@ -20541,7 +20563,7 @@
         "resolvedSourceIds": [
           "corporate-resonac"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 3,
         "financialSourceIds": [
           "results-resonac-2026-05-13-q1"
         ],
@@ -20567,92 +20589,102 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
+      "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 0,
+      "claimCount": 7,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 0,
-      "locatorCount": 0,
-      "directCategorySourcePairCount": 0,
+      "evidenceBindingCount": 7,
+      "locatorCount": 7,
+      "directCategorySourcePairCount": 7,
       "maturity": {
-        "level": "L1",
-        "label": "company-level Sources"
+        "level": "L4",
+        "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
-        "complete": 0,
-        "partial": 5,
-        "not-started": 6
+        "complete": 3,
+        "partial": 4,
+        "not-started": 4
       },
       "categoryCoverage": [
         {
           "category": "company-overview",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-rohm-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "ai-infrastructure-role",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-rohm-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "products",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-rohm-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "technology",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-rohm-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "value-chain-position",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "complete",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-rohm-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "manufacturing-facilities",
@@ -20666,7 +20698,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "capacity-expansion",
@@ -20680,7 +20712,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "customer-end-market",
@@ -20694,21 +20726,23 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "competitive-positioning",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-rohm-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "strategy",
@@ -20722,66 +20756,65 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "risks",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "integrated-rohm-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         }
       ],
       "legacyContentState": {
         "summary": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "aiRole": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "products": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "strengths": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "risks": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         }
       },
       "evidenceGaps": [
-        "company-overview",
         "ai-infrastructure-role",
-        "products",
         "technology",
-        "value-chain-position",
         "manufacturing-facilities",
         "capacity-expansion",
         "customer-end-market",
@@ -20789,21 +20822,15 @@
         "strategy",
         "risks"
       ],
-      "migrationCandidates": [
-        "company-overview",
-        "ai-infrastructure-role",
-        "products",
-        "competitive-positioning",
-        "risks"
-      ],
-      "priorityBand": "A",
-      "priorityScore": 193,
+      "migrationCandidates": [],
+      "priorityBand": "B",
+      "priorityScore": 138,
       "priorityInputs": {
-        "coverageDeficit": 17,
+        "coverageDeficit": 12,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
-        "migrationEaseCandidates": 5
+        "migrationEaseCandidates": 0
       },
       "sourceQuality": {
         "sourceIds": [
@@ -20812,7 +20839,7 @@
         "resolvedSourceIds": [
           "ir-rohm"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 3,
         "financialSourceIds": [
           "financial-report-rohm-fy2026"
         ],
@@ -21950,92 +21977,102 @@
       "primaryLayer": "Memory",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
+      "registrySourceCount": 3,
       "financialSourceCount": 1,
-      "claimCount": 0,
+      "claimCount": 7,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 0,
-      "locatorCount": 0,
-      "directCategorySourcePairCount": 0,
+      "evidenceBindingCount": 7,
+      "locatorCount": 7,
+      "directCategorySourcePairCount": 7,
       "maturity": {
-        "level": "L1",
-        "label": "company-level Sources"
+        "level": "L4",
+        "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
-        "complete": 0,
-        "partial": 5,
-        "not-started": 6
+        "complete": 3,
+        "partial": 4,
+        "not-started": 4
       },
       "categoryCoverage": [
         {
           "category": "company-overview",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-seagate-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "ai-infrastructure-role",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-seagate-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "products",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-seagate-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "technology",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-seagate-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "value-chain-position",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "complete",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-seagate-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "manufacturing-facilities",
@@ -22049,7 +22086,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "capacity-expansion",
@@ -22063,7 +22100,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "customer-end-market",
@@ -22077,21 +22114,23 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "competitive-positioning",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-seagate-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "strategy",
@@ -22105,66 +22144,65 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "risks",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "sec-seagate-2025-10k"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         }
       ],
       "legacyContentState": {
         "summary": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "aiRole": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "products": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "strengths": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "risks": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         }
       },
       "evidenceGaps": [
-        "company-overview",
         "ai-infrastructure-role",
-        "products",
         "technology",
-        "value-chain-position",
         "manufacturing-facilities",
         "capacity-expansion",
         "customer-end-market",
@@ -22172,21 +22210,15 @@
         "strategy",
         "risks"
       ],
-      "migrationCandidates": [
-        "company-overview",
-        "ai-infrastructure-role",
-        "products",
-        "competitive-positioning",
-        "risks"
-      ],
-      "priorityBand": "A",
-      "priorityScore": 193,
+      "migrationCandidates": [],
+      "priorityBand": "B",
+      "priorityScore": 140,
       "priorityInputs": {
-        "coverageDeficit": 17,
+        "coverageDeficit": 12,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
-        "multiCategorySourceLeverage": 1,
-        "migrationEaseCandidates": 5
+        "multiCategorySourceLeverage": 2,
+        "migrationEaseCandidates": 0
       },
       "sourceQuality": {
         "sourceIds": [
@@ -22195,7 +22227,7 @@
         "resolvedSourceIds": [
           "ir-seagate"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 3,
         "financialSourceIds": [
           "earnings-seagate-2026-07-28-q4-fy2026"
         ],
@@ -22207,7 +22239,8 @@
         ],
         "staleIshSourceIds": [],
         "multiCategorySourceIds": [
-          "ir-seagate"
+          "ir-seagate",
+          "sec-seagate-2025-10k"
         ]
       },
       "notes": [
@@ -22721,7 +22754,7 @@
         "competitive-positioning",
         "risks"
       ],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 191,
       "priorityInputs": {
         "coverageDeficit": 17,
@@ -25480,7 +25513,7 @@
         "competitive-positioning",
         "risks"
       ],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 191,
       "priorityInputs": {
         "coverageDeficit": 17,
@@ -25523,92 +25556,102 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 5,
+      "registrySourceCount": 6,
       "financialSourceCount": 2,
-      "claimCount": 0,
+      "claimCount": 7,
       "legacyClaimCount": 0,
-      "evidenceBindingCount": 0,
-      "locatorCount": 0,
-      "directCategorySourcePairCount": 0,
+      "evidenceBindingCount": 7,
+      "locatorCount": 7,
+      "directCategorySourcePairCount": 7,
       "maturity": {
-        "level": "L1",
-        "label": "company-level Sources"
+        "level": "L4",
+        "label": "Claim + Evidence + structured Locator"
       },
       "coverageCounts": {
-        "complete": 0,
-        "partial": 5,
-        "not-started": 6
+        "complete": 3,
+        "partial": 4,
+        "not-started": 4
       },
       "categoryCoverage": [
         {
           "category": "company-overview",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-texas-instruments-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "ai-infrastructure-role",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-texas-instruments-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "products",
-          "collectionStatus": "partial",
+          "collectionStatus": "complete",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-texas-instruments-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "technology",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "partial",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-texas-instruments-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "value-chain-position",
-          "collectionStatus": "not-started",
-          "missingStatus": "not-collected",
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "collectionStatus": "complete",
+          "missingStatus": null,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-texas-instruments-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": false,
           "migrationCandidate": false,
-          "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "manufacturing-facilities",
@@ -25622,7 +25665,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "capacity-expansion",
@@ -25636,7 +25679,7 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "customer-end-market",
@@ -25650,21 +25693,23 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "competitive-positioning",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-texas-instruments-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         },
         {
           "category": "strategy",
@@ -25678,66 +25723,65 @@
           "legacyContentPresent": false,
           "migrationCandidate": false,
           "freezeSchemaReady": false,
-          "notes": "このrepository内にcategory-direct Evidenceを収録していない。非開示・対象外とは推定しない。"
+          "notes": "今回の高レバレッジ一次資料ではCategoryを安全に閉じられないため、推測せず次回収集対象とする。"
         },
         {
           "category": "risks",
           "collectionStatus": "partial",
           "missingStatus": null,
-          "directSourceCount": 0,
-          "directSourceIds": [],
-          "claimCount": 0,
-          "evidenceBindingCount": 0,
-          "locatorCount": 0,
+          "directSourceCount": 1,
+          "directSourceIds": [
+            "annual-report-texas-instruments-2025"
+          ],
+          "claimCount": 1,
+          "evidenceBindingCount": 1,
+          "locatorCount": 1,
           "legacyContentPresent": true,
-          "migrationCandidate": true,
-          "freezeSchemaReady": false,
-          "notes": "Legacy contentはあるが、category-direct Source / Claim-level Evidence Bindingは未収録。"
+          "migrationCandidate": false,
+          "freezeSchemaReady": true,
+          "notes": "Frozen Schema v0.2 Coverage Recordをそのまま使用。"
         }
       ],
       "legacyContentState": {
         "summary": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "aiRole": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "products": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "strengths": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         },
         "risks": {
           "state": "content-present",
-          "directEvidenceAvailable": false,
-          "claimLevelBindingAvailable": false,
-          "migrationCandidate": true,
-          "evidenceGap": true
+          "directEvidenceAvailable": true,
+          "claimLevelBindingAvailable": true,
+          "migrationCandidate": false,
+          "evidenceGap": false
         }
       },
       "evidenceGaps": [
-        "company-overview",
         "ai-infrastructure-role",
-        "products",
         "technology",
-        "value-chain-position",
         "manufacturing-facilities",
         "capacity-expansion",
         "customer-end-market",
@@ -25745,21 +25789,15 @@
         "strategy",
         "risks"
       ],
-      "migrationCandidates": [
-        "company-overview",
-        "ai-infrastructure-role",
-        "products",
-        "competitive-positioning",
-        "risks"
-      ],
-      "priorityBand": "A",
-      "priorityScore": 193,
+      "migrationCandidates": [],
+      "priorityBand": "B",
+      "priorityScore": 138,
       "priorityInputs": {
-        "coverageDeficit": 17,
+        "coverageDeficit": 12,
         "aiInfrastructureImportance": 4,
         "importanceBasis": "primaryLayer and existing tags used as a priority aid",
         "multiCategorySourceLeverage": 1,
-        "migrationEaseCandidates": 5
+        "migrationEaseCandidates": 0
       },
       "sourceQuality": {
         "sourceIds": [
@@ -25768,7 +25806,7 @@
         "resolvedSourceIds": [
           "ir-ti"
         ],
-        "registrySourceCount": 5,
+        "registrySourceCount": 6,
         "financialSourceIds": [
           "earnings-ti-2026-04-22-q1-2026",
           "earnings-ti-2026-07-22-q2-2026"
@@ -27436,7 +27474,7 @@
         "competitive-positioning",
         "risks"
       ],
-      "priorityBand": "B",
+      "priorityBand": "A",
       "priorityScore": 191,
       "priorityInputs": {
         "coverageDeficit": 17,
