@@ -1,0 +1,37 @@
+{
+  "p2TieBreak": {
+    "categoryProjectionPriority": {
+      "capacity-expansion": 10,
+      "strategy": 20
+    },
+    "claims": [
+      {"id":"strategy-newer","companyId":"fixture-company","category":"strategy","priority":"P2","asOf":"2026-09-01"},
+      {"id":"capacity-z","companyId":"fixture-company","category":"capacity-expansion","priority":"P2","asOf":"2026-08-01"},
+      {"id":"capacity-a","companyId":"fixture-company","category":"capacity-expansion","priority":"P2","asOf":"2026-08-01"},
+      {"id":"capacity-older","companyId":"fixture-company","category":"capacity-expansion","priority":"P2","asOf":"2025-08-01"},
+      {"id":"missing-asof","companyId":"fixture-company","category":"capacity-expansion","priority":"P2","asOf":null},
+      {"id":"p3-excluded","companyId":"fixture-company","category":"capacity-expansion","priority":"P3","asOf":"2026-10-01"}
+    ],
+    "expectedClaimId": "capacity-a"
+  },
+  "allMissingMetric": {
+    "metricId": "fixtureMetric",
+    "companies": [
+      {"id":"fixture-a","metrics":{"fixtureMetric":{"value":null}}},
+      {"id":"fixture-b","metrics":{"fixtureMetric":{"value":null}}}
+    ],
+    "expectedPrimaryVisible": false,
+    "expectedRetainedInDataQuality": true
+  },
+  "relationZero": {
+    "setId": "set-a",
+    "companyId": "nvidia",
+    "resolvedRelations": [],
+    "expectedCount": 0
+  },
+  "guardedZero": {
+    "relations": [],
+    "guardedTypes": ["ENABLES", "SUPPLIES_TO"],
+    "expectedCount": 0
+  }
+}

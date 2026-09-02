@@ -547,8 +547,8 @@ def validate_candidate_audit(
     companies, duplicate_company_ids = load_pilot_company_records()
 
     relationships = load_json(RELATIONSHIPS_PATH)
-    if relationships != []:
-        errors.append('relationships.json must remain an empty array')
+    if not isinstance(relationships, list):
+        errors.append('relationships.json must remain an array for targeted freshness')
 
     registry_records = {
         record['id']: record
@@ -789,7 +789,7 @@ def main() -> int:
         f"defer {summary['decisionCounts']['defer']} / "
         f"reject {summary['decisionCounts']['reject']}) / "
         f"grounding Locator {summary['includedLocatorCoverage']['available']}/"
-        f"{summary['includedLocatorCoverage']['total']} / relationships 0"
+        f"{summary['includedLocatorCoverage']['total']} / relationships {len(load_json(RELATIONSHIPS_PATH))}"
     )
     return 0
 

@@ -1,0 +1,1196 @@
+{
+  "schemaVersion": "0.1",
+  "baselineMain": "41cf035a70fd0853f08972113025f3cdd56f50ff",
+  "pilotCompanyIds": [
+    "nvidia",
+    "broadcom",
+    "applied-materials",
+    "lam-research",
+    "tokyo-electron"
+  ],
+  "policy": {
+    "dimensionOrder": [
+      "company-identity",
+      "ai-role",
+      "value-chain-position",
+      "key-products",
+      "technology-moat",
+      "capacity-roadmap",
+      "financial",
+      "key-risks",
+      "evidence-trace"
+    ],
+    "dimensionClaimMapping": {
+      "company-identity": {
+        "p1Categories": [],
+        "p2CategoryProjectionPriorities": {}
+      },
+      "ai-role": {
+        "p1Categories": [
+          "ai-infrastructure-role"
+        ],
+        "p2CategoryProjectionPriorities": {}
+      },
+      "value-chain-position": {
+        "p1Categories": [
+          "value-chain-position"
+        ],
+        "p2CategoryProjectionPriorities": {}
+      },
+      "key-products": {
+        "p1Categories": [
+          "products"
+        ],
+        "p2CategoryProjectionPriorities": {}
+      },
+      "technology-moat": {
+        "p1Categories": [
+          "competitive-positioning"
+        ],
+        "p2CategoryProjectionPriorities": {
+          "technology": 10
+        }
+      },
+      "capacity-roadmap": {
+        "p1Categories": [],
+        "p2CategoryProjectionPriorities": {
+          "capacity-expansion": 10,
+          "strategy": 20
+        }
+      },
+      "financial": {
+        "p1Categories": [],
+        "p2CategoryProjectionPriorities": {}
+      },
+      "key-risks": {
+        "p1Categories": [],
+        "p2CategoryProjectionPriorities": {
+          "risks": 10
+        }
+      },
+      "evidence-trace": {
+        "p1Categories": [],
+        "p2CategoryProjectionPriorities": {}
+      }
+    },
+    "p2TieBreak": [
+      "categoryProjectionPriority:asc",
+      "asOf:desc",
+      "claimId:asc"
+    ],
+    "p2PriorityField": "categoryProjectionPriority",
+    "p2MaxPerCompanyDimension": 1,
+    "p3InitialCount": 0,
+    "missingnessSource": "Company Evidence Coverage plus projection availability",
+    "relationSource": "resolved Relation read model",
+    "identitySource": "Company canonical record",
+    "financialInitialMetricIds": [
+      "operatingMargin",
+      "revenueGrowth"
+    ]
+  },
+  "sets": [
+    {
+      "setId": "set-a",
+      "orderedCompanyIds": [
+        "nvidia",
+        "broadcom"
+      ],
+      "companies": [
+        {
+          "companyId": "nvidia",
+          "dimensions": [
+            {
+              "dimensionId": "company-identity",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "ai-role",
+              "initialClaimIds": [
+                "nvidia-ai-role"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "ai-infrastructure-role",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "value-chain-position",
+              "initialClaimIds": [
+                "nvidia-value-chain"
+              ],
+              "initialRelationIds": [
+                "rel-nvidia-positioned-in-compute"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "value-chain-position",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "key-products",
+              "initialClaimIds": [
+                "nvidia-products"
+              ],
+              "initialRelationIds": [
+                "rel-nvidia-produces-cpu",
+                "rel-nvidia-produces-dpu",
+                "rel-nvidia-produces-gpu"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "products",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "technology-moat",
+              "initialClaimIds": [
+                "nvidia-positioning"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "technology",
+                  "collectionStatus": "partial"
+                },
+                {
+                  "category": "competitive-positioning",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "capacity-roadmap",
+              "initialClaimIds": [
+                "nvidia-strategy-triage-remediation-v02"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "capacity-expansion",
+                  "collectionStatus": "not-started"
+                },
+                {
+                  "category": "strategy",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "financial",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "key-risks",
+              "initialClaimIds": [
+                "nvidia-risks"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "risks",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "evidence-trace",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            }
+          ],
+          "evidenceTrace": {
+            "companyEvidenceBindingIds": [
+              "nvidia-ai-role-e1",
+              "nvidia-positioning-e1",
+              "nvidia-products-e1",
+              "nvidia-risks-e1",
+              "nvidia-strategy-triage-remediation-v02-e1",
+              "nvidia-value-chain-e1"
+            ],
+            "companyEvidenceSourceIds": [
+              "corporate-nvidia-data-center-2026",
+              "corporate-nvidia-networking-2026",
+              "filing-nvidia-2025-02-26-fy2025-10k",
+              "filing-nvidia-2026-02-25-fy2026-10k"
+            ],
+            "relationIds": [
+              "rel-nvidia-positioned-in-compute",
+              "rel-nvidia-produces-cpu",
+              "rel-nvidia-produces-dpu",
+              "rel-nvidia-produces-gpu"
+            ],
+            "relationEvidenceBindingIds": [
+              "rel-evidence-nvidia-positioned-in-compute",
+              "rel-evidence-nvidia-produces-cpu",
+              "rel-evidence-nvidia-produces-dpu",
+              "rel-evidence-nvidia-produces-gpu"
+            ],
+            "relationSourceIds": [
+              "corporate-nvidia-data-center-2026",
+              "filing-nvidia-2026-02-25-fy2026-10k"
+            ]
+          }
+        },
+        {
+          "companyId": "broadcom",
+          "dimensions": [
+            {
+              "dimensionId": "company-identity",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "ai-role",
+              "initialClaimIds": [
+                "broadcom-ai-role"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "ai-infrastructure-role",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "value-chain-position",
+              "initialClaimIds": [
+                "broadcom-value-chain"
+              ],
+              "initialRelationIds": [
+                "rel-broadcom-positioned-in-compute"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "value-chain-position",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "key-products",
+              "initialClaimIds": [
+                "broadcom-products"
+              ],
+              "initialRelationIds": [
+                "rel-broadcom-produces-connectivity-semiconductor",
+                "rel-broadcom-produces-custom-accelerator-asic",
+                "rel-broadcom-produces-ethernet-switching-silicon"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "products",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "technology-moat",
+              "initialClaimIds": [
+                "broadcom-positioning",
+                "broadcom-technology"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "technology",
+                  "collectionStatus": "partial"
+                },
+                {
+                  "category": "competitive-positioning",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "capacity-roadmap",
+              "initialClaimIds": [
+                "broadcom-strategy-triage-remediation-v02"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "capacity-expansion",
+                  "collectionStatus": "not-started"
+                },
+                {
+                  "category": "strategy",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "financial",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "key-risks",
+              "initialClaimIds": [
+                "broadcom-risks"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "risks",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "evidence-trace",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            }
+          ],
+          "evidenceTrace": {
+            "companyEvidenceBindingIds": [
+              "broadcom-ai-role-e1",
+              "broadcom-positioning-e1",
+              "broadcom-products-e1",
+              "broadcom-risks-e1",
+              "broadcom-strategy-triage-remediation-v02-e1",
+              "broadcom-technology-e1",
+              "broadcom-value-chain-e1"
+            ],
+            "companyEvidenceSourceIds": [
+              "sec-broadcom-2025-10k"
+            ],
+            "relationIds": [
+              "rel-broadcom-positioned-in-compute",
+              "rel-broadcom-produces-connectivity-semiconductor",
+              "rel-broadcom-produces-custom-accelerator-asic",
+              "rel-broadcom-produces-ethernet-switching-silicon"
+            ],
+            "relationEvidenceBindingIds": [
+              "rel-evidence-broadcom-positioned-in-compute",
+              "rel-evidence-broadcom-produces-connectivity-semiconductor",
+              "rel-evidence-broadcom-produces-custom-accelerator-asic",
+              "rel-evidence-broadcom-produces-ethernet-switching-silicon"
+            ],
+            "relationSourceIds": [
+              "sec-broadcom-2025-10k"
+            ]
+          }
+        }
+      ],
+      "financial": {
+        "initialMetricIds": [
+          "operatingMargin",
+          "revenueGrowth"
+        ],
+        "expandedMetricIds": [
+          "roic",
+          "financial-history"
+        ],
+        "comparisonPolicyId": "normalized-financial-history-compatibility-v01",
+        "canonicalDataPath": "src/lib/financial-history.ts",
+        "metricDefinitionPath": "src/data/financial-metric-definitions-v04.json",
+        "compatibilityContractPath": "src/lib/financial-comparison-contract.ts",
+        "metricStates": [
+          {
+            "metricId": "operatingMargin",
+            "normalizedMetricDefinitionId": "operatingMargin",
+            "companyMetricRefs": [
+              {
+                "companyId": "nvidia",
+                "metricId": "operatingMargin",
+                "financialRecordId": "nvidia-q2-fy2027",
+                "availability": "available",
+                "periodType": "quarterly",
+                "status": "verified"
+              },
+              {
+                "companyId": "broadcom",
+                "metricId": "operatingMargin",
+                "financialRecordId": "broadcom-q2-fy2026",
+                "availability": "available",
+                "periodType": "quarterly",
+                "status": "verified"
+              }
+            ],
+            "compatibility": {
+              "code": "caution",
+              "reasons": [
+                "最新収録期間が異なる"
+              ]
+            }
+          },
+          {
+            "metricId": "revenueGrowth",
+            "normalizedMetricDefinitionId": null,
+            "companyMetricRefs": [
+              {
+                "companyId": "nvidia",
+                "metricId": "revenueGrowth",
+                "financialRecordId": "nvidia-q2-fy2027",
+                "availability": "metric-definition-missing",
+                "periodType": "quarterly",
+                "status": null
+              },
+              {
+                "companyId": "broadcom",
+                "metricId": "revenueGrowth",
+                "financialRecordId": "broadcom-q2-fy2026",
+                "availability": "metric-definition-missing",
+                "periodType": "quarterly",
+                "status": null
+              }
+            ],
+            "compatibility": {
+              "code": "blocked",
+              "reasons": [
+                "正規化指標定義がありません"
+              ]
+            }
+          }
+        ],
+        "prohibitedOperations": [
+          "difference-rate",
+          "fx-conversion",
+          "ranking"
+        ]
+      }
+    },
+    {
+      "setId": "set-b",
+      "orderedCompanyIds": [
+        "applied-materials",
+        "lam-research",
+        "tokyo-electron"
+      ],
+      "companies": [
+        {
+          "companyId": "applied-materials",
+          "dimensions": [
+            {
+              "dimensionId": "company-identity",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "ai-role",
+              "initialClaimIds": [
+                "applied-ai-role"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "ai-infrastructure-role",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "value-chain-position",
+              "initialClaimIds": [
+                "applied-value-chain"
+              ],
+              "initialRelationIds": [
+                "rel-applied-materials-positioned-in-manufacturing"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "value-chain-position",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "key-products",
+              "initialClaimIds": [
+                "applied-products"
+              ],
+              "initialRelationIds": [
+                "rel-applied-materials-produces-semiconductor-deposition-equipment"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "products",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "technology-moat",
+              "initialClaimIds": [
+                "applied-positioning",
+                "applied-technology"
+              ],
+              "initialRelationIds": [
+                "rel-applied-materials-competes-with-lam-research"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "technology",
+                  "collectionStatus": "partial"
+                },
+                {
+                  "category": "competitive-positioning",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "capacity-roadmap",
+              "initialClaimIds": [
+                "applied-materials-capacity-expansion-gap-closure"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "capacity-expansion",
+                  "collectionStatus": "partial"
+                },
+                {
+                  "category": "strategy",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "financial",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "key-risks",
+              "initialClaimIds": [
+                "applied-risks"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "risks",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "evidence-trace",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            }
+          ],
+          "evidenceTrace": {
+            "companyEvidenceBindingIds": [
+              "applied-ai-role-e1",
+              "applied-materials-capacity-expansion-gap-closure-e1",
+              "applied-positioning-e1",
+              "applied-products-e1",
+              "applied-risks-e1",
+              "applied-technology-e1",
+              "applied-value-chain-e1"
+            ],
+            "companyEvidenceSourceIds": [
+              "corporate-applied-materials-about-2026",
+              "corporate-applied-materials-semiconductor-2026",
+              "earnings-applied-materials-2026-08-13-q3-fy2026",
+              "release-applied-materials-epic-center-2023"
+            ],
+            "relationIds": [
+              "rel-applied-materials-competes-with-lam-research",
+              "rel-applied-materials-positioned-in-manufacturing",
+              "rel-applied-materials-produces-semiconductor-deposition-equipment"
+            ],
+            "relationEvidenceBindingIds": [
+              "rel-evidence-applied-materials-competes-with-lam-research",
+              "rel-evidence-applied-materials-positioned-in-manufacturing",
+              "rel-evidence-applied-materials-produces-semiconductor-deposition-equipment"
+            ],
+            "relationSourceIds": [
+              "corporate-applied-materials-about-2026",
+              "corporate-applied-materials-semiconductor-2026",
+              "sec-lam-research-2025-10k"
+            ]
+          }
+        },
+        {
+          "companyId": "lam-research",
+          "dimensions": [
+            {
+              "dimensionId": "company-identity",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "ai-role",
+              "initialClaimIds": [
+                "lam-research-ai-role"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "ai-infrastructure-role",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "value-chain-position",
+              "initialClaimIds": [
+                "lam-research-value-chain"
+              ],
+              "initialRelationIds": [
+                "rel-lam-research-positioned-in-manufacturing"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "value-chain-position",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "key-products",
+              "initialClaimIds": [
+                "lam-research-products"
+              ],
+              "initialRelationIds": [
+                "rel-lam-research-produces-semiconductor-deposition-equipment",
+                "rel-lam-research-produces-semiconductor-etch-equipment",
+                "rel-lam-research-produces-wafer-cleaning-equipment",
+                "rel-lam-research-produces-wafer-fabrication-equipment"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "products",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "technology-moat",
+              "initialClaimIds": [
+                "lam-research-positioning",
+                "lam-research-technology"
+              ],
+              "initialRelationIds": [
+                "rel-applied-materials-competes-with-lam-research",
+                "rel-lam-research-competes-with-tokyo-electron"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "technology",
+                  "collectionStatus": "partial"
+                },
+                {
+                  "category": "competitive-positioning",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "capacity-roadmap",
+              "initialClaimIds": [
+                "lam-research-capacity-expansion-triage-remediation-v02"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "capacity-expansion",
+                  "collectionStatus": "partial"
+                },
+                {
+                  "category": "strategy",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "financial",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "key-risks",
+              "initialClaimIds": [
+                "lam-research-risks"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "risks",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "evidence-trace",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            }
+          ],
+          "evidenceTrace": {
+            "companyEvidenceBindingIds": [
+              "lam-research-ai-role-e1",
+              "lam-research-capacity-expansion-triage-remediation-v02-e1",
+              "lam-research-positioning-e1",
+              "lam-research-products-e1",
+              "lam-research-risks-e1",
+              "lam-research-technology-e1",
+              "lam-research-value-chain-e1"
+            ],
+            "companyEvidenceSourceIds": [
+              "official-lam-tualatin-building-g-2025",
+              "sec-lam-research-2025-10k"
+            ],
+            "relationIds": [
+              "rel-applied-materials-competes-with-lam-research",
+              "rel-lam-research-competes-with-tokyo-electron",
+              "rel-lam-research-positioned-in-manufacturing",
+              "rel-lam-research-produces-semiconductor-deposition-equipment",
+              "rel-lam-research-produces-semiconductor-etch-equipment",
+              "rel-lam-research-produces-wafer-cleaning-equipment",
+              "rel-lam-research-produces-wafer-fabrication-equipment"
+            ],
+            "relationEvidenceBindingIds": [
+              "rel-evidence-applied-materials-competes-with-lam-research",
+              "rel-evidence-lam-research-competes-with-tokyo-electron",
+              "rel-evidence-lam-research-positioned-in-manufacturing",
+              "rel-evidence-lam-research-produces-semiconductor-deposition-equipment",
+              "rel-evidence-lam-research-produces-semiconductor-etch-equipment",
+              "rel-evidence-lam-research-produces-wafer-cleaning-equipment",
+              "rel-evidence-lam-research-produces-wafer-fabrication-equipment"
+            ],
+            "relationSourceIds": [
+              "sec-lam-research-2025-10k"
+            ]
+          }
+        },
+        {
+          "companyId": "tokyo-electron",
+          "dimensions": [
+            {
+              "dimensionId": "company-identity",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "ai-role",
+              "initialClaimIds": [
+                "tokyo-electron-ai-role"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "ai-infrastructure-role",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "value-chain-position",
+              "initialClaimIds": [
+                "tokyo-electron-value-chain"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "value-chain-position",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "key-products",
+              "initialClaimIds": [
+                "tokyo-electron-products"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "products",
+                  "collectionStatus": "complete"
+                }
+              ],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "technology-moat",
+              "initialClaimIds": [
+                "tokyo-electron-positioning",
+                "tokyo-electron-technology"
+              ],
+              "initialRelationIds": [
+                "rel-lam-research-competes-with-tokyo-electron"
+              ],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "technology",
+                  "collectionStatus": "partial"
+                },
+                {
+                  "category": "competitive-positioning",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "capacity-roadmap",
+              "initialClaimIds": [
+                "tokyo-electron-capacity-expansion-triage-remediation-v02"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "capacity-expansion",
+                  "collectionStatus": "partial"
+                },
+                {
+                  "category": "strategy",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "financial",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            },
+            {
+              "dimensionId": "key-risks",
+              "initialClaimIds": [
+                "tokyo-electron-risks"
+              ],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [
+                {
+                  "category": "risks",
+                  "collectionStatus": "partial"
+                }
+              ],
+              "supplementalP2": true
+            },
+            {
+              "dimensionId": "evidence-trace",
+              "initialClaimIds": [],
+              "initialRelationIds": [],
+              "projectionStatus": "present",
+              "missingState": "not-missing",
+              "missingReason": null,
+              "coverageContext": [],
+              "supplementalP2": false
+            }
+          ],
+          "evidenceTrace": {
+            "companyEvidenceBindingIds": [
+              "tokyo-electron-ai-role-e1",
+              "tokyo-electron-capacity-expansion-triage-remediation-v02-e1",
+              "tokyo-electron-positioning-e1",
+              "tokyo-electron-products-e1",
+              "tokyo-electron-risks-e1",
+              "tokyo-electron-technology-e1",
+              "tokyo-electron-value-chain-e1"
+            ],
+            "companyEvidenceSourceIds": [
+              "ir-tokyo-electron",
+              "official-tel-tohoku-production-logistics-center-2025"
+            ],
+            "relationIds": [
+              "rel-lam-research-competes-with-tokyo-electron"
+            ],
+            "relationEvidenceBindingIds": [
+              "rel-evidence-lam-research-competes-with-tokyo-electron"
+            ],
+            "relationSourceIds": [
+              "sec-lam-research-2025-10k"
+            ]
+          }
+        }
+      ],
+      "financial": {
+        "initialMetricIds": [
+          "operatingMargin",
+          "revenueGrowth"
+        ],
+        "expandedMetricIds": [
+          "roic",
+          "financial-history"
+        ],
+        "comparisonPolicyId": "normalized-financial-history-compatibility-v01",
+        "canonicalDataPath": "src/lib/financial-history.ts",
+        "metricDefinitionPath": "src/data/financial-metric-definitions-v04.json",
+        "compatibilityContractPath": "src/lib/financial-comparison-contract.ts",
+        "metricStates": [
+          {
+            "metricId": "operatingMargin",
+            "normalizedMetricDefinitionId": "operatingMargin",
+            "companyMetricRefs": [
+              {
+                "companyId": "applied-materials",
+                "metricId": "operatingMargin",
+                "financialRecordId": "applied-materials-q3-fy2026",
+                "availability": "available",
+                "periodType": "quarterly",
+                "status": "verified"
+              },
+              {
+                "companyId": "lam-research",
+                "metricId": "operatingMargin",
+                "financialRecordId": "lam-june-2026",
+                "availability": "available",
+                "periodType": "quarterly",
+                "status": "verified"
+              },
+              {
+                "companyId": "tokyo-electron",
+                "metricId": "operatingMargin",
+                "financialRecordId": "tokyo-electron-q1-fy2027",
+                "availability": "available",
+                "periodType": "quarterly",
+                "status": "verified"
+              }
+            ],
+            "compatibility": {
+              "code": "caution",
+              "reasons": [
+                "会計基準が異なる",
+                "最新収録期間が異なる"
+              ]
+            }
+          },
+          {
+            "metricId": "revenueGrowth",
+            "normalizedMetricDefinitionId": null,
+            "companyMetricRefs": [
+              {
+                "companyId": "applied-materials",
+                "metricId": "revenueGrowth",
+                "financialRecordId": "applied-materials-q3-fy2026",
+                "availability": "metric-definition-missing",
+                "periodType": "quarterly",
+                "status": null
+              },
+              {
+                "companyId": "lam-research",
+                "metricId": "revenueGrowth",
+                "financialRecordId": "lam-june-2026",
+                "availability": "metric-definition-missing",
+                "periodType": "quarterly",
+                "status": null
+              },
+              {
+                "companyId": "tokyo-electron",
+                "metricId": "revenueGrowth",
+                "financialRecordId": "tokyo-electron-q1-fy2027",
+                "availability": "metric-definition-missing",
+                "periodType": "quarterly",
+                "status": null
+              }
+            ],
+            "compatibility": {
+              "code": "blocked",
+              "reasons": [
+                "正規化指標定義がありません"
+              ]
+            }
+          }
+        ],
+        "prohibitedOperations": [
+          "difference-rate",
+          "fx-conversion",
+          "ranking"
+        ]
+      }
+    }
+  ]
+}

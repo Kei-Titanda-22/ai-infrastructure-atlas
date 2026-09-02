@@ -10,15 +10,16 @@ import {
   serializeResolvedRelations,
 } from '../src/lib/relations.ts';
 
-assert.equal(relations.length, 0);
-assert.equal(relationEvidenceBindings.length, 0);
-assert.equal(resolvedRelations.length, 0);
+assert.equal(relations.length, 17);
+assert.equal(relationEvidenceBindings.length, 17);
+assert.equal(resolvedRelations.length, 17);
 assert.equal(Object.isFrozen(relations), true);
 assert.equal(Object.isFrozen(relationEvidenceBindings), true);
 assert.equal(Object.isFrozen(resolvedRelations), true);
 
 const { relations: validRelations, bindings: validBindings } = fixture.populated;
 const referenceDate = new Date('2026-09-02T00:00:00Z');
+assert.deepEqual(buildResolvedRelations([], [], referenceDate), []);
 const resolved = buildResolvedRelations(validRelations, validBindings, referenceDate);
 assert.equal(resolved.length, 1);
 assert.deepEqual(resolved[0].evidenceIds, ['rel-evidence-company-a-produces-gpu']);
@@ -153,6 +154,6 @@ assert.throws(
 );
 
 console.log(
-  'Relation loader tests OK: production empty state / canonical key and ID-array serialization / '
+  'Relation loader tests OK: production 17/17 / explicit empty state / canonical key and ID-array serialization / '
   + 'Unicode preservation / non-mutation / meaningful-change detection / three-state freshness / guards',
 );

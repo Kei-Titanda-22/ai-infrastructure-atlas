@@ -213,7 +213,7 @@ def main() -> int:
 
     forbidden = []
     for path in changed_paths():
-        if path.startswith("src/data/companies/") or path.startswith("src/data/financial-history") or "cashflow-overrides" in path or path in {"src/data/claims.json", "src/data/facilities.json", "src/data/relationships.json"}:
+        if path.startswith("src/data/companies/") or path.startswith("src/data/financial-history") or "cashflow-overrides" in path or path in {"src/data/claims.json", "src/data/facilities.json"}:
             forbidden.append(path)
     if forbidden:
         fail(errors, f"changes outside Pilot scope: {forbidden}")

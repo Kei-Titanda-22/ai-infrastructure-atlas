@@ -1,0 +1,92 @@
+{
+  "metricDefinitions": [
+    {"id":"operatingMargin"}
+  ],
+  "bridgeParityCases": [
+    {
+      "caseId": "same-period-ok",
+      "companyIds": ["a", "b"],
+      "history": [
+        {"id":"a-q1","companyId":"a","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":30,"status":"verified","basis":"GAAP operating margin"}}},
+        {"id":"b-q1","companyId":"b","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":25,"status":"verified","basis":"GAAP operating margin"}}}
+      ],
+      "expected":{"code":"ok","reasons":["期間・定義・算出基準が一致"]}
+    },
+    {
+      "caseId": "different-latest-period-caution",
+      "companyIds": ["a", "b"],
+      "history": [
+        {"id":"a-q1","companyId":"a","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":30,"status":"verified"}}},
+        {"id":"b-q2","companyId":"b","periodType":"quarterly","periodLabel":"Q2 FY2027","endDate":"2026-07-31","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":25,"status":"verified"}}}
+      ],
+      "expected":{"code":"caution","reasons":["最新収録期間が異なる"]}
+    },
+    {
+      "caseId": "mixed-period-type-blocked",
+      "companyIds": ["a", "b"],
+      "history": [
+        {"id":"a-q1","companyId":"a","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":30,"status":"verified"}}},
+        {"id":"b-fy","companyId":"b","periodType":"annual","periodLabel":"FY2026","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":25,"status":"verified"}}}
+      ],
+      "expected":{"code":"blocked","reasons":["四半期と通期が混在しています"]}
+    },
+    {
+      "caseId": "accounting-basis-caution",
+      "companyIds": ["a", "b"],
+      "history": [
+        {"id":"a-q1","companyId":"a","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":30,"status":"verified"}}},
+        {"id":"b-q1","companyId":"b","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"Japanese GAAP","metrics":{"operatingMargin":{"value":25,"status":"verified"}}}
+      ],
+      "expected":{"code":"caution","reasons":["会計基準が異なる"]}
+    },
+    {
+      "caseId": "verification-caution",
+      "companyIds": ["a", "b"],
+      "history": [
+        {"id":"a-q1","companyId":"a","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":30,"status":"verified"}}},
+        {"id":"b-q1","companyId":"b","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":25,"status":"source-linked"}}}
+      ],
+      "expected":{"code":"caution","reasons":["未検証値を含む"]}
+    },
+    {
+      "caseId": "availability-blocked",
+      "companyIds": ["a", "b"],
+      "history": [
+        {"id":"a-q1","companyId":"a","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":30,"status":"verified"}}},
+        {"id":"b-q1","companyId":"b","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":null,"status":"not-collected"}}}
+      ],
+      "expected":{"code":"blocked","reasons":["2社以上に値がありません"]}
+    }
+  ],
+  "projectionCases": [
+    {
+      "caseId":"undefined-normalized-metric",
+      "metricId":"revenueGrowth",
+      "companyIds":["a","b"],
+      "history":[
+        {"id":"a-q1","companyId":"a","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{}},
+        {"id":"b-q1","companyId":"b","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{}}
+      ],
+      "expected":{"code":"blocked","reasons":["正規化指標定義がありません"]}
+    },
+    {
+      "caseId":"missing-period-metadata",
+      "metricId":"operatingMargin",
+      "companyIds":["a","b"],
+      "history":[
+        {"id":"a-q1","companyId":"a","periodType":null,"periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":30,"status":"verified"}}},
+        {"id":"b-q1","companyId":"b","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":25,"status":"verified"}}}
+      ],
+      "expected":{"code":"blocked","reasons":["収録期間metadataがありません"]}
+    },
+    {
+      "caseId":"missing-company",
+      "metricId":"operatingMargin",
+      "companyIds":["a","missing-company"],
+      "history":[
+        {"id":"a-q1","companyId":"a","periodType":"quarterly","periodLabel":"Q1 FY2027","endDate":"2026-06-30","accountingBasis":"US GAAP","metrics":{"operatingMargin":{"value":30,"status":"verified"}}}
+      ],
+      "expected":{"code":"blocked","reasons":["2社以上に値がありません"]}
+    }
+  ]
+}
