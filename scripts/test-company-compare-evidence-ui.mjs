@@ -10,6 +10,10 @@ import {
   parseEvidenceCompareSearch,
   serializeEvidenceCompareSearch,
 } from '../src/lib/company-compare-evidence-ui.ts';
+import {
+  evidenceCompareViewRequested,
+  fetchEvidenceCompareFragment,
+} from '../src/lib/company-compare-evidence-bootstrap.ts';
 
 const readJson = async relative => JSON.parse(await readFile(new URL(relative, import.meta.url), 'utf8'));
 const projection = await readJson('../src/data/company-compare-evidence-pilot-v01.json');
@@ -19,6 +23,7 @@ const evidenceManifest = await readJson('../src/data/company-evidence-manifest.j
 const sourceManifest = await readJson('../src/data/source-registry-manifest.json');
 const fixture = await readJson('./fixtures/company-compare-evidence-ui-snapshot-v01.json');
 const comparePage = await readFile(new URL('../src/pages/compare.astro', import.meta.url), 'utf8');
+const fragmentPage = await readFile(new URL('../src/pages/evidence-fragments/company-compare-evidence-v01.astro', import.meta.url), 'utf8');
 const component = await readFile(new URL('../src/components/CompanyCompareEvidence.astro', import.meta.url), 'utf8');
 const claimComponent = await readFile(new URL('../src/components/CompanyEvidenceClaim.astro', import.meta.url), 'utf8');
 const controller = await readFile(new URL('../src/scripts/company-compare-evidence-ui.ts', import.meta.url), 'utf8');
@@ -42,6 +47,28 @@ for (const binding of relationBindings) {
 const sourceIds = new Set(sources.map(source => source.id));
 const sourceById = new Map(sources.map(source => [source.id, source]));
 const companyIds = new Set(['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'asml']);
+
+assert.equal(evidenceCompareViewRequested('?ids=nvidia,broadcom'), false, 'legacy route does not request the Evidence payload');
+assert.equal(evidenceCompareViewRequested('?ids=nvidia,broadcom&view=evidence'), true, 'opt-in route requests the Evidence payload');
+let fragmentFetchCount = 0;
+const validFragment = await fetchEvidenceCompareFragment('/evidence-fragment/', async (url, init) => {
+  fragmentFetchCount += 1;
+  assert.equal(url, '/evidence-fragment/');
+  assert.equal(init.headers.Accept, 'text/html');
+  return { ok: true, status: 200, text: async () => '<section>Evidence</section>' };
+});
+assert.equal(validFragment, '<section>Evidence</section>');
+assert.equal(fragmentFetchCount, 1, 'opt-in payload is fetched exactly once');
+let failedFragmentFetchCount = 0;
+await assert.rejects(
+  () => fetchEvidenceCompareFragment('/evidence-fragment/', async () => {
+    failedFragmentFetchCount += 1;
+    return { ok: false, status: 503, text: async () => '' };
+  }),
+  /Evidence fragment request failed: 503/,
+  'payload failure remains explicit for the inline recovery state',
+);
+assert.equal(failedFragmentFetchCount, 1, 'failed payload request is not retried or duplicated silently');
 
 const setA = parseEvidenceCompareSearch('?ids=nvidia,broadcom&view=evidence&detail=summary', companyIds);
 assert.equal(setA.enabled, true, 'view=evidence routing');
@@ -197,10 +224,21 @@ assert.throws(
 );
 
 assert.match(comparePage, /!evidenceMode/, 'legacy script must be gated only for the opt-in route');
-assert.match(comparePage, /<BaseLayout title="企業比較" indexable>/, 'legacy Compare body remains Pagefind-indexable');
-assert.match(comparePage, /<CompanyCompareEvidence identities=/, 'Set A and B use one generic component');
+assert.match(comparePage, /<BaseLayout title="企業比較">/, 'Compare retains the pre-Pilot non-indexable contract');
+assert.doesNotMatch(comparePage, /<BaseLayout title="企業比較" indexable>/, 'Compare must not become a Pagefind result');
+assert.match(comparePage, /id="company-compare-evidence-mount"/, 'legacy HTML retains only the Evidence mount point');
+assert.match(comparePage, /evidence-fragments\/company-compare-evidence-v01\//, 'Evidence fragment has one internal build-time URL');
+assert.match(comparePage, /evidenceCompareViewRequested\(location\.search\)/, 'legacy route exits before requesting Evidence assets');
+assert.match(comparePage, /fetchEvidenceCompareFragment\(mount\.dataset\.evidenceFragmentUrl/, 'Evidence fragment uses the tested single-request loader');
+assert.match(comparePage, /await import\('\.\.\/scripts\/company-compare-evidence-ui'\)/, 'Evidence controller is a lazy module');
+assert.match(comparePage, /根拠付き比較を読み込めませんでした/, 'fetch failure has an explicit inline error');
+assert.match(comparePage, /retry\.addEventListener\('click', \(\) => location\.reload\(\)\)/, 'fetch failure offers a recovery action');
+assert.doesNotMatch(comparePage, /<CompanyCompareEvidence identities=/, 'Evidence body is not rendered into legacy Compare HTML');
+assert.match(fragmentPage, /<CompanyCompareEvidence identities=\{identities\}/, 'Set A and B use one canonical build-time component');
+assert.match(fragmentPage, /getCollection\('companies'\)/, 'fragment identities derive from canonical Company content');
 assert.match(component, /CompanyEvidenceClaim/, 'existing Evidence drawer component is reused');
 assert.match(component, /data-pagefind-ignore="all"/, 'only the opt-in Evidence subtree is excluded from Pagefind');
+assert.doesNotMatch(component, /initCompanyCompareEvidenceUi/, 'fragment does not initialize its controller before mount');
 assert.doesNotMatch(component, /verificationStatus:\s*['"]verified['"]/, 'Relation adapter must not invent Company Claim verification state');
 assert.match(component, /verificationPresentation=\{entry\.verification\}/, 'Relation verification presentation is Binding-derived');
 assert.match(component, /drawerTitle="Relation根拠"/, 'Relation drawer has an accessible Relation-specific title');
@@ -224,6 +262,7 @@ assert.match(claimComponent, /verified: \{ short: '確認済み', full: '根拠�
 assert.match(claimComponent, /'source-linked': \{ short: '一次資料あり', full: '一次資料紐付け済み・確認未了' \}/, 'Company Claim source-linked presentation remains unchanged');
 assert.match(claimComponent, /'needs-review': \{ short: '要確認', full: '要再検証' \}/, 'Company Claim needs-review presentation remains unchanged');
 assert.match(controller, /if \(!state\.enabled\) return;/, 'Evidence controller exits before exposing its hidden subtree on legacy routes');
+assert.match(controller, /evidenceControllerInitialized/, 'Evidence controller initializes at most once after mount');
 assert.match(controller, /event\.key === 'Escape'/);
 assert.match(controller, /event\.key !== 'Enter' && event\.key !== ' '/, 'Evidence markers have an explicit keyboard activation contract');
 assert.match(controller, /returnFocus/);
@@ -236,5 +275,29 @@ assert.match(styles, /#evidence-compare-templates\[hidden\]/, 'Pilot templates r
 assert.match(styles, /scroll-margin-top: 5rem/);
 assert.match(styles, /@media \(max-width: 600px\)/);
 assert.match(styles, /overflow: visible/);
+
+if (process.argv.includes('--dist')) {
+  const compareHtml = await readFile(new URL('../dist/compare/index.html', import.meta.url), 'utf8');
+  const fragmentHtml = await readFile(new URL('../dist/evidence-fragments/company-compare-evidence-v01/index.html', import.meta.url), 'utf8');
+  const compareBytes = Buffer.byteLength(compareHtml);
+  const baselineBytes = 584_295;
+  const maximumBytes = 642_725;
+  assert.ok(compareBytes <= maximumBytes, `legacy Compare HTML ${compareBytes} B must remain within 10% of ${baselineBytes} B`);
+  assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
+  assert.doesNotMatch(compareHtml, /data-claim-id=/, 'built legacy HTML excludes Company Claim bodies');
+  assert.doesNotMatch(compareHtml, /data-relation-id=/, 'built legacy HTML excludes Relation bodies');
+  assert.doesNotMatch(compareHtml, /class="evidence-drawer"/, 'built legacy HTML excludes Evidence drawers');
+  assert.doesNotMatch(compareHtml, /class="evidence-expanded-financial"/, 'built legacy HTML excludes expanded financial history');
+
+  const claimMarkers = (fragmentHtml.match(/data-claim-id=/g) ?? []).length;
+  const relationMarkers = (fragmentHtml.match(/data-relation-id=/g) ?? []).length;
+  const drawers = [...fragmentHtml.matchAll(/<dialog class="evidence-drawer" id="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(claimMarkers, 34, 'fragment includes all canonical Claim entries');
+  assert.equal(relationMarkers, 19, 'fragment includes all canonical Relation entries');
+  assert.equal(drawers.length, 53, 'fragment includes one Evidence drawer per marker');
+  assert.equal(new Set(drawers).size, drawers.length, 'fragment has no duplicate drawer IDs');
+  assert.match(fragmentHtml, /data-pagefind-ignore="all"/, 'built fragment is outside the Pagefind corpus');
+  console.log(`Company Compare lazy artifact OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(fragmentHtml)} B fragment / ${claimMarkers + relationMarkers} markers`);
+}
 
 console.log(`Company Compare Evidence UI tests OK: Set A/B / routing / URL state / ${claimMarkerCount + relationMarkerCount} markers / Financial 0/2/2 / semantic snapshot`);

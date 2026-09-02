@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CompanyCompareEvidence from '../components/CompanyCompareEvidence.astro';
 import { getCollection } from 'astro:content';
 import { layerLabel, countryLabel, tagLabel, productInfo } from '../lib/display-v02';
 import { getMetricState, formatMetricValue } from '../lib/metrics';
@@ -40,23 +39,17 @@ const compact = companies.map(c => ({
   kpis:kpisByCompany.get(c.id) ?? [],
   searchText:[c.data.name,c.data.japaneseName,c.data.reading,c.data.ticker,c.data.country,layerLabel(c.data.primaryLayer),...c.data.products.map(product => productInfo(product).label),...c.data.tags.map(tagLabel)].filter(Boolean).join(' ').toLowerCase()
 }));
-const evidenceIdentities = companies.map(c => ({
-  id: c.id,
-  href: withBase(`companies/${c.id}/`),
-  name: c.data.name,
-  japaneseName: c.data.japaneseName,
-  officialName: c.data.officialName,
-  reading: c.data.reading,
-  ticker: c.data.ticker,
-  country: countryLabel(c.data.country),
-  primaryLayer: layerLabel(c.data.primaryLayer),
-  lastReviewed: c.data.lastReviewed,
-}));
 const definitions = Object.fromEntries(sectorKpiDefinitions.map(d => [d.id, d]));
 const commonDefinitions = Object.fromEntries(metricDefinitions.map(d => [d.id, d]));
 const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-materials','lam-research','tokyo-electron','kla'];
+const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidence-v01/');
 ---
-<BaseLayout title="企業比較" indexable>
+<BaseLayout title="企業比較">
+  <style is:inline>
+    #legacy-compare-templates[hidden],
+    #evidence-compare-templates[hidden] { display: none !important; }
+    .compare-evidence-retry { min-width: 44px; min-height: 44px; }
+  </style>
   <header class="page-head">
     <div class="shell">
       <span class="eyebrow">企業横断比較</span>
@@ -108,7 +101,7 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
       </div>
     </section>
 
-    <CompanyCompareEvidence identities={evidenceIdentities} />
+    <div id="company-compare-evidence-mount" data-evidence-fragment-url={evidenceFragmentUrl}></div>
 
     <div id="legacy-compare-view">
     <dl class="compare-quality-summary" id="compare-quality-summary" aria-label="比較品質の概要">
@@ -439,5 +432,53 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
       document.addEventListener('click',event=>{ if(!root.querySelector('.compare-search-label')?.contains(event.target) && event.target!==searchInput && !suggestions.contains(event.target)){ suggestions.hidden=true; searchInput.setAttribute('aria-expanded','false'); } });
       render();
     }
+  </script>
+
+  <script>
+    import {
+      evidenceCompareViewRequested,
+      fetchEvidenceCompareFragment,
+    } from '../lib/company-compare-evidence-bootstrap';
+
+    const mountEvidenceCompare = async () => {
+      if (!evidenceCompareViewRequested(location.search)) return;
+
+      const app = document.querySelector<HTMLElement>('#compare-app');
+      const mount = document.querySelector<HTMLElement>('#company-compare-evidence-mount');
+      const legacy = document.querySelector<HTMLElement>('#legacy-compare-view');
+      if (!app || !mount || !legacy || app.dataset.evidencePayloadRequested === 'true') return;
+
+      app.dataset.compareMode = 'evidence-loading';
+      app.dataset.evidencePayloadRequested = 'true';
+      legacy.hidden = true;
+      app.querySelector<HTMLElement>('#legacy-compare-templates')?.setAttribute('hidden', '');
+      app.querySelector<HTMLElement>('#evidence-compare-templates')?.removeAttribute('hidden');
+      mount.setAttribute('aria-busy', 'true');
+      mount.setAttribute('role', 'status');
+      mount.textContent = '根拠付き比較を読み込んでいます。';
+
+      try {
+        const template = document.createElement('template');
+        template.innerHTML = await fetchEvidenceCompareFragment(mount.dataset.evidenceFragmentUrl || '');
+        mount.replaceWith(template.content);
+        const { initCompanyCompareEvidenceUi } = await import('../scripts/company-compare-evidence-ui');
+        initCompanyCompareEvidenceUi();
+      } catch (error) {
+        console.warn('Company Evidence Compare load failed', error);
+        app.dataset.compareMode = 'evidence-error';
+        mount.removeAttribute('aria-busy');
+        mount.replaceChildren();
+        const message = document.createElement('p');
+        message.textContent = '根拠付き比較を読み込めませんでした。通信状態を確認して再試行してください。';
+        const retry = document.createElement('button');
+        retry.type = 'button';
+        retry.className = 'text-button compare-evidence-retry';
+        retry.textContent = '再試行';
+        retry.addEventListener('click', () => location.reload());
+        mount.append(message, retry);
+      }
+    };
+
+    mountEvidenceCompare();
   </script>
 </BaseLayout>

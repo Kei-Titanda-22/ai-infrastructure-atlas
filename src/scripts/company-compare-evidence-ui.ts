@@ -31,6 +31,8 @@ export function initCompanyCompareEvidenceUi() {
   const supportedIds = new Set<string>(uiData.pilotCompanyIds || []);
   let state = parseEvidenceCompareSearch(location.search, byId.keys(), supportedIds);
   if (!state.enabled) return;
+  if (root.dataset.evidenceControllerInitialized === 'true') return;
+  root.dataset.evidenceControllerInitialized = 'true';
 
   app.dataset.compareMode = 'evidence';
   root.hidden = false;

@@ -6,7 +6,7 @@
   "engines": {"node": ">=22.19.0"},
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && pagefind --site dist",
+    "build": "astro build && pagefind --site dist && node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
     "preview": "astro preview",
     "audit:company-evidence-coverage": "python scripts/audit-company-evidence-coverage.py",
     "audit:company-evidence-coverage:write": "python scripts/audit-company-evidence-coverage.py --write",
