@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://kei-titanda-22.github.io/ai-infrastructure-atlas/schemas/relation-resolved-v01.json",
+  "title": "Atlas Relation Resolved Read Model v0.1",
+  "$comment": "The read model repeats the authoring fields and adds only deterministic derived fields. Authoring records must never persist evidenceIds, sourceIds, or freshnessStatus.",
+  "type": "array",
+  "items": { "$ref": "#/$defs/resolvedRelation" },
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$" },
+    "date": { "type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$" },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["productIds", "technologyIds", "valueChainNodeIds", "marketIds", "geographies", "businessUnit", "capacityBasis"],
+      "properties": {
+        "productIds": { "type": "array", "items": { "type": "string", "pattern": "^product-category-[a-z0-9]+(?:-[a-z0-9]+)*$" }, "uniqueItems": true },
+        "technologyIds": { "type": "array", "items": { "type": "string", "pattern": "^technology-[a-z0-9]+(?:-[a-z0-9]+)*$" }, "uniqueItems": true },
+        "valueChainNodeIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "marketIds": { "type": "array", "items": { "type": "string", "pattern": "^market-[a-z0-9]+(?:-[a-z0-9]+)*$" }, "uniqueItems": true },
+        "geographies": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "businessUnit": { "type": "null" },
+        "capacityBasis": { "type": ["string", "null"], "minLength": 1 }
+      }
+    },
+    "resolvedRelation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "relationId", "subjectType", "subjectId", "relationType", "objectType", "objectId", "scope", "statement", "claimType", "asOf", "lastVerified", "nextReview", "importance", "displayPriority", "confidence", "validFrom", "validTo", "supersededBy", "evidenceIds", "sourceIds", "freshnessStatus"
+      ],
+      "properties": {
+        "relationId": { "type": "string", "pattern": "^rel-[a-z0-9]+(?:-[a-z0-9]+)*$" },
+        "subjectType": { "enum": ["company", "product", "technology", "value-chain-node", "facility", "market"] },
+        "subjectId": { "$ref": "#/$defs/id" },
+        "relationType": { "enum": ["PRODUCES", "DEVELOPS", "USES", "ENABLES", "SUPPLIES_TO", "COMPETES_WITH", "OPERATES", "POSITIONED_IN"] },
+        "objectType": { "enum": ["company", "product", "technology", "value-chain-node", "facility", "market"] },
+        "objectId": { "$ref": "#/$defs/id" },
+        "scope": { "$ref": "#/$defs/scope" },
+        "statement": { "type": "string", "minLength": 1, "maxLength": 600 },
+        "claimType": { "enum": ["fact", "company-guidance", "company-positioning", "atlas-analysis", "estimate"] },
+        "asOf": { "$ref": "#/$defs/date" },
+        "lastVerified": { "oneOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }] },
+        "nextReview": { "oneOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }] },
+        "importance": { "enum": ["P1", "P2", "P3"] },
+        "displayPriority": { "type": "integer", "minimum": 1, "maximum": 99 },
+        "confidence": { "enum": ["low", "medium", "high", null] },
+        "validFrom": { "oneOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }] },
+        "validTo": { "oneOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }] },
+        "supersededBy": { "oneOf": [{ "type": "string", "pattern": "^rel-[a-z0-9]+(?:-[a-z0-9]+)*$" }, { "type": "null" }] },
+        "evidenceIds": { "type": "array", "items": { "type": "string", "pattern": "^rel-evidence-[a-z0-9]+(?:-[a-z0-9]+)*$" }, "uniqueItems": true },
+        "sourceIds": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
+        "freshnessStatus": { "enum": ["current", "review-due", "stale"] }
+      }
+    }
+  }
+}

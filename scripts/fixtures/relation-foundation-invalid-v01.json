@@ -1,0 +1,162 @@
+[
+  {
+    "name": "derived authoring field",
+    "operation": "updateRelation",
+    "values": { "sourceIds": [] },
+    "expectedError": "authoring Relation contains derived fields"
+  },
+  {
+    "name": "deferred type",
+    "operation": "updateRelation",
+    "values": { "relationType": "SUBSTITUTES" },
+    "expectedError": "deferred Relation type"
+  },
+  {
+    "name": "unknown type",
+    "operation": "updateRelation",
+    "values": { "relationType": "UNKNOWN_RELATION" },
+    "expectedError": "unknown Relation type"
+  },
+  {
+    "name": "endpoint kind mismatch",
+    "operation": "updateRelation",
+    "values": { "objectType": "company", "objectId": "company-b" },
+    "expectedError": "endpoint kinds are incompatible"
+  },
+  {
+    "name": "unknown endpoint",
+    "operation": "updateRelation",
+    "values": { "objectId": "product-category-unknown" },
+    "expectedError": "unknown object endpoint"
+  },
+  {
+    "name": "business unit forbidden",
+    "operation": "updateScope",
+    "values": { "businessUnit": "Accelerated Computing" },
+    "expectedError": "scope.businessUnit must be null"
+  },
+  {
+    "name": "evidence free",
+    "operation": "removeBindings",
+    "expectedError": "requires a direct supports Binding"
+  },
+  {
+    "name": "context only",
+    "operation": "updateBinding",
+    "values": { "support": "context" },
+    "expectedError": "requires a direct supports Binding"
+  },
+  {
+    "name": "empty locator",
+    "operation": "updateBinding",
+    "values": { "locator": {} },
+    "expectedError": "structured Locator is required"
+  },
+  {
+    "name": "unknown source",
+    "operation": "updateBinding",
+    "values": { "sourceId": "source-unknown" },
+    "expectedError": "unknown Shared Source"
+  },
+  {
+    "name": "missing as-of date",
+    "operation": "updateRelation",
+    "values": { "asOf": null },
+    "expectedError": "asOf must be an ISO date"
+  },
+  {
+    "name": "self reference",
+    "operation": "updateRelation",
+    "values": { "relationType": "SUPPLIES_TO", "objectType": "company", "objectId": "company-a" },
+    "expectedError": "prohibited self-reference"
+  },
+  {
+    "name": "symmetric endpoint order",
+    "operation": "updateRelation",
+    "values": { "subjectId": "company-b", "relationType": "COMPETES_WITH", "objectType": "company", "objectId": "company-a" },
+    "expectedError": "lexicographic canonical order"
+  },
+  {
+    "name": "guarded relation without scope",
+    "operation": "updateRelation",
+    "values": { "subjectType": "product", "subjectId": "product-category-gpu", "relationType": "ENABLES", "objectType": "technology", "objectId": "technology-accelerated-computing-architecture" },
+    "expectedError": "guarded Relation requires at least one scope dimension"
+  },
+  {
+    "name": "binding unknown relation",
+    "operation": "updateBinding",
+    "values": { "relationId": "rel-unknown-relation" },
+    "expectedError": "unknown Relation"
+  },
+  {
+    "name": "duplicate logical relation",
+    "operation": "duplicateRelation",
+    "expectedError": "duplicate logical Relation with overlapping validity"
+  },
+  {
+    "name": "unresolved contradicts",
+    "operation": "addContradictsBinding",
+    "expectedError": "unresolved contradicts Binding blocks publication"
+  },
+  {
+    "name": "invalid date ordering",
+    "operation": "updateRelation",
+    "values": { "lastVerified": "2026-07-31" },
+    "expectedError": "lastVerified must not precede asOf"
+  },
+  {
+    "name": "fact with confidence",
+    "operation": "updateRelation",
+    "values": { "confidence": "high" },
+    "expectedError": "fact must have confidence null"
+  },
+  {
+    "name": "atlas analysis without confidence",
+    "operation": "updateRelation",
+    "values": { "claimType": "atlas-analysis", "confidence": null },
+    "expectedError": "analysis/estimate requires confidence"
+  },
+  {
+    "name": "estimate without confidence",
+    "operation": "updateRelation",
+    "values": { "claimType": "estimate", "confidence": null },
+    "expectedError": "analysis/estimate requires confidence"
+  },
+  {
+    "name": "positioned in authored as fact",
+    "operation": "updateRelation",
+    "values": { "relationType": "POSITIONED_IN", "objectType": "value-chain-node", "objectId": "compute", "claimType": "fact", "confidence": null },
+    "expectedError": "POSITIONED_IN Atlas mapping must not be authored as fact"
+  },
+  {
+    "name": "duplicate binding ID",
+    "operation": "duplicateBindingId",
+    "expectedError": "Relation Evidence Binding IDs must be unique"
+  },
+  {
+    "name": "duplicate logical binding",
+    "operation": "duplicateLogicalBinding",
+    "expectedError": "duplicate Relation/Source/Locator Binding"
+  },
+  {
+    "name": "unstable Relation order",
+    "operation": "unstableRelationOrder",
+    "expectedError": "Relation records must use stable relationId ordering"
+  },
+  {
+    "name": "unstable Binding order",
+    "operation": "unstableBindingOrder",
+    "expectedError": "Relation Evidence Binding records must use stable ID ordering"
+  },
+  {
+    "name": "invalid supersededBy signature",
+    "operation": "invalidSupersededSignature",
+    "expectedError": "supersededBy must preserve logical endpoint and scope"
+  },
+  {
+    "name": "unknown scope ID",
+    "operation": "updateScope",
+    "values": { "productIds": ["product-category-unknown"] },
+    "expectedError": "scope.productIds contains unknown or invalid IDs"
+  }
+]
