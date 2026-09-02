@@ -438,47 +438,81 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
     import {
       evidenceCompareViewRequested,
       fetchEvidenceCompareFragment,
+      mountEvidenceCompareFragment,
     } from '../lib/company-compare-evidence-bootstrap';
 
     const mountEvidenceCompare = async () => {
-      if (!evidenceCompareViewRequested(location.search)) return;
-
       const app = document.querySelector<HTMLElement>('#compare-app');
       const mount = document.querySelector<HTMLElement>('#company-compare-evidence-mount');
       const legacy = document.querySelector<HTMLElement>('#legacy-compare-view');
-      if (!app || !mount || !legacy || app.dataset.evidencePayloadRequested === 'true') return;
+      if (!app || !mount || !legacy) return;
 
-      app.dataset.compareMode = 'evidence-loading';
-      app.dataset.evidencePayloadRequested = 'true';
-      legacy.hidden = true;
-      app.querySelector<HTMLElement>('#legacy-compare-templates')?.setAttribute('hidden', '');
-      app.querySelector<HTMLElement>('#evidence-compare-templates')?.removeAttribute('hidden');
-      mount.setAttribute('aria-busy', 'true');
-      mount.setAttribute('role', 'status');
-      mount.textContent = '根拠付き比較を読み込んでいます。';
-
-      try {
-        const template = document.createElement('template');
-        template.innerHTML = await fetchEvidenceCompareFragment(mount.dataset.evidenceFragmentUrl || '');
-        mount.replaceWith(template.content);
-        const { initCompanyCompareEvidenceUi } = await import('../scripts/company-compare-evidence-ui');
-        initCompanyCompareEvidenceUi();
-      } catch (error) {
-        console.warn('Company Evidence Compare load failed', error);
-        app.dataset.compareMode = 'evidence-error';
-        mount.removeAttribute('aria-busy');
-        mount.replaceChildren();
-        const message = document.createElement('p');
-        message.textContent = '根拠付き比較を読み込めませんでした。通信状態を確認して再試行してください。';
-        const retry = document.createElement('button');
-        retry.type = 'button';
-        retry.className = 'text-button compare-evidence-retry';
-        retry.textContent = '再試行';
-        retry.addEventListener('click', () => location.reload());
-        mount.append(message, retry);
-      }
+      await mountEvidenceCompareFragment({
+        enabled: evidenceCompareViewRequested(location.search),
+        alreadyRequested: () => app.dataset.evidencePayloadRequested === 'true',
+        begin: () => {
+          app.dataset.compareMode = 'evidence-loading';
+          app.dataset.evidencePayloadRequested = 'true';
+          legacy.hidden = true;
+          app.querySelector<HTMLElement>('#legacy-compare-templates')?.setAttribute('hidden', '');
+          app.querySelector<HTMLElement>('#evidence-compare-templates')?.removeAttribute('hidden');
+          mount.setAttribute('aria-busy', 'true');
+          mount.setAttribute('role', 'status');
+          mount.textContent = '根拠付き比較を読み込んでいます。';
+        },
+        fetchFragment: () => fetchEvidenceCompareFragment(mount.dataset.evidenceFragmentUrl || ''),
+        mountFragment: html => {
+          const template = document.createElement('template');
+          template.innerHTML = html;
+          mount.replaceChildren(template.content);
+        },
+        validateMounted: () => {
+          const root = mount.querySelector<HTMLElement>('#company-compare-evidence');
+          if (!root) throw new Error('Evidence fragment root is missing');
+          const payload = mount.querySelector<HTMLScriptElement>('#compare-evidence-ui-data');
+          if (!payload) throw new Error('Evidence fragment payload is missing');
+          try {
+            JSON.parse(payload.textContent || '');
+          } catch (error) {
+            throw new Error('Evidence fragment payload is invalid', { cause: error });
+          }
+        },
+        loadController: () => import('../scripts/company-compare-evidence-ui'),
+        initializeController: controller => {
+          if (typeof controller.initCompanyCompareEvidenceUi !== 'function') {
+            throw new Error('Evidence controller initializer is missing');
+          }
+          return controller.initCompanyCompareEvidenceUi();
+        },
+        validateInitialized: () => {
+          const root = mount.querySelector<HTMLElement>('#company-compare-evidence');
+          if (!root || root.dataset.evidenceControllerInitialized !== 'true') {
+            throw new Error('Evidence controller initialization marker is missing');
+          }
+          if (root.hidden) throw new Error('Evidence fragment remained hidden after initialization');
+        },
+        finish: () => {
+          mount.removeAttribute('aria-busy');
+          mount.removeAttribute('role');
+        },
+        fail: error => {
+          console.error('Company Evidence Compare load failed', error);
+          app.dataset.compareMode = 'evidence-error';
+          mount.removeAttribute('aria-busy');
+          mount.setAttribute('role', 'status');
+          mount.replaceChildren();
+          const message = document.createElement('p');
+          message.textContent = '根拠付き比較を読み込めませんでした。再試行してください。';
+          const retry = document.createElement('button');
+          retry.type = 'button';
+          retry.className = 'text-button compare-evidence-retry';
+          retry.textContent = '再試行';
+          retry.addEventListener('click', () => location.reload());
+          mount.append(message, retry);
+        },
+      });
     };
 
-    mountEvidenceCompare();
+    void mountEvidenceCompare();
   </script>
 </BaseLayout>

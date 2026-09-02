@@ -13,6 +13,7 @@ import {
 import {
   evidenceCompareViewRequested,
   fetchEvidenceCompareFragment,
+  mountEvidenceCompareFragment,
 } from '../src/lib/company-compare-evidence-bootstrap.ts';
 
 const readJson = async relative => JSON.parse(await readFile(new URL(relative, import.meta.url), 'utf8'));
@@ -69,6 +70,122 @@ await assert.rejects(
   'payload failure remains explicit for the inline recovery state',
 );
 assert.equal(failedFragmentFetchCount, 1, 'failed payload request is not retried or duplicated silently');
+
+const createMountFixture = ({ enabled = true, failure = null } = {}) => {
+  const state = {
+    requested: false,
+    loading: false,
+    mountConnected: true,
+    rootPresent: false,
+    payloadPresent: false,
+    payloadValid: false,
+    initialized: false,
+    visible: false,
+    errorVisible: false,
+    legacyVisible: true,
+    fetchCount: 0,
+    importCount: 0,
+    initCount: 0,
+    finishCount: 0,
+    failureCount: 0,
+    diagnosticErrorCount: 0,
+    lastError: '',
+  };
+  const dependencies = {
+    enabled,
+    alreadyRequested: () => state.requested,
+    begin: () => {
+      state.requested = true;
+      state.loading = true;
+      state.legacyVisible = false;
+    },
+    fetchFragment: async () => {
+      state.fetchCount += 1;
+      if (failure === 'http') throw new Error('Evidence fragment request failed: 503');
+      return '<fragment />';
+    },
+    mountFragment: () => {
+      state.rootPresent = failure !== 'missing-root';
+      state.payloadPresent = failure !== 'missing-payload';
+      state.payloadValid = failure !== 'invalid-payload';
+    },
+    validateMounted: () => {
+      if (!state.rootPresent) throw new Error('Evidence fragment root is missing');
+      if (!state.payloadPresent) throw new Error('Evidence fragment payload is missing');
+      if (!state.payloadValid) throw new Error('Evidence fragment payload is invalid');
+    },
+    loadController: async () => {
+      state.importCount += 1;
+      if (failure === 'import') throw new Error('dynamic import rejected');
+      return { init: true };
+    },
+    initializeController: () => {
+      state.initCount += 1;
+      if (failure === 'controller') throw new Error('controller initialization failed');
+      state.initialized = true;
+      state.visible = true;
+      return true;
+    },
+    validateInitialized: () => {
+      if (!state.initialized || !state.visible) throw new Error('controller completion state is invalid');
+    },
+    finish: () => {
+      state.loading = false;
+      state.finishCount += 1;
+    },
+    fail: error => {
+      state.loading = false;
+      state.errorVisible = state.mountConnected;
+      state.failureCount += 1;
+      state.diagnosticErrorCount += 1;
+      state.lastError = error instanceof Error ? error.message : String(error);
+    },
+  };
+  return { state, dependencies };
+};
+
+const legacyMount = createMountFixture({ enabled: false });
+assert.equal(await mountEvidenceCompareFragment(legacyMount.dependencies), 'legacy');
+assert.equal(legacyMount.state.fetchCount, 0, 'legacy mode requests no fragment');
+assert.equal(legacyMount.state.importCount, 0, 'legacy mode imports no Evidence controller');
+
+const successfulMount = createMountFixture();
+assert.equal(await mountEvidenceCompareFragment(successfulMount.dependencies), 'loaded');
+assert.equal(successfulMount.state.fetchCount, 1, 'normal mode fetches one fragment');
+assert.equal(successfulMount.state.importCount, 1, 'normal mode imports one controller');
+assert.equal(successfulMount.state.initCount, 1, 'normal mode initializes one controller');
+assert.equal(successfulMount.state.mountConnected, true, 'normal mode preserves the connected mount');
+assert.equal(successfulMount.state.finishCount, 1, 'normal mode clears its loading state once');
+assert.equal(successfulMount.state.loading, false, 'normal mode clears loading');
+
+const failureFixtures = [
+  ['http', /503/],
+  ['missing-root', /root is missing/],
+  ['missing-payload', /payload is missing/],
+  ['import', /dynamic import rejected/],
+  ['controller', /controller initialization failed/],
+];
+for (const [failure, expectedMessage] of failureFixtures) {
+  const fixtureState = createMountFixture({ failure });
+  assert.equal(await mountEvidenceCompareFragment(fixtureState.dependencies), 'error', `${failure}: explicit failure outcome`);
+  assert.equal(fixtureState.state.errorVisible, true, `${failure}: failure UI remains in the live mount`);
+  assert.equal(fixtureState.state.failureCount, 1, `${failure}: failure UI renders once`);
+  assert.equal(fixtureState.state.diagnosticErrorCount, 1, `${failure}: exactly one diagnostic error is recorded`);
+  assert.equal(fixtureState.state.legacyVisible, false, `${failure}: no silent Legacy fallback`);
+  assert.equal(fixtureState.state.loading, false, `${failure}: busy state is cleared`);
+  assert.match(fixtureState.state.lastError, expectedMessage, `${failure}: diagnostic identifies the failed stage`);
+}
+assert.equal(failureFixtures.length, 5, 'five required post-mount failure classes are covered');
+
+const invalidPayloadMount = createMountFixture({ failure: 'invalid-payload' });
+assert.equal(await mountEvidenceCompareFragment(invalidPayloadMount.dependencies), 'error');
+assert.equal(invalidPayloadMount.state.errorVisible, true, 'invalid JSON shares the live failure UI');
+assert.equal(invalidPayloadMount.state.diagnosticErrorCount, 1, 'invalid JSON records one diagnostic error');
+
+assert.equal(await mountEvidenceCompareFragment(successfulMount.dependencies), 'already-requested');
+assert.equal(successfulMount.state.fetchCount, 1, 'double initialization does not refetch the fragment');
+assert.equal(successfulMount.state.importCount, 1, 'double initialization does not reimport the controller');
+assert.equal(successfulMount.state.initCount, 1, 'double initialization does not duplicate controller listeners');
 
 const setA = parseEvidenceCompareSearch('?ids=nvidia,broadcom&view=evidence&detail=summary', companyIds);
 assert.equal(setA.enabled, true, 'view=evidence routing');
@@ -230,9 +347,19 @@ assert.match(comparePage, /id="company-compare-evidence-mount"/, 'legacy HTML re
 assert.match(comparePage, /evidence-fragments\/company-compare-evidence-v01\//, 'Evidence fragment has one internal build-time URL');
 assert.match(comparePage, /evidenceCompareViewRequested\(location\.search\)/, 'legacy route exits before requesting Evidence assets');
 assert.match(comparePage, /fetchEvidenceCompareFragment\(mount\.dataset\.evidenceFragmentUrl/, 'Evidence fragment uses the tested single-request loader');
-assert.match(comparePage, /await import\('\.\.\/scripts\/company-compare-evidence-ui'\)/, 'Evidence controller is a lazy module');
+assert.match(comparePage, /loadController: \(\) => import\('\.\.\/scripts\/company-compare-evidence-ui'\)/, 'Evidence controller is a lazy module');
+assert.match(comparePage, /mount\.replaceChildren\(template\.content\)/, 'Evidence content keeps the live mount stable');
+assert.doesNotMatch(comparePage, /mount\.replaceWith\(/, 'Evidence content never detaches its mount');
+assert.match(comparePage, /#company-compare-evidence/, 'mounted fragment root is explicitly validated');
+assert.match(comparePage, /#compare-evidence-ui-data/, 'mounted fragment payload is explicitly validated');
+assert.match(comparePage, /JSON\.parse\(payload\.textContent \|\| ''\)/, 'mounted fragment payload JSON is explicitly validated');
+assert.match(comparePage, /controller\.initCompanyCompareEvidenceUi\(\)/, 'controller initialization result is returned to the orchestrator');
+assert.match(comparePage, /evidenceControllerInitialized !== 'true'/, 'controller completion marker is verified');
+assert.match(comparePage, /if \(root\.hidden\)/, 'controller must expose the mounted root before success');
 assert.match(comparePage, /根拠付き比較を読み込めませんでした/, 'fetch failure has an explicit inline error');
 assert.match(comparePage, /retry\.addEventListener\('click', \(\) => location\.reload\(\)\)/, 'fetch failure offers a recovery action');
+assert.match(comparePage, /console\.error\('Company Evidence Compare load failed'/, 'all failure paths log one diagnostic error');
+assert.match(comparePage, /mount\.setAttribute\('role', 'status'\)/, 'failure UI remains a live status');
 assert.doesNotMatch(comparePage, /<CompanyCompareEvidence identities=/, 'Evidence body is not rendered into legacy Compare HTML');
 assert.match(fragmentPage, /<CompanyCompareEvidence identities=\{identities\}/, 'Set A and B use one canonical build-time component');
 assert.match(fragmentPage, /getCollection\('companies'\)/, 'fragment identities derive from canonical Company content');
@@ -261,8 +388,11 @@ assert.match(claimComponent, /data-evidence-open/);
 assert.match(claimComponent, /verified: \{ short: '確認済み', full: '根拠箇所まで確認済み' \}/, 'Company Claim verified presentation remains unchanged');
 assert.match(claimComponent, /'source-linked': \{ short: '一次資料あり', full: '一次資料紐付け済み・確認未了' \}/, 'Company Claim source-linked presentation remains unchanged');
 assert.match(claimComponent, /'needs-review': \{ short: '要確認', full: '要再検証' \}/, 'Company Claim needs-review presentation remains unchanged');
-assert.match(controller, /if \(!state\.enabled\) return;/, 'Evidence controller exits before exposing its hidden subtree on legacy routes');
+assert.match(controller, /if \(!state\.enabled\) throw new Error/, 'Evidence controller reports an invalid non-Evidence initialization');
 assert.match(controller, /evidenceControllerInitialized/, 'Evidence controller initializes at most once after mount');
+assert.match(controller, /evidenceControllerInitialized === 'true'\) return true/, 'a completed controller can be initialized idempotently');
+assert.match(controller, /export function initCompanyCompareEvidenceUi\(\): boolean/, 'controller exposes an explicit success contract');
+assert.match(controller, /requiredElement/, 'controller throws when required DOM is missing');
 assert.match(controller, /event\.key === 'Escape'/);
 assert.match(controller, /event\.key !== 'Enter' && event\.key !== ' '/, 'Evidence markers have an explicit keyboard activation contract');
 assert.match(controller, /returnFocus/);

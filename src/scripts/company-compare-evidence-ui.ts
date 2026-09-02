@@ -16,26 +16,30 @@ const issueLabels: Record<EvidenceCompareIssue['code'], string> = {
 
 const element = <T extends Element>(root: ParentNode, selector: string) => root.querySelector<T>(selector);
 
-export function initCompanyCompareEvidenceUi() {
-  const app = document.querySelector<HTMLElement>('#compare-app');
-  const root = document.querySelector<HTMLElement>('#company-compare-evidence');
-  const legacy = document.querySelector<HTMLElement>('#legacy-compare-view');
-  const compareDataNode = document.querySelector<HTMLScriptElement>('#compare-data');
-  const evidenceDataNode = document.querySelector<HTMLScriptElement>('#compare-evidence-ui-data');
-  if (!app || !root || !legacy || !compareDataNode || !evidenceDataNode) return;
+const requiredElement = <T extends Element>(root: ParentNode, selector: string) => {
+  const found = element<T>(root, selector);
+  if (!found) throw new Error(`Company Evidence Compare requires ${selector}`);
+  return found;
+};
+
+export function initCompanyCompareEvidenceUi(): boolean {
+  const app = requiredElement<HTMLElement>(document, '#compare-app');
+  const root = requiredElement<HTMLElement>(document, '#company-compare-evidence');
+  const legacy = requiredElement<HTMLElement>(document, '#legacy-compare-view');
+  const compareDataNode = requiredElement<HTMLScriptElement>(document, '#compare-data');
+  const evidenceDataNode = requiredElement<HTMLScriptElement>(document, '#compare-evidence-ui-data');
+  if (root.dataset.evidenceControllerInitialized === 'true') return true;
 
   const pageData = JSON.parse(compareDataNode.textContent || '{}');
   const uiData = JSON.parse(evidenceDataNode.textContent || '{}');
-  const companies = pageData.companies || [];
+  if (!Array.isArray(pageData.companies)) throw new Error('Company Evidence Compare page data is invalid');
+  if (!Array.isArray(uiData.pilotCompanyIds)) throw new Error('Company Evidence Compare payload is invalid');
+  const companies = pageData.companies;
   const byId = new Map<string, any>(companies.map((company: any) => [company.id, company]));
-  const supportedIds = new Set<string>(uiData.pilotCompanyIds || []);
+  const supportedIds = new Set<string>(uiData.pilotCompanyIds);
   let state = parseEvidenceCompareSearch(location.search, byId.keys(), supportedIds);
-  if (!state.enabled) return;
-  if (root.dataset.evidenceControllerInitialized === 'true') return;
-  root.dataset.evidenceControllerInitialized = 'true';
+  if (!state.enabled) throw new Error('Company Evidence Compare controller requires view=evidence');
 
-  app.dataset.compareMode = 'evidence';
-  root.hidden = false;
   legacy.hidden = true;
   element<HTMLElement>(app, '#legacy-compare-templates')?.setAttribute('hidden', '');
   element<HTMLElement>(app, '#evidence-compare-templates')?.removeAttribute('hidden');
@@ -44,17 +48,17 @@ export function initCompanyCompareEvidenceUi() {
   if (pageLead) pageLead.textContent = 'Pilot 5社から2～4社を選び、Company Evidence、Relation、財務の比較可能性を根拠付きで確認します。';
   if (builderMeta) builderMeta.textContent = 'Pilotは2～4社。同じ企業、対象外ID、4社を超える指定は理由を表示して除外します。';
 
-  const searchInput = element<HTMLInputElement>(app, '#compare-company-search')!;
-  const suggestions = element<HTMLElement>(app, '#compare-suggestions')!;
-  const selectedRoot = element<HTMLElement>(app, '#compare-selected')!;
-  const selectionStatus = element<HTMLElement>(app, '#compare-selection-status')!;
-  const routeStatus = element<HTMLElement>(root, '#evidence-route-status')!;
-  const empty = element<HTMLElement>(root, '#evidence-compare-empty')!;
-  const matrixScroll = element<HTMLElement>(root, '#evidence-matrix-scroll')!;
-  const matrix = element<HTMLTableElement>(root, '#evidence-compare-matrix')!;
-  const runtimeQuality = element<HTMLElement>(root, '#evidence-runtime-quality')!;
-  const clearButton = element<HTMLButtonElement>(app, '#clear-compare')!;
-  const copyButton = element<HTMLButtonElement>(app, '#copy-compare-url')!;
+  const searchInput = requiredElement<HTMLInputElement>(app, '#compare-company-search');
+  const suggestions = requiredElement<HTMLElement>(app, '#compare-suggestions');
+  const selectedRoot = requiredElement<HTMLElement>(app, '#compare-selected');
+  const selectionStatus = requiredElement<HTMLElement>(app, '#compare-selection-status');
+  const routeStatus = requiredElement<HTMLElement>(root, '#evidence-route-status');
+  const empty = requiredElement<HTMLElement>(root, '#evidence-compare-empty');
+  const matrixScroll = requiredElement<HTMLElement>(root, '#evidence-matrix-scroll');
+  const matrix = requiredElement<HTMLTableElement>(root, '#evidence-compare-matrix');
+  const runtimeQuality = requiredElement<HTMLElement>(root, '#evidence-runtime-quality');
+  const clearButton = requiredElement<HTMLButtonElement>(app, '#clear-compare');
+  const copyButton = requiredElement<HTMLButtonElement>(app, '#copy-compare-url');
   let currentSuggestions: any[] = [];
 
   const normalize = (value: unknown) => String(value || '').trim().toLowerCase().normalize('NFKC');
@@ -362,4 +366,8 @@ export function initCompanyCompareEvidenceUi() {
   if (state.section) {
     requestAnimationFrame(() => document.querySelector(`#evidence-section-${CSS.escape(state.section!)}`)?.scrollIntoView({ block: 'start' }));
   }
+  app.dataset.compareMode = 'evidence';
+  root.hidden = false;
+  root.dataset.evidenceControllerInitialized = 'true';
+  return true;
 }
