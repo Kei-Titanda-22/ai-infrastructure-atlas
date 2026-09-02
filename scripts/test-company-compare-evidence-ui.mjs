@@ -15,6 +15,15 @@ import {
   fetchEvidenceCompareFragment,
   mountEvidenceCompareFragment,
 } from '../src/lib/company-compare-evidence-bootstrap.ts';
+import {
+  compareClaimDisplayCopy,
+  compareCompanyPresentationTokens,
+  compareGenericTermTranslations,
+  comparePreservedProperNouns,
+  companyCompareDisplayName,
+  companyPresentationTokenForOrder,
+  dedupeCompareCanonicalItems,
+} from '../src/lib/company-compare-display.ts';
 
 const readJson = async relative => JSON.parse(await readFile(new URL(relative, import.meta.url), 'utf8'));
 const projection = await readJson('../src/data/company-compare-evidence-pilot-v01.json');
@@ -23,12 +32,20 @@ const relationBindings = await readJson('../src/data/relation-evidence-bindings-
 const evidenceManifest = await readJson('../src/data/company-evidence-manifest.json');
 const sourceManifest = await readJson('../src/data/source-registry-manifest.json');
 const fixture = await readJson('./fixtures/company-compare-evidence-ui-snapshot-v01.json');
+const displayFixture = await readJson('./fixtures/company-compare-japanese-display-v01.json');
 const comparePage = await readFile(new URL('../src/pages/compare.astro', import.meta.url), 'utf8');
 const fragmentPage = await readFile(new URL('../src/pages/evidence-fragments/company-compare-evidence-v01.astro', import.meta.url), 'utf8');
 const component = await readFile(new URL('../src/components/CompanyCompareEvidence.astro', import.meta.url), 'utf8');
-const claimComponent = await readFile(new URL('../src/components/CompanyEvidenceClaim.astro', import.meta.url), 'utf8');
+const claimComponent = await readFile(new URL('../src/components/CompanyCompareEvidenceClaim.astro', import.meta.url), 'utf8');
 const controller = await readFile(new URL('../src/scripts/company-compare-evidence-ui.ts', import.meta.url), 'utf8');
 const styles = await readFile(new URL('../src/styles/company-compare-evidence-v01.css', import.meta.url), 'utf8');
+const readModelSource = await readFile(new URL('../src/lib/company-compare-evidence-read-model.ts', import.meta.url), 'utf8');
+const pilotCompanyRecords = Object.fromEntries(await Promise.all(
+  ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron'].map(async companyId => [
+    companyId,
+    await readJson(`../src/data/companies/${companyId}.json`),
+  ]),
+));
 
 const evidenceShards = await Promise.all(evidenceManifest.shards.map(file => readJson(`../src/data/${file}`)));
 const sourceShards = await Promise.all(sourceManifest.shards.map(file => readJson(`../src/data/${file}`)));
@@ -48,6 +65,58 @@ for (const binding of relationBindings) {
 const sourceIds = new Set(sources.map(source => source.id));
 const sourceById = new Map(sources.map(source => [source.id, source]));
 const companyIds = new Set(['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'asml']);
+
+assert.deepEqual(
+  Object.keys(compareClaimDisplayCopy).sort(),
+  displayFixture.claimDisplayIds,
+  'all and only 34 projected Claims have fixed Compare display copy',
+);
+assert.deepEqual(compareGenericTermTranslations, displayFixture.genericTermTranslations, 'Japanese generic-term policy is fixture-locked');
+assert.deepEqual(comparePreservedProperNouns, displayFixture.preservedProperNouns, 'allowed proper nouns are fixture-locked');
+assert.deepEqual(compareCompanyPresentationTokens, displayFixture.presentationTokens, 'four presentation-order tokens are fixed');
+const projectedClaimIds = [...new Set(projection.sets.flatMap(setRecord => setRecord.companies.flatMap(company =>
+  company.dimensions.flatMap(dimension => dimension.initialClaimIds),
+)))].sort();
+assert.deepEqual(projectedClaimIds, displayFixture.claimDisplayIds, 'display copy coverage equals the projection Claim corpus');
+for (const claimId of projectedClaimIds) {
+  const display = compareClaimDisplayCopy[claimId];
+  assert.deepEqual(display.groundingIds, [claimId], `${claimId}: display sentence is deterministically grounded`);
+  assert.ok(display.title.trim() && display.statement.trim(), `${claimId}: display title and statement are non-empty`);
+}
+for (const [companyId, expectedName] of Object.entries(displayFixture.companyDisplayNames)) {
+  assert.equal(companyCompareDisplayName(pilotCompanyRecords[companyId]), expectedName, `${companyId}: one canonical Japanese display name`);
+}
+assert.equal(
+  companyCompareDisplayName(pilotCompanyRecords['applied-materials']),
+  'Applied Materials（アプライド・マテリアルズ）',
+  'Applied Materials never mixes English-only and Japanese-only display names',
+);
+const dedupeFixture = dedupeCompareCanonicalItems([
+  { canonicalId: 'product-category-gpu', label: 'GPU', groundingIds: ['rel-a'] },
+  { canonicalId: 'product-category-gpu', label: 'Graphics processing unit', groundingIds: ['rel-b'] },
+  { canonicalId: 'product-category-cpu', label: 'CPU', groundingIds: ['rel-c'] },
+]);
+assert.deepEqual(dedupeFixture.map(item => item.canonicalId), ['product-category-gpu', 'product-category-cpu'], 'dedupe uses canonical Registry ID, not visible strings');
+const technologyDedupeFixture = dedupeCompareCanonicalItems([
+  { canonicalId: 'technology-semiconductor-deposition', label: '半導体成膜プロセス', groundingIds: ['claim-a'] },
+  { canonicalId: 'technology-semiconductor-deposition', label: 'Deposition', groundingIds: ['claim-b'] },
+  { canonicalId: 'technology-semiconductor-etching', label: '半導体エッチングプロセス', groundingIds: ['claim-c'] },
+]);
+assert.deepEqual(
+  technologyDedupeFixture.map(item => item.canonicalId),
+  ['technology-semiconductor-deposition', 'technology-semiconductor-etching'],
+  'Technology display also deduplicates by canonical Registry ID',
+);
+const displayCopyText = Object.values(compareClaimDisplayCopy).flatMap(copy => [copy.title, copy.statement]).join('\n');
+for (const properNoun of ['NVIDIA AI Enterprise', 'DGX Cloud', 'GPU', 'CPU', 'DPU', 'ASIC']) {
+  assert.ok(displayCopyText.includes(properNoun), `${properNoun}: preserved in display copy`);
+}
+assert.deepEqual(
+  [0, 1, 2, 3].map(index => companyPresentationTokenForOrder(index).label),
+  displayFixture.presentationTokens,
+  'selection order deterministically assigns the four company identity tokens',
+);
+assert.throws(() => companyPresentationTokenForOrder(4), /outside 1-4/, 'a fifth presentation token is rejected');
 
 assert.equal(evidenceCompareViewRequested('?ids=nvidia,broadcom'), false, 'legacy route does not request the Evidence payload');
 assert.equal(evidenceCompareViewRequested('?ids=nvidia,broadcom&view=evidence'), true, 'opt-in route requests the Evidence payload');
@@ -363,14 +432,14 @@ assert.match(comparePage, /mount\.setAttribute\('role', 'status'\)/, 'failure UI
 assert.doesNotMatch(comparePage, /<CompanyCompareEvidence identities=/, 'Evidence body is not rendered into legacy Compare HTML');
 assert.match(fragmentPage, /<CompanyCompareEvidence identities=\{identities\}/, 'Set A and B use one canonical build-time component');
 assert.match(fragmentPage, /getCollection\('companies'\)/, 'fragment identities derive from canonical Company content');
-assert.match(component, /CompanyEvidenceClaim/, 'existing Evidence drawer component is reused');
+assert.match(component, /CompanyCompareEvidenceClaim/, 'Compare-only Evidence presentation keeps the existing drawer contract isolated');
 assert.match(component, /data-pagefind-ignore="all"/, 'only the opt-in Evidence subtree is excluded from Pagefind');
 assert.doesNotMatch(component, /initCompanyCompareEvidenceUi/, 'fragment does not initialize its controller before mount');
 assert.doesNotMatch(component, /verificationStatus:\s*['"]verified['"]/, 'Relation adapter must not invent Company Claim verification state');
 assert.match(component, /verificationPresentation=\{entry\.verification\}/, 'Relation verification presentation is Binding-derived');
-assert.match(component, /drawerTitle="Relation根拠"/, 'Relation drawer has an accessible Relation-specific title');
-assert.match(component, /Relation support/);
-assert.match(component, /Locator確認日/);
+assert.match(component, /drawerTitle="関係の根拠"/, 'Relation drawer has an accessible Japanese title');
+assert.match(component, /根拠の対応/);
+assert.match(component, /根拠箇所の確認日/);
 assert.match(component, /scope="col"/);
 assert.match(component, /scope="row"/);
 assert.match(component, /data-evidence-section-link/);
@@ -379,10 +448,18 @@ assert.match(component, />補足</);
 assert.match(component, />事実</);
 assert.match(component, />会社見解</);
 assert.match(component, />Atlasによる分析</);
-assert.match(component, /Relation：収録なし/);
-assert.match(component, /entry\.objectLabel/);
-assert.match(component, /Primary comparisonには表示しません/);
-assert.match(component, /FX換算、順位、差分率は算出しません/);
+assert.match(component, /関係データ：収録なし/);
+assert.match(component, /data-canonical-id=\{entry\.relation\.objectId\}/, 'rendered Product entries retain canonical Registry IDs');
+assert.match(component, /relationsForDisplay/, 'Product display is de-duplicated before rendering');
+assert.match(component, /主要比較には表示しません/);
+assert.match(component, /為替換算、順位、差分率は算出しません/);
+assert.doesNotMatch(component, /id=\{`evidence-section-\$\{['"]value-chain-position/, 'Value Chain is not a repeated standalone major section');
+assert.match(component, /sourceDimensionIds/, 'AI role groups its supply-chain position without changing projection data');
+assert.match(component, /data-display-grounding-ids/, 'every Compare display entry exposes deterministic grounding IDs');
+assert.match(component, /data-company-order-label/, 'every company information block repeats number and name');
+assert.match(component, /displayTitle=\{entry\.display\.title\}/, 'visible Claim copy comes from the display-only read model');
+assert.match(claimComponent, /<h4>\{claim\.title\}<\/h4>/, 'Evidence drawer retains the canonical Claim title');
+assert.match(claimComponent, /class="drawer-statement">\{claim\.statement\}/, 'Evidence drawer retains the canonical Claim statement');
 assert.match(claimComponent, /aria-haspopup="dialog"/);
 assert.match(claimComponent, /data-evidence-open/);
 assert.match(claimComponent, /verified: \{ short: '確認済み', full: '根拠箇所まで確認済み' \}/, 'Company Claim verified presentation remains unchanged');
@@ -399,19 +476,36 @@ assert.match(controller, /returnFocus/);
 assert.match(controller, /window\.addEventListener\('popstate'/);
 assert.match(controller, /unresolvedFinancial/);
 assert.match(controller, /\.evidence-expanded-financial, \.evidence-trace-list/);
+assert.match(controller, /companyCompareDisplayName/, 'selected rows and suggestions share one company-name helper');
+assert.match(controller, /companyPresentationTokenForOrder/, 'company identity follows deterministic selection order');
+assert.match(controller, /dataset\.companyToken/, 'company identity tokens are assigned to all ordered cells');
+assert.match(controller, /value-chain-position['"] \? ['"]ai-role/, 'old Value Chain section links resolve to the grouped AI-role section');
 assert.match(styles, /min-height: 44px/);
 assert.match(styles, /#legacy-compare-templates\[hidden\]/);
 assert.match(styles, /#evidence-compare-templates\[hidden\]/, 'Pilot templates remain hidden on legacy Compare');
 assert.match(styles, /scroll-margin-top: 5rem/);
 assert.match(styles, /@media \(max-width: 600px\)/);
 assert.match(styles, /overflow: visible/);
+assert.match(styles, /\.evidence-major-section > th,[\s\S]*border-top: 2px solid var\(--border-strong\)/, 'major section bands use a 2px neutral rule');
+assert.match(styles, /\.evidence-company-context/, 'desktop repeats the company name within every major section');
+assert.match(styles, /\.evidence-company-context > strong/, 'identity is not color-only');
+assert.match(styles, /font-size: 16px/, 'mobile primary text has a 16px floor');
+assert.match(styles, /font-size: 14px/, 'mobile metadata has a 14px floor');
+assert.match(styles, /--company-ident-bg/, 'mobile identity uses a light background');
+assert.match(styles, /--company-ident-border/, 'mobile identity uses a thin border');
+for (let index = 1; index <= 4; index += 1) {
+  assert.match(styles, new RegExp(`data-company-token="company-${index}"`), `company-${index}: stable visual token exists`);
+}
+for (const sectionLabel of displayFixture.majorSections) {
+  assert.ok(`${component}\n${readModelSource}`.includes(sectionLabel), `${sectionLabel}: major section label is present`);
+}
 
 if (process.argv.includes('--dist')) {
   const compareHtml = await readFile(new URL('../dist/compare/index.html', import.meta.url), 'utf8');
   const fragmentHtml = await readFile(new URL('../dist/evidence-fragments/company-compare-evidence-v01/index.html', import.meta.url), 'utf8');
   const compareBytes = Buffer.byteLength(compareHtml);
-  const baselineBytes = 584_295;
-  const maximumBytes = 642_725;
+  const baselineBytes = 585_468;
+  const maximumBytes = 644_015;
   assert.ok(compareBytes <= maximumBytes, `legacy Compare HTML ${compareBytes} B must remain within 10% of ${baselineBytes} B`);
   assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
   assert.doesNotMatch(compareHtml, /data-claim-id=/, 'built legacy HTML excludes Company Claim bodies');
@@ -429,6 +523,9 @@ if (process.argv.includes('--dist')) {
   assert.equal(drawers.length, 53, 'fragment includes one Evidence drawer per marker');
   assert.equal(new Set(drawers).size, drawers.length, 'fragment has no duplicate drawer IDs');
   assert.match(fragmentHtml, /data-pagefind-ignore="all"/, 'built fragment is outside the Pagefind corpus');
+  assert.ok(Buffer.byteLength(fragmentHtml) <= 314_669, `Evidence fragment ${Buffer.byteLength(fragmentHtml)} B must stay within 5% of 299685 B`);
+  assert.equal((fragmentHtml.match(/data-company-order-label/g) ?? []).length, 35, 'seven matrix sections retain five repeated company identity labels');
+  assert.match(fragmentHtml, /Applied Materials（アプライド・マテリアルズ）/, 'built Set B has the exact Japanese Applied Materials name');
   console.log(`Company Compare lazy artifact OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(fragmentHtml)} B fragment / ${claimMarkers + relationMarkers} markers`);
 }
 

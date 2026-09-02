@@ -1,0 +1,116 @@
+---
+import { deriveEvidenceFreshness } from '../lib/evidence-freshness';
+
+interface Props {
+  claim: any;
+  evidence: any[];
+  sources: any[];
+  compact?: boolean;
+  sourceNumberById?: Record<string, number>;
+  suppressTypeLabel?: boolean;
+  drawerKicker?: string;
+  provenanceTypeLabel?: string;
+  additionalMetadata?: Array<{ label: string; value: string }>;
+  freshnessOverride?: { key: string; label: string };
+  verificationPresentation?: { short: string; full: string };
+  priorityLabel?: string;
+  drawerTitle?: string;
+  displayTitle: string;
+  displayStatement: string;
+  variant?: 'standard' | 'list';
+}
+
+const {
+  claim,
+  evidence,
+  sources,
+  compact = false,
+  sourceNumberById = {},
+  suppressTypeLabel = false,
+  drawerKicker = '企業情報の根拠',
+  provenanceTypeLabel,
+  additionalMetadata = [],
+  freshnessOverride,
+  verificationPresentation,
+  priorityLabel = '内部優先度',
+  drawerTitle = '根拠',
+  displayTitle,
+  displayStatement,
+  variant = 'standard',
+} = Astro.props;
+const sourceById = new Map(sources.map(source => [source.id, source]));
+const evidenceById = new Map(evidence.map(binding => [binding.id, binding]));
+const bindings = claim.evidenceIds.map((id: string) => evidenceById.get(id)).filter(Boolean);
+const fresh = freshnessOverride ?? deriveEvidenceFreshness(claim.nextReview);
+
+const claimTypeLabels: Record<string, string> = {
+  fact: '事実',
+  'company-guidance': '会社見解',
+  'company-positioning': '会社見解',
+  'atlas-analysis': 'Atlas分析',
+  estimate: 'Atlas分析',
+};
+const verificationLabels: Record<string, { short: string; full: string }> = {
+  verified: { short: '確認済み', full: '根拠箇所まで確認済み' },
+  'source-linked': { short: '一次資料あり', full: '一次資料紐付け済み・確認未了' },
+  'needs-review': { short: '要確認', full: '要再検証' },
+};
+const locatorLabels: Record<string, string> = {
+  page: 'ページ', section: 'セクション', heading: '見出し', table: '表', note: '注記', anchor: 'アンカー', quotedLabel: '検索語',
+};
+const typeLabel = claimTypeLabels[claim.claimType] ?? claim.claimType;
+const verification = verificationPresentation
+  ?? verificationLabels[claim.verificationStatus]
+  ?? { short: claim.verificationStatus, full: claim.verificationStatus };
+const isAnalysis = ['atlas-analysis', 'estimate'].includes(claim.claimType);
+const showTypeLabel = claim.claimType !== 'fact';
+const sourceNumbers = [...new Set(bindings.map((binding: any) => sourceNumberById[binding.sourceId]).filter(Boolean))];
+const markerLabel = sourceNumbers.length > 0 ? sourceNumbers.join(', ') : '–';
+---
+
+<article class:list={['pilot-claim', { 'pilot-claim-list': variant === 'list', 'pilot-claim-analysis': isAnalysis, 'pilot-claim-compact': compact }]} aria-label={`${typeLabel}: ${displayTitle}`}>
+  {showTypeLabel && !suppressTypeLabel && <div class="pilot-claim-topline"><span class={`claim-kind claim-kind-${claim.claimType}`}>{typeLabel}</span></div>}
+  {variant === 'list' ? <p class="claim-statement claim-statement-list"><strong>{displayTitle}</strong>{displayStatement && displayStatement !== displayTitle ? ` — ${displayStatement}` : ''}<button class="evidence-marker" type="button" data-evidence-open={`evidence-${claim.id}`} aria-haspopup="dialog" aria-controls={`evidence-${claim.id}`} aria-expanded="false" aria-label={`${displayTitle}の根拠 ${bindings.length}件。${verification.full}`}><span aria-hidden="true">[{markerLabel}]</span></button></p> : <>
+    <h3>{displayTitle}</h3>
+    <p class="claim-statement">{displayStatement}<button class="evidence-marker" type="button" data-evidence-open={`evidence-${claim.id}`} aria-haspopup="dialog" aria-controls={`evidence-${claim.id}`} aria-expanded="false" aria-label={`${displayTitle}の根拠 ${bindings.length}件。${verification.full}`}><span aria-hidden="true">[{markerLabel}]</span></button></p>
+  </>}
+  <dialog class="evidence-drawer" id={`evidence-${claim.id}`} aria-labelledby={`evidence-title-${claim.id}`}>
+    <div class="drawer-header">
+      <div><span class="drawer-kicker">{drawerKicker}</span><h3 id={`evidence-title-${claim.id}`}>{drawerTitle}</h3></div>
+      <button type="button" class="drawer-close" data-evidence-close aria-label="根拠パネルを閉じる">閉じる</button>
+    </div>
+    <div class="drawer-sources">
+      {bindings.map((binding: any) => {
+        const source = sourceById.get(binding.sourceId) as any;
+        return source ? (
+          <section class="drawer-source-entry">
+            <span class="drawer-source-index" aria-hidden="true">[{sourceNumberById[source.id] ?? '–'}]</span>
+            <div><div class="source-publisher">{source.publisher}</div><h4>{source.title}</h4><div class="source-date">{source.publishedAt ?? '日付不明'}</div><a class="source-open" href={source.url} target="_blank" rel="noreferrer">一次資料を開く ↗</a></div>
+          </section>
+        ) : null;
+      })}
+    </div>
+    <details class="provenance-details">
+      <summary>詳細情報</summary>
+      <div class="drawer-claim-context"><span>{provenanceTypeLabel ?? typeLabel}</span><h4>{claim.title}</h4><p class="drawer-statement">{claim.statement}</p></div>
+      <dl class="drawer-meta">
+        <div><dt>情報時点</dt><dd>{claim.asOf}</dd></div>
+        <div><dt>検証状態</dt><dd>{verification.full}</dd></div>
+        <div><dt>更新状況</dt><dd><span class={`freshness freshness-${fresh.key}`}>{fresh.label}</span>{claim.nextReview ? ` · 次回 ${claim.nextReview}` : ''}</dd></div>
+        {claim.confidence && <div><dt>確信度</dt><dd>{claim.confidence}</dd></div>}
+        <div><dt>{priorityLabel}</dt><dd>{claim.priority}</dd></div>
+        {additionalMetadata.map(item => <div><dt>{item.label}</dt><dd>{item.value}</dd></div>)}
+      </dl>
+      {bindings.map((binding: any) => {
+        const source = sourceById.get(binding.sourceId) as any;
+        return source ? <section class="binding-detail"><h4>[{sourceNumberById[source.id] ?? '–'}] {source.title}</h4><dl class="source-locator"><div><dt>公開日</dt><dd>{source.publishedAt ?? '日付不明'}</dd></div><div><dt>取得日</dt><dd>{source.retrievedAt}</dd></div><div><dt>根拠箇所の確認日</dt><dd>{binding.lastChecked}</dd></div>{Object.entries(binding.locator).map(([key, value]) => <div><dt>{locatorLabels[key] ?? key}</dt><dd>{String(value)}</dd></div>)}</dl></section> : null;
+      })}
+    </details>
+  </dialog>
+</article>
+
+<style>
+  .pilot-claim{min-width:0;padding:.15rem 0 .4rem}.pilot-claim-topline{margin-bottom:.35rem}.claim-kind{color:#4f5b66;font-family:var(--mono);font-size:.66rem;font-weight:700;letter-spacing:.06em}.claim-kind-atlas-analysis,.claim-kind-estimate{color:#6a4b1f}.pilot-claim h3{max-width:46rem;margin:0 0 .28rem;font-family:var(--sans);font-size:1.02rem;line-height:1.42}.claim-statement{max-width:48rem;margin:0;color:#30363c;font-size:.91rem;line-height:1.65}.evidence-marker{display:inline-flex;align-items:center;justify-content:center;min-width:2.75rem;min-height:2.75rem;margin:-.85rem -.25rem -.85rem .05rem;padding:0 .2rem;border:0;background:transparent;color:#155c8b;font:inherit;font-family:var(--mono);font-size:.68rem;font-weight:700;line-height:1;vertical-align:baseline;cursor:pointer}.evidence-marker:hover{text-decoration:underline}.evidence-marker:focus-visible{outline:2px solid #397fb2;outline-offset:-8px}
+  .evidence-drawer{position:fixed;z-index:100;inset:0 0 0 auto;width:min(34rem,92vw);height:100dvh;max-height:none;margin:0;padding:1rem 1.5rem 2rem;border:0;border-left:1px solid #b8c0c8;background:var(--surface,#fff);color:inherit;overflow:auto}.evidence-drawer::backdrop{background:rgba(12,20,28,.48)}.drawer-header{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;position:sticky;top:-1rem;margin-bottom:1rem;padding:1rem 0 .75rem;border-bottom:1px solid #cfd5db;background:var(--surface,#fff);z-index:2}.drawer-header h3{margin:.1rem 0 0;font-family:var(--serif,Georgia,serif);font-size:1.5rem}.drawer-kicker{color:#65727f;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em}.drawer-close{flex:0 0 auto;min-width:3.25rem;min-height:2.75rem;white-space:nowrap;border:1px solid #7b8793;border-radius:2px;background:transparent;color:inherit;padding:.35rem .55rem;line-height:1.2;cursor:pointer}.drawer-close:focus-visible,.source-open:focus-visible{outline:3px solid #72aee6;outline-offset:3px}.drawer-sources{border-top:1px solid #d8dee4}.drawer-source-entry{display:grid;grid-template-columns:2.25rem minmax(0,1fr);gap:.65rem;padding:1rem 0;border-bottom:1px solid #d8dee4}.drawer-source-index{padding-top:.1rem;color:#65727f;font-family:var(--mono);font-size:.75rem}.drawer-source-entry h4{margin:.15rem 0 .25rem;font-size:1rem;line-height:1.4}.source-publisher,.source-date{color:#65727f;font-size:.75rem}.source-open{display:inline-flex;margin-top:.65rem;border-bottom:1px solid currentColor;color:#155c8b;font-weight:700;text-decoration:none}.provenance-details{margin-top:1.15rem;padding-top:.8rem;border-top:1px solid #cfd5db}.provenance-details>summary{width:fit-content;cursor:pointer;color:#46535f;font-size:.78rem;font-weight:700}.drawer-claim-context{margin-top:1rem}.drawer-claim-context>span{color:#65727f;font-family:var(--mono);font-size:.68rem}.drawer-claim-context h4{margin:.25rem 0}.drawer-statement{font-size:.88rem;line-height:1.6}.drawer-meta,.source-locator{display:grid;gap:.35rem;margin:.8rem 0 0}.drawer-meta div,.source-locator div{display:grid;grid-template-columns:7rem 1fr;gap:.6rem}.drawer-meta dt,.source-locator dt{color:#65727f;font-size:.72rem}.drawer-meta dd,.source-locator dd{margin:0;font-size:.8rem}.binding-detail{margin-top:1rem;padding-top:.75rem;border-top:1px solid #e2e6ea}.binding-detail h4{font-size:.84rem}.freshness{font-weight:700}
+  @media(max-width:600px){.evidence-drawer{width:100%;max-width:none;box-sizing:border-box;padding:.75rem 1rem 1.5rem}.drawer-header{top:-.75rem;padding:.75rem 0 .6rem}.drawer-header h3{font-size:1.3rem}.drawer-close{min-width:3.5rem}.drawer-source-entry{grid-template-columns:1.8rem minmax(0,1fr)}.drawer-meta div,.source-locator div{grid-template-columns:1fr}.pilot-claim h3{font-size:.96rem}.claim-statement{font-size:.86rem;line-height:1.58}.evidence-marker{min-width:2.75rem;min-height:2.75rem}}
+</style>
