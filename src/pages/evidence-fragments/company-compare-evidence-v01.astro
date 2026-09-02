@@ -1,0 +1,23 @@
+---
+import { getCollection } from 'astro:content';
+import CompanyCompareEvidence from '../../components/CompanyCompareEvidence.astro';
+import { countryLabel, layerLabel } from '../../lib/display-v02';
+import { withBase } from '../../lib/paths';
+
+const companies = (await getCollection('companies'))
+  .sort((a, b) => (a.data.japaneseName || a.data.name).localeCompare(b.data.japaneseName || b.data.name, 'ja'));
+const identities = companies.map(company => ({
+  id: company.id,
+  href: withBase(`companies/${company.id}/`),
+  name: company.data.name,
+  japaneseName: company.data.japaneseName,
+  officialName: company.data.officialName,
+  reading: company.data.reading,
+  ticker: company.data.ticker,
+  country: countryLabel(company.data.country),
+  primaryLayer: layerLabel(company.data.primaryLayer),
+  lastReviewed: company.data.lastReviewed,
+}));
+---
+
+<CompanyCompareEvidence identities={identities} />

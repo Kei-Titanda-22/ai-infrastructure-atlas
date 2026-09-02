@@ -1,0 +1,48 @@
+{
+  "schemaVersion": "0.1",
+  "dimensionOrder": [
+    "company-identity",
+    "ai-role",
+    "value-chain-position",
+    "key-products",
+    "technology-moat",
+    "capacity-roadmap",
+    "financial",
+    "key-risks"
+  ],
+  "setCompanyIds": {
+    "set-a": [
+      "nvidia",
+      "broadcom"
+    ],
+    "set-b": [
+      "applied-materials",
+      "lam-research",
+      "tokyo-electron"
+    ]
+  },
+  "priorityCounts": {
+    "P1": 20,
+    "P2": 14,
+    "P3": 0
+  },
+  "claimMarkerCount": 34,
+  "relationMarkerCount": 19,
+  "markerCount": 53,
+  "unresolvedEvidenceCount": 0,
+  "relationPlacementCounts": {
+    "company-identity": 0,
+    "ai-role": 0,
+    "value-chain-position": 4,
+    "key-products": 11,
+    "technology-moat": 4,
+    "capacity-roadmap": 0,
+    "financial": 0,
+    "key-risks": 0
+  },
+  "financialCounts": {
+    "ok": 0,
+    "caution": 2,
+    "blocked": 2
+  }
+}

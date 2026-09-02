@@ -42,13 +42,19 @@ const compact = companies.map(c => ({
 const definitions = Object.fromEntries(sectorKpiDefinitions.map(d => [d.id, d]));
 const commonDefinitions = Object.fromEntries(metricDefinitions.map(d => [d.id, d]));
 const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-materials','lam-research','tokyo-electron','kla'];
+const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidence-v01/');
 ---
 <BaseLayout title="企業比較">
+  <style is:inline>
+    #legacy-compare-templates[hidden],
+    #evidence-compare-templates[hidden] { display: none !important; }
+    .compare-evidence-retry { min-width: 44px; min-height: 44px; }
+  </style>
   <header class="page-head">
     <div class="shell">
       <span class="eyebrow">企業横断比較</span>
       <h1>企業比較</h1>
-      <p class="lead">100社から最大5社を選び、事業・技術・拠点・財務・業種固有KPIを横並びで確認します。財務指標は比較条件を自動判定し、期間や定義が揃わない場合は理由を表示します。</p>
+      <p class="lead" id="compare-page-lead">100社から最大5社を選び、事業・技術・拠点・財務・業種固有KPIを横並びで確認します。財務指標は比較条件を自動判定し、期間や定義が揃わない場合は理由を表示します。</p>
     </div>
   </header>
 
@@ -58,7 +64,7 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
         <div>
           <span class="eyebrow">比較セット</span>
           <h2 id="compare-builder-title">比較する企業を選ぶ</h2>
-          <p class="meta">3〜5社を推奨。2社でも比較できます。同じ企業の重複追加はできません。</p>
+          <p class="meta" id="compare-builder-meta">3〜5社を推奨。2社でも比較できます。同じ企業の重複追加はできません。</p>
         </div>
         <button class="text-button" id="copy-compare-url" type="button">比較URLをコピー</button>
       </div>
@@ -70,11 +76,16 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
           <div class="compare-suggestions" id="compare-suggestions" role="listbox" hidden></div>
         </div>
 
-        <div class="compare-template-list" aria-label="比較テンプレート">
+        <div class="compare-template-list" id="legacy-compare-templates" aria-label="比較テンプレート">
           <span class="compare-template-label">比較テンプレート</span>
           {comparisonTemplates.map(template => (
             <button class="text-button compare-template-button" type="button" data-template={template.id} data-ids={template.companyIds.join(',')} title={template.description}>{template.name}</button>
           ))}
+        </div>
+        <div class="compare-template-list" id="evidence-compare-templates" aria-label="Company Evidence Pilotセット" hidden>
+          <span class="compare-template-label">Pilotセット</span>
+          <button class="text-button compare-template-button" type="button" data-evidence-set-ids="nvidia,broadcom">Set A — NVIDIA / Broadcom</button>
+          <button class="text-button compare-template-button" type="button" data-evidence-set-ids="applied-materials,lam-research,tokyo-electron">Set B — Applied Materials / Lam Research / Tokyo Electron</button>
         </div>
       </div>
 
@@ -90,6 +101,9 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
       </div>
     </section>
 
+    <div id="company-compare-evidence-mount" data-evidence-fragment-url={evidenceFragmentUrl}></div>
+
+    <div id="legacy-compare-view">
     <dl class="compare-quality-summary" id="compare-quality-summary" aria-label="比較品質の概要">
       <div><dt>比較対象</dt><dd id="summary-companies">0社</dd></div>
       <div><dt>比較可</dt><dd id="summary-ok">0</dd></div>
@@ -122,6 +136,7 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
         </table>
       </div>
     </details>
+    </div>
 
     <script id="compare-data" type="application/json" set:html={JSON.stringify({ companies: compact, definitions, commonDefinitions, sourceMap, defaults })}></script>
   </div>
@@ -129,7 +144,8 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
   <script is:inline>
     const root = document.querySelector('#compare-app');
     const dataNode = document.querySelector('#compare-data');
-    if (root && dataNode) {
+    const evidenceMode = new URLSearchParams(location.search).get('view') === 'evidence';
+    if (root && dataNode && !evidenceMode) {
       const payload = JSON.parse(dataNode.textContent || '{}');
       const companies = payload.companies || [];
       const definitions = payload.definitions || {};
@@ -416,5 +432,87 @@ const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-material
       document.addEventListener('click',event=>{ if(!root.querySelector('.compare-search-label')?.contains(event.target) && event.target!==searchInput && !suggestions.contains(event.target)){ suggestions.hidden=true; searchInput.setAttribute('aria-expanded','false'); } });
       render();
     }
+  </script>
+
+  <script>
+    import {
+      evidenceCompareViewRequested,
+      fetchEvidenceCompareFragment,
+      mountEvidenceCompareFragment,
+    } from '../lib/company-compare-evidence-bootstrap';
+
+    const mountEvidenceCompare = async () => {
+      const app = document.querySelector<HTMLElement>('#compare-app');
+      const mount = document.querySelector<HTMLElement>('#company-compare-evidence-mount');
+      const legacy = document.querySelector<HTMLElement>('#legacy-compare-view');
+      if (!app || !mount || !legacy) return;
+
+      await mountEvidenceCompareFragment({
+        enabled: evidenceCompareViewRequested(location.search),
+        alreadyRequested: () => app.dataset.evidencePayloadRequested === 'true',
+        begin: () => {
+          app.dataset.compareMode = 'evidence-loading';
+          app.dataset.evidencePayloadRequested = 'true';
+          legacy.hidden = true;
+          app.querySelector<HTMLElement>('#legacy-compare-templates')?.setAttribute('hidden', '');
+          app.querySelector<HTMLElement>('#evidence-compare-templates')?.removeAttribute('hidden');
+          mount.setAttribute('aria-busy', 'true');
+          mount.setAttribute('role', 'status');
+          mount.textContent = '根拠付き比較を読み込んでいます。';
+        },
+        fetchFragment: () => fetchEvidenceCompareFragment(mount.dataset.evidenceFragmentUrl || ''),
+        mountFragment: html => {
+          const template = document.createElement('template');
+          template.innerHTML = html;
+          mount.replaceChildren(template.content);
+        },
+        validateMounted: () => {
+          const root = mount.querySelector<HTMLElement>('#company-compare-evidence');
+          if (!root) throw new Error('Evidence fragment root is missing');
+          const payload = mount.querySelector<HTMLScriptElement>('#compare-evidence-ui-data');
+          if (!payload) throw new Error('Evidence fragment payload is missing');
+          try {
+            JSON.parse(payload.textContent || '');
+          } catch (error) {
+            throw new Error('Evidence fragment payload is invalid', { cause: error });
+          }
+        },
+        loadController: () => import('../scripts/company-compare-evidence-ui'),
+        initializeController: controller => {
+          if (typeof controller.initCompanyCompareEvidenceUi !== 'function') {
+            throw new Error('Evidence controller initializer is missing');
+          }
+          return controller.initCompanyCompareEvidenceUi();
+        },
+        validateInitialized: () => {
+          const root = mount.querySelector<HTMLElement>('#company-compare-evidence');
+          if (!root || root.dataset.evidenceControllerInitialized !== 'true') {
+            throw new Error('Evidence controller initialization marker is missing');
+          }
+          if (root.hidden) throw new Error('Evidence fragment remained hidden after initialization');
+        },
+        finish: () => {
+          mount.removeAttribute('aria-busy');
+          mount.removeAttribute('role');
+        },
+        fail: error => {
+          console.error('Company Evidence Compare load failed', error);
+          app.dataset.compareMode = 'evidence-error';
+          mount.removeAttribute('aria-busy');
+          mount.setAttribute('role', 'status');
+          mount.replaceChildren();
+          const message = document.createElement('p');
+          message.textContent = '根拠付き比較を読み込めませんでした。再試行してください。';
+          const retry = document.createElement('button');
+          retry.type = 'button';
+          retry.className = 'text-button compare-evidence-retry';
+          retry.textContent = '再試行';
+          retry.addEventListener('click', () => location.reload());
+          mount.append(message, retry);
+        },
+      });
+    };
+
+    void mountEvidenceCompare();
   </script>
 </BaseLayout>
