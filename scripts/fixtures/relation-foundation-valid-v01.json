@@ -1,0 +1,59 @@
+{
+  "empty": {
+    "relations": [],
+    "bindings": []
+  },
+  "populated": {
+    "endpointIds": {
+      "company": ["company-a", "company-b"],
+      "product": ["product-category-gpu"],
+      "technology": ["technology-accelerated-computing-architecture"],
+      "value-chain-node": ["compute"],
+      "facility": ["facility-a"],
+      "market": ["market-data-center"]
+    },
+    "sourceIds": ["source-fixture-primary"],
+    "relations": [
+      {
+        "relationId": "rel-company-a-produces-gpu",
+        "subjectType": "company",
+        "subjectId": "company-a",
+        "relationType": "PRODUCES",
+        "objectType": "product",
+        "objectId": "product-category-gpu",
+        "scope": {
+          "productIds": [],
+          "technologyIds": [],
+          "valueChainNodeIds": [],
+          "marketIds": [],
+          "geographies": [],
+          "businessUnit": null,
+          "capacityBasis": null
+        },
+        "statement": "Company A produces the generic GPU product category.",
+        "claimType": "fact",
+        "asOf": "2026-08-01",
+        "lastVerified": "2026-08-15",
+        "nextReview": "2027-08-15",
+        "importance": "P1",
+        "displayPriority": 10,
+        "confidence": null,
+        "validFrom": null,
+        "validTo": null,
+        "supersededBy": null
+      }
+    ],
+    "bindings": [
+      {
+        "id": "rel-evidence-company-a-produces-gpu",
+        "relationId": "rel-company-a-produces-gpu",
+        "sourceId": "source-fixture-primary",
+        "support": "supports",
+        "locator": {
+          "heading": "Products"
+        },
+        "lastChecked": "2026-08-15"
+      }
+    ]
+  }
+}
