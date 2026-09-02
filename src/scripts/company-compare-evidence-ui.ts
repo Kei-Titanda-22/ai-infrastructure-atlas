@@ -1,0 +1,355 @@
+import {
+  evidenceCompareMaxCompanies,
+  matchEvidencePilotSet,
+  parseEvidenceCompareSearch,
+  serializeEvidenceCompareSearch,
+  type EvidenceCompareIssue,
+  type EvidenceCompareState,
+} from '../lib/company-compare-evidence-ui.ts';
+
+const issueLabels: Record<EvidenceCompareIssue['code'], string> = {
+  unknown: '不明なCompany ID',
+  unsupported: 'Pilot対象外',
+  duplicate: '重複を除外',
+  limit: '4社上限を超過',
+};
+
+const element = <T extends Element>(root: ParentNode, selector: string) => root.querySelector<T>(selector);
+
+export function initCompanyCompareEvidenceUi() {
+  const app = document.querySelector<HTMLElement>('#compare-app');
+  const root = document.querySelector<HTMLElement>('#company-compare-evidence');
+  const legacy = document.querySelector<HTMLElement>('#legacy-compare-view');
+  const compareDataNode = document.querySelector<HTMLScriptElement>('#compare-data');
+  const evidenceDataNode = document.querySelector<HTMLScriptElement>('#compare-evidence-ui-data');
+  if (!app || !root || !legacy || !compareDataNode || !evidenceDataNode) return;
+
+  const pageData = JSON.parse(compareDataNode.textContent || '{}');
+  const uiData = JSON.parse(evidenceDataNode.textContent || '{}');
+  const companies = pageData.companies || [];
+  const byId = new Map<string, any>(companies.map((company: any) => [company.id, company]));
+  const supportedIds = new Set<string>(uiData.pilotCompanyIds || []);
+  let state = parseEvidenceCompareSearch(location.search, byId.keys(), supportedIds);
+  if (!state.enabled) return;
+
+  app.dataset.compareMode = 'evidence';
+  root.hidden = false;
+  legacy.hidden = true;
+  element<HTMLElement>(app, '#legacy-compare-templates')?.setAttribute('hidden', '');
+  element<HTMLElement>(app, '#evidence-compare-templates')?.removeAttribute('hidden');
+  const pageLead = document.querySelector<HTMLElement>('#compare-page-lead');
+  const builderMeta = element<HTMLElement>(app, '#compare-builder-meta');
+  if (pageLead) pageLead.textContent = 'Pilot 5社から2～4社を選び、Company Evidence、Relation、財務の比較可能性を根拠付きで確認します。';
+  if (builderMeta) builderMeta.textContent = 'Pilotは2～4社。同じ企業、対象外ID、4社を超える指定は理由を表示して除外します。';
+
+  const searchInput = element<HTMLInputElement>(app, '#compare-company-search')!;
+  const suggestions = element<HTMLElement>(app, '#compare-suggestions')!;
+  const selectedRoot = element<HTMLElement>(app, '#compare-selected')!;
+  const selectionStatus = element<HTMLElement>(app, '#compare-selection-status')!;
+  const routeStatus = element<HTMLElement>(root, '#evidence-route-status')!;
+  const empty = element<HTMLElement>(root, '#evidence-compare-empty')!;
+  const matrixScroll = element<HTMLElement>(root, '#evidence-matrix-scroll')!;
+  const matrix = element<HTMLTableElement>(root, '#evidence-compare-matrix')!;
+  const runtimeQuality = element<HTMLElement>(root, '#evidence-runtime-quality')!;
+  const clearButton = element<HTMLButtonElement>(app, '#clear-compare')!;
+  const copyButton = element<HTMLButtonElement>(app, '#copy-compare-url')!;
+  let currentSuggestions: any[] = [];
+
+  const normalize = (value: unknown) => String(value || '').trim().toLowerCase().normalize('NFKC');
+  const localCompanyName = (company: any) => {
+    const name = String(company?.name || '');
+    const japanese = String(company?.japaneseName || '');
+    if (!japanese || japanese === name) return '';
+    const wrappedPrefix = `${name}（`;
+    return japanese.startsWith(wrappedPrefix) && japanese.endsWith('）')
+      ? japanese.slice(wrappedPrefix.length, -1)
+      : japanese;
+  };
+  const text = (tag: string, value: string, className = '') => {
+    const node = document.createElement(tag);
+    node.textContent = value;
+    if (className) node.className = className;
+    return node;
+  };
+  const pickedCompanies = () => state.selectedIds.map(id => byId.get(id)).filter(Boolean);
+
+  const issueText = (issues: EvidenceCompareIssue[]) => issues
+    .map(issue => `${issueLabels[issue.code]}：${issue.id}`)
+    .join(' / ');
+
+  const updateUrl = () => {
+    const query = serializeEvidenceCompareSearch(location.search, state);
+    history.replaceState({ evidenceCompare: true }, '', `${location.pathname}${query}`);
+  };
+
+  const renderSelected = () => {
+    selectedRoot.replaceChildren();
+    const picked = pickedCompanies();
+    if (!picked.length) selectedRoot.append(text('p', '比較企業が未選択です。', 'meta'));
+    picked.forEach((company, index) => {
+      const row = document.createElement('div');
+      row.className = 'compare-selected-row';
+      row.append(text('span', String(index + 1).padStart(2, '0'), 'compare-selected-index mono'));
+      const info = document.createElement('div');
+      info.className = 'compare-selected-info';
+      const link = document.createElement('a');
+      link.href = company.href;
+      link.className = 'company-link compare-selected-name';
+      link.textContent = company.name;
+      info.append(link);
+      const localName = localCompanyName(company);
+      if (localName) info.append(text('span', localName, 'compare-selected-local'));
+      info.append(text('span', `${company.ticker} · ${company.primaryLayer}`, 'compare-selected-meta'));
+      row.append(info);
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.className = 'text-button compare-remove';
+      remove.textContent = '外す';
+      remove.dataset.removeId = company.id;
+      row.append(remove);
+      selectedRoot.append(row);
+    });
+    selectionStatus.textContent = `${picked.length}/${evidenceCompareMaxCompanies}社を選択中${picked.length < 2 ? ' — 2社以上を選択してください' : ''}`;
+    clearButton.hidden = picked.length < 2;
+    clearButton.disabled = picked.length < 2;
+    routeStatus.textContent = issueText(state.issues);
+  };
+
+  const directCompanyCells = (container: Element) => [...container.children]
+    .filter((child): child is HTMLElement => child instanceof HTMLElement && Boolean(child.dataset.companyId));
+
+  const orderAndFilterCompanyCells = (container: Element) => {
+    const cells = directCompanyCells(container);
+    const byCompany = new Map(cells.map(cell => [cell.dataset.companyId!, cell]));
+    state.selectedIds.forEach(companyId => {
+      const cell = byCompany.get(companyId);
+      if (!cell) return;
+      cell.hidden = false;
+      container.append(cell);
+    });
+    cells.filter(cell => !state.selectedIds.includes(cell.dataset.companyId!)).forEach(cell => {
+      cell.hidden = true;
+      container.append(cell);
+    });
+  };
+
+  const renderMatrix = () => {
+    const ready = state.selectedIds.length >= 2;
+    const setRecord = matchEvidencePilotSet(state.selectedIds);
+    empty.hidden = ready;
+    matrixScroll.hidden = !ready;
+    matrix.style.setProperty('--evidence-company-count', String(Math.max(2, state.selectedIds.length)));
+    root.querySelectorAll('[data-evidence-company-row]').forEach(orderAndFilterCompanyCells);
+
+    const allMissingDimensions: string[] = [];
+    root.querySelectorAll<HTMLElement>('[data-dimension-id]').forEach(row => {
+      const selectedCells = directCompanyCells(row).filter(cell => state.selectedIds.includes(cell.dataset.companyId!));
+      const allMissing = ready && selectedCells.length > 0 && selectedCells.every(cell => cell.dataset.hasContent !== 'true');
+      const unresolvedFinancial = row.dataset.dimensionId === 'financial' && !setRecord;
+      row.hidden = allMissing || unresolvedFinancial;
+      if (allMissing) allMissingDimensions.push(row.dataset.dimensionId || 'unknown');
+    });
+
+    root.querySelectorAll<HTMLElement>('.evidence-expanded-financial, .evidence-trace-list')
+      .forEach(orderAndFilterCompanyCells);
+
+    root.querySelectorAll<HTMLElement>('[data-financial-set-id]').forEach(panel => {
+      panel.hidden = panel.dataset.financialSetId !== setRecord?.setId;
+    });
+    root.querySelectorAll<HTMLElement>('[data-quality-set-id]').forEach(panel => {
+      panel.hidden = panel.dataset.qualitySetId !== setRecord?.setId;
+    });
+
+    const runtimeMessages: string[] = [];
+    if (ready && !setRecord) runtimeMessages.push('この選択組合せにはcanonical Financial projectionがないため、財務比較は比較不能です。');
+    if (allMissingDimensions.length) {
+      runtimeMessages.push(`全社未収録・比較対象外：${allMissingDimensions.map(id => uiData.dimensionLabels?.[id] || id).join('、')}`);
+    }
+    runtimeQuality.replaceChildren();
+    runtimeMessages.forEach(message => runtimeQuality.append(text('p', message)));
+  };
+
+  const renderDetail = () => {
+    root.dataset.detail = state.detail;
+    root.querySelectorAll<HTMLButtonElement>('[data-evidence-detail]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.evidenceDetail === state.detail));
+    });
+  };
+
+  const renderSectionLinks = () => {
+    root.querySelectorAll<HTMLAnchorElement>('[data-evidence-section-link]').forEach(link => {
+      const section = link.dataset.evidenceSectionLink || null;
+      link.href = `${location.pathname}${serializeEvidenceCompareSearch(location.search, { ...state, section })}`;
+      link.setAttribute('aria-current', String(section === state.section));
+    });
+  };
+
+  const render = (replaceUrl = true) => {
+    renderSelected();
+    renderMatrix();
+    renderDetail();
+    renderSectionLinks();
+    if (replaceUrl) updateUrl();
+  };
+
+  const candidateMatches = (query: string) => {
+    const tokens = normalize(query).split(/\s+/).filter(Boolean);
+    if (!tokens.length) return [];
+    return companies.filter((company: any) =>
+      supportedIds.has(company.id)
+      && !state.selectedIds.includes(company.id)
+      && tokens.every((token: string) => company.searchText.includes(token)),
+    ).slice(0, 10);
+  };
+
+  const renderSuggestions = () => {
+    currentSuggestions = candidateMatches(searchInput.value);
+    suggestions.replaceChildren();
+    if (!currentSuggestions.length) {
+      suggestions.hidden = true;
+      searchInput.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    currentSuggestions.forEach(company => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'compare-suggestion';
+      button.dataset.addId = company.id;
+      button.setAttribute('role', 'option');
+      button.append(text('span', company.japaneseName || company.name, 'compare-suggestion-name'));
+      button.append(text('span', `${company.ticker} · ${company.country} · ${company.primaryLayer}`, 'compare-suggestion-meta'));
+      suggestions.append(button);
+    });
+    suggestions.hidden = false;
+    searchInput.setAttribute('aria-expanded', 'true');
+  };
+
+  const addCompany = (id: string) => {
+    state.issues = [];
+    if (!byId.has(id)) state.issues.push({ code: 'unknown', id });
+    else if (!supportedIds.has(id)) state.issues.push({ code: 'unsupported', id });
+    else if (state.selectedIds.includes(id)) state.issues.push({ code: 'duplicate', id });
+    else if (state.selectedIds.length >= evidenceCompareMaxCompanies) state.issues.push({ code: 'limit', id });
+    else state.selectedIds.push(id);
+    searchInput.value = '';
+    suggestions.hidden = true;
+    searchInput.setAttribute('aria-expanded', 'false');
+    render();
+    searchInput.focus();
+  };
+
+  const applySet = (ids: string[]) => {
+    state.selectedIds = ids.filter(id => supportedIds.has(id)).slice(0, evidenceCompareMaxCompanies);
+    state.issues = [];
+    state.section = null;
+    render();
+  };
+
+  searchInput.addEventListener('input', renderSuggestions);
+  searchInput.addEventListener('keydown', event => {
+    if (event.key === 'Enter' && currentSuggestions[0]) {
+      event.preventDefault();
+      addCompany(currentSuggestions[0].id);
+    }
+    if (event.key === 'Escape') {
+      suggestions.hidden = true;
+      searchInput.setAttribute('aria-expanded', 'false');
+    }
+  });
+  suggestions.addEventListener('click', event => {
+    const button = (event.target as Element).closest<HTMLElement>('[data-add-id]');
+    if (button?.dataset.addId) addCompany(button.dataset.addId);
+  });
+  selectedRoot.addEventListener('click', event => {
+    const button = (event.target as Element).closest<HTMLElement>('[data-remove-id]');
+    if (!button?.dataset.removeId) return;
+    state.selectedIds = state.selectedIds.filter(id => id !== button.dataset.removeId);
+    state.issues = [];
+    render();
+  });
+  clearButton.addEventListener('click', () => {
+    state.selectedIds = [];
+    state.issues = [];
+    state.section = null;
+    render();
+    searchInput.focus();
+  });
+  app.querySelectorAll<HTMLElement>('[data-evidence-set-ids]').forEach(button => {
+    button.addEventListener('click', () => applySet((button.dataset.evidenceSetIds || '').split(',').filter(Boolean)));
+  });
+  copyButton.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(location.href);
+      copyButton.textContent = 'コピーしました';
+      setTimeout(() => { copyButton.textContent = '比較URLをコピー'; }, 1600);
+    } catch {
+      copyButton.textContent = 'URL欄からコピーしてください';
+      setTimeout(() => { copyButton.textContent = '比較URLをコピー'; }, 2200);
+    }
+  });
+  root.addEventListener('click', event => {
+    const detailButton = (event.target as Element).closest<HTMLButtonElement>('[data-evidence-detail]');
+    if (detailButton?.dataset.evidenceDetail) {
+      state.detail = detailButton.dataset.evidenceDetail === 'expanded' ? 'expanded' : 'summary';
+      render();
+      return;
+    }
+    const sectionLink = (event.target as Element).closest<HTMLAnchorElement>('[data-evidence-section-link]');
+    if (sectionLink?.dataset.evidenceSectionLink) {
+      event.preventDefault();
+      state.section = sectionLink.dataset.evidenceSectionLink;
+      render();
+      document.querySelector(`#evidence-section-${CSS.escape(state.section)}`)?.scrollIntoView({ block: 'start' });
+    }
+  });
+  document.addEventListener('click', event => {
+    if (event.target === searchInput || suggestions.contains(event.target as Node)) return;
+    suggestions.hidden = true;
+    searchInput.setAttribute('aria-expanded', 'false');
+  });
+
+  const returnFocus = new WeakMap<HTMLDialogElement, HTMLElement>();
+  root.addEventListener('click', event => {
+    const trigger = (event.target as Element).closest<HTMLElement>('[data-evidence-open]');
+    if (trigger) {
+      const dialog = document.getElementById(trigger.dataset.evidenceOpen || '');
+      if (!(dialog instanceof HTMLDialogElement)) return;
+      returnFocus.set(dialog, trigger);
+      trigger.setAttribute('aria-expanded', 'true');
+      dialog.showModal();
+      dialog.querySelector<HTMLElement>('[data-evidence-close]')?.focus();
+      return;
+    }
+    const close = (event.target as Element).closest<HTMLElement>('[data-evidence-close]');
+    if (close) (close.closest('dialog') as HTMLDialogElement | null)?.close();
+  });
+  root.querySelectorAll<HTMLDialogElement>('.evidence-drawer').forEach(dialog => {
+    dialog.addEventListener('click', event => { if (event.target === dialog) dialog.close(); });
+    dialog.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        dialog.close();
+      }
+    });
+    dialog.addEventListener('close', () => {
+      const trigger = returnFocus.get(dialog);
+      trigger?.setAttribute('aria-expanded', 'false');
+      trigger?.focus();
+    });
+  });
+
+  window.addEventListener('popstate', () => {
+    const restored = parseEvidenceCompareSearch(location.search, byId.keys(), supportedIds);
+    if (!restored.enabled) {
+      location.reload();
+      return;
+    }
+    state = restored;
+    render(false);
+  });
+
+  render();
+  if (state.section) {
+    requestAnimationFrame(() => document.querySelector(`#evidence-section-${CSS.escape(state.section!)}`)?.scrollIntoView({ block: 'start' }));
+  }
+}

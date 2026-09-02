@@ -1,0 +1,294 @@
+---
+import CompanyEvidenceClaim from './CompanyEvidenceClaim.astro';
+import {
+  buildCompanyCompareEvidenceReadModel,
+  compareEvidenceDimensionLabels,
+  type CompareEvidenceIdentity,
+  type CompareEvidenceRelationEntry,
+} from '../lib/company-compare-evidence-read-model';
+import '../styles/company-compare-evidence-v01.css';
+
+interface Props {
+  identities: CompareEvidenceIdentity[];
+}
+
+const { identities } = Astro.props;
+const model = buildCompanyCompareEvidenceReadModel(identities);
+const companyById = new Map(model.companies.map(company => [company.identity.id, company]));
+const sourceNumberById = model.sourceNumberById as Record<string, number>;
+const freshnessLabels: Record<string, string> = {
+  current: '確認期限内',
+  'review-due': '再確認時期',
+  stale: '確認期限超過',
+};
+const claimTypeGroups = (claims: any[], relations: CompareEvidenceRelationEntry[]) => {
+  const types = [...claims.map(entry => entry.claim.claimType), ...relations.map(entry => entry.relation.claimType)];
+  return {
+    fact: types.some(type => type === 'fact'),
+    company: types.some(type => type === 'company-guidance' || type === 'company-positioning'),
+    analysis: types.some(type => type === 'atlas-analysis' || type === 'estimate'),
+  };
+};
+const relationTypeLabels: Record<string, string> = {
+  PRODUCES: '提供製品',
+  POSITIONED_IN: '工程上の位置',
+  COMPETES_WITH: '競合関係',
+};
+const relationCounterparty = (entry: CompareEvidenceRelationEntry, companyId: string) => {
+  const relation = entry.relation;
+  if (relation.relationType === 'COMPETES_WITH') {
+    const otherId = relation.subjectId === companyId ? relation.objectId : relation.subjectId;
+    return companyById.get(otherId)?.identity.japaneseName || companyById.get(otherId)?.identity.name || otherId;
+  }
+  return entry.objectLabel;
+};
+const relationAsClaim = (entry: CompareEvidenceRelationEntry, companyId: string) => ({
+  id: `compare-${entry.relation.relationId}-${companyId}`,
+  companyId,
+  category: 'relation',
+  claimType: entry.relation.claimType,
+  priority: entry.relation.importance,
+  title: `${relationTypeLabels[entry.relation.relationType] ?? entry.relation.relationType} — ${relationCounterparty(entry, companyId)}`,
+  statement: entry.relation.statement,
+  evidenceIds: [...entry.relation.evidenceIds],
+  verificationStatus: 'verified',
+  confidence: entry.relation.confidence ?? undefined,
+  asOf: entry.relation.asOf,
+  lastVerified: entry.relation.lastVerified,
+  nextReview: entry.relation.nextReview,
+});
+const missingLabels: Record<string, string> = {
+  'not-collected': '未収録',
+  'primary-source-unchecked': '一次資料未確認',
+  'not-disclosed': '非開示',
+  'not-applicable': '対象外',
+  'not-missing': '収録済み',
+};
+const coverageLabels: Record<string, string> = {
+  complete: '収録済み',
+  partial: '一部収録',
+  'not-started': '未収録',
+};
+const metricLabel: Record<string, string> = {
+  operatingMargin: '営業利益率',
+  revenueGrowth: '売上高成長率',
+};
+const operatingMarginByCompany = new Map(model.sets.flatMap(setRecord => {
+  const state = setRecord.financial.metricStates.find(metric => metric.metricId === 'operatingMargin');
+  return (state?.companyMetricRefs ?? []).map(reference => [reference.companyId, reference] as const);
+}));
+const financialMetric = (record: any, metricId: string) => record.metrics.find((metric: any) => metric.metricId === metricId);
+const clientPayload = {
+  pilotCompanyIds: model.pilotCompanyIds,
+  dimensionOrder: model.dimensionOrder,
+  dimensionLabels: model.dimensionLabels,
+  stableSections: [...model.dimensionOrder, 'evidence-trace'],
+  sets: model.sets.map(setRecord => ({
+    setId: setRecord.setId,
+    orderedCompanyIds: setRecord.orderedCompanyIds,
+  })),
+};
+---
+
+<section class="evidence-compare" id="company-compare-evidence" aria-labelledby="evidence-compare-title" hidden data-detail="summary">
+  <header class="evidence-compare-head">
+    <div>
+      <span class="eyebrow">Company Evidence</span>
+      <h2 id="evidence-compare-title">根拠付き企業比較</h2>
+      <p>Claim、Relation、財務の正本を同じ比較面で確認します。勝敗や順位は算出しません。</p>
+    </div>
+    <div class="evidence-detail-controls" role="group" aria-label="情報量">
+      <button type="button" data-evidence-detail="summary" aria-pressed="true">要約</button>
+      <button type="button" data-evidence-detail="expanded" aria-pressed="false">詳細</button>
+    </div>
+  </header>
+
+  <p class="evidence-route-status" id="evidence-route-status" role="status" aria-live="polite"></p>
+
+  <nav class="evidence-section-nav" aria-label="比較項目">
+    {model.dimensionOrder.map(dimensionId => (
+      <a href={`?view=evidence&section=${dimensionId}`} data-evidence-section-link={dimensionId}>{compareEvidenceDimensionLabels[dimensionId]}</a>
+    ))}
+    <a href="?view=evidence&section=evidence-trace" data-evidence-section-link="evidence-trace">根拠とデータ品質</a>
+  </nav>
+
+  <div class="evidence-empty" id="evidence-compare-empty">
+    <h3>2～4社を選択してください</h3>
+    <p>上の検索欄またはPilotセットから企業を選ぶと、根拠付き比較を表示します。</p>
+  </div>
+
+  <div class="evidence-matrix-scroll" id="evidence-matrix-scroll" tabindex="0" aria-label="根拠付き企業比較表" hidden>
+    <table class="evidence-matrix" id="evidence-compare-matrix">
+      <thead>
+        <tr data-evidence-company-row>
+          <th scope="col" class="evidence-dimension-column">比較項目</th>
+          {model.companies.map(company => (
+            <th scope="col" data-company-id={company.identity.id} id={`evidence-company-${company.identity.id}`}>
+              <a href={company.identity.href}>{company.identity.japaneseName || company.identity.name}</a>
+              <span>{company.identity.ticker || '非上場'} · {company.identity.country}</span>
+            </th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="evidence-section-company-identity" data-dimension-id="company-identity" data-evidence-company-row>
+          <th scope="row" id="evidence-dimension-company-identity">企業情報</th>
+          {model.companies.map(company => (
+            <td data-company-id={company.identity.id} data-company-label={company.identity.japaneseName || company.identity.name} headers={`evidence-dimension-company-identity evidence-company-${company.identity.id}`} data-has-content="true">
+              <div class="evidence-identity">
+                <a href={company.identity.href}><strong>{company.identity.name}</strong></a>
+                {company.identity.japaneseName && company.identity.japaneseName !== company.identity.name && <span>{company.identity.japaneseName}</span>}
+                <span>{company.identity.ticker || '非上場'} · {company.identity.country}</span>
+                <span>{company.identity.primaryLayer}</span>
+              </div>
+              <dl class="evidence-cell-details" data-expanded-only>
+                {company.identity.officialName && <div><dt>正式名称</dt><dd>{company.identity.officialName}</dd></div>}
+                {company.identity.reading && <div><dt>読み</dt><dd>{company.identity.reading}</dd></div>}
+                {company.identity.lastReviewed && <div><dt>最終確認</dt><dd>{company.identity.lastReviewed}</dd></div>}
+              </dl>
+            </td>
+          ))}
+        </tr>
+
+        {model.dimensionOrder.filter(dimensionId => !['company-identity', 'financial'].includes(dimensionId)).map(dimensionId => (
+          <tr id={`evidence-section-${dimensionId}`} data-dimension-id={dimensionId} data-evidence-company-row>
+            <th scope="row" id={`evidence-dimension-${dimensionId}`}>{compareEvidenceDimensionLabels[dimensionId]}</th>
+            {model.companies.map(company => {
+              const dimension = company.dimensions.find(item => item.dimensionId === dimensionId)!;
+              const typeGroups = claimTypeGroups(dimension.claims, dimension.relations);
+              const hasContent = dimension.claims.length + dimension.relations.length > 0;
+              return (
+                <td data-company-id={company.identity.id} data-company-label={company.identity.japaneseName || company.identity.name} headers={`evidence-dimension-${dimensionId} evidence-company-${company.identity.id}`} data-has-content={String(hasContent)}>
+                  {hasContent ? <>
+                    {(typeGroups.fact || typeGroups.company || typeGroups.analysis) && <div class="evidence-epistemic-notes">
+                      {typeGroups.fact && <span>事実</span>}
+                      {typeGroups.company && <span>会社見解</span>}
+                      {typeGroups.analysis && <span class="evidence-epistemic-analysis">Atlasによる分析</span>}
+                    </div>}
+                    {dimension.claims.map(entry => <div class="evidence-claim-entry" data-claim-id={entry.claim.id} data-claim-priority={entry.claim.priority}>
+                      {dimension.supplementalP2 && entry.claim.priority === 'P2' && <span class="evidence-supplement">補足</span>}
+                      <CompanyEvidenceClaim
+                        claim={entry.claim}
+                        evidence={entry.bindings}
+                        sources={entry.sources}
+                        sourceNumberById={sourceNumberById}
+                        compact
+                        suppressTypeLabel
+                        additionalMetadata={[
+                          { label: 'Claim type', value: entry.claim.claimType },
+                          { label: '最終検証', value: entry.claim.lastVerified ?? '未記録' },
+                          { label: 'スコープ', value: 'Company' },
+                        ]}
+                      />
+                    </div>)}
+                    {dimension.relations.map(entry => {
+                      const relationClaim = relationAsClaim(entry, company.identity.id);
+                      return <div class="evidence-relation-entry" data-relation-id={entry.relation.relationId}>
+                        <CompanyEvidenceClaim
+                          claim={relationClaim}
+                          evidence={entry.bindings}
+                          sources={entry.sources}
+                          sourceNumberById={sourceNumberById}
+                          compact
+                          suppressTypeLabel
+                          drawerKicker="Relation Evidence"
+                          provenanceTypeLabel={`Relation: ${entry.relation.relationType}`}
+                          freshnessOverride={{
+                            key: entry.relation.freshnessStatus,
+                            label: freshnessLabels[entry.relation.freshnessStatus] ?? entry.relation.freshnessStatus,
+                          }}
+                          additionalMetadata={[
+                            { label: 'Relation type', value: entry.relation.relationType },
+                            { label: 'スコープ', value: entry.scopeLabel },
+                            { label: '最終検証', value: entry.relation.lastVerified ?? '未記録' },
+                          ]}
+                        />
+                        <dl class="evidence-relation-meta">
+                          <div><dt>スコープ</dt><dd>{entry.scopeLabel}</dd></div>
+                          <div><dt>鮮度</dt><dd>{freshnessLabels[entry.relation.freshnessStatus] ?? entry.relation.freshnessStatus}</dd></div>
+                        </dl>
+                      </div>;
+                    })}
+                    <div class="evidence-cell-details" data-expanded-only>
+                      {dimension.coverageContext.map(coverage => <p>{coverage.category}: {coverageLabels[coverage.collectionStatus] ?? coverage.collectionStatus}</p>)}
+                    </div>
+                    {dimension.relations.length === 0 && ['value-chain-position', 'key-products', 'technology-moat'].includes(dimensionId) && <p class="evidence-relation-empty">Relation：収録なし</p>}
+                  </> : <p class="evidence-missing">{missingLabels[dimension.missingState] ?? '未収録'}</p>}
+                </td>
+              );
+            })}
+          </tr>
+        ))}
+
+        <tr id="evidence-section-financial" data-dimension-id="financial" data-evidence-company-row class="evidence-financial-row">
+          <th scope="row" id="evidence-dimension-financial">財務</th>
+          {model.companies.map(company => {
+            const reference = operatingMarginByCompany.get(company.identity.id);
+            return <td data-company-id={company.identity.id} data-company-label={company.identity.japaneseName || company.identity.name} headers={`evidence-dimension-financial evidence-company-${company.identity.id}`} data-has-content={String(Boolean(reference?.displayValue))}>
+              {reference?.displayValue ? <div class="evidence-financial-value">
+                <span>営業利益率</span>
+                <strong>{reference.displayValue}</strong>
+                <small>{reference.periodLabel} · {reference.accountingBasis}</small>
+                {reference.source && <a class="evidence-source-link" href={reference.source.url} target="_blank" rel="noreferrer">一次資料を開く ↗</a>}
+              </div> : <p class="evidence-missing">{reference?.availability ?? '未収録'}</p>}
+            </td>;
+          })}
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="evidence-financial-status" aria-live="off">
+    {model.sets.map(setRecord => {
+      const primary = setRecord.financial.metricStates.filter(metric => metric.compatibility.code !== 'blocked');
+      return <section data-financial-set-id={setRecord.setId} hidden>
+        {primary.map(metric => <p><strong>{metricLabel[metric.metricId] ?? metric.metricId}：条件注意</strong> — {metric.compatibility.reasons.join('、')}</p>)}
+      </section>;
+    })}
+  </div>
+
+  <section class="evidence-expanded-financial" data-expanded-only aria-labelledby="evidence-expanded-financial-title">
+    <h3 id="evidence-expanded-financial-title">財務詳細</h3>
+    <p>通貨・単位は各社開示のまま表示します。FX換算、順位、差分率は算出しません。</p>
+    {model.companies.map(company => <section data-company-id={company.identity.id} class="evidence-financial-company">
+      <h4>{company.identity.japaneseName || company.identity.name}</h4>
+      <div class="evidence-financial-scroll" tabindex="0" aria-label={`${company.identity.japaneseName || company.identity.name}の財務履歴`}>
+        <table>
+          <thead><tr><th scope="col">期間</th><th scope="col">売上高</th><th scope="col">営業利益</th><th scope="col">営業利益率</th><th scope="col">FCF</th><th scope="col">設備投資</th><th scope="col">ROIC</th><th scope="col">出典</th></tr></thead>
+          <tbody>{company.expandedFinancial.map(record => <tr>
+            <th scope="row">{record.periodLabel}<small>{record.currency} · {record.unit} · {record.accountingBasis}</small></th>
+            {['revenue', 'operatingProfit', 'operatingMargin', 'freeCashFlow', 'capex', 'roic'].map(metricId => {
+              const metric = financialMetric(record, metricId);
+              return <td>{metric?.displayValue ?? '未収録'}</td>;
+            })}
+            <td><a class="evidence-source-link" href={record.source.url} target="_blank" rel="noreferrer">一次資料 ↗</a></td>
+          </tr>)}</tbody>
+        </table>
+      </div>
+    </section>)}
+  </section>
+
+  <section class="evidence-data-quality" id="evidence-section-evidence-trace" aria-labelledby="evidence-data-quality-title">
+    <h3 id="evidence-data-quality-title">根拠とデータ品質</h3>
+    <div id="evidence-runtime-quality"></div>
+    {model.sets.map(setRecord => {
+      const blocked = setRecord.financial.metricStates.filter(metric => metric.compatibility.code === 'blocked');
+      return <div data-quality-set-id={setRecord.setId} hidden>
+        {blocked.map(metric => <p><strong>比較不能：{metricLabel[metric.metricId] ?? metric.metricId}</strong> — {metric.compatibility.reasons.join('、')}。Primary comparisonには表示しません。</p>)}
+      </div>;
+    })}
+    <div class="evidence-trace-list">
+      {model.companies.map(company => <div data-company-id={company.identity.id}>
+        <strong>{company.identity.japaneseName || company.identity.name}</strong>
+        <span>Claim Binding {company.evidenceTrace.companyEvidenceBindingIds.length}件 · Relation Binding {company.evidenceTrace.relationEvidenceBindingIds.length}件</span>
+      </div>)}
+    </div>
+  </section>
+
+  <script id="compare-evidence-ui-data" type="application/json" set:html={JSON.stringify(clientPayload)}></script>
+</section>
+
+<script>
+  import { initCompanyCompareEvidenceUi } from '../scripts/company-compare-evidence-ui';
+  initCompanyCompareEvidenceUi();
+</script>
