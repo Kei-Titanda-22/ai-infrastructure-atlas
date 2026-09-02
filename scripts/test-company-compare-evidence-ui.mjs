@@ -197,6 +197,7 @@ assert.throws(
 );
 
 assert.match(comparePage, /!evidenceMode/, 'legacy script must be gated only for the opt-in route');
+assert.match(comparePage, /<BaseLayout title="企業比較" indexable>/, 'legacy Compare body remains Pagefind-indexable');
 assert.match(comparePage, /<CompanyCompareEvidence identities=/, 'Set A and B use one generic component');
 assert.match(component, /CompanyEvidenceClaim/, 'existing Evidence drawer component is reused');
 assert.match(component, /data-pagefind-ignore="all"/, 'only the opt-in Evidence subtree is excluded from Pagefind');

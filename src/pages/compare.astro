@@ -56,7 +56,7 @@ const definitions = Object.fromEntries(sectorKpiDefinitions.map(d => [d.id, d]))
 const commonDefinitions = Object.fromEntries(metricDefinitions.map(d => [d.id, d]));
 const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-materials','lam-research','tokyo-electron','kla'];
 ---
-<BaseLayout title="企業比較">
+<BaseLayout title="企業比較" indexable>
   <header class="page-head">
     <div class="shell">
       <span class="eyebrow">企業横断比較</span>
