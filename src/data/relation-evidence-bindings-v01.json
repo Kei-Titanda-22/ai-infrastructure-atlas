@@ -1,1 +1,219 @@
-[]
+[
+  {
+    "id": "rel-evidence-applied-materials-competes-with-lam-research",
+    "relationId": "rel-applied-materials-competes-with-lam-research",
+    "sourceId": "sec-lam-research-2025-10k",
+    "support": "supports",
+    "locator": {
+      "page": "10-11",
+      "section": "Item 1. Business",
+      "heading": "Competition",
+      "quotedLabel": "compete"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding lam-research-positioning-e1."
+  },
+  {
+    "id": "rel-evidence-applied-materials-positioned-in-manufacturing",
+    "relationId": "rel-applied-materials-positioned-in-manufacturing",
+    "sourceId": "corporate-applied-materials-about-2026",
+    "support": "supports",
+    "locator": {
+      "heading": "Accelerating Incredible Solutions"
+    },
+    "lastChecked": "2026-08-31",
+    "notes": "Atlas mapping rationale: frozen Claim applied-value-chain places the Company in the canonical Value Chain node; direct source support is reused from Company Evidence Binding applied-value-chain-e1."
+  },
+  {
+    "id": "rel-evidence-applied-materials-produces-semiconductor-deposition-equipment",
+    "relationId": "rel-applied-materials-produces-semiconductor-deposition-equipment",
+    "sourceId": "corporate-applied-materials-semiconductor-2026",
+    "support": "supports",
+    "locator": {
+      "heading": "Inflection-Focused Innovation"
+    },
+    "lastChecked": "2026-08-31",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding applied-products-e1."
+  },
+  {
+    "id": "rel-evidence-broadcom-positioned-in-compute",
+    "relationId": "rel-broadcom-positioned-in-compute",
+    "sourceId": "sec-broadcom-2025-10k",
+    "support": "supports",
+    "locator": {
+      "section": "Item 1. Business",
+      "heading": "Semiconductor Solutions",
+      "quotedLabel": "AI networking and connectivity"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Atlas mapping rationale: frozen Claim broadcom-value-chain places the Company in the canonical Value Chain node; direct source support is reused from Company Evidence Binding broadcom-value-chain-e1."
+  },
+  {
+    "id": "rel-evidence-broadcom-produces-connectivity-semiconductor",
+    "relationId": "rel-broadcom-produces-connectivity-semiconductor",
+    "sourceId": "sec-broadcom-2025-10k",
+    "support": "supports",
+    "locator": {
+      "section": "Item 1. Business",
+      "heading": "Semiconductor Solutions",
+      "quotedLabel": "AI networking and connectivity"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding broadcom-products-e1."
+  },
+  {
+    "id": "rel-evidence-broadcom-produces-custom-accelerator-asic",
+    "relationId": "rel-broadcom-produces-custom-accelerator-asic",
+    "sourceId": "sec-broadcom-2025-10k",
+    "support": "supports",
+    "locator": {
+      "section": "Item 1. Business",
+      "heading": "Semiconductor Solutions",
+      "quotedLabel": "AI networking and connectivity"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding broadcom-products-e1."
+  },
+  {
+    "id": "rel-evidence-broadcom-produces-ethernet-switching-silicon",
+    "relationId": "rel-broadcom-produces-ethernet-switching-silicon",
+    "sourceId": "sec-broadcom-2025-10k",
+    "support": "supports",
+    "locator": {
+      "section": "Item 1. Business",
+      "heading": "Semiconductor Solutions",
+      "quotedLabel": "AI networking and connectivity"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding broadcom-products-e1."
+  },
+  {
+    "id": "rel-evidence-lam-research-competes-with-tokyo-electron",
+    "relationId": "rel-lam-research-competes-with-tokyo-electron",
+    "sourceId": "sec-lam-research-2025-10k",
+    "support": "supports",
+    "locator": {
+      "page": "10-11",
+      "section": "Item 1. Business",
+      "heading": "Competition",
+      "quotedLabel": "compete"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding lam-research-positioning-e1."
+  },
+  {
+    "id": "rel-evidence-lam-research-positioned-in-manufacturing",
+    "relationId": "rel-lam-research-positioned-in-manufacturing",
+    "sourceId": "sec-lam-research-2025-10k",
+    "support": "supports",
+    "locator": {
+      "page": "9",
+      "section": "Item 1. Business",
+      "heading": "Products",
+      "quotedLabel": "Deposition, Etch and Clean"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Atlas mapping rationale: frozen Claim lam-research-value-chain places the Company in the canonical Value Chain node; direct source support is reused from Company Evidence Binding lam-research-value-chain-e1."
+  },
+  {
+    "id": "rel-evidence-lam-research-produces-semiconductor-deposition-equipment",
+    "relationId": "rel-lam-research-produces-semiconductor-deposition-equipment",
+    "sourceId": "sec-lam-research-2025-10k",
+    "support": "supports",
+    "locator": {
+      "page": "9",
+      "section": "Item 1. Business",
+      "heading": "Products",
+      "quotedLabel": "Deposition, Etch and Clean"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding lam-research-products-e1."
+  },
+  {
+    "id": "rel-evidence-lam-research-produces-semiconductor-etch-equipment",
+    "relationId": "rel-lam-research-produces-semiconductor-etch-equipment",
+    "sourceId": "sec-lam-research-2025-10k",
+    "support": "supports",
+    "locator": {
+      "page": "9",
+      "section": "Item 1. Business",
+      "heading": "Products",
+      "quotedLabel": "Deposition, Etch and Clean"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding lam-research-products-e1."
+  },
+  {
+    "id": "rel-evidence-lam-research-produces-wafer-cleaning-equipment",
+    "relationId": "rel-lam-research-produces-wafer-cleaning-equipment",
+    "sourceId": "sec-lam-research-2025-10k",
+    "support": "supports",
+    "locator": {
+      "page": "9",
+      "section": "Item 1. Business",
+      "heading": "Products",
+      "quotedLabel": "Deposition, Etch and Clean"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding lam-research-products-e1."
+  },
+  {
+    "id": "rel-evidence-lam-research-produces-wafer-fabrication-equipment",
+    "relationId": "rel-lam-research-produces-wafer-fabrication-equipment",
+    "sourceId": "sec-lam-research-2025-10k",
+    "support": "supports",
+    "locator": {
+      "page": "4",
+      "section": "Item 1. Business",
+      "heading": "Business",
+      "quotedLabel": "wafer fabrication equipment and services"
+    },
+    "lastChecked": "2026-09-01",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding lam-research-overview-e1."
+  },
+  {
+    "id": "rel-evidence-nvidia-positioned-in-compute",
+    "relationId": "rel-nvidia-positioned-in-compute",
+    "sourceId": "filing-nvidia-2026-02-25-fy2026-10k",
+    "support": "supports",
+    "locator": {
+      "section": "Item 1. Business",
+      "quotedLabel": "Manufacturing"
+    },
+    "lastChecked": "2026-08-31",
+    "notes": "Atlas mapping rationale: frozen Claim nvidia-value-chain places the Company in the canonical Value Chain node; direct source support is reused from Company Evidence Binding nvidia-value-chain-e1."
+  },
+  {
+    "id": "rel-evidence-nvidia-produces-cpu",
+    "relationId": "rel-nvidia-produces-cpu",
+    "sourceId": "corporate-nvidia-data-center-2026",
+    "support": "supports",
+    "locator": {
+      "section": "Solutions for Every Data Center"
+    },
+    "lastChecked": "2026-08-31",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding nvidia-products-e1."
+  },
+  {
+    "id": "rel-evidence-nvidia-produces-dpu",
+    "relationId": "rel-nvidia-produces-dpu",
+    "sourceId": "corporate-nvidia-data-center-2026",
+    "support": "supports",
+    "locator": {
+      "section": "Solutions for Every Data Center"
+    },
+    "lastChecked": "2026-08-31",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding nvidia-products-e1."
+  },
+  {
+    "id": "rel-evidence-nvidia-produces-gpu",
+    "relationId": "rel-nvidia-produces-gpu",
+    "sourceId": "corporate-nvidia-data-center-2026",
+    "support": "supports",
+    "locator": {
+      "section": "Solutions for Every Data Center"
+    },
+    "lastChecked": "2026-08-31",
+    "notes": "Direct Relation support reuses frozen Company Evidence Binding nvidia-products-e1."
+  }
+]

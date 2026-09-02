@@ -1,0 +1,1923 @@
+{
+  "schemaVersion": "0.1",
+  "baselineMain": "41cf035a70fd0853f08972113025f3cdd56f50ff",
+  "reviewedAt": "2026-09-02",
+  "sets": [
+    {
+      "setId": "set-a",
+      "orderedCompanyIds": [
+        "nvidia",
+        "broadcom"
+      ]
+    },
+    {
+      "setId": "set-b",
+      "orderedCompanyIds": [
+        "applied-materials",
+        "lam-research",
+        "tokyo-electron"
+      ]
+    }
+  ],
+  "inputDigest": "85c34997e13f9bd1b6b68dc2c54ec6bfabb976c2a3dd4aebc474cdd58273cbef",
+  "reviewMethod": {
+    "corpus": "repository-only",
+    "searchEngineUsed": false,
+    "newSourcesAdded": false,
+    "registeredUrlVerification": "direct-open only",
+    "publicGate": [
+      "canonical endpoints",
+      "direct supports Relation Binding",
+      "existing Shared Source",
+      "structured Locator",
+      "Company-wide scope"
+    ]
+  },
+  "summary": {
+    "candidateCount": 41,
+    "decisionCounts": {
+      "include": 17,
+      "defer": 24,
+      "reject": 0
+    },
+    "includedRelationCount": 17,
+    "relationEvidenceBindingCount": 17,
+    "includedRelationTypeCounts": {
+      "COMPETES_WITH": 2,
+      "POSITIONED_IN": 4,
+      "PRODUCES": 11
+    },
+    "candidateTypeDecisionCounts": {
+      "COMPETES_WITH": {
+        "include": 2,
+        "defer": 2,
+        "reject": 0
+      },
+      "DEVELOPS": {
+        "include": 0,
+        "defer": 12,
+        "reject": 0
+      },
+      "ENABLES": {
+        "include": 0,
+        "defer": 1,
+        "reject": 0
+      },
+      "OPERATES": {
+        "include": 0,
+        "defer": 4,
+        "reject": 0
+      },
+      "POSITIONED_IN": {
+        "include": 4,
+        "defer": 1,
+        "reject": 0
+      },
+      "PRODUCES": {
+        "include": 11,
+        "defer": 4,
+        "reject": 0
+      }
+    },
+    "reasonCodeCounts": {
+      "CLAIM_BINDING_MISMATCH": 1,
+      "DIRECT_PREDICATE_NOT_ESTABLISHED": 11,
+      "GUARDED_GATE_NOT_MET": 1,
+      "NO_DIRECT_NAMED_COMPETITOR": 1,
+      "P3_INITIAL_EXCLUDED": 1,
+      "PUBLIC_GATE_PASS": 17,
+      "SUBSIDIARY_SCOPE_REQUIRES_CHANGE_CONTROL": 4,
+      "URL_LOCATOR_NOT_REPRODUCIBLE": 5
+    },
+    "includedSubjectCompanyCounts": {
+      "nvidia": 4,
+      "broadcom": 4,
+      "applied-materials": 3,
+      "lam-research": 6,
+      "tokyo-electron": 0
+    },
+    "includedInvolvedCompanyCounts": {
+      "nvidia": 4,
+      "broadcom": 4,
+      "applied-materials": 3,
+      "lam-research": 7,
+      "tokyo-electron": 1
+    },
+    "guarded": {
+      "ENABLES": {
+        "reviewed": 1,
+        "included": 0
+      },
+      "SUPPLIES_TO": {
+        "reviewed": 0,
+        "included": 0,
+        "note": "No canonical Company/Market candidate with a direct existing Claim/Binding was present in the bounded Pilot corpus."
+      }
+    },
+    "unsupportedDeferredTypesAuthored": 0,
+    "marketEndpointCandidates": 0
+  },
+  "candidates": [
+    {
+      "candidateId": "candidate-applied-deposition-equipment-enables-deposition",
+      "subjectType": "product",
+      "subjectId": "product-category-semiconductor-deposition-equipment",
+      "relationType": "ENABLES",
+      "objectType": "technology",
+      "objectId": "technology-semiconductor-deposition",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "applied-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "applied-products-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-applied-materials-semiconductor-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Inflection-Focused Innovation"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "GUARDED_GATE_NOT_MET",
+      "reviewNote": "The source links equipment and deposition activity, but does not directly state the canonical Product-to-Technology ENABLES Relation.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": false,
+      "guardedPublicGateResult": "fail",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-applied-materials-competes-with-lam-research",
+      "subjectType": "company",
+      "subjectId": "applied-materials",
+      "relationType": "COMPETES_WITH",
+      "objectType": "company",
+      "objectId": "lam-research",
+      "proposedScope": {
+        "productIds": [
+          "product-category-semiconductor-deposition-equipment"
+        ],
+        "technologyIds": [
+          "technology-semiconductor-deposition"
+        ],
+        "valueChainNodeIds": [
+          "manufacturing"
+        ],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "lam-research-positioning"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "lam-research-positioning-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-lam-research-2025-10k"
+      ],
+      "reviewedLocator": {
+        "page": "10-11",
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "compete"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 10,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified: Lam Research FY2025 Form 10-K, Competition, lines identifying Applied Materials as the primary dielectric and metals deposition competitor",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-applied-materials-competes-with-lam-research",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-applied-materials-competes-with-lam-research"
+      ]
+    },
+    {
+      "candidateId": "candidate-applied-materials-competes-with-tokyo-electron",
+      "subjectType": "company",
+      "subjectId": "applied-materials",
+      "relationType": "COMPETES_WITH",
+      "objectType": "company",
+      "objectId": "tokyo-electron",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "applied-positioning"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "applied-positioning-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-applied-materials-semiconductor-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Inflection-Focused Innovation"
+      },
+      "proposedClaimType": "company-positioning",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "NO_DIRECT_NAMED_COMPETITOR",
+      "reviewNote": "The bounded existing-source review did not produce a direct named-competitor statement for this pair.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-applied-materials-develops-materials-engineering",
+      "subjectType": "company",
+      "subjectId": "applied-materials",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-semiconductor-materials-engineering",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "applied-overview"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "applied-overview-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-applied-materials-about-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "semiconductor and display equipment company"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "Materials engineering is grounded as a capability; development of the canonical Technology is not directly stated.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-applied-materials-develops-metrology",
+      "subjectType": "company",
+      "subjectId": "applied-materials",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-semiconductor-metrology",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "applied-technology"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "applied-technology-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-applied-materials-semiconductor-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Inflection-Focused Innovation",
+        "quotedLabel": "Integrated Materials Solution"
+      },
+      "proposedClaimType": "company-positioning",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "Metrology capability is grounded, but the generic DEVELOPS predicate is not direct enough for publication.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-applied-materials-positioned-in-manufacturing",
+      "subjectType": "company",
+      "subjectId": "applied-materials",
+      "relationType": "POSITIONED_IN",
+      "objectType": "value-chain-node",
+      "objectId": "manufacturing",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [
+          "manufacturing"
+        ],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "applied-value-chain"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "applied-value-chain-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-applied-materials-about-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Accelerating Incredible Solutions"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 10,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-applied-materials-positioned-in-manufacturing",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-applied-materials-positioned-in-manufacturing"
+      ]
+    },
+    {
+      "candidateId": "candidate-applied-materials-produces-semiconductor-deposition-equipment",
+      "subjectType": "company",
+      "subjectId": "applied-materials",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-semiconductor-deposition-equipment",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "applied-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "applied-products-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-applied-materials-semiconductor-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Inflection-Focused Innovation"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 10,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-applied-materials-produces-semiconductor-deposition-equipment",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-applied-materials-produces-semiconductor-deposition-equipment"
+      ]
+    },
+    {
+      "candidateId": "candidate-broadcom-develops-ethernet-networking",
+      "subjectType": "company",
+      "subjectId": "broadcom",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-ethernet-networking",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "broadcom-technology"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "broadcom-technology-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-broadcom-2025-10k"
+      ],
+      "reviewedLocator": {
+        "section": "Item 1. Business",
+        "heading": "Semiconductor Solutions",
+        "quotedLabel": "AI networking and connectivity"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "The Claim grounds Ethernet capability but does not state the generic DEVELOPS predicate at Company scope.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-broadcom-positioned-in-compute",
+      "subjectType": "company",
+      "subjectId": "broadcom",
+      "relationType": "POSITIONED_IN",
+      "objectType": "value-chain-node",
+      "objectId": "compute",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [
+          "compute"
+        ],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "broadcom-value-chain"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "broadcom-value-chain-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-broadcom-2025-10k"
+      ],
+      "reviewedLocator": {
+        "section": "Item 1. Business",
+        "heading": "Semiconductor Solutions",
+        "quotedLabel": "AI networking and connectivity"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 10,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-broadcom-positioned-in-compute",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-broadcom-positioned-in-compute"
+      ]
+    },
+    {
+      "candidateId": "candidate-broadcom-produces-connectivity-semiconductor",
+      "subjectType": "company",
+      "subjectId": "broadcom",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-connectivity-semiconductor",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "broadcom-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "broadcom-products-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-broadcom-2025-10k"
+      ],
+      "reviewedLocator": {
+        "section": "Item 1. Business",
+        "heading": "Semiconductor Solutions",
+        "quotedLabel": "AI networking and connectivity"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 30,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-broadcom-produces-connectivity-semiconductor",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-broadcom-produces-connectivity-semiconductor"
+      ]
+    },
+    {
+      "candidateId": "candidate-broadcom-produces-custom-accelerator-asic",
+      "subjectType": "company",
+      "subjectId": "broadcom",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-custom-accelerator-asic",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "broadcom-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "broadcom-products-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-broadcom-2025-10k"
+      ],
+      "reviewedLocator": {
+        "section": "Item 1. Business",
+        "heading": "Semiconductor Solutions",
+        "quotedLabel": "AI networking and connectivity"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 10,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-broadcom-produces-custom-accelerator-asic",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-broadcom-produces-custom-accelerator-asic"
+      ]
+    },
+    {
+      "candidateId": "candidate-broadcom-produces-ethernet-switching-silicon",
+      "subjectType": "company",
+      "subjectId": "broadcom",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-ethernet-switching-silicon",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "broadcom-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "broadcom-products-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-broadcom-2025-10k"
+      ],
+      "reviewedLocator": {
+        "section": "Item 1. Business",
+        "heading": "Semiconductor Solutions",
+        "quotedLabel": "AI networking and connectivity"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 20,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-broadcom-produces-ethernet-switching-silicon",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-broadcom-produces-ethernet-switching-silicon"
+      ]
+    },
+    {
+      "candidateId": "candidate-lam-research-competes-with-tokyo-electron",
+      "subjectType": "company",
+      "subjectId": "lam-research",
+      "relationType": "COMPETES_WITH",
+      "objectType": "company",
+      "objectId": "tokyo-electron",
+      "proposedScope": {
+        "productIds": [
+          "product-category-semiconductor-etch-equipment",
+          "product-category-wafer-cleaning-equipment"
+        ],
+        "technologyIds": [
+          "technology-semiconductor-etching",
+          "technology-wafer-cleaning"
+        ],
+        "valueChainNodeIds": [
+          "manufacturing"
+        ],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "lam-research-positioning"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "lam-research-positioning-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-lam-research-2025-10k"
+      ],
+      "reviewedLocator": {
+        "page": "10-11",
+        "section": "Item 1. Business",
+        "heading": "Competition",
+        "quotedLabel": "compete"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 20,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified: Lam Research FY2025 Form 10-K, Competition, lines identifying Tokyo Electron in etch and wet-clean markets",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-lam-research-competes-with-tokyo-electron",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-lam-research-competes-with-tokyo-electron"
+      ]
+    },
+    {
+      "candidateId": "candidate-lam-research-develops-deposition",
+      "subjectType": "company",
+      "subjectId": "lam-research",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-semiconductor-deposition",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "lam-research-technology"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "lam-research-technology-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-lam-research-2025-10k"
+      ],
+      "reviewedLocator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "The Claim names process technologies without separately establishing a generic development Relation.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-lam-research-develops-etching",
+      "subjectType": "company",
+      "subjectId": "lam-research",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-semiconductor-etching",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "lam-research-technology"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "lam-research-technology-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-lam-research-2025-10k"
+      ],
+      "reviewedLocator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "The Claim names process technologies without separately establishing a generic development Relation.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-lam-research-develops-wafer-cleaning",
+      "subjectType": "company",
+      "subjectId": "lam-research",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-wafer-cleaning",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "lam-research-technology"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "lam-research-technology-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-lam-research-2025-10k"
+      ],
+      "reviewedLocator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "The Claim names process technologies without separately establishing a generic development Relation.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-lam-research-positioned-in-manufacturing",
+      "subjectType": "company",
+      "subjectId": "lam-research",
+      "relationType": "POSITIONED_IN",
+      "objectType": "value-chain-node",
+      "objectId": "manufacturing",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [
+          "manufacturing"
+        ],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "lam-research-value-chain"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "lam-research-value-chain-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-lam-research-2025-10k"
+      ],
+      "reviewedLocator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 10,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-lam-research-positioned-in-manufacturing",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-lam-research-positioned-in-manufacturing"
+      ]
+    },
+    {
+      "candidateId": "candidate-lam-research-produces-semiconductor-deposition-equipment",
+      "subjectType": "company",
+      "subjectId": "lam-research",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-semiconductor-deposition-equipment",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "lam-research-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "lam-research-products-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-lam-research-2025-10k"
+      ],
+      "reviewedLocator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 20,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-lam-research-produces-semiconductor-deposition-equipment",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-lam-research-produces-semiconductor-deposition-equipment"
+      ]
+    },
+    {
+      "candidateId": "candidate-lam-research-produces-semiconductor-etch-equipment",
+      "subjectType": "company",
+      "subjectId": "lam-research",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-semiconductor-etch-equipment",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "lam-research-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "lam-research-products-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-lam-research-2025-10k"
+      ],
+      "reviewedLocator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 30,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-lam-research-produces-semiconductor-etch-equipment",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-lam-research-produces-semiconductor-etch-equipment"
+      ]
+    },
+    {
+      "candidateId": "candidate-lam-research-produces-wafer-cleaning-equipment",
+      "subjectType": "company",
+      "subjectId": "lam-research",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-wafer-cleaning-equipment",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "lam-research-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "lam-research-products-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-lam-research-2025-10k"
+      ],
+      "reviewedLocator": {
+        "page": "9",
+        "section": "Item 1. Business",
+        "heading": "Products",
+        "quotedLabel": "Deposition, Etch and Clean"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 40,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-lam-research-produces-wafer-cleaning-equipment",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-lam-research-produces-wafer-cleaning-equipment"
+      ]
+    },
+    {
+      "candidateId": "candidate-lam-research-produces-wafer-fabrication-equipment",
+      "subjectType": "company",
+      "subjectId": "lam-research",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-wafer-fabrication-equipment",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "lam-research-overview"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "lam-research-overview-e1"
+      ],
+      "sharedSourceIds": [
+        "sec-lam-research-2025-10k"
+      ],
+      "reviewedLocator": {
+        "page": "4",
+        "section": "Item 1. Business",
+        "heading": "Business",
+        "quotedLabel": "wafer fabrication equipment and services"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 10,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-lam-research-produces-wafer-fabrication-equipment",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-lam-research-produces-wafer-fabrication-equipment"
+      ]
+    },
+    {
+      "candidateId": "candidate-nvidia-competes-with-broadcom",
+      "subjectType": "company",
+      "subjectId": "nvidia",
+      "relationType": "COMPETES_WITH",
+      "objectType": "company",
+      "objectId": "broadcom",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "nvidia-positioning"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "nvidia-positioning-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-nvidia-networking-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "The Innovations Defining NVIDIA AI Networking"
+      },
+      "proposedClaimType": "company-positioning",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "CLAIM_BINDING_MISMATCH",
+      "reviewNote": "The registered NVIDIA filing names Broadcom, but the existing supporting Claim/Binding does not bind that named-competitor statement; no new Company Evidence Binding is allowed.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": false,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-nvidia-develops-accelerated-computing",
+      "subjectType": "company",
+      "subjectId": "nvidia",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-accelerated-computing-architecture",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "nvidia-overview"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "nvidia-overview-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-nvidia-data-center-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Full-Stack Data Center Infrastructure"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "The Claim establishes an NVIDIA accelerated-computing platform, but does not independently establish the generic DEVELOPS predicate.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-nvidia-develops-ethernet-networking",
+      "subjectType": "company",
+      "subjectId": "nvidia",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-ethernet-networking",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "nvidia-networking"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "nvidia-networking-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-nvidia-networking-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Networking Purpose-Built for the Era of AI Factories"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P3",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "P3_INITIAL_EXCLUDED",
+      "reviewNote": "The only direct Technology Claim is P3 and the Pilot does not need this Relation to establish the initial read model.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-nvidia-positioned-in-compute",
+      "subjectType": "company",
+      "subjectId": "nvidia",
+      "relationType": "POSITIONED_IN",
+      "objectType": "value-chain-node",
+      "objectId": "compute",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [
+          "compute"
+        ],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "nvidia-value-chain"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "nvidia-value-chain-e1"
+      ],
+      "sharedSourceIds": [
+        "filing-nvidia-2026-02-25-fy2026-10k"
+      ],
+      "reviewedLocator": {
+        "section": "Item 1. Business",
+        "quotedLabel": "Manufacturing"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 10,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-nvidia-positioned-in-compute",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-nvidia-positioned-in-compute"
+      ]
+    },
+    {
+      "candidateId": "candidate-nvidia-produces-cpu",
+      "subjectType": "company",
+      "subjectId": "nvidia",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-cpu",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "nvidia-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "nvidia-products-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-nvidia-data-center-2026"
+      ],
+      "reviewedLocator": {
+        "section": "Solutions for Every Data Center"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 20,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-nvidia-produces-cpu",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-nvidia-produces-cpu"
+      ]
+    },
+    {
+      "candidateId": "candidate-nvidia-produces-dpu",
+      "subjectType": "company",
+      "subjectId": "nvidia",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-dpu",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "nvidia-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "nvidia-products-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-nvidia-data-center-2026"
+      ],
+      "reviewedLocator": {
+        "section": "Solutions for Every Data Center"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 30,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-nvidia-produces-dpu",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-nvidia-produces-dpu"
+      ]
+    },
+    {
+      "candidateId": "candidate-nvidia-produces-gpu",
+      "subjectType": "company",
+      "subjectId": "nvidia",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-gpu",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "nvidia-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "nvidia-products-e1"
+      ],
+      "sharedSourceIds": [
+        "corporate-nvidia-data-center-2026"
+      ],
+      "reviewedLocator": {
+        "section": "Solutions for Every Data Center"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 10,
+      "decision": "include",
+      "reasonCode": "PUBLIC_GATE_PASS",
+      "reviewNote": "Canonical endpoints, direct supports Binding, registered Shared Source, structured Locator, and Company-wide scope are all present.",
+      "existingUrlVerificationResult": "verified against the frozen Company Evidence Binding and registered Source URL",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": "rel-nvidia-produces-gpu",
+      "relationEvidenceBindingIds": [
+        "rel-evidence-nvidia-produces-gpu"
+      ]
+    },
+    {
+      "candidateId": "candidate-tel-operates-koshi",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "OPERATES",
+      "objectType": "facility",
+      "objectId": "tel-koshi",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-manufacturing-facilities-gap-closure-kyushu"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-manufacturing-facilities-gap-closure-kyushu-e1"
+      ],
+      "sharedSourceIds": [
+        "facilities-tel-kyushu-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Business",
+        "quotedLabel": "development and manufacturing of coaters/developers, cleaning and 3D packaging systems"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "SUBSIDIARY_SCOPE_REQUIRES_CHANGE_CONTROL",
+      "reviewNote": "The Facility is operated by a named Tokyo Electron subsidiary. v0.1 forbids free-text businessUnit and defers Relations that do not hold unambiguously at the Company endpoint.",
+      "existingUrlVerificationResult": "registered official facility URL reviewed; subsidiary-level operator is explicit",
+      "companyWideScopeEstablished": false,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tel-operates-nirasaki",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "OPERATES",
+      "objectType": "facility",
+      "objectId": "tel-nirasaki",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-manufacturing-facilities-gap-closure-technology-solutions"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-manufacturing-facilities-gap-closure-technology-solutions-e1"
+      ],
+      "sharedSourceIds": [
+        "facilities-tel-technology-solutions-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Business",
+        "quotedLabel": "development and manufacturing of thermal processing, deposition, etch and test systems"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "SUBSIDIARY_SCOPE_REQUIRES_CHANGE_CONTROL",
+      "reviewNote": "The Facility is operated by a named Tokyo Electron subsidiary. v0.1 forbids free-text businessUnit and defers Relations that do not hold unambiguously at the Company endpoint.",
+      "existingUrlVerificationResult": "registered official facility URL reviewed; subsidiary-level operator is explicit",
+      "companyWideScopeEstablished": false,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tel-operates-oshu",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "OPERATES",
+      "objectType": "facility",
+      "objectId": "tel-oshu",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-manufacturing-facilities-gap-closure-technology-solutions"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-manufacturing-facilities-gap-closure-technology-solutions-e1"
+      ],
+      "sharedSourceIds": [
+        "facilities-tel-technology-solutions-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Business",
+        "quotedLabel": "development and manufacturing of thermal processing, deposition, etch and test systems"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "SUBSIDIARY_SCOPE_REQUIRES_CHANGE_CONTROL",
+      "reviewNote": "The Facility is operated by a named Tokyo Electron subsidiary. v0.1 forbids free-text businessUnit and defers Relations that do not hold unambiguously at the Company endpoint.",
+      "existingUrlVerificationResult": "registered official facility URL reviewed; subsidiary-level operator is explicit",
+      "companyWideScopeEstablished": false,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tel-operates-taiwa",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "OPERATES",
+      "objectType": "facility",
+      "objectId": "tel-taiwa",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-manufacturing-facilities-gap-closure-miyagi"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-manufacturing-facilities-gap-closure-miyagi-e1"
+      ],
+      "sharedSourceIds": [
+        "facilities-tel-miyagi-2026"
+      ],
+      "reviewedLocator": {
+        "heading": "Business",
+        "quotedLabel": "development and manufacturing of plasma etch systems"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "SUBSIDIARY_SCOPE_REQUIRES_CHANGE_CONTROL",
+      "reviewNote": "The Facility is operated by a named Tokyo Electron subsidiary. v0.1 forbids free-text businessUnit and defers Relations that do not hold unambiguously at the Company endpoint.",
+      "existingUrlVerificationResult": "registered official facility URL reviewed; subsidiary-level operator is explicit",
+      "companyWideScopeEstablished": false,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tokyo-electron-develops-coating-development",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-semiconductor-coating-development",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-technology"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-technology-e1"
+      ],
+      "sharedSourceIds": [
+        "ir-tokyo-electron"
+      ],
+      "reviewedLocator": {
+        "section": "Products and Solutions",
+        "heading": "Principal products",
+        "quotedLabel": "products and technologies"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "The Claim describes process coverage, not the generic DEVELOPS predicate.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tokyo-electron-develops-deposition",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-semiconductor-deposition",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-technology"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-technology-e1"
+      ],
+      "sharedSourceIds": [
+        "ir-tokyo-electron"
+      ],
+      "reviewedLocator": {
+        "section": "Products and Solutions",
+        "heading": "Principal products",
+        "quotedLabel": "products and technologies"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "The Claim describes process coverage, not the generic DEVELOPS predicate.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tokyo-electron-develops-etching",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-semiconductor-etching",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-technology"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-technology-e1"
+      ],
+      "sharedSourceIds": [
+        "ir-tokyo-electron"
+      ],
+      "reviewedLocator": {
+        "section": "Products and Solutions",
+        "heading": "Principal products",
+        "quotedLabel": "products and technologies"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "The Claim describes process coverage, not the generic DEVELOPS predicate.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tokyo-electron-develops-wafer-cleaning",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "DEVELOPS",
+      "objectType": "technology",
+      "objectId": "technology-wafer-cleaning",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-technology"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-technology-e1"
+      ],
+      "sharedSourceIds": [
+        "ir-tokyo-electron"
+      ],
+      "reviewedLocator": {
+        "section": "Products and Solutions",
+        "heading": "Principal products",
+        "quotedLabel": "products and technologies"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P2",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "DIRECT_PREDICATE_NOT_ESTABLISHED",
+      "reviewNote": "The Claim describes process coverage, not the generic DEVELOPS predicate.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tokyo-electron-positioned-in-manufacturing",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "POSITIONED_IN",
+      "objectType": "value-chain-node",
+      "objectId": "manufacturing",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-value-chain"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-value-chain-e1"
+      ],
+      "sharedSourceIds": [
+        "ir-tokyo-electron"
+      ],
+      "reviewedLocator": {
+        "section": "Products and Solutions",
+        "heading": "Principal products",
+        "quotedLabel": "products and technologies"
+      },
+      "proposedClaimType": "atlas-analysis",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "URL_LOCATOR_NOT_REPRODUCIBLE",
+      "reviewNote": "The registered IR index was retrievable, but the reviewed Products and Solutions locator and grounding text were not reproducible on that URL.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tokyo-electron-produces-coater-developer",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-coater-developer-equipment",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-products-e1"
+      ],
+      "sharedSourceIds": [
+        "ir-tokyo-electron"
+      ],
+      "reviewedLocator": {
+        "section": "Products and Solutions",
+        "heading": "Principal products",
+        "quotedLabel": "products and technologies"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "URL_LOCATOR_NOT_REPRODUCIBLE",
+      "reviewNote": "The registered IR index was retrievable, but the reviewed Products and Solutions locator and product text were not reproducible on that URL.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tokyo-electron-produces-deposition-equipment",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-semiconductor-deposition-equipment",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-products-e1"
+      ],
+      "sharedSourceIds": [
+        "ir-tokyo-electron"
+      ],
+      "reviewedLocator": {
+        "section": "Products and Solutions",
+        "heading": "Principal products",
+        "quotedLabel": "products and technologies"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "URL_LOCATOR_NOT_REPRODUCIBLE",
+      "reviewNote": "The registered IR index was retrievable, but the reviewed Products and Solutions locator and product text were not reproducible on that URL.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tokyo-electron-produces-etch-equipment",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-semiconductor-etch-equipment",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-products-e1"
+      ],
+      "sharedSourceIds": [
+        "ir-tokyo-electron"
+      ],
+      "reviewedLocator": {
+        "section": "Products and Solutions",
+        "heading": "Principal products",
+        "quotedLabel": "products and technologies"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "URL_LOCATOR_NOT_REPRODUCIBLE",
+      "reviewNote": "The registered IR index was retrievable, but the reviewed Products and Solutions locator and product text were not reproducible on that URL.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    },
+    {
+      "candidateId": "candidate-tokyo-electron-produces-wafer-cleaning-equipment",
+      "subjectType": "company",
+      "subjectId": "tokyo-electron",
+      "relationType": "PRODUCES",
+      "objectType": "product",
+      "objectId": "product-category-wafer-cleaning-equipment",
+      "proposedScope": {
+        "productIds": [],
+        "technologyIds": [],
+        "valueChainNodeIds": [],
+        "marketIds": [],
+        "geographies": [],
+        "businessUnit": null,
+        "capacityBasis": null
+      },
+      "supportingClaimIds": [
+        "tokyo-electron-products"
+      ],
+      "supportingCompanyEvidenceBindingIds": [
+        "tokyo-electron-products-e1"
+      ],
+      "sharedSourceIds": [
+        "ir-tokyo-electron"
+      ],
+      "reviewedLocator": {
+        "section": "Products and Solutions",
+        "heading": "Principal products",
+        "quotedLabel": "products and technologies"
+      },
+      "proposedClaimType": "fact",
+      "proposedImportance": "P1",
+      "proposedDisplayPriority": 50,
+      "decision": "defer",
+      "reasonCode": "URL_LOCATOR_NOT_REPRODUCIBLE",
+      "reviewNote": "The registered IR index was retrievable, but the reviewed Products and Solutions locator and product text were not reproducible on that URL.",
+      "existingUrlVerificationResult": "registered URL and frozen locator reviewed; public-gate predicate or binding requirement remains unmet",
+      "companyWideScopeEstablished": true,
+      "guardedPublicGateResult": "not-guarded",
+      "reviewedAt": "2026-09-02",
+      "relationId": null,
+      "relationEvidenceBindingIds": []
+    }
+  ]
+}
