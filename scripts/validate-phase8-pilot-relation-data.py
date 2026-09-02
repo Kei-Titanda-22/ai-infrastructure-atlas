@@ -27,6 +27,22 @@ DIMENSIONS = [
     "company-identity", "ai-role", "value-chain-position", "key-products", "technology-moat",
     "capacity-roadmap", "financial", "key-risks", "evidence-trace",
 ]
+EXPECTED_COMPETITION_PROJECTION = {
+    "nvidia": [],
+    "broadcom": [],
+    "applied-materials": ["rel-applied-materials-competes-with-lam-research"],
+    "lam-research": [
+        "rel-applied-materials-competes-with-lam-research",
+        "rel-lam-research-competes-with-tokyo-electron",
+    ],
+    "tokyo-electron": ["rel-lam-research-competes-with-tokyo-electron"],
+}
+FINANCIAL_REF_FIELDS = {
+    "companyId", "metricId", "financialRecordId", "availability", "periodType", "status",
+}
+FINANCIAL_AVAILABILITY = {
+    "available", "company-missing", "period-missing", "metric-definition-missing", "metric-missing", "value-missing",
+}
 
 
 def load_json(path: Path) -> Any:
@@ -146,9 +162,19 @@ def validate() -> list[str]:
         errors.append("projection dimensions differ from the adopted nine-dimension order")
     if projection.get("policy", {}).get("p3InitialCount") != 0:
         errors.append("initial P3 must be zero")
+    if projection.get("policy", {}).get("p2TieBreak") != ["categoryProjectionPriority:asc", "asOf:desc", "claimId:asc"]:
+        errors.append("P2 tie-break must use categoryProjectionPriority, asOf, then claimId")
+    if projection.get("policy", {}).get("p2PriorityField") != "categoryProjectionPriority":
+        errors.append("P2 Projection priority field is not explicit")
+    mapping = projection.get("policy", {}).get("dimensionClaimMapping", {})
+    if any("p2Categories" in policy or "displayPriority" in policy for policy in mapping.values()):
+        errors.append("Projection policy must not present category placement priority as a frozen Claim field")
+    if any("p2CategoryProjectionPriorities" not in policy for policy in mapping.values()):
+        errors.append("dimension mapping lacks p2CategoryProjectionPriorities")
     if projection.get("policy", {}).get("financialInitialMetricIds") != ["operatingMargin", "revenueGrowth"]:
         errors.append("initial Financial allowlist must be Operating Margin and Revenue Growth only")
     expected_sets = {"set-a": ["nvidia", "broadcom"], "set-b": ["applied-materials", "lam-research", "tokyo-electron"]}
+    financial_codes: list[str] = []
     for set_record in projection.get("sets", []):
         set_id = set_record.get("setId")
         if set_record.get("orderedCompanyIds") != expected_sets.get(set_id):
@@ -156,15 +182,36 @@ def validate() -> list[str]:
         financial = set_record.get("financial", {})
         if financial.get("initialMetricIds") != ["operatingMargin", "revenueGrowth"]:
             errors.append(f"{set_id}: initial Financial metrics differ from the contract")
+        if financial.get("comparisonPolicyId") != "normalized-financial-history-compatibility-v01":
+            errors.append(f"{set_id}: Financial comparison policy is not the normalized contract")
+        if financial.get("canonicalDataPath") != "src/lib/financial-history.ts":
+            errors.append(f"{set_id}: normalized Financial data path is stale")
+        if financial.get("metricDefinitionPath") != "src/data/financial-metric-definitions-v04.json":
+            errors.append(f"{set_id}: normalized metric definition path is stale")
+        if financial.get("compatibilityContractPath") != "src/lib/financial-comparison-contract.ts":
+            errors.append(f"{set_id}: canonical Financial compatibility helper path is stale")
         metric_states = financial.get("metricStates", [])
         if [state.get("metricId") for state in metric_states] != ["operatingMargin", "revenueGrowth"]:
             errors.append(f"{set_id}: Financial compatibility states differ from the initial allowlist")
         for state in metric_states:
             if state.get("compatibility", {}).get("code") not in {"ok", "caution", "blocked"}:
                 errors.append(f"{set_id} / {state.get('metricId')}: invalid Financial compatibility state")
-            expected_refs = [{"companyId": company_id, "metricId": state.get("metricId")} for company_id in expected_sets[set_id]]
-            if state.get("companyMetricRefs") != expected_refs:
-                errors.append(f"{set_id} / {state.get('metricId')}: Company metric references are stale")
+            financial_codes.append(state.get("compatibility", {}).get("code"))
+            refs = state.get("companyMetricRefs", [])
+            if [ref.get("companyId") for ref in refs] != expected_sets[set_id]:
+                errors.append(f"{set_id} / {state.get('metricId')}: Company metric reference order is stale")
+            for ref in refs:
+                if set(ref) != FINANCIAL_REF_FIELDS:
+                    errors.append(f"{set_id} / {state.get('metricId')}: normalized Financial reference fields are stale")
+                if ref.get("metricId") != state.get("metricId") or ref.get("availability") not in FINANCIAL_AVAILABILITY:
+                    errors.append(f"{set_id} / {state.get('metricId')}: invalid normalized Financial reference")
+            if state.get("metricId") == "operatingMargin" and state.get("normalizedMetricDefinitionId") != "operatingMargin":
+                errors.append(f"{set_id}: Operating Margin must resolve through the normalized definition")
+            if state.get("metricId") == "revenueGrowth" and (
+                state.get("normalizedMetricDefinitionId") is not None
+                or state.get("compatibility") != {"code": "blocked", "reasons": ["正規化指標定義がありません"]}
+            ):
+                errors.append(f"{set_id}: Revenue Growth must expose the normalized-definition gap without fallback")
         if set(financial.get("prohibitedOperations", [])) != {"difference-rate", "fx-conversion", "ranking"}:
             errors.append(f"{set_id}: prohibited Financial operations are incomplete")
         if any(key in json.dumps(financial, ensure_ascii=False) for key in ('"value"', 'revenueHistory', 'operatingProfit')):
@@ -189,6 +236,20 @@ def validate() -> list[str]:
                 if seen_claim_ids & set(initial_claim_ids):
                     errors.append(f"{company.get('companyId')}: Claim duplicated across initial dimensions")
                 seen_claim_ids.update(initial_claim_ids)
+            technology = next(record for record in dimension_records if record.get("dimensionId") == "technology-moat")
+            competition_ids = technology.get("initialRelationIds", [])
+            if competition_ids != EXPECTED_COMPETITION_PROJECTION[company.get("companyId")]:
+                errors.append(f"{company.get('companyId')}: symmetric COMPETES_WITH projection is stale")
+            if competition_ids != sorted(set(competition_ids)):
+                errors.append(f"{company.get('companyId')}: COMPETES_WITH Relation IDs are duplicate or unstable")
+            other_relation_ids = {
+                relation_id
+                for dimension in dimension_records
+                if dimension.get("dimensionId") != "technology-moat"
+                for relation_id in dimension.get("initialRelationIds", [])
+            }
+            if set(competition_ids) & other_relation_ids:
+                errors.append(f"{company.get('companyId')}: COMPETES_WITH duplicated into another dimension")
             trace = company.get("evidenceTrace", {})
             expected_evidence = sorted({evidence_id for claim_id in seen_claim_ids for evidence_id in claims[claim_id]["evidenceIds"]})
             if trace.get("companyEvidenceBindingIds") != expected_evidence:
@@ -197,6 +258,9 @@ def validate() -> list[str]:
                 errors.append(f"{company.get('companyId')}: Relation trace contains unknown Relation")
             if any(binding_id not in relation_binding_by_id for binding_id in trace.get("relationEvidenceBindingIds", [])):
                 errors.append(f"{company.get('companyId')}: Relation Evidence trace contains unknown Binding")
+
+    if Counter(financial_codes) != Counter({"caution": 2, "blocked": 2}):
+        errors.append("Financial compatibility must be recalculated as ok/caution/blocked = 0/2/2")
 
     if len(relations) != 17 or len(relation_bindings) != 17:
         errors.append("expected reviewed Pilot publication count is Relation/Binding 17/17")
@@ -227,7 +291,8 @@ def main() -> int:
     audit = load_json(DOCS / "phase8-pilot-relation-candidate-audit-v01.json")
     print(
         "Phase 8 Pilot Relation / projection validation OK: "
-        f"candidates {audit['summary']['candidateCount']} / Relations 17 / Bindings 17 / guarded 0 / P3 0"
+        f"candidates {audit['summary']['candidateCount']} / Relations 17 / Bindings 17 / "
+        "COMPETES_WITH symmetric / Financial 0/2/2 / guarded 0 / P3 0"
     )
     return 0
 

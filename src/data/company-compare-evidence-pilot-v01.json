@@ -23,61 +23,62 @@
     "dimensionClaimMapping": {
       "company-identity": {
         "p1Categories": [],
-        "p2Categories": {}
+        "p2CategoryProjectionPriorities": {}
       },
       "ai-role": {
         "p1Categories": [
           "ai-infrastructure-role"
         ],
-        "p2Categories": {}
+        "p2CategoryProjectionPriorities": {}
       },
       "value-chain-position": {
         "p1Categories": [
           "value-chain-position"
         ],
-        "p2Categories": {}
+        "p2CategoryProjectionPriorities": {}
       },
       "key-products": {
         "p1Categories": [
           "products"
         ],
-        "p2Categories": {}
+        "p2CategoryProjectionPriorities": {}
       },
       "technology-moat": {
         "p1Categories": [
           "competitive-positioning"
         ],
-        "p2Categories": {
+        "p2CategoryProjectionPriorities": {
           "technology": 10
         }
       },
       "capacity-roadmap": {
         "p1Categories": [],
-        "p2Categories": {
+        "p2CategoryProjectionPriorities": {
           "capacity-expansion": 10,
           "strategy": 20
         }
       },
       "financial": {
         "p1Categories": [],
-        "p2Categories": {}
+        "p2CategoryProjectionPriorities": {}
       },
       "key-risks": {
         "p1Categories": [],
-        "p2Categories": {
+        "p2CategoryProjectionPriorities": {
           "risks": 10
         }
       },
       "evidence-trace": {
         "p1Categories": [],
-        "p2Categories": {}
+        "p2CategoryProjectionPriorities": {}
       }
     },
     "p2TieBreak": [
-      "displayPriority:asc",
+      "categoryProjectionPriority:asc",
       "asOf:desc",
       "claimId:asc"
     ],
+    "p2PriorityField": "categoryProjectionPriority",
     "p2MaxPerCompanyDimension": 1,
     "p3InitialCount": 0,
     "missingnessSource": "Company Evidence Coverage plus projection availability",
@@ -470,43 +471,64 @@
           "roic",
           "financial-history"
         ],
-        "comparisonPolicyId": "existing-compare-compatibility-v01",
+        "comparisonPolicyId": "normalized-financial-history-compatibility-v01",
+        "canonicalDataPath": "src/lib/financial-history.ts",
+        "metricDefinitionPath": "src/data/financial-metric-definitions-v04.json",
+        "compatibilityContractPath": "src/lib/financial-comparison-contract.ts",
         "metricStates": [
           {
             "metricId": "operatingMargin",
+            "normalizedMetricDefinitionId": "operatingMargin",
             "companyMetricRefs": [
               {
                 "companyId": "nvidia",
-                "metricId": "operatingMargin"
+                "metricId": "operatingMargin",
+                "financialRecordId": "nvidia-q2-fy2027",
+                "availability": "available",
+                "periodType": "quarterly",
+                "status": "verified"
               },
               {
                 "companyId": "broadcom",
-                "metricId": "operatingMargin"
+                "metricId": "operatingMargin",
+                "financialRecordId": "broadcom-q2-fy2026",
+                "availability": "available",
+                "periodType": "quarterly",
+                "status": "verified"
               }
             ],
             "compatibility": {
               "code": "caution",
               "reasons": [
-                "対象期間が異なる"
+                "最新収録期間が異なる"
               ]
             }
           },
           {
             "metricId": "revenueGrowth",
+            "normalizedMetricDefinitionId": null,
             "companyMetricRefs": [
               {
                 "companyId": "nvidia",
-                "metricId": "revenueGrowth"
+                "metricId": "revenueGrowth",
+                "financialRecordId": "nvidia-q2-fy2027",
+                "availability": "metric-definition-missing",
+                "periodType": "quarterly",
+                "status": null
               },
               {
                 "companyId": "broadcom",
-                "metricId": "revenueGrowth"
+                "metricId": "revenueGrowth",
+                "financialRecordId": "broadcom-q2-fy2026",
+                "availability": "metric-definition-missing",
+                "periodType": "quarterly",
+                "status": null
               }
             ],
             "compatibility": {
-              "code": "caution",
+              "code": "blocked",
               "reasons": [
-                "対象期間が異なる"
+                "正規化指標定義がありません"
               ]
             }
           }
@@ -600,7 +622,9 @@
                 "applied-positioning",
                 "applied-technology"
               ],
-              "initialRelationIds": [],
+              "initialRelationIds": [
+                "rel-applied-materials-competes-with-lam-research"
+              ],
               "projectionStatus": "present",
               "missingState": "not-missing",
               "missingReason": null,
@@ -785,7 +809,10 @@
                 "lam-research-positioning",
                 "lam-research-technology"
               ],
-              "initialRelationIds": [],
+              "initialRelationIds": [
+                "rel-applied-materials-competes-with-lam-research",
+                "rel-lam-research-competes-with-tokyo-electron"
+              ],
               "projectionStatus": "present",
               "missingState": "not-missing",
               "missingReason": null,
@@ -967,7 +994,9 @@
                 "tokyo-electron-positioning",
                 "tokyo-electron-technology"
               ],
-              "initialRelationIds": [],
+              "initialRelationIds": [
+                "rel-lam-research-competes-with-tokyo-electron"
+              ],
               "projectionStatus": "present",
               "missingState": "not-missing",
               "missingReason": null,
@@ -1077,51 +1106,81 @@
           "roic",
           "financial-history"
         ],
-        "comparisonPolicyId": "existing-compare-compatibility-v01",
+        "comparisonPolicyId": "normalized-financial-history-compatibility-v01",
+        "canonicalDataPath": "src/lib/financial-history.ts",
+        "metricDefinitionPath": "src/data/financial-metric-definitions-v04.json",
+        "compatibilityContractPath": "src/lib/financial-comparison-contract.ts",
         "metricStates": [
           {
             "metricId": "operatingMargin",
+            "normalizedMetricDefinitionId": "operatingMargin",
             "companyMetricRefs": [
               {
                 "companyId": "applied-materials",
-                "metricId": "operatingMargin"
+                "metricId": "operatingMargin",
+                "financialRecordId": "applied-materials-q3-fy2026",
+                "availability": "available",
+                "periodType": "quarterly",
+                "status": "verified"
               },
               {
                 "companyId": "lam-research",
-                "metricId": "operatingMargin"
+                "metricId": "operatingMargin",
+                "financialRecordId": "lam-june-2026",
+                "availability": "available",
+                "periodType": "quarterly",
+                "status": "verified"
               },
               {
                 "companyId": "tokyo-electron",
-                "metricId": "operatingMargin"
+                "metricId": "operatingMargin",
+                "financialRecordId": "tokyo-electron-q1-fy2027",
+                "availability": "available",
+                "periodType": "quarterly",
+                "status": "verified"
               }
             ],
             "compatibility": {
               "code": "caution",
               "reasons": [
-                "対象期間が異なる"
+                "会計基準が異なる",
+                "最新収録期間が異なる"
               ]
             }
           },
           {
             "metricId": "revenueGrowth",
+            "normalizedMetricDefinitionId": null,
             "companyMetricRefs": [
               {
                 "companyId": "applied-materials",
-                "metricId": "revenueGrowth"
+                "metricId": "revenueGrowth",
+                "financialRecordId": "applied-materials-q3-fy2026",
+                "availability": "metric-definition-missing",
+                "periodType": "quarterly",
+                "status": null
               },
               {
                 "companyId": "lam-research",
-                "metricId": "revenueGrowth"
+                "metricId": "revenueGrowth",
+                "financialRecordId": "lam-june-2026",
+                "availability": "metric-definition-missing",
+                "periodType": "quarterly",
+                "status": null
               },
               {
                 "companyId": "tokyo-electron",
-                "metricId": "revenueGrowth"
+                "metricId": "revenueGrowth",
+                "financialRecordId": "tokyo-electron-q1-fy2027",
+                "availability": "metric-definition-missing",
+                "periodType": "quarterly",
+                "status": null
               }
             ],
             "compatibility": {
-              "code": "caution",
+              "code": "blocked",
               "reasons": [
-                "対象期間が異なる"
+                "正規化指標定義がありません"
               ]
             }
           }

@@ -4,6 +4,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
+import re
+import shutil
+import subprocess
 from collections import Counter
 from copy import deepcopy
 from pathlib import Path
@@ -426,32 +430,32 @@ def build_relations_and_candidates() -> tuple[list[dict[str, Any]], list[dict[st
 
 
 DIMENSION_POLICY = {
-    "company-identity": {"p1Categories": [], "p2Categories": {}},
-    "ai-role": {"p1Categories": ["ai-infrastructure-role"], "p2Categories": {}},
-    "value-chain-position": {"p1Categories": ["value-chain-position"], "p2Categories": {}},
-    "key-products": {"p1Categories": ["products"], "p2Categories": {}},
-    "technology-moat": {"p1Categories": ["competitive-positioning"], "p2Categories": {"technology": 10}},
-    "capacity-roadmap": {"p1Categories": [], "p2Categories": {"capacity-expansion": 10, "strategy": 20}},
-    "financial": {"p1Categories": [], "p2Categories": {}},
-    "key-risks": {"p1Categories": [], "p2Categories": {"risks": 10}},
-    "evidence-trace": {"p1Categories": [], "p2Categories": {}},
+    "company-identity": {"p1Categories": [], "p2CategoryProjectionPriorities": {}},
+    "ai-role": {"p1Categories": ["ai-infrastructure-role"], "p2CategoryProjectionPriorities": {}},
+    "value-chain-position": {"p1Categories": ["value-chain-position"], "p2CategoryProjectionPriorities": {}},
+    "key-products": {"p1Categories": ["products"], "p2CategoryProjectionPriorities": {}},
+    "technology-moat": {"p1Categories": ["competitive-positioning"], "p2CategoryProjectionPriorities": {"technology": 10}},
+    "capacity-roadmap": {"p1Categories": [], "p2CategoryProjectionPriorities": {"capacity-expansion": 10, "strategy": 20}},
+    "financial": {"p1Categories": [], "p2CategoryProjectionPriorities": {}},
+    "key-risks": {"p1Categories": [], "p2CategoryProjectionPriorities": {"risks": 10}},
+    "evidence-trace": {"p1Categories": [], "p2CategoryProjectionPriorities": {}},
 }
 
 
-def choose_p2(claims: list[dict[str, Any]], category_priorities: dict[str, int]) -> list[dict[str, Any]]:
+def choose_p2(claims: list[dict[str, Any]], category_projection_priorities: dict[str, int]) -> list[dict[str, Any]]:
     eligible = [
         claim for claim in claims
         if claim.get("priority") == "P2"
-        and claim.get("category") in category_priorities
-        and isinstance(claim.get("asOf"), str) and claim["asOf"]
+        and claim.get("category") in category_projection_priorities
+        and isinstance(claim.get("asOf"), str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", claim["asOf"])
         and isinstance(claim.get("id"), str) and claim["id"]
     ]
-    eligible.sort(key=lambda claim: (category_priorities[claim["category"]], -int(claim["asOf"].replace("-", "")), claim["id"]))
+    eligible.sort(key=lambda claim: (category_projection_priorities[claim["category"]], -int(claim["asOf"].replace("-", "")), claim["id"]))
     return eligible[:1]
 
 
 def coverage_for_dimension(company_id: str, dimension_id: str, coverage: list[dict[str, Any]]) -> list[dict[str, str]]:
-    categories = DIMENSION_POLICY[dimension_id]["p1Categories"] + list(DIMENSION_POLICY[dimension_id]["p2Categories"])
+    categories = DIMENSION_POLICY[dimension_id]["p1Categories"] + list(DIMENSION_POLICY[dimension_id]["p2CategoryProjectionPriorities"])
     return [
         {"category": record["category"], "collectionStatus": record["collectionStatus"]}
         for record in coverage
@@ -459,54 +463,80 @@ def coverage_for_dimension(company_id: str, dimension_id: str, coverage: list[di
     ]
 
 
-def metric_period_kind(metric: dict[str, Any]) -> str:
-    text = str(metric.get("period") or "").lower()
-    basis = str(metric.get("basis") or "").lower()
-    import re
-    if re.search(r"q[1-4]|quarter|四半期", text):
-        return "quarterly"
-    if re.search(r"ttm|ltm", text) or re.search(r"ttm|ltm", basis):
-        return "ttm"
-    if re.search(r"fy|fiscal year|通期|年度", text):
-        return "annual"
-    return "unknown"
+def load_normalized_financial_history() -> list[dict[str, Any]]:
+    def batch_number(path: Path) -> int:
+        match = re.search(r"batch(\d+)\.json$", path.name)
+        return int(match.group(1)) if match else -1
+
+    paths = [DATA / "financial-history.json"] + sorted(
+        DATA.glob("financial-history-v04-batch*.json"),
+        key=batch_number,
+    )
+    history = [deepcopy(record) for path in paths for record in load_json(path)]
+    overrides = {record["id"]: record for record in load_json(DATA / "financial-history-v04-cashflow-overrides.json")}
+    resolved: list[dict[str, Any]] = []
+    for record in history:
+        override = overrides.get(record["id"])
+        if not override:
+            resolved.append(record)
+            continue
+        merged = {**record, **override}
+        merged["metrics"] = {**record["metrics"], **override.get("metrics", {})}
+        resolved.append(merged)
+    return resolved
 
 
-def metric_basis_family(metric: dict[str, Any]) -> str:
-    import re
-    text = str(metric.get("basis") or "").lower()
-    if re.search(r"non.?gaap|adjusted|調整後", text):
-        return "adjusted"
-    if "ifrs" in text:
-        return "ifrs"
-    if "gaap" in text:
-        return "gaap"
-    if "atlas" in text:
-        return "atlas"
-    if re.search(r"reported|company disclosed|会社開示", text):
-        return "reported"
-    return text
+def build_financial_projection() -> dict[str, dict[str, Any]]:
+    node = os.environ.get("NODE_BINARY") or shutil.which("node")
+    if not node:
+        raise RuntimeError("node executable is required for the canonical Financial compatibility contract")
+    pilot_ids = set(PILOT_SETS["set-a"] + PILOT_SETS["set-b"])
+    payload = {
+        "sets": [{"setId": set_id, "orderedCompanyIds": company_ids} for set_id, company_ids in PILOT_SETS.items()],
+        "metricIds": ["operatingMargin", "revenueGrowth"],
+        "history": [record for record in load_normalized_financial_history() if record["companyId"] in pilot_ids],
+        "metricDefinitions": load_json(DATA / "financial-metric-definitions-v04.json"),
+    }
+    run = subprocess.run(
+        [node, "--experimental-strip-types", str(ROOT / "scripts" / "run-financial-comparison-contract.mjs")],
+        cwd=ROOT,
+        input=stable_json(payload),
+        text=True,
+        encoding="utf-8",
+        capture_output=True,
+    )
+    if run.returncode:
+        raise RuntimeError(f"canonical Financial compatibility contract failed: {run.stderr.strip()}")
+    return {record["setId"]: record for record in json.loads(run.stdout)}
 
 
-def assess_metric(metric_id: str, company_records: list[dict[str, Any]]) -> dict[str, Any]:
-    entries = [record.get("metrics", {}).get(metric_id) for record in company_records]
-    entries = [metric for metric in entries if metric and metric.get("value") is not None]
-    if len(entries) < 2:
-        return {"code": "blocked", "reasons": ["2社以上に値がありません"]}
-    definition_ids = {metric.get("definitionId") for metric in entries if metric.get("definitionId")}
-    if len(definition_ids) > 1:
-        return {"code": "blocked", "reasons": ["指標定義が異なります"]}
-    kinds = {metric_period_kind(metric) for metric in entries} - {"unknown"}
-    if len(kinds) > 1:
-        return {"code": "blocked", "reasons": ["四半期・通期・TTMなど期間区分が混在しています"]}
-    reasons: list[str] = []
-    if len({metric.get("period") for metric in entries if metric.get("period")}) > 1:
-        reasons.append("対象期間が異なる")
-    if len({metric_basis_family(metric) for metric in entries if metric_basis_family(metric)}) > 1:
-        reasons.append("算出基準が異なる")
-    if any(metric.get("verificationStatus") and metric.get("verificationStatus") != "verified" for metric in entries):
-        reasons.append("検証状態に注意")
-    return {"code": "caution", "reasons": reasons} if reasons else {"code": "ok", "reasons": ["同一定義・同一期間"]}
+def projected_relation_ids(company_id: str, dimension_id: str, relations: list[dict[str, Any]]) -> list[str]:
+    if dimension_id == "value-chain-position":
+        selected = [
+            relation["relationId"] for relation in relations
+            if relation["relationType"] == "POSITIONED_IN"
+            and relation["subjectType"] == "company"
+            and relation["subjectId"] == company_id
+        ]
+    elif dimension_id == "key-products":
+        selected = [
+            relation["relationId"] for relation in relations
+            if relation["relationType"] == "PRODUCES"
+            and relation["subjectType"] == "company"
+            and relation["subjectId"] == company_id
+        ]
+    elif dimension_id == "technology-moat":
+        selected = [
+            relation["relationId"] for relation in relations
+            if relation["relationType"] == "COMPETES_WITH"
+            and (
+                (relation["subjectType"] == "company" and relation["subjectId"] == company_id)
+                or (relation["objectType"] == "company" and relation["objectId"] == company_id)
+            )
+        ]
+    else:
+        selected = []
+    return sorted(set(selected))
 
 
 def build_projection(relations: list[dict[str, Any]], bindings: list[dict[str, Any]]) -> dict[str, Any]:
@@ -525,9 +555,9 @@ def build_projection(relations: list[dict[str, Any]], bindings: list[dict[str, A
         binding_ids_by_relation.setdefault(binding["relationId"], []).append(binding["id"])
         source_ids_by_relation.setdefault(binding["relationId"], []).append(binding["sourceId"])
 
+    financial_projection = build_financial_projection()
     sets: list[dict[str, Any]] = []
     for set_id, company_ids in PILOT_SETS.items():
-        company_records = [load_json(DATA / "companies" / f"{company_id}.json") for company_id in company_ids]
         companies: list[dict[str, Any]] = []
         for company_id in company_ids:
             company_claims = claims_by_company[company_id]
@@ -538,8 +568,9 @@ def build_projection(relations: list[dict[str, Any]], bindings: list[dict[str, A
                     [claim for claim in company_claims if claim["priority"] == "P1" and claim["category"] in policy["p1Categories"]],
                     key=lambda claim: claim["id"],
                 )
-                p2_claims = choose_p2(company_claims, policy["p2Categories"])
+                p2_claims = choose_p2(company_claims, policy["p2CategoryProjectionPriorities"])
                 initial_claim_ids = [claim["id"] for claim in p1_claims + p2_claims]
+                relation_ids = projected_relation_ids(company_id, dimension_id, relations)
                 if dimension_id == "company-identity":
                     status = "present"
                 elif dimension_id == "financial":
@@ -547,12 +578,7 @@ def build_projection(relations: list[dict[str, Any]], bindings: list[dict[str, A
                 elif dimension_id == "evidence-trace":
                     status = "present"
                 else:
-                    status = "present" if initial_claim_ids else "missing"
-                relation_ids = []
-                if dimension_id == "value-chain-position":
-                    relation_ids = sorted(relation["relationId"] for relation in relations if relation["subjectId"] == company_id and relation["relationType"] == "POSITIONED_IN")
-                elif dimension_id == "key-products":
-                    relation_ids = sorted(relation["relationId"] for relation in relations if relation["subjectId"] == company_id and relation["relationType"] == "PRODUCES")
+                    status = "present" if initial_claim_ids or relation_ids else "missing"
                 coverage_context = coverage_for_dimension(company_id, dimension_id, coverage)
                 if status == "present":
                     missing_state = "not-missing"
@@ -595,15 +621,11 @@ def build_projection(relations: list[dict[str, Any]], bindings: list[dict[str, A
             "financial": {
                 "initialMetricIds": ["operatingMargin", "revenueGrowth"],
                 "expandedMetricIds": ["roic", "financial-history"],
-                "comparisonPolicyId": "existing-compare-compatibility-v01",
-                "metricStates": [
-                    {
-                        "metricId": metric_id,
-                        "companyMetricRefs": [{"companyId": company_id, "metricId": metric_id} for company_id in company_ids],
-                        "compatibility": assess_metric(metric_id, company_records),
-                    }
-                    for metric_id in ("operatingMargin", "revenueGrowth")
-                ],
+                "comparisonPolicyId": "normalized-financial-history-compatibility-v01",
+                "canonicalDataPath": "src/lib/financial-history.ts",
+                "metricDefinitionPath": "src/data/financial-metric-definitions-v04.json",
+                "compatibilityContractPath": "src/lib/financial-comparison-contract.ts",
+                "metricStates": financial_projection[set_id]["metricStates"],
                 "prohibitedOperations": ["difference-rate", "fx-conversion", "ranking"],
             },
         })
@@ -614,7 +636,8 @@ def build_projection(relations: list[dict[str, Any]], bindings: list[dict[str, A
         "policy": {
             "dimensionOrder": list(DIMENSION_POLICY),
             "dimensionClaimMapping": DIMENSION_POLICY,
-            "p2TieBreak": ["displayPriority:asc", "asOf:desc", "claimId:asc"],
+            "p2TieBreak": ["categoryProjectionPriority:asc", "asOf:desc", "claimId:asc"],
+            "p2PriorityField": "categoryProjectionPriority",
             "p2MaxPerCompanyDimension": 1,
             "p3InitialCount": 0,
             "missingnessSource": "Company Evidence Coverage plus projection availability",
@@ -715,19 +738,19 @@ Baseline main: `{BASELINE_MAIN}`
 
 ## Projection contract
 
-The canonical projection is `src/data/company-compare-evidence-pilot-v01.json`. It stores canonical IDs and derived missing/projection states; it does not duplicate Claim statements or financial values. P1 category mapping is explicit. Eligible P2 is selected at most once per company and dimension by policy `displayPriority` ascending, Claim `asOf` descending, then `claimId` ascending. A Claim missing required metadata is ineligible. The projection policy priority is placement metadata and does not alter Claim priority or Coverage.
+The canonical projection is `src/data/company-compare-evidence-pilot-v01.json`. It stores canonical IDs and derived missing/projection states; it does not duplicate Claim statements or financial values. P1 category mapping is explicit. Eligible P2 is selected at most once per company and dimension by Projection metadata `categoryProjectionPriority` ascending, Claim `asOf` descending, then `claimId` ascending. `categoryProjectionPriority` belongs to the category-to-dimension mapping and is not a frozen Claim field. A Claim missing required metadata is ineligible. Claim priority and Coverage remain unchanged.
 
-Relations are referenced by Relation ID and resolved through the accepted Relation loader. Evidence trace retains Claim → Company Evidence Binding → Source and Relation → Relation Evidence Binding → Source chains. Missingness is derived from Coverage context plus projection availability; underlying records are never deleted.
+Relations are referenced by Relation ID and resolved through the accepted Relation loader. The two canonical symmetric `COMPETES_WITH` records are projected into `technology-moat` for both Company endpoints without reverse records: Applied Materials has one, Lam Research has two in Relation ID order, and Tokyo Electron has one. They are not placed in another dimension. Evidence trace retains Claim → Company Evidence Binding → Source and Relation → Relation Evidence Binding → Source chains. Missingness is derived from Coverage context plus projection availability; underlying records are never deleted.
 
-Financial compatibility uses the existing Compare rules: fewer than two values, mismatched definitions, or mixed period kinds block comparison; period, basis, or verification differences produce caution. ROIC and absolute financial history are expanded-only. No FX conversion, ranking, difference-rate calculation, or new metric is introduced.
+Financial compatibility is executed once by `src/lib/financial-comparison-contract.ts` over the normalized records exposed by `src/lib/financial-history.ts` and definitions in `src/data/financial-metric-definitions-v04.json`; the Python builder does not reimplement the decision rules. Existing Compare behavior is locked by parity fixtures because this data-only PR does not change the UI component. Availability, normalized definition, period type, accounting basis, verification status, missing Company, and missing period are evaluated. `operatingMargin` is defined in the normalized contract; `revenueGrowth` is not currently a normalized v0.4 metric and is therefore retained as an initial requested metric with a reasoned `blocked` state rather than sourced from Company JSON. ROIC and absolute financial history are expanded-only. No FX conversion, ranking, difference-rate calculation, Financial value change, or new metric is introduced.
 
 ## Guardrails
 
-No UI, route, component, style, workflow, Schema, Registry, Company, Company Evidence Claim/Binding/Coverage, Shared Source, Facility, Value Chain, or financial record/logic is changed. Browser QA is not applicable because this PR has no visible output. WFE and narrower equipment categories have no implicit hierarchy or roll-up.
+No UI, route, component, style, workflow, Schema foundation, Registry, Company, Company Evidence Claim/Binding/Coverage, Shared Source, Facility, Value Chain, or financial value is changed. The new canonical compatibility helper is Projection-only and parity-locked to existing Compare behavior. Browser QA is not applicable because this PR has no visible output. WFE and narrower equipment categories have no implicit hierarchy or roll-up.
 
 ## Validation
 
-`build-phase8-pilot-relation-data.py --check` protects generated freshness. `validate-phase8-pilot-relation-data.py` audits candidate completeness, public gates, Relation/Binding correspondence, guarded-zero behavior, projection mapping, P2/P3 policy, evidence trace, Financial allowlist, Pilot ordering, and protected baseline counts. Synthetic tests cover P2 tie-break/exclusion, all-missing retention, Relation zero, and guarded zero.
+`build-phase8-pilot-relation-data.py --check` protects generated freshness. `validate-phase8-pilot-relation-data.py` audits candidate completeness, public gates, Relation/Binding correspondence, guarded-zero behavior, symmetric `COMPETES_WITH` projection, Projection-specific P2 priority, P3 policy, evidence trace, normalized Financial paths, Financial allowlist, Pilot ordering, and protected baseline counts. Synthetic tests cover every P2 tie-break stage, missing metadata, canonical symmetric competition projection, unrelated Company exclusion, all-missing retention, Relation zero, guarded zero, existing Compare parity, normalized-definition absence, missing-period handling, and repeat-build equality.
 """
 
 
