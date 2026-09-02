@@ -55,5 +55,163 @@
         "lastChecked": "2026-08-15"
       }
     ]
-  }
+  },
+  "endpointMatrixCases": [
+    {
+      "name": "produces-company-product",
+      "relationId": "rel-fixture-produces-company-product",
+      "relationType": "PRODUCES",
+      "subjectType": "company",
+      "subjectId": "company-a",
+      "objectType": "product",
+      "objectId": "product-category-gpu",
+      "scope": { "productIds": [], "technologyIds": [], "valueChainNodeIds": [], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "fact",
+      "confidence": null,
+      "support": "supports"
+    },
+    {
+      "name": "develops-company-technology",
+      "relationId": "rel-fixture-develops-company-technology",
+      "relationType": "DEVELOPS",
+      "subjectType": "company",
+      "subjectId": "company-a",
+      "objectType": "technology",
+      "objectId": "technology-accelerated-computing-architecture",
+      "scope": { "productIds": [], "technologyIds": [], "valueChainNodeIds": [], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "fact",
+      "confidence": null,
+      "support": "supports"
+    },
+    {
+      "name": "uses-company-technology",
+      "relationId": "rel-fixture-uses-company-technology",
+      "relationType": "USES",
+      "subjectType": "company",
+      "subjectId": "company-a",
+      "objectType": "technology",
+      "objectId": "technology-accelerated-computing-architecture",
+      "scope": { "productIds": [], "technologyIds": [], "valueChainNodeIds": [], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "fact",
+      "confidence": null,
+      "support": "supports"
+    },
+    {
+      "name": "uses-product-technology",
+      "relationId": "rel-fixture-uses-product-technology",
+      "relationType": "USES",
+      "subjectType": "product",
+      "subjectId": "product-category-gpu",
+      "objectType": "technology",
+      "objectId": "technology-accelerated-computing-architecture",
+      "scope": { "productIds": [], "technologyIds": [], "valueChainNodeIds": [], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "fact",
+      "confidence": null,
+      "support": "supports"
+    },
+    {
+      "name": "enables-product-technology",
+      "relationId": "rel-fixture-enables-product-technology",
+      "relationType": "ENABLES",
+      "subjectType": "product",
+      "subjectId": "product-category-gpu",
+      "objectType": "technology",
+      "objectId": "technology-accelerated-computing-architecture",
+      "scope": { "productIds": [], "technologyIds": ["technology-accelerated-computing-architecture"], "valueChainNodeIds": [], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "fact",
+      "confidence": null,
+      "support": "supports"
+    },
+    {
+      "name": "supplies-company-company",
+      "relationId": "rel-fixture-supplies-company-company",
+      "relationType": "SUPPLIES_TO",
+      "subjectType": "company",
+      "subjectId": "company-a",
+      "objectType": "company",
+      "objectId": "company-b",
+      "scope": { "productIds": ["product-category-gpu"], "technologyIds": [], "valueChainNodeIds": [], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "fact",
+      "confidence": null,
+      "support": "supports"
+    },
+    {
+      "name": "supplies-company-market",
+      "relationId": "rel-fixture-supplies-company-market",
+      "relationType": "SUPPLIES_TO",
+      "subjectType": "company",
+      "subjectId": "company-a",
+      "objectType": "market",
+      "objectId": "market-data-center",
+      "scope": { "productIds": [], "technologyIds": [], "valueChainNodeIds": [], "marketIds": ["market-data-center"], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "fact",
+      "confidence": null,
+      "support": "supports"
+    },
+    {
+      "name": "competes-company-company",
+      "relationId": "rel-fixture-competes-company-company",
+      "relationType": "COMPETES_WITH",
+      "subjectType": "company",
+      "subjectId": "company-a",
+      "objectType": "company",
+      "objectId": "company-b",
+      "scope": { "productIds": ["product-category-gpu"], "technologyIds": [], "valueChainNodeIds": [], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "fact",
+      "confidence": null,
+      "support": "supports"
+    },
+    {
+      "name": "operates-company-facility",
+      "relationId": "rel-fixture-operates-company-facility",
+      "relationType": "OPERATES",
+      "subjectType": "company",
+      "subjectId": "company-a",
+      "objectType": "facility",
+      "objectId": "facility-a",
+      "scope": { "productIds": [], "technologyIds": [], "valueChainNodeIds": [], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "fact",
+      "confidence": null,
+      "support": "supports"
+    },
+    {
+      "name": "positioned-company-value-chain",
+      "relationId": "rel-fixture-positioned-company-value-chain",
+      "relationType": "POSITIONED_IN",
+      "subjectType": "company",
+      "subjectId": "company-a",
+      "objectType": "value-chain-node",
+      "objectId": "compute",
+      "scope": { "productIds": [], "technologyIds": [], "valueChainNodeIds": ["compute"], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "atlas-analysis",
+      "confidence": "medium",
+      "support": "supports"
+    },
+    {
+      "name": "positioned-product-value-chain",
+      "relationId": "rel-fixture-positioned-product-value-chain",
+      "relationType": "POSITIONED_IN",
+      "subjectType": "product",
+      "subjectId": "product-category-gpu",
+      "objectType": "value-chain-node",
+      "objectId": "compute",
+      "scope": { "productIds": [], "technologyIds": [], "valueChainNodeIds": ["compute"], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "atlas-analysis",
+      "confidence": "medium",
+      "support": "supports"
+    },
+    {
+      "name": "positioned-technology-value-chain",
+      "relationId": "rel-fixture-positioned-technology-value-chain",
+      "relationType": "POSITIONED_IN",
+      "subjectType": "technology",
+      "subjectId": "technology-accelerated-computing-architecture",
+      "objectType": "value-chain-node",
+      "objectId": "compute",
+      "scope": { "productIds": [], "technologyIds": [], "valueChainNodeIds": ["compute"], "marketIds": [], "geographies": [], "businessUnit": null, "capacityBasis": null },
+      "claimType": "atlas-analysis",
+      "confidence": "medium",
+      "support": "supports"
+    }
+  ]
 }

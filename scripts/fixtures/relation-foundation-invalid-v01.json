@@ -92,5 +92,71 @@
     "name": "duplicate logical relation",
     "operation": "duplicateRelation",
     "expectedError": "duplicate logical Relation with overlapping validity"
+  },
+  {
+    "name": "unresolved contradicts",
+    "operation": "addContradictsBinding",
+    "expectedError": "unresolved contradicts Binding blocks publication"
+  },
+  {
+    "name": "invalid date ordering",
+    "operation": "updateRelation",
+    "values": { "lastVerified": "2026-07-31" },
+    "expectedError": "lastVerified must not precede asOf"
+  },
+  {
+    "name": "fact with confidence",
+    "operation": "updateRelation",
+    "values": { "confidence": "high" },
+    "expectedError": "fact must have confidence null"
+  },
+  {
+    "name": "atlas analysis without confidence",
+    "operation": "updateRelation",
+    "values": { "claimType": "atlas-analysis", "confidence": null },
+    "expectedError": "analysis/estimate requires confidence"
+  },
+  {
+    "name": "estimate without confidence",
+    "operation": "updateRelation",
+    "values": { "claimType": "estimate", "confidence": null },
+    "expectedError": "analysis/estimate requires confidence"
+  },
+  {
+    "name": "positioned in authored as fact",
+    "operation": "updateRelation",
+    "values": { "relationType": "POSITIONED_IN", "objectType": "value-chain-node", "objectId": "compute", "claimType": "fact", "confidence": null },
+    "expectedError": "POSITIONED_IN Atlas mapping must not be authored as fact"
+  },
+  {
+    "name": "duplicate binding ID",
+    "operation": "duplicateBindingId",
+    "expectedError": "Relation Evidence Binding IDs must be unique"
+  },
+  {
+    "name": "duplicate logical binding",
+    "operation": "duplicateLogicalBinding",
+    "expectedError": "duplicate Relation/Source/Locator Binding"
+  },
+  {
+    "name": "unstable Relation order",
+    "operation": "unstableRelationOrder",
+    "expectedError": "Relation records must use stable relationId ordering"
+  },
+  {
+    "name": "unstable Binding order",
+    "operation": "unstableBindingOrder",
+    "expectedError": "Relation Evidence Binding records must use stable ID ordering"
+  },
+  {
+    "name": "invalid supersededBy signature",
+    "operation": "invalidSupersededSignature",
+    "expectedError": "supersededBy must preserve logical endpoint and scope"
+  },
+  {
+    "name": "unknown scope ID",
+    "operation": "updateScope",
+    "values": { "productIds": ["product-category-unknown"] },
+    "expectedError": "scope.productIds contains unknown or invalid IDs"
   }
 ]

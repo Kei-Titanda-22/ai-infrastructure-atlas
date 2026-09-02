@@ -13,13 +13,13 @@
       "additionalProperties": false,
       "required": ["productIds", "technologyIds", "valueChainNodeIds", "marketIds", "geographies", "businessUnit", "capacityBasis"],
       "properties": {
-        "productIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-        "technologyIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-        "valueChainNodeIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-        "marketIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-        "geographies": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "productIds": { "type": "array", "items": { "type": "string", "pattern": "^product-category-[a-z0-9]+(?:-[a-z0-9]+)*$" }, "uniqueItems": true },
+        "technologyIds": { "type": "array", "items": { "type": "string", "pattern": "^technology-[a-z0-9]+(?:-[a-z0-9]+)*$" }, "uniqueItems": true },
+        "valueChainNodeIds": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
+        "marketIds": { "type": "array", "items": { "type": "string", "pattern": "^market-[a-z0-9]+(?:-[a-z0-9]+)*$" }, "uniqueItems": true },
+        "geographies": { "type": "array", "items": { "$ref": "#/$defs/id" }, "uniqueItems": true },
         "businessUnit": { "type": "null" },
-        "capacityBasis": { "type": ["string", "null"] }
+        "capacityBasis": { "type": ["string", "null"], "minLength": 1 }
       }
     },
     "resolvedRelation": {
@@ -29,7 +29,7 @@
         "relationId", "subjectType", "subjectId", "relationType", "objectType", "objectId", "scope", "statement", "claimType", "asOf", "lastVerified", "nextReview", "importance", "displayPriority", "confidence", "validFrom", "validTo", "supersededBy", "evidenceIds", "sourceIds", "freshnessStatus"
       ],
       "properties": {
-        "relationId": { "type": "string" },
+        "relationId": { "type": "string", "pattern": "^rel-[a-z0-9]+(?:-[a-z0-9]+)*$" },
         "subjectType": { "enum": ["company", "product", "technology", "value-chain-node", "facility", "market"] },
         "subjectId": { "$ref": "#/$defs/id" },
         "relationType": { "enum": ["PRODUCES", "DEVELOPS", "USES", "ENABLES", "SUPPLIES_TO", "COMPETES_WITH", "OPERATES", "POSITIONED_IN"] },
@@ -46,9 +46,9 @@
         "confidence": { "enum": ["low", "medium", "high", null] },
         "validFrom": { "oneOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }] },
         "validTo": { "oneOf": [{ "$ref": "#/$defs/date" }, { "type": "null" }] },
-        "supersededBy": { "oneOf": [{ "type": "string" }, { "type": "null" }] },
-        "evidenceIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-        "sourceIds": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "supersededBy": { "oneOf": [{ "type": "string", "pattern": "^rel-[a-z0-9]+(?:-[a-z0-9]+)*$" }, { "type": "null" }] },
+        "evidenceIds": { "type": "array", "items": { "type": "string", "pattern": "^rel-evidence-[a-z0-9]+(?:-[a-z0-9]+)*$" }, "uniqueItems": true },
+        "sourceIds": { "type": "array", "items": { "type": "string", "minLength": 1 }, "uniqueItems": true },
         "freshnessStatus": { "enum": ["current", "review-due", "stale"] }
       }
     }

@@ -33,6 +33,25 @@ baseline_errors = validate(populated['relations'], populated['bindings'])
 if baseline_errors:
     raise AssertionError(f'Populated valid fixture failed: {baseline_errors!r}')
 
+authoring_schema = validator.load_json(validator.AUTHORING_SCHEMA_PATH)
+binding_schema = validator.load_json(validator.BINDING_SCHEMA_PATH)
+resolved_schema = validator.load_json(validator.RESOLVED_SCHEMA_PATH)
+schema_errors = validator.validate_schema_contracts(authoring_schema, binding_schema, resolved_schema)
+if schema_errors:
+    raise AssertionError(f'Baseline schema contract failed: {schema_errors!r}')
+weakened_resolved = copy.deepcopy(resolved_schema)
+weakened_resolved['$defs']['resolvedRelation']['properties']['relationId'].pop('pattern')
+assert any(
+    'authoring field parity mismatch: relationId' in error
+    for error in validator.validate_schema_contracts(authoring_schema, binding_schema, weakened_resolved)
+)
+weakened_derived = copy.deepcopy(resolved_schema)
+weakened_derived['$defs']['resolvedRelation']['properties']['evidenceIds']['items'].pop('pattern')
+assert any(
+    'evidenceIds must be unique Relation Evidence Binding IDs' in error
+    for error in validator.validate_schema_contracts(authoring_schema, binding_schema, weakened_derived)
+)
+
 for case in invalid_cases:
     relations = copy.deepcopy(populated['relations'])
     bindings = copy.deepcopy(populated['bindings'])
@@ -49,6 +68,42 @@ for case in invalid_cases:
         duplicate = copy.deepcopy(relations[0])
         duplicate['relationId'] = 'rel-company-a-produces-gpu-duplicate'
         relations.append(duplicate)
+    elif operation == 'addContradictsBinding':
+        contradicts = copy.deepcopy(bindings[0])
+        contradicts['id'] = 'rel-evidence-company-a-produces-gpu-contradicts'
+        contradicts['support'] = 'contradicts'
+        contradicts['locator'] = {'heading': 'Contradictory statement'}
+        bindings.append(contradicts)
+    elif operation == 'duplicateBindingId':
+        bindings.append(copy.deepcopy(bindings[0]))
+    elif operation == 'duplicateLogicalBinding':
+        duplicate = copy.deepcopy(bindings[0])
+        duplicate['id'] = 'rel-evidence-company-a-produces-gpu-duplicate'
+        bindings.append(duplicate)
+    elif operation == 'unstableRelationOrder':
+        unordered = copy.deepcopy(relations[0])
+        unordered['relationId'] = 'rel-a-company-a-produces-gpu'
+        relations.append(unordered)
+        unordered_binding = copy.deepcopy(bindings[0])
+        unordered_binding['id'] = 'rel-evidence-z-unordered-relation'
+        unordered_binding['relationId'] = unordered['relationId']
+        bindings.append(unordered_binding)
+    elif operation == 'unstableBindingOrder':
+        unordered = copy.deepcopy(bindings[0])
+        unordered['id'] = 'rel-evidence-a-unordered-binding'
+        unordered['support'] = 'context'
+        unordered['locator'] = {'heading': 'Additional context'}
+        bindings.append(unordered)
+    elif operation == 'invalidSupersededSignature':
+        successor = copy.deepcopy(relations[0])
+        successor['relationId'] = 'rel-company-a-produces-gpu-successor'
+        successor['scope']['productIds'] = ['product-category-gpu']
+        relations[0]['supersededBy'] = successor['relationId']
+        relations.append(successor)
+        successor_binding = copy.deepcopy(bindings[0])
+        successor_binding['id'] = 'rel-evidence-company-a-produces-gpu-successor'
+        successor_binding['relationId'] = successor['relationId']
+        bindings.append(successor_binding)
     else:
         raise AssertionError(f"Unknown invalid fixture operation: {operation}")
     errors = validate(relations, bindings)
@@ -72,55 +127,39 @@ assert validator.ENDPOINT_MATRIX == {
     },
 }
 
-matrix_cases = {
-    'PRODUCES': ('company', 'company-a', 'product', 'product-category-gpu', {}),
-    'DEVELOPS': ('company', 'company-a', 'technology', 'technology-accelerated-computing-architecture', {}),
-    'USES': ('product', 'product-category-gpu', 'technology', 'technology-accelerated-computing-architecture', {}),
-    'ENABLES': (
-        'product',
-        'product-category-gpu',
-        'technology',
-        'technology-accelerated-computing-architecture',
-        {'technologyIds': ['technology-accelerated-computing-architecture']},
-    ),
-    'SUPPLIES_TO': (
-        'company',
-        'company-a',
-        'company',
-        'company-b',
-        {'productIds': ['product-category-gpu']},
-    ),
-    'COMPETES_WITH': (
-        'company',
-        'company-a',
-        'company',
-        'company-b',
-        {'productIds': ['product-category-gpu']},
-    ),
-    'OPERATES': ('company', 'company-a', 'facility', 'facility-a', {}),
-    'POSITIONED_IN': ('company', 'company-a', 'value-chain-node', 'compute', {}),
+matrix_cases = fixture['endpointMatrixCases']
+expected_combinations = {
+    (relation_type, subject_type, object_type)
+    for relation_type, combinations in validator.ENDPOINT_MATRIX.items()
+    for subject_type, object_type in combinations
 }
-for relation_type, (subject_type, subject_id, object_type, object_id, scope_values) in matrix_cases.items():
+actual_combinations = {
+    (case['relationType'], case['subjectType'], case['objectType'])
+    for case in matrix_cases
+}
+assert len(matrix_cases) == 12
+assert actual_combinations == expected_combinations
+for case in matrix_cases:
     relation = copy.deepcopy(populated['relations'][0])
-    relation_id = f"rel-fixture-{relation_type.lower().replace('_', '-')}"
     relation.update({
-        'relationId': relation_id,
-        'subjectType': subject_type,
-        'subjectId': subject_id,
-        'relationType': relation_type,
-        'objectType': object_type,
-        'objectId': object_id,
+        'relationId': case['relationId'],
+        'subjectType': case['subjectType'],
+        'subjectId': case['subjectId'],
+        'relationType': case['relationType'],
+        'objectType': case['objectType'],
+        'objectId': case['objectId'],
+        'scope': copy.deepcopy(case['scope']),
+        'claimType': case['claimType'],
+        'confidence': case['confidence'],
+        'statement': f"Valid endpoint fixture: {case['name']}.",
     })
-    relation['scope'].update(scope_values)
-    if relation_type == 'POSITIONED_IN':
-        relation['claimType'] = 'atlas-analysis'
-        relation['confidence'] = 'medium'
     binding = copy.deepcopy(populated['bindings'][0])
-    binding['id'] = f"rel-evidence-fixture-{relation_type.lower().replace('_', '-')}"
-    binding['relationId'] = relation_id
+    binding['id'] = f"rel-evidence-{case['name']}"
+    binding['relationId'] = case['relationId']
+    binding['support'] = case['support']
     matrix_errors = validate([relation], [binding])
     if matrix_errors:
-        raise AssertionError(f'{relation_type} valid endpoint fixture failed: {matrix_errors!r}')
+        raise AssertionError(f"{case['name']} valid endpoint fixture failed: {matrix_errors!r}")
 
 # Supersession and duplicate guards are tested independently of production data.
 cycle_relations = [
@@ -138,5 +177,6 @@ assert any('supersession cycle detected' in error for error in cycle_errors)
 
 print(
     'Relation validator tests OK: 2 valid states / '
-    f'{len(invalid_cases)} invalid fixtures / 8 accepted endpoint fixtures / supersession guard'
+    f'{len(invalid_cases)} invalid fixtures / 12 endpoint matrix fixtures / '
+    'authoring-resolved schema parity / supersession guard'
 )

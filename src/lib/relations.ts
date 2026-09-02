@@ -190,6 +190,36 @@ export const resolveRelationEvidence = (relationId: string) => Object.freeze(
   relationEvidenceBindings.filter(binding => binding.relationId === relationId),
 );
 
+const canonicalizeObjectKeys = (value: unknown): unknown => {
+  if (Array.isArray(value)) return value.map(canonicalizeObjectKeys);
+  if (value && typeof value === 'object') {
+    return Object.fromEntries(
+      Object.entries(value as Readonly<Record<string, unknown>>)
+        .sort(([left], [right]) => compareText(left, right))
+        .map(([key, nestedValue]) => [key, canonicalizeObjectKeys(nestedValue)]),
+    );
+  }
+  return value;
+};
+
+const canonicalizeResolvedRelation = (relation: ResolvedRelation) => ({
+  ...relation,
+  scope: {
+    ...relation.scope,
+    productIds: [...relation.scope.productIds].sort(compareText),
+    technologyIds: [...relation.scope.technologyIds].sort(compareText),
+    valueChainNodeIds: [...relation.scope.valueChainNodeIds].sort(compareText),
+    marketIds: [...relation.scope.marketIds].sort(compareText),
+    geographies: [...relation.scope.geographies].sort(compareText),
+  },
+  evidenceIds: [...relation.evidenceIds].sort(compareText),
+  sourceIds: [...relation.sourceIds].sort(compareText),
+});
+
 export const serializeResolvedRelations = (records: readonly ResolvedRelation[]) => JSON.stringify(
-  [...records].sort((left, right) => compareText(left.relationId, right.relationId)),
+  canonicalizeObjectKeys(
+    [...records]
+      .sort((left, right) => compareText(left.relationId, right.relationId))
+      .map(canonicalizeResolvedRelation),
+  ),
 );

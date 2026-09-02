@@ -132,6 +132,34 @@ def validate_schema_contracts(
     resolved_properties = resolved_relation.get('properties', {})
     if set(resolved_properties) != RELATION_KEYS | DERIVED_FIELDS:
         errors.append('resolved schema must contain authoring fields plus only the three derived fields')
+    if resolved_relation.get('additionalProperties') is not False:
+        errors.append('resolved schema must reject fields outside authoring fields plus derived fields')
+    if set(resolved_relation.get('required', [])) != RELATION_KEYS | DERIVED_FIELDS:
+        errors.append('resolved schema required fields must equal authoring required fields plus derived fields')
+
+    for definition in ('id', 'date', 'scope'):
+        authoring_definition = authoring_schema.get('$defs', {}).get(definition)
+        resolved_definition = resolved_schema.get('$defs', {}).get(definition)
+        if resolved_definition != authoring_definition:
+            errors.append(f'resolved schema {definition} definition must match authoring schema exactly')
+    for field in sorted(RELATION_KEYS):
+        if resolved_properties.get(field) != authoring_properties.get(field):
+            errors.append(f'resolved schema authoring field parity mismatch: {field}')
+
+    evidence_ids = resolved_properties.get('evidenceIds', {})
+    if evidence_ids != {
+        'type': 'array',
+        'items': {'type': 'string', 'pattern': BINDING_ID_PATTERN.pattern},
+        'uniqueItems': True,
+    }:
+        errors.append('resolved evidenceIds must be unique Relation Evidence Binding IDs')
+    source_ids = resolved_properties.get('sourceIds', {})
+    if source_ids != {
+        'type': 'array',
+        'items': {'type': 'string', 'minLength': 1},
+        'uniqueItems': True,
+    }:
+        errors.append('resolved sourceIds must be unique non-empty Source IDs')
     freshness = set(resolved_properties.get('freshnessStatus', {}).get('enum', []))
     if freshness != {'current', 'review-due', 'stale'}:
         errors.append('resolved Relation freshness must be current/review-due/stale only')

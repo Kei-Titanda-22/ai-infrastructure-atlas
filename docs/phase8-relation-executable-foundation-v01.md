@@ -34,6 +34,10 @@ The resolver derives:
 
 `not-applicable` is never emitted as Relation freshness. Because authoring permits `nextReview: null` while Relation freshness has only three states, a missing review date resolves conservatively to `stale`; it never establishes currency and never becomes Coverage `not-applicable`.
 
+The resolved JSON Schema has contract parity with every authoring field. The validator recursively compares the shared `id`, `date`, and `scope` definitions and compares every common property constraint, including required fields, type, enum, pattern, nullability, length, and numeric bounds. The resolved schema may add only `evidenceIds`, `sourceIds`, and `freshnessStatus`; `additionalProperties` remains false. Derived ID arrays are unique and constrained to Relation Evidence Binding IDs or non-empty Source IDs.
+
+Canonical serialization is independent of input object insertion order. It sorts Relations by `relationId`, recursively sorts object keys, and sorts scope, `evidenceIds`, and `sourceIds` arrays without mutating the input. Tests cover reordered object keys, scope and derived arrays, Relation and Binding input arrays, Unicode preservation, and a meaningful-field change producing a different serialization.
+
 ## Accepted type and endpoint contract
 
 | Relation type | Accepted subject → object | Additional guard |
@@ -98,9 +102,10 @@ The Relation gate checks:
 - Binding Relation / Source / Locator integrity;
 - direct-support publication gate and contradictory support block;
 - authoring-derived-field rejection;
-- deterministic resolved ID sets, three-state freshness, stable serialization, and immutable output;
-- valid empty state and valid fixtures for all eight endpoint patterns;
-- invalid fixtures for deferred / unknown types, endpoint errors, scope errors, missing Evidence, Locator, Source, symmetry, orphans, and duplicates.
+- authoring / resolved Schema parity for all common constraints and exact three-derived-field expansion;
+- deterministic resolved ID sets, three-state freshness, canonical object-key / ID-array serialization, Unicode preservation, non-mutation, and immutable output;
+- valid empty state and 12 valid directional endpoint fixtures across all eight accepted Relation types;
+- 28 invalid fixtures, including deferred / unknown types, endpoint and scope errors, unresolved contradiction, date ordering, confidence / epistemic guards, missing Evidence, Locator, Source, symmetry, Binding duplicates / ordering, Relation ordering, supersession signature, orphans, and logical duplicates.
 
 ## Protected baseline
 
