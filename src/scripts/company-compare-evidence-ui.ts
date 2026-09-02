@@ -7,8 +7,9 @@ import {
   type EvidenceCompareState,
 } from '../lib/company-compare-evidence-ui.ts';
 import {
-  companyCompareDisplayName,
+  companyCompareDisplayNameParts,
   companyPresentationTokenForOrder,
+  localizeCompareLocation,
 } from '../lib/company-compare-display.ts';
 
 const issueLabels: Record<EvidenceCompareIssue['code'], string> = {
@@ -59,6 +60,7 @@ export function initCompanyCompareEvidenceUi(): boolean {
   const selectedRoot = requiredElement<HTMLElement>(app, '#compare-selected');
   const selectionStatus = requiredElement<HTMLElement>(app, '#compare-selection-status');
   const routeStatus = requiredElement<HTMLElement>(root, '#evidence-route-status');
+  const detailDescription = requiredElement<HTMLElement>(root, '[data-evidence-detail-description]');
   const empty = requiredElement<HTMLElement>(root, '#evidence-compare-empty');
   const matrixScroll = requiredElement<HTMLElement>(root, '#evidence-matrix-scroll');
   const matrix = requiredElement<HTMLTableElement>(root, '#evidence-compare-matrix');
@@ -74,15 +76,28 @@ export function initCompanyCompareEvidenceUi(): boolean {
     if (className) node.className = className;
     return node;
   };
+  const appendCompanyName = (parent: HTMLElement, company: any) => {
+    const names = companyCompareDisplayNameParts(company);
+    parent.setAttribute('aria-label', names.accessibleName);
+    const wrapper = text('span', '', 'compare-company-name');
+    wrapper.setAttribute('aria-hidden', 'true');
+    wrapper.append(text('span', names.primaryName, 'compare-company-name-primary'));
+    if (names.secondaryName) wrapper.append(text('span', names.secondaryName, 'compare-company-name-secondary'));
+    parent.append(wrapper);
+  };
   const pickedCompanies = () => state.selectedIds.map(id => byId.get(id)).filter(Boolean);
 
   const issueText = (issues: EvidenceCompareIssue[]) => issues
     .map(issue => `${issueLabels[issue.code]}：${issue.id}`)
     .join(' / ');
 
-  const updateUrl = () => {
+  const updateUrl = (mode: 'replace' | 'push') => {
     const query = serializeEvidenceCompareSearch(location.search, state);
-    history.replaceState({ evidenceCompare: true }, '', `${location.pathname}${query}`);
+    history[mode === 'push' ? 'pushState' : 'replaceState'](
+      { evidenceCompare: true },
+      '',
+      `${location.pathname}${query}`,
+    );
   };
 
   const renderSelected = () => {
@@ -101,7 +116,7 @@ export function initCompanyCompareEvidenceUi(): boolean {
       const link = document.createElement('a');
       link.href = company.href;
       link.className = 'company-link compare-selected-name';
-      link.textContent = companyCompareDisplayName(company);
+      appendCompanyName(link, company);
       info.append(link);
       info.append(text('span', `${company.ticker} · ${company.primaryLayer}`, 'compare-selected-meta'));
       row.append(info);
@@ -183,6 +198,9 @@ export function initCompanyCompareEvidenceUi(): boolean {
 
   const renderDetail = () => {
     root.dataset.detail = state.detail;
+    detailDescription.textContent = state.detail === 'expanded'
+      ? '詳細 — 補足・全根拠・財務履歴まで表示'
+      : '要点 — 代表情報だけを表示';
     root.querySelectorAll<HTMLButtonElement>('[data-evidence-detail]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.evidenceDetail === state.detail));
     });
@@ -196,12 +214,12 @@ export function initCompanyCompareEvidenceUi(): boolean {
     });
   };
 
-  const render = (replaceUrl = true) => {
+  const render = (historyMode: 'replace' | 'push' | false = 'replace') => {
     renderSelected();
     renderMatrix();
     renderDetail();
     renderSectionLinks();
-    if (replaceUrl) updateUrl();
+    if (historyMode) updateUrl(historyMode);
   };
 
   const candidateMatches = (query: string) => {
@@ -228,8 +246,10 @@ export function initCompanyCompareEvidenceUi(): boolean {
       button.className = 'compare-suggestion';
       button.dataset.addId = company.id;
       button.setAttribute('role', 'option');
-      button.append(text('span', companyCompareDisplayName(company), 'compare-suggestion-name'));
-      button.append(text('span', `${company.ticker} · ${company.country} · ${company.primaryLayer}`, 'compare-suggestion-meta'));
+      const name = text('span', '', 'compare-suggestion-name');
+      appendCompanyName(name, company);
+      button.append(name);
+      button.append(text('span', `${company.ticker} · ${localizeCompareLocation(company.country)} · ${company.primaryLayer}`, 'compare-suggestion-meta'));
       suggestions.append(button);
     });
     suggestions.hidden = false;
@@ -303,7 +323,7 @@ export function initCompanyCompareEvidenceUi(): boolean {
     const detailButton = (event.target as Element).closest<HTMLButtonElement>('[data-evidence-detail]');
     if (detailButton?.dataset.evidenceDetail) {
       state.detail = detailButton.dataset.evidenceDetail === 'expanded' ? 'expanded' : 'summary';
-      render();
+      render('push');
       return;
     }
     const sectionLink = (event.target as Element).closest<HTMLAnchorElement>('[data-evidence-section-link]');

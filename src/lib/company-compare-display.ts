@@ -9,6 +9,22 @@ export interface CompareDisplayCopy {
   groundingIds: readonly string[];
 }
 
+export interface CompareDisplayNameParts {
+  accessibleName: string;
+  primaryName: string;
+  secondaryName: string | null;
+}
+
+export interface CompareSummaryClaimLike {
+  id: string;
+  priority: string;
+}
+
+export interface CompareSummaryRelationLike {
+  relationId: string;
+  relationType: string;
+}
+
 export interface CompareCanonicalDisplayItem {
   canonicalId: string;
   label: string;
@@ -26,9 +42,26 @@ export const compareGenericTermTranslations = Object.freeze({
   scope: '対象範囲',
   freshness: '更新状況',
   'developer ecosystem': '開発者エコシステム',
+  'Integrated Materials Solution': '統合材料ソリューション',
+  Tualatin: 'チュアラティン',
+  'United States': '米国',
+  Japan: '日本',
+});
+
+export const compareLocationDisplayNames = Object.freeze<Record<string, string>>({
+  'United States': '米国',
+  Japan: '日本',
+  Tualatin: 'チュアラティン',
+  'Oregon, United States': '米国オレゴン州',
+  米国: '米国',
+  日本: '日本',
+  チュアラティン: 'チュアラティン',
+  米国オレゴン州: '米国オレゴン州',
 });
 
 export const comparePreservedProperNouns = Object.freeze([
+  'Atlas',
+  'AI',
   'NVIDIA',
   'Broadcom',
   'Applied Materials',
@@ -36,11 +69,23 @@ export const comparePreservedProperNouns = Object.freeze([
   'Tokyo Electron',
   'NVIDIA AI Enterprise',
   'DGX Cloud',
+  'Blackwell GPU',
+  'Grace CPU',
+  'BlueField DPU',
+  'Spectrum-X',
+  'Integrated Materials Solution',
+  'EPIC Center',
+  'Building G',
   'GPU',
   'CPU',
   'DPU',
   'ASIC',
   'Ethernet',
+  '3D NAND',
+  'DRAM',
+  'HBM',
+  'GAAP',
+  'IFRS',
 ]);
 
 export const compareProductDisplayNameOverrides = Object.freeze<Record<string, string>>({
@@ -142,8 +187,8 @@ export const compareClaimDisplayCopy = Object.freeze<Record<string, CompareDispl
   ),
   'applied-technology': claimCopy(
     'applied-technology',
-    '複数工程を一体化',
-    'Integrated Materials Solutionを、複数のプロセスと計測を一つのプラットフォームで組み合わせる技術として説明している。',
+    '統合材料ソリューション',
+    '統合材料ソリューション（Integrated Materials Solution）を、複数のプロセスと計測を一つのプラットフォームで組み合わせる技術として説明している。',
   ),
   'applied-materials-capacity-expansion-gap-closure': claimCopy(
     'applied-materials-capacity-expansion-gap-closure',
@@ -182,8 +227,8 @@ export const compareClaimDisplayCopy = Object.freeze<Record<string, CompareDispl
   ),
   'lam-research-capacity-expansion-triage-remediation-v02': claimCopy(
     'lam-research-capacity-expansion-triage-remediation-v02',
-    'Building Gを開設',
-    'オレゴン州Tualatinに6,500万米ドル・12万平方フィートのBuilding Gを開設し、研究開発業務向けに最大700の作業スペースを追加した。',
+    '研究開発棟「Building G」を開設',
+    '米国オレゴン州チュアラティンに6,500万米ドル・12万平方フィートの研究開発棟「Building G」を開設し、研究開発業務向けに最大700の作業スペースを追加した。',
   ),
   'lam-research-risks': claimCopy(
     'lam-research-risks',
@@ -230,6 +275,65 @@ export const compareClaimDisplayCopy = Object.freeze<Record<string, CompareDispl
 export function companyCompareDisplayName(identity: CompareDisplayIdentityLike) {
   const japaneseName = identity.japaneseName?.trim();
   return japaneseName || identity.name.trim();
+}
+
+export function companyCompareDisplayNameParts(identity: CompareDisplayIdentityLike): CompareDisplayNameParts {
+  const primaryName = identity.name.trim();
+  const japaneseName = identity.japaneseName?.trim();
+  if (!japaneseName || japaneseName === primaryName) {
+    return { accessibleName: primaryName, primaryName: japaneseName || primaryName, secondaryName: null };
+  }
+  const bilingualPrefix = `${primaryName}（`;
+  if (japaneseName.startsWith(bilingualPrefix) && japaneseName.endsWith('）')) {
+    return {
+      accessibleName: japaneseName,
+      primaryName,
+      secondaryName: japaneseName.slice(primaryName.length),
+    };
+  }
+  return {
+    accessibleName: `${primaryName}（${japaneseName}）`,
+    primaryName: japaneseName,
+    secondaryName: null,
+  };
+}
+
+export function localizeCompareLocation(canonicalValue: string) {
+  const localized = compareLocationDisplayNames[canonicalValue];
+  if (!localized) throw new Error(`Company Compare location mapping is missing: ${canonicalValue}`);
+  return localized;
+}
+
+const representativeClaimId = (claims: readonly CompareSummaryClaimLike[]) =>
+  claims.find(claim => claim.priority === 'P1')?.id
+  ?? claims.find(claim => claim.priority === 'P2')?.id
+  ?? null;
+
+export function selectCompareSummaryClaimIds(
+  dimensionId: string,
+  sectionIndex: number,
+  claims: readonly CompareSummaryClaimLike[],
+  relations: readonly CompareSummaryRelationLike[],
+) {
+  if (dimensionId === 'key-products' && relations.some(relation => relation.relationType === 'PRODUCES')) return [];
+  if (dimensionId === 'ai-role' && sectionIndex > 0 && relations.some(relation => relation.relationType === 'POSITIONED_IN')) return [];
+  const claimId = representativeClaimId(claims);
+  return claimId ? [claimId] : [];
+}
+
+export function selectCompareSummaryRelationIds(
+  dimensionId: string,
+  sectionIndex: number,
+  relations: readonly CompareSummaryRelationLike[],
+) {
+  if (dimensionId === 'key-products') {
+    return relations.filter(relation => relation.relationType === 'PRODUCES').slice(0, 3).map(relation => relation.relationId);
+  }
+  if (dimensionId === 'ai-role' && sectionIndex > 0) {
+    const position = relations.find(relation => relation.relationType === 'POSITIONED_IN');
+    return position ? [position.relationId] : [];
+  }
+  return [];
 }
 
 export function resolveCompareClaimDisplay(claimId: string) {

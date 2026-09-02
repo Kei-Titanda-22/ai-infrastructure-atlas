@@ -19,10 +19,15 @@ import {
   compareClaimDisplayCopy,
   compareCompanyPresentationTokens,
   compareGenericTermTranslations,
+  compareLocationDisplayNames,
   comparePreservedProperNouns,
   companyCompareDisplayName,
+  companyCompareDisplayNameParts,
   companyPresentationTokenForOrder,
   dedupeCompareCanonicalItems,
+  localizeCompareLocation,
+  selectCompareSummaryClaimIds,
+  selectCompareSummaryRelationIds,
 } from '../src/lib/company-compare-display.ts';
 
 const readJson = async relative => JSON.parse(await readFile(new URL(relative, import.meta.url), 'utf8'));
@@ -72,6 +77,7 @@ assert.deepEqual(
   'all and only 34 projected Claims have fixed Compare display copy',
 );
 assert.deepEqual(compareGenericTermTranslations, displayFixture.genericTermTranslations, 'Japanese generic-term policy is fixture-locked');
+assert.deepEqual(compareLocationDisplayNames, displayFixture.locationDisplayNames, 'Compare geography localization is fixture-locked');
 assert.deepEqual(comparePreservedProperNouns, displayFixture.preservedProperNouns, 'allowed proper nouns are fixture-locked');
 assert.deepEqual(compareCompanyPresentationTokens, displayFixture.presentationTokens, 'four presentation-order tokens are fixed');
 const projectedClaimIds = [...new Set(projection.sets.flatMap(setRecord => setRecord.companies.flatMap(company =>
@@ -91,6 +97,23 @@ assert.equal(
   'Applied Materials（アプライド・マテリアルズ）',
   'Applied Materials never mixes English-only and Japanese-only display names',
 );
+assert.deepEqual(
+  companyCompareDisplayNameParts(pilotCompanyRecords['applied-materials']),
+  {
+    accessibleName: 'Applied Materials（アプライド・マテリアルズ）',
+    primaryName: 'Applied Materials',
+    secondaryName: '（アプライド・マテリアルズ）',
+  },
+  'bilingual Company names use two deterministic lines and preserve one accessible full name',
+);
+assert.deepEqual(
+  companyCompareDisplayNameParts(pilotCompanyRecords['tokyo-electron']),
+  { accessibleName: 'Tokyo Electron（東京エレクトロン）', primaryName: '東京エレクトロン', secondaryName: null },
+  'Japanese-only visual Company names remain one line while the accessible name retains English and Japanese',
+);
+assert.equal(localizeCompareLocation('United States'), '米国');
+assert.equal(localizeCompareLocation('Oregon, United States'), '米国オレゴン州');
+assert.throws(() => localizeCompareLocation('unreviewed-place'), /mapping is missing/, 'unreviewed geography never falls through to mixed-language UI');
 const dedupeFixture = dedupeCompareCanonicalItems([
   { canonicalId: 'product-category-gpu', label: 'GPU', groundingIds: ['rel-a'] },
   { canonicalId: 'product-category-gpu', label: 'Graphics processing unit', groundingIds: ['rel-b'] },
@@ -108,9 +131,19 @@ assert.deepEqual(
   'Technology display also deduplicates by canonical Registry ID',
 );
 const displayCopyText = Object.values(compareClaimDisplayCopy).flatMap(copy => [copy.title, copy.statement]).join('\n');
+assert.deepEqual(
+  [...new Set(displayCopyText.match(/[A-Za-z][A-Za-z0-9-]*/g) ?? [])].sort(),
+  displayFixture.approvedPrimaryEnglishTokens,
+  'Pilot primary display contains no unreviewed generic English token',
+);
 for (const properNoun of ['NVIDIA AI Enterprise', 'DGX Cloud', 'GPU', 'CPU', 'DPU', 'ASIC']) {
   assert.ok(displayCopyText.includes(properNoun), `${properNoun}: preserved in display copy`);
 }
+assert.match(claimById.get('applied-technology').statement, /Integrated Materials Solution/, 'canonical Claim keeps the raw formal English name');
+assert.match(claimById.get('lam-research-capacity-expansion-triage-remediation-v02').statement, /Tualatin/, 'canonical Claim keeps the raw source geography');
+assert.equal(compareClaimDisplayCopy['applied-technology'].title, '統合材料ソリューション');
+assert.match(compareClaimDisplayCopy['applied-technology'].statement, /^統合材料ソリューション（Integrated Materials Solution）/);
+assert.match(compareClaimDisplayCopy['lam-research-capacity-expansion-triage-remediation-v02'].statement, /^米国オレゴン州チュアラティン/);
 assert.deepEqual(
   [0, 1, 2, 3].map(index => companyPresentationTokenForOrder(index).label),
   displayFixture.presentationTokens,
@@ -301,6 +334,32 @@ assert.equal(allSelectedMissing(['a', 'b'], new Map([['a', null], ['b', undefine
 assert.equal(allSelectedMissing(['a', 'b'], new Map([['a', null], ['b', 'present']])), false);
 
 const dimensionOrder = projection.policy.dimensionOrder.filter(id => id !== 'evidence-trace');
+const summaryDimensionIds = ['ai-role', 'key-products', 'technology-moat', 'capacity-roadmap', 'key-risks'];
+const summaryMarkerCountBySet = Object.fromEntries(projection.sets.map(setRecord => {
+  let count = 0;
+  for (const company of setRecord.companies) {
+    for (const dimensionId of summaryDimensionIds) {
+      const sourceIds = dimensionId === 'ai-role' ? ['ai-role', 'value-chain-position'] : [dimensionId];
+      sourceIds.forEach((sourceId, sectionIndex) => {
+        const dimension = company.dimensions.find(item => item.dimensionId === sourceId);
+        const sectionClaims = (dimension?.initialClaimIds ?? []).map(id => claimById.get(id));
+        const seenProducts = new Set();
+        const sectionRelations = (dimension?.initialRelationIds ?? [])
+          .map(id => relationById.get(id))
+          .filter(relation => {
+            if (relation.relationType !== 'PRODUCES') return true;
+            if (seenProducts.has(relation.objectId)) return false;
+            seenProducts.add(relation.objectId);
+            return true;
+          });
+        count += selectCompareSummaryClaimIds(dimensionId, sectionIndex, sectionClaims, sectionRelations).length;
+        count += selectCompareSummaryRelationIds(dimensionId, sectionIndex, sectionRelations).length;
+      });
+    }
+  }
+  return [setRecord.setId, count];
+}));
+assert.deepEqual(summaryMarkerCountBySet, displayFixture.summaryMarkerCounts, 'summary marker selection is deterministic for both Pilot sets');
 const priorityCounts = { P1: 0, P2: 0, P3: 0 };
 const relationPlacementCounts = Object.fromEntries(dimensionOrder.map(id => [id, 0]));
 let claimMarkerCount = 0;
@@ -457,6 +516,10 @@ assert.doesNotMatch(component, /id=\{`evidence-section-\$\{['"]value-chain-posit
 assert.match(component, /sourceDimensionIds/, 'AI role groups its supply-chain position without changing projection data');
 assert.match(component, /data-display-grounding-ids/, 'every Compare display entry exposes deterministic grounding IDs');
 assert.match(component, /data-company-order-label/, 'every company information block repeats number and name');
+assert.match(component, /data-summary=/, 'summary visibility is a presentation-only deterministic attribute');
+assert.match(component, /要点 — 代表情報だけを表示/);
+assert.match(component, /詳細 — 補足・全根拠・財務履歴まで表示/);
+assert.match(component, /id="evidence-section-evidence-trace"[\s\S]*data-expanded-only/, 'Evidence trace is expanded-only');
 assert.match(component, /displayTitle=\{entry\.display\.title\}/, 'visible Claim copy comes from the display-only read model');
 assert.match(claimComponent, /<h4>\{claim\.title\}<\/h4>/, 'Evidence drawer retains the canonical Claim title');
 assert.match(claimComponent, /class="drawer-statement">\{claim\.statement\}/, 'Evidence drawer retains the canonical Claim statement');
@@ -474,9 +537,12 @@ assert.match(controller, /event\.key === 'Escape'/);
 assert.match(controller, /event\.key !== 'Enter' && event\.key !== ' '/, 'Evidence markers have an explicit keyboard activation contract');
 assert.match(controller, /returnFocus/);
 assert.match(controller, /window\.addEventListener\('popstate'/);
+assert.match(controller, /pushState/, 'detail mode creates navigable browser history');
 assert.match(controller, /unresolvedFinancial/);
 assert.match(controller, /\.evidence-expanded-financial, \.evidence-trace-list/);
-assert.match(controller, /companyCompareDisplayName/, 'selected rows and suggestions share one company-name helper');
+assert.match(controller, /appendCompanyName/, 'selected rows and suggestions share one company-name renderer');
+assert.match(controller, /companyCompareDisplayNameParts/, 'all dynamic Company names use canonical bilingual parts');
+assert.match(controller, /localizeCompareLocation/, 'dynamic geography uses exact Compare localization');
 assert.match(controller, /companyPresentationTokenForOrder/, 'company identity follows deterministic selection order');
 assert.match(controller, /dataset\.companyToken/, 'company identity tokens are assigned to all ordered cells');
 assert.match(controller, /value-chain-position['"] \? ['"]ai-role/, 'old Value Chain section links resolve to the grouped AI-role section');
@@ -487,8 +553,11 @@ assert.match(styles, /scroll-margin-top: 5rem/);
 assert.match(styles, /@media \(max-width: 600px\)/);
 assert.match(styles, /overflow: visible/);
 assert.match(styles, /\.evidence-major-section > th,[\s\S]*border-top: 2px solid var\(--border-strong\)/, 'major section bands use a 2px neutral rule');
-assert.match(styles, /\.evidence-company-context/, 'desktop repeats the company name within every major section');
+assert.match(styles, /\.evidence-company-context \{[\s\S]*display: none/, 'desktop and tablet cells rely on the sticky Company header');
+assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.evidence-company-context \{[\s\S]*display: flex/, 'mobile cells retain the explicit Company identity strip');
 assert.match(styles, /\.evidence-company-context > strong/, 'identity is not color-only');
+assert.match(styles, /\.compare-company-name-primary,[\s\S]*white-space: nowrap/, 'Company name lines do not break mid-name');
+assert.match(styles, /data-summary="hide"/, 'summary hides non-representative presentation entries only');
 assert.match(styles, /font-size: 16px/, 'mobile primary text has a 16px floor');
 assert.match(styles, /font-size: 14px/, 'mobile metadata has a 14px floor');
 assert.match(styles, /--company-ident-bg/, 'mobile identity uses a light background');
@@ -526,6 +595,9 @@ if (process.argv.includes('--dist')) {
   assert.ok(Buffer.byteLength(fragmentHtml) <= 314_669, `Evidence fragment ${Buffer.byteLength(fragmentHtml)} B must stay within 5% of 299685 B`);
   assert.equal((fragmentHtml.match(/data-company-order-label/g) ?? []).length, 35, 'seven matrix sections retain five repeated company identity labels');
   assert.match(fragmentHtml, /Applied Materials（アプライド・マテリアルズ）/, 'built Set B has the exact Japanese Applied Materials name');
+  assert.match(fragmentHtml, /統合材料ソリューション（Integrated Materials Solution）/, 'general Japanese term precedes the formal English name');
+  assert.match(fragmentHtml, /米国オレゴン州チュアラティン/, 'mixed-language geography is localized');
+  assert.doesNotMatch(fragmentHtml, /オレゴン州Tualatin/, 'mixed-language geography is absent');
   console.log(`Company Compare lazy artifact OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(fragmentHtml)} B fragment / ${claimMarkers + relationMarkers} markers`);
 }
 

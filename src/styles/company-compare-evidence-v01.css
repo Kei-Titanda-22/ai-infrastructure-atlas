@@ -37,6 +37,22 @@
   border-bottom: 1px solid var(--border-strong);
 }
 
+.evidence-detail-control-wrap {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 5px;
+  justify-items: end;
+}
+
+.evidence-detail-control-wrap > p {
+  max-width: 20rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+  text-align: right;
+}
+
 .evidence-detail-controls button {
   min-width: 4rem;
   min-height: 44px;
@@ -216,7 +232,7 @@
 }
 
 .evidence-company-context {
-  display: flex;
+  display: none;
   gap: 7px;
   align-items: baseline;
   margin: 0 0 9px;
@@ -225,6 +241,39 @@
   color: var(--text);
   font-size: 13px;
   line-height: 1.45;
+}
+
+.compare-company-name {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1.35;
+}
+
+.compare-company-name-primary,
+.compare-company-name-secondary,
+.compare-company-name > small,
+.evidence-company-context > strong,
+.evidence-company-context > strong > small {
+  display: block;
+  max-width: 100%;
+  white-space: nowrap;
+}
+
+.compare-company-name-secondary,
+.compare-company-name > small,
+.evidence-company-context > strong > small {
+  color: var(--muted);
+  font-size: .82em;
+  font-weight: 500;
+}
+
+.evidence-company-context > strong {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .evidence-company-context > span {
@@ -549,7 +598,8 @@
   display: grid;
 }
 
-.evidence-compare[data-detail="summary"] [data-expanded-only] {
+.evidence-compare[data-detail="summary"] [data-expanded-only],
+.evidence-compare[data-detail="summary"] [data-summary="hide"] {
   display: none !important;
 }
 
@@ -597,6 +647,16 @@
 
   .evidence-detail-controls {
     width: 100%;
+  }
+
+  .evidence-detail-control-wrap {
+    width: 100%;
+    justify-items: stretch;
+  }
+
+  .evidence-detail-control-wrap > p {
+    max-width: none;
+    text-align: left;
   }
 
   .evidence-detail-controls button {
@@ -670,6 +730,7 @@
   }
 
   .evidence-company-context {
+    display: flex;
     margin-bottom: 11px;
     font-size: 16px;
     line-height: 1.5;

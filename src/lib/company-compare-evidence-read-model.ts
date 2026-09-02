@@ -5,10 +5,13 @@ import {
   compareProductDisplayNameOverrides,
   compareTechnologyIdsByClaimId,
   companyCompareDisplayName,
+  companyCompareDisplayNameParts,
   dedupeCompareCanonicalItems,
+  localizeCompareLocation,
   resolveCompareClaimDisplay,
   type CompareCanonicalDisplayItem,
   type CompareDisplayCopy,
+  type CompareDisplayNameParts,
 } from './company-compare-display.ts';
 import { companyEvidence, type CompanyEvidenceBinding, type CompanyEvidenceClaim } from './company-evidence.ts';
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
@@ -50,6 +53,8 @@ export interface CompareEvidenceIdentity {
   primaryLayer: string;
   lastReviewed?: string | null;
   displayName?: string;
+  displayNameParts?: CompareDisplayNameParts;
+  displayCountry?: string;
 }
 
 export interface CompareEvidenceClaimEntry {
@@ -282,11 +287,14 @@ const buildExpandedFinancial = (companyId: string) => financialHistory
   }));
 
 export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidenceIdentity[]) {
+  const pilotCompanyIds = [...new Set(pilotCompareEvidenceProjection.sets.flatMap(setRecord => setRecord.orderedCompanyIds))];
+  const pilotCompanyIdSet = new Set(pilotCompanyIds);
   const identityById = new Map(identities.map(identity => [identity.id, {
     ...identity,
     displayName: companyCompareDisplayName(identity),
+    displayNameParts: companyCompareDisplayNameParts(identity),
+    displayCountry: pilotCompanyIdSet.has(identity.id) ? localizeCompareLocation(identity.country) : identity.country,
   }]));
-  const pilotCompanyIds = [...new Set(pilotCompareEvidenceProjection.sets.flatMap(setRecord => setRecord.orderedCompanyIds))];
   for (const companyId of pilotCompanyIds) {
     if (!identityById.has(companyId)) {
       throw new Error(`Company Compare Evidence UI cannot resolve Company: ${companyId}`);

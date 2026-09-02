@@ -6,6 +6,10 @@ import {
   type CompareEvidenceIdentity,
   type CompareEvidenceRelationEntry,
 } from '../lib/company-compare-evidence-read-model';
+import {
+  selectCompareSummaryClaimIds,
+  selectCompareSummaryRelationIds,
+} from '../lib/company-compare-display';
 import '../styles/company-compare-evidence-v01.css';
 
 interface Props {
@@ -111,6 +115,10 @@ const financialMetric = (record: any, metricId: string) => record.metrics.find((
 const companyContext = (company: (typeof model.companies)[number]) => ({
   id: company.identity.id,
   name: company.identity.displayName || company.identity.japaneseName || company.identity.name,
+  accessibleName: company.identity.displayNameParts?.accessibleName || company.identity.name,
+  primaryName: company.identity.displayNameParts?.primaryName || company.identity.name,
+  secondaryName: company.identity.displayNameParts?.secondaryName || null,
+  country: company.identity.displayCountry || company.identity.country,
 });
 const clientPayload = {
   pilotCompanyIds: model.pilotCompanyIds,
@@ -131,9 +139,12 @@ const clientPayload = {
       <h2 id="evidence-compare-title">企業の役割と違いを根拠から比較</h2>
       <p>各社がAIインフラのどこを担うか、主な製品・技術、設備計画、リスク、財務の比較条件を確認できます。順位や勝敗は算出しません。</p>
     </div>
-    <div class="evidence-detail-controls" role="group" aria-label="表示する情報量">
-      <button type="button" data-evidence-detail="summary" aria-pressed="true">要点</button>
-      <button type="button" data-evidence-detail="expanded" aria-pressed="false">詳細</button>
+    <div class="evidence-detail-control-wrap">
+      <div class="evidence-detail-controls" role="group" aria-label="表示する情報量">
+        <button type="button" data-evidence-detail="summary" aria-pressed="true" aria-label="要点 — 代表情報だけを表示">要点</button>
+        <button type="button" data-evidence-detail="expanded" aria-pressed="false" aria-label="詳細 — 補足・全根拠・財務履歴まで表示">詳細</button>
+      </div>
+      <p id="evidence-detail-description" data-evidence-detail-description>要点 — 代表情報だけを表示</p>
     </div>
   </header>
 
@@ -144,7 +155,7 @@ const clientPayload = {
       <a href={`?view=evidence&section=${dimensionId}`} data-evidence-section-link={dimensionId}>{compareEvidenceDimensionLabels[dimensionId]}</a>
     ))}
     <a href="?view=evidence&section=financial" data-evidence-section-link="financial">財務</a>
-    <a href="?view=evidence&section=evidence-trace" data-evidence-section-link="evidence-trace">根拠の追跡</a>
+    <a href="?view=evidence&section=evidence-trace" data-evidence-section-link="evidence-trace" data-expanded-only>根拠の追跡</a>
   </nav>
 
   <div class="evidence-empty" id="evidence-compare-empty">
@@ -159,8 +170,8 @@ const clientPayload = {
           <th scope="col" class="evidence-dimension-column">比較項目</th>
           {model.companies.map(company => (
             <th scope="col" data-company-id={company.identity.id} id={`evidence-company-${company.identity.id}`}>
-              <a href={company.identity.href}>{companyContext(company).name}</a>
-              <span>{company.identity.ticker || '非上場'} · {company.identity.country}</span>
+              <a href={company.identity.href} aria-label={companyContext(company).accessibleName}><span class="compare-company-name" aria-hidden="true">{companyContext(company).primaryName}{companyContext(company).secondaryName && <small>{companyContext(company).secondaryName}</small>}</span></a>
+              <span>{company.identity.ticker || '非上場'} · {companyContext(company).country}</span>
             </th>
           ))}
         </tr>
@@ -170,10 +181,9 @@ const clientPayload = {
           <th scope="row" id="evidence-dimension-company-identity">企業情報</th>
           {model.companies.map(company => (
             <td data-company-id={company.identity.id} data-company-label={companyContext(company).name} headers={`evidence-dimension-company-identity evidence-company-${company.identity.id}`} data-has-content="true">
-              <div class="evidence-company-context"><span data-company-order-label>--</span><strong>{companyContext(company).name}</strong></div>
+              <div class="evidence-company-context"><span data-company-order-label>--</span><strong aria-label={companyContext(company).accessibleName}>{companyContext(company).primaryName}{companyContext(company).secondaryName && <small>{companyContext(company).secondaryName}</small>}</strong></div>
               <div class="evidence-identity">
-                <a href={company.identity.href}><strong>{companyContext(company).name}</strong></a>
-                <span>{company.identity.ticker || '非上場'} · {company.identity.country}</span>
+                <span>{company.identity.ticker || '非上場'} · {companyContext(company).country}</span>
                 <span>{company.identity.primaryLayer}</span>
               </div>
               <dl class="evidence-cell-details" data-expanded-only>
@@ -193,20 +203,24 @@ const clientPayload = {
               const typeGroups = claimTypeGroups(dimension.claims, dimension.relations);
               return (
                 <td data-company-id={company.identity.id} data-company-label={companyContext(company).name} headers={`evidence-dimension-${dimensionId} evidence-company-${company.identity.id}`} data-has-content={String(dimension.hasContent)}>
-                  <div class="evidence-company-context"><span data-company-order-label>--</span><strong>{companyContext(company).name}</strong></div>
+                  <div class="evidence-company-context"><span data-company-order-label>--</span><strong aria-label={companyContext(company).accessibleName}>{companyContext(company).primaryName}{companyContext(company).secondaryName && <small>{companyContext(company).secondaryName}</small>}</strong></div>
                   {dimension.hasContent ? <>
                     {(typeGroups.fact || typeGroups.company || typeGroups.analysis) && <div class="evidence-epistemic-notes">
                       {typeGroups.fact && <span>事実</span>}
                       {typeGroups.company && <span>会社見解</span>}
                       {typeGroups.analysis && <span class="evidence-epistemic-analysis">Atlasによる分析</span>}
                     </div>}
-                    {dimension.sections.map((section, sectionIndex) => <div class:list={['evidence-dimension-subsection', { 'evidence-dimension-subsection-secondary': sectionIndex > 0 }]}>
+                    {dimension.sections.map((section, sectionIndex) => {
+                      const displayedRelations = relationsForDisplay(section.relations);
+                      const summaryClaimIds = new Set(selectCompareSummaryClaimIds(dimensionId, sectionIndex, section.claims.map(entry => entry.claim), displayedRelations.map(entry => entry.relation)));
+                      const summaryRelationIds = new Set(selectCompareSummaryRelationIds(dimensionId, sectionIndex, displayedRelations.map(entry => entry.relation)));
+                      return <div class:list={['evidence-dimension-subsection', { 'evidence-dimension-subsection-secondary': sectionIndex > 0 }]}>
                       {sectionIndex > 0 && <h3 class="evidence-subsection-title">{section.label}</h3>}
-                      {dimensionId === 'key-products' && section.displayProducts.length > 0 && <p class="evidence-list-intro">正規化した製品カテゴリ</p>}
+                      {dimensionId === 'key-products' && section.displayProducts.length > 0 && <p class="evidence-list-intro" data-expanded-only>正規化した製品カテゴリ</p>}
                       {dimensionId === 'technology-moat' && section.displayTechnologies.length > 0 && <ul class="evidence-canonical-list" aria-label="関連技術">
-                        {section.displayTechnologies.map(item => <li data-canonical-id={item.canonicalId} data-grounding-ids={item.groundingIds.join(',')}>{item.label}</li>)}
+                        {section.displayTechnologies.map((item, itemIndex) => <li data-canonical-id={item.canonicalId} data-grounding-ids={item.groundingIds.join(',')} data-summary={itemIndex < 3 ? 'show' : 'hide'}>{item.label}</li>)}
                       </ul>}
-                      {section.claims.map(entry => <div class="evidence-claim-entry" data-claim-id={entry.claim.id} data-claim-priority={entry.claim.priority} data-display-grounding-ids={entry.display.groundingIds.join(',')}>
+                      {section.claims.map(entry => <div class="evidence-claim-entry" data-claim-id={entry.claim.id} data-claim-priority={entry.claim.priority} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryClaimIds.has(entry.claim.id) ? 'show' : 'hide'}>
                         {section.supplementalP2 && entry.claim.priority === 'P2' && <span class="evidence-supplement">補足</span>}
                         <CompanyCompareEvidenceClaim
                           claim={entry.claim}
@@ -224,9 +238,9 @@ const clientPayload = {
                           ]}
                         />
                       </div>)}
-                      {relationsForDisplay(section.relations).map(entry => {
+                      {displayedRelations.map(entry => {
                         const relationClaim = relationAsClaim(entry, company.identity.id);
-                        return <div class="evidence-relation-entry" data-relation-id={entry.relation.relationId} data-canonical-id={entry.relation.objectId} data-display-grounding-ids={entry.display.groundingIds.join(',')}>
+                        return <div class="evidence-relation-entry" data-relation-id={entry.relation.relationId} data-canonical-id={entry.relation.objectId} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryRelationIds.has(entry.relation.relationId) ? 'show' : 'hide'}>
                           <CompanyCompareEvidenceClaim
                             claim={relationClaim}
                             evidence={entry.bindings}
@@ -260,11 +274,11 @@ const clientPayload = {
                           </dl>
                         </div>;
                       })}
-                    </div>)}
+                    </div>})}
                     <div class="evidence-cell-details" data-expanded-only>
                       {dimension.coverageContext.map(coverage => <p>{coverageCategoryLabels[coverage.category] ?? coverage.category}：{coverageLabels[coverage.collectionStatus] ?? coverage.collectionStatus}</p>)}
                     </div>
-                    {dimension.relations.length === 0 && ['key-products', 'technology-moat'].includes(dimensionId) && <p class="evidence-relation-empty">関係データ：収録なし</p>}
+                    {dimension.relations.length === 0 && ['key-products', 'technology-moat'].includes(dimensionId) && <p class="evidence-relation-empty" data-expanded-only>関係データ：収録なし</p>}
                   </> : <p class="evidence-missing">{missingLabels[dimension.missingState] ?? '未収録'}</p>}
                 </td>
               );
@@ -277,7 +291,7 @@ const clientPayload = {
           {model.companies.map(company => {
             const reference = operatingMarginByCompany.get(company.identity.id);
             return <td data-company-id={company.identity.id} data-company-label={companyContext(company).name} headers={`evidence-dimension-financial evidence-company-${company.identity.id}`} data-has-content={String(Boolean(reference?.displayValue))}>
-              <div class="evidence-company-context"><span data-company-order-label>--</span><strong>{companyContext(company).name}</strong></div>
+              <div class="evidence-company-context"><span data-company-order-label>--</span><strong aria-label={companyContext(company).accessibleName}>{companyContext(company).primaryName}{companyContext(company).secondaryName && <small>{companyContext(company).secondaryName}</small>}</strong></div>
               {reference?.displayValue ? <div class="evidence-financial-value">
                 <span>営業利益率</span>
                 <strong>{reference.displayValue}</strong>
@@ -305,7 +319,7 @@ const clientPayload = {
     <p>通貨・単位は各社開示のまま表示します。為替換算、順位、差分率は算出しません。</p>
     {model.companies.map(company => <section data-company-id={company.identity.id} class="evidence-financial-company">
       <h4>{companyContext(company).name}</h4>
-      <div class="evidence-financial-scroll" tabindex="0" aria-label={`${companyContext(company).name}の財務履歴`}>
+      <div class="evidence-financial-scroll" tabindex="0" aria-label={`${companyContext(company).accessibleName}の財務履歴`}>
         <table>
           <thead><tr><th scope="col">期間</th><th scope="col">売上高</th><th scope="col">営業利益</th><th scope="col">営業利益率</th><th scope="col">フリーキャッシュフロー</th><th scope="col">設備投資</th><th scope="col">ROIC</th><th scope="col">出典</th></tr></thead>
           <tbody>{company.expandedFinancial.map(record => <tr>
@@ -321,7 +335,7 @@ const clientPayload = {
     </section>)}
   </section>
 
-  <section class="evidence-data-quality evidence-major-panel" id="evidence-section-evidence-trace" aria-labelledby="evidence-data-quality-title">
+  <section class="evidence-data-quality evidence-major-panel" id="evidence-section-evidence-trace" aria-labelledby="evidence-data-quality-title" data-expanded-only>
     <h3 id="evidence-data-quality-title">根拠の追跡・データ品質</h3>
     <div id="evidence-runtime-quality"></div>
     {model.sets.map(setRecord => {
