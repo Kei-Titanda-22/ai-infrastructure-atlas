@@ -3,6 +3,7 @@ import technologyRegistry from '../data/technology-registry-v01.json' with { typ
 import valueChain from '../data/value-chain.json' with { type: 'json' };
 import { companyEvidence, type CompanyEvidenceBinding, type CompanyEvidenceClaim } from './company-evidence.ts';
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
+import { deriveRelationVerificationPresentation, type RelationVerificationPresentation } from './company-compare-evidence-ui.ts';
 import { financialHistory } from './financial-history.ts';
 import {
   relationEvidenceBindingById,
@@ -53,6 +54,7 @@ export interface CompareEvidenceRelationEntry {
   sources: SourceRecord[];
   objectLabel: string;
   scopeLabel: string;
+  verification: RelationVerificationPresentation;
 }
 
 const claimById = new Map(companyEvidence.claims.map(claim => [claim.id, claim]));
@@ -136,6 +138,11 @@ export const formatRelationScope = (relation: ResolvedRelation) => {
 const resolveRelationEntry = (relationId: string): CompareEvidenceRelationEntry => {
   const relation = relationById.get(relationId);
   if (!relation) throw new Error(`Company Compare Evidence UI cannot resolve Relation: ${relationId}`);
+  const verification = deriveRelationVerificationPresentation(
+    relation,
+    relationEvidenceBindingById,
+    sourceId => resolveSource(sourceId),
+  );
   const bindings = relation.evidenceIds.map(evidenceId => {
     const binding = relationEvidenceBindingById.get(evidenceId);
     if (!binding) throw new Error(`Company Compare Evidence UI cannot resolve Relation Binding: ${evidenceId}`);
@@ -155,6 +162,7 @@ const resolveRelationEntry = (relationId: string): CompareEvidenceRelationEntry 
     sources,
     objectLabel: relationObjectLabel(relation),
     scopeLabel: formatRelationScope(relation),
+    verification,
   };
 };
 

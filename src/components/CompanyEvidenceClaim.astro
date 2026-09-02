@@ -13,6 +13,9 @@ interface Props {
   provenanceTypeLabel?: string;
   additionalMetadata?: Array<{ label: string; value: string }>;
   freshnessOverride?: { key: string; label: string };
+  verificationPresentation?: { short: string; full: string };
+  priorityLabel?: string;
+  drawerTitle?: string;
 }
 
 const {
@@ -27,6 +30,9 @@ const {
   provenanceTypeLabel,
   additionalMetadata = [],
   freshnessOverride,
+  verificationPresentation,
+  priorityLabel = '内部優先度',
+  drawerTitle = '根拠',
 } = Astro.props;
 const sourceById = new Map(sources.map(source => [source.id, source]));
 const evidenceById = new Map(evidence.map(binding => [binding.id, binding]));
@@ -49,7 +55,9 @@ const locatorLabels: Record<string, string> = {
   page: 'ページ', section: 'セクション', heading: '見出し', table: '表', note: '注記', anchor: 'アンカー', quotedLabel: '検索語',
 };
 const typeLabel = claimTypeLabels[claim.claimType] ?? claim.claimType;
-const verification = verificationLabels[claim.verificationStatus] ?? { short: claim.verificationStatus, full: claim.verificationStatus };
+const verification = verificationPresentation
+  ?? verificationLabels[claim.verificationStatus]
+  ?? { short: claim.verificationStatus, full: claim.verificationStatus };
 const isAnalysis = ['atlas-analysis', 'estimate'].includes(claim.claimType);
 const showTypeLabel = claim.claimType !== 'fact';
 const sourceNumbers = [...new Set(bindings.map((binding: any) => sourceNumberById[binding.sourceId]).filter(Boolean))];
@@ -63,7 +71,7 @@ const ProvenanceContainer = staticProvenance ? 'div' : 'details';
   <p class="claim-statement">{claim.statement}<button class="evidence-marker" type="button" data-evidence-open={`evidence-${claim.id}`} aria-haspopup="dialog" aria-controls={`evidence-${claim.id}`} aria-expanded="false" aria-label={`${claim.title}の根拠 ${bindings.length}件。${verification.full}`}><span aria-hidden="true">[{markerLabel}]</span></button></p>
   <dialog class="evidence-drawer" id={`evidence-${claim.id}`} aria-labelledby={`evidence-title-${claim.id}`}>
     <div class="drawer-header">
-      <div><span class="drawer-kicker">{drawerKicker}</span><h3 id={`evidence-title-${claim.id}`}>根拠</h3></div>
+      <div><span class="drawer-kicker">{drawerKicker}</span><h3 id={`evidence-title-${claim.id}`}>{drawerTitle}</h3></div>
       <button type="button" class="drawer-close" data-evidence-close aria-label="根拠パネルを閉じる">閉じる</button>
     </div>
     <div class="drawer-sources">
@@ -85,7 +93,7 @@ const ProvenanceContainer = staticProvenance ? 'div' : 'details';
         <div><dt>検証状態</dt><dd>{verification.full}</dd></div>
         <div><dt>鮮度</dt><dd><span class={`freshness freshness-${fresh.key}`}>{fresh.label}</span>{claim.nextReview ? ` · 次回 ${claim.nextReview}` : ''}</dd></div>
         {claim.confidence && <div><dt>確信度</dt><dd>{claim.confidence}</dd></div>}
-        <div><dt>内部優先度</dt><dd>{claim.priority}</dd></div>
+        <div><dt>{priorityLabel}</dt><dd>{claim.priority}</dd></div>
         {additionalMetadata.map(item => <div><dt>{item.label}</dt><dd>{item.value}</dd></div>)}
       </dl>
       {bindings.map((binding: any) => {

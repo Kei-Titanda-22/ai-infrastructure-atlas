@@ -51,7 +51,6 @@ const relationAsClaim = (entry: CompareEvidenceRelationEntry, companyId: string)
   title: `${relationTypeLabels[entry.relation.relationType] ?? entry.relation.relationType} — ${relationCounterparty(entry, companyId)}`,
   statement: entry.relation.statement,
   evidenceIds: [...entry.relation.evidenceIds],
-  verificationStatus: 'verified',
   confidence: entry.relation.confidence ?? undefined,
   asOf: entry.relation.asOf,
   lastVerified: entry.relation.lastVerified,
@@ -90,7 +89,7 @@ const clientPayload = {
 };
 ---
 
-<section class="evidence-compare" id="company-compare-evidence" aria-labelledby="evidence-compare-title" hidden data-detail="summary">
+<section class="evidence-compare" id="company-compare-evidence" aria-labelledby="evidence-compare-title" hidden data-detail="summary" data-pagefind-ignore="all">
   <header class="evidence-compare-head">
     <div>
       <span class="eyebrow">Company Evidence</span>
@@ -192,14 +191,19 @@ const clientPayload = {
                           compact
                           suppressTypeLabel
                           drawerKicker="Relation Evidence"
+                          drawerTitle="Relation根拠"
                           provenanceTypeLabel={`Relation: ${entry.relation.relationType}`}
+                          verificationPresentation={entry.verification}
+                          priorityLabel="重要度"
                           freshnessOverride={{
                             key: entry.relation.freshnessStatus,
                             label: freshnessLabels[entry.relation.freshnessStatus] ?? entry.relation.freshnessStatus,
                           }}
                           additionalMetadata={[
                             { label: 'Relation type', value: entry.relation.relationType },
-                            { label: 'スコープ', value: entry.scopeLabel },
+                            { label: 'Relation support', value: entry.verification.supportLabel },
+                            { label: '構造化スコープ', value: entry.scopeLabel },
+                            { label: 'Locator確認日', value: entry.verification.locatorCheckedAt },
                             { label: '最終検証', value: entry.relation.lastVerified ?? '未記録' },
                           ]}
                         />

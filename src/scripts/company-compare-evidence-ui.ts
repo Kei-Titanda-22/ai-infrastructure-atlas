@@ -308,6 +308,14 @@ export function initCompanyCompareEvidenceUi() {
     searchInput.setAttribute('aria-expanded', 'false');
   });
 
+  root.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    const trigger = (event.target as Element).closest<HTMLElement>('[data-evidence-open]');
+    if (!trigger) return;
+    event.preventDefault();
+    trigger.click();
+  });
+
   const returnFocus = new WeakMap<HTMLDialogElement, HTMLElement>();
   root.addEventListener('click', event => {
     const trigger = (event.target as Element).closest<HTMLElement>('[data-evidence-open]');

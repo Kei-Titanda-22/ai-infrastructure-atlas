@@ -1,4 +1,5 @@
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
+import type { RelationEvidenceBinding, ResolvedRelation } from './relations.ts';
 
 export type EvidenceCompareDetail = 'summary' | 'expanded';
 export type EvidenceCompareIssueCode = 'unknown' | 'unsupported' | 'duplicate' | 'limit';
@@ -14,6 +15,62 @@ export interface EvidenceCompareState {
   detail: EvidenceCompareDetail;
   section: string | null;
   issues: EvidenceCompareIssue[];
+}
+
+export interface RelationVerificationPresentation {
+  short: '確認済み';
+  full: 'Relation根拠確認済み';
+  support: 'supports';
+  supportLabel: 'direct support';
+  locatorCheckedAt: string;
+}
+
+type RelationVerificationSource = { id: string };
+
+const hasStructuredLocator = (locator: Readonly<Record<string, string>> | null | undefined) =>
+  Boolean(
+    locator
+    && !Array.isArray(locator)
+    && Object.entries(locator).length
+    && Object.entries(locator).every(([key, value]) => key.trim() && typeof value === 'string' && value.trim()),
+  );
+
+export function deriveRelationVerificationPresentation(
+  relation: Pick<ResolvedRelation, 'relationId' | 'evidenceIds'>,
+  bindingById: ReadonlyMap<string, RelationEvidenceBinding>,
+  sourceResolver: (sourceId: string) => RelationVerificationSource | null | undefined,
+): RelationVerificationPresentation {
+  if (!relation.evidenceIds.length) {
+    throw new Error(`Company Compare Evidence UI Relation has no Binding: ${relation.relationId}`);
+  }
+  const locatorDates = new Set<string>();
+  for (const evidenceId of relation.evidenceIds) {
+    const binding = bindingById.get(evidenceId);
+    if (!binding) throw new Error(`Company Compare Evidence UI cannot resolve Relation Binding: ${evidenceId}`);
+    if (binding.relationId !== relation.relationId) {
+      throw new Error(`Company Compare Evidence UI Relation Binding mismatch: ${evidenceId}`);
+    }
+    if (binding.support !== 'supports') {
+      throw new Error(`Company Compare Evidence UI Relation Binding is not direct support: ${evidenceId}`);
+    }
+    if (!hasStructuredLocator(binding.locator)) {
+      throw new Error(`Company Compare Evidence UI Relation Binding has no structured Locator: ${evidenceId}`);
+    }
+    if (!binding.lastChecked?.trim()) {
+      throw new Error(`Company Compare Evidence UI Relation Binding has no lastChecked: ${evidenceId}`);
+    }
+    if (!sourceResolver(binding.sourceId)) {
+      throw new Error(`Company Compare Evidence UI cannot resolve Source: ${binding.sourceId}`);
+    }
+    locatorDates.add(binding.lastChecked);
+  }
+  return {
+    short: '確認済み',
+    full: 'Relation根拠確認済み',
+    support: 'supports',
+    supportLabel: 'direct support',
+    locatorCheckedAt: [...locatorDates].sort().join(' / '),
+  };
 }
 
 export const evidenceCompareMaxCompanies = 4;

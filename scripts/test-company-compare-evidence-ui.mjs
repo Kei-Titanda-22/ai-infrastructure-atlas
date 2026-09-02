@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import {
   allSelectedMissing,
+  deriveRelationVerificationPresentation,
   evidenceComparePilotCompanyIds,
   evidenceCompareStableSections,
   financialPresentationForSelection,
@@ -31,6 +32,7 @@ const sources = sourceShards.flat();
 const claimById = new Map(claims.map(claim => [claim.id, claim]));
 const claimBindingById = new Map(claimBindings.map(binding => [binding.id, binding]));
 const relationById = new Map(relations.map(relation => [relation.relationId, relation]));
+const relationBindingById = new Map(relationBindings.map(binding => [binding.id, binding]));
 const relationBindingsByRelation = new Map();
 for (const binding of relationBindings) {
   const group = relationBindingsByRelation.get(binding.relationId) ?? [];
@@ -38,6 +40,7 @@ for (const binding of relationBindings) {
   relationBindingsByRelation.set(binding.relationId, group);
 }
 const sourceIds = new Set(sources.map(source => source.id));
+const sourceById = new Map(sources.map(source => [source.id, source]));
 const companyIds = new Set(['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'asml']);
 
 const setA = parseEvidenceCompareSearch('?ids=nvidia,broadcom&view=evidence&detail=summary', companyIds);
@@ -89,6 +92,7 @@ const priorityCounts = { P1: 0, P2: 0, P3: 0 };
 const relationPlacementCounts = Object.fromEntries(dimensionOrder.map(id => [id, 0]));
 let claimMarkerCount = 0;
 let relationMarkerCount = 0;
+let relationVerificationCount = 0;
 let unresolvedEvidenceCount = 0;
 for (const setRecord of projection.sets) {
   for (const company of setRecord.companies) {
@@ -105,9 +109,22 @@ for (const setRecord of projection.sets) {
       relationPlacementCounts[dimension.dimensionId] += dimension.initialRelationIds.length;
       for (const relationId of dimension.initialRelationIds) {
         relationMarkerCount += 1;
-        assert.ok(relationById.has(relationId), `${relationId}: visible Relation resolves`);
+        const relation = relationById.get(relationId);
+        assert.ok(relation, `${relationId}: visible Relation resolves`);
         const bindings = relationBindingsByRelation.get(relationId) ?? [];
         if (!bindings.length || bindings.some(binding => !sourceIds.has(binding.sourceId))) unresolvedEvidenceCount += 1;
+        const resolvedRelation = { ...relation, evidenceIds: bindings.map(binding => binding.id) };
+        const verification = deriveRelationVerificationPresentation(
+          resolvedRelation,
+          relationBindingById,
+          sourceId => sourceById.get(sourceId),
+        );
+        assert.deepEqual(
+          { full: verification.full, support: verification.supportLabel },
+          { full: 'Relation根拠確認済み', support: 'direct support' },
+          `${relationId}: Relation presentation derives from Binding`,
+        );
+        relationVerificationCount += 1;
       }
     }
   }
@@ -142,10 +159,52 @@ for (const setRecord of projection.sets) {
 assert.equal(priorityCounts.P3, 0, 'P3 initial projection remains zero');
 assert.equal(new Set(relations.filter(relation => relation.relationType === 'COMPETES_WITH').map(relation => relation.relationId)).size, 2);
 assert.equal(relationPlacementCounts['technology-moat'], 4, 'two canonical COMPETES_WITH records project symmetrically without reverse records');
+assert.equal(relationVerificationCount, 19, '17 Relations produce 19 verified projected marker instances from Binding state');
+
+const sampleAuthoringRelation = relations[0];
+const sampleRelation = {
+  ...sampleAuthoringRelation,
+  evidenceIds: (relationBindingsByRelation.get(sampleAuthoringRelation.relationId) ?? []).map(binding => binding.id),
+};
+const sampleBinding = relationBindingById.get(sampleRelation.evidenceIds[0]);
+assert.ok(sampleBinding, 'invalid Relation presentation fixtures require one valid Binding');
+const oneBinding = binding => new Map([[binding.id, binding]]);
+const resolveFixtureSource = sourceId => sourceById.get(sourceId);
+assert.throws(
+  () => deriveRelationVerificationPresentation(sampleRelation, new Map(), resolveFixtureSource),
+  /cannot resolve Relation Binding/,
+  'missing Binding must fail',
+);
+assert.throws(
+  () => deriveRelationVerificationPresentation(sampleRelation, oneBinding({ ...sampleBinding, support: 'context' }), resolveFixtureSource),
+  /not direct support/,
+  'support other than supports must fail',
+);
+assert.throws(
+  () => deriveRelationVerificationPresentation(sampleRelation, oneBinding({ ...sampleBinding, locator: {} }), resolveFixtureSource),
+  /no structured Locator/,
+  'missing structured Locator must fail',
+);
+assert.throws(
+  () => deriveRelationVerificationPresentation(sampleRelation, oneBinding({ ...sampleBinding, lastChecked: '' }), resolveFixtureSource),
+  /no lastChecked/,
+  'missing lastChecked must fail',
+);
+assert.throws(
+  () => deriveRelationVerificationPresentation(sampleRelation, oneBinding(sampleBinding), () => undefined),
+  /cannot resolve Source/,
+  'unresolved Shared Source must fail',
+);
 
 assert.match(comparePage, /!evidenceMode/, 'legacy script must be gated only for the opt-in route');
 assert.match(comparePage, /<CompanyCompareEvidence identities=/, 'Set A and B use one generic component');
 assert.match(component, /CompanyEvidenceClaim/, 'existing Evidence drawer component is reused');
+assert.match(component, /data-pagefind-ignore="all"/, 'only the opt-in Evidence subtree is excluded from Pagefind');
+assert.doesNotMatch(component, /verificationStatus:\s*['"]verified['"]/, 'Relation adapter must not invent Company Claim verification state');
+assert.match(component, /verificationPresentation=\{entry\.verification\}/, 'Relation verification presentation is Binding-derived');
+assert.match(component, /drawerTitle="Relation根拠"/, 'Relation drawer has an accessible Relation-specific title');
+assert.match(component, /Relation support/);
+assert.match(component, /Locator確認日/);
 assert.match(component, /scope="col"/);
 assert.match(component, /scope="row"/);
 assert.match(component, /data-evidence-section-link/);
@@ -160,13 +219,19 @@ assert.match(component, /Primary comparisonには表示しません/);
 assert.match(component, /FX換算、順位、差分率は算出しません/);
 assert.match(claimComponent, /aria-haspopup="dialog"/);
 assert.match(claimComponent, /data-evidence-open/);
+assert.match(claimComponent, /verified: \{ short: '確認済み', full: '根拠箇所まで確認済み' \}/, 'Company Claim verified presentation remains unchanged');
+assert.match(claimComponent, /'source-linked': \{ short: '一次資料あり', full: '一次資料紐付け済み・確認未了' \}/, 'Company Claim source-linked presentation remains unchanged');
+assert.match(claimComponent, /'needs-review': \{ short: '要確認', full: '要再検証' \}/, 'Company Claim needs-review presentation remains unchanged');
+assert.match(controller, /if \(!state\.enabled\) return;/, 'Evidence controller exits before exposing its hidden subtree on legacy routes');
 assert.match(controller, /event\.key === 'Escape'/);
+assert.match(controller, /event\.key !== 'Enter' && event\.key !== ' '/, 'Evidence markers have an explicit keyboard activation contract');
 assert.match(controller, /returnFocus/);
 assert.match(controller, /window\.addEventListener\('popstate'/);
 assert.match(controller, /unresolvedFinancial/);
 assert.match(controller, /\.evidence-expanded-financial, \.evidence-trace-list/);
 assert.match(styles, /min-height: 44px/);
 assert.match(styles, /#legacy-compare-templates\[hidden\]/);
+assert.match(styles, /#evidence-compare-templates\[hidden\]/, 'Pilot templates remain hidden on legacy Compare');
 assert.match(styles, /scroll-margin-top: 5rem/);
 assert.match(styles, /@media \(max-width: 600px\)/);
 assert.match(styles, /overflow: visible/);
