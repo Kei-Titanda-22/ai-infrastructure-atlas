@@ -288,6 +288,8 @@ if (process.argv.includes('--dist')) {
   assert.doesNotMatch(compareHtml, /data-relation-id=/, 'built legacy HTML excludes Relation bodies');
   assert.doesNotMatch(compareHtml, /class="evidence-drawer"/, 'built legacy HTML excludes Evidence drawers');
   assert.doesNotMatch(compareHtml, /class="evidence-expanded-financial"/, 'built legacy HTML excludes expanded financial history');
+  assert.doesNotMatch(compareHtml, /AIファクトリーの計算・接続層を統合/, 'built legacy HTML excludes a Pilot Claim-specific title');
+  assert.ok(relations.every(relation => !compareHtml.includes(relation.statement)), 'built legacy HTML excludes all Relation statements');
 
   const claimMarkers = (fragmentHtml.match(/data-claim-id=/g) ?? []).length;
   const relationMarkers = (fragmentHtml.match(/data-relation-id=/g) ?? []).length;
