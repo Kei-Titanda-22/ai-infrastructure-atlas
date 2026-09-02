@@ -564,6 +564,10 @@
     font-size: 13px;
   }
 
+  .evidence-compare .evidence-marker {
+    margin-right: 0;
+  }
+
   .evidence-trace-list {
     grid-template-columns: minmax(0, 1fr);
   }
