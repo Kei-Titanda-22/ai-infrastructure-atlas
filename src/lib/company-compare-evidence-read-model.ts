@@ -3,15 +3,18 @@ import technologyRegistry from '../data/technology-registry-v01.json' with { typ
 import valueChain from '../data/value-chain.json' with { type: 'json' };
 import {
   compareProductDisplayNameOverrides,
+  compareProductIdsByClaimId,
   compareTechnologyIdsByClaimId,
   companyCompareDisplayName,
   companyCompareDisplayNameParts,
   dedupeCompareCanonicalItems,
   localizeCompareLocation,
   resolveCompareClaimDisplay,
+  resolveCompareProductDisplayDescription,
   type CompareCanonicalDisplayItem,
   type CompareDisplayCopy,
   type CompareDisplayNameParts,
+  type CompareProductDisplayDescription,
 } from './company-compare-display.ts';
 import { companyEvidence, type CompanyEvidenceBinding, type CompanyEvidenceClaim } from './company-evidence.ts';
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
@@ -72,6 +75,7 @@ export interface CompareEvidenceRelationEntry {
   scopeLabel: string;
   verification: RelationVerificationPresentation;
   display: CompareDisplayCopy;
+  productDescription: ({ productId: string } & CompareProductDisplayDescription) | null;
 }
 
 const claimById = new Map(companyEvidence.claims.map(claim => [claim.id, claim]));
@@ -161,7 +165,7 @@ const relationDisplay = (
     return { title: objectLabel, statement: '', groundingIds: [relation.relationId] };
   }
   if (relation.relationType === 'POSITIONED_IN') {
-    return { title: '正規化した位置', statement: objectLabel, groundingIds: [relation.relationId] };
+    return { title: objectLabel, statement: '', groundingIds: [relation.relationId] };
   }
   if (relation.relationType === 'COMPETES_WITH') {
     const subject = identityById.get(relation.subjectId);
@@ -212,6 +216,22 @@ const resolveRelationEntry = (
     scopeLabel: formatRelationScope(relation),
     verification,
     display: relationDisplay(relation, objectLabel, identityById),
+    productDescription: relation.relationType === 'PRODUCES'
+      ? { productId: relation.objectId, ...resolveCompareProductDisplayDescription(relation.objectId) }
+      : null,
+  };
+};
+
+const productDisplayItem = (canonicalId: string, groundingIds: readonly string[]): CompareCanonicalDisplayItem => {
+  const label = productLabelById.get(canonicalId);
+  if (!label) throw new Error(`Company Compare display cannot resolve Product: ${canonicalId}`);
+  const description = resolveCompareProductDisplayDescription(canonicalId);
+  return {
+    canonicalId,
+    label,
+    groundingIds,
+    description: description.description,
+    descriptionGroundingIds: description.groundingIds,
   };
 };
 
@@ -312,13 +332,14 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
       dimensions: projected.dimensions.map(dimension => {
         const claims = dimension.initialClaimIds.map(claimId => resolveClaimEntry(claimId, companyId));
         const relations = dimension.initialRelationIds.map(relationId => resolveRelationEntry(relationId, identityById));
-        const displayProducts = dedupeCompareCanonicalItems(relations
+        const relationProducts = relations
           .filter(entry => entry.relation.relationType === 'PRODUCES')
-          .map(entry => ({
-            canonicalId: entry.relation.objectId,
-            label: entry.objectLabel,
-            groundingIds: [entry.relation.relationId],
-          })));
+          .map(entry => productDisplayItem(entry.relation.objectId, [entry.relation.relationId]));
+        const claimProducts = claims.flatMap(entry =>
+          (compareProductIdsByClaimId[entry.claim.id] ?? [])
+            .map(productId => productDisplayItem(productId, [entry.claim.id])),
+        );
+        const displayProducts = dedupeCompareCanonicalItems([...relationProducts, ...claimProducts]);
         return {
           ...dimension,
           claims,

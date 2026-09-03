@@ -62,6 +62,59 @@
     "チュアラティン": "チュアラティン",
     "米国オレゴン州": "米国オレゴン州"
   },
+  "productDescriptions": {
+    "product-category-coater-developer-equipment": {
+      "description": "半導体製造で、材料の塗布と現像を行う装置。",
+      "groundingIds": ["tokyo-electron-products", "tokyo-electron-overview"]
+    },
+    "product-category-connectivity-semiconductor": {
+      "description": "機器やシステム間の接続を支える半導体。",
+      "groundingIds": ["broadcom-products", "broadcom-overview", "rel-broadcom-produces-connectivity-semiconductor"]
+    },
+    "product-category-cpu": {
+      "description": "データセンター向け基盤で、計算処理を担うプロセッサー。",
+      "groundingIds": ["nvidia-products", "nvidia-overview", "rel-nvidia-produces-cpu"]
+    },
+    "product-category-custom-accelerator-asic": {
+      "description": "顧客用途に合わせて設計し、カスタム演算を担う半導体。",
+      "groundingIds": ["broadcom-products", "broadcom-positioning", "broadcom-ai-role", "rel-broadcom-produces-custom-accelerator-asic"]
+    },
+    "product-category-dpu": {
+      "description": "データセンターで、ネットワーク処理を担うプロセッサー。",
+      "groundingIds": ["nvidia-products", "nvidia-networking", "rel-nvidia-produces-dpu"]
+    },
+    "product-category-ethernet-switching-silicon": {
+      "description": "Ethernetネットワークで、接続とスイッチングを担う半導体。",
+      "groundingIds": ["broadcom-products", "broadcom-ai-role", "rel-broadcom-produces-ethernet-switching-silicon"]
+    },
+    "product-category-gpu": {
+      "description": "アクセラレーテッド・コンピューティングの演算を担うプロセッサー。",
+      "groundingIds": ["nvidia-products", "nvidia-overview", "rel-nvidia-produces-gpu"]
+    },
+    "product-category-semiconductor-deposition-equipment": {
+      "description": "半導体製造で、ウェーハ上へ材料を堆積させる装置。",
+      "groundingIds": ["applied-products", "lam-research-products", "tokyo-electron-products", "rel-applied-materials-produces-semiconductor-deposition-equipment", "rel-lam-research-produces-semiconductor-deposition-equipment"]
+    },
+    "product-category-semiconductor-etch-equipment": {
+      "description": "ウェーハ材料を除去するエッチング装置。",
+      "groundingIds": ["lam-research-products", "tokyo-electron-products", "rel-lam-research-produces-semiconductor-etch-equipment"]
+    },
+    "product-category-wafer-cleaning-equipment": {
+      "description": "ウェーハを洗浄する半導体製造装置。",
+      "groundingIds": ["lam-research-products", "tokyo-electron-products", "rel-lam-research-produces-wafer-cleaning-equipment"]
+    },
+    "product-category-wafer-fabrication-equipment": {
+      "description": "半導体製造のウェーハ前工程で使用する装置群。",
+      "groundingIds": ["applied-value-chain", "lam-research-value-chain", "tokyo-electron-value-chain", "rel-lam-research-produces-wafer-fabrication-equipment"]
+    }
+  },
+  "productIdsByClaimId": {
+    "nvidia-products": ["product-category-gpu", "product-category-cpu", "product-category-dpu"],
+    "broadcom-products": ["product-category-custom-accelerator-asic", "product-category-ethernet-switching-silicon", "product-category-connectivity-semiconductor"],
+    "applied-products": ["product-category-semiconductor-deposition-equipment"],
+    "lam-research-products": ["product-category-wafer-fabrication-equipment", "product-category-semiconductor-deposition-equipment", "product-category-semiconductor-etch-equipment", "product-category-wafer-cleaning-equipment"],
+    "tokyo-electron-products": ["product-category-coater-developer-equipment", "product-category-semiconductor-etch-equipment", "product-category-semiconductor-deposition-equipment", "product-category-wafer-cleaning-equipment"]
+  },
   "preservedProperNouns": [
     "Atlas",
     "AI",

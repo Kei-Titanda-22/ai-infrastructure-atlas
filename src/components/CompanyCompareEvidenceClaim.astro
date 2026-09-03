@@ -18,6 +18,7 @@ interface Props {
   displayTitle: string;
   displayStatement: string;
   variant?: 'standard' | 'list';
+  productDescription?: { productId: string; description: string; groundingIds: readonly string[] };
 }
 
 const {
@@ -37,6 +38,7 @@ const {
   displayTitle,
   displayStatement,
   variant = 'standard',
+  productDescription,
 } = Astro.props;
 const sourceById = new Map(sources.map(source => [source.id, source]));
 const evidenceById = new Map(evidence.map(binding => [binding.id, binding]));
@@ -70,7 +72,7 @@ const markerLabel = sourceNumbers.length > 0 ? sourceNumbers.join(', ') : '–';
 
 <article class:list={['pilot-claim', { 'pilot-claim-list': variant === 'list', 'pilot-claim-analysis': isAnalysis, 'pilot-claim-compact': compact }]} aria-label={`${typeLabel}: ${displayTitle}`}>
   {showTypeLabel && !suppressTypeLabel && <div class="pilot-claim-topline"><span class={`claim-kind claim-kind-${claim.claimType}`}>{typeLabel}</span></div>}
-  {variant === 'list' ? <p class="claim-statement claim-statement-list"><strong>{displayTitle}</strong>{displayStatement && displayStatement !== displayTitle ? ` — ${displayStatement}` : ''}<button class="evidence-marker" type="button" data-evidence-open={`evidence-${claim.id}`} aria-haspopup="dialog" aria-controls={`evidence-${claim.id}`} aria-expanded="false" aria-label={`${displayTitle}の根拠 ${bindings.length}件。${verification.full}`}><span aria-hidden="true">[{markerLabel}]</span></button></p> : <>
+  {variant === 'list' ? <><p class="claim-statement claim-statement-list"><strong>{displayTitle}</strong>{displayStatement && displayStatement !== displayTitle ? ` — ${displayStatement}` : ''}<button class="evidence-marker" type="button" data-evidence-open={`evidence-${claim.id}`} aria-haspopup="dialog" aria-controls={`evidence-${claim.id}`} aria-expanded="false" aria-label={`${displayTitle}の根拠 ${bindings.length}件。${verification.full}`}><span aria-hidden="true">[{markerLabel}]</span></button></p>{productDescription && <p class="evidence-product-description" data-expanded-only data-product-description={productDescription.productId}>{productDescription.description}</p>}</> : <>
     <h3>{displayTitle}</h3>
     <p class="claim-statement">{displayStatement}<button class="evidence-marker" type="button" data-evidence-open={`evidence-${claim.id}`} aria-haspopup="dialog" aria-controls={`evidence-${claim.id}`} aria-expanded="false" aria-label={`${displayTitle}の根拠 ${bindings.length}件。${verification.full}`}><span aria-hidden="true">[{markerLabel}]</span></button></p>
   </>}

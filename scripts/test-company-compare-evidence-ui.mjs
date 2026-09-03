@@ -21,17 +21,21 @@ import {
   compareGenericTermTranslations,
   compareLocationDisplayNames,
   comparePreservedProperNouns,
+  compareProductDisplayDescriptions,
+  compareProductIdsByClaimId,
   companyCompareDisplayName,
   companyCompareDisplayNameParts,
   companyPresentationTokenForOrder,
   dedupeCompareCanonicalItems,
   localizeCompareLocation,
+  resolveCompareProductDisplayDescription,
   selectCompareSummaryClaimIds,
   selectCompareSummaryRelationIds,
 } from '../src/lib/company-compare-display.ts';
 
 const readJson = async relative => JSON.parse(await readFile(new URL(relative, import.meta.url), 'utf8'));
 const projection = await readJson('../src/data/company-compare-evidence-pilot-v01.json');
+const productRegistry = await readJson('../src/data/product-registry-v01.json');
 const relations = await readJson('../src/data/relationships.json');
 const relationBindings = await readJson('../src/data/relation-evidence-bindings-v01.json');
 const evidenceManifest = await readJson('../src/data/company-evidence-manifest.json');
@@ -78,12 +82,31 @@ assert.deepEqual(
 );
 assert.deepEqual(compareGenericTermTranslations, displayFixture.genericTermTranslations, 'Japanese generic-term policy is fixture-locked');
 assert.deepEqual(compareLocationDisplayNames, displayFixture.locationDisplayNames, 'Compare geography localization is fixture-locked');
+assert.deepEqual(compareProductDisplayDescriptions, displayFixture.productDescriptions, 'Product descriptions are fixture-locked');
+assert.deepEqual(compareProductIdsByClaimId, displayFixture.productIdsByClaimId, 'Claim-to-Product display mapping is fixture-locked');
 assert.deepEqual(comparePreservedProperNouns, displayFixture.preservedProperNouns, 'allowed proper nouns are fixture-locked');
 assert.deepEqual(compareCompanyPresentationTokens, displayFixture.presentationTokens, 'four presentation-order tokens are fixed');
 const projectedClaimIds = [...new Set(projection.sets.flatMap(setRecord => setRecord.companies.flatMap(company =>
   company.dimensions.flatMap(dimension => dimension.initialClaimIds),
 )))].sort();
 assert.deepEqual(projectedClaimIds, displayFixture.claimDisplayIds, 'display copy coverage equals the projection Claim corpus');
+const productIds = productRegistry.records.map(record => record.id).sort();
+assert.deepEqual(Object.keys(compareProductDisplayDescriptions).sort(), productIds, 'all and only Pilot canonical Products have descriptions');
+const descriptionGroundingIds = new Set([...claimById.keys(), ...relationById.keys()]);
+for (const productId of productIds) {
+  const product = resolveCompareProductDisplayDescription(productId);
+  const sentenceCount = (product.description.match(/[。！？]/g) ?? []).length;
+  assert.ok(product.description.length <= 80, `${productId}: description is at most 80 characters`);
+  assert.ok(sentenceCount >= 1 && sentenceCount <= 2, `${productId}: description is one or two sentences`);
+  assert.ok(product.groundingIds.length > 0, `${productId}: description has direct grounding IDs`);
+  assert.ok(product.groundingIds.every(id => descriptionGroundingIds.has(id)), `${productId}: every description grounding ID resolves`);
+  assert.doesNotMatch(product.description, /優位|優れる|勝者|推奨|投資判断/, `${productId}: description contains no evaluation`);
+}
+const pilotDisplayedProductIds = new Set([
+  ...relations.filter(relation => relation.relationType === 'PRODUCES').map(relation => relation.objectId),
+  ...projectedClaimIds.flatMap(claimId => compareProductIdsByClaimId[claimId] ?? []),
+]);
+assert.deepEqual([...pilotDisplayedProductIds].sort(), productIds, 'Set A and Set B collectively cover every canonical Product description');
 for (const claimId of projectedClaimIds) {
   const display = compareClaimDisplayCopy[claimId];
   assert.deepEqual(display.groundingIds, [claimId], `${claimId}: display sentence is deterministically grounded`);
@@ -507,7 +530,13 @@ assert.match(component, />補足</);
 assert.match(component, />事実</);
 assert.match(component, />会社見解</);
 assert.match(component, />Atlasによる分析</);
-assert.match(component, /関係データ：収録なし/);
+assert.doesNotMatch(component, /関係データ：収録なし/, 'primary matrix omits internal Relation collection state');
+assert.doesNotMatch(component, /正規化した位置|正規化した製品カテゴリ|正規化された位置/, 'primary UI contains no normalization terminology');
+assert.doesNotMatch(component, /coverageContext\.map/, 'primary matrix omits internal Coverage collection state');
+assert.match(component, /data-product-description/, 'expanded Product descriptions retain canonical Product IDs');
+assert.match(component, /productDescription=\{entry\.productDescription/, 'Relation-backed Products use the shared description contract');
+assert.match(component, /claimOnlyProducts/, 'Claim-backed Products use the same description contract');
+assert.match(component, /class="evidence-product-description" data-product-description=\{item\.canonicalId\}/, 'Claim-backed Products share the description typography contract');
 assert.match(component, /data-canonical-id=\{entry\.relation\.objectId\}/, 'rendered Product entries retain canonical Registry IDs');
 assert.match(component, /relationsForDisplay/, 'Product display is de-duplicated before rendering');
 assert.match(component, /主要比較には表示しません/);
@@ -560,6 +589,12 @@ assert.match(styles, /\.compare-company-name-primary,[\s\S]*white-space: nowrap/
 assert.match(styles, /data-summary="hide"/, 'summary hides non-representative presentation entries only');
 assert.match(styles, /font-size: 16px/, 'mobile primary text has a 16px floor');
 assert.match(styles, /font-size: 14px/, 'mobile metadata has a 14px floor');
+assert.match(styles, /thead th:first-child \{[\s\S]*font-size: 18px;[\s\S]*font-weight: 700/, 'comparison label is at least 18px and bold on desktop');
+assert.match(styles, /thead th > a \{[\s\S]*font-size: 18px;[\s\S]*font-weight: 700/, 'desktop Company heading is at least 18px and bold');
+assert.match(styles, /thead th > span \{[\s\S]*font-size: 14px/, 'desktop ticker and country are at least 14px');
+assert.match(styles, /tbody > tr > th \{[\s\S]*font-size: 16px;[\s\S]*font-weight: 700/, 'desktop row headings are at least 16px and bold');
+assert.match(styles, /\.evidence-identity > span \{[\s\S]*font-size: 16px/, 'Company information values are at least 16px');
+assert.match(styles, /\.evidence-product-description \{[\s\S]*font-size: 15px;[\s\S]*line-height: 1\.65/, 'desktop Product descriptions meet the typography contract');
 assert.match(styles, /--company-ident-bg/, 'mobile identity uses a light background');
 assert.match(styles, /--company-ident-border/, 'mobile identity uses a thin border');
 for (let index = 1; index <= 4; index += 1) {
@@ -598,6 +633,16 @@ if (process.argv.includes('--dist')) {
   assert.match(fragmentHtml, /統合材料ソリューション（Integrated Materials Solution）/, 'general Japanese term precedes the formal English name');
   assert.match(fragmentHtml, /米国オレゴン州チュアラティン/, 'mixed-language geography is localized');
   assert.doesNotMatch(fragmentHtml, /オレゴン州Tualatin/, 'mixed-language geography is absent');
+  assert.doesNotMatch(fragmentHtml, /正規化した位置|正規化した製品カテゴリ|正規化された位置/, 'built primary UI contains no normalization terminology');
+  assert.doesNotMatch(fragmentHtml, /products[：:]/, 'built primary UI contains no raw products field label');
+  assert.doesNotMatch(fragmentHtml, /関係データ：収録なし/, 'built primary UI contains no Relation collection-state message');
+  assert.match(fragmentHtml, /供給網上の位置/, 'built matrix retains the user-facing supply-chain label');
+  assert.match(fragmentHtml, /<strong[^>]*>半導体製造<\/strong>/, 'supply-chain position is presented as the value without an internal subheading');
+  const productDescriptionInstances = [...fragmentHtml.matchAll(/data-product-description="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(productDescriptionInstances.length, 15, 'expanded mode contains 11 Relation-backed and four Claim-backed Product descriptions');
+  assert.deepEqual([...new Set(productDescriptionInstances)].sort(), productIds, 'built descriptions cover all 11 canonical Product IDs');
+  assert.ok(productDescriptionInstances.every(productId => fragmentHtml.includes(compareProductDisplayDescriptions[productId].description)), 'built Product descriptions use only fixture-locked copy');
+  assert.match(fragmentHtml, /data-expanded-only data-product-description=/, 'Product descriptions are expanded-only');
   console.log(`Company Compare lazy artifact OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(fragmentHtml)} B fragment / ${claimMarkers + relationMarkers} markers`);
 }
 

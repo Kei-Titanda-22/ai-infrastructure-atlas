@@ -10,6 +10,7 @@
 - Compare専用read modelは表示用タイトル、短い日本語要約、製品・技術ラベル、企業名を派生する。
 - 表示用の各Claim文は1件の既存Claim IDへ、Relation表示は1件のRelation IDへ決定論的に対応させる。
 - 技術一覧は、対応する既存Claim IDをgroundingとして保持する。
+- Product説明はcanonical Product IDへ対応させ、groundingに使用した既存Claim ID／Relation IDをCompare専用display contractで保持する。
 - Evidence drawerではcanonical Claim / Relation statement、Binding、Locator、Sourceを表示する。display copyで正本を上書きしない。
 - 新しい事実、推測、競争評価、優劣、順位、差分率をdisplay copyへ加えない。
 
@@ -38,6 +39,8 @@
 
 国、州、都市はcanonical fieldまたはreview済みtokenに対するexact mappingで表示する。部分文字列置換は使わない。日本語表記が定着している地名は日本語とし、`オレゴン州Tualatin`のような混在表記を作らない。canonical Company / Claim内のraw valueは変更せず、Compare専用read modelでのみ派生する。
 
+`products`、`relations`、`scope`、`freshness`、`正規化した位置`のような内部field名・schema処理用語はprimary UIへ出さない。利用者に必要な値は`供給網上の位置`、`対象範囲`、`更新状況`のような日本語概念で表示する。Coverageの収録状態のように一般利用者への価値が低いメタデータは、primary matrix内で反復しない。
+
 ## 4. 固有名詞・定着した略語
 
 会社名、製品名、サービス名、正式な技術名、業界で定着した略語は維持できる。Pilotで維持する代表例はNVIDIA、Broadcom、Applied Materials、Lam Research、Tokyo Electron、NVIDIA AI Enterprise、DGX Cloud、Blackwell GPU、Grace CPU、BlueField DPU、Spectrum-X、EPIC Center、Building G、GPU、CPU、DPU、ASIC、Ethernet、3D NAND、DRAM、HBMである。
@@ -64,9 +67,9 @@
 
 ## 7. 情報階層
 
-要点表示は、企業の短い役割要約、各sectionの代表P1、P1がない場合だけ既存P2、主な製品最大3件、関連技術最大3件、供給網上の位置1件、主要な競争上の特徴、最新財務要点に限定する。補足P2、正規化説明、Relation詳細、Evidence trace、財務履歴はpresentation上隠す。
+要点表示は、企業の短い役割要約、各sectionの代表P1、P1がない場合だけ既存P2、主な製品最大3件、関連技術最大3件、供給網上の位置1件、主要な競争上の特徴、最新財務要点に限定する。補足P2、製品説明、Relation詳細、Evidence trace、財務履歴はpresentation上隠す。
 
-詳細表示は現在の全P1 / P2投影、Product / Technology全対象、正規化した位置、補足、Relation詳細、Evidence trace、財務履歴を表示する。要点で隠したcanonical Claim / Relation / Evidenceは削除せず、詳細で再表示する。供給網上の位置はAIインフラでの役割の補助区分として表示し、同義情報を一つの長文へ連結しない。
+詳細表示は現在の全P1 / P2投影、Product / Technology全対象、Productの役割説明、供給網上の位置、補足、Relation詳細、Evidence trace、財務履歴を表示する。要点で隠したcanonical Claim / Relation / Evidenceは削除せず、詳細で再表示する。供給網上の位置はAIインフラでの役割の補助区分とし、その直下に値を表示する。`正規化した位置`のような内部の中間見出しは追加しない。
 
 大セクションは、企業情報、AIインフラでの役割、主な製品、技術・競争力、設備能力・ロードマップ、主なリスク、財務、根拠の追跡・データ品質とする。
 
@@ -80,9 +83,21 @@ Compare専用fixtureで、次を固定する。
 - 5社のcanonical Japanese name
 - bilingual Company nameの2行構造、途中改行防止、accessible full name
 - Product / Technologyのcanonical ID単位deduplication
+- Product 11件すべての役割説明、canonical Product ID、grounding Claim ID／Relation ID
+- Product説明の1～2文、80日本語文字以内、評価語非含有、要点非表示／詳細表示
+- built fragmentからの`正規化`、`products:`、関係データ収録状態の排除
 - 01～04のselection-order presentation token
 - P1 / P2 / P3、Claim / Relation marker、Financial compatibilityの既存snapshot
 - summary marker Set A 16 / Set B 20、expanded marker Set A 21 / Set B 32 / total 53
 - 600px以下だけのcell identity stripと、601px以上のsticky column header
 
 本規格の適用でcanonical dataを変更する必要が生じた場合はHARD STOPとする。
+
+## 9. Product説明の編集規則
+
+- 対象はPilotのcanonical Productだけとし、各説明をcanonical Product IDと1対1で管理する。
+- 既存Product Registry、Claim、Relation、Evidenceで直接groundできる「何をする製品か」だけを、日本語1～2文、原則80文字以内で記す。
+- 投資評価、優劣、順位、推測、会社固有の性能をgeneric Product説明へ加えない。
+- 説明のgrounding Claim ID／Relation IDはfixtureで解決可能性を検証し、canonical Claim / Relation statementとEvidence drawerは書き換えない。
+- 要点は製品名と既存Evidence markerを中心にし、説明を表示しない。詳細だけで製品名の直下に説明を表示する。
+- 既存データでgroundできないProductは説明を推測せずHARD STOPとする。

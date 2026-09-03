@@ -87,22 +87,6 @@ const missingLabels: Record<string, string> = {
   'not-applicable': '対象外',
   'not-missing': '収録済み',
 };
-const coverageLabels: Record<string, string> = {
-  complete: '収録済み',
-  partial: '一部収録',
-  'not-started': '未収録',
-};
-const coverageCategoryLabels: Record<string, string> = {
-  'company-overview': '企業概要',
-  'ai-infrastructure-role': 'AIインフラでの役割',
-  technology: '技術',
-  'competitive-positioning': '競争上の位置付け',
-  strategy: '戦略',
-  'manufacturing-facilities': '製造・事業拠点',
-  'capacity-expansion': '設備能力の拡張',
-  risks: 'リスク',
-  'customer-end-market': '顧客・最終市場',
-};
 const metricLabel: Record<string, string> = {
   operatingMargin: '営業利益率',
   revenueGrowth: '売上高成長率',
@@ -212,11 +196,14 @@ const clientPayload = {
                     </div>}
                     {dimension.sections.map((section, sectionIndex) => {
                       const displayedRelations = relationsForDisplay(section.relations);
+                      const relationProductIds = new Set(displayedRelations
+                        .filter(entry => entry.relation.relationType === 'PRODUCES')
+                        .map(entry => entry.relation.objectId));
+                      const claimOnlyProducts = section.displayProducts.filter(item => !relationProductIds.has(item.canonicalId));
                       const summaryClaimIds = new Set(selectCompareSummaryClaimIds(dimensionId, sectionIndex, section.claims.map(entry => entry.claim), displayedRelations.map(entry => entry.relation)));
                       const summaryRelationIds = new Set(selectCompareSummaryRelationIds(dimensionId, sectionIndex, displayedRelations.map(entry => entry.relation)));
                       return <div class:list={['evidence-dimension-subsection', { 'evidence-dimension-subsection-secondary': sectionIndex > 0 }]}>
                       {sectionIndex > 0 && <h3 class="evidence-subsection-title">{section.label}</h3>}
-                      {dimensionId === 'key-products' && section.displayProducts.length > 0 && <p class="evidence-list-intro" data-expanded-only>正規化した製品カテゴリ</p>}
                       {dimensionId === 'technology-moat' && section.displayTechnologies.length > 0 && <ul class="evidence-canonical-list" aria-label="関連技術">
                         {section.displayTechnologies.map((item, itemIndex) => <li data-canonical-id={item.canonicalId} data-grounding-ids={item.groundingIds.join(',')} data-summary={itemIndex < 3 ? 'show' : 'hide'}>{item.label}</li>)}
                       </ul>}
@@ -236,8 +223,14 @@ const clientPayload = {
                             { label: '最終検証', value: entry.claim.lastVerified ?? '未記録' },
                             { label: '対象範囲', value: '企業全体' },
                           ]}
-                        />
+                          />
                       </div>)}
+                      {dimensionId === 'key-products' && claimOnlyProducts.length > 0 && <ul class="evidence-product-description-list" data-expanded-only aria-label="製品の役割">
+                        {claimOnlyProducts.map(item => <li data-canonical-id={item.canonicalId} data-grounding-ids={item.groundingIds.join(',')}>
+                          <strong>{item.label}</strong>
+                          <p class="evidence-product-description" data-product-description={item.canonicalId}>{item.description}</p>
+                        </li>)}
+                      </ul>}
                       {displayedRelations.map(entry => {
                         const relationClaim = relationAsClaim(entry, company.identity.id);
                         return <div class="evidence-relation-entry" data-relation-id={entry.relation.relationId} data-canonical-id={entry.relation.objectId} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryRelationIds.has(entry.relation.relationId) ? 'show' : 'hide'}>
@@ -250,7 +243,8 @@ const clientPayload = {
                             suppressTypeLabel
                             displayTitle={entry.display.title}
                             displayStatement={entry.display.statement}
-                            variant={entry.relation.relationType === 'PRODUCES' ? 'list' : 'standard'}
+                            variant={['PRODUCES', 'POSITIONED_IN'].includes(entry.relation.relationType) ? 'list' : 'standard'}
+                            productDescription={entry.productDescription ?? undefined}
                             drawerKicker="関係の根拠"
                             drawerTitle="関係の根拠"
                             provenanceTypeLabel={`Relation: ${entry.relation.relationType}`}
@@ -275,10 +269,6 @@ const clientPayload = {
                         </div>;
                       })}
                     </div>})}
-                    <div class="evidence-cell-details" data-expanded-only>
-                      {dimension.coverageContext.map(coverage => <p>{coverageCategoryLabels[coverage.category] ?? coverage.category}：{coverageLabels[coverage.collectionStatus] ?? coverage.collectionStatus}</p>)}
-                    </div>
-                    {dimension.relations.length === 0 && ['key-products', 'technology-moat'].includes(dimensionId) && <p class="evidence-relation-empty" data-expanded-only>関係データ：収録なし</p>}
                   </> : <p class="evidence-missing">{missingLabels[dimension.missingState] ?? '未収録'}</p>}
                 </td>
               );

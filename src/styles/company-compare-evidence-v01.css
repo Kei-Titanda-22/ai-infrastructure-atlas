@@ -188,6 +188,9 @@
 .evidence-matrix thead th:first-child {
   left: 0;
   z-index: 6;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.4;
 }
 
 .evidence-matrix tbody > tr > th {
@@ -195,7 +198,8 @@
   left: 0;
   z-index: 2;
   background: var(--surface-subtle);
-  font-size: 13px;
+  font-size: 16px;
+  font-weight: 700;
   line-height: 1.45;
   text-align: left;
 }
@@ -207,7 +211,8 @@
 .evidence-matrix thead th > a {
   display: block;
   color: var(--text);
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 700;
   line-height: 1.4;
   text-decoration: none;
 }
@@ -222,8 +227,12 @@
   margin-top: 3px;
   color: var(--muted);
   font-family: var(--mono);
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 500;
+}
+
+.evidence-matrix thead .compare-company-name > small {
+  font-size: 16px;
 }
 
 .evidence-identity {
@@ -298,8 +307,8 @@
 
 .evidence-identity > span {
   color: var(--muted);
-  font-size: 11px;
-  line-height: 1.45;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .evidence-epistemic-notes {
@@ -357,6 +366,33 @@
   content: "·";
   margin-right: 5px;
   color: var(--muted);
+}
+
+.evidence-product-description-list {
+  display: grid;
+  gap: 10px;
+  margin: 8px 0 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.evidence-product-description-list li {
+  padding-top: 9px;
+  border-top: 1px solid var(--border);
+}
+
+.evidence-product-description-list strong,
+.evidence-matrix [data-dimension-id="key-products"] .pilot-claim-list .claim-statement {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.evidence-product-description {
+  margin: 3px 0 0;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.65;
 }
 
 .evidence-compare .pilot-claim-list {
@@ -748,6 +784,17 @@
   .evidence-financial-value > strong,
   .evidence-missing {
     font-size: 16px;
+  }
+
+  .evidence-product-description-list strong,
+  .evidence-product-description,
+  .evidence-matrix [data-dimension-id="key-products"] .pilot-claim-list .claim-statement {
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .evidence-company-context > strong > small {
+    font-size: 15px;
   }
 
   .evidence-epistemic-notes,

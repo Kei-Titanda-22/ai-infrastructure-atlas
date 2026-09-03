@@ -2,9 +2,9 @@
 
 ## 1. Status
 
-- Review input: 実ユーザーの初見レビューと第2回Human Reviewを正式入力として採択
+- Review input: 実ユーザーの初見レビューと第2回・第3回Human Reviewを正式入力として採択
 - Remediation scope: `view=evidence` Company Compare Pilot presentation only
-- 第2回remediation後のHuman re-test executed: NO
+- 第3回remediation後のHuman re-test executed: NO
 - PR status target: Draft / Open / Unmerged
 
 ## 2. 視聴環境
@@ -119,7 +119,7 @@ Legacy Compare HTMLはCompare sourceを変更していないが、lazy controlle
 - 英語名と日本語名を持つCompanyは共通helperで2行へ分け、英語名・日本語括弧内をそれぞれ途中改行しない。accessible nameは双方を含む完全名を維持する。
 - cell identity stripは600px以下だけで表示する。601px以上は列表示とし、既存のsticky column headerを企業識別の正本とする。
 - 要点は各sectionの代表P1、P1がない場合だけ既存P2、製品最大3件、技術最大3件、供給網上の位置1件、主要な競争上の特徴、最新財務要点と、その表示項目のmarkerだけに絞る。
-- 詳細は全P1 / P2投影、全Product / Technology、正規化した位置、補足、Relation詳細、Evidence trace、財務履歴と全53 markerを表示する。canonical dataとProjectionは変更しない。
+- 詳細は全P1 / P2投影、全Product / Technology、供給網上の位置、補足、Relation詳細、Evidence trace、財務履歴と全53 markerを表示する。canonical dataとProjectionは変更しない。
 - toggle説明、accessible name、URL stateを一致させ、detail切替はbrowser historyへ積む。reload / back / forwardで復元し、focusを維持する。
 
 ## 12. 第2回remediation実測
@@ -152,3 +152,54 @@ Legacy Compare HTMLはCompare sourceを変更していないが、lazy controlle
 4. 要点16 / 20 markerでSet A / Bの差を短時間に説明できるか。
 5. 詳細へ切り替えた際に、補足・全根拠・財務履歴が追加されたと明確に理解できるか。
 6. 600px以下のidentity stripと601px以上のcolumn header方式の境界が自然か。
+
+## 14. 第3回Human Review
+
+第2回remediation後の実画面を確認し、次を新たな正式入力とした。
+
+1. 詳細表示でもLam Researchの主な製品が名称一覧のままで、各製品が何をするものか分からない。
+2. 要点は製品名中心でよいが、詳細は製品ごと1～2行の日本語説明を必要とする。
+3. `正規化した位置`、`正規化した製品カテゴリ`、`products: 収録済み`、`関係データ：収録なし`は利用者向けでない内部用語に見える。
+4. PCの`比較項目`、企業名、日本語企業名、ticker／国、左列の大項目、企業情報、製品名の文字が小さい。
+5. 同一問題はSet AとSet Bへ共通の表示契約で対応する。
+
+## 15. 第3回で採択した修正
+
+- Pilotのcanonical Product 11件すべてに、既存Product Registry、Claim、Relation、Evidenceの範囲だけで作成した日本語の役割説明を付与した。各説明はcanonical Product IDとgroundingに用いたClaim ID／Relation IDをCompare専用fixtureで固定する。
+- 要点では説明を表示せず、製品名と既存Evidence markerを中心にする。詳細では名称直下に1～2行の説明を表示し、既存metadataとdrawer導線を維持する。
+- 製品説明は投資評価・優劣・会社固有性能を加えず、1～2文、80日本語文字以内とした。新規Sourceは探索・追加していない。
+- primary displayから`正規化した位置`、`正規化した製品カテゴリ`、`products:`、`関係データ：収録なし`を除去した。利用価値の低いCoverage収録状態は表内で反復しない。
+- `供給網上の位置`の直下は`半導体製造`または`計算半導体`という値だけにし、内部の中間見出しを置かない。
+- Compare Evidence専用CSSで、PCの比較項目18px/700、英語企業名18px/700、日本語企業名16px、ticker／国14px、左列見出し16px/700、企業情報16px、製品名16px、詳細説明15px/1.65を共通契約とした。
+
+## 16. 第3回remediation実測
+
+可視blockは第2回と同じselector集合に、新たにClaimから展開したcanonical Product itemを加えて数えた。製品説明文自体は独立blockとして二重計上していない。
+
+| Set / viewport | 要点block | 詳細block | 削減率 | 要点marker | 詳細marker | 要点height | 詳細height | height削減率 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Set A / 1024×768 | 22 | 50 | 56.0% | 16 | 21 | 2,363px | 3,895px | 39.3% |
+| Set B / 1024×768 | 34 | 84 | 59.5% | 20 | 32 | 2,548px | 5,030px | 49.3% |
+| Set A / 390×844 | 22 | 50 | 56.0% | 16 | 21 | 5,614px | 8,106px | 30.7% |
+| Set B / 390×844 | 34 | 84 | 59.5% | 20 | 32 | 7,309px | 11,783px | 38.0% |
+
+追加実測：
+
+- 要点のProduct説明はSet A / Set Bとも0件。詳細はSet A 6件、Set B 9件を表示し、両set全体でcanonical Product 11件をカバーする。全指定viewportで各1～2行に収まる。
+- computed font sizeは比較項目18px、英語企業名18px、日本語企業名16px、ticker／国14px、左列見出し16px、企業情報16px、製品名16px、製品説明15px・line-height 24.75px。
+- Applied Materialsは英語名1行＋日本語名1行、各行のfragment数1、accessible nameは英日完全名を維持した。
+- desktop / tablet identity stripは0。mobileはSet A 14、Set B 21を維持した。
+- 2560×1440、1920×1080、1080×1920、1024×768、768×1024、390×844、360×800のSet A / Set B / Legacyでdocument overflow 0。Set B / 768pxはmatrix内のみ71pxの意図したhorizontal scrollを維持。
+- 44px Evidence marker / detail toggle、sticky header、drawer、Primary Source、Escape、focus return、URL / reload / back / forwardの状態復元、正常系console error 0を確認した。
+- Legacyはfragment / controller request 0 / 0、Evidenceは1 / 1、detail切替での追加requestは0 / 0という自動fixture契約を維持した。
+- Legacy Compare HTMLは585,468 B。Evidence fragmentは311,929 Bから312,320 B（+391 B）、gzip 22,282 B。追加は11件のProduct説明と表示用grounding対応による。5% guard内。
+
+## 17. 第3回remediation後の再レビュー項目
+
+1. 要点の製品名一覧だけで比較の速度を損ねないか。
+2. 詳細の1～2行説明で、Set A / Set Bの全製品の役割を誤解なく説明できるか。
+3. `供給網上の位置`と値だけの構造が自然か。
+4. 表見出しと企業情報の文字階層で、長い比較表を追いやすくなったか。
+5. 詳細説明とEvidence marker／drawerの対応が利用者に伝わるか。
+
+以上は再レビュー予定の項目であり、第3回remediation後のHuman Test結果は生成していない。
