@@ -15,20 +15,66 @@ import {
   fetchEvidenceCompareFragment,
   mountEvidenceCompareFragment,
 } from '../src/lib/company-compare-evidence-bootstrap.ts';
+import {
+  compareClaimDisplayCopy,
+  compareCompanyPresentationTokens,
+  compareFinancialAccountingBasisLabels,
+  compareFinancialAmountUnitLabels,
+  compareGenericTermTranslations,
+  compareLocationDisplayNames,
+  comparePreservedProperNouns,
+  compareProductDisplayDescriptions,
+  compareProductIdsByClaimId,
+  companyCompareDisplayName,
+  companyCompareDisplayNameParts,
+  companyPresentationTokenForOrder,
+  dedupeCompareCanonicalItems,
+  formatCompareFinancialPeriodLabel,
+  localizeCompareLocation,
+  resolveCompareFinancialTablePresentation,
+  resolveCompareProductDisplayDescription,
+  selectCompareSummaryClaimIds,
+  selectCompareSummaryRelationIds,
+} from '../src/lib/company-compare-display.ts';
 
 const readJson = async relative => JSON.parse(await readFile(new URL(relative, import.meta.url), 'utf8'));
 const projection = await readJson('../src/data/company-compare-evidence-pilot-v01.json');
+const productRegistry = await readJson('../src/data/product-registry-v01.json');
 const relations = await readJson('../src/data/relationships.json');
 const relationBindings = await readJson('../src/data/relation-evidence-bindings-v01.json');
 const evidenceManifest = await readJson('../src/data/company-evidence-manifest.json');
 const sourceManifest = await readJson('../src/data/source-registry-manifest.json');
 const fixture = await readJson('./fixtures/company-compare-evidence-ui-snapshot-v01.json');
+const displayFixture = await readJson('./fixtures/company-compare-japanese-display-v01.json');
+const compareCashFlowOverrides = await readJson('../src/data/financial-history-v04-cashflow-overrides.json');
+const compareCashFlowOverrideById = new Map(compareCashFlowOverrides.map(record => [record.id, record]));
+const compareFinancialHistory = [
+  ...await readJson('../src/data/financial-history.json'),
+  ...await readJson('../src/data/financial-history-v04-batch2.json'),
+  ...await readJson('../src/data/financial-history-v04-batch6.json'),
+].map(record => {
+  const override = compareCashFlowOverrideById.get(record.id);
+  return override ? { ...record, ...override, metrics: { ...record.metrics, ...override.metrics } } : record;
+});
 const comparePage = await readFile(new URL('../src/pages/compare.astro', import.meta.url), 'utf8');
 const fragmentPage = await readFile(new URL('../src/pages/evidence-fragments/company-compare-evidence-v01.astro', import.meta.url), 'utf8');
 const component = await readFile(new URL('../src/components/CompanyCompareEvidence.astro', import.meta.url), 'utf8');
-const claimComponent = await readFile(new URL('../src/components/CompanyEvidenceClaim.astro', import.meta.url), 'utf8');
+const claimComponent = await readFile(new URL('../src/components/CompanyCompareEvidenceClaim.astro', import.meta.url), 'utf8');
 const controller = await readFile(new URL('../src/scripts/company-compare-evidence-ui.ts', import.meta.url), 'utf8');
 const styles = await readFile(new URL('../src/styles/company-compare-evidence-v01.css', import.meta.url), 'utf8');
+const readModelSource = await readFile(new URL('../src/lib/company-compare-evidence-read-model.ts', import.meta.url), 'utf8');
+const parsedClaimTypeLabels = Object.fromEntries(
+  [...claimComponent.matchAll(/^\s*(?:'([^']+)'|([a-z]+)):\s*'([^']+)',$/gm)]
+    .map(match => [match[1] ?? match[2], match[3]])
+    .filter(([key]) => key in displayFixture.claimTypeDisplayLabels),
+);
+assert.deepEqual(parsedClaimTypeLabels, displayFixture.claimTypeDisplayLabels, 'Claim type display labels are fixture-locked');
+const pilotCompanyRecords = Object.fromEntries(await Promise.all(
+  ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron'].map(async companyId => [
+    companyId,
+    await readJson(`../src/data/companies/${companyId}.json`),
+  ]),
+));
 
 const evidenceShards = await Promise.all(evidenceManifest.shards.map(file => readJson(`../src/data/${file}`)));
 const sourceShards = await Promise.all(sourceManifest.shards.map(file => readJson(`../src/data/${file}`)));
@@ -48,6 +94,165 @@ for (const binding of relationBindings) {
 const sourceIds = new Set(sources.map(source => source.id));
 const sourceById = new Map(sources.map(source => [source.id, source]));
 const companyIds = new Set(['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'asml']);
+
+assert.deepEqual(
+  Object.keys(compareClaimDisplayCopy).sort(),
+  displayFixture.claimDisplayIds,
+  'all and only 34 projected Claims have fixed Compare display copy',
+);
+assert.deepEqual(compareGenericTermTranslations, displayFixture.genericTermTranslations, 'Japanese generic-term policy is fixture-locked');
+assert.deepEqual(compareLocationDisplayNames, displayFixture.locationDisplayNames, 'Compare geography localization is fixture-locked');
+assert.deepEqual(compareProductDisplayDescriptions, displayFixture.productDescriptions, 'Product descriptions are fixture-locked');
+assert.deepEqual(compareProductIdsByClaimId, displayFixture.productIdsByClaimId, 'Claim-to-Product display mapping is fixture-locked');
+assert.deepEqual(comparePreservedProperNouns, displayFixture.preservedProperNouns, 'allowed proper nouns are fixture-locked');
+assert.deepEqual(compareCompanyPresentationTokens, displayFixture.presentationTokens, 'four presentation-order tokens are fixed');
+const projectedClaimIds = [...new Set(projection.sets.flatMap(setRecord => setRecord.companies.flatMap(company =>
+  company.dimensions.flatMap(dimension => dimension.initialClaimIds),
+)))].sort();
+assert.deepEqual(projectedClaimIds, displayFixture.claimDisplayIds, 'display copy coverage equals the projection Claim corpus');
+const projectedClaimTypeCounts = Object.fromEntries([...projectedClaimIds.reduce((counts, claimId) => {
+  const claimType = claimById.get(claimId)?.claimType;
+  counts.set(claimType, (counts.get(claimType) ?? 0) + 1);
+  return counts;
+}, new Map()).entries()].sort(([left], [right]) => left.localeCompare(right)));
+assert.deepEqual(projectedClaimTypeCounts, displayFixture.projectedClaimTypeCounts, 'all 34 internal Claim types remain unchanged');
+const productIds = productRegistry.records.map(record => record.id).sort();
+assert.deepEqual(Object.keys(compareProductDisplayDescriptions).sort(), productIds, 'all and only Pilot canonical Products have descriptions');
+const descriptionGroundingIds = new Set([...claimById.keys(), ...relationById.keys()]);
+for (const productId of productIds) {
+  const product = resolveCompareProductDisplayDescription(productId);
+  const sentenceCount = (product.description.match(/[。！？]/g) ?? []).length;
+  assert.ok(product.description.length <= 80, `${productId}: description is at most 80 characters`);
+  assert.ok(sentenceCount >= 1 && sentenceCount <= 2, `${productId}: description is one or two sentences`);
+  assert.ok(product.groundingIds.length > 0, `${productId}: description has direct grounding IDs`);
+  assert.ok(product.groundingIds.every(id => descriptionGroundingIds.has(id)), `${productId}: every description grounding ID resolves`);
+  assert.doesNotMatch(product.description, /優位|優れる|勝者|推奨|投資判断/, `${productId}: description contains no evaluation`);
+}
+const pilotDisplayedProductIds = new Set([
+  ...relations.filter(relation => relation.relationType === 'PRODUCES').map(relation => relation.objectId),
+  ...projectedClaimIds.flatMap(claimId => compareProductIdsByClaimId[claimId] ?? []),
+]);
+assert.deepEqual([...pilotDisplayedProductIds].sort(), productIds, 'Set A and Set B collectively cover every canonical Product description');
+for (const claimId of projectedClaimIds) {
+  const display = compareClaimDisplayCopy[claimId];
+  assert.deepEqual(display.groundingIds, [claimId], `${claimId}: display sentence is deterministically grounded`);
+  assert.ok(display.title.trim() && display.statement.trim(), `${claimId}: display title and statement are non-empty`);
+}
+for (const [claimId, expectedCopy] of Object.entries(displayFixture.riskDisplayCopy)) {
+  assert.deepEqual(
+    { title: compareClaimDisplayCopy[claimId].title, statement: compareClaimDisplayCopy[claimId].statement },
+    expectedCopy,
+    `${claimId}: risk display copy is fixture-locked`,
+  );
+  assert.equal(claimById.get(claimId).claimType, 'atlas-analysis', `${claimId}: internal Atlas Analysis type is unchanged`);
+}
+const preservedFactRisk = displayFixture.preservedFactRiskCopy;
+assert.deepEqual(
+  {
+    claimId: preservedFactRisk.claimId,
+    title: compareClaimDisplayCopy[preservedFactRisk.claimId].title,
+    statement: compareClaimDisplayCopy[preservedFactRisk.claimId].statement,
+  },
+  preservedFactRisk,
+  'NVIDIA Fact risk display copy remains unchanged',
+);
+assert.equal(claimById.get(preservedFactRisk.claimId).claimType, 'fact', 'NVIDIA risk remains an internal Fact');
+for (const [companyId, expectedName] of Object.entries(displayFixture.companyDisplayNames)) {
+  assert.equal(companyCompareDisplayName(pilotCompanyRecords[companyId]), expectedName, `${companyId}: one canonical Japanese display name`);
+}
+assert.equal(
+  companyCompareDisplayName(pilotCompanyRecords['applied-materials']),
+  'Applied Materials（アプライド・マテリアルズ）',
+  'Applied Materials never mixes English-only and Japanese-only display names',
+);
+assert.deepEqual(
+  companyCompareDisplayNameParts(pilotCompanyRecords['applied-materials']),
+  {
+    accessibleName: 'Applied Materials（アプライド・マテリアルズ）',
+    primaryName: 'Applied Materials',
+    secondaryName: '（アプライド・マテリアルズ）',
+  },
+  'bilingual Company names use two deterministic lines and preserve one accessible full name',
+);
+assert.deepEqual(
+  companyCompareDisplayNameParts(pilotCompanyRecords['tokyo-electron']),
+  { accessibleName: 'Tokyo Electron（東京エレクトロン）', primaryName: '東京エレクトロン', secondaryName: null },
+  'Japanese-only visual Company names remain one line while the accessible name retains English and Japanese',
+);
+for (const companyId of displayFixture.companyIdentityLink.bilingualCompanyIds) {
+  const names = companyCompareDisplayNameParts(pilotCompanyRecords[companyId]);
+  assert.ok(names.secondaryName, `${companyId}: bilingual identity retains its second line`);
+  assert.ok(names.accessibleName.includes(names.primaryName) && names.accessibleName.includes(names.secondaryName), `${companyId}: accessible name contains both visible lines`);
+}
+for (const companyId of displayFixture.companyIdentityLink.singleLineCompanyIds) {
+  assert.equal(companyCompareDisplayNameParts(pilotCompanyRecords[companyId]).secondaryName, null, `${companyId}: Japanese-only primary identity stays one line`);
+}
+for (const [canonicalLabel, displayLabel] of Object.entries(displayFixture.financialDetailTable.periodLabels)) {
+  assert.equal(formatCompareFinancialPeriodLabel(canonicalLabel), displayLabel, `${canonicalLabel}: financial period label is fixture-locked`);
+}
+assert.throws(() => formatCompareFinancialPeriodLabel('Calendar 2026'), /unsupported/, 'ambiguous period labels are never inferred');
+for (const [companyId, expectedUnitLabel] of Object.entries(displayFixture.financialDetailTable.amountUnitByCompany)) {
+  const records = compareFinancialHistory
+    .filter(record => record.companyId === companyId)
+    .sort((left, right) => left.endDate.localeCompare(right.endDate) || left.id.localeCompare(right.id));
+  assert.equal(records.length, displayFixture.financialDetailTable.recordCountByCompany[companyId], `${companyId}: financial row count is fixture-locked`);
+  const canonicalBefore = JSON.stringify(records);
+  const presentation = resolveCompareFinancialTablePresentation(records);
+  assert.equal(presentation.amountUnitLabel, expectedUnitLabel, `${companyId}: amount unit label`);
+  assert.equal(presentation.accountingBasisLabel, displayFixture.financialDetailTable.accountingBasisByCompany[companyId], `${companyId}: accounting basis label`);
+  assert.deepEqual(presentation.periodLabels, records.map(record => displayFixture.financialDetailTable.periodLabels[record.periodLabel]), `${companyId}: display period order follows canonical order`);
+  assert.equal(JSON.stringify(records), canonicalBefore, `${companyId}: formatting does not mutate values, periods, sources, rows, or order`);
+}
+const financialGuardRecord = { periodLabel: 'FY2026', currency: 'USD', unit: 'million', accountingBasis: 'US GAAP' };
+assert.throws(() => resolveCompareFinancialTablePresentation([financialGuardRecord, { ...financialGuardRecord, currency: 'JPY' }]), /mixed currency or unit/);
+assert.throws(() => resolveCompareFinancialTablePresentation([financialGuardRecord, { ...financialGuardRecord, unit: 'billion' }]), /mixed currency or unit/);
+assert.throws(() => resolveCompareFinancialTablePresentation([financialGuardRecord, { ...financialGuardRecord, accountingBasis: 'Japanese GAAP' }]), /mixed accounting basis/);
+assert.equal(compareFinancialAmountUnitLabels['USD:million'], '百万ドル');
+assert.equal(compareFinancialAmountUnitLabels['JPY:million'], '百万円');
+assert.equal(compareFinancialAccountingBasisLabels['US GAAP'], '米国会計基準');
+assert.equal(compareFinancialAccountingBasisLabels['Japanese GAAP'], '日本会計基準');
+assert.equal(localizeCompareLocation('United States'), '米国');
+assert.equal(localizeCompareLocation('Oregon, United States'), '米国オレゴン州');
+assert.throws(() => localizeCompareLocation('unreviewed-place'), /mapping is missing/, 'unreviewed geography never falls through to mixed-language UI');
+const dedupeFixture = dedupeCompareCanonicalItems([
+  { canonicalId: 'product-category-gpu', label: 'GPU', groundingIds: ['rel-a'] },
+  { canonicalId: 'product-category-gpu', label: 'Graphics processing unit', groundingIds: ['rel-b'] },
+  { canonicalId: 'product-category-cpu', label: 'CPU', groundingIds: ['rel-c'] },
+]);
+assert.deepEqual(dedupeFixture.map(item => item.canonicalId), ['product-category-gpu', 'product-category-cpu'], 'dedupe uses canonical Registry ID, not visible strings');
+const technologyDedupeFixture = dedupeCompareCanonicalItems([
+  { canonicalId: 'technology-semiconductor-deposition', label: '半導体成膜プロセス', groundingIds: ['claim-a'] },
+  { canonicalId: 'technology-semiconductor-deposition', label: 'Deposition', groundingIds: ['claim-b'] },
+  { canonicalId: 'technology-semiconductor-etching', label: '半導体エッチングプロセス', groundingIds: ['claim-c'] },
+]);
+assert.deepEqual(
+  technologyDedupeFixture.map(item => item.canonicalId),
+  ['technology-semiconductor-deposition', 'technology-semiconductor-etching'],
+  'Technology display also deduplicates by canonical Registry ID',
+);
+const displayCopyText = Object.values(compareClaimDisplayCopy).flatMap(copy => [copy.title, copy.statement]).join('\n');
+for (const phrase of displayFixture.prohibitedPrimaryPhrases) {
+  assert.ok(!displayCopyText.includes(phrase), `primary Claim display copy omits editorial phrase: ${phrase}`);
+}
+assert.deepEqual(
+  [...new Set(displayCopyText.match(/[A-Za-z][A-Za-z0-9-]*/g) ?? [])].sort(),
+  displayFixture.approvedPrimaryEnglishTokens,
+  'Pilot primary display contains no unreviewed generic English token',
+);
+for (const properNoun of ['NVIDIA AI Enterprise', 'DGX Cloud', 'GPU', 'CPU', 'DPU', 'ASIC']) {
+  assert.ok(displayCopyText.includes(properNoun), `${properNoun}: preserved in display copy`);
+}
+assert.match(claimById.get('applied-technology').statement, /Integrated Materials Solution/, 'canonical Claim keeps the raw formal English name');
+assert.match(claimById.get('lam-research-capacity-expansion-triage-remediation-v02').statement, /Tualatin/, 'canonical Claim keeps the raw source geography');
+assert.equal(compareClaimDisplayCopy['applied-technology'].title, '統合材料ソリューション');
+assert.match(compareClaimDisplayCopy['applied-technology'].statement, /^統合材料ソリューション（Integrated Materials Solution）/);
+assert.match(compareClaimDisplayCopy['lam-research-capacity-expansion-triage-remediation-v02'].statement, /^米国オレゴン州チュアラティン/);
+assert.deepEqual(
+  [0, 1, 2, 3].map(index => companyPresentationTokenForOrder(index).label),
+  displayFixture.presentationTokens,
+  'selection order deterministically assigns the four company identity tokens',
+);
+assert.throws(() => companyPresentationTokenForOrder(4), /outside 1-4/, 'a fifth presentation token is rejected');
 
 assert.equal(evidenceCompareViewRequested('?ids=nvidia,broadcom'), false, 'legacy route does not request the Evidence payload');
 assert.equal(evidenceCompareViewRequested('?ids=nvidia,broadcom&view=evidence'), true, 'opt-in route requests the Evidence payload');
@@ -232,6 +437,32 @@ assert.equal(allSelectedMissing(['a', 'b'], new Map([['a', null], ['b', undefine
 assert.equal(allSelectedMissing(['a', 'b'], new Map([['a', null], ['b', 'present']])), false);
 
 const dimensionOrder = projection.policy.dimensionOrder.filter(id => id !== 'evidence-trace');
+const summaryDimensionIds = ['ai-role', 'key-products', 'technology-moat', 'capacity-roadmap', 'key-risks'];
+const summaryMarkerCountBySet = Object.fromEntries(projection.sets.map(setRecord => {
+  let count = 0;
+  for (const company of setRecord.companies) {
+    for (const dimensionId of summaryDimensionIds) {
+      const sourceIds = dimensionId === 'ai-role' ? ['ai-role', 'value-chain-position'] : [dimensionId];
+      sourceIds.forEach((sourceId, sectionIndex) => {
+        const dimension = company.dimensions.find(item => item.dimensionId === sourceId);
+        const sectionClaims = (dimension?.initialClaimIds ?? []).map(id => claimById.get(id));
+        const seenProducts = new Set();
+        const sectionRelations = (dimension?.initialRelationIds ?? [])
+          .map(id => relationById.get(id))
+          .filter(relation => {
+            if (relation.relationType !== 'PRODUCES') return true;
+            if (seenProducts.has(relation.objectId)) return false;
+            seenProducts.add(relation.objectId);
+            return true;
+          });
+        count += selectCompareSummaryClaimIds(dimensionId, sectionIndex, sectionClaims, sectionRelations).length;
+        count += selectCompareSummaryRelationIds(dimensionId, sectionIndex, sectionRelations).length;
+      });
+    }
+  }
+  return [setRecord.setId, count];
+}));
+assert.deepEqual(summaryMarkerCountBySet, displayFixture.summaryMarkerCounts, 'summary marker selection is deterministic for both Pilot sets');
 const priorityCounts = { P1: 0, P2: 0, P3: 0 };
 const relationPlacementCounts = Object.fromEntries(dimensionOrder.map(id => [id, 0]));
 let claimMarkerCount = 0;
@@ -363,26 +594,49 @@ assert.match(comparePage, /mount\.setAttribute\('role', 'status'\)/, 'failure UI
 assert.doesNotMatch(comparePage, /<CompanyCompareEvidence identities=/, 'Evidence body is not rendered into legacy Compare HTML');
 assert.match(fragmentPage, /<CompanyCompareEvidence identities=\{identities\}/, 'Set A and B use one canonical build-time component');
 assert.match(fragmentPage, /getCollection\('companies'\)/, 'fragment identities derive from canonical Company content');
-assert.match(component, /CompanyEvidenceClaim/, 'existing Evidence drawer component is reused');
+assert.match(component, /CompanyCompareEvidenceClaim/, 'Compare-only Evidence presentation keeps the existing drawer contract isolated');
 assert.match(component, /data-pagefind-ignore="all"/, 'only the opt-in Evidence subtree is excluded from Pagefind');
 assert.doesNotMatch(component, /initCompanyCompareEvidenceUi/, 'fragment does not initialize its controller before mount');
 assert.doesNotMatch(component, /verificationStatus:\s*['"]verified['"]/, 'Relation adapter must not invent Company Claim verification state');
 assert.match(component, /verificationPresentation=\{entry\.verification\}/, 'Relation verification presentation is Binding-derived');
-assert.match(component, /drawerTitle="Relation根拠"/, 'Relation drawer has an accessible Relation-specific title');
-assert.match(component, /Relation support/);
-assert.match(component, /Locator確認日/);
+assert.match(component, /drawerTitle="関係の根拠"/, 'Relation drawer has an accessible Japanese title');
+assert.match(component, /根拠の対応/);
+assert.match(component, /根拠箇所の確認日/);
 assert.match(component, /scope="col"/);
 assert.match(component, /scope="row"/);
 assert.match(component, /data-evidence-section-link/);
 assert.match(component, /data-claim-priority/);
-assert.match(component, />補足</);
+assert.doesNotMatch(component, />補足</, 'P2 does not receive a redundant visible supplement label');
 assert.match(component, />事実</);
 assert.match(component, />会社見解</);
-assert.match(component, />Atlasによる分析</);
-assert.match(component, /Relation：収録なし/);
-assert.match(component, /entry\.objectLabel/);
-assert.match(component, /Primary comparisonには表示しません/);
-assert.match(component, /FX換算、順位、差分率は算出しません/);
+assert.match(component, />Atlasの見方</);
+assert.doesNotMatch(component, />Atlasによる分析</);
+assert.doesNotMatch(component, /関係データ：収録なし/, 'primary matrix omits internal Relation collection state');
+assert.doesNotMatch(component, /正規化した位置|正規化した製品カテゴリ|正規化された位置/, 'primary UI contains no normalization terminology');
+assert.doesNotMatch(component, /coverageContext\.map/, 'primary matrix omits internal Coverage collection state');
+assert.match(component, /data-product-description/, 'expanded Product descriptions retain canonical Product IDs');
+assert.match(component, /productDescription=\{entry\.productDescription/, 'Relation-backed Products use the shared description contract');
+assert.match(component, /claimOnlyProducts/, 'Claim-backed Products use the same description contract');
+assert.match(component, /class="evidence-product-description" data-product-description=\{item\.canonicalId\}/, 'Claim-backed Products share the description typography contract');
+assert.match(component, /data-canonical-id=\{entry\.relation\.objectId\}/, 'rendered Product entries retain canonical Registry IDs');
+assert.match(component, /relationsForDisplay/, 'Product display is de-duplicated before rendering');
+assert.match(component, /主要比較には表示しません/);
+assert.match(component, /各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。/);
+assert.doesNotMatch(component, /id=\{`evidence-section-\$\{['"]value-chain-position/, 'Value Chain is not a repeated standalone major section');
+assert.match(component, /sourceDimensionIds/, 'AI role groups its supply-chain position without changing projection data');
+assert.match(component, /data-display-grounding-ids/, 'every Compare display entry exposes deterministic grounding IDs');
+assert.match(component, /data-company-order-label/, 'every company information block repeats number and name');
+assert.match(component, /data-summary=/, 'summary visibility is a presentation-only deterministic attribute');
+assert.match(component, /要点 — 代表情報だけを表示/);
+assert.match(component, /詳細 — 全根拠・財務履歴まで表示/);
+assert.match(claimComponent, /'atlas-analysis': 'Atlasの見方'/, 'Atlas Analysis has the reviewed display label');
+assert.match(claimComponent, /fact: '事実'/, 'Fact keeps the reviewed display label');
+assert.match(claimComponent, /aria-label=\{`\$\{typeLabel\}: \$\{displayTitle\}`\}/, 'accessible Claim identity distinguishes Fact and Atlas Analysis');
+assert.match(controller, /詳細 — 全根拠・財務履歴まで表示/, 'runtime detail description omits the redundant supplement label');
+assert.match(component, /id="evidence-section-evidence-trace"[\s\S]*data-expanded-only/, 'Evidence trace is expanded-only');
+assert.match(component, /displayTitle=\{entry\.display\.title\}/, 'visible Claim copy comes from the display-only read model');
+assert.match(claimComponent, /<h4>\{claim\.title\}<\/h4>/, 'Evidence drawer retains the canonical Claim title');
+assert.match(claimComponent, /class="drawer-statement">\{claim\.statement\}/, 'Evidence drawer retains the canonical Claim statement');
 assert.match(claimComponent, /aria-haspopup="dialog"/);
 assert.match(claimComponent, /data-evidence-open/);
 assert.match(claimComponent, /verified: \{ short: '確認済み', full: '根拠箇所まで確認済み' \}/, 'Company Claim verified presentation remains unchanged');
@@ -397,21 +651,84 @@ assert.match(controller, /event\.key === 'Escape'/);
 assert.match(controller, /event\.key !== 'Enter' && event\.key !== ' '/, 'Evidence markers have an explicit keyboard activation contract');
 assert.match(controller, /returnFocus/);
 assert.match(controller, /window\.addEventListener\('popstate'/);
+assert.match(controller, /pushState/, 'detail mode creates navigable browser history');
 assert.match(controller, /unresolvedFinancial/);
 assert.match(controller, /\.evidence-expanded-financial, \.evidence-trace-list/);
+assert.match(controller, /appendCompanyName/, 'selected rows and suggestions share one company-name renderer');
+assert.match(controller, /createCompanyNameLink/, 'all linked Company identities use one anchor factory');
+assert.match(controller, /link\.dataset\.companyIdentityLink = company\.id/, 'each Company identity link retains its canonical Company ID');
+assert.match(controller, /upgradeCompanyIdentityLinks/, 'static Compare identities are upgraded before the Evidence root becomes visible');
+assert.match(controller, /\.evidence-matrix thead th\[data-company-id\] > a, \.evidence-company-context > strong/, 'column and mobile identities share the one-link rule');
+assert.match(controller, /\.evidence-financial-company\[data-company-id\] > h4, \.evidence-trace-list > \[data-company-id\] > strong/, 'Financial and Evidence trace identities share the one-link rule');
+assert.equal((controller.match(/document\.createElement\('a'\)/g) ?? []).length, 1, 'Company identity anchors have one construction path and cannot be nested');
+assert.match(controller, /companyCompareDisplayNameParts/, 'all dynamic Company names use canonical bilingual parts');
+assert.match(controller, /localizeCompareLocation/, 'dynamic geography uses exact Compare localization');
+assert.match(controller, /companyPresentationTokenForOrder/, 'company identity follows deterministic selection order');
+assert.match(controller, /dataset\.companyToken/, 'company identity tokens are assigned to all ordered cells');
+assert.match(controller, /value-chain-position['"] \? ['"]ai-role/, 'old Value Chain section links resolve to the grouped AI-role section');
 assert.match(styles, /min-height: 44px/);
 assert.match(styles, /#legacy-compare-templates\[hidden\]/);
 assert.match(styles, /#evidence-compare-templates\[hidden\]/, 'Pilot templates remain hidden on legacy Compare');
 assert.match(styles, /scroll-margin-top: 5rem/);
 assert.match(styles, /@media \(max-width: 600px\)/);
 assert.match(styles, /overflow: visible/);
+assert.match(styles, /\.evidence-major-section > th,[\s\S]*border-top: 2px solid var\(--border-strong\)/, 'major section bands use a 2px neutral rule');
+assert.match(styles, /\.evidence-company-context \{[\s\S]*display: none/, 'desktop and tablet cells rely on the sticky Company header');
+assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.evidence-company-context \{[\s\S]*display: flex/, 'mobile cells retain the explicit Company identity strip');
+assert.match(styles, /\.evidence-company-context > strong/, 'identity is not color-only');
+assert.match(styles, /\.compare-company-name-primary,[\s\S]*white-space: nowrap/, 'Company name lines do not break mid-name');
+assert.match(styles, /\.company-name-link \.compare-company-name-secondary,[\s\S]*color: inherit/, 'the Japanese second line inherits every anchor color state');
+assert.equal(displayFixture.companyIdentityLink.className, 'company-name-link');
+assert.equal(displayFixture.companyIdentityLink.anchorsPerIdentity, 1);
+assert.equal(displayFixture.companyIdentityLink.finalLocationsPerCompany, 11);
+assert.match(styles, /data-summary="hide"/, 'summary hides non-representative presentation entries only');
+assert.match(styles, /font-size: 16px/, 'mobile primary text has a 16px floor');
+assert.match(styles, /font-size: 14px/, 'mobile metadata has a 14px floor');
+assert.match(styles, /thead th:first-child \{[\s\S]*font-size: 18px;[\s\S]*font-weight: 700/, 'comparison label is at least 18px and bold on desktop');
+assert.match(styles, /thead th > a \{[\s\S]*font-size: 18px;[\s\S]*font-weight: 700/, 'desktop Company heading is at least 18px and bold');
+assert.match(styles, /thead th > span \{[\s\S]*font-size: 14px/, 'desktop ticker and country are at least 14px');
+assert.match(styles, /tbody > tr > th \{[\s\S]*font-size: 16px;[\s\S]*font-weight: 700/, 'desktop row headings are at least 16px and bold');
+assert.match(styles, /\.evidence-identity > span \{[\s\S]*font-size: 16px/, 'Company information values are at least 16px');
+assert.match(styles, /\.evidence-product-description \{[\s\S]*font-size: 15px;[\s\S]*line-height: 1\.65/, 'desktop Product descriptions meet the typography contract');
+assert.match(component, /<thead><tr>[\s\S]*<th scope="col">出典<\/th>/, 'all eight detailed Financial headers use one centered heading contract');
+assert.match(component, /<th class="num" scope="col">売上高<br \/>（\{company\.expandedFinancialPresentation\.amountUnitLabel\}）<\/th>/, 'amount header exposes one continuous accessible name on two visual lines');
+assert.match(component, /class="financial-basis">会計基準：\{company\.expandedFinancialPresentation\.accountingBasisLabel\}/, 'accounting basis appears once at Company-table level');
+assert.match(component, /scope="row">\{record\.displayPeriodLabel\}<\/th>/, 'period rows contain the localized period only');
+assert.doesNotMatch(component, /record\.currency[\s\S]*record\.unit[\s\S]*record\.accountingBasis/, 'period rows never repeat currency, unit, or accounting basis');
+assert.match(component, /各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。/, 'detailed Financial explanation uses the reviewed Japanese copy');
+assert.match(component, /metric\?\.displayValue[\s\S]*class="num"[\s\S]*class="missing"/, 'available and missing values have distinct semantic classes');
+assert.doesNotMatch(component, /class="num"[^>]*>未収録</, 'missing status never receives the numeric class');
+assert.match(styles, /\.evidence-financial-scroll th,[\s\S]*vertical-align: middle/, 'detailed Financial cells are vertically centered');
+assert.match(styles, /\.evidence-financial-scroll thead th \{[\s\S]*text-align: center;[\s\S]*vertical-align: middle/, 'all detailed Financial column headings are centered on both axes');
+assert.match(styles, /thead th\.period \{[\s\S]*text-align: center/, 'the period column heading is not overridden by the left-aligned body-period contract');
+assert.match(styles, /\.evidence-financial-scroll \.num \{[\s\S]*font-size: 14px;[\s\S]*font-weight: 500;[\s\S]*font-variant-numeric: tabular-nums;[\s\S]*text-align: right/, 'financial values are readable, tabular, and right aligned');
+assert.match(styles, /thead \.num \{[\s\S]*font-weight: 600/, 'numeric headers retain readable emphasis');
+assert.match(styles, /\.evidence-financial-scroll \.period \{[\s\S]*text-align: left/, 'period stays left aligned');
+assert.match(styles, /\.evidence-financial-scroll \.missing \{[\s\S]*font-size: 13px;[\s\S]*text-align: center/, 'missing state remains readable and distinct from numbers');
+assert.match(styles, /\.evidence-financial-scroll td:last-child a \{[\s\S]*font-size: 13px;[\s\S]*white-space: nowrap/, 'source links remain readable and discoverable');
+assert.equal(displayFixture.financialDetailTable.numericAlignment, 'right');
+assert.equal(displayFixture.financialDetailTable.verticalAlignment, 'middle');
+assert.equal(displayFixture.financialDetailTable.periodAlignment, 'left');
+assert.equal(displayFixture.financialDetailTable.columnHeadingAlignment, 'center');
+assert.equal(displayFixture.financialDetailTable.columnHeadingVerticalAlignment, 'middle');
+assert.equal(displayFixture.financialDetailTable.sourceMinimumTargetPx, 44);
+assert.deepEqual(displayFixture.financialDetailTable.metricIds, ['revenue', 'operatingProfit', 'operatingMargin', 'freeCashFlow', 'capex', 'roic']);
+assert.match(styles, /\.evidence-financial-value > a,[\s\S]*\.evidence-financial-company a \{[\s\S]*min-height: 44px/, 'detailed Financial source links have a 44px target');
+assert.match(styles, /--company-ident-bg/, 'mobile identity uses a light background');
+assert.match(styles, /--company-ident-border/, 'mobile identity uses a thin border');
+for (let index = 1; index <= 4; index += 1) {
+  assert.match(styles, new RegExp(`data-company-token="company-${index}"`), `company-${index}: stable visual token exists`);
+}
+for (const sectionLabel of displayFixture.majorSections) {
+  assert.ok(`${component}\n${readModelSource}`.includes(sectionLabel), `${sectionLabel}: major section label is present`);
+}
 
 if (process.argv.includes('--dist')) {
   const compareHtml = await readFile(new URL('../dist/compare/index.html', import.meta.url), 'utf8');
   const fragmentHtml = await readFile(new URL('../dist/evidence-fragments/company-compare-evidence-v01/index.html', import.meta.url), 'utf8');
   const compareBytes = Buffer.byteLength(compareHtml);
-  const baselineBytes = 584_295;
-  const maximumBytes = 642_725;
+  const baselineBytes = 585_468;
+  const maximumBytes = 644_015;
   assert.ok(compareBytes <= maximumBytes, `legacy Compare HTML ${compareBytes} B must remain within 10% of ${baselineBytes} B`);
   assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
   assert.doesNotMatch(compareHtml, /data-claim-id=/, 'built legacy HTML excludes Company Claim bodies');
@@ -422,13 +739,76 @@ if (process.argv.includes('--dist')) {
   assert.ok(relations.every(relation => !compareHtml.includes(relation.statement)), 'built legacy HTML excludes all Relation statements');
 
   const claimMarkers = (fragmentHtml.match(/data-claim-id=/g) ?? []).length;
+  const claimMarkerIds = [...fragmentHtml.matchAll(/data-claim-id="([^"]+)"/g)].map(match => match[1]);
   const relationMarkers = (fragmentHtml.match(/data-relation-id=/g) ?? []).length;
   const drawers = [...fragmentHtml.matchAll(/<dialog class="evidence-drawer" id="([^"]+)"/g)].map(match => match[1]);
   assert.equal(claimMarkers, 34, 'fragment includes all canonical Claim entries');
+  assert.equal(new Set(claimMarkerIds).size, claimMarkerIds.length, 'detail content has no duplicate Claim entries');
+  assert.deepEqual([...claimMarkerIds].sort(), projectedClaimIds, 'detail content has no missing Claim entry');
   assert.equal(relationMarkers, 19, 'fragment includes all canonical Relation entries');
   assert.equal(drawers.length, 53, 'fragment includes one Evidence drawer per marker');
   assert.equal(new Set(drawers).size, drawers.length, 'fragment has no duplicate drawer IDs');
   assert.match(fragmentHtml, /data-pagefind-ignore="all"/, 'built fragment is outside the Pagefind corpus');
+  assert.ok(Buffer.byteLength(fragmentHtml) <= 314_669, `Evidence fragment ${Buffer.byteLength(fragmentHtml)} B must stay within 5% of 299685 B`);
+  assert.equal((fragmentHtml.match(/data-company-order-label/g) ?? []).length, 35, 'seven matrix sections retain five repeated company identity labels');
+  assert.match(fragmentHtml, /Applied Materials（アプライド・マテリアルズ）/, 'built Set B has the exact Japanese Applied Materials name');
+  assert.match(fragmentHtml, /統合材料ソリューション（Integrated Materials Solution）/, 'general Japanese term precedes the formal English name');
+  assert.match(fragmentHtml, /米国オレゴン州チュアラティン/, 'mixed-language geography is localized');
+  assert.doesNotMatch(fragmentHtml, /オレゴン州Tualatin/, 'mixed-language geography is absent');
+  assert.doesNotMatch(fragmentHtml, /正規化した位置|正規化した製品カテゴリ|正規化された位置/, 'built primary UI contains no normalization terminology');
+  assert.doesNotMatch(fragmentHtml, /products[：:]/, 'built primary UI contains no raw products field label');
+  assert.doesNotMatch(fragmentHtml, /関係データ：収録なし/, 'built primary UI contains no Relation collection-state message');
+  const primaryFragmentHtml = fragmentHtml.replace(/<dialog class="evidence-drawer"[\s\S]*?<\/dialog>/g, '');
+  for (const phrase of displayFixture.prohibitedPrimaryPhrases) {
+    assert.ok(!primaryFragmentHtml.includes(phrase), `built primary UI omits editorial phrase: ${phrase}`);
+  }
+  assert.match(primaryFragmentHtml, />事実</, 'built primary UI retains the Fact label');
+  assert.match(primaryFragmentHtml, />Atlasの見方</, 'built primary UI identifies Atlas Analysis with the reviewed label');
+  assert.match(fragmentHtml, /供給網上の位置/, 'built matrix retains the user-facing supply-chain label');
+  assert.match(fragmentHtml, /<strong[^>]*>半導体製造<\/strong>/, 'supply-chain position is presented as the value without an internal subheading');
+  const productDescriptionInstances = [...fragmentHtml.matchAll(/data-product-description="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(productDescriptionInstances.length, 15, 'expanded mode contains 11 Relation-backed and four Claim-backed Product descriptions');
+  assert.deepEqual([...new Set(productDescriptionInstances)].sort(), productIds, 'built descriptions cover all 11 canonical Product IDs');
+  assert.ok(productDescriptionInstances.every(productId => fragmentHtml.includes(compareProductDisplayDescriptions[productId].description)), 'built Product descriptions use only fixture-locked copy');
+  assert.match(fragmentHtml, /data-expanded-only data-product-description=/, 'Product descriptions are expanded-only');
+  const expandedFinancialStart = fragmentHtml.indexOf('<section class="evidence-expanded-financial"');
+  const expandedFinancialEnd = fragmentHtml.indexOf('<section class="evidence-data-quality', expandedFinancialStart);
+  assert.ok(expandedFinancialStart >= 0 && expandedFinancialEnd > expandedFinancialStart, 'built detailed Financial section is bounded');
+  const expandedFinancialHtml = fragmentHtml.slice(expandedFinancialStart, expandedFinancialEnd);
+  assert.equal((expandedFinancialHtml.match(/scope="col"/g) ?? []).length, 40, 'five tables retain all eight semantic column headings');
+  assert.equal((expandedFinancialHtml.match(/class="financial-basis"/g) ?? []).length, 5, 'accounting basis appears once per Company table');
+  assert.equal((expandedFinancialHtml.match(/会計基準：米国会計基準/g) ?? []).length, 4, 'four USD tables show the Japanese US accounting-basis label once');
+  assert.equal((expandedFinancialHtml.match(/会計基準：日本会計基準/g) ?? []).length, 1, 'Tokyo Electron shows the Japanese accounting-basis label once');
+  for (const token of displayFixture.financialDetailTable.forbiddenDetailedEnglishLabels) {
+    assert.ok(!expandedFinancialHtml.includes(token), `detailed Financial primary UI omits internal label: ${token}`);
+  }
+  const amountHeaderNames = ['売上高', '営業利益', 'フリーキャッシュフロー', '設備投資'];
+  for (const label of amountHeaderNames) {
+    assert.equal((expandedFinancialHtml.match(new RegExp(`${label}<br>（百万ドル）`, 'g')) ?? []).length, 4, `${label}: four USD tables expose the continuous accessible unit label`);
+    assert.equal((expandedFinancialHtml.match(new RegExp(`${label}<br>（百万円）`, 'g')) ?? []).length, 1, `${label}: Tokyo Electron exposes the continuous accessible unit label`);
+  }
+  const orderedPilotCompanyIds = [...fixture.setCompanyIds['set-a'], ...fixture.setCompanyIds['set-b']];
+  const orderedFinancialRecords = orderedPilotCompanyIds.flatMap(companyId => compareFinancialHistory
+    .filter(record => record.companyId === companyId)
+    .sort((left, right) => left.endDate.localeCompare(right.endDate) || left.id.localeCompare(right.id)));
+  const displayedPeriods = [...expandedFinancialHtml.matchAll(/<th class="period" scope="row">([^<]+)<\/th>/g)].map(match => match[1]);
+  assert.deepEqual(displayedPeriods, orderedFinancialRecords.map(record => formatCompareFinancialPeriodLabel(record.periodLabel)), 'display period labels preserve canonical Company, date, and ID order');
+  const financialMetricIds = displayFixture.financialDetailTable.metricIds;
+  const formatExpectedFinancialValue = (metricId, value) => value == null
+    ? '未収録'
+    : metricId === 'operatingMargin' || metricId === 'roic'
+      ? `${Number(value).toLocaleString('ja-JP', { maximumFractionDigits: 1 })}%`
+      : Number(value).toLocaleString('ja-JP', { maximumFractionDigits: 3 });
+  const expectedFinancialCells = orderedFinancialRecords.flatMap(record => financialMetricIds.map(metricId => formatExpectedFinancialValue(metricId, record.metrics[metricId]?.value)));
+  const displayedFinancialCells = [...expandedFinancialHtml.matchAll(/<td class="(?:num|missing)">([^<]+)<\/td>/g)].map(match => match[1]);
+  assert.deepEqual(displayedFinancialCells, expectedFinancialCells, 'display values, missing states, row counts, and order remain canonical');
+  assert.equal((expandedFinancialHtml.match(/class="evidence-source-link"/g) ?? []).length, orderedFinancialRecords.length, 'each canonical Financial row retains one Source link in order');
+  for (const [companyId, displayValue] of Object.entries(displayFixture.financialDetailTable.maxDigitFixtures)) {
+    assert.ok(fragmentHtml.includes(displayValue), `${companyId}: realistic maximum-digit Financial value remains present`);
+  }
+  assert.equal((fragmentHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 5, 'NVIDIA, Broadcom, and Set B use the same detailed Financial table');
+  assert.match(fragmentHtml, /class="num">2,431,568<\/td>/, 'maximum Set B value is rendered as an unwrapped numeric cell');
+  assert.match(fragmentHtml, /class="missing">未収録<\/td>/, 'missing status is rendered outside the numeric class');
   console.log(`Company Compare lazy artifact OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(fragmentHtml)} B fragment / ${claimMarkers + relationMarkers} markers`);
 }
 

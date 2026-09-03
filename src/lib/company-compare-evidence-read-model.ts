@@ -1,6 +1,22 @@
 import productRegistry from '../data/product-registry-v01.json' with { type: 'json' };
 import technologyRegistry from '../data/technology-registry-v01.json' with { type: 'json' };
 import valueChain from '../data/value-chain.json' with { type: 'json' };
+import {
+  compareProductDisplayNameOverrides,
+  compareProductIdsByClaimId,
+  compareTechnologyIdsByClaimId,
+  companyCompareDisplayName,
+  companyCompareDisplayNameParts,
+  dedupeCompareCanonicalItems,
+  localizeCompareLocation,
+  resolveCompareClaimDisplay,
+  resolveCompareFinancialTablePresentation,
+  resolveCompareProductDisplayDescription,
+  type CompareCanonicalDisplayItem,
+  type CompareDisplayCopy,
+  type CompareDisplayNameParts,
+  type CompareProductDisplayDescription,
+} from './company-compare-display.ts';
 import { companyEvidence, type CompanyEvidenceBinding, type CompanyEvidenceClaim } from './company-evidence.ts';
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
 import { deriveRelationVerificationPresentation, type RelationVerificationPresentation } from './company-compare-evidence-ui.ts';
@@ -16,13 +32,13 @@ import { resolveSource, type SourceRecord } from './source-registry.ts';
 export const compareEvidenceDimensionLabels: Readonly<Record<string, string>> = Object.freeze({
   'company-identity': '企業情報',
   'ai-role': 'AIインフラでの役割',
-  'value-chain-position': 'バリューチェーン上の位置',
-  'key-products': '主要製品',
-  'technology-moat': '技術・競争優位',
-  'capacity-roadmap': '生産能力・ロードマップ',
+  'value-chain-position': '供給網上の位置',
+  'key-products': '主な製品',
+  'technology-moat': '技術・競争力',
+  'capacity-roadmap': '設備能力・ロードマップ',
   financial: '財務',
-  'key-risks': '主要リスク',
-  'evidence-trace': '根拠とデータ品質',
+  'key-risks': '主なリスク',
+  'evidence-trace': '根拠の追跡・データ品質',
 });
 
 export const compareEvidencePrimaryDimensionIds = Object.freeze(
@@ -40,12 +56,16 @@ export interface CompareEvidenceIdentity {
   country: string;
   primaryLayer: string;
   lastReviewed?: string | null;
+  displayName?: string;
+  displayNameParts?: CompareDisplayNameParts;
+  displayCountry?: string;
 }
 
 export interface CompareEvidenceClaimEntry {
   claim: CompanyEvidenceClaim;
   bindings: CompanyEvidenceBinding[];
   sources: SourceRecord[];
+  display: CompareDisplayCopy;
 }
 
 export interface CompareEvidenceRelationEntry {
@@ -55,6 +75,8 @@ export interface CompareEvidenceRelationEntry {
   objectLabel: string;
   scopeLabel: string;
   verification: RelationVerificationPresentation;
+  display: CompareDisplayCopy;
+  productDescription: ({ productId: string } & CompareProductDisplayDescription) | null;
 }
 
 const claimById = new Map(companyEvidence.claims.map(claim => [claim.id, claim]));
@@ -63,7 +85,7 @@ const financialRecordById = new Map(financialHistory.map(record => [record.id, r
 
 const productLabelById = new Map(productRegistry.records.map(record => [
   record.id,
-  record.displayNames.ja || record.canonicalName,
+  compareProductDisplayNameOverrides[record.id] || record.displayNames.ja || record.canonicalName,
 ]));
 const technologyLabelById = new Map(technologyRegistry.records.map(record => [
   record.id,
@@ -109,7 +131,7 @@ const resolveClaimEntry = (claimId: string, companyId: string): CompareEvidenceC
     const source = resolveRequiredSource(binding.sourceId);
     return [source.id, source] as const;
   })).values()];
-  return { claim, bindings, sources };
+  return { claim, bindings, sources, display: resolveCompareClaimDisplay(claim.id) };
 };
 
 const labelIds = (ids: readonly string[], labels: ReadonlyMap<string, string>, label: string) => ids.map(id => {
@@ -127,15 +149,45 @@ export const formatRelationScope = (relation: ResolvedRelation) => {
     parts.push(`技術：${labelIds(relation.scope.technologyIds, technologyLabelById, 'Technology').join('、')}`);
   }
   if (relation.scope.valueChainNodeIds.length) {
-    parts.push(`工程：${labelIds(relation.scope.valueChainNodeIds, valueChainLabelById, 'ValueChainNode').join('、')}`);
+    parts.push(`供給網：${labelIds(relation.scope.valueChainNodeIds, valueChainLabelById, 'ValueChainNode').join('、')}`);
   }
   if (relation.scope.marketIds.length) parts.push(`市場：${relation.scope.marketIds.join('、')}`);
   if (relation.scope.geographies.length) parts.push(`地域：${relation.scope.geographies.join('、')}`);
   if (relation.scope.capacityBasis) parts.push(`能力基準：${relation.scope.capacityBasis}`);
-  return parts.join(' / ') || 'Company全体';
+  return parts.join(' / ') || '会社全体';
 };
 
-const resolveRelationEntry = (relationId: string): CompareEvidenceRelationEntry => {
+const relationDisplay = (
+  relation: ResolvedRelation,
+  objectLabel: string,
+  identityById: ReadonlyMap<string, CompareEvidenceIdentity>,
+): CompareDisplayCopy => {
+  if (relation.relationType === 'PRODUCES') {
+    return { title: objectLabel, statement: '', groundingIds: [relation.relationId] };
+  }
+  if (relation.relationType === 'POSITIONED_IN') {
+    return { title: objectLabel, statement: '', groundingIds: [relation.relationId] };
+  }
+  if (relation.relationType === 'COMPETES_WITH') {
+    const subject = identityById.get(relation.subjectId);
+    const object = identityById.get(relation.objectId);
+    if (!subject || !object) {
+      throw new Error(`Company Compare display cannot resolve Relation endpoint: ${relation.relationId}`);
+    }
+    const products = labelIds(relation.scope.productIds, productLabelById, 'Product').join('・');
+    return {
+      title: '競合関係',
+      statement: `${companyCompareDisplayName(subject)}と${companyCompareDisplayName(object)}は${products || '対象製品'}で競合する。`,
+      groundingIds: [relation.relationId],
+    };
+  }
+  throw new Error(`Company Compare display does not support Relation type: ${relation.relationType}`);
+};
+
+const resolveRelationEntry = (
+  relationId: string,
+  identityById: ReadonlyMap<string, CompareEvidenceIdentity>,
+): CompareEvidenceRelationEntry => {
   const relation = relationById.get(relationId);
   if (!relation) throw new Error(`Company Compare Evidence UI cannot resolve Relation: ${relationId}`);
   const verification = deriveRelationVerificationPresentation(
@@ -156,15 +208,42 @@ const resolveRelationEntry = (relationId: string): CompareEvidenceRelationEntry 
     const source = resolveRequiredSource(binding.sourceId);
     return [source.id, source] as const;
   })).values()];
+  const objectLabel = relationObjectLabel(relation);
   return {
     relation,
     bindings,
     sources,
-    objectLabel: relationObjectLabel(relation),
+    objectLabel,
     scopeLabel: formatRelationScope(relation),
     verification,
+    display: relationDisplay(relation, objectLabel, identityById),
+    productDescription: relation.relationType === 'PRODUCES'
+      ? { productId: relation.objectId, ...resolveCompareProductDisplayDescription(relation.objectId) }
+      : null,
   };
 };
+
+const productDisplayItem = (canonicalId: string, groundingIds: readonly string[]): CompareCanonicalDisplayItem => {
+  const label = productLabelById.get(canonicalId);
+  if (!label) throw new Error(`Company Compare display cannot resolve Product: ${canonicalId}`);
+  const description = resolveCompareProductDisplayDescription(canonicalId);
+  return {
+    canonicalId,
+    label,
+    groundingIds,
+    description: description.description,
+    descriptionGroundingIds: description.groundingIds,
+  };
+};
+
+const displayTechnologies = (claims: readonly CompareEvidenceClaimEntry[]): CompareCanonicalDisplayItem[] =>
+  dedupeCompareCanonicalItems(claims.flatMap(entry =>
+    (compareTechnologyIdsByClaimId[entry.claim.id] ?? []).map(canonicalId => {
+      const label = technologyLabelById.get(canonicalId);
+      if (!label) throw new Error(`Company Compare display cannot resolve Technology: ${canonicalId}`);
+      return { canonicalId, label, groundingIds: [entry.claim.id] };
+    }),
+  ));
 
 const metricLabels: Readonly<Record<string, string>> = Object.freeze({
   operatingMargin: '営業利益率',
@@ -203,34 +282,50 @@ const formatFinancialReference = (reference: any) => {
   };
 };
 
-const buildExpandedFinancial = (companyId: string) => financialHistory
-  .filter(record => record.companyId === companyId)
-  .sort((left, right) => left.endDate.localeCompare(right.endDate) || left.id.localeCompare(right.id))
-  .map(record => ({
-    id: record.id,
-    periodType: record.periodType,
-    periodLabel: record.periodLabel,
-    endDate: record.endDate,
-    currency: record.currency,
-    unit: record.unit,
-    accountingBasis: record.accountingBasis,
-    verifiedAt: record.verifiedAt,
-    source: resolveRequiredSource(record.sourceId),
-    metrics: Object.entries(record.metrics)
-      .filter(([metricId, metric]) => metric.value != null && metricId in metricLabels)
-      .map(([metricId, metric]) => ({
-        metricId,
-        label: metricLabels[metricId],
-        value: metric.value,
-        displayValue: formatMetric(metricId, metric.value),
-        status: metric.status,
-        basis: metric.basis,
-      })),
-  }));
+const buildExpandedFinancial = (companyId: string) => {
+  const records = financialHistory
+    .filter(record => record.companyId === companyId)
+    .sort((left, right) => left.endDate.localeCompare(right.endDate) || left.id.localeCompare(right.id));
+  const presentation = resolveCompareFinancialTablePresentation(records);
+  return {
+    presentation: {
+      amountUnitLabel: presentation.amountUnitLabel,
+      accountingBasisLabel: presentation.accountingBasisLabel,
+    },
+    records: records.map((record, recordIndex) => ({
+      id: record.id,
+      periodType: record.periodType,
+      periodLabel: record.periodLabel,
+      displayPeriodLabel: presentation.periodLabels[recordIndex],
+      endDate: record.endDate,
+      currency: record.currency,
+      unit: record.unit,
+      accountingBasis: record.accountingBasis,
+      verifiedAt: record.verifiedAt,
+      source: resolveRequiredSource(record.sourceId),
+      metrics: Object.entries(record.metrics)
+        .filter(([metricId, metric]) => metric.value != null && metricId in metricLabels)
+        .map(([metricId, metric]) => ({
+          metricId,
+          label: metricLabels[metricId],
+          value: metric.value,
+          displayValue: formatMetric(metricId, metric.value),
+          status: metric.status,
+          basis: metric.basis,
+        })),
+    })),
+  };
+};
 
 export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidenceIdentity[]) {
-  const identityById = new Map(identities.map(identity => [identity.id, identity]));
   const pilotCompanyIds = [...new Set(pilotCompareEvidenceProjection.sets.flatMap(setRecord => setRecord.orderedCompanyIds))];
+  const pilotCompanyIdSet = new Set(pilotCompanyIds);
+  const identityById = new Map(identities.map(identity => [identity.id, {
+    ...identity,
+    displayName: companyCompareDisplayName(identity),
+    displayNameParts: companyCompareDisplayNameParts(identity),
+    displayCountry: pilotCompanyIdSet.has(identity.id) ? localizeCompareLocation(identity.country) : identity.country,
+  }]));
   for (const companyId of pilotCompanyIds) {
     if (!identityById.has(companyId)) {
       throw new Error(`Company Compare Evidence UI cannot resolve Company: ${companyId}`);
@@ -243,15 +338,31 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
   const companies = pilotCompanyIds.map(companyId => {
     const projected = projectedCompanies.get(companyId);
     if (!projected) throw new Error(`Company Compare Evidence UI cannot resolve Projection company: ${companyId}`);
+    const expandedFinancial = buildExpandedFinancial(companyId);
     return {
       identity: identityById.get(companyId)!,
-      dimensions: projected.dimensions.map(dimension => ({
-        ...dimension,
-        claims: dimension.initialClaimIds.map(claimId => resolveClaimEntry(claimId, companyId)),
-        relations: dimension.initialRelationIds.map(resolveRelationEntry),
-      })),
+      dimensions: projected.dimensions.map(dimension => {
+        const claims = dimension.initialClaimIds.map(claimId => resolveClaimEntry(claimId, companyId));
+        const relations = dimension.initialRelationIds.map(relationId => resolveRelationEntry(relationId, identityById));
+        const relationProducts = relations
+          .filter(entry => entry.relation.relationType === 'PRODUCES')
+          .map(entry => productDisplayItem(entry.relation.objectId, [entry.relation.relationId]));
+        const claimProducts = claims.flatMap(entry =>
+          (compareProductIdsByClaimId[entry.claim.id] ?? [])
+            .map(productId => productDisplayItem(productId, [entry.claim.id])),
+        );
+        const displayProducts = dedupeCompareCanonicalItems([...relationProducts, ...claimProducts]);
+        return {
+          ...dimension,
+          claims,
+          relations,
+          displayProducts,
+          displayTechnologies: displayTechnologies(claims),
+        };
+      }),
       evidenceTrace: projected.evidenceTrace,
-      expandedFinancial: buildExpandedFinancial(companyId),
+      expandedFinancial: expandedFinancial.records,
+      expandedFinancialPresentation: expandedFinancial.presentation,
     };
   });
 

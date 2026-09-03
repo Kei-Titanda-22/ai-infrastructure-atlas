@@ -1,0 +1,307 @@
+{
+  "schemaVersion": "0.1",
+  "claimDisplayIds": [
+    "applied-ai-role",
+    "applied-materials-capacity-expansion-gap-closure",
+    "applied-positioning",
+    "applied-products",
+    "applied-risks",
+    "applied-technology",
+    "applied-value-chain",
+    "broadcom-ai-role",
+    "broadcom-positioning",
+    "broadcom-products",
+    "broadcom-risks",
+    "broadcom-strategy-triage-remediation-v02",
+    "broadcom-technology",
+    "broadcom-value-chain",
+    "lam-research-ai-role",
+    "lam-research-capacity-expansion-triage-remediation-v02",
+    "lam-research-positioning",
+    "lam-research-products",
+    "lam-research-risks",
+    "lam-research-technology",
+    "lam-research-value-chain",
+    "nvidia-ai-role",
+    "nvidia-positioning",
+    "nvidia-products",
+    "nvidia-risks",
+    "nvidia-strategy-triage-remediation-v02",
+    "nvidia-value-chain",
+    "tokyo-electron-ai-role",
+    "tokyo-electron-capacity-expansion-triage-remediation-v02",
+    "tokyo-electron-positioning",
+    "tokyo-electron-products",
+    "tokyo-electron-risks",
+    "tokyo-electron-technology",
+    "tokyo-electron-value-chain"
+  ],
+  "claimTypeDisplayLabels": {
+    "fact": "事実",
+    "company-guidance": "会社見解",
+    "company-positioning": "会社見解",
+    "atlas-analysis": "Atlasの見方",
+    "estimate": "Atlasの見方"
+  },
+  "projectedClaimTypeCounts": {
+    "fact": 8,
+    "company-guidance": 3,
+    "company-positioning": 3,
+    "atlas-analysis": 20
+  },
+  "riskDisplayCopy": {
+    "broadcom-risks": {
+      "title": "顧客集中とAI投資の変動",
+      "statement": "顧客集中、大型案件の世代交代、半導体市況、AI投資の増減が業績を左右する可能性がある。"
+    },
+    "applied-risks": {
+      "title": "顧客の設備投資に左右される需要",
+      "statement": "先端半導体工場の投資サイクルと大口顧客の設備投資動向が、装置需要を大きく左右する。"
+    },
+    "lam-research-risks": {
+      "title": "メモリ投資・輸出規制・競争",
+      "statement": "メモリ向け設備投資の増減、輸出規制、工程別のシェア競争が主な業績変動要因となる。"
+    },
+    "tokyo-electron-risks": {
+      "title": "設備投資サイクルと輸出規制",
+      "statement": "半導体製造装置の投資サイクル、輸出規制、特定工程での競争激化が主なリスクとなる。"
+    }
+  },
+  "preservedFactRiskCopy": {
+    "claimId": "nvidia-risks",
+    "title": "外部製造への依存",
+    "statement": "製造工程を第三者へ委託しており、供給制約や特定サプライヤーへの依存をリスクとして開示している。"
+  },
+  "prohibitedPrimaryPhrases": [
+    "Atlasによる分析",
+    "補足",
+    "主な確認点",
+    "確認点とする",
+    "注目点とする",
+    "留意点とする",
+    "見ていく必要がある"
+  ],
+  "genericTermTranslations": {
+    "compute": "演算",
+    "interconnect": "相互接続",
+    "system": "システム",
+    "software": "ソフトウェア",
+    "switching silicon": "スイッチ用半導体",
+    "connectivity semiconductors": "接続用半導体",
+    "Value Chain": "供給網上の位置",
+    "scope": "対象範囲",
+    "freshness": "更新状況",
+    "developer ecosystem": "開発者エコシステム",
+    "Integrated Materials Solution": "統合材料ソリューション",
+    "Tualatin": "チュアラティン",
+    "United States": "米国",
+    "Japan": "日本"
+  },
+  "locationDisplayNames": {
+    "United States": "米国",
+    "Japan": "日本",
+    "Tualatin": "チュアラティン",
+    "Oregon, United States": "米国オレゴン州",
+    "米国": "米国",
+    "日本": "日本",
+    "チュアラティン": "チュアラティン",
+    "米国オレゴン州": "米国オレゴン州"
+  },
+  "productDescriptions": {
+    "product-category-coater-developer-equipment": {
+      "description": "半導体製造で、材料の塗布と現像を行う装置。",
+      "groundingIds": ["tokyo-electron-products", "tokyo-electron-overview"]
+    },
+    "product-category-connectivity-semiconductor": {
+      "description": "機器やシステム間の接続を支える半導体。",
+      "groundingIds": ["broadcom-products", "broadcom-overview", "rel-broadcom-produces-connectivity-semiconductor"]
+    },
+    "product-category-cpu": {
+      "description": "データセンター向け基盤で、計算処理を担うプロセッサー。",
+      "groundingIds": ["nvidia-products", "nvidia-overview", "rel-nvidia-produces-cpu"]
+    },
+    "product-category-custom-accelerator-asic": {
+      "description": "顧客用途に合わせて設計し、カスタム演算を担う半導体。",
+      "groundingIds": ["broadcom-products", "broadcom-positioning", "broadcom-ai-role", "rel-broadcom-produces-custom-accelerator-asic"]
+    },
+    "product-category-dpu": {
+      "description": "データセンターで、ネットワーク処理を担うプロセッサー。",
+      "groundingIds": ["nvidia-products", "nvidia-networking", "rel-nvidia-produces-dpu"]
+    },
+    "product-category-ethernet-switching-silicon": {
+      "description": "Ethernetネットワークで、接続とスイッチングを担う半導体。",
+      "groundingIds": ["broadcom-products", "broadcom-ai-role", "rel-broadcom-produces-ethernet-switching-silicon"]
+    },
+    "product-category-gpu": {
+      "description": "アクセラレーテッド・コンピューティングの演算を担うプロセッサー。",
+      "groundingIds": ["nvidia-products", "nvidia-overview", "rel-nvidia-produces-gpu"]
+    },
+    "product-category-semiconductor-deposition-equipment": {
+      "description": "半導体製造で、ウェーハ上へ材料を堆積させる装置。",
+      "groundingIds": ["applied-products", "lam-research-products", "tokyo-electron-products", "rel-applied-materials-produces-semiconductor-deposition-equipment", "rel-lam-research-produces-semiconductor-deposition-equipment"]
+    },
+    "product-category-semiconductor-etch-equipment": {
+      "description": "ウェーハ材料を除去するエッチング装置。",
+      "groundingIds": ["lam-research-products", "tokyo-electron-products", "rel-lam-research-produces-semiconductor-etch-equipment"]
+    },
+    "product-category-wafer-cleaning-equipment": {
+      "description": "ウェーハを洗浄する半導体製造装置。",
+      "groundingIds": ["lam-research-products", "tokyo-electron-products", "rel-lam-research-produces-wafer-cleaning-equipment"]
+    },
+    "product-category-wafer-fabrication-equipment": {
+      "description": "半導体製造のウェーハ前工程で使用する装置群。",
+      "groundingIds": ["applied-value-chain", "lam-research-value-chain", "tokyo-electron-value-chain", "rel-lam-research-produces-wafer-fabrication-equipment"]
+    }
+  },
+  "productIdsByClaimId": {
+    "nvidia-products": ["product-category-gpu", "product-category-cpu", "product-category-dpu"],
+    "broadcom-products": ["product-category-custom-accelerator-asic", "product-category-ethernet-switching-silicon", "product-category-connectivity-semiconductor"],
+    "applied-products": ["product-category-semiconductor-deposition-equipment"],
+    "lam-research-products": ["product-category-wafer-fabrication-equipment", "product-category-semiconductor-deposition-equipment", "product-category-semiconductor-etch-equipment", "product-category-wafer-cleaning-equipment"],
+    "tokyo-electron-products": ["product-category-coater-developer-equipment", "product-category-semiconductor-etch-equipment", "product-category-semiconductor-deposition-equipment", "product-category-wafer-cleaning-equipment"]
+  },
+  "preservedProperNouns": [
+    "Atlas",
+    "AI",
+    "NVIDIA",
+    "Broadcom",
+    "Applied Materials",
+    "Lam Research",
+    "Tokyo Electron",
+    "NVIDIA AI Enterprise",
+    "DGX Cloud",
+    "Blackwell GPU",
+    "Grace CPU",
+    "BlueField DPU",
+    "Spectrum-X",
+    "Integrated Materials Solution",
+    "EPIC Center",
+    "Building G",
+    "GPU",
+    "CPU",
+    "DPU",
+    "ASIC",
+    "Ethernet",
+    "3D NAND",
+    "DRAM",
+    "HBM",
+    "GAAP",
+    "IFRS"
+  ],
+  "companyDisplayNames": {
+    "nvidia": "NVIDIA（エヌビディア）",
+    "broadcom": "Broadcom（ブロードコム）",
+    "applied-materials": "Applied Materials（アプライド・マテリアルズ）",
+    "lam-research": "Lam Research（ラムリサーチ）",
+    "tokyo-electron": "東京エレクトロン"
+  },
+  "companyIdentityLink": {
+    "className": "company-name-link",
+    "bilingualCompanyIds": ["nvidia", "broadcom", "applied-materials", "lam-research"],
+    "singleLineCompanyIds": ["tokyo-electron"],
+    "finalLocationsPerCompany": 11,
+    "anchorsPerIdentity": 1
+  },
+  "presentationTokens": ["01", "02", "03", "04"],
+  "financialDetailTable": {
+    "metricIds": ["revenue", "operatingProfit", "operatingMargin", "freeCashFlow", "capex", "roic"],
+    "columnHeadingAlignment": "center",
+    "columnHeadingVerticalAlignment": "middle",
+    "numericAlignment": "right",
+    "verticalAlignment": "middle",
+    "periodAlignment": "left",
+    "sourceMinimumTargetPx": 44,
+    "amountUnitByCompany": {
+      "nvidia": "百万ドル",
+      "broadcom": "百万ドル",
+      "applied-materials": "百万ドル",
+      "lam-research": "百万ドル",
+      "tokyo-electron": "百万円"
+    },
+    "accountingBasisByCompany": {
+      "nvidia": "米国会計基準",
+      "broadcom": "米国会計基準",
+      "applied-materials": "米国会計基準",
+      "lam-research": "米国会計基準",
+      "tokyo-electron": "日本会計基準"
+    },
+    "periodLabels": {
+      "FY2024": "2024年度",
+      "FY2025": "2025年度",
+      "FY2026": "2026年度",
+      "Q2 FY2025": "2025年度 第2四半期",
+      "Q3 FY2025": "2025年度 第3四半期",
+      "Q1 FY2026": "2026年度 第1四半期",
+      "Q2 FY2026": "2026年度 第2四半期",
+      "Q3 FY2026": "2026年度 第3四半期",
+      "Q1 FY2027": "2027年度 第1四半期",
+      "Q2 FY2027": "2027年度 第2四半期",
+      "FY2026 Q1": "2026年度 第1四半期",
+      "FY2026 Q2": "2026年度 第2四半期",
+      "FY2026 Q3": "2026年度 第3四半期",
+      "FY2026 Q4": "2026年度 第4四半期",
+      "FY2027 Q1": "2027年度 第1四半期",
+      "June 2025 quarter": "2025年6月期（四半期）",
+      "March 2026 quarter": "2026年3月期（四半期）",
+      "June 2026 quarter": "2026年6月期（四半期）"
+    },
+    "recordCountByCompany": {
+      "nvidia": 6,
+      "broadcom": 3,
+      "applied-materials": 2,
+      "lam-research": 5,
+      "tokyo-electron": 7
+    },
+    "forbiddenDetailedEnglishLabels": ["USD · million", "JPY · million", "US GAAP", "Japanese GAAP"],
+    "maxDigitFixtures": {
+      "applied-materials": "7,302",
+      "lam-research": "18,435.591",
+      "tokyo-electron": "2,431,568"
+    }
+  },
+  "summaryMarkerCounts": {
+    "set-a": 16,
+    "set-b": 20
+  },
+  "approvedPrimaryEnglishTokens": [
+    "AI",
+    "ASIC",
+    "Applied",
+    "Atlas",
+    "Blackwell",
+    "BlueField",
+    "Broadcom",
+    "Building",
+    "CPU",
+    "Center",
+    "Cloud",
+    "D",
+    "DGX",
+    "DPU",
+    "DRAM",
+    "EPIC",
+    "Enterprise",
+    "G",
+    "GPU",
+    "Grace",
+    "HBM",
+    "Integrated",
+    "Lam",
+    "Materials",
+    "NAND",
+    "NVIDIA",
+    "Research",
+    "Solution",
+    "Spectrum-X"
+  ],
+  "majorSections": [
+    "企業情報",
+    "AIインフラでの役割",
+    "主な製品",
+    "技術・競争力",
+    "設備能力・ロードマップ",
+    "主なリスク",
+    "財務",
+    "根拠の追跡・データ品質"
+  ]
+}
