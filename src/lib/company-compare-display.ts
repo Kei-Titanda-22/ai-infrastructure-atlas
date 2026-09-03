@@ -248,8 +248,8 @@ export const compareClaimDisplayCopy = Object.freeze<Record<string, CompareDispl
   ),
   'broadcom-risks': claimCopy(
     'broadcom-risks',
-    '主な確認点',
-    '顧客集中、大型案件の世代交代、半導体景気とAI投資の変動を主な確認点とする。',
+    '顧客集中とAI投資の変動',
+    '顧客集中、大型案件の世代交代、半導体市況、AI投資の増減が業績を左右する可能性がある。',
   ),
   'applied-ai-role': claimCopy(
     'applied-ai-role',
@@ -283,8 +283,8 @@ export const compareClaimDisplayCopy = Object.freeze<Record<string, CompareDispl
   ),
   'applied-risks': claimCopy(
     'applied-risks',
-    '主な確認点',
-    '先端半導体工場の投資サイクルと大口顧客の設備投資変動を、装置需要を左右する主な確認点とする。',
+    '顧客の設備投資に左右される需要',
+    '先端半導体工場の投資サイクルと大口顧客の設備投資動向が、装置需要を大きく左右する。',
   ),
   'lam-research-ai-role': claimCopy(
     'lam-research-ai-role',
@@ -318,8 +318,8 @@ export const compareClaimDisplayCopy = Object.freeze<Record<string, CompareDispl
   ),
   'lam-research-risks': claimCopy(
     'lam-research-risks',
-    '主な確認点',
-    'メモリ向け製造装置需要の変動、輸出規制、工程シェア競争を主な確認点とする。',
+    'メモリ投資・輸出規制・競争',
+    'メモリ向け設備投資の増減、輸出規制、工程別のシェア競争が主な業績変動要因となる。',
   ),
   'tokyo-electron-ai-role': claimCopy(
     'tokyo-electron-ai-role',
@@ -353,8 +353,8 @@ export const compareClaimDisplayCopy = Object.freeze<Record<string, CompareDispl
   ),
   'tokyo-electron-risks': claimCopy(
     'tokyo-electron-risks',
-    '主な確認点',
-    '半導体製造装置の投資サイクル、輸出規制、特定工程での競争激化を主な確認点とする。',
+    '設備投資サイクルと輸出規制',
+    '半導体製造装置の投資サイクル、輸出規制、特定工程での競争激化が主なリスクとなる。',
   ),
 });
 

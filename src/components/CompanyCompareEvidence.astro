@@ -126,7 +126,7 @@ const clientPayload = {
     <div class="evidence-detail-control-wrap">
       <div class="evidence-detail-controls" role="group" aria-label="表示する情報量">
         <button type="button" data-evidence-detail="summary" aria-pressed="true" aria-label="要点 — 代表情報だけを表示">要点</button>
-        <button type="button" data-evidence-detail="expanded" aria-pressed="false" aria-label="詳細 — 補足・全根拠・財務履歴まで表示">詳細</button>
+        <button type="button" data-evidence-detail="expanded" aria-pressed="false" aria-label="詳細 — 全根拠・財務履歴まで表示">詳細</button>
       </div>
       <p id="evidence-detail-description" data-evidence-detail-description>要点 — 代表情報だけを表示</p>
     </div>
@@ -192,7 +192,7 @@ const clientPayload = {
                     {(typeGroups.fact || typeGroups.company || typeGroups.analysis) && <div class="evidence-epistemic-notes">
                       {typeGroups.fact && <span>事実</span>}
                       {typeGroups.company && <span>会社見解</span>}
-                      {typeGroups.analysis && <span class="evidence-epistemic-analysis">Atlasによる分析</span>}
+                      {typeGroups.analysis && <span class="evidence-epistemic-analysis">Atlasの見方</span>}
                     </div>}
                     {dimension.sections.map((section, sectionIndex) => {
                       const displayedRelations = relationsForDisplay(section.relations);
@@ -208,7 +208,6 @@ const clientPayload = {
                         {section.displayTechnologies.map((item, itemIndex) => <li data-canonical-id={item.canonicalId} data-grounding-ids={item.groundingIds.join(',')} data-summary={itemIndex < 3 ? 'show' : 'hide'}>{item.label}</li>)}
                       </ul>}
                       {section.claims.map(entry => <div class="evidence-claim-entry" data-claim-id={entry.claim.id} data-claim-priority={entry.claim.priority} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryClaimIds.has(entry.claim.id) ? 'show' : 'hide'}>
-                        {section.supplementalP2 && entry.claim.priority === 'P2' && <span class="evidence-supplement">補足</span>}
                         <CompanyCompareEvidenceClaim
                           claim={entry.claim}
                           evidence={entry.bindings}

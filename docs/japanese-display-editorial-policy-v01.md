@@ -67,9 +67,9 @@
 
 ## 7. 情報階層
 
-要点表示は、企業の短い役割要約、各sectionの代表P1、P1がない場合だけ既存P2、主な製品最大3件、関連技術最大3件、供給網上の位置1件、主要な競争上の特徴、最新財務要点に限定する。補足P2、製品説明、Relation詳細、Evidence trace、財務履歴はpresentation上隠す。
+要点表示は、企業の短い役割要約、各sectionの代表P1、P1がない場合だけ既存P2、主な製品最大3件、関連技術最大3件、供給網上の位置1件、主要な競争上の特徴、最新財務要点に限定する。要点で選択されなかったP2、製品説明、Relation詳細、Evidence trace、財務履歴はpresentation上隠す。
 
-詳細表示は現在の全P1 / P2投影、Product / Technology全対象、Productの役割説明、供給網上の位置、補足、Relation詳細、Evidence trace、財務履歴を表示する。要点で隠したcanonical Claim / Relation / Evidenceは削除せず、詳細で再表示する。供給網上の位置はAIインフラでの役割の補助区分とし、その直下に値を表示する。`正規化した位置`のような内部の中間見出しは追加しない。
+詳細表示は現在の全P1 / P2投影、Product / Technology全対象、Productの役割説明、供給網上の位置、Relation詳細、Evidence trace、財務履歴を表示する。P2であることだけを理由に`補足`という反復ラベルを付けない。要点で隠したcanonical Claim / Relation / Evidenceは削除せず、詳細で再表示する。供給網上の位置はAIインフラでの役割の補助区分とし、その直下に値を表示する。`正規化した位置`のような内部の中間見出しは追加しない。
 
 大セクションは、企業情報、AIインフラでの役割、主な製品、技術・競争力、設備能力・ロードマップ、主なリスク、財務、根拠の追跡・データ品質とする。
 
@@ -90,6 +90,9 @@ Compare専用fixtureで、次を固定する。
 - P1 / P2 / P3、Claim / Relation marker、Financial compatibilityの既存snapshot
 - summary marker Set A 16 / Set B 20、expanded marker Set A 21 / Set B 32 / total 53
 - 600px以下だけのcell identity stripと、601px以上のsticky column header
+- Factの表示ラベル`事実`、Atlas Analysisの表示ラベル`Atlasの見方`と、34件の内部claimType件数
+- 4件のAtlas Analysisリスク見出し・本文と、NVIDIAのFactリスク文言
+- primary UIからの`Atlasによる分析`、`補足`、`主な確認点`等の編集者視点表現の排除
 
 本規格の適用でcanonical dataを変更する必要が生じた場合はHARD STOPとする。
 
@@ -101,3 +104,11 @@ Compare専用fixtureで、次を固定する。
 - 説明のgrounding Claim ID／Relation IDはfixtureで解決可能性を検証し、canonical Claim / Relation statementとEvidence drawerは書き換えない。
 - 要点は製品名と既存Evidence markerを中心にし、説明を表示しない。詳細だけで製品名の直下に説明を表示する。
 - 既存データでgroundできないProductは説明を推測せずHARD STOPとする。
+
+## 10. 情報区分とリスク見出し
+
+- Factは`事実`、Atlas Analysisは`Atlasの見方`と表示する。内部の`fact`、`atlas-analysis`、`estimate`等のclaimTypeは変更しない。
+- 情報区分はsection内で反復せず、本文から独立した控えめな注記として示す。各Claimのaccessible nameには情報区分と見出しを含め、色だけに依存しない。
+- リスク見出しは、顧客集中、設備投資、輸出規制、競争、外部製造依存など、利用者が比較する具体的な対象を示す。
+- `主な確認点`、`確認点とする`、`注目点とする`、`留意点とする`、`見ていく必要がある`のような編集者の行為を主語にした表現をprimary UIへ置かない。
+- Compare専用display copyの編集は既存Claimの意味範囲内に限定し、canonical Claim、Evidence Binding、Source、Locatorを変更しない。drawerの詳細情報ではcanonical Claimを正本として表示する。

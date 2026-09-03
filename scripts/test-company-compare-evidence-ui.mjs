@@ -49,6 +49,12 @@ const claimComponent = await readFile(new URL('../src/components/CompanyCompareE
 const controller = await readFile(new URL('../src/scripts/company-compare-evidence-ui.ts', import.meta.url), 'utf8');
 const styles = await readFile(new URL('../src/styles/company-compare-evidence-v01.css', import.meta.url), 'utf8');
 const readModelSource = await readFile(new URL('../src/lib/company-compare-evidence-read-model.ts', import.meta.url), 'utf8');
+const parsedClaimTypeLabels = Object.fromEntries(
+  [...claimComponent.matchAll(/^\s*(?:'([^']+)'|([a-z]+)):\s*'([^']+)',$/gm)]
+    .map(match => [match[1] ?? match[2], match[3]])
+    .filter(([key]) => key in displayFixture.claimTypeDisplayLabels),
+);
+assert.deepEqual(parsedClaimTypeLabels, displayFixture.claimTypeDisplayLabels, 'Claim type display labels are fixture-locked');
 const pilotCompanyRecords = Object.fromEntries(await Promise.all(
   ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron'].map(async companyId => [
     companyId,
@@ -90,6 +96,12 @@ const projectedClaimIds = [...new Set(projection.sets.flatMap(setRecord => setRe
   company.dimensions.flatMap(dimension => dimension.initialClaimIds),
 )))].sort();
 assert.deepEqual(projectedClaimIds, displayFixture.claimDisplayIds, 'display copy coverage equals the projection Claim corpus');
+const projectedClaimTypeCounts = Object.fromEntries([...projectedClaimIds.reduce((counts, claimId) => {
+  const claimType = claimById.get(claimId)?.claimType;
+  counts.set(claimType, (counts.get(claimType) ?? 0) + 1);
+  return counts;
+}, new Map()).entries()].sort(([left], [right]) => left.localeCompare(right)));
+assert.deepEqual(projectedClaimTypeCounts, displayFixture.projectedClaimTypeCounts, 'all 34 internal Claim types remain unchanged');
 const productIds = productRegistry.records.map(record => record.id).sort();
 assert.deepEqual(Object.keys(compareProductDisplayDescriptions).sort(), productIds, 'all and only Pilot canonical Products have descriptions');
 const descriptionGroundingIds = new Set([...claimById.keys(), ...relationById.keys()]);
@@ -112,6 +124,25 @@ for (const claimId of projectedClaimIds) {
   assert.deepEqual(display.groundingIds, [claimId], `${claimId}: display sentence is deterministically grounded`);
   assert.ok(display.title.trim() && display.statement.trim(), `${claimId}: display title and statement are non-empty`);
 }
+for (const [claimId, expectedCopy] of Object.entries(displayFixture.riskDisplayCopy)) {
+  assert.deepEqual(
+    { title: compareClaimDisplayCopy[claimId].title, statement: compareClaimDisplayCopy[claimId].statement },
+    expectedCopy,
+    `${claimId}: risk display copy is fixture-locked`,
+  );
+  assert.equal(claimById.get(claimId).claimType, 'atlas-analysis', `${claimId}: internal Atlas Analysis type is unchanged`);
+}
+const preservedFactRisk = displayFixture.preservedFactRiskCopy;
+assert.deepEqual(
+  {
+    claimId: preservedFactRisk.claimId,
+    title: compareClaimDisplayCopy[preservedFactRisk.claimId].title,
+    statement: compareClaimDisplayCopy[preservedFactRisk.claimId].statement,
+  },
+  preservedFactRisk,
+  'NVIDIA Fact risk display copy remains unchanged',
+);
+assert.equal(claimById.get(preservedFactRisk.claimId).claimType, 'fact', 'NVIDIA risk remains an internal Fact');
 for (const [companyId, expectedName] of Object.entries(displayFixture.companyDisplayNames)) {
   assert.equal(companyCompareDisplayName(pilotCompanyRecords[companyId]), expectedName, `${companyId}: one canonical Japanese display name`);
 }
@@ -154,6 +185,9 @@ assert.deepEqual(
   'Technology display also deduplicates by canonical Registry ID',
 );
 const displayCopyText = Object.values(compareClaimDisplayCopy).flatMap(copy => [copy.title, copy.statement]).join('\n');
+for (const phrase of displayFixture.prohibitedPrimaryPhrases) {
+  assert.ok(!displayCopyText.includes(phrase), `primary Claim display copy omits editorial phrase: ${phrase}`);
+}
 assert.deepEqual(
   [...new Set(displayCopyText.match(/[A-Za-z][A-Za-z0-9-]*/g) ?? [])].sort(),
   displayFixture.approvedPrimaryEnglishTokens,
@@ -526,10 +560,11 @@ assert.match(component, /scope="col"/);
 assert.match(component, /scope="row"/);
 assert.match(component, /data-evidence-section-link/);
 assert.match(component, /data-claim-priority/);
-assert.match(component, />補足</);
+assert.doesNotMatch(component, />補足</, 'P2 does not receive a redundant visible supplement label');
 assert.match(component, />事実</);
 assert.match(component, />会社見解</);
-assert.match(component, />Atlasによる分析</);
+assert.match(component, />Atlasの見方</);
+assert.doesNotMatch(component, />Atlasによる分析</);
 assert.doesNotMatch(component, /関係データ：収録なし/, 'primary matrix omits internal Relation collection state');
 assert.doesNotMatch(component, /正規化した位置|正規化した製品カテゴリ|正規化された位置/, 'primary UI contains no normalization terminology');
 assert.doesNotMatch(component, /coverageContext\.map/, 'primary matrix omits internal Coverage collection state');
@@ -547,7 +582,11 @@ assert.match(component, /data-display-grounding-ids/, 'every Compare display ent
 assert.match(component, /data-company-order-label/, 'every company information block repeats number and name');
 assert.match(component, /data-summary=/, 'summary visibility is a presentation-only deterministic attribute');
 assert.match(component, /要点 — 代表情報だけを表示/);
-assert.match(component, /詳細 — 補足・全根拠・財務履歴まで表示/);
+assert.match(component, /詳細 — 全根拠・財務履歴まで表示/);
+assert.match(claimComponent, /'atlas-analysis': 'Atlasの見方'/, 'Atlas Analysis has the reviewed display label');
+assert.match(claimComponent, /fact: '事実'/, 'Fact keeps the reviewed display label');
+assert.match(claimComponent, /aria-label=\{`\$\{typeLabel\}: \$\{displayTitle\}`\}/, 'accessible Claim identity distinguishes Fact and Atlas Analysis');
+assert.match(controller, /詳細 — 全根拠・財務履歴まで表示/, 'runtime detail description omits the redundant supplement label');
 assert.match(component, /id="evidence-section-evidence-trace"[\s\S]*data-expanded-only/, 'Evidence trace is expanded-only');
 assert.match(component, /displayTitle=\{entry\.display\.title\}/, 'visible Claim copy comes from the display-only read model');
 assert.match(claimComponent, /<h4>\{claim\.title\}<\/h4>/, 'Evidence drawer retains the canonical Claim title');
@@ -620,9 +659,12 @@ if (process.argv.includes('--dist')) {
   assert.ok(relations.every(relation => !compareHtml.includes(relation.statement)), 'built legacy HTML excludes all Relation statements');
 
   const claimMarkers = (fragmentHtml.match(/data-claim-id=/g) ?? []).length;
+  const claimMarkerIds = [...fragmentHtml.matchAll(/data-claim-id="([^"]+)"/g)].map(match => match[1]);
   const relationMarkers = (fragmentHtml.match(/data-relation-id=/g) ?? []).length;
   const drawers = [...fragmentHtml.matchAll(/<dialog class="evidence-drawer" id="([^"]+)"/g)].map(match => match[1]);
   assert.equal(claimMarkers, 34, 'fragment includes all canonical Claim entries');
+  assert.equal(new Set(claimMarkerIds).size, claimMarkerIds.length, 'detail content has no duplicate Claim entries');
+  assert.deepEqual([...claimMarkerIds].sort(), projectedClaimIds, 'detail content has no missing Claim entry');
   assert.equal(relationMarkers, 19, 'fragment includes all canonical Relation entries');
   assert.equal(drawers.length, 53, 'fragment includes one Evidence drawer per marker');
   assert.equal(new Set(drawers).size, drawers.length, 'fragment has no duplicate drawer IDs');
@@ -636,6 +678,12 @@ if (process.argv.includes('--dist')) {
   assert.doesNotMatch(fragmentHtml, /正規化した位置|正規化した製品カテゴリ|正規化された位置/, 'built primary UI contains no normalization terminology');
   assert.doesNotMatch(fragmentHtml, /products[：:]/, 'built primary UI contains no raw products field label');
   assert.doesNotMatch(fragmentHtml, /関係データ：収録なし/, 'built primary UI contains no Relation collection-state message');
+  const primaryFragmentHtml = fragmentHtml.replace(/<dialog class="evidence-drawer"[\s\S]*?<\/dialog>/g, '');
+  for (const phrase of displayFixture.prohibitedPrimaryPhrases) {
+    assert.ok(!primaryFragmentHtml.includes(phrase), `built primary UI omits editorial phrase: ${phrase}`);
+  }
+  assert.match(primaryFragmentHtml, />事実</, 'built primary UI retains the Fact label');
+  assert.match(primaryFragmentHtml, />Atlasの見方</, 'built primary UI identifies Atlas Analysis with the reviewed label');
   assert.match(fragmentHtml, /供給網上の位置/, 'built matrix retains the user-facing supply-chain label');
   assert.match(fragmentHtml, /<strong[^>]*>半導体製造<\/strong>/, 'supply-chain position is presented as the value without an internal subheading');
   const productDescriptionInstances = [...fragmentHtml.matchAll(/data-product-description="([^"]+)"/g)].map(match => match[1]);

@@ -203,3 +203,45 @@ Legacy Compare HTMLはCompare sourceを変更していないが、lazy controlle
 5. 詳細説明とEvidence marker／drawerの対応が利用者に伝わるか。
 
 以上は再レビュー予定の項目であり、第3回remediation後のHuman Test結果は生成していない。
+
+## 18. 第4回Human Review
+
+第3回remediation後の実画面を確認し、次を新たな正式入力とした。
+
+1. `Atlasによる分析`は説明的すぎ、比較表内で反復するとAI生成レポートのように見える。
+2. P2へ一律表示した`補足`は、表示内容の意味を独立して説明していない。
+3. `主な確認点`と`〜を主な確認点とする`は、企業リスクではなく編集者の作業メモに見える。
+4. FactとAtlas Analysisの区別は維持しつつ、利用者が比較できる具体的なリスク見出し・本文を必要とする。
+
+## 19. 第4回で採択した修正
+
+- Factの表示ラベル`事実`は維持し、Atlas Analysisの表示ラベルを`Atlasの見方`へ変更した。内部claimType、Evidence、Source、Locatorは変更していない。
+- P2であることだけを示す`補足`ラベルと、詳細toggle説明内の`補足`をprimary UIから削除した。要点／詳細の選択ロジック、priority、Coverageは不変とした。
+- Broadcom、Applied Materials、Lam Research、Tokyo Electronの4件のAtlas Analysisリスクを、具体的な比較対象を示す見出し・本文へCompare専用display mappingで変更した。
+- NVIDIAのFactリスク`外部製造への依存`と本文は変更していない。
+- section-level注記と各Claimのaccessible nameで`事実`と`Atlasの見方`を文字として識別でき、既存の視覚差も維持した。色だけに依存しない。
+- `主な確認点`、`確認点とする`、`注目点とする`、`留意点とする`、`見ていく必要がある`を新しいprimary display copyへ使用しない契約をfixtureで固定した。
+
+## 20. 第4回remediation実測
+
+第3回と同じ可視情報block契約で、表示entryの追加・削除がないことを確認した。document heightは同一final buildのChromeで実測した。
+
+| Set / viewport | 要点block | 詳細block | 削減率 | 要点marker | 詳細marker | 要点height | 詳細height | height削減率 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Set A / 1024×768 | 22 | 50 | 56.0% | 16 | 21 | 2,323px | 3,835px | 39.4% |
+| Set B / 1024×768 | 34 | 84 | 59.5% | 20 | 32 | 2,508px | 4,970px | 49.5% |
+| Set A / 390×844 | 22 | 50 | 56.0% | 16 | 21 | 5,550px | 8,020px | 30.8% |
+| Set B / 390×844 | 34 | 84 | 59.5% | 20 | 32 | 7,173px | 11,579px | 38.1% |
+
+追加実測：
+
+- primary UIの`Atlasによる分析`、`補足`、`主な確認点`、`確認点とする`はSet A / Set Bの要点・詳細、1024px / 390px / 360pxですべて可視0件。
+- section-level表示ラベルはPilot 5社合計で`事実`11件、`Atlasの見方`12件。accessible Claim / Relationは要点でSet A 事実7 / Atlas 6、Set B 事実7 / Atlas 11、詳細でSet A 事実9 / Atlas 9、Set B 事実14 / Atlas 15を文字で識別できる。
+- canonical 34 Claimの内部claimTypeはfact 8、company-guidance 3、company-positioning 3、atlas-analysis 20で不変。
+- 4件のAtlas Analysisリスクは要点と詳細で同じ見出し・本文を表示し、NVIDIAのFactリスク文言も不変。全表示entryのgrounding ID、marker、drawer、一次資料、structured Locatorを解決できる。
+- 1024px / 390px / 360pxのLegacy / Set A / Set Bでdocument overflow 0。Evidence markerとdetail toggleは最小44×44px。
+- drawer、Primary Source、Escape、focus return、summary / detailのURL、reload、back / forwardを確認した。正常系console errorは0。
+- LegacyはEvidence rootをmountせず、fragment / controller request 0 / 0。Evidenceはfragment / controller request 1 / 1、detail切替で追加request 0 / 0という決定論的fixture契約を維持した。
+- Legacy Compare HTMLは585,468 B。Evidence fragmentは312,007 B、gzip 22,354 Bで5% guard内。Pagefindは105 pages / 5,791 words。
+
+以上は第4回Human Review入力に対するremediation結果であり、実参加者によるHuman Test結果は生成していない。

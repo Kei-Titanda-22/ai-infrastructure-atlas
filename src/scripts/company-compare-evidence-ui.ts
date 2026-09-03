@@ -199,7 +199,7 @@ export function initCompanyCompareEvidenceUi(): boolean {
   const renderDetail = () => {
     root.dataset.detail = state.detail;
     detailDescription.textContent = state.detail === 'expanded'
-      ? '詳細 — 補足・全根拠・財務履歴まで表示'
+      ? '詳細 — 全根拠・財務履歴まで表示'
       : '要点 — 代表情報だけを表示';
     root.querySelectorAll<HTMLButtonElement>('[data-evidence-detail]').forEach(button => {
       button.setAttribute('aria-pressed', String(button.dataset.evidenceDetail === state.detail));

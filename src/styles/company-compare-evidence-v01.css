@@ -410,16 +410,6 @@
   color: var(--muted);
 }
 
-.evidence-supplement {
-  display: block;
-  margin-bottom: 1px;
-  color: var(--muted);
-  font-family: var(--mono);
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .04em;
-}
-
 .evidence-compare .pilot-claim h3 {
   font-size: 14px;
   line-height: 1.45;
@@ -798,7 +788,6 @@
   }
 
   .evidence-epistemic-notes,
-  .evidence-supplement,
   .evidence-subsection-title,
   .evidence-list-intro,
   .evidence-relation-meta dt,

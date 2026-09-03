@@ -36,6 +36,51 @@
     "tokyo-electron-technology",
     "tokyo-electron-value-chain"
   ],
+  "claimTypeDisplayLabels": {
+    "fact": "事実",
+    "company-guidance": "会社見解",
+    "company-positioning": "会社見解",
+    "atlas-analysis": "Atlasの見方",
+    "estimate": "Atlasの見方"
+  },
+  "projectedClaimTypeCounts": {
+    "fact": 8,
+    "company-guidance": 3,
+    "company-positioning": 3,
+    "atlas-analysis": 20
+  },
+  "riskDisplayCopy": {
+    "broadcom-risks": {
+      "title": "顧客集中とAI投資の変動",
+      "statement": "顧客集中、大型案件の世代交代、半導体市況、AI投資の増減が業績を左右する可能性がある。"
+    },
+    "applied-risks": {
+      "title": "顧客の設備投資に左右される需要",
+      "statement": "先端半導体工場の投資サイクルと大口顧客の設備投資動向が、装置需要を大きく左右する。"
+    },
+    "lam-research-risks": {
+      "title": "メモリ投資・輸出規制・競争",
+      "statement": "メモリ向け設備投資の増減、輸出規制、工程別のシェア競争が主な業績変動要因となる。"
+    },
+    "tokyo-electron-risks": {
+      "title": "設備投資サイクルと輸出規制",
+      "statement": "半導体製造装置の投資サイクル、輸出規制、特定工程での競争激化が主なリスクとなる。"
+    }
+  },
+  "preservedFactRiskCopy": {
+    "claimId": "nvidia-risks",
+    "title": "外部製造への依存",
+    "statement": "製造工程を第三者へ委託しており、供給制約や特定サプライヤーへの依存をリスクとして開示している。"
+  },
+  "prohibitedPrimaryPhrases": [
+    "Atlasによる分析",
+    "補足",
+    "主な確認点",
+    "確認点とする",
+    "注目点とする",
+    "留意点とする",
+    "見ていく必要がある"
+  ],
   "genericTermTranslations": {
     "compute": "演算",
     "interconnect": "相互接続",
