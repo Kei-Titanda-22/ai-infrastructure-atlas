@@ -87,6 +87,40 @@
   line-height: 1.5;
 }
 
+.evidence-company-load-status {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 10px;
+}
+
+.evidence-company-load-status:empty {
+  display: none;
+}
+
+.evidence-company-load-status p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.evidence-company-load-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.evidence-company-retry {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
 .evidence-section-nav {
   display: flex;
   flex-wrap: wrap;
@@ -352,6 +386,18 @@
   border-top: 1px solid var(--border);
 }
 
+.evidence-compare[data-detail="summary"] .evidence-position-entry {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
+.evidence-compare[data-detail="expanded"] .evidence-position-entry .evidence-claim-projection-context + .pilot-claim-list {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
 .evidence-subsection-title,
 .evidence-list-intro {
   margin: 0 0 6px;
@@ -429,6 +475,16 @@
 .evidence-compare .claim-statement {
   font-size: 14px;
   line-height: 1.65;
+}
+
+.evidence-claim-projection-context {
+  margin-bottom: 5px;
+}
+
+.evidence-claim-projection-context h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .evidence-relation-meta,
@@ -656,7 +712,6 @@
   font-size: 10px;
 }
 
-.evidence-compare .evidence-marker,
 .evidence-compare .drawer-close,
 .evidence-compare .source-open,
 .evidence-compare .provenance-details > summary {
@@ -664,6 +719,50 @@
   align-items: center;
   min-width: 44px;
   min-height: 44px;
+}
+
+.evidence-compare .evidence-marker {
+  position: relative;
+  display: inline-block;
+  min-width: 0;
+  min-height: 0;
+  margin: 0 .08em;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  appearance: none;
+  background: transparent;
+  color: #155c8b;
+  font: inherit;
+  font-family: var(--mono);
+  font-size: .68rem;
+  font-weight: 700;
+  line-height: 1;
+  vertical-align: baseline;
+  cursor: pointer;
+}
+
+.evidence-compare .evidence-marker::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+
+.evidence-compare .evidence-marker:hover {
+  border: 0;
+  background: transparent;
+  text-decoration: underline;
+}
+
+.evidence-compare .evidence-marker:focus-visible {
+  border: 0;
+  outline: 2px solid #397fb2;
+  outline-offset: 2px;
+  background: transparent;
 }
 
 .evidence-compare [data-dimension-id],
@@ -699,6 +798,15 @@
 .evidence-compare[data-detail="summary"] [data-expanded-only],
 .evidence-compare[data-detail="summary"] [data-summary="hide"] {
   display: none !important;
+}
+
+.evidence-compare[data-detail="summary"] .evidence-product-portfolio-summary[data-summary="show"] .pilot-claim {
+  padding: 0;
+}
+
+.evidence-compare[data-detail="summary"] .evidence-product-portfolio-summary[data-summary="show"] .pilot-claim > h3,
+.evidence-compare[data-detail="summary"] .evidence-product-portfolio-summary[data-summary="show"] .pilot-claim > .claim-statement {
+  display: none;
 }
 
 @media (max-width: 800px) and (min-width: 601px) {

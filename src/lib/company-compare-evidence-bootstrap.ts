@@ -19,7 +19,7 @@ export type EvidenceCompareMountDependencies<Fragment, ControllerModule> = {
   mountFragment(fragment: Fragment): void;
   validateMounted(): void;
   loadController(): Promise<ControllerModule>;
-  initializeController(module: ControllerModule): boolean;
+  initializeController(module: ControllerModule): boolean | Promise<boolean>;
   validateInitialized(): void;
   finish(): void;
   fail(error: unknown): void;
@@ -49,7 +49,7 @@ export async function mountEvidenceCompareFragment<Fragment, ControllerModule>(
     dependencies.mountFragment(fragment);
     dependencies.validateMounted();
     const controller = await dependencies.loadController();
-    if (dependencies.initializeController(controller) !== true) {
+    if (await dependencies.initializeController(controller) !== true) {
       throw new Error('Evidence controller did not report successful initialization');
     }
     dependencies.validateInitialized();

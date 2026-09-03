@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import CompanyCompareEvidenceCompanyAsset from '../../../components/CompanyCompareEvidenceCompanyAsset.astro';
+import { countryLabel, layerLabel } from '../../../lib/display-v02';
+import { evidenceComparePilotCompanyIds } from '../../../lib/company-compare-evidence-ui';
+import { buildCompanyCompareEvidenceReadModel } from '../../../lib/company-compare-evidence-read-model';
+import { withBase } from '../../../lib/paths';
+
+export function getStaticPaths() {
+  return evidenceComparePilotCompanyIds.map(companyId => ({ params: { companyId } }));
+}
+
+const companies = (await getCollection('companies'))
+  .sort((a, b) => (a.data.japaneseName || a.data.name).localeCompare(b.data.japaneseName || b.data.name, 'ja'));
+const identities = companies.map(company => ({
+  id: company.id,
+  href: withBase(`companies/${company.id}/`),
+  name: company.data.name,
+  japaneseName: company.data.japaneseName,
+  officialName: company.data.officialName,
+  reading: company.data.reading,
+  ticker: company.data.ticker,
+  country: countryLabel(company.data.country),
+  primaryLayer: layerLabel(company.data.primaryLayer),
+  lastReviewed: company.data.lastReviewed,
+}));
+const model = buildCompanyCompareEvidenceReadModel(identities);
+const companyId = Astro.params.companyId || '';
+const company = model.companies.find(record => record.identity.id === companyId);
+if (!company) throw new Error(`Unknown Company Compare asset route: ${companyId}`);
+const operatingMarginReference = model.sets
+  .flatMap(setRecord => setRecord.financial.metricStates)
+  .filter(metric => metric.metricId === 'operatingMargin')
+  .flatMap(metric => metric.companyMetricRefs)
+  .find(reference => reference.companyId === companyId);
+---
+
+<CompanyCompareEvidenceCompanyAsset
+  company={company}
+  operatingMarginReference={operatingMarginReference}
+  sourceNumberById={model.sourceNumberById as Record<string, number>}
+/>
