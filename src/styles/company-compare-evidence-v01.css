@@ -380,6 +380,12 @@
   border-top: 1px solid var(--border);
 }
 
+.evidence-compare[data-detail="expanded"] .evidence-product-entry-boundary {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+
 .evidence-dimension-subsection-secondary {
   margin-top: 13px;
   padding-top: 11px;

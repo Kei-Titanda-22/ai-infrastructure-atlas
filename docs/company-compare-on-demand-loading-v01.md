@@ -88,6 +88,12 @@ Evidence markerの四角は、on-demand分割後にCompany asset route側へ出�
 
 ChromeでSet A / Set Bを`1024`、`390`、`360` pxの要点／詳細で確認し、document overflow `0`、console error `0`、要点の製品説明・metadata `0`、詳細の製品説明Set A `6` / Set B `9`を確認した。drawer、Primary Source、Escape、focus return、URL reload / Back / Forwardを維持し、要点／詳細切替でCompany asset集合は変化しない。
 
+### Product portfolio boundary hotfix
+
+Human Reviewで、詳細表示のTokyo Electronだけ製品群概要と最初の製品entryの境界線が欠けていることを確認した。Relation-backedの4社では`.evidence-product-portfolio-summary`の直後が`.evidence-relation-entry`であるため既存の隣接兄弟ruleが適用される一方、Claim-backedのTokyo Electronでは両者の間に`.evidence-claim-backed-product-list` wrapperがあり、同ruleが一致しなかったことが原因である。修正前のcomputed styleはApplied Materials / Lam Researchが`border-top: 1px solid rgb(217, 221, 225)`、`margin-top: 10px`、`padding-top: 10px`、Tokyo Electronのwrapperと先頭entryがすべて`0px`だった。前回Acceptanceでは「供給網上の位置」のseparatorと製品entry同士の線を確認したが、製品群概要から最初の製品entryへ移る境界を独立fixtureにしていなかった。
+
+会社IDや座標に依存せず、5社共通の製品群概要から最初の製品entryへの境界を`evidence-product-entry-boundary`として明示した。詳細表示だけに`1px solid var(--border)`と上下`10px`の間隔を適用し、Relation-backedでは最初の`PRODUCES` entry、Claim-backedでは製品list wrapperが同じcontractを持つ。修正後はApplied Materials / Lam Research / Tokyo Electronでいずれも`border-top: 1px solid rgb(217, 221, 225)`、`margin-top: 10px`、`padding-top: 10px`、境界classは各社1件となり、pseudo-elementによる二重線はない。要点表示、製品文言、Evidence marker `16 / 21`（Set A）・`23 / 36`（Set B）・全5社詳細`57`、unique grounding / drawer `53 / 53`、request契約、asset分割、semantic dataは変更しない。最終buildはCompare `585,482 B`、shell `7,431 B`、Set B cold-load `200,447 B`（gzip `19,939 B`）、最大4社cold-load `266,204 B`（gzip `24,910 B`）で、上限`330,509 B`以内だった。
+
 - Rendered marker: Summary Set A `16` / Set B `23`; Expanded Set A `21` / Set B `36`; five-company Expanded total `57`
 - Unique grounding entry / drawer: `53 / 53`（Tokyo Electronの4製品markerは既存の同一drawerを共有）
 - Product description: Summary `0`; Expanded Set A `6` / Set B `9`

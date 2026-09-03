@@ -181,6 +181,7 @@ const companyContext = {
                 new Set(section.claims.map(entry => entry.claim.id)),
               )
             : null;
+          const firstProductRelationId = displayedRelations.find(entry => entry.relation.relationType === 'PRODUCES')?.relation.relationId;
           const usesGroupLevelProductEvidence = Boolean(
             productPortfolioSummary
             && relationProductIds.size === 0
@@ -245,7 +246,10 @@ const companyContext = {
                 </dl>}
               </div>;
             })}
-            {dimensionId === 'key-products' && claimOnlyProductEntries.length > 0 && <div class="evidence-claim-backed-product-list" aria-label="製品の役割">
+            {dimensionId === 'key-products' && claimOnlyProductEntries.length > 0 && <div
+              class:list={['evidence-claim-backed-product-list', { 'evidence-product-entry-boundary': Boolean(productPortfolioSummary) }]}
+              aria-label="製品の役割"
+            >
               {claimOnlyProductEntries.map(({ item, groundingClaim, markerLabel }) => <div
                 class="evidence-relation-entry evidence-product-entry evidence-claim-backed-product-entry"
                 data-canonical-id={item.canonicalId}
@@ -269,7 +273,12 @@ const companyContext = {
             </div>}
             {displayedRelations.map(entry => {
               const relationClaim = relationAsClaim(entry);
-              return <div class:list={['evidence-relation-entry', { 'evidence-position-entry': entry.relation.relationType === 'POSITIONED_IN' }]} data-relation-id={entry.relation.relationId} data-canonical-id={entry.relation.objectId} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryRelationIds.has(entry.relation.relationId) ? 'show' : 'hide'}>
+              return <div class:list={['evidence-relation-entry', {
+                'evidence-position-entry': entry.relation.relationType === 'POSITIONED_IN',
+                'evidence-product-entry-boundary': Boolean(productPortfolioSummary)
+                  && claimOnlyProductEntries.length === 0
+                  && entry.relation.relationId === firstProductRelationId,
+              }]} data-relation-id={entry.relation.relationId} data-canonical-id={entry.relation.objectId} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryRelationIds.has(entry.relation.relationId) ? 'show' : 'hide'}>
                 <CompanyCompareEvidenceClaim
                   claim={relationClaim}
                   evidence={entry.bindings}
