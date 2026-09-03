@@ -278,7 +278,12 @@
   font-weight: 500;
 }
 
-.evidence-company-context > strong {
+.company-name-link .compare-company-name-secondary,
+.company-name-link .compare-company-name > small {
+  color: inherit;
+}
+
+.evidence-company-context > .company-name-link {
   display: flex;
   min-width: 0;
   flex-direction: column;
@@ -292,9 +297,15 @@
   font-size: 11px;
 }
 
-.evidence-company-context > strong {
+.evidence-company-context > .company-name-link {
   min-width: 0;
   overflow-wrap: anywhere;
+}
+
+.evidence-company-context > .company-name-link,
+.evidence-financial-company h4 .company-name-link,
+.evidence-trace-list strong .company-name-link {
+  color: var(--link);
 }
 
 .evidence-identity a {
@@ -840,7 +851,8 @@
     line-height: 1.7;
   }
 
-  .evidence-company-context > strong > small {
+  .evidence-company-context .compare-company-name-secondary,
+  .evidence-company-context .compare-company-name > small {
     font-size: 15px;
   }
 

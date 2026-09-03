@@ -165,6 +165,14 @@ assert.deepEqual(
   { accessibleName: 'Tokyo Electron（東京エレクトロン）', primaryName: '東京エレクトロン', secondaryName: null },
   'Japanese-only visual Company names remain one line while the accessible name retains English and Japanese',
 );
+for (const companyId of displayFixture.companyIdentityLink.bilingualCompanyIds) {
+  const names = companyCompareDisplayNameParts(pilotCompanyRecords[companyId]);
+  assert.ok(names.secondaryName, `${companyId}: bilingual identity retains its second line`);
+  assert.ok(names.accessibleName.includes(names.primaryName) && names.accessibleName.includes(names.secondaryName), `${companyId}: accessible name contains both visible lines`);
+}
+for (const companyId of displayFixture.companyIdentityLink.singleLineCompanyIds) {
+  assert.equal(companyCompareDisplayNameParts(pilotCompanyRecords[companyId]).secondaryName, null, `${companyId}: Japanese-only primary identity stays one line`);
+}
 assert.equal(localizeCompareLocation('United States'), '米国');
 assert.equal(localizeCompareLocation('Oregon, United States'), '米国オレゴン州');
 assert.throws(() => localizeCompareLocation('unreviewed-place'), /mapping is missing/, 'unreviewed geography never falls through to mixed-language UI');
@@ -609,6 +617,12 @@ assert.match(controller, /pushState/, 'detail mode creates navigable browser his
 assert.match(controller, /unresolvedFinancial/);
 assert.match(controller, /\.evidence-expanded-financial, \.evidence-trace-list/);
 assert.match(controller, /appendCompanyName/, 'selected rows and suggestions share one company-name renderer');
+assert.match(controller, /createCompanyNameLink/, 'all linked Company identities use one anchor factory');
+assert.match(controller, /link\.dataset\.companyIdentityLink = company\.id/, 'each Company identity link retains its canonical Company ID');
+assert.match(controller, /upgradeCompanyIdentityLinks/, 'static Compare identities are upgraded before the Evidence root becomes visible');
+assert.match(controller, /\.evidence-matrix thead th\[data-company-id\] > a, \.evidence-company-context > strong/, 'column and mobile identities share the one-link rule');
+assert.match(controller, /\.evidence-financial-company\[data-company-id\] > h4, \.evidence-trace-list > \[data-company-id\] > strong/, 'Financial and Evidence trace identities share the one-link rule');
+assert.equal((controller.match(/document\.createElement\('a'\)/g) ?? []).length, 1, 'Company identity anchors have one construction path and cannot be nested');
 assert.match(controller, /companyCompareDisplayNameParts/, 'all dynamic Company names use canonical bilingual parts');
 assert.match(controller, /localizeCompareLocation/, 'dynamic geography uses exact Compare localization');
 assert.match(controller, /companyPresentationTokenForOrder/, 'company identity follows deterministic selection order');
@@ -625,6 +639,10 @@ assert.match(styles, /\.evidence-company-context \{[\s\S]*display: none/, 'deskt
 assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.evidence-company-context \{[\s\S]*display: flex/, 'mobile cells retain the explicit Company identity strip');
 assert.match(styles, /\.evidence-company-context > strong/, 'identity is not color-only');
 assert.match(styles, /\.compare-company-name-primary,[\s\S]*white-space: nowrap/, 'Company name lines do not break mid-name');
+assert.match(styles, /\.company-name-link \.compare-company-name-secondary,[\s\S]*color: inherit/, 'the Japanese second line inherits every anchor color state');
+assert.equal(displayFixture.companyIdentityLink.className, 'company-name-link');
+assert.equal(displayFixture.companyIdentityLink.anchorsPerIdentity, 1);
+assert.equal(displayFixture.companyIdentityLink.finalLocationsPerCompany, 11);
 assert.match(styles, /data-summary="hide"/, 'summary hides non-representative presentation entries only');
 assert.match(styles, /font-size: 16px/, 'mobile primary text has a 16px floor');
 assert.match(styles, /font-size: 14px/, 'mobile metadata has a 14px floor');

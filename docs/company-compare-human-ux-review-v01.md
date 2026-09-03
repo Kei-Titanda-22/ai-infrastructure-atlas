@@ -285,3 +285,31 @@ Set A / Set Bの要点では財務詳細表0件、詳細では選択会社数ど
 Legacy Compare HTMLは585,468 Bで不変。Evidence fragmentは312,007 Bから314,559 B（+2,552 B、初回299,685 B比+5% guard内）、gzip 22,416 B。Pagefindは105 pages / 5,791 wordsで不変である。
 
 以上は第5回Human Review入力に対するremediation結果であり、最終的な読みやすさ判断は次のHuman Reviewへ残す。実参加者によるHuman Test結果は生成していない。
+
+## 24. 第6回Human Review
+
+第5回remediation後の実画面を確認し、英語名と日本語名を併記する会社リンクで、英語名はlink color、日本語名は本文色になっている不整合を正式入力とした。DOM上は既に1つのanchor内だったが、secondary nameへ独立したmuted colorが指定されていたため、同じ会社名が別情報に見える状態だった。
+
+## 25. 第6回で採択した修正
+
+- 選択中カードを含むすべてのCompany identity linkを、英語名と日本語名の2行を内包する単一anchor factoryへ統一する。
+- 日本語名は2行目を維持し、anchorの通常・visited・hover・focus colorを継承する。1 identity内の重複anchorとnested anchorを作らない。
+- 比較表の列見出し、mobile identity、財務詳細の会社見出し、根拠追跡の会社見出しを、Evidence root表示前に同じrendererへ統一する。
+- 東京エレクトロンは日本語primaryの1行表示を維持し、accessible nameでは英語名と日本語名を保持する。
+- Company URL、会社名、ticker、国、業種、canonical dataは変更しない。文中の非link会社名は対象外とする。
+
+## 26. 第6回remediation検証
+
+同一final buildのChromeで、Set A / Set Bの要点・詳細を1024×768、390×844、360×800で再測定した。
+
+- 各Company identity表示は1 anchorで、選択中、比較表列見出し、mobile identity 7か所、財務詳細見出し、根拠追跡見出しの計11か所を同一rendererで生成した。各表示内のanchorは1件、日本語名だけの重複linkとnested anchorは0件である。
+- Applied MaterialsとLam Researchの選択中表示は、通常時に英語名・日本語名とも`rgb(0, 87, 184)`、hover時にとも`rgb(0, 63, 135)`、keyboard focus時にとも`rgb(0, 87, 184)`となった。mobile identityでも両行のcomputed colorは一致した。
+- 英語名と日本語名は同じ44px高のfocus targetに入り、日本語名は英語名の21.59px下の2行目、text fragment 1件として表示した。1024px / 390px / 360pxの全条件で途中改行は0件だった。
+- 選択中Set BのTab順は、Applied Materials link、外すbutton、Lam Research link、外すbutton、東京エレクトロンlinkとなり、会社名のfocusは各社1回だけだった。EnterでApplied Materialsの`/companies/applied-materials/`へ遷移した。
+- accessible nameは英語名と日本語名の双方を保持した。東京エレクトロンは日本語primaryの1行linkを維持し、accessible nameのみ`Tokyo Electron（東京エレクトロン）`を保持した。
+- Set A / Set Bの詳細markerは21件 / 32件、要点markerは16件 / 20件。全viewportでdocument overflow 0、正常系console error 0だった。
+- 第5回で修正した財務表は、1024pxで列見出し14px、期間14px/600、数値14px/500・右揃え・縦中央・`tabular-nums`、標準行高53px、出典link高44px、表内scroll 0を維持した。
+- Company URL、会社名、ticker、国、業種のsemantic snapshotに差分はない。Legacy Compare、Company個別ページ、Company / Evidence / Source / Relation / Financial dataには変更していない。
+- Legacy Compare HTMLは585,468 B、Evidence fragmentは314,559 B、gzip 22,416 B。Pagefindは105 pages / 5,791 wordsで不変である。
+
+以上は第6回Human Review入力に対するremediation結果であり、実参加者によるHuman Test結果は生成していない。

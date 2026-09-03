@@ -85,6 +85,30 @@ export function initCompanyCompareEvidenceUi(): boolean {
     if (names.secondaryName) wrapper.append(text('span', names.secondaryName, 'compare-company-name-secondary'));
     parent.append(wrapper);
   };
+  const createCompanyNameLink = (company: any, extraClasses: string[] = []) => {
+    const link = document.createElement('a');
+    link.href = company.href;
+    link.className = ['company-name-link', ...extraClasses].join(' ');
+    link.dataset.companyIdentityLink = company.id;
+    appendCompanyName(link, company);
+    return link;
+  };
+  const upgradeCompanyIdentityLinks = () => {
+    root.querySelectorAll<HTMLElement>('.evidence-matrix thead th[data-company-id] > a, .evidence-company-context > strong')
+      .forEach(host => {
+        const companyId = host.closest<HTMLElement>('[data-company-id]')?.dataset.companyId;
+        const company = companyId ? byId.get(companyId) : null;
+        if (!company) throw new Error(`Company Evidence Compare identity is unresolved: ${companyId || 'unknown'}`);
+        host.replaceWith(createCompanyNameLink(company));
+      });
+    root.querySelectorAll<HTMLElement>('.evidence-financial-company[data-company-id] > h4, .evidence-trace-list > [data-company-id] > strong')
+      .forEach(host => {
+        const companyId = host.closest<HTMLElement>('[data-company-id]')?.dataset.companyId;
+        const company = companyId ? byId.get(companyId) : null;
+        if (!company) throw new Error(`Company Evidence Compare identity is unresolved: ${companyId || 'unknown'}`);
+        host.replaceChildren(createCompanyNameLink(company));
+      });
+  };
   const pickedCompanies = () => state.selectedIds.map(id => byId.get(id)).filter(Boolean);
 
   const issueText = (issues: EvidenceCompareIssue[]) => issues
@@ -113,10 +137,7 @@ export function initCompanyCompareEvidenceUi(): boolean {
       row.append(text('span', presentation.label, 'compare-selected-index mono'));
       const info = document.createElement('div');
       info.className = 'compare-selected-info';
-      const link = document.createElement('a');
-      link.href = company.href;
-      link.className = 'company-link compare-selected-name';
-      appendCompanyName(link, company);
+      const link = createCompanyNameLink(company, ['company-link', 'compare-selected-name']);
       info.append(link);
       info.append(text('span', `${company.ticker} · ${company.primaryLayer}`, 'compare-selected-meta'));
       row.append(info);
@@ -389,6 +410,7 @@ export function initCompanyCompareEvidenceUi(): boolean {
     render(false);
   });
 
+  upgradeCompanyIdentityLinks();
   render();
   if (state.section) {
     const sectionId = state.section === 'value-chain-position' ? 'ai-role' : state.section;

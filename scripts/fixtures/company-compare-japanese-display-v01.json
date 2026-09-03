@@ -195,6 +195,13 @@
     "lam-research": "Lam Research（ラムリサーチ）",
     "tokyo-electron": "東京エレクトロン"
   },
+  "companyIdentityLink": {
+    "className": "company-name-link",
+    "bilingualCompanyIds": ["nvidia", "broadcom", "applied-materials", "lam-research"],
+    "singleLineCompanyIds": ["tokyo-electron"],
+    "finalLocationsPerCompany": 11,
+    "anchorsPerIdentity": 1
+  },
   "presentationTokens": ["01", "02", "03", "04"],
   "financialDetailTable": {
     "metricIds": ["revenue", "operatingProfit", "operatingMargin", "freeCashFlow", "capex", "roic"],

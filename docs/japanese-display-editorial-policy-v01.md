@@ -121,3 +121,11 @@ Compare専用fixtureで、次を固定する。
 - 数値・見出し・出典は周辺本文より大幅に小さくしない。PC / tabletでは見出し・期間・数値14px以上、欠損と出典13px以上、通貨・単位・会計基準11px以上を下限とする。
 - 44px touch targetは出典リンクなどのinteractive要素へ適用し、非interactiveな表セルの行高を一律に膨らませない。
 - 1024pxでは表内scrollなしを目標とし、768px以下では表内だけのhorizontal scrollを許容する。いずれもdocument overflowは発生させない。
+
+## 12. Company identity link
+
+- 英語名と日本語名を併記するCompany identityは、2行を1つの会社リンク内に置く。英語名と日本語名へ同じURLのanchorを重複させず、nested anchorも作らない。
+- 日本語名は意図した2行目を維持し、linkから`color`を継承する。通常、visited、hover、focusの各状態で英語名と日本語名を同じ色・同じlink stateとして扱う。
+- 1つのidentity表示に対するkeyboard focus targetは1つとし、accessible nameには英語名と日本語名の双方を含める。
+- 日本語名だけをprimary表示するCompanyは1行の会社リンクとし、accessible nameでは既存の英語名・日本語名を維持する。
+- 選択中カード、比較表の列見出し、mobile identity、財務詳細、根拠追跡に同じCompare専用link rendererを使用する。文中のCompany名は自動的にリンク化しない。
