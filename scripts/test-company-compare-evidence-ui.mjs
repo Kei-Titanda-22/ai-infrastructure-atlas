@@ -833,7 +833,11 @@ assert.doesNotMatch(presentationSource, /coverageContext\.map/, 'primary matrix 
 assert.match(presentationSource, /data-product-description/, 'expanded Product descriptions retain canonical Product IDs');
 assert.match(presentationSource, /productDescription=\{entry\.productDescription/, 'Relation-backed Products use the shared description contract');
 assert.match(presentationSource, /claimOnlyProducts/, 'Claim-backed Products use the same description contract');
-assert.match(presentationSource, /class="evidence-product-description" data-product-description=\{item\.canonicalId\}/, 'Claim-backed Products share the description typography contract');
+assert.match(presentationSource, /class="evidence-product-description" data-expanded-only data-product-description=\{item\.canonicalId\}/, 'Claim-backed Products share the description typography contract');
+assert.match(presentationSource, /usesClaimBackedPositionProjection/, 'Tokyo Electron uses the shared list renderer for its Claim-backed supply-chain projection');
+assert.match(presentationSource, /displayTitle=\{usesClaimBackedPositionProjection[\s\S]*\? '半導体製造'/, 'Claim-backed position projects the canonical Value Chain label');
+assert.match(presentationSource, /claimBackedProductProjection[\s\S]*\? '製品構成'/, 'Claim-backed Products use the common Product-composition heading');
+assert.match(presentationSource, /<ul class="evidence-product-description-list evidence-claim-backed-product-list" aria-label="製品の役割">/, 'Claim-backed Product names remain visible in summary');
 assert.match(presentationSource, /data-canonical-id=\{entry\.relation\.objectId\}/, 'rendered Product entries retain canonical Registry IDs');
 assert.match(presentationSource, /relationsForDisplay/, 'Product display is de-duplicated before rendering');
 assert.match(presentationSource, /主要比較には表示しません/);
@@ -906,6 +910,7 @@ assert.match(styles, /thead th > span \{[\s\S]*font-size: 14px/, 'desktop ticker
 assert.match(styles, /tbody > tr > th \{[\s\S]*font-size: 16px;[\s\S]*font-weight: 700/, 'desktop row headings are at least 16px and bold');
 assert.match(styles, /\.evidence-identity > span \{[\s\S]*font-size: 16px/, 'Company information values are at least 16px');
 assert.match(styles, /\.evidence-product-description \{[\s\S]*font-size: 15px;[\s\S]*line-height: 1\.65/, 'desktop Product descriptions meet the typography contract');
+assert.match(styles, /\.evidence-claim-backed-product-list strong::before \{[\s\S]*content: "·"/, 'Claim-backed Product entries use the same bullet as Relation-backed entries');
 assert.match(presentationSource, /<thead><tr>[\s\S]*<th scope="col">出典<\/th>/, 'all eight detailed Financial headers use one centered heading contract');
 assert.match(presentationSource, /<th class="num" scope="col">売上高<br \/>（\{company\.expandedFinancialPresentation\.amountUnitLabel\}）<\/th>/, 'amount header exposes one continuous accessible name on two visual lines');
 assert.match(presentationSource, /class="financial-basis">会計基準：\{company\.expandedFinancialPresentation\.accountingBasisLabel\}/, 'accounting basis appears once at Company-table level');
@@ -1029,7 +1034,27 @@ if (process.argv.includes('--dist')) {
   assert.equal(productDescriptionInstances.length, 15, 'expanded mode contains 11 Relation-backed and four Claim-backed Product descriptions');
   assert.deepEqual([...new Set(productDescriptionInstances)].sort(), productIds, 'built descriptions cover all 11 canonical Product IDs');
   assert.ok(productDescriptionInstances.every(productId => fragmentHtml.includes(compareProductDisplayDescriptions[productId].description)), 'built Product descriptions use only fixture-locked copy');
-  assert.match(fragmentHtml, /data-expanded-only data-product-description=/, 'Product descriptions are expanded-only');
+  assert.match(fragmentHtml, /class="evidence-product-description" data-expanded-only data-product-description=/, 'Product descriptions are expanded-only');
+  const tokyoAssetHtml = assetHtmlById['tokyo-electron'];
+  const tokyoRoleTemplate = tokyoAssetHtml.match(/<template data-company-slot="ai-role"[\s\S]*?<\/template>/)?.[0] ?? '';
+  const tokyoProductsTemplate = tokyoAssetHtml.match(/<template data-company-slot="key-products"[\s\S]*?<\/template>/)?.[0] ?? '';
+  assert.match(tokyoRoleTemplate, /<h3 class="evidence-subsection-title">供給網上の位置<\/h3>/, 'Tokyo Electron retains the supply-chain subsection');
+  assert.match(tokyoRoleTemplate, /data-expanded-only><h3>半導体前工程製造装置の供給層<\/h3><p class="claim-statement">先端ロジックとメモリ向けに、幅広い半導体前工程製造装置を供給する。<\/p>/, 'Tokyo Electron expanded role retains the reviewed title and description without a duplicate marker');
+  assert.match(tokyoRoleTemplate, /class="pilot-claim pilot-claim-list[^"]*"[^>]*><p class="claim-statement claim-statement-list"[^>]*><strong[^>]*>半導体製造<\/strong><button class="evidence-marker"/, 'Tokyo Electron supply-chain position uses the common list entry renderer');
+  assert.equal((tokyoRoleTemplate.match(/data-evidence-open="evidence-tokyo-electron-value-chain"/g) ?? []).length, 1, 'Tokyo Electron position has exactly one Evidence marker in summary and expanded DOM');
+  assert.match(tokyoRoleTemplate, /<dt>対象範囲<\/dt><dd>企業全体<\/dd>/, 'Tokyo Electron position exposes only existing scope metadata');
+  assert.match(tokyoRoleTemplate, /<dt>更新状況<\/dt><dd>確認期限内<\/dd>/, 'Tokyo Electron position exposes derived existing freshness metadata');
+  assert.doesNotMatch(tokyoProductsTemplate, /<h3>主な製品<\/h3>/, 'Tokyo Electron has no repeated Product heading');
+  assert.match(tokyoProductsTemplate, /<h3[^>]*>製品構成<\/h3><p class="claim-statement"[^>]*>下記の製品カテゴリを提供する。<button class="evidence-marker"/, 'Tokyo Electron uses the common Product-composition Claim hierarchy');
+  assert.equal((tokyoProductsTemplate.match(/data-evidence-open="evidence-tokyo-electron-products"/g) ?? []).length, 1, 'Tokyo Electron Product group has exactly one Evidence marker');
+  const tokyoProductIds = [...tokyoProductsTemplate.matchAll(/<li data-canonical-id="([^"]+)"/g)].map(match => match[1]);
+  assert.deepEqual(tokyoProductIds, compareProductIdsByClaimId['tokyo-electron-products'], 'Tokyo Electron keeps all four Product entries in canonical reviewed order');
+  assert.deepEqual(
+    [...tokyoProductsTemplate.matchAll(/<li data-canonical-id="[^"]+"[^>]*><strong>([^<]+)<\/strong>/g)].map(match => match[1]),
+    ['塗布・現像装置', '半導体エッチング装置', '半導体成膜装置', 'ウェーハ洗浄装置'],
+    'Tokyo Electron keeps the reviewed four visible Product names in order',
+  );
+  assert.equal((tokyoProductsTemplate.match(/class="evidence-product-description" data-expanded-only/g) ?? []).length, 4, 'Tokyo Electron uses four common expanded Product entries');
   const expandedFinancialHtml = pilotIds.map(companyId => {
     const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);
     assert.ok(match, `${companyId}: detailed Financial template is present`);

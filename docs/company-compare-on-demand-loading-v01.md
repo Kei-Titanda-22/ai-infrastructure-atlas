@@ -58,15 +58,17 @@ assetはHTTP status、company ID、schema version、必要slot全件、未知／
 | Broadcom | 62,875 B | 5,227 B |
 | Applied Materials | 56,038 B | 5,693 B |
 | Lam Research | 83,452 B | 6,375 B |
-| Tokyo Electron | 49,812 B | 5,522 B |
+| Tokyo Electron | 50,146 B | 5,599 B |
 
-転送単位ごとのgzip値を合算すると、Set A cold loadはraw `125,636 B` / gzip `12,784 B`、Set Bはraw `196,733 B` / gzip `19,758 B`。1～4社の全30組合せで最大はNVIDIA / Broadcom / Applied Materials / Lam Researchのraw `265,126 B`であり、`330,509 B`以下である。
+転送単位ごとのgzip値を合算すると、Set A cold loadはraw `125,636 B` / gzip `12,784 B`、Set Bはraw `197,067 B` / gzip `19,835 B`。1～4社の全30組合せで最大はNVIDIA / Broadcom / Applied Materials / Lam Researchのraw `265,126 B`であり、`330,509 B`以下である。
 
 個別上限はshell raw `20,000 B`、company asset raw `100,000 B`、company asset gzip `15,000 B`。各上限値はPASS、上限+1 BはFAILとし、baseline欠損、0、負数、不正ratio、不明company IDをfail closedにする。
 
 ## Presentation parity
 
 baseline main buildと新buildの`main`可視テキストを、Set A / Set Bの要点／詳細の4状態で比較し、全状態で完全一致した。内部asset URL、loading表示、実装用data属性以外の表示契約は変更しない。
+
+Human Review後、東京エレクトロンのClaim-backed表示だけを共通rendererの視覚階層へ統一した。`供給網上の位置`は、要点では`半導体製造 [8]`のlist entry、詳細では既存title / statementの後に同じentryを置く。Evidence markerは既存`tokyo-electron-value-chain` Binding由来の1件だけとし、既存metadataから対象範囲と更新状況を表示する。`主な製品`のfallbackは`製品構成`とcanonical順の4 Product entryへ置換し、要点は製品名だけ、詳細は既存の4説明を表示する。製品群のmarkerは既存`tokyo-electron-products` Binding由来の1件を維持する。Applied Materials / Lam Researchのasset、Company / Claim / Evidence / Source / Relation / Registry / Financial semanticsは変更しない。
 
 - Marker: Summary Set A `16` / Set B `20`; Expanded Set A `21` / Set B `32`; total `53`
 - Product description: Summary `0`; Expanded Set A `6` / Set B `9`

@@ -433,6 +433,18 @@
   line-height: 1.55;
 }
 
+.evidence-claim-backed-product-list strong {
+  display: block;
+  padding-left: .85rem;
+  text-indent: -.65rem;
+}
+
+.evidence-claim-backed-product-list strong::before {
+  content: "·";
+  margin-right: .35rem;
+  color: var(--muted);
+}
+
 .evidence-product-description {
   margin: 3px 0 0;
   color: var(--text);
@@ -463,6 +475,16 @@
 .evidence-compare .claim-statement {
   font-size: 14px;
   line-height: 1.65;
+}
+
+.evidence-claim-projection-context {
+  margin-bottom: 5px;
+}
+
+.evidence-claim-projection-context h3 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  line-height: 1.45;
 }
 
 .evidence-relation-meta,

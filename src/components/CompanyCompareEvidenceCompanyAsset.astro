@@ -10,6 +10,7 @@ import {
   selectCompareSummaryRelationIds,
 } from '../lib/company-compare-display';
 import { companyCompareAssetSchemaVersion } from '../lib/company-compare-evidence-assets';
+import { deriveEvidenceFreshness } from '../lib/evidence-freshness';
 
 type CompareEvidenceModel = ReturnType<typeof buildCompanyCompareEvidenceReadModel>;
 type CompareEvidenceCompany = CompareEvidenceModel['companies'][number];
@@ -81,6 +82,9 @@ const relationsForDisplay = (relations: CompareEvidenceRelationEntry[]) => {
     return true;
   });
 };
+const claimBackedProductLabel = (canonicalId: string, fallback: string) => canonicalId === 'product-category-coater-developer-equipment'
+  ? '塗布・現像装置'
+  : fallback;
 const missingLabels: Record<string, string> = {
   'not-collected': '未収録',
   'primary-source-unchecked': '一次資料未確認',
@@ -140,6 +144,10 @@ const companyContext = {
         </div>}
         {dimension.sections.map((section, sectionIndex) => {
           const displayedRelations = relationsForDisplay(section.relations);
+          const usesClaimBackedPositionProjection = company.identity.id === 'tokyo-electron'
+            && dimensionId === 'ai-role'
+            && section.dimensionId === 'value-chain-position'
+            && displayedRelations.length === 0;
           const relationProductIds = new Set(displayedRelations
             .filter(entry => entry.relation.relationType === 'PRODUCES')
             .map(entry => entry.relation.objectId));
@@ -151,27 +159,48 @@ const companyContext = {
             {dimensionId === 'technology-moat' && section.displayTechnologies.length > 0 && <ul class="evidence-canonical-list" aria-label="関連技術">
               {section.displayTechnologies.map((item, itemIndex) => <li data-canonical-id={item.canonicalId} data-grounding-ids={item.groundingIds.join(',')} data-summary={itemIndex < 3 ? 'show' : 'hide'}>{item.label}</li>)}
             </ul>}
-            {section.claims.map(entry => <div class="evidence-claim-entry" data-claim-id={entry.claim.id} data-claim-priority={entry.claim.priority} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryClaimIds.has(entry.claim.id) ? 'show' : 'hide'}>
-              <CompanyCompareEvidenceClaim
-                claim={entry.claim}
-                evidence={entry.bindings}
-                sources={entry.sources}
-                sourceNumberById={sourceNumberById}
-                compact
-                suppressTypeLabel
-                displayTitle={entry.display.title}
-                displayStatement={entry.display.statement}
-                additionalMetadata={[
-                  { label: '主張区分', value: entry.claim.claimType },
-                  { label: '最終検証', value: entry.claim.lastVerified ?? '未記録' },
-                  { label: '対象範囲', value: '企業全体' },
-                ]}
-              />
-            </div>)}
-            {dimensionId === 'key-products' && claimOnlyProducts.length > 0 && <ul class="evidence-product-description-list" data-expanded-only aria-label="製品の役割">
+            {section.claims.map(entry => {
+              const claimBackedProductProjection = dimensionId === 'key-products' && claimOnlyProducts.length > 0;
+              const freshness = deriveEvidenceFreshness(entry.claim.nextReview);
+              return <div class="evidence-claim-entry" data-claim-id={entry.claim.id} data-claim-priority={entry.claim.priority} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryClaimIds.has(entry.claim.id) ? 'show' : 'hide'}>
+                {usesClaimBackedPositionProjection && <div class="evidence-claim-projection-context" data-expanded-only>
+                  <h3>{entry.display.title}</h3>
+                  <p class="claim-statement">{entry.display.statement}</p>
+                </div>}
+                <CompanyCompareEvidenceClaim
+                  claim={entry.claim}
+                  evidence={entry.bindings}
+                  sources={entry.sources}
+                  sourceNumberById={sourceNumberById}
+                  compact
+                  suppressTypeLabel
+                  displayTitle={usesClaimBackedPositionProjection
+                    ? '半導体製造'
+                    : claimBackedProductProjection
+                      ? '製品構成'
+                      : entry.display.title}
+                  displayStatement={usesClaimBackedPositionProjection
+                    ? ''
+                    : claimBackedProductProjection
+                      ? '下記の製品カテゴリを提供する。'
+                      : entry.display.statement}
+                  variant={usesClaimBackedPositionProjection ? 'list' : 'standard'}
+                  additionalMetadata={[
+                    { label: '主張区分', value: entry.claim.claimType },
+                    { label: '最終検証', value: entry.claim.lastVerified ?? '未記録' },
+                    { label: '対象範囲', value: '企業全体' },
+                  ]}
+                />
+                {usesClaimBackedPositionProjection && <dl class="evidence-relation-meta" data-expanded-only>
+                  <div><dt>対象範囲</dt><dd>企業全体</dd></div>
+                  <div><dt>更新状況</dt><dd>{freshnessLabels[freshness.key] ?? freshness.label}</dd></div>
+                </dl>}
+              </div>;
+            })}
+            {dimensionId === 'key-products' && claimOnlyProducts.length > 0 && <ul class="evidence-product-description-list evidence-claim-backed-product-list" aria-label="製品の役割">
               {claimOnlyProducts.map(item => <li data-canonical-id={item.canonicalId} data-grounding-ids={item.groundingIds.join(',')}>
-                <strong>{item.label}</strong>
-                <p class="evidence-product-description" data-product-description={item.canonicalId}>{item.description}</p>
+                <strong>{claimBackedProductLabel(item.canonicalId, item.label)}</strong>
+                <p class="evidence-product-description" data-expanded-only data-product-description={item.canonicalId}>{item.description}</p>
               </li>)}
             </ul>}
             {displayedRelations.map(entry => {
