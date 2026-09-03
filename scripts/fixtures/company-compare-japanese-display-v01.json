@@ -205,10 +205,54 @@
   "presentationTokens": ["01", "02", "03", "04"],
   "financialDetailTable": {
     "metricIds": ["revenue", "operatingProfit", "operatingMargin", "freeCashFlow", "capex", "roic"],
+    "columnHeadingAlignment": "center",
+    "columnHeadingVerticalAlignment": "middle",
     "numericAlignment": "right",
     "verticalAlignment": "middle",
     "periodAlignment": "left",
     "sourceMinimumTargetPx": 44,
+    "amountUnitByCompany": {
+      "nvidia": "百万ドル",
+      "broadcom": "百万ドル",
+      "applied-materials": "百万ドル",
+      "lam-research": "百万ドル",
+      "tokyo-electron": "百万円"
+    },
+    "accountingBasisByCompany": {
+      "nvidia": "米国会計基準",
+      "broadcom": "米国会計基準",
+      "applied-materials": "米国会計基準",
+      "lam-research": "米国会計基準",
+      "tokyo-electron": "日本会計基準"
+    },
+    "periodLabels": {
+      "FY2024": "2024年度",
+      "FY2025": "2025年度",
+      "FY2026": "2026年度",
+      "Q2 FY2025": "2025年度 第2四半期",
+      "Q3 FY2025": "2025年度 第3四半期",
+      "Q1 FY2026": "2026年度 第1四半期",
+      "Q2 FY2026": "2026年度 第2四半期",
+      "Q3 FY2026": "2026年度 第3四半期",
+      "Q1 FY2027": "2027年度 第1四半期",
+      "Q2 FY2027": "2027年度 第2四半期",
+      "FY2026 Q1": "2026年度 第1四半期",
+      "FY2026 Q2": "2026年度 第2四半期",
+      "FY2026 Q3": "2026年度 第3四半期",
+      "FY2026 Q4": "2026年度 第4四半期",
+      "FY2027 Q1": "2027年度 第1四半期",
+      "June 2025 quarter": "2025年6月期（四半期）",
+      "March 2026 quarter": "2026年3月期（四半期）",
+      "June 2026 quarter": "2026年6月期（四半期）"
+    },
+    "recordCountByCompany": {
+      "nvidia": 6,
+      "broadcom": 3,
+      "applied-materials": 2,
+      "lam-research": 5,
+      "tokyo-electron": 7
+    },
+    "forbiddenDetailedEnglishLabels": ["USD · million", "JPY · million", "US GAAP", "Japanese GAAP"],
     "maxDigitFixtures": {
       "applied-materials": "7,302",
       "lam-research": "18,435.591",

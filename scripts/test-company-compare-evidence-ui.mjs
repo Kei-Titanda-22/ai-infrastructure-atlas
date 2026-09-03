@@ -18,6 +18,8 @@ import {
 import {
   compareClaimDisplayCopy,
   compareCompanyPresentationTokens,
+  compareFinancialAccountingBasisLabels,
+  compareFinancialAmountUnitLabels,
   compareGenericTermTranslations,
   compareLocationDisplayNames,
   comparePreservedProperNouns,
@@ -27,7 +29,9 @@ import {
   companyCompareDisplayNameParts,
   companyPresentationTokenForOrder,
   dedupeCompareCanonicalItems,
+  formatCompareFinancialPeriodLabel,
   localizeCompareLocation,
+  resolveCompareFinancialTablePresentation,
   resolveCompareProductDisplayDescription,
   selectCompareSummaryClaimIds,
   selectCompareSummaryRelationIds,
@@ -42,6 +46,16 @@ const evidenceManifest = await readJson('../src/data/company-evidence-manifest.j
 const sourceManifest = await readJson('../src/data/source-registry-manifest.json');
 const fixture = await readJson('./fixtures/company-compare-evidence-ui-snapshot-v01.json');
 const displayFixture = await readJson('./fixtures/company-compare-japanese-display-v01.json');
+const compareCashFlowOverrides = await readJson('../src/data/financial-history-v04-cashflow-overrides.json');
+const compareCashFlowOverrideById = new Map(compareCashFlowOverrides.map(record => [record.id, record]));
+const compareFinancialHistory = [
+  ...await readJson('../src/data/financial-history.json'),
+  ...await readJson('../src/data/financial-history-v04-batch2.json'),
+  ...await readJson('../src/data/financial-history-v04-batch6.json'),
+].map(record => {
+  const override = compareCashFlowOverrideById.get(record.id);
+  return override ? { ...record, ...override, metrics: { ...record.metrics, ...override.metrics } } : record;
+});
 const comparePage = await readFile(new URL('../src/pages/compare.astro', import.meta.url), 'utf8');
 const fragmentPage = await readFile(new URL('../src/pages/evidence-fragments/company-compare-evidence-v01.astro', import.meta.url), 'utf8');
 const component = await readFile(new URL('../src/components/CompanyCompareEvidence.astro', import.meta.url), 'utf8');
@@ -173,6 +187,30 @@ for (const companyId of displayFixture.companyIdentityLink.bilingualCompanyIds) 
 for (const companyId of displayFixture.companyIdentityLink.singleLineCompanyIds) {
   assert.equal(companyCompareDisplayNameParts(pilotCompanyRecords[companyId]).secondaryName, null, `${companyId}: Japanese-only primary identity stays one line`);
 }
+for (const [canonicalLabel, displayLabel] of Object.entries(displayFixture.financialDetailTable.periodLabels)) {
+  assert.equal(formatCompareFinancialPeriodLabel(canonicalLabel), displayLabel, `${canonicalLabel}: financial period label is fixture-locked`);
+}
+assert.throws(() => formatCompareFinancialPeriodLabel('Calendar 2026'), /unsupported/, 'ambiguous period labels are never inferred');
+for (const [companyId, expectedUnitLabel] of Object.entries(displayFixture.financialDetailTable.amountUnitByCompany)) {
+  const records = compareFinancialHistory
+    .filter(record => record.companyId === companyId)
+    .sort((left, right) => left.endDate.localeCompare(right.endDate) || left.id.localeCompare(right.id));
+  assert.equal(records.length, displayFixture.financialDetailTable.recordCountByCompany[companyId], `${companyId}: financial row count is fixture-locked`);
+  const canonicalBefore = JSON.stringify(records);
+  const presentation = resolveCompareFinancialTablePresentation(records);
+  assert.equal(presentation.amountUnitLabel, expectedUnitLabel, `${companyId}: amount unit label`);
+  assert.equal(presentation.accountingBasisLabel, displayFixture.financialDetailTable.accountingBasisByCompany[companyId], `${companyId}: accounting basis label`);
+  assert.deepEqual(presentation.periodLabels, records.map(record => displayFixture.financialDetailTable.periodLabels[record.periodLabel]), `${companyId}: display period order follows canonical order`);
+  assert.equal(JSON.stringify(records), canonicalBefore, `${companyId}: formatting does not mutate values, periods, sources, rows, or order`);
+}
+const financialGuardRecord = { periodLabel: 'FY2026', currency: 'USD', unit: 'million', accountingBasis: 'US GAAP' };
+assert.throws(() => resolveCompareFinancialTablePresentation([financialGuardRecord, { ...financialGuardRecord, currency: 'JPY' }]), /mixed currency or unit/);
+assert.throws(() => resolveCompareFinancialTablePresentation([financialGuardRecord, { ...financialGuardRecord, unit: 'billion' }]), /mixed currency or unit/);
+assert.throws(() => resolveCompareFinancialTablePresentation([financialGuardRecord, { ...financialGuardRecord, accountingBasis: 'Japanese GAAP' }]), /mixed accounting basis/);
+assert.equal(compareFinancialAmountUnitLabels['USD:million'], '百万ドル');
+assert.equal(compareFinancialAmountUnitLabels['JPY:million'], '百万円');
+assert.equal(compareFinancialAccountingBasisLabels['US GAAP'], '米国会計基準');
+assert.equal(compareFinancialAccountingBasisLabels['Japanese GAAP'], '日本会計基準');
 assert.equal(localizeCompareLocation('United States'), '米国');
 assert.equal(localizeCompareLocation('Oregon, United States'), '米国オレゴン州');
 assert.throws(() => localizeCompareLocation('unreviewed-place'), /mapping is missing/, 'unreviewed geography never falls through to mixed-language UI');
@@ -583,7 +621,7 @@ assert.match(component, /class="evidence-product-description" data-product-descr
 assert.match(component, /data-canonical-id=\{entry\.relation\.objectId\}/, 'rendered Product entries retain canonical Registry IDs');
 assert.match(component, /relationsForDisplay/, 'Product display is de-duplicated before rendering');
 assert.match(component, /主要比較には表示しません/);
-assert.match(component, /為替換算、順位、差分率は算出しません/);
+assert.match(component, /各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。/);
 assert.doesNotMatch(component, /id=\{`evidence-section-\$\{['"]value-chain-position/, 'Value Chain is not a repeated standalone major section');
 assert.match(component, /sourceDimensionIds/, 'AI role groups its supply-chain position without changing projection data');
 assert.match(component, /data-display-grounding-ids/, 'every Compare display entry exposes deterministic grounding IDs');
@@ -652,10 +690,17 @@ assert.match(styles, /thead th > span \{[\s\S]*font-size: 14px/, 'desktop ticker
 assert.match(styles, /tbody > tr > th \{[\s\S]*font-size: 16px;[\s\S]*font-weight: 700/, 'desktop row headings are at least 16px and bold');
 assert.match(styles, /\.evidence-identity > span \{[\s\S]*font-size: 16px/, 'Company information values are at least 16px');
 assert.match(styles, /\.evidence-product-description \{[\s\S]*font-size: 15px;[\s\S]*line-height: 1\.65/, 'desktop Product descriptions meet the typography contract');
-assert.match(component, /class="num" scope="col"/, 'numeric headers use the numeric alignment contract');
+assert.match(component, /<thead><tr>[\s\S]*<th scope="col">出典<\/th>/, 'all eight detailed Financial headers use one centered heading contract');
+assert.match(component, /<th class="num" scope="col">売上高<br \/>（\{company\.expandedFinancialPresentation\.amountUnitLabel\}）<\/th>/, 'amount header exposes one continuous accessible name on two visual lines');
+assert.match(component, /class="financial-basis">会計基準：\{company\.expandedFinancialPresentation\.accountingBasisLabel\}/, 'accounting basis appears once at Company-table level');
+assert.match(component, /scope="row">\{record\.displayPeriodLabel\}<\/th>/, 'period rows contain the localized period only');
+assert.doesNotMatch(component, /record\.currency[\s\S]*record\.unit[\s\S]*record\.accountingBasis/, 'period rows never repeat currency, unit, or accounting basis');
+assert.match(component, /各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。/, 'detailed Financial explanation uses the reviewed Japanese copy');
 assert.match(component, /metric\?\.displayValue[\s\S]*class="num"[\s\S]*class="missing"/, 'available and missing values have distinct semantic classes');
 assert.doesNotMatch(component, /class="num"[^>]*>未収録</, 'missing status never receives the numeric class');
 assert.match(styles, /\.evidence-financial-scroll th,[\s\S]*vertical-align: middle/, 'detailed Financial cells are vertically centered');
+assert.match(styles, /\.evidence-financial-scroll thead th \{[\s\S]*text-align: center;[\s\S]*vertical-align: middle/, 'all detailed Financial column headings are centered on both axes');
+assert.match(styles, /thead th\.period \{[\s\S]*text-align: center/, 'the period column heading is not overridden by the left-aligned body-period contract');
 assert.match(styles, /\.evidence-financial-scroll \.num \{[\s\S]*font-size: 14px;[\s\S]*font-weight: 500;[\s\S]*font-variant-numeric: tabular-nums;[\s\S]*text-align: right/, 'financial values are readable, tabular, and right aligned');
 assert.match(styles, /thead \.num \{[\s\S]*font-weight: 600/, 'numeric headers retain readable emphasis');
 assert.match(styles, /\.evidence-financial-scroll \.period \{[\s\S]*text-align: left/, 'period stays left aligned');
@@ -664,6 +709,8 @@ assert.match(styles, /\.evidence-financial-scroll td:last-child a \{[\s\S]*font-
 assert.equal(displayFixture.financialDetailTable.numericAlignment, 'right');
 assert.equal(displayFixture.financialDetailTable.verticalAlignment, 'middle');
 assert.equal(displayFixture.financialDetailTable.periodAlignment, 'left');
+assert.equal(displayFixture.financialDetailTable.columnHeadingAlignment, 'center');
+assert.equal(displayFixture.financialDetailTable.columnHeadingVerticalAlignment, 'middle');
 assert.equal(displayFixture.financialDetailTable.sourceMinimumTargetPx, 44);
 assert.deepEqual(displayFixture.financialDetailTable.metricIds, ['revenue', 'operatingProfit', 'operatingMargin', 'freeCashFlow', 'capex', 'roic']);
 assert.match(styles, /\.evidence-financial-value > a,[\s\S]*\.evidence-financial-company a \{[\s\S]*min-height: 44px/, 'detailed Financial source links have a 44px target');
@@ -724,6 +771,38 @@ if (process.argv.includes('--dist')) {
   assert.deepEqual([...new Set(productDescriptionInstances)].sort(), productIds, 'built descriptions cover all 11 canonical Product IDs');
   assert.ok(productDescriptionInstances.every(productId => fragmentHtml.includes(compareProductDisplayDescriptions[productId].description)), 'built Product descriptions use only fixture-locked copy');
   assert.match(fragmentHtml, /data-expanded-only data-product-description=/, 'Product descriptions are expanded-only');
+  const expandedFinancialStart = fragmentHtml.indexOf('<section class="evidence-expanded-financial"');
+  const expandedFinancialEnd = fragmentHtml.indexOf('<section class="evidence-data-quality', expandedFinancialStart);
+  assert.ok(expandedFinancialStart >= 0 && expandedFinancialEnd > expandedFinancialStart, 'built detailed Financial section is bounded');
+  const expandedFinancialHtml = fragmentHtml.slice(expandedFinancialStart, expandedFinancialEnd);
+  assert.equal((expandedFinancialHtml.match(/scope="col"/g) ?? []).length, 40, 'five tables retain all eight semantic column headings');
+  assert.equal((expandedFinancialHtml.match(/class="financial-basis"/g) ?? []).length, 5, 'accounting basis appears once per Company table');
+  assert.equal((expandedFinancialHtml.match(/会計基準：米国会計基準/g) ?? []).length, 4, 'four USD tables show the Japanese US accounting-basis label once');
+  assert.equal((expandedFinancialHtml.match(/会計基準：日本会計基準/g) ?? []).length, 1, 'Tokyo Electron shows the Japanese accounting-basis label once');
+  for (const token of displayFixture.financialDetailTable.forbiddenDetailedEnglishLabels) {
+    assert.ok(!expandedFinancialHtml.includes(token), `detailed Financial primary UI omits internal label: ${token}`);
+  }
+  const amountHeaderNames = ['売上高', '営業利益', 'フリーキャッシュフロー', '設備投資'];
+  for (const label of amountHeaderNames) {
+    assert.equal((expandedFinancialHtml.match(new RegExp(`${label}<br>（百万ドル）`, 'g')) ?? []).length, 4, `${label}: four USD tables expose the continuous accessible unit label`);
+    assert.equal((expandedFinancialHtml.match(new RegExp(`${label}<br>（百万円）`, 'g')) ?? []).length, 1, `${label}: Tokyo Electron exposes the continuous accessible unit label`);
+  }
+  const orderedPilotCompanyIds = [...fixture.setCompanyIds['set-a'], ...fixture.setCompanyIds['set-b']];
+  const orderedFinancialRecords = orderedPilotCompanyIds.flatMap(companyId => compareFinancialHistory
+    .filter(record => record.companyId === companyId)
+    .sort((left, right) => left.endDate.localeCompare(right.endDate) || left.id.localeCompare(right.id)));
+  const displayedPeriods = [...expandedFinancialHtml.matchAll(/<th class="period" scope="row">([^<]+)<\/th>/g)].map(match => match[1]);
+  assert.deepEqual(displayedPeriods, orderedFinancialRecords.map(record => formatCompareFinancialPeriodLabel(record.periodLabel)), 'display period labels preserve canonical Company, date, and ID order');
+  const financialMetricIds = displayFixture.financialDetailTable.metricIds;
+  const formatExpectedFinancialValue = (metricId, value) => value == null
+    ? '未収録'
+    : metricId === 'operatingMargin' || metricId === 'roic'
+      ? `${Number(value).toLocaleString('ja-JP', { maximumFractionDigits: 1 })}%`
+      : Number(value).toLocaleString('ja-JP', { maximumFractionDigits: 3 });
+  const expectedFinancialCells = orderedFinancialRecords.flatMap(record => financialMetricIds.map(metricId => formatExpectedFinancialValue(metricId, record.metrics[metricId]?.value)));
+  const displayedFinancialCells = [...expandedFinancialHtml.matchAll(/<td class="(?:num|missing)">([^<]+)<\/td>/g)].map(match => match[1]);
+  assert.deepEqual(displayedFinancialCells, expectedFinancialCells, 'display values, missing states, row counts, and order remain canonical');
+  assert.equal((expandedFinancialHtml.match(/class="evidence-source-link"/g) ?? []).length, orderedFinancialRecords.length, 'each canonical Financial row retains one Source link in order');
   for (const [companyId, displayValue] of Object.entries(displayFixture.financialDetailTable.maxDigitFixtures)) {
     assert.ok(fragmentHtml.includes(displayValue), `${companyId}: realistic maximum-digit Financial value remains present`);
   }

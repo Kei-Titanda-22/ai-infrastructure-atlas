@@ -313,3 +313,39 @@ Legacy Compare HTMLは585,468 Bで不変。Evidence fragmentは312,007 Bから31
 - Legacy Compare HTMLは585,468 B、Evidence fragmentは314,559 B、gzip 22,416 B。Pagefindは105 pages / 5,791 wordsで不変である。
 
 以上は第6回Human Review入力に対するremediation結果であり、実参加者によるHuman Test結果は生成していない。
+
+## 27. 第7回Human Review
+
+第6回remediation後の実画面を確認し、詳細表示の財務履歴について次を新たな正式入力とした。
+
+1. 金額列で`USD · million`、`JPY · million`が期間行ごとに反復し、日本語ページ内で英語の内部表現が目立つ。
+2. `US GAAP`、`Japanese GAAP`も各行で反復しており、会社単位で一度示せば足りる情報が表を縦に重くしている。
+3. `Q3 FY2026`、`June 2025 quarter`等の期間名が英語のままで、日本語の比較表として走査しにくい。
+4. 第5回で数値列見出しを右揃えにしたが、複数行見出しの視線位置が揃わず、表全体では中央揃えの方が自然である。
+
+## 28. 第7回で採択した修正
+
+- USD / millionの金額列単位を`百万ドル`、JPY / millionを`百万円`として列見出しへ表示する。canonical currency、unit、数値は変更しない。
+- 会計基準は会社見出し直下へ1回だけ、US GAAPを`米国会計基準`、Japanese GAAPを`日本会計基準`として表示し、期間行から反復表示を除く。
+- canonical periodLabelは保持し、Compare専用formatterで`2026年度 第3四半期`、`2025年6月期（四半期）`等へ決定論的に日本語化する。未対応形式は推測せず失敗させる。
+- 同一会社内でcurrency / unitまたはaccounting basisが混在する場合は表を生成せず失敗させる。Pilot 5社は各社内で単位・会計基準が一意であることをfixtureで固定する。
+- 財務表の8列見出しを水平・垂直中央揃えへ統一する。数値セルの右揃え・縦中央・`tabular-nums`、期間の左揃え、欠損・出典の中央揃え、出典linkの44px targetは維持する。
+- 説明文を`各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。`へ統一する。
+- Summary財務カード、canonical Financial data / contract、Financial compatibility、Company個別ページ、Legacy Compareは変更しない。
+
+以上は第7回Human Review入力に対する採択内容であり、実参加者によるHuman Test結果は生成していない。
+
+## 29. 第7回remediation検証
+
+同一final buildのChromeで、Set A / Set Bの要点・詳細を1024×768、768×1024、390×844、360×800で再測定した。
+
+- 財務詳細はSet A 2社14行、Set B 3社14行をcanonical endDate / ID順で表示した。金額の再計算、丸め、換算は行わず、全138 metric cellの表示値・欠損・順序をfixtureで照合した。
+- NVIDIA、Broadcom、Applied Materials、Lam Researchは全金額列を`百万ドル`、東京エレクトロンは`百万円`とした。会計基準は各社表の冒頭1回だけ`米国会計基準`4件、`日本会計基準`1件を表示した。
+- 全23 periodLabelを決定論的に日本語化した。`Q3 FY2026` / `FY2026 Q3` / `FY2026` / named quarterを含む採択形式をfixtureで固定し、未知形式、currency / unit混在、accounting basis混在は明示的にrejectする。
+- 財務詳細primary UIで`USD · million`、`JPY · million`、`US GAAP`、`Japanese GAAP`の可視件数は0。Summary財務カードはSet A 2件 / Set B 3件で不変である。
+- 財務表の8列見出しは全社・全指定幅で水平中央・垂直中央、期間行は左・中央、数値は右・中央・`tabular-nums`、欠損と出典は中央となった。数値cellのoverflowは0、出典linkとdetail toggleの最小高は44pxである。
+- 1024pxでは全5表の表内scrollは0。768pxでは173px、390pxでは551px、360pxでは581pxの表内horizontal scrollを許容し、全16状態でdocument overflowは0だった。
+- 要点 / 詳細のmarkerはSet A 16 / 21、Set B 20 / 32で不変。drawer、Primary Source、Escape、focus returnを確認し、正常系console errorは0だった。
+- Legacy Compare HTMLは585,468 B。Evidence fragmentは314,627 B、gzip 22,480 Bで、初回299,685 B比5% guard内。Pagefindは105 pages / 5,791 wordsを維持した。
+
+以上は第7回Human Review入力に対するremediation結果であり、実参加者によるHuman Test結果は生成していない。

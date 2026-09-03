@@ -305,14 +305,24 @@ const clientPayload = {
 
   <section class="evidence-expanded-financial" data-expanded-only aria-labelledby="evidence-expanded-financial-title">
     <h3 id="evidence-expanded-financial-title">財務詳細</h3>
-    <p>通貨・単位は各社開示のまま表示します。為替換算、順位、差分率は算出しません。</p>
+    <p>各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。</p>
     {model.companies.map(company => <section data-company-id={company.identity.id} class="evidence-financial-company">
       <h4>{companyContext(company).name}</h4>
+      <p class="financial-basis">会計基準：{company.expandedFinancialPresentation.accountingBasisLabel}</p>
       <div class="evidence-financial-scroll" tabindex="0" aria-label={`${companyContext(company).accessibleName}の財務履歴`}>
         <table>
-          <thead><tr><th class="period" scope="col">期間</th><th class="num" scope="col">売上高</th><th class="num" scope="col">営業利益</th><th class="num" scope="col">営業利益率</th><th class="num" scope="col">フリーキャッシュフロー</th><th class="num" scope="col">設備投資</th><th class="num" scope="col">ROIC</th><th scope="col">出典</th></tr></thead>
+          <thead><tr>
+            <th class="period" scope="col">期間</th>
+            <th class="num" scope="col">売上高<br />（{company.expandedFinancialPresentation.amountUnitLabel}）</th>
+            <th class="num" scope="col">営業利益<br />（{company.expandedFinancialPresentation.amountUnitLabel}）</th>
+            <th class="num" scope="col">営業利益率</th>
+            <th class="num" scope="col">フリーキャッシュフロー<br />（{company.expandedFinancialPresentation.amountUnitLabel}）</th>
+            <th class="num" scope="col">設備投資<br />（{company.expandedFinancialPresentation.amountUnitLabel}）</th>
+            <th class="num" scope="col">ROIC</th>
+            <th scope="col">出典</th>
+          </tr></thead>
           <tbody>{company.expandedFinancial.map(record => <tr>
-            <th class="period" scope="row">{record.periodLabel}<small>{record.currency} · {record.unit} · {record.accountingBasis}</small></th>
+            <th class="period" scope="row">{record.displayPeriodLabel}</th>
             {['revenue', 'operatingProfit', 'operatingMargin', 'freeCashFlow', 'capex', 'roic'].map(metricId => {
               const metric = financialMetric(record, metricId);
               return metric?.displayValue

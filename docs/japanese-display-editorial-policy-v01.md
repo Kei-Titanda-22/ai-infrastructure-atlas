@@ -129,3 +129,14 @@ Compare専用fixtureで、次を固定する。
 - 1つのidentity表示に対するkeyboard focus targetは1つとし、accessible nameには英語名と日本語名の双方を含める。
 - 日本語名だけをprimary表示するCompanyは1行の会社リンクとし、accessible nameでは既存の英語名・日本語名を維持する。
 - 選択中カード、比較表の列見出し、mobile identity、財務詳細、根拠追跡に同じCompare専用link rendererを使用する。文中のCompany名は自動的にリンク化しない。
+
+## 13. 財務詳細表の単位・期間・会計基準
+
+- 財務詳細表の金額列は、各社のcanonical currency / unitからCompare専用表示を派生する。USD / millionは`百万ドル`、JPY / millionは`百万円`とし、値の換算、再計算、丸め、為替換算は行わない。
+- 同一会社の財務履歴にcurrency、unit、accounting basisの混在がある場合は表示を継続せず、read modelで明示的に失敗させる。将来の混在表を黙って作らない。
+- 会計基準は会社見出しの直下へ1回だけ表示する。US GAAPは`米国会計基準`、Japanese GAAPは`日本会計基準`とし、各期間行では反復しない。
+- 期間はcanonical periodLabelを書き換えず、Compare専用の決定論的formatterで表示する。`Q3 FY2026`は`2026年度 第3四半期`、`FY2026 Q3`も同じ表記、`FY2026`は`2026年度`、named quarterは`2025年6月期（四半期）`の形式とする。
+- 未対応のperiodLabelは推測で表示せず、明示的に失敗させる。対応済み変換と表示順はfixtureで固定する。
+- 8列の見出しは水平・垂直とも中央揃えとする。単位は見出しの2行目に置いてよいが、accessible nameは`売上高（百万ドル）`のように連続した名称にする。
+- 期間は左揃え・縦中央、数値は右揃え・縦中央・`tabular-nums`、欠損と出典は中央揃えとする。出典リンクの44px targetを維持する。
+- 説明文は`各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。`とし、primary財務詳細UIへ`USD · million`、`JPY · million`、`US GAAP`、`Japanese GAAP`を表示しない。

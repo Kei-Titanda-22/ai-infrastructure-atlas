@@ -38,6 +38,69 @@ export interface CompareProductDisplayDescription {
   groundingIds: readonly string[];
 }
 
+export interface CompareFinancialDisplayRecordLike {
+  periodLabel: string;
+  currency: string;
+  unit: string;
+  accountingBasis: string;
+}
+
+export const compareFinancialAmountUnitLabels = Object.freeze<Record<string, string>>({
+  'USD:million': '百万ドル',
+  'JPY:million': '百万円',
+});
+
+export const compareFinancialAccountingBasisLabels = Object.freeze<Record<string, string>>({
+  'US GAAP': '米国会計基準',
+  'Japanese GAAP': '日本会計基準',
+});
+
+const compareNamedQuarterPeriodLabels = Object.freeze<Record<string, string>>({
+  'June 2025 quarter': '2025年6月期（四半期）',
+  'March 2026 quarter': '2026年3月期（四半期）',
+  'June 2026 quarter': '2026年6月期（四半期）',
+});
+
+export function formatCompareFinancialPeriodLabel(periodLabel: string) {
+  const canonicalLabel = periodLabel.trim();
+  const namedQuarter = compareNamedQuarterPeriodLabels[canonicalLabel];
+  if (namedQuarter) return namedQuarter;
+
+  const quarterFirst = canonicalLabel.match(/^Q([1-4]) FY(\d{4})$/);
+  if (quarterFirst) return `${quarterFirst[2]}年度 第${quarterFirst[1]}四半期`;
+
+  const fiscalYearFirst = canonicalLabel.match(/^FY(\d{4}) Q([1-4])$/);
+  if (fiscalYearFirst) return `${fiscalYearFirst[1]}年度 第${fiscalYearFirst[2]}四半期`;
+
+  const annual = canonicalLabel.match(/^FY(\d{4})$/);
+  if (annual) return `${annual[1]}年度`;
+
+  throw new Error(`Company Compare financial period label is unsupported: ${periodLabel}`);
+}
+
+export function resolveCompareFinancialTablePresentation(records: readonly CompareFinancialDisplayRecordLike[]) {
+  if (!records.length) throw new Error('Company Compare financial table requires at least one record');
+  const currencyUnitKeys = new Set(records.map(record => `${record.currency}:${record.unit}`));
+  if (currencyUnitKeys.size !== 1) {
+    throw new Error(`Company Compare financial table has mixed currency or unit: ${[...currencyUnitKeys].join(', ')}`);
+  }
+  const accountingBases = new Set(records.map(record => record.accountingBasis));
+  if (accountingBases.size !== 1) {
+    throw new Error(`Company Compare financial table has mixed accounting basis: ${[...accountingBases].join(', ')}`);
+  }
+  const currencyUnitKey = [...currencyUnitKeys][0];
+  const accountingBasis = [...accountingBases][0];
+  const amountUnitLabel = compareFinancialAmountUnitLabels[currencyUnitKey];
+  const accountingBasisLabel = compareFinancialAccountingBasisLabels[accountingBasis];
+  if (!amountUnitLabel) throw new Error(`Company Compare financial unit label is unsupported: ${currencyUnitKey}`);
+  if (!accountingBasisLabel) throw new Error(`Company Compare accounting basis label is unsupported: ${accountingBasis}`);
+  return {
+    amountUnitLabel,
+    accountingBasisLabel,
+    periodLabels: records.map(record => formatCompareFinancialPeriodLabel(record.periodLabel)),
+  } as const;
+}
+
 export const compareGenericTermTranslations = Object.freeze({
   compute: '演算',
   interconnect: '相互接続',

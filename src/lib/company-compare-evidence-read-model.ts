@@ -10,6 +10,7 @@ import {
   dedupeCompareCanonicalItems,
   localizeCompareLocation,
   resolveCompareClaimDisplay,
+  resolveCompareFinancialTablePresentation,
   resolveCompareProductDisplayDescription,
   type CompareCanonicalDisplayItem,
   type CompareDisplayCopy,
@@ -281,30 +282,40 @@ const formatFinancialReference = (reference: any) => {
   };
 };
 
-const buildExpandedFinancial = (companyId: string) => financialHistory
-  .filter(record => record.companyId === companyId)
-  .sort((left, right) => left.endDate.localeCompare(right.endDate) || left.id.localeCompare(right.id))
-  .map(record => ({
-    id: record.id,
-    periodType: record.periodType,
-    periodLabel: record.periodLabel,
-    endDate: record.endDate,
-    currency: record.currency,
-    unit: record.unit,
-    accountingBasis: record.accountingBasis,
-    verifiedAt: record.verifiedAt,
-    source: resolveRequiredSource(record.sourceId),
-    metrics: Object.entries(record.metrics)
-      .filter(([metricId, metric]) => metric.value != null && metricId in metricLabels)
-      .map(([metricId, metric]) => ({
-        metricId,
-        label: metricLabels[metricId],
-        value: metric.value,
-        displayValue: formatMetric(metricId, metric.value),
-        status: metric.status,
-        basis: metric.basis,
-      })),
-  }));
+const buildExpandedFinancial = (companyId: string) => {
+  const records = financialHistory
+    .filter(record => record.companyId === companyId)
+    .sort((left, right) => left.endDate.localeCompare(right.endDate) || left.id.localeCompare(right.id));
+  const presentation = resolveCompareFinancialTablePresentation(records);
+  return {
+    presentation: {
+      amountUnitLabel: presentation.amountUnitLabel,
+      accountingBasisLabel: presentation.accountingBasisLabel,
+    },
+    records: records.map((record, recordIndex) => ({
+      id: record.id,
+      periodType: record.periodType,
+      periodLabel: record.periodLabel,
+      displayPeriodLabel: presentation.periodLabels[recordIndex],
+      endDate: record.endDate,
+      currency: record.currency,
+      unit: record.unit,
+      accountingBasis: record.accountingBasis,
+      verifiedAt: record.verifiedAt,
+      source: resolveRequiredSource(record.sourceId),
+      metrics: Object.entries(record.metrics)
+        .filter(([metricId, metric]) => metric.value != null && metricId in metricLabels)
+        .map(([metricId, metric]) => ({
+          metricId,
+          label: metricLabels[metricId],
+          value: metric.value,
+          displayValue: formatMetric(metricId, metric.value),
+          status: metric.status,
+          basis: metric.basis,
+        })),
+    })),
+  };
+};
 
 export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidenceIdentity[]) {
   const pilotCompanyIds = [...new Set(pilotCompareEvidenceProjection.sets.flatMap(setRecord => setRecord.orderedCompanyIds))];
@@ -327,6 +338,7 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
   const companies = pilotCompanyIds.map(companyId => {
     const projected = projectedCompanies.get(companyId);
     if (!projected) throw new Error(`Company Compare Evidence UI cannot resolve Projection company: ${companyId}`);
+    const expandedFinancial = buildExpandedFinancial(companyId);
     return {
       identity: identityById.get(companyId)!,
       dimensions: projected.dimensions.map(dimension => {
@@ -349,7 +361,8 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
         };
       }),
       evidenceTrace: projected.evidenceTrace,
-      expandedFinancial: buildExpandedFinancial(companyId),
+      expandedFinancial: expandedFinancial.records,
+      expandedFinancialPresentation: expandedFinancial.presentation,
     };
   });
 
