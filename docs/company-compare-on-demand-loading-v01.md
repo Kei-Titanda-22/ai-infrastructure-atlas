@@ -53,14 +53,14 @@ assetはHTTP status、company ID、schema version、必要slot全件、未知／
 
 | Asset | Raw | gzip |
 | --- | ---: | ---: |
-| Shell | 7,431 B | 2,167 B |
+| Shell | 7,431 B | 2,169 B |
 | NVIDIA | 55,530 B | 5,460 B |
 | Broadcom | 63,168 B | 5,311 B |
 | Applied Materials | 56,193 B | 5,736 B |
 | Lam Research | 83,754 B | 6,469 B |
-| Tokyo Electron | 50,457 B | 5,664 B |
+| Tokyo Electron | 52,973 B | 5,743 B |
 
-転送単位ごとのgzip値を合算すると、Set A cold loadはraw `126,129 B` / gzip `12,938 B`、Set Bはraw `197,835 B` / gzip `20,036 B`。1～4社の全30組合せで最大はNVIDIA / Broadcom / Applied Materials / Lam Researchのraw `266,076 B`であり、`330,509 B`以下である。
+転送単位ごとのgzip値を合算すると、Set A cold loadはraw `126,129 B` / gzip `12,940 B`、Set Bはraw `200,351 B` / gzip `20,117 B`。1～4社の全30組合せで最大はNVIDIA / Broadcom / Applied Materials / Lam Researchのraw `266,076 B`であり、`330,509 B`以下である。
 
 個別上限はshell raw `20,000 B`、company asset raw `100,000 B`、company asset gzip `15,000 B`。各上限値はPASS、上限+1 BはFAILとし、baseline欠損、0、負数、不正ratio、不明company IDをfail closedにする。
 
@@ -84,11 +84,12 @@ Evidence markerの四角は、on-demand分割後にCompany asset route側へ出�
 | Lam Research | 成膜・エッチング・洗浄を横断 | 成膜、エッチング、ウェーハ洗浄を中心に、複数の前工程装置を展開する。 | `lam-research-products` |
 | Tokyo Electron | 前工程の主要工程を幅広くカバー | 塗布・現像、エッチング、成膜、洗浄の各工程に対応する装置を展開する。 | `tokyo-electron-products` |
 
-要点では5社とも製品群title / body、説明、metadataを表示せず、`事実`、製品名、必要なEvidence markerだけを表示する。詳細では上表の会社別製品群概要を先に表示し、その後に製品名、既存説明、既存metadataを表示する。item-level Relationがある4社は各製品entryのmarkerを維持し、group-level ClaimだけのTokyo Electronは製品群marker `[8]`を1件だけ維持する。`製品構成`、`下記の製品カテゴリを提供する。`、重複する`主な製品`、`以下の製品を提供する。`は5社の製品本文へ出力しない。
+要点では5社とも製品群title / body、説明、metadataを表示せず、`事実`、製品名、必要なEvidence markerだけを表示する。詳細では上表の会社別製品群概要を先に表示し、その後に製品名、既存説明、既存metadataを表示する。item-level Relationがある4社は各製品entryのmarkerを維持する。group-level Claimだけを持つTokyo Electronでは、4つの製品entryが同じ`tokyo-electron-products` grounding Claimを共有し、製品名の直後から既存Evidence `[8]`を開く。詳細では製品群概要末尾の既存`[8]`も維持する。共通entryは`pilot-claim-list`、`claim-statement-list`、inline markerという同じDOM階層を使用し、会社別のmarker座標やCSS例外を置かない。`製品構成`、`下記の製品カテゴリを提供する。`、重複する`主な製品`、`以下の製品を提供する。`は5社の製品本文へ出力しない。
 
 ChromeでSet A / Set Bを`1024`、`390`、`360` pxの要点／詳細で確認し、document overflow `0`、console error `0`、要点の製品説明・metadata `0`、詳細の製品説明Set A `6` / Set B `9`を確認した。drawer、Primary Source、Escape、focus return、URL reload / Back / Forwardを維持し、要点／詳細切替でCompany asset集合は変化しない。
 
-- Marker: Summary Set A `16` / Set B `20`; Expanded Set A `21` / Set B `32`; total `53`
+- Rendered marker: Summary Set A `16` / Set B `23`; Expanded Set A `21` / Set B `36`; five-company Expanded total `57`
+- Unique grounding entry / drawer: `53 / 53`（Tokyo Electronの4製品markerは既存の同一drawerを共有）
 - Product description: Summary `0`; Expanded Set A `6` / Set B `9`
 - Relation / Binding: `17 / 17`
 - Registry Product / Technology / Market: `11 / 8 / 0`

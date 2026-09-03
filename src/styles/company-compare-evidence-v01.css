@@ -445,18 +445,6 @@
   line-height: 1.55;
 }
 
-.evidence-claim-backed-product-list strong {
-  display: block;
-  padding-left: .85rem;
-  text-indent: -.65rem;
-}
-
-.evidence-claim-backed-product-list strong::before {
-  content: "·";
-  margin-right: .35rem;
-  color: var(--muted);
-}
-
 .evidence-product-description {
   margin: 3px 0 0;
   color: var(--text);
@@ -812,21 +800,13 @@
   display: none !important;
 }
 
-.evidence-compare[data-detail="summary"] .evidence-product-portfolio-summary[data-summary="show"] .pilot-claim h3 {
+.evidence-compare[data-detail="summary"] .evidence-product-portfolio-summary[data-summary="show"] .pilot-claim {
+  padding: 0;
+}
+
+.evidence-compare[data-detail="summary"] .evidence-product-portfolio-summary[data-summary="show"] .pilot-claim > h3,
+.evidence-compare[data-detail="summary"] .evidence-product-portfolio-summary[data-summary="show"] .pilot-claim > .claim-statement {
   display: none;
-}
-
-.evidence-compare[data-detail="summary"] .evidence-product-portfolio-summary[data-summary="show"] .claim-statement {
-  margin: 0;
-  font-size: 0;
-  line-height: 0;
-  visibility: hidden;
-}
-
-.evidence-compare[data-detail="summary"] .evidence-product-portfolio-summary[data-summary="show"] .evidence-marker {
-  font-size: .68rem;
-  line-height: 1;
-  visibility: visible;
 }
 
 @media (max-width: 800px) and (min-width: 601px) {

@@ -924,7 +924,9 @@ assert.doesNotMatch(companyAssetComponent, /company\.identity\.id === 'tokyo-ele
 assert.match(presentationSource, /resolveCompanyCompareProductPortfolioSummary/, 'all five Product portfolio summaries use one validated display-copy contract');
 assert.match(presentationSource, /evidence-product-portfolio-summary/, 'Product portfolio summaries use one shared presentation class');
 assert.match(presentationSource, /evidence-position-entry/, 'Claim-backed and Relation-backed positions use one shared presentation class');
-assert.match(presentationSource, /<ul class="evidence-product-description-list evidence-claim-backed-product-list" aria-label="製品の役割">/, 'Claim-backed Product names remain visible in summary');
+assert.match(presentationSource, /class="evidence-relation-entry evidence-product-entry evidence-claim-backed-product-entry"/, 'Claim-backed Products use the shared Product-entry hierarchy');
+assert.match(presentationSource, /data-product-grounding-id=\{groundingClaim\.claim\.id\}/, 'each Claim-backed Product entry owns an explicit grounding Claim reference');
+assert.match(presentationSource, /data-evidence-open=\{`evidence-\$\{groundingClaim\.claim\.id\}`\}/, 'the shared Product entry renders its Evidence marker immediately after the Product name');
 assert.match(presentationSource, /data-canonical-id=\{entry\.relation\.objectId\}/, 'rendered Product entries retain canonical Registry IDs');
 assert.match(presentationSource, /relationsForDisplay/, 'Product display is de-duplicated before rendering');
 assert.match(presentationSource, /主要比較には表示しません/);
@@ -997,7 +999,8 @@ assert.match(styles, /thead th > span \{[\s\S]*font-size: 14px/, 'desktop ticker
 assert.match(styles, /tbody > tr > th \{[\s\S]*font-size: 16px;[\s\S]*font-weight: 700/, 'desktop row headings are at least 16px and bold');
 assert.match(styles, /\.evidence-identity > span \{[\s\S]*font-size: 16px/, 'Company information values are at least 16px');
 assert.match(styles, /\.evidence-product-description \{[\s\S]*font-size: 15px;[\s\S]*line-height: 1\.65/, 'desktop Product descriptions meet the typography contract');
-assert.match(styles, /\.evidence-claim-backed-product-list strong::before \{[\s\S]*content: "·"/, 'Claim-backed Product entries use the same bullet as Relation-backed entries');
+assert.match(styles, /\.evidence-compare \.claim-statement-list::before \{[\s\S]*content: "·"/, 'Claim-backed and Relation-backed Product entries use the same shared bullet rule');
+assert.match(styles, /data-detail="summary"\] \.evidence-product-portfolio-summary[\s\S]*\.pilot-claim > \.claim-statement \{[\s\S]*display: none/, 'summary hides the Product portfolio body and its group marker without hiding the shared drawer');
 assert.match(styles, /data-detail="summary"\] \.evidence-position-entry \{[\s\S]*border-top: 1px solid var\(--border\)/, 'summary position entries use one shared separator rule');
 assert.match(styles, /\.evidence-compare \.evidence-marker \{[\s\S]*border: 0;[\s\S]*appearance: none;[\s\S]*background: transparent/, 'Evidence markers reset native button chrome in the shell stylesheet');
 assert.match(styles, /\.evidence-compare \.evidence-marker::before \{[\s\S]*width: 44px;[\s\S]*height: 44px/, 'Evidence markers retain a transparent 44px hit area without expanding line height');
@@ -1100,22 +1103,26 @@ if (process.argv.includes('--dist')) {
     const setHtml = setIds.map(id => assetHtmlById[id]).join('\n');
     const setRawBytes = Buffer.byteLength(shellHtml) + Buffer.byteLength(setHtml);
     assertWithinBoundary(setRawBytes, onDemandSize.maximumSetRawBytes, `${setId}: initial shell plus selected assets`);
-    const summaryMarkers = (setHtml.match(/class="evidence-(?:claim|relation)-entry(?: [^"]*)?"[^>]*data-summary="show"/g) ?? []).length;
+    const summaryEntryMarkers = (setHtml.match(/class="evidence-(?:claim|relation)-entry(?: [^"]*)?"[^>]*data-summary="show"/g) ?? []).length;
+    const hiddenSummaryPortfolioMarkers = (setHtml.match(/class="evidence-claim-entry evidence-product-portfolio-summary"[^>]*data-summary="show"/g) ?? []).length;
+    const summaryMarkers = summaryEntryMarkers - hiddenSummaryPortfolioMarkers;
     const expandedMarkers = (setHtml.match(/class="evidence-(?:claim|relation)-entry(?: [^"]*)?"/g) ?? []).length;
-    assert.equal(summaryMarkers, displayFixture.summaryMarkerCounts[setId], `${setId}: summary marker count is unchanged`);
-    assert.equal(expandedMarkers, setId === 'set-a' ? 21 : 32, `${setId}: expanded marker count is unchanged`);
+    assert.equal(summaryMarkers, setId === 'set-a' ? 16 : 23, `${setId}: summary marker count follows the reviewed Product-entry contract`);
+    assert.equal(expandedMarkers, setId === 'set-a' ? 21 : 36, `${setId}: expanded marker count follows the reviewed Product-entry contract`);
     assert.equal((setHtml.match(/data-product-description=/g) ?? []).length, setId === 'set-a' ? 6 : 9, `${setId}: expanded Product-description count is unchanged`);
   }
 
   const claimMarkers = (fragmentHtml.match(/data-claim-id=/g) ?? []).length;
   const claimMarkerIds = [...fragmentHtml.matchAll(/data-claim-id="([^"]+)"/g)].map(match => match[1]);
   const relationMarkers = (fragmentHtml.match(/data-relation-id=/g) ?? []).length;
+  const renderedMarkerButtons = (fragmentHtml.match(/class="evidence-marker"/g) ?? []).length;
   const drawers = [...fragmentHtml.matchAll(/<dialog class="evidence-drawer" id="([^"]+)"/g)].map(match => match[1]);
   assert.equal(claimMarkers, 34, 'fragment includes all canonical Claim entries');
   assert.equal(new Set(claimMarkerIds).size, claimMarkerIds.length, 'detail content has no duplicate Claim entries');
   assert.deepEqual([...claimMarkerIds].sort(), projectedClaimIds, 'detail content has no missing Claim entry');
   assert.equal(relationMarkers, 19, 'fragment includes all canonical Relation entries');
-  assert.equal(drawers.length, 53, 'fragment includes one Evidence drawer per marker');
+  assert.equal(renderedMarkerButtons, 57, 'fragment renders 57 marker controls after four Tokyo Electron Product entries share the existing group Evidence');
+  assert.equal(drawers.length, 53, 'fragment keeps one drawer per unique canonical Claim or Relation grounding');
   assert.equal(new Set(drawers).size, drawers.length, 'fragment has no duplicate drawer IDs');
   assert.match(fragmentHtml, /data-pagefind-ignore="all"/, 'built Company assets are outside the Pagefind corpus');
   assert.equal((fragmentHtml.match(/data-company-order-label/g) ?? []).length, 35, 'seven matrix sections retain five repeated company identity labels');
@@ -1146,7 +1153,11 @@ if (process.argv.includes('--dist')) {
     assert.match(productTemplate, /data-product-portfolio-summary="true" data-summary-visible="false" data-expanded-visible="true"/, `${companyId}: Product title and body are expanded-only`);
     assert.ok(productTemplate.includes(`>${expected.title}</h3>`), `${companyId}: reviewed Product portfolio title is rendered`);
     assert.ok(productTemplate.includes(`${expected.body}<button class="evidence-marker"`), `${companyId}: reviewed Product portfolio body owns its Evidence marker`);
-    assert.equal((productTemplate.match(new RegExp(`data-evidence-open="evidence-${expected.groundingId}"`, 'g')) ?? []).length, 1, `${companyId}: Product portfolio grounding marker is rendered once`);
+    assert.equal(
+      (productTemplate.match(new RegExp(`data-evidence-open="evidence-${expected.groundingId}"`, 'g')) ?? []).length,
+      companyId === 'tokyo-electron' ? 5 : 1,
+      `${companyId}: Product portfolio Evidence is exposed at every reviewed Product entry`,
+    );
     assert.doesNotMatch(productTemplate, /<h3>製品構成<\/h3>|下記の製品カテゴリを提供する。|<h3>主な製品<\/h3>|以下の製品を提供する。/, `${companyId}: no generic Product fallback is rendered`);
   }
   const tokyoAssetHtml = assetHtmlById['tokyo-electron'];
@@ -1160,15 +1171,21 @@ if (process.argv.includes('--dist')) {
   assert.match(tokyoRoleTemplate, /<dt>更新状況<\/dt><dd>確認期限内<\/dd>/, 'Tokyo Electron position exposes derived existing freshness metadata');
   assert.doesNotMatch(tokyoProductsTemplate, /<h3>主な製品<\/h3>/, 'Tokyo Electron has no repeated Product heading');
   assert.match(tokyoProductsTemplate, /<h3[^>]*>前工程の主要工程を幅広くカバー<\/h3><p class="claim-statement"[^>]*>塗布・現像、エッチング、成膜、洗浄の各工程に対応する装置を展開する。<button class="evidence-marker"/, 'Tokyo Electron uses the reviewed Product portfolio summary in expanded mode');
-  assert.equal((tokyoProductsTemplate.match(/data-evidence-open="evidence-tokyo-electron-products"/g) ?? []).length, 1, 'Tokyo Electron Product group has exactly one Evidence marker');
-  const tokyoProductIds = [...tokyoProductsTemplate.matchAll(/<li data-canonical-id="([^"]+)"/g)].map(match => match[1]);
+  assert.equal((tokyoProductsTemplate.match(/data-evidence-open="evidence-tokyo-electron-products"/g) ?? []).length, 5, 'Tokyo Electron keeps the portfolio marker and exposes the same Evidence from all four Product entries');
+  assert.equal((tokyoProductsTemplate.match(/data-product-grounding-id="tokyo-electron-products"/g) ?? []).length, 4, 'all four Tokyo Electron Product entries share the reviewed grounding Claim');
+  const tokyoProductEpistemicNotes = tokyoProductsTemplate.match(/<div class="evidence-epistemic-notes">[\s\S]*?<\/div>/)?.[0] ?? '';
+  assert.doesNotMatch(tokyoProductEpistemicNotes, /data-evidence-open|evidence-marker/, 'the Fact label does not own an isolated Evidence marker');
+  const tokyoProductIds = [...tokyoProductsTemplate.matchAll(/class="evidence-relation-entry evidence-product-entry evidence-claim-backed-product-entry" data-canonical-id="([^"]+)"/g)].map(match => match[1]);
   assert.deepEqual(tokyoProductIds, compareProductIdsByClaimId['tokyo-electron-products'], 'Tokyo Electron keeps all four Product entries in canonical reviewed order');
   assert.deepEqual(
-    [...tokyoProductsTemplate.matchAll(/<li data-canonical-id="[^"]+"[^>]*><strong>([^<]+)<\/strong>/g)].map(match => match[1]),
+    [...tokyoProductsTemplate.matchAll(/data-product-grounding-id="tokyo-electron-products"[^>]*data-summary="show"><article class="pilot-claim pilot-claim-list pilot-claim-compact"[^>]*><p class="claim-statement claim-statement-list"><strong>([^<]+)<\/strong><button class="evidence-marker"/g)].map(match => match[1]),
     ['塗布・現像装置', '半導体エッチング装置', '半導体成膜装置', 'ウェーハ洗浄装置'],
-    'Tokyo Electron keeps the reviewed four visible Product names in order',
+    'Tokyo Electron keeps all four Product names inline with their Evidence markers',
   );
   assert.equal((tokyoProductsTemplate.match(/class="evidence-product-description" data-expanded-only/g) ?? []).length, 4, 'Tokyo Electron uses four common expanded Product entries');
+  const lamProductsTemplate = assetHtmlById['lam-research'].match(/<template data-company-slot="key-products"[\s\S]*?<\/template>/)?.[0] ?? '';
+  assert.match(lamProductsTemplate, /<article class="pilot-claim pilot-claim-list pilot-claim-compact"[^>]*>[\s\S]*?<p class="claim-statement claim-statement-list"[^>]*><strong[^>]*>半導体成膜装置<\/strong><button class="evidence-marker"/, 'Lam Research uses the shared inline Product marker hierarchy');
+  assert.match(tokyoProductsTemplate, /<article class="pilot-claim pilot-claim-list pilot-claim-compact"[^>]*>[\s\S]*?<p class="claim-statement claim-statement-list"[^>]*><strong[^>]*>塗布・現像装置<\/strong><button class="evidence-marker"/, 'Tokyo Electron uses the same inline Product marker hierarchy as Lam Research');
   const expandedFinancialHtml = pilotIds.map(companyId => {
     const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);
     assert.ok(match, `${companyId}: detailed Financial template is present`);
@@ -1208,7 +1225,7 @@ if (process.argv.includes('--dist')) {
   assert.equal((fragmentHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 5, 'NVIDIA, Broadcom, and Set B use the same detailed Financial table');
   assert.match(fragmentHtml, /class="num">2,431,568<\/td>/, 'maximum Set B value is rendered as an unwrapped numeric cell');
   assert.match(fragmentHtml, /class="missing">未収録<\/td>/, 'missing status is rendered outside the numeric class');
-  console.log(`Company Compare on-demand artifacts OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(shellHtml)} B shell / ${claimMarkers + relationMarkers} markers across five Company assets`);
+  console.log(`Company Compare on-demand artifacts OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(shellHtml)} B shell / ${renderedMarkerButtons} rendered markers / ${claimMarkers + relationMarkers} unique grounding entries`);
 }
 
-console.log(`Company Compare Evidence UI tests OK: Set A/B / routing / URL state / ${claimMarkerCount + relationMarkerCount} markers / Financial 0/2/2 / semantic snapshot`);
+console.log(`Company Compare Evidence UI tests OK: Set A/B / routing / URL state / 57 rendered markers / ${claimMarkerCount + relationMarkerCount} unique grounding entries / Financial 0/2/2 / semantic snapshot`);

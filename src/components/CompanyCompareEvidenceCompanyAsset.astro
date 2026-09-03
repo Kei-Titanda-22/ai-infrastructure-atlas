@@ -155,6 +155,26 @@ const companyContext = {
             .filter(entry => entry.relation.relationType === 'PRODUCES')
             .map(entry => entry.relation.objectId));
           const claimOnlyProducts = section.displayProducts.filter(item => !relationProductIds.has(item.canonicalId));
+          const claimOnlyProductEntries = claimOnlyProducts.map(item => {
+            if (item.groundingIds.length !== 1) {
+              throw new Error(`Company Compare Product entry must resolve one grounding Claim: ${company.identity.id}:${item.canonicalId}`);
+            }
+            const groundingClaim = section.claims.find(entry => entry.claim.id === item.groundingIds[0]);
+            if (!groundingClaim) {
+              throw new Error(`Company Compare Product entry grounding Claim is unresolved: ${company.identity.id}:${item.canonicalId}:${item.groundingIds[0]}`);
+            }
+            const markerSourceNumbers = [...new Set(groundingClaim.bindings
+              .map(binding => sourceNumberById[binding.sourceId])
+              .filter(Boolean))];
+            if (markerSourceNumbers.length === 0) {
+              throw new Error(`Company Compare Product entry has no numbered Evidence source: ${company.identity.id}:${item.canonicalId}`);
+            }
+            return {
+              item,
+              groundingClaim,
+              markerLabel: markerSourceNumbers.join(', '),
+            };
+          });
           const productPortfolioSummary = dimensionId === 'key-products'
             ? resolveCompanyCompareProductPortfolioSummary(
                 company.identity.id,
@@ -164,7 +184,7 @@ const companyContext = {
           const usesGroupLevelProductEvidence = Boolean(
             productPortfolioSummary
             && relationProductIds.size === 0
-            && claimOnlyProducts.length > 0,
+            && claimOnlyProductEntries.length > 0,
           );
           const summaryClaimIds = new Set(selectCompareSummaryClaimIds(dimensionId, sectionIndex, section.claims.map(entry => entry.claim), displayedRelations.map(entry => entry.relation)));
           const summaryRelationIds = new Set(selectCompareSummaryRelationIds(dimensionId, sectionIndex, displayedRelations.map(entry => entry.relation)));
@@ -225,12 +245,28 @@ const companyContext = {
                 </dl>}
               </div>;
             })}
-            {dimensionId === 'key-products' && claimOnlyProducts.length > 0 && <ul class="evidence-product-description-list evidence-claim-backed-product-list" aria-label="製品の役割">
-              {claimOnlyProducts.map(item => <li data-canonical-id={item.canonicalId} data-grounding-ids={item.groundingIds.join(',')}>
-                <strong>{claimBackedProductLabel(item.canonicalId, item.label)}</strong>
-                <p class="evidence-product-description" data-expanded-only data-product-description={item.canonicalId}>{item.description}</p>
-              </li>)}
-            </ul>}
+            {dimensionId === 'key-products' && claimOnlyProductEntries.length > 0 && <div class="evidence-claim-backed-product-list" aria-label="製品の役割">
+              {claimOnlyProductEntries.map(({ item, groundingClaim, markerLabel }) => <div
+                class="evidence-relation-entry evidence-product-entry evidence-claim-backed-product-entry"
+                data-canonical-id={item.canonicalId}
+                data-display-grounding-ids={item.groundingIds.join(',')}
+                data-product-grounding-id={groundingClaim.claim.id}
+                data-summary="show"
+              >
+                <article class="pilot-claim pilot-claim-list pilot-claim-compact" aria-label={`事実: ${claimBackedProductLabel(item.canonicalId, item.label)}`}>
+                  <p class="claim-statement claim-statement-list"><strong>{claimBackedProductLabel(item.canonicalId, item.label)}</strong><button
+                    class="evidence-marker"
+                    type="button"
+                    data-evidence-open={`evidence-${groundingClaim.claim.id}`}
+                    aria-haspopup="dialog"
+                    aria-controls={`evidence-${groundingClaim.claim.id}`}
+                    aria-expanded="false"
+                    aria-label={`${claimBackedProductLabel(item.canonicalId, item.label)}の根拠 ${groundingClaim.bindings.length}件`}
+                  ><span aria-hidden="true">[{markerLabel}]</span></button></p>
+                  <p class="evidence-product-description" data-expanded-only data-product-description={item.canonicalId}>{item.description}</p>
+                </article>
+              </div>)}
+            </div>}
             {displayedRelations.map(entry => {
               const relationClaim = relationAsClaim(entry);
               return <div class:list={['evidence-relation-entry', { 'evidence-position-entry': entry.relation.relationType === 'POSITIONED_IN' }]} data-relation-id={entry.relation.relationId} data-canonical-id={entry.relation.objectId} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryRelationIds.has(entry.relation.relationId) ? 'show' : 'hide'}>
