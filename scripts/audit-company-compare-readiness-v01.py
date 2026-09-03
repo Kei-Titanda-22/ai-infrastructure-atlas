@@ -32,6 +32,14 @@ EXPECTED_REGISTRY_COUNTS = {"product": 11, "technology": 8, "market": 0}
 EXPECTED_PROJECTION = {"P1": 20, "P2": 14, "P3": 0}
 EXPECTED_MARKERS = 53
 EXPECTED_TRIAGE_SAMPLE = 87
+ACCEPTANCE_REVIEW_DECISION = "REVISE"
+ORIGINAL_CLASSIFICATION_COUNTS = {
+    "READY_EXISTING_EVIDENCE": 5,
+    "DISPLAY_COPY_ONLY": 95,
+    "REGISTRY_REQUIRED": 0,
+    "RELATION_REQUIRED": 0,
+    "EVIDENCE_HOLD": 0,
+}
 
 AXES = (
     "what",
@@ -80,6 +88,23 @@ PILOT_COMPANY_IDS = {
     "lam-research",
     "tokyo-electron",
 }
+FIRST_BATCH_REVIEW_IDS = (
+    "amd",
+    "vertiv",
+    "tsmc",
+    "kioxia",
+    "amphenol",
+    "aptiv",
+    "advantest",
+    "asm-international",
+    "air-liquide",
+    "analog-devices",
+    "abb",
+    "globalfoundries",
+    "micron",
+    "arista",
+    "bosch",
+)
 LOCATOR_FIELDS = {"page", "section", "heading", "table", "note", "anchor", "quotedLabel"}
 GROUNDING_KEYS = (
     "claimIds",
@@ -94,6 +119,16 @@ GROUNDING_KEYS = (
 )
 SCORE_BY_STATUS = {"complete": 2, "partial": 1, "missing": 0}
 PRIORITY_ORDER = {"P1": 0, "P2": 1, "P3": 2}
+FINANCIAL_REQUIRED_FIELDS = (
+    "periodLabel",
+    "endDate",
+    "periodType",
+    "currency",
+    "unit",
+    "accountingBasis",
+    "sourceId",
+)
+NON_PRIMARY_SOURCE_TYPES = {"official-gazette-transcription"}
 
 
 def load_json(path: Path) -> Any:
@@ -120,6 +155,77 @@ def has_structured_locator(locator: Any) -> bool:
     return isinstance(locator, dict) and any(
         key in LOCATOR_FIELDS and has_content(value) for key, value in locator.items()
     )
+
+
+def is_primary_source(source: dict[str, Any] | None) -> bool:
+    if not source:
+        return False
+    source_type = source.get("sourceType")
+    if not isinstance(source_type, str) or source_type in NON_PRIMARY_SOURCE_TYPES:
+        return False
+    accepted = (
+        source_type in {"annual-report", "exchange-filing"}
+        or source_type.startswith("official-")
+        or source_type.startswith("company-")
+        or source_type.startswith("parent-company-")
+        or source_type.startswith("sec-")
+        or source_type.startswith("edinet-")
+        or source_type.startswith("tdnet-")
+        or source_type.startswith("krx-")
+        or source_type.startswith("hkex-")
+    )
+    return bool(
+        accepted
+        and has_content(source.get("publisher"))
+        and has_content(source.get("title"))
+        and has_content(source.get("url"))
+    )
+
+
+def grounding_snapshot(grounding: dict[str, list[str]]) -> dict[str, list[str]]:
+    return {key: list(grounding[key]) for key in GROUNDING_KEYS}
+
+
+def evidence_minimum_assessment(
+    axis: str,
+    grounding: dict[str, list[str]],
+    errors: list[str],
+) -> tuple[bool, str, list[str], str]:
+    claim_count = len(grounding["claimIds"])
+    relation_count = len(grounding["relationIds"])
+    if axis in {"what", "risks"}:
+        usable = claim_count > 0
+    else:
+        usable = claim_count > 0 or relation_count > 0
+
+    paths: list[str] = []
+    if claim_count:
+        paths.append("company-evidence-claim")
+    if relation_count:
+        paths.append("relation")
+    display_path = "+".join(paths) if paths else "unresolved"
+
+    if usable:
+        reason = (
+            f"{AXIS_LABELS[axis]}専用の既存Evidence-backed Claim {claim_count}件"
+            + (f"とRelation {relation_count}件" if relation_count else "")
+            + "をBinding、structured Locator、Shared Sourceまで解決できる。"
+            "legacy proseや一般的な会社説明からの推測は使用しない。"
+        )
+        return True, reason, [], display_path
+
+    blocking = sorted(
+        set(
+            errors
+            or [
+                f"{AXIS_LABELS[axis]}を直接説明する既存Claim／Relationの解決可能なgroundingがない"
+            ]
+        )
+    )
+    reason = (
+        f"{AXIS_LABELS[axis]}の最低表示条件を既存Claim／RelationとEvidence chainだけでは満たせない。"
+    )
+    return False, reason, blocking, display_path
 
 
 def priority_sort_key(claim: dict[str, Any]) -> tuple[int, str]:
@@ -604,13 +710,24 @@ def evidence_axis(company_id: str, axis: str, context: dict[str, Any]) -> dict[s
             "Shared Sourceだけでは安全に表示できない。"
         )
 
+    minimum_usable, minimum_reason, blocking_gaps, display_path = evidence_minimum_assessment(
+        axis,
+        grounding,
+        errors,
+    )
     priority_counts = Counter(claim.get("priority") for claim in claims if claim["id"] in grounding["claimIds"])
     return {
         "status": status,
         "reason": reason,
         **grounding,
+        "groundingIds": grounding_snapshot(grounding),
+        "minimumUsable": minimum_usable,
+        "minimumUsableReason": minimum_reason,
+        "blockingGaps": blocking_gaps,
+        "displayPath": display_path,
         "claimPriorityCounts": {key: priority_counts[key] for key in ("P1", "P2", "P3")},
         "missingContent": missing_content,
+        "legacyProseUsed": False,
         "inferenceUsed": False,
     }
 
@@ -623,6 +740,21 @@ def usable_metric(record: dict[str, Any], metric_id: str) -> bool:
         and isinstance(metric.get("basis"), str)
         and bool(metric["basis"].strip())
     )
+
+
+def financial_record_minimum_gaps(
+    record: dict[str, Any],
+    context: dict[str, Any],
+) -> list[str]:
+    gaps = [field for field in FINANCIAL_REQUIRED_FIELDS if not has_content(record.get(field))]
+    if not usable_metric(record, "revenue"):
+        gaps.append("revenue metric／basis")
+    if not usable_metric(record, "operatingMargin"):
+        gaps.append("operatingMargin metric／basis")
+    source = context["sources"].get(record.get("sourceId"))
+    if not is_primary_source(source):
+        gaps.append("一次資料として確認できるShared Source")
+    return sorted(set(gaps))
 
 
 def financial_axis(company_id: str, context: dict[str, Any]) -> dict[str, Any]:
@@ -660,6 +792,27 @@ def financial_axis(company_id: str, context: dict[str, Any]) -> dict[str, Any]:
     ]
     grounding = merge_grounding(grounding)
     revenue_growth_defined = "revenueGrowth" in context["metricDefinitions"]
+    minimum_records = [
+        record for record in selected if not financial_record_minimum_gaps(record, context)
+    ]
+    minimum_usable = bool(minimum_records)
+    if minimum_usable:
+        minimum_reason = (
+            f"正規化Financial historyの{len(minimum_records)}期間で、期間、通貨、単位、会計基準、"
+            "Operating Margin、revenue、一次Shared Sourceを解決できる。"
+            "会社単位の最低表示は可能で、集合単位のdefinition／period／basis互換性は表示時に再判定する。"
+        )
+        blocking_gaps: list[str] = []
+    else:
+        per_record_gaps = [
+            f"{record['id']}: {', '.join(financial_record_minimum_gaps(record, context))}"
+            for record in selected
+            if financial_record_minimum_gaps(record, context)
+        ]
+        blocking_gaps = per_record_gaps or [
+            "期間、通貨、単位、会計基準、Operating Margin、revenue、一次資料が揃うFinancial recordがない"
+        ]
+        minimum_reason = "会社単位のFinancial最低表示条件を満たす既存正規化recordがない。"
 
     missing_content: list[str] = []
     if not selected:
@@ -692,8 +845,21 @@ def financial_axis(company_id: str, context: dict[str, Any]) -> dict[str, Any]:
         "status": status,
         "reason": reason,
         **grounding,
+        "groundingIds": grounding_snapshot(grounding),
+        "minimumUsable": minimum_usable,
+        "minimumUsableReason": minimum_reason,
+        "blockingGaps": blocking_gaps,
+        "displayPath": "normalized-financial-history" if minimum_usable else "unresolved",
+        "minimumFinancialRecordIds": stable_ids(record["id"] for record in minimum_records),
+        "companyLevelReadiness": "ready" if minimum_usable else "hold",
+        "setLevelCompatibility": {
+            "required": True,
+            "status": "not-evaluated-at-company-level",
+            "checks": ["metricDefinition", "periodType", "period", "basis"],
+        },
         "claimPriorityCounts": {"P1": 0, "P2": 0, "P3": 0},
         "missingContent": missing_content,
+        "legacyProseUsed": False,
         "inferenceUsed": False,
     }
 
@@ -731,6 +897,9 @@ def structure_assessment(
                 for relation_id in dimension.get("initialRelationIds", [])
             )
     relation_gaps = sorted(projected_relation_ids - set(context["relations"]))
+    products_path = axes["products"]["displayPath"]
+    claim_backed_axes = [axis for axis in AXES if axes[axis]["claimIds"]]
+    relation_backed_axes = [axis for axis in AXES if axes[axis]["relationIds"]]
     if registry_gaps:
         reason = "既存の構造化表示が参照するcanonical Registry entityを解決できない。"
     elif relation_gaps:
@@ -739,14 +908,30 @@ def structure_assessment(
         reason = "Frozen Pilot Projectionが要求するRegistry／Relation参照はすべて解決する。"
     else:
         reason = (
-            "6軸はgrounded Claimを直接投影でき、新しいentity／relation主張を要求しない。"
-            "未登録Registry／Relationは推測していない。"
+            "製品・役割・競争力を含む最低表示は既存Evidence-backed Claimのstatementを直接投影できる。"
+            "会社別P1表示ではentityの横断集計・重複排除や新しい関係主張を行わないため、"
+            "Registry／Relation追加を要求しない。未登録IDは推測していない。"
         )
     return {
         "registryRequired": bool(registry_gaps),
         "relationRequired": bool(relation_gaps),
         "unresolvedRegistryEntityIds": registry_gaps,
         "unresolvedRelationIds": relation_gaps,
+        "productDisplayPath": products_path,
+        "claimBackedAxes": claim_backed_axes,
+        "relationBackedAxes": relation_backed_axes,
+        "registryRequirementReason": (
+            "既存Product Claimを会社別P1 copyへ直接投影し、entity横断の集計・roll-up・重複排除をしないため不要。"
+            if not registry_gaps and axes["products"]["minimumUsable"]
+            else reason
+        ),
+        "relationRequirementReason": (
+            "AI role、Products、Competitive Positionは既存Evidence-backed Claimから直接表示でき、"
+            "新しいCompany間・Company→entity関係を主張しないため不要。"
+            if not relation_gaps
+            and all(axes[axis]["minimumUsable"] for axis in ("aiRole", "products", "competitivePosition"))
+            else reason
+        ),
         "reason": reason,
         "inferenceUsed": False,
     }
@@ -767,14 +952,15 @@ def build_record(company_id: str, context: dict[str, Any]) -> dict[str, Any]:
     structure = structure_assessment(company_id, axes, context)
 
     required_actions: list[dict[str, Any]] = []
-    missing_axes = [axis for axis in AXES if axes[axis]["status"] == "missing"]
-    if missing_axes:
-        for axis in missing_axes:
+    blocking_axes = [axis for axis in AXES if not axes[axis]["minimumUsable"]]
+    if blocking_axes:
+        for axis in blocking_axes:
             required_actions.append(
                 {
                     "actionType": "RESOLVE_EVIDENCE_GAP",
                     "axis": axis,
-                    "reason": "既存Claim／Binding／Locator／SourceまたはFinancial根拠だけでは安全に表示できない。",
+                    "reason": axes[axis]["minimumUsableReason"],
+                    "blockingGaps": axes[axis]["blockingGaps"],
                 }
             )
         readiness = "EVIDENCE_HOLD"
@@ -844,49 +1030,99 @@ def build_record(company_id: str, context: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def recommended_first_batch(records: list[dict[str, Any]], limit: int = 15) -> dict[str, Any]:
-    candidates = [
-        record
-        for record in records
-        if record["companyId"] not in PILOT_COMPANY_IDS
+def eligible_for_first_batch(record: dict[str, Any]) -> bool:
+    return bool(
+        record["companyId"] not in PILOT_COMPANY_IDS
         and record["readinessClass"] in READY_CLASSES
-        and all(axis["status"] in {"complete", "partial", "notApplicable"} for axis in record["axes"].values())
+        and all(axis["minimumUsable"] for axis in record["axes"].values())
         and not any(
             action["actionType"] in {"RESOLVE_EVIDENCE_GAP", "EXPAND_REGISTRY", "AUTHOR_RELATION"}
             for action in record["requiredActions"]
         )
-    ]
-    groups: dict[str, list[dict[str, Any]]] = defaultdict(list)
-    for record in candidates:
-        groups[record["valueChainClassification"]["primaryLayer"]].append(record)
-    for group in groups.values():
-        group.sort(key=lambda record: (-record["coveragePercent"], record["companyId"]))
+    )
 
-    selected: list[dict[str, Any]] = []
-    round_index = 0
-    layers = sorted(groups)
-    while len(selected) < limit:
-        added = False
-        for layer in layers:
-            if round_index < len(groups[layer]) and len(selected) < limit:
-                selected.append(groups[layer][round_index])
-                added = True
-        if not added:
-            break
-        round_index += 1
+
+def recommended_first_batch(records: list[dict[str, Any]]) -> dict[str, Any]:
+    records_by_id = {record["companyId"]: record for record in records}
+    selected = [
+        records_by_id[company_id]
+        for company_id in FIRST_BATCH_REVIEW_IDS
+        if eligible_for_first_batch(records_by_id[company_id])
+    ]
 
     company_ids = [record["companyId"] for record in selected]
     distribution = Counter(record["valueChainClassification"]["primaryLayer"] for record in selected)
     return {
         "selectionMethod": (
-            "Exclude the frozen Pilot five; require READY_EXISTING_EVIDENCE or DISPLAY_COPY_ONLY, "
-            "six explainable axes, and no Evidence/Registry/Relation action; then round-robin by "
-            "primaryLayer with coveragePercent descending and companyId ascending."
+            "Recheck the fixed 15-company acceptance-review list without replacement; retain only non-Pilot "
+            "READY_EXISTING_EVIDENCE or DISPLAY_COPY_ONLY records whose six axes are minimumUsable=true and "
+            "which require no Evidence, Registry, or Relation action."
         ),
-        "targetSize": limit,
+        "targetSize": len(FIRST_BATCH_REVIEW_IDS),
         "companyIds": company_ids,
+        "excludedCompanyIds": [
+            company_id for company_id in FIRST_BATCH_REVIEW_IDS if company_id not in company_ids
+        ],
         "valueChainDistribution": dict(sorted(distribution.items())),
     }
+
+
+def major_grounding(axis: dict[str, Any]) -> dict[str, list[str]]:
+    return {
+        "claimIds": axis["claimIds"][:2],
+        "relationIds": axis["relationIds"][:2],
+        "bindingIds": stable_ids(
+            [*axis["companyEvidenceBindingIds"], *axis["relationEvidenceBindingIds"]]
+        )[:2],
+        "financialRecordIds": axis["financialRecordIds"][:2],
+        "sourceIds": axis["sourceIds"][:2],
+    }
+
+
+def first_batch_acceptance_review(
+    records: list[dict[str, Any]],
+    batch: dict[str, Any],
+) -> list[dict[str, Any]]:
+    records_by_id = {record["companyId"]: record for record in records}
+    retained_ids = set(batch["companyIds"])
+    reviews: list[dict[str, Any]] = []
+    for company_id in FIRST_BATCH_REVIEW_IDS:
+        record = records_by_id[company_id]
+        financial = record["axes"]["financialComparability"]
+        retained = company_id in retained_ids
+        reviews.append(
+            {
+                "companyId": company_id,
+                "readinessClass": record["readinessClass"],
+                "axes": {
+                    axis: {
+                        "status": record["axes"][axis]["status"],
+                        "minimumUsable": record["axes"][axis]["minimumUsable"],
+                        "majorGroundingIds": major_grounding(record["axes"][axis]),
+                    }
+                    for axis in AXES
+                },
+                "registryRequirement": {
+                    "required": record["structureAssessment"]["registryRequired"],
+                    "reason": record["structureAssessment"]["registryRequirementReason"],
+                },
+                "relationRequirement": {
+                    "required": record["structureAssessment"]["relationRequired"],
+                    "reason": record["structureAssessment"]["relationRequirementReason"],
+                },
+                "financialCompanyLevel": {
+                    "status": financial["companyLevelReadiness"],
+                    "reason": financial["minimumUsableReason"],
+                    "minimumFinancialRecordIds": financial["minimumFinancialRecordIds"],
+                },
+                "financialSetLevel": financial["setLevelCompatibility"],
+                "retainedInFirstBatch": retained,
+                "exclusionReason": None
+                if retained
+                else "6軸minimumUsableまたはEvidence／Registry／Relation action条件を満たさない。",
+            }
+        )
+    return reviews
 
 
 def build_artifact() -> tuple[dict[str, Any], dict[str, Any]]:
@@ -900,17 +1136,76 @@ def build_artifact() -> tuple[dict[str, Any], dict[str, Any]]:
         }
         for axis in AXES
     }
+    minimum_summary = {
+        axis: {
+            "true": sum(record["axes"][axis]["minimumUsable"] is True for record in records),
+            "false": sum(record["axes"][axis]["minimumUsable"] is False for record in records),
+        }
+        for axis in AXES
+    }
     common_gaps = Counter(
         item
         for record in records
         for axis in AXES
         for item in record["axes"][axis]["missingContent"]
     )
+    batch = recommended_first_batch(records)
+    display_copy_records = [
+        record for record in records if record["readinessClass"] == "DISPLAY_COPY_ONLY"
+    ]
+    display_copy_proof = {
+        "companyCount": len(display_copy_records),
+        "allSixAxesMinimumUsableCount": sum(
+            all(axis["minimumUsable"] for axis in record["axes"].values())
+            for record in display_copy_records
+        ),
+        "allAxesHaveCoreGroundingCount": sum(
+            all(
+                bool(axis["claimIds"] or axis["relationIds"] or axis["financialRecordIds"])
+                for axis in record["axes"].values()
+            )
+            for record in display_copy_records
+        ),
+        "legacyProseUsedCompanyCount": sum(
+            any(axis["legacyProseUsed"] for axis in record["axes"].values())
+            for record in display_copy_records
+        ),
+        "nonCopyBlockingGapCompanyCount": sum(
+            any(not axis["minimumUsable"] or axis["blockingGaps"] for axis in record["axes"].values())
+            or record["structureAssessment"]["registryRequired"]
+            or record["structureAssessment"]["relationRequired"]
+            for record in display_copy_records
+        ),
+        "productClaimDirectProjectionCount": sum(
+            "company-evidence-claim" in record["axes"]["products"]["displayPath"]
+            for record in display_copy_records
+        ),
+        "financialCompanyLevelReadyCount": sum(
+            record["axes"]["financialComparability"]["companyLevelReadiness"] == "ready"
+            for record in display_copy_records
+        ),
+    }
     artifact = {
         "schemaVersion": SCHEMA_VERSION,
         "baselineMainSha": BASELINE_MAIN_SHA,
         "inputDigest": input_digest(audited_input_paths()),
         "companyCount": len(records),
+        "acceptanceReview": {
+            "decision": ACCEPTANCE_REVIEW_DECISION,
+            "reason": (
+                "The original classification totals remain supported, but the original artifact did not "
+                "separate coverage status from minimum P1 usability or mechanically prove the 15-company review. "
+                "This revision adds those contracts without changing production data."
+            ),
+            "originalClassificationCounts": ORIGINAL_CLASSIFICATION_COUNTS,
+            "reviewedClassificationCounts": {
+                key: classifications[key] for key in READINESS_CLASSES
+            },
+            "classificationCountsChanged": (
+                {key: classifications[key] for key in READINESS_CLASSES}
+                != ORIGINAL_CLASSIFICATION_COUNTS
+            ),
+        },
         "methodology": {
             "scope": "Repository-only audit of canonical Company, Evidence, Registry, Relation, and Financial data.",
             "evidenceProjection": (
@@ -923,9 +1218,15 @@ def build_artifact() -> tuple[dict[str, Any], dict[str, Any]]:
                 "action is required only for an explicit structured assertion."
             ),
             "financialRule": (
-                "Use normalized Financial history only. Operating Margin and two same-period-type revenue "
-                "records must resolve; Revenue Growth remains partial while its normalized definition is absent, "
-                "and compatibility is recalculated for each comparison set."
+                "Use normalized Financial history only. Company-level minimum usability requires at least one "
+                "period with period, currency, unit, accounting basis, Operating Margin, revenue, and a primary "
+                "Shared Source. Coverage status remains partial while Revenue Growth lacks a normalized definition; "
+                "definition, period, and basis compatibility is recalculated for each comparison set."
+            ),
+            "minimumUsableRule": (
+                "A partial axis may be minimumUsable=true only when a category-specific Claim or accepted Relation "
+                "resolves through Binding, structured Locator, and Shared Source, or when Financial meets its "
+                "company-level metadata and primary-source contract. Legacy prose is never grounding."
             ),
             "scoreRule": "complete=2, partial=1, missing=0, notApplicable excluded; percent rounded to one decimal.",
             "externalResearchUsed": False,
@@ -947,11 +1248,14 @@ def build_artifact() -> tuple[dict[str, Any], dict[str, Any]]:
         },
         "classificationCounts": {key: classifications[key] for key in READINESS_CLASSES},
         "axisCoverageSummary": axis_summary,
+        "axisMinimumUsableSummary": minimum_summary,
+        "displayCopyOnlyProof": display_copy_proof,
         "commonMissingContent": [
             {"reason": reason, "companyAxisCount": count}
             for reason, count in sorted(common_gaps.items(), key=lambda item: (-item[1], item[0]))
         ],
-        "recommendedFirstBatch": recommended_first_batch(records),
+        "recommendedFirstBatch": batch,
+        "firstBatchAcceptanceReview": first_batch_acceptance_review(records, batch),
         "hardStop": {
             "triggered": False,
             "reason": "Fixed baseline and repository-only structural audit gates are consistent.",
@@ -962,7 +1266,13 @@ def build_artifact() -> tuple[dict[str, Any], dict[str, Any]]:
     return artifact, context
 
 
-def validate_axis_grounding(axis: dict[str, Any], context: dict[str, Any], location: str) -> None:
+def validate_axis_grounding(
+    axis: dict[str, Any],
+    context: dict[str, Any],
+    location: str,
+    company_id: str,
+    axis_name: str,
+) -> None:
     known = {
         "claimIds": set(context["claims"]),
         "companyEvidenceBindingIds": set(context["companyBindings"]),
@@ -982,6 +1292,30 @@ def validate_axis_grounding(axis: dict[str, Any], context: dict[str, Any], locat
         if unresolved:
             raise ValueError(f"{location}: unresolved {key}: {', '.join(unresolved)}")
 
+    expected_nested_grounding = {key: axis[key] for key in GROUNDING_KEYS}
+    if axis.get("groundingIds") != expected_nested_grounding:
+        raise ValueError(f"{location}: groundingIds must match the stable axis grounding arrays")
+
+    if not isinstance(axis.get("minimumUsable"), bool):
+        raise ValueError(f"{location}: minimumUsable must be boolean")
+    if not has_content(axis.get("minimumUsableReason")):
+        raise ValueError(f"{location}: minimumUsableReason is required")
+    if not isinstance(axis.get("blockingGaps"), list) or axis["blockingGaps"] != sorted(
+        set(axis["blockingGaps"])
+    ):
+        raise ValueError(f"{location}: blockingGaps must be a unique stable array")
+    if axis.get("legacyProseUsed") is not False:
+        raise ValueError(f"{location}: legacyProseUsed must be false")
+    if not has_content(axis.get("displayPath")):
+        raise ValueError(f"{location}: displayPath is required")
+    core_grounding = bool(
+        axis["claimIds"] or axis["relationIds"] or axis["financialRecordIds"]
+    )
+    if axis["minimumUsable"] and (not core_grounding or axis["blockingGaps"]):
+        raise ValueError(f"{location}: usable axis requires core grounding and no blockingGaps")
+    if not axis["minimumUsable"] and not axis["blockingGaps"]:
+        raise ValueError(f"{location}: unusable axis requires blockingGaps")
+
     for binding_id in axis["companyEvidenceBindingIds"]:
         binding = context["companyBindings"][binding_id]
         if (
@@ -990,10 +1324,59 @@ def validate_axis_grounding(axis: dict[str, Any], context: dict[str, Any], locat
             or not has_structured_locator(binding.get("locator"))
         ):
             raise ValueError(f"{location}: Company Evidence Binding is not fully grounded: {binding_id}")
+    for claim_id in axis["claimIds"]:
+        claim = context["claims"][claim_id]
+        if claim.get("companyId") != company_id:
+            raise ValueError(f"{location}: Claim belongs to another Company: {claim_id}")
+        if axis_name != "financialComparability" and claim.get("category") not in AXIS_CATEGORIES[axis_name]:
+            raise ValueError(f"{location}: Claim category cannot ground this axis: {claim_id}")
+        if not any(
+            context["companyBindings"][binding_id].get("claimId") == claim_id
+            for binding_id in axis["companyEvidenceBindingIds"]
+        ):
+            raise ValueError(f"{location}: Claim has no included grounded Binding: {claim_id}")
     for binding_id in axis["relationEvidenceBindingIds"]:
         binding = context["relationBindings"][binding_id]
         if binding.get("sourceId") not in axis["sourceIds"] or not has_structured_locator(binding.get("locator")):
             raise ValueError(f"{location}: Relation Evidence Binding is not fully grounded: {binding_id}")
+    for relation_id in axis["relationIds"]:
+        relation = context["relations"][relation_id]
+        if not relation_applies_to_company(relation, company_id, axis_name):
+            raise ValueError(f"{location}: Relation cannot ground this Company/axis: {relation_id}")
+        if not any(
+            context["relationBindings"][binding_id].get("relationId") == relation_id
+            and context["relationBindings"][binding_id].get("support") == "supports"
+            for binding_id in axis["relationEvidenceBindingIds"]
+        ):
+            raise ValueError(f"{location}: Relation has no included supports Binding: {relation_id}")
+
+    for record_id in axis["financialRecordIds"]:
+        record = context["financialRecords"][record_id]
+        if record.get("companyId") != company_id:
+            raise ValueError(f"{location}: Financial record belongs to another Company: {record_id}")
+        if record.get("sourceId") not in axis["sourceIds"]:
+            raise ValueError(f"{location}: Financial record Source is not included: {record_id}")
+
+    if axis_name == "financialComparability":
+        minimum_ids = axis.get("minimumFinancialRecordIds")
+        if not isinstance(minimum_ids, list) or minimum_ids != sorted(set(minimum_ids)):
+            raise ValueError(f"{location}: minimumFinancialRecordIds must be a unique stable array")
+        if set(minimum_ids) - set(axis["financialRecordIds"]):
+            raise ValueError(f"{location}: minimum Financial records must be included in grounding")
+        actually_usable = [
+            record_id
+            for record_id in minimum_ids
+            if not financial_record_minimum_gaps(context["financialRecords"][record_id], context)
+        ]
+        if axis["minimumUsable"] != bool(actually_usable):
+            raise ValueError(f"{location}: Financial minimumUsable does not match required metadata/source")
+        set_level = axis.get("setLevelCompatibility", {})
+        if (
+            set_level.get("required") is not True
+            or set_level.get("status") != "not-evaluated-at-company-level"
+            or set_level.get("checks") != ["metricDefinition", "periodType", "period", "basis"]
+        ):
+            raise ValueError(f"{location}: Financial set-level compatibility contract differs")
 
 
 def validate_artifact(artifact: dict[str, Any], context: dict[str, Any]) -> None:
@@ -1028,6 +1411,10 @@ def validate_artifact(artifact: dict[str, Any], context: dict[str, Any]) -> None
             structure.get("unresolvedRelationIds"), list
         ):
             raise ValueError(f"{company_id}: invalid structure assessment")
+        if not has_content(structure.get("registryRequirementReason")) or not has_content(
+            structure.get("relationRequirementReason")
+        ):
+            raise ValueError(f"{company_id}: Registry/Relation requirement reasons are required")
 
         for axis_name, axis in record["axes"].items():
             if axis.get("status") not in STATUSES:
@@ -1038,7 +1425,13 @@ def validate_artifact(artifact: dict[str, Any], context: dict[str, Any]) -> None
                 raise ValueError(f"{company_id}/{axis_name}: reason is required")
             if not isinstance(axis.get("missingContent"), list):
                 raise ValueError(f"{company_id}/{axis_name}: missingContent must be an array")
-            validate_axis_grounding(axis, context, f"{company_id}/{axis_name}")
+            validate_axis_grounding(
+                axis,
+                context,
+                f"{company_id}/{axis_name}",
+                company_id,
+                axis_name,
+            )
 
         expected_grounding = merge_grounding(*(record["axes"][axis] for axis in AXES))
         if record.get("groundingIds") != expected_grounding:
@@ -1051,12 +1444,12 @@ def validate_artifact(artifact: dict[str, Any], context: dict[str, Any]) -> None
         ):
             raise ValueError(f"{company_id}: score formula mismatch")
         if record["readinessClass"] in READY_CLASSES and any(
-            axis["status"] == "missing" for axis in record["axes"].values()
+            not axis["minimumUsable"] for axis in record["axes"].values()
         ):
-            raise ValueError(f"{company_id}: displayable classification has a missing axis")
+            raise ValueError(f"{company_id}: displayable classification has an unusable axis")
         expected_readiness = (
             "EVIDENCE_HOLD"
-            if any(axis["status"] == "missing" for axis in record["axes"].values())
+            if any(not axis["minimumUsable"] for axis in record["axes"].values())
             else "REGISTRY_REQUIRED"
             if structure.get("registryRequired")
             else "RELATION_REQUIRED"
@@ -1084,6 +1477,64 @@ def validate_artifact(artifact: dict[str, Any], context: dict[str, Any]) -> None
     if artifact.get("axisCoverageSummary") != expected_axis_summary:
         raise ValueError("axisCoverageSummary does not match Company records")
 
+    expected_minimum_summary = {
+        axis: {
+            "true": sum(record["axes"][axis]["minimumUsable"] is True for record in records),
+            "false": sum(record["axes"][axis]["minimumUsable"] is False for record in records),
+        }
+        for axis in AXES
+    }
+    if artifact.get("axisMinimumUsableSummary") != expected_minimum_summary:
+        raise ValueError("axisMinimumUsableSummary does not match Company records")
+
+    review = artifact.get("acceptanceReview", {})
+    if (
+        review.get("decision") != ACCEPTANCE_REVIEW_DECISION
+        or review.get("originalClassificationCounts") != ORIGINAL_CLASSIFICATION_COUNTS
+        or review.get("reviewedClassificationCounts") != expected_class_counts
+        or review.get("classificationCountsChanged")
+        != (expected_class_counts != ORIGINAL_CLASSIFICATION_COUNTS)
+    ):
+        raise ValueError("Acceptance Review summary differs from computed classifications")
+
+    display_records = [
+        record for record in records if record["readinessClass"] == "DISPLAY_COPY_ONLY"
+    ]
+    expected_display_proof = {
+        "companyCount": len(display_records),
+        "allSixAxesMinimumUsableCount": sum(
+            all(axis["minimumUsable"] for axis in record["axes"].values())
+            for record in display_records
+        ),
+        "allAxesHaveCoreGroundingCount": sum(
+            all(
+                bool(axis["claimIds"] or axis["relationIds"] or axis["financialRecordIds"])
+                for axis in record["axes"].values()
+            )
+            for record in display_records
+        ),
+        "legacyProseUsedCompanyCount": sum(
+            any(axis["legacyProseUsed"] for axis in record["axes"].values())
+            for record in display_records
+        ),
+        "nonCopyBlockingGapCompanyCount": sum(
+            any(not axis["minimumUsable"] or axis["blockingGaps"] for axis in record["axes"].values())
+            or record["structureAssessment"]["registryRequired"]
+            or record["structureAssessment"]["relationRequired"]
+            for record in display_records
+        ),
+        "productClaimDirectProjectionCount": sum(
+            "company-evidence-claim" in record["axes"]["products"]["displayPath"]
+            for record in display_records
+        ),
+        "financialCompanyLevelReadyCount": sum(
+            record["axes"]["financialComparability"]["companyLevelReadiness"] == "ready"
+            for record in display_records
+        ),
+    }
+    if artifact.get("displayCopyOnlyProof") != expected_display_proof:
+        raise ValueError("DISPLAY_COPY_ONLY proof summary differs from Company records")
+
     batch_ids = artifact.get("recommendedFirstBatch", {}).get("companyIds", [])
     if len(batch_ids) != len(set(batch_ids)):
         raise ValueError("recommendedFirstBatch contains duplicate Company IDs")
@@ -1094,13 +1545,46 @@ def validate_artifact(artifact: dict[str, Any], context: dict[str, Any]) -> None
         record = records_by_id.get(company_id)
         if not record or record["readinessClass"] not in READY_CLASSES:
             raise ValueError(f"recommendedFirstBatch contains an ineligible Company: {company_id}")
-        if any(axis["status"] == "missing" for axis in record["axes"].values()):
-            raise ValueError(f"recommendedFirstBatch contains a missing axis: {company_id}")
+        if any(not axis["minimumUsable"] for axis in record["axes"].values()):
+            raise ValueError(f"recommendedFirstBatch contains an unusable axis: {company_id}")
         if any(
             action["actionType"] in {"RESOLVE_EVIDENCE_GAP", "EXPAND_REGISTRY", "AUTHOR_RELATION"}
             for action in record["requiredActions"]
         ):
             raise ValueError(f"recommendedFirstBatch contains a structural shortage: {company_id}")
+
+    acceptance_rows = artifact.get("firstBatchAcceptanceReview")
+    if not isinstance(acceptance_rows, list) or [
+        row.get("companyId") for row in acceptance_rows
+    ] != list(FIRST_BATCH_REVIEW_IDS):
+        raise ValueError("firstBatchAcceptanceReview must cover the fixed 15 Companies in order")
+    retained_ids = []
+    for row in acceptance_rows:
+        company_id = row["companyId"]
+        record = records_by_id[company_id]
+        if row.get("readinessClass") != record["readinessClass"]:
+            raise ValueError(f"{company_id}: first-batch readinessClass differs")
+        for axis in AXES:
+            review_axis = row.get("axes", {}).get(axis, {})
+            if (
+                review_axis.get("status") != record["axes"][axis]["status"]
+                or review_axis.get("minimumUsable") != record["axes"][axis]["minimumUsable"]
+                or review_axis.get("majorGroundingIds") != major_grounding(record["axes"][axis])
+            ):
+                raise ValueError(f"{company_id}/{axis}: first-batch axis review differs")
+        should_retain = eligible_for_first_batch(record)
+        if row.get("retainedInFirstBatch") != should_retain:
+            raise ValueError(f"{company_id}: first-batch retention decision differs")
+        if should_retain:
+            retained_ids.append(company_id)
+            if row.get("exclusionReason") is not None:
+                raise ValueError(f"{company_id}: retained Company must not have exclusionReason")
+        elif not has_content(row.get("exclusionReason")):
+            raise ValueError(f"{company_id}: excluded Company requires exclusionReason")
+    if retained_ids != batch_ids or artifact["recommendedFirstBatch"].get("excludedCompanyIds") != [
+        company_id for company_id in FIRST_BATCH_REVIEW_IDS if company_id not in retained_ids
+    ]:
+        raise ValueError("recommendedFirstBatch must equal retained acceptance-review Companies")
     if artifact.get("hardStop", {}).get("triggered") is not False:
         raise ValueError("hardStop must remain false after all audit validations pass")
 
@@ -1113,13 +1597,34 @@ def display_company(record: dict[str, Any]) -> str:
     return f"{record['companyId']} — {record['japaneseDisplayName']}"
 
 
+def status_minimum_cell(axis: dict[str, Any]) -> str:
+    short = {"complete": "C", "partial": "P", "missing": "M", "notApplicable": "NA"}
+    return f"{short[axis['status']]}/{'Y' if axis['minimumUsable'] else 'N'}"
+
+
+def compact_major_grounding(review: dict[str, Any]) -> str:
+    parts: list[str] = []
+    for axis in AXES:
+        grounding = review["axes"][axis]["majorGroundingIds"]
+        core = [
+            *grounding["claimIds"],
+            *grounding["relationIds"],
+            *grounding["financialRecordIds"],
+        ]
+        chain = [*core[:2], *grounding["bindingIds"][:1], *grounding["sourceIds"][:1]]
+        parts.append(f"{axis}: " + " → ".join(f"`{item}`" for item in chain))
+    return "<br>".join(parts)
+
+
 def render_markdown(artifact: dict[str, Any]) -> str:
     records = artifact["records"]
     records_by_id = {record["companyId"]: record for record in records}
+    acceptance = artifact["acceptanceReview"]
     lines = [
         "# 100社 Company Compare Readiness Audit v0.1",
         "",
-        "- Result: **PASS**",
+        f"- Acceptance Review: **{acceptance['decision']}**",
+        "- Revised artifact validation: **PASS**",
         f"- Baseline main: `{artifact['baselineMainSha']}`",
         f"- Input digest: `{artifact['inputDigest']}`",
         f"- 対象: canonical Company **{artifact['companyCount']}社**",
@@ -1131,19 +1636,30 @@ def render_markdown(artifact: dict[str, Any]) -> str:
         "",
         "Frozen Company Compare Pilotを100社へ展開する前に、現行repository内のcanonical Company、Company Evidence、Shared Source、Relation、Registry、Financialだけで、安全な比較表示を構成できるかを監査した。監査は表示やデータを変更せず、不足を分類する。",
         "",
-        "## 2. 判定方法",
+        "Acceptance Reviewでは、旧成果物が`status=missing`だけをblocking条件としていた点を修正対象とした。分類件数は実データで再現したが、充足度と最低表示可能性を分離していなかったため判定を`REVISE`とし、本成果物へ機械検証可能な`minimumUsable`契約を追加した。",
         "",
-        "6軸を`complete=2`、`partial=1`、`missing=0`で採点し、`notApplicable`は分母から除外した。すべてのClaimは`Claim → supports/context Binding → structured Locator → Shared Source`を解決できる場合だけ使用した。Financialは正規化historyのOperating Marginと同一period typeの売上高2期を使用し、Revenue Growthの正規化定義未収録とset単位の互換性判定をpartialとして保持した。",
+        "## 2. 判定方法：充足度と最低表示可能性",
+        "",
+        "`status`はCoverageの網羅性、`minimumUsable`は安全なP1 Compare表示の最低条件を表す。各軸は`minimumUsableReason`、`blockingGaps`、`groundingIds`を保持する。`partial`でも直接groundingがあれば`minimumUsable=true`になり得るが、単に文章が存在するだけでは認めない。",
+        "",
+        "Claimは軸専用categoryからだけ選び、`Claim → supports/context Binding → structured Locator → Shared Source`を解決する。Relation使用時も`Relation → supports Binding → structured Locator → Shared Source`を解決する。legacy prose、一般常識、企業規模、competitor配列からの推測は0件である。",
+        "",
+        "Financialは正規化historyだけを使い、会社単位では1期間以上の期間、通貨、単位、会計基準、Operating Margin、revenue、一次Shared Sourceを必須とする。Revenue Growthの正規化定義未収録とset単位のdefinition／period／basis互換性確認はpartial理由として残す。",
         "",
         "Product／Technology entity IDやRelationは推測していない。6軸が既存Claimだけで説明できる場合、Registry／Relationが存在しないこと自体を不足にはしない。構造化したentity／relation表示を新たに主張する場合だけ、別change-controlでRegistry／Relationを要求する。",
         "",
-        "## 3. Readiness分類",
+        "Readinessは`EVIDENCE_HOLD > REGISTRY_REQUIRED > RELATION_REQUIRED > DISPLAY_COPY_ONLY > READY_EXISTING_EVIDENCE`の優先順で、6軸の`minimumUsable`と構造不足から決定する。",
         "",
-        "| Readiness class | 会社数 |",
-        "| --- | ---: |",
+        "## 3. Acceptance ReviewとReadiness分類",
+        "",
+        "| Readiness class | 修正前 | 修正後 |",
+        "| --- | ---: | ---: |",
     ]
     for readiness in READINESS_CLASSES:
-        lines.append(f"| `{readiness}` | {artifact['classificationCounts'][readiness]} |")
+        lines.append(
+            f"| `{readiness}` | {acceptance['originalClassificationCounts'][readiness]} | "
+            f"{artifact['classificationCounts'][readiness]} |"
+        )
 
     lines.extend(
         [
@@ -1161,13 +1677,44 @@ def render_markdown(artifact: dict[str, Any]) -> str:
             f"{summary['missing']} | {summary['notApplicable']} |"
         )
 
-    short = {"complete": "C", "partial": "P", "missing": "M", "notApplicable": "NA"}
+    lines.extend(
+        [
+            "",
+            "### Minimum usability",
+            "",
+            "| 軸 | minimumUsable=true | minimumUsable=false |",
+            "| --- | ---: | ---: |",
+        ]
+    )
+    for axis in AXES:
+        summary = artifact["axisMinimumUsableSummary"][axis]
+        lines.append(
+            f"| `{axis}`（{AXIS_LABELS[axis]}） | {summary['true']} | {summary['false']} |"
+        )
+
+    proof = artifact["displayCopyOnlyProof"]
+    lines.extend(
+        [
+            "",
+            "### 95社のDISPLAY_COPY_ONLYが成立する根拠",
+            "",
+            f"- 対象：**{proof['companyCount']}社**",
+            f"- 6軸すべて`minimumUsable=true`：**{proof['allSixAxesMinimumUsableCount']}社**",
+            f"- 全軸にClaim／Relation／Financialのcore groundingあり：**{proof['allAxesHaveCoreGroundingCount']}社**",
+            f"- legacy prose使用：**{proof['legacyProseUsedCompanyCount']}社**",
+            f"- 日本語copy以外のblocking gap：**{proof['nonCopyBlockingGapCompanyCount']}社**",
+            f"- Product Claimの直接投影経路あり：**{proof['productClaimDirectProjectionCount']}社**",
+            f"- Financial会社単位minimum ready：**{proof['financialCompanyLevelReadyCount']}社**",
+            "",
+            "`DISPLAY_COPY_ONLY`は会社別準備として残るものがCompare専用日本語copyの編集レビューだけという意味である。set単位Financial compatibility gateは別途必須であり、どのsetでも全指標を表示できるという意味ではない。",
+        ]
+    )
     lines.extend(
         [
             "",
             "## 5. 100社一覧",
             "",
-            "`C=complete / P=partial / M=missing / NA=notApplicable`。",
+            "各軸は`status/minimumUsable`。`C=complete / P=partial / M=missing / NA=notApplicable / Y=usable / N=blocked`。",
             "",
             "| Company ID | canonical会社名 | 日本語表示名 | Primary Layer | Readiness | 得点 | what | aiRole | products | competitive | risks | financial |",
             "| --- | --- | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |",
@@ -1185,12 +1732,12 @@ def render_markdown(artifact: dict[str, Any]) -> str:
                     markdown_escape(record["valueChainClassification"]["primaryLayer"]),
                     f"`{record['readinessClass']}`",
                     f"{record['score']}/{record['maximumScore']} ({record['coveragePercent']:.1f}%)",
-                    short[axes["what"]["status"]],
-                    short[axes["aiRole"]["status"]],
-                    short[axes["products"]["status"]],
-                    short[axes["competitivePosition"]["status"]],
-                    short[axes["risks"]["status"]],
-                    short[axes["financialComparability"]["status"]],
+                    status_minimum_cell(axes["what"]),
+                    status_minimum_cell(axes["aiRole"]),
+                    status_minimum_cell(axes["products"]),
+                    status_minimum_cell(axes["competitivePosition"]),
+                    status_minimum_cell(axes["risks"]),
+                    status_minimum_cell(axes["financialComparability"]),
                 ]
             )
             + " |"
@@ -1221,9 +1768,51 @@ def render_markdown(artifact: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "## 8. 最初に追加可能な会社",
+            "## 8. 推奨first batch 15社の個別Acceptance Review",
             "",
-            f"既存Pilot 5社を除外し、{len(batch['companyIds'])}社を決定論的に選定した。投資順位ではなく、readiness、6軸の解決性、Primary Layer分散だけを使用した。",
+            "指定15社を1社ずつ再判定し、不適格会社の自動補充は行わない。Registry／Relationの要否は、既存Claimを会社別P1 copyへ直接投影する現行経路を前提に判定した。",
+            "",
+            "| companyId | readinessClass | what | aiRole | products | competitive | risks | financial | 主要grounding ID | Registry | Relation | Financial会社単位 | set単位確認 | first batch | 除外理由 |",
+            "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- | --- | --- | --- | --- | --- | --- |",
+        ]
+    )
+    for review in artifact["firstBatchAcceptanceReview"]:
+        record = records_by_id[review["companyId"]]
+        axes = record["axes"]
+        lines.append(
+            "| "
+            + " | ".join(
+                [
+                    f"`{review['companyId']}`",
+                    f"`{review['readinessClass']}`",
+                    status_minimum_cell(axes["what"]),
+                    status_minimum_cell(axes["aiRole"]),
+                    status_minimum_cell(axes["products"]),
+                    status_minimum_cell(axes["competitivePosition"]),
+                    status_minimum_cell(axes["risks"]),
+                    status_minimum_cell(axes["financialComparability"]),
+                    compact_major_grounding(review),
+                    ("必要" if review["registryRequirement"]["required"] else "不要")
+                    + " — "
+                    + markdown_escape(review["registryRequirement"]["reason"]),
+                    ("必要" if review["relationRequirement"]["required"] else "不要")
+                    + " — "
+                    + markdown_escape(review["relationRequirement"]["reason"]),
+                    markdown_escape(review["financialCompanyLevel"]["status"])
+                    + " — "
+                    + markdown_escape(review["financialCompanyLevel"]["reason"]),
+                    "必要 — metricDefinition／periodType／period／basis",
+                    "残す" if review["retainedInFirstBatch"] else "除外",
+                    markdown_escape(review["exclusionReason"] or "—"),
+                ]
+            )
+            + " |"
+        )
+    lines.extend(
+        [
+            "",
+            f"結果：指定15社中 **{len(batch['companyIds'])}社を維持**、"
+            f"**{len(batch['excludedCompanyIds'])}社を除外**。自動補充は0社。",
             "",
         ]
     )
@@ -1234,8 +1823,8 @@ def render_markdown(artifact: dict[str, Any]) -> str:
                 f"{index}. {display_company(record)} — {record['valueChainClassification']['primaryLayer']} / "
                 f"{record['coveragePercent']:.1f}% / `{record['readinessClass']}`"
             )
-    else:
-        lines.append("条件を満たす非Pilot会社は0社。問題のある会社による水増しは行っていない。")
+    if batch["excludedCompanyIds"]:
+        lines.extend(["", "除外：" + ", ".join(batch["excludedCompanyIds"])])
 
     lines.extend(
         [
@@ -1245,17 +1834,27 @@ def render_markdown(artifact: dict[str, Any]) -> str:
                 f"{layer} {count}社" for layer, count in batch["valueChainDistribution"].items()
             ),
             "",
-            "## 9. 次工程で必要な作業",
+            "## 9. Registry／Relation追加が0件でよい理由",
+            "",
+            "100社すべてでProductsは専用のEvidence-backed Claimから最低1件を直接表示できる。今回の会社別P1 copyはProduct entity横断の集計、roll-up、同義語統合、重複排除を行わないため、Registry追加は表示の前提ではない。Registry IDを推測したrecordは0件である。",
+            "",
+            "AI role、Products、Competitive Positionも既存Evidence-backed Claimから直接表示できる。新しいCompany間関係やCompany→entity関係を主張せず、既存Relationの不在だけを不足扱いしないため、Relation追加は0件でよい。Relationが必要な将来表示は別change-controlとする。",
+            "",
+            "## 10. Financial partialの意味",
+            "",
+            "全100社は会社単位で、1期間以上の期間、通貨、単位、会計基準、Operating Margin、revenue、一次Shared Sourceを解決できる。一方、Revenue Growthの正規化definitionは未収録で、比較setが決まるまでdefinition／period／basis互換性を確定できない。このためCoverage statusは100社とも`partial`のまま維持する。`partial`は会社単位の最低表示不可を意味せず、set gateで`ok / caution / blocked`を理由付き判定する契約を示す。Company JSON fallback、FX換算、推測値は使用しない。",
+            "",
+            "## 11. 次工程で必要な作業",
             "",
             "1. 推奨batchについて、既存Claimを改変しない短い日本語Compare copyを人間が編集レビューする。",
             "2. 実際の比較setごとにFinancial compatibility contractを実行し、period／basis差とRevenue Growth定義未収録を理由付きで表示する。",
             "3. entity／relation行を新設する場合だけ、対象Claimを起点にbounded reviewし、Registry／Relation／Bindingを別PR・別change-controlで追加する。",
             "4. Frozen UIを使う実装PRは、本監査PRのmergeとは分離する。",
             "",
-            "## 10. HARD STOP／未解決事項",
+            "## 12. HARD STOP／未解決事項",
             "",
             "- HARD STOP: **NO**",
-            "- Revenue Growthは正規化指標定義が未収録であり、全社でFinancial軸をpartialのまま保持した。値をCompany JSONからfallbackしていない。",
+            "- Acceptance Reviewは`REVISE`。旧分類の件数は維持されたが、minimum usabilityと15社個別確認を成果物へ追加した。",
             "- competitivePositionとrisksは全社で主要内容をEvidence化済みだがCoverageはpartialであり、completeへ水増ししていない。",
             "- Registry／Relationを新たに必要とする表示主張は本監査で作っていない。未登録entity／relationを推測していない。",
             "- Compare専用copyの実レビュー、set単位Financial判定、実装、merge、deployは次工程であり未実施。",
@@ -1271,8 +1870,14 @@ def render_markdown(artifact: dict[str, Any]) -> str:
 
 
 def validate_markdown_summary(markdown: str, artifact: dict[str, Any]) -> None:
+    if f"- Acceptance Review: **{artifact['acceptanceReview']['decision']}**" not in markdown:
+        raise ValueError("Markdown Acceptance Review decision is stale")
     for readiness in READINESS_CLASSES:
-        expected = f"| `{readiness}` | {artifact['classificationCounts'][readiness]} |"
+        expected = (
+            f"| `{readiness}` | "
+            f"{artifact['acceptanceReview']['originalClassificationCounts'][readiness]} | "
+            f"{artifact['classificationCounts'][readiness]} |"
+        )
         if expected not in markdown:
             raise ValueError(f"Markdown classification summary is stale: {readiness}")
     for axis in AXES:
@@ -1283,8 +1888,22 @@ def validate_markdown_summary(markdown: str, artifact: dict[str, Any]) -> None:
         )
         if expected not in markdown:
             raise ValueError(f"Markdown axis summary is stale: {axis}")
-    if f"既存Pilot 5社を除外し、{len(artifact['recommendedFirstBatch']['companyIds'])}社" not in markdown:
-        raise ValueError("Markdown recommended batch count is stale")
+        minimum = artifact["axisMinimumUsableSummary"][axis]
+        minimum_expected = (
+            f"| `{axis}`（{AXIS_LABELS[axis]}） | {minimum['true']} | {minimum['false']} |"
+        )
+        if minimum_expected not in markdown:
+            raise ValueError(f"Markdown minimumUsable summary is stale: {axis}")
+    for company_id in FIRST_BATCH_REVIEW_IDS:
+        if f"| `{company_id}` |" not in markdown:
+            raise ValueError(f"Markdown first-batch review is missing: {company_id}")
+    batch = artifact["recommendedFirstBatch"]
+    expected_result = (
+        f"結果：指定15社中 **{len(batch['companyIds'])}社を維持**、"
+        f"**{len(batch['excludedCompanyIds'])}社を除外**。自動補充は0社。"
+    )
+    if expected_result not in markdown:
+        raise ValueError("Markdown recommended batch result is stale")
     if "HARD STOP: **NO**" not in markdown:
         raise ValueError("Markdown HARD STOP result is stale")
 
@@ -1292,7 +1911,7 @@ def validate_markdown_summary(markdown: str, artifact: dict[str, Any]) -> None:
 def print_summary(artifact: dict[str, Any], prefix: str) -> None:
     classes = artifact["classificationCounts"]
     print(
-        f"{prefix}: {artifact['companyCount']} companies / "
+        f"{prefix}: {artifact['acceptanceReview']['decision']} / {artifact['companyCount']} companies / "
         f"READY {classes['READY_EXISTING_EVIDENCE']} / COPY {classes['DISPLAY_COPY_ONLY']} / "
         f"REGISTRY {classes['REGISTRY_REQUIRED']} / RELATION {classes['RELATION_REQUIRED']} / "
         f"EVIDENCE_HOLD {classes['EVIDENCE_HOLD']} / "
