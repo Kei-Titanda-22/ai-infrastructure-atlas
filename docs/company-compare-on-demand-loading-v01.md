@@ -53,22 +53,40 @@ assetはHTTP status、company ID、schema version、必要slot全件、未知／
 
 | Asset | Raw | gzip |
 | --- | ---: | ---: |
-| Shell | 7,431 B | 2,168 B |
-| NVIDIA | 55,330 B | 5,389 B |
-| Broadcom | 62,875 B | 5,227 B |
-| Applied Materials | 56,038 B | 5,693 B |
-| Lam Research | 83,452 B | 6,375 B |
-| Tokyo Electron | 50,146 B | 5,599 B |
+| Shell | 7,431 B | 2,167 B |
+| NVIDIA | 55,530 B | 5,460 B |
+| Broadcom | 63,168 B | 5,311 B |
+| Applied Materials | 56,193 B | 5,736 B |
+| Lam Research | 83,754 B | 6,469 B |
+| Tokyo Electron | 50,457 B | 5,664 B |
 
-転送単位ごとのgzip値を合算すると、Set A cold loadはraw `125,636 B` / gzip `12,784 B`、Set Bはraw `197,067 B` / gzip `19,835 B`。1～4社の全30組合せで最大はNVIDIA / Broadcom / Applied Materials / Lam Researchのraw `265,126 B`であり、`330,509 B`以下である。
+転送単位ごとのgzip値を合算すると、Set A cold loadはraw `126,129 B` / gzip `12,938 B`、Set Bはraw `197,835 B` / gzip `20,036 B`。1～4社の全30組合せで最大はNVIDIA / Broadcom / Applied Materials / Lam Researchのraw `266,076 B`であり、`330,509 B`以下である。
 
 個別上限はshell raw `20,000 B`、company asset raw `100,000 B`、company asset gzip `15,000 B`。各上限値はPASS、上限+1 BはFAILとし、baseline欠損、0、負数、不正ratio、不明company IDをfail closedにする。
 
-## Presentation parity
+## Presentation parity and Human Review correction
 
-baseline main buildと新buildの`main`可視テキストを、Set A / Set Bの要点／詳細の4状態で比較し、全状態で完全一致した。内部asset URL、loading表示、実装用data属性以外の表示契約は変更しない。
+初期のon-demand化では、baseline main buildと新buildの`main`可視テキストをSet A / Set Bの要点／詳細で比較し、asset URL、loading表示、実装用data属性以外の表示契約を維持した。その後のHuman Reviewで、canonical dataを変えずCompare専用projectionだけを修正した。
 
-Human Review後、東京エレクトロンのClaim-backed表示だけを共通rendererの視覚階層へ統一した。`供給網上の位置`は、要点では`半導体製造 [8]`のlist entry、詳細では既存title / statementの後に同じentryを置く。Evidence markerは既存`tokyo-electron-value-chain` Binding由来の1件だけとし、既存metadataから対象範囲と更新状況を表示する。`主な製品`のfallbackは`製品構成`とcanonical順の4 Product entryへ置換し、要点は製品名だけ、詳細は既存の4説明を表示する。製品群のmarkerは既存`tokyo-electron-products` Binding由来の1件を維持する。Applied Materials / Lam Researchのasset、Company / Claim / Evidence / Source / Relation / Registry / Financial semanticsは変更しない。
+供給網位置の区切り線は、Relation-backed entryだけが直前の非表示Claimとの隣接selectorへ一致し、Claim-backed entryは一致しないことが不統一の原因だった。Claim / Relationの両方へ`evidence-position-entry`を付け、要点ではborder `1px solid rgb(217, 221, 225)`、margin-top `10px`、padding-top `10px`の同一computed styleを適用する。詳細では既存説明と位置情報の間へ1本だけ置き、二重線を作らない。
+
+Evidence markerの四角は、on-demand分割後にCompany asset route側へ出力されたcomponent-scoped CSSがCompare shellで読み込まれず、ブラウザ既定button外観が露出したことが原因だった。shellが常時読む共通CSSで`appearance: none`、border `0`、transparent backgroundを明示し、通常時とhover時は枠なし、focus-visible時だけ2px outlineを表示する。表示寸法は本文相当の約`18 × 11 px`、透明pseudo-elementの操作面は`44 × 44 px`とし、本文行高を押し広げない。
+
+### Five-company Product summary contract
+
+会社ごとの条件分岐ではなく、5社すべてを1つの検証済みdisplay-copy mapで管理する。mapは5 / 5社、非空title / body / grounding Claim、`summaryVisible=false`、`expandedVisible=true`を必須とし、未知groundingやgeneric fallbackをfail closedにする。
+
+| Company | Expanded title | Expanded body | Grounding Claim |
+| --- | --- | --- | --- |
+| NVIDIA | 演算とネットワークを横断 | Blackwell GPU、Grace CPU、BlueField DPU、Spectrum-Xネットワークを展開する。 | `nvidia-products` |
+| Broadcom | 接続・演算を担う半導体群 | 接続用半導体、カスタムアクセラレータASIC、Ethernetスイッチ用半導体を展開する。 | `broadcom-products` |
+| Applied Materials | 材料工程を広くカバー | 材料の堆積、除去、改質、分析、デバイス接続に関わる装置・技術を展開する。 | `applied-products` |
+| Lam Research | 成膜・エッチング・洗浄を横断 | 成膜、エッチング、ウェーハ洗浄を中心に、複数の前工程装置を展開する。 | `lam-research-products` |
+| Tokyo Electron | 前工程の主要工程を幅広くカバー | 塗布・現像、エッチング、成膜、洗浄の各工程に対応する装置を展開する。 | `tokyo-electron-products` |
+
+要点では5社とも製品群title / body、説明、metadataを表示せず、`事実`、製品名、必要なEvidence markerだけを表示する。詳細では上表の会社別製品群概要を先に表示し、その後に製品名、既存説明、既存metadataを表示する。item-level Relationがある4社は各製品entryのmarkerを維持し、group-level ClaimだけのTokyo Electronは製品群marker `[8]`を1件だけ維持する。`製品構成`、`下記の製品カテゴリを提供する。`、重複する`主な製品`、`以下の製品を提供する。`は5社の製品本文へ出力しない。
+
+ChromeでSet A / Set Bを`1024`、`390`、`360` pxの要点／詳細で確認し、document overflow `0`、console error `0`、要点の製品説明・metadata `0`、詳細の製品説明Set A `6` / Set B `9`を確認した。drawer、Primary Source、Escape、focus return、URL reload / Back / Forwardを維持し、要点／詳細切替でCompany asset集合は変化しない。
 
 - Marker: Summary Set A `16` / Set B `20`; Expanded Set A `21` / Set B `32`; total `53`
 - Product description: Summary `0`; Expanded Set A `6` / Set B `9`

@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import {
   allSelectedMissing,
   deriveRelationVerificationPresentation,
@@ -17,9 +17,13 @@ import {
 } from '../src/lib/company-compare-evidence-bootstrap.ts';
 import {
   companyCompareAssetSchemaVersion,
+  companyCompareProductPortfolioCompanyIds,
   createCompanyCompareAssetLoader,
+  getCompanyCompareProductPortfolioSummaries,
+  resolveCompanyCompareProductPortfolioSummary,
   resolveCompanyCompareAssetUrl,
   validateCompanyCompareAssetManifest,
+  validateCompanyCompareProductPortfolioSummaries,
 } from '../src/lib/company-compare-evidence-assets.ts';
 import { gzipSync } from 'node:zlib';
 import {
@@ -184,6 +188,86 @@ for (const binding of relationBindings) {
 const sourceIds = new Set(sources.map(source => source.id));
 const sourceById = new Map(sources.map(source => [source.id, source]));
 const companyIds = new Set(['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'asml']);
+
+const expectedProductPortfolioSummaries = {
+  nvidia: {
+    title: '演算とネットワークを横断',
+    body: 'Blackwell GPU、Grace CPU、BlueField DPU、Spectrum-Xネットワークを展開する。',
+    groundingId: 'nvidia-products',
+    summaryVisible: false,
+    expandedVisible: true,
+  },
+  broadcom: {
+    title: '接続・演算を担う半導体群',
+    body: '接続用半導体、カスタムアクセラレータASIC、Ethernetスイッチ用半導体を展開する。',
+    groundingId: 'broadcom-products',
+    summaryVisible: false,
+    expandedVisible: true,
+  },
+  'applied-materials': {
+    title: '材料工程を広くカバー',
+    body: '材料の堆積、除去、改質、分析、デバイス接続に関わる装置・技術を展開する。',
+    groundingId: 'applied-products',
+    summaryVisible: false,
+    expandedVisible: true,
+  },
+  'lam-research': {
+    title: '成膜・エッチング・洗浄を横断',
+    body: '成膜、エッチング、ウェーハ洗浄を中心に、複数の前工程装置を展開する。',
+    groundingId: 'lam-research-products',
+    summaryVisible: false,
+    expandedVisible: true,
+  },
+  'tokyo-electron': {
+    title: '前工程の主要工程を幅広くカバー',
+    body: '塗布・現像、エッチング、成膜、洗浄の各工程に対応する装置を展開する。',
+    groundingId: 'tokyo-electron-products',
+    summaryVisible: false,
+    expandedVisible: true,
+  },
+};
+const companyCompareProductPortfolioSummaries = getCompanyCompareProductPortfolioSummaries();
+assert.deepEqual([...companyCompareProductPortfolioCompanyIds], Object.keys(expectedProductPortfolioSummaries), 'Product portfolio copy contract covers the exact Pilot 5 companies');
+assert.deepEqual(companyCompareProductPortfolioSummaries, expectedProductPortfolioSummaries, 'all five Product portfolio summaries are fixture-locked');
+const portfolioGroundingIds = new Set(claimById.keys());
+assert.doesNotThrow(
+  () => validateCompanyCompareProductPortfolioSummaries(expectedProductPortfolioSummaries, portfolioGroundingIds),
+  'all five Product portfolio summaries resolve to an existing Company Claim',
+);
+for (const companyId of companyCompareProductPortfolioCompanyIds) {
+  assert.deepEqual(
+    resolveCompanyCompareProductPortfolioSummary(companyId, portfolioGroundingIds),
+    expectedProductPortfolioSummaries[companyId],
+    `${companyId}: Product portfolio copy and visibility are deterministic`,
+  );
+}
+const clonePortfolioSummaries = () => Object.fromEntries(Object.entries(expectedProductPortfolioSummaries).map(([id, record]) => [id, { ...record }]));
+const missingPortfolio = clonePortfolioSummaries();
+delete missingPortfolio.nvidia;
+assert.throws(() => validateCompanyCompareProductPortfolioSummaries(missingPortfolio), /exact Pilot 5/, 'missing Pilot Company copy is rejected');
+assert.throws(() => validateCompanyCompareProductPortfolioSummaries({ ...clonePortfolioSummaries(), extra: expectedProductPortfolioSummaries.nvidia }), /exact Pilot 5/, 'extra Company copy is rejected');
+for (const [field, value] of [['title', ''], ['body', ''], ['groundingId', '']]) {
+  const invalid = clonePortfolioSummaries();
+  invalid.nvidia[field] = value;
+  assert.throws(() => validateCompanyCompareProductPortfolioSummaries(invalid), /non-empty/, `empty Product portfolio ${field} is rejected`);
+}
+for (const genericCopy of ['製品構成', '下記の製品カテゴリを提供する。', '主な製品', '以下の製品を提供する。']) {
+  const invalid = clonePortfolioSummaries();
+  invalid.nvidia.title = genericCopy;
+  assert.throws(() => validateCompanyCompareProductPortfolioSummaries(invalid), /prohibited generic copy/, `generic Product fallback is rejected: ${genericCopy}`);
+}
+for (const visibility of [{ summaryVisible: true }, { expandedVisible: false }]) {
+  const invalid = clonePortfolioSummaries();
+  Object.assign(invalid.nvidia, visibility);
+  assert.throws(() => validateCompanyCompareProductPortfolioSummaries(invalid), /visibility contract/, 'invalid Product portfolio visibility is rejected');
+}
+const unknownPortfolioGrounding = clonePortfolioSummaries();
+unknownPortfolioGrounding.nvidia.groundingId = 'unknown-products';
+assert.throws(
+  () => validateCompanyCompareProductPortfolioSummaries(unknownPortfolioGrounding, portfolioGroundingIds),
+  /grounding does not resolve/,
+  'unknown Product portfolio grounding is rejected',
+);
 
 assert.deepEqual(
   Object.keys(compareClaimDisplayCopy).sort(),
@@ -834,9 +918,12 @@ assert.match(presentationSource, /data-product-description/, 'expanded Product d
 assert.match(presentationSource, /productDescription=\{entry\.productDescription/, 'Relation-backed Products use the shared description contract');
 assert.match(presentationSource, /claimOnlyProducts/, 'Claim-backed Products use the same description contract');
 assert.match(presentationSource, /class="evidence-product-description" data-expanded-only data-product-description=\{item\.canonicalId\}/, 'Claim-backed Products share the description typography contract');
-assert.match(presentationSource, /usesClaimBackedPositionProjection/, 'Tokyo Electron uses the shared list renderer for its Claim-backed supply-chain projection');
+assert.match(presentationSource, /usesClaimBackedPositionProjection/, 'a Relation-free supply-chain Claim uses the shared list renderer');
 assert.match(presentationSource, /displayTitle=\{usesClaimBackedPositionProjection[\s\S]*\? '半導体製造'/, 'Claim-backed position projects the canonical Value Chain label');
-assert.match(presentationSource, /claimBackedProductProjection[\s\S]*\? '製品構成'/, 'Claim-backed Products use the common Product-composition heading');
+assert.doesNotMatch(companyAssetComponent, /company\.identity\.id === 'tokyo-electron'/, 'Compare rendering contains no Tokyo Electron-specific branch');
+assert.match(presentationSource, /resolveCompanyCompareProductPortfolioSummary/, 'all five Product portfolio summaries use one validated display-copy contract');
+assert.match(presentationSource, /evidence-product-portfolio-summary/, 'Product portfolio summaries use one shared presentation class');
+assert.match(presentationSource, /evidence-position-entry/, 'Claim-backed and Relation-backed positions use one shared presentation class');
 assert.match(presentationSource, /<ul class="evidence-product-description-list evidence-claim-backed-product-list" aria-label="製品の役割">/, 'Claim-backed Product names remain visible in summary');
 assert.match(presentationSource, /data-canonical-id=\{entry\.relation\.objectId\}/, 'rendered Product entries retain canonical Registry IDs');
 assert.match(presentationSource, /relationsForDisplay/, 'Product display is de-duplicated before rendering');
@@ -911,6 +998,11 @@ assert.match(styles, /tbody > tr > th \{[\s\S]*font-size: 16px;[\s\S]*font-weigh
 assert.match(styles, /\.evidence-identity > span \{[\s\S]*font-size: 16px/, 'Company information values are at least 16px');
 assert.match(styles, /\.evidence-product-description \{[\s\S]*font-size: 15px;[\s\S]*line-height: 1\.65/, 'desktop Product descriptions meet the typography contract');
 assert.match(styles, /\.evidence-claim-backed-product-list strong::before \{[\s\S]*content: "·"/, 'Claim-backed Product entries use the same bullet as Relation-backed entries');
+assert.match(styles, /data-detail="summary"\] \.evidence-position-entry \{[\s\S]*border-top: 1px solid var\(--border\)/, 'summary position entries use one shared separator rule');
+assert.match(styles, /\.evidence-compare \.evidence-marker \{[\s\S]*border: 0;[\s\S]*appearance: none;[\s\S]*background: transparent/, 'Evidence markers reset native button chrome in the shell stylesheet');
+assert.match(styles, /\.evidence-compare \.evidence-marker::before \{[\s\S]*width: 44px;[\s\S]*height: 44px/, 'Evidence markers retain a transparent 44px hit area without expanding line height');
+assert.match(styles, /\.evidence-compare \.evidence-marker:hover \{[\s\S]*background: transparent;[\s\S]*text-decoration: underline/, 'Evidence marker hover remains a quiet text interaction');
+assert.match(styles, /\.evidence-compare \.evidence-marker:focus-visible \{[\s\S]*outline: 2px solid/, 'Evidence marker keyboard focus remains explicit');
 assert.match(presentationSource, /<thead><tr>[\s\S]*<th scope="col">出典<\/th>/, 'all eight detailed Financial headers use one centered heading contract');
 assert.match(presentationSource, /<th class="num" scope="col">売上高<br \/>（\{company\.expandedFinancialPresentation\.amountUnitLabel\}）<\/th>/, 'amount header exposes one continuous accessible name on two visual lines');
 assert.match(presentationSource, /class="financial-basis">会計基準：\{company\.expandedFinancialPresentation\.accountingBasisLabel\}/, 'accounting basis appears once at Company-table level');
@@ -947,6 +1039,10 @@ for (const sectionLabel of displayFixture.majorSections) {
 if (process.argv.includes('--dist')) {
   const compareHtml = await readFile(new URL('../dist/compare/index.html', import.meta.url), 'utf8');
   const shellHtml = await readFile(new URL('../dist/evidence-fragments/company-compare-evidence-v01/index.html', import.meta.url), 'utf8');
+  const builtAssetNames = await readdir(new URL('../dist/_astro/', import.meta.url));
+  const controllerAssetName = builtAssetNames.find(name => /^company-compare-evidence-ui\..+\.js$/.test(name));
+  assert.ok(controllerAssetName, 'built Company Compare controller asset is present');
+  const controllerAsset = await readFile(new URL(`../dist/_astro/${controllerAssetName}`, import.meta.url), 'utf8');
   const pilotIds = [...fixture.setCompanyIds['set-a'], ...fixture.setCompanyIds['set-b']];
   const assetHtmlById = Object.fromEntries(await Promise.all(pilotIds.map(async companyId => [
     companyId,
@@ -968,6 +1064,14 @@ if (process.argv.includes('--dist')) {
   assertWithinBoundary(Buffer.byteLength(shellHtml), onDemandSize.maximumShellRawBytes, 'Evidence shell');
   assert.doesNotMatch(shellHtml, /data-claim-id=|data-relation-id=|class="evidence-drawer"|class="evidence-financial-company"/, 'Evidence shell contains no Company projection bodies');
   assert.match(shellHtml, /"companyManifest"/, 'Evidence shell contains the lightweight manifest');
+  for (const copy of [
+    expectedProductPortfolioSummaries.nvidia.title,
+    expectedProductPortfolioSummaries.broadcom.title,
+    expectedProductPortfolioSummaries['lam-research'].title,
+    expectedProductPortfolioSummaries['tokyo-electron'].title,
+  ]) {
+    assert.ok(!controllerAsset.includes(copy), 'new Product portfolio copy remains inside Company assets, not the shared controller');
+  }
   for (const companyId of pilotIds) {
     const assetHtml = assetHtmlById[companyId];
     assert.equal((assetHtml.match(/data-company-compare-asset/g) ?? []).length, 1, `${companyId}: one asset envelope`);
@@ -996,8 +1100,8 @@ if (process.argv.includes('--dist')) {
     const setHtml = setIds.map(id => assetHtmlById[id]).join('\n');
     const setRawBytes = Buffer.byteLength(shellHtml) + Buffer.byteLength(setHtml);
     assertWithinBoundary(setRawBytes, onDemandSize.maximumSetRawBytes, `${setId}: initial shell plus selected assets`);
-    const summaryMarkers = (setHtml.match(/class="evidence-(?:claim|relation)-entry"[^>]*data-summary="show"/g) ?? []).length;
-    const expandedMarkers = (setHtml.match(/class="evidence-(?:claim|relation)-entry"/g) ?? []).length;
+    const summaryMarkers = (setHtml.match(/class="evidence-(?:claim|relation)-entry(?: [^"]*)?"[^>]*data-summary="show"/g) ?? []).length;
+    const expandedMarkers = (setHtml.match(/class="evidence-(?:claim|relation)-entry(?: [^"]*)?"/g) ?? []).length;
     assert.equal(summaryMarkers, displayFixture.summaryMarkerCounts[setId], `${setId}: summary marker count is unchanged`);
     assert.equal(expandedMarkers, setId === 'set-a' ? 21 : 32, `${setId}: expanded marker count is unchanged`);
     assert.equal((setHtml.match(/data-product-description=/g) ?? []).length, setId === 'set-a' ? 6 : 9, `${setId}: expanded Product-description count is unchanged`);
@@ -1035,6 +1139,16 @@ if (process.argv.includes('--dist')) {
   assert.deepEqual([...new Set(productDescriptionInstances)].sort(), productIds, 'built descriptions cover all 11 canonical Product IDs');
   assert.ok(productDescriptionInstances.every(productId => fragmentHtml.includes(compareProductDisplayDescriptions[productId].description)), 'built Product descriptions use only fixture-locked copy');
   assert.match(fragmentHtml, /class="evidence-product-description" data-expanded-only data-product-description=/, 'Product descriptions are expanded-only');
+  for (const companyId of companyCompareProductPortfolioCompanyIds) {
+    const productTemplate = assetHtmlById[companyId].match(/<template data-company-slot="key-products"[\s\S]*?<\/template>/)?.[0] ?? '';
+    const expected = expectedProductPortfolioSummaries[companyId];
+    assert.match(productTemplate, /class="evidence-claim-entry evidence-product-portfolio-summary"/, `${companyId}: Product summary uses the shared portfolio class`);
+    assert.match(productTemplate, /data-product-portfolio-summary="true" data-summary-visible="false" data-expanded-visible="true"/, `${companyId}: Product title and body are expanded-only`);
+    assert.ok(productTemplate.includes(`>${expected.title}</h3>`), `${companyId}: reviewed Product portfolio title is rendered`);
+    assert.ok(productTemplate.includes(`${expected.body}<button class="evidence-marker"`), `${companyId}: reviewed Product portfolio body owns its Evidence marker`);
+    assert.equal((productTemplate.match(new RegExp(`data-evidence-open="evidence-${expected.groundingId}"`, 'g')) ?? []).length, 1, `${companyId}: Product portfolio grounding marker is rendered once`);
+    assert.doesNotMatch(productTemplate, /<h3>製品構成<\/h3>|下記の製品カテゴリを提供する。|<h3>主な製品<\/h3>|以下の製品を提供する。/, `${companyId}: no generic Product fallback is rendered`);
+  }
   const tokyoAssetHtml = assetHtmlById['tokyo-electron'];
   const tokyoRoleTemplate = tokyoAssetHtml.match(/<template data-company-slot="ai-role"[\s\S]*?<\/template>/)?.[0] ?? '';
   const tokyoProductsTemplate = tokyoAssetHtml.match(/<template data-company-slot="key-products"[\s\S]*?<\/template>/)?.[0] ?? '';
@@ -1045,7 +1159,7 @@ if (process.argv.includes('--dist')) {
   assert.match(tokyoRoleTemplate, /<dt>対象範囲<\/dt><dd>企業全体<\/dd>/, 'Tokyo Electron position exposes only existing scope metadata');
   assert.match(tokyoRoleTemplate, /<dt>更新状況<\/dt><dd>確認期限内<\/dd>/, 'Tokyo Electron position exposes derived existing freshness metadata');
   assert.doesNotMatch(tokyoProductsTemplate, /<h3>主な製品<\/h3>/, 'Tokyo Electron has no repeated Product heading');
-  assert.match(tokyoProductsTemplate, /<h3[^>]*>製品構成<\/h3><p class="claim-statement"[^>]*>下記の製品カテゴリを提供する。<button class="evidence-marker"/, 'Tokyo Electron uses the common Product-composition Claim hierarchy');
+  assert.match(tokyoProductsTemplate, /<h3[^>]*>前工程の主要工程を幅広くカバー<\/h3><p class="claim-statement"[^>]*>塗布・現像、エッチング、成膜、洗浄の各工程に対応する装置を展開する。<button class="evidence-marker"/, 'Tokyo Electron uses the reviewed Product portfolio summary in expanded mode');
   assert.equal((tokyoProductsTemplate.match(/data-evidence-open="evidence-tokyo-electron-products"/g) ?? []).length, 1, 'Tokyo Electron Product group has exactly one Evidence marker');
   const tokyoProductIds = [...tokyoProductsTemplate.matchAll(/<li data-canonical-id="([^"]+)"/g)].map(match => match[1]);
   assert.deepEqual(tokyoProductIds, compareProductIdsByClaimId['tokyo-electron-products'], 'Tokyo Electron keeps all four Product entries in canonical reviewed order');

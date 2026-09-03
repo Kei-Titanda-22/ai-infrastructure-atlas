@@ -9,7 +9,10 @@ import {
   selectCompareSummaryClaimIds,
   selectCompareSummaryRelationIds,
 } from '../lib/company-compare-display';
-import { companyCompareAssetSchemaVersion } from '../lib/company-compare-evidence-assets';
+import {
+  companyCompareAssetSchemaVersion,
+  resolveCompanyCompareProductPortfolioSummary,
+} from '../lib/company-compare-evidence-assets';
 import { deriveEvidenceFreshness } from '../lib/evidence-freshness';
 
 type CompareEvidenceModel = ReturnType<typeof buildCompanyCompareEvidenceReadModel>;
@@ -144,14 +147,25 @@ const companyContext = {
         </div>}
         {dimension.sections.map((section, sectionIndex) => {
           const displayedRelations = relationsForDisplay(section.relations);
-          const usesClaimBackedPositionProjection = company.identity.id === 'tokyo-electron'
-            && dimensionId === 'ai-role'
+          const usesClaimBackedPositionProjection = dimensionId === 'ai-role'
             && section.dimensionId === 'value-chain-position'
-            && displayedRelations.length === 0;
+            && !displayedRelations.some(entry => entry.relation.relationType === 'POSITIONED_IN')
+            && section.claims.length > 0;
           const relationProductIds = new Set(displayedRelations
             .filter(entry => entry.relation.relationType === 'PRODUCES')
             .map(entry => entry.relation.objectId));
           const claimOnlyProducts = section.displayProducts.filter(item => !relationProductIds.has(item.canonicalId));
+          const productPortfolioSummary = dimensionId === 'key-products'
+            ? resolveCompanyCompareProductPortfolioSummary(
+                company.identity.id,
+                new Set(section.claims.map(entry => entry.claim.id)),
+              )
+            : null;
+          const usesGroupLevelProductEvidence = Boolean(
+            productPortfolioSummary
+            && relationProductIds.size === 0
+            && claimOnlyProducts.length > 0,
+          );
           const summaryClaimIds = new Set(selectCompareSummaryClaimIds(dimensionId, sectionIndex, section.claims.map(entry => entry.claim), displayedRelations.map(entry => entry.relation)));
           const summaryRelationIds = new Set(selectCompareSummaryRelationIds(dimensionId, sectionIndex, displayedRelations.map(entry => entry.relation)));
           return <div class:list={['evidence-dimension-subsection', { 'evidence-dimension-subsection-secondary': sectionIndex > 0 }]}>
@@ -160,9 +174,23 @@ const companyContext = {
               {section.displayTechnologies.map((item, itemIndex) => <li data-canonical-id={item.canonicalId} data-grounding-ids={item.groundingIds.join(',')} data-summary={itemIndex < 3 ? 'show' : 'hide'}>{item.label}</li>)}
             </ul>}
             {section.claims.map(entry => {
-              const claimBackedProductProjection = dimensionId === 'key-products' && claimOnlyProducts.length > 0;
+              const isProductPortfolioSummary = productPortfolioSummary?.groundingId === entry.claim.id;
               const freshness = deriveEvidenceFreshness(entry.claim.nextReview);
-              return <div class="evidence-claim-entry" data-claim-id={entry.claim.id} data-claim-priority={entry.claim.priority} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryClaimIds.has(entry.claim.id) ? 'show' : 'hide'}>
+              return <div
+                class:list={['evidence-claim-entry', {
+                  'evidence-position-entry': usesClaimBackedPositionProjection,
+                  'evidence-product-portfolio-summary': isProductPortfolioSummary,
+                }]}
+                data-claim-id={entry.claim.id}
+                data-claim-priority={entry.claim.priority}
+                data-display-grounding-ids={entry.display.groundingIds.join(',')}
+                data-product-portfolio-summary={isProductPortfolioSummary ? 'true' : undefined}
+                data-summary-visible={isProductPortfolioSummary ? String(productPortfolioSummary.summaryVisible) : undefined}
+                data-expanded-visible={isProductPortfolioSummary ? String(productPortfolioSummary.expandedVisible) : undefined}
+                data-summary={isProductPortfolioSummary
+                  ? (usesGroupLevelProductEvidence ? 'show' : 'hide')
+                  : (summaryClaimIds.has(entry.claim.id) ? 'show' : 'hide')}
+              >
                 {usesClaimBackedPositionProjection && <div class="evidence-claim-projection-context" data-expanded-only>
                   <h3>{entry.display.title}</h3>
                   <p class="claim-statement">{entry.display.statement}</p>
@@ -176,13 +204,13 @@ const companyContext = {
                   suppressTypeLabel
                   displayTitle={usesClaimBackedPositionProjection
                     ? '半導体製造'
-                    : claimBackedProductProjection
-                      ? '製品構成'
+                    : isProductPortfolioSummary
+                      ? productPortfolioSummary.title
                       : entry.display.title}
                   displayStatement={usesClaimBackedPositionProjection
                     ? ''
-                    : claimBackedProductProjection
-                      ? '下記の製品カテゴリを提供する。'
+                    : isProductPortfolioSummary
+                      ? productPortfolioSummary.body
                       : entry.display.statement}
                   variant={usesClaimBackedPositionProjection ? 'list' : 'standard'}
                   additionalMetadata={[
@@ -205,7 +233,7 @@ const companyContext = {
             </ul>}
             {displayedRelations.map(entry => {
               const relationClaim = relationAsClaim(entry);
-              return <div class="evidence-relation-entry" data-relation-id={entry.relation.relationId} data-canonical-id={entry.relation.objectId} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryRelationIds.has(entry.relation.relationId) ? 'show' : 'hide'}>
+              return <div class:list={['evidence-relation-entry', { 'evidence-position-entry': entry.relation.relationType === 'POSITIONED_IN' }]} data-relation-id={entry.relation.relationId} data-canonical-id={entry.relation.objectId} data-display-grounding-ids={entry.display.groundingIds.join(',')} data-summary={summaryRelationIds.has(entry.relation.relationId) ? 'show' : 'hide'}>
                 <CompanyCompareEvidenceClaim
                   claim={relationClaim}
                   evidence={entry.bindings}
