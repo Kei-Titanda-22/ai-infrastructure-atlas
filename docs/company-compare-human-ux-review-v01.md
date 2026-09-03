@@ -349,3 +349,11 @@ Legacy Compare HTMLは585,468 Bで不変。Evidence fragmentは312,007 Bから31
 - Legacy Compare HTMLは585,468 B。Evidence fragmentは314,627 B、gzip 22,480 Bで、初回299,685 B比5% guard内。Pagefindは105 pages / 5,791 wordsを維持した。
 
 以上は第7回Human Review入力に対するremediation結果であり、実参加者によるHuman Test結果は生成していない。
+
+## 30. Freeze済みEvidence fragment size baseline
+
+PR #158はHuman Review 7回を経てCompany Compare Pilot UI v0.1として正式採択され、main `08cdd9dde22a0ec8d2908a58750cb718ec455810`へmergeされた。merge後のLinux CIではEvidence fragmentが314,771 Bとなり、Information Reduction前の旧baseline 299,685 Bに対する5%上限314,669 Bを102 B超過した。Windows local buildは314,627 Bで、Linux CIとの差は144 Bだった。
+
+この差はFreeze済み表示内容を削減する根拠とはせず、PR #158のLinux CI成果物314,771 Bを新しいaccepted baselineとして固定する。baseline metadataは`acceptedRawBytes: 314771`、`acceptedAtMainSha: 08cdd9dde22a0ec8d2908a58750cb718ec455810`、`acceptedReason: Company Compare Pilot UI v0.1 Freeze`、`growthLimitRatio: 1.05`とする。既存と同じ端数切り捨てにより、新上限は330,509 Bである。
+
+このrebaselineはInformation Reduction、日本語表示規格、mobile company identity、製品説明、会社名リンク統一、リスク見出し改善、財務表の可読性、日本語の通貨・単位・会計基準、7回のHuman Reviewを含むFreeze済み成果物を基準点とする。`+5%`の増加上限は変更せず、Company Compare UI、visible text、data、Evidence、Relation、Financial、workflow、production build outputは変更しない。
