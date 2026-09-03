@@ -1002,8 +1002,8 @@ assert.match(styles, /\.evidence-product-description \{[\s\S]*font-size: 15px;[\
 assert.match(styles, /\.evidence-compare \.claim-statement-list::before \{[\s\S]*content: "·"/, 'Claim-backed and Relation-backed Product entries use the same shared bullet rule');
 assert.match(styles, /data-detail="summary"\] \.evidence-product-portfolio-summary[\s\S]*\.pilot-claim > \.claim-statement \{[\s\S]*display: none/, 'summary hides the Product portfolio body and its group marker without hiding the shared drawer');
 assert.match(styles, /data-detail="summary"\] \.evidence-position-entry \{[\s\S]*border-top: 1px solid var\(--border\)/, 'summary position entries use one shared separator rule');
-assert.match(styles, /data-detail="expanded"\] \.evidence-product-entry-boundary \{[\s\S]*margin-top: 10px;[\s\S]*padding-top: 10px;[\s\S]*border-top: 1px solid var\(--border\)/, 'expanded Product portfolio-to-entry boundary uses the shared neutral divider contract');
-assert.doesNotMatch(styles, /data-detail="summary"\] \.evidence-product-entry-boundary/, 'summary does not activate the Product portfolio-to-entry boundary');
+assert.match(styles, /\.evidence-compare \.evidence-product-entry-boundary \{[\s\S]*margin-top: 10px;[\s\S]*padding-top: 10px;[\s\S]*border-top: 1px solid var\(--border\)/, 'summary and expanded Product portfolio-to-entry boundaries use the shared neutral divider contract');
+assert.doesNotMatch(styles, /data-detail="(?:summary|expanded)"\] \.evidence-product-entry-boundary/, 'the shared Product boundary is not split into detail-mode-specific contracts');
 assert.doesNotMatch(styles, /evidence-product-entry-boundary::(?:before|after)/, 'the shared Product boundary uses one border and no pseudo-element double rule');
 assert.doesNotMatch(styles, /tokyo-electron|\[data-company-id[^\]]*\][^{]*evidence-product-entry-boundary/, 'the Product boundary has no Company-specific selector');
 assert.match(styles, /\.evidence-relation-entry \+ \.evidence-relation-entry \{[\s\S]*margin-top: 10px;[\s\S]*padding-top: 10px;[\s\S]*border-top: 1px solid var\(--border\)/, 'existing separators between Product entries remain unchanged');
@@ -1165,7 +1165,7 @@ if (process.argv.includes('--dist')) {
       `${companyId}: Product portfolio Evidence is exposed at every reviewed Product entry`,
     );
     assert.doesNotMatch(productTemplate, /<h3>製品構成<\/h3>|下記の製品カテゴリを提供する。|<h3>主な製品<\/h3>|以下の製品を提供する。/, `${companyId}: no generic Product fallback is rendered`);
-    assert.equal((productTemplate.match(/evidence-product-entry-boundary/g) ?? []).length, 1, `${companyId}: one shared Product portfolio-to-first-entry boundary is rendered`);
+    assert.equal((productTemplate.match(/evidence-product-entry-boundary/g) ?? []).length, 1, `${companyId}: one shared Summary/Expanded Product boundary is rendered`);
   }
   const tokyoAssetHtml = assetHtmlById['tokyo-electron'];
   const tokyoRoleTemplate = tokyoAssetHtml.match(/<template data-company-slot="ai-role"[\s\S]*?<\/template>/)?.[0] ?? '';
