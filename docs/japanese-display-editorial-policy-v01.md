@@ -112,3 +112,12 @@ Compare専用fixtureで、次を固定する。
 - リスク見出しは、顧客集中、設備投資、輸出規制、競争、外部製造依存など、利用者が比較する具体的な対象を示す。
 - `主な確認点`、`確認点とする`、`注目点とする`、`留意点とする`、`見ていく必要がある`のような編集者の行為を主語にした表現をprimary UIへ置かない。
 - Compare専用display copyの編集は既存Claimの意味範囲内に限定し、canonical Claim、Evidence Binding、Source、Locatorを変更しない。drawerの詳細情報ではcanonical Claimを正本として表示する。
+
+## 11. 財務詳細表の数値組版
+
+- 数値は右揃え、セル内では縦中央に置き、`tabular-nums`を適用する。対応する数値列見出しも右揃えとする。
+- 期間は左揃えとし、期間名をprimary、通貨・単位・会計基準をsecondaryの2行で表示する。欠損状態は数値扱いせず、独立した状態表示として中央揃えにする。
+- 列密度はPilot各社の現実の最大桁数とsecondary表示を基準に設計し、全列の均等割りや固定的な余剰空白を避ける。broad / narrowの表示幅を内容に応じて分ける。
+- 数値・見出し・出典は周辺本文より大幅に小さくしない。PC / tabletでは見出し・期間・数値14px以上、欠損と出典13px以上、通貨・単位・会計基準11px以上を下限とする。
+- 44px touch targetは出典リンクなどのinteractive要素へ適用し、非interactiveな表セルの行高を一律に膨らませない。
+- 1024pxでは表内scrollなしを目標とし、768px以下では表内だけのhorizontal scrollを許容する。いずれもdocument overflowは発生させない。

@@ -310,12 +310,14 @@ const clientPayload = {
       <h4>{companyContext(company).name}</h4>
       <div class="evidence-financial-scroll" tabindex="0" aria-label={`${companyContext(company).accessibleName}の財務履歴`}>
         <table>
-          <thead><tr><th scope="col">期間</th><th scope="col">売上高</th><th scope="col">営業利益</th><th scope="col">営業利益率</th><th scope="col">フリーキャッシュフロー</th><th scope="col">設備投資</th><th scope="col">ROIC</th><th scope="col">出典</th></tr></thead>
+          <thead><tr><th class="period" scope="col">期間</th><th class="num" scope="col">売上高</th><th class="num" scope="col">営業利益</th><th class="num" scope="col">営業利益率</th><th class="num" scope="col">フリーキャッシュフロー</th><th class="num" scope="col">設備投資</th><th class="num" scope="col">ROIC</th><th scope="col">出典</th></tr></thead>
           <tbody>{company.expandedFinancial.map(record => <tr>
-            <th scope="row">{record.periodLabel}<small>{record.currency} · {record.unit} · {record.accountingBasis}</small></th>
+            <th class="period" scope="row">{record.periodLabel}<small>{record.currency} · {record.unit} · {record.accountingBasis}</small></th>
             {['revenue', 'operatingProfit', 'operatingMargin', 'freeCashFlow', 'capex', 'roic'].map(metricId => {
               const metric = financialMetric(record, metricId);
-              return <td>{metric?.displayValue ?? '未収録'}</td>;
+              return metric?.displayValue
+                ? <td class="num">{metric.displayValue}</td>
+                : <td class="missing">未収録</td>;
             })}
             <td><a class="evidence-source-link" href={record.source.url} target="_blank" rel="noreferrer">一次資料 ↗</a></td>
           </tr>)}</tbody>

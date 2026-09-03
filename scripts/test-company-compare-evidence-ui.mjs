@@ -634,6 +634,21 @@ assert.match(styles, /thead th > span \{[\s\S]*font-size: 14px/, 'desktop ticker
 assert.match(styles, /tbody > tr > th \{[\s\S]*font-size: 16px;[\s\S]*font-weight: 700/, 'desktop row headings are at least 16px and bold');
 assert.match(styles, /\.evidence-identity > span \{[\s\S]*font-size: 16px/, 'Company information values are at least 16px');
 assert.match(styles, /\.evidence-product-description \{[\s\S]*font-size: 15px;[\s\S]*line-height: 1\.65/, 'desktop Product descriptions meet the typography contract');
+assert.match(component, /class="num" scope="col"/, 'numeric headers use the numeric alignment contract');
+assert.match(component, /metric\?\.displayValue[\s\S]*class="num"[\s\S]*class="missing"/, 'available and missing values have distinct semantic classes');
+assert.doesNotMatch(component, /class="num"[^>]*>未収録</, 'missing status never receives the numeric class');
+assert.match(styles, /\.evidence-financial-scroll th,[\s\S]*vertical-align: middle/, 'detailed Financial cells are vertically centered');
+assert.match(styles, /\.evidence-financial-scroll \.num \{[\s\S]*font-size: 14px;[\s\S]*font-weight: 500;[\s\S]*font-variant-numeric: tabular-nums;[\s\S]*text-align: right/, 'financial values are readable, tabular, and right aligned');
+assert.match(styles, /thead \.num \{[\s\S]*font-weight: 600/, 'numeric headers retain readable emphasis');
+assert.match(styles, /\.evidence-financial-scroll \.period \{[\s\S]*text-align: left/, 'period stays left aligned');
+assert.match(styles, /\.evidence-financial-scroll \.missing \{[\s\S]*font-size: 13px;[\s\S]*text-align: center/, 'missing state remains readable and distinct from numbers');
+assert.match(styles, /\.evidence-financial-scroll td:last-child a \{[\s\S]*font-size: 13px;[\s\S]*white-space: nowrap/, 'source links remain readable and discoverable');
+assert.equal(displayFixture.financialDetailTable.numericAlignment, 'right');
+assert.equal(displayFixture.financialDetailTable.verticalAlignment, 'middle');
+assert.equal(displayFixture.financialDetailTable.periodAlignment, 'left');
+assert.equal(displayFixture.financialDetailTable.sourceMinimumTargetPx, 44);
+assert.deepEqual(displayFixture.financialDetailTable.metricIds, ['revenue', 'operatingProfit', 'operatingMargin', 'freeCashFlow', 'capex', 'roic']);
+assert.match(styles, /\.evidence-financial-value > a,[\s\S]*\.evidence-financial-company a \{[\s\S]*min-height: 44px/, 'detailed Financial source links have a 44px target');
 assert.match(styles, /--company-ident-bg/, 'mobile identity uses a light background');
 assert.match(styles, /--company-ident-border/, 'mobile identity uses a thin border');
 for (let index = 1; index <= 4; index += 1) {
@@ -691,6 +706,12 @@ if (process.argv.includes('--dist')) {
   assert.deepEqual([...new Set(productDescriptionInstances)].sort(), productIds, 'built descriptions cover all 11 canonical Product IDs');
   assert.ok(productDescriptionInstances.every(productId => fragmentHtml.includes(compareProductDisplayDescriptions[productId].description)), 'built Product descriptions use only fixture-locked copy');
   assert.match(fragmentHtml, /data-expanded-only data-product-description=/, 'Product descriptions are expanded-only');
+  for (const [companyId, displayValue] of Object.entries(displayFixture.financialDetailTable.maxDigitFixtures)) {
+    assert.ok(fragmentHtml.includes(displayValue), `${companyId}: realistic maximum-digit Financial value remains present`);
+  }
+  assert.equal((fragmentHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 5, 'NVIDIA, Broadcom, and Set B use the same detailed Financial table');
+  assert.match(fragmentHtml, /class="num">2,431,568<\/td>/, 'maximum Set B value is rendered as an unwrapped numeric cell');
+  assert.match(fragmentHtml, /class="missing">未収録<\/td>/, 'missing status is rendered outside the numeric class');
   console.log(`Company Compare lazy artifact OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(fragmentHtml)} B fragment / ${claimMarkers + relationMarkers} markers`);
 }
 

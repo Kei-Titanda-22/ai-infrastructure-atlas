@@ -245,3 +245,43 @@ Legacy Compare HTMLはCompare sourceを変更していないが、lazy controlle
 - Legacy Compare HTMLは585,468 B。Evidence fragmentは312,007 B、gzip 22,354 Bで5% guard内。Pagefindは105 pages / 5,791 words。
 
 以上は第4回Human Review入力に対するremediation結果であり、実参加者によるHuman Test結果は生成していない。
+
+## 21. 第5回Human Review
+
+第4回remediation後の実画面を確認し、詳細表示の財務履歴について次を新たな正式入力とした。
+
+1. 見出し、期間、数値、出典が11px中心で、周辺の比較本文に対して小さすぎる。
+2. 数値セルが上揃えのため、2行の期間情報や44pxの出典導線との行内関係が不安定に見える。
+3. 均等に近い自動列幅では、最大桁数の異なる売上高・利益率・FCF・設備投資へ不要な余白が生じる。
+4. 可読性を上げながら、財務詳細全体の縦方向の負担は増やさない必要がある。
+
+## 22. 第5回で採択した修正
+
+- 財務詳細の列に期間、各数値指標、出典のsemantic classを付与し、Set A / Set Bを同じcomponentとCSSで処理する。
+- 数値と対応見出しを右揃え、数値セルを縦中央、`tabular-nums`とし、欠損状態はnumeric classから分離して中央表示する。
+- 期間は左揃えのまま、期間14px/600、通貨・単位・会計基準11px以上の2行を維持する。数値は14px/500、列見出し14px/600、欠損と出典は13px以上とする。
+- Applied Materials、Lam Research、Tokyo Electronの現実の最大桁数をfixtureへ固定し、値を切り詰めず一行表示する。収録値、期間、単位、会計基準、出典は変更しない。
+- 期間、売上高、営業利益、営業利益率、FCF、設備投資、ROIC、出典を内容に応じた非均等列幅にし、1024pxでは表内scrollなし、768px以下では表内scrollを許容する。
+- interactiveな出典リンクは44px targetを維持しつつ、非interactive cellのpaddingを調整して標準行高48〜56pxを目標とする。
+
+## 23. 第5回remediation実測
+
+変更前のSet B / 1024×768では、財務詳細セクション1,146.2px、3社の表合計927.7px、標準行高59pxだった。列見出し、期間、数値、出典は11px、通貨・単位・会計基準は9px、数値セルは上揃えだった。
+
+同一final buildのChromeで変更後を再測定した。
+
+| Set B / 1024×768 | Before | After | 差分 |
+|---|---:|---:|---:|
+| 財務詳細セクション全体 | 1,146.2px | 1,064.0px | -82.2px（-7.2%） |
+| 3社の表合計 | 927.7px | 845.5px | -82.2px（-8.9%） |
+| 標準行高 | 59px | 53px | -6px |
+
+変更後の列幅は期間183.6px、売上高101.5px、営業利益106.3px、営業利益率106.3px、FCF149.8px、設備投資96.6px、ROIC77.3px、出典145.0px。1024pxでは3社とも表内scroll 0、768pxでは表内だけ173px、390pxでは551px、360pxでは581pxのhorizontal scrollとなり、全条件でdocument overflowは0だった。
+
+列見出し14px/600、期間14px/600、数値14px/500、通貨・単位・会計基準11px、欠損と出典13pxを確認した。数値は右揃え・縦中央・`tabular-nums`、期間は左揃え、欠損はnumeric classを持たず中央揃えである。最大桁fixtureの`7,302`、`18,435.591`、`2,431,568`を含む全数値で`scrollWidth = clientWidth`、nowrap、fragment 1件を確認し、切り詰め・折り返しは0件だった。出典リンクは全viewportで高さ44pxを維持した。
+
+Set A / Set Bの要点では財務詳細表0件、詳細では選択会社数どおり2件 / 3件を表示した。summary cardは2件 / 3件で不変。drawer、Primary Source、Escape、focus returnを確認し、正常表示でfailure UIは0件だった。
+
+Legacy Compare HTMLは585,468 Bで不変。Evidence fragmentは312,007 Bから314,559 B（+2,552 B、初回299,685 B比+5% guard内）、gzip 22,416 B。Pagefindは105 pages / 5,791 wordsで不変である。
+
+以上は第5回Human Review入力に対するremediation結果であり、最終的な読みやすさ判断は次のHuman Reviewへ残す。実参加者によるHuman Test結果は生成していない。

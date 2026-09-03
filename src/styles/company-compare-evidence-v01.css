@@ -533,32 +533,89 @@
 
 .evidence-financial-scroll table {
   width: 100%;
-  min-width: 880px;
+  min-width: 900px;
+  table-layout: fixed;
   border-collapse: collapse;
-  font-size: 11px;
-  font-variant-numeric: tabular-nums;
 }
 
 .evidence-financial-scroll th,
 .evidence-financial-scroll td {
-  padding: 7px 8px;
+  padding: 4px 7px;
   border-right: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-  text-align: right;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
-.evidence-financial-scroll th:first-child {
+.evidence-financial-scroll thead th {
+  padding-block: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.evidence-financial-scroll .period {
   text-align: left;
 }
 
-.evidence-financial-scroll th small {
+.evidence-financial-scroll tbody .period {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.evidence-financial-scroll .period small {
   display: block;
   margin-top: 2px;
   color: var(--muted);
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 400;
+  line-height: 1.35;
+  white-space: nowrap;
 }
+
+.evidence-financial-scroll .num {
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.evidence-financial-scroll thead .num {
+  font-family: inherit;
+  font-weight: 600;
+  white-space: normal;
+}
+
+.evidence-financial-scroll .missing {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.evidence-financial-scroll :is(th, td):last-child {
+  text-align: center;
+}
+
+.evidence-financial-scroll td:last-child a {
+  justify-content: center;
+  margin-inline: auto;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.evidence-financial-scroll :is(th, td):nth-child(1) { width: 19%; }
+.evidence-financial-scroll :is(th, td):nth-child(2) { width: 10.5%; }
+.evidence-financial-scroll :is(th, td):nth-child(3) { width: 11%; }
+.evidence-financial-scroll :is(th, td):nth-child(4) { width: 11%; }
+.evidence-financial-scroll :is(th, td):nth-child(5) { width: 15.5%; }
+.evidence-financial-scroll :is(th, td):nth-child(6) { width: 10%; }
+.evidence-financial-scroll :is(th, td):nth-child(7) { width: 8%; }
+.evidence-financial-scroll :is(th, td):nth-child(8) { width: 15%; }
 
 .evidence-trace-list {
   display: grid;

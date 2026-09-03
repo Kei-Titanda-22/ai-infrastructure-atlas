@@ -196,6 +196,18 @@
     "tokyo-electron": "東京エレクトロン"
   },
   "presentationTokens": ["01", "02", "03", "04"],
+  "financialDetailTable": {
+    "metricIds": ["revenue", "operatingProfit", "operatingMargin", "freeCashFlow", "capex", "roic"],
+    "numericAlignment": "right",
+    "verticalAlignment": "middle",
+    "periodAlignment": "left",
+    "sourceMinimumTargetPx": 44,
+    "maxDigitFixtures": {
+      "applied-materials": "7,302",
+      "lam-research": "18,435.591",
+      "tokyo-electron": "2,431,568"
+    }
+  },
   "summaryMarkerCounts": {
     "set-a": 16,
     "set-b": 20
