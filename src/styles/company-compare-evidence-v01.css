@@ -87,6 +87,40 @@
   line-height: 1.5;
 }
 
+.evidence-company-load-status {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 10px;
+}
+
+.evidence-company-load-status:empty {
+  display: none;
+}
+
+.evidence-company-load-status p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.evidence-company-load-error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 4px;
+  border-bottom: 1px solid var(--border);
+}
+
+.evidence-company-retry {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+
 .evidence-section-nav {
   display: flex;
   flex-wrap: wrap;

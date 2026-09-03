@@ -16,6 +16,13 @@ import {
   mountEvidenceCompareFragment,
 } from '../src/lib/company-compare-evidence-bootstrap.ts';
 import {
+  companyCompareAssetSchemaVersion,
+  createCompanyCompareAssetLoader,
+  resolveCompanyCompareAssetUrl,
+  validateCompanyCompareAssetManifest,
+} from '../src/lib/company-compare-evidence-assets.ts';
+import { gzipSync } from 'node:zlib';
+import {
   compareClaimDisplayCopy,
   compareCompanyPresentationTokens,
   compareFinancialAccountingBasisLabels,
@@ -47,6 +54,7 @@ const sourceManifest = await readJson('../src/data/source-registry-manifest.json
 const fixture = await readJson('./fixtures/company-compare-evidence-ui-snapshot-v01.json');
 const displayFixture = await readJson('./fixtures/company-compare-japanese-display-v01.json');
 const artifactSizeBaselineFixture = await readJson('./fixtures/company-compare-artifact-size-baseline-v01.json');
+const onDemandSizeFixture = await readJson('./fixtures/company-compare-on-demand-size-v01.json');
 
 const resolveArtifactSizeBaseline = baseline => {
   assert.ok(baseline && typeof baseline === 'object' && !Array.isArray(baseline), 'artifact size baseline must be an object');
@@ -71,6 +79,44 @@ const assertArtifactSizeWithinLimit = (rawBytes, baseline) => {
 };
 
 const artifactSizeBaseline = resolveArtifactSizeBaseline(artifactSizeBaselineFixture);
+const resolveOnDemandSizeContract = contract => {
+  assert.ok(contract && typeof contract === 'object' && !Array.isArray(contract), 'on-demand size contract must be an object');
+  assert.equal(contract.schemaVersion, '0.1', 'on-demand size contract schema is fixed');
+  assert.match(contract.baselineMain, /^[0-9a-f]{40}$/, 'on-demand baselineMain must be a full SHA');
+  for (const field of [
+    'legacyMonolithRawBytes',
+    'maximumColdLoadRawBytes',
+    'maximumSetRawBytes',
+    'maximumShellRawBytes',
+    'maximumCompanyAssetRawBytes',
+    'maximumCompanyAssetGzipBytes',
+  ]) assert.ok(Number.isSafeInteger(contract[field]) && contract[field] > 0, `${field} must be a positive integer`);
+  assert.equal(contract.legacyGrowthLimitRatio, 1.05, 'legacy growth ratio remains 1.05');
+  assert.deepEqual(contract.companyIds, ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron'], 'size contract covers exactly the Pilot five');
+  assert.equal(
+    Math.floor(contract.legacyMonolithRawBytes * contract.legacyGrowthLimitRatio),
+    contract.maximumColdLoadRawBytes,
+    'cold-load maximum is derived from the accepted legacy monolith',
+  );
+  return contract;
+};
+const assertWithinBoundary = (bytes, maximum, label) => {
+  assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, `${label} bytes must be a non-negative integer`);
+  assert.ok(bytes <= maximum, `${label} ${bytes} B exceeds ${maximum} B`);
+};
+const onDemandSize = resolveOnDemandSizeContract(onDemandSizeFixture);
+for (const [field, maximum] of [
+  ['shell', onDemandSize.maximumShellRawBytes],
+  ['company asset raw', onDemandSize.maximumCompanyAssetRawBytes],
+  ['company asset gzip', onDemandSize.maximumCompanyAssetGzipBytes],
+  ['cold load', onDemandSize.maximumColdLoadRawBytes],
+]) {
+  assert.doesNotThrow(() => assertWithinBoundary(maximum, maximum, field), `${field}: exact boundary passes`);
+  assert.throws(() => assertWithinBoundary(maximum + 1, maximum, field), /exceeds/, `${field}: boundary plus one fails`);
+}
+for (const invalid of [null, {}, { ...onDemandSizeFixture, maximumColdLoadRawBytes: 0 }, { ...onDemandSizeFixture, maximumShellRawBytes: -1 }, { ...onDemandSizeFixture, legacyGrowthLimitRatio: 1.06 }, { ...onDemandSizeFixture, companyIds: [...onDemandSizeFixture.companyIds, 'unknown'] }]) {
+  assert.throws(() => resolveOnDemandSizeContract(invalid), 'invalid on-demand size contract fails closed');
+}
 assert.equal(artifactSizeBaseline.acceptedRawBytes, 314_771, 'PR #158 Linux CI artifact is the accepted raw-byte baseline');
 assert.equal(artifactSizeBaseline.acceptedAtMainSha, '08cdd9dde22a0ec8d2908a58750cb718ec455810', 'accepted baseline is pinned to the PR #158 merge SHA');
 assert.equal(artifactSizeBaseline.acceptedReason, 'Company Compare Pilot UI v0.1 Freeze', 'accepted baseline records the Freeze decision');
@@ -99,6 +145,10 @@ const compareFinancialHistory = [
 const comparePage = await readFile(new URL('../src/pages/compare.astro', import.meta.url), 'utf8');
 const fragmentPage = await readFile(new URL('../src/pages/evidence-fragments/company-compare-evidence-v01.astro', import.meta.url), 'utf8');
 const component = await readFile(new URL('../src/components/CompanyCompareEvidence.astro', import.meta.url), 'utf8');
+const companyAssetComponent = await readFile(new URL('../src/components/CompanyCompareEvidenceCompanyAsset.astro', import.meta.url), 'utf8');
+const companyAssetPage = await readFile(new URL('../src/pages/evidence-fragments/company-compare-evidence-v01/[companyId].astro', import.meta.url), 'utf8');
+const companyAssetLoaderSource = await readFile(new URL('../src/lib/company-compare-evidence-assets.ts', import.meta.url), 'utf8');
+const presentationSource = `${component}\n${companyAssetComponent}`;
 const claimComponent = await readFile(new URL('../src/components/CompanyCompareEvidenceClaim.astro', import.meta.url), 'utf8');
 const controller = await readFile(new URL('../src/scripts/company-compare-evidence-ui.ts', import.meta.url), 'utf8');
 const styles = await readFile(new URL('../src/styles/company-compare-evidence-v01.css', import.meta.url), 'utf8');
@@ -432,6 +482,121 @@ assert.equal(successfulMount.state.fetchCount, 1, 'double initialization does no
 assert.equal(successfulMount.state.importCount, 1, 'double initialization does not reimport the controller');
 assert.equal(successfulMount.state.initCount, 1, 'double initialization does not duplicate controller listeners');
 
+const assetManifest = {
+  schemaVersion: companyCompareAssetSchemaVersion,
+  companies: ['nvidia', 'broadcom'].map(companyId => ({
+    companyId,
+    assetPath: `/evidence-fragments/company-compare-evidence-v01/${companyId}/`,
+    schemaVersion: companyCompareAssetSchemaVersion,
+  })),
+};
+assert.deepEqual(validateCompanyCompareAssetManifest(assetManifest), assetManifest, 'lightweight asset manifest validates');
+assert.equal(
+  resolveCompanyCompareAssetUrl('/ai-infrastructure-atlas/evidence-fragments/company-compare-evidence-v01/nvidia/', 'https://example.test/ai-infrastructure-atlas/compare/'),
+  'https://example.test/ai-infrastructure-atlas/evidence-fragments/company-compare-evidence-v01/nvidia/',
+  'GitHub Pages base path resolves without leaving the current origin',
+);
+assert.throws(() => resolveCompanyCompareAssetUrl('https://other.test/nvidia/', 'https://example.test/compare/'), /current origin/, 'cross-origin assets are rejected');
+assert.throws(
+  () => validateCompanyCompareAssetManifest({ ...assetManifest, schemaVersion: '9.9' }),
+  /schema mismatch/,
+  'manifest schema mismatch fails closed',
+);
+assert.throws(
+  () => validateCompanyCompareAssetManifest({ ...assetManifest, companies: [...assetManifest.companies, assetManifest.companies[0]] }),
+  /Duplicate.*company ID/,
+  'duplicate manifest Company IDs fail closed',
+);
+assert.throws(
+  () => validateCompanyCompareAssetManifest({ ...assetManifest, companies: [{ ...assetManifest.companies[0], assetPath: '/wrong/' }] }),
+  /does not match Company ID/,
+  'Company asset path and ID must match',
+);
+const assetRequests = [];
+const assetLoader = createCompanyCompareAssetLoader({
+  manifest: assetManifest,
+  currentUrl: 'https://example.test/compare/?view=evidence',
+  fetcher: async url => {
+    assetRequests.push(url);
+    const companyId = url.includes('/nvidia/') ? 'nvidia' : 'broadcom';
+    return { ok: true, status: 200, text: async () => JSON.stringify({ companyId }) };
+  },
+  parseAsset: (body, record) => {
+    const parsed = JSON.parse(body);
+    if (parsed.companyId !== record.companyId) throw new Error('asset Company ID mismatch');
+    return parsed;
+  },
+});
+assert.equal(assetLoader.requestCount('broadcom'), 0, 'unselected Company asset starts at zero requests');
+const [firstNvidia, duplicateNvidia] = await Promise.all([assetLoader.load('nvidia'), assetLoader.load('nvidia')]);
+assert.deepEqual(firstNvidia, { companyId: 'nvidia' });
+assert.strictEqual(firstNvidia, duplicateNvidia, 'concurrent duplicate requests share one in-flight result');
+assert.equal(assetLoader.requestCount('nvidia'), 1, 'selected Company asset is fetched once');
+assert.equal(assetLoader.requestCount('broadcom'), 0, 'unselected Company asset is not prefetched');
+assert.strictEqual(await assetLoader.load('nvidia'), firstNvidia, 'loaded Company asset is reused from cache');
+assert.equal(assetLoader.requestCount('nvidia'), 1, 'detail changes and reselection require no refetch');
+await assetLoader.load('broadcom');
+assert.equal(assetLoader.requestCount('broadcom'), 1, 'newly selected Company is fetched once');
+assert.deepEqual(assetLoader.cachedCompanyIds(), ['broadcom', 'nvidia'], 'cache inventory is deterministic');
+assert.equal(assetRequests.length, 2, 'only selected Company assets reached the network');
+await assert.rejects(() => assetLoader.load('unknown'), /Unknown Company Compare asset/, 'unknown asset is rejected before fetch');
+
+for (const status of [404, 500]) {
+  const failedLoader = createCompanyCompareAssetLoader({
+    manifest: assetManifest,
+    currentUrl: 'https://example.test/compare/',
+    fetcher: async () => ({ ok: false, status, text: async () => '' }),
+    parseAsset: JSON.parse,
+  });
+  await assert.rejects(() => failedLoader.load('nvidia'), new RegExp(`nvidia:${status}`), `${status}: per-Company failure is explicit`);
+  assert.equal(failedLoader.requestCount('nvidia'), 1, `${status}: no automatic retry loop`);
+}
+const invalidAssetLoader = createCompanyCompareAssetLoader({
+  manifest: assetManifest,
+  currentUrl: 'https://example.test/compare/',
+  fetcher: async () => ({ ok: true, status: 200, text: async () => '{invalid' }),
+  parseAsset: JSON.parse,
+});
+await assert.rejects(() => invalidAssetLoader.load('nvidia'), /JSON/, 'invalid Company asset fails explicitly');
+const schemaMismatchAssetLoader = createCompanyCompareAssetLoader({
+  manifest: assetManifest,
+  currentUrl: 'https://example.test/compare/',
+  fetcher: async () => ({ ok: true, status: 200, text: async () => JSON.stringify({ schemaVersion: '9.9' }) }),
+  parseAsset: body => {
+    const parsed = JSON.parse(body);
+    if (parsed.schemaVersion !== companyCompareAssetSchemaVersion) throw new Error('Company asset schema mismatch');
+    return parsed;
+  },
+});
+await assert.rejects(() => schemaMismatchAssetLoader.load('nvidia'), /schema mismatch/, 'Company asset schema mismatch fails explicitly');
+const timeoutAssetLoader = createCompanyCompareAssetLoader({
+  manifest: assetManifest,
+  currentUrl: 'https://example.test/compare/',
+  timeoutMs: 5,
+  fetcher: async (_url, init) => new Promise((_resolve, reject) => {
+    init.signal.addEventListener('abort', () => reject(new Error('aborted')), { once: true });
+  }),
+  parseAsset: JSON.parse,
+});
+await assert.rejects(() => timeoutAssetLoader.load('nvidia'), /timed out/, 'Company asset timeout is bounded and explicit');
+let retryAttempt = 0;
+const retryAssetLoader = createCompanyCompareAssetLoader({
+  manifest: assetManifest,
+  currentUrl: 'https://example.test/compare/',
+  fetcher: async url => {
+    const companyId = url.includes('/nvidia/') ? 'nvidia' : 'broadcom';
+    if (companyId === 'nvidia' && retryAttempt++ === 0) return { ok: false, status: 500, text: async () => '' };
+    return { ok: true, status: 200, text: async () => JSON.stringify({ companyId }) };
+  },
+  parseAsset: JSON.parse,
+});
+const loadedPeer = await retryAssetLoader.load('broadcom');
+await assert.rejects(() => retryAssetLoader.load('nvidia'), /500/, 'one Company may fail while its peer stays loaded');
+assert.strictEqual(await retryAssetLoader.load('broadcom'), loadedPeer, 'successful peer remains cached during partial failure');
+assert.deepEqual(await retryAssetLoader.load('nvidia'), { companyId: 'nvidia' }, 'retry recovers only the failed Company');
+assert.equal(retryAssetLoader.requestCount('broadcom'), 1, 'retry never refetches the successful peer');
+assert.equal(retryAssetLoader.requestCount('nvidia'), 2, 'failed Company is fetched exactly once more on explicit retry');
+
 const setA = parseEvidenceCompareSearch('?ids=nvidia,broadcom&view=evidence&detail=summary', companyIds);
 assert.equal(setA.enabled, true, 'view=evidence routing');
 assert.deepEqual(setA.selectedIds, ['nvidia', 'broadcom'], 'Set A ordered selection');
@@ -634,47 +799,58 @@ assert.match(comparePage, /mount\.setAttribute\('role', 'status'\)/, 'failure UI
 assert.doesNotMatch(comparePage, /<CompanyCompareEvidence identities=/, 'Evidence body is not rendered into legacy Compare HTML');
 assert.match(fragmentPage, /<CompanyCompareEvidence identities=\{identities\}/, 'Set A and B use one canonical build-time component');
 assert.match(fragmentPage, /getCollection\('companies'\)/, 'fragment identities derive from canonical Company content');
-assert.match(component, /CompanyCompareEvidenceClaim/, 'Compare-only Evidence presentation keeps the existing drawer contract isolated');
+assert.match(companyAssetPage, /evidenceComparePilotCompanyIds/, 'only the accepted five Pilot Company routes are generated');
+assert.match(companyAssetPage, /CompanyCompareEvidenceCompanyAsset/, 'each Company route renders one deterministic asset');
+assert.doesNotMatch(component, /CompanyCompareEvidenceClaim|expandedFinancial\.map|data-claim-id|data-relation-id/, 'shell contains no Company Claim, Relation, or Financial-history bodies');
+assert.match(component, /companyManifest/, 'shell exposes a lightweight Company asset manifest');
+assert.match(companyAssetLoaderSource, /const cache = new Map/, 'Company assets use an in-memory cache');
+assert.match(companyAssetLoaderSource, /const inFlight = new Map/, 'concurrent requests are de-duplicated');
+assert.match(companyAssetLoaderSource, /AbortController/, 'Company asset fetches have a bounded timeout');
+assert.match(controller, /await Promise\.all\(state\.selectedIds\.map\(loadCompany\)\)/, 'only selected Company IDs are loaded');
+assert.match(controller, /selectionRevision/, 'selection races cannot apply stale rendering state');
+assert.match(controller, /data-retry-company-id/, 'a failed Company has an isolated retry action');
+assert.match(controller, /failures\.set\(companyId/, 'one Company failure does not discard loaded peers');
+assert.match(presentationSource, /CompanyCompareEvidenceClaim/, 'Compare-only Evidence presentation keeps the existing drawer contract isolated');
 assert.match(component, /data-pagefind-ignore="all"/, 'only the opt-in Evidence subtree is excluded from Pagefind');
-assert.doesNotMatch(component, /initCompanyCompareEvidenceUi/, 'fragment does not initialize its controller before mount');
-assert.doesNotMatch(component, /verificationStatus:\s*['"]verified['"]/, 'Relation adapter must not invent Company Claim verification state');
-assert.match(component, /verificationPresentation=\{entry\.verification\}/, 'Relation verification presentation is Binding-derived');
-assert.match(component, /drawerTitle="関係の根拠"/, 'Relation drawer has an accessible Japanese title');
-assert.match(component, /根拠の対応/);
-assert.match(component, /根拠箇所の確認日/);
-assert.match(component, /scope="col"/);
-assert.match(component, /scope="row"/);
-assert.match(component, /data-evidence-section-link/);
-assert.match(component, /data-claim-priority/);
-assert.doesNotMatch(component, />補足</, 'P2 does not receive a redundant visible supplement label');
-assert.match(component, />事実</);
-assert.match(component, />会社見解</);
-assert.match(component, />Atlasの見方</);
-assert.doesNotMatch(component, />Atlasによる分析</);
-assert.doesNotMatch(component, /関係データ：収録なし/, 'primary matrix omits internal Relation collection state');
-assert.doesNotMatch(component, /正規化した位置|正規化した製品カテゴリ|正規化された位置/, 'primary UI contains no normalization terminology');
-assert.doesNotMatch(component, /coverageContext\.map/, 'primary matrix omits internal Coverage collection state');
-assert.match(component, /data-product-description/, 'expanded Product descriptions retain canonical Product IDs');
-assert.match(component, /productDescription=\{entry\.productDescription/, 'Relation-backed Products use the shared description contract');
-assert.match(component, /claimOnlyProducts/, 'Claim-backed Products use the same description contract');
-assert.match(component, /class="evidence-product-description" data-product-description=\{item\.canonicalId\}/, 'Claim-backed Products share the description typography contract');
-assert.match(component, /data-canonical-id=\{entry\.relation\.objectId\}/, 'rendered Product entries retain canonical Registry IDs');
-assert.match(component, /relationsForDisplay/, 'Product display is de-duplicated before rendering');
-assert.match(component, /主要比較には表示しません/);
-assert.match(component, /各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。/);
-assert.doesNotMatch(component, /id=\{`evidence-section-\$\{['"]value-chain-position/, 'Value Chain is not a repeated standalone major section');
-assert.match(component, /sourceDimensionIds/, 'AI role groups its supply-chain position without changing projection data');
-assert.match(component, /data-display-grounding-ids/, 'every Compare display entry exposes deterministic grounding IDs');
-assert.match(component, /data-company-order-label/, 'every company information block repeats number and name');
-assert.match(component, /data-summary=/, 'summary visibility is a presentation-only deterministic attribute');
-assert.match(component, /要点 — 代表情報だけを表示/);
-assert.match(component, /詳細 — 全根拠・財務履歴まで表示/);
+assert.doesNotMatch(presentationSource, /initCompanyCompareEvidenceUi/, 'fragment does not initialize its controller before mount');
+assert.doesNotMatch(presentationSource, /verificationStatus:\s*['"]verified['"]/, 'Relation adapter must not invent Company Claim verification state');
+assert.match(presentationSource, /verificationPresentation=\{entry\.verification\}/, 'Relation verification presentation is Binding-derived');
+assert.match(presentationSource, /drawerTitle="関係の根拠"/, 'Relation drawer has an accessible Japanese title');
+assert.match(presentationSource, /根拠の対応/);
+assert.match(presentationSource, /根拠箇所の確認日/);
+assert.match(presentationSource, /scope="col"/);
+assert.match(presentationSource, /scope="row"/);
+assert.match(presentationSource, /data-evidence-section-link/);
+assert.match(presentationSource, /data-claim-priority/);
+assert.doesNotMatch(presentationSource, />補足</, 'P2 does not receive a redundant visible supplement label');
+assert.match(presentationSource, />事実</);
+assert.match(presentationSource, />会社見解</);
+assert.match(presentationSource, />Atlasの見方</);
+assert.doesNotMatch(presentationSource, />Atlasによる分析</);
+assert.doesNotMatch(presentationSource, /関係データ：収録なし/, 'primary matrix omits internal Relation collection state');
+assert.doesNotMatch(presentationSource, /正規化した位置|正規化した製品カテゴリ|正規化された位置/, 'primary UI contains no normalization terminology');
+assert.doesNotMatch(presentationSource, /coverageContext\.map/, 'primary matrix omits internal Coverage collection state');
+assert.match(presentationSource, /data-product-description/, 'expanded Product descriptions retain canonical Product IDs');
+assert.match(presentationSource, /productDescription=\{entry\.productDescription/, 'Relation-backed Products use the shared description contract');
+assert.match(presentationSource, /claimOnlyProducts/, 'Claim-backed Products use the same description contract');
+assert.match(presentationSource, /class="evidence-product-description" data-product-description=\{item\.canonicalId\}/, 'Claim-backed Products share the description typography contract');
+assert.match(presentationSource, /data-canonical-id=\{entry\.relation\.objectId\}/, 'rendered Product entries retain canonical Registry IDs');
+assert.match(presentationSource, /relationsForDisplay/, 'Product display is de-duplicated before rendering');
+assert.match(presentationSource, /主要比較には表示しません/);
+assert.match(presentationSource, /各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。/);
+assert.doesNotMatch(presentationSource, /id=\{`evidence-section-\$\{['"]value-chain-position/, 'Value Chain is not a repeated standalone major section');
+assert.match(presentationSource, /sourceDimensionIds/, 'AI role groups its supply-chain position without changing projection data');
+assert.match(presentationSource, /data-display-grounding-ids/, 'every Compare display entry exposes deterministic grounding IDs');
+assert.match(presentationSource, /data-company-order-label/, 'every company information block repeats number and name');
+assert.match(presentationSource, /data-summary=/, 'summary visibility is a presentation-only deterministic attribute');
+assert.match(presentationSource, /要点 — 代表情報だけを表示/);
+assert.match(presentationSource, /詳細 — 全根拠・財務履歴まで表示/);
 assert.match(claimComponent, /'atlas-analysis': 'Atlasの見方'/, 'Atlas Analysis has the reviewed display label');
 assert.match(claimComponent, /fact: '事実'/, 'Fact keeps the reviewed display label');
 assert.match(claimComponent, /aria-label=\{`\$\{typeLabel\}: \$\{displayTitle\}`\}/, 'accessible Claim identity distinguishes Fact and Atlas Analysis');
 assert.match(controller, /詳細 — 全根拠・財務履歴まで表示/, 'runtime detail description omits the redundant supplement label');
-assert.match(component, /id="evidence-section-evidence-trace"[\s\S]*data-expanded-only/, 'Evidence trace is expanded-only');
-assert.match(component, /displayTitle=\{entry\.display\.title\}/, 'visible Claim copy comes from the display-only read model');
+assert.match(presentationSource, /id="evidence-section-evidence-trace"[\s\S]*data-expanded-only/, 'Evidence trace is expanded-only');
+assert.match(presentationSource, /displayTitle=\{entry\.display\.title\}/, 'visible Claim copy comes from the display-only read model');
 assert.match(claimComponent, /<h4>\{claim\.title\}<\/h4>/, 'Evidence drawer retains the canonical Claim title');
 assert.match(claimComponent, /class="drawer-statement">\{claim\.statement\}/, 'Evidence drawer retains the canonical Claim statement');
 assert.match(claimComponent, /aria-haspopup="dialog"/);
@@ -684,8 +860,8 @@ assert.match(claimComponent, /'source-linked': \{ short: '一次資料あり', f
 assert.match(claimComponent, /'needs-review': \{ short: '要確認', full: '要再検証' \}/, 'Company Claim needs-review presentation remains unchanged');
 assert.match(controller, /if \(!state\.enabled\) throw new Error/, 'Evidence controller reports an invalid non-Evidence initialization');
 assert.match(controller, /evidenceControllerInitialized/, 'Evidence controller initializes at most once after mount');
-assert.match(controller, /evidenceControllerInitialized === 'true'\) return true/, 'a completed controller can be initialized idempotently');
-assert.match(controller, /export function initCompanyCompareEvidenceUi\(\): boolean/, 'controller exposes an explicit success contract');
+assert.match(controller, /evidenceControllerInitialized === 'true'\) return Promise\.resolve\(true\)/, 'a completed controller can be initialized idempotently');
+assert.match(controller, /export function initCompanyCompareEvidenceUi\(\): Promise<boolean>/, 'controller exposes an explicit async success contract');
 assert.match(controller, /requiredElement/, 'controller throws when required DOM is missing');
 assert.match(controller, /event\.key === 'Escape'/);
 assert.match(controller, /event\.key !== 'Enter' && event\.key !== ' '/, 'Evidence markers have an explicit keyboard activation contract');
@@ -693,7 +869,7 @@ assert.match(controller, /returnFocus/);
 assert.match(controller, /window\.addEventListener\('popstate'/);
 assert.match(controller, /pushState/, 'detail mode creates navigable browser history');
 assert.match(controller, /unresolvedFinancial/);
-assert.match(controller, /\.evidence-expanded-financial, \.evidence-trace-list/);
+assert.match(controller, /\[expandedFinancial, evidenceTrace\]\.forEach\(orderAndFilterCompanyCells\)/);
 assert.match(controller, /appendCompanyName/, 'selected rows and suggestions share one company-name renderer');
 assert.match(controller, /createCompanyNameLink/, 'all linked Company identities use one anchor factory');
 assert.match(controller, /link\.dataset\.companyIdentityLink = company\.id/, 'each Company identity link retains its canonical Company ID');
@@ -730,14 +906,14 @@ assert.match(styles, /thead th > span \{[\s\S]*font-size: 14px/, 'desktop ticker
 assert.match(styles, /tbody > tr > th \{[\s\S]*font-size: 16px;[\s\S]*font-weight: 700/, 'desktop row headings are at least 16px and bold');
 assert.match(styles, /\.evidence-identity > span \{[\s\S]*font-size: 16px/, 'Company information values are at least 16px');
 assert.match(styles, /\.evidence-product-description \{[\s\S]*font-size: 15px;[\s\S]*line-height: 1\.65/, 'desktop Product descriptions meet the typography contract');
-assert.match(component, /<thead><tr>[\s\S]*<th scope="col">出典<\/th>/, 'all eight detailed Financial headers use one centered heading contract');
-assert.match(component, /<th class="num" scope="col">売上高<br \/>（\{company\.expandedFinancialPresentation\.amountUnitLabel\}）<\/th>/, 'amount header exposes one continuous accessible name on two visual lines');
-assert.match(component, /class="financial-basis">会計基準：\{company\.expandedFinancialPresentation\.accountingBasisLabel\}/, 'accounting basis appears once at Company-table level');
-assert.match(component, /scope="row">\{record\.displayPeriodLabel\}<\/th>/, 'period rows contain the localized period only');
-assert.doesNotMatch(component, /record\.currency[\s\S]*record\.unit[\s\S]*record\.accountingBasis/, 'period rows never repeat currency, unit, or accounting basis');
-assert.match(component, /各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。/, 'detailed Financial explanation uses the reviewed Japanese copy');
-assert.match(component, /metric\?\.displayValue[\s\S]*class="num"[\s\S]*class="missing"/, 'available and missing values have distinct semantic classes');
-assert.doesNotMatch(component, /class="num"[^>]*>未収録</, 'missing status never receives the numeric class');
+assert.match(presentationSource, /<thead><tr>[\s\S]*<th scope="col">出典<\/th>/, 'all eight detailed Financial headers use one centered heading contract');
+assert.match(presentationSource, /<th class="num" scope="col">売上高<br \/>（\{company\.expandedFinancialPresentation\.amountUnitLabel\}）<\/th>/, 'amount header exposes one continuous accessible name on two visual lines');
+assert.match(presentationSource, /class="financial-basis">会計基準：\{company\.expandedFinancialPresentation\.accountingBasisLabel\}/, 'accounting basis appears once at Company-table level');
+assert.match(presentationSource, /scope="row">\{record\.displayPeriodLabel\}<\/th>/, 'period rows contain the localized period only');
+assert.doesNotMatch(presentationSource, /record\.currency[\s\S]*record\.unit[\s\S]*record\.accountingBasis/, 'period rows never repeat currency, unit, or accounting basis');
+assert.match(presentationSource, /各社が開示した通貨・単位で表示しています。為替換算、順位付け、差分率の計算は行っていません。/, 'detailed Financial explanation uses the reviewed Japanese copy');
+assert.match(presentationSource, /metric\?\.displayValue[\s\S]*class="num"[\s\S]*class="missing"/, 'available and missing values have distinct semantic classes');
+assert.doesNotMatch(presentationSource, /class="num"[^>]*>未収録</, 'missing status never receives the numeric class');
 assert.match(styles, /\.evidence-financial-scroll th,[\s\S]*vertical-align: middle/, 'detailed Financial cells are vertically centered');
 assert.match(styles, /\.evidence-financial-scroll thead th \{[\s\S]*text-align: center;[\s\S]*vertical-align: middle/, 'all detailed Financial column headings are centered on both axes');
 assert.match(styles, /thead th\.period \{[\s\S]*text-align: center/, 'the period column heading is not overridden by the left-aligned body-period contract');
@@ -760,12 +936,18 @@ for (let index = 1; index <= 4; index += 1) {
   assert.match(styles, new RegExp(`data-company-token="company-${index}"`), `company-${index}: stable visual token exists`);
 }
 for (const sectionLabel of displayFixture.majorSections) {
-  assert.ok(`${component}\n${readModelSource}`.includes(sectionLabel), `${sectionLabel}: major section label is present`);
+  assert.ok(`${presentationSource}\n${readModelSource}`.includes(sectionLabel), `${sectionLabel}: major section label is present`);
 }
 
 if (process.argv.includes('--dist')) {
   const compareHtml = await readFile(new URL('../dist/compare/index.html', import.meta.url), 'utf8');
-  const fragmentHtml = await readFile(new URL('../dist/evidence-fragments/company-compare-evidence-v01/index.html', import.meta.url), 'utf8');
+  const shellHtml = await readFile(new URL('../dist/evidence-fragments/company-compare-evidence-v01/index.html', import.meta.url), 'utf8');
+  const pilotIds = [...fixture.setCompanyIds['set-a'], ...fixture.setCompanyIds['set-b']];
+  const assetHtmlById = Object.fromEntries(await Promise.all(pilotIds.map(async companyId => [
+    companyId,
+    await readFile(new URL(`../dist/evidence-fragments/company-compare-evidence-v01/${companyId}/index.html`, import.meta.url), 'utf8'),
+  ])));
+  const fragmentHtml = pilotIds.map(companyId => assetHtmlById[companyId]).join('\n');
   const compareBytes = Buffer.byteLength(compareHtml);
   const baselineBytes = 585_468;
   const maximumBytes = 644_015;
@@ -778,6 +960,44 @@ if (process.argv.includes('--dist')) {
   assert.doesNotMatch(compareHtml, /AIファクトリーの計算・接続層を統合/, 'built legacy HTML excludes a Pilot Claim-specific title');
   assert.ok(relations.every(relation => !compareHtml.includes(relation.statement)), 'built legacy HTML excludes all Relation statements');
 
+  assertWithinBoundary(Buffer.byteLength(shellHtml), onDemandSize.maximumShellRawBytes, 'Evidence shell');
+  assert.doesNotMatch(shellHtml, /data-claim-id=|data-relation-id=|class="evidence-drawer"|class="evidence-financial-company"/, 'Evidence shell contains no Company projection bodies');
+  assert.match(shellHtml, /"companyManifest"/, 'Evidence shell contains the lightweight manifest');
+  for (const companyId of pilotIds) {
+    const assetHtml = assetHtmlById[companyId];
+    assert.equal((assetHtml.match(/data-company-compare-asset/g) ?? []).length, 1, `${companyId}: one asset envelope`);
+    assert.match(assetHtml, new RegExp(`data-company-id="${companyId}"`), `${companyId}: asset identity matches route`);
+    const embeddedCompanyIds = [...assetHtml.matchAll(/data-company-id="([^"]+)"/g)].map(match => match[1]);
+    assert.ok(embeddedCompanyIds.every(id => id === companyId), `${companyId}: asset contains no other Company projection`);
+    assertWithinBoundary(Buffer.byteLength(assetHtml), onDemandSize.maximumCompanyAssetRawBytes, `${companyId}: individual raw asset`);
+    assertWithinBoundary(gzipSync(assetHtml).byteLength, onDemandSize.maximumCompanyAssetGzipBytes, `${companyId}: individual gzip asset`);
+  }
+  const combinations = (values, maximum) => {
+    const result = [];
+    const visit = (start, picked) => {
+      if (picked.length) result.push([...picked]);
+      if (picked.length === maximum) return;
+      for (let index = start; index < values.length; index += 1) visit(index + 1, [...picked, values[index]]);
+    };
+    visit(0, []);
+    return result;
+  };
+  for (const selectedIds of combinations(pilotIds, 4)) {
+    const rawBytes = Buffer.byteLength(shellHtml) + selectedIds.reduce((sum, id) => sum + Buffer.byteLength(assetHtmlById[id]), 0);
+    assertWithinBoundary(rawBytes, onDemandSize.maximumColdLoadRawBytes, `${selectedIds.join('+')}: 1-4 Company initial raw payload`);
+  }
+  for (const setId of ['set-a', 'set-b']) {
+    const setIds = fixture.setCompanyIds[setId];
+    const setHtml = setIds.map(id => assetHtmlById[id]).join('\n');
+    const setRawBytes = Buffer.byteLength(shellHtml) + Buffer.byteLength(setHtml);
+    assertWithinBoundary(setRawBytes, onDemandSize.maximumSetRawBytes, `${setId}: initial shell plus selected assets`);
+    const summaryMarkers = (setHtml.match(/class="evidence-(?:claim|relation)-entry"[^>]*data-summary="show"/g) ?? []).length;
+    const expandedMarkers = (setHtml.match(/class="evidence-(?:claim|relation)-entry"/g) ?? []).length;
+    assert.equal(summaryMarkers, displayFixture.summaryMarkerCounts[setId], `${setId}: summary marker count is unchanged`);
+    assert.equal(expandedMarkers, setId === 'set-a' ? 21 : 32, `${setId}: expanded marker count is unchanged`);
+    assert.equal((setHtml.match(/data-product-description=/g) ?? []).length, setId === 'set-a' ? 6 : 9, `${setId}: expanded Product-description count is unchanged`);
+  }
+
   const claimMarkers = (fragmentHtml.match(/data-claim-id=/g) ?? []).length;
   const claimMarkerIds = [...fragmentHtml.matchAll(/data-claim-id="([^"]+)"/g)].map(match => match[1]);
   const relationMarkers = (fragmentHtml.match(/data-relation-id=/g) ?? []).length;
@@ -788,8 +1008,7 @@ if (process.argv.includes('--dist')) {
   assert.equal(relationMarkers, 19, 'fragment includes all canonical Relation entries');
   assert.equal(drawers.length, 53, 'fragment includes one Evidence drawer per marker');
   assert.equal(new Set(drawers).size, drawers.length, 'fragment has no duplicate drawer IDs');
-  assert.match(fragmentHtml, /data-pagefind-ignore="all"/, 'built fragment is outside the Pagefind corpus');
-  assertArtifactSizeWithinLimit(Buffer.byteLength(fragmentHtml), artifactSizeBaselineFixture);
+  assert.match(fragmentHtml, /data-pagefind-ignore="all"/, 'built Company assets are outside the Pagefind corpus');
   assert.equal((fragmentHtml.match(/data-company-order-label/g) ?? []).length, 35, 'seven matrix sections retain five repeated company identity labels');
   assert.match(fragmentHtml, /Applied Materials（アプライド・マテリアルズ）/, 'built Set B has the exact Japanese Applied Materials name');
   assert.match(fragmentHtml, /統合材料ソリューション（Integrated Materials Solution）/, 'general Japanese term precedes the formal English name');
@@ -811,10 +1030,11 @@ if (process.argv.includes('--dist')) {
   assert.deepEqual([...new Set(productDescriptionInstances)].sort(), productIds, 'built descriptions cover all 11 canonical Product IDs');
   assert.ok(productDescriptionInstances.every(productId => fragmentHtml.includes(compareProductDisplayDescriptions[productId].description)), 'built Product descriptions use only fixture-locked copy');
   assert.match(fragmentHtml, /data-expanded-only data-product-description=/, 'Product descriptions are expanded-only');
-  const expandedFinancialStart = fragmentHtml.indexOf('<section class="evidence-expanded-financial"');
-  const expandedFinancialEnd = fragmentHtml.indexOf('<section class="evidence-data-quality', expandedFinancialStart);
-  assert.ok(expandedFinancialStart >= 0 && expandedFinancialEnd > expandedFinancialStart, 'built detailed Financial section is bounded');
-  const expandedFinancialHtml = fragmentHtml.slice(expandedFinancialStart, expandedFinancialEnd);
+  const expandedFinancialHtml = pilotIds.map(companyId => {
+    const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);
+    assert.ok(match, `${companyId}: detailed Financial template is present`);
+    return match[1];
+  }).join('\n');
   assert.equal((expandedFinancialHtml.match(/scope="col"/g) ?? []).length, 40, 'five tables retain all eight semantic column headings');
   assert.equal((expandedFinancialHtml.match(/class="financial-basis"/g) ?? []).length, 5, 'accounting basis appears once per Company table');
   assert.equal((expandedFinancialHtml.match(/会計基準：米国会計基準/g) ?? []).length, 4, 'four USD tables show the Japanese US accounting-basis label once');
@@ -849,7 +1069,7 @@ if (process.argv.includes('--dist')) {
   assert.equal((fragmentHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 5, 'NVIDIA, Broadcom, and Set B use the same detailed Financial table');
   assert.match(fragmentHtml, /class="num">2,431,568<\/td>/, 'maximum Set B value is rendered as an unwrapped numeric cell');
   assert.match(fragmentHtml, /class="missing">未収録<\/td>/, 'missing status is rendered outside the numeric class');
-  console.log(`Company Compare lazy artifact OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(fragmentHtml)} B fragment / ${claimMarkers + relationMarkers} markers`);
+  console.log(`Company Compare on-demand artifacts OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(shellHtml)} B shell / ${claimMarkers + relationMarkers} markers across five Company assets`);
 }
 
 console.log(`Company Compare Evidence UI tests OK: Set A/B / routing / URL state / ${claimMarkerCount + relationMarkerCount} markers / Financial 0/2/2 / semantic snapshot`);
