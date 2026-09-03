@@ -46,6 +46,46 @@ const evidenceManifest = await readJson('../src/data/company-evidence-manifest.j
 const sourceManifest = await readJson('../src/data/source-registry-manifest.json');
 const fixture = await readJson('./fixtures/company-compare-evidence-ui-snapshot-v01.json');
 const displayFixture = await readJson('./fixtures/company-compare-japanese-display-v01.json');
+const artifactSizeBaselineFixture = await readJson('./fixtures/company-compare-artifact-size-baseline-v01.json');
+
+const resolveArtifactSizeBaseline = baseline => {
+  assert.ok(baseline && typeof baseline === 'object' && !Array.isArray(baseline), 'artifact size baseline must be an object');
+  assert.ok(Number.isSafeInteger(baseline.acceptedRawBytes) && baseline.acceptedRawBytes > 0, 'acceptedRawBytes must be a positive integer');
+  assert.match(baseline.acceptedAtMainSha, /^[0-9a-f]{40}$/, 'acceptedAtMainSha must be a full lowercase commit SHA');
+  assert.ok(typeof baseline.acceptedReason === 'string' && baseline.acceptedReason.trim().length > 0, 'acceptedReason must be non-empty');
+  assert.equal(baseline.growthLimitRatio, 1.05, 'growthLimitRatio must remain the accepted +5% contract');
+  return {
+    ...baseline,
+    maximumRawBytes: Math.floor(baseline.acceptedRawBytes * baseline.growthLimitRatio),
+  };
+};
+
+const assertArtifactSizeWithinLimit = (rawBytes, baseline) => {
+  const resolved = resolveArtifactSizeBaseline(baseline);
+  assert.ok(Number.isSafeInteger(rawBytes) && rawBytes >= 0, 'artifact raw byte count must be a non-negative integer');
+  assert.ok(
+    rawBytes <= resolved.maximumRawBytes,
+    `Evidence fragment ${rawBytes} B must stay within +5% of accepted ${resolved.acceptedRawBytes} B (${resolved.maximumRawBytes} B maximum)`,
+  );
+  return resolved;
+};
+
+const artifactSizeBaseline = resolveArtifactSizeBaseline(artifactSizeBaselineFixture);
+assert.equal(artifactSizeBaseline.acceptedRawBytes, 314_771, 'PR #158 Linux CI artifact is the accepted raw-byte baseline');
+assert.equal(artifactSizeBaseline.acceptedAtMainSha, '08cdd9dde22a0ec8d2908a58750cb718ec455810', 'accepted baseline is pinned to the PR #158 merge SHA');
+assert.equal(artifactSizeBaseline.acceptedReason, 'Company Compare Pilot UI v0.1 Freeze', 'accepted baseline records the Freeze decision');
+assert.equal(artifactSizeBaseline.maximumRawBytes, 330_509, 'accepted baseline keeps the existing floor-based +5% limit');
+assert.notEqual(artifactSizeBaseline.acceptedRawBytes, 299_685, 'pre-Freeze baseline is not active');
+assert.doesNotThrow(() => assertArtifactSizeWithinLimit(artifactSizeBaseline.maximumRawBytes, artifactSizeBaselineFixture), 'artifact at the maximum passes');
+assert.throws(() => assertArtifactSizeWithinLimit(artifactSizeBaseline.maximumRawBytes + 1, artifactSizeBaselineFixture), /330509 B maximum/, 'artifact one byte above the maximum fails');
+assert.throws(() => resolveArtifactSizeBaseline({ ...artifactSizeBaselineFixture, acceptedRawBytes: undefined }), /acceptedRawBytes/, 'missing baseline bytes fail');
+assert.throws(() => resolveArtifactSizeBaseline({ ...artifactSizeBaselineFixture, acceptedAtMainSha: undefined }), /acceptedAtMainSha/, 'missing baseline SHA fails');
+for (const acceptedRawBytes of [-1, 0]) {
+  assert.throws(() => resolveArtifactSizeBaseline({ ...artifactSizeBaselineFixture, acceptedRawBytes }), /acceptedRawBytes/, `baseline ${acceptedRawBytes} is rejected`);
+}
+for (const growthLimitRatio of [-1, 0, 1, 1.01, 1.06, Number.NaN, '1.05']) {
+  assert.throws(() => resolveArtifactSizeBaseline({ ...artifactSizeBaselineFixture, growthLimitRatio }), /growthLimitRatio/, `ratio ${String(growthLimitRatio)} is rejected`);
+}
 const compareCashFlowOverrides = await readJson('../src/data/financial-history-v04-cashflow-overrides.json');
 const compareCashFlowOverrideById = new Map(compareCashFlowOverrides.map(record => [record.id, record]));
 const compareFinancialHistory = [
@@ -749,7 +789,7 @@ if (process.argv.includes('--dist')) {
   assert.equal(drawers.length, 53, 'fragment includes one Evidence drawer per marker');
   assert.equal(new Set(drawers).size, drawers.length, 'fragment has no duplicate drawer IDs');
   assert.match(fragmentHtml, /data-pagefind-ignore="all"/, 'built fragment is outside the Pagefind corpus');
-  assert.ok(Buffer.byteLength(fragmentHtml) <= 314_669, `Evidence fragment ${Buffer.byteLength(fragmentHtml)} B must stay within 5% of 299685 B`);
+  assertArtifactSizeWithinLimit(Buffer.byteLength(fragmentHtml), artifactSizeBaselineFixture);
   assert.equal((fragmentHtml.match(/data-company-order-label/g) ?? []).length, 35, 'seven matrix sections retain five repeated company identity labels');
   assert.match(fragmentHtml, /Applied Materials（アプライド・マテリアルズ）/, 'built Set B has the exact Japanese Applied Materials name');
   assert.match(fragmentHtml, /統合材料ソリューション（Integrated Materials Solution）/, 'general Japanese term precedes the formal English name');
