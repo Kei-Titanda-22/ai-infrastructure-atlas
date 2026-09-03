@@ -88,6 +88,14 @@ Evidence markerの四角は、on-demand分割後にCompany asset route側へ出�
 
 ChromeでSet A / Set Bを`1024`、`390`、`360` pxの要点／詳細で確認し、document overflow `0`、console error `0`、要点の製品説明・metadata `0`、詳細の製品説明Set A `6` / Set B `9`を確認した。drawer、Primary Source、Escape、focus return、URL reload / Back / Forwardを維持し、要点／詳細切替でCompany asset集合は変化しない。
 
+### Product portfolio boundary hotfix
+
+Human Reviewで、詳細表示のTokyo Electronだけ製品群概要と最初の製品entryの境界線が欠けていることを確認した。Relation-backedの4社では`.evidence-product-portfolio-summary`の直後が`.evidence-relation-entry`であるため既存の隣接兄弟ruleが適用される一方、Claim-backedのTokyo Electronでは両者の間に`.evidence-claim-backed-product-list` wrapperがあり、同ruleが一致しなかったことが原因である。修正前のcomputed styleはApplied Materials / Lam Researchが`border-top: 1px solid rgb(217, 221, 225)`、`margin-top: 10px`、`padding-top: 10px`、Tokyo Electronのwrapperと先頭entryがすべて`0px`だった。前回Acceptanceでは「供給網上の位置」のseparatorと製品entry同士の線を確認したが、製品群概要から最初の製品entryへ移る境界を独立fixtureにしていなかった。
+
+会社IDや座標に依存せず、5社共通の製品群概要から最初の製品entryへの境界を`evidence-product-entry-boundary`として明示した。Relation-backedでは最初の`PRODUCES` entry、Claim-backedでは製品list wrapperが同じcontractを持つ。修正後はApplied Materials / Lam Research / Tokyo Electronでいずれも`border-top: 1px solid rgb(217, 221, 225)`、`margin-top: 10px`、`padding-top: 10px`、境界classは各社1件となり、pseudo-elementによる二重線はない。製品文言、Evidence marker `16 / 21`（Set A）・`23 / 36`（Set B）・全5社詳細`57`、unique grounding / drawer `53 / 53`、request契約、asset分割、semantic dataは変更しない。最終buildはCompare `585,482 B`、shell `7,431 B`、Set B cold-load `200,447 B`（gzip `19,939 B`）、最大4社cold-load `266,204 B`（gzip `24,910 B`）で、上限`330,509 B`以内だった。
+
+追加Human Reviewでは、要点表示のTokyo Electronだけ「事実」から最初の製品entryへ移る境界線が欠けていた。Relation-backedのApplied Materials / Lam Researchは、Summaryでも非表示の製品群概要と先頭Relation entryが隣接するため既存ruleに一致していたが、Claim-backedのTokyo Electronは`evidence-claim-backed-product-list` wrapperを挟むため一致しなかった。修正前の要点computed styleはApplied Materials / Lam Researchが`1px / 10px / 10px`、Tokyo Electronが`0px / 0px / 0px`だった。既に5社共通で付与している`evidence-product-entry-boundary`へ表示modeに依存しない同一のneutral divider contractを適用し、要点・詳細とも全5社で同じ境界を使う。会社別selector、inline style、pseudo-element、二重線は追加しない。修正後は`1024`、`390`、`360` pxのSet A / Set B要点・詳細で、全5社が境界class `1`件、`border-top: 1px solid rgb(217, 221, 225)`、`margin-top: 10px`、`padding-top: 10px`となり、Tokyo Electron wrapper内の先頭entry自身は`border-top: 0`のため二重線はない。Rendered marker、製品文言、drawer、request集合は不変で、document overflow `0`、console error `0`を確認した。
+
 - Rendered marker: Summary Set A `16` / Set B `23`; Expanded Set A `21` / Set B `36`; five-company Expanded total `57`
 - Unique grounding entry / drawer: `53 / 53`（Tokyo Electronの4製品markerは既存の同一drawerを共有）
 - Product description: Summary `0`; Expanded Set A `6` / Set B `9`

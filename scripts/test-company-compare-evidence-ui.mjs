@@ -1002,6 +1002,12 @@ assert.match(styles, /\.evidence-product-description \{[\s\S]*font-size: 15px;[\
 assert.match(styles, /\.evidence-compare \.claim-statement-list::before \{[\s\S]*content: "·"/, 'Claim-backed and Relation-backed Product entries use the same shared bullet rule');
 assert.match(styles, /data-detail="summary"\] \.evidence-product-portfolio-summary[\s\S]*\.pilot-claim > \.claim-statement \{[\s\S]*display: none/, 'summary hides the Product portfolio body and its group marker without hiding the shared drawer');
 assert.match(styles, /data-detail="summary"\] \.evidence-position-entry \{[\s\S]*border-top: 1px solid var\(--border\)/, 'summary position entries use one shared separator rule');
+assert.match(styles, /\.evidence-compare \.evidence-product-entry-boundary \{[\s\S]*margin-top: 10px;[\s\S]*padding-top: 10px;[\s\S]*border-top: 1px solid var\(--border\)/, 'summary and expanded Product portfolio-to-entry boundaries use the shared neutral divider contract');
+assert.doesNotMatch(styles, /data-detail="(?:summary|expanded)"\] \.evidence-product-entry-boundary/, 'the shared Product boundary is not split into detail-mode-specific contracts');
+assert.doesNotMatch(styles, /evidence-product-entry-boundary::(?:before|after)/, 'the shared Product boundary uses one border and no pseudo-element double rule');
+assert.doesNotMatch(styles, /tokyo-electron|\[data-company-id[^\]]*\][^{]*evidence-product-entry-boundary/, 'the Product boundary has no Company-specific selector');
+assert.match(styles, /\.evidence-relation-entry \+ \.evidence-relation-entry \{[\s\S]*margin-top: 10px;[\s\S]*padding-top: 10px;[\s\S]*border-top: 1px solid var\(--border\)/, 'existing separators between Product entries remain unchanged');
+assert.match(presentationSource, /const firstProductRelationId = displayedRelations\.find\(entry => entry\.relation\.relationType === 'PRODUCES'\)/, 'Relation-backed Products identify the first Product entry without a Company branch');
 assert.match(styles, /\.evidence-compare \.evidence-marker \{[\s\S]*border: 0;[\s\S]*appearance: none;[\s\S]*background: transparent/, 'Evidence markers reset native button chrome in the shell stylesheet');
 assert.match(styles, /\.evidence-compare \.evidence-marker::before \{[\s\S]*width: 44px;[\s\S]*height: 44px/, 'Evidence markers retain a transparent 44px hit area without expanding line height');
 assert.match(styles, /\.evidence-compare \.evidence-marker:hover \{[\s\S]*background: transparent;[\s\S]*text-decoration: underline/, 'Evidence marker hover remains a quiet text interaction');
@@ -1159,6 +1165,7 @@ if (process.argv.includes('--dist')) {
       `${companyId}: Product portfolio Evidence is exposed at every reviewed Product entry`,
     );
     assert.doesNotMatch(productTemplate, /<h3>製品構成<\/h3>|下記の製品カテゴリを提供する。|<h3>主な製品<\/h3>|以下の製品を提供する。/, `${companyId}: no generic Product fallback is rendered`);
+    assert.equal((productTemplate.match(/evidence-product-entry-boundary/g) ?? []).length, 1, `${companyId}: one shared Summary/Expanded Product boundary is rendered`);
   }
   const tokyoAssetHtml = assetHtmlById['tokyo-electron'];
   const tokyoRoleTemplate = tokyoAssetHtml.match(/<template data-company-slot="ai-role"[\s\S]*?<\/template>/)?.[0] ?? '';
@@ -1183,7 +1190,9 @@ if (process.argv.includes('--dist')) {
     'Tokyo Electron keeps all four Product names inline with their Evidence markers',
   );
   assert.equal((tokyoProductsTemplate.match(/class="evidence-product-description" data-expanded-only/g) ?? []).length, 4, 'Tokyo Electron uses four common expanded Product entries');
+  assert.match(tokyoProductsTemplate, /class="evidence-claim-backed-product-list evidence-product-entry-boundary"/, 'Tokyo Electron applies the shared boundary to its Claim-backed Product list wrapper');
   const lamProductsTemplate = assetHtmlById['lam-research'].match(/<template data-company-slot="key-products"[\s\S]*?<\/template>/)?.[0] ?? '';
+  assert.match(lamProductsTemplate, /class="evidence-relation-entry evidence-product-entry-boundary"/, 'Lam Research applies the same shared boundary to its first Relation-backed Product entry');
   assert.match(lamProductsTemplate, /<article class="pilot-claim pilot-claim-list pilot-claim-compact"[^>]*>[\s\S]*?<p class="claim-statement claim-statement-list"[^>]*><strong[^>]*>半導体成膜装置<\/strong><button class="evidence-marker"/, 'Lam Research uses the shared inline Product marker hierarchy');
   assert.match(tokyoProductsTemplate, /<article class="pilot-claim pilot-claim-list pilot-claim-compact"[^>]*>[\s\S]*?<p class="claim-statement claim-statement-list"[^>]*><strong[^>]*>塗布・現像装置<\/strong><button class="evidence-marker"/, 'Tokyo Electron uses the same inline Product marker hierarchy as Lam Research');
   const expandedFinancialHtml = pilotIds.map(companyId => {
