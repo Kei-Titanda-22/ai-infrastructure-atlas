@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "0.1",
+  "stage": "first-batch-stage-1",
+  "companyIds": [
+    "amd",
+    "vertiv",
+    "tsmc"
+  ],
+  "companies": [
+    {
+      "companyId": "amd",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["amd-ai-role"],
+        "value-chain-position": ["amd-value-chain"],
+        "key-products": ["amd-products"],
+        "technology-moat": ["amd-positioning", "amd-technology"],
+        "capacity-roadmap": ["amd-strategy"],
+        "key-risks": ["amd-risks"]
+      },
+      "claimDisplay": {
+        "amd-ai-role": {
+          "title": "AI演算・サーバーCPU・ネットワークを供給",
+          "statement": "AtlasではAMDを、AIクラスタのアクセラレータ、サーバーCPU、DPU・AI NICを供給し、演算と接続を担う半導体設計企業と位置付ける。"
+        },
+        "amd-value-chain": {
+          "title": "設計からAIサーバー基盤へ接続",
+          "statement": "AMDはAI用半導体とソフトウェア基盤を設計し、大規模クラウド事業者、OEM、ODMが構築するサーバー・ラック・クラスタへ製品を供給する。"
+        },
+        "amd-products": {
+          "title": "EPYC・Instinct・Pensando・FPGA",
+          "statement": "AMDのデータセンター製品にはEPYCサーバーCPU、Instinct GPU、Pensando DPU・AI NIC、FPGA・適応型SoCが含まれる。"
+        },
+        "amd-positioning": {
+          "title": "年次更新のAI GPUロードマップ",
+          "statement": "AMDはInstinct製品で年次更新の先進的なロードマップを進め、EPYCとネットワーク製品を含む製品群でAIデータセンターを展開すると説明している。"
+        },
+        "amd-technology": {
+          "title": "CPU・GPU・ネットワークをラック規模で統合",
+          "statement": "AMDはCPU、GPU、ネットワークを組み合わせたHelios AIラック規模プラットフォームを提示し、AI演算需要を複数の半導体・ソフトウェア要素で扱う。"
+        },
+        "amd-strategy": {
+          "title": "データセンターとAI成長を最優先",
+          "statement": "AMDはデータセンター事業の成長加速を優先し、AI GPUロードマップ、ネットワーク、ラック規模ソリューション、ソフトウェア能力への投資を継続する方針を示す。"
+        },
+        "amd-risks": {
+          "title": "競争・輸出規制・外部製造への依存",
+          "statement": "AMDはIntelやNVIDIAなどとの競争、AI GPUへの輸出規制、第三者ファウンドリ・組立工程への依存を主要な事業リスクとして開示する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "CPU・GPU・ネットワーク製品を横断",
+        "body": "EPYCサーバーCPU、Instinct GPU、Pensando DPU・AI NIC、FPGA・適応型SoCを展開する。",
+        "groundingId": "amd-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-amd-epyc-server-cpu",
+          "label": "EPYCサーバーCPU",
+          "description": "データセンター向けのサーバーCPU。",
+          "groundingId": "amd-products"
+        },
+        {
+          "canonicalId": "display-product-amd-instinct-gpu",
+          "label": "Instinct GPU",
+          "description": "データセンター向けのGPU。",
+          "groundingId": "amd-products"
+        },
+        {
+          "canonicalId": "display-product-amd-pensando-dpu-ai-nic",
+          "label": "Pensando DPU・AI NIC",
+          "description": "データセンター向けのDPUとAI NIC。",
+          "groundingId": "amd-products"
+        },
+        {
+          "canonicalId": "display-product-amd-fpga-adaptive-soc",
+          "label": "FPGA・適応型SoC",
+          "description": "データセンター向けのFPGAと適応型SoC。",
+          "groundingId": "amd-products"
+        }
+      ]
+    },
+    {
+      "companyId": "vertiv",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["vertiv-ai-role"],
+        "value-chain-position": ["vertiv-value-chain"],
+        "key-products": ["vertiv-products"],
+        "technology-moat": ["vertiv-positioning", "vertiv-technology"],
+        "capacity-roadmap": ["vertiv-capacity-expansion-gap-closure"],
+        "key-risks": ["vertiv-risks"]
+      },
+      "claimDisplay": {
+        "vertiv-ai-role": {
+          "title": "高密度AI演算を電力・冷却側から支える",
+          "statement": "AtlasではVertivを、高密度AIラックの電力供給、熱除去、物理設備統合を担うデータセンターインフラ企業と位置付ける。"
+        },
+        "vertiv-value-chain": {
+          "title": "電力系統とIT機器の間の設備層",
+          "statement": "AtlasではVertivを、電力系統とサーバー・アクセラレータラックの間で電力品質、配電、冷却、収容を統合する施設層として整理する。"
+        },
+        "vertiv-products": {
+          "title": "UPS・配電・熱管理・ラック",
+          "statement": "Vertivの製品群はUPS、直流電源、配電、開閉装置、熱管理、ラック、監視、サービスを含む。"
+        },
+        "vertiv-positioning": {
+          "title": "電力・冷却を一体で提供",
+          "statement": "Vertivは電力、冷却、IT、サービスが連携する一体型インフラを自社の位置付けとして説明している。"
+        },
+        "vertiv-technology": {
+          "title": "高密度環境向け液冷を展開",
+          "statement": "Vertivは直接液冷やリアドア冷却向けCDUを含む液冷製品とサービスを展開している。"
+        },
+        "vertiv-capacity-expansion-gap-closure": {
+          "title": "米州4拠点で製造能力を拡張",
+          "statement": "Vertivは2026年3月、インフラソリューション、電力管理、統合キャビネットの生産能力を拡大する米州4拠点の新設・拡張を発表した。"
+        },
+        "vertiv-risks": {
+          "title": "AIラック仕様と施設制約の変化",
+          "statement": "Atlasでは、ラック電力密度、冷却方式、電力接続条件の急速な変化を、製品適合性と案件時期を左右する確認点として扱う。"
+        }
+      },
+      "productPortfolio": {
+        "title": "電力・冷却・収容設備を横断",
+        "body": "UPS、直流電源、配電、開閉装置、熱管理、ラック、監視、サービスを展開する。",
+        "groundingId": "vertiv-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-vertiv-ups",
+          "label": "無停電電源装置（UPS）",
+          "description": "データセンターなどの電力供給を支えるUPS。",
+          "groundingId": "vertiv-products"
+        },
+        {
+          "canonicalId": "display-product-vertiv-power-distribution-switchgear",
+          "label": "直流電源・配電・開閉装置",
+          "description": "電力供給と配電を担う直流電源、配電機器、開閉装置。",
+          "groundingId": "vertiv-products"
+        },
+        {
+          "canonicalId": "display-product-vertiv-thermal-management",
+          "label": "熱管理・冷却",
+          "description": "データセンター設備の熱を管理する冷却製品。",
+          "groundingId": "vertiv-products"
+        },
+        {
+          "canonicalId": "display-product-vertiv-rack-monitoring-service",
+          "label": "ラック・監視・サービス",
+          "description": "機器収容、監視、運用を支えるラックとサービス。",
+          "groundingId": "vertiv-products"
+        }
+      ]
+    },
+    {
+      "companyId": "tsmc",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["tsmc-ai-role"],
+        "value-chain-position": ["tsmc-value-chain"],
+        "key-products": ["tsmc-products"],
+        "technology-moat": ["tsmc-competitive-positioning-gap-closure", "tsmc-technology"],
+        "capacity-roadmap": ["tsmc-capacity"],
+        "key-risks": ["tsmc-risks-gap-closure"]
+      },
+      "claimDisplay": {
+        "tsmc-ai-role": {
+          "title": "AI半導体を量産へ接続する製造基盤",
+          "statement": "AtlasではTSMCを、AIアクセラレータなどの設計を先端プロセスとパッケージングで量産へ接続する製造基盤と位置付ける。"
+        },
+        "tsmc-value-chain": {
+          "title": "半導体設計と最終システムの間の製造工程",
+          "statement": "AtlasではTSMCを、ファブレス企業の設計データをウェーハ製造と先端パッケージングへ変換する上流製造工程として整理する。"
+        },
+        "tsmc-products": {
+          "title": "多様なプロセス技術で顧客ICを製造",
+          "statement": "TSMCはロジックを中心とする多様なプロセス技術で顧客設計のICを製造し、HPC、スマートフォン、IoT、自動車などへ供給している。"
+        },
+        "tsmc-competitive-positioning-gap-closure": {
+          "title": "製造能力と先端プロセス技術",
+          "statement": "TSMCは専業ファウンドリとしての製造能力上の強い位置に加え、先端プロセス技術の優位を維持する継続的な研究開発を、自社の競争上の位置として説明している。"
+        },
+        "tsmc-technology": {
+          "title": "3DFabricで前工程と後工程を統合",
+          "statement": "TSMCは3DFabricを、前工程のSoICと後工程のCoWoS・InFOを組み合わせる3次元シリコン積層および先端パッケージング技術群として説明している。"
+        },
+        "tsmc-capacity": {
+          "title": "年間能力は12インチ換算1,700万枚超",
+          "statement": "TSMCは2025年の管理製造能力が年間1,700万枚超の12インチ換算ウェーハだったと開示している。"
+        },
+        "tsmc-risks-gap-closure": {
+          "title": "政治・貿易・海外展開・先端技術のリスク",
+          "statement": "TSMCの2025年Form 20-Fは、政治・貿易措置、海外展開の実行、先端技術と歩留まり、競争・顧客集中、自然災害や公益設備の停止などを事業リスクとして挙げている。"
+        }
+      },
+      "productPortfolio": {
+        "title": "顧客設計ICを多様なプロセスで製造",
+        "body": "ロジックを中心とする多様なプロセス技術で、顧客設計のICを製造する。",
+        "groundingId": "tsmc-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-tsmc-logic-process-technologies",
+          "label": "ロジック向けプロセス技術",
+          "description": "顧客設計のロジックICを製造するプロセス技術。",
+          "groundingId": "tsmc-products"
+        }
+      ]
+    }
+  ]
+}

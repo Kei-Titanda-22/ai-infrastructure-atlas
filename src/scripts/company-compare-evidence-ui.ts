@@ -108,14 +108,14 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   const pageData = JSON.parse(compareDataNode.textContent || '{}');
   const uiData = JSON.parse(evidenceDataNode.textContent || '{}');
   if (!Array.isArray(pageData.companies)) throw new Error('Company Evidence Compare page data is invalid');
-  if (!Array.isArray(uiData.pilotCompanyIds)) throw new Error('Company Evidence Compare payload is invalid');
+  if (!Array.isArray(uiData.supportedCompanyIds)) throw new Error('Company Evidence Compare payload is invalid');
   const manifest = validateCompanyCompareAssetManifest(uiData.companyManifest);
   const companies = pageData.companies;
   const byId = new Map<string, any>(companies.map((company: any) => [company.id, company]));
-  const supportedIds = new Set<string>(uiData.pilotCompanyIds);
+  const supportedIds = new Set<string>(uiData.supportedCompanyIds);
   if (manifest.companies.some(record => !supportedIds.has(record.companyId))
     || manifest.companies.length !== supportedIds.size) {
-    throw new Error('Company Compare asset manifest and Pilot companies do not match');
+    throw new Error('Company Compare asset manifest and supported companies do not match');
   }
   let state = parseEvidenceCompareSearch(location.search, byId.keys(), supportedIds);
   if (!state.enabled) throw new Error('Company Evidence Compare controller requires view=evidence');
@@ -127,7 +127,7 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   if (evidenceTemplateLabel) evidenceTemplateLabel.textContent = '比較セット';
   const pageLead = document.querySelector<HTMLElement>('#compare-page-lead');
   const builderMeta = element<HTMLElement>(app, '#compare-builder-meta');
-  if (pageLead) pageLead.textContent = '試験対象5社から2～4社を選び、各社の役割、製品・技術、企業間関係、財務の比較条件を根拠付きで確認します。';
+  if (pageLead) pageLead.textContent = '対応8社から2～4社を選び、各社の役割、製品・技術、企業間関係、財務の比較条件を根拠付きで確認します。';
   if (builderMeta) builderMeta.textContent = '2～4社を選択できます。重複、対象外の企業、4社を超える指定は理由を表示して除外します。';
 
   const searchInput = requiredElement<HTMLInputElement>(app, '#compare-company-search');

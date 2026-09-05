@@ -10,9 +10,9 @@ import {
   selectCompareSummaryRelationIds,
 } from '../lib/company-compare-display';
 import {
-  companyCompareAssetSchemaVersion,
   resolveCompanyCompareProductPortfolioSummary,
-} from '../lib/company-compare-evidence-assets';
+} from '../lib/company-compare-product-portfolios';
+import { companyCompareAssetSchemaVersion } from '../lib/company-compare-evidence-assets';
 import { deriveEvidenceFreshness } from '../lib/evidence-freshness';
 
 type CompareEvidenceModel = ReturnType<typeof buildCompanyCompareEvidenceReadModel>;

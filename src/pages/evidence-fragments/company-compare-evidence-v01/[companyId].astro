@@ -2,12 +2,12 @@
 import { getCollection } from 'astro:content';
 import CompanyCompareEvidenceCompanyAsset from '../../../components/CompanyCompareEvidenceCompanyAsset.astro';
 import { countryLabel, layerLabel } from '../../../lib/display-v02';
-import { evidenceComparePilotCompanyIds } from '../../../lib/company-compare-evidence-ui';
+import { evidenceCompareSupportedCompanyIds } from '../../../lib/company-compare-evidence-ui';
 import { buildCompanyCompareEvidenceReadModel } from '../../../lib/company-compare-evidence-read-model';
 import { withBase } from '../../../lib/paths';
 
 export function getStaticPaths() {
-  return evidenceComparePilotCompanyIds.map(companyId => ({ params: { companyId } }));
+  return evidenceCompareSupportedCompanyIds.map(companyId => ({ params: { companyId } }));
 }
 
 const companies = (await getCollection('companies'))

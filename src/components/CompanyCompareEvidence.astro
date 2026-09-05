@@ -21,7 +21,7 @@ const metricLabel: Record<string, string> = {
 };
 const clientPayload = {
   schemaVersion: '0.2',
-  pilotCompanyIds: model.pilotCompanyIds,
+  supportedCompanyIds: model.supportedCompanyIds,
   dimensionOrder: presentationDimensionIds,
   dimensionLabels: model.dimensionLabels,
   stableSections: [...presentationDimensionIds, 'financial', 'evidence-trace'],

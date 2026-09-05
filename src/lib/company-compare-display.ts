@@ -48,11 +48,13 @@ export interface CompareFinancialDisplayRecordLike {
 export const compareFinancialAmountUnitLabels = Object.freeze<Record<string, string>>({
   'USD:million': '百万ドル',
   'JPY:million': '百万円',
+  'TWD:billion': '十億台湾ドル',
 });
 
 export const compareFinancialAccountingBasisLabels = Object.freeze<Record<string, string>>({
   'US GAAP': '米国会計基準',
   'Japanese GAAP': '日本会計基準',
+  'TIFRS consolidated': '台湾IFRS（連結）',
 });
 
 const compareNamedQuarterPeriodLabels = Object.freeze<Record<string, string>>({
@@ -71,6 +73,9 @@ export function formatCompareFinancialPeriodLabel(periodLabel: string) {
 
   const fiscalYearFirst = canonicalLabel.match(/^FY(\d{4}) Q([1-4])$/);
   if (fiscalYearFirst) return `${fiscalYearFirst[1]}年度 第${fiscalYearFirst[2]}四半期`;
+
+  const calendarQuarter = canonicalLabel.match(/^Q([1-4]) (\d{4})$/);
+  if (calendarQuarter) return `${calendarQuarter[2]}年 第${calendarQuarter[1]}四半期`;
 
   const annual = canonicalLabel.match(/^FY(\d{4})$/);
   if (annual) return `${annual[1]}年度`;
@@ -121,10 +126,12 @@ export const compareGenericTermTranslations = Object.freeze({
 export const compareLocationDisplayNames = Object.freeze<Record<string, string>>({
   'United States': '米国',
   Japan: '日本',
+  Taiwan: '台湾',
   Tualatin: 'チュアラティン',
   'Oregon, United States': '米国オレゴン州',
   米国: '米国',
   日本: '日本',
+  台湾: '台湾',
   チュアラティン: 'チュアラティン',
   米国オレゴン州: '米国オレゴン州',
 });
@@ -156,6 +163,9 @@ export const comparePreservedProperNouns = Object.freeze([
   'HBM',
   'GAAP',
   'IFRS',
+  'AMD',
+  'Vertiv',
+  'TSMC',
 ]);
 
 export const compareProductDisplayNameOverrides = Object.freeze<Record<string, string>>({
