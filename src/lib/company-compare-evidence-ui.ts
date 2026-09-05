@@ -1,5 +1,8 @@
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
-import { evidenceCompareFirstBatchCompanyIds } from './company-compare-supported-companies.ts';
+import {
+  evidenceCompareFirstBatchCompanyIds,
+  evidenceCompareRemainingBatch1CompanyIds,
+} from './company-compare-supported-companies.ts';
 import type { RelationEvidenceBinding, ResolvedRelation } from './relations.ts';
 
 export type EvidenceCompareDetail = 'summary' | 'expanded';
@@ -85,6 +88,7 @@ export const evidenceComparePilotCompanyIds = Object.freeze(
 export const evidenceCompareSupportedCompanyIds = Object.freeze([
   ...evidenceComparePilotCompanyIds,
   ...evidenceCompareFirstBatchCompanyIds,
+  ...evidenceCompareRemainingBatch1CompanyIds,
 ]);
 
 export function parseEvidenceCompareSearch(

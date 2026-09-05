@@ -9,7 +9,7 @@
 
 ## 現在Phase
 
-Company Compare First Batchは完了。productionの意味層を変更せず、Human Review済みの表示projectionとオンデマンドCompany assetを15社へ段階的に追加した。
+Company Compare First Batchは完了。productionの意味層を変更せず、Human Review済みの表示projectionとオンデマンドCompany assetを15社へ段階的に追加した。続くRemaining Rollout Batch 1では、既存の構造化データだけを使い20社を追加している。
 
 ## Freeze済みPilot 5社
 
@@ -37,13 +37,34 @@ Company Compare First Batchは完了。productionの意味層を変更せず、H
 - `arista`
 - `bosch`
 
-## 現在のStage
+## Remaining Rollout Batch 1（20社）
 
-Stage 4 / 4 companies。`globalfoundries`、`micron`、`arista`、`bosch`を`DISPLAY_COPY_ONLY`として追加。First Batchは`15 / 15`で完了。既存Pilot 5社と合わせ、Compare対応企業は20社。Human Reviewは承認済みで、PR #164はmerge済み。
+- `cadence`
+- `marvell`
+- `nxp`
+- `renesas`
+- `synopsys`
+- `digital-realty`
+- `ge-vernova`
+- `schneider-electric`
+- `ciena`
+- `corning`
+- `lumentum`
+- `fanuc`
+- `smc`
+- `asml`
+- `kokusai-electric`
+- `screen-holdings`
+- `linde`
+- `shinko-electric`
+- `seagate`
+- `besi`
+
+First Batchは`15 / 15`で完了。Remaining Rollout Batch 1は`20 / 20`を`DISPLAY_COPY_ONLY`として追加する。既存Pilot 5社と合わせ、Compare対応企業は40社、未対応は60社。
 
 ## 次に行う作業
 
-token review後に、残り80社のrollout設計を別の作業単位として行う。残り80社の実装は未着手とする。
+Human Review後に、残り60社のrollout設計を別の作業単位として行う。残り60社の実装は未着手とする。
 
 Company Compare 100社対応完了後、Human Review済みの日本語表示projectionを100社の各社ページへ展開する。canonical dataは変更せず、表示層だけを同期する。
 
@@ -65,10 +86,10 @@ Company Compare 100社対応完了後、Human Review済みの日本語表示proj
 - Pilot Set B Summary / Expanded marker: `23 / 36`
 - Pilot Expanded marker: `57`
 - Pilot unique grounding / drawer: `53 / 53`
-- Supported companies: `20`
-- 1～4社 combinations: `6,195`
-- 最大cold-load: `276,219 B raw / 25,856 B gzip`
-- shell + 20社asset: `21 / 21 byte-identical`
-- Astro: `130 routes`
+- Supported companies: `40`
+- 2～4社 combinations: `102,050`
+- 最大cold-load: `289,971 B raw / 26,666 B gzip`
+- shell + 40社asset: `41 / 41 byte-identical`
+- Astro: `150 routes`
 - Pagefind: `105 pages / 5,791 words`
 - protected semantic diff: `0`

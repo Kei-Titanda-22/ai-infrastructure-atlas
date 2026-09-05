@@ -24,6 +24,12 @@ import {
   firstBatchProductEntries,
   firstBatchProductIdsByClaimId,
   firstBatchStages,
+  remainingBatch1ClaimDisplay,
+  remainingBatch1Companies,
+  remainingBatch1CompanyIds,
+  remainingBatch1ProductEntries,
+  remainingBatch1ProductIdsByClaimId,
+  remainingBatch1Stage,
 } from './company-compare-first-batch.ts';
 import { companyEvidence, type CompanyEvidenceBinding, type CompanyEvidenceClaim } from './company-evidence.ts';
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
@@ -91,12 +97,17 @@ export interface CompareEvidenceRelationEntry {
 const claimById = new Map(companyEvidence.claims.map(claim => [claim.id, claim]));
 const claimBindingById = new Map(companyEvidence.evidence.map(binding => [binding.id, binding]));
 const financialRecordById = new Map(financialHistory.map(record => [record.id, record]));
-const firstBatchProductEntryById = new Map(firstBatchProductEntries.map(record => [record.canonicalId, record]));
+const displayOnlyCompanies = Object.freeze([...firstBatchCompanies, ...remainingBatch1Companies]);
+const displayOnlyCompanyIds = Object.freeze([...firstBatchCompanyIds, ...remainingBatch1CompanyIds]);
+const displayOnlyClaimDisplay = Object.freeze({ ...firstBatchClaimDisplay, ...remainingBatch1ClaimDisplay });
+const displayOnlyProductEntries = Object.freeze([...firstBatchProductEntries, ...remainingBatch1ProductEntries]);
+const displayOnlyProductIdsByClaimId = Object.freeze({ ...firstBatchProductIdsByClaimId, ...remainingBatch1ProductIdsByClaimId });
+const displayOnlyProductEntryById = new Map(displayOnlyProductEntries.map(record => [record.canonicalId, record]));
 
 const productLabelById = new Map(productRegistry.records.map(record => [
   record.id,
   compareProductDisplayNameOverrides[record.id] || record.displayNames.ja || record.canonicalName,
-]).concat(firstBatchProductEntries.map(record => [record.canonicalId, record.label])));
+]).concat(displayOnlyProductEntries.map(record => [record.canonicalId, record.label])));
 const technologyLabelById = new Map(technologyRegistry.records.map(record => [
   record.id,
   record.displayNames.ja || record.canonicalName,
@@ -123,19 +134,19 @@ const resolveRequiredSource = (sourceId: string) => {
 };
 
 const resolveDisplayClaim = (claimId: string) => {
-  const stageCopy = firstBatchClaimDisplay[claimId];
+  const stageCopy = displayOnlyClaimDisplay[claimId];
   if (!stageCopy) return resolveCompareClaimDisplay(claimId);
   return { ...stageCopy, groundingIds: [claimId] };
 };
 
 const resolveProductDescription = (productId: string) => {
-  const stageEntry = firstBatchProductEntryById.get(productId);
+  const stageEntry = displayOnlyProductEntryById.get(productId);
   if (!stageEntry) return resolveCompareProductDisplayDescription(productId);
   return { description: stageEntry.description, groundingIds: [stageEntry.groundingId] };
 };
 
 const productIdsForClaim = (claimId: string) =>
-  firstBatchProductIdsByClaimId[claimId] ?? compareProductIdsByClaimId[claimId] ?? [];
+  displayOnlyProductIdsByClaimId[claimId] ?? compareProductIdsByClaimId[claimId] ?? [];
 
 const resolveClaimEntry = (claimId: string, companyId: string): CompareEvidenceClaimEntry => {
   const claim = claimById.get(claimId);
@@ -342,7 +353,7 @@ const buildExpandedFinancial = (companyId: string) => {
   };
 };
 
-const buildDisplayOnlyProjectionCompany = (record: (typeof firstBatchCompanies)[number]) => {
+const buildDisplayOnlyProjectionCompany = (record: (typeof displayOnlyCompanies)[number]) => {
   const projectedClaimIds = [...new Set(Object.values(record.dimensions).flat())];
   const projectedClaims = projectedClaimIds.map(claimId => {
     const claim = claimById.get(claimId);
@@ -388,7 +399,7 @@ const buildDisplayOnlyProjectionCompany = (record: (typeof firstBatchCompanies)[
 
 export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidenceIdentity[]) {
   const pilotCompanyIds = [...new Set(pilotCompareEvidenceProjection.sets.flatMap(setRecord => setRecord.orderedCompanyIds))];
-  const supportedCompanyIds = [...pilotCompanyIds, ...firstBatchCompanyIds];
+  const supportedCompanyIds = [...pilotCompanyIds, ...displayOnlyCompanyIds];
   const supportedCompanyIdSet = new Set(supportedCompanyIds);
   const identityById = new Map(identities.map(identity => [identity.id, {
     ...identity,
@@ -406,7 +417,7 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
     ...pilotCompareEvidenceProjection.sets.flatMap(setRecord =>
       setRecord.companies.map(company => [company.companyId, company] as const),
     ),
-    ...firstBatchCompanies.map(record => [record.companyId, buildDisplayOnlyProjectionCompany(record)] as const),
+    ...displayOnlyCompanies.map(record => [record.companyId, buildDisplayOnlyProjectionCompany(record)] as const),
   ]);
   const companies = supportedCompanyIds.map(companyId => {
     const projected = projectedCompanies.get(companyId);
@@ -450,7 +461,8 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
       })),
     },
   }));
-  const firstBatchFinancialSelections = firstBatchStages.flatMap(stage => stage.setId !== 'first-batch-stage-1'
+  const displayOnlyFinancialStages = [...firstBatchStages, remainingBatch1Stage];
+  const firstBatchFinancialSelections = displayOnlyFinancialStages.flatMap(stage => stage.setId !== 'first-batch-stage-1'
     ? [stage, ...stage.orderedCompanyIds.map(companyId => ({
         setId: `${stage.setId}-${companyId}`,
         orderedCompanyIds: [companyId],
@@ -487,7 +499,7 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
     return sourceIds;
   };
   const pilotUsedSourceIds = collectUsedSourceIds(companies.filter(company => pilotCompanyIds.includes(company.identity.id)));
-  const firstBatchSourceGroups = firstBatchStages.map(stage => collectUsedSourceIds(
+  const firstBatchSourceGroups = displayOnlyFinancialStages.map(stage => collectUsedSourceIds(
     companies.filter(company => stage.orderedCompanyIds.includes(company.identity.id as never)),
   ));
   const orderedSourceIds = [
