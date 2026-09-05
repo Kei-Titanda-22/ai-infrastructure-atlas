@@ -800,6 +800,12 @@
   white-space: normal;
 }
 
+@media (min-width: 960px) {
+  #compare-app[data-compare-mode="evidence"] .compare-selected {
+    grid-template-columns: repeat(var(--compare-selected-count, 1), minmax(0, 1fr));
+  }
+}
+
 #compare-app[data-compare-mode="evidence"] #legacy-compare-templates[hidden] {
   display: none !important;
 }

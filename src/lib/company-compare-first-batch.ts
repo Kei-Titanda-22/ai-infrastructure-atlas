@@ -1,8 +1,17 @@
-import data from '../data/company-compare-first-batch-stage1-v01.json' with { type: 'json' };
-import { evidenceCompareFirstBatchStage1CompanyIds } from './company-compare-supported-companies.ts';
+import stage1Data from '../data/company-compare-first-batch-stage1-v01.json' with { type: 'json' };
+import stage2Data from '../data/company-compare-first-batch-stage2-v01.json' with { type: 'json' };
+import {
+  evidenceCompareFirstBatchCompanyIds,
+  evidenceCompareFirstBatchStage1CompanyIds,
+  evidenceCompareFirstBatchStage2CompanyIds,
+} from './company-compare-supported-companies.ts';
 
 export const firstBatchStage1CompanyIds = evidenceCompareFirstBatchStage1CompanyIds;
+export const firstBatchStage2CompanyIds = evidenceCompareFirstBatchStage2CompanyIds;
+export const firstBatchCompanyIds = evidenceCompareFirstBatchCompanyIds;
 export type FirstBatchStage1CompanyId = typeof firstBatchStage1CompanyIds[number];
+export type FirstBatchStage2CompanyId = typeof firstBatchStage2CompanyIds[number];
+export type FirstBatchCompanyId = typeof firstBatchCompanyIds[number];
 
 export const firstBatchStage1DimensionIds = [
   'ai-role',
@@ -26,7 +35,7 @@ export interface FirstBatchProductEntry {
 }
 
 export interface FirstBatchCompanyDisplayProjection {
-  companyId: FirstBatchStage1CompanyId;
+  companyId: FirstBatchCompanyId;
   readinessClass: 'DISPLAY_COPY_ONLY';
   dimensions: Record<(typeof firstBatchStage1DimensionIds)[number], string[]>;
   claimDisplay: Record<string, FirstBatchDisplayCopy>;
@@ -45,21 +54,25 @@ const requireNonEmpty = (value: unknown, label: string) => {
   return value.trim();
 };
 
-function validateFirstBatchStage1Data(value: typeof data) {
-  if (value.schemaVersion !== '0.1' || value.stage !== 'first-batch-stage-1') {
-    throw new Error('Company Compare first-batch Stage 1 metadata mismatch');
+function validateFirstBatchData(
+  value: any,
+  expectedStage: 'first-batch-stage-1' | 'first-batch-stage-2',
+  expectedCompanyIds: readonly FirstBatchCompanyId[],
+) {
+  if (value.schemaVersion !== '0.1' || value.stage !== expectedStage) {
+    throw new Error(`Company Compare ${expectedStage} metadata mismatch`);
   }
-  if (JSON.stringify(value.companyIds) !== JSON.stringify(firstBatchStage1CompanyIds)) {
-    throw new Error('Company Compare first-batch Stage 1 IDs must be amd / vertiv / tsmc');
+  if (JSON.stringify(value.companyIds) !== JSON.stringify(expectedCompanyIds)) {
+    throw new Error(`Company Compare ${expectedStage} Company IDs mismatch`);
   }
-  if (value.companies.length !== firstBatchStage1CompanyIds.length) {
-    throw new Error('Company Compare first-batch Stage 1 must contain exactly three companies');
+  if (value.companies.length !== expectedCompanyIds.length) {
+    throw new Error(`Company Compare ${expectedStage} Company count mismatch`);
   }
 
   const seenCompanies = new Set<string>();
   const seenProducts = new Set<string>();
-  const records = value.companies.map(raw => {
-    if (!firstBatchStage1CompanyIds.includes(raw.companyId as FirstBatchStage1CompanyId)) {
+  const records = value.companies.map((raw: any) => {
+    if (!expectedCompanyIds.includes(raw.companyId as FirstBatchCompanyId)) {
       throw new Error(`Unexpected Company Compare first-batch Company: ${raw.companyId}`);
     }
     if (seenCompanies.has(raw.companyId)) throw new Error(`Duplicate Company Compare first-batch Company: ${raw.companyId}`);
@@ -82,17 +95,20 @@ function validateFirstBatchStage1Data(value: typeof data) {
     if (JSON.stringify(Object.keys(raw.claimDisplay).sort()) !== JSON.stringify([...claimIds].sort())) {
       throw new Error(`Company Compare first-batch display copy must cover exactly the projected Claims: ${raw.companyId}`);
     }
-    const claimDisplay = Object.fromEntries(Object.entries(raw.claimDisplay).map(([claimId, copy]) => [claimId, Object.freeze({
+    const claimDisplay = Object.fromEntries(Object.entries(raw.claimDisplay).map(([claimId, value]) => {
+      const copy = value as FirstBatchDisplayCopy;
+      return [claimId, Object.freeze({
       title: requireNonEmpty(copy.title, `${claimId} display title`),
       statement: requireNonEmpty(copy.statement, `${claimId} display statement`),
-    })]));
+    })];
+    }));
     const portfolio = raw.productPortfolio;
     if (!claimIds.has(portfolio.groundingId)
       || portfolio.summaryVisible !== false
       || portfolio.expandedVisible !== true) {
       throw new Error(`Company Compare first-batch Product portfolio contract mismatch: ${raw.companyId}`);
     }
-    const productEntries = raw.productEntries.map(entry => {
+    const productEntries = raw.productEntries.map((entry: any) => {
       if (!entry.canonicalId.startsWith(`display-product-${raw.companyId}-`)) {
         throw new Error(`Company Compare first-batch display Product ID mismatch: ${entry.canonicalId}`);
       }
@@ -129,15 +145,38 @@ function validateFirstBatchStage1Data(value: typeof data) {
   return Object.freeze(records) as readonly FirstBatchCompanyDisplayProjection[];
 }
 
-export const firstBatchStage1Companies = validateFirstBatchStage1Data(data);
+export const firstBatchStage1Companies = validateFirstBatchData(stage1Data, 'first-batch-stage-1', firstBatchStage1CompanyIds);
+export const firstBatchStage2Companies = validateFirstBatchData(stage2Data, 'first-batch-stage-2', firstBatchStage2CompanyIds);
+export const firstBatchCompanies = Object.freeze([...firstBatchStage1Companies, ...firstBatchStage2Companies]);
 export const firstBatchStage1CompanyById = new Map(firstBatchStage1Companies.map(record => [record.companyId, record]));
+export const firstBatchStage2CompanyById = new Map(firstBatchStage2Companies.map(record => [record.companyId, record]));
 export const firstBatchStage1ClaimDisplay = Object.freeze(Object.fromEntries(
   firstBatchStage1Companies.flatMap(record => Object.entries(record.claimDisplay)),
 ));
+export const firstBatchStage2ClaimDisplay = Object.freeze(Object.fromEntries(
+  firstBatchStage2Companies.flatMap(record => Object.entries(record.claimDisplay)),
+));
+export const firstBatchClaimDisplay = Object.freeze({ ...firstBatchStage1ClaimDisplay, ...firstBatchStage2ClaimDisplay });
 export const firstBatchStage1ProductEntries = Object.freeze(
   firstBatchStage1Companies.flatMap(record => record.productEntries),
 );
+export const firstBatchStage2ProductEntries = Object.freeze(
+  firstBatchStage2Companies.flatMap(record => record.productEntries),
+);
+export const firstBatchProductEntries = Object.freeze([...firstBatchStage1ProductEntries, ...firstBatchStage2ProductEntries]);
 export const firstBatchStage1ProductById = new Map(firstBatchStage1ProductEntries.map(record => [record.canonicalId, record]));
+export const firstBatchStage2ProductById = new Map(firstBatchStage2ProductEntries.map(record => [record.canonicalId, record]));
 export const firstBatchStage1ProductIdsByClaimId = Object.freeze(Object.fromEntries(
   firstBatchStage1Companies.map(record => [record.productPortfolio.groundingId, record.productEntries.map(entry => entry.canonicalId)]),
 ));
+export const firstBatchStage2ProductIdsByClaimId = Object.freeze(Object.fromEntries(
+  firstBatchStage2Companies.map(record => [record.productPortfolio.groundingId, record.productEntries.map(entry => entry.canonicalId)]),
+));
+export const firstBatchProductIdsByClaimId = Object.freeze({
+  ...firstBatchStage1ProductIdsByClaimId,
+  ...firstBatchStage2ProductIdsByClaimId,
+});
+export const firstBatchStages = Object.freeze([
+  Object.freeze({ setId: 'first-batch-stage-1', orderedCompanyIds: [...firstBatchStage1CompanyIds] }),
+  Object.freeze({ setId: 'first-batch-stage-2', orderedCompanyIds: [...firstBatchStage2CompanyIds] }),
+]);

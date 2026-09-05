@@ -55,6 +55,7 @@ export const compareFinancialAccountingBasisLabels = Object.freeze<Record<string
   'US GAAP': '米国会計基準',
   'Japanese GAAP': '日本会計基準',
   'TIFRS consolidated': '台湾IFRS（連結）',
+  IFRS: '国際財務報告基準（IFRS）',
 });
 
 const compareNamedQuarterPeriodLabels = Object.freeze<Record<string, string>>({
@@ -129,11 +130,13 @@ export const compareLocationDisplayNames = Object.freeze<Record<string, string>>
   Taiwan: '台湾',
   Tualatin: 'チュアラティン',
   'Oregon, United States': '米国オレゴン州',
+  Ireland: 'アイルランド',
   米国: '米国',
   日本: '日本',
   台湾: '台湾',
   チュアラティン: 'チュアラティン',
   米国オレゴン州: '米国オレゴン州',
+  アイルランド: 'アイルランド',
 });
 
 export const comparePreservedProperNouns = Object.freeze([

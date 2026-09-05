@@ -1,6 +1,6 @@
 import {
-  firstBatchStage1Companies,
-  firstBatchStage1CompanyIds,
+  firstBatchCompanies,
+  firstBatchCompanyIds,
 } from './company-compare-first-batch.ts';
 
 export const companyCompareProductPortfolioCompanyIds = [
@@ -9,7 +9,7 @@ export const companyCompareProductPortfolioCompanyIds = [
   'applied-materials',
   'lam-research',
   'tokyo-electron',
-  ...firstBatchStage1CompanyIds,
+  ...firstBatchCompanyIds,
 ] as const;
 
 export type CompanyCompareProductPortfolioCompanyId = typeof companyCompareProductPortfolioCompanyIds[number];
@@ -107,7 +107,7 @@ export function getCompanyCompareProductPortfolioSummaries() {
       summaryVisible: false,
       expandedVisible: true,
     },
-    ...Object.fromEntries(firstBatchStage1Companies.map(record => [record.companyId, record.productPortfolio])),
+    ...Object.fromEntries(firstBatchCompanies.map(record => [record.companyId, record.productPortfolio])),
   });
 }
 
@@ -123,4 +123,3 @@ export function resolveCompanyCompareProductPortfolioSummary(
   }
   return summary;
 }
-

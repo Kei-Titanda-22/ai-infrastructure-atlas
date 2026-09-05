@@ -37,11 +37,11 @@ Company Compare First Batch。productionの意味層を変更せず、Human Revi
 
 ## 現在のStage
 
-Stage 1 / 3 companies only。`amd`、`vertiv`、`tsmc`を`DISPLAY_COPY_ONLY`として追加する。First batch progressは`3 / 15`。既存Pilot 5社と合わせ、Compare対応企業は8社。
+Stage 2 / 4 companies。`kioxia`、`amphenol`、`aptiv`、`advantest`を`DISPLAY_COPY_ONLY`として追加。First batch progressは`7 / 15`。既存Pilot 5社と合わせ、Compare対応企業は12社。
 
 ## 次に行う作業
 
-Token calibrationとHuman Reviewの完了後に、別の作業単位として残り12社を扱う。Stage 1では未着手とする。
+Token calibrationとHuman Reviewの完了後に、別の作業単位として残り8社を扱う。Stage 2では未着手とする。
 
 Company Compare 100社対応完了後、Human Review済みの日本語表示projectionを100社の各社ページへ展開する。canonical dataは変更せず、表示層だけを同期する。
 
@@ -63,7 +63,6 @@ Company Compare 100社対応完了後、Human Review済みの日本語表示proj
 - Pilot Set B Summary / Expanded marker: `23 / 36`
 - Pilot Expanded marker: `57`
 - Pilot unique grounding / drawer: `53 / 53`
-- Supported companies: `8`
-- 1～4社 combinations: `162`
+- Supported companies: `12`
+- 1～4社 combinations: `793`
 - protected semantic diff: `0`
-

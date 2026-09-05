@@ -36,6 +36,13 @@ const assetSlots = Object.freeze([
   'evidence-trace',
 ]);
 
+export function formatCompanyCompareEvidencePageLead(availableCompanyCount: number) {
+  if (!Number.isSafeInteger(availableCompanyCount) || availableCompanyCount < 1) {
+    throw new Error('Company Compare available Company count must be a positive integer');
+  }
+  return `対応${availableCompanyCount}社から2～${evidenceCompareMaxCompanies}社を選び、各社の役割、製品・技術、企業間関係、財務の比較条件を根拠付きで確認します。`;
+}
+
 type AssetSlot = { html: string; companyLabel?: string; hasContent?: string };
 type ParsedCompanyAsset = { companyId: string; slots: Map<string, AssetSlot> };
 
@@ -126,7 +133,7 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   if (evidenceTemplateLabel) evidenceTemplateLabel.textContent = '比較セット';
   const pageLead = document.querySelector<HTMLElement>('#compare-page-lead');
   const builderMeta = element<HTMLElement>(app, '#compare-builder-meta');
-  if (pageLead) pageLead.textContent = '対応8社から2～4社を選び、各社の役割、製品・技術、企業間関係、財務の比較条件を根拠付きで確認します。';
+  if (pageLead) pageLead.textContent = formatCompanyCompareEvidencePageLead(manifest.companies.length);
   if (builderMeta) builderMeta.textContent = '2～4社を選択できます。重複、対象外の企業、4社を超える指定は理由を表示して除外します。';
 
   const searchInput = requiredElement<HTMLInputElement>(app, '#compare-company-search');
@@ -210,6 +217,7 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   const renderSelected = () => {
     selectedRoot.replaceChildren();
     const picked = pickedCompanies();
+    selectedRoot.style.setProperty('--compare-selected-count', String(Math.max(1, picked.length)));
     if (!picked.length) selectedRoot.append(text('p', '比較企業が未選択です。', 'meta'));
     picked.forEach((company, index) => {
       const row = document.createElement('div');

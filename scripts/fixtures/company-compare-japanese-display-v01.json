@@ -219,7 +219,11 @@
       "tokyo-electron": "百万円",
       "amd": "百万ドル",
       "vertiv": "百万ドル",
-      "tsmc": "十億台湾ドル"
+      "tsmc": "十億台湾ドル",
+      "kioxia": "百万円",
+      "amphenol": "百万ドル",
+      "aptiv": "百万ドル",
+      "advantest": "百万円"
     },
     "accountingBasisByCompany": {
       "nvidia": "米国会計基準",
@@ -229,12 +233,18 @@
       "tokyo-electron": "日本会計基準",
       "amd": "米国会計基準",
       "vertiv": "米国会計基準",
-      "tsmc": "台湾IFRS（連結）"
+      "tsmc": "台湾IFRS（連結）",
+      "kioxia": "国際財務報告基準（IFRS）",
+      "amphenol": "米国会計基準",
+      "aptiv": "米国会計基準",
+      "advantest": "国際財務報告基準（IFRS）"
     },
     "periodLabels": {
       "FY2024": "2024年度",
       "FY2025": "2025年度",
       "FY2026": "2026年度",
+      "Q1 FY2025": "2025年度 第1四半期",
+      "FY2025 Q1": "2025年度 第1四半期",
       "Q2 FY2025": "2025年度 第2四半期",
       "Q3 FY2025": "2025年度 第3四半期",
       "Q1 FY2026": "2026年度 第1四半期",
@@ -262,7 +272,11 @@
       "tokyo-electron": 7,
       "amd": 3,
       "vertiv": 2,
-      "tsmc": 3
+      "tsmc": 3,
+      "kioxia": 7,
+      "amphenol": 2,
+      "aptiv": 2,
+      "advantest": 4
     },
     "forbiddenDetailedEnglishLabels": ["USD · million", "JPY · million", "US GAAP", "Japanese GAAP"],
     "maxDigitFixtures": {
@@ -295,6 +309,18 @@
         "accountingBasis": "TIFRS consolidated",
         "sourceId": "financial-statements-tsmc-2026-q2"
       }
+    }
+  },
+  "stage2FinancialRow": {
+    "selectionId": "first-batch-stage-2",
+    "metricId": "operatingMargin",
+    "compatibility": "blocked",
+    "blockedMetricId": "revenueGrowth",
+    "companies": {
+      "kioxia": {"displayValue": "71.9%", "periodLabel": "FY2027 Q1", "accountingBasis": "IFRS", "sourceId": "earnings-kioxia-2026-07-31-q1-fy2027"},
+      "amphenol": {"displayValue": "29.5%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-amphenol-2026-07-29-q2-2026"},
+      "aptiv": {"displayValue": "5.8%", "periodLabel": "FY2025", "accountingBasis": "US GAAP", "sourceId": "sec-aptiv-2025-10k"},
+      "advantest": {"displayValue": "51.7%", "periodLabel": "FY2026 Q1", "accountingBasis": "IFRS", "sourceId": "earnings-advantest-2026-07-29-q1-fy2026"}
     }
   },
   "summaryMarkerCounts": {
