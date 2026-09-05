@@ -1,6 +1,5 @@
 import {
   evidenceCompareMaxCompanies,
-  matchEvidencePilotSet,
   parseEvidenceCompareSearch,
   serializeEvidenceCompareSearch,
   type EvidenceCompareIssue,
@@ -197,6 +196,10 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
       });
   };
   const pickedCompanies = () => state.selectedIds.map(id => byId.get(id)).filter(Boolean);
+  const financialSetForSelection = (selectedIds: string[]) => uiData.sets.find((setRecord: any) => (
+    setRecord.orderedCompanyIds.length === selectedIds.length
+    && setRecord.orderedCompanyIds.every((companyId: string) => selectedIds.includes(companyId))
+  )) ?? null;
   const issueText = (issues: EvidenceCompareIssue[]) => issues
     .map(issue => `${issueLabels[issue.code]}：${issue.id}`).join(' / ');
   const updateUrl = (mode: 'replace' | 'push') => {
@@ -308,7 +311,7 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   const renderMatrix = () => {
     const selectionReady = state.selectedIds.length >= 2;
     const selectedLoaded = state.selectedIds.filter(id => loadedIds.has(id));
-    const setRecord = matchEvidencePilotSet(state.selectedIds);
+    const setRecord = financialSetForSelection(state.selectedIds);
     empty.hidden = selectionReady;
     matrixScroll.hidden = !selectionReady || selectedLoaded.length === 0;
     matrix.style.setProperty('--evidence-company-count', String(Math.max(2, selectedLoaded.length)));

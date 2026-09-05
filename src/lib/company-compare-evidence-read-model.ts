@@ -27,7 +27,8 @@ import {
 import { companyEvidence, type CompanyEvidenceBinding, type CompanyEvidenceClaim } from './company-evidence.ts';
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
 import { deriveRelationVerificationPresentation, type RelationVerificationPresentation } from './company-compare-evidence-ui.ts';
-import { financialHistory } from './financial-history.ts';
+import { assessFinancialProjection } from './financial-comparison-contract.ts';
+import { financialHistory, financialMetricDefinitions } from './financial-history.ts';
 import {
   relationEvidenceBindingById,
   relationById,
@@ -448,6 +449,25 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
       })),
     },
   }));
+  const firstBatchFinancialProjection = assessFinancialProjection(
+    [{ setId: 'first-batch-stage-1', orderedCompanyIds: [...firstBatchStage1CompanyIds] }],
+    ['operatingMargin', 'revenueGrowth'],
+    financialHistory,
+    [...financialMetricDefinitions.values()],
+  );
+  const presentationFinancialSets = [
+    ...sets,
+    ...firstBatchFinancialProjection.map(setRecord => ({
+      setId: setRecord.setId,
+      orderedCompanyIds: [...firstBatchStage1CompanyIds],
+      financial: {
+        metricStates: setRecord.metricStates.map(metricState => ({
+          ...metricState,
+          companyMetricRefs: metricState.companyMetricRefs.map(formatFinancialReference),
+        })),
+      },
+    })),
+  ];
 
   const collectUsedSourceIds = (selectedCompanies: typeof companies) => {
     const sourceIds = new Set<string>();
@@ -477,6 +497,7 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
     dimensionLabels: compareEvidenceDimensionLabels,
     companies,
     sets,
+    presentationFinancialSets,
     sourceNumberById,
   } as const;
 }

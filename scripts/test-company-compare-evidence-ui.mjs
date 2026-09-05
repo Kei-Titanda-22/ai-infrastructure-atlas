@@ -36,6 +36,7 @@ import {
   firstBatchStage1DimensionIds,
   firstBatchStage1ProductIdsByClaimId,
 } from '../src/lib/company-compare-first-batch.ts';
+import { assessNormalizedFinancialCompatibility } from '../src/lib/financial-comparison-contract.ts';
 import { gzipSync } from 'node:zlib';
 import {
   compareClaimDisplayCopy,
@@ -158,6 +159,38 @@ const compareFinancialHistory = [
   const override = compareCashFlowOverrideById.get(record.id);
   return override ? { ...record, ...override, metrics: { ...record.metrics, ...override.metrics } } : record;
 });
+const compareFinancialMetricDefinitions = await readJson('../src/data/financial-metric-definitions-v04.json');
+const stageOperatingMarginProjection = assessNormalizedFinancialCompatibility(
+  displayFixture.stage1FinancialRow.metricId,
+  [...firstBatchStage1CompanyIds],
+  compareFinancialHistory,
+  compareFinancialMetricDefinitions,
+);
+const stageRevenueGrowthProjection = assessNormalizedFinancialCompatibility(
+  displayFixture.stage1FinancialRow.blockedMetricId,
+  [...firstBatchStage1CompanyIds],
+  compareFinancialHistory,
+  compareFinancialMetricDefinitions,
+);
+assert.equal(stageOperatingMarginProjection.compatibility.code, displayFixture.stage1FinancialRow.compatibility, 'Stage 1 operating margin keeps the common condition-caution contract');
+assert.equal(stageRevenueGrowthProjection.compatibility.code, 'blocked', 'Stage 1 unavailable revenue growth remains outside the primary row');
+for (const reference of stageOperatingMarginProjection.companyMetricRefs) {
+  const expected = displayFixture.stage1FinancialRow.companies[reference.companyId];
+  const record = compareFinancialHistory.find(item => item.id === reference.financialRecordId);
+  assert.ok(expected && record, `${reference.companyId}: canonical primary Financial reference resolves`);
+  const metric = record.metrics[displayFixture.stage1FinancialRow.metricId];
+  const displayValue = `${Number(metric.value).toLocaleString('ja-JP', { maximumFractionDigits: 1 })}%`;
+  assert.deepEqual(
+    {
+      displayValue,
+      periodLabel: record.periodLabel,
+      accountingBasis: record.accountingBasis,
+      sourceId: record.sourceId,
+    },
+    expected,
+    `${reference.companyId}: primary Financial value, period, basis, and Source derive from canonical history`,
+  );
+}
 const comparePage = await readFile(new URL('../src/pages/compare.astro', import.meta.url), 'utf8');
 const fragmentPage = await readFile(new URL('../src/pages/evidence-fragments/company-compare-evidence-v01.astro', import.meta.url), 'utf8');
 const component = await readFile(new URL('../src/components/CompanyCompareEvidence.astro', import.meta.url), 'utf8');
@@ -1093,6 +1126,7 @@ assert.match(styles, /\.evidence-compare \.evidence-marker:hover \{[\s\S]*backgr
 assert.match(styles, /\.evidence-compare \.evidence-marker:focus-visible \{[\s\S]*outline: 2px solid/, 'Evidence marker keyboard focus remains explicit');
 assert.match(presentationSource, /<thead><tr>[\s\S]*<th scope="col">出典<\/th>/, 'all eight detailed Financial headers use one centered heading contract');
 assert.match(presentationSource, /<th class="num" scope="col">売上高<br \/>（\{company\.expandedFinancialPresentation\.amountUnitLabel\}）<\/th>/, 'amount header exposes one continuous accessible name on two visual lines');
+assert.match(styles, /\.evidence-financial-scroll thead \.num \{[\s\S]*white-space: nowrap/, 'forced line break stays between the metric and indivisible localized Financial amount unit');
 assert.match(presentationSource, /class="financial-basis">会計基準：\{company\.expandedFinancialPresentation\.accountingBasisLabel\}/, 'accounting basis appears once at Company-table level');
 assert.match(presentationSource, /scope="row">\{record\.displayPeriodLabel\}<\/th>/, 'period rows contain the localized period only');
 assert.doesNotMatch(presentationSource, /record\.currency[\s\S]*record\.unit[\s\S]*record\.accountingBasis/, 'period rows never repeat currency, unit, or accounting basis');
@@ -1117,6 +1151,13 @@ assert.deepEqual(displayFixture.financialDetailTable.metricIds, ['revenue', 'ope
 assert.match(styles, /\.evidence-financial-value > a,[\s\S]*\.evidence-financial-company a \{[\s\S]*min-height: 44px/, 'detailed Financial source links have a 44px target');
 assert.match(styles, /--company-ident-bg/, 'mobile identity uses a light background');
 assert.match(styles, /--company-ident-border/, 'mobile identity uses a thin border');
+assert.match(styles, /\.compare-selected-name \{[\s\S]*min-width: 0;[\s\S]*max-width: 100%/, 'selected Company links may shrink within the shared grid cell');
+assert.match(styles, /\.compare-selected-name \.compare-company-name-secondary \{[\s\S]*overflow-wrap: anywhere;[\s\S]*white-space: normal/, 'long secondary Company names wrap within every selected card');
+assert.doesNotMatch(styles, /amd[^\n{]*\{/, 'selected Company wrapping has no AMD-specific selector');
+assert.match(readModelSource, /assessFinancialProjection\([\s\S]*first-batch-stage-1[\s\S]*\['operatingMargin', 'revenueGrowth'\]/, 'Stage 1 Financial rows use the canonical compatibility resolver');
+assert.match(component, /presentationFinancialSets\.map/, 'the common Financial renderer covers Pilot and Stage 1 presentation sets');
+assert.match(controller, /financialSetForSelection[\s\S]*uiData\.sets\.find/, 'Financial row visibility resolves from the common presentation-set payload');
+assert.doesNotMatch(controller, /matchEvidencePilotSet/, 'runtime Financial visibility is not restricted to the two Pilot buttons');
 for (let index = 1; index <= 4; index += 1) {
   assert.match(styles, new RegExp(`data-company-token="company-${index}"`), `company-${index}: stable visual token exists`);
 }
@@ -1322,8 +1363,16 @@ if (process.argv.includes('--dist')) {
   }).join('\n');
   assert.equal((stageFinancialHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 3, 'all three Stage 1 Companies expose existing expanded Financial history');
   assert.match(stageFinancialHtml, /会計基準：台湾IFRS（連結）/, 'TSMC Financial accounting basis is localized without changing canonical data');
-  assert.match(stageFinancialHtml, /売上高<br>（十億台湾ドル）/, 'TSMC Financial amount unit is localized without FX conversion');
+  assert.match(stageFinancialHtml, /売上高<br>（十億台湾ドル）/, 'TSMC Financial amount unit is localized and kept indivisible without FX conversion');
   assert.match(stageFinancialHtml, />2026年 第2四半期</, 'Stage 1 quarter labels are localized from existing canonical periods');
+  for (const companyId of firstBatchStage1CompanyIds) {
+    const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
+    const expected = displayFixture.stage1FinancialRow.companies[companyId];
+    assert.match(financialTemplate, /data-has-content="true"/, `${companyId}: primary Financial slot is available`);
+    assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: primary Financial value is canonical`);
+    assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: primary Financial period and basis are canonical`);
+    assert.ok(financialTemplate.includes('一次資料を開く'), `${companyId}: primary Financial Source remains linked`);
+  }
   const expandedFinancialHtml = pilotIds.map(companyId => {
     const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);
     assert.ok(match, `${companyId}: detailed Financial template is present`);

@@ -613,7 +613,7 @@
 
 .evidence-financial-scroll table {
   width: 100%;
-  min-width: 900px;
+  min-width: 930px;
   table-layout: fixed;
   border-collapse: collapse;
 }
@@ -663,7 +663,7 @@
   font-family: inherit;
   font-weight: 600;
   text-align: center;
-  white-space: normal;
+  white-space: nowrap;
 }
 
 .evidence-financial-scroll .missing {
@@ -685,14 +685,14 @@
   white-space: nowrap;
 }
 
-.evidence-financial-scroll :is(th, td):nth-child(1) { width: 19%; }
-.evidence-financial-scroll :is(th, td):nth-child(2) { width: 10.5%; }
-.evidence-financial-scroll :is(th, td):nth-child(3) { width: 11%; }
-.evidence-financial-scroll :is(th, td):nth-child(4) { width: 11%; }
+.evidence-financial-scroll :is(th, td):nth-child(1) { width: 15%; }
+.evidence-financial-scroll :is(th, td):nth-child(2) { width: 13%; }
+.evidence-financial-scroll :is(th, td):nth-child(3) { width: 13%; }
+.evidence-financial-scroll :is(th, td):nth-child(4) { width: 10.5%; }
 .evidence-financial-scroll :is(th, td):nth-child(5) { width: 15.5%; }
-.evidence-financial-scroll :is(th, td):nth-child(6) { width: 10%; }
+.evidence-financial-scroll :is(th, td):nth-child(6) { width: 13%; }
 .evidence-financial-scroll :is(th, td):nth-child(7) { width: 8%; }
-.evidence-financial-scroll :is(th, td):nth-child(8) { width: 15%; }
+.evidence-financial-scroll :is(th, td):nth-child(8) { width: 12%; }
 
 .evidence-trace-list {
   display: grid;
@@ -790,7 +790,14 @@
 #compare-app[data-compare-mode="evidence"] .compare-selected-name {
   display: inline-flex;
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
   min-height: 44px;
+}
+
+#compare-app[data-compare-mode="evidence"] .compare-selected-name .compare-company-name-secondary {
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 #compare-app[data-compare-mode="evidence"] #legacy-compare-templates[hidden] {

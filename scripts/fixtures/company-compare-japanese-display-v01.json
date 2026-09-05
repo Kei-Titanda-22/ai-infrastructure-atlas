@@ -216,14 +216,20 @@
       "broadcom": "百万ドル",
       "applied-materials": "百万ドル",
       "lam-research": "百万ドル",
-      "tokyo-electron": "百万円"
+      "tokyo-electron": "百万円",
+      "amd": "百万ドル",
+      "vertiv": "百万ドル",
+      "tsmc": "十億台湾ドル"
     },
     "accountingBasisByCompany": {
       "nvidia": "米国会計基準",
       "broadcom": "米国会計基準",
       "applied-materials": "米国会計基準",
       "lam-research": "米国会計基準",
-      "tokyo-electron": "日本会計基準"
+      "tokyo-electron": "日本会計基準",
+      "amd": "米国会計基準",
+      "vertiv": "米国会計基準",
+      "tsmc": "台湾IFRS（連結）"
     },
     "periodLabels": {
       "FY2024": "2024年度",
@@ -236,6 +242,9 @@
       "Q3 FY2026": "2026年度 第3四半期",
       "Q1 FY2027": "2027年度 第1四半期",
       "Q2 FY2027": "2027年度 第2四半期",
+      "Q2 2025": "2025年 第2四半期",
+      "Q1 2026": "2026年 第1四半期",
+      "Q2 2026": "2026年 第2四半期",
       "FY2026 Q1": "2026年度 第1四半期",
       "FY2026 Q2": "2026年度 第2四半期",
       "FY2026 Q3": "2026年度 第3四半期",
@@ -250,13 +259,42 @@
       "broadcom": 3,
       "applied-materials": 2,
       "lam-research": 5,
-      "tokyo-electron": 7
+      "tokyo-electron": 7,
+      "amd": 3,
+      "vertiv": 2,
+      "tsmc": 3
     },
     "forbiddenDetailedEnglishLabels": ["USD · million", "JPY · million", "US GAAP", "Japanese GAAP"],
     "maxDigitFixtures": {
       "applied-materials": "7,302",
       "lam-research": "18,435.591",
       "tokyo-electron": "2,431,568"
+    }
+  },
+  "stage1FinancialRow": {
+    "selectionId": "first-batch-stage-1",
+    "metricId": "operatingMargin",
+    "compatibility": "caution",
+    "blockedMetricId": "revenueGrowth",
+    "companies": {
+      "amd": {
+        "displayValue": "17%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "US GAAP",
+        "sourceId": "earnings-amd-2026-08-04-q2-2026"
+      },
+      "vertiv": {
+        "displayValue": "19.5%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "US GAAP",
+        "sourceId": "earnings-vertiv-2026-07-29-q2-2026"
+      },
+      "tsmc": {
+        "displayValue": "60.3%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "TIFRS consolidated",
+        "sourceId": "financial-statements-tsmc-2026-q2"
+      }
     }
   },
   "summaryMarkerCounts": {
