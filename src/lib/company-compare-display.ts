@@ -58,6 +58,7 @@ export const compareFinancialAccountingBasisLabels = Object.freeze<Record<string
   'TIFRS consolidated': '台湾IFRS（連結）',
   IFRS: '国際財務報告基準（IFRS）',
   'IFRS consolidated': '国際財務報告基準（IFRS・連結）',
+  'IFRS as adopted by the EU, consolidated': 'EU採択の国際財務報告基準（IFRS・連結）',
 });
 
 const compareNamedQuarterPeriodLabels = Object.freeze<Record<string, string>>({
@@ -136,6 +137,7 @@ export const compareLocationDisplayNames = Object.freeze<Record<string, string>>
   Netherlands: 'オランダ',
   France: 'フランス',
   Switzerland: 'スイス',
+  Germany: 'ドイツ',
   米国: '米国',
   日本: '日本',
   台湾: '台湾',
@@ -145,6 +147,7 @@ export const compareLocationDisplayNames = Object.freeze<Record<string, string>>
   オランダ: 'オランダ',
   フランス: 'フランス',
   スイス: 'スイス',
+  ドイツ: 'ドイツ',
 });
 
 export const comparePreservedProperNouns = Object.freeze([

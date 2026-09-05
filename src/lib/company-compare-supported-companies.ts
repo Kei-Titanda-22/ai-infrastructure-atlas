@@ -1,8 +1,10 @@
 export const evidenceCompareFirstBatchStage1CompanyIds = ['amd', 'vertiv', 'tsmc'] as const;
 export const evidenceCompareFirstBatchStage2CompanyIds = ['kioxia', 'amphenol', 'aptiv', 'advantest'] as const;
 export const evidenceCompareFirstBatchStage3CompanyIds = ['asm-international', 'air-liquide', 'analog-devices', 'abb'] as const;
+export const evidenceCompareFirstBatchStage4CompanyIds = ['globalfoundries', 'micron', 'arista', 'bosch'] as const;
 export const evidenceCompareFirstBatchCompanyIds = [
   ...evidenceCompareFirstBatchStage1CompanyIds,
   ...evidenceCompareFirstBatchStage2CompanyIds,
   ...evidenceCompareFirstBatchStage3CompanyIds,
+  ...evidenceCompareFirstBatchStage4CompanyIds,
 ] as const;

@@ -37,11 +37,11 @@ Company Compare First Batch。productionの意味層を変更せず、Human Revi
 
 ## 現在のStage
 
-Stage 3 / 4 companies。`asm-international`、`air-liquide`、`analog-devices`、`abb`を`DISPLAY_COPY_ONLY`として追加。First batch progressは`11 / 15`。既存Pilot 5社と合わせ、Compare対応企業は16社。
+Stage 4 / 4 companies。`globalfoundries`、`micron`、`arista`、`bosch`を`DISPLAY_COPY_ONLY`として追加。First batch progressは`15 / 15`。既存Pilot 5社と合わせ、Compare対応企業は20社。First Batch rolloutは完了し、Human Review待ち。
 
 ## 次に行う作業
 
-Token calibrationとHuman Reviewの完了後に、別の作業単位として残り4社を扱う。Stage 3では未着手とする。
+First Batch 15社のHuman Reviewとmerge判断を行う。残り95社への展開は別の作業単位とし、本Stageでは未着手とする。
 
 Company Compare 100社対応完了後、Human Review済みの日本語表示projectionを100社の各社ページへ展開する。canonical dataは変更せず、表示層だけを同期する。
 

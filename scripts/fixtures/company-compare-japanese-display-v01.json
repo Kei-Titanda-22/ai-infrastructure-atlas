@@ -105,6 +105,7 @@
     "Netherlands": "オランダ",
     "France": "フランス",
     "Switzerland": "スイス",
+    "Germany": "ドイツ",
     "米国": "米国",
     "日本": "日本",
     "チュアラティン": "チュアラティン",
@@ -231,6 +232,10 @@
       ,"air-liquide": "百万ユーロ"
       ,"analog-devices": "百万ドル"
       ,"abb": "百万ドル"
+      ,"globalfoundries": "百万ドル"
+      ,"micron": "百万ドル"
+      ,"arista": "百万ドル"
+      ,"bosch": "百万ユーロ"
     },
     "accountingBasisByCompany": {
       "nvidia": "米国会計基準",
@@ -249,6 +254,10 @@
       ,"air-liquide": "国際財務報告基準（IFRS・連結）"
       ,"analog-devices": "米国会計基準"
       ,"abb": "米国会計基準"
+      ,"globalfoundries": "国際財務報告基準（IFRS）"
+      ,"micron": "米国会計基準"
+      ,"arista": "米国会計基準"
+      ,"bosch": "EU採択の国際財務報告基準（IFRS・連結）"
     },
     "periodLabels": {
       "FY2024": "2024年度",
@@ -292,6 +301,10 @@
       ,"air-liquide": 2
       ,"analog-devices": 2
       ,"abb": 2
+      ,"globalfoundries": 2
+      ,"micron": 3
+      ,"arista": 2
+      ,"bosch": 2
     },
     "forbiddenDetailedEnglishLabels": ["USD · million", "JPY · million", "US GAAP", "Japanese GAAP"],
     "maxDigitFixtures": {
@@ -348,6 +361,18 @@
       "air-liquide": {"displayValue": "19.6%", "periodLabel": "FY2025", "accountingBasis": "IFRS consolidated", "sourceId": "air-liquide-fy2025-performance-report"},
       "analog-devices": {"displayValue": "40.1%", "periodLabel": "Q3 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-analog-devices-2026-08-19-q3-fy2026"},
       "abb": {"displayValue": "16.7%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "financial-info-abb-2026-07-16-q2"}
+    }
+  },
+  "stage4FinancialRow": {
+    "selectionId": "first-batch-stage-4",
+    "metricId": "operatingMargin",
+    "compatibility": "blocked",
+    "blockedMetricId": "revenueGrowth",
+    "companies": {
+      "globalfoundries": {"displayValue": "9.7%", "periodLabel": "Q2 2026", "accountingBasis": "IFRS", "sourceId": "earnings-globalfoundries-2026-08-04-q2-2026"},
+      "micron": {"displayValue": "80.4%", "periodLabel": "Q3 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-micron-2026-06-24-q3-fy2026"},
+      "arista": {"displayValue": "45.4%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-arista-2026-08-04-q2-2026"},
+      "bosch": {"displayValue": "1.5%", "periodLabel": "FY2025", "accountingBasis": "IFRS as adopted by the EU, consolidated", "sourceId": "bosch-annual-report-2025"}
     }
   },
   "summaryMarkerCounts": {

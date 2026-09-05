@@ -44,6 +44,9 @@ import {
   firstBatchStage3ClaimDisplay,
   firstBatchStage3Companies,
   firstBatchStage3CompanyIds,
+  firstBatchStage4ClaimDisplay,
+  firstBatchStage4Companies,
+  firstBatchStage4CompanyIds,
 } from '../src/lib/company-compare-first-batch.ts';
 import { assessNormalizedFinancialCompatibility } from '../src/lib/financial-comparison-contract.ts';
 import { formatCompanyCompareEvidencePageLead } from '../src/scripts/company-compare-evidence-ui.ts';
@@ -84,7 +87,7 @@ const onDemandSizeFixture = await readJson('./fixtures/company-compare-on-demand
 
 assert.equal(
   formatCompanyCompareEvidencePageLead(onDemandSizeFixture.companyIds.length),
-  '対応16社から2～4社を選び、各社の役割、製品・技術、企業間関係、財務の比較条件を根拠付きで確認します。',
+  '対応20社から2～4社を選び、各社の役割、製品・技術、企業間関係、財務の比較条件を根拠付きで確認します。',
   'Evidence page lead derives the supported Company count from the current manifest contract',
 );
 assert.match(formatCompanyCompareEvidencePageLead(19), /^対応19社から2～4社を選び/, 'Evidence page lead follows a changed manifest count');
@@ -126,7 +129,7 @@ const resolveOnDemandSizeContract = contract => {
     'maximumCompanyAssetGzipBytes',
   ]) assert.ok(Number.isSafeInteger(contract[field]) && contract[field] > 0, `${field} must be a positive integer`);
   assert.equal(contract.legacyGrowthLimitRatio, 1.05, 'legacy growth ratio remains 1.05');
-  assert.deepEqual(contract.companyIds, ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb'], 'size contract covers exactly the supported sixteen');
+  assert.deepEqual(contract.companyIds, ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb', 'globalfoundries', 'micron', 'arista', 'bosch'], 'size contract covers exactly the supported twenty');
   assert.equal(
     Math.floor(contract.legacyMonolithRawBytes * contract.legacyGrowthLimitRatio),
     contract.maximumColdLoadRawBytes,
@@ -180,6 +183,7 @@ const compareFinancialHistory = [
   ...await readJson('../src/data/financial-history-v04-batch20.json'),
   ...await readJson('../src/data/financial-history-v04-batch26.json'),
   ...await readJson('../src/data/financial-history-v04-batch34.json'),
+  ...await readJson('../src/data/financial-history-v04-batch35.json'),
 ].map(record => {
   const override = compareCashFlowOverrideById.get(record.id);
   return override ? { ...record, ...override, metrics: { ...record.metrics, ...override.metrics } } : record;
@@ -268,6 +272,32 @@ for (const reference of stage3OperatingMarginProjection.companyMetricRefs) {
     sourceId: record.sourceId,
   }, expected, `${reference.companyId}: Stage 3 Financial display derives from canonical history`);
 }
+const stage4OperatingMarginProjection = assessNormalizedFinancialCompatibility(
+  displayFixture.stage4FinancialRow.metricId,
+  [...firstBatchStage4CompanyIds],
+  compareFinancialHistory,
+  compareFinancialMetricDefinitions,
+);
+const stage4RevenueGrowthProjection = assessNormalizedFinancialCompatibility(
+  displayFixture.stage4FinancialRow.blockedMetricId,
+  [...firstBatchStage4CompanyIds],
+  compareFinancialHistory,
+  compareFinancialMetricDefinitions,
+);
+assert.equal(stage4OperatingMarginProjection.compatibility.code, displayFixture.stage4FinancialRow.compatibility, 'Stage 4 operating margin keeps the common mixed-basis and mixed-period comparison-blocked contract');
+assert.equal(stage4RevenueGrowthProjection.compatibility.code, 'blocked', 'Stage 4 unavailable revenue growth remains outside the primary row');
+for (const reference of stage4OperatingMarginProjection.companyMetricRefs) {
+  const expected = displayFixture.stage4FinancialRow.companies[reference.companyId];
+  const record = compareFinancialHistory.find(item => item.id === reference.financialRecordId);
+  assert.ok(expected && record, `${reference.companyId}: Stage 4 canonical primary Financial reference resolves`);
+  const metric = record.metrics[displayFixture.stage4FinancialRow.metricId];
+  assert.deepEqual({
+    displayValue: `${Number(metric.value).toLocaleString('ja-JP', { maximumFractionDigits: 1 })}%`,
+    periodLabel: record.periodLabel,
+    accountingBasis: record.accountingBasis,
+    sourceId: record.sourceId,
+  }, expected, `${reference.companyId}: Stage 4 Financial display derives from canonical history`);
+}
 const comparePage = await readFile(new URL('../src/pages/compare.astro', import.meta.url), 'utf8');
 const fragmentPage = await readFile(new URL('../src/pages/evidence-fragments/company-compare-evidence-v01.astro', import.meta.url), 'utf8');
 const component = await readFile(new URL('../src/components/CompanyCompareEvidence.astro', import.meta.url), 'utf8');
@@ -309,7 +339,7 @@ for (const binding of relationBindings) {
 }
 const sourceIds = new Set(sources.map(source => source.id));
 const sourceById = new Map(sources.map(source => [source.id, source]));
-const companyIds = new Set(['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb', 'asml']);
+const companyIds = new Set(['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb', 'globalfoundries', 'micron', 'arista', 'bosch', 'asml']);
 
 const expectedProductPortfolioSummaries = {
   nvidia: {
@@ -350,12 +380,12 @@ const expectedProductPortfolioSummaries = {
   ...Object.fromEntries(firstBatchCompanies.map(record => [record.companyId, record.productPortfolio])),
 };
 const companyCompareProductPortfolioSummaries = getCompanyCompareProductPortfolioSummaries();
-assert.deepEqual([...companyCompareProductPortfolioCompanyIds], Object.keys(expectedProductPortfolioSummaries), 'Product portfolio copy contract covers the exact supported sixteen companies');
-assert.deepEqual(companyCompareProductPortfolioSummaries, expectedProductPortfolioSummaries, 'all sixteen Product portfolio summaries are fixture-locked');
+assert.deepEqual([...companyCompareProductPortfolioCompanyIds], Object.keys(expectedProductPortfolioSummaries), 'Product portfolio copy contract covers the exact supported twenty companies');
+assert.deepEqual(companyCompareProductPortfolioSummaries, expectedProductPortfolioSummaries, 'all twenty Product portfolio summaries are fixture-locked');
 const portfolioGroundingIds = new Set(claimById.keys());
 assert.doesNotThrow(
   () => validateCompanyCompareProductPortfolioSummaries(expectedProductPortfolioSummaries, portfolioGroundingIds),
-  'all sixteen Product portfolio summaries resolve to an existing Company Claim',
+  'all twenty Product portfolio summaries resolve to an existing Company Claim',
 );
 for (const companyId of companyCompareProductPortfolioCompanyIds) {
   assert.deepEqual(
@@ -422,6 +452,7 @@ assert.deepEqual(projectedClaimIds, displayFixture.claimDisplayIds, 'display cop
 const firstBatchProjectedClaimIds = [...new Set(firstBatchStage1Companies.flatMap(record => Object.values(record.dimensions).flat()))].sort();
 const firstBatchStage2ProjectedClaimIds = [...new Set(firstBatchStage2Companies.flatMap(record => Object.values(record.dimensions).flat()))].sort();
 const firstBatchStage3ProjectedClaimIds = [...new Set(firstBatchStage3Companies.flatMap(record => Object.values(record.dimensions).flat()))].sort();
+const firstBatchStage4ProjectedClaimIds = [...new Set(firstBatchStage4Companies.flatMap(record => Object.values(record.dimensions).flat()))].sort();
 assert.equal(firstBatchStage1Companies.length, 3, 'Stage 1 contains exactly three display-only Companies');
 assert.ok(firstBatchStage1Companies.every(record => record.readinessClass === 'DISPLAY_COPY_ONLY'), 'Stage 1 changes display projection only');
 assert.ok(firstBatchStage1Companies.every(record => firstBatchStage1DimensionIds.every(id => record.dimensions[id].length > 0)), 'all three Companies have six minimum-usable Evidence dimensions');
@@ -438,7 +469,11 @@ assert.equal(firstBatchStage3Companies.length, 4, 'Stage 3 contains exactly four
 assert.ok(firstBatchStage3Companies.every(record => record.readinessClass === 'DISPLAY_COPY_ONLY'), 'Stage 3 changes display projection only');
 assert.ok(firstBatchStage3Companies.every(record => firstBatchStage1DimensionIds.every(id => record.dimensions[id].length > 0)), 'all four Stage 3 Companies have six minimum-usable Evidence dimensions');
 assert.deepEqual(Object.keys(firstBatchStage3ClaimDisplay).sort(), firstBatchStage3ProjectedClaimIds, 'all Stage 3 projected Claims have reviewed Japanese display copy');
-assert.deepEqual([...firstBatchCompanyIds], ['amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb'], 'First batch progress is exactly 11 / 15');
+assert.equal(firstBatchStage4Companies.length, 4, 'Stage 4 contains exactly four display-only Companies');
+assert.ok(firstBatchStage4Companies.every(record => record.readinessClass === 'DISPLAY_COPY_ONLY'), 'Stage 4 changes display projection only');
+assert.ok(firstBatchStage4Companies.every(record => firstBatchStage1DimensionIds.every(id => record.dimensions[id].length > 0)), 'all four Stage 4 Companies have six minimum-usable Evidence dimensions');
+assert.deepEqual(Object.keys(firstBatchStage4ClaimDisplay).sort(), firstBatchStage4ProjectedClaimIds, 'all Stage 4 projected Claims have reviewed Japanese display copy');
+assert.deepEqual([...firstBatchCompanyIds], ['amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb', 'globalfoundries', 'micron', 'arista', 'bosch'], 'First batch progress is exactly 15 / 15');
 const projectedClaimTypeCounts = Object.fromEntries([...projectedClaimIds.reduce((counts, claimId) => {
   const claimType = claimById.get(claimId)?.claimType;
   counts.set(claimType, (counts.get(claimType) ?? 0) + 1);
@@ -553,10 +588,12 @@ assert.equal(compareFinancialAccountingBasisLabels['Japanese GAAP'], '日本会�
 assert.equal(compareFinancialAccountingBasisLabels['TIFRS consolidated'], '台湾IFRS（連結）');
 assert.equal(compareFinancialAccountingBasisLabels.IFRS, '国際財務報告基準（IFRS）');
 assert.equal(compareFinancialAccountingBasisLabels['IFRS consolidated'], '国際財務報告基準（IFRS・連結）');
+assert.equal(compareFinancialAccountingBasisLabels['IFRS as adopted by the EU, consolidated'], 'EU採択の国際財務報告基準（IFRS・連結）');
 assert.equal(localizeCompareLocation('Ireland'), 'アイルランド');
 assert.equal(localizeCompareLocation('Netherlands'), 'オランダ');
 assert.equal(localizeCompareLocation('France'), 'フランス');
 assert.equal(localizeCompareLocation('Switzerland'), 'スイス');
+assert.equal(localizeCompareLocation('Germany'), 'ドイツ');
 assert.equal(localizeCompareLocation('アイルランド'), 'アイルランド');
 assert.equal(
   resolveCompareFinancialTablePresentation([{ ...financialGuardRecord, currency: 'JPY', accountingBasis: 'IFRS' }]).accountingBasisLabel,
@@ -574,6 +611,18 @@ assert.deepEqual(
     periodLabels: ['2024年度', '2025年度'],
   },
   'canonical Air Liquide Financial presentation resolves without a Company-specific branch',
+);
+assert.deepEqual(
+  resolveCompareFinancialTablePresentation([
+    { periodLabel: 'FY2024', currency: 'EUR', unit: 'million', accountingBasis: 'IFRS as adopted by the EU, consolidated' },
+    { periodLabel: 'FY2025', currency: 'EUR', unit: 'million', accountingBasis: 'IFRS as adopted by the EU, consolidated' },
+  ]),
+  {
+    amountUnitLabel: '百万ユーロ',
+    accountingBasisLabel: 'EU採択の国際財務報告基準（IFRS・連結）',
+    periodLabels: ['2024年度', '2025年度'],
+  },
+  'canonical Bosch Financial presentation resolves without a Company-specific branch',
 );
 assert.throws(
   () => resolveCompareFinancialTablePresentation([{ ...financialGuardRecord, accountingBasis: 'Unsupported GAAP' }]),
@@ -909,6 +958,34 @@ await Promise.all(firstBatchStage3CompanyIds.map(companyId => stage3AssetLoader.
 assert.deepEqual(firstBatchStage3CompanyIds.map(companyId => stage3AssetLoader.requestCount(companyId)), [1, 1, 1, 1], 'Stage 3 detail changes and reselection do not refetch Company assets');
 assert.equal(stage3AssetRequests.length, 4, 'Stage 3 four-company view makes exactly four Company asset requests');
 
+const stage4AssetRequests = [];
+const stage4AssetManifest = {
+  schemaVersion: companyCompareAssetSchemaVersion,
+  companies: firstBatchStage4CompanyIds.map(companyId => ({
+    companyId,
+    assetPath: `/evidence-fragments/company-compare-evidence-v01/${companyId}/`,
+    schemaVersion: companyCompareAssetSchemaVersion,
+  })),
+};
+const stage4AssetLoader = createCompanyCompareAssetLoader({
+  manifest: stage4AssetManifest,
+  currentUrl: 'https://example.test/compare/?view=evidence',
+  fetcher: async url => {
+    stage4AssetRequests.push(url);
+    const companyId = firstBatchStage4CompanyIds.find(id => url.includes(`/${id}/`));
+    return { ok: true, status: 200, text: async () => JSON.stringify({ companyId }) };
+  },
+  parseAsset: (body, record) => {
+    const parsed = JSON.parse(body);
+    assert.equal(parsed.companyId, record.companyId);
+    return parsed;
+  },
+});
+await Promise.all(firstBatchStage4CompanyIds.map(companyId => stage4AssetLoader.load(companyId)));
+await Promise.all(firstBatchStage4CompanyIds.map(companyId => stage4AssetLoader.load(companyId)));
+assert.deepEqual(firstBatchStage4CompanyIds.map(companyId => stage4AssetLoader.requestCount(companyId)), [1, 1, 1, 1], 'Stage 4 detail changes and reselection do not refetch Company assets');
+assert.equal(stage4AssetRequests.length, 4, 'Stage 4 four-company view makes exactly four Company asset requests');
+
 for (const status of [404, 500]) {
   const failedLoader = createCompanyCompareAssetLoader({
     manifest: assetManifest,
@@ -1002,10 +1079,11 @@ assert.equal(serializedParams.get('detail'), 'expanded');
 assert.equal(serializedParams.get('section'), 'technology-moat');
 
 assert.deepEqual([...evidenceComparePilotCompanyIds], ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron']);
-assert.deepEqual([...evidenceCompareSupportedCompanyIds], ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb']);
+assert.deepEqual([...evidenceCompareSupportedCompanyIds], ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb', 'globalfoundries', 'micron', 'arista', 'bosch']);
 assert.deepEqual([...firstBatchStage1CompanyIds], ['amd', 'vertiv', 'tsmc']);
 assert.deepEqual([...firstBatchStage2CompanyIds], ['kioxia', 'amphenol', 'aptiv', 'advantest']);
 assert.deepEqual([...firstBatchStage3CompanyIds], ['asm-international', 'air-liquide', 'analog-devices', 'abb']);
+assert.deepEqual([...firstBatchStage4CompanyIds], ['globalfoundries', 'micron', 'arista', 'bosch']);
 assert.deepEqual(evidenceCompareStableSections, [...fixture.dimensionOrder, 'evidence-trace']);
 assert.equal(financialPresentationForSelection(['nvidia', 'broadcom']).primary[0].compatibility.code, 'caution');
 assert.equal(financialPresentationForSelection(['nvidia', 'broadcom']).dataQuality[0].compatibility.code, 'blocked');
@@ -1401,8 +1479,8 @@ if (process.argv.includes('--dist')) {
   ]) {
     assert.ok(!controllerAsset.includes(copy), 'new Product portfolio copy remains inside Company assets, not the shared controller');
   }
-  assert.deepEqual(Object.keys(assetHtmlById), supportedIds, 'built Company assets cover exactly the supported sixteen');
-  assert.equal((shellHtml.match(/"companyId":/g) ?? []).length, 16, 'lightweight manifest contains exactly sixteen Company entries');
+  assert.deepEqual(Object.keys(assetHtmlById), supportedIds, 'built Company assets cover exactly the supported twenty');
+  assert.equal((shellHtml.match(/"companyId":/g) ?? []).length, 20, 'lightweight manifest contains exactly twenty Company entries');
   for (const companyId of supportedIds) {
     const assetHtml = assetHtmlById[companyId];
     assert.equal((assetHtml.match(/data-company-compare-asset/g) ?? []).length, 1, `${companyId}: one asset envelope`);
@@ -1423,7 +1501,7 @@ if (process.argv.includes('--dist')) {
     return result;
   };
   const supportedCombinations = combinations(supportedIds, 4);
-  assert.equal(supportedCombinations.length, 2_516, 'all 16 + 120 + 560 + 1,820 supported Company combinations are inspected');
+  assert.equal(supportedCombinations.length, 6_195, 'all 20 + 190 + 1,140 + 4,845 supported Company combinations are inspected');
   let maximumCombination = { ids: [], rawBytes: 0, gzipBytes: 0 };
   for (const selectedIds of supportedCombinations) {
     const rawBytes = Buffer.byteLength(shellHtml) + selectedIds.reduce((sum, id) => sum + Buffer.byteLength(assetHtmlById[id]), 0);
@@ -1529,6 +1607,8 @@ if (process.argv.includes('--dist')) {
     aptiv: { summary: 8, expanded: 10 }, advantest: { summary: 8, expanded: 10 },
     'asm-international': { summary: 11, expanded: 13 }, 'air-liquide': { summary: 8, expanded: 10 },
     'analog-devices': { summary: 8, expanded: 10 }, abb: { summary: 9, expanded: 11 },
+    globalfoundries: { summary: 8, expanded: 10 }, micron: { summary: 8, expanded: 10 },
+    arista: { summary: 9, expanded: 11 }, bosch: { summary: 8, expanded: 10 },
   };
   for (const record of firstBatchCompanies) {
     const assetHtml = assetHtmlById[record.companyId];
@@ -1594,6 +1674,22 @@ if (process.argv.includes('--dist')) {
     assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: Stage 3 primary Financial period and basis are canonical`);
     assert.ok(financialTemplate.includes('一次資料を開く'), `${companyId}: Stage 3 primary Financial Source remains linked`);
   }
+  const stage4FinancialHtml = firstBatchStage4CompanyIds.map(companyId => {
+    const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);
+    assert.ok(match, `${companyId}: Stage 4 detailed Financial template is present`);
+    return match[1];
+  }).join('\n');
+  assert.equal((stage4FinancialHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 4, 'all four Stage 4 Companies expose canonical expanded Financial history');
+  assert.match(stage4FinancialHtml, /会計基準：EU採択の国際財務報告基準（IFRS・連結）/, 'Bosch uses the reviewed EU-adopted IFRS presentation label');
+  assert.match(stage4FinancialHtml, /売上高<br>（百万ユーロ）/, 'Bosch uses the shared EUR:million presentation label');
+  for (const companyId of firstBatchStage4CompanyIds) {
+    const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
+    const expected = displayFixture.stage4FinancialRow.companies[companyId];
+    assert.match(financialTemplate, /data-has-content="true"/, `${companyId}: Stage 4 primary Financial slot is available`);
+    assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: Stage 4 primary Financial value is canonical`);
+    assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: Stage 4 primary Financial period and basis are canonical`);
+    assert.ok(financialTemplate.includes('一次資料を開く'), `${companyId}: Stage 4 primary Financial Source remains linked`);
+  }
   const expandedFinancialHtml = pilotIds.map(companyId => {
     const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);
     assert.ok(match, `${companyId}: detailed Financial template is present`);
@@ -1633,7 +1729,7 @@ if (process.argv.includes('--dist')) {
   assert.equal((fragmentHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 5, 'NVIDIA, Broadcom, and Set B use the same detailed Financial table');
   assert.match(fragmentHtml, /class="num">2,431,568<\/td>/, 'maximum Set B value is rendered as an unwrapped numeric cell');
   assert.match(fragmentHtml, /class="missing">未収録<\/td>/, 'missing status is rendered outside the numeric class');
-  console.log(`Company Compare on-demand artifacts OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(shellHtml)} B shell / 2516 combinations / max ${maximumCombination.ids.join('+')} ${maximumCombination.rawBytes} B raw ${maximumCombination.gzipBytes} B gzip / ${renderedMarkerButtons} Pilot markers / ${claimMarkers + relationMarkers} Pilot unique grounding entries`);
+  console.log(`Company Compare on-demand artifacts OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(shellHtml)} B shell / 6195 combinations / max ${maximumCombination.ids.join('+')} ${maximumCombination.rawBytes} B raw ${maximumCombination.gzipBytes} B gzip / ${renderedMarkerButtons} Pilot markers / ${claimMarkers + relationMarkers} Pilot unique grounding entries`);
 }
 
 console.log(`Company Compare Evidence UI tests OK: Set A/B / routing / URL state / 57 rendered markers / ${claimMarkerCount + relationMarkerCount} unique grounding entries / Financial 0/2/2 / semantic snapshot`);
