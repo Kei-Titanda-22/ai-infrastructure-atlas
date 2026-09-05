@@ -202,7 +202,7 @@
 }
 
 .evidence-matrix tr > :last-child {
-  border-right: 0;
+  border-right: 1px solid var(--border);
 }
 
 .evidence-matrix thead th {
@@ -244,6 +244,8 @@
 
 .evidence-matrix thead th > a {
   display: block;
+  min-width: 0;
+  max-width: 100%;
   color: var(--text);
   font-size: 18px;
   font-weight: 700;
@@ -289,19 +291,28 @@
 .compare-company-name {
   display: flex;
   min-width: 0;
+  max-width: 100%;
   flex-direction: column;
   align-items: flex-start;
   line-height: 1.35;
 }
 
 .compare-company-name-primary,
-.compare-company-name-secondary,
 .compare-company-name > small,
 .evidence-company-context > strong,
 .evidence-company-context > strong > small {
   display: block;
   max-width: 100%;
   white-space: nowrap;
+}
+
+.compare-company-name-primary,
+.compare-company-name-secondary {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  white-space: normal;
 }
 
 .compare-company-name-secondary,

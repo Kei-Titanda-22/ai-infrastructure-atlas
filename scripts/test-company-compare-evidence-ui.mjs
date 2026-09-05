@@ -1364,11 +1364,25 @@ assert.match(styles, /\.evidence-major-section > th,[\s\S]*border-top: 2px solid
 assert.match(styles, /\.evidence-company-context \{[\s\S]*display: none/, 'desktop and tablet cells rely on the sticky Company header');
 assert.match(styles, /@media \(max-width: 600px\)[\s\S]*\.evidence-company-context \{[\s\S]*display: flex/, 'mobile cells retain the explicit Company identity strip');
 assert.match(styles, /\.evidence-company-context > strong/, 'identity is not color-only');
-assert.match(styles, /\.compare-company-name-primary,[\s\S]*white-space: nowrap/, 'Company name lines do not break mid-name');
+assert.match(styles, /\.evidence-matrix thead th > a \{[\s\S]*min-width: 0;[\s\S]*max-width: 100%/, 'matrix Company links may shrink within their shared column');
+assert.match(styles, /\.compare-company-name \{[\s\S]*min-width: 0;[\s\S]*max-width: 100%/, 'the Company-name stack cannot widen a matrix column');
+assert.match(styles, /\.compare-company-name-primary,[\s\S]*overflow-wrap: anywhere;[\s\S]*white-space: normal/, 'primary and secondary Company names wrap within their shared column when required');
 assert.match(styles, /\.company-name-link \.compare-company-name-secondary,[\s\S]*color: inherit/, 'the Japanese second line inherits every anchor color state');
 assert.equal(displayFixture.companyIdentityLink.className, 'company-name-link');
 assert.equal(displayFixture.companyIdentityLink.anchorsPerIdentity, 1);
 assert.equal(displayFixture.companyIdentityLink.finalLocationsPerCompany, 11);
+assert.deepEqual(
+  displayFixture.companyIdentityLink.longNameRegressionCompanyIds,
+  ['besi', 'kioxia', 'amd', 'kokusai-electric', 'screen-holdings', 'schneider-electric', 'digital-realty', 'applied-materials', 'asm-international'],
+  'the reviewed long Company-name regression corpus is fixture-locked',
+);
+assert.ok(
+  displayFixture.companyIdentityLink.longNameRegressionCompanyIds.every(companyId => evidenceCompareSupportedCompanyIds.includes(companyId)),
+  'every long-name regression Company uses the shared supported-Company identity path',
+);
+assert.deepEqual(displayFixture.companyIdentityLink.responsiveViewports, [1024, 390, 360], 'long-name regression covers desktop and mobile viewports');
+assert.equal(displayFixture.companyIdentityLink.finalColumnBorder, '1px solid var(--border)', 'the final comparison column has a visible neutral right boundary');
+assert.match(styles, /\.evidence-matrix tr > :last-child \{[\s\S]*border-right: 1px solid var\(--border\)/, 'every final matrix cell retains the shared right border');
 assert.match(styles, /data-summary="hide"/, 'summary hides non-representative presentation entries only');
 assert.match(styles, /font-size: 16px/, 'mobile primary text has a 16px floor');
 assert.match(styles, /font-size: 14px/, 'mobile metadata has a 14px floor');
