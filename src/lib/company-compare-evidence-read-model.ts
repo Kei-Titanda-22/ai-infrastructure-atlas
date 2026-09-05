@@ -17,10 +17,19 @@ import {
   type CompareDisplayNameParts,
   type CompareProductDisplayDescription,
 } from './company-compare-display.ts';
+import {
+  firstBatchClaimDisplay,
+  firstBatchCompanies,
+  firstBatchCompanyIds,
+  firstBatchProductEntries,
+  firstBatchProductIdsByClaimId,
+  firstBatchStages,
+} from './company-compare-first-batch.ts';
 import { companyEvidence, type CompanyEvidenceBinding, type CompanyEvidenceClaim } from './company-evidence.ts';
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
 import { deriveRelationVerificationPresentation, type RelationVerificationPresentation } from './company-compare-evidence-ui.ts';
-import { financialHistory } from './financial-history.ts';
+import { assessFinancialProjection } from './financial-comparison-contract.ts';
+import { financialHistory, financialMetricDefinitions } from './financial-history.ts';
 import {
   relationEvidenceBindingById,
   relationById,
@@ -82,11 +91,12 @@ export interface CompareEvidenceRelationEntry {
 const claimById = new Map(companyEvidence.claims.map(claim => [claim.id, claim]));
 const claimBindingById = new Map(companyEvidence.evidence.map(binding => [binding.id, binding]));
 const financialRecordById = new Map(financialHistory.map(record => [record.id, record]));
+const firstBatchProductEntryById = new Map(firstBatchProductEntries.map(record => [record.canonicalId, record]));
 
 const productLabelById = new Map(productRegistry.records.map(record => [
   record.id,
   compareProductDisplayNameOverrides[record.id] || record.displayNames.ja || record.canonicalName,
-]));
+]).concat(firstBatchProductEntries.map(record => [record.canonicalId, record.label])));
 const technologyLabelById = new Map(technologyRegistry.records.map(record => [
   record.id,
   record.displayNames.ja || record.canonicalName,
@@ -112,6 +122,21 @@ const resolveRequiredSource = (sourceId: string) => {
   return source;
 };
 
+const resolveDisplayClaim = (claimId: string) => {
+  const stageCopy = firstBatchClaimDisplay[claimId];
+  if (!stageCopy) return resolveCompareClaimDisplay(claimId);
+  return { ...stageCopy, groundingIds: [claimId] };
+};
+
+const resolveProductDescription = (productId: string) => {
+  const stageEntry = firstBatchProductEntryById.get(productId);
+  if (!stageEntry) return resolveCompareProductDisplayDescription(productId);
+  return { description: stageEntry.description, groundingIds: [stageEntry.groundingId] };
+};
+
+const productIdsForClaim = (claimId: string) =>
+  firstBatchProductIdsByClaimId[claimId] ?? compareProductIdsByClaimId[claimId] ?? [];
+
 const resolveClaimEntry = (claimId: string, companyId: string): CompareEvidenceClaimEntry => {
   const claim = claimById.get(claimId);
   if (!claim) throw new Error(`Company Compare Evidence UI cannot resolve Claim: ${claimId}`);
@@ -131,7 +156,7 @@ const resolveClaimEntry = (claimId: string, companyId: string): CompareEvidenceC
     const source = resolveRequiredSource(binding.sourceId);
     return [source.id, source] as const;
   })).values()];
-  return { claim, bindings, sources, display: resolveCompareClaimDisplay(claim.id) };
+  return { claim, bindings, sources, display: resolveDisplayClaim(claim.id) };
 };
 
 const labelIds = (ids: readonly string[], labels: ReadonlyMap<string, string>, label: string) => ids.map(id => {
@@ -226,7 +251,7 @@ const resolveRelationEntry = (
 const productDisplayItem = (canonicalId: string, groundingIds: readonly string[]): CompareCanonicalDisplayItem => {
   const label = productLabelById.get(canonicalId);
   if (!label) throw new Error(`Company Compare display cannot resolve Product: ${canonicalId}`);
-  const description = resolveCompareProductDisplayDescription(canonicalId);
+  const description = resolveProductDescription(canonicalId);
   return {
     canonicalId,
     label,
@@ -317,25 +342,73 @@ const buildExpandedFinancial = (companyId: string) => {
   };
 };
 
+const buildDisplayOnlyProjectionCompany = (record: (typeof firstBatchCompanies)[number]) => {
+  const projectedClaimIds = [...new Set(Object.values(record.dimensions).flat())];
+  const projectedClaims = projectedClaimIds.map(claimId => {
+    const claim = claimById.get(claimId);
+    if (!claim) throw new Error(`Company Compare first-batch Claim does not resolve: ${claimId}`);
+    if (claim.companyId !== record.companyId) {
+      throw new Error(`Company Compare first-batch Claim company mismatch: ${record.companyId}:${claimId}`);
+    }
+    if (!claim.evidenceIds.length) throw new Error(`Company Compare first-batch Claim has no Evidence: ${claimId}`);
+    return claim;
+  });
+  const bindings = projectedClaims.flatMap(claim => claim.evidenceIds.map(evidenceId => {
+    const binding = claimBindingById.get(evidenceId);
+    if (!binding || binding.claimId !== claim.id) {
+      throw new Error(`Company Compare first-batch Binding does not resolve: ${claim.id}:${evidenceId}`);
+    }
+    resolveRequiredSource(binding.sourceId);
+    return binding;
+  }));
+  const dimensions = pilotCompareEvidenceProjection.policy.dimensionOrder.map(dimensionId => ({
+    dimensionId,
+    initialClaimIds: dimensionId in record.dimensions
+      ? [...record.dimensions[dimensionId as keyof typeof record.dimensions]]
+      : [],
+    initialRelationIds: [],
+    projectionStatus: 'present',
+    missingState: 'not-missing',
+    missingReason: null,
+    coverageContext: [],
+    supplementalP2: false,
+  }));
+  return {
+    companyId: record.companyId,
+    dimensions,
+    evidenceTrace: {
+      companyEvidenceBindingIds: [...new Set(bindings.map(binding => binding.id))].sort(),
+      companyEvidenceSourceIds: [...new Set(bindings.map(binding => binding.sourceId))].sort(),
+      relationIds: [],
+      relationEvidenceBindingIds: [],
+      relationSourceIds: [],
+    },
+  };
+};
+
 export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidenceIdentity[]) {
   const pilotCompanyIds = [...new Set(pilotCompareEvidenceProjection.sets.flatMap(setRecord => setRecord.orderedCompanyIds))];
-  const pilotCompanyIdSet = new Set(pilotCompanyIds);
+  const supportedCompanyIds = [...pilotCompanyIds, ...firstBatchCompanyIds];
+  const supportedCompanyIdSet = new Set(supportedCompanyIds);
   const identityById = new Map(identities.map(identity => [identity.id, {
     ...identity,
     displayName: companyCompareDisplayName(identity),
     displayNameParts: companyCompareDisplayNameParts(identity),
-    displayCountry: pilotCompanyIdSet.has(identity.id) ? localizeCompareLocation(identity.country) : identity.country,
+    displayCountry: supportedCompanyIdSet.has(identity.id) ? localizeCompareLocation(identity.country) : identity.country,
   }]));
-  for (const companyId of pilotCompanyIds) {
+  for (const companyId of supportedCompanyIds) {
     if (!identityById.has(companyId)) {
       throw new Error(`Company Compare Evidence UI cannot resolve Company: ${companyId}`);
     }
   }
 
-  const projectedCompanies = new Map(pilotCompareEvidenceProjection.sets.flatMap(setRecord =>
-    setRecord.companies.map(company => [company.companyId, company] as const),
-  ));
-  const companies = pilotCompanyIds.map(companyId => {
+  const projectedCompanies = new Map<string, any>([
+    ...pilotCompareEvidenceProjection.sets.flatMap(setRecord =>
+      setRecord.companies.map(company => [company.companyId, company] as const),
+    ),
+    ...firstBatchCompanies.map(record => [record.companyId, buildDisplayOnlyProjectionCompany(record)] as const),
+  ]);
+  const companies = supportedCompanyIds.map(companyId => {
     const projected = projectedCompanies.get(companyId);
     if (!projected) throw new Error(`Company Compare Evidence UI cannot resolve Projection company: ${companyId}`);
     const expandedFinancial = buildExpandedFinancial(companyId);
@@ -348,7 +421,7 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
           .filter(entry => entry.relation.relationType === 'PRODUCES')
           .map(entry => productDisplayItem(entry.relation.objectId, [entry.relation.relationId]));
         const claimProducts = claims.flatMap(entry =>
-          (compareProductIdsByClaimId[entry.claim.id] ?? [])
+          productIdsForClaim(entry.claim.id)
             .map(productId => productDisplayItem(productId, [entry.claim.id])),
         );
         const displayProducts = dedupeCompareCanonicalItems([...relationProducts, ...claimProducts]);
@@ -377,33 +450,75 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
       })),
     },
   }));
+  const firstBatchFinancialSelections = firstBatchStages.flatMap(stage => stage.setId !== 'first-batch-stage-1'
+    ? [stage, ...stage.orderedCompanyIds.map(companyId => ({
+        setId: `${stage.setId}-${companyId}`,
+        orderedCompanyIds: [companyId],
+      }))]
+    : [stage]);
+  const firstBatchFinancialProjection = assessFinancialProjection(
+    firstBatchFinancialSelections,
+    ['operatingMargin', 'revenueGrowth'],
+    financialHistory,
+    [...financialMetricDefinitions.values()],
+  );
+  const presentationFinancialSets = [
+    ...sets,
+    ...firstBatchFinancialProjection.map(setRecord => ({
+      setId: setRecord.setId,
+      orderedCompanyIds: [...firstBatchFinancialSelections.find(selection => selection.setId === setRecord.setId)!.orderedCompanyIds],
+      financial: {
+        metricStates: setRecord.metricStates.map(metricState => ({
+          ...metricState,
+          companyMetricRefs: metricState.companyMetricRefs.map(formatFinancialReference),
+        })),
+      },
+    })),
+  ];
 
-  const usedSourceIds = new Set<string>();
-  for (const company of companies) {
-    for (const dimension of company.dimensions) {
-      dimension.claims.forEach(entry => entry.bindings.forEach(binding => usedSourceIds.add(binding.sourceId)));
-      dimension.relations.forEach(entry => entry.bindings.forEach(binding => usedSourceIds.add(binding.sourceId)));
+  const collectUsedSourceIds = (selectedCompanies: typeof companies) => {
+    const sourceIds = new Set<string>();
+    for (const company of selectedCompanies) {
+      for (const dimension of company.dimensions) {
+        dimension.claims.forEach(entry => entry.bindings.forEach(binding => sourceIds.add(binding.sourceId)));
+        dimension.relations.forEach(entry => entry.bindings.forEach(binding => sourceIds.add(binding.sourceId)));
+      }
     }
-  }
+    return sourceIds;
+  };
+  const pilotUsedSourceIds = collectUsedSourceIds(companies.filter(company => pilotCompanyIds.includes(company.identity.id)));
+  const firstBatchSourceGroups = firstBatchStages.map(stage => collectUsedSourceIds(
+    companies.filter(company => stage.orderedCompanyIds.includes(company.identity.id as never)),
+  ));
+  const orderedSourceIds = [
+    ...[...pilotUsedSourceIds].sort(),
+    ...firstBatchSourceGroups.flatMap((group, index) => [...group]
+      .filter(sourceId => !pilotUsedSourceIds.has(sourceId)
+        && firstBatchSourceGroups.slice(0, index).every(previous => !previous.has(sourceId)))
+      .sort()),
+  ];
   const sourceNumberById = Object.fromEntries(
-    [...usedSourceIds].sort().map((sourceId, index) => [sourceId, index + 1]),
+    orderedSourceIds.map((sourceId, index) => [sourceId, index + 1]),
   );
 
   return {
     schemaVersion: '0.1',
     pilotCompanyIds,
+    supportedCompanyIds,
     dimensionOrder: [...compareEvidencePrimaryDimensionIds],
     dimensionLabels: compareEvidenceDimensionLabels,
     companies,
     sets,
+    presentationFinancialSets,
     sourceNumberById,
   } as const;
 }
 
 export function companyCompareEvidenceSemanticSnapshot(identities: CompareEvidenceIdentity[]) {
   const model = buildCompanyCompareEvidenceReadModel(identities);
-  const claimEntries = model.companies.flatMap(company => company.dimensions.flatMap(dimension => dimension.claims));
-  const relationEntries = model.companies.flatMap(company => company.dimensions.flatMap(dimension => dimension.relations));
+  const pilotCompanies = model.companies.filter(company => model.pilotCompanyIds.includes(company.identity.id));
+  const claimEntries = pilotCompanies.flatMap(company => company.dimensions.flatMap(dimension => dimension.claims));
+  const relationEntries = pilotCompanies.flatMap(company => company.dimensions.flatMap(dimension => dimension.relations));
   const financialStates = model.sets.flatMap(setRecord => setRecord.financial.metricStates);
   return {
     dimensionOrder: model.dimensionOrder,
@@ -419,7 +534,7 @@ export function companyCompareEvidenceSemanticSnapshot(identities: CompareEviden
     unresolvedEvidenceCount: [...claimEntries, ...relationEntries].filter(entry => !entry.bindings.length || !entry.sources.length).length,
     relationPlacementCounts: Object.fromEntries(model.dimensionOrder.map(dimensionId => [
       dimensionId,
-      model.companies.reduce((count, company) => count + (company.dimensions.find(dimension => dimension.dimensionId === dimensionId)?.relations.length ?? 0), 0),
+      pilotCompanies.reduce((count, company) => count + (company.dimensions.find(dimension => dimension.dimensionId === dimensionId)?.relations.length ?? 0), 0),
     ])),
     financialCounts: {
       ok: financialStates.filter(state => state.compatibility.code === 'ok').length,

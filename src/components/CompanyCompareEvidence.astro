@@ -21,7 +21,7 @@ const metricLabel: Record<string, string> = {
 };
 const clientPayload = {
   schemaVersion: '0.2',
-  pilotCompanyIds: model.pilotCompanyIds,
+  supportedCompanyIds: model.supportedCompanyIds,
   dimensionOrder: presentationDimensionIds,
   dimensionLabels: model.dimensionLabels,
   stableSections: [...presentationDimensionIds, 'financial', 'evidence-trace'],
@@ -33,7 +33,7 @@ const clientPayload = {
       schemaVersion: companyCompareAssetSchemaVersion,
     })),
   },
-  sets: model.sets.map(setRecord => ({
+  sets: model.presentationFinancialSets.map(setRecord => ({
     setId: setRecord.setId,
     orderedCompanyIds: setRecord.orderedCompanyIds,
   })),
@@ -92,7 +92,7 @@ const clientPayload = {
   </div>
 
   <div class="evidence-financial-status" aria-live="off">
-    {model.sets.map(setRecord => {
+    {model.presentationFinancialSets.map(setRecord => {
       const primary = setRecord.financial.metricStates.filter(metric => metric.compatibility.code !== 'blocked');
       return <section data-financial-set-id={setRecord.setId} hidden>
         {primary.map(metric => <p><strong>{metricLabel[metric.metricId] ?? metric.metricId}：条件注意</strong> — {metric.compatibility.reasons.join('、')}</p>)}
@@ -109,7 +109,7 @@ const clientPayload = {
   <section class="evidence-data-quality evidence-major-panel" id="evidence-section-evidence-trace" aria-labelledby="evidence-data-quality-title" data-expanded-only>
     <h3 id="evidence-data-quality-title">根拠の追跡・データ品質</h3>
     <div id="evidence-runtime-quality"></div>
-    {model.sets.map(setRecord => {
+    {model.presentationFinancialSets.map(setRecord => {
       const blocked = setRecord.financial.metricStates.filter(metric => metric.compatibility.code === 'blocked');
       return <div data-quality-set-id={setRecord.setId} hidden>
         {blocked.map(metric => <p><strong>比較不能：{metricLabel[metric.metricId] ?? metric.metricId}</strong> — {metric.compatibility.reasons.join('、')}。主要比較には表示しません。</p>)}

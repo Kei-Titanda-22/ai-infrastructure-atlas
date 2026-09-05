@@ -1,0 +1,116 @@
+{
+  "schemaVersion": "0.1",
+  "stage": "first-batch-stage-4",
+  "companyIds": ["globalfoundries", "micron", "arista", "bosch"],
+  "companies": [
+    {
+      "companyId": "globalfoundries",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["globalfoundries-ai-role"],
+        "value-chain-position": ["globalfoundries-value-chain"],
+        "key-products": ["globalfoundries-products"],
+        "technology-moat": ["globalfoundries-positioning", "globalfoundries-technology"],
+        "capacity-roadmap": ["globalfoundries-capacity-expansion-triage-remediation-v02"],
+        "key-risks": ["globalfoundries-risks"]
+      },
+      "claimDisplay": {
+        "globalfoundries-ai-role": {"title": "接続・電源・RF向け半導体製造を担う", "statement": "AtlasではGlobalFoundriesを、AIインフラ周辺の接続、電源、RF、シリコンフォトニクス向け半導体製造を担う企業と位置付ける。"},
+        "globalfoundries-value-chain": {"title": "ファウンドリ・ロジック製造の供給層", "statement": "AtlasではGlobalFoundriesをファウンドリ・ロジック製造の供給層に位置付け、接続、電源、RF、シリコンフォトニクス向け半導体を製造する企業と整理する。"},
+        "globalfoundries-products": {"title": "特殊プロセス・光電融合・先端パッケージ", "statement": "GlobalFoundriesは、特殊プロセスの半導体受託製造、シリコンフォトニクス製造、先端パッケージ関連サービスを提供する。"},
+        "globalfoundries-positioning": {"title": "特殊プロセスと世界製造網", "statement": "Atlasでは、米欧アジアにまたがる製造拠点、特殊プロセスの長期供給、シリコンフォトニクスなどの差別化技術を、GlobalFoundriesの競争上の重要な特徴として整理する。"},
+        "globalfoundries-technology": {"title": "特殊プロセスとシリコンフォトニクス", "statement": "Atlasでは、半導体受託製造、特殊プロセス、シリコンフォトニクスに関わる技術基盤を、GlobalFoundriesの製品構成を支える技術領域として整理する。"},
+        "globalfoundries-capacity-expansion-triage-remediation-v02": {"title": "ニューヨーク・バーモントの製造能力を拡張", "statement": "GlobalFoundriesは米国CHIPS法による最大15億ドルの直接資金供与契約のもと、ニューヨーク州マルタとバーモント州バーリントンで半導体の製造能力を拡張する計画を進めている。"},
+        "globalfoundries-risks": {"title": "固定費・需要変動・競争範囲", "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、先端ロジックでの競争範囲の制約、高い固定費、顧客需要の変動を主要な確認点として整理する。"}
+      },
+      "productPortfolio": {"title": "特殊プロセスから先端パッケージまで", "body": "特殊プロセスの半導体受託製造、シリコンフォトニクス製造、先端パッケージ関連サービスを展開する。", "groundingId": "globalfoundries-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-globalfoundries-specialty-foundry", "label": "特殊プロセス半導体受託製造", "description": "特殊・成熟プロセスを中心に半導体を受託製造するサービス。", "groundingId": "globalfoundries-products"},
+        {"canonicalId": "display-product-globalfoundries-silicon-photonics", "label": "シリコンフォトニクス製造", "description": "光通信向けのシリコンフォトニクス半導体を製造するサービス。", "groundingId": "globalfoundries-products"},
+        {"canonicalId": "display-product-globalfoundries-advanced-packaging", "label": "先端パッケージ関連サービス", "description": "半導体の接続と実装を支える先端パッケージ関連サービス。", "groundingId": "globalfoundries-products"}
+      ]
+    },
+    {
+      "companyId": "micron",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["micron-ai-role"],
+        "value-chain-position": ["micron-value-chain"],
+        "key-products": ["micron-products"],
+        "technology-moat": ["micron-positioning", "micron-technology"],
+        "capacity-roadmap": ["micron-capacity-expansion-triage-remediation-v02"],
+        "key-risks": ["micron-risks"]
+      },
+      "claimDisplay": {
+        "micron-ai-role": {"title": "AI向けメモリ需要を担う", "statement": "AtlasではMicron Technologyを、HBM、データセンター向けDRAM、SSDを通じてAIインフラのメモリ・ストレージ需要を担う企業と位置付ける。"},
+        "micron-value-chain": {"title": "メモリの供給層", "statement": "AtlasではMicron Technologyをメモリの供給層に位置付け、HBM、DRAM、NAND、SSDを通じてAIインフラを支える企業と整理する。"},
+        "micron-products": {"title": "HBM・DRAM・NAND・SSD", "statement": "Micron Technologyは、HBM・DRAM、NANDフラッシュ、データセンター向けメモリ・ストレージを提供する。"},
+        "micron-positioning": {"title": "先端メモリと高付加価値製品", "statement": "Atlasでは、先端メモリ開発、DRAMとNAND双方の製品群、AI向け高付加価値製品への転換余地を、Micron Technologyの競争上の重要な特徴として整理する。"},
+        "micron-technology": {"title": "HBM・DRAM・NANDの技術基盤", "statement": "Atlasでは、HBM・DRAM、NANDフラッシュ、データセンター向けメモリ・ストレージという製品構成を、HBM、DRAM、NANDに関わる技術基盤として整理する。"},
+        "micron-capacity-expansion-triage-remediation-v02": {"title": "アイダホ・ニューヨークでDRAM工場を拡張", "statement": "Micronはボイシの第1工場で2027年後半のDRAMウェーハ生産を見込み、第2工場も計画している。ニューヨークでは20年以上をかけて最大4つの先端DRAM工場を建設する計画である。"},
+        "micron-risks": {"title": "メモリ価格・設備投資・歩留まり", "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、メモリ価格サイクル、巨額の設備投資、製品世代と歩留まりの競争を主要な確認点として整理する。"}
+      },
+      "productPortfolio": {"title": "AI向けメモリからストレージまで", "body": "HBM・DRAM、NANDフラッシュ、データセンター向けメモリ・ストレージを展開する。", "groundingId": "micron-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-micron-hbm-dram", "label": "HBM・DRAM", "description": "AI計算とデータセンターの作業メモリを担う半導体。", "groundingId": "micron-products"},
+        {"canonicalId": "display-product-micron-nand-flash", "label": "NANDフラッシュ", "description": "データを不揮発で保存するメモリ半導体。", "groundingId": "micron-products"},
+        {"canonicalId": "display-product-micron-data-center-memory-storage", "label": "データセンター向けメモリ・ストレージ", "description": "サーバー向けメモリとSSDを含むデータセンター製品群。", "groundingId": "micron-products"}
+      ]
+    },
+    {
+      "companyId": "arista",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["arista-ai-role"],
+        "value-chain-position": ["arista-value-chain"],
+        "key-products": ["arista-products"],
+        "technology-moat": ["arista-positioning", "arista-technology"],
+        "capacity-roadmap": ["arista-strategy"],
+        "key-risks": ["arista-risks"]
+      },
+      "claimDisplay": {
+        "arista-ai-role": {"title": "AIクラスターの接続を担う", "statement": "AtlasではAristaを、AIアクセラレータ群と前段・後段ネットワークをEthernetで接続し、AI処理の通信効率を支えるネットワーク企業と位置付ける。"},
+        "arista-value-chain": {"title": "AIデータセンターのネットワーク接続", "statement": "AristaはAIアクセラレータを製造せず、XPU間、クラスター内、前段ネットワーク、データセンター間の通信を運ぶネットワーク基盤を提供する。"},
+        "arista-products": {"title": "Ethernet基盤・EOS・CloudVision", "statement": "Aristaの主要製品・技術には、Ethernetスイッチ・ルーター基盤、Extensible Operating System（EOS）、CloudVision、AIネットワークソリューションが含まれる。"},
+        "arista-positioning": {"title": "AI Centerの統合ネットワーク構成", "statement": "AristaはAI Centerを、異なる接続層を統合して初回処理開始までの時間、処理完了時間、XPU利用効率を最適化する構成と説明している。"},
+        "arista-technology": {"title": "単一EOSとデータ主導の自動化", "statement": "Aristaは複数のハードウェア基盤で共通のEOSを用い、ネットワーク状態の可視化、自動化、遠隔計測をソフトウェアで統合する。"},
+        "arista-strategy": {"title": "AI・クラウド・データセンター市場を拡張", "statement": "AristaはAI、クラウド、データセンターネットワーク、ルーティング、キャンパス、ソフトウェア、サービスを既存・新規市場の成長領域として掲げる。"},
+        "arista-risks": {"title": "顧客集中・外部製造・部品供給", "statement": "Aristaは、少数の顧客・販売業者への集中、第三者製造委託先への依存、部品供給の制約、競争を主要リスクとして開示する。"}
+      },
+      "productPortfolio": {"title": "Ethernet基盤とネットワークソフトウェアを展開", "body": "Ethernetスイッチ・ルーター基盤、EOS、CloudVision、AIネットワークソリューションを展開する。", "groundingId": "arista-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-arista-ethernet-platform", "label": "Ethernetスイッチ・ルーター基盤", "description": "データセンター内外の通信を運ぶEthernetネットワーク機器。", "groundingId": "arista-products"},
+        {"canonicalId": "display-product-arista-eos", "label": "Extensible Operating System（EOS）", "description": "複数のネットワーク機器で共通利用するネットワークOS。", "groundingId": "arista-products"},
+        {"canonicalId": "display-product-arista-cloudvision", "label": "CloudVision", "description": "ネットワークの可視化、自動化、運用を統合するソフトウェア。", "groundingId": "arista-products"},
+        {"canonicalId": "display-product-arista-ai-networking", "label": "AIネットワークソリューション", "description": "AIクラスターの前段・後段接続を支えるネットワーク製品群。", "groundingId": "arista-products"}
+      ]
+    },
+    {
+      "companyId": "bosch",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["bosch-ai-role"],
+        "value-chain-position": ["bosch-value-chain"],
+        "key-products": ["bosch-products"],
+        "technology-moat": ["bosch-positioning", "bosch-technology"],
+        "capacity-roadmap": ["bosch-capacity-expansion-triage-remediation-v02"],
+        "key-risks": ["bosch-risks"]
+      },
+      "claimDisplay": {
+        "bosch-ai-role": {"title": "Physical AIのセンシングと制御を支える", "statement": "AtlasではBoschを、MEMSセンサ、車載電子、産業自動化を通じてPhysical AIのセンシングと制御を支える企業と位置付ける。"},
+        "bosch-value-chain": {"title": "Physical AIの供給層", "statement": "AtlasではBoschをPhysical AIの供給層に位置付け、MEMSセンサ、車載電子、産業自動化を通じてセンシングと制御を支える企業と整理する。"},
+        "bosch-products": {"title": "MEMSセンサ・車載制御・産業自動化", "statement": "Boschは、MEMS・車載センサ、車載計算・制御システム、産業自動化技術を提供する。"},
+        "bosch-positioning": {"title": "センサから制御までの技術蓄積", "statement": "Atlasでは、車載・産業の広い顧客基盤、センサから制御までの技術蓄積、大規模な研究開発基盤を、Boschの競争上の重要な特徴として整理する。"},
+        "bosch-technology": {"title": "MEMS・車載センサ・産業自動化", "statement": "Atlasでは、MEMS・車載センサ、車載計算・制御システム、産業自動化技術という製品構成を、MEMS、車載センサ、産業自動化に関わる技術基盤として整理する。"},
+        "bosch-capacity-expansion-triage-remediation-v02": {"title": "半導体製造網への増産投資", "statement": "Boschはドレスデン、ロイトリンゲン、ローズビルを含む半導体拠点へ投資し、ウェーハ製造と関連能力を拡張する計画を開示している。"},
+        "bosch-risks": {"title": "自動車・産業景気と事業構成", "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動車・産業景気、非上場による市場指標比較の制約、事業ポートフォリオの複雑さを主要な確認点として整理する。"}
+      },
+      "productPortfolio": {"title": "センサから産業自動化まで", "body": "MEMS・車載センサ、車載計算・制御システム、産業自動化技術を展開する。", "groundingId": "bosch-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-bosch-mems-automotive-sensors", "label": "MEMS・車載センサ", "description": "車両や機器の状態を検知するMEMS・車載センサ。", "groundingId": "bosch-products"},
+        {"canonicalId": "display-product-bosch-vehicle-compute-control", "label": "車載計算・制御システム", "description": "車両内の計算処理と制御を担うシステム。", "groundingId": "bosch-products"},
+        {"canonicalId": "display-product-bosch-industrial-automation", "label": "産業自動化技術", "description": "工場設備の自動化と制御を支える技術。", "groundingId": "bosch-products"}
+      ]
+    }
+  ]
+}

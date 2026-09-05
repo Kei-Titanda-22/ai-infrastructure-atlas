@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "0.1",
+  "stage": "first-batch-stage-2",
+  "companyIds": ["kioxia", "amphenol", "aptiv", "advantest"],
+  "companies": [
+    {
+      "companyId": "kioxia",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["kioxia-ai-role"],
+        "value-chain-position": ["kioxia-value-chain"],
+        "key-products": ["kioxia-products"],
+        "technology-moat": ["kioxia-positioning", "kioxia-technology"],
+        "capacity-roadmap": ["kioxia-capacity-expansion-triage-remediation-v02"],
+        "key-risks": ["kioxia-risks"]
+      },
+      "claimDisplay": {
+        "kioxia-ai-role": {"title": "AIストレージ需要とNAND需給に連動", "statement": "Atlasではキオクシアホールディングスを、AIデータセンターのストレージ需要とNAND需給の双方に感応する企業と位置付ける。"},
+        "kioxia-value-chain": {"title": "メモリの供給層", "statement": "Atlasではキオクシアホールディングスをメモリの供給層に位置付け、AIデータセンターのストレージ需要とNAND需給の双方に感応する役割を担う企業と整理する。"},
+        "kioxia-products": {"title": "NANDフラッシュ・SSD", "statement": "キオクシアホールディングスは、NANDフラッシュ、エンタープライズSSD、クライアント・組み込み向けフラッシュを提供する。"},
+        "kioxia-positioning": {"title": "NAND技術・量産基盤・SSD展開", "statement": "Atlasでは、NAND技術と量産基盤、データセンター向けSSDへの展開、フラッシュ専業性を、キオクシアホールディングスの競争上の重要な特徴として整理する。"},
+        "kioxia-technology": {"title": "NAND・SSD・フラッシュメモリ", "statement": "Atlasでは、NANDフラッシュ、エンタープライズSSD、クライアント・組み込み向けフラッシュという製品構成を、NAND、SSD、フラッシュメモリに関わる技術基盤として整理する。"},
+        "kioxia-capacity-expansion-triage-remediation-v02": {"title": "北上工場Fab2を段階的に立ち上げ", "statement": "キオクシアとSandiskは2025年9月に北上工場Fab2の稼働を開始し、第8世代218層BiCS FLASHなどの生産能力を市場動向に応じて段階的に立ち上げている。"},
+        "kioxia-risks": {"title": "NAND価格・設備投資・ビットコスト競争", "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、NAND価格サイクル、設備投資負担、競合各社とのビットコスト競争を主要な確認点として整理する。"}
+      },
+      "productPortfolio": {"title": "NANDフラッシュとSSDを展開", "body": "NANDフラッシュ、エンタープライズSSD、クライアント・組み込み向けフラッシュを提供する。", "groundingId": "kioxia-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-kioxia-nand-flash", "label": "NANDフラッシュ", "description": "データ保存に用いるNANDフラッシュメモリ。", "groundingId": "kioxia-products"},
+        {"canonicalId": "display-product-kioxia-enterprise-ssd", "label": "エンタープライズSSD", "description": "企業・データセンター向けのSSD。", "groundingId": "kioxia-products"},
+        {"canonicalId": "display-product-kioxia-client-embedded-flash", "label": "クライアント・組み込み向けフラッシュ", "description": "クライアント機器と組み込み用途向けのフラッシュ製品。", "groundingId": "kioxia-products"}
+      ]
+    },
+    {
+      "companyId": "amphenol",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["amphenol-ai-role"],
+        "value-chain-position": ["amphenol-value-chain"],
+        "key-products": ["amphenol-products"],
+        "technology-moat": ["amphenol-positioning", "amphenol-technology"],
+        "capacity-roadmap": ["amphenol-capacity-expansion-triage-remediation-v02"],
+        "key-risks": ["amphenol-risks"]
+      },
+      "claimDisplay": {
+        "amphenol-ai-role": {"title": "AI機器間の高速・電力・光接続", "statement": "AtlasではAmphenolを、AIサーバー、スイッチ、ストレージ間の高速電気・光接続、電力接続、ケーブルアセンブリを担う接続部品企業と位置付ける。"},
+        "amphenol-value-chain": {"title": "機器内外の相互接続層", "statement": "Amphenolは半導体そのものではなく、サーバー、ネットワークスイッチ、ストレージ、通信機器内外で電力・信号・光を接続する部品とアセンブリを供給する。"},
+        "amphenol-products": {"title": "高速・光・RF・電力接続", "statement": "Amphenolの製品群には高速、光ファイバー、RF、電力用コネクタ、ケーブルアセンブリ、アンテナ、センサーが含まれる。"},
+        "amphenol-positioning": {"title": "幅広い接続技術と世界展開", "statement": "Amphenolは高性能相互接続の幅広い技術群、顧客との設計協業、世界的な事業展開を競争上の利点として説明する。"},
+        "amphenol-technology": {"title": "顧客設計段階から高性能接続を開発", "statement": "Amphenolは顧客の設計段階から協働し、高速、光ファイバー、電力、RF、センサー分野の性能向上ソリューションを開発する。"},
+        "amphenol-capacity-expansion-triage-remediation-v02": {"title": "Mesaの太陽光製品工場を稼働", "statement": "Amphenolは米国アリゾナ州Mesaの太陽光製品工場で製造を開始し、最大12本のラインと月産120万個の潜在能力を開示している。"},
+        "amphenol-risks": {"title": "需要変動・顧客関係・供給網・競争", "statement": "Amphenolは最終市場需要の変動、顧客・供給業者との関係、原材料・部品供給、買収統合、競争などをリスクとして開示する。"}
+      },
+      "productPortfolio": {"title": "電気・光・RF接続を横断", "body": "高速、光ファイバー、RF、電力用コネクタ、ケーブルアセンブリ、アンテナ、センサーを展開する。", "groundingId": "amphenol-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-amphenol-high-speed-connector", "label": "高速コネクタ", "description": "高速信号を接続するコネクタ。", "groundingId": "amphenol-products"},
+        {"canonicalId": "display-product-amphenol-fiber-optic-connector", "label": "光ファイバーコネクタ", "description": "光ファイバー接続向けのコネクタ。", "groundingId": "amphenol-products"},
+        {"canonicalId": "display-product-amphenol-rf-connector", "label": "RFコネクタ", "description": "無線周波数信号を接続するコネクタ。", "groundingId": "amphenol-products"},
+        {"canonicalId": "display-product-amphenol-power-connector", "label": "電力用コネクタ", "description": "機器へ電力を接続するコネクタ。", "groundingId": "amphenol-products"},
+        {"canonicalId": "display-product-amphenol-cable-assembly", "label": "ケーブルアセンブリ", "description": "機器内外を接続するケーブルアセンブリ。", "groundingId": "amphenol-products"},
+        {"canonicalId": "display-product-amphenol-antenna", "label": "アンテナ", "description": "通信向けのアンテナ製品。", "groundingId": "amphenol-products"},
+        {"canonicalId": "display-product-amphenol-sensor", "label": "センサー", "description": "各種用途向けのセンサー製品。", "groundingId": "amphenol-products"}
+      ]
+    },
+    {
+      "companyId": "aptiv",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["aptiv-ai-role"],
+        "value-chain-position": ["aptiv-value-chain"],
+        "key-products": ["aptiv-products"],
+        "technology-moat": ["aptiv-positioning", "aptiv-technology"],
+        "capacity-roadmap": ["aptiv-capacity-expansion-triage-remediation-v02"],
+        "key-risks": ["aptiv-risks"]
+      },
+      "claimDisplay": {
+        "aptiv-ai-role": {"title": "車両内のセンサー・計算機・電源を接続", "statement": "AtlasではAptivを、車両の電気・電子アーキテクチャを通じてセンサー、計算機、電源、ネットワークを接続する企業と位置付ける。"},
+        "aptiv-value-chain": {"title": "Physical AIの供給層", "statement": "AtlasではAptivをPhysical AIに位置付け、車両の電気・電子アーキテクチャを通じてセンサー、計算機、電源、ネットワークを接続する役割を担う企業と整理する。"},
+        "aptiv-products": {"title": "車載電装・ADAS・接続・配電", "statement": "Aptivは、車載電気・電子アーキテクチャ、ADAS関連システム、車載接続・配電製品を提供する。"},
+        "aptiv-positioning": {"title": "車両全体の電装設計と世界的な顧客基盤", "statement": "Atlasでは、車両全体の電装アーキテクチャ知見、世界の自動車メーカーとの顧客基盤、高電圧化・ソフトウェア化への対応を、Aptivの競争上の重要な特徴として整理する。"},
+        "aptiv-technology": {"title": "ADAS・車載ネットワーク・電装", "statement": "Atlasでは、車載電気・電子アーキテクチャ、ADAS関連システム、車載接続・配電製品という製品構成を、ADAS、車載ネットワーク、電装に関わる技術基盤として整理する。"},
+        "aptiv-capacity-expansion-triage-remediation-v02": {"title": "Chennai工場を拡張", "statement": "AptivはChennai工場を拡張し、ソフトウェア定義コックピットなど統合型車載システムの生産能力を増強する計画を開示している。"},
+        "aptiv-risks": {"title": "自動車生産・価格交渉・地域需要・供給網", "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動車生産の変動、自動車メーカーとの価格交渉、地域別需要と供給網を主要な確認点として整理する。"}
+      },
+      "productPortfolio": {"title": "車載電装・運転支援・接続を横断", "body": "車載電気・電子アーキテクチャ、ADAS関連システム、車載接続・配電製品を提供する。", "groundingId": "aptiv-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-aptiv-electrical-electronic-architecture", "label": "車載電気・電子アーキテクチャ", "description": "車両の電気・電子系統を構成するアーキテクチャ。", "groundingId": "aptiv-products"},
+        {"canonicalId": "display-product-aptiv-adas-systems", "label": "ADAS関連システム", "description": "先進運転支援に関わるシステム。", "groundingId": "aptiv-products"},
+        {"canonicalId": "display-product-aptiv-connectivity-power-distribution", "label": "車載接続・配電製品", "description": "車両内の接続と配電を担う製品。", "groundingId": "aptiv-products"}
+      ]
+    },
+    {
+      "companyId": "advantest",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["advantest-ai-role"],
+        "value-chain-position": ["advantest-value-chain"],
+        "key-products": ["advantest-products"],
+        "technology-moat": ["advantest-positioning", "advantest-technology"],
+        "capacity-roadmap": ["advantest-capacity-expansion-triage-remediation-v02"],
+        "key-risks": ["advantest-risks"]
+      },
+      "claimDisplay": {
+        "advantest-ai-role": {"title": "高性能GPU・ASIC・HBMのテストを支える", "statement": "Atlasではアドバンテストを、高性能GPU、ASIC、HBMの高価値化とテスト複雑化に連動しやすい企業と位置付ける。"},
+        "advantest-value-chain": {"title": "テスト・後工程の供給層", "statement": "Atlasではアドバンテストをテスト・後工程に位置付け、高性能GPU、ASIC、HBMの高価値化とテスト複雑化に連動しやすい役割を担う企業と整理する。"},
+        "advantest-products": {"title": "SoC・メモリテスターとテストハンドラー", "statement": "アドバンテストは、SoCテスター、メモリテスター、テストハンドラーと関連システムを提供する。"},
+        "advantest-positioning": {"title": "先端SoC・メモリ双方のテスト技術", "statement": "Atlasでは、高性能半導体向けテスト技術、先端SoCとメモリ双方への接点、テスト時間・品質最適化のノウハウを、アドバンテストの競争上の重要な特徴として整理する。"},
+        "advantest-technology": {"title": "ATE・SoCテスト・メモリテスト", "statement": "Atlasでは、SoCテスター、メモリテスター、テストハンドラーと関連システムという製品構成を、ATE、SoCテスト、メモリテストに関わる技術基盤として整理する。"},
+        "advantest-capacity-expansion-triage-remediation-v02": {"title": "生産能力を数年間で3倍へ増強", "statement": "アドバンテストは需要対応と供給網強化を進め、生産能力を過去数年間で3倍へ増強したと開示している。"},
+        "advantest-risks": {"title": "顧客投資・テスト需要・ATE競争", "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、顧客投資集中、半導体テスト需要の変動、競合ATEとのシェア競争を主要な確認点として整理する。"}
+      },
+      "productPortfolio": {"title": "SoC・メモリのテスト工程を横断", "body": "SoCテスター、メモリテスター、テストハンドラーと関連システムを提供する。", "groundingId": "advantest-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-advantest-soc-testers", "label": "SoCテスター", "description": "SoC向けの自動テスト装置。", "groundingId": "advantest-products"},
+        {"canonicalId": "display-product-advantest-memory-testers", "label": "メモリテスター", "description": "メモリ向けの自動テスト装置。", "groundingId": "advantest-products"},
+        {"canonicalId": "display-product-advantest-test-handlers-related-systems", "label": "テストハンドラー・関連システム", "description": "半導体テストを支えるハンドラーと関連システム。", "groundingId": "advantest-products"}
+      ]
+    }
+  ]
+}

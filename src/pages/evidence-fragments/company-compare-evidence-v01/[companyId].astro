@@ -2,12 +2,12 @@
 import { getCollection } from 'astro:content';
 import CompanyCompareEvidenceCompanyAsset from '../../../components/CompanyCompareEvidenceCompanyAsset.astro';
 import { countryLabel, layerLabel } from '../../../lib/display-v02';
-import { evidenceComparePilotCompanyIds } from '../../../lib/company-compare-evidence-ui';
+import { evidenceCompareSupportedCompanyIds } from '../../../lib/company-compare-evidence-ui';
 import { buildCompanyCompareEvidenceReadModel } from '../../../lib/company-compare-evidence-read-model';
 import { withBase } from '../../../lib/paths';
 
 export function getStaticPaths() {
-  return evidenceComparePilotCompanyIds.map(companyId => ({ params: { companyId } }));
+  return evidenceCompareSupportedCompanyIds.map(companyId => ({ params: { companyId } }));
 }
 
 const companies = (await getCollection('companies'))
@@ -28,7 +28,7 @@ const model = buildCompanyCompareEvidenceReadModel(identities);
 const companyId = Astro.params.companyId || '';
 const company = model.companies.find(record => record.identity.id === companyId);
 if (!company) throw new Error(`Unknown Company Compare asset route: ${companyId}`);
-const operatingMarginReference = model.sets
+const operatingMarginReference = model.presentationFinancialSets
   .flatMap(setRecord => setRecord.financial.metricStates)
   .filter(metric => metric.metricId === 'operatingMargin')
   .flatMap(metric => metric.companyMetricRefs)

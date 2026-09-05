@@ -102,6 +102,10 @@
     "Japan": "日本",
     "Tualatin": "チュアラティン",
     "Oregon, United States": "米国オレゴン州",
+    "Netherlands": "オランダ",
+    "France": "フランス",
+    "Switzerland": "スイス",
+    "Germany": "ドイツ",
     "米国": "米国",
     "日本": "日本",
     "チュアラティン": "チュアラティン",
@@ -216,19 +220,51 @@
       "broadcom": "百万ドル",
       "applied-materials": "百万ドル",
       "lam-research": "百万ドル",
-      "tokyo-electron": "百万円"
+      "tokyo-electron": "百万円",
+      "amd": "百万ドル",
+      "vertiv": "百万ドル",
+      "tsmc": "十億台湾ドル",
+      "kioxia": "百万円",
+      "amphenol": "百万ドル",
+      "aptiv": "百万ドル",
+      "advantest": "百万円"
+      ,"asm-international": "百万ユーロ"
+      ,"air-liquide": "百万ユーロ"
+      ,"analog-devices": "百万ドル"
+      ,"abb": "百万ドル"
+      ,"globalfoundries": "百万ドル"
+      ,"micron": "百万ドル"
+      ,"arista": "百万ドル"
+      ,"bosch": "百万ユーロ"
     },
     "accountingBasisByCompany": {
       "nvidia": "米国会計基準",
       "broadcom": "米国会計基準",
       "applied-materials": "米国会計基準",
       "lam-research": "米国会計基準",
-      "tokyo-electron": "日本会計基準"
+      "tokyo-electron": "日本会計基準",
+      "amd": "米国会計基準",
+      "vertiv": "米国会計基準",
+      "tsmc": "台湾IFRS（連結）",
+      "kioxia": "国際財務報告基準（IFRS）",
+      "amphenol": "米国会計基準",
+      "aptiv": "米国会計基準",
+      "advantest": "国際財務報告基準（IFRS）"
+      ,"asm-international": "国際財務報告基準（IFRS）"
+      ,"air-liquide": "国際財務報告基準（IFRS・連結）"
+      ,"analog-devices": "米国会計基準"
+      ,"abb": "米国会計基準"
+      ,"globalfoundries": "国際財務報告基準（IFRS）"
+      ,"micron": "米国会計基準"
+      ,"arista": "米国会計基準"
+      ,"bosch": "EU採択の国際財務報告基準（IFRS・連結）"
     },
     "periodLabels": {
       "FY2024": "2024年度",
       "FY2025": "2025年度",
       "FY2026": "2026年度",
+      "Q1 FY2025": "2025年度 第1四半期",
+      "FY2025 Q1": "2025年度 第1四半期",
       "Q2 FY2025": "2025年度 第2四半期",
       "Q3 FY2025": "2025年度 第3四半期",
       "Q1 FY2026": "2026年度 第1四半期",
@@ -236,6 +272,9 @@
       "Q3 FY2026": "2026年度 第3四半期",
       "Q1 FY2027": "2027年度 第1四半期",
       "Q2 FY2027": "2027年度 第2四半期",
+      "Q2 2025": "2025年 第2四半期",
+      "Q1 2026": "2026年 第1四半期",
+      "Q2 2026": "2026年 第2四半期",
       "FY2026 Q1": "2026年度 第1四半期",
       "FY2026 Q2": "2026年度 第2四半期",
       "FY2026 Q3": "2026年度 第3四半期",
@@ -250,13 +289,90 @@
       "broadcom": 3,
       "applied-materials": 2,
       "lam-research": 5,
-      "tokyo-electron": 7
+      "tokyo-electron": 7,
+      "amd": 3,
+      "vertiv": 2,
+      "tsmc": 3,
+      "kioxia": 7,
+      "amphenol": 2,
+      "aptiv": 2,
+      "advantest": 4
+      ,"asm-international": 2
+      ,"air-liquide": 2
+      ,"analog-devices": 2
+      ,"abb": 2
+      ,"globalfoundries": 2
+      ,"micron": 3
+      ,"arista": 2
+      ,"bosch": 2
     },
     "forbiddenDetailedEnglishLabels": ["USD · million", "JPY · million", "US GAAP", "Japanese GAAP"],
     "maxDigitFixtures": {
       "applied-materials": "7,302",
       "lam-research": "18,435.591",
       "tokyo-electron": "2,431,568"
+    }
+  },
+  "stage1FinancialRow": {
+    "selectionId": "first-batch-stage-1",
+    "metricId": "operatingMargin",
+    "compatibility": "caution",
+    "blockedMetricId": "revenueGrowth",
+    "companies": {
+      "amd": {
+        "displayValue": "17%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "US GAAP",
+        "sourceId": "earnings-amd-2026-08-04-q2-2026"
+      },
+      "vertiv": {
+        "displayValue": "19.5%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "US GAAP",
+        "sourceId": "earnings-vertiv-2026-07-29-q2-2026"
+      },
+      "tsmc": {
+        "displayValue": "60.3%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "TIFRS consolidated",
+        "sourceId": "financial-statements-tsmc-2026-q2"
+      }
+    }
+  },
+  "stage2FinancialRow": {
+    "selectionId": "first-batch-stage-2",
+    "metricId": "operatingMargin",
+    "compatibility": "blocked",
+    "blockedMetricId": "revenueGrowth",
+    "companies": {
+      "kioxia": {"displayValue": "71.9%", "periodLabel": "FY2027 Q1", "accountingBasis": "IFRS", "sourceId": "earnings-kioxia-2026-07-31-q1-fy2027"},
+      "amphenol": {"displayValue": "29.5%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-amphenol-2026-07-29-q2-2026"},
+      "aptiv": {"displayValue": "5.8%", "periodLabel": "FY2025", "accountingBasis": "US GAAP", "sourceId": "sec-aptiv-2025-10k"},
+      "advantest": {"displayValue": "51.7%", "periodLabel": "FY2026 Q1", "accountingBasis": "IFRS", "sourceId": "earnings-advantest-2026-07-29-q1-fy2026"}
+    }
+  },
+  "stage3FinancialRow": {
+    "selectionId": "first-batch-stage-3",
+    "metricId": "operatingMargin",
+    "compatibility": "blocked",
+    "blockedMetricId": "revenueGrowth",
+    "companies": {
+      "asm-international": {"displayValue": "29.6%", "periodLabel": "FY2025", "accountingBasis": "IFRS", "sourceId": "annual-report-asm-2025"},
+      "air-liquide": {"displayValue": "19.6%", "periodLabel": "FY2025", "accountingBasis": "IFRS consolidated", "sourceId": "air-liquide-fy2025-performance-report"},
+      "analog-devices": {"displayValue": "40.1%", "periodLabel": "Q3 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-analog-devices-2026-08-19-q3-fy2026"},
+      "abb": {"displayValue": "16.7%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "financial-info-abb-2026-07-16-q2"}
+    }
+  },
+  "stage4FinancialRow": {
+    "selectionId": "first-batch-stage-4",
+    "metricId": "operatingMargin",
+    "compatibility": "blocked",
+    "blockedMetricId": "revenueGrowth",
+    "companies": {
+      "globalfoundries": {"displayValue": "9.7%", "periodLabel": "Q2 2026", "accountingBasis": "IFRS", "sourceId": "earnings-globalfoundries-2026-08-04-q2-2026"},
+      "micron": {"displayValue": "80.4%", "periodLabel": "Q3 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-micron-2026-06-24-q3-fy2026"},
+      "arista": {"displayValue": "45.4%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-arista-2026-08-04-q2-2026"},
+      "bosch": {"displayValue": "1.5%", "periodLabel": "FY2025", "accountingBasis": "IFRS as adopted by the EU, consolidated", "sourceId": "bosch-annual-report-2025"}
     }
   },
   "summaryMarkerCounts": {

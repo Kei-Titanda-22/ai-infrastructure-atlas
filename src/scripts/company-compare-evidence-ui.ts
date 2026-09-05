@@ -1,6 +1,5 @@
 import {
   evidenceCompareMaxCompanies,
-  matchEvidencePilotSet,
   parseEvidenceCompareSearch,
   serializeEvidenceCompareSearch,
   type EvidenceCompareIssue,
@@ -36,6 +35,13 @@ const assetSlots = Object.freeze([
   'expanded-financial',
   'evidence-trace',
 ]);
+
+export function formatCompanyCompareEvidencePageLead(availableCompanyCount: number) {
+  if (!Number.isSafeInteger(availableCompanyCount) || availableCompanyCount < 1) {
+    throw new Error('Company Compare available Company count must be a positive integer');
+  }
+  return `対応${availableCompanyCount}社から2～${evidenceCompareMaxCompanies}社を選び、各社の役割、製品・技術、企業間関係、財務の比較条件を根拠付きで確認します。`;
+}
 
 type AssetSlot = { html: string; companyLabel?: string; hasContent?: string };
 type ParsedCompanyAsset = { companyId: string; slots: Map<string, AssetSlot> };
@@ -108,14 +114,14 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   const pageData = JSON.parse(compareDataNode.textContent || '{}');
   const uiData = JSON.parse(evidenceDataNode.textContent || '{}');
   if (!Array.isArray(pageData.companies)) throw new Error('Company Evidence Compare page data is invalid');
-  if (!Array.isArray(uiData.pilotCompanyIds)) throw new Error('Company Evidence Compare payload is invalid');
+  if (!Array.isArray(uiData.supportedCompanyIds)) throw new Error('Company Evidence Compare payload is invalid');
   const manifest = validateCompanyCompareAssetManifest(uiData.companyManifest);
   const companies = pageData.companies;
   const byId = new Map<string, any>(companies.map((company: any) => [company.id, company]));
-  const supportedIds = new Set<string>(uiData.pilotCompanyIds);
+  const supportedIds = new Set<string>(uiData.supportedCompanyIds);
   if (manifest.companies.some(record => !supportedIds.has(record.companyId))
     || manifest.companies.length !== supportedIds.size) {
-    throw new Error('Company Compare asset manifest and Pilot companies do not match');
+    throw new Error('Company Compare asset manifest and supported companies do not match');
   }
   let state = parseEvidenceCompareSearch(location.search, byId.keys(), supportedIds);
   if (!state.enabled) throw new Error('Company Evidence Compare controller requires view=evidence');
@@ -127,7 +133,7 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   if (evidenceTemplateLabel) evidenceTemplateLabel.textContent = '比較セット';
   const pageLead = document.querySelector<HTMLElement>('#compare-page-lead');
   const builderMeta = element<HTMLElement>(app, '#compare-builder-meta');
-  if (pageLead) pageLead.textContent = '試験対象5社から2～4社を選び、各社の役割、製品・技術、企業間関係、財務の比較条件を根拠付きで確認します。';
+  if (pageLead) pageLead.textContent = formatCompanyCompareEvidencePageLead(manifest.companies.length);
   if (builderMeta) builderMeta.textContent = '2～4社を選択できます。重複、対象外の企業、4社を超える指定は理由を表示して除外します。';
 
   const searchInput = requiredElement<HTMLInputElement>(app, '#compare-company-search');
@@ -197,6 +203,10 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
       });
   };
   const pickedCompanies = () => state.selectedIds.map(id => byId.get(id)).filter(Boolean);
+  const financialSetForSelection = (selectedIds: string[]) => uiData.sets.find((setRecord: any) => (
+    setRecord.orderedCompanyIds.length === selectedIds.length
+    && setRecord.orderedCompanyIds.every((companyId: string) => selectedIds.includes(companyId))
+  )) ?? null;
   const issueText = (issues: EvidenceCompareIssue[]) => issues
     .map(issue => `${issueLabels[issue.code]}：${issue.id}`).join(' / ');
   const updateUrl = (mode: 'replace' | 'push') => {
@@ -207,6 +217,7 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   const renderSelected = () => {
     selectedRoot.replaceChildren();
     const picked = pickedCompanies();
+    selectedRoot.style.setProperty('--compare-selected-count', String(Math.max(1, picked.length)));
     if (!picked.length) selectedRoot.append(text('p', '比較企業が未選択です。', 'meta'));
     picked.forEach((company, index) => {
       const row = document.createElement('div');
@@ -308,7 +319,7 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   const renderMatrix = () => {
     const selectionReady = state.selectedIds.length >= 2;
     const selectedLoaded = state.selectedIds.filter(id => loadedIds.has(id));
-    const setRecord = matchEvidencePilotSet(state.selectedIds);
+    const setRecord = financialSetForSelection(state.selectedIds);
     empty.hidden = selectionReady;
     matrixScroll.hidden = !selectionReady || selectedLoaded.length === 0;
     matrix.style.setProperty('--evidence-company-count', String(Math.max(2, selectedLoaded.length)));

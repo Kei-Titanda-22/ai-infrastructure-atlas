@@ -1,4 +1,5 @@
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
+import { evidenceCompareFirstBatchCompanyIds } from './company-compare-supported-companies.ts';
 import type { RelationEvidenceBinding, ResolvedRelation } from './relations.ts';
 
 export type EvidenceCompareDetail = 'summary' | 'expanded';
@@ -81,11 +82,15 @@ export const evidenceCompareStableSections = Object.freeze([
 export const evidenceComparePilotCompanyIds = Object.freeze(
   [...new Set(pilotCompareEvidenceProjection.sets.flatMap(setRecord => setRecord.orderedCompanyIds))],
 );
+export const evidenceCompareSupportedCompanyIds = Object.freeze([
+  ...evidenceComparePilotCompanyIds,
+  ...evidenceCompareFirstBatchCompanyIds,
+]);
 
 export function parseEvidenceCompareSearch(
   search: string,
   knownCompanyIds: Iterable<string>,
-  supportedCompanyIds: Iterable<string> = evidenceComparePilotCompanyIds,
+  supportedCompanyIds: Iterable<string> = evidenceCompareSupportedCompanyIds,
 ): EvidenceCompareState {
   const params = new URLSearchParams(search.startsWith('?') ? search.slice(1) : search);
   const enabled = params.get('view') === 'evidence';
