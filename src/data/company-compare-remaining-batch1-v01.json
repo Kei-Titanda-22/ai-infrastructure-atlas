@@ -1,0 +1,1752 @@
+{
+  "schemaVersion": "0.1",
+  "stage": "remaining-rollout-batch-1",
+  "companyIds": [
+    "cadence",
+    "marvell",
+    "nxp",
+    "renesas",
+    "synopsys",
+    "digital-realty",
+    "ge-vernova",
+    "schneider-electric",
+    "ciena",
+    "corning",
+    "lumentum",
+    "fanuc",
+    "smc",
+    "asml",
+    "kokusai-electric",
+    "screen-holdings",
+    "linde",
+    "shinko-electric",
+    "seagate",
+    "besi"
+  ],
+  "companies": [
+    {
+      "companyId": "cadence",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "cadence-ai-role"
+        ],
+        "value-chain-position": [
+          "cadence-value-chain"
+        ],
+        "key-products": [
+          "cadence-products"
+        ],
+        "technology-moat": [
+          "cadence-positioning",
+          "cadence-technology"
+        ],
+        "capacity-roadmap": [
+          "cadence-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "cadence-risks"
+        ]
+      },
+      "claimDisplay": {
+        "cadence-ai-role": {
+          "title": "AI\u30c1\u30c3\u30d7\u8a2d\u8a08\u30fb\u691c\u8a3c\u3092\u652f\u3048\u308b",
+          "statement": "Atlas\u3067\u306fCadence\uff08\u30b1\u30a4\u30c7\u30f3\u30b9\uff09\u3092\u3001AI\u534a\u5c0e\u4f53\u3068\u5148\u7aef\u30d1\u30c3\u30b1\u30fc\u30b8\u306e\u8a2d\u8a08\u30fb\u691c\u8a3c\u30fb\u30b7\u30b9\u30c6\u30e0\u89e3\u6790\u3092\u652f\u3048\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "cadence-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fCadence\uff08\u30b1\u30a4\u30c7\u30f3\u30b9\uff09\u3092\u300cCompute & Silicon\u300d\u306b\u4f4d\u7f6e\u3057\u3001AI\u534a\u5c0e\u4f53\u3068\u5148\u7aef\u30d1\u30c3\u30b1\u30fc\u30b8\u306e\u8a2d\u8a08\u30fb\u691c\u8a3c\u30fb\u30b7\u30b9\u30c6\u30e0\u89e3\u6790\u3092\u652f\u3048\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "cadence-products": {
+          "title": "EDA\u30fb\u8a2d\u8a08IP\u30fb\u89e3\u6790",
+          "statement": "Cadence\uff08\u30b1\u30a4\u30c7\u30f3\u30b9\uff09\u306f\u3001EDA\u8a2d\u8a08\u30fb\u691c\u8a3c\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3001\u534a\u5c0e\u4f53\u8a2d\u8a08IP\u3001\u30de\u30eb\u30c1\u30d5\u30a3\u30b8\u30c3\u30af\u30b9\u89e3\u6790\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "cadence-positioning": {
+          "title": "\u7d71\u5408\u30c4\u30fc\u30eb\u7fa4\u3068\u8a2d\u8a08\u9023\u643a",
+          "statement": "Atlas\u3067\u306f\u3001\u5148\u7aefIC\u8a2d\u8a08\u306e\u7d71\u5408\u30c4\u30fc\u30eb\u7fa4\u3001\u30d5\u30a1\u30a6\u30f3\u30c9\u30ea\u30fb\u9867\u5ba2\u3068\u306e\u6df1\u3044\u9023\u643a\u3001\u30b7\u30b9\u30c6\u30e0\u8a2d\u8a08\u3078\u306e\u62e1\u5f35\u3092\u3001Cadence\uff08\u30b1\u30a4\u30c7\u30f3\u30b9\uff09\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "cadence-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001EDA\u8a2d\u8a08\u30fb\u691c\u8a3c\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3001\u534a\u5c0e\u4f53\u8a2d\u8a08IP\u3001\u30de\u30eb\u30c1\u30d5\u30a3\u30b8\u30c3\u30af\u30b9\u89e3\u6790\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001EDA\u3001\u534a\u5c0e\u4f53\u8a2d\u8a08\u3001\u30b7\u30b9\u30c6\u30e0\u8a2d\u8a08\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "cadence-strategy-triage-remediation-v02": {
+          "title": "\u5148\u7aefIC\u8a2d\u8a08\u3092\u91cd\u70b9\u5316",
+          "statement": "Cadence\uff08\u30b1\u30a4\u30c7\u30f3\u30b9\uff09\u306f\u3001EDA\u8a2d\u8a08\u30fb\u691c\u8a3c\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3092\u542b\u3080\u4e2d\u6838\u4e8b\u696d\u306b\u3064\u3044\u3066\u3001\u5148\u7aefIC\u8a2d\u8a08\u306e\u7d71\u5408\u30c4\u30fc\u30eb\u7fa4\u3092\u751f\u304b\u3057\u305f\u6280\u8853\u958b\u767a\u3001\u4f9b\u7d66\u529b\u3001\u9867\u5ba2\u5bfe\u5fdc\u3092\u91cd\u70b9\u5316\u3059\u308b\u7d4c\u55b6\u65b9\u91dd\u3092\u4e00\u6b21\u8cc7\u6599\u3067\u793a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "cadence-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u9867\u5ba2\u8a2d\u8a08\u6295\u8cc7\u3001\u8f38\u51fa\u898f\u5236\u3001Synopsys\u7b49\u3068\u306e\u7af6\u4e89\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "EDA\u30fb\u8a2d\u8a08IP\u30fb\u89e3\u6790",
+        "body": "Cadence\uff08\u30b1\u30a4\u30c7\u30f3\u30b9\uff09\u306f\u3001EDA\u8a2d\u8a08\u30fb\u691c\u8a3c\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3001\u534a\u5c0e\u4f53\u8a2d\u8a08IP\u3001\u30de\u30eb\u30c1\u30d5\u30a3\u30b8\u30c3\u30af\u30b9\u89e3\u6790\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "cadence-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-cadence-01",
+          "label": "EDA\u8a2d\u8a08\u30fb\u691c\u8a3c\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2",
+          "description": "EDA\u8a2d\u8a08\u30fb\u691c\u8a3c\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "cadence-products"
+        },
+        {
+          "canonicalId": "display-product-cadence-02",
+          "label": "\u534a\u5c0e\u4f53\u8a2d\u8a08IP",
+          "description": "\u534a\u5c0e\u4f53\u8a2d\u8a08IP\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "cadence-products"
+        },
+        {
+          "canonicalId": "display-product-cadence-03",
+          "label": "\u30de\u30eb\u30c1\u30d5\u30a3\u30b8\u30c3\u30af\u30b9\u89e3\u6790",
+          "description": "\u30de\u30eb\u30c1\u30d5\u30a3\u30b8\u30c3\u30af\u30b9\u89e3\u6790\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "cadence-products"
+        }
+      ]
+    },
+    {
+      "companyId": "marvell",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "marvell-ai-role"
+        ],
+        "value-chain-position": [
+          "marvell-value-chain"
+        ],
+        "key-products": [
+          "marvell-products"
+        ],
+        "technology-moat": [
+          "marvell-positioning",
+          "marvell-technology"
+        ],
+        "capacity-roadmap": [
+          "marvell-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "marvell-risks"
+        ]
+      },
+      "claimDisplay": {
+        "marvell-ai-role": {
+          "title": "\u30ab\u30b9\u30bf\u30e0AI\u534a\u5c0e\u4f53\u3068\u63a5\u7d9a",
+          "statement": "Atlas\u3067\u306fMarvell Technology\uff08\u30de\u30fc\u30d9\u30eb\u30fb\u30c6\u30af\u30ce\u30ed\u30b8\u30fc\uff09\u3092\u3001\u30ab\u30b9\u30bf\u30e0AI\u30a2\u30af\u30bb\u30e9\u30ec\u30fc\u30bf\u3068\u9ad8\u901f\u63a5\u7d9a\u534a\u5c0e\u4f53\u3092\u901a\u3058\u3001AI\u30af\u30e9\u30b9\u30bf\u306e\u8a08\u7b97\u3068\u901a\u4fe1\u306e\u4e21\u65b9\u306b\u95a2\u4e0e\u3059\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "marvell-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fMarvell Technology\uff08\u30de\u30fc\u30d9\u30eb\u30fb\u30c6\u30af\u30ce\u30ed\u30b8\u30fc\uff09\u3092\u300cCompute & Silicon\u300d\u306b\u4f4d\u7f6e\u3057\u3001\u30ab\u30b9\u30bf\u30e0AI\u30a2\u30af\u30bb\u30e9\u30ec\u30fc\u30bf\u3068\u9ad8\u901f\u63a5\u7d9a\u534a\u5c0e\u4f53\u3092\u901a\u3058\u3001AI\u30af\u30e9\u30b9\u30bf\u306e\u8a08\u7b97\u3068\u901a\u4fe1\u306e\u4e21\u65b9\u306b\u95a2\u4e0e\u3059\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "marvell-products": {
+          "title": "AI\u30a2\u30af\u30bb\u30e9\u30ec\u30fc\u30bf\u30fb\u63a5\u7d9a\u30fb\u30b9\u30c8\u30ec\u30fc\u30b8",
+          "statement": "Marvell Technology\uff08\u30de\u30fc\u30d9\u30eb\u30fb\u30c6\u30af\u30ce\u30ed\u30b8\u30fc\uff09\u306f\u3001Custom AI accelerators / ASIC\u3001Data-center interconnect silicon\u3001Storage controllers\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "marvell-positioning": {
+          "title": "\u30ab\u30b9\u30bf\u30e0\u8a2d\u8a08\u3068\u9ad8\u901f\u63a5\u7d9a",
+          "statement": "Atlas\u3067\u306f\u3001\u30ab\u30b9\u30bf\u30e0\u534a\u5c0e\u4f53\u8a2d\u8a08\u3078\u306e\u5bfe\u5fdc\u529b\u3001\u9ad8\u901f\u63a5\u7d9a\u3068\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u534a\u5c0e\u4f53\u306e\u88fd\u54c1\u7fa4\u3001\u30af\u30e9\u30a6\u30c9\u9867\u5ba2\u5411\u3051\u30a4\u30f3\u30d5\u30e9\u534a\u5c0e\u4f53\u3078\u306e\u96c6\u4e2d\u3092\u3001Marvell Technology\uff08\u30de\u30fc\u30d9\u30eb\u30fb\u30c6\u30af\u30ce\u30ed\u30b8\u30fc\uff09\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "marvell-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001Custom AI accelerators / ASIC\u3001Data-center interconnect silicon\u3001Storage controllers\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001AI accelerator\u3001AI networking\u3001data center\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "marvell-strategy-triage-remediation-v02": {
+          "title": "\u30c7\u30fc\u30bf\u30a4\u30f3\u30d5\u30e9\u534a\u5c0e\u4f53\u306b\u96c6\u4e2d",
+          "statement": "Marvell\u306fcompute\u3001networking\u3001security\u3001interconnect\u3001storage\u306esemiconductor portfolio\u3092data center\u3068communications\u5411\u3051\u306b\u96c6\u4e2d\u3057\u3001custom ASIC\u3068high-speed interconnect\u3092data infrastructure\u306e\u4e2d\u6838solution\u3068\u3057\u3066\u5c55\u958b\u3057\u3066\u3044\u308b\u3002"
+        },
+        "marvell-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u5927\u53e3\u9867\u5ba2\u3078\u306e\u58f2\u4e0a\u96c6\u4e2d\u3001\u30ab\u30b9\u30bf\u30e0ASIC\u6848\u4ef6\u306e\u7acb\u3061\u4e0a\u304c\u308a\u5909\u52d5\u3001Broadcom\u306a\u3069\u3068\u306e\u8a2d\u8a08\u7372\u5f97\u7af6\u4e89\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "AI\u30a2\u30af\u30bb\u30e9\u30ec\u30fc\u30bf\u30fb\u63a5\u7d9a\u30fb\u30b9\u30c8\u30ec\u30fc\u30b8",
+        "body": "Marvell Technology\uff08\u30de\u30fc\u30d9\u30eb\u30fb\u30c6\u30af\u30ce\u30ed\u30b8\u30fc\uff09\u306f\u3001Custom AI accelerators / ASIC\u3001Data-center interconnect silicon\u3001Storage controllers\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "marvell-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-marvell-01",
+          "label": "Custom AI accelerators / ASIC",
+          "description": "Custom AI accelerators / ASIC\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "marvell-products"
+        },
+        {
+          "canonicalId": "display-product-marvell-02",
+          "label": "Data-center interconnect silicon",
+          "description": "Data-center interconnect silicon\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "marvell-products"
+        },
+        {
+          "canonicalId": "display-product-marvell-03",
+          "label": "Storage controllers",
+          "description": "Storage controllers\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "marvell-products"
+        }
+      ]
+    },
+    {
+      "companyId": "nxp",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "nxp-ai-role"
+        ],
+        "value-chain-position": [
+          "nxp-value-chain"
+        ],
+        "key-products": [
+          "nxp-products"
+        ],
+        "technology-moat": [
+          "nxp-positioning",
+          "nxp-technology"
+        ],
+        "capacity-roadmap": [
+          "nxp-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "nxp-risks"
+        ]
+      },
+      "claimDisplay": {
+        "nxp-ai-role": {
+          "title": "\u8eca\u8f09\u30fb\u7523\u696d\u30a8\u30c3\u30b8\u534a\u5c0e\u4f53",
+          "statement": "Atlas\u3067\u306fNXP Semiconductors\uff08NXP\u30bb\u30df\u30b3\u30f3\u30c0\u30af\u30bf\u30fc\u30ba\uff09\u3092\u3001\u8eca\u8f09\u8a08\u7b97\u30fb\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u3001\u7523\u696d\u30a8\u30c3\u30b8AI\u306e\u5236\u5fa1\u30fb\u63a5\u7d9a\u534a\u5c0e\u4f53\u3092\u62c5\u3046\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "nxp-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fNXP Semiconductors\uff08NXP\u30bb\u30df\u30b3\u30f3\u30c0\u30af\u30bf\u30fc\u30ba\uff09\u3092\u300cCompute & Silicon\u300d\u306b\u4f4d\u7f6e\u3057\u3001\u8eca\u8f09\u8a08\u7b97\u30fb\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u3001\u7523\u696d\u30a8\u30c3\u30b8AI\u306e\u5236\u5fa1\u30fb\u63a5\u7d9a\u534a\u5c0e\u4f53\u3092\u62c5\u3046\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "nxp-products": {
+          "title": "\u8eca\u8f09\u30fb\u7523\u696d\u5411\u3051\u7d44\u307f\u8fbc\u307f\u534a\u5c0e\u4f53",
+          "statement": "NXP Semiconductors\uff08NXP\u30bb\u30df\u30b3\u30f3\u30c0\u30af\u30bf\u30fc\u30ba\uff09\u306f\u3001\u8eca\u8f09\u30d7\u30ed\u30bb\u30c3\u30b5\u30fbMCU\u3001\u8eca\u8f09\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u534a\u5c0e\u4f53\u3001\u7523\u696d\u30fbIoT\u5411\u3051\u7d44\u307f\u8fbc\u307f\u534a\u5c0e\u4f53\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "nxp-positioning": {
+          "title": "\u8eca\u8f09\u9867\u5ba2\u57fa\u76e4\u3068\u9577\u671f\u88fd\u54c1\u30b5\u30a4\u30af\u30eb",
+          "statement": "Atlas\u3067\u306f\u3001\u8eca\u8f09\u534a\u5c0e\u4f53\u306e\u5f37\u3044\u9867\u5ba2\u57fa\u76e4\u3001\u63a5\u7d9a\u30fb\u30bb\u30ad\u30e5\u30ea\u30c6\u30a3\u6280\u8853\u3001\u9577\u671f\u88fd\u54c1\u30b5\u30a4\u30af\u30eb\u3092\u3001NXP Semiconductors\uff08NXP\u30bb\u30df\u30b3\u30f3\u30c0\u30af\u30bf\u30fc\u30ba\uff09\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "nxp-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001\u8eca\u8f09\u30d7\u30ed\u30bb\u30c3\u30b5\u30fbMCU\u3001\u8eca\u8f09\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u534a\u5c0e\u4f53\u3001\u7523\u696d\u30fbIoT\u5411\u3051\u7d44\u307f\u8fbc\u307f\u534a\u5c0e\u4f53\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001\u8eca\u8f09\u534a\u5c0e\u4f53\u3001MCU\u3001\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u534a\u5c0e\u4f53\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "nxp-capacity-expansion-triage-remediation-v02": {
+          "title": "300mm fab capacity\u3092\u78ba\u4fdd",
+          "statement": "NXP\u306fSingapore\u306eVSMC 300mm fab capacity\u306e40%\u3092\u78ba\u4fdd\u30572027\u5e74\u306eproduction\u958b\u59cb\u3092\u3001Dresden\u306eESMC 300mm fab capacity\u306e10%\u3092\u78ba\u4fdd\u30572028\u5e74\u306eproduction\u958b\u59cb\u3092\u898b\u8fbc\u3093\u3067\u3044\u308b\u3002"
+        },
+        "nxp-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u81ea\u52d5\u8eca\u751f\u7523\u30b5\u30a4\u30af\u30eb\u3001\u9867\u5ba2\u5728\u5eab\u8abf\u6574\u3001\u7d44\u307f\u8fbc\u307f\u5e02\u5834\u306e\u7af6\u4e89\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u8eca\u8f09\u30fb\u7523\u696d\u5411\u3051\u7d44\u307f\u8fbc\u307f\u534a\u5c0e\u4f53",
+        "body": "NXP Semiconductors\uff08NXP\u30bb\u30df\u30b3\u30f3\u30c0\u30af\u30bf\u30fc\u30ba\uff09\u306f\u3001\u8eca\u8f09\u30d7\u30ed\u30bb\u30c3\u30b5\u30fbMCU\u3001\u8eca\u8f09\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u534a\u5c0e\u4f53\u3001\u7523\u696d\u30fbIoT\u5411\u3051\u7d44\u307f\u8fbc\u307f\u534a\u5c0e\u4f53\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "nxp-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-nxp-01",
+          "label": "\u8eca\u8f09\u30d7\u30ed\u30bb\u30c3\u30b5\u30fbMCU",
+          "description": "\u8eca\u8f09\u30d7\u30ed\u30bb\u30c3\u30b5\u30fbMCU\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "nxp-products"
+        },
+        {
+          "canonicalId": "display-product-nxp-02",
+          "label": "\u8eca\u8f09\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u534a\u5c0e\u4f53",
+          "description": "\u8eca\u8f09\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u534a\u5c0e\u4f53\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "nxp-products"
+        },
+        {
+          "canonicalId": "display-product-nxp-03",
+          "label": "\u7523\u696d\u30fbIoT\u5411\u3051\u7d44\u307f\u8fbc\u307f\u534a\u5c0e\u4f53",
+          "description": "\u7523\u696d\u30fbIoT\u5411\u3051\u7d44\u307f\u8fbc\u307f\u534a\u5c0e\u4f53\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "nxp-products"
+        }
+      ]
+    },
+    {
+      "companyId": "renesas",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "renesas-ai-role"
+        ],
+        "value-chain-position": [
+          "renesas-value-chain"
+        ],
+        "key-products": [
+          "renesas-products"
+        ],
+        "technology-moat": [
+          "renesas-positioning",
+          "renesas-technology"
+        ],
+        "capacity-roadmap": [
+          "renesas-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "renesas-risks"
+        ]
+      },
+      "claimDisplay": {
+        "renesas-ai-role": {
+          "title": "\u8eca\u8f09\u30fb\u7523\u696d\u306e\u7d44\u307f\u8fbc\u307f\u534a\u5c0e\u4f53",
+          "statement": "Atlas\u3067\u306f\u30eb\u30cd\u30b5\u30b9 \u30a8\u30ec\u30af\u30c8\u30ed\u30cb\u30af\u30b9\u3092\u3001\u8eca\u8f09\u30fb\u7523\u696d\u6a5f\u5668\u306e\u5236\u5fa1\u3068\u30a8\u30c3\u30b8AI\u5b9f\u88c5\u306b\u5fc5\u8981\u306a\u7d44\u307f\u8fbc\u307f\u8a08\u7b97\u30fb\u30a2\u30ca\u30ed\u30b0\u534a\u5c0e\u4f53\u3092\u4f9b\u7d66\u3059\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "renesas-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306f\u30eb\u30cd\u30b5\u30b9 \u30a8\u30ec\u30af\u30c8\u30ed\u30cb\u30af\u30b9\u3092\u300cCompute & Silicon\u300d\u306b\u4f4d\u7f6e\u3057\u3001\u8eca\u8f09\u30fb\u7523\u696d\u6a5f\u5668\u306e\u5236\u5fa1\u3068\u30a8\u30c3\u30b8AI\u5b9f\u88c5\u306b\u5fc5\u8981\u306a\u7d44\u307f\u8fbc\u307f\u8a08\u7b97\u30fb\u30a2\u30ca\u30ed\u30b0\u534a\u5c0e\u4f53\u3092\u4f9b\u7d66\u3059\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "renesas-products": {
+          "title": "MCU\u30fbSoC\u30fb\u30a2\u30ca\u30ed\u30b0\u534a\u5c0e\u4f53",
+          "statement": "\u30eb\u30cd\u30b5\u30b9 \u30a8\u30ec\u30af\u30c8\u30ed\u30cb\u30af\u30b9\u306f\u3001\u8eca\u8f09\u30fb\u7523\u696d\u5411\u3051MCU\u3001SoC\u30fbMPU\u3001\u30a2\u30ca\u30ed\u30b0\u30fb\u30d1\u30ef\u30fc\u534a\u5c0e\u4f53\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "renesas-positioning": {
+          "title": "\u30de\u30a4\u30b3\u30f3\u57fa\u76e4\u3068\u8eca\u8f09\u30fb\u7523\u696d\u4f9b\u7d66",
+          "statement": "Atlas\u3067\u306f\u3001\u30de\u30a4\u30b3\u30f3\u306e\u5927\u898f\u6a21\u9867\u5ba2\u57fa\u76e4\u3001\u8eca\u8f09\u30fb\u7523\u696d\u5411\u3051\u9577\u671f\u4f9b\u7d66\u3001\u7d44\u307f\u8fbc\u307f\u8a08\u7b97\u3068\u30a2\u30ca\u30ed\u30b0\u306e\u7d44\u5408\u305b\u3092\u3001\u30eb\u30cd\u30b5\u30b9 \u30a8\u30ec\u30af\u30c8\u30ed\u30cb\u30af\u30b9\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "renesas-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001\u8eca\u8f09\u30fb\u7523\u696d\u5411\u3051MCU\u3001SoC\u30fbMPU\u3001\u30a2\u30ca\u30ed\u30b0\u30fb\u30d1\u30ef\u30fc\u534a\u5c0e\u4f53\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001MCU\u3001SoC\u3001\u30a2\u30ca\u30ed\u30b0\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "renesas-capacity-expansion-triage-remediation-v02": {
+          "title": "\u7532\u5e9c\u5de5\u5834\u3092power\u534a\u5c0e\u4f53fab\u306b\u518d\u7a3c\u50cd",
+          "statement": "\u30eb\u30cd\u30b5\u30b9\u306f2024\u5e744\u6708\u3001900\u5104\u5186\u3092\u6295\u3058\u3066\u7532\u5e9c\u5de5\u5834\u3092power semiconductor\u5c02\u7528300 mm wafer fab\u3068\u3057\u3066\u518d\u7a3c\u50cd\u3057\u305f\u30022025\u5e74\u306bIGBT\u7b49\u306e\u91cf\u7523\u3092\u59cb\u3081\u3001power semiconductor\u751f\u7523\u80fd\u529b\u3092\u5f93\u6765\u6bd42\u500d\u306b\u3059\u308b\u8a08\u753b\u3092\u793a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "renesas-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u81ea\u52d5\u8eca\u30fb\u7523\u696d\u9700\u8981\u3001\u8cb7\u53ce\u7d71\u5408\u3001\u5728\u5eab\u5faa\u74b0\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "MCU\u30fbSoC\u30fb\u30a2\u30ca\u30ed\u30b0\u534a\u5c0e\u4f53",
+        "body": "\u30eb\u30cd\u30b5\u30b9 \u30a8\u30ec\u30af\u30c8\u30ed\u30cb\u30af\u30b9\u306f\u3001\u8eca\u8f09\u30fb\u7523\u696d\u5411\u3051MCU\u3001SoC\u30fbMPU\u3001\u30a2\u30ca\u30ed\u30b0\u30fb\u30d1\u30ef\u30fc\u534a\u5c0e\u4f53\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "renesas-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-renesas-01",
+          "label": "\u8eca\u8f09\u30fb\u7523\u696d\u5411\u3051MCU",
+          "description": "\u8eca\u8f09\u30fb\u7523\u696d\u5411\u3051MCU\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "renesas-products"
+        },
+        {
+          "canonicalId": "display-product-renesas-02",
+          "label": "SoC\u30fbMPU",
+          "description": "SoC\u30fbMPU\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "renesas-products"
+        },
+        {
+          "canonicalId": "display-product-renesas-03",
+          "label": "\u30a2\u30ca\u30ed\u30b0\u30fb\u30d1\u30ef\u30fc\u534a\u5c0e\u4f53",
+          "description": "\u30a2\u30ca\u30ed\u30b0\u30fb\u30d1\u30ef\u30fc\u534a\u5c0e\u4f53\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "renesas-products"
+        }
+      ]
+    },
+    {
+      "companyId": "synopsys",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "synopsys-ai-role"
+        ],
+        "value-chain-position": [
+          "synopsys-value-chain"
+        ],
+        "key-products": [
+          "synopsys-products"
+        ],
+        "technology-moat": [
+          "synopsys-positioning",
+          "synopsys-technology"
+        ],
+        "capacity-roadmap": [
+          "synopsys-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "synopsys-risks"
+        ]
+      },
+      "claimDisplay": {
+        "synopsys-ai-role": {
+          "title": "AI\u30c1\u30c3\u30d7\u8a2d\u8a08\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3068IP",
+          "statement": "Atlas\u3067\u306fSynopsys\uff08\u30b7\u30ce\u30d7\u30b7\u30b9\uff09\u3092\u3001GPU\u30fbASIC\u30fb\u30ab\u30b9\u30bf\u30e0AI\u534a\u5c0e\u4f53\u3092\u8a2d\u8a08\u3059\u308b\u305f\u3081\u306e\u57fa\u76e4\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3068IP\u3092\u4f9b\u7d66\u3059\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "synopsys-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fSynopsys\uff08\u30b7\u30ce\u30d7\u30b7\u30b9\uff09\u3092\u300cCompute & Silicon\u300d\u306b\u4f4d\u7f6e\u3057\u3001GPU\u30fbASIC\u30fb\u30ab\u30b9\u30bf\u30e0AI\u534a\u5c0e\u4f53\u3092\u8a2d\u8a08\u3059\u308b\u305f\u3081\u306e\u57fa\u76e4\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3068IP\u3092\u4f9b\u7d66\u3059\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "synopsys-products": {
+          "title": "EDA\u30fb\u8a2d\u8a08IP\u30fb\u30b7\u30df\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3",
+          "statement": "Synopsys\uff08\u30b7\u30ce\u30d7\u30b7\u30b9\uff09\u306f\u3001EDA\u8a2d\u8a08\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3001\u534a\u5c0e\u4f53\u8a2d\u8a08IP\u3001\u30b7\u30b9\u30c6\u30e0\u89e3\u6790\u30fb\u30b7\u30df\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "synopsys-positioning": {
+          "title": "EDA\u306e\u53c2\u5165\u969c\u58c1\u3068\u8a2d\u8a08IP\u7d71\u5408",
+          "statement": "Atlas\u3067\u306f\u3001EDA\u5e02\u5834\u306e\u9ad8\u3044\u53c2\u5165\u969c\u58c1\u3001\u5148\u7aef\u30d7\u30ed\u30bb\u30b9\u3067\u306e\u30d5\u30a1\u30a6\u30f3\u30c9\u30ea\u9023\u643a\u3001\u8a2d\u8a08IP\u3068\u306e\u7d71\u5408\u3092\u3001Synopsys\uff08\u30b7\u30ce\u30d7\u30b7\u30b9\uff09\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "synopsys-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001EDA\u8a2d\u8a08\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3001\u534a\u5c0e\u4f53\u8a2d\u8a08IP\u3001\u30b7\u30b9\u30c6\u30e0\u89e3\u6790\u30fb\u30b7\u30df\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001EDA\u3001\u534a\u5c0e\u4f53\u8a2d\u8a08\u3001IP\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "synopsys-strategy-triage-remediation-v02": {
+          "title": "AI\u99c6\u52d5\u30c1\u30c3\u30d7\u8a2d\u8a08\u3092\u7d71\u5408",
+          "statement": "Synopsys\u306fsilicon design\u3001Design IP\u3001Ansys simulation and analysis\u3001design services\u3092\u7d71\u5408\u3057\u3001AI-driven chip design\u3068IP Accelerated\u3067customer development cycle\u306e\u77ed\u7e2e\u3092\u9032\u3081\u308b\u6226\u7565\u3092\u793a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "synopsys-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u534a\u5c0e\u4f53\u8a2d\u8a08\u6295\u8cc7\u30b5\u30a4\u30af\u30eb\u3001\u5927\u53e3\u9867\u5ba2\u96c6\u4e2d\u3001\u898f\u5236\u30fb\u8f38\u51fa\u7ba1\u7406\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "EDA\u30fb\u8a2d\u8a08IP\u30fb\u30b7\u30df\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3",
+        "body": "Synopsys\uff08\u30b7\u30ce\u30d7\u30b7\u30b9\uff09\u306f\u3001EDA\u8a2d\u8a08\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3001\u534a\u5c0e\u4f53\u8a2d\u8a08IP\u3001\u30b7\u30b9\u30c6\u30e0\u89e3\u6790\u30fb\u30b7\u30df\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "synopsys-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-synopsys-01",
+          "label": "EDA\u8a2d\u8a08\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2",
+          "description": "EDA\u8a2d\u8a08\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "synopsys-products"
+        },
+        {
+          "canonicalId": "display-product-synopsys-02",
+          "label": "\u534a\u5c0e\u4f53\u8a2d\u8a08IP",
+          "description": "\u534a\u5c0e\u4f53\u8a2d\u8a08IP\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "synopsys-products"
+        },
+        {
+          "canonicalId": "display-product-synopsys-03",
+          "label": "\u30b7\u30b9\u30c6\u30e0\u89e3\u6790\u30fb\u30b7\u30df\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3",
+          "description": "\u30b7\u30b9\u30c6\u30e0\u89e3\u6790\u30fb\u30b7\u30df\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "synopsys-products"
+        }
+      ]
+    },
+    {
+      "companyId": "digital-realty",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "digital-realty-ai-role"
+        ],
+        "value-chain-position": [
+          "digital-realty-value-chain"
+        ],
+        "key-products": [
+          "digital-realty-products"
+        ],
+        "technology-moat": [
+          "digital-realty-positioning",
+          "digital-realty-technology"
+        ],
+        "capacity-roadmap": [
+          "digital-realty-strategy"
+        ],
+        "key-risks": [
+          "digital-realty-risks"
+        ]
+      },
+      "claimDisplay": {
+        "digital-realty-ai-role": {
+          "title": "AI\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u306e\u7269\u7406\u57fa\u76e4",
+          "statement": "Atlas\u3067\u306fDigital Realty\u3092\u3001AI compute\u3092\u53ce\u5bb9\u3059\u308bdata center space\u3001power\u3001cooling\u3001network interconnection\u3092\u63d0\u4f9b\u3059\u308bphysical infrastructure\u5c64\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "digital-realty-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Digital Realty\u306fdata center\u306e\u571f\u5730\u30fb\u5efa\u7269\u30fb\u96fb\u529b\u30fb\u51b7\u5374\u3068network\u63a5\u7d9a\u3092\u7d71\u5408\u3057\u3001\u4f01\u696d\u30fbcloud\u30fbservice provider\u306eIT infrastructure\u3092\u53ce\u5bb9\u3059\u308b\u3002"
+        },
+        "digital-realty-products": {
+          "title": "\u30b3\u30ed\u30b1\u30fc\u30b7\u30e7\u30f3\u304b\u3089\u76f8\u4e92\u63a5\u7d9a\u307e\u3067",
+          "statement": "Digital Realty\u306fPlatformDIGITAL\u3092\u4e2d\u6838\u306b\u3001cabinet\u304b\u3089multi-megawatt deployment\u3001colocation\u3001Turn-Key Flex\u3001Powered Base Building\u3001cross connect\u3001ServiceFabric\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "digital-realty-positioning": {
+          "title": "\u30b0\u30ed\u30fc\u30d0\u30eb\u63a5\u7d9a\u57fa\u76e4",
+          "statement": "Digital Realty\u306f300\u8d85\u306efacility\u300155\u8d85\u306emetro\u3001connected community\u3001network density\u3001interconnection infrastructure\u304c\u8907\u88fd\u56f0\u96e3\u306aglobal platform\u3092\u5f62\u6210\u3059\u308b\u3068\u8aac\u660e\u3057\u3066\u3044\u308b\u3002"
+        },
+        "digital-realty-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "PlatformDIGITAL\u306fglobal footprint\u3001PDx architecture\u3001ServiceFabric\u306enetwork orchestration\u3092\u7d44\u307f\u5408\u308f\u305b\u3001workload\u914d\u7f6e\u3068private connectivity\u3092\u652f\u63f4\u3059\u308b\u3002"
+        },
+        "digital-realty-strategy": {
+          "title": "\u53ce\u76ca\u6027\u3068\u30b0\u30ed\u30fc\u30d0\u30eb\u898f\u6a21\u3092\u91cd\u8996",
+          "statement": "Digital Realty\u306frisk-adjusted return\u3001\u614e\u91cd\u306acapital allocation\u3001product diversification\u3001global reach\u3068scale\u3001operating efficiency\u3092\u6210\u9577\u65b9\u91dd\u3068\u3057\u3066\u3044\u308b\u3002"
+        },
+        "digital-realty-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Digital Realty\u306fdata center\u9700\u8981\u3001\u96fb\u529b\u4f9b\u7d66\u3068\u4fa1\u683c\u3001\u7af6\u4e89\u3001significant customer\u3001power density\u3092\u542b\u3080technology\u5909\u5316\u3078\u306e\u9069\u5fdc\u3092\u4e3b\u8981\u30ea\u30b9\u30af\u3068\u3057\u3066\u958b\u793a\u3057\u3066\u3044\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u30b3\u30ed\u30b1\u30fc\u30b7\u30e7\u30f3\u304b\u3089\u76f8\u4e92\u63a5\u7d9a\u307e\u3067",
+        "body": "Digital Realty\u306fPlatformDIGITAL\u3092\u4e2d\u6838\u306b\u3001cabinet\u304b\u3089multi-megawatt deployment\u3001colocation\u3001Turn-Key Flex\u3001Powered Base Building\u3001cross connect\u3001ServiceFabric\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "digital-realty-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-digital-realty-01",
+          "label": "PlatformDIGITAL",
+          "description": "PlatformDIGITAL\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "digital-realty-products"
+        },
+        {
+          "canonicalId": "display-product-digital-realty-02",
+          "label": "colocation",
+          "description": "colocation\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "digital-realty-products"
+        },
+        {
+          "canonicalId": "display-product-digital-realty-03",
+          "label": "Turn-Key Flex",
+          "description": "Turn-Key Flex\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "digital-realty-products"
+        },
+        {
+          "canonicalId": "display-product-digital-realty-04",
+          "label": "Powered Base Building",
+          "description": "Powered Base Building\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "digital-realty-products"
+        },
+        {
+          "canonicalId": "display-product-digital-realty-05",
+          "label": "cross connect",
+          "description": "cross connect\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "digital-realty-products"
+        },
+        {
+          "canonicalId": "display-product-digital-realty-06",
+          "label": "ServiceFabric",
+          "description": "ServiceFabric\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "digital-realty-products"
+        }
+      ]
+    },
+    {
+      "companyId": "ge-vernova",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "ge-vernova-ai-role"
+        ],
+        "value-chain-position": [
+          "ge-vernova-value-chain"
+        ],
+        "key-products": [
+          "ge-vernova-products"
+        ],
+        "technology-moat": [
+          "ge-vernova-positioning",
+          "ge-vernova-technology"
+        ],
+        "capacity-roadmap": [
+          "ge-vernova-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "ge-vernova-risks"
+        ]
+      },
+      "claimDisplay": {
+        "ge-vernova-ai-role": {
+          "title": "\u767a\u96fb\u30fb\u9001\u96fb\u8a2d\u5099\u3092\u4f9b\u7d66",
+          "statement": "Atlas\u3067\u306fGE Vernova\uff08GE\u30d9\u30eb\u30ce\u30d0\uff09\u3092\u3001AI\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u306e\u96fb\u529b\u9700\u8981\u5897\u52a0\u306b\u5bfe\u3057\u3001\u767a\u96fb\u5bb9\u91cf\u3068\u9001\u96fb\u30fb\u5909\u96fb\u30a4\u30f3\u30d5\u30e9\u306e\u53cc\u65b9\u304b\u3089\u4e0a\u6d41\u8a2d\u5099\u6295\u8cc7\u306b\u63a5\u7d9a\u3059\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "ge-vernova-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fGE Vernova\uff08GE\u30d9\u30eb\u30ce\u30d0\uff09\u3092\u300cData Center & Facilities\u300d\u306b\u4f4d\u7f6e\u3057\u3001AI\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u306e\u96fb\u529b\u9700\u8981\u5897\u52a0\u306b\u5bfe\u3057\u3001\u767a\u96fb\u5bb9\u91cf\u3068\u9001\u96fb\u30fb\u5909\u96fb\u30a4\u30f3\u30d5\u30e9\u306e\u53cc\u65b9\u304b\u3089\u4e0a\u6d41\u8a2d\u5099\u6295\u8cc7\u306b\u63a5\u7d9a\u3059\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "ge-vernova-products": {
+          "title": "\u7cfb\u7d71\u30fb\u5909\u5727\u5668\u30fb\u767a\u96fb\u8a2d\u5099",
+          "statement": "GE Vernova\uff08GE\u30d9\u30eb\u30ce\u30d0\uff09\u306f\u3001Grid solutions\u3001Power transformers and switchgear\u3001Gas power generation\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "ge-vernova-positioning": {
+          "title": "\u767a\u96fb\u304b\u3089\u9001\u914d\u96fb\u307e\u3067",
+          "statement": "Atlas\u3067\u306f\u3001\u767a\u96fb\u304b\u3089\u9001\u96fb\u30fb\u5909\u96fb\u307e\u3067\u3092\u6301\u3064\u96fb\u529b\u30a4\u30f3\u30d5\u30e9\u88fd\u54c1\u7fa4\u3001\u5927\u898f\u6a21\u96fb\u529b\u8a2d\u5099\u306e\u8a2d\u8a08\u30fb\u30b5\u30fc\u30d3\u30b9\u57fa\u76e4\u3001\u96fb\u529b\u9700\u8981\u5897\u52a0\u3068\u7cfb\u7d71\u66f4\u65b0\u306e\u53cc\u65b9\u3078\u306e\u63a5\u70b9\u3092\u3001GE Vernova\uff08GE\u30d9\u30eb\u30ce\u30d0\uff09\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "ge-vernova-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001Grid solutions\u3001Power transformers and switchgear\u3001Gas power generation\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001grid infrastructure\u3001transformer\u3001switchgear\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "ge-vernova-capacity-expansion-triage-remediation-v02": {
+          "title": "\u7c73\u56fd\u306e\u96fb\u529b\u8a2d\u5099\u751f\u7523\u3092\u5897\u5f37",
+          "statement": "GE Vernova\u306f2025\u5e74\u306b\u7c73\u56fdPower\u30fbElectrification\u5de5\u5834\u30671,500\u4eba\u8d85\u3092\u5897\u54e1\u3057\u3001Pennsylvania\u306egrid\u5de5\u5834\u30782\u5e74\u9593\u3067100 million dollar\u8d85\u3092\u6295\u3058\u3066high-voltage switchgear\u306e\u751f\u7523\u3092\u5897\u3084\u3059\u8a08\u753b\u3092\u793a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "ge-vernova-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u5927\u578b\u96fb\u529b\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u63a1\u7b97\u30fb\u7d0d\u671f\u3001\u30ac\u30b9\u30bf\u30fc\u30d3\u30f3\u30fb\u9001\u96fb\u8a2d\u5099\u306e\u4f9b\u7d66\u5236\u7d04\u3001\u653f\u7b56\u30fb\u96fb\u6e90\u69cb\u6210\u306e\u5909\u5316\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u7cfb\u7d71\u30fb\u5909\u5727\u5668\u30fb\u767a\u96fb\u8a2d\u5099",
+        "body": "GE Vernova\uff08GE\u30d9\u30eb\u30ce\u30d0\uff09\u306f\u3001Grid solutions\u3001Power transformers and switchgear\u3001Gas power generation\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "ge-vernova-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-ge-vernova-01",
+          "label": "Grid solutions",
+          "description": "Grid solutions\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "ge-vernova-products"
+        },
+        {
+          "canonicalId": "display-product-ge-vernova-02",
+          "label": "Power transformers and switchgear",
+          "description": "Power transformers and switchgear\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "ge-vernova-products"
+        },
+        {
+          "canonicalId": "display-product-ge-vernova-03",
+          "label": "Gas power generation",
+          "description": "Gas power generation\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "ge-vernova-products"
+        }
+      ]
+    },
+    {
+      "companyId": "schneider-electric",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "schneider-electric-ai-role"
+        ],
+        "value-chain-position": [
+          "schneider-electric-value-chain"
+        ],
+        "key-products": [
+          "schneider-electric-products"
+        ],
+        "technology-moat": [
+          "schneider-electric-positioning",
+          "schneider-electric-technology"
+        ],
+        "capacity-roadmap": [
+          "schneider-electric-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "schneider-electric-risks"
+        ]
+      },
+      "claimDisplay": {
+        "schneider-electric-ai-role": {
+          "title": "AI\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u306e\u96fb\u529b\u30fb\u51b7\u5374",
+          "statement": "Atlas\u3067\u306fSchneider Electric\uff08\u30b7\u30e5\u30ca\u30a4\u30c0\u30fc\u30a8\u30ec\u30af\u30c8\u30ea\u30c3\u30af\uff09\u3092\u3001AI\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u306e\u9ad8\u96fb\u529b\u5bc6\u5ea6\u5316\u306b\u4f34\u3046\u53d7\u914d\u96fb\u30fbUPS\u30fb\u51b7\u5374\u30fb\u904b\u7528\u7ba1\u7406\u306e\u8a2d\u5099\u6295\u8cc7\u3092\u5e83\u304f\u53d6\u308a\u8fbc\u3080\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "schneider-electric-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fSchneider Electric\uff08\u30b7\u30e5\u30ca\u30a4\u30c0\u30fc\u30a8\u30ec\u30af\u30c8\u30ea\u30c3\u30af\uff09\u3092\u300cData Center & Facilities\u300d\u306b\u4f4d\u7f6e\u3057\u3001AI\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u306e\u9ad8\u96fb\u529b\u5bc6\u5ea6\u5316\u306b\u4f34\u3046\u53d7\u914d\u96fb\u30fbUPS\u30fb\u51b7\u5374\u30fb\u904b\u7528\u7ba1\u7406\u306e\u8a2d\u5099\u6295\u8cc7\u3092\u5e83\u304f\u53d6\u308a\u8fbc\u3080\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "schneider-electric-products": {
+          "title": "\u53d7\u914d\u96fb\u30fbUPS\u30fb\u51b7\u5374\u30fb\u904b\u7528\u7ba1\u7406",
+          "statement": "Schneider Electric\uff08\u30b7\u30e5\u30ca\u30a4\u30c0\u30fc\u30a8\u30ec\u30af\u30c8\u30ea\u30c3\u30af\uff09\u306f\u3001Data center power distribution\u3001UPS and secure power\u3001Cooling and data center management\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "schneider-electric-positioning": {
+          "title": "\u96fb\u529b\u30fb\u51b7\u5374\u30fb\u7ba1\u7406\u306e\u7d71\u5408",
+          "statement": "Atlas\u3067\u306f\u3001\u53d7\u914d\u96fb\u304b\u3089UPS\u30fb\u51b7\u5374\u30fb\u7ba1\u7406\u30bd\u30d5\u30c8\u307e\u3067\u306e\u5e83\u3044\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u88fd\u54c1\u7fa4\u3001\u30b0\u30ed\u30fc\u30d0\u30eb\u306a\u8ca9\u58f2\u30fb\u30b5\u30fc\u30d3\u30b9\u7db2\u3001\u96fb\u5316\u3068\u30a8\u30cd\u30eb\u30ae\u30fc\u7ba1\u7406\u3092\u7d71\u5408\u3059\u308b\u4e8b\u696d\u57fa\u76e4\u3092\u3001Schneider Electric\uff08\u30b7\u30e5\u30ca\u30a4\u30c0\u30fc\u30a8\u30ec\u30af\u30c8\u30ea\u30c3\u30af\uff09\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "schneider-electric-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001Data center power distribution\u3001UPS and secure power\u3001Cooling and data center management\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001data center\u3001power distribution\u3001UPS\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "schneider-electric-capacity-expansion-triage-remediation-v02": {
+          "title": "\u7c73\u56fd\u306e\u65bd\u8a2d\u30fb\u62e0\u70b9\u3092\u62e1\u5f35",
+          "statement": "Schneider Electric\u306f2025\uff5e2027\u5e74\u306b\u7c73\u56fdoperations\u30787\u5104USD\u8d85\u3092\u6295\u3058\u3001Mt. Juliet\u306e\u65b0\u65bd\u8a2d\u3001Columbia\u30fbEl Paso\u7b49\u306eplant\u62e1\u5f35\u3001AI data center\u5411\u3051power distribution laboratory\u3092\u6574\u5099\u3057\u30011,000\u4eba\u8d85\u3092\u96c7\u7528\u3059\u308b\u8a08\u753b\u3092\u793a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "schneider-electric-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u5927\u578b\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u6295\u8cc7\u30b5\u30a4\u30af\u30eb\u3001\u96fb\u6a5f\u30fb\u53d7\u914d\u96fb\u5e02\u5834\u306e\u7af6\u4e89\u3001\u5730\u57df\u5225\u8a2d\u5099\u6295\u8cc7\u3068\u70ba\u66ff\u306e\u5909\u52d5\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u53d7\u914d\u96fb\u30fbUPS\u30fb\u51b7\u5374\u30fb\u904b\u7528\u7ba1\u7406",
+        "body": "Schneider Electric\uff08\u30b7\u30e5\u30ca\u30a4\u30c0\u30fc\u30a8\u30ec\u30af\u30c8\u30ea\u30c3\u30af\uff09\u306f\u3001Data center power distribution\u3001UPS and secure power\u3001Cooling and data center management\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "schneider-electric-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-schneider-electric-01",
+          "label": "Data center power distribution",
+          "description": "Data center power distribution\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "schneider-electric-products"
+        },
+        {
+          "canonicalId": "display-product-schneider-electric-02",
+          "label": "UPS and secure power",
+          "description": "UPS and secure power\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "schneider-electric-products"
+        },
+        {
+          "canonicalId": "display-product-schneider-electric-03",
+          "label": "Cooling and data center management",
+          "description": "Cooling and data center management\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "schneider-electric-products"
+        }
+      ]
+    },
+    {
+      "companyId": "ciena",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "ciena-ai-role"
+        ],
+        "value-chain-position": [
+          "ciena-value-chain"
+        ],
+        "key-products": [
+          "ciena-products"
+        ],
+        "technology-moat": [
+          "ciena-positioning",
+          "ciena-technology"
+        ],
+        "capacity-roadmap": [
+          "ciena-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "ciena-risks"
+        ]
+      },
+      "claimDisplay": {
+        "ciena-ai-role": {
+          "title": "\u9577\u8ddd\u96e2\u30fb\u5e83\u57df\u306e\u5149\u63a5\u7d9a",
+          "statement": "Atlas\u3067\u306fCiena\uff08\u30b7\u30a8\u30ca\uff09\u3092\u3001\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u9593\u3084\u901a\u4fe1\u4e8b\u696d\u8005\u7db2\u306e\u5927\u5bb9\u91cf\u4f1d\u9001\u3092\u62c5\u3044\u3001\u5206\u6563AI\u57fa\u76e4\u306e\u9577\u8ddd\u96e2\u30fb\u5e83\u57df\u63a5\u7d9a\u3092\u652f\u3048\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "ciena-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fCiena\uff08\u30b7\u30a8\u30ca\uff09\u3092\u300cNetwork & Optical\u300d\u306b\u4f4d\u7f6e\u3057\u3001\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u9593\u3084\u901a\u4fe1\u4e8b\u696d\u8005\u7db2\u306e\u5927\u5bb9\u91cf\u4f1d\u9001\u3092\u62c5\u3044\u3001\u5206\u6563AI\u57fa\u76e4\u306e\u9577\u8ddd\u96e2\u30fb\u5e83\u57df\u63a5\u7d9a\u3092\u652f\u3048\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "ciena-products": {
+          "title": "\u5149\u4f1d\u9001\u30fbcoherent optics\u30fb\u5236\u5fa1\u30bd\u30d5\u30c8",
+          "statement": "Ciena\uff08\u30b7\u30a8\u30ca\uff09\u306f\u3001Coherent optical transport systems\u3001WaveLogic coherent optics\u3001Network control software\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "ciena-positioning": {
+          "title": "coherent optics\u3068\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u7d71\u5408",
+          "statement": "Atlas\u3067\u306f\u3001\u30b3\u30d2\u30fc\u30ec\u30f3\u30c8\u5149\u4f1d\u9001\u306e\u6280\u8853\u84c4\u7a4d\u3001\u5927\u5bb9\u91cf\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u9593\u63a5\u7d9a\u3078\u306e\u5f37\u3044\u88fd\u54c1\u30dd\u30b8\u30b7\u30e7\u30f3\u3001\u5149\u4f1d\u9001\u88c5\u7f6e\u3068\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u5236\u5fa1\u30bd\u30d5\u30c8\u30a6\u30a7\u30a2\u306e\u7d71\u5408\u3092\u3001Ciena\uff08\u30b7\u30a8\u30ca\uff09\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "ciena-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001Coherent optical transport systems\u3001WaveLogic coherent optics\u3001Network control software\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001coherent optics\u3001optical transport\u3001data center interconnect\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "ciena-strategy-triage-remediation-v02": {
+          "title": "\u5149\u4f1d\u9001\u306e\u6280\u8853\u958b\u767a\u3092\u91cd\u70b9\u5316",
+          "statement": "Ciena\uff08\u30b7\u30a8\u30ca\uff09\u306f\u3001Coherent optical transport systems\u3092\u542b\u3080\u4e2d\u6838\u4e8b\u696d\u306b\u3064\u3044\u3066\u3001\u30b3\u30d2\u30fc\u30ec\u30f3\u30c8\u5149\u4f1d\u9001\u306e\u6280\u8853\u84c4\u7a4d\u3092\u751f\u304b\u3057\u305f\u6280\u8853\u958b\u767a\u3001\u4f9b\u7d66\u529b\u3001\u9867\u5ba2\u5bfe\u5fdc\u3092\u91cd\u70b9\u5316\u3059\u308b\u7d4c\u55b6\u65b9\u91dd\u3092\u4e00\u6b21\u8cc7\u6599\u3067\u793a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "ciena-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u901a\u4fe1\u4e8b\u696d\u8005\u306e\u8a2d\u5099\u6295\u8cc7\u30b5\u30a4\u30af\u30eb\u3001\u7af6\u5408\u30cd\u30c3\u30c8\u30ef\u30fc\u30af\u6a5f\u5668\u4f01\u696d\u3068\u306e\u4fa1\u683c\u30fb\u6280\u8853\u7af6\u4e89\u3001\u5927\u53e3\u9867\u5ba2\u306e\u5c0e\u5165\u6642\u671f\u306b\u3088\u308b\u58f2\u4e0a\u5909\u52d5\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u5149\u4f1d\u9001\u30fbcoherent optics\u30fb\u5236\u5fa1\u30bd\u30d5\u30c8",
+        "body": "Ciena\uff08\u30b7\u30a8\u30ca\uff09\u306f\u3001Coherent optical transport systems\u3001WaveLogic coherent optics\u3001Network control software\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "ciena-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-ciena-01",
+          "label": "Coherent optical transport systems",
+          "description": "Coherent optical transport systems\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "ciena-products"
+        },
+        {
+          "canonicalId": "display-product-ciena-02",
+          "label": "WaveLogic coherent optics",
+          "description": "WaveLogic coherent optics\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "ciena-products"
+        },
+        {
+          "canonicalId": "display-product-ciena-03",
+          "label": "Network control software",
+          "description": "Network control software\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "ciena-products"
+        }
+      ]
+    },
+    {
+      "companyId": "corning",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "corning-ai-role"
+        ],
+        "value-chain-position": [
+          "corning-value-chain"
+        ],
+        "key-products": [
+          "corning-products"
+        ],
+        "technology-moat": [
+          "corning-positioning",
+          "corning-technology"
+        ],
+        "capacity-roadmap": [
+          "corning-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "corning-risks"
+        ]
+      },
+      "claimDisplay": {
+        "corning-ai-role": {
+          "title": "AI\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u306e\u5149\u914d\u7dda",
+          "statement": "Atlas\u3067\u306fCorning\u3092\u3001hyperscale AI data center\u5185\u306e\u9ad8\u5bc6\u5ea6fiber\u914d\u7dda\u3068data center\u9593\u63a5\u7d9a\u3092\u62c5\u3046optical connectivity\u30fbfiber\u4f9b\u7d66\u5074\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "corning-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Corning\u306fdata\u3001voice\u3001video\u3092\u904b\u3076\u901a\u4fe1\u57fa\u76e4\u306efiber\u30fbcable\u30fbconnector\u3092\u88fd\u9020\u3057\u3001AI infrastructure\u306enetwork physical layer\u306b\u4f4d\u7f6e\u3059\u308b\u3002"
+        },
+        "corning-products": {
+          "title": "\u5149\u30d5\u30a1\u30a4\u30d0\u30fc\u30fb\u30b1\u30fc\u30d6\u30eb\u30fb\u30b3\u30cd\u30af\u30bf",
+          "statement": "Corning\u306eOptical Communications\u4e8b\u696d\u306fcarrier network\u3068enterprise network\u5411\u3051\u306boptical fiber\u3001cable\u3001connector\u3001\u9ad8\u5bc6\u5ea6data center cabling\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "corning-positioning": {
+          "title": "\u5927\u898f\u6a21\u88fd\u9020\u3068fiber\u6280\u8853",
+          "statement": "Corning\u306fOptical Communications\u306e\u4e3b\u8981\u88fd\u54c1\u7fa4\u3067leadership position\u3092\u6301\u3061\u3001\u5927\u898f\u6a21\u88fd\u9020\u7d4c\u9a13\u3001fiber process\u3001technology leadership\u3001\u77e5\u7684\u8ca1\u7523\u304ccost advantage\u3092\u3082\u305f\u3089\u3059\u3068\u8aac\u660e\u3057\u3066\u3044\u308b\u3002"
+        },
+        "corning-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Corning\u306fGenerative AI\u9700\u8981\u5411\u3051\u306bSMF-28e Contour fiber\u3068Contour Flow Cable\u3092\u5c55\u958b\u3057\u3001\u540c\u4e00cable\u5f84\u3067fiber\u5bc6\u5ea6\u3092\u9ad8\u3081\u308b\u8a2d\u8a08\u3092\u793a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "corning-capacity-expansion-triage-remediation-v02": {
+          "title": "\u7c73\u56fd\u5149\u63a5\u7d9a\u80fd\u529b\u3092\u62e1\u5f35",
+          "statement": "Corning\u306fNVIDIA\u3068\u306e\u63d0\u643a\u3067\u3001\u7c73\u56fd\u306e\u5149\u63a5\u7d9a\u88fd\u9020\u80fd\u529b\u309210\u500d\u3001fiber\u751f\u7523\u80fd\u529b\u309250%\u4ee5\u4e0a\u5897\u3084\u3057\u3001North Carolina\u3068Texas\u306b3\u5de5\u5834\u3092\u65b0\u8a2d\u3059\u308b\u8a08\u753b\u3092\u958b\u793a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "corning-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Corning\u306fhyperscale data center\u8a2d\u5099\u6295\u8cc7\u306e\u5909\u52d5\u3001\u696d\u754c\u306e\u4fa1\u683c\u5727\u529b\u3068\u88fd\u54c1innovation\u7af6\u4e89\u3001\u539f\u6750\u6599\u306e\u4f9b\u7d66\u30fbcost\u5909\u52d5\u3092\u30ea\u30b9\u30af\u3068\u3057\u3066\u958b\u793a\u3057\u3066\u3044\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u5149\u30d5\u30a1\u30a4\u30d0\u30fc\u30fb\u30b1\u30fc\u30d6\u30eb\u30fb\u30b3\u30cd\u30af\u30bf",
+        "body": "Corning\u306eOptical Communications\u4e8b\u696d\u306fcarrier network\u3068enterprise network\u5411\u3051\u306boptical fiber\u3001cable\u3001connector\u3001\u9ad8\u5bc6\u5ea6data center cabling\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "corning-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-corning-01",
+          "label": "optical fiber",
+          "description": "optical fiber\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "corning-products"
+        },
+        {
+          "canonicalId": "display-product-corning-02",
+          "label": "cable",
+          "description": "cable\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "corning-products"
+        },
+        {
+          "canonicalId": "display-product-corning-03",
+          "label": "connector",
+          "description": "connector\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "corning-products"
+        },
+        {
+          "canonicalId": "display-product-corning-04",
+          "label": "\u9ad8\u5bc6\u5ea6data center cabling",
+          "description": "\u9ad8\u5bc6\u5ea6data center cabling\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "corning-products"
+        }
+      ]
+    },
+    {
+      "companyId": "lumentum",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "lumentum-ai-role"
+        ],
+        "value-chain-position": [
+          "lumentum-value-chain"
+        ],
+        "key-products": [
+          "lumentum-products"
+        ],
+        "technology-moat": [
+          "lumentum-positioning",
+          "lumentum-technology"
+        ],
+        "capacity-roadmap": [
+          "lumentum-capacity"
+        ],
+        "key-risks": [
+          "lumentum-risks"
+        ]
+      },
+      "claimDisplay": {
+        "lumentum-ai-role": {
+          "title": "\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u5149\u63a5\u7d9a",
+          "statement": "Atlas\u3067\u306fLumentum\u3092\u3001AI accelerator\u30fbserver\u30fbswitch\u9593\u306escale-up\uff0fscale-out\u5149\u63a5\u7d9a\u3068data center interconnect\u3092\u652f\u3048\u308bphotonics\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "lumentum-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Lumentum\u306ftransceiver\u5185\u90e8\u306elaser\u30fbPIC\u7b49\u306ecomponent\u304b\u3089pluggable module\u3001optical transport\u30fbswitching system\u307e\u3067\u3001\u5149\u63a5\u7d9a\u306e\u8907\u6570\u968e\u5c64\u3078\u4f9b\u7d66\u3059\u308b\u3002"
+        },
+        "lumentum-products": {
+          "title": "\u5149\u30c8\u30e9\u30f3\u30b7\u30fc\u30d0\u304b\u3089\u5149\u30b9\u30a4\u30c3\u30c1\u307e\u3067",
+          "statement": "Lumentum\u306e\u88fd\u54c1\u306b\u306fhigh-speed optical transceiver\u3001laser transmitter\u3001photonic integrated circuit\u3001photodiode\u3001coherent component\u3001ROADM\u3001optical amplifier\u3001optical circuit switch\u304c\u542b\u307e\u308c\u308b\u3002"
+        },
+        "lumentum-positioning": {
+          "title": "\u5e83\u3044\u5149\u90e8\u54c1portfolio",
+          "statement": "Lumentum\u306foptical networking\u5e02\u5834\u3067\u5e45\u5e83\u3044portfolio\u3068\u4e3b\u8981\u9867\u5ba2\u3068\u306e\u95a2\u4fc2\u3092\u901a\u3058\u3066leading market position\u3092\u7dad\u6301\u3057\u3066\u3044\u308b\u3068\u8aac\u660e\u3059\u308b\u3002"
+        },
+        "lumentum-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Lumentum\u306f200G lane\u90e8\u54c1\u3001coherent optics\u3001ultra-narrow-linewidth laser\u3001integrated photonics\u3001co-packaged optics\u5411\u3051package\u6280\u8853\u3092\u5c55\u958b\u3059\u308b\u3002"
+        },
+        "lumentum-capacity": {
+          "title": "AI\u5411\u3051\u5149\u90e8\u54c1\u306e\u751f\u7523\u57fa\u76e4\u3092\u8ffd\u52a0",
+          "statement": "Lumentum\u306fAI\u30fbcloud\u5411\u3051\u5149\u90e8\u54c1\u9700\u8981\u306b\u5bfe\u5fdc\u3059\u308b\u305f\u3081\u88fd\u9020line\u3068supply chain\u3078\u306e\u6295\u8cc7\u3092\u9032\u3081\u3001Greensboro facility\u53d6\u5f97\u3092\u901a\u3058\u3066wafer\u751f\u7523\u57fa\u76e4\u3092\u8ffd\u52a0\u3057\u305f\u3002"
+        },
+        "lumentum-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Lumentum\u306f\u9867\u5ba2\u96c6\u4e2d\u3001cloud\u30fbtelecom\u9700\u8981\u5909\u52d5\u3001\u65b0\u88fd\u54c1\u7acb\u4e0a\u3052\u3001manufacturing yield\u3001contract manufacturer\u30fbcomponent\u4f9b\u7d66\u3001\u5730\u653f\u5b66\u3092\u4e3b\u8981\u30ea\u30b9\u30af\u3068\u3057\u3066\u958b\u793a\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u5149\u30c8\u30e9\u30f3\u30b7\u30fc\u30d0\u304b\u3089\u5149\u30b9\u30a4\u30c3\u30c1\u307e\u3067",
+        "body": "Lumentum\u306e\u88fd\u54c1\u306b\u306fhigh-speed optical transceiver\u3001laser transmitter\u3001photonic integrated circuit\u3001photodiode\u3001coherent component\u3001ROADM\u3001optical amplifier\u3001optical circuit switch\u304c\u542b\u307e\u308c\u308b\u3002",
+        "groundingId": "lumentum-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-lumentum-01",
+          "label": "high-speed optical transceiver",
+          "description": "high-speed optical transceiver\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "lumentum-products"
+        },
+        {
+          "canonicalId": "display-product-lumentum-02",
+          "label": "laser transmitter",
+          "description": "laser transmitter\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "lumentum-products"
+        },
+        {
+          "canonicalId": "display-product-lumentum-03",
+          "label": "photonic integrated circuit",
+          "description": "photonic integrated circuit\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "lumentum-products"
+        },
+        {
+          "canonicalId": "display-product-lumentum-04",
+          "label": "photodiode",
+          "description": "photodiode\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "lumentum-products"
+        },
+        {
+          "canonicalId": "display-product-lumentum-05",
+          "label": "coherent component",
+          "description": "coherent component\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "lumentum-products"
+        },
+        {
+          "canonicalId": "display-product-lumentum-06",
+          "label": "ROADM",
+          "description": "ROADM\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "lumentum-products"
+        },
+        {
+          "canonicalId": "display-product-lumentum-07",
+          "label": "optical amplifier",
+          "description": "optical amplifier\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "lumentum-products"
+        },
+        {
+          "canonicalId": "display-product-lumentum-08",
+          "label": "optical circuit switch",
+          "description": "optical circuit switch\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "lumentum-products"
+        }
+      ]
+    },
+    {
+      "companyId": "fanuc",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "fanuc-ai-role"
+        ],
+        "value-chain-position": [
+          "fanuc-value-chain"
+        ],
+        "key-products": [
+          "fanuc-products"
+        ],
+        "technology-moat": [
+          "fanuc-positioning",
+          "fanuc-technology"
+        ],
+        "capacity-roadmap": [
+          "fanuc-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "fanuc-risks"
+        ]
+      },
+      "claimDisplay": {
+        "fanuc-ai-role": {
+          "title": "\u88fd\u9020\u30fb\u30ed\u30dc\u30c6\u30a3\u30af\u30b9\u306ePhysical AI",
+          "statement": "Atlas\u3067\u306f\u30d5\u30a1\u30ca\u30c3\u30af\u3092\u3001AI\u304c\u73fe\u5b9f\u7a7a\u9593\u306e\u88fd\u9020\u30fb\u30ed\u30dc\u30c6\u30a3\u30af\u30b9\u3078\u6d78\u900f\u3059\u308bPhysical AI\u306e\u4e0b\u6d41\u5074\u5019\u88dc\u3068\u3057\u3066\u4f4d\u7f6e\u4ed8\u3051\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "fanuc-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306f\u30d5\u30a1\u30ca\u30c3\u30af\u3092\u300cPhysical AI\u300d\u306b\u4f4d\u7f6e\u3057\u3001AI\u304c\u73fe\u5b9f\u7a7a\u9593\u306e\u88fd\u9020\u30fb\u30ed\u30dc\u30c6\u30a3\u30af\u30b9\u3078\u6d78\u900f\u3059\u308bPhysical AI\u306e\u4e0b\u6d41\u5074\u5019\u88dc\u3068\u3057\u3066\u4f4d\u7f6e\u4ed8\u3051\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "fanuc-products": {
+          "title": "\u30ed\u30dc\u30c3\u30c8\u30fbCNC\u30fbFA",
+          "statement": "\u30d5\u30a1\u30ca\u30c3\u30af\u306f\u3001Industrial robots\u3001CNC systems\u3001Factory automation\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "fanuc-positioning": {
+          "title": "FA\u57fa\u76e4\u3068\u9ad8\u4fe1\u983c\u6027\u5236\u5fa1",
+          "statement": "Atlas\u3067\u306f\u3001FA\u306e\u8a2d\u7f6e\u57fa\u76e4\u3001\u9ad8\u4fe1\u983c\u6027\u5236\u5fa1\u6280\u8853\u3001\u30ed\u30dc\u30c3\u30c8\u3068CNC\u306e\u4e21\u8f2a\u3092\u3001\u30d5\u30a1\u30ca\u30c3\u30af\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "fanuc-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001Industrial robots\u3001CNC systems\u3001Factory automation\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001industrial robot\u3001CNC\u3001factory automation\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "fanuc-capacity-expansion-triage-remediation-v02": {
+          "title": "\u52a0\u5de5\u30e9\u30a4\u30f3\u3092\u96c6\u7d04\u30fb\u66f4\u65b0",
+          "statement": "FANUC\u306f2024\u5e746\u6708\u306bservo motor\u90e8\u54c1\u52a0\u5de5\u30922\u5de5\u5834\u304b\u3089\u65b0\u5de5\u5834\u3078\u96c6\u7d04\u3057\u3001\u8a2d\u5099\u66f4\u65b0\u3001\u5927\u578brobot\u52a0\u5de5cell\u3001ROBODRILL\u52a0\u5de5line\u306e\u5c0e\u5165\u3067\u751f\u7523\u80fd\u529b\u3092\u6539\u5584\u3057\u305f\u3002"
+        },
+        "fanuc-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u8a2d\u5099\u6295\u8cc7\u30b5\u30a4\u30af\u30eb\u3001\u4e2d\u56fd\u3092\u542b\u3080\u88fd\u9020\u696d\u9700\u8981\u3001Physical AI\u53ce\u76ca\u5316\u306e\u901f\u5ea6\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u30ed\u30dc\u30c3\u30c8\u30fbCNC\u30fbFA",
+        "body": "\u30d5\u30a1\u30ca\u30c3\u30af\u306f\u3001Industrial robots\u3001CNC systems\u3001Factory automation\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "fanuc-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-fanuc-01",
+          "label": "Industrial robots",
+          "description": "Industrial robots\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "fanuc-products"
+        },
+        {
+          "canonicalId": "display-product-fanuc-02",
+          "label": "CNC systems",
+          "description": "CNC systems\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "fanuc-products"
+        },
+        {
+          "canonicalId": "display-product-fanuc-03",
+          "label": "Factory automation",
+          "description": "Factory automation\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "fanuc-products"
+        }
+      ]
+    },
+    {
+      "companyId": "smc",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "smc-ai-role"
+        ],
+        "value-chain-position": [
+          "smc-value-chain"
+        ],
+        "key-products": [
+          "smc-products"
+        ],
+        "technology-moat": [
+          "smc-positioning",
+          "smc-technology"
+        ],
+        "capacity-roadmap": [
+          "smc-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "smc-risks"
+        ]
+      },
+      "claimDisplay": {
+        "smc-ai-role": {
+          "title": "\u7a7a\u6c17\u5727\u306b\u3088\u308b\u672b\u7aef\u5236\u5fa1",
+          "statement": "Atlas\u3067\u306fSMC\u3092\u3001\u5de5\u5834\u30fb\u88c5\u7f6e\u306e\u30a2\u30af\u30c1\u30e5\u30a8\u30fc\u30b7\u30e7\u30f3\u3092\u62c5\u3044\u3001Physical AI\u304c\u5b9f\u4e16\u754c\u306e\u6a5f\u68b0\u3092\u52d5\u304b\u3059\u672b\u7aef\u5236\u5fa1\u3092\u652f\u3048\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "smc-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fSMC\u3092\u300cPhysical AI\u300d\u306b\u4f4d\u7f6e\u3057\u3001\u5de5\u5834\u30fb\u88c5\u7f6e\u306e\u30a2\u30af\u30c1\u30e5\u30a8\u30fc\u30b7\u30e7\u30f3\u3092\u62c5\u3044\u3001Physical AI\u304c\u5b9f\u4e16\u754c\u306e\u6a5f\u68b0\u3092\u52d5\u304b\u3059\u672b\u7aef\u5236\u5fa1\u3092\u652f\u3048\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "smc-products": {
+          "title": "\u7a7a\u6c17\u5727\u30fb\u65b9\u5411\u30fb\u6d41\u4f53\u5236\u5fa1",
+          "statement": "SMC\u306f\u3001\u7a7a\u6c17\u5727\u30a2\u30af\u30c1\u30e5\u30a8\u30fc\u30bf\u3001\u65b9\u5411\u5236\u5fa1\u6a5f\u5668\u3001\u6d41\u4f53\u30fb\u5727\u529b\u5236\u5fa1\u6a5f\u5668\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "smc-positioning": {
+          "title": "\u5e45\u5e83\u3044\u7a7a\u6c17\u5727\u88fd\u54c1\u3068\u8ca9\u58f2\u7db2",
+          "statement": "Atlas\u3067\u306f\u3001\u7a7a\u6c17\u5727\u6a5f\u5668\u306e\u5e83\u3044\u88fd\u54c1\u7fa4\u3001\u30b0\u30ed\u30fc\u30d0\u30eb\u8ca9\u58f2\u7db2\u3001\u7701\u30a8\u30cd\u30fb\u81ea\u52d5\u5316\u9700\u8981\u3078\u306e\u9069\u5408\u3092\u3001SMC\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "smc-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001\u7a7a\u6c17\u5727\u30a2\u30af\u30c1\u30e5\u30a8\u30fc\u30bf\u3001\u65b9\u5411\u5236\u5fa1\u6a5f\u5668\u3001\u6d41\u4f53\u30fb\u5727\u529b\u5236\u5fa1\u6a5f\u5668\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001FA\u3001\u7a7a\u6c17\u5727\u3001\u81ea\u52d5\u5236\u5fa1\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "smc-capacity-expansion-triage-remediation-v02": {
+          "title": "Vietnam\u5de5\u5834\u3092\u62e1\u5f35",
+          "statement": "SMC\u306fglobal supply\u306e\u5b89\u5b9a\u5316\u306b\u5411\u3051\u3001Vietnam\u5de5\u5834\u3092\u62e1\u5f35\u3057\u3066\u4e00\u90e8model\u306emass-production\u6a5f\u80fd\u3092\u79fb\u7ba1\u3059\u308b\u8a08\u753b\u3092\u9032\u3081\u3066\u3044\u308b\u3002"
+        },
+        "smc-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u88fd\u9020\u696d\u8a2d\u5099\u6295\u8cc7\u30b5\u30a4\u30af\u30eb\u3001\u70ba\u66ff\u5909\u52d5\u3001\u4e2d\u56fd\u3092\u542b\u3080\u5730\u57df\u9700\u8981\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u7a7a\u6c17\u5727\u30fb\u65b9\u5411\u30fb\u6d41\u4f53\u5236\u5fa1",
+        "body": "SMC\u306f\u3001\u7a7a\u6c17\u5727\u30a2\u30af\u30c1\u30e5\u30a8\u30fc\u30bf\u3001\u65b9\u5411\u5236\u5fa1\u6a5f\u5668\u3001\u6d41\u4f53\u30fb\u5727\u529b\u5236\u5fa1\u6a5f\u5668\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "smc-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-smc-01",
+          "label": "\u7a7a\u6c17\u5727\u30a2\u30af\u30c1\u30e5\u30a8\u30fc\u30bf",
+          "description": "\u7a7a\u6c17\u5727\u30a2\u30af\u30c1\u30e5\u30a8\u30fc\u30bf\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "smc-products"
+        },
+        {
+          "canonicalId": "display-product-smc-02",
+          "label": "\u65b9\u5411\u5236\u5fa1\u6a5f\u5668",
+          "description": "\u65b9\u5411\u5236\u5fa1\u6a5f\u5668\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "smc-products"
+        },
+        {
+          "canonicalId": "display-product-smc-03",
+          "label": "\u6d41\u4f53\u30fb\u5727\u529b\u5236\u5fa1\u6a5f\u5668",
+          "description": "\u6d41\u4f53\u30fb\u5727\u529b\u5236\u5fa1\u6a5f\u5668\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "smc-products"
+        }
+      ]
+    },
+    {
+      "companyId": "asml",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "asml-ai-role"
+        ],
+        "value-chain-position": [
+          "asml-value-chain"
+        ],
+        "key-products": [
+          "asml-products"
+        ],
+        "technology-moat": [
+          "asml-positioning",
+          "asml-technology"
+        ],
+        "capacity-roadmap": [
+          "asml-strategy"
+        ],
+        "key-risks": [
+          "asml-risks"
+        ]
+      },
+      "claimDisplay": {
+        "asml-ai-role": {
+          "title": "\u5148\u7aef\u534a\u5c0e\u4f53\u306e\u5fae\u7d30\u5316\u3092\u652f\u3048\u308b",
+          "statement": "Atlas\u3067\u306fASML\u3092\u3001AI\u30b5\u30fc\u30d0\u30fc\u5411\u3051\u5148\u7aefLogic\u3068HBM\u3092\u542b\u3080Memory\u306e\u5fae\u7d30\u5316\u3092\u3001\u30ea\u30bd\u30b0\u30e9\u30d5\u30a3\u88c5\u7f6e\u3068\u30d7\u30ed\u30bb\u30b9\u5236\u5fa1\u3067\u652f\u3048\u308bwafer fab equipment\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "asml-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "\u30ea\u30bd\u30b0\u30e9\u30d5\u30a3\u306f\u5149\u3067\u56de\u8def\u30d1\u30bf\u30fc\u30f3\u3092\u30a6\u30a7\u30cf\u30fc\u3078\u8ee2\u5199\u3059\u308b\u5de5\u7a0b\u3067\u3042\u308a\u3001\u5fae\u7d30\u5316\u53ef\u80fd\u306a\u5bf8\u6cd5\u3068\u30c8\u30e9\u30f3\u30b8\u30b9\u30bf\u5bc6\u5ea6\u3092\u5de6\u53f3\u3059\u308b\u534a\u5c0e\u4f53\u91cf\u7523\u306e\u4e2d\u6838\u5de5\u7a0b\u3067\u3042\u308b\u3002"
+        },
+        "asml-products": {
+          "title": "EUV\u30fbDUV\u30fb\u8a08\u6e2c\u30fb\u8a08\u7b97\u30ea\u30bd\u30b0\u30e9\u30d5\u30a3",
+          "statement": "ASML\u306e\u88fd\u54c1\u7fa4\u306fEUV\uff08NXE\u30fbHigh-NA EXE\uff09\u3001DUV\uff08immersion\u30fbdry\uff09\u3001\u8a08\u6e2c\u30fb\u691c\u67fb\u3001computational lithography\u3068\u9867\u5ba2\u88c5\u7f6e\u306e\u30b5\u30fc\u30d3\u30b9\u3067\u69cb\u6210\u3055\u308c\u308b\u3002"
+        },
+        "asml-positioning": {
+          "title": "EUV\u306e\u72ec\u81ea\u6027\u3068holistic lithography",
+          "statement": "ASML\u306f\u81ea\u793e\u3092EUV\u30ea\u30bd\u30b0\u30e9\u30d5\u30a3\u88c5\u7f6e\u306e\u4e16\u754c\u3067\u552f\u4e00\u306e\u30e1\u30fc\u30ab\u30fc\u3068\u8aac\u660e\u3057\u3001EUV\u3001DUV\u3001\u8a08\u6e2c\u30fb\u691c\u67fb\u3001software\u3092\u7d44\u307f\u5408\u308f\u305b\u305fholistic lithography\u3092\u5c55\u958b\u3057\u3066\u3044\u308b\u3002"
+        },
+        "asml-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "TWINSCAN EXE\u306f\u958b\u53e3\u6570\u30920.55\u3078\u9ad8\u3081\u305fHigh-NA EUV\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u3067\u3001\u3088\u308a\u5c0f\u3055\u306a\u69cb\u9020\u306e\u5f62\u6210\u3068\u8907\u6570\u30d1\u30bf\u30fc\u30cb\u30f3\u30b0\u5de5\u7a0b\u306e\u524a\u6e1b\u3092\u72d9\u3046\u3002"
+        },
+        "asml-strategy": {
+          "title": "\u6280\u8853\u30fbecosystem\u30fb\u9867\u5ba2\u4fe1\u983c\u3092\u512a\u5148",
+          "statement": "ASML\u306f\u9867\u5ba2\u4fe1\u983c\u3001\u6280\u8853\u3068holistic product leadership\u3001ecosystem\u95a2\u4fc2\u3001operational excellence\u306a\u30696\u9805\u76ee\u3092\u9577\u671f\u6210\u9577\u306e\u512a\u5148\u4e8b\u9805\u3068\u3057\u3066\u3044\u308b\u3002"
+        },
+        "asml-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "ASML\u306f\u534a\u5c0e\u4f53\u8a2d\u5099\u6295\u8cc7\u306e\u5faa\u74b0\u3001\u5c11\u6570\u9867\u5ba2\u3078\u306e\u58f2\u4e0a\u96c6\u4e2d\u3001\u5358\u4e00\u4f9b\u7d66\u6e90\u306e\u91cd\u8981\u90e8\u54c1\u3001\u9650\u5b9a\u3055\u308c\u305f\u88fd\u9020\u65bd\u8a2d\u3078\u306e\u4f9d\u5b58\u3092\u4e3b\u8981\u30ea\u30b9\u30af\u3068\u3057\u3066\u958b\u793a\u3057\u3066\u3044\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "EUV\u30fbDUV\u30fb\u8a08\u6e2c\u30fb\u8a08\u7b97\u30ea\u30bd\u30b0\u30e9\u30d5\u30a3",
+        "body": "ASML\u306e\u88fd\u54c1\u7fa4\u306fEUV\uff08NXE\u30fbHigh-NA EXE\uff09\u3001DUV\uff08immersion\u30fbdry\uff09\u3001\u8a08\u6e2c\u30fb\u691c\u67fb\u3001computational lithography\u3068\u9867\u5ba2\u88c5\u7f6e\u306e\u30b5\u30fc\u30d3\u30b9\u3067\u69cb\u6210\u3055\u308c\u308b\u3002",
+        "groundingId": "asml-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-asml-01",
+          "label": "EUV\uff08NXE\u30fbHigh-NA EXE\uff09",
+          "description": "EUV\uff08NXE\u30fbHigh-NA EXE\uff09\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "asml-products"
+        },
+        {
+          "canonicalId": "display-product-asml-02",
+          "label": "DUV\uff08immersion\u30fbdry\uff09",
+          "description": "DUV\uff08immersion\u30fbdry\uff09\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "asml-products"
+        },
+        {
+          "canonicalId": "display-product-asml-03",
+          "label": "\u8a08\u6e2c\u30fb\u691c\u67fb",
+          "description": "\u8a08\u6e2c\u30fb\u691c\u67fb\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "asml-products"
+        },
+        {
+          "canonicalId": "display-product-asml-04",
+          "label": "computational lithography",
+          "description": "computational lithography\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "asml-products"
+        },
+        {
+          "canonicalId": "display-product-asml-05",
+          "label": "\u9867\u5ba2\u88c5\u7f6e\u306e\u30b5\u30fc\u30d3\u30b9",
+          "description": "\u9867\u5ba2\u88c5\u7f6e\u306e\u30b5\u30fc\u30d3\u30b9\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "asml-products"
+        }
+      ]
+    },
+    {
+      "companyId": "kokusai-electric",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "kokusai-electric-ai-role"
+        ],
+        "value-chain-position": [
+          "kokusai-electric-value-chain"
+        ],
+        "key-products": [
+          "kokusai-electric-products"
+        ],
+        "technology-moat": [
+          "kokusai-electric-positioning",
+          "kokusai-electric-technology"
+        ],
+        "capacity-roadmap": [
+          "kokusai-electric-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "kokusai-electric-risks"
+        ]
+      },
+      "claimDisplay": {
+        "kokusai-electric-ai-role": {
+          "title": "\u6210\u819c\u30fb\u71b1\u51e6\u7406\u3092\u62c5\u3046",
+          "statement": "Atlas\u3067\u306fKOKUSAI ELECTRIC\uff08\u56fd\u969b\u96fb\u6c17\uff09\u3092\u3001DRAM\u3001NAND\u3001\u5148\u7aef\u30ed\u30b8\u30c3\u30af\u306e\u6210\u819c\u30fb\u71b1\u51e6\u7406\u5de5\u7a0b\u3092\u901a\u3058\u3001\u30e1\u30e2\u30ea\u3068AI\u534a\u5c0e\u4f53\u306e\u8a2d\u5099\u6295\u8cc7\u306b\u63a5\u7d9a\u3059\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "kokusai-electric-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fKOKUSAI ELECTRIC\uff08\u56fd\u969b\u96fb\u6c17\uff09\u3092\u300cWafer Fab Equipment\u300d\u306b\u4f4d\u7f6e\u3057\u3001DRAM\u3001NAND\u3001\u5148\u7aef\u30ed\u30b8\u30c3\u30af\u306e\u6210\u819c\u30fb\u71b1\u51e6\u7406\u5de5\u7a0b\u3092\u901a\u3058\u3001\u30e1\u30e2\u30ea\u3068AI\u534a\u5c0e\u4f53\u306e\u8a2d\u5099\u6295\u8cc7\u306b\u63a5\u7d9a\u3059\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "kokusai-electric-products": {
+          "title": "\u71b1\u51e6\u7406\u30fb\u6210\u819c\u30fb\u51e6\u7406\u88c5\u7f6e",
+          "statement": "KOKUSAI ELECTRIC\uff08\u56fd\u969b\u96fb\u6c17\uff09\u306f\u3001Batch thermal processing systems\u3001Deposition systems\u3001Treatment systems\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "kokusai-electric-positioning": {
+          "title": "\u30d0\u30c3\u30c1\u71b1\u51e6\u7406\u3068\u30e1\u30e2\u30ea\u5de5\u7a0b",
+          "statement": "Atlas\u3067\u306f\u3001\u30d0\u30c3\u30c1\u5f0f\u71b1\u51e6\u7406\u88c5\u7f6e\u306e\u5de5\u7a0b\u30ce\u30a6\u30cf\u30a6\u3001\u30e1\u30e2\u30ea\u91cf\u7523\u5de5\u7a0b\u3068\u306e\u6df1\u3044\u63a5\u70b9\u3001\u6210\u819c\u30fb\u71b1\u51e6\u7406\u3092\u4e2d\u5fc3\u3068\u3057\u305f\u5c02\u9580\u6027\u3092\u3001KOKUSAI ELECTRIC\uff08\u56fd\u969b\u96fb\u6c17\uff09\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "kokusai-electric-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001Batch thermal processing systems\u3001Deposition systems\u3001Treatment systems\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001deposition\u3001batch furnace\u3001thermal processing\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "kokusai-electric-capacity-expansion-triage-remediation-v02": {
+          "title": "\u5bcc\u5c71\u3067\u751f\u7523\u80fd\u529b\u3068R&D\u3092\u5f37\u5316",
+          "statement": "KOKUSAI ELECTRIC\u306fToyama\u770c\u306eTonami Manufacturing Center\u306b\u7d04240\u5104\u5186\u3092\u6295\u3058\u3001\u534a\u5c0e\u4f53\u88fd\u9020\u88c5\u7f6e\u306e\u751f\u7523\u80fd\u529b\u62e1\u5f35\u3068Toyama\u62e0\u70b9\u306eR&D\u5f37\u5316\u3092\u9032\u3081\u3066\u3044\u308b\u3002"
+        },
+        "kokusai-electric-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u30e1\u30e2\u30ea\u8a2d\u5099\u6295\u8cc7\u30b5\u30a4\u30af\u30eb\u3001\u9867\u5ba2\u96c6\u4e2d\u3001\u6210\u819c\u30fb\u71b1\u51e6\u7406\u5de5\u7a0b\u3067\u306e\u7af6\u4e89\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u71b1\u51e6\u7406\u30fb\u6210\u819c\u30fb\u51e6\u7406\u88c5\u7f6e",
+        "body": "KOKUSAI ELECTRIC\uff08\u56fd\u969b\u96fb\u6c17\uff09\u306f\u3001Batch thermal processing systems\u3001Deposition systems\u3001Treatment systems\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "kokusai-electric-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-kokusai-electric-01",
+          "label": "Batch thermal processing systems",
+          "description": "Batch thermal processing systems\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "kokusai-electric-products"
+        },
+        {
+          "canonicalId": "display-product-kokusai-electric-02",
+          "label": "Deposition systems",
+          "description": "Deposition systems\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "kokusai-electric-products"
+        },
+        {
+          "canonicalId": "display-product-kokusai-electric-03",
+          "label": "Treatment systems",
+          "description": "Treatment systems\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "kokusai-electric-products"
+        }
+      ]
+    },
+    {
+      "companyId": "screen-holdings",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "screen-holdings-ai-role"
+        ],
+        "value-chain-position": [
+          "screen-holdings-value-chain"
+        ],
+        "key-products": [
+          "screen-holdings-products"
+        ],
+        "technology-moat": [
+          "screen-holdings-positioning",
+          "screen-holdings-technology"
+        ],
+        "capacity-roadmap": [
+          "screen-holdings-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "screen-holdings-risks"
+        ]
+      },
+      "claimDisplay": {
+        "screen-holdings-ai-role": {
+          "title": "\u534a\u5c0e\u4f53\u6d17\u6d44\u30fb\u5857\u5e03\u30fb\u691c\u67fb",
+          "statement": "Atlas\u3067\u306fSCREEN\u30db\u30fc\u30eb\u30c7\u30a3\u30f3\u30b0\u30b9\u3092\u3001\u5148\u7aef\u30ed\u30b8\u30c3\u30af\u30fb\u30e1\u30e2\u30ea\u306e\u5de5\u7a0b\u6570\u5897\u52a0\u3068\u6e05\u6d44\u5ea6\u8981\u6c42\u306e\u4e0a\u6607\u3092\u901a\u3058\u3001AI\u5411\u3051\u534a\u5c0e\u4f53\u8a2d\u5099\u6295\u8cc7\u306b\u95a2\u4e0e\u3059\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "screen-holdings-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fSCREEN\u30db\u30fc\u30eb\u30c7\u30a3\u30f3\u30b0\u30b9\u3092\u300cWafer Fab Equipment\u300d\u306b\u4f4d\u7f6e\u3057\u3001\u5148\u7aef\u30ed\u30b8\u30c3\u30af\u30fb\u30e1\u30e2\u30ea\u306e\u5de5\u7a0b\u6570\u5897\u52a0\u3068\u6e05\u6d44\u5ea6\u8981\u6c42\u306e\u4e0a\u6607\u3092\u901a\u3058\u3001AI\u5411\u3051\u534a\u5c0e\u4f53\u8a2d\u5099\u6295\u8cc7\u306b\u95a2\u4e0e\u3059\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "screen-holdings-products": {
+          "title": "\u6d17\u6d44\u30fb\u5857\u5e03\u73fe\u50cf\u30fb\u691c\u67fb\u8a08\u6e2c",
+          "statement": "SCREEN\u30db\u30fc\u30eb\u30c7\u30a3\u30f3\u30b0\u30b9\u306f\u3001Wafer cleaning systems\u3001Coater / developer systems\u3001Inspection / metrology systems\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "screen-holdings-positioning": {
+          "title": "\u6d17\u6d44\u5de5\u7a0b\u3068\u91cf\u7523\u5b9f\u7e3e",
+          "statement": "Atlas\u3067\u306f\u3001\u30a6\u30a7\u30cf\u6d17\u6d44\u5de5\u7a0b\u306e\u88fd\u54c1\u57fa\u76e4\u3001\u8907\u6570\u524d\u5de5\u7a0b\u3078\u306e\u5c55\u958b\u3001\u534a\u5c0e\u4f53\u30e1\u30fc\u30ab\u30fc\u306e\u91cf\u7523\u5de5\u7a0b\u3078\u306e\u8a2d\u7f6e\u5b9f\u7e3e\u3092\u3001SCREEN\u30db\u30fc\u30eb\u30c7\u30a3\u30f3\u30b0\u30b9\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "screen-holdings-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001Wafer cleaning systems\u3001Coater / developer systems\u3001Inspection / metrology systems\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001cleaning\u3001inspection\u3001coater developer\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "screen-holdings-capacity-expansion-triage-remediation-v02": {
+          "title": "\u5f66\u6839\u3067\u6d17\u6d44\u88c5\u7f6e\u306e\u751f\u7523\u80fd\u529b\u3092\u5411\u4e0a",
+          "statement": "SCREEN\u306fHikone Site\u3067single-wafer cleaning equipment\u7b49\u3092\u751f\u7523\u3059\u308bS3-5\u30922024\u5e741\u6708\u306b\u5b8c\u6210\u30fb\u64cd\u696d\u958b\u59cb\u3057\u3001\u305d\u306e\u5f8cfull-scale operation\u3078\u79fb\u884c\u3057\u3066\u534a\u5c0e\u4f53\u88fd\u9020\u88c5\u7f6e\u306e\u751f\u7523\u80fd\u529b\u3092\u9ad8\u3081\u305f\u3002"
+        },
+        "screen-holdings-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001WFE\u30b5\u30a4\u30af\u30eb\u3001\u6d17\u6d44\u5de5\u7a0b\u3067\u306e\u30b7\u30a7\u30a2\u7af6\u4e89\u3001\u5148\u7aef\u9867\u5ba2\u306e\u8a2d\u5099\u6295\u8cc7\u5909\u52d5\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u6d17\u6d44\u30fb\u5857\u5e03\u73fe\u50cf\u30fb\u691c\u67fb\u8a08\u6e2c",
+        "body": "SCREEN\u30db\u30fc\u30eb\u30c7\u30a3\u30f3\u30b0\u30b9\u306f\u3001Wafer cleaning systems\u3001Coater / developer systems\u3001Inspection / metrology systems\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "screen-holdings-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-screen-holdings-01",
+          "label": "Wafer cleaning systems",
+          "description": "Wafer cleaning systems\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "screen-holdings-products"
+        },
+        {
+          "canonicalId": "display-product-screen-holdings-02",
+          "label": "Coater / developer systems",
+          "description": "Coater / developer systems\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "screen-holdings-products"
+        },
+        {
+          "canonicalId": "display-product-screen-holdings-03",
+          "label": "Inspection / metrology systems",
+          "description": "Inspection / metrology systems\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "screen-holdings-products"
+        }
+      ]
+    },
+    {
+      "companyId": "linde",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "linde-ai-role"
+        ],
+        "value-chain-position": [
+          "linde-value-chain"
+        ],
+        "key-products": [
+          "linde-products"
+        ],
+        "technology-moat": [
+          "linde-positioning",
+          "linde-technology"
+        ],
+        "capacity-roadmap": [
+          "linde-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "linde-risks"
+        ]
+      },
+      "claimDisplay": {
+        "linde-ai-role": {
+          "title": "\u534a\u5c0e\u4f53\u88fd\u9020\u7528\u30ac\u30b9\u3092\u4f9b\u7d66",
+          "statement": "Atlas\u3067\u306fLinde\uff08\u30ea\u30f3\u30c7\uff09\u3092\u3001\u534a\u5c0e\u4f53\u88fd\u9020\u306e\u30d7\u30ed\u30bb\u30b9\u30ac\u30b9\u3068\u5de5\u5834\u30a4\u30f3\u30d5\u30e9\u3092\u9577\u671f\u5951\u7d04\u578b\u3067\u652f\u3048\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "linde-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fLinde\uff08\u30ea\u30f3\u30c7\uff09\u3092\u300c\u534a\u5c0e\u4f53\u6750\u6599\u30fb\u57fa\u677f\u300d\u306b\u4f4d\u7f6e\u3057\u3001\u534a\u5c0e\u4f53\u88fd\u9020\u306e\u30d7\u30ed\u30bb\u30b9\u30ac\u30b9\u3068\u5de5\u5834\u30a4\u30f3\u30d5\u30e9\u3092\u9577\u671f\u5951\u7d04\u578b\u3067\u652f\u3048\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "linde-products": {
+          "title": "\u9ad8\u7d14\u5ea6\u30ac\u30b9\u30fb\u7279\u6b8a\u30ac\u30b9\u30fb\u30aa\u30f3\u30b5\u30a4\u30c8\u4f9b\u7d66",
+          "statement": "Linde\uff08\u30ea\u30f3\u30c7\uff09\u306f\u3001\u534a\u5c0e\u4f53\u7528\u9ad8\u7d14\u5ea6\u30ac\u30b9\u3001\u7279\u6b8a\u30ac\u30b9\u3001\u30aa\u30f3\u30b5\u30a4\u30c8\u30ac\u30b9\u4f9b\u7d66\u8a2d\u5099\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "linde-positioning": {
+          "title": "\u9ad8\u7d14\u5ea6\u30fb\u5b89\u5b9a\u4f9b\u7d66\u3068\u9577\u671f\u5951\u7d04",
+          "statement": "Atlas\u3067\u306f\u3001\u30b0\u30ed\u30fc\u30d0\u30eb\u306a\u7523\u696d\u30ac\u30b9\u4f9b\u7d66\u7db2\u3001\u9577\u671f\u5951\u7d04\u578b\u30d3\u30b8\u30cd\u30b9\u3001\u9ad8\u7d14\u5ea6\u30fb\u5b89\u5b9a\u4f9b\u7d66\u80fd\u529b\u3092\u3001Linde\uff08\u30ea\u30f3\u30c7\uff09\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "linde-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001\u534a\u5c0e\u4f53\u7528\u9ad8\u7d14\u5ea6\u30ac\u30b9\u3001\u7279\u6b8a\u30ac\u30b9\u3001\u30aa\u30f3\u30b5\u30a4\u30c8\u30ac\u30b9\u4f9b\u7d66\u8a2d\u5099\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001\u534a\u5c0e\u4f53\u30ac\u30b9\u3001\u9ad8\u7d14\u5ea6\u30ac\u30b9\u3001\u30aa\u30f3\u30b5\u30a4\u30c8\u4f9b\u7d66\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "linde-capacity-expansion-triage-remediation-v02": {
+          "title": "\u5e73\u6ca2\u534a\u5c0e\u4f53\u56e3\u5730\u5411\u3051\u4f9b\u7d66\u80fd\u529b\u3092\u5897\u5f37",
+          "statement": "Linde\u306fSamsung\u306ePyeongtaek semiconductor complex\u30678\u57fa\u76ee\u3068\u306a\u308bon-site air separation unit\u3092\u5efa\u8a2d\u30fb\u4fdd\u6709\u30fb\u904b\u55b6\u3057\u3001nitrogen\u3001oxygen\u3001argon\u3092\u4f9b\u7d66\u3059\u308b\u3002\u4f9b\u7d66\u958b\u59cb\u306f2026\u5e74\u534a\u3070\u3092\u4e88\u5b9a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "linde-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u30a8\u30cd\u30eb\u30ae\u30fc\u4fa1\u683c\u3001\u5927\u578b\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u5b9f\u884c\u3001\u8a2d\u5099\u6295\u8cc7\u9700\u8981\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u9ad8\u7d14\u5ea6\u30ac\u30b9\u30fb\u7279\u6b8a\u30ac\u30b9\u30fb\u30aa\u30f3\u30b5\u30a4\u30c8\u4f9b\u7d66",
+        "body": "Linde\uff08\u30ea\u30f3\u30c7\uff09\u306f\u3001\u534a\u5c0e\u4f53\u7528\u9ad8\u7d14\u5ea6\u30ac\u30b9\u3001\u7279\u6b8a\u30ac\u30b9\u3001\u30aa\u30f3\u30b5\u30a4\u30c8\u30ac\u30b9\u4f9b\u7d66\u8a2d\u5099\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "linde-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-linde-01",
+          "label": "\u534a\u5c0e\u4f53\u7528\u9ad8\u7d14\u5ea6\u30ac\u30b9",
+          "description": "\u534a\u5c0e\u4f53\u7528\u9ad8\u7d14\u5ea6\u30ac\u30b9\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "linde-products"
+        },
+        {
+          "canonicalId": "display-product-linde-02",
+          "label": "\u7279\u6b8a\u30ac\u30b9",
+          "description": "\u7279\u6b8a\u30ac\u30b9\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "linde-products"
+        },
+        {
+          "canonicalId": "display-product-linde-03",
+          "label": "\u30aa\u30f3\u30b5\u30a4\u30c8\u30ac\u30b9\u4f9b\u7d66\u8a2d\u5099",
+          "description": "\u30aa\u30f3\u30b5\u30a4\u30c8\u30ac\u30b9\u4f9b\u7d66\u8a2d\u5099\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "linde-products"
+        }
+      ]
+    },
+    {
+      "companyId": "shinko-electric",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "shinko-electric-ai-role"
+        ],
+        "value-chain-position": [
+          "shinko-electric-value-chain"
+        ],
+        "key-products": [
+          "shinko-electric-products"
+        ],
+        "technology-moat": [
+          "shinko-electric-positioning",
+          "shinko-electric-technology"
+        ],
+        "capacity-roadmap": [
+          "shinko-electric-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "shinko-electric-risks"
+        ]
+      },
+      "claimDisplay": {
+        "shinko-electric-ai-role": {
+          "title": "\u9ad8\u5bc6\u5ea6\u30d1\u30c3\u30b1\u30fc\u30b8\u3092\u652f\u3048\u308b",
+          "statement": "Atlas\u3067\u306f\u65b0\u5149\u96fb\u6c17\u5de5\u696d\u3092\u3001\u9ad8\u6027\u80fd\u534a\u5c0e\u4f53\u306e\u5927\u578b\u30fb\u9ad8\u5bc6\u5ea6\u30d1\u30c3\u30b1\u30fc\u30b8\u5316\u306b\u4f34\u3046\u57fa\u677f\u30fb\u653e\u71b1\u30fb\u5b9f\u88c5\u9700\u8981\u306b\u63a5\u7d9a\u3059\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "shinko-electric-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306f\u65b0\u5149\u96fb\u6c17\u5de5\u696d\u3092\u300c\u534a\u5c0e\u4f53\u6750\u6599\u30fb\u57fa\u677f\u300d\u306b\u4f4d\u7f6e\u3057\u3001\u9ad8\u6027\u80fd\u534a\u5c0e\u4f53\u306e\u5927\u578b\u30fb\u9ad8\u5bc6\u5ea6\u30d1\u30c3\u30b1\u30fc\u30b8\u5316\u306b\u4f34\u3046\u57fa\u677f\u30fb\u653e\u71b1\u30fb\u5b9f\u88c5\u9700\u8981\u306b\u63a5\u7d9a\u3059\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "shinko-electric-products": {
+          "title": "\u30d1\u30c3\u30b1\u30fc\u30b8\u30fb\u30ea\u30fc\u30c9\u30d5\u30ec\u30fc\u30e0\u30fb\u30a2\u30bb\u30f3\u30d6\u30ea",
+          "statement": "\u65b0\u5149\u96fb\u6c17\u5de5\u696d\u306f\u3001\u30d7\u30e9\u30b9\u30c1\u30c3\u30af\u30e9\u30df\u30cd\u30fc\u30c8\u30d1\u30c3\u30b1\u30fc\u30b8\u3001\u30ea\u30fc\u30c9\u30d5\u30ec\u30fc\u30e0\u3001IC\u30a2\u30bb\u30f3\u30d6\u30ea\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "shinko-electric-positioning": {
+          "title": "\u57fa\u677f\u30fb\u5b9f\u88c5\u3068\u5f8c\u5de5\u7a0b\u5bfe\u5fdc",
+          "statement": "Atlas\u3067\u306f\u3001\u534a\u5c0e\u4f53\u30d1\u30c3\u30b1\u30fc\u30b8\u57fa\u677f\u3068\u5b9f\u88c5\u6280\u8853\u306e\u84c4\u7a4d\u3001\u57fa\u677f\u304b\u3089\u7d44\u7acb\u307e\u3067\u306e\u5f8c\u5de5\u7a0b\u5bfe\u5fdc\u529b\u3001\u65e5\u672c\u56fd\u5185\u306e\u8907\u6570\u88fd\u9020\u62e0\u70b9\u3092\u3001\u65b0\u5149\u96fb\u6c17\u5de5\u696d\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "shinko-electric-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001\u30d7\u30e9\u30b9\u30c1\u30c3\u30af\u30e9\u30df\u30cd\u30fc\u30c8\u30d1\u30c3\u30b1\u30fc\u30b8\u3001\u30ea\u30fc\u30c9\u30d5\u30ec\u30fc\u30e0\u3001IC\u30a2\u30bb\u30f3\u30d6\u30ea\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001\u30d1\u30c3\u30b1\u30fc\u30b8\u57fa\u677f\u3001leadframe\u3001advanced packaging\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "shinko-electric-capacity-expansion-triage-remediation-v02": {
+          "title": "Arai Plant\u3067\u57fa\u677f\u80fd\u529b\u3092\u500d\u5897",
+          "statement": "\u65b0\u5149\u96fb\u6c17\u5de5\u696d\u306fArai Plant\u306b280\u5104\u5186\u3092\u6295\u3058\u308bnew building plan\u3092\u516c\u8868\u3057\u3001semiconductor memory\u5411\u3051plastic BGA substrate\u306e\u751f\u7523\u80fd\u529b\u3092\u65e2\u5b58line\u5206\u3092\u542b\u3081\u5f93\u6765\u6bd4\u7d042\u500d\u3078\u9ad8\u3081\u3001FY2026\u306e\u7a3c\u50cd\u958b\u59cb\u3092\u4e88\u5b9a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "shinko-electric-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u5148\u7aef\u30d1\u30c3\u30b1\u30fc\u30b8\u9700\u8981\u306e\u5909\u52d5\u3001\u9867\u5ba2\u88fd\u54c1\u30b5\u30a4\u30af\u30eb\u3078\u306e\u4f9d\u5b58\u3001\u975e\u4e0a\u5834\u5316\u5f8c\u306e\u516c\u958b\u60c5\u5831\u91cf\u306e\u4f4e\u4e0b\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u30d1\u30c3\u30b1\u30fc\u30b8\u30fb\u30ea\u30fc\u30c9\u30d5\u30ec\u30fc\u30e0\u30fb\u30a2\u30bb\u30f3\u30d6\u30ea",
+        "body": "\u65b0\u5149\u96fb\u6c17\u5de5\u696d\u306f\u3001\u30d7\u30e9\u30b9\u30c1\u30c3\u30af\u30e9\u30df\u30cd\u30fc\u30c8\u30d1\u30c3\u30b1\u30fc\u30b8\u3001\u30ea\u30fc\u30c9\u30d5\u30ec\u30fc\u30e0\u3001IC\u30a2\u30bb\u30f3\u30d6\u30ea\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "shinko-electric-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-shinko-electric-01",
+          "label": "\u30d7\u30e9\u30b9\u30c1\u30c3\u30af\u30e9\u30df\u30cd\u30fc\u30c8\u30d1\u30c3\u30b1\u30fc\u30b8",
+          "description": "\u30d7\u30e9\u30b9\u30c1\u30c3\u30af\u30e9\u30df\u30cd\u30fc\u30c8\u30d1\u30c3\u30b1\u30fc\u30b8\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "shinko-electric-products"
+        },
+        {
+          "canonicalId": "display-product-shinko-electric-02",
+          "label": "\u30ea\u30fc\u30c9\u30d5\u30ec\u30fc\u30e0",
+          "description": "\u30ea\u30fc\u30c9\u30d5\u30ec\u30fc\u30e0\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "shinko-electric-products"
+        },
+        {
+          "canonicalId": "display-product-shinko-electric-03",
+          "label": "IC\u30a2\u30bb\u30f3\u30d6\u30ea",
+          "description": "IC\u30a2\u30bb\u30f3\u30d6\u30ea\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "shinko-electric-products"
+        }
+      ]
+    },
+    {
+      "companyId": "seagate",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "seagate-ai-role"
+        ],
+        "value-chain-position": [
+          "seagate-value-chain"
+        ],
+        "key-products": [
+          "seagate-products"
+        ],
+        "technology-moat": [
+          "seagate-positioning",
+          "seagate-technology"
+        ],
+        "capacity-roadmap": [
+          "seagate-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "seagate-risks"
+        ]
+      },
+      "claimDisplay": {
+        "seagate-ai-role": {
+          "title": "AI\u30c7\u30fc\u30bf\u306e\u5927\u5bb9\u91cf\u4fdd\u5b58",
+          "statement": "Atlas\u3067\u306fSeagate\uff08\u30b7\u30fc\u30b2\u30a4\u30c8\uff09\u3092\u3001\u30af\u30e9\u30a6\u30c9\u30fbAI\u30c7\u30fc\u30bf\u306e\u5927\u5bb9\u91cf\u4fdd\u5b58\u3092\u4f4e\u30b3\u30b9\u30c8\u3067\u652f\u3048\u308b\u30cb\u30a2\u30e9\u30a4\u30f3HDD\u3092\u4f9b\u7d66\u3059\u308b\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "seagate-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Atlas\u3067\u306fSeagate\uff08\u30b7\u30fc\u30b2\u30a4\u30c8\uff09\u3092\u300cMemory\u300d\u306b\u4f4d\u7f6e\u3057\u3001\u30af\u30e9\u30a6\u30c9\u30fbAI\u30c7\u30fc\u30bf\u306e\u5927\u5bb9\u91cf\u4fdd\u5b58\u3092\u4f4e\u30b3\u30b9\u30c8\u3067\u652f\u3048\u308b\u30cb\u30a2\u30e9\u30a4\u30f3HDD\u3092\u4f9b\u7d66\u3059\u308b\u5f79\u5272\u3092\u62c5\u3046\u4f01\u696d\u3068\u6574\u7406\u3059\u308b\u3002"
+        },
+        "seagate-products": {
+          "title": "\u30cb\u30a2\u30e9\u30a4\u30f3HDD\u30fbHAMR\u30fb\u30b9\u30c8\u30ec\u30fc\u30b8",
+          "statement": "Seagate\uff08\u30b7\u30fc\u30b2\u30a4\u30c8\uff09\u306f\u3001\u30cb\u30a2\u30e9\u30a4\u30f3HDD\u3001HAMR\u5927\u5bb9\u91cfHDD\u3001\u30a8\u30f3\u30bf\u30fc\u30d7\u30e9\u30a4\u30ba\u30b9\u30c8\u30ec\u30fc\u30b8\u3092\u63d0\u4f9b\u3059\u308b\u3002"
+        },
+        "seagate-positioning": {
+          "title": "HAMR\u3068\u5782\u76f4\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001HDD\u30d8\u30c3\u30c9\u30fb\u5a92\u4f53\u7b49\u306e\u5782\u76f4\u6280\u8853\u3001HAMR\u306b\u3088\u308b\u5bb9\u91cf\u62e1\u5927\u3001\u30af\u30e9\u30a6\u30c9\u9867\u5ba2\u57fa\u76e4\u3092\u3001Seagate\uff08\u30b7\u30fc\u30b2\u30a4\u30c8\uff09\u306e\u7af6\u4e89\u4e0a\u306e\u91cd\u8981\u306a\u7279\u5fb4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "seagate-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Atlas\u3067\u306f\u3001\u30cb\u30a2\u30e9\u30a4\u30f3HDD\u3001HAMR\u5927\u5bb9\u91cfHDD\u3001\u30a8\u30f3\u30bf\u30fc\u30d7\u30e9\u30a4\u30ba\u30b9\u30c8\u30ec\u30fc\u30b8\u3068\u3044\u3046\u88fd\u54c1\u69cb\u6210\u3092\u3001HDD\u3001HAMR\u3001\u30c7\u30fc\u30bf\u30bb\u30f3\u30bf\u30fc\u30b9\u30c8\u30ec\u30fc\u30b8\u306b\u95a2\u308f\u308b\u6280\u8853\u57fa\u76e4\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        },
+        "seagate-capacity-expansion-triage-remediation-v02": {
+          "title": "\u5927\u5bb9\u91cfHDD\u306e\u958b\u767a\u30fb\u88fd\u9020\u306b\u6295\u8cc7",
+          "statement": "Seagate\u306fNorthern Ireland\u306eDerry/Londonderry\u62e0\u70b9\u30785\u5e74\u9593\u30671.15\u5104GBP\u3092\u6295\u3058\u300160 TB\u8d85\u306eHDD\u958b\u767a\u30fb\u88fd\u9020\u30682030\u5e74\u307e\u3067\u306e100 TB\u5b9f\u8a3c\u3092\u76ee\u6307\u3059\u8a08\u753b\u3092\u793a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "seagate-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Atlas\u3067\u306f\u3001\u4e00\u6b21\u8cc7\u6599\u306e\u4e8b\u696d\u30fb\u30ea\u30b9\u30af\u958b\u793a\u3092\u8e0f\u307e\u3048\u3001\u30af\u30e9\u30a6\u30c9\u8a2d\u5099\u6295\u8cc7\u30b5\u30a4\u30af\u30eb\u3001HDD\u9700\u7d66\u3001\u30d5\u30e9\u30c3\u30b7\u30e5\u3068\u306e\u7af6\u4e89\u3092\u4e3b\u8981\u306a\u78ba\u8a8d\u70b9\u3068\u3057\u3066\u6574\u7406\u3059\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "\u30cb\u30a2\u30e9\u30a4\u30f3HDD\u30fbHAMR\u30fb\u30b9\u30c8\u30ec\u30fc\u30b8",
+        "body": "Seagate\uff08\u30b7\u30fc\u30b2\u30a4\u30c8\uff09\u306f\u3001\u30cb\u30a2\u30e9\u30a4\u30f3HDD\u3001HAMR\u5927\u5bb9\u91cfHDD\u3001\u30a8\u30f3\u30bf\u30fc\u30d7\u30e9\u30a4\u30ba\u30b9\u30c8\u30ec\u30fc\u30b8\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+        "groundingId": "seagate-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-seagate-01",
+          "label": "\u30cb\u30a2\u30e9\u30a4\u30f3HDD",
+          "description": "\u30cb\u30a2\u30e9\u30a4\u30f3HDD\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "seagate-products"
+        },
+        {
+          "canonicalId": "display-product-seagate-02",
+          "label": "HAMR\u5927\u5bb9\u91cfHDD",
+          "description": "HAMR\u5927\u5bb9\u91cfHDD\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "seagate-products"
+        },
+        {
+          "canonicalId": "display-product-seagate-03",
+          "label": "\u30a8\u30f3\u30bf\u30fc\u30d7\u30e9\u30a4\u30ba\u30b9\u30c8\u30ec\u30fc\u30b8",
+          "description": "\u30a8\u30f3\u30bf\u30fc\u30d7\u30e9\u30a4\u30ba\u30b9\u30c8\u30ec\u30fc\u30b8\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "seagate-products"
+        }
+      ]
+    },
+    {
+      "companyId": "besi",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "besi-ai-role"
+        ],
+        "value-chain-position": [
+          "besi-value-chain"
+        ],
+        "key-products": [
+          "besi-products"
+        ],
+        "technology-moat": [
+          "besi-positioning",
+          "besi-technology"
+        ],
+        "capacity-roadmap": [
+          "besi-capacity"
+        ],
+        "key-risks": [
+          "besi-risks"
+        ]
+      },
+      "claimDisplay": {
+        "besi-ai-role": {
+          "title": "\u5148\u7aef\u30d1\u30c3\u30b1\u30fc\u30b8\u63a5\u5408\u3092\u652f\u3048\u308b",
+          "statement": "Atlas\u3067\u306fBesi\u3092\u30012.5D\u30fb3D package\u3084chiplet\u3067die\u30fbwafer\u3092\u9ad8\u7cbe\u5ea6\u306b\u63a5\u5408\u3059\u308bhybrid bonding\u3001die attach\u3001TCB\u88c5\u7f6e\u306e\u4f01\u696d\u3068\u4f4d\u7f6e\u4ed8\u3051\u308b\u3002"
+        },
+        "besi-value-chain": {
+          "title": "\u4f9b\u7d66\u7db2\u4e0a\u306e\u4f4d\u7f6e",
+          "statement": "Besi\u306e\u88c5\u7f6e\u306fwafer\u524d\u5de5\u7a0b\u306e\u5f8c\u306b\u3001die\u3092\u5207\u308a\u51fa\u3057\u3001\u63a5\u5408\u30fb\u5c01\u6b62\u30fb\u57fa\u677f\u63a5\u7d9a\u3059\u308bassembly\u30fbpackaging\u5de5\u7a0b\u3078\u4f4d\u7f6e\u3059\u308b\u3002"
+        },
+        "besi-products": {
+          "title": "hybrid bonding\u304b\u3089plating\u307e\u3067",
+          "statement": "Besi\u306e\u88fd\u54c1portfolio\u306b\u306fhybrid bonding\u3001flip-chip\u30fbdie attach\u3001thermo-compression\u3001molding\u3001trim-and-form\u3001plating solution\u304c\u542b\u307e\u308c\u308b\u3002"
+        },
+        "besi-positioning": {
+          "title": "advanced packaging\u3068hybrid bonding",
+          "statement": "Besi\u306fadvanced packaging\u306e\u9577\u671f\u6210\u9577\u3068wafer-level assembly\u3092\u80cc\u666f\u306b\u3001\u81ea\u793e\u3092assembly equipment\u5206\u91ce\u306eindustry leader\u3068\u8aac\u660e\u3057\u3066\u3044\u308b\u3002"
+        },
+        "besi-technology": {
+          "title": "\u95a2\u9023\u6280\u8853",
+          "statement": "Besi\u306fwafer-level assembly\u6280\u8853\u3068\u3057\u3066hybrid bonding\u3068TC Next system\u306e\u958b\u767a\u30fb\u88fd\u54c1\u5316\u3092\u9032\u3081\u3066\u3044\u308b\u3002"
+        },
+        "besi-capacity": {
+          "title": "cleanroom\u3068Asia support\u3092\u62e1\u5f35",
+          "statement": "Besi\u306f\u5c06\u6765\u306eadvanced packaging\u6210\u9577\u306b\u5099\u3048\u3001cleanroom capacity\u3068Asia\u306esupport capability\u3092\u62e1\u5f35\u3059\u308b\u8a08\u753b\u3092\u793a\u3057\u3066\u3044\u308b\u3002"
+        },
+        "besi-risks": {
+          "title": "\u4e3b\u306a\u30ea\u30b9\u30af",
+          "statement": "Besi\u306e\u958b\u793a\u3067\u306fmainstream mobile\u30fbautomotive\u30fbindustrial\u5e02\u5834\u306e\u5f31\u3055\u304c\u6b8b\u308a\u3001advanced packaging\u9700\u8981\u3084hybrid bonding\u63a1\u7528\u6642\u671f\u306e\u5909\u52d5\u304c\u696d\u7e3e\u306b\u5f71\u97ff\u3057\u5f97\u308b\u3002"
+        }
+      },
+      "productPortfolio": {
+        "title": "hybrid bonding\u304b\u3089plating\u307e\u3067",
+        "body": "Besi\u306e\u88fd\u54c1portfolio\u306b\u306fhybrid bonding\u3001flip-chip\u30fbdie attach\u3001thermo-compression\u3001molding\u3001trim-and-form\u3001plating solution\u304c\u542b\u307e\u308c\u308b\u3002",
+        "groundingId": "besi-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-besi-01",
+          "label": "hybrid bonding",
+          "description": "hybrid bonding\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "besi-products"
+        },
+        {
+          "canonicalId": "display-product-besi-02",
+          "label": "flip-chip\u30fbdie attach",
+          "description": "flip-chip\u30fbdie attach\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "besi-products"
+        },
+        {
+          "canonicalId": "display-product-besi-03",
+          "label": "thermo-compression",
+          "description": "thermo-compression\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "besi-products"
+        },
+        {
+          "canonicalId": "display-product-besi-04",
+          "label": "molding",
+          "description": "molding\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "besi-products"
+        },
+        {
+          "canonicalId": "display-product-besi-05",
+          "label": "trim-and-form",
+          "description": "trim-and-form\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "besi-products"
+        },
+        {
+          "canonicalId": "display-product-besi-06",
+          "label": "plating solution",
+          "description": "plating solution\u3092\u63d0\u4f9b\u3059\u308b\u3002",
+          "groundingId": "besi-products"
+        }
+      ]
+    }
+  ]
+}
