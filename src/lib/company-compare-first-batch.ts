@@ -3,6 +3,7 @@ import stage2Data from '../data/company-compare-first-batch-stage2-v01.json' wit
 import stage3Data from '../data/company-compare-first-batch-stage3-v01.json' with { type: 'json' };
 import stage4Data from '../data/company-compare-first-batch-stage4-v01.json' with { type: 'json' };
 import remainingBatch1Data from '../data/company-compare-remaining-batch1-v01.json' with { type: 'json' };
+import remainingBatch2Data from '../data/company-compare-remaining-batch2-v01.json' with { type: 'json' };
 import {
   evidenceCompareFirstBatchCompanyIds,
   evidenceCompareFirstBatchStage1CompanyIds,
@@ -10,6 +11,7 @@ import {
   evidenceCompareFirstBatchStage3CompanyIds,
   evidenceCompareFirstBatchStage4CompanyIds,
   evidenceCompareRemainingBatch1CompanyIds,
+  evidenceCompareRemainingBatch2CompanyIds,
 } from './company-compare-supported-companies.ts';
 
 export const firstBatchStage1CompanyIds = evidenceCompareFirstBatchStage1CompanyIds;
@@ -18,12 +20,13 @@ export const firstBatchStage3CompanyIds = evidenceCompareFirstBatchStage3Company
 export const firstBatchStage4CompanyIds = evidenceCompareFirstBatchStage4CompanyIds;
 export const firstBatchCompanyIds = evidenceCompareFirstBatchCompanyIds;
 export const remainingBatch1CompanyIds = evidenceCompareRemainingBatch1CompanyIds;
+export const remainingBatch2CompanyIds = evidenceCompareRemainingBatch2CompanyIds;
 export type FirstBatchStage1CompanyId = typeof firstBatchStage1CompanyIds[number];
 export type FirstBatchStage2CompanyId = typeof firstBatchStage2CompanyIds[number];
 export type FirstBatchStage3CompanyId = typeof firstBatchStage3CompanyIds[number];
 export type FirstBatchStage4CompanyId = typeof firstBatchStage4CompanyIds[number];
 export type FirstBatchCompanyId = typeof firstBatchCompanyIds[number];
-export type DisplayOnlyProjectionCompanyId = FirstBatchCompanyId | typeof remainingBatch1CompanyIds[number];
+export type DisplayOnlyProjectionCompanyId = FirstBatchCompanyId | typeof remainingBatch1CompanyIds[number] | typeof remainingBatch2CompanyIds[number];
 
 export const firstBatchStage1DimensionIds = [
   'ai-role',
@@ -68,7 +71,7 @@ const requireNonEmpty = (value: unknown, label: string) => {
 
 function validateFirstBatchData(
   value: any,
-  expectedStage: 'first-batch-stage-1' | 'first-batch-stage-2' | 'first-batch-stage-3' | 'first-batch-stage-4' | 'remaining-rollout-batch-1',
+  expectedStage: 'first-batch-stage-1' | 'first-batch-stage-2' | 'first-batch-stage-3' | 'first-batch-stage-4' | 'remaining-rollout-batch-1' | 'remaining-rollout-batch-2',
   expectedCompanyIds: readonly DisplayOnlyProjectionCompanyId[],
 ) {
   if (value.schemaVersion !== '0.1' || value.stage !== expectedStage) {
@@ -162,6 +165,7 @@ export const firstBatchStage2Companies = validateFirstBatchData(stage2Data, 'fir
 export const firstBatchStage3Companies = validateFirstBatchData(stage3Data, 'first-batch-stage-3', firstBatchStage3CompanyIds);
 export const firstBatchStage4Companies = validateFirstBatchData(stage4Data, 'first-batch-stage-4', firstBatchStage4CompanyIds);
 export const remainingBatch1Companies = validateFirstBatchData(remainingBatch1Data, 'remaining-rollout-batch-1', remainingBatch1CompanyIds);
+export const remainingBatch2Companies = validateFirstBatchData(remainingBatch2Data, 'remaining-rollout-batch-2', remainingBatch2CompanyIds);
 export const firstBatchCompanies = Object.freeze([...firstBatchStage1Companies, ...firstBatchStage2Companies, ...firstBatchStage3Companies, ...firstBatchStage4Companies]);
 export const firstBatchStage1CompanyById = new Map(firstBatchStage1Companies.map(record => [record.companyId, record]));
 export const firstBatchStage2CompanyById = new Map(firstBatchStage2Companies.map(record => [record.companyId, record]));
@@ -182,6 +186,9 @@ export const firstBatchStage4ClaimDisplay = Object.freeze(Object.fromEntries(
 export const remainingBatch1ClaimDisplay = Object.freeze(Object.fromEntries(
   remainingBatch1Companies.flatMap(record => Object.entries(record.claimDisplay)),
 ));
+export const remainingBatch2ClaimDisplay = Object.freeze(Object.fromEntries(
+  remainingBatch2Companies.flatMap(record => Object.entries(record.claimDisplay)),
+));
 export const firstBatchClaimDisplay = Object.freeze({ ...firstBatchStage1ClaimDisplay, ...firstBatchStage2ClaimDisplay, ...firstBatchStage3ClaimDisplay, ...firstBatchStage4ClaimDisplay });
 export const firstBatchStage1ProductEntries = Object.freeze(
   firstBatchStage1Companies.flatMap(record => record.productEntries),
@@ -197,6 +204,9 @@ export const firstBatchStage4ProductEntries = Object.freeze(
 );
 export const remainingBatch1ProductEntries = Object.freeze(
   remainingBatch1Companies.flatMap(record => record.productEntries),
+);
+export const remainingBatch2ProductEntries = Object.freeze(
+  remainingBatch2Companies.flatMap(record => record.productEntries),
 );
 export const firstBatchProductEntries = Object.freeze([...firstBatchStage1ProductEntries, ...firstBatchStage2ProductEntries, ...firstBatchStage3ProductEntries, ...firstBatchStage4ProductEntries]);
 export const firstBatchStage1ProductById = new Map(firstBatchStage1ProductEntries.map(record => [record.canonicalId, record]));
@@ -218,6 +228,9 @@ export const firstBatchStage4ProductIdsByClaimId = Object.freeze(Object.fromEntr
 export const remainingBatch1ProductIdsByClaimId = Object.freeze(Object.fromEntries(
   remainingBatch1Companies.map(record => [record.productPortfolio.groundingId, record.productEntries.map(entry => entry.canonicalId)]),
 ));
+export const remainingBatch2ProductIdsByClaimId = Object.freeze(Object.fromEntries(
+  remainingBatch2Companies.map(record => [record.productPortfolio.groundingId, record.productEntries.map(entry => entry.canonicalId)]),
+));
 export const firstBatchProductIdsByClaimId = Object.freeze({
   ...firstBatchStage1ProductIdsByClaimId,
   ...firstBatchStage2ProductIdsByClaimId,
@@ -233,4 +246,8 @@ export const firstBatchStages = Object.freeze([
 export const remainingBatch1Stage = Object.freeze({
   setId: 'remaining-rollout-batch-1',
   orderedCompanyIds: [...remainingBatch1CompanyIds],
+});
+export const remainingBatch2Stage = Object.freeze({
+  setId: 'remaining-rollout-batch-2',
+  orderedCompanyIds: [...remainingBatch2CompanyIds],
 });

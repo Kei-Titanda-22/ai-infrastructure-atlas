@@ -52,6 +52,11 @@ import {
   remainingBatch1CompanyIds,
   remainingBatch1ProductIdsByClaimId,
   remainingBatch1Stage,
+  remainingBatch2ClaimDisplay,
+  remainingBatch2Companies,
+  remainingBatch2CompanyIds,
+  remainingBatch2ProductIdsByClaimId,
+  remainingBatch2Stage,
 } from '../src/lib/company-compare-first-batch.ts';
 import { assessNormalizedFinancialCompatibility } from '../src/lib/financial-comparison-contract.ts';
 import { formatCompanyCompareEvidencePageLead } from '../src/scripts/company-compare-evidence-ui.ts';
@@ -92,7 +97,7 @@ const onDemandSizeFixture = await readJson('./fixtures/company-compare-on-demand
 
 assert.equal(
   formatCompanyCompareEvidencePageLead(onDemandSizeFixture.companyIds.length),
-  '対応40社から2～4社を選び、各社の役割、製品・技術、企業間関係、財務の比較条件を根拠付きで確認します。',
+  '対応60社から2～4社を選び、各社の役割、製品・技術、企業間関係、財務の比較条件を根拠付きで確認します。',
   'Evidence page lead derives the supported Company count from the current manifest contract',
 );
 assert.match(formatCompanyCompareEvidencePageLead(19), /^対応19社から2～4社を選び/, 'Evidence page lead follows a changed manifest count');
@@ -134,7 +139,7 @@ const resolveOnDemandSizeContract = contract => {
     'maximumCompanyAssetGzipBytes',
   ]) assert.ok(Number.isSafeInteger(contract[field]) && contract[field] > 0, `${field} must be a positive integer`);
   assert.equal(contract.legacyGrowthLimitRatio, 1.05, 'legacy growth ratio remains 1.05');
-  assert.deepEqual(contract.companyIds, ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb', 'globalfoundries', 'micron', 'arista', 'bosch', 'cadence', 'marvell', 'nxp', 'renesas', 'synopsys', 'digital-realty', 'ge-vernova', 'schneider-electric', 'ciena', 'corning', 'lumentum', 'fanuc', 'smc', 'asml', 'kokusai-electric', 'screen-holdings', 'linde', 'shinko-electric', 'seagate', 'besi'], 'size contract covers exactly the supported forty');
+  assert.deepEqual(contract.companyIds, ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb', 'globalfoundries', 'micron', 'arista', 'bosch', 'cadence', 'marvell', 'nxp', 'renesas', 'synopsys', 'digital-realty', 'ge-vernova', 'schneider-electric', 'ciena', 'corning', 'lumentum', 'fanuc', 'smc', 'asml', 'kokusai-electric', 'screen-holdings', 'linde', 'shinko-electric', 'seagate', 'besi', 'infineon', 'mitsubishi-electric', 'onsemi', 'rohm', 'texas-instruments', 'eaton', 'legrand', 'siemens-energy', 'cisco', 'credo', 'te-connectivity', 'keyence', 'tesla', 'canon', 'lasertec', 'entegris', 'resonac-holdings', 'sumco', 'western-digital', 'disco'], 'size contract covers exactly the supported sixty');
   assert.equal(
     Math.floor(contract.legacyMonolithRawBytes * contract.legacyGrowthLimitRatio),
     contract.maximumColdLoadRawBytes,
@@ -384,14 +389,15 @@ const expectedProductPortfolioSummaries = {
   },
   ...Object.fromEntries(firstBatchCompanies.map(record => [record.companyId, record.productPortfolio])),
   ...Object.fromEntries(remainingBatch1Companies.map(record => [record.companyId, record.productPortfolio])),
+  ...Object.fromEntries(remainingBatch2Companies.map(record => [record.companyId, record.productPortfolio])),
 };
 const companyCompareProductPortfolioSummaries = getCompanyCompareProductPortfolioSummaries();
-assert.deepEqual([...companyCompareProductPortfolioCompanyIds], Object.keys(expectedProductPortfolioSummaries), 'Product portfolio copy contract covers the exact supported forty companies');
-assert.deepEqual(companyCompareProductPortfolioSummaries, expectedProductPortfolioSummaries, 'all forty Product portfolio summaries are fixture-locked');
+assert.deepEqual([...companyCompareProductPortfolioCompanyIds], Object.keys(expectedProductPortfolioSummaries), 'Product portfolio copy contract covers the exact supported sixty companies');
+assert.deepEqual(companyCompareProductPortfolioSummaries, expectedProductPortfolioSummaries, 'all sixty Product portfolio summaries are fixture-locked');
 const portfolioGroundingIds = new Set(claimById.keys());
 assert.doesNotThrow(
   () => validateCompanyCompareProductPortfolioSummaries(expectedProductPortfolioSummaries, portfolioGroundingIds),
-  'all forty Product portfolio summaries resolve to an existing Company Claim',
+  'all sixty Product portfolio summaries resolve to an existing Company Claim',
 );
 for (const companyId of companyCompareProductPortfolioCompanyIds) {
   assert.deepEqual(
@@ -460,6 +466,7 @@ const firstBatchStage2ProjectedClaimIds = [...new Set(firstBatchStage2Companies.
 const firstBatchStage3ProjectedClaimIds = [...new Set(firstBatchStage3Companies.flatMap(record => Object.values(record.dimensions).flat()))].sort();
 const firstBatchStage4ProjectedClaimIds = [...new Set(firstBatchStage4Companies.flatMap(record => Object.values(record.dimensions).flat()))].sort();
 const remainingBatch1ProjectedClaimIds = [...new Set(remainingBatch1Companies.flatMap(record => Object.values(record.dimensions).flat()))].sort();
+const remainingBatch2ProjectedClaimIds = [...new Set(remainingBatch2Companies.flatMap(record => Object.values(record.dimensions).flat()))].sort();
 assert.equal(firstBatchStage1Companies.length, 3, 'Stage 1 contains exactly three display-only Companies');
 assert.ok(firstBatchStage1Companies.every(record => record.readinessClass === 'DISPLAY_COPY_ONLY'), 'Stage 1 changes display projection only');
 assert.ok(firstBatchStage1Companies.every(record => firstBatchStage1DimensionIds.every(id => record.dimensions[id].length > 0)), 'all three Companies have six minimum-usable Evidence dimensions');
@@ -485,6 +492,11 @@ assert.ok(remainingBatch1Companies.every(record => record.readinessClass === 'DI
 assert.ok(remainingBatch1Companies.every(record => firstBatchStage1DimensionIds.every(id => record.dimensions[id].length > 0)), 'all Remaining rollout Batch 1 Companies have six minimum-usable Evidence dimensions');
 assert.deepEqual(Object.keys(remainingBatch1ClaimDisplay).sort(), remainingBatch1ProjectedClaimIds, 'all Remaining rollout Batch 1 projected Claims have reviewed Japanese display copy');
 assert.deepEqual([...remainingBatch1Stage.orderedCompanyIds], [...remainingBatch1CompanyIds], 'Remaining rollout Batch 1 stage preserves its deterministic Company order');
+assert.equal(remainingBatch2Companies.length, 20, 'Remaining rollout Batch 2 contains exactly twenty display-only Companies');
+assert.ok(remainingBatch2Companies.every(record => record.readinessClass === 'DISPLAY_COPY_ONLY'), 'Remaining rollout Batch 2 changes display projection only');
+assert.ok(remainingBatch2Companies.every(record => firstBatchStage1DimensionIds.every(id => record.dimensions[id].length > 0)), 'all Remaining rollout Batch 2 Companies have six minimum-usable Evidence dimensions');
+assert.deepEqual(Object.keys(remainingBatch2ClaimDisplay).sort(), remainingBatch2ProjectedClaimIds, 'all Remaining rollout Batch 2 projected Claims have reviewed Japanese display copy');
+assert.deepEqual([...remainingBatch2Stage.orderedCompanyIds], [...remainingBatch2CompanyIds], 'Remaining rollout Batch 2 stage preserves its deterministic Company order');
 assert.deepEqual([...firstBatchCompanyIds], ['amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb', 'globalfoundries', 'micron', 'arista', 'bosch'], 'First batch progress is exactly 15 / 15');
 const projectedClaimTypeCounts = Object.fromEntries([...projectedClaimIds.reduce((counts, claimId) => {
   const claimType = claimById.get(claimId)?.claimType;
@@ -504,11 +516,11 @@ for (const productId of productIds) {
   assert.ok(product.groundingIds.every(id => descriptionGroundingIds.has(id)), `${productId}: every description grounding ID resolves`);
   assert.doesNotMatch(product.description, /優位|優れる|勝者|推奨|投資判断/, `${productId}: description contains no evaluation`);
 }
-for (const record of [...firstBatchCompanies, ...remainingBatch1Companies]) {
+for (const record of [...firstBatchCompanies, ...remainingBatch1Companies, ...remainingBatch2Companies]) {
   for (const entry of record.productEntries) {
     assert.deepEqual([entry.groundingId], [record.productPortfolio.groundingId], `${entry.canonicalId}: display Product reuses its existing Product Claim`);
     assert.ok(entry.description.trim(), `${entry.canonicalId}: display Product has reviewed Japanese descriptive copy`);
-    const productIdsByClaimId = firstBatchProductIdsByClaimId[entry.groundingId] ?? remainingBatch1ProductIdsByClaimId[entry.groundingId];
+    const productIdsByClaimId = firstBatchProductIdsByClaimId[entry.groundingId] ?? remainingBatch1ProductIdsByClaimId[entry.groundingId] ?? remainingBatch2ProductIdsByClaimId[entry.groundingId];
     assert.equal(productIdsByClaimId.includes(entry.canonicalId), true, `${entry.canonicalId}: Product order is data-driven`);
     assert.ok(claimById.has(entry.groundingId), `${entry.canonicalId}: Product grounding Claim resolves`);
   }
@@ -1092,7 +1104,7 @@ assert.equal(serializedParams.get('detail'), 'expanded');
 assert.equal(serializedParams.get('section'), 'technology-moat');
 
 assert.deepEqual([...evidenceComparePilotCompanyIds], ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron']);
-assert.deepEqual([...evidenceCompareSupportedCompanyIds], ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb', 'globalfoundries', 'micron', 'arista', 'bosch', 'cadence', 'marvell', 'nxp', 'renesas', 'synopsys', 'digital-realty', 'ge-vernova', 'schneider-electric', 'ciena', 'corning', 'lumentum', 'fanuc', 'smc', 'asml', 'kokusai-electric', 'screen-holdings', 'linde', 'shinko-electric', 'seagate', 'besi']);
+assert.deepEqual([...evidenceCompareSupportedCompanyIds], ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron', 'amd', 'vertiv', 'tsmc', 'kioxia', 'amphenol', 'aptiv', 'advantest', 'asm-international', 'air-liquide', 'analog-devices', 'abb', 'globalfoundries', 'micron', 'arista', 'bosch', 'cadence', 'marvell', 'nxp', 'renesas', 'synopsys', 'digital-realty', 'ge-vernova', 'schneider-electric', 'ciena', 'corning', 'lumentum', 'fanuc', 'smc', 'asml', 'kokusai-electric', 'screen-holdings', 'linde', 'shinko-electric', 'seagate', 'besi', 'infineon', 'mitsubishi-electric', 'onsemi', 'rohm', 'texas-instruments', 'eaton', 'legrand', 'siemens-energy', 'cisco', 'credo', 'te-connectivity', 'keyence', 'tesla', 'canon', 'lasertec', 'entegris', 'resonac-holdings', 'sumco', 'western-digital', 'disco']);
 assert.deepEqual([...firstBatchStage1CompanyIds], ['amd', 'vertiv', 'tsmc']);
 assert.deepEqual([...firstBatchStage2CompanyIds], ['kioxia', 'amphenol', 'aptiv', 'advantest']);
 assert.deepEqual([...firstBatchStage3CompanyIds], ['asm-international', 'air-liquide', 'analog-devices', 'abb']);
@@ -1516,11 +1528,12 @@ if (process.argv.includes('--dist')) {
     expectedProductPortfolioSummaries['tokyo-electron'].title,
     ...firstBatchCompanies.map(record => record.productPortfolio.title),
     ...remainingBatch1Companies.map(record => record.productPortfolio.title),
+    ...remainingBatch2Companies.map(record => record.productPortfolio.title),
   ]) {
     assert.ok(!controllerAsset.includes(copy), 'new Product portfolio copy remains inside Company assets, not the shared controller');
   }
-  assert.deepEqual(Object.keys(assetHtmlById), supportedIds, 'built Company assets cover exactly the supported forty');
-  assert.equal((shellHtml.match(/"companyId":/g) ?? []).length, 40, 'lightweight manifest contains exactly forty Company entries');
+  assert.deepEqual(Object.keys(assetHtmlById), supportedIds, 'built Company assets cover exactly the supported sixty');
+  assert.equal((shellHtml.match(/"companyId":/g) ?? []).length, 60, 'lightweight manifest contains exactly sixty Company entries');
   for (const companyId of supportedIds) {
     const assetHtml = assetHtmlById[companyId];
     assert.equal((assetHtml.match(/data-company-compare-asset/g) ?? []).length, 1, `${companyId}: one asset envelope`);
@@ -1530,33 +1543,34 @@ if (process.argv.includes('--dist')) {
     assertWithinBoundary(Buffer.byteLength(assetHtml), onDemandSize.maximumCompanyAssetRawBytes, `${companyId}: individual raw asset`);
     assertWithinBoundary(gzipSync(assetHtml).byteLength, onDemandSize.maximumCompanyAssetGzipBytes, `${companyId}: individual gzip asset`);
   }
-  for (const companyId of remainingBatch1CompanyIds) {
+  for (const companyId of [...remainingBatch1CompanyIds, ...remainingBatch2CompanyIds]) {
     const assetHtml = assetHtmlById[companyId];
     assert.match(assetHtml, /<template data-company-slot="financial"[^>]*data-has-content="true"/, `${companyId}: canonical primary Financial projection is available`);
     assert.match(assetHtml, /<template data-company-slot="expanded-financial">[\s\S]*?class="evidence-financial-scroll"/, `${companyId}: canonical detailed Financial projection is available`);
     assert.match(assetHtml, /一次資料を開く/, `${companyId}: Financial source remains available`);
   }
-  const combinations = (values, maximum) => {
-    const result = [];
-    const visit = (start, picked) => {
-      if (picked.length >= 2) result.push([...picked]);
-      if (picked.length === maximum) return;
-      for (let index = start; index < values.length; index += 1) visit(index + 1, [...picked, values[index]]);
-    };
-    visit(0, []);
-    return result;
-  };
-  const supportedCombinations = combinations(supportedIds, 4);
-  assert.equal(supportedCombinations.length, 102_050, 'all 40 + 780 + 9,880 + 91,350 supported Company combinations are inspected');
   const shellGzipBytes = gzipSync(shellHtml).byteLength;
+  const shellRawBytes = Buffer.byteLength(shellHtml);
+  const assetRawBytesById = Object.fromEntries(supportedIds.map(id => [id, Buffer.byteLength(assetHtmlById[id])]));
   const assetGzipBytesById = Object.fromEntries(supportedIds.map(id => [id, gzipSync(assetHtmlById[id]).byteLength]));
   let maximumCombination = { ids: [], rawBytes: 0, gzipBytes: 0 };
-  for (const selectedIds of supportedCombinations) {
-    const rawBytes = Buffer.byteLength(shellHtml) + selectedIds.reduce((sum, id) => sum + Buffer.byteLength(assetHtmlById[id]), 0);
-    assertWithinBoundary(rawBytes, onDemandSize.maximumColdLoadRawBytes, `${selectedIds.join('+')}: 1-4 Company initial raw payload`);
-    const gzipBytes = shellGzipBytes + selectedIds.reduce((sum, id) => sum + assetGzipBytesById[id], 0);
-    if (rawBytes > maximumCombination.rawBytes) maximumCombination = { ids: selectedIds, rawBytes, gzipBytes };
-  }
+  let inspectedCombinations = 0;
+  const visitCombination = (start, selectedIds, rawBytes, gzipBytes) => {
+    if (selectedIds.length >= 2) {
+      inspectedCombinations += 1;
+      assertWithinBoundary(rawBytes, onDemandSize.maximumColdLoadRawBytes, `${selectedIds.join('+')}: 1-4 Company initial raw payload`);
+      if (rawBytes > maximumCombination.rawBytes) maximumCombination = { ids: [...selectedIds], rawBytes, gzipBytes };
+    }
+    if (selectedIds.length === 4) return;
+    for (let index = start; index < supportedIds.length; index += 1) {
+      const companyId = supportedIds[index];
+      selectedIds.push(companyId);
+      visitCombination(index + 1, selectedIds, rawBytes + assetRawBytesById[companyId], gzipBytes + assetGzipBytesById[companyId]);
+      selectedIds.pop();
+    }
+  };
+  visitCombination(0, [], shellRawBytes, shellGzipBytes);
+  assert.equal(inspectedCombinations, 523_625, 'all 60 supported Company combinations of two to four Companies are inspected');
   for (const setId of ['set-a', 'set-b']) {
     const setIds = fixture.setCompanyIds[setId];
     const setHtml = setIds.map(id => assetHtmlById[id]).join('\n');
@@ -1612,7 +1626,7 @@ if (process.argv.includes('--dist')) {
     assert.match(productTemplate, /data-product-portfolio-summary="true" data-summary-visible="false" data-expanded-visible="true"/, `${companyId}: Product title and body are expanded-only`);
     assert.ok(productTemplate.includes(`>${expected.title}</h3>`), `${companyId}: reviewed Product portfolio title is rendered`);
     assert.ok(productTemplate.includes(`${expected.body}<button class="evidence-marker"`), `${companyId}: reviewed Product portfolio body owns its Evidence marker`);
-    const stageRecord = [...firstBatchCompanies, ...remainingBatch1Companies].find(record => record.companyId === companyId);
+    const stageRecord = [...firstBatchCompanies, ...remainingBatch1Companies, ...remainingBatch2Companies].find(record => record.companyId === companyId);
     assert.equal(
       (productTemplate.match(new RegExp(`data-evidence-open="evidence-${expected.groundingId}"`, 'g')) ?? []).length,
       companyId === 'tokyo-electron' ? 5 : stageRecord ? stageRecord.productEntries.length + 1 : 1,
@@ -1777,7 +1791,7 @@ if (process.argv.includes('--dist')) {
   assert.equal((fragmentHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 5, 'NVIDIA, Broadcom, and Set B use the same detailed Financial table');
   assert.match(fragmentHtml, /class="num">2,431,568<\/td>/, 'maximum Set B value is rendered as an unwrapped numeric cell');
   assert.match(fragmentHtml, /class="missing">未収録<\/td>/, 'missing status is rendered outside the numeric class');
-  console.log(`Company Compare on-demand artifacts OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(shellHtml)} B shell / 102050 combinations / max ${maximumCombination.ids.join('+')} ${maximumCombination.rawBytes} B raw ${maximumCombination.gzipBytes} B gzip / ${renderedMarkerButtons} Pilot markers / ${claimMarkers + relationMarkers} Pilot unique grounding entries`);
+  console.log(`Company Compare on-demand artifacts OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(shellHtml)} B shell / 523625 combinations / max ${maximumCombination.ids.join('+')} ${maximumCombination.rawBytes} B raw ${maximumCombination.gzipBytes} B gzip / ${renderedMarkerButtons} Pilot markers / ${claimMarkers + relationMarkers} Pilot unique grounding entries`);
 }
 
 console.log(`Company Compare Evidence UI tests OK: Set A/B / routing / URL state / 57 rendered markers / ${claimMarkerCount + relationMarkerCount} unique grounding entries / Financial 0/2/2 / semantic snapshot`);

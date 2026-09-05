@@ -2,6 +2,7 @@ import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot
 import {
   evidenceCompareFirstBatchCompanyIds,
   evidenceCompareRemainingBatch1CompanyIds,
+  evidenceCompareRemainingBatch2CompanyIds,
 } from './company-compare-supported-companies.ts';
 import type { RelationEvidenceBinding, ResolvedRelation } from './relations.ts';
 
@@ -89,6 +90,7 @@ export const evidenceCompareSupportedCompanyIds = Object.freeze([
   ...evidenceComparePilotCompanyIds,
   ...evidenceCompareFirstBatchCompanyIds,
   ...evidenceCompareRemainingBatch1CompanyIds,
+  ...evidenceCompareRemainingBatch2CompanyIds,
 ]);
 
 export function parseEvidenceCompareSearch(
