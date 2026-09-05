@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "0.1",
+  "stage": "first-batch-stage-3",
+  "companyIds": ["asm-international", "air-liquide", "analog-devices", "abb"],
+  "companies": [
+    {
+      "companyId": "asm-international",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["asm-international-ai-role"],
+        "value-chain-position": ["asm-international-value-chain"],
+        "key-products": ["asm-international-products"],
+        "technology-moat": ["asm-international-positioning", "asm-international-technology"],
+        "capacity-roadmap": ["asm-international-facilities"],
+        "key-risks": ["asm-international-risks"]
+      },
+      "claimDisplay": {
+        "asm-international-ai-role": {"title": "原子層レベルの薄膜形成を担う", "statement": "AtlasではASM Internationalを、AI向け先端ロジックのGAA移行やHBM関連DRAMで増える原子層レベルの薄膜形成工程を担う半導体前工程製造装置企業と位置付ける。"},
+        "asm-international-value-chain": {"title": "前工程の材料形成を支える", "statement": "ASM Internationalの装置は、ウェーハ上で材料を堆積・成長させる前工程に位置し、先端トランジスタ、メモリ、相互接続などの材料形成を支える。"},
+        "asm-international-products": {"title": "成膜を中心とする前工程装置", "statement": "ASM Internationalは、ALD、エピタキシー、PECVD、縦型炉、SiCエピタキシー、CMPの各装置を提供する。"},
+        "asm-international-positioning": {"title": "枚葉式ALDでの市場地位", "statement": "ASM Internationalは自社を枚葉式ALD市場のリーダーと説明し、55%超という自社推定シェアと幅広いALD製品群を示している。"},
+        "asm-international-technology": {"title": "原子スケールで薄膜を制御", "statement": "ASM InternationalのALDは薄膜を一原子層ずつ堆積し、厚さ、膜質、面内均一性を原子スケールで制御する技術である。"},
+        "asm-international-facilities": {"title": "シンガポールと韓国の製造拠点", "statement": "ASM Internationalはシンガポールを最大の製造拠点かつ世界的な業務拠点とし、韓国の技術開発・製造拠点を2025年に拡張した。"},
+        "asm-international-risks": {"title": "技術競争・能力制約・供給網・規制", "statement": "ASM Internationalは、技術革新で競合に先行できないリスク、能力制約、供給業者への依存、輸出規制と関税が販売・サービスへ及ぼすリスクを開示している。"}
+      },
+      "productPortfolio": {"title": "成膜工程を中心に前工程装置を展開", "body": "ALD、エピタキシー、PECVD、縦型炉、SiCエピタキシー、CMPの各装置を提供する。", "groundingId": "asm-international-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-asm-international-ald", "label": "ALD装置", "description": "原子層単位で薄膜を形成する装置。", "groundingId": "asm-international-products"},
+        {"canonicalId": "display-product-asm-international-epitaxy", "label": "エピタキシー装置", "description": "結晶層を成長させる前工程装置。", "groundingId": "asm-international-products"},
+        {"canonicalId": "display-product-asm-international-pecvd", "label": "PECVD装置", "description": "プラズマを用いて薄膜を形成する装置。", "groundingId": "asm-international-products"},
+        {"canonicalId": "display-product-asm-international-vertical-furnace", "label": "縦型炉", "description": "ウェーハを縦方向に配置して処理する装置。", "groundingId": "asm-international-products"},
+        {"canonicalId": "display-product-asm-international-sic-epitaxy", "label": "SiCエピタキシー装置", "description": "SiCの結晶層を成長させる装置。", "groundingId": "asm-international-products"},
+        {"canonicalId": "display-product-asm-international-cmp", "label": "CMP装置", "description": "ウェーハ表面を平坦化する装置。", "groundingId": "asm-international-products"}
+      ]
+    },
+    {
+      "companyId": "air-liquide",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["air-liquide-ai-role"],
+        "value-chain-position": ["air-liquide-value-chain"],
+        "key-products": ["air-liquide-products"],
+        "technology-moat": ["air-liquide-positioning", "air-liquide-technology"],
+        "capacity-roadmap": ["air-liquide-capacity-expansion-triage-remediation-v02"],
+        "key-risks": ["air-liquide-risks"]
+      },
+      "claimDisplay": {
+        "air-liquide-ai-role": {"title": "半導体製造へ高純度ガスを供給", "statement": "AtlasではAir Liquideを、ロジック・メモリ工場の成膜、エッチング、洗浄などに必要な高純度ガスを供給する企業と位置付ける。"},
+        "air-liquide-value-chain": {"title": "半導体材料の供給層", "statement": "AtlasではAir Liquideを半導体材料・基板の供給層に位置付け、ロジック・メモリ工場へ高純度ガスを供給する企業と整理する。"},
+        "air-liquide-products": {"title": "高純度ガス・特殊材料・供給設備", "statement": "Air Liquideは、半導体用高純度ガス、特殊材料・前駆体、オンサイトガス供給設備を提供する。"},
+        "air-liquide-positioning": {"title": "高純度技術・長期契約・世界供給網", "statement": "Atlasでは、超高純度ガス供給技術、半導体工場との長期供給契約、世界的な供給網を、Air Liquideの競争上の重要な特徴として整理する。"},
+        "air-liquide-technology": {"title": "半導体ガスと材料供給の技術基盤", "statement": "Atlasでは、半導体用高純度ガス、特殊材料・前駆体、オンサイトガス供給設備という製品構成を、半導体ガス、高純度ガス、材料供給に関わる技術基盤として整理する。"},
+        "air-liquide-capacity-expansion-triage-remediation-v02": {"title": "インドで産業ガス供給能力を増強", "statement": "Air Liquideはインドのグジャラート州で新たな空気分離装置と充填設備を整備し、地域の産業ガス供給能力を増強する計画を開示している。"},
+        "air-liquide-risks": {"title": "設備投資・エネルギー費・資本集約性", "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、大型顧客の設備投資、エネルギーコスト、ガス設備の資本集約性を主要な確認点として整理する。"}
+      },
+      "productPortfolio": {"title": "ガス・材料と供給設備を展開", "body": "半導体用高純度ガス、特殊材料・前駆体、オンサイトガス供給設備を提供する。", "groundingId": "air-liquide-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-air-liquide-high-purity-gases", "label": "半導体用高純度ガス", "description": "半導体製造工程で使用する高純度ガス。", "groundingId": "air-liquide-products"},
+        {"canonicalId": "display-product-air-liquide-specialty-materials-precursors", "label": "特殊材料・前駆体", "description": "半導体製造工程で使用する特殊材料と前駆体。", "groundingId": "air-liquide-products"},
+        {"canonicalId": "display-product-air-liquide-onsite-gas-supply", "label": "オンサイトガス供給設備", "description": "顧客拠点でガスを供給する設備。", "groundingId": "air-liquide-products"}
+      ]
+    },
+    {
+      "companyId": "analog-devices",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["analog-devices-ai-role"],
+        "value-chain-position": ["analog-devices-value-chain"],
+        "key-products": ["analog-devices-products"],
+        "technology-moat": ["analog-devices-positioning", "analog-devices-technology"],
+        "capacity-roadmap": ["analog-devices-capacity-expansion-triage-remediation-v02"],
+        "key-risks": ["analog-devices-risks"]
+      },
+      "claimDisplay": {
+        "analog-devices-ai-role": {"title": "アナログ信号とデジタル世界を接続", "statement": "AtlasではAnalog Devicesを、AI設備と産業システムでアナログ信号をデジタル世界へ接続し、電源・計測・通信を支える企業と位置付ける。"},
+        "analog-devices-value-chain": {"title": "計算半導体の供給層", "statement": "AtlasではAnalog Devicesを計算半導体の供給層に位置付け、AI設備と産業システムの電源・計測・通信を支える企業と整理する。"},
+        "analog-devices-products": {"title": "データ変換・電源管理・アナログRF", "statement": "Analog Devicesは、高性能データコンバータ、電源管理IC、アナログ・RF半導体を提供する。"},
+        "analog-devices-positioning": {"title": "技術蓄積・顧客組込み・長い製品寿命", "statement": "Atlasでは、高性能アナログの技術蓄積、産業・通信顧客への深い組込み、長い製品寿命を、Analog Devicesの競争上の重要な特徴として整理する。"},
+        "analog-devices-technology": {"title": "アナログ・データ変換・電源管理", "statement": "Atlasでは、高性能データコンバータ、電源管理IC、アナログ・RF半導体という製品構成を、アナログ半導体、データコンバータ、電源管理に関わる技術基盤として整理する。"},
+        "analog-devices-capacity-expansion-triage-remediation-v02": {"title": "タイの製造拠点を拡張", "statement": "Analog Devicesはタイの製造拠点を拡張し、半導体の組立・テストを含む供給能力と強靱性を高める計画を公表している。"},
+        "analog-devices-risks": {"title": "産業需要・在庫・事業構成管理", "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、産業需要の循環、在庫調整、買収後の事業構成管理を主要な確認点として整理する。"}
+      },
+      "productPortfolio": {"title": "アナログ信号処理と電源管理を展開", "body": "高性能データコンバータ、電源管理IC、アナログ・RF半導体を提供する。", "groundingId": "analog-devices-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-analog-devices-data-converters", "label": "高性能データコンバータ", "description": "アナログ信号とデジタル信号を変換する半導体。", "groundingId": "analog-devices-products"},
+        {"canonicalId": "display-product-analog-devices-power-management-ic", "label": "電源管理IC", "description": "電力の変換と制御を担う半導体。", "groundingId": "analog-devices-products"},
+        {"canonicalId": "display-product-analog-devices-analog-rf", "label": "アナログ・RF半導体", "description": "アナログ信号と無線周波数信号を扱う半導体。", "groundingId": "analog-devices-products"}
+      ]
+    },
+    {
+      "companyId": "abb",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": ["abb-ai-role"],
+        "value-chain-position": ["abb-value-chain"],
+        "key-products": ["abb-products"],
+        "technology-moat": ["abb-positioning", "abb-technology"],
+        "capacity-roadmap": ["abb-capacity-expansion-triage-remediation-v02"],
+        "key-risks": ["abb-risks"]
+      },
+      "claimDisplay": {
+        "abb-ai-role": {"title": "データセンターの電力供給を支える", "statement": "AtlasではABBを、データセンターへ電力を引き込み、変圧・配電・保護・制御する電化インフラを担う企業と位置付ける。"},
+        "abb-value-chain": {"title": "データセンター設備の供給層", "statement": "ABBは施設内外の受配電、電力品質、モーター駆動、運用制御を通じてデータセンター設備層に位置する。"},
+        "abb-products": {"title": "配電・駆動・計測制御・デジタル", "statement": "ABBの主要製品群には、中低圧配電機器、モーターとドライブ、計測・制御システム、産業向けデジタルソリューションが含まれる。"},
+        "abb-positioning": {"title": "電化と自動化を横断", "statement": "ABBは自社を電化と自動化の世界的な技術リーダーと位置付け、両分野を横断する技術構成を強みとして説明している。"},
+        "abb-technology": {"title": "機器・制御・ソフトウェアを統合", "statement": "ABBは電化と自動化の機器群に、制御、ソフトウェア、デジタル化の専門性を組み合わせて産業システムを構成する。"},
+        "abb-capacity-expansion-triage-remediation-v02": {"title": "複数地域で生産施設を増強", "statement": "ABBは2025年、米国、イタリア、ドイツ、フィンランドなどで既存生産施設を改良・拡張し、中国とインドでは新設・拡張施設へ投資したと開示している。"},
+        "abb-risks": {"title": "景気・供給網・規制・技術競争", "statement": "ABBは事業リスクとして、景気循環、原材料と部品の供給、地政学・規制、技術変化および競争などを開示している。"}
+      },
+      "productPortfolio": {"title": "電化・駆動・自動化を横断", "body": "中低圧配電機器、モーターとドライブ、計測・制御システム、産業向けデジタルソリューションを展開する。", "groundingId": "abb-products", "summaryVisible": false, "expandedVisible": true},
+      "productEntries": [
+        {"canonicalId": "display-product-abb-distribution-equipment", "label": "中低圧配電機器", "description": "中低圧の受配電を担う機器。", "groundingId": "abb-products"},
+        {"canonicalId": "display-product-abb-motors-drives", "label": "モーター・ドライブ", "description": "産業設備の駆動と制御を担う機器。", "groundingId": "abb-products"},
+        {"canonicalId": "display-product-abb-measurement-control", "label": "計測・制御システム", "description": "産業設備を計測・制御するシステム。", "groundingId": "abb-products"},
+        {"canonicalId": "display-product-abb-digital-solutions", "label": "産業向けデジタルソリューション", "description": "産業設備の運用を支えるデジタルソリューション。", "groundingId": "abb-products"}
+      ]
+    }
+  ]
+}

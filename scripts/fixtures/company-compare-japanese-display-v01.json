@@ -102,6 +102,9 @@
     "Japan": "日本",
     "Tualatin": "チュアラティン",
     "Oregon, United States": "米国オレゴン州",
+    "Netherlands": "オランダ",
+    "France": "フランス",
+    "Switzerland": "スイス",
     "米国": "米国",
     "日本": "日本",
     "チュアラティン": "チュアラティン",
@@ -224,6 +227,10 @@
       "amphenol": "百万ドル",
       "aptiv": "百万ドル",
       "advantest": "百万円"
+      ,"asm-international": "百万ユーロ"
+      ,"air-liquide": "百万ユーロ"
+      ,"analog-devices": "百万ドル"
+      ,"abb": "百万ドル"
     },
     "accountingBasisByCompany": {
       "nvidia": "米国会計基準",
@@ -238,6 +245,10 @@
       "amphenol": "米国会計基準",
       "aptiv": "米国会計基準",
       "advantest": "国際財務報告基準（IFRS）"
+      ,"asm-international": "国際財務報告基準（IFRS）"
+      ,"air-liquide": "国際財務報告基準（IFRS・連結）"
+      ,"analog-devices": "米国会計基準"
+      ,"abb": "米国会計基準"
     },
     "periodLabels": {
       "FY2024": "2024年度",
@@ -277,6 +288,10 @@
       "amphenol": 2,
       "aptiv": 2,
       "advantest": 4
+      ,"asm-international": 2
+      ,"air-liquide": 2
+      ,"analog-devices": 2
+      ,"abb": 2
     },
     "forbiddenDetailedEnglishLabels": ["USD · million", "JPY · million", "US GAAP", "Japanese GAAP"],
     "maxDigitFixtures": {
@@ -321,6 +336,18 @@
       "amphenol": {"displayValue": "29.5%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-amphenol-2026-07-29-q2-2026"},
       "aptiv": {"displayValue": "5.8%", "periodLabel": "FY2025", "accountingBasis": "US GAAP", "sourceId": "sec-aptiv-2025-10k"},
       "advantest": {"displayValue": "51.7%", "periodLabel": "FY2026 Q1", "accountingBasis": "IFRS", "sourceId": "earnings-advantest-2026-07-29-q1-fy2026"}
+    }
+  },
+  "stage3FinancialRow": {
+    "selectionId": "first-batch-stage-3",
+    "metricId": "operatingMargin",
+    "compatibility": "blocked",
+    "blockedMetricId": "revenueGrowth",
+    "companies": {
+      "asm-international": {"displayValue": "29.6%", "periodLabel": "FY2025", "accountingBasis": "IFRS", "sourceId": "annual-report-asm-2025"},
+      "air-liquide": {"displayValue": "19.6%", "periodLabel": "FY2025", "accountingBasis": "IFRS consolidated", "sourceId": "air-liquide-fy2025-performance-report"},
+      "analog-devices": {"displayValue": "40.1%", "periodLabel": "Q3 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-analog-devices-2026-08-19-q3-fy2026"},
+      "abb": {"displayValue": "16.7%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "financial-info-abb-2026-07-16-q2"}
     }
   },
   "summaryMarkerCounts": {

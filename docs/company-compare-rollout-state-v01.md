@@ -37,11 +37,11 @@ Company Compare First Batch。productionの意味層を変更せず、Human Revi
 
 ## 現在のStage
 
-Stage 2 / 4 companies。`kioxia`、`amphenol`、`aptiv`、`advantest`を`DISPLAY_COPY_ONLY`として追加。First batch progressは`7 / 15`。既存Pilot 5社と合わせ、Compare対応企業は12社。
+Stage 3 / 4 companies。`asm-international`、`air-liquide`、`analog-devices`、`abb`を`DISPLAY_COPY_ONLY`として追加。First batch progressは`11 / 15`。既存Pilot 5社と合わせ、Compare対応企業は16社。
 
 ## 次に行う作業
 
-Token calibrationとHuman Reviewの完了後に、別の作業単位として残り8社を扱う。Stage 2では未着手とする。
+Token calibrationとHuman Reviewの完了後に、別の作業単位として残り4社を扱う。Stage 3では未着手とする。
 
 Company Compare 100社対応完了後、Human Review済みの日本語表示projectionを100社の各社ページへ展開する。canonical dataは変更せず、表示層だけを同期する。
 

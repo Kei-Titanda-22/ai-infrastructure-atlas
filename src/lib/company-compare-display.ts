@@ -49,6 +49,7 @@ export const compareFinancialAmountUnitLabels = Object.freeze<Record<string, str
   'USD:million': '百万ドル',
   'JPY:million': '百万円',
   'TWD:billion': '十億台湾ドル',
+  'EUR:million': '百万ユーロ',
 });
 
 export const compareFinancialAccountingBasisLabels = Object.freeze<Record<string, string>>({
@@ -56,6 +57,7 @@ export const compareFinancialAccountingBasisLabels = Object.freeze<Record<string
   'Japanese GAAP': '日本会計基準',
   'TIFRS consolidated': '台湾IFRS（連結）',
   IFRS: '国際財務報告基準（IFRS）',
+  'IFRS consolidated': '国際財務報告基準（IFRS・連結）',
 });
 
 const compareNamedQuarterPeriodLabels = Object.freeze<Record<string, string>>({
@@ -131,12 +133,18 @@ export const compareLocationDisplayNames = Object.freeze<Record<string, string>>
   Tualatin: 'チュアラティン',
   'Oregon, United States': '米国オレゴン州',
   Ireland: 'アイルランド',
+  Netherlands: 'オランダ',
+  France: 'フランス',
+  Switzerland: 'スイス',
   米国: '米国',
   日本: '日本',
   台湾: '台湾',
   チュアラティン: 'チュアラティン',
   米国オレゴン州: '米国オレゴン州',
   アイルランド: 'アイルランド',
+  オランダ: 'オランダ',
+  フランス: 'フランス',
+  スイス: 'スイス',
 });
 
 export const comparePreservedProperNouns = Object.freeze([

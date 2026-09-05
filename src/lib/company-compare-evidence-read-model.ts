@@ -450,7 +450,7 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
       })),
     },
   }));
-  const firstBatchFinancialSelections = firstBatchStages.flatMap(stage => stage.setId === 'first-batch-stage-2'
+  const firstBatchFinancialSelections = firstBatchStages.flatMap(stage => stage.setId !== 'first-batch-stage-1'
     ? [stage, ...stage.orderedCompanyIds.map(companyId => ({
         setId: `${stage.setId}-${companyId}`,
         orderedCompanyIds: [companyId],

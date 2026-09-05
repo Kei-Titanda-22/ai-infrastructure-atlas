@@ -1,16 +1,20 @@
 import stage1Data from '../data/company-compare-first-batch-stage1-v01.json' with { type: 'json' };
 import stage2Data from '../data/company-compare-first-batch-stage2-v01.json' with { type: 'json' };
+import stage3Data from '../data/company-compare-first-batch-stage3-v01.json' with { type: 'json' };
 import {
   evidenceCompareFirstBatchCompanyIds,
   evidenceCompareFirstBatchStage1CompanyIds,
   evidenceCompareFirstBatchStage2CompanyIds,
+  evidenceCompareFirstBatchStage3CompanyIds,
 } from './company-compare-supported-companies.ts';
 
 export const firstBatchStage1CompanyIds = evidenceCompareFirstBatchStage1CompanyIds;
 export const firstBatchStage2CompanyIds = evidenceCompareFirstBatchStage2CompanyIds;
+export const firstBatchStage3CompanyIds = evidenceCompareFirstBatchStage3CompanyIds;
 export const firstBatchCompanyIds = evidenceCompareFirstBatchCompanyIds;
 export type FirstBatchStage1CompanyId = typeof firstBatchStage1CompanyIds[number];
 export type FirstBatchStage2CompanyId = typeof firstBatchStage2CompanyIds[number];
+export type FirstBatchStage3CompanyId = typeof firstBatchStage3CompanyIds[number];
 export type FirstBatchCompanyId = typeof firstBatchCompanyIds[number];
 
 export const firstBatchStage1DimensionIds = [
@@ -56,7 +60,7 @@ const requireNonEmpty = (value: unknown, label: string) => {
 
 function validateFirstBatchData(
   value: any,
-  expectedStage: 'first-batch-stage-1' | 'first-batch-stage-2',
+  expectedStage: 'first-batch-stage-1' | 'first-batch-stage-2' | 'first-batch-stage-3',
   expectedCompanyIds: readonly FirstBatchCompanyId[],
 ) {
   if (value.schemaVersion !== '0.1' || value.stage !== expectedStage) {
@@ -147,36 +151,50 @@ function validateFirstBatchData(
 
 export const firstBatchStage1Companies = validateFirstBatchData(stage1Data, 'first-batch-stage-1', firstBatchStage1CompanyIds);
 export const firstBatchStage2Companies = validateFirstBatchData(stage2Data, 'first-batch-stage-2', firstBatchStage2CompanyIds);
-export const firstBatchCompanies = Object.freeze([...firstBatchStage1Companies, ...firstBatchStage2Companies]);
+export const firstBatchStage3Companies = validateFirstBatchData(stage3Data, 'first-batch-stage-3', firstBatchStage3CompanyIds);
+export const firstBatchCompanies = Object.freeze([...firstBatchStage1Companies, ...firstBatchStage2Companies, ...firstBatchStage3Companies]);
 export const firstBatchStage1CompanyById = new Map(firstBatchStage1Companies.map(record => [record.companyId, record]));
 export const firstBatchStage2CompanyById = new Map(firstBatchStage2Companies.map(record => [record.companyId, record]));
+export const firstBatchStage3CompanyById = new Map(firstBatchStage3Companies.map(record => [record.companyId, record]));
 export const firstBatchStage1ClaimDisplay = Object.freeze(Object.fromEntries(
   firstBatchStage1Companies.flatMap(record => Object.entries(record.claimDisplay)),
 ));
 export const firstBatchStage2ClaimDisplay = Object.freeze(Object.fromEntries(
   firstBatchStage2Companies.flatMap(record => Object.entries(record.claimDisplay)),
 ));
-export const firstBatchClaimDisplay = Object.freeze({ ...firstBatchStage1ClaimDisplay, ...firstBatchStage2ClaimDisplay });
+export const firstBatchStage3ClaimDisplay = Object.freeze(Object.fromEntries(
+  firstBatchStage3Companies.flatMap(record => Object.entries(record.claimDisplay)),
+));
+export const firstBatchClaimDisplay = Object.freeze({ ...firstBatchStage1ClaimDisplay, ...firstBatchStage2ClaimDisplay, ...firstBatchStage3ClaimDisplay });
 export const firstBatchStage1ProductEntries = Object.freeze(
   firstBatchStage1Companies.flatMap(record => record.productEntries),
 );
 export const firstBatchStage2ProductEntries = Object.freeze(
   firstBatchStage2Companies.flatMap(record => record.productEntries),
 );
-export const firstBatchProductEntries = Object.freeze([...firstBatchStage1ProductEntries, ...firstBatchStage2ProductEntries]);
+export const firstBatchStage3ProductEntries = Object.freeze(
+  firstBatchStage3Companies.flatMap(record => record.productEntries),
+);
+export const firstBatchProductEntries = Object.freeze([...firstBatchStage1ProductEntries, ...firstBatchStage2ProductEntries, ...firstBatchStage3ProductEntries]);
 export const firstBatchStage1ProductById = new Map(firstBatchStage1ProductEntries.map(record => [record.canonicalId, record]));
 export const firstBatchStage2ProductById = new Map(firstBatchStage2ProductEntries.map(record => [record.canonicalId, record]));
+export const firstBatchStage3ProductById = new Map(firstBatchStage3ProductEntries.map(record => [record.canonicalId, record]));
 export const firstBatchStage1ProductIdsByClaimId = Object.freeze(Object.fromEntries(
   firstBatchStage1Companies.map(record => [record.productPortfolio.groundingId, record.productEntries.map(entry => entry.canonicalId)]),
 ));
 export const firstBatchStage2ProductIdsByClaimId = Object.freeze(Object.fromEntries(
   firstBatchStage2Companies.map(record => [record.productPortfolio.groundingId, record.productEntries.map(entry => entry.canonicalId)]),
 ));
+export const firstBatchStage3ProductIdsByClaimId = Object.freeze(Object.fromEntries(
+  firstBatchStage3Companies.map(record => [record.productPortfolio.groundingId, record.productEntries.map(entry => entry.canonicalId)]),
+));
 export const firstBatchProductIdsByClaimId = Object.freeze({
   ...firstBatchStage1ProductIdsByClaimId,
   ...firstBatchStage2ProductIdsByClaimId,
+  ...firstBatchStage3ProductIdsByClaimId,
 });
 export const firstBatchStages = Object.freeze([
   Object.freeze({ setId: 'first-batch-stage-1', orderedCompanyIds: [...firstBatchStage1CompanyIds] }),
   Object.freeze({ setId: 'first-batch-stage-2', orderedCompanyIds: [...firstBatchStage2CompanyIds] }),
+  Object.freeze({ setId: 'first-batch-stage-3', orderedCompanyIds: [...firstBatchStage3CompanyIds] }),
 ]);
