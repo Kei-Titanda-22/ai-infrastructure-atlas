@@ -1,0 +1,1632 @@
+{
+  "schemaVersion": "0.1",
+  "stage": "remaining-rollout-batch-2",
+  "companyIds": [
+    "infineon",
+    "mitsubishi-electric",
+    "onsemi",
+    "rohm",
+    "texas-instruments",
+    "eaton",
+    "legrand",
+    "siemens-energy",
+    "cisco",
+    "credo",
+    "te-connectivity",
+    "keyence",
+    "tesla",
+    "canon",
+    "lasertec",
+    "entegris",
+    "resonac-holdings",
+    "sumco",
+    "western-digital",
+    "disco"
+  ],
+  "companies": [
+{
+    "companyId": "infineon",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "infineon-ai-role"
+      ],
+      "value-chain-position": [
+        "infineon-value-chain"
+      ],
+      "key-products": [
+        "infineon-products"
+      ],
+      "technology-moat": [
+        "infineon-positioning",
+        "infineon-technology"
+      ],
+      "capacity-roadmap": [
+        "infineon-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "infineon-risks"
+      ]
+    },
+    "claimDisplay": {
+      "infineon-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "AtlasではInfineon（インフィニオン）を、AIデータセンターの電源変換効率向上に必要なSiC・GaN・パワー半導体を供給する企業と位置付ける。"
+      },
+      "infineon-value-chain": {
+        "title": "Compute & Siliconの供給層",
+        "statement": "AtlasではInfineon（インフィニオン）を「Compute & Silicon」に位置し、AIデータセンターの電源変換効率向上に必要なSiC・GaN・パワー半導体を供給する役割を担う企業と整理する。"
+      },
+      "infineon-products": {
+        "title": "主要製品・サービス",
+        "statement": "Infineon（インフィニオン）は、SiC・GaNパワー半導体、IGBT・MOSFET、車載・産業向けマイコンを提供する。"
+      },
+      "infineon-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、パワー半導体の製品幅、SiC・GaNへの投資、車載・産業の大規模顧客基盤を、Infineon（インフィニオン）の競争上の重要な特徴として整理する。"
+      },
+      "infineon-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、SiC・GaNパワー半導体、IGBT・MOSFET、車載・産業向けマイコンという製品構成を、パワー半導体、SiC、GaNに関わる技術基盤として整理する。"
+      },
+      "infineon-capacity-expansion-triage-remediation-v02": {
+        "title": "Dresden Smart Power Fabを整備",
+        "statement": "InfineonはDresdenにSmart Power Fabを建設し、power semiconductorとanalog/mixed-signal製品の300 mm生産能力を拡張する計画を進めている。"
+      },
+      "infineon-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、パワー半導体需給、自動車・産業景気、大型設備投資負担を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "Infineon（インフィニオン）は、SiC・GaNパワー半導体、IGBT・MOSFET、車載・産業向けマイコンを提供する。",
+      "groundingId": "infineon-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-infineon-01",
+        "label": "SiC・GaNパワー半導体",
+        "description": "SiC・GaNパワー半導体を提供する。",
+        "groundingId": "infineon-products"
+      },
+      {
+        "canonicalId": "display-product-infineon-02",
+        "label": "IGBT・MOSFET",
+        "description": "IGBT・MOSFETを提供する。",
+        "groundingId": "infineon-products"
+      },
+      {
+        "canonicalId": "display-product-infineon-03",
+        "label": "車載・産業向けマイコン",
+        "description": "車載・産業向けマイコンを提供する。",
+        "groundingId": "infineon-products"
+      }
+    ]
+  },
+  {
+    "companyId": "mitsubishi-electric",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "mitsubishi-electric-ai-role"
+      ],
+      "value-chain-position": [
+        "mitsubishi-electric-value-chain"
+      ],
+      "key-products": [
+        "mitsubishi-electric-products"
+      ],
+      "technology-moat": [
+        "mitsubishi-electric-positioning",
+        "mitsubishi-electric-technology"
+      ],
+      "capacity-roadmap": [
+        "mitsubishi-electric-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "mitsubishi-electric-risks"
+      ]
+    },
+    "claimDisplay": {
+      "mitsubishi-electric-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "Atlasでは三菱電機を、SiCパワーモジュールと電力・FA機器を通じてAI設備の電源効率とPhysical AI双方に関与する企業と位置付ける。"
+      },
+      "mitsubishi-electric-value-chain": {
+        "title": "Compute & Siliconの供給層",
+        "statement": "Atlasでは三菱電機を「Compute & Silicon」に位置し、SiCパワーモジュールと電力・FA機器を通じてAI設備の電源効率とPhysical AI双方に関与する役割を担う企業と整理する。"
+      },
+      "mitsubishi-electric-products": {
+        "title": "主要製品・サービス",
+        "statement": "三菱電機は、SiCパワーモジュール、産業用パワー半導体、FA・電力変換機器を提供する。"
+      },
+      "mitsubishi-electric-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、パワー半導体と装置の両面展開、産業・インフラ顧客基盤、SiC技術を、三菱電機の競争上の重要な特徴として整理する。"
+      },
+      "mitsubishi-electric-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、SiCパワーモジュール、産業用パワー半導体、FA・電力変換機器という製品構成を、パワー半導体、SiC、FAに関わる技術基盤として整理する。"
+      },
+      "mitsubishi-electric-capacity-expansion-triage-remediation-v02": {
+        "title": "Semiconductor & Deviceへ670億円を計画",
+        "statement": "三菱電機はFY2027のSemiconductor & Device segmentに670億円のcapital investmentを計画し、主目的をpower device businessの生産能力増強としている。"
+      },
+      "mitsubishi-electric-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、総合電機ゆえAI感応度の希薄化、設備投資サイクル、品質・ガバナンス課題を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "三菱電機は、SiCパワーモジュール、産業用パワー半導体、FA・電力変換機器を提供する。",
+      "groundingId": "mitsubishi-electric-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-mitsubishi-electric-01",
+        "label": "SiCパワーモジュール",
+        "description": "SiCパワーモジュールを提供する。",
+        "groundingId": "mitsubishi-electric-products"
+      },
+      {
+        "canonicalId": "display-product-mitsubishi-electric-02",
+        "label": "産業用パワー半導体",
+        "description": "産業用パワー半導体を提供する。",
+        "groundingId": "mitsubishi-electric-products"
+      },
+      {
+        "canonicalId": "display-product-mitsubishi-electric-03",
+        "label": "FA・電力変換機器",
+        "description": "FA・電力変換機器を提供する。",
+        "groundingId": "mitsubishi-electric-products"
+      }
+    ]
+  },
+  {
+    "companyId": "onsemi",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "onsemi-ai-role"
+      ],
+      "value-chain-position": [
+        "onsemi-value-chain"
+      ],
+      "key-products": [
+        "onsemi-products"
+      ],
+      "technology-moat": [
+        "onsemi-positioning",
+        "onsemi-technology"
+      ],
+      "capacity-roadmap": [
+        "onsemi-strategy-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "onsemi-risks"
+      ]
+    },
+    "claimDisplay": {
+      "onsemi-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "Atlasではonsemi（オンセミ）を、電源効率、モータ制御、センシングを通じてデータセンター周辺設備とPhysical AIを支える企業と位置付ける。"
+      },
+      "onsemi-value-chain": {
+        "title": "Compute & Siliconの供給層",
+        "statement": "Atlasではonsemi（オンセミ）を「Compute & Silicon」に位置し、電源効率、モータ制御、センシングを通じてデータセンター周辺設備とPhysical AIを支える役割を担う企業と整理する。"
+      },
+      "onsemi-products": {
+        "title": "主要製品・サービス",
+        "statement": "onsemi（オンセミ）は、SiC・パワー半導体、インテリジェントパワー製品、イメージセンサを提供する。"
+      },
+      "onsemi-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、車載・産業の電力制御技術、SiC垂直統合、センサとパワーの組合せを、onsemi（オンセミ）の競争上の重要な特徴として整理する。"
+      },
+      "onsemi-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、SiC・パワー半導体、インテリジェントパワー製品、イメージセンサという製品構成を、パワー半導体、SiC、センサに関わる技術基盤として整理する。"
+      },
+      "onsemi-strategy-triage-remediation-v02": {
+        "title": "差別化技術とmanufacturing footprint最適化",
+        "statement": "onsemiはautomotive、industrial、AI data center等へ差別化technologyを展開し、需要見通しに合わせたmanufacturing footprintの最適化によってgross marginとcash flowを高める方針を示している。"
+      },
+      "onsemi-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、EV・産業需要、SiC供給過剰、工場稼働率を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "onsemi（オンセミ）は、SiC・パワー半導体、インテリジェントパワー製品、イメージセンサを提供する。",
+      "groundingId": "onsemi-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-onsemi-01",
+        "label": "SiC・パワー半導体",
+        "description": "SiC・パワー半導体を提供する。",
+        "groundingId": "onsemi-products"
+      },
+      {
+        "canonicalId": "display-product-onsemi-02",
+        "label": "インテリジェントパワー製品",
+        "description": "インテリジェントパワー製品を提供する。",
+        "groundingId": "onsemi-products"
+      },
+      {
+        "canonicalId": "display-product-onsemi-03",
+        "label": "イメージセンサ",
+        "description": "イメージセンサを提供する。",
+        "groundingId": "onsemi-products"
+      }
+    ]
+  },
+  {
+    "companyId": "rohm",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "rohm-ai-role"
+      ],
+      "value-chain-position": [
+        "rohm-value-chain"
+      ],
+      "key-products": [
+        "rohm-products"
+      ],
+      "technology-moat": [
+        "rohm-positioning",
+        "rohm-technology"
+      ],
+      "capacity-roadmap": [
+        "rohm-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "rohm-risks"
+      ]
+    },
+    "claimDisplay": {
+      "rohm-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "Atlasではロームを、AIデータセンターの電源効率や産業機器の電力変換に使われるパワー半導体を供給する企業と位置付ける。"
+      },
+      "rohm-value-chain": {
+        "title": "Compute & Siliconの供給層",
+        "statement": "Atlasではロームを「Compute & Silicon」に位置し、AIデータセンターの電源効率や産業機器の電力変換に使われるパワー半導体を供給する役割を担う企業と整理する。"
+      },
+      "rohm-products": {
+        "title": "主要製品・サービス",
+        "statement": "ロームは、SiCパワーデバイス、電源管理IC、アナログ半導体を提供する。"
+      },
+      "rohm-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、SiC材料・デバイスへの投資、電源ICとの組合せ、日本の車載・産業顧客基盤を、ロームの競争上の重要な特徴として整理する。"
+      },
+      "rohm-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、SiCパワーデバイス、電源管理IC、アナログ半導体という製品構成を、パワー半導体、SiC、電源ICに関わる技術基盤として整理する。"
+      },
+      "rohm-capacity-expansion-triage-remediation-v02": {
+        "title": "8-inch SiC power device能力を増強",
+        "statement": "ロームはROHM Apollo Chikugo Plantの新棟とLAPIS Semiconductor Miyazaki Plant No. 2を活用し、8-inch SiC power deviceの生産能力を拡張している。"
+      },
+      "rohm-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、SiC設備投資負担、車載需要、価格競争を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "ロームは、SiCパワーデバイス、電源管理IC、アナログ半導体を提供する。",
+      "groundingId": "rohm-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-rohm-01",
+        "label": "SiCパワーデバイス",
+        "description": "SiCパワーデバイスを提供する。",
+        "groundingId": "rohm-products"
+      },
+      {
+        "canonicalId": "display-product-rohm-02",
+        "label": "電源管理IC",
+        "description": "電源管理ICを提供する。",
+        "groundingId": "rohm-products"
+      },
+      {
+        "canonicalId": "display-product-rohm-03",
+        "label": "アナログ半導体",
+        "description": "アナログ半導体を提供する。",
+        "groundingId": "rohm-products"
+      }
+    ]
+  },
+  {
+    "companyId": "texas-instruments",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "texas-instruments-ai-role"
+      ],
+      "value-chain-position": [
+        "texas-instruments-value-chain"
+      ],
+      "key-products": [
+        "texas-instruments-products"
+      ],
+      "technology-moat": [
+        "texas-instruments-positioning",
+        "texas-instruments-technology"
+      ],
+      "capacity-roadmap": [
+        "texas-instruments-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "texas-instruments-risks"
+      ]
+    },
+    "claimDisplay": {
+      "texas-instruments-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "AtlasではTexas Instruments（テキサス・インスツルメンツ）を、AIサーバー、電源、産業機器の電力管理・信号処理を支えるアナログ半導体を供給する企業と位置付ける。"
+      },
+      "texas-instruments-value-chain": {
+        "title": "Compute & Siliconの供給層",
+        "statement": "AtlasではTexas Instruments（テキサス・インスツルメンツ）を「Compute & Silicon」に位置し、AIサーバー、電源、産業機器の電力管理・信号処理を支えるアナログ半導体を供給する役割を担う企業と整理する。"
+      },
+      "texas-instruments-products": {
+        "title": "主要製品・サービス",
+        "statement": "Texas Instruments（テキサス・インスツルメンツ）は、パワーマネジメントIC、アナログ・信号処理IC、組み込みプロセッサを提供する。"
+      },
+      "texas-instruments-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、非常に広いアナログ製品群、自社300mm製造投資、長い製品ライフサイクルを、Texas Instruments（テキサス・インスツルメンツ）の競争上の重要な特徴として整理する。"
+      },
+      "texas-instruments-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、パワーマネジメントIC、アナログ・信号処理IC、組み込みプロセッサという製品構成を、アナログ半導体、パワーマネジメント、組み込みに関わる技術基盤として整理する。"
+      },
+      "texas-instruments-capacity-expansion-triage-remediation-v02": {
+        "title": "米国7 fabへ600億USD超を投資",
+        "statement": "Texas InstrumentsはTexasとUtahの3 manufacturing mega-sitesにある7 semiconductor fabsへ600億USD超を投資し、300mm capacityを拡張する計画を公表している。"
+      },
+      "texas-instruments-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、産業・自動車の在庫循環、大型工場投資、アナログ半導体価格競争を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "Texas Instruments（テキサス・インスツルメンツ）は、パワーマネジメントIC、アナログ・信号処理IC、組み込みプロセッサを提供する。",
+      "groundingId": "texas-instruments-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-texas-instruments-01",
+        "label": "パワーマネジメントIC",
+        "description": "パワーマネジメントICを提供する。",
+        "groundingId": "texas-instruments-products"
+      },
+      {
+        "canonicalId": "display-product-texas-instruments-02",
+        "label": "アナログ・信号処理IC",
+        "description": "アナログ・信号処理ICを提供する。",
+        "groundingId": "texas-instruments-products"
+      },
+      {
+        "canonicalId": "display-product-texas-instruments-03",
+        "label": "組み込みプロセッサ",
+        "description": "組み込みプロセッサを提供する。",
+        "groundingId": "texas-instruments-products"
+      }
+    ]
+  },
+{
+    "companyId": "eaton",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "eaton-ai-role"
+      ],
+      "value-chain-position": [
+        "eaton-value-chain"
+      ],
+      "key-products": [
+        "eaton-products"
+      ],
+      "technology-moat": [
+        "eaton-positioning",
+        "eaton-technology"
+      ],
+      "capacity-roadmap": [
+        "eaton-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "eaton-risks"
+      ]
+    },
+    "claimDisplay": {
+      "eaton-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "AtlasではEaton（イートン）を、AIデータセンター新設・増強による受配電・電力品質投資を通じてAI需要に接続する企業と位置付ける。"
+      },
+      "eaton-value-chain": {
+        "title": "Data Center & Facilitiesの供給層",
+        "statement": "AtlasではEaton（イートン）を「Data Center & Facilities」に位置し、AIデータセンター新設・増強による受配電・電力品質投資を通じてAI需要に接続する役割を担う企業と整理する。"
+      },
+      "eaton-products": {
+        "title": "主要製品・サービス",
+        "statement": "Eaton（イートン）は、Power distribution、Electrical protection、Power management systemsを提供する。"
+      },
+      "eaton-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、幅広い電力機器ポートフォリオ、データセンター以外にも分散した需要基盤、高電力密度化の恩恵を、Eaton（イートン）の競争上の重要な特徴として整理する。"
+      },
+      "eaton-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、Power distribution、Electrical protection、Power management systemsという製品構成を、power distribution、electrical、data center powerに関わる技術基盤として整理する。"
+      },
+      "eaton-capacity-expansion-triage-remediation-v02": {
+        "title": "Virginiaにcritical power新工場",
+        "statement": "EatonはVirginia州Henrico Countyに50 million dollar超を投じ、static transfer switch、power distribution unit、remote power panelの生産能力を増やす350,000平方footの新拠点を2027年に稼働する計画を公表している。"
+      },
+      "eaton-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、設備投資サイクル、金利・建設需要、原材料・供給制約を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "Eaton（イートン）は、Power distribution、Electrical protection、Power management systemsを提供する。",
+      "groundingId": "eaton-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-eaton-01",
+        "label": "Power distribution",
+        "description": "Power distributionを提供する。",
+        "groundingId": "eaton-products"
+      },
+      {
+        "canonicalId": "display-product-eaton-02",
+        "label": "Electrical protection",
+        "description": "Electrical protectionを提供する。",
+        "groundingId": "eaton-products"
+      },
+      {
+        "canonicalId": "display-product-eaton-03",
+        "label": "Power management systems",
+        "description": "Power management systemsを提供する。",
+        "groundingId": "eaton-products"
+      }
+    ]
+  },
+  {
+    "companyId": "legrand",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "legrand-ai-role"
+      ],
+      "value-chain-position": [
+        "legrand-value-chain"
+      ],
+      "key-products": [
+        "legrand-products"
+      ],
+      "technology-moat": [
+        "legrand-positioning",
+        "legrand-technology"
+      ],
+      "capacity-roadmap": [
+        "legrand-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "legrand-risks"
+      ]
+    },
+    "claimDisplay": {
+      "legrand-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "AtlasではLegrand（ルグラン）を、AIデータセンターの高密度化に伴うラック単位の配電、バスウェイ、PDU、冷却、構内配線需要を幅広く取り込む企業と位置付ける。"
+      },
+      "legrand-value-chain": {
+        "title": "Data Center & Facilitiesの供給層",
+        "statement": "AtlasではLegrand（ルグラン）を「Data Center & Facilities」に位置し、AIデータセンターの高密度化に伴うラック単位の配電、バスウェイ、PDU、冷却、構内配線需要を幅広く取り込む役割を担う企業と整理する。"
+      },
+      "legrand-products": {
+        "title": "主要製品・サービス",
+        "statement": "Legrand（ルグラン）は、Data center busway and PDU、UPS and transformers、Racks cooling and structured cablingを提供する。"
+      },
+      "legrand-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、データセンターの電力・ラック・配線を横断する幅広い製品群、高密度電力供給に対応するバスウェイ・PDU製品、複数の専門ブランドを組み合わせたデータセンター提案力を、Legrand（ルグラン）の競争上の重要な特徴として整理する。"
+      },
+      "legrand-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、Data center busway and PDU、UPS and transformers、Racks cooling and structured cablingという製品構成を、data center、power distribution、UPSに関わる技術基盤として整理する。"
+      },
+      "legrand-capacity-expansion-triage-remediation-v02": {
+        "title": "Montbard拠点のindustrial capacity投資",
+        "statement": "Legrandはlocal industrial capacityへの投資を進め、latest-generation data center向けsteel wire-mesh cable trayを生産するFranceのMontbard拠点へ2,200万euroを投資すると公表している。"
+      },
+      "legrand-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、データセンター建設サイクル、M&Aによる製品統合・収益性管理、Schneider ElectricやnVent等との競争を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "Legrand（ルグラン）は、Data center busway and PDU、UPS and transformers、Racks cooling and structured cablingを提供する。",
+      "groundingId": "legrand-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-legrand-01",
+        "label": "Data center busway and PDU",
+        "description": "Data center busway and PDUを提供する。",
+        "groundingId": "legrand-products"
+      },
+      {
+        "canonicalId": "display-product-legrand-02",
+        "label": "UPS and transformers",
+        "description": "UPS and transformersを提供する。",
+        "groundingId": "legrand-products"
+      },
+      {
+        "canonicalId": "display-product-legrand-03",
+        "label": "Racks cooling and structured cabling",
+        "description": "Racks cooling and structured cablingを提供する。",
+        "groundingId": "legrand-products"
+      }
+    ]
+  },
+  {
+    "companyId": "siemens-energy",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "siemens-energy-ai-role"
+      ],
+      "value-chain-position": [
+        "siemens-energy-value-chain"
+      ],
+      "key-products": [
+        "siemens-energy-products"
+      ],
+      "technology-moat": [
+        "siemens-energy-positioning",
+        "siemens-energy-technology"
+      ],
+      "capacity-roadmap": [
+        "siemens-energy-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "siemens-energy-risks"
+      ]
+    },
+    "claimDisplay": {
+      "siemens-energy-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "AtlasではSiemens Energy（シーメンス・エナジー）を、AIデータセンターの電力需要増加に伴う系統増強、変圧器、高電圧設備、発電容量の投資を上流から取り込む企業と位置付ける。"
+      },
+      "siemens-energy-value-chain": {
+        "title": "Data Center & Facilitiesの供給層",
+        "statement": "AtlasではSiemens Energy（シーメンス・エナジー）を「Data Center & Facilities」に位置し、AIデータセンターの電力需要増加に伴う系統増強、変圧器、高電圧設備、発電容量の投資を上流から取り込む役割を担う企業と整理する。"
+      },
+      "siemens-energy-products": {
+        "title": "主要製品・サービス",
+        "statement": "Siemens Energy（シーメンス・エナジー）は、Grid transformers、High-voltage grid equipment、Power generation systemsを提供する。"
+      },
+      "siemens-energy-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、発電から送電網までの広い電力インフラ製品群、大型変圧器・高電圧設備の技術と納入基盤、世界的な電力設備更新需要への接点を、Siemens Energy（シーメンス・エナジー）の競争上の重要な特徴として整理する。"
+      },
+      "siemens-energy-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、Grid transformers、High-voltage grid equipment、Power generation systemsという製品構成を、grid infrastructure、transformer、high voltageに関わる技術基盤として整理する。"
+      },
+      "siemens-energy-capacity-expansion-triage-remediation-v02": {
+        "title": "Nuremberg変圧器工場を約50%増強",
+        "statement": "Siemens EnergyはNurembergのtransformer factoryへ約2億2,000万euroを投資し、約16,000㎡を増設してproduction capacityを約50%高め、2028年の新production areas稼働を見込む。"
+      },
+      "siemens-energy-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、大型プロジェクトの採算・納期リスク、電力設備の長い受注・建設サイクル、原材料・サプライチェーン制約を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "Siemens Energy（シーメンス・エナジー）は、Grid transformers、High-voltage grid equipment、Power generation systemsを提供する。",
+      "groundingId": "siemens-energy-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-siemens-energy-01",
+        "label": "Grid transformers",
+        "description": "Grid transformersを提供する。",
+        "groundingId": "siemens-energy-products"
+      },
+      {
+        "canonicalId": "display-product-siemens-energy-02",
+        "label": "High-voltage grid equipment",
+        "description": "High-voltage grid equipmentを提供する。",
+        "groundingId": "siemens-energy-products"
+      },
+      {
+        "canonicalId": "display-product-siemens-energy-03",
+        "label": "Power generation systems",
+        "description": "Power generation systemsを提供する。",
+        "groundingId": "siemens-energy-products"
+      }
+    ]
+  },
+  {
+    "companyId": "cisco",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "cisco-ai-role"
+      ],
+      "value-chain-position": [
+        "cisco-value-chain"
+      ],
+      "key-products": [
+        "cisco-products"
+      ],
+      "technology-moat": [
+        "cisco-positioning",
+        "cisco-technology"
+      ],
+      "capacity-roadmap": [
+        "cisco-strategy-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "cisco-risks"
+      ]
+    },
+    "claimDisplay": {
+      "cisco-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "AtlasではCisco（シスコ）を、Silicon OneやEthernetスイッチを含むネットワーク基盤を通じ、AIクラスタのscale-up・scale-out接続を支える企業と位置付ける。"
+      },
+      "cisco-value-chain": {
+        "title": "Network & Opticalの供給層",
+        "statement": "AtlasではCisco（シスコ）を「Network & Optical」に位置し、Silicon OneやEthernetスイッチを含むネットワーク基盤を通じ、AIクラスタのscale-up・scale-out接続を支える役割を担う企業と整理する。"
+      },
+      "cisco-products": {
+        "title": "主要製品・サービス",
+        "statement": "Cisco（シスコ）は、AI datacenter switching、Silicon One network silicon、Routing and network platformsを提供する。"
+      },
+      "cisco-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、Silicon Oneを含むネットワーク半導体からシステムまでの垂直展開、企業・通信事業者に広がる大規模な導入基盤、ネットワークとセキュリティを統合した製品群を、Cisco（シスコ）の競争上の重要な特徴として整理する。"
+      },
+      "cisco-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、AI datacenter switching、Silicon One network silicon、Routing and network platformsという製品構成を、Ethernet、AI networking、network siliconに関わる技術基盤として整理する。"
+      },
+      "cisco-strategy-triage-remediation-v02": {
+        "title": "中核事業への成長投資",
+        "statement": "Cisco（シスコ）は、AI datacenter switchingを含む中核事業について、Silicon Oneを含むネットワーク半導体からシステムまでの垂直展開を生かした技術開発、供給力、顧客対応を重点化する経営方針を一次資料で示している。"
+      },
+      "cisco-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、AristaなどとのAIデータセンターネットワーク競争、クラウド事業者による自社設計・ホワイトボックス化、大型ネットワーク更新サイクルの変動を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "Cisco（シスコ）は、AI datacenter switching、Silicon One network silicon、Routing and network platformsを提供する。",
+      "groundingId": "cisco-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-cisco-01",
+        "label": "AI datacenter switching",
+        "description": "AI datacenter switchingを提供する。",
+        "groundingId": "cisco-products"
+      },
+      {
+        "canonicalId": "display-product-cisco-02",
+        "label": "Silicon One network silicon",
+        "description": "Silicon One network siliconを提供する。",
+        "groundingId": "cisco-products"
+      },
+      {
+        "canonicalId": "display-product-cisco-03",
+        "label": "Routing and network platforms",
+        "description": "Routing and network platformsを提供する。",
+        "groundingId": "cisco-products"
+      }
+    ]
+  },
+  {
+    "companyId": "credo",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "credo-ai-role"
+      ],
+      "value-chain-position": [
+        "credo-value-chain"
+      ],
+      "key-products": [
+        "credo-products"
+      ],
+      "technology-moat": [
+        "credo-positioning",
+        "credo-technology"
+      ],
+      "capacity-roadmap": [
+        "credo-strategy"
+      ],
+      "key-risks": [
+        "credo-risks"
+      ]
+    },
+    "claimDisplay": {
+      "credo-ai-role": {
+        "title": "AI cluster内外の高速interconnect層",
+        "statement": "AtlasではCredoを、AI clusterでGPU、server、switch、memoryをEthernet、PCIe、UALink等で接続するhigh-speed interconnect semiconductor・cable供給側と位置付ける。"
+      },
+      "credo-value-chain": {
+        "title": "fabless設計と外部製造を採用",
+        "statement": "Credoはfabless modelを採用し、IC wafer製造をTSMC、assembly・testを主にAsiaのsubcontractorへ委託し、自社はconnectivity設計とengineeringへ集中する。"
+      },
+      "credo-products": {
+        "title": "AEC・optical transceiver・retimer・DSP・SerDes chiplet",
+        "statement": "CredoのportfolioはZeroFlap AEC・optical transceiver、OmniConnect memory solution、Ethernet・PCIe向けretimerとDSP、SerDes chiplet、PILOT softwareで構成される。"
+      },
+      "credo-positioning": {
+        "title": "performance・power・cost効率を競争軸とする",
+        "statement": "Credoは製品のperformance、power efficiency、cost effectiveness、design win、customer relationship、R&D roadmapを主要な競争要因として挙げている。"
+      },
+      "credo-technology": {
+        "title": "SerDes・DSPで32Gから200G/laneを処理",
+        "statement": "Credoのconnectivity solutionは自社SerDesとDSPを基盤とし、32Gから200G/laneのoptical・electrical Ethernet、PCIe等へ対応する。"
+      },
+      "credo-strategy": {
+        "title": "electrical・optical・memory connectivityを拡張",
+        "statement": "CredoはAEC、optical transceiver、memory connectivity、microLEDを含むportfolio拡張により、AI clusterのbandwidthとreachの課題へ対応する方針を示している。"
+      },
+      "credo-risks": {
+        "title": "顧客集中・design win・外部製造依存",
+        "statement": "Credoは上位10顧客への売上集中、design winから量産までの長いcycle、TSMCなど限られた第三者製造・assembly partnerへの依存を開示している。"
+      }
+    },
+    "productPortfolio": {
+      "title": "AEC・optical transceiver・retimer・DSP・SerDes chiplet",
+      "body": "CredoのportfolioはZeroFlap AEC・optical transceiver、OmniConnect memory solution、Ethernet・PCIe向けretimerとDSP、SerDes chiplet、PILOT softwareで構成される。",
+      "groundingId": "credo-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-credo-01",
+        "label": "AEC・optical transceiver・retimer・DSP・SerDes chiplet",
+        "description": "AEC・optical transceiver・retimer・DSP・SerDes chipletを提供する。",
+        "groundingId": "credo-products"
+      }
+    ]
+  },
+{
+    "companyId": "te-connectivity",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "te-connectivity-ai-role"
+      ],
+      "value-chain-position": [
+        "te-connectivity-value-chain"
+      ],
+      "key-products": [
+        "te-connectivity-products"
+      ],
+      "technology-moat": [
+        "te-connectivity-positioning",
+        "te-connectivity-technology"
+      ],
+      "capacity-roadmap": [
+        "te-connectivity-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "te-connectivity-risks"
+      ]
+    },
+    "claimDisplay": {
+      "te-connectivity-ai-role": {
+        "title": "AI data centerの高速・電力接続",
+        "statement": "AtlasではTE Connectivityを、AI data center内のserver・switch・power systemをつなぐ高速data、power、signal connectorとcable componentの供給企業と位置付ける。"
+      },
+      "te-connectivity-value-chain": {
+        "title": "chip・board・system間のcomponent層",
+        "statement": "TEは半導体やserver完成品ではなく、board、cable、rack、電力設備の間でdata・signal・powerを伝えるconnector・sensor componentを供給する。"
+      },
+      "te-connectivity-products": {
+        "title": "connector・terminal・cable・relay・sensor",
+        "statement": "TEの主要製品にはterminal、connector system、wire・cable、relay、heat-shrink tubing、filter、sensor、application toolingが含まれる。"
+      },
+      "te-connectivity-positioning": {
+        "title": "trusted innovation partnerと説明",
+        "statement": "TEは幅広いconnectivity・sensor portfolio、engineering、customer co-developmentを基盤に自社をtrusted innovation partnerと位置付ける。"
+      },
+      "te-connectivity-technology": {
+        "title": "power・signal・dataを高密度接続",
+        "statement": "TEは高密度・高速data transmission、電力配分、harsh environment対応、sensor技術を組み合わせて機器・system間を接続する。"
+      },
+      "te-connectivity-capacity-expansion-triage-remediation-v02": {
+        "title": "Waiblingen smart-grid拠点を拡張",
+        "statement": "TE ConnectivityはWaiblingenのinnovation・engineering・production siteを1,800㎡から5,000㎡へ拡張し、第2 automated lineの追加でproduction capacityを2倍にした。"
+      },
+      "te-connectivity-risks": {
+        "title": "需要cycle・原材料・顧客・競争・規制",
+        "statement": "TEは最終市場需要、原材料・component供給、customer concentration、価格・競争、買収、地政学・規制を主要リスクとして開示する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "connector・terminal・cable・relay・sensor",
+      "body": "TEの主要製品にはterminal、connector system、wire・cable、relay、heat-shrink tubing、filter、sensor、application toolingが含まれる。",
+      "groundingId": "te-connectivity-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-te-connectivity-01",
+        "label": "connector・terminal・cable・relay・sensor",
+        "description": "connector・terminal・cable・relay・sensorを提供する。",
+        "groundingId": "te-connectivity-products"
+      }
+    ]
+  },
+  {
+    "companyId": "keyence",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "keyence-ai-role"
+      ],
+      "value-chain-position": [
+        "keyence-value-chain"
+      ],
+      "key-products": [
+        "keyence-products"
+      ],
+      "technology-moat": [
+        "keyence-positioning",
+        "keyence-technology"
+      ],
+      "capacity-roadmap": [
+        "keyence-strategy-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "keyence-risks"
+      ]
+    },
+    "claimDisplay": {
+      "keyence-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "Atlasではキーエンスを、生産現場の検知・計測・画像認識を担い、Physical AIの入力と品質制御を支える企業と位置付ける。"
+      },
+      "keyence-value-chain": {
+        "title": "Physical AIの供給層",
+        "statement": "Atlasではキーエンスを「Physical AI」に位置し、生産現場の検知・計測・画像認識を担い、Physical AIの入力と品質制御を支える役割を担う企業と整理する。"
+      },
+      "keyence-products": {
+        "title": "主要製品・サービス",
+        "statement": "キーエンスは、FAセンサ、画像処理・マシンビジョン、測定・計測システムを提供する。"
+      },
+      "keyence-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、直販によるアプリケーション提案力、高収益な製品構成、幅広い製造業への展開を、キーエンスの競争上の重要な特徴として整理する。"
+      },
+      "keyence-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、FAセンサ、画像処理・マシンビジョン、測定・計測システムという製品構成を、FA、センサ、マシンビジョンに関わる技術基盤として整理する。"
+      },
+      "keyence-strategy-triage-remediation-v02": {
+        "title": "direct salesで潜在needsを捉えstandard product化",
+        "statement": "キーエンスはdirect salesで顧客現場の潜在needsを把握し、特定顧客向けcustom品ではなく、幅広い産業で使えるworld-first・industry-firstのstandard productsを企画・開発する方針を示している。"
+      },
+      "keyence-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、製造業設備投資の減速、高い利益率への期待、顧客設備投資の地域差を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "キーエンスは、FAセンサ、画像処理・マシンビジョン、測定・計測システムを提供する。",
+      "groundingId": "keyence-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-keyence-01",
+        "label": "FAセンサ",
+        "description": "FAセンサを提供する。",
+        "groundingId": "keyence-products"
+      },
+      {
+        "canonicalId": "display-product-keyence-02",
+        "label": "画像処理・マシンビジョン",
+        "description": "画像処理・マシンビジョンを提供する。",
+        "groundingId": "keyence-products"
+      },
+      {
+        "canonicalId": "display-product-keyence-03",
+        "label": "測定・計測システム",
+        "description": "測定・計測システムを提供する。",
+        "groundingId": "keyence-products"
+      }
+    ]
+  },
+  {
+    "companyId": "tesla",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "tesla-ai-role"
+      ],
+      "value-chain-position": [
+        "tesla-value-chain"
+      ],
+      "key-products": [
+        "tesla-products"
+      ],
+      "technology-moat": [
+        "tesla-positioning",
+        "tesla-technology"
+      ],
+      "capacity-roadmap": [
+        "tesla-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "tesla-risks"
+      ]
+    },
+    "claimDisplay": {
+      "tesla-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "AtlasではTesla（テスラ）を、車載AIとロボットを実世界へ展開するPhysical AI企業であり、推論計算・センサ・電力設備の需要にも関係する企業と位置付ける。"
+      },
+      "tesla-value-chain": {
+        "title": "Physical AIの供給層",
+        "statement": "AtlasではTesla（テスラ）を「Physical AI」に位置し、車載AIとロボットを実世界へ展開するPhysical AI企業であり、推論計算・センサ・電力設備の需要にも関係する役割を担う企業と整理する。"
+      },
+      "tesla-products": {
+        "title": "主要製品・サービス",
+        "statement": "Tesla（テスラ）は、自動運転・運転支援システム、ヒューマノイドロボット、定置用蓄電システムを提供する。"
+      },
+      "tesla-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、車両・AI・エネルギーをまたぐ垂直統合、大規模な実走行データ基盤、蓄電設備まで含む事業範囲を、Tesla（テスラ）の競争上の重要な特徴として整理する。"
+      },
+      "tesla-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、自動運転・運転支援システム、ヒューマノイドロボット、定置用蓄電システムという製品構成を、自動運転、ロボット、AI計算に関わる技術基盤として整理する。"
+      },
+      "tesla-capacity-expansion-triage-remediation-v02": {
+        "title": "2026年に6本のproduction lineをramp",
+        "statement": "Teslaは2026年にvehicle、Bots、energy storage、battery manufacturingで6本の新production linesをrampし、既存factory footprintも活用する計画を開示している。"
+      },
+      "tesla-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動運転規制と安全性、自動車需要の循環、大型設備投資と価格競争を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "Tesla（テスラ）は、自動運転・運転支援システム、ヒューマノイドロボット、定置用蓄電システムを提供する。",
+      "groundingId": "tesla-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-tesla-01",
+        "label": "自動運転・運転支援システム",
+        "description": "自動運転・運転支援システムを提供する。",
+        "groundingId": "tesla-products"
+      },
+      {
+        "canonicalId": "display-product-tesla-02",
+        "label": "ヒューマノイドロボット",
+        "description": "ヒューマノイドロボットを提供する。",
+        "groundingId": "tesla-products"
+      },
+      {
+        "canonicalId": "display-product-tesla-03",
+        "label": "定置用蓄電システム",
+        "description": "定置用蓄電システムを提供する。",
+        "groundingId": "tesla-products"
+      }
+    ]
+  },
+  {
+    "companyId": "canon",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "canon-ai-role"
+      ],
+      "value-chain-position": [
+        "canon-value-chain"
+      ],
+      "key-products": [
+        "canon-products"
+      ],
+      "technology-moat": [
+        "canon-positioning",
+        "canon-technology"
+      ],
+      "capacity-roadmap": [
+        "canon-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "canon-risks"
+      ]
+    },
+    "claimDisplay": {
+      "canon-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "Atlasではキヤノンを、露光・ナノインプリント技術を通じて半導体製造装置市場に関与する企業と位置付ける。"
+      },
+      "canon-value-chain": {
+        "title": "Wafer Fab Equipmentの供給層",
+        "statement": "Atlasではキヤノンを「Wafer Fab Equipment」に位置し、露光・ナノインプリント技術を通じて半導体製造装置市場に関与する役割を担う企業と整理する。"
+      },
+      "canon-products": {
+        "title": "主要製品・サービス",
+        "statement": "キヤノンは、半導体露光装置、ナノインプリントリソグラフィ装置、FPD露光装置を提供する。"
+      },
+      "canon-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、光学・精密位置決め技術、ナノインプリントの独自技術、幅広い精密機器事業を、キヤノンの競争上の重要な特徴として整理する。"
+      },
+      "canon-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、半導体露光装置、ナノインプリントリソグラフィ装置、FPD露光装置という製品構成を、半導体露光、ナノインプリント、リソグラフィに関わる技術基盤として整理する。"
+      },
+      "canon-capacity-expansion-triage-remediation-v02": {
+        "title": "宇都宮の半導体露光装置新工場",
+        "statement": "キヤノンは半導体露光装置の需要拡大へ対応するため、宇都宮事業所に新たな製造棟を整備して生産能力を増強する計画を開示している。"
+      },
+      "canon-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、先端露光でのASML優位、ナノインプリント普及速度、半導体設備投資サイクルを主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "キヤノンは、半導体露光装置、ナノインプリントリソグラフィ装置、FPD露光装置を提供する。",
+      "groundingId": "canon-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-canon-01",
+        "label": "半導体露光装置",
+        "description": "半導体露光装置を提供する。",
+        "groundingId": "canon-products"
+      },
+      {
+        "canonicalId": "display-product-canon-02",
+        "label": "ナノインプリントリソグラフィ装置",
+        "description": "ナノインプリントリソグラフィ装置を提供する。",
+        "groundingId": "canon-products"
+      },
+      {
+        "canonicalId": "display-product-canon-03",
+        "label": "FPD露光装置",
+        "description": "FPD露光装置を提供する。",
+        "groundingId": "canon-products"
+      }
+    ]
+  },
+  {
+    "companyId": "lasertec",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "lasertec-ai-role"
+      ],
+      "value-chain-position": [
+        "lasertec-value-chain"
+      ],
+      "key-products": [
+        "lasertec-products"
+      ],
+      "technology-moat": [
+        "lasertec-positioning",
+        "lasertec-technology"
+      ],
+      "capacity-roadmap": [
+        "lasertec-strategy"
+      ],
+      "key-risks": [
+        "lasertec-risks"
+      ]
+    },
+    "claimDisplay": {
+      "lasertec-ai-role": {
+        "title": "EUV量産のmask検査工程",
+        "statement": "Atlasではレーザーテックを、AI向け先端半導体の微細化に使うEUV lithographyで、mask blank・patterned maskの欠陥検査を担うprocess control企業と位置付ける。"
+      },
+      "lasertec-value-chain": {
+        "title": "wafer露光前後の品質保証を担当",
+        "statement": "レーザーテックの装置はphotomask shopとwafer fabで、maskの製造、受入、定期検査を通じてlithographyの歩留まりを支える。"
+      },
+      "lasertec-products": {
+        "title": "ACTIS・ABICS・MATRICS・MAGICS",
+        "statement": "レーザーテックの半導体関連製品にはEUV patterned mask検査のACTIS、mask blank検査のABICS、mask検査のMATRICS、blank検査のMAGICS、wafer検査装置が含まれる。"
+      },
+      "lasertec-positioning": {
+        "title": "EUV mask blank検査のde facto standard",
+        "statement": "レーザーテックは自社のEUV mask blank検査装置をde facto standard、先端lithography向けmask検査を高い市場shareを持つ事業と説明している。"
+      },
+      "lasertec-technology": {
+        "title": "EUV・DUV・confocal optics",
+        "statement": "レーザーテックはEUV/DUV optics、confocal optics、interferometry、画像処理を組み合わせ、微小欠陥の検出と寸法・形状計測を行う。"
+      },
+      "lasertec-strategy": {
+        "title": "EUV微細化と新材料・構造に検査を展開",
+        "statement": "レーザーテックはEUV量産、IC微細化、新材料・新構造で増える検査・計測需要に対し、光応用技術を組み合わせた新製品を継続投入する方針を示す。"
+      },
+      "lasertec-risks": {
+        "title": "顧客投資・技術開発・供給網への依存",
+        "statement": "レーザーテックは半導体設備投資の変動、少数顧客への依存、研究開発の成否、部材調達、為替などを事業リスクとして開示する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "ACTIS・ABICS・MATRICS・MAGICS",
+      "body": "レーザーテックの半導体関連製品にはEUV patterned mask検査のACTIS、mask blank検査のABICS、mask検査のMATRICS、blank検査のMAGICS、wafer検査装置が含まれる。",
+      "groundingId": "lasertec-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-lasertec-01",
+        "label": "ACTIS・ABICS・MATRICS・MAGICS",
+        "description": "ACTIS・ABICS・MATRICS・MAGICSを提供する。",
+        "groundingId": "lasertec-products"
+      }
+    ]
+  },
+{
+    "companyId": "entegris",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "entegris-ai-role"
+      ],
+      "value-chain-position": [
+        "entegris-value-chain"
+      ],
+      "key-products": [
+        "entegris-products"
+      ],
+      "technology-moat": [
+        "entegris-positioning",
+        "entegris-technology"
+      ],
+      "capacity-roadmap": [
+        "entegris-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "entegris-risks"
+      ]
+    },
+    "claimDisplay": {
+      "entegris-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "AtlasではEntegris（インテグリス）を、微細化と先端メモリ・ロジックで要求される高純度材料とプロセス清浄度を支える企業と位置付ける。"
+      },
+      "entegris-value-chain": {
+        "title": "半導体材料・基板の供給層",
+        "statement": "AtlasではEntegris（インテグリス）を「半導体材料・基板」に位置し、微細化と先端メモリ・ロジックで要求される高純度材料とプロセス清浄度を支える役割を担う企業と整理する。"
+      },
+      "entegris-products": {
+        "title": "主要製品・サービス",
+        "statement": "Entegris（インテグリス）は、高純度プロセス材料、濾過・汚染制御製品、ウェハ搬送・流体管理製品を提供する。"
+      },
+      "entegris-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、材料純度・汚染制御の技術、先端ノードでのコンテンツ増、半導体工場への深い組込みを、Entegris（インテグリス）の競争上の重要な特徴として整理する。"
+      },
+      "entegris-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、高純度プロセス材料、濾過・汚染制御製品、ウェハ搬送・流体管理製品という製品構成を、半導体材料、高純度化学品、汚染制御に関わる技術基盤として整理する。"
+      },
+      "entegris-capacity-expansion-triage-remediation-v02": {
+        "title": "Colorado Springsへ約600 million dollar投資",
+        "statement": "EntegrisはColorado SpringsのManufacturing Center of Excellenceへ複数年で約600 million dollarを投じ、初期130,000平方footでMaterials SolutionsとAdvanced Purity Solutionsを支える計画を開示している。"
+      },
+      "entegris-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、WFE・半導体稼働率、顧客集中、買収・負債管理を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "Entegris（インテグリス）は、高純度プロセス材料、濾過・汚染制御製品、ウェハ搬送・流体管理製品を提供する。",
+      "groundingId": "entegris-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-entegris-01",
+        "label": "高純度プロセス材料",
+        "description": "高純度プロセス材料を提供する。",
+        "groundingId": "entegris-products"
+      },
+      {
+        "canonicalId": "display-product-entegris-02",
+        "label": "濾過・汚染制御製品",
+        "description": "濾過・汚染制御製品を提供する。",
+        "groundingId": "entegris-products"
+      },
+      {
+        "canonicalId": "display-product-entegris-03",
+        "label": "ウェハ搬送・流体管理製品",
+        "description": "ウェハ搬送・流体管理製品を提供する。",
+        "groundingId": "entegris-products"
+      }
+    ]
+  },
+  {
+    "companyId": "resonac-holdings",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "resonac-holdings-ai-role"
+      ],
+      "value-chain-position": [
+        "resonac-holdings-value-chain"
+      ],
+      "key-products": [
+        "resonac-holdings-products"
+      ],
+      "technology-moat": [
+        "resonac-holdings-positioning",
+        "resonac-holdings-technology"
+      ],
+      "capacity-roadmap": [
+        "resonac-holdings-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "resonac-holdings-risks"
+      ]
+    },
+    "claimDisplay": {
+      "resonac-holdings-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "Atlasではレゾナック・ホールディングスを、AI半導体の微細化・積層化で増える前工程材料と先端実装材料の双方から需要を取り込む企業と位置付ける。"
+      },
+      "resonac-holdings-value-chain": {
+        "title": "半導体材料・基板の供給層",
+        "statement": "Atlasではレゾナック・ホールディングスを「半導体材料・基板」に位置し、AI半導体の微細化・積層化で増える前工程材料と先端実装材料の双方から需要を取り込む役割を担う企業と整理する。"
+      },
+      "resonac-holdings-products": {
+        "title": "主要製品・サービス",
+        "statement": "レゾナック・ホールディングスは、半導体実装材料、半導体用高純度ガス、CMP関連材料を提供する。"
+      },
+      "resonac-holdings-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、前工程から後工程まで広い半導体材料ポートフォリオ、先端パッケージ材料の共同開発基盤、材料間の組合せ評価・実装技術を、レゾナック・ホールディングスの競争上の重要な特徴として整理する。"
+      },
+      "resonac-holdings-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、半導体実装材料、半導体用高純度ガス、CMP関連材料という製品構成を、半導体実装材料、半導体用高純度ガス、CMPに関わる技術基盤として整理する。"
+      },
+      "resonac-holdings-capacity-expansion-triage-remediation-v02": {
+        "title": "AI chip向けNCF・TIM能力を3.5～5倍へ",
+        "statement": "レゾナックはAI向けhigh-performance semiconductor chipに使うNCFとTIMの生産設備へ150億円を投じ、2024年以降に順次稼働して生産能力を従来比3.5～5倍へ増強する計画を示している。"
+      },
+      "resonac-holdings-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、事業ポートフォリオ転換の実行リスク、半導体材料需要の周期変動、原材料・エネルギー価格変動を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "レゾナック・ホールディングスは、半導体実装材料、半導体用高純度ガス、CMP関連材料を提供する。",
+      "groundingId": "resonac-holdings-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-resonac-holdings-01",
+        "label": "半導体実装材料",
+        "description": "半導体実装材料を提供する。",
+        "groundingId": "resonac-holdings-products"
+      },
+      {
+        "canonicalId": "display-product-resonac-holdings-02",
+        "label": "半導体用高純度ガス",
+        "description": "半導体用高純度ガスを提供する。",
+        "groundingId": "resonac-holdings-products"
+      },
+      {
+        "canonicalId": "display-product-resonac-holdings-03",
+        "label": "CMP関連材料",
+        "description": "CMP関連材料を提供する。",
+        "groundingId": "resonac-holdings-products"
+      }
+    ]
+  },
+  {
+    "companyId": "sumco",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "sumco-ai-role"
+      ],
+      "value-chain-position": [
+        "sumco-value-chain"
+      ],
+      "key-products": [
+        "sumco-products"
+      ],
+      "technology-moat": [
+        "sumco-positioning",
+        "sumco-technology"
+      ],
+      "capacity-roadmap": [
+        "sumco-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "sumco-risks"
+      ]
+    },
+    "claimDisplay": {
+      "sumco-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "AtlasではSUMCOを、先端ロジック・メモリのウェハ投入量と大口径・高品質ウェハ需要を通じてAI半導体投資に接続する企業と位置付ける。"
+      },
+      "sumco-value-chain": {
+        "title": "半導体材料・基板の供給層",
+        "statement": "AtlasではSUMCOを「半導体材料・基板」に位置し、先端ロジック・メモリのウェハ投入量と大口径・高品質ウェハ需要を通じてAI半導体投資に接続する役割を担う企業と整理する。"
+      },
+      "sumco-products": {
+        "title": "主要製品・サービス",
+        "statement": "SUMCOは、300mmシリコンウェハ、エピタキシャルウェハ、SOI・特殊ウェハを提供する。"
+      },
+      "sumco-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、半導体用シリコンウェハへの専業集中、300mmを含む大口径ウェハ量産力、先端デバイス向け品質・結晶制御技術を、SUMCOの競争上の重要な特徴として整理する。"
+      },
+      "sumco-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、300mmシリコンウェハ、エピタキシャルウェハ、SOI・特殊ウェハという製品構成を、シリコンウェハ、エピタキシャルウェハ、SOIウェハに関わる技術基盤として整理する。"
+      },
+      "sumco-capacity-expansion-triage-remediation-v02": {
+        "title": "leading-edge 300mm wafer能力への投資",
+        "statement": "SUMCOはFY2025に799億57百万円のcapital investmentを実施し、主要項目をcutting-edge semiconductor向け300mm high-precision waferのcapacity expansionとして開示している。"
+      },
+      "sumco-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、シリコンウェハ需給サイクル、大規模設備投資の回収負担、顧客在庫調整の長期化を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "SUMCOは、300mmシリコンウェハ、エピタキシャルウェハ、SOI・特殊ウェハを提供する。",
+      "groundingId": "sumco-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-sumco-01",
+        "label": "300mmシリコンウェハ",
+        "description": "300mmシリコンウェハを提供する。",
+        "groundingId": "sumco-products"
+      },
+      {
+        "canonicalId": "display-product-sumco-02",
+        "label": "エピタキシャルウェハ",
+        "description": "エピタキシャルウェハを提供する。",
+        "groundingId": "sumco-products"
+      },
+      {
+        "canonicalId": "display-product-sumco-03",
+        "label": "SOI・特殊ウェハ",
+        "description": "SOI・特殊ウェハを提供する。",
+        "groundingId": "sumco-products"
+      }
+    ]
+  },
+  {
+    "companyId": "western-digital",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "western-digital-ai-role"
+      ],
+      "value-chain-position": [
+        "western-digital-value-chain"
+      ],
+      "key-products": [
+        "western-digital-products"
+      ],
+      "technology-moat": [
+        "western-digital-positioning",
+        "western-digital-technology"
+      ],
+      "capacity-roadmap": [
+        "western-digital-strategy-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "western-digital-risks"
+      ]
+    },
+    "claimDisplay": {
+      "western-digital-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "AtlasではWestern Digital（ウエスタンデジタル）を、AI学習データやクラウドデータの長期・大容量保存を担うデータセンターストレージ層に位置する企業と位置付ける。"
+      },
+      "western-digital-value-chain": {
+        "title": "Memoryの供給層",
+        "statement": "AtlasではWestern Digital（ウエスタンデジタル）を「Memory」に位置し、AI学習データやクラウドデータの長期・大容量保存を担うデータセンターストレージ層に位置する役割を担う企業と整理する。"
+      },
+      "western-digital-products": {
+        "title": "主要製品・サービス",
+        "statement": "Western Digital（ウエスタンデジタル）は、データセンター向けHDD、大容量エンタープライズHDD、クラウド向けストレージ製品を提供する。"
+      },
+      "western-digital-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、大容量HDDの技術・量産基盤、ハイパースケーラー向け供給実績、容量単価の低い大規模保存を、Western Digital（ウエスタンデジタル）の競争上の重要な特徴として整理する。"
+      },
+      "western-digital-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、データセンター向けHDD、大容量エンタープライズHDD、クラウド向けストレージ製品という製品構成を、HDD、データセンターストレージ、大容量ストレージに関わる技術基盤として整理する。"
+      },
+      "western-digital-strategy-triage-remediation-v02": {
+        "title": "6つのstrategic pillars",
+        "statement": "Western Digitalはcustomer focus、product and technology leadership、financial discipline、operational excellence、innovation and growth、高performance teamsを6つのstrategic pillarsとしている。"
+      },
+      "western-digital-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、HDD需要サイクル、フラッシュとの代替関係、顧客集中を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "Western Digital（ウエスタンデジタル）は、データセンター向けHDD、大容量エンタープライズHDD、クラウド向けストレージ製品を提供する。",
+      "groundingId": "western-digital-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-western-digital-01",
+        "label": "データセンター向けHDD",
+        "description": "データセンター向けHDDを提供する。",
+        "groundingId": "western-digital-products"
+      },
+      {
+        "canonicalId": "display-product-western-digital-02",
+        "label": "大容量エンタープライズHDD",
+        "description": "大容量エンタープライズHDDを提供する。",
+        "groundingId": "western-digital-products"
+      },
+      {
+        "canonicalId": "display-product-western-digital-03",
+        "label": "クラウド向けストレージ製品",
+        "description": "クラウド向けストレージ製品を提供する。",
+        "groundingId": "western-digital-products"
+      }
+    ]
+  },
+  {
+    "companyId": "disco",
+    "readinessClass": "DISPLAY_COPY_ONLY",
+    "dimensions": {
+      "ai-role": [
+        "disco-ai-role"
+      ],
+      "value-chain-position": [
+        "disco-value-chain"
+      ],
+      "key-products": [
+        "disco-products"
+      ],
+      "technology-moat": [
+        "disco-positioning",
+        "disco-technology"
+      ],
+      "capacity-roadmap": [
+        "disco-capacity-expansion-triage-remediation-v02"
+      ],
+      "key-risks": [
+        "disco-risks"
+      ]
+    },
+    "claimDisplay": {
+      "disco-ai-role": {
+        "title": "AIインフラでの役割",
+        "statement": "Atlasではディスコを、先端パッケージやHBMの薄化・加工難度上昇を通じてAI関連投資に接続する企業と位置付ける。"
+      },
+      "disco-value-chain": {
+        "title": "Test & Back-endの供給層",
+        "statement": "Atlasではディスコを「Test & Back-end」に位置し、先端パッケージやHBMの薄化・加工難度上昇を通じてAI関連投資に接続する役割を担う企業と整理する。"
+      },
+      "disco-products": {
+        "title": "主要製品・サービス",
+        "statement": "ディスコは、Dicing saws、Grinding systems、Polishing / precision processingを提供する。"
+      },
+      "disco-positioning": {
+        "title": "競争上の特徴",
+        "statement": "Atlasでは、精密加工技術、装置と消耗品の組合せ、先端パッケージ工程への適合を、ディスコの競争上の重要な特徴として整理する。"
+      },
+      "disco-technology": {
+        "title": "製品を支える技術領域",
+        "statement": "Atlasでは、Dicing saws、Grinding systems、Polishing / precision processingという製品構成を、dicing、grinding、wafer thinningに関わる技術基盤として整理する。"
+      },
+      "disco-capacity-expansion-triage-remediation-v02": {
+        "title": "広島事業所・郷原工場を3期で新設",
+        "statement": "DISCOは精密加工ツールの需要拡大へ対応するため、広島県呉市に郷原工場を3期に分けて建設し、呉・桑畑工場の生産機能を順次移設・集約する計画を公表している。"
+      },
+      "disco-risks": {
+        "title": "主要な確認点",
+        "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、半導体設備投資サイクル、顧客工程変更、高バリュエーション時の期待変動を主要な確認点として整理する。"
+      }
+    },
+    "productPortfolio": {
+      "title": "主要製品・サービス",
+      "body": "ディスコは、Dicing saws、Grinding systems、Polishing / precision processingを提供する。",
+      "groundingId": "disco-products",
+      "summaryVisible": false,
+      "expandedVisible": true
+    },
+    "productEntries": [
+      {
+        "canonicalId": "display-product-disco-01",
+        "label": "Dicing saws",
+        "description": "Dicing sawsを提供する。",
+        "groundingId": "disco-products"
+      },
+      {
+        "canonicalId": "display-product-disco-02",
+        "label": "Grinding systems",
+        "description": "Grinding systemsを提供する。",
+        "groundingId": "disco-products"
+      },
+      {
+        "canonicalId": "display-product-disco-03",
+        "label": "Polishing / precision processing",
+        "description": "Polishing / precision processingを提供する。",
+        "groundingId": "disco-products"
+      }
+    ]
+  }
+  ]
+}

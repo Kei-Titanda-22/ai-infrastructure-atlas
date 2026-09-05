@@ -8,6 +8,12 @@ export const evidenceCompareRemainingBatch1CompanyIds = [
   'lumentum', 'fanuc', 'smc', 'asml', 'kokusai-electric',
   'screen-holdings', 'linde', 'shinko-electric', 'seagate', 'besi',
 ] as const;
+export const evidenceCompareRemainingBatch2CompanyIds = [
+  'infineon', 'mitsubishi-electric', 'onsemi', 'rohm', 'texas-instruments',
+  'eaton', 'legrand', 'siemens-energy', 'cisco', 'credo',
+  'te-connectivity', 'keyence', 'tesla', 'canon', 'lasertec',
+  'entegris', 'resonac-holdings', 'sumco', 'western-digital', 'disco',
+] as const;
 export const evidenceCompareFirstBatchCompanyIds = [
   ...evidenceCompareFirstBatchStage1CompanyIds,
   ...evidenceCompareFirstBatchStage2CompanyIds,
