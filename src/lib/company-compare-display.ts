@@ -55,11 +55,20 @@ export const compareFinancialAmountUnitLabels = Object.freeze<Record<string, str
 export const compareFinancialAccountingBasisLabels = Object.freeze<Record<string, string>>({
   'US GAAP': '米国会計基準',
   'Japanese GAAP': '日本会計基準',
+  'Japanese GAAP non-consolidated': '日本会計基準（単体）',
   'TIFRS consolidated': '台湾IFRS（連結）',
   IFRS: '国際財務報告基準（IFRS）',
   'IFRS consolidated': '国際財務報告基準（IFRS・連結）',
   'IFRS as adopted by the EU, consolidated': 'EU採択の国際財務報告基準（IFRS・連結）',
 });
+
+const compareFinancialAccountingBasisAliases = Object.freeze<Record<string, string>>({
+  'Japanese GAAP non-consolidated (official-gazette announcement transcription)': 'Japanese GAAP non-consolidated',
+});
+
+export function normalizeCompareFinancialAccountingBasis(accountingBasis: string) {
+  return compareFinancialAccountingBasisAliases[accountingBasis] ?? accountingBasis;
+}
 
 const compareNamedQuarterPeriodLabels = Object.freeze<Record<string, string>>({
   'June 2025 quarter': '2025年6月期（四半期）',
@@ -93,7 +102,7 @@ export function resolveCompareFinancialTablePresentation(records: readonly Compa
   if (currencyUnitKeys.size !== 1) {
     throw new Error(`Company Compare financial table has mixed currency or unit: ${[...currencyUnitKeys].join(', ')}`);
   }
-  const accountingBases = new Set(records.map(record => record.accountingBasis));
+  const accountingBases = new Set(records.map(record => normalizeCompareFinancialAccountingBasis(record.accountingBasis)));
   if (accountingBases.size !== 1) {
     throw new Error(`Company Compare financial table has mixed accounting basis: ${[...accountingBases].join(', ')}`);
   }

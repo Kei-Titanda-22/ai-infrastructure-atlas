@@ -14,6 +14,12 @@ export const evidenceCompareRemainingBatch2CompanyIds = [
   'te-connectivity', 'keyence', 'tesla', 'canon', 'lasertec',
   'entegris', 'resonac-holdings', 'sumco', 'western-digital', 'disco',
 ] as const;
+export const evidenceCompareRemainingBatch3CompanyIds = [
+  'intel', 'monolithic-power', 'qualcomm', 'stmicroelectronics', 'carrier',
+  'equinix', 'nvent', 'trane-technologies', 'coherent', 'furukawa-electric',
+  'denso', 'omron', 'yaskawa', 'kla', 'nikon',
+  'ibiden', 'shin-etsu-chemical', 'sandisk', 'amkor', 'ajinomoto-fine-techno',
+] as const;
 export const evidenceCompareFirstBatchCompanyIds = [
   ...evidenceCompareFirstBatchStage1CompanyIds,
   ...evidenceCompareFirstBatchStage2CompanyIds,
