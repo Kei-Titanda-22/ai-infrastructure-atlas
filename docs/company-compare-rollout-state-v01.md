@@ -9,7 +9,7 @@
 
 ## 現在Phase
 
-Company Compare First Batch、Remaining Rollout Batch 1、Batch 2、Batch 3は、productionの意味層を変更せず、既存の構造化データだけを使ったHuman Review対象の表示projectionとして段階的に追加した。Compare対応は80社、残り20社である。
+Company Compare First Batch、Remaining Rollout Batch 1～4は、productionの意味層を変更せず、既存の構造化データだけを使ったHuman Review対象の表示projectionとして段階的に追加した。Compare対応は100社、未対応は0社である。
 
 ## Freeze済みPilot 5社
 
@@ -106,13 +106,36 @@ Company Compare First Batch、Remaining Rollout Batch 1、Batch 2、Batch 3は�
 - `amkor`
 - `ajinomoto-fine-techno`
 
-First Batchは`15 / 15`、Remaining Rollout Batch 1～3は各`20 / 20`を`DISPLAY_COPY_ONLY`として追加する。既存Pilot 5社と合わせ、Compare対応企業は80社、未対応は20社。
+## Remaining Rollout Batch 4（20社）
+
+- `arm`
+- `ase-technology`
+- `asmpt`
+- `fujikura`
+- `globalwafers`
+- `hanmi-semiconductor`
+- `hexagon`
+- `jcet`
+- `johnson-controls`
+- `kinsus`
+- `mediatek`
+- `mobileye`
+- `nan-ya-pcb`
+- `samsung-electronics`
+- `sk-hynix`
+- `smic`
+- `sumitomo-electric`
+- `tower-semiconductor`
+- `umc`
+- `unimicron`
+
+First Batchは`15 / 15`、Remaining Rollout Batch 1～4は各`20 / 20`を`DISPLAY_COPY_ONLY`として追加した。既存Pilot 5社と合わせ、Compare対応企業は100社、未対応は0社である。
 
 ## 次に行う作業
 
-Batch 2までに完了したshell最適化を維持したまま、Batch 3で20社を追加する。shell status setは`6`のまま、shellは`19,444 B raw`、最大cold-loadは`278,217 B raw / 26,529 B gzip`で、raw上限`330,509 B`以内である。shell raw上限は`40,000 B`を維持する。残り20社のrolloutはHuman Reviewとtoken review後に設計する。
+Batch 2で完了したshell最適化を維持したまま、Batch 4までの20社を追加した。shell status setは`6`のまま、shellは`22,181 B raw`、最大cold-loadは`280,954 B raw / 26,846 B gzip`で、raw上限`330,509 B`以内である。shell raw上限は`40,000 B`を維持する。100社対応のHuman Review完了まで、追加機能には着手しない。
 
-Company Compare 100社対応完了後、Human Review済みの日本語表示projectionを100社の各社ページへ展開する。canonical dataは変更せず、表示層だけを同期する。
+Company Compare 100社対応のHuman Review完了後、Human Review済みの日本語表示projectionを100社の各社ページへ展開する。canonical dataは変更せず、表示層だけを同期する。
 
 ## 参照すべきcontract文書
 
@@ -132,10 +155,11 @@ Company Compare 100社対応完了後、Human Review済みの日本語表示proj
 - Pilot Set B Summary / Expanded marker: `23 / 36`
 - Pilot Expanded marker: `57`
 - Pilot unique grounding / drawer: `53 / 53`
-- Supported companies: `80`
-- 1～4社 combinations: `1,666,980`
-- 最大cold-load: `278,217 B raw / 26,529 B gzip`
-- shell + 80社asset: `81 / 81 byte-identical`
-- Astro: `190 routes`
+- Supported companies: `100`
+- 1～4社 combinations: `4,087,975`
+- 最大cold-load: `280,954 B raw / 26,846 B gzip`
+- shell: `22,181 B raw`（上限 `40,000 B raw`）
+- shell + 100社asset: `101 / 101 byte-identical`
+- Astro: `210 routes`
 - Pagefind: `105 pages / 5,791 words`
 - protected semantic diff: `0`
