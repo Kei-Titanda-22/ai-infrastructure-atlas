@@ -24,5 +24,14 @@
   "emptyQueries": ["", "   "],
   "symbolOnlyQuery": "（・）",
   "unmatchedQuery": "該当しない企業名",
-  "expectedIdentityCollisionCount": 0
+  "expectedIdentityCollisionCount": 0,
+  "pagefind": {
+    "primaryQueries": [
+      { "input": "フジクラ", "expected": "フジクラ", "supplemental": "ふじくら" },
+      { "input": "ふじくら", "expected": "ふじくら", "supplemental": "フジクラ" },
+      { "input": "ﾌｼﾞｸﾗ", "expected": "フジクラ", "supplemental": "ふじくら" },
+      { "input": "ＡＭＤ", "expected": "amd", "supplemental": null },
+      { "input": " AI　インフラ ", "expected": "ai インフラ", "supplemental": "ai いんふら" }
+    ]
+  }
 }
