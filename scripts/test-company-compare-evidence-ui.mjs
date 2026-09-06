@@ -1453,7 +1453,9 @@ assert.match(controller, /--compare-selected-count[\s\S]*picked\.length/, 'selec
 assert.match(styles, /@media \(min-width: 960px\)[\s\S]*data-compare-mode="evidence"[\s\S]*\.compare-selected[\s\S]*repeat\(var\(--compare-selected-count, 1\), minmax\(0, 1fr\)\)/, 'Evidence selected cards use exactly the live 2/3/4 column count on desktop');
 assert.doesNotMatch(styles, /(?:kioxia|amd)[^\n{]*\{/, 'selected-card layout has no Company-specific selector');
 assert.match(readModelSource, /assessFinancialProjection\([\s\S]*firstBatchFinancialSelections[\s\S]*\['operatingMargin', 'revenueGrowth'\]/, 'First batch Financial rows use the canonical compatibility resolver');
-assert.match(component, /presentationFinancialSets\.map/, 'the common Financial renderer covers Pilot and First batch presentation sets');
+assert.match(component, /const shellPresentationFinancialSets = model\.presentationFinancialSets\.filter\(setRecord => \([\s\S]*orderedCompanyIds\.length >= 2[\s\S]*orderedCompanyIds\.length <= 4/, 'the shell defines one shared 2–4 Company presentation-set collection');
+assert.equal((component.match(/shellPresentationFinancialSets\.map/g) ?? []).length, 3, 'payload, Financial status, and Data Quality use the same shell presentation-set collection');
+assert.doesNotMatch(component, /model\.presentationFinancialSets\.map/, 'the shell never emits singleton or rollout-wide presentation sets directly');
 assert.match(controller, /financialSetForSelection[\s\S]*uiData\.sets\.find/, 'Financial row visibility resolves from the common presentation-set payload');
 assert.doesNotMatch(controller, /matchEvidencePilotSet/, 'runtime Financial visibility is not restricted to the two Pilot buttons');
 for (let index = 1; index <= 4; index += 1) {
@@ -1521,6 +1523,17 @@ if (process.argv.includes('--dist')) {
   assertWithinBoundary(Buffer.byteLength(shellHtml), onDemandSize.maximumShellRawBytes, 'Evidence shell');
   assert.doesNotMatch(shellHtml, /data-claim-id=|data-relation-id=|class="evidence-drawer"|class="evidence-financial-company"/, 'Evidence shell contains no Company projection bodies');
   assert.match(shellHtml, /"companyManifest"/, 'Evidence shell contains the lightweight manifest');
+  const shellPayloadMatch = shellHtml.match(/<script id="compare-evidence-ui-data" type="application\/json">([\s\S]*?)<\/script>/);
+  assert.ok(shellPayloadMatch, 'Evidence shell contains the validated UI payload');
+  const shellPayload = JSON.parse(shellPayloadMatch[1]);
+  const shellSetIds = shellPayload.sets.map(setRecord => setRecord.setId);
+  assert.deepEqual(shellSetIds, ['set-a', 'set-b', 'first-batch-stage-1', 'first-batch-stage-2', 'first-batch-stage-3', 'first-batch-stage-4'], 'shell payload keeps only the six selectable 2–4 Company presentation sets');
+  assert.ok(shellPayload.sets.every(setRecord => setRecord.orderedCompanyIds.length >= 2 && setRecord.orderedCompanyIds.length <= 4), 'every shell presentation set has two to four Companies');
+  assert.equal((shellHtml.match(/data-financial-set-id=/g) ?? []).length, 6, 'shell renders Financial status for the six selectable presentation sets only');
+  assert.equal((shellHtml.match(/data-quality-set-id=/g) ?? []).length, 6, 'shell renders Data Quality status for the six selectable presentation sets only');
+  assert.doesNotMatch(shellHtml, /remaining-rollout-batch-[12]/, '20-Company rollout set status is absent from the shell');
+  assert.match(controller, /const selectionReady = state\.selectedIds\.length >= 2/, 'single-Company selections retain the existing empty-state boundary');
+  assert.match(controller, /empty\.hidden = selectionReady/, 'single-Company selections keep the compare empty prompt');
   for (const copy of [
     expectedProductPortfolioSummaries.nvidia.title,
     expectedProductPortfolioSummaries.broadcom.title,

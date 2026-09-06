@@ -87,7 +87,7 @@ First Batchは`15 / 15`、Remaining Rollout Batch 1は`20 / 20`で完了。Remai
 
 ## 次に行う作業
 
-Human Review後に、残り40社のrollout設計を別の作業単位として行う。残り40社の実装は未着手とする。
+残り40社のrollout設計に先立ち、60社対応時点で増加したCompany Compare Evidence shellを最適化する。read model内のsingleton setおよび20社rollout setは維持し、shell出力だけを実際に比較可能な2～4社set（Set A／B、Stage 1～4）へ限定する。shell status setは`60`から`6`へ、shellは`45,038 B raw / 4,452 B gzip`から`16,731 B raw / 3,179 B gzip`へ減少した。最大cold-loadは`303,811 B raw / 27,472 B gzip`から`275,504 B raw / 26,199 B gzip`となり、60社company assetは`60 / 60` byte-identicalを維持した。shell raw上限は一時的な`50,000 B`から`40,000 B`へ復帰する。残り40社の実装は未着手とする。
 
 Company Compare 100社対応完了後、Human Review済みの日本語表示projectionを100社の各社ページへ展開する。canonical dataは変更せず、表示層だけを同期する。
 
