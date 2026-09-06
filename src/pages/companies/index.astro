@@ -6,6 +6,7 @@ import valueChain from '../../data/value-chain.json';
 import filterContract from '../../data/company-filter-contract.json';
 import { layerLabel, countryLabel, tagLabel, productInfo } from '../../lib/display-v02';
 import { withBase } from '../../lib/paths';
+import { buildSearchText } from '../../lib/search-normalization';
 
 const companies = (await getCollection('companies')).sort((a,b) => (a.data.japaneseName || a.data.name).localeCompare(b.data.japaneseName || b.data.name, 'ja'));
 const layers = [...new Set(companies.map(c => c.data.primaryLayer))].sort();
@@ -89,12 +90,12 @@ const localizedCompanyName = (name: string, japaneseName?: string) => {
             const stageIds = stageIdsForLayers(d.layers);
             const technologyIds = technologyIdsForTags(d.tags);
             const visibleTags = d.tags.slice(0,3);
-            const searchText = [
-              d.name, d.japaneseName, d.reading, d.ticker ?? '', d.country, countryLabel(d.country),
+            const searchText = buildSearchText([
+              company.id, d.name, d.japaneseName, d.reading, d.ticker ?? '', d.country, countryLabel(d.country),
               d.primaryLayer, layerLabel(d.primaryLayer), d.summary, d.aiRole,
               ...d.tags, ...d.tags.map(tagLabel), ...d.products, ...productLabels,
               ...stageIds.map(id => stageLabelById.get(id) || id), ...sites.flatMap(site => [site.city, site.region, site.country])
-            ].join(' ').toLowerCase();
+            ]);
             return (
               <tr data-company-row data-search={searchText} data-tags={d.tags.join('|')} data-layer={d.primaryLayer} data-country={d.country} data-stages={stageIds.join('|')} data-technologies={technologyIds.join('|')} data-sort-name={d.japaneseName || d.name} data-sort-country={countryLabel(d.country)} data-sort-updated={d.lastReviewed}>
                 <td class="company-col"><span class="company-index-name"><a href={withBase(`companies/${company.id}/`)}>{d.name}</a></span>{localName && <span class="company-index-local">{localName}</span>}<span class="company-index-meta mono">{d.ticker || '非上場'}</span></td>
@@ -112,7 +113,9 @@ const localizedCompanyName = (name: string, japaneseName?: string) => {
     </div>
   </div>
 
-  <script is:inline>
+  <script>
+    import { searchTokens } from '../../lib/search-normalization';
+
     const root = document.querySelector('#companies-app');
     if (root) {
       const input = root.querySelector('#company-search');
@@ -182,8 +185,7 @@ const localizedCompanyName = (name: string, japaneseName?: string) => {
         });
       };
       const apply = () => {
-        const query = input instanceof HTMLInputElement ? input.value.trim().toLowerCase() : '';
-        const tokens = query.split(/\s+/).filter(Boolean);
+        const tokens = input instanceof HTMLInputElement ? searchTokens(input.value) : [];
         const l = layer instanceof HTMLSelectElement ? layer.value : '';
         const c = country instanceof HTMLSelectElement ? country.value : '';
         const t = tag instanceof HTMLSelectElement ? tag.value : '';

@@ -4,6 +4,7 @@ import { getCollection } from 'astro:content';
 import { layerLabel, countryLabel, tagLabel, productInfo } from '../lib/display-v02';
 import { getMetricState, formatMetricValue } from '../lib/metrics';
 import { withBase } from '../lib/paths';
+import { buildSearchText } from '../lib/search-normalization';
 import facilities from '../data/facilities.json';
 import sectorKpis from '../data/sector-kpis.json';
 import sectorKpiDefinitions from '../data/sector-kpi-definitions.json';
@@ -37,7 +38,7 @@ const compact = companies.map(c => ({
   metrics:Object.fromEntries(Object.entries(c.data.metrics).map(([key, metric]) => [key, { ...metric, display:formatMetricValue(metric), state:getMetricState(c.id,key,metric,key === 'roic' && verifiedRoic.has(c.id)) }])),
   scores:c.data.scores ?? null,
   kpis:kpisByCompany.get(c.id) ?? [],
-  searchText:[c.data.name,c.data.japaneseName,c.data.reading,c.data.ticker,c.data.country,layerLabel(c.data.primaryLayer),...c.data.products.map(product => productInfo(product).label),...c.data.tags.map(tagLabel)].filter(Boolean).join(' ').toLowerCase()
+  searchText:buildSearchText([c.id,c.data.name,c.data.japaneseName,c.data.reading,c.data.ticker,c.data.country,layerLabel(c.data.primaryLayer),...c.data.products.map(product => productInfo(product).label),...c.data.tags.map(tagLabel)])
 }));
 const definitions = Object.fromEntries(sectorKpiDefinitions.map(d => [d.id, d]));
 const commonDefinitions = Object.fromEntries(metricDefinitions.map(d => [d.id, d]));
@@ -74,6 +75,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
           <label class="compare-search-label" for="compare-company-search">企業を追加</label>
           <input class="control" id="compare-company-search" type="search" placeholder="企業名・Ticker・製品・技術・領域で検索" autocomplete="off" aria-controls="compare-suggestions" aria-expanded="false" />
           <div class="compare-suggestions" id="compare-suggestions" role="listbox" hidden></div>
+          <p class="search-combobox-status" id="compare-suggestions-status" aria-live="polite"></p>
         </div>
 
         <div class="compare-template-list" id="legacy-compare-templates" aria-label="比較テンプレート">
@@ -141,7 +143,10 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
     <script id="compare-data" type="application/json" set:html={JSON.stringify({ companies: compact, definitions, commonDefinitions, sourceMap, defaults })}></script>
   </div>
 
-  <script is:inline>
+  <script>
+    import { searchTokens } from '../lib/search-normalization';
+    import { createSearchComboboxController } from '../scripts/search-combobox-controller';
+
     const root = document.querySelector('#compare-app');
     const dataNode = document.querySelector('#compare-data');
     const evidenceMode = new URLSearchParams(location.search).get('view') === 'evidence';
@@ -155,6 +160,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
       const byId = new Map(companies.map(c => [c.id, c]));
       const searchInput = root.querySelector('#compare-company-search');
       const suggestions = root.querySelector('#compare-suggestions');
+      const suggestionsStatus = root.querySelector('#compare-suggestions-status');
       const selectedRoot = root.querySelector('#compare-selected');
       const selectionStatus = root.querySelector('#compare-selection-status');
       const tbody = root.querySelector('#compare-table tbody');
@@ -169,8 +175,6 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
       const params = new URLSearchParams(location.search);
       const requested = (params.get('ids') || '').split(',').filter(id => byId.has(id)).slice(0,5);
       let selectedIds = params.has('ids') ? requested : defaults.filter(id => byId.has(id)).slice(0,5);
-      let currentSuggestions = [];
-
       const normalize = value => String(value || '').trim().toLowerCase().normalize('NFKC');
       const periodKind = metric => {
         const text = normalize(metric?.period);
@@ -334,24 +338,13 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
         clearButton.disabled=picked.length<2;
       };
       const candidateMatches = query => {
-        const tokens=normalize(query).split(/\s+/).filter(Boolean);
+        const tokens=searchTokens(query);
         if(!tokens.length) return [];
         return companies.filter(company => !selectedIds.includes(company.id) && tokens.every(token => company.searchText.includes(token))).slice(0,10);
       };
-      const renderSuggestions = () => {
-        const matches=candidateMatches(searchInput.value); currentSuggestions=matches; clear(suggestions);
-        if(!matches.length){ suggestions.hidden=true; searchInput.setAttribute('aria-expanded','false'); return; }
-        matches.forEach(company=>{
-          const button=document.createElement('button'); button.type='button'; button.className='compare-suggestion'; button.dataset.addId=company.id; button.setAttribute('role','option');
-          const name=text('span',company.japaneseName || company.name,'compare-suggestion-name'); button.append(name);
-          button.append(text('span',`${company.ticker} · ${company.country} · ${company.primaryLayer}`,'compare-suggestion-meta'));
-          suggestions.append(button);
-        });
-        suggestions.hidden=false; searchInput.setAttribute('aria-expanded','true');
-      };
       const addCompany = id => {
         if(!byId.has(id) || selectedIds.includes(id) || selectedIds.length>=5) return;
-        selectedIds.push(id); searchInput.value=''; suggestions.hidden=true; searchInput.setAttribute('aria-expanded','false'); render(); searchInput.focus();
+        selectedIds.push(id); searchInput.value=''; searchCombobox.close(); render(); searchInput.focus();
       };
       const removeCompany = id => { selectedIds=selectedIds.filter(item=>item!==id); render(); };
       const applyTemplate = ids => { selectedIds=ids.filter(id=>byId.has(id)).slice(0,5); render(); };
@@ -416,12 +409,20 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
       };
       const render = () => { renderSelected(); renderTable(); updateUrl(); };
 
-      searchInput.addEventListener('input',renderSuggestions);
-      searchInput.addEventListener('keydown',event=>{
-        if(event.key==='Enter' && currentSuggestions[0]){ event.preventDefault(); addCompany(currentSuggestions[0].id); }
-        if(event.key==='Escape'){ suggestions.hidden=true; searchInput.setAttribute('aria-expanded','false'); }
+      const searchCombobox = createSearchComboboxController({
+        input: searchInput,
+        listbox: suggestions,
+        status: suggestionsStatus,
+        optionIdPrefix: 'compare-suggestion',
+        getMatches: candidateMatches,
+        renderOption: company => {
+          const button=document.createElement('button'); button.type='button'; button.className='compare-suggestion'; button.dataset.searchOptionId=company.id;
+          const name=text('span',company.japaneseName || company.name,'compare-suggestion-name'); button.append(name);
+          button.append(text('span',`${company.ticker} · ${company.country} · ${company.primaryLayer}`,'compare-suggestion-meta'));
+          return button;
+        },
+        select: company => addCompany(company.id),
       });
-      suggestions.addEventListener('click',event=>{ const button=event.target.closest('[data-add-id]'); if(button) addCompany(button.dataset.addId); });
       selectedRoot.addEventListener('click',event=>{ const button=event.target.closest('[data-remove-id]'); if(button) removeCompany(button.dataset.removeId); });
       clearButton.addEventListener('click',()=>{ selectedIds=[]; render(); searchInput.focus(); });
       root.querySelectorAll('.compare-template-button').forEach(button=>button.addEventListener('click',()=>applyTemplate((button.dataset.ids||'').split(',').filter(Boolean))));
@@ -429,7 +430,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
         try { await navigator.clipboard.writeText(location.href); copyButton.textContent='コピーしました'; setTimeout(()=>copyButton.textContent='比較URLをコピー',1600); }
         catch { copyButton.textContent='URL欄からコピーしてください'; setTimeout(()=>copyButton.textContent='比較URLをコピー',2200); }
       });
-      document.addEventListener('click',event=>{ if(!root.querySelector('.compare-search-label')?.contains(event.target) && event.target!==searchInput && !suggestions.contains(event.target)){ suggestions.hidden=true; searchInput.setAttribute('aria-expanded','false'); } });
+      document.addEventListener('click',event=>{ if(!root.querySelector('.compare-search-control')?.contains(event.target)){ searchCombobox.close(); } });
       render();
     }
   </script>

@@ -16,6 +16,8 @@ import {
   validateCompanyCompareAssetManifest,
   type CompanyCompareAssetManifestRecord,
 } from '../lib/company-compare-evidence-assets.ts';
+import { searchTokens } from '../lib/search-normalization.ts';
+import { createSearchComboboxController } from './search-combobox-controller.ts';
 
 const issueLabels: Record<EvidenceCompareIssue['code'], string> = {
   unknown: '不明な企業ID',
@@ -154,7 +156,6 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   const loadedIds = new Set<string>();
   const loadingIds = new Set<string>();
   const failures = new Map<string, Error>();
-  let currentSuggestions: any[] = [];
   let selectionRevision = 0;
 
   const loader = createCompanyCompareAssetLoader({
@@ -393,34 +394,11 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   };
 
   const candidateMatches = (query: string) => {
-    const tokens = normalize(query).split(/\s+/).filter(Boolean);
+    const tokens = searchTokens(query);
     if (!tokens.length) return [];
     return companies.filter((company: any) => supportedIds.has(company.id)
       && !state.selectedIds.includes(company.id)
       && tokens.every((token: string) => company.searchText.includes(token))).slice(0, 10);
-  };
-  const renderSuggestions = () => {
-    currentSuggestions = candidateMatches(searchInput.value);
-    suggestions.replaceChildren();
-    if (!currentSuggestions.length) {
-      suggestions.hidden = true;
-      searchInput.setAttribute('aria-expanded', 'false');
-      return;
-    }
-    currentSuggestions.forEach(company => {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.className = 'compare-suggestion';
-      button.dataset.addId = company.id;
-      button.setAttribute('role', 'option');
-      const name = text('span', '', 'compare-suggestion-name');
-      appendCompanyName(name, company);
-      button.append(name);
-      button.append(text('span', `${company.ticker} · ${localizeCompareLocation(company.country)} · ${company.primaryLayer}`, 'compare-suggestion-meta'));
-      suggestions.append(button);
-    });
-    suggestions.hidden = false;
-    searchInput.setAttribute('aria-expanded', 'true');
   };
   const addCompany = (id: string) => {
     state.issues = [];
@@ -430,8 +408,7 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
     else if (state.selectedIds.length >= evidenceCompareMaxCompanies) state.issues.push({ code: 'limit', id });
     else state.selectedIds.push(id);
     searchInput.value = '';
-    suggestions.hidden = true;
-    searchInput.setAttribute('aria-expanded', 'false');
+    searchCombobox.close();
     void refreshSelection();
     searchInput.focus();
   };
@@ -460,14 +437,24 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
     });
   }
 
-  searchInput.addEventListener('input', renderSuggestions);
-  searchInput.addEventListener('keydown', event => {
-    if (event.key === 'Enter' && currentSuggestions[0]) { event.preventDefault(); addCompany(currentSuggestions[0].id); }
-    if (event.key === 'Escape') { suggestions.hidden = true; searchInput.setAttribute('aria-expanded', 'false'); }
-  });
-  suggestions.addEventListener('click', event => {
-    const button = (event.target as Element).closest<HTMLElement>('[data-add-id]');
-    if (button?.dataset.addId) addCompany(button.dataset.addId);
+  const searchCombobox = createSearchComboboxController({
+    input: searchInput,
+    listbox: suggestions,
+    status: requiredElement<HTMLElement>(app, '#compare-suggestions-status'),
+    optionIdPrefix: 'evidence-compare-suggestion',
+    getMatches: candidateMatches,
+    renderOption: company => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'compare-suggestion';
+      button.dataset.searchOptionId = company.id;
+      const name = text('span', '', 'compare-suggestion-name');
+      appendCompanyName(name, company);
+      button.append(name);
+      button.append(text('span', `${company.ticker} · ${localizeCompareLocation(company.country)} · ${company.primaryLayer}`, 'compare-suggestion-meta'));
+      return button;
+    },
+    select: company => addCompany(company.id),
   });
   selectedRoot.addEventListener('click', event => {
     const button = (event.target as Element).closest<HTMLElement>('[data-remove-id]');
@@ -539,8 +526,7 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
   });
   document.addEventListener('click', event => {
     if (event.target === searchInput || suggestions.contains(event.target as Node)) return;
-    suggestions.hidden = true;
-    searchInput.setAttribute('aria-expanded', 'false');
+    searchCombobox.close();
   });
   window.addEventListener('popstate', () => {
     const restored = parseEvidenceCompareSearch(location.search, byId.keys(), supportedIds);
@@ -549,6 +535,7 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
     void refreshSelection(false);
   });
 
+  searchCombobox.refresh(true);
   await refreshSelection();
   if (state.section) {
     const sectionId = state.section === 'value-chain-position' ? 'ai-role' : state.section;
