@@ -36,6 +36,12 @@ import {
   remainingBatch2ProductEntries,
   remainingBatch2ProductIdsByClaimId,
   remainingBatch2Stage,
+  remainingBatch3ClaimDisplay,
+  remainingBatch3Companies,
+  remainingBatch3CompanyIds,
+  remainingBatch3ProductEntries,
+  remainingBatch3ProductIdsByClaimId,
+  remainingBatch3Stage,
 } from './company-compare-first-batch.ts';
 import { companyEvidence, type CompanyEvidenceBinding, type CompanyEvidenceClaim } from './company-evidence.ts';
 import { pilotCompareEvidenceProjection } from './company-compare-evidence-pilot.ts';
@@ -103,11 +109,11 @@ export interface CompareEvidenceRelationEntry {
 const claimById = new Map(companyEvidence.claims.map(claim => [claim.id, claim]));
 const claimBindingById = new Map(companyEvidence.evidence.map(binding => [binding.id, binding]));
 const financialRecordById = new Map(financialHistory.map(record => [record.id, record]));
-const displayOnlyCompanies = Object.freeze([...firstBatchCompanies, ...remainingBatch1Companies, ...remainingBatch2Companies]);
-const displayOnlyCompanyIds = Object.freeze([...firstBatchCompanyIds, ...remainingBatch1CompanyIds, ...remainingBatch2CompanyIds]);
-const displayOnlyClaimDisplay = Object.freeze({ ...firstBatchClaimDisplay, ...remainingBatch1ClaimDisplay, ...remainingBatch2ClaimDisplay });
-const displayOnlyProductEntries = Object.freeze([...firstBatchProductEntries, ...remainingBatch1ProductEntries, ...remainingBatch2ProductEntries]);
-const displayOnlyProductIdsByClaimId = Object.freeze({ ...firstBatchProductIdsByClaimId, ...remainingBatch1ProductIdsByClaimId, ...remainingBatch2ProductIdsByClaimId });
+const displayOnlyCompanies = Object.freeze([...firstBatchCompanies, ...remainingBatch1Companies, ...remainingBatch2Companies, ...remainingBatch3Companies]);
+const displayOnlyCompanyIds = Object.freeze([...firstBatchCompanyIds, ...remainingBatch1CompanyIds, ...remainingBatch2CompanyIds, ...remainingBatch3CompanyIds]);
+const displayOnlyClaimDisplay = Object.freeze({ ...firstBatchClaimDisplay, ...remainingBatch1ClaimDisplay, ...remainingBatch2ClaimDisplay, ...remainingBatch3ClaimDisplay });
+const displayOnlyProductEntries = Object.freeze([...firstBatchProductEntries, ...remainingBatch1ProductEntries, ...remainingBatch2ProductEntries, ...remainingBatch3ProductEntries]);
+const displayOnlyProductIdsByClaimId = Object.freeze({ ...firstBatchProductIdsByClaimId, ...remainingBatch1ProductIdsByClaimId, ...remainingBatch2ProductIdsByClaimId, ...remainingBatch3ProductIdsByClaimId });
 const displayOnlyProductEntryById = new Map(displayOnlyProductEntries.map(record => [record.canonicalId, record]));
 
 const productLabelById = new Map(productRegistry.records.map(record => [
@@ -467,7 +473,7 @@ export function buildCompanyCompareEvidenceReadModel(identities: CompareEvidence
       })),
     },
   }));
-  const displayOnlyFinancialStages = [...firstBatchStages, remainingBatch1Stage, remainingBatch2Stage];
+  const displayOnlyFinancialStages = [...firstBatchStages, remainingBatch1Stage, remainingBatch2Stage, remainingBatch3Stage];
   const firstBatchFinancialSelections = displayOnlyFinancialStages.flatMap(stage => stage.setId !== 'first-batch-stage-1'
     ? [stage, ...stage.orderedCompanyIds.map(companyId => ({
         setId: `${stage.setId}-${companyId}`,

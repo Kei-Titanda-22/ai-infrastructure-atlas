@@ -1,0 +1,1668 @@
+{
+  "schemaVersion": "0.1",
+  "stage": "remaining-rollout-batch-3",
+  "companyIds": [
+    "intel",
+    "monolithic-power",
+    "qualcomm",
+    "stmicroelectronics",
+    "carrier",
+    "equinix",
+    "nvent",
+    "trane-technologies",
+    "coherent",
+    "furukawa-electric",
+    "denso",
+    "omron",
+    "yaskawa",
+    "kla",
+    "nikon",
+    "ibiden",
+    "shin-etsu-chemical",
+    "sandisk",
+    "amkor",
+    "ajinomoto-fine-techno"
+  ],
+  "companies": [
+    {
+      "companyId": "intel",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "intel-ai-role"
+        ],
+        "value-chain-position": [
+          "intel-value-chain"
+        ],
+        "key-products": [
+          "intel-products"
+        ],
+        "technology-moat": [
+          "intel-positioning",
+          "intel-technology"
+        ],
+        "capacity-roadmap": [
+          "intel-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "intel-risks"
+        ]
+      },
+      "claimDisplay": {
+        "intel-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではIntel（インテル）を、Xeon系CPU、AI向け計算製品、Intel Foundryを通じてAIサーバーと先端製造の双方に関与する企業と位置付ける。"
+        },
+        "intel-value-chain": {
+          "title": "Compute & Siliconの供給層",
+          "statement": "AtlasではIntel（インテル）を「Compute & Silicon」に位置し、Xeon系CPU、AI向け計算製品、Intel Foundryを通じてAIサーバーと先端製造の双方に関与する役割を担う企業と整理する。"
+        },
+        "intel-products": {
+          "title": "主要製品・サービス",
+          "statement": "Intel（インテル）は、Xeon server CPUs、AI accelerators、Foundry servicesを提供する。"
+        },
+        "intel-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、CPUの大規模な導入基盤、設計と製造を併せ持つ事業構造、先端パッケージを含む製造技術を、Intel（インテル）の競争上の重要な特徴として整理する。"
+        },
+        "intel-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、Xeon server CPUs、AI accelerators、Foundry servicesという製品構成を、CPU、GPU、foundryに関わる技術基盤として整理する。"
+        },
+        "intel-capacity-expansion-triage-remediation-v02": {
+          "title": "Arizonaの2新fabで製造資産を稼働",
+          "statement": "IntelはArizonaで2つの新fabを建設中で、2025年に最初の製造資産を稼働可能な状態へ移し、2026年のIntel 18A量産に向けて立ち上げている。"
+        },
+        "intel-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、先端プロセス立ち上げの実行リスク、AMD・Arm系CPUとの競争、巨額設備投資とファウンドリ稼働率を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "Intel（インテル）は、Xeon server CPUs、AI accelerators、Foundry servicesを提供する。",
+        "groundingId": "intel-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-intel-01",
+          "label": "Xeon server CPUs",
+          "description": "Xeon server CPUsを提供する。",
+          "groundingId": "intel-products"
+        },
+        {
+          "canonicalId": "display-product-intel-02",
+          "label": "AI accelerators",
+          "description": "AI acceleratorsを提供する。",
+          "groundingId": "intel-products"
+        },
+        {
+          "canonicalId": "display-product-intel-03",
+          "label": "Foundry services",
+          "description": "Foundry servicesを提供する。",
+          "groundingId": "intel-products"
+        }
+      ]
+    },
+    {
+      "companyId": "monolithic-power",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "monolithic-power-ai-role"
+        ],
+        "value-chain-position": [
+          "monolithic-power-value-chain"
+        ],
+        "key-products": [
+          "monolithic-power-products"
+        ],
+        "technology-moat": [
+          "monolithic-power-positioning",
+          "monolithic-power-technology"
+        ],
+        "capacity-roadmap": [
+          "monolithic-power-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "monolithic-power-risks"
+        ]
+      },
+      "claimDisplay": {
+        "monolithic-power-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではMonolithic Power Systems（モノリシック・パワー・システムズ）を、GPU・AIサーバーの高電流・高密度電源変換を半導体レベルで支える企業と位置付ける。"
+        },
+        "monolithic-power-value-chain": {
+          "title": "Compute & Siliconの供給層",
+          "statement": "AtlasではMonolithic Power Systems（モノリシック・パワー・システムズ）を「Compute & Silicon」に位置し、GPU・AIサーバーの高電流・高密度電源変換を半導体レベルで支える役割を担う企業と整理する。"
+        },
+        "monolithic-power-products": {
+          "title": "主要製品・サービス",
+          "statement": "Monolithic Power Systems（モノリシック・パワー・システムズ）は、DC-DC電源管理IC、AIサーバー向けパワーソリューション、電源モジュールを提供する。"
+        },
+        "monolithic-power-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、高効率電源設計、AI・データセンター向け高成長用途、ファブレスモデルを、Monolithic Power Systems（モノリシック・パワー・システムズ）の競争上の重要な特徴として整理する。"
+        },
+        "monolithic-power-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、DC-DC電源管理IC、AIサーバー向けパワーソリューション、電源モジュールという製品構成を、電源管理IC、AIサーバー電源、DC-DCに関わる技術基盤として整理する。"
+        },
+        "monolithic-power-strategy-triage-remediation-v02": {
+          "title": "power solutionのfamily拡張と新市場開拓",
+          "statement": "Monolithic Power Systemsは既存product familyの新製品開発と、新市場へ展開するinnovative productを成長方針とし、高性能analog・mixed-signal、独自process・packaging、集積化と効率を重点化している。"
+        },
+        "monolithic-power-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、顧客集中、競合電源IC企業、AI設備投資の変動を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "Monolithic Power Systems（モノリシック・パワー・システムズ）は、DC-DC電源管理IC、AIサーバー向けパワーソリューション、電源モジュールを提供する。",
+        "groundingId": "monolithic-power-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-monolithic-power-01",
+          "label": "DC-DC電源管理IC",
+          "description": "DC-DC電源管理ICを提供する。",
+          "groundingId": "monolithic-power-products"
+        },
+        {
+          "canonicalId": "display-product-monolithic-power-02",
+          "label": "AIサーバー向けパワーソリューション",
+          "description": "AIサーバー向けパワーソリューションを提供する。",
+          "groundingId": "monolithic-power-products"
+        },
+        {
+          "canonicalId": "display-product-monolithic-power-03",
+          "label": "電源モジュール",
+          "description": "電源モジュールを提供する。",
+          "groundingId": "monolithic-power-products"
+        }
+      ]
+    },
+    {
+      "companyId": "qualcomm",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "qualcomm-ai-role"
+        ],
+        "value-chain-position": [
+          "qualcomm-value-chain"
+        ],
+        "key-products": [
+          "qualcomm-products"
+        ],
+        "technology-moat": [
+          "qualcomm-positioning",
+          "qualcomm-technology"
+        ],
+        "capacity-roadmap": [
+          "qualcomm-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "qualcomm-risks"
+        ]
+      },
+      "claimDisplay": {
+        "qualcomm-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではQualcomm（クアルコム）を、SnapdragonのNPUを中心に、クラウド外で動作するエッジAIの計算基盤を供給する企業と位置付ける。"
+        },
+        "qualcomm-value-chain": {
+          "title": "Compute & Siliconの供給層",
+          "statement": "AtlasではQualcomm（クアルコム）を「Compute & Silicon」に位置し、SnapdragonのNPUを中心に、クラウド外で動作するエッジAIの計算基盤を供給する役割を担う企業と整理する。"
+        },
+        "qualcomm-products": {
+          "title": "主要製品・サービス",
+          "statement": "Qualcomm（クアルコム）は、Snapdragon SoCs、AI / NPU platforms、Automotive compute platformsを提供する。"
+        },
+        "qualcomm-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、モバイルSoCの大規模な採用基盤、通信技術と計算処理の統合、端末AI・自動車への展開を、Qualcomm（クアルコム）の競争上の重要な特徴として整理する。"
+        },
+        "qualcomm-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、Snapdragon SoCs、AI / NPU platforms、Automotive compute platformsという製品構成を、SoC、edge AI、automotiveに関わる技術基盤として整理する。"
+        },
+        "qualcomm-strategy-triage-remediation-v02": {
+          "title": "intelligent computingをhandset外へ拡張",
+          "statement": "QualcommはSnapdragonをpremium handset・automotive・consumer IoTへ、Dragonwingをindustrial・edge networking IoTへ展開し、R&Dを通じてautomotiveとIoTのintelligent computingを拡大する方針を示している。"
+        },
+        "qualcomm-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、スマートフォン市場への依存、主要顧客の内製半導体化、ライセンス事業を巡る規制・交渉リスクを主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "Qualcomm（クアルコム）は、Snapdragon SoCs、AI / NPU platforms、Automotive compute platformsを提供する。",
+        "groundingId": "qualcomm-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-qualcomm-01",
+          "label": "Snapdragon SoCs",
+          "description": "Snapdragon SoCsを提供する。",
+          "groundingId": "qualcomm-products"
+        },
+        {
+          "canonicalId": "display-product-qualcomm-02",
+          "label": "AI / NPU platforms",
+          "description": "AI / NPU platformsを提供する。",
+          "groundingId": "qualcomm-products"
+        },
+        {
+          "canonicalId": "display-product-qualcomm-03",
+          "label": "Automotive compute platforms",
+          "description": "Automotive compute platformsを提供する。",
+          "groundingId": "qualcomm-products"
+        }
+      ]
+    },
+    {
+      "companyId": "stmicroelectronics",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "stmicroelectronics-ai-role"
+        ],
+        "value-chain-position": [
+          "stmicroelectronics-value-chain"
+        ],
+        "key-products": [
+          "stmicroelectronics-products"
+        ],
+        "technology-moat": [
+          "stmicroelectronics-positioning",
+          "stmicroelectronics-technology"
+        ],
+        "capacity-roadmap": [
+          "stmicroelectronics-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "stmicroelectronics-risks"
+        ]
+      },
+      "claimDisplay": {
+        "stmicroelectronics-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではSTMicroelectronics（STマイクロエレクトロニクス）を、電力変換、センシング、組み込み制御を通じてAI設備とPhysical AIの周辺半導体を供給する企業と位置付ける。"
+        },
+        "stmicroelectronics-value-chain": {
+          "title": "Compute & Siliconの供給層",
+          "statement": "AtlasではSTMicroelectronics（STマイクロエレクトロニクス）を「Compute & Silicon」に位置し、電力変換、センシング、組み込み制御を通じてAI設備とPhysical AIの周辺半導体を供給する役割を担う企業と整理する。"
+        },
+        "stmicroelectronics-products": {
+          "title": "主要製品・サービス",
+          "statement": "STMicroelectronics（STマイクロエレクトロニクス）は、SiC・パワー半導体、STM32マイコン、MEMS・センサを提供する。"
+        },
+        "stmicroelectronics-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、組み込み・車載の広い製品群、SiCを含むパワー半導体、欧州の製造基盤を、STMicroelectronics（STマイクロエレクトロニクス）の競争上の重要な特徴として整理する。"
+        },
+        "stmicroelectronics-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、SiC・パワー半導体、STM32マイコン、MEMS・センサという製品構成を、パワー半導体、MCU、MEMSに関わる技術基盤として整理する。"
+        },
+        "stmicroelectronics-capacity-expansion-triage-remediation-v02": {
+          "title": "Agrate・Crolles 300mmとCatania 200mm SiC",
+          "statement": "STMicroelectronicsはAgrateの300mm capacityを2027年までに4,000 wafers/week、Crollesを14,000 wafers/weekへ高める計画を示し、Cataniaでは200mm SiC production開始を予定している。"
+        },
+        "stmicroelectronics-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動車・産業需要、設備投資負担、競争の激しい汎用半導体市場を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "STMicroelectronics（STマイクロエレクトロニクス）は、SiC・パワー半導体、STM32マイコン、MEMS・センサを提供する。",
+        "groundingId": "stmicroelectronics-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-stmicroelectronics-01",
+          "label": "SiC・パワー半導体",
+          "description": "SiC・パワー半導体を提供する。",
+          "groundingId": "stmicroelectronics-products"
+        },
+        {
+          "canonicalId": "display-product-stmicroelectronics-02",
+          "label": "STM32マイコン",
+          "description": "STM32マイコンを提供する。",
+          "groundingId": "stmicroelectronics-products"
+        },
+        {
+          "canonicalId": "display-product-stmicroelectronics-03",
+          "label": "MEMS・センサ",
+          "description": "MEMS・センサを提供する。",
+          "groundingId": "stmicroelectronics-products"
+        }
+      ]
+    },
+    {
+      "companyId": "carrier",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "carrier-ai-role"
+        ],
+        "value-chain-position": [
+          "carrier-value-chain"
+        ],
+        "key-products": [
+          "carrier-products"
+        ],
+        "technology-moat": [
+          "carrier-positioning",
+          "carrier-technology"
+        ],
+        "capacity-roadmap": [
+          "carrier-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "carrier-risks"
+        ]
+      },
+      "claimDisplay": {
+        "carrier-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではCarrier（キャリア）を、データセンター向け冷却設備と建物制御を通じ、AIサーバーの発熱・電力密度上昇に対応する設備投資へ接続する企業と位置付ける。"
+        },
+        "carrier-value-chain": {
+          "title": "Data Center & Facilitiesの供給層",
+          "statement": "AtlasではCarrier（キャリア）を「Data Center & Facilities」に位置し、データセンター向け冷却設備と建物制御を通じ、AIサーバーの発熱・電力密度上昇に対応する設備投資へ接続する役割を担う企業と整理する。"
+        },
+        "carrier-products": {
+          "title": "主要製品・サービス",
+          "statement": "Carrier（キャリア）は、Commercial HVAC and chillers、Data center cooling solutions、Building controlsを提供する。"
+        },
+        "carrier-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、大型空調・冷却機器の幅広い製品群、建物向け制御・サービスとの組合せ、グローバルな設置・保守基盤を、Carrier（キャリア）の競争上の重要な特徴として整理する。"
+        },
+        "carrier-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、Commercial HVAC and chillers、Data center cooling solutions、Building controlsという製品構成を、data center、cooling、HVACに関わる技術基盤として整理する。"
+        },
+        "carrier-capacity-expansion-triage-remediation-v02": {
+          "title": "米国製造・R&Dへ5年間で10億dollar投資",
+          "statement": "Carrierは米国の製造・R&D・人材へ5年間で追加10億dollarを投じ、既存施設拡張とheat pump・battery assembly部品向け新工場を計画している。"
+        },
+        "carrier-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、建設・設備投資サイクル、冷却技術の転換、TraneやJohnson Controls等との競争を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "Carrier（キャリア）は、Commercial HVAC and chillers、Data center cooling solutions、Building controlsを提供する。",
+        "groundingId": "carrier-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-carrier-01",
+          "label": "Commercial HVAC and chillers",
+          "description": "Commercial HVAC and chillersを提供する。",
+          "groundingId": "carrier-products"
+        },
+        {
+          "canonicalId": "display-product-carrier-02",
+          "label": "Data center cooling solutions",
+          "description": "Data center cooling solutionsを提供する。",
+          "groundingId": "carrier-products"
+        },
+        {
+          "canonicalId": "display-product-carrier-03",
+          "label": "Building controls",
+          "description": "Building controlsを提供する。",
+          "groundingId": "carrier-products"
+        }
+      ]
+    },
+    {
+      "companyId": "equinix",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "equinix-ai-role"
+        ],
+        "value-chain-position": [
+          "equinix-value-chain"
+        ],
+        "key-products": [
+          "equinix-products"
+        ],
+        "technology-moat": [
+          "equinix-positioning",
+          "equinix-technology"
+        ],
+        "capacity-roadmap": [
+          "equinix-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "equinix-risks"
+        ]
+      },
+      "claimDisplay": {
+        "equinix-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではEquinix（エクイニクス）を、AI向け計算・ネットワーク需要の増加は追い風だが、REITとして資本コストや金利の影響も大きい企業と位置付ける。"
+        },
+        "equinix-value-chain": {
+          "title": "Data Center & Facilitiesの供給層",
+          "statement": "AtlasではEquinix（エクイニクス）を「Data Center & Facilities」に位置し、AI向け計算・ネットワーク需要の増加は追い風だが、REITとして資本コストや金利の影響も大きい役割を担う企業と整理する。"
+        },
+        "equinix-products": {
+          "title": "主要製品・サービス",
+          "statement": "Equinix（エクイニクス）は、Colocation data centers、Interconnection services、Digital infrastructure real estateを提供する。"
+        },
+        "equinix-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、大規模な接続エコシステム、主要都市での拠点網、相互接続によるネットワーク効果を、Equinix（エクイニクス）の競争上の重要な特徴として整理する。"
+        },
+        "equinix-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、Colocation data centers、Interconnection services、Digital infrastructure real estateという製品構成を、REIT、colocation、interconnectionに関わる技術基盤として整理する。"
+        },
+        "equinix-capacity-expansion-triage-remediation-v02": {
+          "title": "52件の主要開発projectを進行",
+          "statement": "Equinixは2026年1月時点で35都市に52件の主要開発projectを進め、2028年までに55,000超のretail cabinetと100 MW超のxScale能力を追加する計画を開示している。"
+        },
+        "equinix-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、金利・資本コスト、電力確保、AI向け高密度設備への追加投資を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "Equinix（エクイニクス）は、Colocation data centers、Interconnection services、Digital infrastructure real estateを提供する。",
+        "groundingId": "equinix-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-equinix-01",
+          "label": "Colocation data centers",
+          "description": "Colocation data centersを提供する。",
+          "groundingId": "equinix-products"
+        },
+        {
+          "canonicalId": "display-product-equinix-02",
+          "label": "Interconnection services",
+          "description": "Interconnection servicesを提供する。",
+          "groundingId": "equinix-products"
+        },
+        {
+          "canonicalId": "display-product-equinix-03",
+          "label": "Digital infrastructure real estate",
+          "description": "Digital infrastructure real estateを提供する。",
+          "groundingId": "equinix-products"
+        }
+      ]
+    },
+    {
+      "companyId": "nvent",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "nvent-ai-role"
+        ],
+        "value-chain-position": [
+          "nvent-value-chain"
+        ],
+        "key-products": [
+          "nvent-products"
+        ],
+        "technology-moat": [
+          "nvent-positioning",
+          "nvent-technology"
+        ],
+        "capacity-roadmap": [
+          "nvent-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "nvent-risks"
+        ]
+      },
+      "claimDisplay": {
+        "nvent-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではnVent（エヌベント）を、AI・HPC向け高密度ラックの液冷、PDU、ラック・筐体インフラを通じてAIデータセンター設備投資に直接接続する企業と位置付ける。"
+        },
+        "nvent-value-chain": {
+          "title": "Data Center & Facilitiesの供給層",
+          "statement": "AtlasではnVent（エヌベント）を「Data Center & Facilities」に位置し、AI・HPC向け高密度ラックの液冷、PDU、ラック・筐体インフラを通じてAIデータセンター設備投資に直接接続する役割を担う企業と整理する。"
+        },
+        "nvent-products": {
+          "title": "主要製品・サービス",
+          "statement": "nVent（エヌベント）は、Data center liquid cooling、High-density power distribution、Racks and electrical enclosuresを提供する。"
+        },
+        "nvent-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、液冷と高密度電力を同一データセンター基盤で扱う製品群、ラック・筐体・電気接続までの広い対応範囲、AI/HPC向け冷却能力の増産投資を、nVent（エヌベント）の競争上の重要な特徴として整理する。"
+        },
+        "nvent-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、Data center liquid cooling、High-density power distribution、Racks and electrical enclosuresという製品構成を、data center、liquid cooling、power distributionに関わる技術基盤として整理する。"
+        },
+        "nvent-capacity-expansion-triage-remediation-v02": {
+          "title": "Eleanor工場を117,000平方foot拡張",
+          "statement": "nVentはWest Virginia州Eleanor工場を117,000平方foot拡張し、facility・equipmentを更新して100人のmanufacturing jobを追加する計画を発表した。拡張後は約250人を雇用する見込みである。"
+        },
+        "nvent-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、AIデータセンター設備投資の変動、液冷方式・標準の変化、VertivやLegrand等との競争を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "nVent（エヌベント）は、Data center liquid cooling、High-density power distribution、Racks and electrical enclosuresを提供する。",
+        "groundingId": "nvent-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-nvent-01",
+          "label": "Data center liquid cooling",
+          "description": "Data center liquid coolingを提供する。",
+          "groundingId": "nvent-products"
+        },
+        {
+          "canonicalId": "display-product-nvent-02",
+          "label": "High-density power distribution",
+          "description": "High-density power distributionを提供する。",
+          "groundingId": "nvent-products"
+        },
+        {
+          "canonicalId": "display-product-nvent-03",
+          "label": "Racks and electrical enclosures",
+          "description": "Racks and electrical enclosuresを提供する。",
+          "groundingId": "nvent-products"
+        }
+      ]
+    },
+    {
+      "companyId": "trane-technologies",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "trane-technologies-ai-role"
+        ],
+        "value-chain-position": [
+          "trane-technologies-value-chain"
+        ],
+        "key-products": [
+          "trane-technologies-products"
+        ],
+        "technology-moat": [
+          "trane-technologies-positioning",
+          "trane-technologies-technology"
+        ],
+        "capacity-roadmap": [
+          "trane-technologies-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "trane-technologies-risks"
+        ]
+      },
+      "claimDisplay": {
+        "trane-technologies-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではTrane Technologies（トレイン・テクノロジーズ）を、AIデータセンターの発熱密度上昇に伴う大型チラー、空調、熱管理設備の需要増加に接続する企業と位置付ける。"
+        },
+        "trane-technologies-value-chain": {
+          "title": "Data Center & Facilitiesの供給層",
+          "statement": "AtlasではTrane Technologies（トレイン・テクノロジーズ）を「Data Center & Facilities」に位置し、AIデータセンターの発熱密度上昇に伴う大型チラー、空調、熱管理設備の需要増加に接続する役割を担う企業と整理する。"
+        },
+        "trane-technologies-products": {
+          "title": "主要製品・サービス",
+          "statement": "Trane Technologies（トレイン・テクノロジーズ）は、Commercial chillers、Data center cooling systems、Building HVAC controlsを提供する。"
+        },
+        "trane-technologies-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、大型商業施設向けチラー・空調技術、高効率冷却と建物制御の組合せ、グローバルなサービス・保守基盤を、Trane Technologies（トレイン・テクノロジーズ）の競争上の重要な特徴として整理する。"
+        },
+        "trane-technologies-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、Commercial chillers、Data center cooling systems、Building HVAC controlsという製品構成を、data center、cooling、HVACに関わる技術基盤として整理する。"
+        },
+        "trane-technologies-capacity-expansion-triage-remediation-v02": {
+          "title": "La Crosseのchiller生産lineを増強",
+          "statement": "Trane TechnologiesはLa Crosse, Wisconsinにhighly automated manufacturing lineを新設し、CDHH CenTraVac water-cooled chillersを含むelectrified solutionのcapacityを拡張した。"
+        },
+        "trane-technologies-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、建設・設備投資サイクル、液冷など新冷却方式への対応速度、Johnson ControlsやCarrier等との競争を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "Trane Technologies（トレイン・テクノロジーズ）は、Commercial chillers、Data center cooling systems、Building HVAC controlsを提供する。",
+        "groundingId": "trane-technologies-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-trane-technologies-01",
+          "label": "Commercial chillers",
+          "description": "Commercial chillersを提供する。",
+          "groundingId": "trane-technologies-products"
+        },
+        {
+          "canonicalId": "display-product-trane-technologies-02",
+          "label": "Data center cooling systems",
+          "description": "Data center cooling systemsを提供する。",
+          "groundingId": "trane-technologies-products"
+        },
+        {
+          "canonicalId": "display-product-trane-technologies-03",
+          "label": "Building HVAC controls",
+          "description": "Building HVAC controlsを提供する。",
+          "groundingId": "trane-technologies-products"
+        }
+      ]
+    },
+    {
+      "companyId": "coherent",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "coherent-ai-role"
+        ],
+        "value-chain-position": [
+          "coherent-value-chain"
+        ],
+        "key-products": [
+          "coherent-products"
+        ],
+        "technology-moat": [
+          "coherent-positioning",
+          "coherent-technology"
+        ],
+        "capacity-roadmap": [
+          "coherent-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "coherent-risks"
+        ]
+      },
+      "claimDisplay": {
+        "coherent-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではCoherent（コヒレント）を、AIデータセンターの高速光接続で、トランシーバーからレーザー・受光素子・光部品まで供給する企業と位置付ける。"
+        },
+        "coherent-value-chain": {
+          "title": "Network & Opticalの供給層",
+          "statement": "AtlasではCoherent（コヒレント）を「Network & Optical」に位置し、AIデータセンターの高速光接続で、トランシーバーからレーザー・受光素子・光部品まで供給する役割を担う企業と整理する。"
+        },
+        "coherent-products": {
+          "title": "主要製品・サービス",
+          "statement": "Coherent（コヒレント）は、Datacenter optical transceivers、Optoelectronic devices and lasers、Optical circuit switchesを提供する。"
+        },
+        "coherent-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、材料・デバイス・モジュール・システムまで跨る光技術の垂直統合、1.6T級を含むデータセンター向け光トランシーバーの製品幅、InP・VCSEL・シリコンフォトニクスなど複数方式を扱える技術基盤を、Coherent（コヒレント）の競争上の重要な特徴として整理する。"
+        },
+        "coherent-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、Datacenter optical transceivers、Optoelectronic devices and lasers、Optical circuit switchesという製品構成を、optical transceiver、coherent optics、silicon photonicsに関わる技術基盤として整理する。"
+        },
+        "coherent-capacity-expansion-triage-remediation-v02": {
+          "title": "TexasのInP wafer能力を4倍へ",
+          "statement": "CoherentはTexas州Shermanの6-inch InP半導体施設を拡張し、製造spaceを2倍、wafer生産能力を4倍にする計画を公表している。"
+        },
+        "coherent-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、AI向け光部品の急速な技術世代交代、大型顧客の設備投資・在庫調整、Lumentumなど光部品企業との競争を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "Coherent（コヒレント）は、Datacenter optical transceivers、Optoelectronic devices and lasers、Optical circuit switchesを提供する。",
+        "groundingId": "coherent-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-coherent-01",
+          "label": "Datacenter optical transceivers",
+          "description": "Datacenter optical transceiversを提供する。",
+          "groundingId": "coherent-products"
+        },
+        {
+          "canonicalId": "display-product-coherent-02",
+          "label": "Optoelectronic devices and lasers",
+          "description": "Optoelectronic devices and lasersを提供する。",
+          "groundingId": "coherent-products"
+        },
+        {
+          "canonicalId": "display-product-coherent-03",
+          "label": "Optical circuit switches",
+          "description": "Optical circuit switchesを提供する。",
+          "groundingId": "coherent-products"
+        }
+      ]
+    },
+    {
+      "companyId": "furukawa-electric",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "furukawa-electric-ai-role"
+        ],
+        "value-chain-position": [
+          "furukawa-electric-value-chain"
+        ],
+        "key-products": [
+          "furukawa-electric-products"
+        ],
+        "technology-moat": [
+          "furukawa-electric-positioning",
+          "furukawa-electric-technology"
+        ],
+        "capacity-roadmap": [
+          "furukawa-electric-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "furukawa-electric-risks"
+        ]
+      },
+      "claimDisplay": {
+        "furukawa-electric-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "Atlasでは古河電気工業を、AIデータセンターの光配線と電力インフラの双方に製品接点を持ち、通信量と電力需要の増加に接続する企業と位置付ける。"
+        },
+        "furukawa-electric-value-chain": {
+          "title": "Network & Opticalの供給層",
+          "statement": "Atlasでは古河電気工業を「Network & Optical」に位置し、AIデータセンターの光配線と電力インフラの双方に製品接点を持ち、通信量と電力需要の増加に接続する役割を担う企業と整理する。"
+        },
+        "furukawa-electric-products": {
+          "title": "主要製品・サービス",
+          "statement": "古河電気工業は、Optical fiber and cable、Datacenter optical connectivity、Power cables and systemsを提供する。"
+        },
+        "furukawa-electric-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、光ファイバ・光ケーブルの材料から配線までの技術基盤、通信と電力の双方を持つ事業ポートフォリオ、データセンター向け高密度光配線への展開を、古河電気工業の競争上の重要な特徴として整理する。"
+        },
+        "furukawa-electric-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、Optical fiber and cable、Datacenter optical connectivity、Power cables and systemsという製品構成を、optical fiber、data center cable、power cableに関わる技術基盤として整理する。"
+        },
+        "furukawa-electric-capacity-expansion-triage-remediation-v02": {
+          "title": "Mie Works第2工場で超多心cableを量産",
+          "statement": "Furukawa Electricは2026年2月にMie Works第2工場を本格稼働し、hyperscale data center向け超多心光fiber cableの生産能力をFY2023比で2倍超へ増強した。"
+        },
+        "furukawa-electric-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、光通信・電力設備投資の変動、原材料価格と為替の影響、フジクラ・住友電工など国内外競合とのシェア競争を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "古河電気工業は、Optical fiber and cable、Datacenter optical connectivity、Power cables and systemsを提供する。",
+        "groundingId": "furukawa-electric-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-furukawa-electric-01",
+          "label": "Optical fiber and cable",
+          "description": "Optical fiber and cableを提供する。",
+          "groundingId": "furukawa-electric-products"
+        },
+        {
+          "canonicalId": "display-product-furukawa-electric-02",
+          "label": "Datacenter optical connectivity",
+          "description": "Datacenter optical connectivityを提供する。",
+          "groundingId": "furukawa-electric-products"
+        },
+        {
+          "canonicalId": "display-product-furukawa-electric-03",
+          "label": "Power cables and systems",
+          "description": "Power cables and systemsを提供する。",
+          "groundingId": "furukawa-electric-products"
+        }
+      ]
+    },
+    {
+      "companyId": "denso",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "denso-ai-role"
+        ],
+        "value-chain-position": [
+          "denso-value-chain"
+        ],
+        "key-products": [
+          "denso-products"
+        ],
+        "technology-moat": [
+          "denso-positioning",
+          "denso-technology"
+        ],
+        "capacity-roadmap": [
+          "denso-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "denso-risks"
+        ]
+      },
+      "claimDisplay": {
+        "denso-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "Atlasではデンソーを、車載センシング・ECU・半導体・熱管理を通じて自動運転と電動車の実装を支える企業と位置付ける。"
+        },
+        "denso-value-chain": {
+          "title": "Physical AIの供給層",
+          "statement": "Atlasではデンソーを「Physical AI」に位置し、車載センシング・ECU・半導体・熱管理を通じて自動運転と電動車の実装を支える役割を担う企業と整理する。"
+        },
+        "denso-products": {
+          "title": "主要製品・サービス",
+          "statement": "デンソーは、車載センサ・ECU、車載半導体・パワーエレクトロニクス、車両熱管理システムを提供する。"
+        },
+        "denso-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、大規模量産基盤、車載半導体からシステムまでの垂直性、電動化・熱管理の総合力を、デンソーの競争上の重要な特徴として整理する。"
+        },
+        "denso-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、車載センサ・ECU、車載半導体・パワーエレクトロニクス、車両熱管理システムという製品構成を、車載半導体、センサ、ADASに関わる技術基盤として整理する。"
+        },
+        "denso-capacity-expansion-triage-remediation-v02": {
+          "title": "inverter生産を5極で増強",
+          "statement": "DENSOは2024年にHungary、Guangzhou、Fukushimaでinverter生産能力を拡張し、IndiaとThailandでも生産を展開する計画を示している。"
+        },
+        "denso-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動車市場の循環、顧客集中、半導体・部材供給の変動を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "デンソーは、車載センサ・ECU、車載半導体・パワーエレクトロニクス、車両熱管理システムを提供する。",
+        "groundingId": "denso-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-denso-01",
+          "label": "車載センサ・ECU",
+          "description": "車載センサ・ECUを提供する。",
+          "groundingId": "denso-products"
+        },
+        {
+          "canonicalId": "display-product-denso-02",
+          "label": "車載半導体・パワーエレクトロニクス",
+          "description": "車載半導体・パワーエレクトロニクスを提供する。",
+          "groundingId": "denso-products"
+        },
+        {
+          "canonicalId": "display-product-denso-03",
+          "label": "車両熱管理システム",
+          "description": "車両熱管理システムを提供する。",
+          "groundingId": "denso-products"
+        }
+      ]
+    },
+    {
+      "companyId": "omron",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "omron-ai-role"
+        ],
+        "value-chain-position": [
+          "omron-value-chain"
+        ],
+        "key-products": [
+          "omron-products"
+        ],
+        "technology-moat": [
+          "omron-positioning",
+          "omron-technology"
+        ],
+        "capacity-roadmap": [
+          "omron-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "omron-risks"
+        ]
+      },
+      "claimDisplay": {
+        "omron-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "Atlasではオムロンを、製造現場のセンシング・制御・検査を通じてPhysical AIとスマートファクトリーを支える企業と位置付ける。"
+        },
+        "omron-value-chain": {
+          "title": "Physical AIの供給層",
+          "statement": "Atlasではオムロンを「Physical AI」に位置し、製造現場のセンシング・制御・検査を通じてPhysical AIとスマートファクトリーを支える役割を担う企業と整理する。"
+        },
+        "omron-products": {
+          "title": "主要製品・サービス",
+          "statement": "オムロンは、FA制御機器、センサ・画像処理、産業用ロボット・検査システムを提供する。"
+        },
+        "omron-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、制御機器とセンサの統合、製造現場のアプリケーション知見、品質検査・自動化の幅広い製品群を、オムロンの競争上の重要な特徴として整理する。"
+        },
+        "omron-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、FA制御機器、センサ・画像処理、産業用ロボット・検査システムという製品構成を、FA、センサ、マシンビジョンに関わる技術基盤として整理する。"
+        },
+        "omron-strategy-triage-remediation-v02": {
+          "title": "IABを最優先としbusiness modelを転換",
+          "statement": "オムロンはSF 2nd StageでIndustrial Automation Businessを最優先領域とし、顧客起点のgrowth issue設定、earnings foundation・business portfolio・business modelの転換を進める方針を示している。"
+        },
+        "omron-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、設備投資需要、事業再編の実行、中国・電子部品市場の変動を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "オムロンは、FA制御機器、センサ・画像処理、産業用ロボット・検査システムを提供する。",
+        "groundingId": "omron-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-omron-01",
+          "label": "FA制御機器",
+          "description": "FA制御機器を提供する。",
+          "groundingId": "omron-products"
+        },
+        {
+          "canonicalId": "display-product-omron-02",
+          "label": "センサ・画像処理",
+          "description": "センサ・画像処理を提供する。",
+          "groundingId": "omron-products"
+        },
+        {
+          "canonicalId": "display-product-omron-03",
+          "label": "産業用ロボット・検査システム",
+          "description": "産業用ロボット・検査システムを提供する。",
+          "groundingId": "omron-products"
+        }
+      ]
+    },
+    {
+      "companyId": "yaskawa",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "yaskawa-ai-role"
+        ],
+        "value-chain-position": [
+          "yaskawa-value-chain"
+        ],
+        "key-products": [
+          "yaskawa-products"
+        ],
+        "technology-moat": [
+          "yaskawa-positioning",
+          "yaskawa-technology"
+        ],
+        "capacity-roadmap": [
+          "yaskawa-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "yaskawa-risks"
+        ]
+      },
+      "claimDisplay": {
+        "yaskawa-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "Atlasでは安川電機を、AIによる認識・判断を実際の機械動作へ変換するモーション制御とロボットを担う企業と位置付ける。"
+        },
+        "yaskawa-value-chain": {
+          "title": "Physical AIの供給層",
+          "statement": "Atlasでは安川電機を「Physical AI」に位置し、AIによる認識・判断を実際の機械動作へ変換するモーション制御とロボットを担う役割を担う企業と整理する。"
+        },
+        "yaskawa-products": {
+          "title": "主要製品・サービス",
+          "statement": "安川電機は、産業用ロボット、ACサーボ・モーション制御、インバータを提供する。"
+        },
+        "yaskawa-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、モーション制御の技術蓄積、ロボットと駆動機器の統合、世界の製造業顧客基盤を、安川電機の競争上の重要な特徴として整理する。"
+        },
+        "yaskawa-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、産業用ロボット、ACサーボ・モーション制御、インバータという製品構成を、産業用ロボット、サーボ、インバータに関わる技術基盤として整理する。"
+        },
+        "yaskawa-capacity-expansion-triage-remediation-v02": {
+          "title": "Wisconsin新campusへ1.8億USD投資",
+          "statement": "安川電機はWisconsin州Franklinに約74,000㎡の新campusを設け、8〜10年で1.8億USDを投資してAmericas headquarters、training、industrial robot manufacturingを統合する計画を示している。"
+        },
+        "yaskawa-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、設備投資サイクル、中国製造業需要、ロボット価格競争を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "安川電機は、産業用ロボット、ACサーボ・モーション制御、インバータを提供する。",
+        "groundingId": "yaskawa-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-yaskawa-01",
+          "label": "産業用ロボット",
+          "description": "産業用ロボットを提供する。",
+          "groundingId": "yaskawa-products"
+        },
+        {
+          "canonicalId": "display-product-yaskawa-02",
+          "label": "ACサーボ・モーション制御",
+          "description": "ACサーボ・モーション制御を提供する。",
+          "groundingId": "yaskawa-products"
+        },
+        {
+          "canonicalId": "display-product-yaskawa-03",
+          "label": "インバータ",
+          "description": "インバータを提供する。",
+          "groundingId": "yaskawa-products"
+        }
+      ]
+    },
+    {
+      "companyId": "kla",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "kla-ai-role"
+        ],
+        "value-chain-position": [
+          "kla-value-chain"
+        ],
+        "key-products": [
+          "kla-products"
+        ],
+        "technology-moat": [
+          "kla-positioning",
+          "kla-technology"
+        ],
+        "capacity-roadmap": [
+          "kla-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "kla-risks"
+        ]
+      },
+      "claimDisplay": {
+        "kla-ai-role": {
+          "title": "AI向けLogic・Memoryの歩留まり管理層",
+          "statement": "AtlasではKLAを、AI向けadvanced logic、DRAM、3D NAND、advanced packagingの量産立上げと歩留まりをinspection・metrology・softwareで支えるprocess control層と位置付ける。"
+        },
+        "kla-value-chain": {
+          "title": "R&Dから量産までのprocess controlを担う",
+          "statement": "KLAはIC、wafer、reticle、materialsメーカーのR&Dから最終量産までinspection・metrologyを提供し、target yieldの達成を支える。"
+        },
+        "kla-products": {
+          "title": "inspection・metrology・chemistry control・software",
+          "statement": "KLAのSemiconductor Process Control製品はdefect inspection・review、metrology、chemistry process control、reticle・wafer inspection、yield management softwareで構成される。"
+        },
+        "kla-positioning": {
+          "title": "包括的process control portfolioを強みとする",
+          "statement": "KLAはadvanced product、process control software、serviceを組み合わせた包括的portfolioが、顧客のyield改善と量産目標を支えると説明している。"
+        },
+        "kla-technology": {
+          "title": "検査・計測dataを統合してprocessを補正",
+          "statement": "KLAのsemiconductor softwareはinspection・metrology・process systemのdataを集約・解析し、defect excursion識別、process correction、defect classificationを行う。"
+        },
+        "kla-capacity-expansion-triage-remediation-v02": {
+          "title": "NewportにR&D・製造centerを開設",
+          "statement": "KLAは2025年5月、Wales・Newportに1.38億USD、237,000平方footのR&D・製造centerを開設した。施設は25,000平方footのR&D cleanroomと35,000平方footの製造spaceを備える。"
+        },
+        "kla-risks": {
+          "title": "顧客集中・cycle・supplier・技術競争リスク",
+          "statement": "KLAは顧客集中、半導体産業のcycle、技術変化への対応、singleまたはlimited supplierへの依存を主要リスクとして開示している。"
+        }
+      },
+      "productPortfolio": {
+        "title": "inspection・metrology・chemistry control・software",
+        "body": "KLAのSemiconductor Process Control製品はdefect inspection・review、metrology、chemistry process control、reticle・wafer inspection、yield management softwareで構成される。",
+        "groundingId": "kla-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-kla-01",
+          "label": "defect inspection・review",
+          "description": "defect inspection・reviewを提供する。",
+          "groundingId": "kla-products"
+        },
+        {
+          "canonicalId": "display-product-kla-02",
+          "label": "metrology",
+          "description": "metrologyを提供する。",
+          "groundingId": "kla-products"
+        },
+        {
+          "canonicalId": "display-product-kla-03",
+          "label": "chemistry process control",
+          "description": "chemistry process controlを提供する。",
+          "groundingId": "kla-products"
+        },
+        {
+          "canonicalId": "display-product-kla-04",
+          "label": "reticle・wafer inspection",
+          "description": "reticle・wafer inspectionを提供する。",
+          "groundingId": "kla-products"
+        },
+        {
+          "canonicalId": "display-product-kla-05",
+          "label": "yield management software",
+          "description": "yield management softwareを提供する。",
+          "groundingId": "kla-products"
+        }
+      ]
+    },
+    {
+      "companyId": "nikon",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "nikon-ai-role"
+        ],
+        "value-chain-position": [
+          "nikon-value-chain"
+        ],
+        "key-products": [
+          "nikon-products"
+        ],
+        "technology-moat": [
+          "nikon-positioning",
+          "nikon-technology"
+        ],
+        "capacity-roadmap": [
+          "nikon-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "nikon-risks"
+        ]
+      },
+      "claimDisplay": {
+        "nikon-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "Atlasではニコンを、リソグラフィと精密計測技術を半導体製造へ提供する企業と位置付ける。"
+        },
+        "nikon-value-chain": {
+          "title": "Wafer Fab Equipmentの供給層",
+          "statement": "Atlasではニコンを「Wafer Fab Equipment」に位置し、リソグラフィと精密計測技術を半導体製造へ提供する役割を担う企業と整理する。"
+        },
+        "nikon-products": {
+          "title": "主要製品・サービス",
+          "statement": "ニコンは、半導体露光装置、FPD露光装置、精密計測・光学システムを提供する。"
+        },
+        "nikon-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、高精度光学・位置決め技術、長年の露光装置実績、計測・デジタル製造への展開を、ニコンの競争上の重要な特徴として整理する。"
+        },
+        "nikon-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、半導体露光装置、FPD露光装置、精密計測・光学システムという製品構成を、半導体露光、リソグラフィ、計測に関わる技術基盤として整理する。"
+        },
+        "nikon-strategy-triage-remediation-v02": {
+          "title": "lithographyの顧客基盤維持と次世代技術開発",
+          "statement": "ニコンはsemiconductor lithographyでproduction・serviceの最適化と安定顧客基盤の維持を進め、後工程向けdigital lithographyと次世代ArF immersion lithographyの開発を成長施策としている。"
+        },
+        "nikon-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、露光装置市場の競争、半導体設備投資、事業ポートフォリオ再編を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "ニコンは、半導体露光装置、FPD露光装置、精密計測・光学システムを提供する。",
+        "groundingId": "nikon-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-nikon-01",
+          "label": "半導体露光装置",
+          "description": "半導体露光装置を提供する。",
+          "groundingId": "nikon-products"
+        },
+        {
+          "canonicalId": "display-product-nikon-02",
+          "label": "FPD露光装置",
+          "description": "FPD露光装置を提供する。",
+          "groundingId": "nikon-products"
+        },
+        {
+          "canonicalId": "display-product-nikon-03",
+          "label": "精密計測・光学システム",
+          "description": "精密計測・光学システムを提供する。",
+          "groundingId": "nikon-products"
+        }
+      ]
+    },
+    {
+      "companyId": "ibiden",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "ibiden-ai-role"
+        ],
+        "value-chain-position": [
+          "ibiden-value-chain"
+        ],
+        "key-products": [
+          "ibiden-products"
+        ],
+        "technology-moat": [
+          "ibiden-positioning",
+          "ibiden-technology"
+        ],
+        "capacity-roadmap": [
+          "ibiden-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "ibiden-risks"
+        ]
+      },
+      "claimDisplay": {
+        "ibiden-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "Atlasではイビデンを、CPU・GPUなど大型高性能半導体のパッケージ基板需要を通じてAIサーバー投資に接続する企業と位置付ける。"
+        },
+        "ibiden-value-chain": {
+          "title": "半導体材料・基板の供給層",
+          "statement": "Atlasではイビデンを「半導体材料・基板」に位置し、CPU・GPUなど大型高性能半導体のパッケージ基板需要を通じてAIサーバー投資に接続する役割を担う企業と整理する。"
+        },
+        "ibiden-products": {
+          "title": "主要製品・サービス",
+          "statement": "イビデンは、ICパッケージ基板、高密度プリント配線板を提供する。"
+        },
+        "ibiden-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、高多層・高密度なICパッケージ基板技術、先端CPU・GPU向け大判基板への対応、大手半導体顧客との長期量産実績を、イビデンの競争上の重要な特徴として整理する。"
+        },
+        "ibiden-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、ICパッケージ基板、高密度プリント配線板という製品構成を、パッケージ基板、advanced packaging、PCBに関わる技術基盤として整理する。"
+        },
+        "ibiden-capacity-expansion-triage-remediation-v02": {
+          "title": "IC package基板の生産能力を増強",
+          "statement": "イビデンはAI server向けを含むIC package基板需要へ対応するため、growth investmentを通じて生産能力を増強する方針を示している。"
+        },
+        "ibiden-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、主要顧客の製品サイクル、先端パッケージ投資の変動、大型基板の歩留まり・増産負担を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "イビデンは、ICパッケージ基板、高密度プリント配線板を提供する。",
+        "groundingId": "ibiden-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-ibiden-01",
+          "label": "ICパッケージ基板",
+          "description": "ICパッケージ基板を提供する。",
+          "groundingId": "ibiden-products"
+        },
+        {
+          "canonicalId": "display-product-ibiden-02",
+          "label": "高密度プリント配線板",
+          "description": "高密度プリント配線板を提供する。",
+          "groundingId": "ibiden-products"
+        }
+      ]
+    },
+    {
+      "companyId": "shin-etsu-chemical",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "shin-etsu-chemical-ai-role"
+        ],
+        "value-chain-position": [
+          "shin-etsu-chemical-value-chain"
+        ],
+        "key-products": [
+          "shin-etsu-chemical-products"
+        ],
+        "technology-moat": [
+          "shin-etsu-chemical-positioning",
+          "shin-etsu-chemical-technology"
+        ],
+        "capacity-roadmap": [
+          "shin-etsu-chemical-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "shin-etsu-chemical-risks"
+        ]
+      },
+      "claimDisplay": {
+        "shin-etsu-chemical-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "Atlasでは信越化学工業を、先端ロジック・メモリの増産と微細化に必要なウェハ・露光材料を通じてAI半導体投資に接続する企業と位置付ける。"
+        },
+        "shin-etsu-chemical-value-chain": {
+          "title": "半導体材料・基板の供給層",
+          "statement": "Atlasでは信越化学工業を「半導体材料・基板」に位置し、先端ロジック・メモリの増産と微細化に必要なウェハ・露光材料を通じてAI半導体投資に接続する役割を担う企業と整理する。"
+        },
+        "shin-etsu-chemical-products": {
+          "title": "主要製品・サービス",
+          "statement": "信越化学工業は、シリコンウェハ、フォトレジスト、フォトマスクブランクを提供する。"
+        },
+        "shin-etsu-chemical-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、シリコンウェハを含む高純度材料技術、露光関連材料まで持つ製品幅、大規模量産と品質管理を、信越化学工業の競争上の重要な特徴として整理する。"
+        },
+        "shin-etsu-chemical-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、シリコンウェハ、フォトレジスト、フォトマスクブランクという製品構成を、シリコンウェハ、フォトレジスト、フォトマスクブランクに関わる技術基盤として整理する。"
+        },
+        "shin-etsu-chemical-capacity-expansion-triage-remediation-v02": {
+          "title": "Isesakiに830億円のlithography材料拠点",
+          "statement": "信越化学工業はsemiconductor lithography materialsの第4拠点として群馬県伊勢崎市にplantを建設し、第1期約830億円を投じて2026年の完成を予定している。"
+        },
+        "shin-etsu-chemical-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、半導体材料需要の周期変動、先端設備投資の大型化、為替・原材料価格変動を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "信越化学工業は、シリコンウェハ、フォトレジスト、フォトマスクブランクを提供する。",
+        "groundingId": "shin-etsu-chemical-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-shin-etsu-chemical-01",
+          "label": "シリコンウェハ",
+          "description": "シリコンウェハを提供する。",
+          "groundingId": "shin-etsu-chemical-products"
+        },
+        {
+          "canonicalId": "display-product-shin-etsu-chemical-02",
+          "label": "フォトレジスト",
+          "description": "フォトレジストを提供する。",
+          "groundingId": "shin-etsu-chemical-products"
+        },
+        {
+          "canonicalId": "display-product-shin-etsu-chemical-03",
+          "label": "フォトマスクブランク",
+          "description": "フォトマスクブランクを提供する。",
+          "groundingId": "shin-etsu-chemical-products"
+        }
+      ]
+    },
+    {
+      "companyId": "sandisk",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "sandisk-ai-role"
+        ],
+        "value-chain-position": [
+          "sandisk-value-chain"
+        ],
+        "key-products": [
+          "sandisk-products"
+        ],
+        "technology-moat": [
+          "sandisk-positioning",
+          "sandisk-technology"
+        ],
+        "capacity-roadmap": [
+          "sandisk-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "sandisk-risks"
+        ]
+      },
+      "claimDisplay": {
+        "sandisk-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではSandisk（サンディスク）を、AI・データ集約型用途向けにNANDとSSDを供給し、キオクシアとの共同生産にも関係する企業と位置付ける。"
+        },
+        "sandisk-value-chain": {
+          "title": "Memoryの供給層",
+          "statement": "AtlasではSandisk（サンディスク）を「Memory」に位置し、AI・データ集約型用途向けにNANDとSSDを供給し、キオクシアとの共同生産にも関係する役割を担う企業と整理する。"
+        },
+        "sandisk-products": {
+          "title": "主要製品・サービス",
+          "statement": "Sandisk（サンディスク）は、NANDフラッシュメモリ、エンタープライズSSD、クライアント・組み込みフラッシュを提供する。"
+        },
+        "sandisk-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、NAND技術と製品ブランド、キオクシアとの共同製造基盤、データセンターから端末までの製品幅を、Sandisk（サンディスク）の競争上の重要な特徴として整理する。"
+        },
+        "sandisk-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、NANDフラッシュメモリ、エンタープライズSSD、クライアント・組み込みフラッシュという製品構成を、NAND、SSD、フラッシュメモリに関わる技術基盤として整理する。"
+        },
+        "sandisk-capacity-expansion-triage-remediation-v02": {
+          "title": "Kitakami K2の稼働準備",
+          "statement": "SandiskとKioxiaのFlash VenturesはYokkaichi 6施設とKitakami 1施設でNANDを生産し、2025年に8番目の施設を加える計画を示した。Kitakami K2は2026年前半のoutput開始を予定している。"
+        },
+        "sandisk-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、NAND価格サイクル、共同生産パートナー依存、設備投資と需給調整を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "Sandisk（サンディスク）は、NANDフラッシュメモリ、エンタープライズSSD、クライアント・組み込みフラッシュを提供する。",
+        "groundingId": "sandisk-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-sandisk-01",
+          "label": "NANDフラッシュメモリ",
+          "description": "NANDフラッシュメモリを提供する。",
+          "groundingId": "sandisk-products"
+        },
+        {
+          "canonicalId": "display-product-sandisk-02",
+          "label": "エンタープライズSSD",
+          "description": "エンタープライズSSDを提供する。",
+          "groundingId": "sandisk-products"
+        },
+        {
+          "canonicalId": "display-product-sandisk-03",
+          "label": "クライアント・組み込みフラッシュ",
+          "description": "クライアント・組み込みフラッシュを提供する。",
+          "groundingId": "sandisk-products"
+        }
+      ]
+    },
+    {
+      "companyId": "amkor",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "amkor-ai-role"
+        ],
+        "value-chain-position": [
+          "amkor-value-chain"
+        ],
+        "key-products": [
+          "amkor-products"
+        ],
+        "technology-moat": [
+          "amkor-positioning",
+          "amkor-technology"
+        ],
+        "capacity-roadmap": [
+          "amkor-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "amkor-risks"
+        ]
+      },
+      "claimDisplay": {
+        "amkor-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではAmkor Technology（アムコー・テクノロジー）を、AI・高性能半導体の先端パッケージと量産テストを担う企業と位置付ける。"
+        },
+        "amkor-value-chain": {
+          "title": "Test & Back-endの供給層",
+          "statement": "AtlasではAmkor Technology（アムコー・テクノロジー）を「Test & Back-end」に位置し、AI・高性能半導体の先端パッケージと量産テストを担う役割を担う企業と整理する。"
+        },
+        "amkor-products": {
+          "title": "主要製品・サービス",
+          "statement": "Amkor Technology（アムコー・テクノロジー）は、先端半導体パッケージ、ウェハレベルパッケージ、半導体テストを提供する。"
+        },
+        "amkor-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、長いOSAT事業実績、アジアを中心とする量産拠点、先端・車載パッケージ対応を、Amkor Technology（アムコー・テクノロジー）の競争上の重要な特徴として整理する。"
+        },
+        "amkor-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、先端半導体パッケージ、ウェハレベルパッケージ、半導体テストという製品構成を、OSAT、先端パッケージ、半導体テストに関わる技術基盤として整理する。"
+        },
+        "amkor-capacity-expansion-triage-remediation-v02": {
+          "title": "Arizona先端packaging拠点",
+          "statement": "AmkorはArizonaでadvanced packaging and test facilityを建設し、米国内の先端後工程能力を拡張する計画を開示している。"
+        },
+        "amkor-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、顧客集中、半導体需要サイクル、大型設備投資を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "Amkor Technology（アムコー・テクノロジー）は、先端半導体パッケージ、ウェハレベルパッケージ、半導体テストを提供する。",
+        "groundingId": "amkor-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-amkor-01",
+          "label": "先端半導体パッケージ",
+          "description": "先端半導体パッケージを提供する。",
+          "groundingId": "amkor-products"
+        },
+        {
+          "canonicalId": "display-product-amkor-02",
+          "label": "ウェハレベルパッケージ",
+          "description": "ウェハレベルパッケージを提供する。",
+          "groundingId": "amkor-products"
+        },
+        {
+          "canonicalId": "display-product-amkor-03",
+          "label": "半導体テスト",
+          "description": "半導体テストを提供する。",
+          "groundingId": "amkor-products"
+        }
+      ]
+    },
+    {
+      "companyId": "ajinomoto-fine-techno",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "ajinomoto-fine-techno-ai-role"
+        ],
+        "value-chain-position": [
+          "ajinomoto-fine-techno-value-chain"
+        ],
+        "key-products": [
+          "ajinomoto-fine-techno-products"
+        ],
+        "technology-moat": [
+          "ajinomoto-fine-techno-positioning",
+          "ajinomoto-fine-techno-technology"
+        ],
+        "capacity-roadmap": [
+          "ajinomoto-fine-techno-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "ajinomoto-fine-techno-risks"
+        ]
+      },
+      "claimDisplay": {
+        "ajinomoto-fine-techno-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "Atlasでは味の素ファインテクノを、CPU・GPUなど高性能半導体のパッケージ基板に使われるABFを通じて、AI計算基盤の高密度化に接続する企業と位置付ける。"
+        },
+        "ajinomoto-fine-techno-value-chain": {
+          "title": "半導体材料・基板の供給層",
+          "statement": "Atlasでは味の素ファインテクノを「半導体材料・基板」に位置し、CPU・GPUなど高性能半導体のパッケージ基板に使われるABFを通じて、AI計算基盤の高密度化に接続する役割を担う企業と整理する。"
+        },
+        "ajinomoto-fine-techno-products": {
+          "title": "主要製品・サービス",
+          "statement": "味の素ファインテクノは、味の素ビルドアップフィルム（ABF）、電子材料・機能性材料を提供する。"
+        },
+        "ajinomoto-fine-techno-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、高性能半導体パッケージ向けABFの長期開発実績、基板メーカー・半導体メーカーの要求に合わせた材料設計、味の素グループの化学・材料技術基盤を、味の素ファインテクノの競争上の重要な特徴として整理する。"
+        },
+        "ajinomoto-fine-techno-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、味の素ビルドアップフィルム（ABF）、電子材料・機能性材料という製品構成を、ABF、パッケージ基板、半導体実装材料に関わる技術基盤として整理する。"
+        },
+        "ajinomoto-fine-techno-capacity-expansion-triage-remediation-v02": {
+          "title": "岐阜県にABF第3生産拠点を計画",
+          "statement": "味の素グループは、2030年以降のABF需要への供給力と将来拡張性を確保するため、岐阜県可児市に味の素ファインテクノの第3生産拠点を計画している。"
+        },
+        "ajinomoto-fine-techno-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、特定材料への事業集中、パッケージ構造や材料方式の変化、非上場子会社のため単体財務情報が限定的を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "主要製品・サービス",
+        "body": "味の素ファインテクノは、味の素ビルドアップフィルム（ABF）、電子材料・機能性材料を提供する。",
+        "groundingId": "ajinomoto-fine-techno-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-ajinomoto-fine-techno-01",
+          "label": "味の素ビルドアップフィルム（ABF）",
+          "description": "味の素ビルドアップフィルム（ABF）を提供する。",
+          "groundingId": "ajinomoto-fine-techno-products"
+        },
+        {
+          "canonicalId": "display-product-ajinomoto-fine-techno-02",
+          "label": "電子材料・機能性材料",
+          "description": "電子材料・機能性材料を提供する。",
+          "groundingId": "ajinomoto-fine-techno-products"
+        }
+      ]
+    }
+  ]
+}

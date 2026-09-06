@@ -3,6 +3,7 @@ import {
   evidenceCompareFirstBatchCompanyIds,
   evidenceCompareRemainingBatch1CompanyIds,
   evidenceCompareRemainingBatch2CompanyIds,
+  evidenceCompareRemainingBatch3CompanyIds,
 } from './company-compare-supported-companies.ts';
 import type { RelationEvidenceBinding, ResolvedRelation } from './relations.ts';
 
@@ -91,6 +92,7 @@ export const evidenceCompareSupportedCompanyIds = Object.freeze([
   ...evidenceCompareFirstBatchCompanyIds,
   ...evidenceCompareRemainingBatch1CompanyIds,
   ...evidenceCompareRemainingBatch2CompanyIds,
+  ...evidenceCompareRemainingBatch3CompanyIds,
 ]);
 
 export function parseEvidenceCompareSearch(
