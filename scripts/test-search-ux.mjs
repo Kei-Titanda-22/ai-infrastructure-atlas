@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import { readdir, readFile } from 'node:fs/promises';
 import { buildSearchText, matchesSearchTokens, normalizeSearchText, searchTokens } from '../src/lib/search-normalization.ts';
 import { createSearchComboboxController } from '../src/scripts/search-combobox-controller.ts';
+import { buildPagefindCompanyAliasMap, createPagefindQueryPlan, createPagefindSearchAdapter } from '../src/lib/pagefind-search-adapter.ts';
 
 const fixture = JSON.parse(await readFile(new URL('./fixtures/search-ux-v01.json', import.meta.url), 'utf8'));
 const companiesDirectory = new URL('../src/data/companies/', import.meta.url);
@@ -34,6 +35,71 @@ for (const testCase of fixture.companyQueries) {
   assert.ok(company && matchesSearchTokens(company.searchText, testCase.query), `${testCase.query} resolves ${testCase.companyId}`);
 }
 assert.equal(identities.some(company => matchesSearchTokens(company.searchText, fixture.unmatchedQuery)), false, 'unmatched input has no Company result');
+
+const aliases = buildPagefindCompanyAliasMap(companies.map(company => ({
+  href: `/companies/${company.id}/`,
+  values: [company.name, company.japaneseName, company.reading, company.ticker, company.id],
+})));
+for (const testCase of fixture.pagefind.primaryQueries) assert.deepEqual(createPagefindQueryPlan(testCase.input), { primary: testCase.expected, supplemental: testCase.supplemental }, `plans Pagefind query ${testCase.input}`);
+assert.equal(Object.keys(aliases).length, identityOwners.size, 'the one-hundred Company alias map has no normalized collisions');
+
+const pagefindCalls = [];
+const pagefindResponses = new Map([
+  ['ふじくら', [{ url: '/companies/other/', meta: { title: 'Other' } }, { url: '/companies/fujikura/', meta: { title: 'Fujikura' } }]],
+  ['フジクラ', [{ url: '/companies/fujikura/', meta: { title: 'Fujikura duplicate' } }]],
+  ['amd', [{ url: '/companies/amd/', meta: { title: 'AMD' } }]],
+]);
+const adapter = createPagefindSearchAdapter({
+  aliases,
+  search: async query => {
+    pagefindCalls.push(query);
+    if (query === 'フジクラ') throw new Error('supplemental unavailable');
+    return { results: (pagefindResponses.get(query) || []).map(item => ({ data: async () => item })) };
+  },
+});
+const kanaRun = await adapter.run('ふじくら');
+assert.deepEqual(pagefindCalls, ['ふじくら', 'フジクラ'], 'runs primary then one distinct kana supplemental query');
+assert.equal(kanaRun.results[0]?.url, '/companies/fujikura/', 'an exact Company alias pins an existing Company Page result only');
+assert.equal(kanaRun.results.length, 2, 'supplemental failure retains the primary result set');
+const duplicateRun = await adapter.run('ふじくら');
+assert.equal(duplicateRun.deduped, true, 'compositionend with the same value does not search twice');
+assert.equal(pagefindCalls.length, 2, 'duplicate input leaves Pagefind calls unchanged');
+const mergeAdapter = createPagefindSearchAdapter({
+  aliases,
+  search: async query => ({ results: (query === 'かな'
+    ? [{ url: '/companies/other/', meta: { title: 'Primary first' } }, { url: '/companies/fujikura/', meta: { title: 'Primary second' } }]
+    : [{ url: '/companies/fujikura/', meta: { title: 'Supplemental duplicate' } }, { url: '/companies/amd/', meta: { title: 'Supplemental only' } }]
+  ).map(item => ({ data: async () => item })) }),
+});
+const mergeRun = await mergeAdapter.run('かな');
+assert.deepEqual(mergeRun.results.map(item => item.url), ['/companies/other/', '/companies/fujikura/', '/companies/amd/'], 'primary order is retained, supplemental results follow, and URLs are unique');
+const prefixAdapter = createPagefindSearchAdapter({
+  aliases,
+  search: async () => ({ results: [{ data: async () => ({ url: '/companies/other/' }) }, { data: async () => ({ url: '/companies/fujikura/' }) }] }),
+});
+assert.equal((await prefixAdapter.run('ふじ')).results[0]?.url, '/companies/other/', 'a partial alias does not rerank Pagefind results');
+const amdRun = await adapter.run('ＡＭＤ');
+assert.equal(amdRun.results[0]?.url, '/companies/amd/', 'non-kana exact alias uses one primary result');
+assert.deepEqual(pagefindCalls.slice(-1), ['amd'], 'non-kana query runs once');
+const emptyRun = await adapter.run('');
+assert.equal(emptyRun.empty, true, 'empty query resets without calling Pagefind');
+assert.equal(pagefindCalls.length, 3, 'empty query produces zero Pagefind calls');
+
+const failingAdapter = createPagefindSearchAdapter({ aliases, search: async () => { throw new Error('Pagefind unavailable'); } });
+assert.equal((await failingAdapter.run('壊れた検索')).error, true, 'primary failure is returned for an error status without an unhandled exception');
+let resolveStale;
+const staleAdapter = createPagefindSearchAdapter({
+  aliases,
+  search: query => query === 'first'
+    ? new Promise(resolve => { resolveStale = resolve; })
+    : Promise.resolve({ results: [{ data: async () => ({ url: '/companies/amd/' }) }] }),
+});
+const staleRun = staleAdapter.run('first');
+const currentRun = await staleAdapter.run('second');
+resolveStale({ results: [{ data: async () => ({ url: '/companies/fujikura/' }) }] });
+const staleResponse = await staleRun;
+assert.equal(staleAdapter.isCurrent(staleResponse.revision), false, 'a stale response cannot replace the current query');
+assert.equal(currentRun.results[0]?.url, '/companies/amd/', 'the current query result remains available');
 
 class FakeElement {
   constructor() { this.attributes = new Map(); this.children = []; this.listeners = new Map(); this.hidden = false; this.dataset = {}; this.value = ''; this.id = ''; this.textContent = ''; }

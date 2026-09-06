@@ -1,8 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 import { withBase } from '../lib/paths';
+import { buildPagefindCompanyAliasMap } from '../lib/pagefind-search-adapter';
 const pagefindPath = withBase('pagefind/pagefind.js');
 const basePath = withBase('');
+const companyAliases = buildPagefindCompanyAliasMap((await getCollection('companies')).map(company => ({
+  href: withBase(`companies/${company.id}/`),
+  values: [company.data.name, company.data.japaneseName, company.data.reading, company.data.ticker, company.id],
+})));
 ---
 <BaseLayout title="全文検索" pageClass="global-visual-pilot global-visual-search">
   <header class="page-head">
@@ -12,15 +18,17 @@ const basePath = withBase('');
       <p class="lead">企業ページ、決算データ、製品・技術、バリューチェーン、主要拠点、財務指標、競争優位、リスクなど、Atlas内の情報を横断して検索します。</p>
     </div>
   </header>
-  <div class="shell section" id="search-app" data-pagefind-path={pagefindPath} data-base-path={basePath}>
-    <form class="search-box" id="full-search-form">
-      <input id="full-search-input" class="control" type="search" placeholder="企業名・技術・製品・工程・地域・財務指標・リスクなどを検索" aria-label="全文検索" />
+  <div class="shell section" id="search-app" data-pagefind-path={pagefindPath} data-base-path={basePath} data-company-aliases={JSON.stringify(companyAliases)}>
+    <form class="search-box" id="full-search-form" action={withBase('search/')} method="get">
+      <input id="full-search-input" class="control" type="search" name="q" placeholder="企業名・技術・製品・工程・地域・財務指標・リスクなどを検索" aria-label="全文検索" />
       <button class="primary-button" type="submit">検索</button>
     </form>
-    <p class="result-count" id="search-status">検索語を入力してください。</p>
-    <div class="search-results" id="search-results" aria-live="polite"></div>
+    <p class="result-count" id="search-status" aria-live="polite">検索語を入力してください。</p>
+    <div class="search-results" id="search-results"></div>
   </div>
-  <script is:inline>
+  <script>
+    import { createPagefindSearchAdapter } from '../lib/pagefind-search-adapter';
+
     const root = document.querySelector('#search-app');
     if (root) {
       const form = root.querySelector('#full-search-form');
@@ -29,6 +37,8 @@ const basePath = withBase('');
       const results = root.querySelector('#search-results');
       const pagefindPath = root.dataset.pagefindPath;
       const basePath = root.dataset.basePath || '/';
+      const aliases = JSON.parse(root.dataset.companyAliases || '{}');
+      let composing = false;
       let pagefind;
       const load = async () => {
         if (pagefind) return pagefind;
@@ -36,29 +46,59 @@ const basePath = withBase('');
         pagefind = await import(pagefindPath);
         return pagefind;
       };
-      form?.addEventListener('submit', async (event) => {
-        event.preventDefault();
-        const q = input instanceof HTMLInputElement ? input.value.trim() : '';
-        if (!q || !results || !status) return;
-        status.textContent = '検索中…'; results.replaceChildren();
-        try {
-          const pf = await load();
-          const search = await pf.search(q);
-          status.textContent = `${search.results.length}件`;
-          for (const ref of search.results.slice(0,30)) {
-            const item = await ref.data();
-            const a = document.createElement('a'); a.className = 'search-result';
-            let url = item.url || '';
-            if (basePath !== '/' && !url.startsWith(basePath)) url = `${basePath.replace(/\/$/,'')}${url}`;
-            a.href = url;
-            const h = document.createElement('h3'); h.textContent = item.meta?.title || item.url;
-            const p = document.createElement('p'); p.innerHTML = item.excerpt || '';
-            a.append(h,p); results.append(a);
-          }
-        } catch (error) {
-          status.textContent = '検索索引を読み込めませんでした。企業一覧の絞り込みを利用してください。';
+      const adapter = createPagefindSearchAdapter({ search: async query => (await load()).search(query), aliases });
+      const render = (items) => {
+        if (!results) return;
+        results.replaceChildren();
+        for (const item of items.slice(0, 30)) {
+          const a = document.createElement('a'); a.className = 'search-result';
+          let url = item.url || '';
+          if (basePath !== '/' && !url.startsWith(basePath)) url = `${basePath.replace(/\/$/,'')}${url}`;
+          a.href = url;
+          const h = document.createElement('h3'); h.textContent = item.meta?.title || item.url || '';
+          const p = document.createElement('p'); p.innerHTML = item.excerpt || '';
+          a.append(h,p); results.append(a);
         }
+      };
+      const runSearch = async (value) => {
+        if (!(input instanceof HTMLInputElement) || !results || !status) return;
+        const pending = adapter.run(value);
+        let response;
+        root.setAttribute('aria-busy', 'true');
+        status.textContent = '検索中…';
+        try {
+          response = await pending;
+          if (!adapter.isCurrent(response.revision) || response.deduped) return;
+          if (response.error) {
+            results.replaceChildren();
+            status.textContent = '検索索引を読み込めませんでした。企業一覧の絞り込みを利用してください。';
+            return;
+          }
+          if (response.empty) {
+            results.replaceChildren();
+            status.textContent = '検索語を入力してください。';
+            return;
+          }
+          render(response.results);
+          status.textContent = `${response.results.length}件`;
+        } finally {
+          if (response && adapter.isCurrent(response.revision)) root.removeAttribute('aria-busy');
+        }
+      };
+      input?.addEventListener('compositionstart', () => { composing = true; });
+      input?.addEventListener('compositionend', () => { composing = false; void runSearch(input instanceof HTMLInputElement ? input.value : ''); });
+      input?.addEventListener('input', () => { void runSearch(input instanceof HTMLInputElement ? input.value : ''); });
+      input?.addEventListener('keydown', event => {
+        if (event.key === 'Enter' && (event.isComposing || composing || event.keyCode === 229)) event.preventDefault();
       });
+      form?.addEventListener('submit', event => {
+        if (composing || event.isComposing || event.keyCode === 229) event.preventDefault();
+      });
+      const initialQuery = new URL(location.href).searchParams.get('q') || '';
+      if (input instanceof HTMLInputElement && initialQuery) {
+        input.value = initialQuery;
+        void runSearch(initialQuery);
+      }
     }
   </script>
 </BaseLayout>
