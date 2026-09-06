@@ -56,7 +56,8 @@
 }
 .compare-suggestion:last-child { border-bottom: 0; }
 .compare-suggestion:hover,
-.compare-suggestion:focus-visible { background: #f3f6f8; }
+.compare-suggestion:focus-visible,
+.compare-suggestion[aria-selected="true"] { background: #f3f6f8; }
 .compare-suggestion-name { color: var(--link); font-weight: 700; text-decoration: underline; }
 .compare-suggestion-meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
 .compare-template-list {

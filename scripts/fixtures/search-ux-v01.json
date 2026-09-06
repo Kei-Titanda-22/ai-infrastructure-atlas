@@ -1,0 +1,28 @@
+{
+  "schemaVersion": "0.1",
+  "normalization": [
+    { "input": "ふじくら", "expected": "ふじくら" },
+    { "input": "フジクラ", "expected": "ふじくら" },
+    { "input": "ﾌｼﾞｸﾗ", "expected": "ふじくら" },
+    { "input": "きおくしあ", "expected": "きおくしあ" },
+    { "input": "キオクシア", "expected": "きおくしあ" },
+    { "input": "えーえすえむえる", "expected": "えーえすえむえる" },
+    { "input": "エーエスエムエル", "expected": "えーえすえむえる" },
+    { "input": "ＡＭＤ", "expected": "amd" },
+    { "input": " AMD  ", "expected": "amd" },
+    { "input": "カ\u3099", "expected": "が" },
+    { "input": "ハ\u309a", "expected": "ぱ" },
+    { "input": "  複数\u3000 空白  ", "expected": "複数 空白" }
+  ],
+  "companyQueries": [
+    { "query": "ふじくら", "companyId": "fujikura" },
+    { "query": "キオクシア", "companyId": "kioxia" },
+    { "query": "えーえすえむえる", "companyId": "asml" },
+    { "query": "ＡＭＤ", "companyId": "amd" },
+    { "query": "amd", "companyId": "amd" }
+  ],
+  "emptyQueries": ["", "   "],
+  "symbolOnlyQuery": "（・）",
+  "unmatchedQuery": "該当しない企業名",
+  "expectedIdentityCollisionCount": 0
+}

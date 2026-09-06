@@ -374,6 +374,7 @@ const companyAssetLoaderSource = await readFile(new URL('../src/lib/company-comp
 const presentationSource = `${component}\n${companyAssetComponent}`;
 const claimComponent = await readFile(new URL('../src/components/CompanyCompareEvidenceClaim.astro', import.meta.url), 'utf8');
 const controller = await readFile(new URL('../src/scripts/company-compare-evidence-ui.ts', import.meta.url), 'utf8');
+const compareSearchController = await readFile(new URL('../src/scripts/search-combobox-controller.ts', import.meta.url), 'utf8');
 const styles = await readFile(new URL('../src/styles/company-compare-evidence-v01.css', import.meta.url), 'utf8');
 const readModelSource = await readFile(new URL('../src/lib/company-compare-evidence-read-model.ts', import.meta.url), 'utf8');
 const parsedClaimTypeLabels = Object.fromEntries(
@@ -1472,6 +1473,9 @@ assert.match(controller, /evidenceControllerInitialized/, 'Evidence controller i
 assert.match(controller, /evidenceControllerInitialized === 'true'\) return Promise\.resolve\(true\)/, 'a completed controller can be initialized idempotently');
 assert.match(controller, /export function initCompanyCompareEvidenceUi\(\): Promise<boolean>/, 'controller exposes an explicit async success contract');
 assert.match(controller, /requiredElement/, 'controller throws when required DOM is missing');
+assert.match(controller, /searchCombobox\.refresh\(true\)/, 'Evidence controller replays an input that existed before lazy initialization');
+assert.match(controller, /createSearchComboboxController/, 'Evidence controller uses the shared IME-safe combobox contract');
+assert.match(compareSearchController, /event\.isComposing \|\| event\.keyCode === 229/, 'shared combobox suppresses IME Enter selection');
 assert.match(controller, /event\.key === 'Escape'/);
 assert.match(controller, /event\.key !== 'Enter' && event\.key !== ' '/, 'Evidence markers have an explicit keyboard activation contract');
 assert.match(controller, /returnFocus/);
