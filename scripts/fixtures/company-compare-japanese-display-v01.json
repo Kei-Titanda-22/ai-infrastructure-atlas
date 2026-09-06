@@ -106,6 +106,18 @@
     "France": "フランス",
     "Switzerland": "スイス",
     "Germany": "ドイツ",
+    "China": "中国",
+    "Israel": "イスラエル",
+    "Singapore": "シンガポール",
+    "South Korea": "韓国",
+    "Sweden": "スウェーデン",
+    "United Kingdom": "英国",
+    "中国": "中国",
+    "イスラエル": "イスラエル",
+    "シンガポール": "シンガポール",
+    "韓国": "韓国",
+    "スウェーデン": "スウェーデン",
+    "英国": "英国",
     "米国": "米国",
     "日本": "日本",
     "チュアラティン": "チュアラティン",
@@ -259,6 +271,26 @@
       ,"sandisk": "百万ドル"
       ,"amkor": "百万ドル"
       ,"ajinomoto-fine-techno": "百万円"
+      ,"arm": "百万ドル"
+      ,"ase-technology": "百万台湾ドル"
+      ,"asmpt": "百万香港ドル"
+      ,"fujikura": "百万円"
+      ,"globalwafers": "百万台湾ドル"
+      ,"hanmi-semiconductor": "百万韓国ウォン"
+      ,"hexagon": "百万ユーロ"
+      ,"jcet": "百万元"
+      ,"johnson-controls": "百万ドル"
+      ,"kinsus": "百万台湾ドル"
+      ,"mediatek": "百万台湾ドル"
+      ,"mobileye": "百万ドル"
+      ,"nan-ya-pcb": "百万台湾ドル"
+      ,"samsung-electronics": "兆韓国ウォン"
+      ,"sk-hynix": "兆韓国ウォン"
+      ,"smic": "百万ドル"
+      ,"sumitomo-electric": "十億円"
+      ,"tower-semiconductor": "百万ドル"
+      ,"umc": "百万台湾ドル"
+      ,"unimicron": "百万台湾ドル"
     },
     "accountingBasisByCompany": {
       "nvidia": "米国会計基準",
@@ -301,6 +333,26 @@
       ,"sandisk": "米国会計基準"
       ,"amkor": "米国会計基準"
       ,"ajinomoto-fine-techno": "日本会計基準（単体）"
+      ,"arm": "米国会計基準"
+      ,"ase-technology": "台湾版国際財務報告基準（Taiwan-IFRS）"
+      ,"asmpt": "香港財務報告基準（HKFRS）"
+      ,"fujikura": "日本会計基準（連結）"
+      ,"globalwafers": "台湾版国際財務報告基準（Taiwan-IFRS）"
+      ,"hanmi-semiconductor": "韓国採択の国際財務報告基準（K-IFRS・連結）"
+      ,"hexagon": "EU採択の国際財務報告基準（IFRS・IAS第34号・年度末報告）"
+      ,"jcet": "中国企業会計準則（PRC GAAP）"
+      ,"johnson-controls": "米国会計基準（連結・継続事業）"
+      ,"kinsus": "台湾金融監督管理委員会採択の国際財務報告基準（IFRS・連結）"
+      ,"mediatek": "台湾金融監督管理委員会採択の国際財務報告基準（IFRS）"
+      ,"mobileye": "米国会計基準"
+      ,"nan-ya-pcb": "台湾版国際財務報告基準（Taiwan-IFRS）"
+      ,"samsung-electronics": "韓国採択の国際財務報告基準（K-IFRS・連結）"
+      ,"sk-hynix": "韓国採択の国際財務報告基準（K-IFRS・連結）"
+      ,"smic": "国際財務報告基準（IFRS）"
+      ,"sumitomo-electric": "日本会計基準"
+      ,"tower-semiconductor": "米国会計基準"
+      ,"umc": "台湾金融監督管理委員会認定の台湾版国際財務報告基準（TIFRS）"
+      ,"unimicron": "台湾金融監督管理委員会採択の国際財務報告基準（IFRS・連結）"
     },
     "periodLabels": {
       "FY2024": "2024年度",
@@ -317,6 +369,10 @@
       "Q1 FY2027": "2027年度 第1四半期",
       "Q2 FY2027": "2027年度 第2四半期",
       "Q2 2025": "2025年 第2四半期",
+      "Q1 2025": "2025年 第1四半期",
+      "Q1 2024": "2024年 第1四半期",
+      "Q2 2024": "2024年 第2四半期",
+      "Q1 2023": "2023年 第1四半期",
       "Q4 FY2025": "2025年度 第4四半期",
       "Q4 FY2026": "2026年度 第4四半期",
       "Q1 2026": "2026年 第1四半期",
@@ -371,6 +427,26 @@
       ,"sandisk": 4
       ,"amkor": 2
       ,"ajinomoto-fine-techno": 2
+      ,"arm": 2
+      ,"ase-technology": 3
+      ,"asmpt": 2
+      ,"fujikura": 2
+      ,"globalwafers": 2
+      ,"hanmi-semiconductor": 2
+      ,"hexagon": 2
+      ,"jcet": 2
+      ,"johnson-controls": 2
+      ,"kinsus": 2
+      ,"mediatek": 2
+      ,"mobileye": 2
+      ,"nan-ya-pcb": 2
+      ,"samsung-electronics": 2
+      ,"sk-hynix": 3
+      ,"smic": 2
+      ,"sumitomo-electric": 2
+      ,"tower-semiconductor": 2
+      ,"umc": 2
+      ,"unimicron": 2
     },
     "forbiddenDetailedEnglishLabels": ["USD · million", "JPY · million", "US GAAP", "Japanese GAAP"],
     "maxDigitFixtures": {
@@ -439,6 +515,34 @@
       "micron": {"displayValue": "80.4%", "periodLabel": "Q3 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-micron-2026-06-24-q3-fy2026"},
       "arista": {"displayValue": "45.4%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-arista-2026-08-04-q2-2026"},
       "bosch": {"displayValue": "1.5%", "periodLabel": "FY2025", "accountingBasis": "IFRS as adopted by the EU, consolidated", "sourceId": "bosch-annual-report-2025"}
+    }
+  },
+  "remainingBatch4FinancialRow": {
+    "selectionId": "remaining-rollout-batch-4",
+    "metricId": "operatingMargin",
+    "compatibility": "blocked",
+    "blockedMetricId": "revenueGrowth",
+    "companies": {
+      "arm": {"displayValue": "18.3%", "periodLabel": "FY2026", "accountingBasis": "US GAAP", "sourceId": "sec-arm-fy2026-20f"},
+      "ase-technology": {"displayValue": "11.1%", "periodLabel": "Q2 2026", "accountingBasis": "Taiwan-IFRS", "sourceId": "earnings-ase-technology-2026-07-30-q2-2026"},
+      "asmpt": {"displayValue": "4.6%", "periodLabel": "FY2025", "accountingBasis": "HKFRS", "sourceId": "annual-report-asmpt-2025"},
+      "fujikura": {"displayValue": "16%", "periodLabel": "FY2026", "accountingBasis": "Japanese GAAP consolidated", "sourceId": "jpx-fujikura-fy2026-financial-results"},
+      "globalwafers": {"displayValue": "10.5%", "periodLabel": "Q1 2026", "accountingBasis": "Taiwan-IFRS", "sourceId": "filing-globalwafers-2026-q1"},
+      "hanmi-semiconductor": {"displayValue": "43.6%", "periodLabel": "FY2025", "accountingBasis": "K-IFRS consolidated", "sourceId": "krx-hanmi-semiconductor-fy2025-business-report"},
+      "hexagon": {"displayValue": "17%", "periodLabel": "FY2025", "accountingBasis": "IFRS (EU), IAS 34 year-end report", "sourceId": "hexagon-fy2025-year-end-report"},
+      "jcet": {"displayValue": "2.5%", "periodLabel": "Q1 2024", "accountingBasis": "PRC GAAP", "sourceId": "report-jcet-2024-q1"},
+      "johnson-controls": {"displayValue": "9.7%", "periodLabel": "FY2025", "accountingBasis": "US GAAP consolidated continuing operations", "sourceId": "sec-johnson-controls-2025-10k"},
+      "kinsus": {"displayValue": "6.8%", "periodLabel": "FY2025", "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated", "sourceId": "kinsus-annual-report-2025"},
+      "mediatek": {"displayValue": "17.4%", "periodLabel": "FY2025", "accountingBasis": "IFRS as endorsed by Taiwan FSC", "sourceId": "mediatek-q4-2025-consolidated-financial-statements"},
+      "mobileye": {"displayValue": "-23.2%", "periodLabel": "FY2025", "accountingBasis": "US GAAP", "sourceId": "sec-mobileye-2025-10k"},
+      "nan-ya-pcb": {"displayValue": "3.8%", "periodLabel": "Q2 2025", "accountingBasis": "Taiwan-IFRS", "sourceId": "filing-nan-ya-pcb-2025-q2"},
+      "samsung-electronics": {"displayValue": "52.2%", "periodLabel": "Q2 2026", "accountingBasis": "K-IFRS consolidated", "sourceId": "earnings-samsung-2026-07-30-q2-2026"},
+      "sk-hynix": {"displayValue": "76%", "periodLabel": "Q2 2026", "accountingBasis": "K-IFRS consolidated", "sourceId": "earnings-sk-hynix-2026-07-29-q2-2026"},
+      "smic": {"displayValue": "11.9%", "periodLabel": "FY2025", "accountingBasis": "IFRS", "sourceId": "hkex-smic-2025-annual-report"},
+      "sumitomo-electric": {"displayValue": "8.2%", "periodLabel": "FY2025", "accountingBasis": "Japanese GAAP", "sourceId": "sumitomo-electric-financial-highlights-fy2025"},
+      "tower-semiconductor": {"displayValue": "12.4%", "periodLabel": "FY2025", "accountingBasis": "US GAAP", "sourceId": "sec-tower-fy2025-20f"},
+      "umc": {"displayValue": "21.8%", "periodLabel": "Q2 2026", "accountingBasis": "TIFRS recognized by Taiwan FSC", "sourceId": "earnings-umc-2026-07-29-q2-2026"},
+      "unimicron": {"displayValue": "5.1%", "periodLabel": "FY2025", "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated", "sourceId": "unimicron-audited-financials-2025"}
     }
   },
   "summaryMarkerCounts": {

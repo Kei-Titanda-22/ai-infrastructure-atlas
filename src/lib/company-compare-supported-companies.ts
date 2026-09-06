@@ -20,6 +20,12 @@ export const evidenceCompareRemainingBatch3CompanyIds = [
   'denso', 'omron', 'yaskawa', 'kla', 'nikon',
   'ibiden', 'shin-etsu-chemical', 'sandisk', 'amkor', 'ajinomoto-fine-techno',
 ] as const;
+export const evidenceCompareRemainingBatch4CompanyIds = [
+  'arm', 'ase-technology', 'asmpt', 'fujikura', 'globalwafers',
+  'hanmi-semiconductor', 'hexagon', 'jcet', 'johnson-controls', 'kinsus',
+  'mediatek', 'mobileye', 'nan-ya-pcb', 'samsung-electronics', 'sk-hynix',
+  'smic', 'sumitomo-electric', 'tower-semiconductor', 'umc', 'unimicron',
+] as const;
 export const evidenceCompareFirstBatchCompanyIds = [
   ...evidenceCompareFirstBatchStage1CompanyIds,
   ...evidenceCompareFirstBatchStage2CompanyIds,

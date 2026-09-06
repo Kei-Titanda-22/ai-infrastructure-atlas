@@ -1,0 +1,1740 @@
+{
+  "schemaVersion": "0.1",
+  "stage": "remaining-rollout-batch-4",
+  "companyIds": [
+    "arm",
+    "ase-technology",
+    "asmpt",
+    "fujikura",
+    "globalwafers",
+    "hanmi-semiconductor",
+    "hexagon",
+    "jcet",
+    "johnson-controls",
+    "kinsus",
+    "mediatek",
+    "mobileye",
+    "nan-ya-pcb",
+    "samsung-electronics",
+    "sk-hynix",
+    "smic",
+    "sumitomo-electric",
+    "tower-semiconductor",
+    "umc",
+    "unimicron"
+  ],
+  "companies": [
+    {
+      "companyId": "arm",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "arm-ai-role"
+        ],
+        "value-chain-position": [
+          "arm-value-chain"
+        ],
+        "key-products": [
+          "arm-products"
+        ],
+        "technology-moat": [
+          "arm-positioning",
+          "arm-technology"
+        ],
+        "capacity-roadmap": [
+          "arm-strategy"
+        ],
+        "key-risks": [
+          "arm-risks"
+        ]
+      },
+      "claimDisplay": {
+        "arm-ai-role": {
+          "title": "AIデータセンターのCPU基盤",
+          "statement": "AtlasではArmを、AIデータセンターでアクセラレータの制御、データ移動、汎用計算を担うCPU設計・計算基盤の供給側と位置付ける。"
+        },
+        "arm-value-chain": {
+          "title": "半導体製造ではなく設計IPの上流",
+          "statement": "AtlasではArmを、半導体企業やクラウド事業者が自社チップを設計するためのIPをライセンスする上流企業と整理する。Arm自身を半導体製造会社とは扱わない。"
+        },
+        "arm-products": {
+          "title": "CPU・GPU・NPU・System IP・CSS",
+          "statement": "Armの製品群にはCPU、GPU・NPU、System IP、用途別に統合したCompute Subsystem、開発ツールとソフトウェアが含まれる。"
+        },
+        "arm-positioning": {
+          "title": "独立系のライセンス可能な計算基盤として説明",
+          "statement": "Armは、自社のアーキテクチャ、CPU設計、アクセラレータ関連IPを、他社が利用できる独立系プロセッサ技術の中核として説明し、ソフトウェアとパートナーのエコシステムを競争上の強みとしている。"
+        },
+        "arm-technology": {
+          "title": "Neoverse CSSを事前検証済み基盤として提供",
+          "statement": "ArmはNeoverse CSSを、Armv9技術を組み込んだ事前検証・性能最適化済みのインフラ向け計算基盤として説明している。"
+        },
+        "arm-strategy": {
+          "title": "Edge・Physical・Cloud AIへ事業を再編",
+          "statement": "ArmはAIワークロードの拡大に合わせ、事業をEdge AI、Physical AI、Cloud AIの3領域へ再編し、IPからCSS、Arm AGI CPUへ製品範囲を広げている。"
+        },
+        "arm-risks": {
+          "title": "代替アーキテクチャと生産シリコン移行のリスク",
+          "statement": "Armはx86、RISC-V、顧客の内製アーキテクチャとの競争に加え、生産シリコン参入に伴う第三者ファウンドリ、供給網、在庫の新たなリスクを開示している。"
+        }
+      },
+      "productPortfolio": {
+        "title": "CPU・GPU・NPUとSystem IP",
+        "body": "Armの製品群にはCPU、GPU・NPU、System IP、用途別に統合したCompute Subsystem、開発ツールとソフトウェアが含まれる。",
+        "groundingId": "arm-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-arm-01",
+          "label": "CPU",
+          "description": "CPUを提供する。",
+          "groundingId": "arm-products"
+        },
+        {
+          "canonicalId": "display-product-arm-02",
+          "label": "GPU・NPU",
+          "description": "GPU・NPUを提供する。",
+          "groundingId": "arm-products"
+        },
+        {
+          "canonicalId": "display-product-arm-03",
+          "label": "System IP",
+          "description": "System IPを提供する。",
+          "groundingId": "arm-products"
+        },
+        {
+          "canonicalId": "display-product-arm-04",
+          "label": "Compute Subsystem",
+          "description": "Compute Subsystemを提供する。",
+          "groundingId": "arm-products"
+        },
+        {
+          "canonicalId": "display-product-arm-05",
+          "label": "開発ツールとソフトウェア",
+          "description": "開発ツールとソフトウェアを提供する。",
+          "groundingId": "arm-products"
+        }
+      ]
+    },
+    {
+      "companyId": "ase-technology",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "ase-technology-ai-role"
+        ],
+        "value-chain-position": [
+          "ase-technology-value-chain"
+        ],
+        "key-products": [
+          "ase-technology-products"
+        ],
+        "technology-moat": [
+          "ase-technology-positioning",
+          "ase-technology-technology"
+        ],
+        "capacity-roadmap": [
+          "ase-technology-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "ase-technology-risks"
+        ]
+      },
+      "claimDisplay": {
+        "ase-technology-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではASE Technology（ASEテクノロジー）を、AI半導体の高密度化に伴う先端パッケージ、テスト、システム統合需要を取り込む企業と位置付ける。"
+        },
+        "ase-technology-value-chain": {
+          "title": "Test & Back-endの供給層",
+          "statement": "AtlasではASE Technology（ASEテクノロジー）を「Test & Back-end」に位置し、AI半導体の高密度化に伴う先端パッケージ、テスト、システム統合需要を取り込む役割を担う企業と整理する。"
+        },
+        "ase-technology-products": {
+          "title": "主要製品・サービス",
+          "statement": "ASE Technology（ASEテクノロジー）は、半導体パッケージング、半導体テスト、SiP・システム統合を提供する。"
+        },
+        "ase-technology-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、大規模なOSAT供給能力、パッケージとテストの一体運用、幅広い顧客基盤を、ASE Technology（ASEテクノロジー）の競争上の重要な特徴として整理する。"
+        },
+        "ase-technology-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、半導体パッケージング、半導体テスト、SiP・システム統合という製品構成を、OSAT、先端パッケージ、半導体テストに関わる技術基盤として整理する。"
+        },
+        "ase-technology-capacity-expansion-triage-remediation-v02": {
+          "title": "先端packaging能力の増強",
+          "statement": "ASE TechnologyはAI・high-performance computing需要へ対応するため、advanced packaging and testの設備・生産能力を増強する投資計画を開示している。"
+        },
+        "ase-technology-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、半導体サイクル、設備投資負担、先端パッケージ競争を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "パッケージングからSiP統合まで",
+        "body": "ASE Technology（ASEテクノロジー）は、半導体パッケージング、半導体テスト、SiP・システム統合を提供する。",
+        "groundingId": "ase-technology-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-ase-technology-01",
+          "label": "半導体パッケージング",
+          "description": "半導体パッケージングを提供する。",
+          "groundingId": "ase-technology-products"
+        },
+        {
+          "canonicalId": "display-product-ase-technology-02",
+          "label": "半導体テスト",
+          "description": "半導体テストを提供する。",
+          "groundingId": "ase-technology-products"
+        },
+        {
+          "canonicalId": "display-product-ase-technology-03",
+          "label": "SiP・システム統合",
+          "description": "SiP・システム統合を提供する。",
+          "groundingId": "ase-technology-products"
+        }
+      ]
+    },
+    {
+      "companyId": "asmpt",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "asmpt-ai-role"
+        ],
+        "value-chain-position": [
+          "asmpt-value-chain"
+        ],
+        "key-products": [
+          "asmpt-products"
+        ],
+        "technology-moat": [
+          "asmpt-positioning",
+          "asmpt-technology"
+        ],
+        "capacity-roadmap": [
+          "asmpt-strategy"
+        ],
+        "key-risks": [
+          "asmpt-risks"
+        ]
+      },
+      "claimDisplay": {
+        "asmpt-ai-role": {
+          "title": "AI chipのadvanced packagingとserver実装工程",
+          "statement": "AtlasではASMPTを、GPU・memory等のchipletを接合・封止するadvanced packagingと、AI server boardを実装するSMT工程の装置企業と位置付ける。"
+        },
+        "asmpt-value-chain": {
+          "title": "wafer後工程からboard実装までを担当",
+          "statement": "ASMPTはwafer deposition後からbonding、molding、package形成、さらにelectronics boardへのSMT実装までの製造工程に装置を供給する。"
+        },
+        "asmpt-products": {
+          "title": "TCB・die bonding・molding・SMT・MES",
+          "statement": "ASMPTの製品群にはthermo-compression bonding、die・flip-chip bonding、wire bonding、molding、SMT line equipment、manufacturing execution softwareが含まれる。"
+        },
+        "asmpt-positioning": {
+          "title": "advanced packagingのtechnology leadership",
+          "statement": "ASMPTはadvanced packagingでのtechnology leadership、幅広いSEMI・SMT portfolio、顧客との共同開発を競争上の位置付けとして説明する。"
+        },
+        "asmpt-technology": {
+          "title": "fine-pitch TCBとchiplet integration",
+          "statement": "ASMPTはfine-pitch thermo-compression bondingやplasma AORを含むadvanced packaging solutionを展開し、chiplet integrationの高密度接続へ対応する。"
+        },
+        "asmpt-strategy": {
+          "title": "AI需要とadvanced packagingを成長軸に設定",
+          "statement": "ASMPTはAI用途の投資がSEMI・SMT需要を支えると見込み、TCB等のadvanced packagingとR&D能力への継続投資を方針として示す。"
+        },
+        "asmpt-risks": {
+          "title": "半導体cycle・顧客投資・供給網・競争",
+          "statement": "ASMPTは半導体・electronics設備投資のcycle、customer concentration、supply chain、技術転換、競争等の事業リスクを開示する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "TCB・die bonding・molding・SMT・MES",
+        "body": "ASMPTの製品群にはthermo-compression bonding、die・flip-chip bonding、wire bonding、molding、SMT line equipment、manufacturing execution softwareが含まれる。",
+        "groundingId": "asmpt-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-asmpt-01",
+          "label": "thermo-compression bonding",
+          "description": "thermo-compression bondingを提供する。",
+          "groundingId": "asmpt-products"
+        },
+        {
+          "canonicalId": "display-product-asmpt-02",
+          "label": "die・flip-chip bonding",
+          "description": "die・flip-chip bondingを提供する。",
+          "groundingId": "asmpt-products"
+        },
+        {
+          "canonicalId": "display-product-asmpt-03",
+          "label": "wire bonding",
+          "description": "wire bondingを提供する。",
+          "groundingId": "asmpt-products"
+        },
+        {
+          "canonicalId": "display-product-asmpt-04",
+          "label": "molding",
+          "description": "moldingを提供する。",
+          "groundingId": "asmpt-products"
+        },
+        {
+          "canonicalId": "display-product-asmpt-05",
+          "label": "SMT line equipment",
+          "description": "SMT line equipmentを提供する。",
+          "groundingId": "asmpt-products"
+        },
+        {
+          "canonicalId": "display-product-asmpt-06",
+          "label": "manufacturing execution software",
+          "description": "manufacturing execution softwareを提供する。",
+          "groundingId": "asmpt-products"
+        }
+      ]
+    },
+    {
+      "companyId": "fujikura",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "fujikura-ai-role"
+        ],
+        "value-chain-position": [
+          "fujikura-value-chain"
+        ],
+        "key-products": [
+          "fujikura-products"
+        ],
+        "technology-moat": [
+          "fujikura-positioning",
+          "fujikura-technology"
+        ],
+        "capacity-roadmap": [
+          "fujikura-capacity"
+        ],
+        "key-risks": [
+          "fujikura-risks-triage-remediation-v02"
+        ]
+      },
+      "claimDisplay": {
+        "fujikura-ai-role": {
+          "title": "データセンター内外の高密度光配線を支える",
+          "statement": "Atlasではフジクラを、生成AIとcloudによる通信量増加に対応する高密度光fiber cableを供給するinterconnect企業と位置付ける。"
+        },
+        "fujikura-value-chain": {
+          "title": "光fiberとネットワーク機器の間のcable・接続層",
+          "statement": "Atlasではフジクラを、光fiberを高密度cableと接続ソリューションへ加工し、data centerの物理networkへ供給する層として整理する。"
+        },
+        "fujikura-products": {
+          "title": "SWR・WTC高密度光fiber cable",
+          "statement": "主力のSWRとWTCは間欠接着ribbonを束ね、細径・高密度の光fiber cableを構成する。"
+        },
+        "fujikura-positioning": {
+          "title": "国内data center向け最多心数と説明",
+          "statement": "フジクラは4000心SWR/WTCを、国内data center向け光fiber cableで最多心数と説明している。"
+        },
+        "fujikura-technology": {
+          "title": "4000心を最大外径23mmに収容",
+          "statement": "国内data center向け4000心SWR/WTCは最大外径23mmで、16心または8心の間欠接着ribbonを用いる。"
+        },
+        "fujikura-capacity": {
+          "title": "4000心lineupを製品化",
+          "statement": "フジクラは2026年3月に国内data center向け4000心SWR/WTC lineupの製品化を発表した。"
+        },
+        "fujikura-risks-triage-remediation-v02": {
+          "title": "全社リスク管理体制",
+          "statement": "フジクラは、リスク管理委員会が全社横断でリスクを識別・評価し、取締役会の監督下で対応状況を管理する体制を開示している。"
+        }
+      },
+      "productPortfolio": {
+        "title": "高密度光fiber cable",
+        "body": "主力のSWRとWTCは間欠接着ribbonを束ね、細径・高密度の光fiber cableを構成する。",
+        "groundingId": "fujikura-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-fujikura-01",
+          "label": "SWR",
+          "description": "SWRを提供する。",
+          "groundingId": "fujikura-products"
+        },
+        {
+          "canonicalId": "display-product-fujikura-02",
+          "label": "WTC高密度光fiber cable",
+          "description": "WTC高密度光fiber cableを提供する。",
+          "groundingId": "fujikura-products"
+        }
+      ]
+    },
+    {
+      "companyId": "globalwafers",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "globalwafers-ai-role"
+        ],
+        "value-chain-position": [
+          "globalwafers-value-chain"
+        ],
+        "key-products": [
+          "globalwafers-products"
+        ],
+        "technology-moat": [
+          "globalwafers-positioning",
+          "globalwafers-technology"
+        ],
+        "capacity-roadmap": [
+          "globalwafers-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "globalwafers-risks"
+        ]
+      },
+      "claimDisplay": {
+        "globalwafers-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではGlobalWafers（グローバルウェーハズ）を、先端ロジック・メモリを含む半導体生産に不可欠なシリコンウェハを供給し、AI向け増産の上流に位置する企業と位置付ける。"
+        },
+        "globalwafers-value-chain": {
+          "title": "半導体材料・基板の供給層",
+          "statement": "AtlasではGlobalWafers（グローバルウェーハズ）を「半導体材料・基板」に位置し、先端ロジック・メモリを含む半導体生産に不可欠なシリコンウェハを供給し、AI向け増産の上流に位置する役割を担う企業と整理する。"
+        },
+        "globalwafers-products": {
+          "title": "主要製品・サービス",
+          "statement": "GlobalWafers（グローバルウェーハズ）は、研磨シリコンウェハ、エピタキシャルウェハ、SOI・特殊ウェハを提供する。"
+        },
+        "globalwafers-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、米欧アジアにまたがる製造拠点、幅広いシリコンウェハ製品群、大手半導体メーカーへの供給基盤を、GlobalWafers（グローバルウェーハズ）の競争上の重要な特徴として整理する。"
+        },
+        "globalwafers-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、研磨シリコンウェハ、エピタキシャルウェハ、SOI・特殊ウェハという製品構成を、シリコンウェハ、エピタキシャルウェハ、SOIウェハに関わる技術基盤として整理する。"
+        },
+        "globalwafers-capacity-expansion-triage-remediation-v02": {
+          "title": "Shermanの300 mm silicon wafer工場を開業",
+          "statement": "GlobalWafersは2025年5月にTexas州Shermanでfully integratedな300 mm silicon wafer工場を開業し、需要に応じて最大6 phaseまで拡張できる142 acre campusを整備した。"
+        },
+        "globalwafers-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、ウェハ需給サイクル、大型増産投資の稼働率リスク、地域・エネルギーコスト変動を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "シリコンウェハと特殊ウェハ",
+        "body": "GlobalWafers（グローバルウェーハズ）は、研磨シリコンウェハ、エピタキシャルウェハ、SOI・特殊ウェハを提供する。",
+        "groundingId": "globalwafers-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-globalwafers-01",
+          "label": "研磨シリコンウェハ",
+          "description": "研磨シリコンウェハを提供する。",
+          "groundingId": "globalwafers-products"
+        },
+        {
+          "canonicalId": "display-product-globalwafers-02",
+          "label": "エピタキシャルウェハ",
+          "description": "エピタキシャルウェハを提供する。",
+          "groundingId": "globalwafers-products"
+        },
+        {
+          "canonicalId": "display-product-globalwafers-03",
+          "label": "SOI・特殊ウェハ",
+          "description": "SOI・特殊ウェハを提供する。",
+          "groundingId": "globalwafers-products"
+        }
+      ]
+    },
+    {
+      "companyId": "hanmi-semiconductor",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "hanmi-semiconductor-ai-role"
+        ],
+        "value-chain-position": [
+          "hanmi-semiconductor-value-chain"
+        ],
+        "key-products": [
+          "hanmi-semiconductor-products"
+        ],
+        "technology-moat": [
+          "hanmi-semiconductor-positioning",
+          "hanmi-semiconductor-technology"
+        ],
+        "capacity-roadmap": [
+          "hanmi-semiconductor-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "hanmi-semiconductor-risks"
+        ]
+      },
+      "claimDisplay": {
+        "hanmi-semiconductor-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではHANMI Semiconductor（ハンミ・セミコンダクター）を、HBMの積層・接合工程に直接関与し、AIアクセラレータ向けHBM増産の影響を受けやすい企業と位置付ける。"
+        },
+        "hanmi-semiconductor-value-chain": {
+          "title": "Test & Back-endの供給層",
+          "statement": "AtlasではHANMI Semiconductor（ハンミ・セミコンダクター）を「Test & Back-end」に位置し、HBMの積層・接合工程に直接関与し、AIアクセラレータ向けHBM増産の影響を受けやすい役割を担う企業と整理する。"
+        },
+        "hanmi-semiconductor-products": {
+          "title": "主要製品・サービス",
+          "statement": "HANMI Semiconductor（ハンミ・セミコンダクター）は、HBM向けTCボンダ、マイクロソー・ビジョンプレースメント装置、6面外観検査装置を提供する。"
+        },
+        "hanmi-semiconductor-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、HBM積層向け熱圧着装置への集中、設計から部品加工・組立までの垂直統合、後工程の切断・検査装置群を、HANMI Semiconductor（ハンミ・セミコンダクター）の競争上の重要な特徴として整理する。"
+        },
+        "hanmi-semiconductor-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、HBM向けTCボンダ、マイクロソー・ビジョンプレースメント装置、6面外観検査装置という製品構成を、HBM、HBM向け装置、TCボンディングに関わる技術基盤として整理する。"
+        },
+        "hanmi-semiconductor-capacity-expansion-triage-remediation-v02": {
+          "title": "次世代HBM向け第7工場を建設",
+          "statement": "Hanmi Semiconductorは次世代premium HBM向けhybrid bonder専用の第7工場へ578.24億wonを投じ、2026年11月末までの建設を計画している。"
+        },
+        "hanmi-semiconductor-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、HBM設備投資への依存、主要メモリ顧客の投資計画変動、接合方式の世代交代を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "HBM向け後工程装置",
+        "body": "HANMI Semiconductor（ハンミ・セミコンダクター）は、HBM向けTCボンダ、マイクロソー・ビジョンプレースメント装置、6面外観検査装置を提供する。",
+        "groundingId": "hanmi-semiconductor-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-hanmi-semiconductor-01",
+          "label": "HBM向けTCボンダ",
+          "description": "HBM向けTCボンダを提供する。",
+          "groundingId": "hanmi-semiconductor-products"
+        },
+        {
+          "canonicalId": "display-product-hanmi-semiconductor-02",
+          "label": "マイクロソー・ビジョンプレースメント装置",
+          "description": "マイクロソー・ビジョンプレースメント装置を提供する。",
+          "groundingId": "hanmi-semiconductor-products"
+        },
+        {
+          "canonicalId": "display-product-hanmi-semiconductor-03",
+          "label": "6面外観検査装置",
+          "description": "6面外観検査装置を提供する。",
+          "groundingId": "hanmi-semiconductor-products"
+        }
+      ]
+    },
+    {
+      "companyId": "hexagon",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "hexagon-ai-role"
+        ],
+        "value-chain-position": [
+          "hexagon-value-chain"
+        ],
+        "key-products": [
+          "hexagon-products"
+        ],
+        "technology-moat": [
+          "hexagon-positioning",
+          "hexagon-technology"
+        ],
+        "capacity-roadmap": [
+          "hexagon-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "hexagon-risks"
+        ]
+      },
+      "claimDisplay": {
+        "hexagon-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではHexagon（ヘキサゴン）を、現実空間を高精度に測定・モデル化し、自律機械や産業AIの認識・制御基盤を提供する企業と位置付ける。"
+        },
+        "hexagon-value-chain": {
+          "title": "Physical AIの供給層",
+          "statement": "AtlasではHexagon（ヘキサゴン）を「Physical AI」に位置し、現実空間を高精度に測定・モデル化し、自律機械や産業AIの認識・制御基盤を提供する役割を担う企業と整理する。"
+        },
+        "hexagon-products": {
+          "title": "主要製品・サービス",
+          "statement": "Hexagon（ヘキサゴン）は、精密計測システム、測位・位置情報技術、デジタルリアリティ・産業ソフトウェアを提供する。"
+        },
+        "hexagon-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、高精度な計測・位置情報技術、ハードとソフトの統合、製造・建設・自律化への幅広い用途を、Hexagon（ヘキサゴン）の競争上の重要な特徴として整理する。"
+        },
+        "hexagon-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、精密計測システム、測位・位置情報技術、デジタルリアリティ・産業ソフトウェアという製品構成を、計測、位置情報、デジタルツインに関わる技術基盤として整理する。"
+        },
+        "hexagon-strategy-triage-remediation-v02": {
+          "title": "precision measurement・positioning・autonomyへ集中",
+          "statement": "Hexagonはprecision measurement、positioning、autonomous solutionsを中核技術領域とし、manufacturing、construction、aerospace、agriculture、mining等のproductivity・quality・safety向上へ展開していると位置付けている。"
+        },
+        "hexagon-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、産業景気、買収統合、ソフトウェア競争を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "精密計測と産業ソフトウェア",
+        "body": "Hexagon（ヘキサゴン）は、精密計測システム、測位・位置情報技術、デジタルリアリティ・産業ソフトウェアを提供する。",
+        "groundingId": "hexagon-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-hexagon-01",
+          "label": "精密計測システム",
+          "description": "精密計測システムを提供する。",
+          "groundingId": "hexagon-products"
+        },
+        {
+          "canonicalId": "display-product-hexagon-02",
+          "label": "測位・位置情報技術",
+          "description": "測位・位置情報技術を提供する。",
+          "groundingId": "hexagon-products"
+        },
+        {
+          "canonicalId": "display-product-hexagon-03",
+          "label": "デジタルリアリティ・産業ソフトウェア",
+          "description": "デジタルリアリティ・産業ソフトウェアを提供する。",
+          "groundingId": "hexagon-products"
+        }
+      ]
+    },
+    {
+      "companyId": "jcet",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "jcet-ai-role"
+        ],
+        "value-chain-position": [
+          "jcet-value-chain"
+        ],
+        "key-products": [
+          "jcet-products"
+        ],
+        "technology-moat": [
+          "jcet-positioning",
+          "jcet-technology"
+        ],
+        "capacity-roadmap": [
+          "jcet-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "jcet-risks"
+        ]
+      },
+      "claimDisplay": {
+        "jcet-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではJCET（長電科技）を、中国・グローバル顧客の高性能半導体向け後工程・先端パッケージ需要を担う企業と位置付ける。"
+        },
+        "jcet-value-chain": {
+          "title": "Test & Back-endの供給層",
+          "statement": "AtlasではJCET（長電科技）を「Test & Back-end」に位置し、中国・グローバル顧客の高性能半導体向け後工程・先端パッケージ需要を担う役割を担う企業と整理する。"
+        },
+        "jcet-products": {
+          "title": "主要製品・サービス",
+          "statement": "JCET（長電科技）は、半導体パッケージング、ウェハレベル・先端パッケージ、半導体テストを提供する。"
+        },
+        "jcet-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、中国最大級のOSAT規模、幅広いパッケージ技術、グローバル拠点を、JCET（長電科技）の競争上の重要な特徴として整理する。"
+        },
+        "jcet-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、半導体パッケージング、ウェハレベル・先端パッケージ、半導体テストという製品構成を、OSAT、先端パッケージ、半導体テストに関わる技術基盤として整理する。"
+        },
+        "jcet-capacity-expansion-triage-remediation-v02": {
+          "title": "Shanghaiの車載chip後工程拠点を建設",
+          "statement": "JCETは2024年末時点でShanghaiのAutomotive Chip Back-End Manufacturing Baseの躯体工事を完了し、2025年下期の稼働開始を計画していた。"
+        },
+        "jcet-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、中国半導体規制、設備投資サイクル、先端パッケージ技術競争を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "パッケージングと半導体テスト",
+        "body": "JCET（長電科技）は、半導体パッケージング、ウェハレベル・先端パッケージ、半導体テストを提供する。",
+        "groundingId": "jcet-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-jcet-01",
+          "label": "半導体パッケージング",
+          "description": "半導体パッケージングを提供する。",
+          "groundingId": "jcet-products"
+        },
+        {
+          "canonicalId": "display-product-jcet-02",
+          "label": "ウェハレベル・先端パッケージ",
+          "description": "ウェハレベル・先端パッケージを提供する。",
+          "groundingId": "jcet-products"
+        },
+        {
+          "canonicalId": "display-product-jcet-03",
+          "label": "半導体テスト",
+          "description": "半導体テストを提供する。",
+          "groundingId": "jcet-products"
+        }
+      ]
+    },
+    {
+      "companyId": "johnson-controls",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "johnson-controls-ai-role"
+        ],
+        "value-chain-position": [
+          "johnson-controls-value-chain"
+        ],
+        "key-products": [
+          "johnson-controls-products"
+        ],
+        "technology-moat": [
+          "johnson-controls-positioning",
+          "johnson-controls-technology"
+        ],
+        "capacity-roadmap": [
+          "johnson-controls-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "johnson-controls-risks"
+        ]
+      },
+      "claimDisplay": {
+        "johnson-controls-ai-role": {
+          "title": "AI data centerのthermal・building control層",
+          "statement": "AtlasではJohnson Controlsを、AI data centerのHVAC、冷却、building management、fire・security、運用serviceを担うfacility infrastructure供給側と位置付ける。"
+        },
+        "johnson-controls-value-chain": {
+          "title": "data center facilityの設計・設置・運用を支援",
+          "statement": "Johnson Controlsはdata centerのIT機器そのものではなく、冷却、building control、安全設備と継続serviceを提供するfacility・operations層に位置する。"
+        },
+        "johnson-controls-products": {
+          "title": "HVAC・building controls・OpenBlue・service",
+          "statement": "Johnson Controlsのportfolioはcommercial HVAC equipment、control system、security・fire system、OpenBlue digital platform、設置・maintenance・retrofit serviceを含む。"
+        },
+        "johnson-controls-positioning": {
+          "title": "portfolio・installed base・field positionを強みと説明",
+          "statement": "Johnson ControlsはHVAC、controls、fire、security、serviceの包括的portfolio、installed base、field positionを成長市場での強みとして説明している。"
+        },
+        "johnson-controls-technology": {
+          "title": "OpenBlueでbuilding dataを統合",
+          "statement": "OpenBlueはbuilding productとserviceをdigital capabilityへ統合し、data-drivenなsmart buildingの管理・運用solutionを提供する。"
+        },
+        "johnson-controls-capacity-expansion-triage-remediation-v02": {
+          "title": "欧州・中東のdata center冷却供給を拡張",
+          "statement": "Johnson ControlsはEurope・Middle EastでYORK YVAM chillerを発売し、域内製造能力を追加してhyperscale・colocation data center向けの供給を拡張している。"
+        },
+        "johnson-controls-risks": {
+          "title": "cycle・project遅延・供給・technology変化リスク",
+          "statement": "Johnson Controlsは顧客の大型project延期・取消、原材料・component供給、trade policy、製品technologyと規制変化への対応をリスクとして開示している。"
+        }
+      },
+      "productPortfolio": {
+        "title": "HVACと建物制御",
+        "body": "Johnson Controlsのportfolioはcommercial HVAC equipment、control system、security・fire system、OpenBlue digital platform、設置・maintenance・retrofit serviceを含む。",
+        "groundingId": "johnson-controls-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-johnson-controls-01",
+          "label": "commercial HVAC equipment",
+          "description": "commercial HVAC equipmentを提供する。",
+          "groundingId": "johnson-controls-products"
+        },
+        {
+          "canonicalId": "display-product-johnson-controls-02",
+          "label": "control system",
+          "description": "control systemを提供する。",
+          "groundingId": "johnson-controls-products"
+        },
+        {
+          "canonicalId": "display-product-johnson-controls-03",
+          "label": "security・fire system",
+          "description": "security・fire systemを提供する。",
+          "groundingId": "johnson-controls-products"
+        },
+        {
+          "canonicalId": "display-product-johnson-controls-04",
+          "label": "OpenBlue digital platform",
+          "description": "OpenBlue digital platformを提供する。",
+          "groundingId": "johnson-controls-products"
+        },
+        {
+          "canonicalId": "display-product-johnson-controls-05",
+          "label": "設置・maintenance・retrofit service",
+          "description": "設置・maintenance・retrofit serviceを提供する。",
+          "groundingId": "johnson-controls-products"
+        }
+      ]
+    },
+    {
+      "companyId": "kinsus",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "kinsus-ai-role"
+        ],
+        "value-chain-position": [
+          "kinsus-value-chain"
+        ],
+        "key-products": [
+          "kinsus-products"
+        ],
+        "technology-moat": [
+          "kinsus-positioning",
+          "kinsus-technology"
+        ],
+        "capacity-roadmap": [
+          "kinsus-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "kinsus-risks"
+        ]
+      },
+      "claimDisplay": {
+        "kinsus-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではKinsus（景碩科技）を、高性能計算半導体やネットワーク半導体を実装するパッケージ基板を供給する企業と位置付ける。"
+        },
+        "kinsus-value-chain": {
+          "title": "半導体材料・基板の供給層",
+          "statement": "AtlasではKinsus（景碩科技）を「半導体材料・基板」に位置し、高性能計算半導体やネットワーク半導体を実装するパッケージ基板を供給する役割を担う企業と整理する。"
+        },
+        "kinsus-products": {
+          "title": "主要製品・サービス",
+          "statement": "Kinsus（景碩科技）は、ICパッケージ基板、FC-BGA基板、高密度基板を提供する。"
+        },
+        "kinsus-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、パッケージ基板量産技術、台湾半導体供給網との近接、高性能用途への対応を、Kinsus（景碩科技）の競争上の重要な特徴として整理する。"
+        },
+        "kinsus-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、ICパッケージ基板、FC-BGA基板、高密度基板という製品構成を、パッケージ基板、ABF基板、FC-BGAに関わる技術基盤として整理する。"
+        },
+        "kinsus-capacity-expansion-triage-remediation-v02": {
+          "title": "Xing-Feng高度化・Youth工場を拡張",
+          "statement": "Kinsusは2026年のABF substrate市場回復とAI substrate需要へ備え、Xing-Feng Factoryの技術高度化とYouth Factoryの拡張を進め、Youth拡張設備の計画どおりの稼働開始を短期優先事項としている。"
+        },
+        "kinsus-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、基板市況、顧客集中、設備投資負担を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "ICパッケージ基板とFC-BGA",
+        "body": "Kinsus（景碩科技）は、ICパッケージ基板、FC-BGA基板、高密度基板を提供する。",
+        "groundingId": "kinsus-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-kinsus-01",
+          "label": "ICパッケージ基板",
+          "description": "ICパッケージ基板を提供する。",
+          "groundingId": "kinsus-products"
+        },
+        {
+          "canonicalId": "display-product-kinsus-02",
+          "label": "FC-BGA基板",
+          "description": "FC-BGA基板を提供する。",
+          "groundingId": "kinsus-products"
+        },
+        {
+          "canonicalId": "display-product-kinsus-03",
+          "label": "高密度基板",
+          "description": "高密度基板を提供する。",
+          "groundingId": "kinsus-products"
+        }
+      ]
+    },
+    {
+      "companyId": "mediatek",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "mediatek-ai-role"
+        ],
+        "value-chain-position": [
+          "mediatek-value-chain"
+        ],
+        "key-products": [
+          "mediatek-products"
+        ],
+        "technology-moat": [
+          "mediatek-positioning",
+          "mediatek-technology"
+        ],
+        "capacity-roadmap": [
+          "mediatek-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "mediatek-risks"
+        ]
+      },
+      "claimDisplay": {
+        "mediatek-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではMediaTek（メディアテック）を、端末向けSoCとAI処理機能を通じ、エッジ側での生成AI・推論需要に接続する企業と位置付ける。"
+        },
+        "mediatek-value-chain": {
+          "title": "Compute & Siliconの供給層",
+          "statement": "AtlasではMediaTek（メディアテック）を「Compute & Silicon」に位置し、端末向けSoCとAI処理機能を通じ、エッジ側での生成AI・推論需要に接続する役割を担う企業と整理する。"
+        },
+        "mediatek-products": {
+          "title": "主要製品・サービス",
+          "statement": "MediaTek（メディアテック）は、Mobile SoCs、Edge AI SoCs、Connectivity chipsを提供する。"
+        },
+        "mediatek-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、スマートフォンSoCの量産規模、通信・接続機能を統合した製品設計、幅広い端末市場への展開を、MediaTek（メディアテック）の競争上の重要な特徴として整理する。"
+        },
+        "mediatek-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、Mobile SoCs、Edge AI SoCs、Connectivity chipsという製品構成を、SoC、edge AI、connectivityに関わる技術基盤として整理する。"
+        },
+        "mediatek-strategy-triage-remediation-v02": {
+          "title": "advanced process・packaging・400G SerDes/CPOへ投資",
+          "statement": "MediaTekはcloud data center businessの拡大に向け、advanced process・advanced packaging、400G SerDes、co-packaged opticsの開発へ投資する方針を示している。"
+        },
+        "mediatek-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、スマートフォン需要の変動、Qualcommなどとの高性能SoC競争、先端ファウンドリ供給への依存を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "モバイル・Edge AI SoC",
+        "body": "MediaTek（メディアテック）は、Mobile SoCs、Edge AI SoCs、Connectivity chipsを提供する。",
+        "groundingId": "mediatek-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-mediatek-01",
+          "label": "Mobile SoCs",
+          "description": "Mobile SoCsを提供する。",
+          "groundingId": "mediatek-products"
+        },
+        {
+          "canonicalId": "display-product-mediatek-02",
+          "label": "Edge AI SoCs",
+          "description": "Edge AI SoCsを提供する。",
+          "groundingId": "mediatek-products"
+        },
+        {
+          "canonicalId": "display-product-mediatek-03",
+          "label": "Connectivity chips",
+          "description": "Connectivity chipsを提供する。",
+          "groundingId": "mediatek-products"
+        }
+      ]
+    },
+    {
+      "companyId": "mobileye",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "mobileye-ai-role"
+        ],
+        "value-chain-position": [
+          "mobileye-value-chain"
+        ],
+        "key-products": [
+          "mobileye-products"
+        ],
+        "technology-moat": [
+          "mobileye-positioning",
+          "mobileye-technology"
+        ],
+        "capacity-roadmap": [
+          "mobileye-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "mobileye-risks"
+        ]
+      },
+      "claimDisplay": {
+        "mobileye-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではMobileye（モービルアイ）を、カメラ認識、車載SoC、地図情報を統合し、自動車向けPhysical AIの中核を担う企業と位置付ける。"
+        },
+        "mobileye-value-chain": {
+          "title": "Physical AIの供給層",
+          "statement": "AtlasではMobileye（モービルアイ）を「Physical AI」に位置し、カメラ認識、車載SoC、地図情報を統合し、自動車向けPhysical AIの中核を担う役割を担う企業と整理する。"
+        },
+        "mobileye-products": {
+          "title": "主要製品・サービス",
+          "statement": "Mobileye（モービルアイ）は、EyeQ車載プロセッサ、ADAS・自動運転ソフトウェア、REMマッピングを提供する。"
+        },
+        "mobileye-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、車載向け専用計算基盤、長年のADAS量産実績、認識・地図・SoCの統合を、Mobileye（モービルアイ）の競争上の重要な特徴として整理する。"
+        },
+        "mobileye-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、EyeQ車載プロセッサ、ADAS・自動運転ソフトウェア、REMマッピングという製品構成を、ADAS、自動運転、車載SoCに関わる技術基盤として整理する。"
+        },
+        "mobileye-strategy-triage-remediation-v02": {
+          "title": "ADASから自動運転へmodularに拡張",
+          "statement": "MobileyeはCloud-Enhanced ADASとSuperVisionからChauffeur、Driveへ、共通のECU baselineを活用してeyes-off・hands-off機能を段階的かつmodularに拡張する方針を示している。"
+        },
+        "mobileye-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動車生産サイクル、OEM内製化、自動運転の実装時期を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "車載プロセッサと自動運転ソフトウェア",
+        "body": "Mobileye（モービルアイ）は、EyeQ車載プロセッサ、ADAS・自動運転ソフトウェア、REMマッピングを提供する。",
+        "groundingId": "mobileye-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-mobileye-01",
+          "label": "EyeQ車載プロセッサ",
+          "description": "EyeQ車載プロセッサを提供する。",
+          "groundingId": "mobileye-products"
+        },
+        {
+          "canonicalId": "display-product-mobileye-02",
+          "label": "ADAS・自動運転ソフトウェア",
+          "description": "ADAS・自動運転ソフトウェアを提供する。",
+          "groundingId": "mobileye-products"
+        },
+        {
+          "canonicalId": "display-product-mobileye-03",
+          "label": "REMマッピング",
+          "description": "REMマッピングを提供する。",
+          "groundingId": "mobileye-products"
+        }
+      ]
+    },
+    {
+      "companyId": "nan-ya-pcb",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "nan-ya-pcb-ai-role"
+        ],
+        "value-chain-position": [
+          "nan-ya-pcb-value-chain"
+        ],
+        "key-products": [
+          "nan-ya-pcb-products"
+        ],
+        "technology-moat": [
+          "nan-ya-pcb-positioning",
+          "nan-ya-pcb-technology"
+        ],
+        "capacity-roadmap": [
+          "nan-ya-pcb-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "nan-ya-pcb-risks"
+        ]
+      },
+      "claimDisplay": {
+        "nan-ya-pcb-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではNan Ya PCB（南亜電路板）を、CPU・GPU・サーバー向け高密度パッケージ基板の供給網を支える企業と位置付ける。"
+        },
+        "nan-ya-pcb-value-chain": {
+          "title": "半導体材料・基板の供給層",
+          "statement": "AtlasではNan Ya PCB（南亜電路板）を「半導体材料・基板」に位置し、CPU・GPU・サーバー向け高密度パッケージ基板の供給網を支える役割を担う企業と整理する。"
+        },
+        "nan-ya-pcb-products": {
+          "title": "主要製品・サービス",
+          "statement": "Nan Ya PCB（南亜電路板）は、ICパッケージ基板、ABF基板、プリント配線板を提供する。"
+        },
+        "nan-ya-pcb-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、高密度基板の量産能力、台湾の電子材料供給網、サーバー・半導体用途への展開を、Nan Ya PCB（南亜電路板）の競争上の重要な特徴として整理する。"
+        },
+        "nan-ya-pcb-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、ICパッケージ基板、ABF基板、プリント配線板という製品構成を、パッケージ基板、ABF基板、PCBに関わる技術基盤として整理する。"
+        },
+        "nan-ya-pcb-capacity-expansion-triage-remediation-v02": {
+          "title": "Kunshan・ShulinでABF substrate lineを増設",
+          "statement": "Nan Ya PCBはKunshanのABF substrate production lineを2021年に、ShulinのABF substrate production lineを2022年にそれぞれ稼働させた。"
+        },
+        "nan-ya-pcb-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、基板需給、顧客・用途集中、設備投資サイクルを主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "ICパッケージ・ABF基板",
+        "body": "Nan Ya PCB（南亜電路板）は、ICパッケージ基板、ABF基板、プリント配線板を提供する。",
+        "groundingId": "nan-ya-pcb-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-nan-ya-pcb-01",
+          "label": "ICパッケージ基板",
+          "description": "ICパッケージ基板を提供する。",
+          "groundingId": "nan-ya-pcb-products"
+        },
+        {
+          "canonicalId": "display-product-nan-ya-pcb-02",
+          "label": "ABF基板",
+          "description": "ABF基板を提供する。",
+          "groundingId": "nan-ya-pcb-products"
+        },
+        {
+          "canonicalId": "display-product-nan-ya-pcb-03",
+          "label": "プリント配線板",
+          "description": "プリント配線板を提供する。",
+          "groundingId": "nan-ya-pcb-products"
+        }
+      ]
+    },
+    {
+      "companyId": "samsung-electronics",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "samsung-electronics-ai-role"
+        ],
+        "value-chain-position": [
+          "samsung-electronics-value-chain"
+        ],
+        "key-products": [
+          "samsung-electronics-products"
+        ],
+        "technology-moat": [
+          "samsung-electronics-positioning",
+          "samsung-electronics-technology"
+        ],
+        "capacity-roadmap": [
+          "samsung-electronics-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "samsung-electronics-risks"
+        ]
+      },
+      "claimDisplay": {
+        "samsung-electronics-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではSamsung Electronics（サムスン電子）を、HBM/DRAM、NAND、先端ロジック製造の複数チャネルからAIインフラ投資に接続する企業と位置付ける。"
+        },
+        "samsung-electronics-value-chain": {
+          "title": "Memoryの供給層",
+          "statement": "AtlasではSamsung Electronics（サムスン電子）を「Memory」に位置し、HBM/DRAM、NAND、先端ロジック製造の複数チャネルからAIインフラ投資に接続する役割を担う企業と整理する。"
+        },
+        "samsung-electronics-products": {
+          "title": "主要製品・サービス",
+          "statement": "Samsung Electronics（サムスン電子）は、DRAM / HBM、NAND flash、Foundry servicesを提供する。"
+        },
+        "samsung-electronics-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、メモリの大規模生産、複数半導体領域を跨ぐ垂直性、製造投資余力を、Samsung Electronics（サムスン電子）の競争上の重要な特徴として整理する。"
+        },
+        "samsung-electronics-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、DRAM / HBM、NAND flash、Foundry servicesという製品構成を、DRAM、HBM、NANDに関わる技術基盤として整理する。"
+        },
+        "samsung-electronics-capacity-expansion-triage-remediation-v02": {
+          "title": "memory・foundry・Pyeongtaekへ継続投資",
+          "statement": "Samsung Electronicsは2025年にmemory、foundry、Pyeongtaek facility、次世代semiconductor R&D complexへの投資を継続し、AI需要に対応する生産・技術基盤を増強した。"
+        },
+        "samsung-electronics-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、メモリ価格変動、ファウンドリ競争、巨額CAPEXと稼働率リスクを主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "DRAM・HBM、NAND、Foundry",
+        "body": "Samsung Electronics（サムスン電子）は、DRAM / HBM、NAND flash、Foundry servicesを提供する。",
+        "groundingId": "samsung-electronics-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-samsung-electronics-01",
+          "label": "DRAM / HBM",
+          "description": "DRAM / HBMを提供する。",
+          "groundingId": "samsung-electronics-products"
+        },
+        {
+          "canonicalId": "display-product-samsung-electronics-02",
+          "label": "NAND flash",
+          "description": "NAND flashを提供する。",
+          "groundingId": "samsung-electronics-products"
+        },
+        {
+          "canonicalId": "display-product-samsung-electronics-03",
+          "label": "Foundry services",
+          "description": "Foundry servicesを提供する。",
+          "groundingId": "samsung-electronics-products"
+        }
+      ]
+    },
+    {
+      "companyId": "sk-hynix",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "sk-hynix-ai-role"
+        ],
+        "value-chain-position": [
+          "sk-hynix-value-chain"
+        ],
+        "key-products": [
+          "sk-hynix-products"
+        ],
+        "technology-moat": [
+          "sk-hynix-positioning",
+          "sk-hynix-technology"
+        ],
+        "capacity-roadmap": [
+          "sk-hynix-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "sk-hynix-risks"
+        ]
+      },
+      "claimDisplay": {
+        "sk-hynix-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではSK hynix（SKハイニックス）を、AIアクセラレータ向けHBM需要への感応度が高い企業と位置付ける。"
+        },
+        "sk-hynix-value-chain": {
+          "title": "Memoryの供給層",
+          "statement": "AtlasではSK hynix（SKハイニックス）を「Memory」に位置し、AIアクセラレータ向けHBM需要への感応度が高い役割を担う企業と整理する。"
+        },
+        "sk-hynix-products": {
+          "title": "主要製品・サービス",
+          "statement": "SK hynix（SKハイニックス）は、HBM、DRAM、NAND flashを提供する。"
+        },
+        "sk-hynix-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、高帯域メモリ分野の製品競争力、DRAM量産力、AI向け高付加価値ミックスを、SK hynix（SKハイニックス）の競争上の重要な特徴として整理する。"
+        },
+        "sk-hynix-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、HBM、DRAM、NAND flashという製品構成を、HBM、DRAM、NANDに関わる技術基盤として整理する。"
+        },
+        "sk-hynix-capacity-expansion-triage-remediation-v02": {
+          "title": "AI memory向け3拠点投資",
+          "statement": "SK hynixはAI memory需要に備え、Yongin Semiconductor Clusterへ120兆won、Cheongju M15Xへ20兆won、Indiana advanced packaging plantへ5.2兆wonを投じる計画を開示している。"
+        },
+        "sk-hynix-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、メモリ価格サイクル、顧客認定・世代移行、設備投資と需給の振れを主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "HBM・DRAM・NAND",
+        "body": "SK hynix（SKハイニックス）は、HBM、DRAM、NAND flashを提供する。",
+        "groundingId": "sk-hynix-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-sk-hynix-01",
+          "label": "HBM",
+          "description": "HBMを提供する。",
+          "groundingId": "sk-hynix-products"
+        },
+        {
+          "canonicalId": "display-product-sk-hynix-02",
+          "label": "DRAM",
+          "description": "DRAMを提供する。",
+          "groundingId": "sk-hynix-products"
+        },
+        {
+          "canonicalId": "display-product-sk-hynix-03",
+          "label": "NAND flash",
+          "description": "NAND flashを提供する。",
+          "groundingId": "sk-hynix-products"
+        }
+      ]
+    },
+    {
+      "companyId": "smic",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "smic-ai-role"
+        ],
+        "value-chain-position": [
+          "smic-value-chain"
+        ],
+        "key-products": [
+          "smic-products"
+        ],
+        "technology-moat": [
+          "smic-positioning",
+          "smic-technology"
+        ],
+        "capacity-roadmap": [
+          "smic-capacity"
+        ],
+        "key-risks": [
+          "smic-risks"
+        ]
+      },
+      "claimDisplay": {
+        "smic-ai-role": {
+          "title": "中国本土のlogic・specialty wafer製造",
+          "statement": "AtlasではSMICを、AI systemに使われるlogic、power・analog、RF、memory、image sensor等をwafer製造する中国本土のfoundry企業と位置付ける。"
+        },
+        "smic-value-chain": {
+          "title": "fabless・IDM向けwafer manufacturing",
+          "statement": "SMICはchip設計後のphotomask・wafer processを受託し、assembly・testより前のfront-end manufacturingを担う。"
+        },
+        "smic-products": {
+          "title": "logic・power/analog・RF・memory・CIS platform",
+          "statement": "SMICはlogic IC、power/analog、高電圧display driver、embedded・stand-alone non-volatile memory、mixed-signal/RF、CMOS image sensor等のplatformを量産する。"
+        },
+        "smic-positioning": {
+          "title": "世界第2位のpure-play foundryと説明",
+          "statement": "SMICは2025年売上に基づき世界第2位、中国本土第1位のpure-play wafer foundryと説明している。"
+        },
+        "smic-technology": {
+          "title": "8-inch・12-inchの多様なprocess platform",
+          "statement": "SMICは8-inchと12-inchの多様なprocess platform、PDK、IP support、mask製造を組み合わせて製品導入から量産までを支援する。"
+        },
+        "smic-capacity": {
+          "title": "月産100万枚超の8-inch換算能力",
+          "statement": "SMICの2025年末の月間能力はstandard logic 8-inch equivalentで100万枚を超え、同年も段階的にcapacity expansionを進めた。"
+        },
+        "smic-risks": {
+          "title": "技術開発・輸出規制・設備投資・供給網",
+          "statement": "SMICはprocess technology開発の不確実性、人材、国際貿易・輸出規制、巨額設備投資、需要・価格、原材料・装置供給をリスクとして開示する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "logicからCISまでの半導体platform",
+        "body": "SMICはlogic IC、power/analog、高電圧display driver、embedded・stand-alone non-volatile memory、mixed-signal/RF、CMOS image sensor等のplatformを量産する。",
+        "groundingId": "smic-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-smic-01",
+          "label": "logic IC",
+          "description": "logic ICを提供する。",
+          "groundingId": "smic-products"
+        },
+        {
+          "canonicalId": "display-product-smic-02",
+          "label": "power/analog",
+          "description": "power/analogを提供する。",
+          "groundingId": "smic-products"
+        },
+        {
+          "canonicalId": "display-product-smic-03",
+          "label": "高電圧display driver",
+          "description": "高電圧display driverを提供する。",
+          "groundingId": "smic-products"
+        },
+        {
+          "canonicalId": "display-product-smic-04",
+          "label": "embedded・stand-alone non-volatile memory",
+          "description": "embedded・stand-alone non-volatile memoryを提供する。",
+          "groundingId": "smic-products"
+        },
+        {
+          "canonicalId": "display-product-smic-05",
+          "label": "mixed-signal/RF",
+          "description": "mixed-signal/RFを提供する。",
+          "groundingId": "smic-products"
+        },
+        {
+          "canonicalId": "display-product-smic-06",
+          "label": "CMOS image sensor",
+          "description": "CMOS image sensorを提供する。",
+          "groundingId": "smic-products"
+        }
+      ]
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "sumitomo-electric-ai-role"
+        ],
+        "value-chain-position": [
+          "sumitomo-electric-value-chain"
+        ],
+        "key-products": [
+          "sumitomo-electric-products"
+        ],
+        "technology-moat": [
+          "sumitomo-electric-positioning",
+          "sumitomo-electric-technology"
+        ],
+        "capacity-roadmap": [
+          "sumitomo-electric-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "sumitomo-electric-risks"
+        ]
+      },
+      "claimDisplay": {
+        "sumitomo-electric-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "Atlasでは住友電気工業を、AIデータセンターでは高速光通信と大容量電力供給の両面からインフラ増設に関与する企業と位置付ける。"
+        },
+        "sumitomo-electric-value-chain": {
+          "title": "Network & Opticalの供給層",
+          "statement": "Atlasでは住友電気工業を「Network & Optical」に位置し、AIデータセンターでは高速光通信と大容量電力供給の両面からインフラ増設に関与する役割を担う企業と整理する。"
+        },
+        "sumitomo-electric-products": {
+          "title": "主要製品・サービス",
+          "statement": "住友電気工業は、Optical fiber and cable、Optical communication devices、Power cables and systemsを提供する。"
+        },
+        "sumitomo-electric-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、光通信と電力ケーブルを併せ持つ総合的な技術基盤、光ファイバから光部品までの広い通信製品群、大容量送電・配電向けケーブル技術を、住友電気工業の競争上の重要な特徴として整理する。"
+        },
+        "sumitomo-electric-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、Optical fiber and cable、Optical communication devices、Power cables and systemsという製品構成を、optical fiber、data center cable、power cableに関わる技術基盤として整理する。"
+        },
+        "sumitomo-electric-capacity-expansion-triage-remediation-v02": {
+          "title": "Scotland海底送電cable工場",
+          "statement": "住友電気工業はScotlandでsubsea transmission cable factoryの建設を開始し、Europeのpower transmission projectに対応する製造能力を増強している。"
+        },
+        "sumitomo-electric-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、自動車を含む非AI事業の影響が大きい事業構成、通信・電力設備投資サイクル、原材料・為替変動を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "光通信と電力ケーブル",
+        "body": "住友電気工業は、Optical fiber and cable、Optical communication devices、Power cables and systemsを提供する。",
+        "groundingId": "sumitomo-electric-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-sumitomo-electric-01",
+          "label": "Optical fiber and cable",
+          "description": "Optical fiber and cableを提供する。",
+          "groundingId": "sumitomo-electric-products"
+        },
+        {
+          "canonicalId": "display-product-sumitomo-electric-02",
+          "label": "Optical communication devices",
+          "description": "Optical communication devicesを提供する。",
+          "groundingId": "sumitomo-electric-products"
+        },
+        {
+          "canonicalId": "display-product-sumitomo-electric-03",
+          "label": "Power cables and systems",
+          "description": "Power cables and systemsを提供する。",
+          "groundingId": "sumitomo-electric-products"
+        }
+      ]
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "tower-semiconductor-ai-role"
+        ],
+        "value-chain-position": [
+          "tower-semiconductor-value-chain"
+        ],
+        "key-products": [
+          "tower-semiconductor-products"
+        ],
+        "technology-moat": [
+          "tower-semiconductor-positioning",
+          "tower-semiconductor-technology"
+        ],
+        "capacity-roadmap": [
+          "tower-semiconductor-capacity"
+        ],
+        "key-risks": [
+          "tower-semiconductor-risks"
+        ]
+      },
+      "claimDisplay": {
+        "tower-semiconductor-ai-role": {
+          "title": "AI光通信向けSiPho・SiGe wafer製造",
+          "statement": "AtlasではTowerを、AI data centerのoptical transceiverに使うsilicon photonics PICとSiGe EICをwafer製造するspecialty foundryと位置付ける。"
+        },
+        "tower-semiconductor-value-chain": {
+          "title": "fabless・IDMのspecialty waferを受託製造",
+          "statement": "Towerはfabless semiconductor companyとIDMから設計を受け、qualificationを経てspecialty analog・photonics waferを量産する。"
+        },
+        "tower-semiconductor-products": {
+          "title": "SiPho・SiGe・RF SOI・power・CIS",
+          "statement": "Towerのprocess portfolioにはsilicon photonics、SiGe BiCMOS、RF CMOS・SOI、analog・mixed-signal、power management、CMOS image sensor等が含まれる。"
+        },
+        "tower-semiconductor-positioning": {
+          "title": "high-value analogのleading foundryを志向",
+          "statement": "Towerはadvanced specialty technology、設計支援、customer collaborationを通じてhigh-value analog semiconductor solutionのleading foundryを目指すと説明する。"
+        },
+        "tower-semiconductor-technology": {
+          "title": "specialty CMOSに光・RF・analogを統合",
+          "statement": "Towerはspecialty CMOS processにoptical component、advanced passive、high-voltage、RF、analog deviceを統合し、用途別platformを提供する。"
+        },
+        "tower-semiconductor-capacity": {
+          "title": "SiPho・SiGe等へ9.2億ドル投資計画",
+          "statement": "Towerは直近2年間に総額9.2億ドルの設備投資計画を開始し、Fab 2・3・7・9のSiPho・SiGeとpower等の能力拡張を進める。"
+        },
+        "tower-semiconductor-risks": {
+          "title": "fab稼働率・投資回収・顧客集中・地政学",
+          "statement": "Towerは高固定費のfab稼働率、capacity投資の回収、顧客集中、technology transition、設備・材料供給、Israelを含む地政学を主要リスクとして開示する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "SiPho・SiGe・RF SOI",
+        "body": "Towerのprocess portfolioにはsilicon photonics、SiGe BiCMOS、RF CMOS・SOI、analog・mixed-signal、power management、CMOS image sensor等が含まれる。",
+        "groundingId": "tower-semiconductor-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-tower-semiconductor-01",
+          "label": "silicon photonics",
+          "description": "silicon photonicsを提供する。",
+          "groundingId": "tower-semiconductor-products"
+        },
+        {
+          "canonicalId": "display-product-tower-semiconductor-02",
+          "label": "SiGe BiCMOS",
+          "description": "SiGe BiCMOSを提供する。",
+          "groundingId": "tower-semiconductor-products"
+        },
+        {
+          "canonicalId": "display-product-tower-semiconductor-03",
+          "label": "RF CMOS・SOI",
+          "description": "RF CMOS・SOIを提供する。",
+          "groundingId": "tower-semiconductor-products"
+        },
+        {
+          "canonicalId": "display-product-tower-semiconductor-04",
+          "label": "analog・mixed-signal",
+          "description": "analog・mixed-signalを提供する。",
+          "groundingId": "tower-semiconductor-products"
+        },
+        {
+          "canonicalId": "display-product-tower-semiconductor-05",
+          "label": "power management",
+          "description": "power managementを提供する。",
+          "groundingId": "tower-semiconductor-products"
+        },
+        {
+          "canonicalId": "display-product-tower-semiconductor-06",
+          "label": "CMOS image sensor",
+          "description": "CMOS image sensorを提供する。",
+          "groundingId": "tower-semiconductor-products"
+        }
+      ]
+    },
+    {
+      "companyId": "umc",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "umc-ai-role"
+        ],
+        "value-chain-position": [
+          "umc-value-chain"
+        ],
+        "key-products": [
+          "umc-products"
+        ],
+        "technology-moat": [
+          "umc-positioning",
+          "umc-technology"
+        ],
+        "capacity-roadmap": [
+          "umc-capacity-expansion-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "umc-risks"
+        ]
+      },
+      "claimDisplay": {
+        "umc-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではUMC（聯華電子）を、AIインフラ周辺の電源、接続、制御等に使われる多様な半導体の量産を担う企業と位置付ける。"
+        },
+        "umc-value-chain": {
+          "title": "Foundry & Logic Manufacturingの供給層",
+          "statement": "AtlasではUMC（聯華電子）を「Foundry & Logic Manufacturing」に位置し、AIインフラ周辺の電源、接続、制御等に使われる多様な半導体の量産を担う役割を担う企業と整理する。"
+        },
+        "umc-products": {
+          "title": "主要製品・サービス",
+          "statement": "UMC（聯華電子）は、成熟プロセスの半導体受託製造、特殊プロセス、300mm量産サービスを提供する。"
+        },
+        "umc-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、大規模な成熟プロセス供給力、台湾・海外の製造拠点、長期顧客関係を、UMC（聯華電子）の競争上の重要な特徴として整理する。"
+        },
+        "umc-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、成熟プロセスの半導体受託製造、特殊プロセス、300mm量産サービスという製品構成を、ファウンドリ、成熟プロセス、特殊プロセスに関わる技術基盤として整理する。"
+        },
+        "umc-capacity-expansion-triage-remediation-v02": {
+          "title": "Fab 12i Phase 3と2025 capacity投資",
+          "statement": "UMCはSingaporeのFab 12i Phase 3を稼働させ、2025年のcapital expenditure約16億USDをFab 12A、Fab 12i、USCXMのcapacity expansionとUSJC・8-inch fabsのtechnology upgradeへ配分した。"
+        },
+        "umc-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、成熟ノードの価格競争、中国ファウンドリとの競争、景気循環を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "成熟・特殊プロセスの受託製造",
+        "body": "UMC（聯華電子）は、成熟プロセスの半導体受託製造、特殊プロセス、300mm量産サービスを提供する。",
+        "groundingId": "umc-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-umc-01",
+          "label": "成熟プロセスの半導体受託製造",
+          "description": "成熟プロセスの半導体受託製造を提供する。",
+          "groundingId": "umc-products"
+        },
+        {
+          "canonicalId": "display-product-umc-02",
+          "label": "特殊プロセス",
+          "description": "特殊プロセスを提供する。",
+          "groundingId": "umc-products"
+        },
+        {
+          "canonicalId": "display-product-umc-03",
+          "label": "300mm量産サービス",
+          "description": "300mm量産サービスを提供する。",
+          "groundingId": "umc-products"
+        }
+      ]
+    },
+    {
+      "companyId": "unimicron",
+      "readinessClass": "DISPLAY_COPY_ONLY",
+      "dimensions": {
+        "ai-role": [
+          "unimicron-ai-role"
+        ],
+        "value-chain-position": [
+          "unimicron-value-chain"
+        ],
+        "key-products": [
+          "unimicron-products"
+        ],
+        "technology-moat": [
+          "unimicron-positioning",
+          "unimicron-technology"
+        ],
+        "capacity-roadmap": [
+          "unimicron-strategy-triage-remediation-v02"
+        ],
+        "key-risks": [
+          "unimicron-risks"
+        ]
+      },
+      "claimDisplay": {
+        "unimicron-ai-role": {
+          "title": "AIインフラでの役割",
+          "statement": "AtlasではUnimicron（欣興電子）を、GPU・CPU・ネットワークASIC向けの高多層ABFパッケージ基板を供給する企業と位置付ける。"
+        },
+        "unimicron-value-chain": {
+          "title": "半導体材料・基板の供給層",
+          "statement": "AtlasではUnimicron（欣興電子）を「半導体材料・基板」に位置し、GPU・CPU・ネットワークASIC向けの高多層ABFパッケージ基板を供給する役割を担う企業と整理する。"
+        },
+        "unimicron-products": {
+          "title": "主要製品・サービス",
+          "statement": "Unimicron（欣興電子）は、ABFパッケージ基板、FC-BGA基板、高密度プリント配線板を提供する。"
+        },
+        "unimicron-positioning": {
+          "title": "競争上の特徴",
+          "statement": "Atlasでは、先端パッケージ基板の量産能力、高多層・高密度基板技術、大手半導体顧客との関係を、Unimicron（欣興電子）の競争上の重要な特徴として整理する。"
+        },
+        "unimicron-technology": {
+          "title": "製品を支える技術領域",
+          "statement": "Atlasでは、ABFパッケージ基板、FC-BGA基板、高密度プリント配線板という製品構成を、パッケージ基板、ABF基板、PCBに関わる技術基盤として整理する。"
+        },
+        "unimicron-strategy-triage-remediation-v02": {
+          "title": "product mix・digitalization・intelligent automation",
+          "statement": "Unimicronはdiverse supply-chain collaboration、blue-ocean productとproduct mixの最適化、APQPを含むdigitalization、lean intelligent automationを短期経営方針としている。"
+        },
+        "unimicron-risks": {
+          "title": "主要な確認点",
+          "statement": "Atlasでは、一次資料の事業・リスク開示を踏まえ、ABF需給サイクル、設備投資負担、顧客集中を主要な確認点として整理する。"
+        }
+      },
+      "productPortfolio": {
+        "title": "ABF・FC-BGA基板",
+        "body": "Unimicron（欣興電子）は、ABFパッケージ基板、FC-BGA基板、高密度プリント配線板を提供する。",
+        "groundingId": "unimicron-products",
+        "summaryVisible": false,
+        "expandedVisible": true
+      },
+      "productEntries": [
+        {
+          "canonicalId": "display-product-unimicron-01",
+          "label": "ABFパッケージ基板",
+          "description": "ABFパッケージ基板を提供する。",
+          "groundingId": "unimicron-products"
+        },
+        {
+          "canonicalId": "display-product-unimicron-02",
+          "label": "FC-BGA基板",
+          "description": "FC-BGA基板を提供する。",
+          "groundingId": "unimicron-products"
+        },
+        {
+          "canonicalId": "display-product-unimicron-03",
+          "label": "高密度プリント配線板",
+          "description": "高密度プリント配線板を提供する。",
+          "groundingId": "unimicron-products"
+        }
+      ]
+    }
+  ]
+}
