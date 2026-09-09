@@ -103,6 +103,7 @@ const evidenceManifest = await readJson('../src/data/company-evidence-manifest.j
 const sourceManifest = await readJson('../src/data/source-registry-manifest.json');
 const fixture = await readJson('./fixtures/company-compare-evidence-ui-snapshot-v01.json');
 const displayFixture = await readJson('./fixtures/company-compare-japanese-display-v01.json');
+const japaneseFirstCopyFixture = await readJson('./fixtures/japanese-first-copy-v01.json');
 const artifactSizeBaselineFixture = await readJson('./fixtures/company-compare-artifact-size-baseline-v01.json');
 const onDemandSizeFixture = await readJson('./fixtures/company-compare-on-demand-size-v01.json');
 
@@ -1612,6 +1613,8 @@ if (process.argv.includes('--dist')) {
     await readFile(new URL(`../dist/evidence-fragments/company-compare-evidence-v01/${companyId}/index.html`, import.meta.url), 'utf8'),
   ])));
   const fragmentHtml = pilotIds.map(companyId => assetHtmlById[companyId]).join('\n');
+  // Historical pre-Japanese-first baseline, retained as release history only.
+  // The PR #173 artifact freeze below is the active unconditional guard.
   const frozenPilotAssetSha256 = {
     nvidia: '117dfcd1ba581fa1cacd8ed04d7f7e956b78edc74757a88c6aead46d0d388dc3',
     broadcom: 'dee43be84e969544a98ee5799bf862166c10b9c67d26153c6d0f69e8927941a1',
@@ -1634,23 +1637,44 @@ if (process.argv.includes('--dist')) {
     arista: '7f11e87e0d1a825daaba3eb10e1992aa5a5674be4cdc7227837336e61700c880',
     bosch: 'cd1c5cea3580fbfaac745ddb9490f4cc08ac163b0a4f26cf723fd7a2f9801acd',
   };
+  const artifactRoot = 'evidence-fragments/company-compare-evidence-v01';
+  const actualArtifactHtmlByPath = Object.fromEntries([
+    ['index.html', shellHtml],
+    ...supportedIds.map(companyId => [`${companyId}/index.html`, assetHtmlById[companyId]]),
+  ]);
+  const expectedArtifactSha256ByPath = japaneseFirstCopyFixture.artifactFreeze?.sha256ByPath;
+  assert.equal(
+    japaneseFirstCopyFixture.artifactFreeze?.metadata?.baseMain,
+    '27d6c537f55a223afbd58311d0366cdadd3f8dc0',
+    'Japanese-first artifact freeze records its base main',
+  );
+  assert.equal(
+    japaneseFirstCopyFixture.artifactFreeze?.metadata?.purpose,
+    'PR #173 Japanese-first presentation foundation approved final artifacts',
+    'Japanese-first artifact freeze records its purpose',
+  );
+  assert.equal(japaneseFirstCopyFixture.artifactFreeze?.metadata?.pathBase, `dist/${artifactRoot}`, 'Japanese-first artifact freeze records its path base');
+  assert.ok(expectedArtifactSha256ByPath && typeof expectedArtifactSha256ByPath === 'object', 'Japanese-first exact artifact SHA-256 map is present');
+  const expectedArtifactPaths = Object.keys(expectedArtifactSha256ByPath);
+  const actualArtifactPaths = Object.keys(actualArtifactHtmlByPath).sort();
+  assert.deepEqual(expectedArtifactPaths, [...expectedArtifactPaths].sort(), 'Japanese-first artifact SHA-256 paths are stably sorted');
+  assert.equal(expectedArtifactPaths.length, 101, 'Japanese-first artifact SHA-256 fixture freezes shell plus 100 assets');
+  assert.equal(actualArtifactPaths.length, 101, 'built artifacts contain shell plus 100 assets');
+  assert.deepEqual(actualArtifactPaths, expectedArtifactPaths, 'expected and actual Japanese-first artifact path sets match exactly');
+  for (const artifactPath of expectedArtifactPaths) {
+    assert.equal(
+      createHash('sha256').update(actualArtifactHtmlByPath[artifactPath]).digest('hex'),
+      expectedArtifactSha256ByPath[artifactPath],
+      `${artifactPath}: PR #173 approved artifact SHA-256 is exact`,
+    );
+  }
+  const testScriptSource = await readFile(new URL('./test-company-compare-evidence-ui.mjs', import.meta.url), 'utf8');
+  assert.doesNotMatch(testScriptSource, /if \(assetSha256 !== frozenPilotAssetSha256\[companyId\]\)/, 'no permissive legacy SHA mismatch fallback remains');
   for (const companyId of [...pilotIds, ...firstBatchCompanyIds]) {
     const assetHtml = assetHtmlById[companyId];
-    const assetSha256 = createHash('sha256').update(assetHtml).digest('hex');
-    if (assetSha256 !== frozenPilotAssetSha256[companyId]) {
-      // This PR deliberately changes only shared presentation labels and adds
-      // the shared terminology hook. The semantic fixture assertions below
-      // remain the guard for the canonical payload and evidence contracts.
-      assert.match(assetHtml, /<dt>最終確認日<\/dt>/, `${companyId}: shared freshness-date label`);
-      assert.doesNotMatch(assetHtml, /<dt>最終確認<\/dt>/, `${companyId}: no legacy freshness-date label`);
-      assert.match(assetHtml, /data-terminology-content/, `${companyId}: shared terminology hook`);
-    } else {
-      assert.equal(
-        assetSha256,
-        frozenPilotAssetSha256[companyId],
-        `${companyId}: frozen pre-Stage-2 asset SHA-256 remains byte-identical to baseline`,
-      );
-    }
+    assert.match(assetHtml, /<dt>最終確認日<\/dt>/, `${companyId}: shared freshness-date label`);
+    assert.doesNotMatch(assetHtml, /<dt>最終確認<\/dt>/, `${companyId}: no legacy freshness-date label`);
+    assert.match(assetHtml, /data-terminology-content/, `${companyId}: shared terminology hook`);
   }
   const compareBytes = Buffer.byteLength(compareHtml);
   const baselineBytes = 585_468;
