@@ -7,6 +7,7 @@ import filterContract from '../../data/company-filter-contract.json';
 import { layerLabel, countryLabel, tagLabel, productInfo } from '../../lib/display-v02';
 import { withBase } from '../../lib/paths';
 import { buildSearchText } from '../../lib/search-normalization';
+import { companyDisplayNameParts } from '../../lib/japanese-first-presentation.ts';
 
 const companies = (await getCollection('companies')).sort((a,b) => (a.data.japaneseName || a.data.name).localeCompare(b.data.japaneseName || b.data.name, 'ja'));
 const layers = [...new Set(companies.map(c => c.data.primaryLayer))].sort();
@@ -34,13 +35,6 @@ const stageIdsForLayers = (companyLayers: string[]) => {
 const technologyIdsForTags = (companyTags: string[]) => Object.entries(filterContract.technologyFilters)
   .filter(([, filter]) => filter.tags.some(tag => companyTags.includes(tag)))
   .map(([technologyId]) => technologyId);
-const localizedCompanyName = (name: string, japaneseName?: string) => {
-  if (!japaneseName || japaneseName === name) return '';
-  const wrappedPrefix = `${name}（`;
-  return japaneseName.startsWith(wrappedPrefix) && japaneseName.endsWith('）')
-    ? japaneseName.slice(wrappedPrefix.length, -1)
-    : japaneseName;
-};
 ---
 <BaseLayout title="企業一覧" pageClass="global-visual-pilot global-visual-companies">
   <header class="page-head">
@@ -84,7 +78,7 @@ const localizedCompanyName = (name: string, japaneseName?: string) => {
         <tbody id="company-tbody">
           {companies.map(company => {
             const d = company.data;
-            const localName = localizedCompanyName(d.name, d.japaneseName);
+            const companyName = companyDisplayNameParts(d);
             const sites = facilitiesByCompany.get(company.id) ?? [];
             const productLabels = d.products.map(product => productInfo(product).label);
             const stageIds = stageIdsForLayers(d.layers);
@@ -98,7 +92,7 @@ const localizedCompanyName = (name: string, japaneseName?: string) => {
             ]);
             return (
               <tr data-company-row data-search={searchText} data-tags={d.tags.join('|')} data-layer={d.primaryLayer} data-country={d.country} data-stages={stageIds.join('|')} data-technologies={technologyIds.join('|')} data-sort-name={d.japaneseName || d.name} data-sort-country={countryLabel(d.country)} data-sort-updated={d.lastReviewed}>
-                <td class="company-col"><span class="company-index-name"><a href={withBase(`companies/${company.id}/`)}>{d.name}</a></span>{localName && <span class="company-index-local">{localName}</span>}<span class="company-index-meta mono">{d.ticker || '非上場'}</span></td>
+                <td class="company-col"><span class="company-index-name"><a href={withBase(`companies/${company.id}/`)} aria-label={companyName.accessibleName}>{companyName.primaryName}{companyName.secondaryName && <span class="company-index-local">{companyName.secondaryName}</span>}</a></span><span class="company-index-meta mono">{d.ticker || '非上場'}</span></td>
                 <td><a class="filter-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a></td>
                 <td><a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></td>
                 <td class="company-index-products">{productLabels.slice(0,2).join(' / ')}{productLabels.length > 2 ? <span class="table-more"> +{productLabels.length - 2}</span> : null}</td>

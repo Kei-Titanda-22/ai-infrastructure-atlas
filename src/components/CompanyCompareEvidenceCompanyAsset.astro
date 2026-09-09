@@ -59,7 +59,7 @@ const claimTypeGroups = (claims: any[], relations: CompareEvidenceRelationEntry[
 };
 const relationTypeLabels: Record<string, string> = {
   PRODUCES: '製品カテゴリ',
-  POSITIONED_IN: '供給網上の位置',
+  POSITIONED_IN: 'バリューチェーン上の位置',
   COMPETES_WITH: '競合関係',
 };
 const relationAsClaim = (entry: CompareEvidenceRelationEntry) => ({
@@ -126,7 +126,7 @@ const companyContext = {
     <dl class="evidence-cell-details" data-expanded-only>
       {company.identity.officialName && <div><dt>正式名称</dt><dd>{company.identity.officialName}</dd></div>}
       {company.identity.reading && <div><dt>読み</dt><dd>{company.identity.reading}</dd></div>}
-      {company.identity.lastReviewed && <div><dt>最終確認</dt><dd>{company.identity.lastReviewed}</dd></div>}
+      {company.identity.lastReviewed && <div><dt>最終確認日</dt><dd>{company.identity.lastReviewed}</dd></div>}
     </dl>
   </template>
 

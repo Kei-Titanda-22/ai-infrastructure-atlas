@@ -18,6 +18,7 @@ import sectorKpiDefinitions from '../../data/sector-kpi-definitions.json';
 import roicCalculations from '../../data/roic-calculations.json';
 import metricDefinitions from '../../data/metric-definitions.json';
 import { companyEvidence, companyEvidenceCompanyIds } from '../../lib/company-evidence';
+import { companyDisplayNameParts } from '../../lib/japanese-first-presentation.ts';
 
 export async function getStaticPaths() {
   const companies = await getCollection('companies');
@@ -26,6 +27,7 @@ export async function getStaticPaths() {
 
 const { company } = Astro.props;
 const d = company.data;
+const companyName = companyDisplayNameParts(d);
 const allCompanies = await getCollection('companies');
 const metricDefinitionById = new Map(metricDefinitions.map(definition => [definition.id, definition]));
 const peerIds = new Set<string>(d.competitors);
@@ -123,7 +125,7 @@ const toc = (isEvidencePilot ? [
   return true;
 });
 ---
-<BaseLayout title={d.japaneseName || d.name} description={d.summary} indexable pageClass={isEvidencePilot ? undefined : 'global-visual-pilot global-visual-company-legacy'}>
+<BaseLayout title={companyName.visualName} description={d.summary} indexable pageClass={isEvidencePilot ? undefined : 'global-visual-pilot global-visual-company-legacy'}>
   <article class:list={[`sector-page sector-${d.primaryLayer.replace(/[^a-zA-Z]/g,'-').toLowerCase()}`, { 'evidence-pilot': isEvidencePilot }]} data-terminology-scope>
     <span hidden data-pagefind-filter={`layer:${d.primaryLayer}`}></span>
     <span hidden data-pagefind-filter={`country:${d.country}`}></span>
@@ -135,7 +137,7 @@ const toc = (isEvidencePilot ? [
         <div class="company-heading-wrap">
           {brandAsset?.displayAllowed && brandAsset.assetUrl ? <img class="company-logo" src={brandAsset.assetUrl} alt={`${d.name} ロゴ`} /> : null}
           <div>
-            <div class="company-title-line"><h1>{d.japaneseName || d.name}</h1></div>
+            <div class="company-title-line"><h1 aria-label={companyName.accessibleName}>{companyName.primaryName}{companyName.secondaryName && <small>{companyName.secondaryName}</small>}</h1></div>
             <div class="company-meta-line">
               {d.ticker ? <><span class="mono">{d.ticker}</span><span>·</span><span>{d.exchange}</span><span>·</span></> : <><span>非上場</span><span>·</span></>}
               <a href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a>
@@ -172,7 +174,7 @@ const toc = (isEvidencePilot ? [
           {isEvidencePilot
             ? <><div class="pilot-summary-grid">
                 <section class="pilot-summary-unit pilot-summary-position"><h3>AIインフラでの位置</h3>{hasAtlasAnalysis(['ai-infrastructure-role','value-chain-position'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['ai-infrastructure-role','value-chain-position']} priorities={['P1']} showCoverage={false} compact /></section>
-                <section class="pilot-summary-unit"><h3>競争優位</h3>{hasAtlasAnalysis(['competitive-positioning','technology'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['competitive-positioning','technology']} priorities={['P1']} showCoverage={false} compact />{peers.length > 0 && <div class="pilot-competitors"><h4>主要比較対象</h4><div class="link-list">{peers.map(peer => <a class="text-link" href={withBase(`companies/${peer.id}/`)}>{peer.data.japaneseName || peer.data.name}</a>)}</div></div>}</section>
+                <section class="pilot-summary-unit"><h3>競争優位</h3>{hasAtlasAnalysis(['competitive-positioning','technology'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['competitive-positioning','technology']} priorities={['P1']} showCoverage={false} compact />{peers.length > 0 && <div class="pilot-competitors"><h4>主要比較対象</h4><div class="link-list">{peers.map(peer => { const peerName = companyDisplayNameParts(peer.data); return <a class="text-link" href={withBase(`companies/${peer.id}/`)} aria-label={peerName.accessibleName}>{peerName.visualName}</a>; })}</div></div>}</section>
                 <section class="pilot-summary-unit"><h3>主要製品・技術</h3>{hasAtlasAnalysis(['products'], ['P1']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['products']} priorities={['P1']} showCoverage={false} compact /></section>
                 {pilotMainRiskClaims.length > 0 && <section class="pilot-summary-unit pilot-risk-summary"><h3>リスク・確認点</h3>{hasAtlasAnalysis(['risks'], ['P1','P2']) && <p class="pilot-analysis-label">Atlasによる分析</p>}<CompanyEvidenceClaims claims={pilotClaims} evidence={pilotEvidence} sources={companySources} sourceNumberById={sourceNumberById} categories={['risks']} priorities={['P1','P2']} showCoverage={false} compact flattenSecondary /></section>}
               </div></>
@@ -295,7 +297,7 @@ const toc = (isEvidencePilot ? [
           </section>
         )}
 
-        {!isEvidencePilot && <section class="company-section" id="competitors"><div class="section-classification">比較対象</div><h2>競合</h2>{peers.length ? <div class="link-list">{peers.map(peer => <a class="text-link" href={withBase(`companies/${peer.id}/`)}>{peer.data.japaneseName || peer.data.name}</a>)}</div> : <p>競合関係は一次資料の確認後に追加します。</p>}</section>}
+        {!isEvidencePilot && <section class="company-section" id="competitors"><div class="section-classification">比較対象</div><h2>競合</h2>{peers.length ? <div class="link-list">{peers.map(peer => { const peerName = companyDisplayNameParts(peer.data); return <a class="text-link" href={withBase(`companies/${peer.id}/`)} aria-label={peerName.accessibleName}>{peerName.visualName}</a>; })}</div> : <p>競合関係は一次資料の確認後に追加します。</p>}</section>}
 
         {!isEvidencePilot && <section class="company-section" id="risks"><div class="section-classification analysis-label">分析</div><h2>リスク・確認点</h2><ul class="research-list">{d.risks.map(item => <li>{item}</li>)}</ul></section>}
 

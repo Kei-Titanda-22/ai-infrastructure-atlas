@@ -14,6 +14,8 @@ import comparisonTemplates from '../data/comparison-templates.json';
 import sources from '../data/sources.json';
 import v02Sources from '../data/sources-v02.json';
 import documentSources from '../data/document-sources.json';
+import DisplayTerminologyHelper from '../components/DisplayTerminologyHelper.astro';
+import { companyDisplayNameParts } from '../lib/japanese-first-presentation.ts';
 import '../styles/compare-v03.css';
 
 const companies = (await getCollection('companies')).sort((a,b) => (a.data.japaneseName || a.data.name).localeCompare(b.data.japaneseName || b.data.name, 'ja'));
@@ -29,6 +31,7 @@ const compact = companies.map(c => ({
   href:withBase(`companies/${c.id}/`),
   name:c.data.name,
   japaneseName:c.data.japaneseName,
+  displayNameParts:companyDisplayNameParts(c.data),
   ticker:c.data.ticker ?? '非上場',
   country:countryLabel(c.data.country),
   primaryLayer:layerLabel(c.data.primaryLayer),
@@ -59,7 +62,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
     </div>
   </header>
 
-  <div class="shell section" id="compare-app">
+  <div class="shell section" id="compare-app" data-terminology-scope>
     <section class="compare-builder" aria-labelledby="compare-builder-title">
       <div class="compare-builder-head">
         <div>
@@ -84,10 +87,10 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
             <button class="text-button compare-template-button" type="button" data-template={template.id} data-ids={template.companyIds.join(',')} title={template.description}>{template.name}</button>
           ))}
         </div>
-        <div class="compare-template-list" id="evidence-compare-templates" aria-label="Company Evidence Pilotセット" hidden>
-          <span class="compare-template-label">Pilotセット</span>
-          <button class="text-button compare-template-button" type="button" data-evidence-set-ids="nvidia,broadcom">Set A — NVIDIA / Broadcom</button>
-          <button class="text-button compare-template-button" type="button" data-evidence-set-ids="applied-materials,lam-research,tokyo-electron">Set B — Applied Materials / Lam Research / Tokyo Electron</button>
+        <div class="compare-template-list" id="evidence-compare-templates" aria-label="根拠付き比較セット" hidden>
+          <span class="compare-template-label">比較セット</span>
+          <button class="text-button compare-template-button" type="button" data-evidence-set-ids="nvidia,broadcom">比較セットA — NVIDIA / Broadcom</button>
+          <button class="text-button compare-template-button" type="button" data-evidence-set-ids="applied-materials,lam-research,tokyo-electron">比較セットB — Applied Materials / Lam Research / Tokyo Electron</button>
         </div>
       </div>
 
@@ -104,6 +107,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
     </section>
 
     <div id="company-compare-evidence-mount" data-evidence-fragment-url={evidenceFragmentUrl}></div>
+    <DisplayTerminologyHelper />
 
     <div id="legacy-compare-view">
     <dl class="compare-quality-summary" id="compare-quality-summary" aria-label="比較品質の概要">
@@ -302,17 +306,9 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
       };
       const pickedCompanies = () => selectedIds.map(id=>byId.get(id)).filter(Boolean);
       const localCompanyName = company => {
-        const name=String(company?.name || '');
-        const japanese=String(company?.japaneseName || '');
-        if(!japanese || japanese===name) return '';
-        const wrappedPrefix=`${name}（`;
-        return japanese.startsWith(wrappedPrefix) && japanese.endsWith('）')
-          ? japanese.slice(wrappedPrefix.length,-1)
-          : japanese;
+        return company?.displayNameParts?.secondaryName || '';
       };
-      const tableCompanyName = company => company.country === '日本'
-        ? (localCompanyName(company) || company.name)
-        : company.name;
+      const tableCompanyName = company => company?.displayNameParts?.visualName || company.name;
       const updateUrl = () => {
         const next=new URLSearchParams(location.search);
         next.set('ids',selectedIds.join(','));
@@ -326,8 +322,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
           const row=document.createElement('div'); row.className='compare-selected-row';
           const indexEl=text('span',String(index+1).padStart(2,'0'),'compare-selected-index mono'); row.append(indexEl);
           const info=document.createElement('div'); info.className='compare-selected-info';
-          const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-selected-name'; a.textContent=company.name; info.append(a);
-          const localName=localCompanyName(company); if(localName) info.append(text('span',localName,'compare-selected-local'));
+          const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-selected-name'; a.textContent=company.displayNameParts?.primaryName || company.name; a.setAttribute('aria-label',company.displayNameParts?.accessibleName || company.name); const localName=localCompanyName(company); if(localName) a.append(text('span',localName,'compare-selected-local')); info.append(a);
           info.append(text('span',`${company.ticker} · ${company.primaryLayer}`,'compare-selected-meta')); row.append(info);
           const remove=document.createElement('button'); remove.type='button'; remove.className='text-button compare-remove'; remove.textContent='外す'; remove.dataset.removeId=company.id; row.append(remove);
           selectedRoot.append(row);
@@ -357,7 +352,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
       const renderAnalysis = picked => {
         clear(analysisHead); clear(analysisBody);
         const lead=text('th','分析項目'); analysisHead.append(lead);
-        picked.forEach(company=>{ const th=document.createElement('th'); const a=document.createElement('a'); a.href=company.href; a.textContent=company.japaneseName || company.name; a.className='company-link'; th.append(a); analysisHead.append(th); });
+        picked.forEach(company=>{ const th=document.createElement('th'); const a=document.createElement('a'); a.href=company.href; a.textContent=tableCompanyName(company); a.setAttribute('aria-label',company.displayNameParts?.accessibleName || company.name); a.className='company-link'; th.append(a); analysisHead.append(th); });
         const hasAnyScore=picked.some(company=>company.scores && Object.keys(company.scores).length);
         analysisDetails.hidden=!hasAnyScore;
         if(!hasAnyScore) return;
@@ -375,7 +370,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
         const lead=text('th','指標'); theadRow.append(lead);
         picked.forEach(company=>{
           const th=document.createElement('th');
-          const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-company-head'; a.textContent=tableCompanyName(company); a.setAttribute('aria-label',company.japaneseName || company.name); th.append(a);
+          const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-company-head'; a.textContent=tableCompanyName(company); a.setAttribute('aria-label',company.displayNameParts?.accessibleName || company.name); th.append(a);
           th.append(text('span',`${company.ticker} · ${company.country}`,'compare-company-sub')); theadRow.append(th);
         });
         if(!picked.length){ const tr=document.createElement('tr'); const td=document.createElement('td'); td.colSpan=1; td.textContent='企業を追加すると比較表が表示されます。'; tr.append(td); tbody.append(tr); renderQualitySummary([]); renderAnalysis([]); renderMissingSummary([]); return; }
@@ -417,7 +412,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
         getMatches: candidateMatches,
         renderOption: company => {
           const button=document.createElement('button'); button.type='button'; button.className='compare-suggestion'; button.dataset.searchOptionId=company.id;
-          const name=text('span',company.japaneseName || company.name,'compare-suggestion-name'); button.append(name);
+          const name=text('span',company.displayNameParts?.visualName || company.name,'compare-suggestion-name'); button.append(name);
           button.append(text('span',`${company.ticker} · ${company.country} · ${company.primaryLayer}`,'compare-suggestion-meta'));
           return button;
         },

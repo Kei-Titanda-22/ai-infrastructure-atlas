@@ -8,6 +8,8 @@ import metricAudits from '../data/metric-audits.json';
 import sectorKpis from '../data/sector-kpis.json';
 import roicCalculations from '../data/roic-calculations.json';
 import { buildSearchText } from '../lib/search-normalization';
+import { countryLabel } from '../lib/display-v02';
+import { companyDisplayNameParts } from '../lib/japanese-first-presentation.ts';
 
 const companies = await getCollection('companies');
 const companyById = new Map(companies.map(company => [company.id, company]));
@@ -21,8 +23,8 @@ const processCount = valueChain.filter(stage => stage.id !== 'demand').length;
 const lastDbUpdate = updateLog[0]?.date ?? '—';
 const homeCompanySearchCandidates = companies.map(company => ({
   id: company.id,
-  label: company.data.japaneseName || company.data.name,
-  meta: `${company.data.ticker || '非上場'} · ${company.data.country}`,
+  label: companyDisplayNameParts(company.data).visualName,
+  meta: `${company.data.ticker || '非上場'} · ${countryLabel(company.data.country)}`,
   href: withBase(`companies/${company.id}/`),
   searchText: buildSearchText([company.id, company.data.name, company.data.japaneseName, company.data.reading, company.data.ticker]),
 }));
@@ -92,7 +94,8 @@ const linkHref = (link: any) => link.technology
           <tbody>
             {updateLog.map(entry => {
               const company = entry.companyId ? companyById.get(entry.companyId) : null;
-              return <tr><td class="mono">{entry.date}</td><td>{company ? <a href={withBase(`companies/${company.id}/`)}>{company.data.japaneseName || company.data.name}</a> : 'データベース'}</td><td>{entry.title}</td><td>{entry.detail}</td></tr>;
+              const companyName = company ? companyDisplayNameParts(company.data) : null;
+              return <tr><td class="mono">{entry.date}</td><td>{company && companyName ? <a href={withBase(`companies/${company.id}/`)} aria-label={companyName.accessibleName}>{companyName.visualName}</a> : 'データベース'}</td><td>{entry.title}</td><td>{entry.detail}</td></tr>;
             })}
           </tbody>
         </table>
