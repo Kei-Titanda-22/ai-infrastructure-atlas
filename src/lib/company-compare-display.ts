@@ -1,7 +1,10 @@
-export interface CompareDisplayIdentityLike {
-  name: string;
-  japaneseName?: string | null;
-}
+import {
+  companyDisplayNameParts,
+  type CompanyDisplayIdentityLike,
+  type CompanyDisplayNameParts,
+} from './japanese-first-presentation.ts';
+
+export type CompareDisplayIdentityLike = CompanyDisplayIdentityLike;
 
 export interface CompareDisplayCopy {
   title: string;
@@ -9,11 +12,7 @@ export interface CompareDisplayCopy {
   groundingIds: readonly string[];
 }
 
-export interface CompareDisplayNameParts {
-  accessibleName: string;
-  primaryName: string;
-  secondaryName: string | null;
-}
+export type CompareDisplayNameParts = Pick<CompanyDisplayNameParts, 'accessibleName' | 'primaryName' | 'secondaryName'>;
 
 export interface CompareSummaryClaimLike {
   id: string;
@@ -141,8 +140,8 @@ export const compareGenericTermTranslations = Object.freeze({
   system: 'システム',
   software: 'ソフトウェア',
   'switching silicon': 'スイッチ用半導体',
-  'connectivity semiconductors': '接続用半導体',
-  'Value Chain': '供給網上の位置',
+  'connectivity semiconductors': '接続・通信向け半導体',
+  'Value Chain': 'バリューチェーン上の位置',
   scope: '対象範囲',
   freshness: '更新状況',
   'developer ecosystem': '開発者エコシステム',
@@ -483,29 +482,12 @@ export const compareClaimDisplayCopy = Object.freeze<Record<string, CompareDispl
 });
 
 export function companyCompareDisplayName(identity: CompareDisplayIdentityLike) {
-  const japaneseName = identity.japaneseName?.trim();
-  return japaneseName || identity.name.trim();
+  return companyDisplayNameParts(identity).visualName;
 }
 
 export function companyCompareDisplayNameParts(identity: CompareDisplayIdentityLike): CompareDisplayNameParts {
-  const primaryName = identity.name.trim();
-  const japaneseName = identity.japaneseName?.trim();
-  if (!japaneseName || japaneseName === primaryName) {
-    return { accessibleName: primaryName, primaryName: japaneseName || primaryName, secondaryName: null };
-  }
-  const bilingualPrefix = `${primaryName}（`;
-  if (japaneseName.startsWith(bilingualPrefix) && japaneseName.endsWith('）')) {
-    return {
-      accessibleName: japaneseName,
-      primaryName,
-      secondaryName: japaneseName.slice(primaryName.length),
-    };
-  }
-  return {
-    accessibleName: `${primaryName}（${japaneseName}）`,
-    primaryName: japaneseName,
-    secondaryName: null,
-  };
+  const { accessibleName, primaryName, secondaryName } = companyDisplayNameParts(identity);
+  return { accessibleName, primaryName, secondaryName };
 }
 
 export function localizeCompareLocation(canonicalValue: string) {

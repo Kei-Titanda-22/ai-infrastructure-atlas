@@ -16,11 +16,11 @@ export const displayTerminology = [
   { term: 'NVLink', description: 'GPU同士を高速接続する技術' },
   { term: 'fabless', description: '自社工場を持たず半導体設計を主業とする事業形態' },
   { term: 'OSAT', description: '半導体の組立・パッケージ・テストを受託する企業' },
-  { term: 'DPU', description: 'データ処理やネットワーク処理を担う専用プロセッサ' },
+  { term: 'DPU', description: 'データ処理専用プロセッサ' },
   { term: 'HBM', description: 'AI計算向けの広帯域メモリ' },
   { term: 'FCF', description: '事業活動後に企業が自由に使える現金収支' },
   { term: 'ROIC', description: '事業へ投じた資本に対する利益率' },
   { term: 'EDA', description: '半導体設計を支援するソフトウェア' },
-  { term: 'ASIC', description: '特定用途向けに設計した専用半導体' },
+  { term: 'ASIC', description: '特定用途向け半導体' },
   { term: 'GPU', description: '画像・AI計算を並列処理するプロセッサ' },
 ] as const;

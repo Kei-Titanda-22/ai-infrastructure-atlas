@@ -18,6 +18,10 @@ import {
   type CompareProductDisplayDescription,
 } from './company-compare-display.ts';
 import {
+  resolveJapaneseFirstClaimPresentation,
+  resolveJapaneseFirstPresentation,
+} from './japanese-first-presentation.ts';
+import {
   firstBatchClaimDisplay,
   firstBatchCompanies,
   firstBatchCompanyIds,
@@ -65,7 +69,7 @@ import { resolveSource, type SourceRecord } from './source-registry.ts';
 export const compareEvidenceDimensionLabels: Readonly<Record<string, string>> = Object.freeze({
   'company-identity': '企業情報',
   'ai-role': 'AIインフラでの役割',
-  'value-chain-position': '供給網上の位置',
+  'value-chain-position': 'バリューチェーン上の位置',
   'key-products': '主な製品',
   'technology-moat': '技術・競争力',
   'capacity-roadmap': '設備能力・ロードマップ',
@@ -185,7 +189,12 @@ const resolveClaimEntry = (claimId: string, companyId: string): CompareEvidenceC
     const source = resolveRequiredSource(binding.sourceId);
     return [source.id, source] as const;
   })).values()];
-  return { claim, bindings, sources, display: resolveDisplayClaim(claim.id) };
+  return {
+    claim,
+    bindings,
+    sources,
+    display: resolveJapaneseFirstClaimPresentation(claim, resolveDisplayClaim(claim.id)),
+  };
 };
 
 const labelIds = (ids: readonly string[], labels: ReadonlyMap<string, string>, label: string) => ids.map(id => {
@@ -281,11 +290,17 @@ const productDisplayItem = (canonicalId: string, groundingIds: readonly string[]
   const label = productLabelById.get(canonicalId);
   if (!label) throw new Error(`Company Compare display cannot resolve Product: ${canonicalId}`);
   const description = resolveProductDescription(canonicalId);
+  const presentation = resolveJapaneseFirstPresentation(
+    'product',
+    canonicalId,
+    { canonicalId, label, description: description.description },
+    { title: label, statement: description.description },
+  );
   return {
     canonicalId,
-    label,
+    label: presentation.title,
     groundingIds,
-    description: description.description,
+    description: presentation.statement,
     descriptionGroundingIds: description.groundingIds,
   };
 };

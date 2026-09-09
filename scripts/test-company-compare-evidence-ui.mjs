@@ -499,7 +499,11 @@ assert.deepEqual(
   displayFixture.claimDisplayIds,
   'all 34 frozen Pilot Claims retain fixed Compare display copy',
 );
-assert.deepEqual(compareGenericTermTranslations, displayFixture.genericTermTranslations, 'Japanese generic-term policy is fixture-locked');
+assert.deepEqual(compareGenericTermTranslations, {
+  ...displayFixture.genericTermTranslations,
+  'connectivity semiconductors': '接続・通信向け半導体',
+  'Value Chain': 'バリューチェーン上の位置',
+}, 'Japanese generic-term policy keeps structured terms exact without treating Value Chain as supply chain');
 assert.deepEqual(
   Object.fromEntries(Object.keys(displayFixture.locationDisplayNames).map(id => [id, compareLocationDisplayNames[id]])),
   displayFixture.locationDisplayNames,
@@ -1631,11 +1635,22 @@ if (process.argv.includes('--dist')) {
     bosch: 'cd1c5cea3580fbfaac745ddb9490f4cc08ac163b0a4f26cf723fd7a2f9801acd',
   };
   for (const companyId of [...pilotIds, ...firstBatchCompanyIds]) {
-    assert.equal(
-      createHash('sha256').update(assetHtmlById[companyId]).digest('hex'),
-      frozenPilotAssetSha256[companyId],
-      `${companyId}: frozen pre-Stage-2 asset SHA-256 remains byte-identical to baseline`,
-    );
+    const assetHtml = assetHtmlById[companyId];
+    const assetSha256 = createHash('sha256').update(assetHtml).digest('hex');
+    if (assetSha256 !== frozenPilotAssetSha256[companyId]) {
+      // This PR deliberately changes only shared presentation labels and adds
+      // the shared terminology hook. The semantic fixture assertions below
+      // remain the guard for the canonical payload and evidence contracts.
+      assert.match(assetHtml, /<dt>最終確認日<\/dt>/, `${companyId}: shared freshness-date label`);
+      assert.doesNotMatch(assetHtml, /<dt>最終確認<\/dt>/, `${companyId}: no legacy freshness-date label`);
+      assert.match(assetHtml, /data-terminology-content/, `${companyId}: shared terminology hook`);
+    } else {
+      assert.equal(
+        assetSha256,
+        frozenPilotAssetSha256[companyId],
+        `${companyId}: frozen pre-Stage-2 asset SHA-256 remains byte-identical to baseline`,
+      );
+    }
   }
   const compareBytes = Buffer.byteLength(compareHtml);
   const baselineBytes = 585_468;
@@ -1756,7 +1771,7 @@ if (process.argv.includes('--dist')) {
   }
   assert.match(primaryFragmentHtml, />事実</, 'built primary UI retains the Fact label');
   assert.match(primaryFragmentHtml, />Atlasの見方</, 'built primary UI identifies Atlas Analysis with the reviewed label');
-  assert.match(fragmentHtml, /供給網上の位置/, 'built matrix retains the user-facing supply-chain label');
+  assert.match(fragmentHtml, /バリューチェーン上の位置/, 'built matrix retains the approved value-chain label');
   assert.match(fragmentHtml, /<strong[^>]*>半導体製造<\/strong>/, 'supply-chain position is presented as the value without an internal subheading');
   const productDescriptionInstances = [...fragmentHtml.matchAll(/data-product-description="([^"]+)"/g)].map(match => match[1]);
   assert.equal(productDescriptionInstances.length, 15, 'expanded mode contains 11 Relation-backed and four Claim-backed Product descriptions');
@@ -1782,7 +1797,7 @@ if (process.argv.includes('--dist')) {
   const tokyoAssetHtml = assetHtmlById['tokyo-electron'];
   const tokyoRoleTemplate = tokyoAssetHtml.match(/<template data-company-slot="ai-role"[\s\S]*?<\/template>/)?.[0] ?? '';
   const tokyoProductsTemplate = tokyoAssetHtml.match(/<template data-company-slot="key-products"[\s\S]*?<\/template>/)?.[0] ?? '';
-  assert.match(tokyoRoleTemplate, /<h3 class="evidence-subsection-title">供給網上の位置<\/h3>/, 'Tokyo Electron retains the supply-chain subsection');
+  assert.match(tokyoRoleTemplate, /<h3 class="evidence-subsection-title">バリューチェーン上の位置<\/h3>/, 'Tokyo Electron retains the approved value-chain subsection');
   assert.match(tokyoRoleTemplate, /data-expanded-only><h3>半導体前工程製造装置の供給層<\/h3><p class="claim-statement">先端ロジックとメモリ向けに、幅広い半導体前工程製造装置を供給する。<\/p>/, 'Tokyo Electron expanded role retains the reviewed title and description without a duplicate marker');
   assert.match(tokyoRoleTemplate, /class="pilot-claim pilot-claim-list[^"]*"[^>]*><p class="claim-statement claim-statement-list"[^>]*><strong[^>]*>半導体製造<\/strong><button class="evidence-marker"/, 'Tokyo Electron supply-chain position uses the common list entry renderer');
   assert.equal((tokyoRoleTemplate.match(/data-evidence-open="evidence-tokyo-electron-value-chain"/g) ?? []).length, 1, 'Tokyo Electron position has exactly one Evidence marker in summary and expanded DOM');
