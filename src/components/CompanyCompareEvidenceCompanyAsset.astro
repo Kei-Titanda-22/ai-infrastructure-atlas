@@ -233,6 +233,8 @@ const companyContext = {
                     : isProductPortfolioSummary
                       ? productPortfolioSummary.body
                       : entry.display.statement}
+                  drawerDisplayTitle={entry.display.title}
+                  drawerDisplayStatement={entry.display.statement}
                   variant={usesClaimBackedPositionProjection ? 'list' : 'standard'}
                   additionalMetadata={[
                     { label: '主張区分', value: entry.claim.claimType },

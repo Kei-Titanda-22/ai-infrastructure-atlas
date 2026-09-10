@@ -508,9 +508,36 @@ const tsmcPortfolio = [...rawPortfolioById.values()].find(portfolio => portfolio
 assert.deepEqual(resolveCompanyCompareProductPortfolioPresentation(tsmcPortfolio, allOverlayByKey), tsmcPortfolio, 'an unregistered Batch 2 Portfolio remains canonical');
 
 const companyClaimComponentSource = readFileSync(new URL('../src/components/CompanyEvidenceClaim.astro', import.meta.url), 'utf8');
+const compareClaimComponentSource = readFileSync(new URL('../src/components/CompanyCompareEvidenceClaim.astro', import.meta.url), 'utf8');
+const compareClaimAssetComponentSource = readFileSync(new URL('../src/components/CompanyCompareEvidenceCompanyAsset.astro', import.meta.url), 'utf8');
 const compareReadModelSource = readFileSync(new URL('../src/lib/company-compare-evidence-read-model.ts', import.meta.url), 'utf8');
 assert.match(companyClaimComponentSource, /resolveJapaneseFirstClaimPresentation/, 'company pages use the shared Claim presentation resolver');
 assert.match(compareReadModelSource, /resolveJapaneseFirstClaimPresentation/, 'Company Compare uses the shared Claim presentation resolver');
+assert.match(compareClaimComponentSource, /drawer-claim-context[\s\S]*?<h4>\{drawerDisplayTitle\}<\/h4><p class="drawer-statement">\{drawerDisplayStatement\}<\/p>/, 'Compare drawer receives its explicit presentation title and statement');
+assert.match(companyClaimComponentSource, /drawer-claim-context[\s\S]*?<h4>\{presentation\.title\}<\/h4><p class="drawer-statement">\{presentation\.statement\}<\/p>/, 'Company drawer receives the resolved presentation title and statement');
+assert.doesNotMatch(compareClaimComponentSource, /drawer-claim-context[\s\S]*?\{claim\.(?:title|statement)\}/, 'Compare drawer has no raw canonical Claim display fallback');
+assert.doesNotMatch(companyClaimComponentSource, /drawer-claim-context[\s\S]*?\{claim\.(?:title|statement)\}/, 'Company drawer has no raw canonical Claim display fallback');
+assert.match(compareClaimAssetComponentSource, /drawerDisplayTitle=\{entry\.display\.title\}/, 'Compare drawer receives the shared resolved Claim title independently of body projection labels');
+assert.match(compareClaimAssetComponentSource, /drawerDisplayStatement=\{entry\.display\.statement\}/, 'Compare drawer receives the shared resolved Claim statement independently of body projection labels');
+const overlayClaimEntries = [...batch1.entries, ...batch2.entries].filter(entry => entry.entityType === 'claim');
+assert.equal(overlayClaimEntries.length, 538, 'all 538 registered Claim overlays are covered by the drawer presentation contract');
+const overlayClaimCompanyIds = new Set(overlayClaimEntries.map(entry => canonicalForEntry(entry).companyId));
+assert.equal(overlayClaimCompanyIds.size, 99, 'the drawer presentation contract covers exactly 99 companies');
+for (const entry of overlayClaimEntries) {
+  const { canonical: canonicalClaim } = canonicalForEntry(entry);
+  const resolved = resolveJapaneseFirstClaimPresentation(canonicalClaim, { title: canonicalClaim.title, statement: canonicalClaim.statement }, allOverlayByKey);
+  assert.deepEqual(
+    { title: resolved.title, statement: resolved.statement },
+    { title: entry.title, statement: entry.statement },
+    `${entry.stableKey}: body and both drawer consumers resolve the same registered presentation Claim copy`,
+  );
+}
+const ajinomotoDrawerFallback = claimById.get('ajinomoto-fine-techno-ai-role');
+assert.deepEqual(
+  resolveJapaneseFirstClaimPresentation(ajinomotoDrawerFallback, { title: ajinomotoDrawerFallback.title, statement: ajinomotoDrawerFallback.statement }, allOverlayByKey),
+  { title: ajinomotoDrawerFallback.title, statement: ajinomotoDrawerFallback.statement, decision: 'canonical' },
+  'Ajinomoto Fine-Techno retains the canonical Claim fallback in both drawer consumers',
+);
 const asmlCanonical = claimById.get('asml-ai-role');
 const asmlFallback = { title: asmlCanonical.title, statement: asmlCanonical.statement };
 assert.deepEqual(
@@ -588,16 +615,27 @@ assert.equal(
   'Ajinomoto Fine-Techno asset SHA is unchanged',
 );
 assert.equal(batch1ToBatch2ChangedPaths.length, 49, 'all and only candidate-bearing Batch 2 company assets receive new SHA values');
-assert.equal(activeFreeze.version, 'company-compare-mobile-tracking-p1-v01', 'the explicit active ID selects the mobile tracking P1 freeze');
-assert.equal(activeFreeze.metadata.baseMain, '178ea4f5f0b8d59b1dcf6e8a24dc363c80774ec8', 'mobile tracking freeze records its approved base main');
-const batch2ToMobileTrackingChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== batch2Freeze.sha256ByPath[path]);
+const mobileTrackingFreeze = freezes.find(freeze => freeze.version === 'company-compare-mobile-tracking-p1-v01');
+assert.ok(mobileTrackingFreeze, 'Mobile Compare P1 artifact freeze remains in history');
+assert.equal(mobileTrackingFreeze.metadata.baseMain, '178ea4f5f0b8d59b1dcf6e8a24dc363c80774ec8', 'mobile tracking freeze retains its approved base main');
+const batch2ToMobileTrackingChangedPaths = expectedArtifactPaths.filter(path => mobileTrackingFreeze.sha256ByPath[path] !== batch2Freeze.sha256ByPath[path]);
 assert.deepEqual(batch2ToMobileTrackingChangedPaths, ['index.html'], 'the CSS-only P1 freeze changes the Evidence shell and no Company asset');
 for (const path of expectedArtifactPaths.filter(path => path !== 'index.html')) {
-  assert.equal(activeFreeze.sha256ByPath[path], batch2Freeze.sha256ByPath[path], `${path}: mobile tracking leaves Company asset SHA unchanged`);
+  assert.equal(mobileTrackingFreeze.sha256ByPath[path], batch2Freeze.sha256ByPath[path], `${path}: mobile tracking leaves Company asset SHA unchanged`);
 }
 
+assert.equal(activeFreeze.version, 'drawer-presentation-consistency-v01', 'the explicit active ID selects the drawer presentation consistency freeze');
+assert.equal(activeFreeze.metadata.baseMain, 'f13605c375f030e88b6374ed439f7721c4921e69', 'drawer presentation freeze records its approved base main');
+assert.equal(activeFreeze.metadata.previousVersion, mobileTrackingFreeze.version, 'drawer presentation freeze records its predecessor explicitly');
+const mobileTrackingToDrawerChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== mobileTrackingFreeze.sha256ByPath[path]);
+const expectedDrawerPresentationChangedPaths = expectedArtifactPaths.filter(path => path !== 'index.html' && path !== 'ajinomoto-fine-techno/index.html');
+assert.deepEqual(mobileTrackingToDrawerChangedPaths, expectedDrawerPresentationChangedPaths, 'drawer presentation changes all and only assets with registered Claim presentation overlays');
+assert.equal(activeFreeze.sha256ByPath['index.html'], mobileTrackingFreeze.sha256ByPath['index.html'], 'drawer presentation leaves the Evidence shell SHA unchanged');
+assert.equal(activeFreeze.sha256ByPath['ajinomoto-fine-techno/index.html'], mobileTrackingFreeze.sha256ByPath['ajinomoto-fine-techno/index.html'], 'Ajinomoto Fine-Techno canonical fallback asset SHA remains unchanged');
+assert.equal(mobileTrackingToDrawerChangedPaths.length, 99, 'drawer presentation changes exactly the 99 companies with Claim overlays');
+
 const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
-assert.equal(shaBlocks.length, 4, 'fixture source contains the foundation, Batch 1, Batch 2, and mobile tracking P1 SHA maps');
+assert.equal(shaBlocks.length, 5, 'fixture source contains the foundation, Batch 1, Batch 2, mobile tracking P1, and drawer presentation SHA maps');
 for (const [index, block] of shaBlocks.entries()) {
   const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
   assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);

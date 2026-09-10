@@ -89,7 +89,7 @@ const ProvenanceContainer = staticProvenance ? 'div' : 'details';
     </div>
     <ProvenanceContainer class:list={['provenance-details', { 'provenance-details-static': staticProvenance }]}>
       {!staticProvenance && <summary>詳細情報</summary>}
-      <div class="drawer-claim-context"><span>{provenanceTypeLabel ?? typeLabel}</span><h4>{claim.title}</h4><p class="drawer-statement">{claim.statement}</p></div>
+      <div class="drawer-claim-context"><span>{provenanceTypeLabel ?? typeLabel}</span><h4>{presentation.title}</h4><p class="drawer-statement">{presentation.statement}</p></div>
       <dl class="drawer-meta">
         <div><dt>情報時点</dt><dd>{claim.asOf}</dd></div>
         <div><dt>検証状態</dt><dd>{verification.full}</dd></div>
