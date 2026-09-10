@@ -1,27 +1,87 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { readdirSync, readFileSync } from 'node:fs';
 import {
   companyDisplayNameParts,
   compileJapaneseFirstPresentationEntries,
   japaneseFirstCanonicalDigest,
   japaneseFirstFixedUiLabels,
   resolveJapaneseFirstClaimPresentation,
+  resolveJapaneseFirstPresentation,
 } from '../src/lib/japanese-first-presentation.ts';
+import {
+  getCompanyCompareProductPortfolioSummaries,
+  resolveCompanyCompareProductPortfolioPresentation,
+  resolveCompanyCompareProductPortfolioSummary,
+} from '../src/lib/company-compare-product-portfolios.ts';
+import {
+  firstBatchCompanies,
+  firstBatchProductEntries,
+  remainingBatch1Companies,
+  remainingBatch1ProductEntries,
+  remainingBatch2Companies,
+  remainingBatch2ProductEntries,
+  remainingBatch3Companies,
+  remainingBatch3ProductEntries,
+  remainingBatch4Companies,
+  remainingBatch4ProductEntries,
+} from '../src/lib/company-compare-first-batch.ts';
+import {
+  compareGenericTermTranslations,
+  compareProductDisplayDescriptions,
+  compareProductDisplayNameOverrides,
+} from '../src/lib/company-compare-display.ts';
 import { productInfo } from '../src/lib/display.ts';
-import { compareGenericTermTranslations } from '../src/lib/company-compare-display.ts';
 import { displayTerminology } from '../src/lib/display-terminology.ts';
 
-const fixture = JSON.parse(readFileSync(new URL('./fixtures/japanese-first-copy-v01.json', import.meta.url), 'utf8'));
+const readJson = relativePath => JSON.parse(readFileSync(new URL(relativePath, import.meta.url), 'utf8'));
+const escapeRegex = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const fixturePath = new URL('./fixtures/japanese-first-copy-v01.json', import.meta.url);
+const fixtureSource = readFileSync(fixturePath, 'utf8');
+const fixture = JSON.parse(fixtureSource);
+const overlayDataFiles = readdirSync(new URL('../src/data/', import.meta.url))
+  .filter(file => /^japanese-first-copy-batch\d+-v\d+\.json$/.test(file))
+  .sort();
+const overlayPayloads = overlayDataFiles.map(file => readJson(`../src/data/${file}`));
+const batch1 = overlayPayloads.find(payload => payload.version === 'japanese-first-copy-batch1-v01');
+const manifest = readJson('../src/data/japanese-first-copy-manifest-v01.json');
+
+assert.ok(batch1, 'Batch 1 presentation data is registered by the generic file contract');
+assert.deepEqual(overlayDataFiles, ['japanese-first-copy-batch1-v01.json'], 'only the approved Batch 1 overlay is registered before Batch 2');
+
+const fixedBatch1CompanyIds = [
+  'kla', 'johnson-controls', 'tower-semiconductor', 'corning', 'smic', 'te-connectivity', 'credo', 'digital-realty',
+  'lumentum', 'asmpt', 'marvell', 'sumitomo-electric', 'furukawa-electric', 'eaton', 'besi', 'nvent', 'fujikura',
+  'schneider-electric', 'equinix', 'vertiv', 'intel', 'screen-holdings', 'cisco', 'arista', 'trane-technologies',
+  'coherent', 'kokusai-electric', 'ge-vernova', 'legrand', 'samsung-electronics', 'fanuc', 'siemens-energy',
+  'ciena', 'qualcomm', 'carrier', 'rohm', 'amd', 'micron', 'amphenol', 'mediatek', 'renesas', 'tesla', 'disco',
+  'monolithic-power', 'onsemi', 'lam-research', 'stmicroelectronics', 'asml', 'sk-hynix', 'texas-instruments',
+];
+
 assert.equal(
   japaneseFirstCanonicalDigest('abc'),
   '6cc43f858fbb763301637b5af970e2a46b46f461f27e5a0f41e009c59b827b25',
   'canonical digests use standard SHA-256 of stable serialization',
 );
+
+const presentationSource = readFileSync(new URL('../src/lib/japanese-first-presentation.ts', import.meta.url), 'utf8');
 assert.match(
-  readFileSync(new URL('../src/lib/japanese-first-presentation.ts', import.meta.url), 'utf8'),
-  /import\.meta\.glob\([^)]*japanese-first-copy-\*\.json/,
-  'future presentation overlays load from the deterministic data glob',
+  presentationSource,
+  /import\.meta\.glob\('\.\.\/data\/japanese-first-copy-batch\*-v\*\.json'/,
+  'future presentation overlays load from the literal deterministic data glob',
 );
+assert.match(presentationSource, /import\.meta\.env\?\.SSR === true/, 'the runtime overlay registry is created in Vite SSR builds');
+assert.match(presentationSource, /Object\.entries\(registeredModules\)[\s\S]*?\.sort\(\(\[left\], \[right\]\) => left\.localeCompare\(right\)\)/, 'overlay modules are sorted before compilation');
+assert.doesNotMatch(presentationSource, /import\.meta\.glob\s*\?/, 'the broken runtime feature-test no longer disables the Vite glob');
+assert.doesNotMatch(presentationSource, /japanese-first-copy-batch1-v01\.json/, 'the runtime loader does not directly import Batch 1');
+assert.doesNotMatch(presentationSource, /node:fs|readFileSync|require\s*\(|process\.env|eval\s*\(|new Function/, 'the runtime loader uses no filesystem, environment, or dynamic-code fallback');
+assert.doesNotMatch(presentationSource, /companyId\s*===|switch\s*\(\s*companyId/, 'the presentation loader has no company-specific branch');
+assert.throws(
+  () => resolveJapaneseFirstPresentation('claim', 'outside-vite', {}, { title: 'Title', statement: 'Statement' }),
+  /registry is unavailable outside the Vite SSR build/,
+  'an unavailable runtime registry fails explicitly instead of behaving like an empty overlay',
+);
+
 assert.deepEqual(Object.fromEntries(Object.entries(fixture.fixedUi).map(([key]) => [key, japaneseFirstFixedUiLabels[key]])), fixture.fixedUi, 'fixed UI labels are exact');
 assert.notEqual(japaneseFirstFixedUiLabels['Value Chain'], '供給網上の位置', 'Value Chain is not conflated with supply chain');
 for (const [canonicalValue, label] of Object.entries(fixture.structuredTerms)) {
@@ -35,13 +95,392 @@ for (const [term, description] of Object.entries(fixture.terminology)) {
 const canonical = fixture.canonicalClaim;
 const translated = { ...fixture.translatedClaim, canonicalDigest: japaneseFirstCanonicalDigest(canonical) };
 const entries = compileJapaneseFirstPresentationEntries([translated]);
-assert.deepEqual(resolveJapaneseFirstClaimPresentation(canonical, canonical, entries), { title: translated.title, statement: translated.statement, decision: 'translate' });
+assert.deepEqual(resolveJapaneseFirstClaimPresentation(canonical, canonical, entries), { ...canonical, title: translated.title, statement: translated.statement, decision: 'translate' });
 assert.throws(() => resolveJapaneseFirstClaimPresentation({ ...canonical, statement: `${canonical.statement}!` }, canonical, entries), /digest is stale/);
 assert.throws(() => compileJapaneseFirstPresentationEntries([translated, translated]), /duplicate key/);
 assert.throws(() => compileJapaneseFirstPresentationEntries([{ ...translated, entityType: 'unknown' }]), /entity type is unsupported/);
 assert.throws(() => compileJapaneseFirstPresentationEntries([{ ...translated, title: '' }]), /requires title and statement/);
 assert.throws(() => compileJapaneseFirstPresentationEntries([{ ...translated, decision: 'preserve', title: undefined, statement: undefined }]), /preserve decision requires reason/);
 assert.equal(canonical.title, fixture.canonicalClaim.title, 'canonical object is not mutated');
+
+const preservedEntry = {
+  entityType: 'claim',
+  stableKey: 'preserved-claim',
+  decision: 'preserve',
+  reason: 'Formal product name',
+  canonicalDigest: japaneseFirstCanonicalDigest(canonical),
+};
+assert.deepEqual(
+  resolveJapaneseFirstPresentation('claim', preservedEntry.stableKey, canonical, canonical, compileJapaneseFirstPresentationEntries([preservedEntry])),
+  { ...canonical, decision: 'preserve', reason: preservedEntry.reason },
+  'preserve decisions retain canonical copy and their reason',
+);
+
+const canonicalPortfolio = Object.freeze({
+  title: 'Canonical portfolio title',
+  body: 'Canonical portfolio body.',
+  groundingId: 'fixture-portfolio-grounding',
+  summaryVisible: false,
+  expandedVisible: true,
+});
+const portfolioEntry = {
+  entityType: 'portfolio',
+  stableKey: canonicalPortfolio.groundingId,
+  decision: 'translate',
+  title: '日本語の製品群見出し',
+  statement: '日本語の製品群概要。',
+  canonicalDigest: japaneseFirstCanonicalDigest({
+    groundingId: canonicalPortfolio.groundingId,
+    title: canonicalPortfolio.title,
+    body: canonicalPortfolio.body,
+  }),
+};
+const portfolioEntries = compileJapaneseFirstPresentationEntries([portfolioEntry]);
+assert.deepEqual(resolveCompanyCompareProductPortfolioPresentation(canonicalPortfolio, portfolioEntries), {
+  ...canonicalPortfolio,
+  title: portfolioEntry.title,
+  body: portfolioEntry.statement,
+}, 'Portfolio title and body resolve through the groundingId presentation key');
+assert.deepEqual(resolveCompanyCompareProductPortfolioPresentation(canonicalPortfolio, new Map()), canonicalPortfolio, 'unregistered Portfolio overlays retain canonical copy');
+assert.throws(
+  () => resolveCompanyCompareProductPortfolioPresentation({ ...canonicalPortfolio, title: `${canonicalPortfolio.title}!` }, portfolioEntries),
+  /digest is stale/,
+  'a changed canonical Portfolio title rejects its stale digest',
+);
+assert.throws(
+  () => resolveCompanyCompareProductPortfolioPresentation({ ...canonicalPortfolio, body: `${canonicalPortfolio.body}!` }, portfolioEntries),
+  /digest is stale/,
+  'a changed canonical Portfolio body rejects its stale digest',
+);
+assert.throws(() => compileJapaneseFirstPresentationEntries([portfolioEntry, portfolioEntry]), /duplicate key/, 'duplicate groundingId presentation entries reject');
+assert.throws(() => resolveCompanyCompareProductPortfolioSummary('nvidia', new Set()), /grounding does not resolve/, 'unknown Portfolio grounding IDs reject');
+assert.equal(canonicalPortfolio.title, 'Canonical portfolio title', 'canonical Portfolio title is not mutated');
+assert.equal(canonicalPortfolio.body, 'Canonical portfolio body.', 'canonical Portfolio body is not mutated');
+const portfolioSource = readFileSync(new URL('../src/lib/company-compare-product-portfolios.ts', import.meta.url), 'utf8');
+assert.doesNotMatch(portfolioSource, /companyId\s*===\s*['"]|case\s+['"]/, 'Portfolio presentation has no company-specific branch');
+
+const canonicalFacility = Object.freeze({ facilityId: 'fixture-facility', title: 'Canonical facility', statement: 'Canonical facility statement.' });
+const facilityEntry = {
+  entityType: 'facility',
+  stableKey: canonicalFacility.facilityId,
+  decision: 'translate',
+  title: '試験用施設',
+  statement: '試験用施設の説明。',
+  canonicalDigest: japaneseFirstCanonicalDigest(canonicalFacility),
+};
+assert.deepEqual(
+  resolveJapaneseFirstPresentation('facility', canonicalFacility.facilityId, canonicalFacility, canonicalFacility, compileJapaneseFirstPresentationEntries([facilityEntry])),
+  { ...canonicalFacility, title: facilityEntry.title, statement: facilityEntry.statement, decision: 'translate' },
+  'the shared resolver supports facilityId without a company branch',
+);
+
+const evidenceManifest = readJson('../src/data/company-evidence-manifest.json');
+const evidenceClaims = evidenceManifest.shards.flatMap(shard => readJson(`../src/data/${shard}`).claims);
+const claimById = new Map(evidenceClaims.map(claim => [claim.id, claim]));
+assert.equal(claimById.size, 1_062, 'the frozen canonical Claim set remains complete');
+
+const projectionCompanies = [
+  ...firstBatchCompanies,
+  ...remainingBatch1Companies,
+  ...remainingBatch2Companies,
+  ...remainingBatch3Companies,
+  ...remainingBatch4Companies,
+];
+const displayOnlyProducts = [
+  ...firstBatchProductEntries,
+  ...remainingBatch1ProductEntries,
+  ...remainingBatch2ProductEntries,
+  ...remainingBatch3ProductEntries,
+  ...remainingBatch4ProductEntries,
+];
+const productRegistry = readJson('../src/data/product-registry-v01.json');
+const productRegistryById = new Map(productRegistry.records.map(product => [product.id, product]));
+const productById = new Map(displayOnlyProducts.map(product => [product.canonicalId, product]));
+for (const [productId, description] of Object.entries(compareProductDisplayDescriptions)) {
+  const product = productRegistryById.get(productId);
+  assert.ok(product, `${productId}: Compare Product resolves in the canonical registry`);
+  productById.set(productId, {
+    canonicalId: productId,
+    label: compareProductDisplayNameOverrides[productId] ?? product.displayNames?.ja ?? product.canonicalName,
+    description: description.description,
+  });
+}
+const rawPortfolioById = new Map(Object.values(getCompanyCompareProductPortfolioSummaries()).map(portfolio => [portfolio.groundingId, portfolio]));
+
+const productOwnerById = new Map();
+const portfolioOwnerById = new Map();
+for (const company of projectionCompanies) {
+  portfolioOwnerById.set(company.productPortfolio.groundingId, company.companyId);
+  for (const product of company.productEntries) productOwnerById.set(product.canonicalId, company.companyId);
+}
+const pilotPortfolioOwners = {
+  'nvidia-products': 'nvidia',
+  'broadcom-products': 'broadcom',
+  'applied-products': 'applied-materials',
+  'lam-research-products': 'lam-research',
+  'tokyo-electron-products': 'tokyo-electron',
+};
+for (const [groundingId, companyId] of Object.entries(pilotPortfolioOwners)) portfolioOwnerById.set(groundingId, companyId);
+
+const canonicalForEntry = entry => {
+  if (entry.entityType === 'claim') {
+    const claim = claimById.get(entry.stableKey);
+    if (!claim) throw new Error(`Overlay Claim does not resolve: ${entry.stableKey}`);
+    return { canonical: { id: claim.id, title: claim.title, statement: claim.statement }, companyId: claim.companyId };
+  }
+  if (entry.entityType === 'product') {
+    const product = productById.get(entry.stableKey);
+    const companyId = productOwnerById.get(entry.stableKey);
+    if (!product || !companyId) throw new Error(`Overlay Product does not resolve: ${entry.stableKey}`);
+    return { canonical: { canonicalId: product.canonicalId, label: product.label, description: product.description }, companyId };
+  }
+  if (entry.entityType === 'portfolio') {
+    const portfolio = rawPortfolioById.get(entry.stableKey);
+    const companyId = portfolioOwnerById.get(entry.stableKey);
+    if (!portfolio || !companyId) throw new Error(`Overlay Portfolio does not resolve: ${entry.stableKey}`);
+    return { canonical: { groundingId: portfolio.groundingId, title: portfolio.title, body: portfolio.body }, companyId };
+  }
+  throw new Error(`Batch overlay entity type has no canonical catalog: ${entry.entityType}`);
+};
+
+assert.deepEqual(batch1.companyIds, fixedBatch1CompanyIds, 'Batch 1 data keeps the exact reviewed 50-company order');
+assert.deepEqual(manifest.companyIds, fixedBatch1CompanyIds, 'Batch 1 manifest keeps the exact reviewed 50-company order');
+assert.equal(batch1.baseMainSha, 'c7d0e0022fa280f0f9a3bd90259b2e9132251939', 'Batch 1 data records the approved base main');
+assert.equal(manifest.baseMainSha, batch1.baseMainSha, 'Batch 1 data and manifest share the same base main');
+assert.equal(batch1.entries.length, 535, 'Batch 1 contains the reviewed 535 stable presentation entries');
+assert.equal(manifest.auditCandidateCount, 1_957, 'the 1,957 audited display candidates are retained');
+assert.equal(manifest.translateCount, 1_957, 'all reviewed candidates have a translate decision');
+assert.equal(manifest.preserveCount, 0, 'no candidate is silently preserved');
+assert.equal(manifest.unresolvedCount, 0, 'no audited candidate remains unresolved');
+assert.equal(manifest.overlayEntryCount, batch1.entries.length, 'manifest overlay count matches the registered entries');
+assert.equal(manifest.duplicateStableKeyCount, 0, 'manifest records no duplicate stable key');
+assert.equal(manifest.staleCanonicalDigestCount, 0, 'manifest records no stale canonical digest');
+assert.equal(manifest.batch2EntryCount, 0, 'Batch 2 contributes no overlay entry');
+assert.equal(manifest.canonicalDigestVerification, 'PASS', 'manifest records canonical digest verification');
+assert.deepEqual(manifest.entries, [], 'the audit manifest is not an executable overlay envelope');
+
+const batchEntryKeys = batch1.entries.map(entry => `${entry.entityType}:${entry.stableKey}`);
+assert.deepEqual(batchEntryKeys, [...batchEntryKeys].sort(), 'Batch 1 entries are stably sorted by type and stable key');
+assert.equal(new Set(batchEntryKeys).size, batchEntryKeys.length, 'Batch 1 has no duplicate entityType and stableKey pair');
+assert.deepEqual(manifest.stableKeys, batchEntryKeys, 'manifest stable keys exactly match the executable overlay');
+assert.deepEqual(manifest.stableKeys, [...manifest.stableKeys].sort(), 'manifest stable keys are stably sorted');
+assert.deepEqual(
+  Object.fromEntries(['claim', 'product', 'portfolio', 'facility'].map(type => [type, batch1.entries.filter(entry => entry.entityType === type).length])),
+  { claim: 380, product: 118, portfolio: 37, facility: 0 },
+  'Batch 1 entity-type totals are exact',
+);
+
+const compiledBatchEntries = compileJapaneseFirstPresentationEntries(batch1.entries);
+const entryKeysByCompany = new Map(fixedBatch1CompanyIds.map(companyId => [companyId, []]));
+const canonicalTextByEntry = new Map();
+for (const entry of batch1.entries) {
+  assert.equal(entry.decision, 'translate', `${entry.entityType}:${entry.stableKey}: decision is explicit`);
+  assert.deepEqual(Object.keys(entry).sort(), ['canonicalDigest', 'decision', 'entityType', 'stableKey', 'statement', 'title'], `${entry.entityType}:${entry.stableKey}: overlay fields are exact`);
+  assert.match(`${entry.title}${entry.statement}`, /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u, `${entry.entityType}:${entry.stableKey}: translated copy contains Japanese text`);
+  const { canonical: canonicalValue, companyId } = canonicalForEntry(entry);
+  assert.ok(entryKeysByCompany.has(companyId), `${entry.entityType}:${entry.stableKey}: owner belongs to the fixed Batch 1 set`);
+  entryKeysByCompany.get(companyId).push(`${entry.entityType}:${entry.stableKey}`);
+  assert.equal(entry.canonicalDigest, japaneseFirstCanonicalDigest(canonicalValue), `${entry.entityType}:${entry.stableKey}: canonical digest is current`);
+  const before = JSON.stringify(canonicalValue);
+  const fallback = entry.entityType === 'product'
+    ? { title: canonicalValue.label, statement: canonicalValue.description }
+    : entry.entityType === 'portfolio'
+      ? { title: canonicalValue.title, statement: canonicalValue.body }
+      : { title: canonicalValue.title, statement: canonicalValue.statement };
+  const resolved = resolveJapaneseFirstPresentation(entry.entityType, entry.stableKey, canonicalValue, fallback, compiledBatchEntries);
+  assert.equal(resolved.title, entry.title, `${entry.entityType}:${entry.stableKey}: title resolves`);
+  assert.equal(resolved.statement, entry.statement, `${entry.entityType}:${entry.stableKey}: statement resolves`);
+  assert.equal(resolved.decision, 'translate', `${entry.entityType}:${entry.stableKey}: resolution is translated`);
+  assert.equal(JSON.stringify(canonicalValue), before, `${entry.entityType}:${entry.stableKey}: canonical input is not mutated`);
+  assert.ok(entry.title !== fallback.title || entry.statement !== fallback.statement, `${entry.entityType}:${entry.stableKey}: overlay makes an explicit presentation change`);
+  canonicalTextByEntry.set(`${entry.entityType}:${entry.stableKey}`, `${fallback.title} ${fallback.statement}`);
+}
+assert.deepEqual([...entryKeysByCompany.keys()], fixedBatch1CompanyIds, 'entry ownership includes exactly the fixed Batch 1 companies');
+
+assert.equal(manifest.companies.length, 50, 'manifest has one audit record per fixed company');
+assert.deepEqual(manifest.companies.map(company => company.companyId), fixedBatch1CompanyIds, 'manifest company records preserve the reviewed order');
+let auditedCandidates = 0;
+for (const company of manifest.companies) {
+  assert.equal(company.candidateCount, company.compareCandidateCount + company.companyPageCandidateCount, `${company.companyId}: surface counts total correctly`);
+  assert.equal(company.translateCount, company.candidateCount, `${company.companyId}: every candidate has a translate decision`);
+  assert.equal(company.preserveCount, 0, `${company.companyId}: preserve count is zero`);
+  assert.equal(company.unresolvedCount, 0, `${company.companyId}: unresolved count is zero`);
+  assert.deepEqual(company.stableKeys, [...entryKeysByCompany.get(company.companyId)].sort(), `${company.companyId}: audit stable keys match executable entries`);
+  assert.deepEqual(company.stableKeys, [...company.stableKeys].sort(), `${company.companyId}: audit stable keys are sorted`);
+  assert.deepEqual(company.candidateLedger.map(record => record.surface), ['compare', 'company-page'], `${company.companyId}: both audited surfaces are recorded`);
+  for (const record of company.candidateLedger) {
+    assert.equal(record.decision, 'translate', `${company.companyId}:${record.surface}: ledger decision is explicit`);
+    if (record.count === 0) {
+      assert.equal(record.candidateIdRange, null, `${company.companyId}:${record.surface}: an empty surface has no candidate range`);
+      continue;
+    }
+    const match = record.candidateIdRange.match(new RegExp(`^${escapeRegex(company.companyId)}:${record.surface}:001-(\\d{3})$`));
+    assert.ok(match, `${company.companyId}:${record.surface}: candidate range is stable`);
+    assert.equal(Number(match[1]), record.count, `${company.companyId}:${record.surface}: candidate range matches count`);
+  }
+  auditedCandidates += company.candidateCount;
+}
+assert.equal(auditedCandidates, 1_957, 'company audit ledgers total 1,957 candidates');
+
+const batchOverlayText = batch1.entries.map(entry => `${entry.title} ${entry.statement}`).join('\n');
+for (const phrase of [
+  'Power管理', 'Power変圧器', 'Digitalインフラ', 'Connectivityチップ', 'サーバー CPU', 'サーバー CPUs',
+  'ルーター 基盤', ' / ', '物理AI', '12-インチ', 'データ-センター', 'まで跨る', '位置付ける企業と位置付ける',
+]) {
+  assert.ok(!batchOverlayText.includes(phrase), `reviewed Japanese copy omits the mechanical remnant: ${phrase}`);
+}
+const generalEnglishTerms = [
+  'data center', 'advanced packaging', 'wafer', 'memory', 'foundry', 'network', 'server', 'software', 'cable',
+  'metrology', 'portfolio', 'power', 'service', 'system', 'compute', 'connectivity', 'freshness', 'scope',
+  'value chain', 'evidence', 'physical AI',
+];
+const countGeneralTerms = text => generalEnglishTerms.reduce((count, term) => {
+  const escaped = escapeRegex(term).replace(/\\ /g, '\\s+');
+  return count + (text.match(new RegExp(`(?<![A-Za-z])${escaped}s?(?![A-Za-z])`, 'gi')) ?? []).length;
+}, 0);
+const canonicalGeneralTermCount = [...canonicalTextByEntry.values()].reduce((count, text) => count + countGeneralTerms(text), 0);
+const translatedGeneralTermCount = countGeneralTerms(batchOverlayText);
+const generalTermReduction = 1 - translatedGeneralTermCount / canonicalGeneralTermCount;
+assert.ok(canonicalGeneralTermCount > 0, 'general-term reduction has a non-empty canonical baseline');
+assert.ok(generalTermReduction >= 0.95, `targeted English general terms are reduced by at least 95% (actual ${(generalTermReduction * 100).toFixed(2)}%)`);
+
+const overlayByKey = compiledBatchEntries;
+assert.equal(
+  overlayByKey.get('claim:asml-ai-role').statement,
+  'AtlasではASMLを、AIサーバー向け先端ロジックとHBMを含むメモリの微細化を、リソグラフィ装置とプロセス制御で支える半導体前工程装置企業と位置付ける。',
+  'ASML follows the approved Japanese-first direction',
+);
+assert.equal(
+  overlayByKey.get('claim:fujikura-value-chain').statement,
+  'Atlasではフジクラを、光ファイバを高密度ケーブルと接続ソリューションへ加工し、データセンターの物理ネットワークへ供給する層として整理する。',
+  'Fujikura follows the approved Japanese-first direction',
+);
+assert.equal(
+  overlayByKey.get('claim:samsung-electronics-strategy-triage-remediation-v02').statement,
+  'Samsung Electronicsは、HBM4・GDDR7による高付加価値メモリ、先端GAAプロセスと成熟プロセスの改善、AI・HPC向けファウンドリ顧客基盤の拡大を中長期成長の重点とする。',
+  'Samsung Electronics follows the approved Japanese-first direction',
+);
+assert.equal(
+  overlayByKey.get('claim:sk-hynix-capacity-expansion-triage-remediation-v02').statement,
+  'SK hynixはAIメモリ需要に備え、Yongin Semiconductor Clusterへ120兆ウォン、Cheongju M15Xへ20兆ウォン、インディアナ州先端パッケージ工場へ5.2兆ウォンを投じる計画を開示している。',
+  'SK hynix follows the approved Japanese-first direction',
+);
+
+const klaPortfolio = [...rawPortfolioById.values()].find(portfolio => portfolioOwnerById.get(portfolio.groundingId) === 'kla');
+const klaPortfolioEntry = overlayByKey.get(`portfolio:${klaPortfolio.groundingId}`);
+const resolvedKlaPortfolio = resolveCompanyCompareProductPortfolioPresentation(klaPortfolio, overlayByKey);
+assert.equal(resolvedKlaPortfolio.title, klaPortfolioEntry.title, 'KLA Expanded model receives the translated Portfolio title');
+assert.equal(resolvedKlaPortfolio.body, klaPortfolioEntry.statement, 'KLA Expanded model receives the translated Portfolio body');
+assert.equal(resolveCompanyCompareProductPortfolioPresentation(klaPortfolio, overlayByKey).body, resolvedKlaPortfolio.body, 'shared Portfolio presentation is deterministic across consumers');
+const tsmcPortfolio = [...rawPortfolioById.values()].find(portfolio => portfolioOwnerById.get(portfolio.groundingId) === 'tsmc');
+assert.deepEqual(resolveCompanyCompareProductPortfolioPresentation(tsmcPortfolio, overlayByKey), tsmcPortfolio, 'a non-target company Portfolio remains canonical');
+
+const companyClaimComponentSource = readFileSync(new URL('../src/components/CompanyEvidenceClaim.astro', import.meta.url), 'utf8');
+const compareReadModelSource = readFileSync(new URL('../src/lib/company-compare-evidence-read-model.ts', import.meta.url), 'utf8');
+assert.match(companyClaimComponentSource, /resolveJapaneseFirstClaimPresentation/, 'company pages use the shared Claim presentation resolver');
+assert.match(compareReadModelSource, /resolveJapaneseFirstClaimPresentation/, 'Company Compare uses the shared Claim presentation resolver');
+const asmlCanonical = claimById.get('asml-ai-role');
+const asmlFallback = { title: asmlCanonical.title, statement: asmlCanonical.statement };
+assert.deepEqual(
+  resolveJapaneseFirstClaimPresentation(asmlCanonical, asmlFallback, overlayByKey),
+  resolveJapaneseFirstClaimPresentation(asmlCanonical, asmlFallback, overlayByKey),
+  'the same Claim key resolves identically for Compare and company-page consumers',
+);
+
+const pilotCompanyIds = ['nvidia', 'broadcom', 'applied-materials', 'lam-research', 'tokyo-electron'];
+const allSupportedCompanyIds = [...pilotCompanyIds, ...projectionCompanies.map(company => company.companyId)].sort();
+assert.equal(allSupportedCompanyIds.length, 100, 'artifact freeze derives the complete 100-company set');
+assert.equal(new Set(allSupportedCompanyIds).size, 100, 'artifact freeze company paths are unique');
+const expectedArtifactPaths = ['index.html', ...allSupportedCompanyIds.map(companyId => `${companyId}/index.html`)].sort();
+
+const validateShaEntries = entriesToValidate => {
+  const paths = entriesToValidate.map(([path]) => path);
+  if (new Set(paths).size !== paths.length) throw new Error('artifact SHA path is duplicated');
+  for (const [path, sha] of entriesToValidate) {
+    if (!path || !/^[a-f0-9]{64}$/.test(sha)) throw new Error('artifact SHA entry is invalid');
+  }
+};
+const validateFreezeFixture = value => {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('artifact freeze fixture must be an object');
+  if (typeof value.activeArtifactFreezeVersion !== 'string' || !value.activeArtifactFreezeVersion.trim()) throw new Error('active artifact freeze version is invalid');
+  if (!Array.isArray(value.artifactFreezes) || !value.artifactFreezes.length) throw new Error('artifact freeze history is invalid');
+  const versions = value.artifactFreezes.map(freeze => freeze?.version);
+  if (versions.some(version => typeof version !== 'string' || !version.trim())) throw new Error('artifact freeze version is invalid');
+  if (new Set(versions).size !== versions.length) throw new Error('artifact freeze version is duplicated');
+  const matches = value.artifactFreezes.filter(freeze => freeze.version === value.activeArtifactFreezeVersion);
+  if (matches.length !== 1) throw new Error('active artifact freeze version must resolve exactly once');
+  for (const freeze of value.artifactFreezes) {
+    const map = freeze.sha256ByPath;
+    if (!map || typeof map !== 'object' || Array.isArray(map)) throw new Error('artifact SHA map is invalid');
+    const paths = Object.keys(map);
+    if (paths.length !== 101) throw new Error('artifact SHA path count is invalid');
+    if (JSON.stringify(paths) !== JSON.stringify([...paths].sort())) throw new Error('artifact SHA paths are not sorted');
+    if (JSON.stringify(paths) !== JSON.stringify(expectedArtifactPaths)) throw new Error('artifact SHA path set is invalid');
+    validateShaEntries(Object.entries(map));
+  }
+  return { active: matches[0], freezes: value.artifactFreezes };
+};
+
+const { active: activeFreeze, freezes } = validateFreezeFixture(fixture);
+const foundationFreeze = freezes.find(freeze => freeze.version === 'japanese-first-presentation-foundation-v01');
+assert.ok(foundationFreeze, 'PR #173 foundation freeze remains in history');
+assert.equal(foundationFreeze.metadata.baseMain, '27d6c537f55a223afbd58311d0366cdadd3f8dc0', 'foundation freeze retains its original base main');
+assert.equal(foundationFreeze.metadata.purpose, 'PR #173 Japanese-first presentation foundation approved final artifacts', 'foundation freeze retains its purpose');
+assert.equal(
+  createHash('sha256').update(JSON.stringify(Object.fromEntries(expectedArtifactPaths.map(path => [path, foundationFreeze.sha256ByPath[path]])))).digest('hex'),
+  '926308c93a170814b821d823ad2a636957a463e77659cdead8841928c38f15e6',
+  'foundation path and SHA history is byte-for-byte unchanged',
+);
+assert.equal(activeFreeze.version, 'japanese-first-copy-batch1-v01', 'the explicit active ID selects the Batch 1 freeze');
+const freezeChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== foundationFreeze.sha256ByPath[path]);
+const fixedBatch1ArtifactPaths = fixedBatch1CompanyIds.map(companyId => `${companyId}/index.html`).sort();
+assert.deepEqual(freezeChangedPaths, fixedBatch1ArtifactPaths, 'foundation-to-Batch-1 artifact changes are exactly the fixed 50 companies');
+assert.equal(activeFreeze.sha256ByPath['index.html'], foundationFreeze.sha256ByPath['index.html'], 'Evidence shell SHA remains at the foundation value');
+assert.equal(freezeChangedPaths.length, 50, 'all and only Batch 1 company assets receive new SHA values');
+
+const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
+assert.equal(shaBlocks.length, 2, 'fixture source contains exactly the foundation and Batch 1 SHA maps');
+for (const [index, block] of shaBlocks.entries()) {
+  const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
+  assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);
+  assert.equal(new Set(rawPaths).size, rawPaths.length, `freeze ${index}: raw JSON has no duplicate path key`);
+}
+assert.throws(() => validateShaEntries([...Object.entries(activeFreeze.sha256ByPath), Object.entries(activeFreeze.sha256ByPath)[0]]), /duplicated/, 'duplicate artifact paths reject');
+
+for (const mutate of [
+  value => { delete value.activeArtifactFreezeVersion; },
+  value => { value.activeArtifactFreezeVersion = ''; },
+  value => { value.activeArtifactFreezeVersion = 7; },
+  value => { value.activeArtifactFreezeVersion = 'unknown-version'; },
+  value => { value.artifactFreezes.push(structuredClone(value.artifactFreezes[0])); },
+  value => { value.artifactFreezes[1].sha256ByPath['index.html'] = 'not-a-sha'; },
+  value => { delete value.artifactFreezes[1].sha256ByPath['index.html']; },
+  value => { value.artifactFreezes[1].sha256ByPath['unexpected/index.html'] = '0'.repeat(64); },
+  value => { value.artifactFreezes[1].sha256ByPath = Object.fromEntries(Object.entries(value.artifactFreezes[1].sha256ByPath).reverse()); },
+]) {
+  const invalid = structuredClone(fixture);
+  mutate(invalid);
+  assert.throws(() => validateFreezeFixture(invalid), 'invalid active-version or SHA fixture fails closed');
+}
+
+const evidenceTestSource = readFileSync(new URL('./test-company-compare-evidence-ui.mjs', import.meta.url), 'utf8');
+const freezeSelectionSource = evidenceTestSource.slice(
+  evidenceTestSource.indexOf('const selectActiveArtifactFreeze'),
+  evidenceTestSource.indexOf('const resolveArtifactSizeBaseline'),
+);
+const distFreezeSource = evidenceTestSource.slice(
+  evidenceTestSource.indexOf("const artifactRoot = 'evidence-fragments/company-compare-evidence-v01'"),
+  evidenceTestSource.indexOf('const compareBytes = Buffer.byteLength(compareHtml)'),
+);
+assert.match(freezeSelectionSource, /activeArtifactFreezeVersion/, 'Evidence test selects the explicit active version ID');
+assert.match(freezeSelectionSource, /matches\.length, 1/, 'Evidence test requires the active ID to resolve exactly once');
+assert.doesNotMatch(`${freezeSelectionSource}\n${distFreezeSource}`, /process\.env|\.at\(-1\)|\[.*\.length\s*-\s*1\]|catch\s*\(|japanese-first-copy-batch1-v01/, 'Evidence freeze selection has no environment, ordering, fallback, or Batch 1 branch');
+assert.match(distFreezeSource, /actualArtifactPaths, expectedArtifactPaths/, 'Evidence test compares the actual and expected path sets exactly');
+assert.match(distFreezeSource, /createHash\('sha256'\)[\s\S]*?expectedArtifactSha256ByPath\[artifactPath\]/, 'Evidence test unconditionally compares every artifact SHA');
+assert.doesNotMatch(distFreezeSource, /if\s*\([^)]*(?:sha|hash)[^)]*\)[\s\S]*?(?:marker|terminology|最終確認日)/i, 'SHA mismatch has no HTML-content fallback');
+const legacyShaBlock = evidenceTestSource.match(/const frozenPilotAssetSha256 = \{([\s\S]*?)\n\s{2}\};/);
+assert.ok(legacyShaBlock, 'historical pre-Japanese-first 20-company SHA map remains present');
+assert.equal((legacyShaBlock[1].match(/[a-f0-9]{64}/g) ?? []).length, 20, 'historical 20-company SHA values remain intact');
 
 const partsById = new Map(fixture.names.map(identity => [identity.id, companyDisplayNameParts(identity)]));
 assert.deepEqual(partsById.get('applied-materials'), {
@@ -55,4 +494,16 @@ assert.equal(partsById.get('sumco').secondaryName, null, 'matching names are not
 for (const [id, parts] of partsById) {
   assert.ok(parts.accessibleName && parts.primaryName, `${id}: accessible company identity is present`);
 }
-console.log('Japanese-first presentation foundation tests OK: fixed UI / digest reject / company identity contract');
+
+console.log(JSON.stringify({
+  status: 'PASS',
+  companies: fixedBatch1CompanyIds.length,
+  auditedCandidates,
+  overlayEntries: batch1.entries.length,
+  entityTypes: { claim: 380, product: 118, portfolio: 37, facility: 0 },
+  unresolved: manifest.unresolvedCount,
+  staleCanonicalDigests: manifest.staleCanonicalDigestCount,
+  changedArtifacts: freezeChangedPaths.length,
+  artifactPathsPerFreeze: expectedArtifactPaths.length,
+  generalTermReductionPercent: Number((generalTermReduction * 100).toFixed(2)),
+}, null, 2));

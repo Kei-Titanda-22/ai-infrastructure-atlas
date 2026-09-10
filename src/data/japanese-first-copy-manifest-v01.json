@@ -1,0 +1,2392 @@
+{
+  "schemaVersion": "0.1",
+  "version": "japanese-first-copy-manifest-v01",
+  "baseMainSha": "c7d0e0022fa280f0f9a3bd90259b2e9132251939",
+  "companyIds": [
+    "kla",
+    "johnson-controls",
+    "tower-semiconductor",
+    "corning",
+    "smic",
+    "te-connectivity",
+    "credo",
+    "digital-realty",
+    "lumentum",
+    "asmpt",
+    "marvell",
+    "sumitomo-electric",
+    "furukawa-electric",
+    "eaton",
+    "besi",
+    "nvent",
+    "fujikura",
+    "schneider-electric",
+    "equinix",
+    "vertiv",
+    "intel",
+    "screen-holdings",
+    "cisco",
+    "arista",
+    "trane-technologies",
+    "coherent",
+    "kokusai-electric",
+    "ge-vernova",
+    "legrand",
+    "samsung-electronics",
+    "fanuc",
+    "siemens-energy",
+    "ciena",
+    "qualcomm",
+    "carrier",
+    "rohm",
+    "amd",
+    "micron",
+    "amphenol",
+    "mediatek",
+    "renesas",
+    "tesla",
+    "disco",
+    "monolithic-power",
+    "onsemi",
+    "lam-research",
+    "stmicroelectronics",
+    "asml",
+    "sk-hynix",
+    "texas-instruments"
+  ],
+  "auditCandidateCount": 1957,
+  "translateCount": 1957,
+  "preserveCount": 0,
+  "unresolvedCount": 0,
+  "overlayEntryCount": 535,
+  "duplicateStableKeyCount": 0,
+  "staleCanonicalDigestCount": 0,
+  "batch2EntryCount": 0,
+  "canonicalDigestVerification": "PASS",
+  "candidateLedgerContract": "Each candidate ID is companyId:surface:NNN within the recorded inclusive range; every candidate resolves through the company stableKey set.",
+  "companies": [
+    {
+      "companyId": "kla",
+      "candidateCount": 102,
+      "compareCandidateCount": 50,
+      "companyPageCandidateCount": 52,
+      "translateCount": 102,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 50,
+          "decision": "translate",
+          "candidateIdRange": "kla:compare:001-050"
+        },
+        {
+          "surface": "company-page",
+          "count": 52,
+          "decision": "translate",
+          "candidateIdRange": "kla:company-page:001-052"
+        }
+      ],
+      "stableKeys": [
+        "claim:kla-ai-role",
+        "claim:kla-capacity-expansion-triage-remediation-v02",
+        "claim:kla-customer-markets",
+        "claim:kla-facilities",
+        "claim:kla-overview",
+        "claim:kla-positioning",
+        "claim:kla-products",
+        "claim:kla-risks",
+        "claim:kla-strategy-triage-remediation-v02",
+        "claim:kla-technology",
+        "claim:kla-value-chain",
+        "portfolio:kla-products",
+        "product:display-product-kla-01",
+        "product:display-product-kla-02",
+        "product:display-product-kla-03",
+        "product:display-product-kla-04",
+        "product:display-product-kla-05"
+      ]
+    },
+    {
+      "companyId": "johnson-controls",
+      "candidateCount": 84,
+      "compareCandidateCount": 43,
+      "companyPageCandidateCount": 41,
+      "translateCount": 84,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 43,
+          "decision": "translate",
+          "candidateIdRange": "johnson-controls:compare:001-043"
+        },
+        {
+          "surface": "company-page",
+          "count": 41,
+          "decision": "translate",
+          "candidateIdRange": "johnson-controls:company-page:001-041"
+        }
+      ],
+      "stableKeys": [
+        "claim:johnson-controls-ai-role",
+        "claim:johnson-controls-capacity-expansion-triage-remediation-v02",
+        "claim:johnson-controls-customer-markets",
+        "claim:johnson-controls-manufacturing-facilities-triage-remediation-v02",
+        "claim:johnson-controls-overview",
+        "claim:johnson-controls-positioning",
+        "claim:johnson-controls-products",
+        "claim:johnson-controls-risks",
+        "claim:johnson-controls-strategy",
+        "claim:johnson-controls-technology",
+        "claim:johnson-controls-value-chain",
+        "portfolio:johnson-controls-products",
+        "product:display-product-johnson-controls-01",
+        "product:display-product-johnson-controls-02",
+        "product:display-product-johnson-controls-03",
+        "product:display-product-johnson-controls-04",
+        "product:display-product-johnson-controls-05"
+      ]
+    },
+    {
+      "companyId": "tower-semiconductor",
+      "candidateCount": 81,
+      "compareCandidateCount": 40,
+      "companyPageCandidateCount": 41,
+      "translateCount": 81,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 40,
+          "decision": "translate",
+          "candidateIdRange": "tower-semiconductor:compare:001-040"
+        },
+        {
+          "surface": "company-page",
+          "count": 41,
+          "decision": "translate",
+          "candidateIdRange": "tower-semiconductor:company-page:001-041"
+        }
+      ],
+      "stableKeys": [
+        "claim:tower-semiconductor-ai-role",
+        "claim:tower-semiconductor-capacity",
+        "claim:tower-semiconductor-customer",
+        "claim:tower-semiconductor-facilities",
+        "claim:tower-semiconductor-overview",
+        "claim:tower-semiconductor-positioning",
+        "claim:tower-semiconductor-products",
+        "claim:tower-semiconductor-risks",
+        "claim:tower-semiconductor-strategy",
+        "claim:tower-semiconductor-technology",
+        "claim:tower-semiconductor-value-chain",
+        "portfolio:tower-semiconductor-products",
+        "product:display-product-tower-semiconductor-01",
+        "product:display-product-tower-semiconductor-04",
+        "product:display-product-tower-semiconductor-05",
+        "product:display-product-tower-semiconductor-06"
+      ]
+    },
+    {
+      "companyId": "corning",
+      "candidateCount": 78,
+      "compareCandidateCount": 35,
+      "companyPageCandidateCount": 43,
+      "translateCount": 78,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 35,
+          "decision": "translate",
+          "candidateIdRange": "corning:compare:001-035"
+        },
+        {
+          "surface": "company-page",
+          "count": 43,
+          "decision": "translate",
+          "candidateIdRange": "corning:company-page:001-043"
+        }
+      ],
+      "stableKeys": [
+        "claim:corning-ai-role",
+        "claim:corning-capacity-expansion-triage-remediation-v02",
+        "claim:corning-customer-markets",
+        "claim:corning-facilities",
+        "claim:corning-overview",
+        "claim:corning-positioning",
+        "claim:corning-products",
+        "claim:corning-risks",
+        "claim:corning-strategy-triage-remediation-v02",
+        "claim:corning-technology",
+        "claim:corning-value-chain",
+        "portfolio:corning-products",
+        "product:display-product-corning-01",
+        "product:display-product-corning-02",
+        "product:display-product-corning-03",
+        "product:display-product-corning-04"
+      ]
+    },
+    {
+      "companyId": "smic",
+      "candidateCount": 65,
+      "compareCandidateCount": 33,
+      "companyPageCandidateCount": 32,
+      "translateCount": 65,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 33,
+          "decision": "translate",
+          "candidateIdRange": "smic:compare:001-033"
+        },
+        {
+          "surface": "company-page",
+          "count": 32,
+          "decision": "translate",
+          "candidateIdRange": "smic:company-page:001-032"
+        }
+      ],
+      "stableKeys": [
+        "claim:smic-ai-role",
+        "claim:smic-capacity",
+        "claim:smic-customer",
+        "claim:smic-facilities",
+        "claim:smic-overview",
+        "claim:smic-positioning",
+        "claim:smic-products",
+        "claim:smic-risks",
+        "claim:smic-strategy",
+        "claim:smic-technology",
+        "claim:smic-value-chain",
+        "portfolio:smic-products",
+        "product:display-product-smic-01",
+        "product:display-product-smic-02",
+        "product:display-product-smic-03",
+        "product:display-product-smic-04",
+        "product:display-product-smic-05",
+        "product:display-product-smic-06"
+      ]
+    },
+    {
+      "companyId": "te-connectivity",
+      "candidateCount": 65,
+      "compareCandidateCount": 27,
+      "companyPageCandidateCount": 38,
+      "translateCount": 65,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 27,
+          "decision": "translate",
+          "candidateIdRange": "te-connectivity:compare:001-027"
+        },
+        {
+          "surface": "company-page",
+          "count": 38,
+          "decision": "translate",
+          "candidateIdRange": "te-connectivity:company-page:001-038"
+        }
+      ],
+      "stableKeys": [
+        "claim:te-connectivity-ai-role",
+        "claim:te-connectivity-capacity-expansion-triage-remediation-v02",
+        "claim:te-connectivity-customer",
+        "claim:te-connectivity-facilities",
+        "claim:te-connectivity-overview",
+        "claim:te-connectivity-positioning",
+        "claim:te-connectivity-products",
+        "claim:te-connectivity-risks",
+        "claim:te-connectivity-strategy-triage-remediation-v02",
+        "claim:te-connectivity-technology",
+        "claim:te-connectivity-value-chain",
+        "portfolio:te-connectivity-products",
+        "product:display-product-te-connectivity-01"
+      ]
+    },
+    {
+      "companyId": "credo",
+      "candidateCount": 64,
+      "compareCandidateCount": 32,
+      "companyPageCandidateCount": 32,
+      "translateCount": 64,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 32,
+          "decision": "translate",
+          "candidateIdRange": "credo:compare:001-032"
+        },
+        {
+          "surface": "company-page",
+          "count": 32,
+          "decision": "translate",
+          "candidateIdRange": "credo:company-page:001-032"
+        }
+      ],
+      "stableKeys": [
+        "claim:credo-ai-role",
+        "claim:credo-customer-markets",
+        "claim:credo-overview",
+        "claim:credo-positioning",
+        "claim:credo-products",
+        "claim:credo-risks",
+        "claim:credo-strategy",
+        "claim:credo-technology",
+        "claim:credo-value-chain",
+        "portfolio:credo-products",
+        "product:display-product-credo-01"
+      ]
+    },
+    {
+      "companyId": "digital-realty",
+      "candidateCount": 60,
+      "compareCandidateCount": 18,
+      "companyPageCandidateCount": 42,
+      "translateCount": 60,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 18,
+          "decision": "translate",
+          "candidateIdRange": "digital-realty:compare:001-018"
+        },
+        {
+          "surface": "company-page",
+          "count": 42,
+          "decision": "translate",
+          "candidateIdRange": "digital-realty:company-page:001-042"
+        }
+      ],
+      "stableKeys": [
+        "claim:digital-realty-ai-role",
+        "claim:digital-realty-capacity",
+        "claim:digital-realty-customer-markets",
+        "claim:digital-realty-facilities",
+        "claim:digital-realty-overview",
+        "claim:digital-realty-positioning",
+        "claim:digital-realty-products",
+        "claim:digital-realty-risks",
+        "claim:digital-realty-strategy",
+        "claim:digital-realty-technology",
+        "claim:digital-realty-value-chain",
+        "portfolio:digital-realty-products",
+        "product:display-product-digital-realty-02",
+        "product:display-product-digital-realty-05"
+      ]
+    },
+    {
+      "companyId": "lumentum",
+      "candidateCount": 60,
+      "compareCandidateCount": 26,
+      "companyPageCandidateCount": 34,
+      "translateCount": 60,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 26,
+          "decision": "translate",
+          "candidateIdRange": "lumentum:compare:001-026"
+        },
+        {
+          "surface": "company-page",
+          "count": 34,
+          "decision": "translate",
+          "candidateIdRange": "lumentum:company-page:001-034"
+        }
+      ],
+      "stableKeys": [
+        "claim:lumentum-ai-role",
+        "claim:lumentum-capacity",
+        "claim:lumentum-customer",
+        "claim:lumentum-facilities",
+        "claim:lumentum-overview",
+        "claim:lumentum-positioning",
+        "claim:lumentum-products",
+        "claim:lumentum-risks",
+        "claim:lumentum-strategy",
+        "claim:lumentum-technology",
+        "claim:lumentum-value-chain",
+        "portfolio:lumentum-products",
+        "product:display-product-lumentum-01",
+        "product:display-product-lumentum-02",
+        "product:display-product-lumentum-03",
+        "product:display-product-lumentum-04",
+        "product:display-product-lumentum-05",
+        "product:display-product-lumentum-07",
+        "product:display-product-lumentum-08"
+      ]
+    },
+    {
+      "companyId": "asmpt",
+      "candidateCount": 59,
+      "compareCandidateCount": 31,
+      "companyPageCandidateCount": 28,
+      "translateCount": 59,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 31,
+          "decision": "translate",
+          "candidateIdRange": "asmpt:compare:001-031"
+        },
+        {
+          "surface": "company-page",
+          "count": 28,
+          "decision": "translate",
+          "candidateIdRange": "asmpt:company-page:001-028"
+        }
+      ],
+      "stableKeys": [
+        "claim:asmpt-ai-role",
+        "claim:asmpt-customer",
+        "claim:asmpt-facilities",
+        "claim:asmpt-overview",
+        "claim:asmpt-positioning",
+        "claim:asmpt-products",
+        "claim:asmpt-risks",
+        "claim:asmpt-strategy",
+        "claim:asmpt-technology",
+        "claim:asmpt-value-chain",
+        "portfolio:asmpt-products",
+        "product:display-product-asmpt-01",
+        "product:display-product-asmpt-02",
+        "product:display-product-asmpt-03",
+        "product:display-product-asmpt-04",
+        "product:display-product-asmpt-05",
+        "product:display-product-asmpt-06"
+      ]
+    },
+    {
+      "companyId": "marvell",
+      "candidateCount": 56,
+      "compareCandidateCount": 28,
+      "companyPageCandidateCount": 28,
+      "translateCount": 56,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 28,
+          "decision": "translate",
+          "candidateIdRange": "marvell:compare:001-028"
+        },
+        {
+          "surface": "company-page",
+          "count": 28,
+          "decision": "translate",
+          "candidateIdRange": "marvell:company-page:001-028"
+        }
+      ],
+      "stableKeys": [
+        "claim:marvell-customer-end-market-triage-remediation-v02",
+        "claim:marvell-products",
+        "claim:marvell-strategy-triage-remediation-v02",
+        "claim:marvell-technology",
+        "claim:marvell-value-chain",
+        "portfolio:marvell-products",
+        "product:display-product-marvell-01",
+        "product:display-product-marvell-02",
+        "product:display-product-marvell-03"
+      ]
+    },
+    {
+      "companyId": "sumitomo-electric",
+      "candidateCount": 51,
+      "compareCandidateCount": 23,
+      "companyPageCandidateCount": 28,
+      "translateCount": 51,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 23,
+          "decision": "translate",
+          "candidateIdRange": "sumitomo-electric:compare:001-023"
+        },
+        {
+          "surface": "company-page",
+          "count": 28,
+          "decision": "translate",
+          "candidateIdRange": "sumitomo-electric:company-page:001-028"
+        }
+      ],
+      "stableKeys": [
+        "claim:sumitomo-electric-capacity-expansion-triage-remediation-v02",
+        "claim:sumitomo-electric-customer-end-market-triage-remediation-v02",
+        "claim:sumitomo-electric-manufacturing-facilities-triage-remediation-v02",
+        "claim:sumitomo-electric-products",
+        "claim:sumitomo-electric-strategy-triage-remediation-v02",
+        "claim:sumitomo-electric-technology",
+        "claim:sumitomo-electric-value-chain",
+        "portfolio:sumitomo-electric-products",
+        "product:display-product-sumitomo-electric-01",
+        "product:display-product-sumitomo-electric-02",
+        "product:display-product-sumitomo-electric-03"
+      ]
+    },
+    {
+      "companyId": "furukawa-electric",
+      "candidateCount": 49,
+      "compareCandidateCount": 23,
+      "companyPageCandidateCount": 26,
+      "translateCount": 49,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 23,
+          "decision": "translate",
+          "candidateIdRange": "furukawa-electric:compare:001-023"
+        },
+        {
+          "surface": "company-page",
+          "count": 26,
+          "decision": "translate",
+          "candidateIdRange": "furukawa-electric:company-page:001-026"
+        }
+      ],
+      "stableKeys": [
+        "claim:furukawa-electric-capacity-expansion-triage-remediation-v02",
+        "claim:furukawa-electric-customer-end-market-triage-remediation-v02",
+        "claim:furukawa-electric-manufacturing-facilities-triage-remediation-v02",
+        "claim:furukawa-electric-products",
+        "claim:furukawa-electric-strategy-triage-remediation-v02",
+        "claim:furukawa-electric-technology",
+        "claim:furukawa-electric-value-chain",
+        "portfolio:furukawa-electric-products",
+        "product:display-product-furukawa-electric-01",
+        "product:display-product-furukawa-electric-02",
+        "product:display-product-furukawa-electric-03"
+      ]
+    },
+    {
+      "companyId": "eaton",
+      "candidateCount": 45,
+      "compareCandidateCount": 24,
+      "companyPageCandidateCount": 21,
+      "translateCount": 45,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 24,
+          "decision": "translate",
+          "candidateIdRange": "eaton:compare:001-024"
+        },
+        {
+          "surface": "company-page",
+          "count": 21,
+          "decision": "translate",
+          "candidateIdRange": "eaton:company-page:001-021"
+        }
+      ],
+      "stableKeys": [
+        "claim:eaton-capacity-expansion-triage-remediation-v02",
+        "claim:eaton-customer-end-market-triage-remediation-v02",
+        "claim:eaton-manufacturing-facilities-triage-remediation-v02",
+        "claim:eaton-products",
+        "claim:eaton-strategy-triage-remediation-v02",
+        "claim:eaton-technology",
+        "claim:eaton-value-chain",
+        "portfolio:eaton-products",
+        "product:display-product-eaton-01",
+        "product:display-product-eaton-02",
+        "product:display-product-eaton-03"
+      ]
+    },
+    {
+      "companyId": "besi",
+      "candidateCount": 44,
+      "compareCandidateCount": 19,
+      "companyPageCandidateCount": 25,
+      "translateCount": 44,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 19,
+          "decision": "translate",
+          "candidateIdRange": "besi:compare:001-019"
+        },
+        {
+          "surface": "company-page",
+          "count": 25,
+          "decision": "translate",
+          "candidateIdRange": "besi:company-page:001-025"
+        }
+      ],
+      "stableKeys": [
+        "claim:besi-ai-role",
+        "claim:besi-capacity",
+        "claim:besi-customer",
+        "claim:besi-facilities",
+        "claim:besi-overview",
+        "claim:besi-positioning",
+        "claim:besi-products",
+        "claim:besi-risks",
+        "claim:besi-strategy",
+        "claim:besi-technology",
+        "claim:besi-value-chain",
+        "portfolio:besi-products",
+        "product:display-product-besi-01",
+        "product:display-product-besi-02",
+        "product:display-product-besi-03",
+        "product:display-product-besi-04",
+        "product:display-product-besi-05",
+        "product:display-product-besi-06"
+      ]
+    },
+    {
+      "companyId": "nvent",
+      "candidateCount": 43,
+      "compareCandidateCount": 22,
+      "companyPageCandidateCount": 21,
+      "translateCount": 43,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 22,
+          "decision": "translate",
+          "candidateIdRange": "nvent:compare:001-022"
+        },
+        {
+          "surface": "company-page",
+          "count": 21,
+          "decision": "translate",
+          "candidateIdRange": "nvent:company-page:001-021"
+        }
+      ],
+      "stableKeys": [
+        "claim:nvent-capacity-expansion-triage-remediation-v02",
+        "claim:nvent-customer-end-market-triage-remediation-v02",
+        "claim:nvent-manufacturing-facilities-triage-remediation-v02",
+        "claim:nvent-products",
+        "claim:nvent-strategy-triage-remediation-v02",
+        "claim:nvent-technology",
+        "claim:nvent-value-chain",
+        "portfolio:nvent-products",
+        "product:display-product-nvent-01",
+        "product:display-product-nvent-02",
+        "product:display-product-nvent-03"
+      ]
+    },
+    {
+      "companyId": "fujikura",
+      "candidateCount": 42,
+      "compareCandidateCount": 20,
+      "companyPageCandidateCount": 22,
+      "translateCount": 42,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 20,
+          "decision": "translate",
+          "candidateIdRange": "fujikura:compare:001-020"
+        },
+        {
+          "surface": "company-page",
+          "count": 22,
+          "decision": "translate",
+          "candidateIdRange": "fujikura:company-page:001-022"
+        }
+      ],
+      "stableKeys": [
+        "claim:fujikura-ai-role",
+        "claim:fujikura-capacity",
+        "claim:fujikura-customer-end-market-triage-remediation-v02",
+        "claim:fujikura-positioning",
+        "claim:fujikura-products",
+        "claim:fujikura-strategy-triage-remediation-v02",
+        "claim:fujikura-technology",
+        "claim:fujikura-value-chain",
+        "portfolio:fujikura-products",
+        "product:display-product-fujikura-02"
+      ]
+    },
+    {
+      "companyId": "schneider-electric",
+      "candidateCount": 42,
+      "compareCandidateCount": 20,
+      "companyPageCandidateCount": 22,
+      "translateCount": 42,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 20,
+          "decision": "translate",
+          "candidateIdRange": "schneider-electric:compare:001-020"
+        },
+        {
+          "surface": "company-page",
+          "count": 22,
+          "decision": "translate",
+          "candidateIdRange": "schneider-electric:company-page:001-022"
+        }
+      ],
+      "stableKeys": [
+        "claim:schneider-electric-capacity-expansion-triage-remediation-v02",
+        "claim:schneider-electric-customer-end-market-triage-remediation-v02",
+        "claim:schneider-electric-manufacturing-facilities-triage-remediation-v02",
+        "claim:schneider-electric-products",
+        "claim:schneider-electric-strategy-triage-remediation-v02",
+        "claim:schneider-electric-technology",
+        "claim:schneider-electric-value-chain",
+        "portfolio:schneider-electric-products",
+        "product:display-product-schneider-electric-01",
+        "product:display-product-schneider-electric-02",
+        "product:display-product-schneider-electric-03"
+      ]
+    },
+    {
+      "companyId": "equinix",
+      "candidateCount": 39,
+      "compareCandidateCount": 18,
+      "companyPageCandidateCount": 21,
+      "translateCount": 39,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 18,
+          "decision": "translate",
+          "candidateIdRange": "equinix:compare:001-018"
+        },
+        {
+          "surface": "company-page",
+          "count": 21,
+          "decision": "translate",
+          "candidateIdRange": "equinix:company-page:001-021"
+        }
+      ],
+      "stableKeys": [
+        "claim:equinix-capacity-expansion-triage-remediation-v02",
+        "claim:equinix-customer-end-market-triage-remediation-v02",
+        "claim:equinix-manufacturing-facilities-triage-remediation-v02",
+        "claim:equinix-products",
+        "claim:equinix-strategy-triage-remediation-v02",
+        "claim:equinix-technology",
+        "claim:equinix-value-chain",
+        "portfolio:equinix-products",
+        "product:display-product-equinix-01",
+        "product:display-product-equinix-02",
+        "product:display-product-equinix-03"
+      ]
+    },
+    {
+      "companyId": "vertiv",
+      "candidateCount": 39,
+      "compareCandidateCount": 0,
+      "companyPageCandidateCount": 39,
+      "translateCount": 39,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 0,
+          "decision": "translate",
+          "candidateIdRange": null
+        },
+        {
+          "surface": "company-page",
+          "count": 39,
+          "decision": "translate",
+          "candidateIdRange": "vertiv:company-page:001-039"
+        }
+      ],
+      "stableKeys": [
+        "claim:vertiv-ai-role",
+        "claim:vertiv-capacity-expansion-gap-closure",
+        "claim:vertiv-manufacturing-facilities-triage-remediation-v02",
+        "claim:vertiv-overview",
+        "claim:vertiv-positioning",
+        "claim:vertiv-products",
+        "claim:vertiv-risks",
+        "claim:vertiv-strategy",
+        "claim:vertiv-technology",
+        "claim:vertiv-value-chain"
+      ]
+    },
+    {
+      "companyId": "intel",
+      "candidateCount": 38,
+      "compareCandidateCount": 20,
+      "companyPageCandidateCount": 18,
+      "translateCount": 38,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 20,
+          "decision": "translate",
+          "candidateIdRange": "intel:compare:001-020"
+        },
+        {
+          "surface": "company-page",
+          "count": 18,
+          "decision": "translate",
+          "candidateIdRange": "intel:company-page:001-018"
+        }
+      ],
+      "stableKeys": [
+        "claim:intel-ai-role",
+        "claim:intel-capacity-expansion-triage-remediation-v02",
+        "claim:intel-customer-end-market-triage-remediation-v02",
+        "claim:intel-manufacturing-facilities-gap-closure",
+        "claim:intel-products",
+        "claim:intel-strategy-triage-remediation-v02",
+        "claim:intel-technology",
+        "claim:intel-value-chain",
+        "portfolio:intel-products",
+        "product:display-product-intel-01",
+        "product:display-product-intel-02",
+        "product:display-product-intel-03"
+      ]
+    },
+    {
+      "companyId": "screen-holdings",
+      "candidateCount": 37,
+      "compareCandidateCount": 19,
+      "companyPageCandidateCount": 18,
+      "translateCount": 37,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 19,
+          "decision": "translate",
+          "candidateIdRange": "screen-holdings:compare:001-019"
+        },
+        {
+          "surface": "company-page",
+          "count": 18,
+          "decision": "translate",
+          "candidateIdRange": "screen-holdings:company-page:001-018"
+        }
+      ],
+      "stableKeys": [
+        "claim:screen-holdings-capacity-expansion-triage-remediation-v02",
+        "claim:screen-holdings-customer-end-market-triage-remediation-v02",
+        "claim:screen-holdings-manufacturing-facilities-triage-remediation-v02",
+        "claim:screen-holdings-products",
+        "claim:screen-holdings-strategy-triage-remediation-v02",
+        "claim:screen-holdings-technology",
+        "claim:screen-holdings-value-chain",
+        "portfolio:screen-holdings-products",
+        "product:display-product-screen-holdings-01",
+        "product:display-product-screen-holdings-02",
+        "product:display-product-screen-holdings-03"
+      ]
+    },
+    {
+      "companyId": "cisco",
+      "candidateCount": 36,
+      "compareCandidateCount": 20,
+      "companyPageCandidateCount": 16,
+      "translateCount": 36,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 20,
+          "decision": "translate",
+          "candidateIdRange": "cisco:compare:001-020"
+        },
+        {
+          "surface": "company-page",
+          "count": 16,
+          "decision": "translate",
+          "candidateIdRange": "cisco:company-page:001-016"
+        }
+      ],
+      "stableKeys": [
+        "claim:cisco-ai-role",
+        "claim:cisco-customer-end-market-triage-remediation-v02",
+        "claim:cisco-products",
+        "claim:cisco-strategy-triage-remediation-v02",
+        "claim:cisco-technology",
+        "claim:cisco-value-chain",
+        "portfolio:cisco-products",
+        "product:display-product-cisco-01",
+        "product:display-product-cisco-02",
+        "product:display-product-cisco-03"
+      ]
+    },
+    {
+      "companyId": "arista",
+      "candidateCount": 35,
+      "compareCandidateCount": 0,
+      "companyPageCandidateCount": 35,
+      "translateCount": 35,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 0,
+          "decision": "translate",
+          "candidateIdRange": null
+        },
+        {
+          "surface": "company-page",
+          "count": 35,
+          "decision": "translate",
+          "candidateIdRange": "arista:company-page:001-035"
+        }
+      ],
+      "stableKeys": [
+        "claim:arista-ai-role",
+        "claim:arista-customer",
+        "claim:arista-overview",
+        "claim:arista-positioning",
+        "claim:arista-products",
+        "claim:arista-risks",
+        "claim:arista-strategy",
+        "claim:arista-technology",
+        "claim:arista-value-chain"
+      ]
+    },
+    {
+      "companyId": "trane-technologies",
+      "candidateCount": 35,
+      "compareCandidateCount": 16,
+      "companyPageCandidateCount": 19,
+      "translateCount": 35,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 16,
+          "decision": "translate",
+          "candidateIdRange": "trane-technologies:compare:001-016"
+        },
+        {
+          "surface": "company-page",
+          "count": 19,
+          "decision": "translate",
+          "candidateIdRange": "trane-technologies:company-page:001-019"
+        }
+      ],
+      "stableKeys": [
+        "claim:trane-technologies-capacity-expansion-triage-remediation-v02",
+        "claim:trane-technologies-customer-end-market-triage-remediation-v02",
+        "claim:trane-technologies-manufacturing-facilities-triage-remediation-v02",
+        "claim:trane-technologies-products",
+        "claim:trane-technologies-strategy-triage-remediation-v02",
+        "claim:trane-technologies-technology",
+        "claim:trane-technologies-value-chain",
+        "portfolio:trane-technologies-products",
+        "product:display-product-trane-technologies-01",
+        "product:display-product-trane-technologies-02",
+        "product:display-product-trane-technologies-03"
+      ]
+    },
+    {
+      "companyId": "coherent",
+      "candidateCount": 33,
+      "compareCandidateCount": 16,
+      "companyPageCandidateCount": 17,
+      "translateCount": 33,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 16,
+          "decision": "translate",
+          "candidateIdRange": "coherent:compare:001-016"
+        },
+        {
+          "surface": "company-page",
+          "count": 17,
+          "decision": "translate",
+          "candidateIdRange": "coherent:company-page:001-017"
+        }
+      ],
+      "stableKeys": [
+        "claim:coherent-capacity-expansion-triage-remediation-v02",
+        "claim:coherent-customer-end-market-triage-remediation-v02",
+        "claim:coherent-manufacturing-facilities-triage-remediation-v02",
+        "claim:coherent-products",
+        "claim:coherent-strategy-triage-remediation-v02",
+        "claim:coherent-technology",
+        "claim:coherent-value-chain",
+        "portfolio:coherent-products",
+        "product:display-product-coherent-01",
+        "product:display-product-coherent-02",
+        "product:display-product-coherent-03"
+      ]
+    },
+    {
+      "companyId": "kokusai-electric",
+      "candidateCount": 33,
+      "compareCandidateCount": 17,
+      "companyPageCandidateCount": 16,
+      "translateCount": 33,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 17,
+          "decision": "translate",
+          "candidateIdRange": "kokusai-electric:compare:001-017"
+        },
+        {
+          "surface": "company-page",
+          "count": 16,
+          "decision": "translate",
+          "candidateIdRange": "kokusai-electric:company-page:001-016"
+        }
+      ],
+      "stableKeys": [
+        "claim:kokusai-electric-capacity-expansion-triage-remediation-v02",
+        "claim:kokusai-electric-customer-end-market-triage-remediation-v02",
+        "claim:kokusai-electric-manufacturing-facilities-triage-remediation-v02",
+        "claim:kokusai-electric-products",
+        "claim:kokusai-electric-strategy-triage-remediation-v02",
+        "claim:kokusai-electric-technology",
+        "claim:kokusai-electric-value-chain",
+        "portfolio:kokusai-electric-products",
+        "product:display-product-kokusai-electric-01",
+        "product:display-product-kokusai-electric-02",
+        "product:display-product-kokusai-electric-03"
+      ]
+    },
+    {
+      "companyId": "ge-vernova",
+      "candidateCount": 32,
+      "compareCandidateCount": 17,
+      "companyPageCandidateCount": 15,
+      "translateCount": 32,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 17,
+          "decision": "translate",
+          "candidateIdRange": "ge-vernova:compare:001-017"
+        },
+        {
+          "surface": "company-page",
+          "count": 15,
+          "decision": "translate",
+          "candidateIdRange": "ge-vernova:company-page:001-015"
+        }
+      ],
+      "stableKeys": [
+        "claim:ge-vernova-capacity-expansion-triage-remediation-v02",
+        "claim:ge-vernova-customer-end-market-triage-remediation-v02",
+        "claim:ge-vernova-manufacturing-facilities-triage-remediation-v02",
+        "claim:ge-vernova-products",
+        "claim:ge-vernova-strategy-triage-remediation-v02",
+        "claim:ge-vernova-technology",
+        "claim:ge-vernova-value-chain",
+        "portfolio:ge-vernova-products",
+        "product:display-product-ge-vernova-01",
+        "product:display-product-ge-vernova-02",
+        "product:display-product-ge-vernova-03"
+      ]
+    },
+    {
+      "companyId": "legrand",
+      "candidateCount": 32,
+      "compareCandidateCount": 16,
+      "companyPageCandidateCount": 16,
+      "translateCount": 32,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 16,
+          "decision": "translate",
+          "candidateIdRange": "legrand:compare:001-016"
+        },
+        {
+          "surface": "company-page",
+          "count": 16,
+          "decision": "translate",
+          "candidateIdRange": "legrand:company-page:001-016"
+        }
+      ],
+      "stableKeys": [
+        "claim:legrand-capacity-expansion-triage-remediation-v02",
+        "claim:legrand-customer-end-market-triage-remediation-v02",
+        "claim:legrand-manufacturing-facilities-triage-remediation-v02",
+        "claim:legrand-products",
+        "claim:legrand-strategy-triage-remediation-v02",
+        "claim:legrand-technology",
+        "claim:legrand-value-chain",
+        "portfolio:legrand-products",
+        "product:display-product-legrand-01",
+        "product:display-product-legrand-02",
+        "product:display-product-legrand-03"
+      ]
+    },
+    {
+      "companyId": "samsung-electronics",
+      "candidateCount": 31,
+      "compareCandidateCount": 12,
+      "companyPageCandidateCount": 19,
+      "translateCount": 31,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 12,
+          "decision": "translate",
+          "candidateIdRange": "samsung-electronics:compare:001-012"
+        },
+        {
+          "surface": "company-page",
+          "count": 19,
+          "decision": "translate",
+          "candidateIdRange": "samsung-electronics:company-page:001-019"
+        }
+      ],
+      "stableKeys": [
+        "claim:samsung-electronics-capacity-expansion-triage-remediation-v02",
+        "claim:samsung-electronics-customer-end-market-triage-remediation-v02",
+        "claim:samsung-electronics-manufacturing-facilities-triage-remediation-v02",
+        "claim:samsung-electronics-products",
+        "claim:samsung-electronics-strategy-triage-remediation-v02",
+        "claim:samsung-electronics-technology",
+        "claim:samsung-electronics-value-chain",
+        "portfolio:samsung-electronics-products",
+        "product:display-product-samsung-electronics-02",
+        "product:display-product-samsung-electronics-03"
+      ]
+    },
+    {
+      "companyId": "fanuc",
+      "candidateCount": 30,
+      "compareCandidateCount": 16,
+      "companyPageCandidateCount": 14,
+      "translateCount": 30,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 16,
+          "decision": "translate",
+          "candidateIdRange": "fanuc:compare:001-016"
+        },
+        {
+          "surface": "company-page",
+          "count": 14,
+          "decision": "translate",
+          "candidateIdRange": "fanuc:company-page:001-014"
+        }
+      ],
+      "stableKeys": [
+        "claim:fanuc-ai-role",
+        "claim:fanuc-capacity-expansion-triage-remediation-v02",
+        "claim:fanuc-customer-end-market-triage-remediation-v02",
+        "claim:fanuc-manufacturing-facilities-triage-remediation-v02",
+        "claim:fanuc-products",
+        "claim:fanuc-risks",
+        "claim:fanuc-strategy-triage-remediation-v02",
+        "claim:fanuc-technology",
+        "claim:fanuc-value-chain",
+        "portfolio:fanuc-products",
+        "product:display-product-fanuc-01",
+        "product:display-product-fanuc-02",
+        "product:display-product-fanuc-03"
+      ]
+    },
+    {
+      "companyId": "siemens-energy",
+      "candidateCount": 29,
+      "compareCandidateCount": 14,
+      "companyPageCandidateCount": 15,
+      "translateCount": 29,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 14,
+          "decision": "translate",
+          "candidateIdRange": "siemens-energy:compare:001-014"
+        },
+        {
+          "surface": "company-page",
+          "count": 15,
+          "decision": "translate",
+          "candidateIdRange": "siemens-energy:company-page:001-015"
+        }
+      ],
+      "stableKeys": [
+        "claim:siemens-energy-capacity-expansion-triage-remediation-v02",
+        "claim:siemens-energy-customer-end-market-triage-remediation-v02",
+        "claim:siemens-energy-manufacturing-facilities-triage-remediation-v02",
+        "claim:siemens-energy-products",
+        "claim:siemens-energy-strategy-triage-remediation-v02",
+        "claim:siemens-energy-technology",
+        "claim:siemens-energy-value-chain",
+        "portfolio:siemens-energy-products",
+        "product:display-product-siemens-energy-01",
+        "product:display-product-siemens-energy-02",
+        "product:display-product-siemens-energy-03"
+      ]
+    },
+    {
+      "companyId": "ciena",
+      "candidateCount": 28,
+      "compareCandidateCount": 14,
+      "companyPageCandidateCount": 14,
+      "translateCount": 28,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 14,
+          "decision": "translate",
+          "candidateIdRange": "ciena:compare:001-014"
+        },
+        {
+          "surface": "company-page",
+          "count": 14,
+          "decision": "translate",
+          "candidateIdRange": "ciena:company-page:001-014"
+        }
+      ],
+      "stableKeys": [
+        "claim:ciena-customer-end-market-triage-remediation-v02",
+        "claim:ciena-products",
+        "claim:ciena-strategy-triage-remediation-v02",
+        "claim:ciena-technology",
+        "claim:ciena-value-chain",
+        "portfolio:ciena-products",
+        "product:display-product-ciena-01",
+        "product:display-product-ciena-02",
+        "product:display-product-ciena-03"
+      ]
+    },
+    {
+      "companyId": "qualcomm",
+      "candidateCount": 27,
+      "compareCandidateCount": 15,
+      "companyPageCandidateCount": 12,
+      "translateCount": 27,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 15,
+          "decision": "translate",
+          "candidateIdRange": "qualcomm:compare:001-015"
+        },
+        {
+          "surface": "company-page",
+          "count": 12,
+          "decision": "translate",
+          "candidateIdRange": "qualcomm:company-page:001-012"
+        }
+      ],
+      "stableKeys": [
+        "claim:qualcomm-customer-end-market-triage-remediation-v02",
+        "claim:qualcomm-products",
+        "claim:qualcomm-strategy-triage-remediation-v02",
+        "claim:qualcomm-technology",
+        "claim:qualcomm-value-chain",
+        "portfolio:qualcomm-products",
+        "product:display-product-qualcomm-02",
+        "product:display-product-qualcomm-03"
+      ]
+    },
+    {
+      "companyId": "carrier",
+      "candidateCount": 24,
+      "compareCandidateCount": 14,
+      "companyPageCandidateCount": 10,
+      "translateCount": 24,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 14,
+          "decision": "translate",
+          "candidateIdRange": "carrier:compare:001-014"
+        },
+        {
+          "surface": "company-page",
+          "count": 10,
+          "decision": "translate",
+          "candidateIdRange": "carrier:company-page:001-010"
+        }
+      ],
+      "stableKeys": [
+        "claim:carrier-capacity-expansion-triage-remediation-v02",
+        "claim:carrier-customer-end-market-triage-remediation-v02",
+        "claim:carrier-manufacturing-facilities-triage-remediation-v02",
+        "claim:carrier-products",
+        "claim:carrier-strategy-triage-remediation-v02",
+        "claim:carrier-technology",
+        "claim:carrier-value-chain",
+        "portfolio:carrier-products",
+        "product:display-product-carrier-01",
+        "product:display-product-carrier-02",
+        "product:display-product-carrier-03"
+      ]
+    },
+    {
+      "companyId": "rohm",
+      "candidateCount": 24,
+      "compareCandidateCount": 5,
+      "companyPageCandidateCount": 19,
+      "translateCount": 24,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 5,
+          "decision": "translate",
+          "candidateIdRange": "rohm:compare:001-005"
+        },
+        {
+          "surface": "company-page",
+          "count": 19,
+          "decision": "translate",
+          "candidateIdRange": "rohm:company-page:001-019"
+        }
+      ],
+      "stableKeys": [
+        "claim:rohm-capacity-expansion-triage-remediation-v02",
+        "claim:rohm-customer-end-market-triage-remediation-v02",
+        "claim:rohm-manufacturing-facilities-triage-remediation-v02",
+        "claim:rohm-strategy-triage-remediation-v02",
+        "claim:rohm-value-chain"
+      ]
+    },
+    {
+      "companyId": "amd",
+      "candidateCount": 23,
+      "compareCandidateCount": 0,
+      "companyPageCandidateCount": 23,
+      "translateCount": 23,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 0,
+          "decision": "translate",
+          "candidateIdRange": null
+        },
+        {
+          "surface": "company-page",
+          "count": 23,
+          "decision": "translate",
+          "candidateIdRange": "amd:company-page:001-023"
+        }
+      ],
+      "stableKeys": [
+        "claim:amd-ai-role",
+        "claim:amd-customer",
+        "claim:amd-overview",
+        "claim:amd-positioning",
+        "claim:amd-products",
+        "claim:amd-risks",
+        "claim:amd-strategy",
+        "claim:amd-technology",
+        "claim:amd-value-chain"
+      ]
+    },
+    {
+      "companyId": "micron",
+      "candidateCount": 23,
+      "compareCandidateCount": 0,
+      "companyPageCandidateCount": 23,
+      "translateCount": 23,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 0,
+          "decision": "translate",
+          "candidateIdRange": null
+        },
+        {
+          "surface": "company-page",
+          "count": 23,
+          "decision": "translate",
+          "candidateIdRange": "micron:company-page:001-023"
+        }
+      ],
+      "stableKeys": [
+        "claim:micron-capacity-expansion-triage-remediation-v02",
+        "claim:micron-customer-end-market-triage-remediation-v02",
+        "claim:micron-manufacturing-facilities-gap-closure",
+        "claim:micron-products",
+        "claim:micron-strategy-triage-remediation-v02",
+        "claim:micron-technology",
+        "claim:micron-value-chain"
+      ]
+    },
+    {
+      "companyId": "amphenol",
+      "candidateCount": 22,
+      "compareCandidateCount": 0,
+      "companyPageCandidateCount": 22,
+      "translateCount": 22,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 0,
+          "decision": "translate",
+          "candidateIdRange": null
+        },
+        {
+          "surface": "company-page",
+          "count": 22,
+          "decision": "translate",
+          "candidateIdRange": "amphenol:company-page:001-022"
+        }
+      ],
+      "stableKeys": [
+        "claim:amphenol-ai-role",
+        "claim:amphenol-capacity-expansion-triage-remediation-v02",
+        "claim:amphenol-customer",
+        "claim:amphenol-overview",
+        "claim:amphenol-positioning",
+        "claim:amphenol-products",
+        "claim:amphenol-risks",
+        "claim:amphenol-strategy-triage-remediation-v02",
+        "claim:amphenol-technology",
+        "claim:amphenol-value-chain"
+      ]
+    },
+    {
+      "companyId": "mediatek",
+      "candidateCount": 22,
+      "compareCandidateCount": 11,
+      "companyPageCandidateCount": 11,
+      "translateCount": 22,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 11,
+          "decision": "translate",
+          "candidateIdRange": "mediatek:compare:001-011"
+        },
+        {
+          "surface": "company-page",
+          "count": 11,
+          "decision": "translate",
+          "candidateIdRange": "mediatek:company-page:001-011"
+        }
+      ],
+      "stableKeys": [
+        "claim:mediatek-customer-end-market-triage-remediation-v02",
+        "claim:mediatek-products",
+        "claim:mediatek-strategy-triage-remediation-v02",
+        "claim:mediatek-technology",
+        "claim:mediatek-value-chain",
+        "portfolio:mediatek-products",
+        "product:display-product-mediatek-01",
+        "product:display-product-mediatek-02",
+        "product:display-product-mediatek-03"
+      ]
+    },
+    {
+      "companyId": "renesas",
+      "candidateCount": 22,
+      "compareCandidateCount": 6,
+      "companyPageCandidateCount": 16,
+      "translateCount": 22,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 6,
+          "decision": "translate",
+          "candidateIdRange": "renesas:compare:001-006"
+        },
+        {
+          "surface": "company-page",
+          "count": 16,
+          "decision": "translate",
+          "candidateIdRange": "renesas:company-page:001-016"
+        }
+      ],
+      "stableKeys": [
+        "claim:renesas-capacity-expansion-triage-remediation-v02",
+        "claim:renesas-customer-end-market-triage-remediation-v02",
+        "claim:renesas-manufacturing-facilities-triage-remediation-v02",
+        "claim:renesas-strategy-triage-remediation-v02",
+        "claim:renesas-value-chain"
+      ]
+    },
+    {
+      "companyId": "tesla",
+      "candidateCount": 21,
+      "compareCandidateCount": 7,
+      "companyPageCandidateCount": 14,
+      "translateCount": 21,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 7,
+          "decision": "translate",
+          "candidateIdRange": "tesla:compare:001-007"
+        },
+        {
+          "surface": "company-page",
+          "count": 14,
+          "decision": "translate",
+          "candidateIdRange": "tesla:company-page:001-014"
+        }
+      ],
+      "stableKeys": [
+        "claim:tesla-ai-role",
+        "claim:tesla-capacity-expansion-triage-remediation-v02",
+        "claim:tesla-customer-end-market-triage-remediation-v02",
+        "claim:tesla-manufacturing-facilities-triage-remediation-v02",
+        "claim:tesla-strategy-triage-remediation-v02",
+        "claim:tesla-value-chain"
+      ]
+    },
+    {
+      "companyId": "disco",
+      "candidateCount": 20,
+      "compareCandidateCount": 13,
+      "companyPageCandidateCount": 7,
+      "translateCount": 20,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 13,
+          "decision": "translate",
+          "candidateIdRange": "disco:compare:001-013"
+        },
+        {
+          "surface": "company-page",
+          "count": 7,
+          "decision": "translate",
+          "candidateIdRange": "disco:company-page:001-007"
+        }
+      ],
+      "stableKeys": [
+        "claim:disco-products",
+        "claim:disco-technology",
+        "claim:disco-value-chain",
+        "portfolio:disco-products",
+        "product:display-product-disco-01",
+        "product:display-product-disco-02",
+        "product:display-product-disco-03"
+      ]
+    },
+    {
+      "companyId": "monolithic-power",
+      "candidateCount": 20,
+      "compareCandidateCount": 6,
+      "companyPageCandidateCount": 14,
+      "translateCount": 20,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 6,
+          "decision": "translate",
+          "candidateIdRange": "monolithic-power:compare:001-006"
+        },
+        {
+          "surface": "company-page",
+          "count": 14,
+          "decision": "translate",
+          "candidateIdRange": "monolithic-power:company-page:001-014"
+        }
+      ],
+      "stableKeys": [
+        "claim:monolithic-power-customer-end-market-triage-remediation-v02",
+        "claim:monolithic-power-strategy-triage-remediation-v02",
+        "claim:monolithic-power-value-chain"
+      ]
+    },
+    {
+      "companyId": "onsemi",
+      "candidateCount": 20,
+      "compareCandidateCount": 7,
+      "companyPageCandidateCount": 13,
+      "translateCount": 20,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 7,
+          "decision": "translate",
+          "candidateIdRange": "onsemi:compare:001-007"
+        },
+        {
+          "surface": "company-page",
+          "count": 13,
+          "decision": "translate",
+          "candidateIdRange": "onsemi:company-page:001-013"
+        }
+      ],
+      "stableKeys": [
+        "claim:onsemi-ai-role",
+        "claim:onsemi-customer-end-market-triage-remediation-v02",
+        "claim:onsemi-manufacturing-facilities-triage-remediation-v02",
+        "claim:onsemi-strategy-triage-remediation-v02",
+        "claim:onsemi-value-chain"
+      ]
+    },
+    {
+      "companyId": "lam-research",
+      "candidateCount": 19,
+      "compareCandidateCount": 0,
+      "companyPageCandidateCount": 19,
+      "translateCount": 19,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 0,
+          "decision": "translate",
+          "candidateIdRange": null
+        },
+        {
+          "surface": "company-page",
+          "count": 19,
+          "decision": "translate",
+          "candidateIdRange": "lam-research:company-page:001-019"
+        }
+      ],
+      "stableKeys": [
+        "claim:lam-research-capacity-expansion-triage-remediation-v02",
+        "claim:lam-research-customer-end-market-triage-remediation-v02",
+        "claim:lam-research-manufacturing-facilities-triage-remediation-v02",
+        "claim:lam-research-products",
+        "claim:lam-research-strategy-triage-remediation-v02",
+        "claim:lam-research-technology",
+        "claim:lam-research-value-chain"
+      ]
+    },
+    {
+      "companyId": "stmicroelectronics",
+      "candidateCount": 19,
+      "compareCandidateCount": 6,
+      "companyPageCandidateCount": 13,
+      "translateCount": 19,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 6,
+          "decision": "translate",
+          "candidateIdRange": "stmicroelectronics:compare:001-006"
+        },
+        {
+          "surface": "company-page",
+          "count": 13,
+          "decision": "translate",
+          "candidateIdRange": "stmicroelectronics:company-page:001-013"
+        }
+      ],
+      "stableKeys": [
+        "claim:stmicroelectronics-ai-role",
+        "claim:stmicroelectronics-capacity-expansion-triage-remediation-v02",
+        "claim:stmicroelectronics-customer-end-market-triage-remediation-v02",
+        "claim:stmicroelectronics-manufacturing-facilities-triage-remediation-v02",
+        "claim:stmicroelectronics-strategy-triage-remediation-v02",
+        "claim:stmicroelectronics-value-chain"
+      ]
+    },
+    {
+      "companyId": "asml",
+      "candidateCount": 18,
+      "compareCandidateCount": 6,
+      "companyPageCandidateCount": 12,
+      "translateCount": 18,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 6,
+          "decision": "translate",
+          "candidateIdRange": "asml:compare:001-006"
+        },
+        {
+          "surface": "company-page",
+          "count": 12,
+          "decision": "translate",
+          "candidateIdRange": "asml:company-page:001-012"
+        }
+      ],
+      "stableKeys": [
+        "claim:asml-ai-role",
+        "claim:asml-capacity",
+        "claim:asml-customer-markets",
+        "claim:asml-facilities",
+        "claim:asml-positioning",
+        "claim:asml-products",
+        "claim:asml-risks",
+        "claim:asml-strategy",
+        "claim:asml-value-chain",
+        "portfolio:asml-products",
+        "product:display-product-asml-02",
+        "product:display-product-asml-04"
+      ]
+    },
+    {
+      "companyId": "sk-hynix",
+      "candidateCount": 18,
+      "compareCandidateCount": 5,
+      "companyPageCandidateCount": 13,
+      "translateCount": 18,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 5,
+          "decision": "translate",
+          "candidateIdRange": "sk-hynix:compare:001-005"
+        },
+        {
+          "surface": "company-page",
+          "count": 13,
+          "decision": "translate",
+          "candidateIdRange": "sk-hynix:company-page:001-013"
+        }
+      ],
+      "stableKeys": [
+        "claim:sk-hynix-capacity-expansion-triage-remediation-v02",
+        "claim:sk-hynix-customer-end-market-triage-remediation-v02",
+        "claim:sk-hynix-manufacturing-facilities-triage-remediation-v02",
+        "claim:sk-hynix-products",
+        "claim:sk-hynix-strategy-triage-remediation-v02",
+        "claim:sk-hynix-technology",
+        "claim:sk-hynix-value-chain",
+        "portfolio:sk-hynix-products",
+        "product:display-product-sk-hynix-03"
+      ]
+    },
+    {
+      "companyId": "texas-instruments",
+      "candidateCount": 18,
+      "compareCandidateCount": 5,
+      "companyPageCandidateCount": 13,
+      "translateCount": 18,
+      "preserveCount": 0,
+      "unresolvedCount": 0,
+      "candidateLedger": [
+        {
+          "surface": "compare",
+          "count": 5,
+          "decision": "translate",
+          "candidateIdRange": "texas-instruments:compare:001-005"
+        },
+        {
+          "surface": "company-page",
+          "count": 13,
+          "decision": "translate",
+          "candidateIdRange": "texas-instruments:company-page:001-013"
+        }
+      ],
+      "stableKeys": [
+        "claim:texas-instruments-capacity-expansion-triage-remediation-v02",
+        "claim:texas-instruments-customer-end-market-triage-remediation-v02",
+        "claim:texas-instruments-manufacturing-facilities-triage-remediation-v02",
+        "claim:texas-instruments-strategy-triage-remediation-v02",
+        "claim:texas-instruments-value-chain"
+      ]
+    }
+  ],
+  "stableKeys": [
+    "claim:amd-ai-role",
+    "claim:amd-customer",
+    "claim:amd-overview",
+    "claim:amd-positioning",
+    "claim:amd-products",
+    "claim:amd-risks",
+    "claim:amd-strategy",
+    "claim:amd-technology",
+    "claim:amd-value-chain",
+    "claim:amphenol-ai-role",
+    "claim:amphenol-capacity-expansion-triage-remediation-v02",
+    "claim:amphenol-customer",
+    "claim:amphenol-overview",
+    "claim:amphenol-positioning",
+    "claim:amphenol-products",
+    "claim:amphenol-risks",
+    "claim:amphenol-strategy-triage-remediation-v02",
+    "claim:amphenol-technology",
+    "claim:amphenol-value-chain",
+    "claim:arista-ai-role",
+    "claim:arista-customer",
+    "claim:arista-overview",
+    "claim:arista-positioning",
+    "claim:arista-products",
+    "claim:arista-risks",
+    "claim:arista-strategy",
+    "claim:arista-technology",
+    "claim:arista-value-chain",
+    "claim:asml-ai-role",
+    "claim:asml-capacity",
+    "claim:asml-customer-markets",
+    "claim:asml-facilities",
+    "claim:asml-positioning",
+    "claim:asml-products",
+    "claim:asml-risks",
+    "claim:asml-strategy",
+    "claim:asml-value-chain",
+    "claim:asmpt-ai-role",
+    "claim:asmpt-customer",
+    "claim:asmpt-facilities",
+    "claim:asmpt-overview",
+    "claim:asmpt-positioning",
+    "claim:asmpt-products",
+    "claim:asmpt-risks",
+    "claim:asmpt-strategy",
+    "claim:asmpt-technology",
+    "claim:asmpt-value-chain",
+    "claim:besi-ai-role",
+    "claim:besi-capacity",
+    "claim:besi-customer",
+    "claim:besi-facilities",
+    "claim:besi-overview",
+    "claim:besi-positioning",
+    "claim:besi-products",
+    "claim:besi-risks",
+    "claim:besi-strategy",
+    "claim:besi-technology",
+    "claim:besi-value-chain",
+    "claim:carrier-capacity-expansion-triage-remediation-v02",
+    "claim:carrier-customer-end-market-triage-remediation-v02",
+    "claim:carrier-manufacturing-facilities-triage-remediation-v02",
+    "claim:carrier-products",
+    "claim:carrier-strategy-triage-remediation-v02",
+    "claim:carrier-technology",
+    "claim:carrier-value-chain",
+    "claim:ciena-customer-end-market-triage-remediation-v02",
+    "claim:ciena-products",
+    "claim:ciena-strategy-triage-remediation-v02",
+    "claim:ciena-technology",
+    "claim:ciena-value-chain",
+    "claim:cisco-ai-role",
+    "claim:cisco-customer-end-market-triage-remediation-v02",
+    "claim:cisco-products",
+    "claim:cisco-strategy-triage-remediation-v02",
+    "claim:cisco-technology",
+    "claim:cisco-value-chain",
+    "claim:coherent-capacity-expansion-triage-remediation-v02",
+    "claim:coherent-customer-end-market-triage-remediation-v02",
+    "claim:coherent-manufacturing-facilities-triage-remediation-v02",
+    "claim:coherent-products",
+    "claim:coherent-strategy-triage-remediation-v02",
+    "claim:coherent-technology",
+    "claim:coherent-value-chain",
+    "claim:corning-ai-role",
+    "claim:corning-capacity-expansion-triage-remediation-v02",
+    "claim:corning-customer-markets",
+    "claim:corning-facilities",
+    "claim:corning-overview",
+    "claim:corning-positioning",
+    "claim:corning-products",
+    "claim:corning-risks",
+    "claim:corning-strategy-triage-remediation-v02",
+    "claim:corning-technology",
+    "claim:corning-value-chain",
+    "claim:credo-ai-role",
+    "claim:credo-customer-markets",
+    "claim:credo-overview",
+    "claim:credo-positioning",
+    "claim:credo-products",
+    "claim:credo-risks",
+    "claim:credo-strategy",
+    "claim:credo-technology",
+    "claim:credo-value-chain",
+    "claim:digital-realty-ai-role",
+    "claim:digital-realty-capacity",
+    "claim:digital-realty-customer-markets",
+    "claim:digital-realty-facilities",
+    "claim:digital-realty-overview",
+    "claim:digital-realty-positioning",
+    "claim:digital-realty-products",
+    "claim:digital-realty-risks",
+    "claim:digital-realty-strategy",
+    "claim:digital-realty-technology",
+    "claim:digital-realty-value-chain",
+    "claim:disco-products",
+    "claim:disco-technology",
+    "claim:disco-value-chain",
+    "claim:eaton-capacity-expansion-triage-remediation-v02",
+    "claim:eaton-customer-end-market-triage-remediation-v02",
+    "claim:eaton-manufacturing-facilities-triage-remediation-v02",
+    "claim:eaton-products",
+    "claim:eaton-strategy-triage-remediation-v02",
+    "claim:eaton-technology",
+    "claim:eaton-value-chain",
+    "claim:equinix-capacity-expansion-triage-remediation-v02",
+    "claim:equinix-customer-end-market-triage-remediation-v02",
+    "claim:equinix-manufacturing-facilities-triage-remediation-v02",
+    "claim:equinix-products",
+    "claim:equinix-strategy-triage-remediation-v02",
+    "claim:equinix-technology",
+    "claim:equinix-value-chain",
+    "claim:fanuc-ai-role",
+    "claim:fanuc-capacity-expansion-triage-remediation-v02",
+    "claim:fanuc-customer-end-market-triage-remediation-v02",
+    "claim:fanuc-manufacturing-facilities-triage-remediation-v02",
+    "claim:fanuc-products",
+    "claim:fanuc-risks",
+    "claim:fanuc-strategy-triage-remediation-v02",
+    "claim:fanuc-technology",
+    "claim:fanuc-value-chain",
+    "claim:fujikura-ai-role",
+    "claim:fujikura-capacity",
+    "claim:fujikura-customer-end-market-triage-remediation-v02",
+    "claim:fujikura-positioning",
+    "claim:fujikura-products",
+    "claim:fujikura-strategy-triage-remediation-v02",
+    "claim:fujikura-technology",
+    "claim:fujikura-value-chain",
+    "claim:furukawa-electric-capacity-expansion-triage-remediation-v02",
+    "claim:furukawa-electric-customer-end-market-triage-remediation-v02",
+    "claim:furukawa-electric-manufacturing-facilities-triage-remediation-v02",
+    "claim:furukawa-electric-products",
+    "claim:furukawa-electric-strategy-triage-remediation-v02",
+    "claim:furukawa-electric-technology",
+    "claim:furukawa-electric-value-chain",
+    "claim:ge-vernova-capacity-expansion-triage-remediation-v02",
+    "claim:ge-vernova-customer-end-market-triage-remediation-v02",
+    "claim:ge-vernova-manufacturing-facilities-triage-remediation-v02",
+    "claim:ge-vernova-products",
+    "claim:ge-vernova-strategy-triage-remediation-v02",
+    "claim:ge-vernova-technology",
+    "claim:ge-vernova-value-chain",
+    "claim:intel-ai-role",
+    "claim:intel-capacity-expansion-triage-remediation-v02",
+    "claim:intel-customer-end-market-triage-remediation-v02",
+    "claim:intel-manufacturing-facilities-gap-closure",
+    "claim:intel-products",
+    "claim:intel-strategy-triage-remediation-v02",
+    "claim:intel-technology",
+    "claim:intel-value-chain",
+    "claim:johnson-controls-ai-role",
+    "claim:johnson-controls-capacity-expansion-triage-remediation-v02",
+    "claim:johnson-controls-customer-markets",
+    "claim:johnson-controls-manufacturing-facilities-triage-remediation-v02",
+    "claim:johnson-controls-overview",
+    "claim:johnson-controls-positioning",
+    "claim:johnson-controls-products",
+    "claim:johnson-controls-risks",
+    "claim:johnson-controls-strategy",
+    "claim:johnson-controls-technology",
+    "claim:johnson-controls-value-chain",
+    "claim:kla-ai-role",
+    "claim:kla-capacity-expansion-triage-remediation-v02",
+    "claim:kla-customer-markets",
+    "claim:kla-facilities",
+    "claim:kla-overview",
+    "claim:kla-positioning",
+    "claim:kla-products",
+    "claim:kla-risks",
+    "claim:kla-strategy-triage-remediation-v02",
+    "claim:kla-technology",
+    "claim:kla-value-chain",
+    "claim:kokusai-electric-capacity-expansion-triage-remediation-v02",
+    "claim:kokusai-electric-customer-end-market-triage-remediation-v02",
+    "claim:kokusai-electric-manufacturing-facilities-triage-remediation-v02",
+    "claim:kokusai-electric-products",
+    "claim:kokusai-electric-strategy-triage-remediation-v02",
+    "claim:kokusai-electric-technology",
+    "claim:kokusai-electric-value-chain",
+    "claim:lam-research-capacity-expansion-triage-remediation-v02",
+    "claim:lam-research-customer-end-market-triage-remediation-v02",
+    "claim:lam-research-manufacturing-facilities-triage-remediation-v02",
+    "claim:lam-research-products",
+    "claim:lam-research-strategy-triage-remediation-v02",
+    "claim:lam-research-technology",
+    "claim:lam-research-value-chain",
+    "claim:legrand-capacity-expansion-triage-remediation-v02",
+    "claim:legrand-customer-end-market-triage-remediation-v02",
+    "claim:legrand-manufacturing-facilities-triage-remediation-v02",
+    "claim:legrand-products",
+    "claim:legrand-strategy-triage-remediation-v02",
+    "claim:legrand-technology",
+    "claim:legrand-value-chain",
+    "claim:lumentum-ai-role",
+    "claim:lumentum-capacity",
+    "claim:lumentum-customer",
+    "claim:lumentum-facilities",
+    "claim:lumentum-overview",
+    "claim:lumentum-positioning",
+    "claim:lumentum-products",
+    "claim:lumentum-risks",
+    "claim:lumentum-strategy",
+    "claim:lumentum-technology",
+    "claim:lumentum-value-chain",
+    "claim:marvell-customer-end-market-triage-remediation-v02",
+    "claim:marvell-products",
+    "claim:marvell-strategy-triage-remediation-v02",
+    "claim:marvell-technology",
+    "claim:marvell-value-chain",
+    "claim:mediatek-customer-end-market-triage-remediation-v02",
+    "claim:mediatek-products",
+    "claim:mediatek-strategy-triage-remediation-v02",
+    "claim:mediatek-technology",
+    "claim:mediatek-value-chain",
+    "claim:micron-capacity-expansion-triage-remediation-v02",
+    "claim:micron-customer-end-market-triage-remediation-v02",
+    "claim:micron-manufacturing-facilities-gap-closure",
+    "claim:micron-products",
+    "claim:micron-strategy-triage-remediation-v02",
+    "claim:micron-technology",
+    "claim:micron-value-chain",
+    "claim:monolithic-power-customer-end-market-triage-remediation-v02",
+    "claim:monolithic-power-strategy-triage-remediation-v02",
+    "claim:monolithic-power-value-chain",
+    "claim:nvent-capacity-expansion-triage-remediation-v02",
+    "claim:nvent-customer-end-market-triage-remediation-v02",
+    "claim:nvent-manufacturing-facilities-triage-remediation-v02",
+    "claim:nvent-products",
+    "claim:nvent-strategy-triage-remediation-v02",
+    "claim:nvent-technology",
+    "claim:nvent-value-chain",
+    "claim:onsemi-ai-role",
+    "claim:onsemi-customer-end-market-triage-remediation-v02",
+    "claim:onsemi-manufacturing-facilities-triage-remediation-v02",
+    "claim:onsemi-strategy-triage-remediation-v02",
+    "claim:onsemi-value-chain",
+    "claim:qualcomm-customer-end-market-triage-remediation-v02",
+    "claim:qualcomm-products",
+    "claim:qualcomm-strategy-triage-remediation-v02",
+    "claim:qualcomm-technology",
+    "claim:qualcomm-value-chain",
+    "claim:renesas-capacity-expansion-triage-remediation-v02",
+    "claim:renesas-customer-end-market-triage-remediation-v02",
+    "claim:renesas-manufacturing-facilities-triage-remediation-v02",
+    "claim:renesas-strategy-triage-remediation-v02",
+    "claim:renesas-value-chain",
+    "claim:rohm-capacity-expansion-triage-remediation-v02",
+    "claim:rohm-customer-end-market-triage-remediation-v02",
+    "claim:rohm-manufacturing-facilities-triage-remediation-v02",
+    "claim:rohm-strategy-triage-remediation-v02",
+    "claim:rohm-value-chain",
+    "claim:samsung-electronics-capacity-expansion-triage-remediation-v02",
+    "claim:samsung-electronics-customer-end-market-triage-remediation-v02",
+    "claim:samsung-electronics-manufacturing-facilities-triage-remediation-v02",
+    "claim:samsung-electronics-products",
+    "claim:samsung-electronics-strategy-triage-remediation-v02",
+    "claim:samsung-electronics-technology",
+    "claim:samsung-electronics-value-chain",
+    "claim:schneider-electric-capacity-expansion-triage-remediation-v02",
+    "claim:schneider-electric-customer-end-market-triage-remediation-v02",
+    "claim:schneider-electric-manufacturing-facilities-triage-remediation-v02",
+    "claim:schneider-electric-products",
+    "claim:schneider-electric-strategy-triage-remediation-v02",
+    "claim:schneider-electric-technology",
+    "claim:schneider-electric-value-chain",
+    "claim:screen-holdings-capacity-expansion-triage-remediation-v02",
+    "claim:screen-holdings-customer-end-market-triage-remediation-v02",
+    "claim:screen-holdings-manufacturing-facilities-triage-remediation-v02",
+    "claim:screen-holdings-products",
+    "claim:screen-holdings-strategy-triage-remediation-v02",
+    "claim:screen-holdings-technology",
+    "claim:screen-holdings-value-chain",
+    "claim:siemens-energy-capacity-expansion-triage-remediation-v02",
+    "claim:siemens-energy-customer-end-market-triage-remediation-v02",
+    "claim:siemens-energy-manufacturing-facilities-triage-remediation-v02",
+    "claim:siemens-energy-products",
+    "claim:siemens-energy-strategy-triage-remediation-v02",
+    "claim:siemens-energy-technology",
+    "claim:siemens-energy-value-chain",
+    "claim:sk-hynix-capacity-expansion-triage-remediation-v02",
+    "claim:sk-hynix-customer-end-market-triage-remediation-v02",
+    "claim:sk-hynix-manufacturing-facilities-triage-remediation-v02",
+    "claim:sk-hynix-products",
+    "claim:sk-hynix-strategy-triage-remediation-v02",
+    "claim:sk-hynix-technology",
+    "claim:sk-hynix-value-chain",
+    "claim:smic-ai-role",
+    "claim:smic-capacity",
+    "claim:smic-customer",
+    "claim:smic-facilities",
+    "claim:smic-overview",
+    "claim:smic-positioning",
+    "claim:smic-products",
+    "claim:smic-risks",
+    "claim:smic-strategy",
+    "claim:smic-technology",
+    "claim:smic-value-chain",
+    "claim:stmicroelectronics-ai-role",
+    "claim:stmicroelectronics-capacity-expansion-triage-remediation-v02",
+    "claim:stmicroelectronics-customer-end-market-triage-remediation-v02",
+    "claim:stmicroelectronics-manufacturing-facilities-triage-remediation-v02",
+    "claim:stmicroelectronics-strategy-triage-remediation-v02",
+    "claim:stmicroelectronics-value-chain",
+    "claim:sumitomo-electric-capacity-expansion-triage-remediation-v02",
+    "claim:sumitomo-electric-customer-end-market-triage-remediation-v02",
+    "claim:sumitomo-electric-manufacturing-facilities-triage-remediation-v02",
+    "claim:sumitomo-electric-products",
+    "claim:sumitomo-electric-strategy-triage-remediation-v02",
+    "claim:sumitomo-electric-technology",
+    "claim:sumitomo-electric-value-chain",
+    "claim:te-connectivity-ai-role",
+    "claim:te-connectivity-capacity-expansion-triage-remediation-v02",
+    "claim:te-connectivity-customer",
+    "claim:te-connectivity-facilities",
+    "claim:te-connectivity-overview",
+    "claim:te-connectivity-positioning",
+    "claim:te-connectivity-products",
+    "claim:te-connectivity-risks",
+    "claim:te-connectivity-strategy-triage-remediation-v02",
+    "claim:te-connectivity-technology",
+    "claim:te-connectivity-value-chain",
+    "claim:tesla-ai-role",
+    "claim:tesla-capacity-expansion-triage-remediation-v02",
+    "claim:tesla-customer-end-market-triage-remediation-v02",
+    "claim:tesla-manufacturing-facilities-triage-remediation-v02",
+    "claim:tesla-strategy-triage-remediation-v02",
+    "claim:tesla-value-chain",
+    "claim:texas-instruments-capacity-expansion-triage-remediation-v02",
+    "claim:texas-instruments-customer-end-market-triage-remediation-v02",
+    "claim:texas-instruments-manufacturing-facilities-triage-remediation-v02",
+    "claim:texas-instruments-strategy-triage-remediation-v02",
+    "claim:texas-instruments-value-chain",
+    "claim:tower-semiconductor-ai-role",
+    "claim:tower-semiconductor-capacity",
+    "claim:tower-semiconductor-customer",
+    "claim:tower-semiconductor-facilities",
+    "claim:tower-semiconductor-overview",
+    "claim:tower-semiconductor-positioning",
+    "claim:tower-semiconductor-products",
+    "claim:tower-semiconductor-risks",
+    "claim:tower-semiconductor-strategy",
+    "claim:tower-semiconductor-technology",
+    "claim:tower-semiconductor-value-chain",
+    "claim:trane-technologies-capacity-expansion-triage-remediation-v02",
+    "claim:trane-technologies-customer-end-market-triage-remediation-v02",
+    "claim:trane-technologies-manufacturing-facilities-triage-remediation-v02",
+    "claim:trane-technologies-products",
+    "claim:trane-technologies-strategy-triage-remediation-v02",
+    "claim:trane-technologies-technology",
+    "claim:trane-technologies-value-chain",
+    "claim:vertiv-ai-role",
+    "claim:vertiv-capacity-expansion-gap-closure",
+    "claim:vertiv-manufacturing-facilities-triage-remediation-v02",
+    "claim:vertiv-overview",
+    "claim:vertiv-positioning",
+    "claim:vertiv-products",
+    "claim:vertiv-risks",
+    "claim:vertiv-strategy",
+    "claim:vertiv-technology",
+    "claim:vertiv-value-chain",
+    "portfolio:asml-products",
+    "portfolio:asmpt-products",
+    "portfolio:besi-products",
+    "portfolio:carrier-products",
+    "portfolio:ciena-products",
+    "portfolio:cisco-products",
+    "portfolio:coherent-products",
+    "portfolio:corning-products",
+    "portfolio:credo-products",
+    "portfolio:digital-realty-products",
+    "portfolio:disco-products",
+    "portfolio:eaton-products",
+    "portfolio:equinix-products",
+    "portfolio:fanuc-products",
+    "portfolio:fujikura-products",
+    "portfolio:furukawa-electric-products",
+    "portfolio:ge-vernova-products",
+    "portfolio:intel-products",
+    "portfolio:johnson-controls-products",
+    "portfolio:kla-products",
+    "portfolio:kokusai-electric-products",
+    "portfolio:legrand-products",
+    "portfolio:lumentum-products",
+    "portfolio:marvell-products",
+    "portfolio:mediatek-products",
+    "portfolio:nvent-products",
+    "portfolio:qualcomm-products",
+    "portfolio:samsung-electronics-products",
+    "portfolio:schneider-electric-products",
+    "portfolio:screen-holdings-products",
+    "portfolio:siemens-energy-products",
+    "portfolio:sk-hynix-products",
+    "portfolio:smic-products",
+    "portfolio:sumitomo-electric-products",
+    "portfolio:te-connectivity-products",
+    "portfolio:tower-semiconductor-products",
+    "portfolio:trane-technologies-products",
+    "product:display-product-asml-02",
+    "product:display-product-asml-04",
+    "product:display-product-asmpt-01",
+    "product:display-product-asmpt-02",
+    "product:display-product-asmpt-03",
+    "product:display-product-asmpt-04",
+    "product:display-product-asmpt-05",
+    "product:display-product-asmpt-06",
+    "product:display-product-besi-01",
+    "product:display-product-besi-02",
+    "product:display-product-besi-03",
+    "product:display-product-besi-04",
+    "product:display-product-besi-05",
+    "product:display-product-besi-06",
+    "product:display-product-carrier-01",
+    "product:display-product-carrier-02",
+    "product:display-product-carrier-03",
+    "product:display-product-ciena-01",
+    "product:display-product-ciena-02",
+    "product:display-product-ciena-03",
+    "product:display-product-cisco-01",
+    "product:display-product-cisco-02",
+    "product:display-product-cisco-03",
+    "product:display-product-coherent-01",
+    "product:display-product-coherent-02",
+    "product:display-product-coherent-03",
+    "product:display-product-corning-01",
+    "product:display-product-corning-02",
+    "product:display-product-corning-03",
+    "product:display-product-corning-04",
+    "product:display-product-credo-01",
+    "product:display-product-digital-realty-02",
+    "product:display-product-digital-realty-05",
+    "product:display-product-disco-01",
+    "product:display-product-disco-02",
+    "product:display-product-disco-03",
+    "product:display-product-eaton-01",
+    "product:display-product-eaton-02",
+    "product:display-product-eaton-03",
+    "product:display-product-equinix-01",
+    "product:display-product-equinix-02",
+    "product:display-product-equinix-03",
+    "product:display-product-fanuc-01",
+    "product:display-product-fanuc-02",
+    "product:display-product-fanuc-03",
+    "product:display-product-fujikura-02",
+    "product:display-product-furukawa-electric-01",
+    "product:display-product-furukawa-electric-02",
+    "product:display-product-furukawa-electric-03",
+    "product:display-product-ge-vernova-01",
+    "product:display-product-ge-vernova-02",
+    "product:display-product-ge-vernova-03",
+    "product:display-product-intel-01",
+    "product:display-product-intel-02",
+    "product:display-product-intel-03",
+    "product:display-product-johnson-controls-01",
+    "product:display-product-johnson-controls-02",
+    "product:display-product-johnson-controls-03",
+    "product:display-product-johnson-controls-04",
+    "product:display-product-johnson-controls-05",
+    "product:display-product-kla-01",
+    "product:display-product-kla-02",
+    "product:display-product-kla-03",
+    "product:display-product-kla-04",
+    "product:display-product-kla-05",
+    "product:display-product-kokusai-electric-01",
+    "product:display-product-kokusai-electric-02",
+    "product:display-product-kokusai-electric-03",
+    "product:display-product-legrand-01",
+    "product:display-product-legrand-02",
+    "product:display-product-legrand-03",
+    "product:display-product-lumentum-01",
+    "product:display-product-lumentum-02",
+    "product:display-product-lumentum-03",
+    "product:display-product-lumentum-04",
+    "product:display-product-lumentum-05",
+    "product:display-product-lumentum-07",
+    "product:display-product-lumentum-08",
+    "product:display-product-marvell-01",
+    "product:display-product-marvell-02",
+    "product:display-product-marvell-03",
+    "product:display-product-mediatek-01",
+    "product:display-product-mediatek-02",
+    "product:display-product-mediatek-03",
+    "product:display-product-nvent-01",
+    "product:display-product-nvent-02",
+    "product:display-product-nvent-03",
+    "product:display-product-qualcomm-02",
+    "product:display-product-qualcomm-03",
+    "product:display-product-samsung-electronics-02",
+    "product:display-product-samsung-electronics-03",
+    "product:display-product-schneider-electric-01",
+    "product:display-product-schneider-electric-02",
+    "product:display-product-schneider-electric-03",
+    "product:display-product-screen-holdings-01",
+    "product:display-product-screen-holdings-02",
+    "product:display-product-screen-holdings-03",
+    "product:display-product-siemens-energy-01",
+    "product:display-product-siemens-energy-02",
+    "product:display-product-siemens-energy-03",
+    "product:display-product-sk-hynix-03",
+    "product:display-product-smic-01",
+    "product:display-product-smic-02",
+    "product:display-product-smic-03",
+    "product:display-product-smic-04",
+    "product:display-product-smic-05",
+    "product:display-product-smic-06",
+    "product:display-product-sumitomo-electric-01",
+    "product:display-product-sumitomo-electric-02",
+    "product:display-product-sumitomo-electric-03",
+    "product:display-product-te-connectivity-01",
+    "product:display-product-tower-semiconductor-01",
+    "product:display-product-tower-semiconductor-04",
+    "product:display-product-tower-semiconductor-05",
+    "product:display-product-tower-semiconductor-06",
+    "product:display-product-trane-technologies-01",
+    "product:display-product-trane-technologies-02",
+    "product:display-product-trane-technologies-03"
+  ],
+  "entries": []
+}
