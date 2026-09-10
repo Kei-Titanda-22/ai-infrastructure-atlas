@@ -17,6 +17,8 @@ interface Props {
   drawerTitle?: string;
   displayTitle: string;
   displayStatement: string;
+  drawerDisplayTitle?: string;
+  drawerDisplayStatement?: string;
   variant?: 'standard' | 'list';
   productDescription?: { productId: string; description: string; groundingIds: readonly string[] };
 }
@@ -37,6 +39,8 @@ const {
   drawerTitle = '根拠',
   displayTitle,
   displayStatement,
+  drawerDisplayTitle = displayTitle,
+  drawerDisplayStatement = displayStatement,
   variant = 'standard',
   productDescription,
 } = Astro.props;
@@ -94,7 +98,7 @@ const markerLabel = sourceNumbers.length > 0 ? sourceNumbers.join(', ') : '–';
     </div>
     <details class="provenance-details">
       <summary>詳細情報</summary>
-      <div class="drawer-claim-context"><span>{provenanceTypeLabel ?? typeLabel}</span><h4>{claim.title}</h4><p class="drawer-statement">{claim.statement}</p></div>
+      <div class="drawer-claim-context"><span>{provenanceTypeLabel ?? typeLabel}</span><h4>{drawerDisplayTitle}</h4><p class="drawer-statement">{drawerDisplayStatement}</p></div>
       <dl class="drawer-meta">
         <div><dt>情報時点</dt><dd>{claim.asOf}</dd></div>
         <div><dt>検証状態</dt><dd>{verification.full}</dd></div>

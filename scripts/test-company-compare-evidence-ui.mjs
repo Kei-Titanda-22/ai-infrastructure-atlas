@@ -401,6 +401,7 @@ const companyAssetPage = await readFile(new URL('../src/pages/evidence-fragments
 const companyAssetLoaderSource = await readFile(new URL('../src/lib/company-compare-evidence-assets.ts', import.meta.url), 'utf8');
 const presentationSource = `${component}\n${companyAssetComponent}`;
 const claimComponent = await readFile(new URL('../src/components/CompanyCompareEvidenceClaim.astro', import.meta.url), 'utf8');
+const companyClaimComponent = await readFile(new URL('../src/components/CompanyEvidenceClaim.astro', import.meta.url), 'utf8');
 const controller = await readFile(new URL('../src/scripts/company-compare-evidence-ui.ts', import.meta.url), 'utf8');
 const compareSearchController = await readFile(new URL('../src/scripts/search-combobox-controller.ts', import.meta.url), 'utf8');
 const styles = await readFile(new URL('../src/styles/company-compare-evidence-v01.css', import.meta.url), 'utf8');
@@ -1493,8 +1494,12 @@ assert.match(claimComponent, /aria-label=\{`\$\{typeLabel\}: \$\{displayTitle\}`
 assert.match(controller, /詳細 — 全根拠・財務履歴まで表示/, 'runtime detail description omits the redundant supplement label');
 assert.match(presentationSource, /id="evidence-section-evidence-trace"[\s\S]*data-expanded-only/, 'Evidence trace is expanded-only');
 assert.match(presentationSource, /displayTitle=\{entry\.display\.title\}/, 'visible Claim copy comes from the display-only read model');
-assert.match(claimComponent, /<h4>\{claim\.title\}<\/h4>/, 'Evidence drawer retains the canonical Claim title');
-assert.match(claimComponent, /class="drawer-statement">\{claim\.statement\}/, 'Evidence drawer retains the canonical Claim statement');
+assert.match(claimComponent, /drawer-claim-context[\s\S]*?<h4>\{drawerDisplayTitle\}<\/h4><p class="drawer-statement">\{drawerDisplayStatement\}<\/p>/, 'Compare Evidence drawer uses its explicit presentation Claim title and statement');
+assert.doesNotMatch(claimComponent, /drawer-claim-context[\s\S]*?<h4>\{claim\.title\}<\/h4>|drawer-claim-context[\s\S]*?class="drawer-statement">\{claim\.statement\}/, 'Compare Evidence drawer does not re-render raw canonical Claim copy');
+assert.match(companyAssetComponent, /drawerDisplayTitle=\{entry\.display\.title\}/, 'Compare asset passes the resolved Claim title to the drawer independently of body projection labels');
+assert.match(companyAssetComponent, /drawerDisplayStatement=\{entry\.display\.statement\}/, 'Compare asset passes the resolved Claim statement to the drawer independently of body projection labels');
+assert.match(companyClaimComponent, /drawer-claim-context[\s\S]*?<h4>\{presentation\.title\}<\/h4><p class="drawer-statement">\{presentation\.statement\}<\/p>/, 'Company Evidence drawer uses the same presentation Claim title and statement as its body');
+assert.doesNotMatch(companyClaimComponent, /drawer-claim-context[\s\S]*?<h4>\{claim\.title\}<\/h4>|drawer-claim-context[\s\S]*?class="drawer-statement">\{claim\.statement\}/, 'Company Evidence drawer does not re-render raw canonical Claim copy');
 assert.match(claimComponent, /aria-haspopup="dialog"/);
 assert.match(claimComponent, /data-evidence-open/);
 assert.match(claimComponent, /verified: \{ short: '確認済み', full: '根拠箇所まで確認済み' \}/, 'Company Claim verified presentation remains unchanged');
