@@ -10,6 +10,10 @@ import {
   remainingBatch4Companies,
   remainingBatch4CompanyIds,
 } from './company-compare-first-batch.ts';
+import {
+  resolveJapaneseFirstPresentation,
+  type JapaneseFirstPresentationEntry,
+} from './japanese-first-presentation.ts';
 
 export const companyCompareProductPortfolioCompanyIds = [
   'nvidia',
@@ -32,6 +36,26 @@ export interface CompanyCompareProductPortfolioSummary {
   groundingId: string;
   summaryVisible: false;
   expandedVisible: true;
+}
+
+export function resolveCompanyCompareProductPortfolioPresentation(
+  summary: CompanyCompareProductPortfolioSummary,
+  entries?: ReadonlyMap<string, JapaneseFirstPresentationEntry>,
+): CompanyCompareProductPortfolioSummary {
+  const canonical = {
+    groundingId: summary.groundingId,
+    title: summary.title,
+    body: summary.body,
+  };
+  const fallback = { title: summary.title, statement: summary.body };
+  const presentation = entries
+    ? resolveJapaneseFirstPresentation('portfolio', summary.groundingId, canonical, fallback, entries)
+    : resolveJapaneseFirstPresentation('portfolio', summary.groundingId, canonical, fallback);
+  return Object.freeze({
+    ...summary,
+    title: presentation.title,
+    body: presentation.statement,
+  });
 }
 
 const requireRecord = (value: unknown, label: string): Record<string, unknown> => {
@@ -130,6 +154,7 @@ export function getCompanyCompareProductPortfolioSummaries() {
 export function resolveCompanyCompareProductPortfolioSummary(
   companyId: string,
   knownGroundingIds?: ReadonlySet<string>,
+  entries?: ReadonlyMap<string, JapaneseFirstPresentationEntry>,
 ): CompanyCompareProductPortfolioSummary {
   const companyCompareProductPortfolioSummaries = getCompanyCompareProductPortfolioSummaries();
   const summary = companyCompareProductPortfolioSummaries[companyId as CompanyCompareProductPortfolioCompanyId];
@@ -137,5 +162,5 @@ export function resolveCompanyCompareProductPortfolioSummary(
   if (knownGroundingIds && !knownGroundingIds.has(summary.groundingId)) {
     throw new Error(`Company Compare Product portfolio grounding does not resolve: ${companyId}:${summary.groundingId}`);
   }
-  return summary;
+  return resolveCompanyCompareProductPortfolioPresentation(summary, entries);
 }

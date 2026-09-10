@@ -125,38 +125,46 @@ export function compileJapaneseFirstPresentationEntries(entries: readonly Japane
   return compiled;
 }
 
-const registeredModules = import.meta.glob ? import.meta.glob('../data/japanese-first-copy-*.json', { eager: true, import: 'default' }) : {};
-const registeredEntryMap = compileJapaneseFirstPresentationEntries(
-  Object.entries(registeredModules)
-    .sort(([left], [right]) => left.localeCompare(right))
-    .flatMap(([path, payload]) => {
-      if (!payload || typeof payload !== 'object' || !Array.isArray((payload as { entries?: unknown }).entries)) {
-        throw new Error(`Japanese-first presentation data envelope is invalid: ${path}`);
-      }
-      return (payload as { entries: JapaneseFirstPresentationEntry[] }).entries;
-    }),
-);
+const registeredModules = import.meta.env?.SSR === true
+  ? import.meta.glob('../data/japanese-first-copy-batch*-v*.json', { eager: true, import: 'default' })
+  : null;
+const registeredEntryMap = registeredModules
+  ? compileJapaneseFirstPresentationEntries(
+    Object.entries(registeredModules)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .flatMap(([path, payload]) => {
+        if (!payload || typeof payload !== 'object' || !Array.isArray((payload as { entries?: unknown }).entries)) {
+          throw new Error(`Japanese-first presentation data envelope is invalid: ${path}`);
+        }
+        return (payload as { entries: JapaneseFirstPresentationEntry[] }).entries;
+      }),
+  )
+  : null;
 
-export function resolveJapaneseFirstPresentation(
+export function resolveJapaneseFirstPresentation<TFallback extends JapaneseFirstDisplayCopy>(
   entityType: JapaneseFirstEntityType,
   stableKey: string,
   canonical: unknown,
-  fallback: JapaneseFirstDisplayCopy,
-  entries: ReadonlyMap<string, JapaneseFirstPresentationEntry> = registeredEntryMap,
+  fallback: TFallback,
+  entries?: ReadonlyMap<string, JapaneseFirstPresentationEntry>,
 ) {
-  const entry = entries.get(`${entityType}:${stableKey}`);
+  const activeEntries = entries ?? registeredEntryMap;
+  if (!activeEntries) {
+    throw new Error('Japanese-first presentation registry is unavailable outside the Vite SSR build; inject an entry map');
+  }
+  const entry = activeEntries.get(`${entityType}:${stableKey}`);
   if (!entry) return { ...fallback, decision: 'canonical' as const };
   if (entry.canonicalDigest !== japaneseFirstCanonicalDigest(canonical)) {
     throw new Error(`Japanese-first presentation digest is stale: ${entityType}:${stableKey}`);
   }
   if (entry.decision === 'preserve') return { ...fallback, decision: 'preserve' as const, reason: entry.reason! };
-  return { title: entry.title!, statement: entry.statement!, decision: 'translate' as const };
+  return { ...fallback, title: entry.title!, statement: entry.statement!, decision: 'translate' as const };
 }
 
 export const resolveJapaneseFirstClaimPresentation = (
   claim: { id: string; title: string; statement: string },
   fallback: JapaneseFirstDisplayCopy = { title: claim.title, statement: claim.statement },
-  entries: ReadonlyMap<string, JapaneseFirstPresentationEntry> = registeredEntryMap,
+  entries?: ReadonlyMap<string, JapaneseFirstPresentationEntry>,
 ) => resolveJapaneseFirstPresentation('claim', claim.id, { id: claim.id, title: claim.title, statement: claim.statement }, fallback, entries);
 
 export function companyDisplayNameParts(identity: CompanyDisplayIdentityLike): CompanyDisplayNameParts {

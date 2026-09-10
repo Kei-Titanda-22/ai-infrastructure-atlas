@@ -69,6 +69,7 @@ import {
   remainingBatch4Stage,
 } from '../src/lib/company-compare-first-batch.ts';
 import { assessNormalizedFinancialCompatibility } from '../src/lib/financial-comparison-contract.ts';
+import { compileJapaneseFirstPresentationEntries } from '../src/lib/japanese-first-presentation.ts';
 import { formatCompanyCompareEvidencePageLead } from '../src/scripts/company-compare-evidence-ui.ts';
 import { gzipSync } from 'node:zlib';
 import {
@@ -95,6 +96,13 @@ import {
 } from '../src/lib/company-compare-display.ts';
 
 const readJson = async relative => JSON.parse(await readFile(new URL(relative, import.meta.url), 'utf8'));
+const japaneseFirstOverlayDataFileNames = (await readdir(new URL('../src/data/', import.meta.url)))
+  .filter(fileName => /^japanese-first-copy-batch\d+-v\d+\.json$/.test(fileName))
+  .sort();
+const japaneseFirstOverlayEntries = compileJapaneseFirstPresentationEntries(
+  (await Promise.all(japaneseFirstOverlayDataFileNames.map(fileName => readJson(`../src/data/${fileName}`))))
+    .flatMap(batch => batch.entries),
+);
 const projection = await readJson('../src/data/company-compare-evidence-pilot-v01.json');
 const productRegistry = await readJson('../src/data/product-registry-v01.json');
 const relations = await readJson('../src/data/relationships.json');
@@ -106,6 +114,25 @@ const displayFixture = await readJson('./fixtures/company-compare-japanese-displ
 const japaneseFirstCopyFixture = await readJson('./fixtures/japanese-first-copy-v01.json');
 const artifactSizeBaselineFixture = await readJson('./fixtures/company-compare-artifact-size-baseline-v01.json');
 const onDemandSizeFixture = await readJson('./fixtures/company-compare-on-demand-size-v01.json');
+
+const selectActiveArtifactFreeze = fixtureValue => {
+  assert.ok(fixtureValue && typeof fixtureValue === 'object' && !Array.isArray(fixtureValue), 'Japanese-first fixture is an object');
+  const activeVersion = fixtureValue.activeArtifactFreezeVersion;
+  assert.equal(typeof activeVersion, 'string', 'Japanese-first active artifact freeze version is a string');
+  assert.ok(activeVersion.trim(), 'Japanese-first active artifact freeze version is not empty');
+  const freezes = fixtureValue.artifactFreezes;
+  assert.ok(Array.isArray(freezes), 'Japanese-first artifact freezes are a versioned array');
+  const versions = freezes.map((freeze, index) => {
+    assert.ok(freeze && typeof freeze === 'object' && !Array.isArray(freeze), `Japanese-first artifact freeze ${index} is an object`);
+    assert.equal(typeof freeze.version, 'string', `Japanese-first artifact freeze ${index} version is a string`);
+    assert.ok(freeze.version.trim(), `Japanese-first artifact freeze ${index} version is not empty`);
+    return freeze.version;
+  });
+  assert.equal(new Set(versions).size, versions.length, 'Japanese-first artifact freeze versions are unique');
+  const matches = freezes.filter(freeze => freeze.version === activeVersion);
+  assert.equal(matches.length, 1, 'Japanese-first active artifact freeze version resolves exactly once');
+  return { activeVersion, activeFreeze: matches[0], freezes };
+};
 
 assert.equal(
   formatCompanyCompareEvidencePageLead(onDemandSizeFixture.companyIds.length),
@@ -462,7 +489,7 @@ assert.doesNotThrow(
 );
 for (const companyId of companyCompareProductPortfolioCompanyIds) {
   assert.deepEqual(
-    resolveCompanyCompareProductPortfolioSummary(companyId, portfolioGroundingIds),
+    resolveCompanyCompareProductPortfolioSummary(companyId, portfolioGroundingIds, new Map()),
     expectedProductPortfolioSummaries[companyId],
     `${companyId}: Product portfolio copy and visibility are deterministic`,
   );
@@ -1614,7 +1641,7 @@ if (process.argv.includes('--dist')) {
   ])));
   const fragmentHtml = pilotIds.map(companyId => assetHtmlById[companyId]).join('\n');
   // Historical pre-Japanese-first baseline, retained as release history only.
-  // The PR #173 artifact freeze below is the active unconditional guard.
+  // The fixture's explicit active version is the unconditional artifact guard.
   const frozenPilotAssetSha256 = {
     nvidia: '117dfcd1ba581fa1cacd8ed04d7f7e956b78edc74757a88c6aead46d0d388dc3',
     broadcom: 'dee43be84e969544a98ee5799bf862166c10b9c67d26153c6d0f69e8927941a1',
@@ -1642,30 +1669,37 @@ if (process.argv.includes('--dist')) {
     ['index.html', shellHtml],
     ...supportedIds.map(companyId => [`${companyId}/index.html`, assetHtmlById[companyId]]),
   ]);
-  const expectedArtifactSha256ByPath = japaneseFirstCopyFixture.artifactFreeze?.sha256ByPath;
+  const { activeVersion, activeFreeze, freezes: artifactFreezes } = selectActiveArtifactFreeze(japaneseFirstCopyFixture);
+  const foundationFreeze = artifactFreezes.find(freeze => freeze.version === 'japanese-first-presentation-foundation-v01');
+  assert.ok(foundationFreeze, 'PR #173 Japanese-first foundation artifact freeze remains in version history');
   assert.equal(
-    japaneseFirstCopyFixture.artifactFreeze?.metadata?.baseMain,
+    foundationFreeze.metadata?.baseMain,
     '27d6c537f55a223afbd58311d0366cdadd3f8dc0',
-    'Japanese-first artifact freeze records its base main',
+    'PR #173 Japanese-first foundation freeze retains its base main',
   );
   assert.equal(
-    japaneseFirstCopyFixture.artifactFreeze?.metadata?.purpose,
+    foundationFreeze.metadata?.purpose,
     'PR #173 Japanese-first presentation foundation approved final artifacts',
-    'Japanese-first artifact freeze records its purpose',
+    'PR #173 Japanese-first foundation freeze retains its purpose',
   );
-  assert.equal(japaneseFirstCopyFixture.artifactFreeze?.metadata?.pathBase, `dist/${artifactRoot}`, 'Japanese-first artifact freeze records its path base');
-  assert.ok(expectedArtifactSha256ByPath && typeof expectedArtifactSha256ByPath === 'object', 'Japanese-first exact artifact SHA-256 map is present');
+  assert.equal(foundationFreeze.metadata?.pathBase, `dist/${artifactRoot}`, 'PR #173 Japanese-first foundation freeze retains its path base');
+  assert.equal(activeFreeze.metadata?.pathBase, `dist/${artifactRoot}`, `${activeVersion}: active Japanese-first artifact freeze records its path base`);
+  const expectedArtifactSha256ByPath = activeFreeze.sha256ByPath;
+  assert.ok(expectedArtifactSha256ByPath && typeof expectedArtifactSha256ByPath === 'object' && !Array.isArray(expectedArtifactSha256ByPath), `${activeVersion}: exact artifact SHA-256 map is present`);
   const expectedArtifactPaths = Object.keys(expectedArtifactSha256ByPath);
   const actualArtifactPaths = Object.keys(actualArtifactHtmlByPath).sort();
-  assert.deepEqual(expectedArtifactPaths, [...expectedArtifactPaths].sort(), 'Japanese-first artifact SHA-256 paths are stably sorted');
-  assert.equal(expectedArtifactPaths.length, 101, 'Japanese-first artifact SHA-256 fixture freezes shell plus 100 assets');
+  assert.deepEqual(expectedArtifactPaths, [...expectedArtifactPaths].sort(), `${activeVersion}: artifact SHA-256 paths are stably sorted`);
+  assert.equal(expectedArtifactPaths.length, 101, `${activeVersion}: artifact SHA-256 fixture freezes shell plus 100 assets`);
+  for (const artifactPath of expectedArtifactPaths) {
+    assert.match(expectedArtifactSha256ByPath[artifactPath], /^[a-f0-9]{64}$/, `${activeVersion}:${artifactPath}: expected SHA-256 is valid`);
+  }
   assert.equal(actualArtifactPaths.length, 101, 'built artifacts contain shell plus 100 assets');
   assert.deepEqual(actualArtifactPaths, expectedArtifactPaths, 'expected and actual Japanese-first artifact path sets match exactly');
   for (const artifactPath of expectedArtifactPaths) {
     assert.equal(
       createHash('sha256').update(actualArtifactHtmlByPath[artifactPath]).digest('hex'),
       expectedArtifactSha256ByPath[artifactPath],
-      `${artifactPath}: PR #173 approved artifact SHA-256 is exact`,
+      `${activeVersion}:${artifactPath}: approved artifact SHA-256 is exact`,
     );
   }
   const testScriptSource = await readFile(new URL('./test-company-compare-evidence-ui.mjs', import.meta.url), 'utf8');
@@ -1804,7 +1838,7 @@ if (process.argv.includes('--dist')) {
   assert.match(fragmentHtml, /class="evidence-product-description" data-expanded-only data-product-description=/, 'Product descriptions are expanded-only');
   for (const companyId of companyCompareProductPortfolioCompanyIds) {
     const productTemplate = assetHtmlById[companyId].match(/<template data-company-slot="key-products"[\s\S]*?<\/template>/)?.[0] ?? '';
-    const expected = expectedProductPortfolioSummaries[companyId];
+    const expected = resolveCompanyCompareProductPortfolioSummary(companyId, portfolioGroundingIds, japaneseFirstOverlayEntries);
     assert.match(productTemplate, /class="evidence-claim-entry evidence-product-portfolio-summary"/, `${companyId}: Product summary uses the shared portfolio class`);
     assert.match(productTemplate, /data-product-portfolio-summary="true" data-summary-visible="false" data-expanded-visible="true"/, `${companyId}: Product title and body are expanded-only`);
     assert.ok(productTemplate.includes(`>${expected.title}</h3>`), `${companyId}: reviewed Product portfolio title is rendered`);
