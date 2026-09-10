@@ -44,10 +44,16 @@ const overlayDataFiles = readdirSync(new URL('../src/data/', import.meta.url))
   .sort();
 const overlayPayloads = overlayDataFiles.map(file => readJson(`../src/data/${file}`));
 const batch1 = overlayPayloads.find(payload => payload.version === 'japanese-first-copy-batch1-v01');
+const batch2 = overlayPayloads.find(payload => payload.version === 'japanese-first-copy-batch2-v01');
 const manifest = readJson('../src/data/japanese-first-copy-manifest-v01.json');
 
 assert.ok(batch1, 'Batch 1 presentation data is registered by the generic file contract');
-assert.deepEqual(overlayDataFiles, ['japanese-first-copy-batch1-v01.json'], 'only the approved Batch 1 overlay is registered before Batch 2');
+assert.ok(batch2, 'Batch 2 presentation data is registered by the existing generic file contract');
+assert.deepEqual(
+  overlayDataFiles,
+  ['japanese-first-copy-batch1-v01.json', 'japanese-first-copy-batch2-v01.json'],
+  'the generic loader discovers the two approved presentation overlays without source changes',
+);
 
 const fixedBatch1CompanyIds = [
   'kla', 'johnson-controls', 'tower-semiconductor', 'corning', 'smic', 'te-connectivity', 'credo', 'digital-realty',
@@ -57,6 +63,18 @@ const fixedBatch1CompanyIds = [
   'ciena', 'qualcomm', 'carrier', 'rohm', 'amd', 'micron', 'amphenol', 'mediatek', 'renesas', 'tesla', 'disco',
   'monolithic-power', 'onsemi', 'lam-research', 'stmicroelectronics', 'asml', 'sk-hynix', 'texas-instruments',
 ];
+const fixedBatch2CandidateCounts = {
+  abb: 1, advantest: 13, 'air-liquide': 3, 'ajinomoto-fine-techno': 0, amkor: 10,
+  'analog-devices': 6, 'applied-materials': 15, aptiv: 6, arm: 2, 'ase-technology': 12,
+  'asm-international': 15, bosch: 12, broadcom: 17, cadence: 6, canon: 8, denso: 7,
+  entegris: 7, globalfoundries: 8, globalwafers: 11, 'hanmi-semiconductor': 6, hexagon: 13,
+  ibiden: 9, infineon: 11, jcet: 16, keyence: 8, kinsus: 10, kioxia: 8, lasertec: 13,
+  linde: 7, 'mitsubishi-electric': 17, mobileye: 11, 'nan-ya-pcb': 8, nikon: 12, nvidia: 11,
+  nxp: 16, omron: 16, 'resonac-holdings': 13, sandisk: 17, seagate: 13,
+  'shin-etsu-chemical': 8, 'shinko-electric': 12, smc: 13, sumco: 13, synopsys: 10,
+  'tokyo-electron': 17, tsmc: 16, umc: 13, unimicron: 8, 'western-digital': 11, yaskawa: 15,
+};
+const fixedBatch2CompanyIds = Object.keys(fixedBatch2CandidateCounts);
 
 assert.equal(
   japaneseFirstCanonicalDigest('abc'),
@@ -158,6 +176,8 @@ assert.equal(canonicalPortfolio.title, 'Canonical portfolio title', 'canonical P
 assert.equal(canonicalPortfolio.body, 'Canonical portfolio body.', 'canonical Portfolio body is not mutated');
 const portfolioSource = readFileSync(new URL('../src/lib/company-compare-product-portfolios.ts', import.meta.url), 'utf8');
 assert.doesNotMatch(portfolioSource, /companyId\s*===\s*['"]|case\s+['"]/, 'Portfolio presentation has no company-specific branch');
+assert.equal(createHash('sha256').update(presentationSource).digest('hex'), 'cc0a9f83bd01c346963a69c3d1245dc0aceb48dc9ac25f465972bc54f68ef87f', 'the generic overlay loader source is unchanged');
+assert.equal(createHash('sha256').update(portfolioSource).digest('hex'), '5a6404f0e67e1206125e6894306c16c89bff5f930eec889b5a830f7ac1d72474', 'the shared Portfolio resolver source is unchanged');
 
 const canonicalFacility = Object.freeze({ facilityId: 'fixture-facility', title: 'Canonical facility', statement: 'Canonical facility statement.' });
 const facilityEntry = {
@@ -244,26 +264,53 @@ const canonicalForEntry = entry => {
 };
 
 assert.deepEqual(batch1.companyIds, fixedBatch1CompanyIds, 'Batch 1 data keeps the exact reviewed 50-company order');
-assert.deepEqual(manifest.companyIds, fixedBatch1CompanyIds, 'Batch 1 manifest keeps the exact reviewed 50-company order');
+assert.deepEqual(batch2.companyIds, fixedBatch2CompanyIds, 'Batch 2 data keeps the exact reviewed 50-company order');
+assert.deepEqual(manifest.companyIds, [...fixedBatch1CompanyIds, ...fixedBatch2CompanyIds], 'manifest covers the exact reviewed 100-company order');
 assert.equal(batch1.baseMainSha, 'c7d0e0022fa280f0f9a3bd90259b2e9132251939', 'Batch 1 data records the approved base main');
-assert.equal(manifest.baseMainSha, batch1.baseMainSha, 'Batch 1 data and manifest share the same base main');
+assert.equal(batch2.baseMainSha, 'a9a58be520a6aabfe0c3f63558ce2a189d3b7020', 'Batch 2 data records the approved base main');
+assert.equal(manifest.baseMainSha, batch2.baseMainSha, 'combined manifest records the Batch 2 base main');
 assert.equal(batch1.entries.length, 535, 'Batch 1 contains the reviewed 535 stable presentation entries');
-assert.equal(manifest.auditCandidateCount, 1_957, 'the 1,957 audited display candidates are retained');
-assert.equal(manifest.translateCount, 1_957, 'all reviewed candidates have a translate decision');
+assert.equal(batch2.entries.length, 159, 'Batch 2 contains the reviewed stable presentation entries');
+assert.equal(manifest.auditCandidateCount, 2_487, 'all 2,487 audited display candidates are retained');
+assert.equal(manifest.translateCount, 2_487, 'all reviewed candidates have a translate decision');
 assert.equal(manifest.preserveCount, 0, 'no candidate is silently preserved');
 assert.equal(manifest.unresolvedCount, 0, 'no audited candidate remains unresolved');
-assert.equal(manifest.overlayEntryCount, batch1.entries.length, 'manifest overlay count matches the registered entries');
+assert.equal(manifest.overlayEntryCount, batch1.entries.length + batch2.entries.length, 'manifest overlay count matches both registered batches');
 assert.equal(manifest.duplicateStableKeyCount, 0, 'manifest records no duplicate stable key');
 assert.equal(manifest.staleCanonicalDigestCount, 0, 'manifest records no stale canonical digest');
-assert.equal(manifest.batch2EntryCount, 0, 'Batch 2 contributes no overlay entry');
+assert.equal(manifest.batch1EntryCount, batch1.entries.length, 'Batch 1 entry count is retained');
+assert.equal(manifest.batch2EntryCount, batch2.entries.length, 'Batch 2 entry count is exact');
 assert.equal(manifest.canonicalDigestVerification, 'PASS', 'manifest records canonical digest verification');
 assert.deepEqual(manifest.entries, [], 'the audit manifest is not an executable overlay envelope');
 
-const batchEntryKeys = batch1.entries.map(entry => `${entry.entityType}:${entry.stableKey}`);
-assert.deepEqual(batchEntryKeys, [...batchEntryKeys].sort(), 'Batch 1 entries are stably sorted by type and stable key');
-assert.equal(new Set(batchEntryKeys).size, batchEntryKeys.length, 'Batch 1 has no duplicate entityType and stableKey pair');
-assert.deepEqual(manifest.stableKeys, batchEntryKeys, 'manifest stable keys exactly match the executable overlay');
+const batch1EntryKeys = batch1.entries.map(entry => `${entry.entityType}:${entry.stableKey}`);
+const batch2EntryKeys = batch2.entries.map(entry => `${entry.entityType}:${entry.stableKey}`);
+const batchEntryKeys = [...batch1EntryKeys, ...batch2EntryKeys].sort();
+assert.deepEqual(batch1EntryKeys, [...batch1EntryKeys].sort(), 'Batch 1 entries are stably sorted by type and stable key');
+assert.deepEqual(batch2EntryKeys, [...batch2EntryKeys].sort(), 'Batch 2 entries are stably sorted by type and stable key');
+assert.equal(new Set(batchEntryKeys).size, batchEntryKeys.length, 'the two batches have no duplicate entityType and stableKey pair');
+assert.deepEqual(manifest.stableKeys, batchEntryKeys, 'manifest stable keys exactly match both executable overlays');
 assert.deepEqual(manifest.stableKeys, [...manifest.stableKeys].sort(), 'manifest stable keys are stably sorted');
+const batch1Manifest = manifest.batches.find(batch => batch.version === batch1.version);
+const batch2Manifest = manifest.batches.find(batch => batch.version === batch2.version);
+assert.ok(batch1Manifest && batch2Manifest, 'manifest records both versioned batch summaries');
+assert.deepEqual(batch1Manifest.companyIds, fixedBatch1CompanyIds, 'Batch 1 manifest boundary is unchanged');
+assert.equal(batch1Manifest.auditCandidateCount, 1_957, 'Batch 1 candidate total is unchanged');
+assert.equal(batch1Manifest.overlayEntryCount, 535, 'Batch 1 overlay total is unchanged');
+assert.deepEqual(batch1Manifest.stableKeys, batch1EntryKeys, 'Batch 1 stable-key set is unchanged');
+assert.deepEqual(batch2Manifest.companyIds, fixedBatch2CompanyIds, 'Batch 2 manifest boundary is exact');
+assert.equal(batch2Manifest.auditCandidateCount, 530, 'Batch 2 candidate total is exact');
+assert.equal(batch2Manifest.overlayEntryCount, batch2.entries.length, 'Batch 2 manifest entry total is exact');
+assert.deepEqual(batch2Manifest.stableKeys, batch2EntryKeys, 'Batch 2 stable keys match the executable overlay');
+assert.deepEqual(manifest.crossBatchValidation, {
+  companyOverlapCount: 0,
+  stableKeyOverlapCount: 0,
+  totalCompanyCount: 100,
+  totalAuditCandidateCount: 2_487,
+  unresolvedCount: 0,
+  staleCanonicalDigestCount: 0,
+  orphanEntryCount: 0,
+}, 'cross-batch boundary checks are explicit');
 assert.deepEqual(
   Object.fromEntries(['claim', 'product', 'portfolio', 'facility'].map(type => [type, batch1.entries.filter(entry => entry.entityType === type).length])),
   { claim: 380, product: 118, portfolio: 37, facility: 0 },
@@ -297,10 +344,13 @@ for (const entry of batch1.entries) {
 }
 assert.deepEqual([...entryKeysByCompany.keys()], fixedBatch1CompanyIds, 'entry ownership includes exactly the fixed Batch 1 companies');
 
-assert.equal(manifest.companies.length, 50, 'manifest has one audit record per fixed company');
-assert.deepEqual(manifest.companies.map(company => company.companyId), fixedBatch1CompanyIds, 'manifest company records preserve the reviewed order');
+assert.equal(manifest.companies.length, 100, 'manifest has one audit record per supported company');
+const batch1CompanyAudits = manifest.companies.slice(0, 50);
+const batch2CompanyAudits = manifest.companies.slice(50);
+assert.deepEqual(batch1CompanyAudits.map(company => company.companyId), fixedBatch1CompanyIds, 'Batch 1 company records preserve the reviewed order');
+assert.deepEqual(batch2CompanyAudits.map(company => company.companyId), fixedBatch2CompanyIds, 'Batch 2 company records preserve the reviewed order');
 let auditedCandidates = 0;
-for (const company of manifest.companies) {
+for (const company of batch1CompanyAudits) {
   assert.equal(company.candidateCount, company.compareCandidateCount + company.companyPageCandidateCount, `${company.companyId}: surface counts total correctly`);
   assert.equal(company.translateCount, company.candidateCount, `${company.companyId}: every candidate has a translate decision`);
   assert.equal(company.preserveCount, 0, `${company.companyId}: preserve count is zero`);
@@ -321,6 +371,51 @@ for (const company of manifest.companies) {
   auditedCandidates += company.candidateCount;
 }
 assert.equal(auditedCandidates, 1_957, 'company audit ledgers total 1,957 candidates');
+
+const compiledAllEntries = compileJapaneseFirstPresentationEntries([...batch1.entries, ...batch2.entries]);
+const batch2EntryKeysByCompany = new Map(fixedBatch2CompanyIds.map(companyId => [companyId, []]));
+const batch2CanonicalTextByEntry = new Map();
+for (const entry of batch2.entries) {
+  assert.equal(entry.decision, 'translate', `${entry.entityType}:${entry.stableKey}: Batch 2 decision is explicit`);
+  assert.deepEqual(
+    Object.keys(entry).sort(),
+    ['canonicalDigest', 'decision', 'entityType', 'stableKey', 'statement', 'title'],
+    `${entry.entityType}:${entry.stableKey}: Batch 2 overlay fields are exact`,
+  );
+  assert.match(`${entry.title}${entry.statement}`, /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u, `${entry.entityType}:${entry.stableKey}: Batch 2 copy contains Japanese text`);
+  const { canonical: canonicalValue, companyId } = canonicalForEntry(entry);
+  assert.ok(batch2EntryKeysByCompany.has(companyId), `${entry.entityType}:${entry.stableKey}: owner belongs to Batch 2`);
+  batch2EntryKeysByCompany.get(companyId).push(`${entry.entityType}:${entry.stableKey}`);
+  assert.equal(entry.canonicalDigest, japaneseFirstCanonicalDigest(canonicalValue), `${entry.entityType}:${entry.stableKey}: Batch 2 canonical digest is current`);
+  const before = JSON.stringify(canonicalValue);
+  const fallback = entry.entityType === 'product'
+    ? { title: canonicalValue.label, statement: canonicalValue.description }
+    : entry.entityType === 'portfolio'
+      ? { title: canonicalValue.title, statement: canonicalValue.body }
+      : { title: canonicalValue.title, statement: canonicalValue.statement };
+  const resolved = resolveJapaneseFirstPresentation(entry.entityType, entry.stableKey, canonicalValue, fallback, compiledAllEntries);
+  assert.equal(resolved.title, entry.title, `${entry.entityType}:${entry.stableKey}: Batch 2 title resolves`);
+  assert.equal(resolved.statement, entry.statement, `${entry.entityType}:${entry.stableKey}: Batch 2 statement resolves`);
+  assert.equal(resolved.decision, 'translate', `${entry.entityType}:${entry.stableKey}: Batch 2 resolution is translated`);
+  assert.equal(JSON.stringify(canonicalValue), before, `${entry.entityType}:${entry.stableKey}: Batch 2 canonical input is not mutated`);
+  assert.ok(entry.title !== fallback.title || entry.statement !== fallback.statement, `${entry.entityType}:${entry.stableKey}: Batch 2 overlay changes presentation`);
+  batch2CanonicalTextByEntry.set(`${entry.entityType}:${entry.stableKey}`, `${fallback.title} ${fallback.statement}`);
+}
+assert.equal([...batch2EntryKeysByCompany.values()].filter(keys => keys.length > 0).length, 49, 'all Batch 2 companies except Ajinomoto Fine-Techno receive overlays');
+assert.deepEqual(batch2EntryKeysByCompany.get('ajinomoto-fine-techno'), [], 'Ajinomoto Fine-Techno receives no unnecessary overlay');
+
+let batch2AuditedCandidates = 0;
+for (const company of batch2CompanyAudits) {
+  assert.equal(company.candidateCount, fixedBatch2CandidateCounts[company.companyId], `${company.companyId}: Batch 2 candidate count is exact`);
+  assert.equal(company.translateCount, company.candidateCount, `${company.companyId}: every Batch 2 candidate is decided`);
+  assert.equal(company.preserveCount, 0, `${company.companyId}: Batch 2 preserve count is zero`);
+  assert.equal(company.unresolvedCount, 0, `${company.companyId}: Batch 2 unresolved count is zero`);
+  assert.equal(company.overlayEntryCount, batch2EntryKeysByCompany.get(company.companyId).length, `${company.companyId}: Batch 2 overlay count is exact`);
+  assert.deepEqual(company.stableKeys, [...batch2EntryKeysByCompany.get(company.companyId)].sort(), `${company.companyId}: Batch 2 stable keys match executable entries`);
+  batch2AuditedCandidates += company.candidateCount;
+}
+assert.equal(batch2AuditedCandidates, 530, 'Batch 2 audit records total 530 candidates');
+assert.equal(auditedCandidates + batch2AuditedCandidates, 2_487, 'all 100 companies total 2,487 candidates');
 
 const batchOverlayText = batch1.entries.map(entry => `${entry.title} ${entry.statement}`).join('\n');
 for (const phrase of [
@@ -344,7 +439,18 @@ const generalTermReduction = 1 - translatedGeneralTermCount / canonicalGeneralTe
 assert.ok(canonicalGeneralTermCount > 0, 'general-term reduction has a non-empty canonical baseline');
 assert.ok(generalTermReduction >= 0.95, `targeted English general terms are reduced by at least 95% (actual ${(generalTermReduction * 100).toFixed(2)}%)`);
 
+const batch2OverlayText = batch2.entries.map(entry => `${entry.title} ${entry.statement}`).join('\n');
+const batch2CanonicalGeneralTermCount = [...batch2CanonicalTextByEntry.values()].reduce((count, text) => count + countGeneralTerms(text), 0);
+const batch2TranslatedGeneralTermCount = countGeneralTerms(batch2OverlayText);
+const batch2GeneralTermReduction = 1 - batch2TranslatedGeneralTermCount / batch2CanonicalGeneralTermCount;
+assert.ok(batch2CanonicalGeneralTermCount > 0, 'Batch 2 general-term reduction has a non-empty canonical baseline');
+assert.ok(batch2GeneralTermReduction >= 0.95, `Batch 2 targeted English general terms are reduced by at least 95% (actual ${(batch2GeneralTermReduction * 100).toFixed(2)}%)`);
+for (const phrase of ['Globalウェハ', '規模d', '主導的企業ship', 'パートナーship', '演算r', 'Kyoガスe', '向け向け']) {
+  assert.ok(!batch2OverlayText.includes(phrase), `Batch 2 copy omits the mechanical remnant: ${phrase}`);
+}
+
 const overlayByKey = compiledBatchEntries;
+const allOverlayByKey = compiledAllEntries;
 assert.equal(
   overlayByKey.get('claim:asml-ai-role').statement,
   'AtlasではASMLを、AIサーバー向け先端ロジックとHBMを含むメモリの微細化を、リソグラフィ装置とプロセス制御で支える半導体前工程装置企業と位置付ける。',
@@ -365,6 +471,32 @@ assert.equal(
   'SK hynixはAIメモリ需要に備え、Yongin Semiconductor Clusterへ120兆ウォン、Cheongju M15Xへ20兆ウォン、インディアナ州先端パッケージ工場へ5.2兆ウォンを投じる計画を開示している。',
   'SK hynix follows the approved Japanese-first direction',
 );
+assert.equal(
+  allOverlayByKey.get('claim:nvidia-strategy-triage-remediation-v02').statement,
+  'NVIDIAはGPU、CPU、DPU、相互接続、システム、ソフトウェアを統合する高速計算基盤を拡張し、開発者エコシステム、NVIDIA AI Enterprise、DGX Cloudを通じてAI基盤における主導的地位を強化する方針を示している。',
+  'NVIDIA follows the approved Batch 2 Japanese-first direction',
+);
+assert.equal(
+  allOverlayByKey.get('claim:broadcom-products').statement,
+  'Broadcom（ブロードコム）は、カスタムAIアクセラレーター／ASIC、Ethernetスイッチ向け半導体、接続・通信向け半導体を提供する。',
+  'Broadcom follows the approved Batch 2 Japanese-first direction',
+);
+assert.equal(
+  allOverlayByKey.get('claim:applied-products').statement,
+  '半導体向け製品群は、材料の堆積、除去、改質、分析、デバイス接続に関わる装置・技術を含む。',
+  'Applied Materials follows the approved Batch 2 Japanese-first direction',
+);
+assert.equal(
+  allOverlayByKey.get('claim:tsmc-value-chain').statement,
+  'AtlasではTSMCを、ファブレス企業の設計データをウェハ製造と先端パッケージへ変換する上流製造工程として整理する。',
+  'TSMC follows the approved Batch 2 Japanese-first direction',
+);
+assert.ok(!batch2.entries.some(entry => canonicalForEntry(entry).companyId === 'ajinomoto-fine-techno'), 'Ajinomoto Fine-Techno has zero Batch 2 entries');
+assert.equal(
+  claimById.get('ajinomoto-fine-techno-ai-role').statement,
+  'Atlasでは味の素ファインテクノを、CPU・GPUなど高性能半導体のパッケージ基板に使われるABFを通じて、AI計算基盤の高密度化に接続する企業と位置付ける。',
+  'Ajinomoto Fine-Techno canonical presentation remains unchanged',
+);
 
 const klaPortfolio = [...rawPortfolioById.values()].find(portfolio => portfolioOwnerById.get(portfolio.groundingId) === 'kla');
 const klaPortfolioEntry = overlayByKey.get(`portfolio:${klaPortfolio.groundingId}`);
@@ -373,7 +505,7 @@ assert.equal(resolvedKlaPortfolio.title, klaPortfolioEntry.title, 'KLA Expanded 
 assert.equal(resolvedKlaPortfolio.body, klaPortfolioEntry.statement, 'KLA Expanded model receives the translated Portfolio body');
 assert.equal(resolveCompanyCompareProductPortfolioPresentation(klaPortfolio, overlayByKey).body, resolvedKlaPortfolio.body, 'shared Portfolio presentation is deterministic across consumers');
 const tsmcPortfolio = [...rawPortfolioById.values()].find(portfolio => portfolioOwnerById.get(portfolio.groundingId) === 'tsmc');
-assert.deepEqual(resolveCompanyCompareProductPortfolioPresentation(tsmcPortfolio, overlayByKey), tsmcPortfolio, 'a non-target company Portfolio remains canonical');
+assert.deepEqual(resolveCompanyCompareProductPortfolioPresentation(tsmcPortfolio, allOverlayByKey), tsmcPortfolio, 'an unregistered Batch 2 Portfolio remains canonical');
 
 const companyClaimComponentSource = readFileSync(new URL('../src/components/CompanyEvidenceClaim.astro', import.meta.url), 'utf8');
 const compareReadModelSource = readFileSync(new URL('../src/lib/company-compare-evidence-read-model.ts', import.meta.url), 'utf8');
@@ -431,15 +563,33 @@ assert.equal(
   '926308c93a170814b821d823ad2a636957a463e77659cdead8841928c38f15e6',
   'foundation path and SHA history is byte-for-byte unchanged',
 );
-assert.equal(activeFreeze.version, 'japanese-first-copy-batch1-v01', 'the explicit active ID selects the Batch 1 freeze');
-const freezeChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== foundationFreeze.sha256ByPath[path]);
+const batch1Freeze = freezes.find(freeze => freeze.version === 'japanese-first-copy-batch1-v01');
+assert.ok(batch1Freeze, 'PR #174 Batch 1 artifact freeze remains in history');
+const foundationToBatch1ChangedPaths = expectedArtifactPaths.filter(path => batch1Freeze.sha256ByPath[path] !== foundationFreeze.sha256ByPath[path]);
 const fixedBatch1ArtifactPaths = fixedBatch1CompanyIds.map(companyId => `${companyId}/index.html`).sort();
-assert.deepEqual(freezeChangedPaths, fixedBatch1ArtifactPaths, 'foundation-to-Batch-1 artifact changes are exactly the fixed 50 companies');
-assert.equal(activeFreeze.sha256ByPath['index.html'], foundationFreeze.sha256ByPath['index.html'], 'Evidence shell SHA remains at the foundation value');
-assert.equal(freezeChangedPaths.length, 50, 'all and only Batch 1 company assets receive new SHA values');
+assert.deepEqual(foundationToBatch1ChangedPaths, fixedBatch1ArtifactPaths, 'foundation-to-Batch-1 artifact changes remain exactly the fixed 50 companies');
+assert.equal(batch1Freeze.sha256ByPath['index.html'], foundationFreeze.sha256ByPath['index.html'], 'Batch 1 Evidence shell SHA remains at the foundation value');
+assert.equal(activeFreeze.version, 'japanese-first-copy-batch2-v01', 'the explicit active ID selects the Batch 2 freeze');
+const batch1ToBatch2ChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== batch1Freeze.sha256ByPath[path]);
+const fixedBatch2ChangedArtifactPaths = fixedBatch2CompanyIds
+  .filter(companyId => companyId !== 'ajinomoto-fine-techno')
+  .map(companyId => `${companyId}/index.html`)
+  .sort();
+assert.deepEqual(batch1ToBatch2ChangedPaths, fixedBatch2ChangedArtifactPaths, 'Batch 1-to-Batch 2 artifact changes are exactly the 49 candidate-bearing companies');
+assert.equal(activeFreeze.sha256ByPath['index.html'], batch1Freeze.sha256ByPath['index.html'], 'Evidence shell SHA remains at the Batch 1 value');
+for (const companyId of fixedBatch1CompanyIds) {
+  const path = `${companyId}/index.html`;
+  assert.equal(activeFreeze.sha256ByPath[path], batch1Freeze.sha256ByPath[path], `${companyId}: Batch 1 asset SHA is unchanged`);
+}
+assert.equal(
+  activeFreeze.sha256ByPath['ajinomoto-fine-techno/index.html'],
+  batch1Freeze.sha256ByPath['ajinomoto-fine-techno/index.html'],
+  'Ajinomoto Fine-Techno asset SHA is unchanged',
+);
+assert.equal(batch1ToBatch2ChangedPaths.length, 49, 'all and only candidate-bearing Batch 2 company assets receive new SHA values');
 
 const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
-assert.equal(shaBlocks.length, 2, 'fixture source contains exactly the foundation and Batch 1 SHA maps');
+assert.equal(shaBlocks.length, 3, 'fixture source contains exactly the foundation, Batch 1, and Batch 2 SHA maps');
 for (const [index, block] of shaBlocks.entries()) {
   const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
   assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);
@@ -453,10 +603,13 @@ for (const mutate of [
   value => { value.activeArtifactFreezeVersion = 7; },
   value => { value.activeArtifactFreezeVersion = 'unknown-version'; },
   value => { value.artifactFreezes.push(structuredClone(value.artifactFreezes[0])); },
-  value => { value.artifactFreezes[1].sha256ByPath['index.html'] = 'not-a-sha'; },
-  value => { delete value.artifactFreezes[1].sha256ByPath['index.html']; },
-  value => { value.artifactFreezes[1].sha256ByPath['unexpected/index.html'] = '0'.repeat(64); },
-  value => { value.artifactFreezes[1].sha256ByPath = Object.fromEntries(Object.entries(value.artifactFreezes[1].sha256ByPath).reverse()); },
+  value => { value.artifactFreezes.find(freeze => freeze.version === value.activeArtifactFreezeVersion).sha256ByPath['index.html'] = 'not-a-sha'; },
+  value => { delete value.artifactFreezes.find(freeze => freeze.version === value.activeArtifactFreezeVersion).sha256ByPath['index.html']; },
+  value => { value.artifactFreezes.find(freeze => freeze.version === value.activeArtifactFreezeVersion).sha256ByPath['unexpected/index.html'] = '0'.repeat(64); },
+  value => {
+    const active = value.artifactFreezes.find(freeze => freeze.version === value.activeArtifactFreezeVersion);
+    active.sha256ByPath = Object.fromEntries(Object.entries(active.sha256ByPath).reverse());
+  },
 ]) {
   const invalid = structuredClone(fixture);
   mutate(invalid);
@@ -497,13 +650,15 @@ for (const [id, parts] of partsById) {
 
 console.log(JSON.stringify({
   status: 'PASS',
-  companies: fixedBatch1CompanyIds.length,
-  auditedCandidates,
-  overlayEntries: batch1.entries.length,
-  entityTypes: { claim: 380, product: 118, portfolio: 37, facility: 0 },
+  companies: fixedBatch1CompanyIds.length + fixedBatch2CompanyIds.length,
+  auditedCandidates: auditedCandidates + batch2AuditedCandidates,
+  overlayEntries: batch1.entries.length + batch2.entries.length,
+  batch1OverlayEntries: batch1.entries.length,
+  batch2OverlayEntries: batch2.entries.length,
   unresolved: manifest.unresolvedCount,
   staleCanonicalDigests: manifest.staleCanonicalDigestCount,
-  changedArtifacts: freezeChangedPaths.length,
+  batch2ChangedArtifacts: batch1ToBatch2ChangedPaths.length,
   artifactPathsPerFreeze: expectedArtifactPaths.length,
-  generalTermReductionPercent: Number((generalTermReduction * 100).toFixed(2)),
+  batch1GeneralTermReductionPercent: Number((generalTermReduction * 100).toFixed(2)),
+  batch2GeneralTermReductionPercent: Number((batch2GeneralTermReduction * 100).toFixed(2)),
 }, null, 2));
