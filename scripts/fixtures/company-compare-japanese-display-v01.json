@@ -589,5 +589,18 @@
     "主なリスク",
     "財務",
     "根拠の追跡・データ品質"
-  ]
+  ],
+  "mobileTracking": {
+    "breakpointMaxPx": 600,
+    "responsiveViewports": [1024, 390, 360],
+    "details": ["summary", "expanded"],
+    "selectedCompanyCounts": [2, 3, 4],
+    "sectionStickyTop": "6rem",
+    "companyStickyTop": "calc(6rem + 48px)",
+    "sectionBoundary": "2px solid var(--border-strong)",
+    "identityCues": ["company-name", "selection-order", "border", "spacing"],
+    "markerButtonMinimumTargetPx": 44,
+    "markerHitOffsetPx": 21,
+    "desktopUnchangedMinWidthPx": 601
+  }
 }

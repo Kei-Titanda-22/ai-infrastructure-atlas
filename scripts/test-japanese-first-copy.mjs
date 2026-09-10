@@ -569,27 +569,35 @@ const foundationToBatch1ChangedPaths = expectedArtifactPaths.filter(path => batc
 const fixedBatch1ArtifactPaths = fixedBatch1CompanyIds.map(companyId => `${companyId}/index.html`).sort();
 assert.deepEqual(foundationToBatch1ChangedPaths, fixedBatch1ArtifactPaths, 'foundation-to-Batch-1 artifact changes remain exactly the fixed 50 companies');
 assert.equal(batch1Freeze.sha256ByPath['index.html'], foundationFreeze.sha256ByPath['index.html'], 'Batch 1 Evidence shell SHA remains at the foundation value');
-assert.equal(activeFreeze.version, 'japanese-first-copy-batch2-v01', 'the explicit active ID selects the Batch 2 freeze');
-const batch1ToBatch2ChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== batch1Freeze.sha256ByPath[path]);
+const batch2Freeze = freezes.find(freeze => freeze.version === 'japanese-first-copy-batch2-v01');
+assert.ok(batch2Freeze, 'PR #175 Batch 2 artifact freeze remains in history');
+const batch1ToBatch2ChangedPaths = expectedArtifactPaths.filter(path => batch2Freeze.sha256ByPath[path] !== batch1Freeze.sha256ByPath[path]);
 const fixedBatch2ChangedArtifactPaths = fixedBatch2CompanyIds
   .filter(companyId => companyId !== 'ajinomoto-fine-techno')
   .map(companyId => `${companyId}/index.html`)
   .sort();
 assert.deepEqual(batch1ToBatch2ChangedPaths, fixedBatch2ChangedArtifactPaths, 'Batch 1-to-Batch 2 artifact changes are exactly the 49 candidate-bearing companies');
-assert.equal(activeFreeze.sha256ByPath['index.html'], batch1Freeze.sha256ByPath['index.html'], 'Evidence shell SHA remains at the Batch 1 value');
+assert.equal(batch2Freeze.sha256ByPath['index.html'], batch1Freeze.sha256ByPath['index.html'], 'Batch 2 Evidence shell SHA remains at the Batch 1 value');
 for (const companyId of fixedBatch1CompanyIds) {
   const path = `${companyId}/index.html`;
-  assert.equal(activeFreeze.sha256ByPath[path], batch1Freeze.sha256ByPath[path], `${companyId}: Batch 1 asset SHA is unchanged`);
+  assert.equal(batch2Freeze.sha256ByPath[path], batch1Freeze.sha256ByPath[path], `${companyId}: Batch 1 asset SHA is unchanged`);
 }
 assert.equal(
-  activeFreeze.sha256ByPath['ajinomoto-fine-techno/index.html'],
+  batch2Freeze.sha256ByPath['ajinomoto-fine-techno/index.html'],
   batch1Freeze.sha256ByPath['ajinomoto-fine-techno/index.html'],
   'Ajinomoto Fine-Techno asset SHA is unchanged',
 );
 assert.equal(batch1ToBatch2ChangedPaths.length, 49, 'all and only candidate-bearing Batch 2 company assets receive new SHA values');
+assert.equal(activeFreeze.version, 'company-compare-mobile-tracking-p1-v01', 'the explicit active ID selects the mobile tracking P1 freeze');
+assert.equal(activeFreeze.metadata.baseMain, '178ea4f5f0b8d59b1dcf6e8a24dc363c80774ec8', 'mobile tracking freeze records its approved base main');
+const batch2ToMobileTrackingChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== batch2Freeze.sha256ByPath[path]);
+assert.deepEqual(batch2ToMobileTrackingChangedPaths, ['index.html'], 'the CSS-only P1 freeze changes the Evidence shell and no Company asset');
+for (const path of expectedArtifactPaths.filter(path => path !== 'index.html')) {
+  assert.equal(activeFreeze.sha256ByPath[path], batch2Freeze.sha256ByPath[path], `${path}: mobile tracking leaves Company asset SHA unchanged`);
+}
 
 const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
-assert.equal(shaBlocks.length, 3, 'fixture source contains exactly the foundation, Batch 1, and Batch 2 SHA maps');
+assert.equal(shaBlocks.length, 4, 'fixture source contains the foundation, Batch 1, Batch 2, and mobile tracking P1 SHA maps');
 for (const [index, block] of shaBlocks.entries()) {
   const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
   assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);
