@@ -1576,6 +1576,9 @@ assert.match(styles, /\.evidence-relation-entry \+ \.evidence-relation-entry \{[
 assert.match(presentationSource, /const firstProductRelationId = displayedRelations\.find\(entry => entry\.relation\.relationType === 'PRODUCES'\)/, 'Relation-backed Products identify the first Product entry without a Company branch');
 assert.match(styles, /\.evidence-compare \.evidence-marker \{[\s\S]*border: 0;[\s\S]*appearance: none;[\s\S]*background: transparent/, 'Evidence markers reset native button chrome in the shell stylesheet');
 assert.match(styles, /\.evidence-compare \.evidence-marker::before \{[\s\S]*width: 44px;[\s\S]*height: 44px/, 'Evidence markers retain a transparent 44px hit area without expanding line height');
+assert.equal(displayFixture.mobileTracking.markerButtonMinimumTargetPx, 44, 'Evidence marker fixture fixes the actual button target at 44px');
+assert.equal(displayFixture.mobileTracking.markerHitOffsetPx, 21, 'Evidence marker fixture fixes the center-plus-or-minus-21px hit contract');
+assert.match(styles, /\.evidence-compare \.evidence-marker \{[\s\S]*width: 44px;[\s\S]*height: 44px;[\s\S]*min-width: 44px;[\s\S]*min-height: 44px/, 'Evidence marker button itself has the required 44px hit rectangle');
 assert.match(styles, /\.evidence-compare \.evidence-marker:hover \{[\s\S]*background: transparent;[\s\S]*text-decoration: underline/, 'Evidence marker hover remains a quiet text interaction');
 assert.match(styles, /\.evidence-compare \.evidence-marker:focus-visible \{[\s\S]*outline: 2px solid/, 'Evidence marker keyboard focus remains explicit');
 assert.match(presentationSource, /<thead><tr>[\s\S]*<th scope="col">出典<\/th>/, 'all eight detailed Financial headers use one centered heading contract');
@@ -1625,6 +1628,15 @@ for (let index = 1; index <= 4; index += 1) {
 for (const sectionLabel of displayFixture.majorSections) {
   assert.ok(`${presentationSource}\n${readModelSource}`.includes(sectionLabel), `${sectionLabel}: major section label is present`);
 }
+assert.deepEqual(displayFixture.mobileTracking.responsiveViewports, [1024, 390, 360], 'mobile tracking covers the approved desktop and phone widths');
+assert.deepEqual(displayFixture.mobileTracking.details, ['summary', 'expanded'], 'mobile tracking covers Summary and Expanded');
+assert.deepEqual(displayFixture.mobileTracking.selectedCompanyCounts, [2, 3, 4], 'mobile tracking covers every supported multi-company selection count');
+assert.equal(displayFixture.mobileTracking.breakpointMaxPx, 600, 'mobile tracking is confined to the existing mobile breakpoint');
+assert.equal(displayFixture.mobileTracking.desktopUnchangedMinWidthPx, 601, 'desktop table tracking remains outside the mobile contract');
+assert.deepEqual(displayFixture.mobileTracking.identityCues, ['company-name', 'selection-order', 'border', 'spacing'], 'company tracking does not depend on color alone');
+assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.evidence-matrix tbody > tr > th \{[\s\S]*?position: sticky;[\s\S]*?top: 6rem;[\s\S]*?z-index: 5;[\s\S]*?border-top: 2px solid var\(--border-strong\)/, 'mobile section labels are sticky and retain a strong structural boundary below the global header');
+assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.evidence-company-context \{[\s\S]*?position: sticky;[\s\S]*?top: calc\(6rem \+ 48px\);[\s\S]*?z-index: 4;[\s\S]*?border-bottom: 2px solid var\(--company-ident-border, var\(--border-strong\)\)/, 'mobile Company identity remains sticky beneath the current section without color-only tracking');
+assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.evidence-matrix tbody > tr \{[\s\S]*?position: relative/, 'each mobile section establishes a bounded sticky containing block');
 
 if (process.argv.includes('--dist')) {
   const compareHtml = await readFile(new URL('../dist/compare/index.html', import.meta.url), 'utf8');

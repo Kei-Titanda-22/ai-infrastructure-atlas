@@ -741,8 +741,11 @@
 .evidence-compare .evidence-marker {
   position: relative;
   display: inline-block;
-  min-width: 0;
-  min-height: 0;
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   margin: 0 .08em;
   padding: 0;
   border: 0;
@@ -938,15 +941,19 @@
   }
 
   .evidence-matrix tbody > tr {
+    position: relative;
     padding: 19px 0 0;
     border-top: 2px solid var(--border-strong);
     border-bottom: 0;
   }
 
   .evidence-matrix tbody > tr > th {
-    position: static;
+    position: sticky;
+    top: 6rem;
+    z-index: 5;
     padding: 0 0 8px;
     border: 0;
+    border-top: 2px solid var(--border-strong);
     background: #e8ebe7;
     font-size: 16px;
     line-height: 1.5;
@@ -967,7 +974,13 @@
 
   .evidence-company-context {
     display: flex;
+    position: sticky;
+    top: calc(6rem + 48px);
+    z-index: 4;
     margin-bottom: 11px;
+    padding: 5px 0 7px;
+    border-bottom: 2px solid var(--company-ident-border, var(--border-strong));
+    background: var(--company-ident-bg, var(--surface));
     font-size: 16px;
     line-height: 1.5;
   }
