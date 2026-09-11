@@ -180,8 +180,8 @@
       "entityType": "claim",
       "stableKey": "applied-value-chain",
       "decision": "translate",
-      "title": "Fabの工程装置を供給",
-      "statement": "AtlasではApplied Materialsを、半導体メーカーやファウンドリのFabへウェハ工程装置を供給する製造装置層として整理する。",
+      "title": "半導体工場の工程装置を供給",
+      "statement": "AtlasではApplied Materialsを、半導体メーカーやファウンドリの半導体工場へウェハ工程装置を供給する製造装置層として整理する。",
       "canonicalDigest": "b2754892ce3ee9f7e510d030452fa590f3eacf4d658cc0f0417bdaf1136e35f9"
     },
     {
@@ -349,7 +349,7 @@
       "stableKey": "broadcom-value-chain",
       "decision": "translate",
       "title": "演算・半導体の供給層",
-      "statement": "AtlasではBroadcom（ブロードコム）を「演算・半導体」に位置し、AIクラスタのカスタム計算・スイッチング・接続需要に複数経路で関与する役割を担う企業と整理する。",
+      "statement": "AtlasではBroadcom（ブロードコム）を「演算・半導体」に位置付け、AIクラスターのカスタム計算・スイッチング・接続需要に複数経路で関与する企業と整理する。",
       "canonicalDigest": "fef71566f673bd130a03defb42a1fdcffb6b1c893c6581f040af989501814469"
     },
     {
@@ -453,7 +453,7 @@
       "stableKey": "globalfoundries-value-chain",
       "decision": "translate",
       "title": "ファウンドリ・ロジック製造の供給層",
-      "statement": "AtlasではGlobalFoundries（グローバルファウンドリーズ）を「ファウンドリ・ロジック製造」に位置し、AIインフラ周辺の接続、電源、RF、シリコンフォトニクス向け半導体製造を担う役割を担う企業と整理する。",
+      "statement": "AtlasではGlobalFoundries（グローバルファウンドリーズ）を「ファウンドリ・ロジック製造」に位置付け、AIインフラ周辺の接続、電源、RF、シリコンフォトニクス向け半導体を製造する企業と整理する。",
       "canonicalDigest": "443d31491701b1c3a7404b47d65ce0c102030937f95f2fae2f9ef4db9a6b6b4d"
     },
     {
@@ -588,7 +588,7 @@
       "entityType": "claim",
       "stableKey": "jcet-customer-end-market-triage-remediation-v02",
       "decision": "translate",
-      "title": "車載・AI/HPC・ストレージ・通信向け",
+      "title": "車載・AI／HPC・ストレージ・通信向け",
       "statement": "JCETは半導体組立・テストソリューションの用途として車載、コンピューティング、ストレージ、エッジAI、電力・エネルギーを掲げ、HPCのコンピューティング・ストレージ・接続性・電源管理向け量産ソリューションを提供している。",
       "canonicalDigest": "a7255ee79a5f384a3290dcd1f8ec21dcba6399e777e04fef8e3acff3289fc75d"
     },
@@ -605,7 +605,7 @@
       "stableKey": "jcet-strategy-triage-remediation-v02",
       "decision": "translate",
       "title": "先端パッケージと高付加価値分野へ移行",
-      "statement": "JCETは先端パッケージへの投資を拡大し、AI/HPC、車載等の高付加価値用途へ事業構造を移行する方針を示している。",
+      "statement": "JCETは先端パッケージへの投資を拡大し、AI／HPC、車載等の高付加価値用途へ事業構造を移行する方針を示している。",
       "canonicalDigest": "ff2065821e72137c293a18a8eed832fd6def447b99519b7e2f56cb8b4149fa78"
     },
     {
@@ -660,7 +660,7 @@
       "entityType": "claim",
       "stableKey": "kioxia-customer-end-market-triage-remediation-v02",
       "decision": "translate",
-      "title": "PC・データセンター・企業向け・スマートデバイス向け",
+      "title": "PC・データセンター・企業・スマートデバイス向け",
       "statement": "キオクシアはSSD・ストレージの用途としてPC、データセンター、企業向けを、スマートデバイス等の用途としてスマートフォン、タブレット、TV、車載、産業を開示している。",
       "canonicalDigest": "613d212eb2342bcd8ecfa261827fcb14b2b09f290f017f85f4ee56cf874f263e"
     },
@@ -797,7 +797,7 @@
       "stableKey": "mobileye-value-chain",
       "decision": "translate",
       "title": "フィジカルAIの供給層",
-      "statement": "AtlasではMobileye（モービルアイ）を「フィジカルAI」に位置し、カメラ認識、車載SoC、地図情報を統合し、自動車向けフィジカルAIの中核を担う役割を担う企業と整理する。",
+      "statement": "AtlasではMobileye（モービルアイ）を「フィジカルAI」に位置付け、カメラ認識、車載SoC、地図情報を統合し、自動車向けフィジカルAIの中核を担う企業と整理する。",
       "canonicalDigest": "75841493040367bfcd3240a1e05bb976fadac24f76f9feb4894e47276a279f4d"
     },
     {
@@ -885,7 +885,7 @@
       "stableKey": "nxp-value-chain",
       "decision": "translate",
       "title": "演算・半導体の供給層",
-      "statement": "AtlasではNXP Semiconductors（NXPセミコンダクターズ）を「演算・半導体」に位置し、車載計算・ネットワーク、産業エッジAIの制御・接続半導体を担う役割を担う企業と整理する。",
+      "statement": "AtlasではNXP Semiconductors（NXPセミコンダクターズ）を「演算・半導体」に位置付け、車載計算・ネットワークと産業エッジAI向けの制御・接続半導体の供給を担う企業と整理する。",
       "canonicalDigest": "2cacfc011ae62e3fb43869825cddca74808503ef35ea235119d2d9caa8cf67f7"
     },
     {
@@ -1085,7 +1085,7 @@
       "stableKey": "sumco-capacity-expansion-triage-remediation-v02",
       "decision": "translate",
       "title": "先端300mmウェハ能力への投資",
-      "statement": "SUMCOはFY2025に799億57百万円の設備投資を実施し、主要項目を先端半導体向け300mm高精度ウェハの生産能力拡張として開示している。",
+      "statement": "SUMCOはFY2025に799億5,700万円の設備投資を実施し、主要項目を先端半導体向け300mm高精度ウェハの生産能力拡張として開示している。",
       "canonicalDigest": "b078b686ae9bd0af9ff5382f18f16940c9ba70f858c57a3460bcddbe7559f358"
     },
     {
@@ -1212,7 +1212,7 @@
       "entityType": "claim",
       "stableKey": "umc-customer-end-market-triage-remediation-v02",
       "decision": "translate",
-      "title": "モバイル・産業・車載・AI/クラウド用途",
+      "title": "モバイル・産業・車載・AI／クラウド用途",
       "statement": "UMCのファウンドリ工程はモバイル、消費者向け、産業制御、車載、通信、AI・クラウドコンピューティングなどの半導体用途を需要先としている。",
       "canonicalDigest": "f0f1ba3bc5a8861e329e85489a89b6428c643da7c34b980c2f083913869980ba"
     },
@@ -1237,7 +1237,7 @@
       "stableKey": "umc-value-chain",
       "decision": "translate",
       "title": "ファウンドリ・ロジック製造の供給層",
-      "statement": "AtlasではUMC（聯華電子）を「ファウンドリ・ロジック製造」に位置し、AIインフラ周辺の電源、接続、制御等に使われる多様な半導体の量産を担う役割を担う企業と整理する。",
+      "statement": "AtlasではUMC（聯華電子）を「ファウンドリ・ロジック製造」に位置付け、AIインフラ周辺の電源、接続、制御等に使われる多様な半導体を量産する企業と整理する。",
       "canonicalDigest": "87196e67d8d65d0711aaf1238371c9120273938190fe8c009226b29fda9be8ae"
     },
     {
@@ -1268,8 +1268,8 @@
       "entityType": "claim",
       "stableKey": "western-digital-customer-end-market-triage-remediation-v02",
       "decision": "translate",
-      "title": "クラウド・クライアント向け・消費者向けの顧客層",
-      "statement": "Western Digitalはクラウド、クライアント、コンシューマの3つの最終市場へHDDを提供し、クラウドサービス事業者、OEM、再販業者、販売代理店、小売業者を主要な顧客区分としている。",
+      "title": "クラウド・クライアント・消費者向けの顧客層",
+      "statement": "Western Digitalはクラウド、クライアント、消費者の3つの最終市場へHDDを提供し、クラウドサービス事業者、OEM、再販業者、販売代理店、小売業者を主要な顧客区分としている。",
       "canonicalDigest": "43551555bf0681f7351dea37e69173a7744233630e420171d8818ab0000ccd7d"
     },
     {
@@ -1285,7 +1285,7 @@
       "stableKey": "western-digital-value-chain",
       "decision": "translate",
       "title": "メモリの供給層",
-      "statement": "AtlasではWestern Digital（ウエスタンデジタル）を「メモリ」に位置し、AI学習データやクラウドデータの長期・大容量保存を担うデータセンターストレージ層に位置する役割を担う企業と整理する。",
+      "statement": "AtlasではWestern Digital（ウエスタンデジタル）を「メモリ」に位置付け、AI学習データやクラウドデータの長期・大容量保存を担うデータセンターストレージ層の企業と整理する。",
       "canonicalDigest": "d592fdf358a65ee9e1db275b3f7bc2cbbf391ad954070d8db1d7d010e1835597"
     },
     {
@@ -1317,7 +1317,7 @@
       "stableKey": "yaskawa-value-chain",
       "decision": "translate",
       "title": "フィジカルAIの供給層",
-      "statement": "Atlasでは安川電機を「フィジカルAI」に位置し、AIによる認識・判断を実際の機械動作へ変換するモーション制御とロボットを担う役割を担う企業と整理する。",
+      "statement": "Atlasでは安川電機を「フィジカルAI」に位置付け、AIによる認識・判断を実際の機械動作へ変換するモーション制御とロボットを担う企業と整理する。",
       "canonicalDigest": "fd4b664b7232aa8b724acc8d0b32ee0893d7db6131ec7ef75d1b6f961709be89"
     },
     {

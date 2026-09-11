@@ -79,7 +79,1377 @@
       "japaneseName": "SUMCO"
     }
   ],
-  "activeArtifactFreezeVersion": "drawer-presentation-consistency-v01",
+  "p2CopyAudit": {
+    "version": "japanese-first-copy-p2-v01",
+    "baseMain": "46f3aceca5c793cd269197cada3788c97a84b04b",
+    "purpose": "Independent stable-key ledger for the 62 Human Review approved P2 copy fixes; canonical data and protected review/preserve entries remain unchanged.",
+    "auditFixRows": 62,
+    "expandedOverlayEntries": 67,
+    "targetCompanyIds": [
+      "amphenol",
+      "applied-materials",
+      "asmpt",
+      "besi",
+      "broadcom",
+      "cisco",
+      "corning",
+      "credo",
+      "digital-realty",
+      "eaton",
+      "equinix",
+      "fanuc",
+      "ge-vernova",
+      "globalfoundries",
+      "intel",
+      "jcet",
+      "johnson-controls",
+      "kioxia",
+      "kla",
+      "kokusai-electric",
+      "lam-research",
+      "lumentum",
+      "marvell",
+      "mediatek",
+      "micron",
+      "mobileye",
+      "monolithic-power",
+      "nxp",
+      "qualcomm",
+      "renesas",
+      "rohm",
+      "samsung-electronics",
+      "schneider-electric",
+      "sk-hynix",
+      "smic",
+      "stmicroelectronics",
+      "sumco",
+      "texas-instruments",
+      "umc",
+      "vertiv",
+      "western-digital",
+      "yaskawa"
+    ],
+    "rows": [
+      {
+        "companyId": "besi",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "besi-facilities",
+            "before": {
+              "statement": "Besiは欧州の技術・技術拠点とアジアの製造・顧客支援基盤を組み合わせて組立装置を供給する。"
+            },
+            "after": {
+              "statement": "Besiは欧州の技術拠点とアジアの製造・顧客支援基盤を組み合わせて組立装置を供給する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "asmpt",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "asmpt-products",
+            "before": {
+              "statement": "ASMPTの製品群には熱圧着ボンディング、ダイ・フリップチップボンディング、ワイヤー ボンディング、モールディング、SMTライン装置、製造実行ソフトウェアが含まれる。"
+            },
+            "after": {
+              "statement": "ASMPTの製品群には熱圧着ボンディング、ダイ・フリップチップボンディング、ワイヤーボンディング、モールディング、SMTライン装置、製造実行ソフトウェアが含まれる。"
+            }
+          },
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "portfolio",
+            "groundingId": "asmpt-products",
+            "before": {
+              "statement": "ASMPTの製品群には熱圧着ボンディング、ダイ・フリップチップボンディング、ワイヤー ボンディング、モールディング、SMTライン装置、製造実行ソフトウェアが含まれる。"
+            },
+            "after": {
+              "statement": "ASMPTの製品群には熱圧着ボンディング、ダイ・フリップチップボンディング、ワイヤーボンディング、モールディング、SMTライン装置、製造実行ソフトウェアが含まれる。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "asmpt",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "product",
+            "groundingId": "display-product-asmpt-03",
+            "before": {
+              "title": "ワイヤー ボンディング",
+              "statement": "ワイヤー ボンディングを提供する。"
+            },
+            "after": {
+              "title": "ワイヤーボンディング",
+              "statement": "ワイヤーボンディングを提供する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "lumentum",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "lumentum-products",
+            "before": {
+              "statement": "Lumentumの製品には高速光トランシーバー、レーザー 送信器、光統合回路、フォトダイオード、コヒーレント部品、ROADM、光増幅器、光回路スイッチが含まれる。"
+            },
+            "after": {
+              "statement": "Lumentumの製品には高速光トランシーバー、レーザー送信器、光統合回路、フォトダイオード、コヒーレント部品、ROADM、光増幅器、光回路スイッチが含まれる。"
+            }
+          },
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "portfolio",
+            "groundingId": "lumentum-products",
+            "before": {
+              "title": "光トランシーバから光スイッチまで",
+              "statement": "Lumentumの製品には高速光トランシーバー、レーザー 送信器、光統合回路、フォトダイオード、コヒーレント部品、ROADM、光増幅器、光回路スイッチが含まれる。"
+            },
+            "after": {
+              "title": "光トランシーバーから光スイッチまで",
+              "statement": "Lumentumの製品には高速光トランシーバー、レーザー送信器、光統合回路、フォトダイオード、コヒーレント部品、ROADM、光増幅器、光回路スイッチが含まれる。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "lumentum",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "product",
+            "groundingId": "display-product-lumentum-02",
+            "before": {
+              "title": "レーザー 送信器",
+              "statement": "レーザー 送信器を提供する。"
+            },
+            "after": {
+              "title": "レーザー送信器",
+              "statement": "レーザー送信器を提供する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "qualcomm",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "qualcomm-customer-end-market-triage-remediation-v02",
+            "before": {
+              "title": "携帯端末・車載・民生/産業向けIoT向け"
+            },
+            "after": {
+              "title": "携帯端末・車載・民生／産業IoT向け"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "lumentum",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "lumentum-overview",
+            "before": {
+              "statement": "Lumentumはクラウド・AI、通信、企業向けの光部品・モジュール・システムと、製造向け産業向けレーザーを提供するフォトニクス企業である。"
+            },
+            "after": {
+              "statement": "Lumentumはクラウド・AI、通信、企業向けの光部品・モジュール・システムと、製造業向けの産業用レーザーを提供するフォトニクス企業である。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "corning",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "corning-products",
+            "before": {
+              "statement": "Corningの光通信事業は通信事業者ネットワークと企業向けネットワーク向けに光ファイバ、ケーブル、コネクタ、高密度データセンターケーブル配線を提供する。"
+            },
+            "after": {
+              "statement": "Corningの光通信事業は通信事業者ネットワークと企業ネットワーク向けに光ファイバ、ケーブル、コネクタ、高密度データセンターケーブル配線を提供する。"
+            }
+          },
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "portfolio",
+            "groundingId": "corning-products",
+            "before": {
+              "title": "光ファイバー・ケーブル・コネクタ",
+              "statement": "Corningの光通信事業は通信事業者ネットワークと企業向けネットワーク向けに光ファイバ、ケーブル、コネクタ、高密度データセンターケーブル配線を提供する。"
+            },
+            "after": {
+              "title": "光ファイバ・ケーブル・コネクタ",
+              "statement": "Corningの光通信事業は通信事業者ネットワークと企業ネットワーク向けに光ファイバ、ケーブル、コネクタ、高密度データセンターケーブル配線を提供する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "corning",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "corning-customer-markets",
+            "before": {
+              "title": "通信事業者・企業向け・ハイパースケールデータセンター向け"
+            },
+            "after": {
+              "title": "通信事業者・企業・ハイパースケールデータセンター向け"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "micron",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "micron-customer-end-market-triage-remediation-v02",
+            "before": {
+              "statement": "Micronはハイパースケールクラウド、企業向け・OEMデータセンター、モバイル・クライアント、車載・産業向け・民生向けにDRAM、HBM、NAND、SSD等のメモリ・ストレージソリューションを提供している。"
+            },
+            "after": {
+              "statement": "Micronはハイパースケールクラウド、企業向け・OEMデータセンター、モバイル・クライアント、車載・産業・民生向けにDRAM、HBM、NAND、SSD等のメモリ・ストレージソリューションを提供している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "renesas",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "renesas-customer-end-market-triage-remediation-v02",
+            "before": {
+              "title": "車載・産業向け・インフラ・IoT向け"
+            },
+            "after": {
+              "title": "車載・産業・インフラ・IoT向け"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "rohm",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "rohm-customer-end-market-triage-remediation-v02",
+            "before": {
+              "title": "車載・産業向け・AIサーバー向け"
+            },
+            "after": {
+              "title": "車載・産業・AIサーバー向け"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "kioxia",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "kioxia-customer-end-market-triage-remediation-v02",
+            "before": {
+              "title": "PC・データセンター・企業向け・スマートデバイス向け"
+            },
+            "after": {
+              "title": "PC・データセンター・企業・スマートデバイス向け"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "western-digital",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "western-digital-customer-end-market-triage-remediation-v02",
+            "before": {
+              "title": "クラウド・クライアント向け・消費者向けの顧客層",
+              "statement": "Western Digitalはクラウド、クライアント、コンシューマの3つの最終市場へHDDを提供し、クラウドサービス事業者、OEM、再販業者、販売代理店、小売業者を主要な顧客区分としている。"
+            },
+            "after": {
+              "title": "クラウド・クライアント・消費者向けの顧客層",
+              "statement": "Western Digitalはクラウド、クライアント、消費者の3つの最終市場へHDDを提供し、クラウドサービス事業者、OEM、再販業者、販売代理店、小売業者を主要な顧客区分としている。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "johnson-controls",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "johnson-controls-customer-markets",
+            "before": {
+              "title": "業務用・産業向け・データセンター向け"
+            },
+            "after": {
+              "title": "業務用・産業・データセンター向け"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "vertiv",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "vertiv-value-chain",
+            "before": {
+              "statement": "AtlasではVertivを、電源系統とサーバー・アクセラレーター ラックの間で電力品質、配電、冷却、収容を統合する施設層として整理する。"
+            },
+            "after": {
+              "statement": "AtlasではVertivを、電源系統とサーバー・アクセラレーターラックの間で電力品質、配電、冷却、収容を統合する施設層として整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "asmpt",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "asmpt-positioning",
+            "before": {
+              "title": "先端パッケージの技術面での主導的地位",
+              "statement": "ASMPTは先端パッケージでの技術面での主導的地位、幅広いSEMI・SMT事業・製品群、顧客との共同開発を競争上の位置付けとして説明する。"
+            },
+            "after": {
+              "title": "先端パッケージ技術での主導的地位",
+              "statement": "ASMPTは先端パッケージ技術での主導的地位、幅広いSEMI・SMTの事業・製品群、顧客との共同開発を競争上の位置付けとして説明する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "besi",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "besi-positioning",
+            "before": {
+              "title": "組立装置の産業主導企業と説明",
+              "statement": "Besiは先端パッケージの長期成長とウェハレベル組立を背景に、自社を組立装置分野の産業主導企業と説明している。"
+            },
+            "after": {
+              "title": "組立装置分野を主導する企業と説明",
+              "statement": "Besiは先端パッケージの長期成長とウェハレベル組立を背景に、自社を組立装置分野を主導する企業と説明している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "besi",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "besi-products",
+            "before": {
+              "statement": "Besiの製品事業・製品群にはハイブリッドボンディング、フリップチップ・ダイ接着、熱圧着、モールディング、成形切断、めっきソリューションが含まれる。"
+            },
+            "after": {
+              "statement": "Besiの製品群にはハイブリッドボンディング、フリップチップ・ダイ接着、熱圧着、モールディング、成形切断、めっきソリューションが含まれる。"
+            }
+          },
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "portfolio",
+            "groundingId": "besi-products",
+            "before": {
+              "statement": "Besiの製品事業・製品群にはハイブリッドボンディング、フリップチップ・ダイ接着、熱圧着、モールディング、成形切断、めっきソリューションが含まれる。"
+            },
+            "after": {
+              "statement": "Besiの製品群にはハイブリッドボンディング、フリップチップ・ダイ接着、熱圧着、モールディング、成形切断、めっきソリューションが含まれる。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "digital-realty",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "digital-realty-facilities",
+            "before": {
+              "statement": "2025年末時点でDigital Realtyの事業・製品群は310データセンターで、米国、欧州、中南米、アフリカ、アジア、オーストラリア、カナダに分布する。"
+            },
+            "after": {
+              "statement": "2025年末時点でDigital Realtyの施設網は310のデータセンターで構成され、米国、欧州、中南米、アフリカ、アジア、オーストラリア、カナダに分布する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "amphenol",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "amphenol-positioning",
+            "before": {
+              "title": "広い技術事業・製品群と世界的な事業基盤",
+              "statement": "Amphenolは高性能相互接続の幅広い技術事業・製品群、顧客との設計協業、世界的な事業基盤を競争上の利点として説明する。"
+            },
+            "after": {
+              "title": "幅広い技術・製品群と世界的な事業基盤",
+              "statement": "Amphenolは高性能相互接続の幅広い技術・製品群、顧客との設計協業、世界的な事業基盤を競争上の利点として説明する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "vertiv",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "vertiv-manufacturing-facilities-triage-remediation-v02",
+            "before": {
+              "statement": "Vertivは40超の国で約300拠点を持ち、米州、アジア太平洋、EMEAに重要な製造・運用上の施設を運用し、Puneの製造・検査研究所とPelzer（サウスカロライナ州）の約215,000平方フィート施設を含む。"
+            },
+            "after": {
+              "statement": "Vertivは40超の国で約300拠点を持ち、米州、アジア太平洋、EMEAに重要な製造・運用拠点を展開している。これらにはPuneの製造・検査研究所とPelzer（サウスカロライナ州）の約215,000平方フィートの施設が含まれる。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "applied-materials",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "applied-value-chain",
+            "before": {
+              "title": "Fabの工程装置を供給",
+              "statement": "AtlasではApplied Materialsを、半導体メーカーやファウンドリのFabへウェハ工程装置を供給する製造装置層として整理する。"
+            },
+            "after": {
+              "title": "半導体工場の工程装置を供給",
+              "statement": "AtlasではApplied Materialsを、半導体メーカーやファウンドリの半導体工場へウェハ工程装置を供給する製造装置層として整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "eaton",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "eaton-capacity-expansion-triage-remediation-v02",
+            "before": {
+              "statement": "Eatonはバージニア州Henrico Countyに50百万ドル超を投じ、静的移転スイッチ、配電ユニット、遠隔電源パネルの生産能力を増やす350,000平方フィートの新拠点を2027年に稼働する計画を公表している。"
+            },
+            "after": {
+              "statement": "Eatonはバージニア州Henrico Countyに5,000万ドル超を投じ、静的移転スイッチ、配電ユニット、遠隔電源パネルの生産能力を増やす350,000平方フィートの新拠点を2027年に稼働する計画を公表している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "ge-vernova",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "ge-vernova-capacity-expansion-triage-remediation-v02",
+            "before": {
+              "statement": "GE Vernovaは2025年に米国電力・電化工場で1,500人超を増員し、ペンシルベニア州の電力網工場へ2年間で100百万ドル超を投じて高電圧開閉装置の生産を増やす計画を示している。"
+            },
+            "after": {
+              "statement": "GE Vernovaは2025年に米国電力・電化工場で1,500人超を増員し、ペンシルベニア州の電力網工場へ2年間で1億ドル超を投じて高電圧開閉装置の生産を増やす計画を示している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "johnson-controls",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "johnson-controls-manufacturing-facilities-triage-remediation-v02",
+            "before": {
+              "title": "約60カ国・約23百万平方フィートの事業拠点",
+              "statement": "Johnson Controlsは約60カ国で約23百万平方フィートの不動産を運用し、主に製造、販売・サービス、R&D、監視、組立・倉庫へ使用している。"
+            },
+            "after": {
+              "title": "約60カ国・約2,300万平方フィートの事業拠点",
+              "statement": "Johnson Controlsは約60カ国で約2,300万平方フィートの不動産を運用し、主に製造、販売・サービス、R&D、監視、組立・倉庫へ使用している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "kla",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "kla-capacity-expansion-triage-remediation-v02",
+            "before": {
+              "statement": "KLAは2025年5月、ウェールズ・ニューポートに1.38億USD、237,000平方フィートのR&D・製造センターを開設した。施設は25,000平方フィートのR&Dクリーンルームと35,000平方フィートの製造スペースを備える。"
+            },
+            "after": {
+              "statement": "KLAは2025年5月、ウェールズ・ニューポートに1億3,800万米ドル、237,000平方フィートのR&D・製造センターを開設した。施設は25,000平方フィートのR&Dクリーンルームと35,000平方フィートの製造スペースを備える。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "schneider-electric",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "schneider-electric-capacity-expansion-triage-remediation-v02",
+            "before": {
+              "title": "米国へ2027年までに7億USD超を投資",
+              "statement": "Schneider Electricは2025～2027年に米国事業活動へ7億USD超を投じ、Mt. Julietの新施設、Columbia・El Paso等の工場拡張、AIデータセンター向け配電研究所を整備し、1,000人超を雇用する計画を示している。"
+            },
+            "after": {
+              "title": "米国へ2027年までに7億米ドル超を投資",
+              "statement": "Schneider Electricは2025～2027年に米国事業活動へ7億米ドル超を投じ、Mt. Julietの新施設、Columbia・El Paso等の工場拡張、AIデータセンター向け配電研究所を整備し、1,000人超を雇用する計画を示している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "texas-instruments",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "texas-instruments-capacity-expansion-triage-remediation-v02",
+            "before": {
+              "title": "米国7工場へ600億USD超を投資",
+              "statement": "Texas Instrumentsはテキサス州とユタ州の3つの大規模製造拠点にある7つの半導体工場へ600億USD超を投資し、300mm能力を拡張する計画を公表している。"
+            },
+            "after": {
+              "title": "米国7工場へ600億米ドル超を投資",
+              "statement": "Texas Instrumentsはテキサス州とユタ州の3つの大規模製造拠点にある7つの半導体工場へ600億米ドル超を投資し、300mm能力を拡張する計画を公表している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "sumco",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "sumco-capacity-expansion-triage-remediation-v02",
+            "before": {
+              "statement": "SUMCOはFY2025に799億57百万円の設備投資を実施し、主要項目を先端半導体向け300mm高精度ウェハの生産能力拡張として開示している。"
+            },
+            "after": {
+              "statement": "SUMCOはFY2025に799億5,700万円の設備投資を実施し、主要項目を先端半導体向け300mm高精度ウェハの生産能力拡張として開示している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "credo",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "credo-technology",
+            "before": {
+              "title": "SerDes・DSPで32Gから200G/レーンを処理",
+              "statement": "Credoの接続ソリューションは自社SerDesとDSPを基盤とし、32Gから200G/レーンの光・電気Ethernet、PCIe等へ対応する。"
+            },
+            "after": {
+              "title": "SerDes・DSPで32Gから200G／レーンを処理",
+              "statement": "Credoの接続ソリューションは自社SerDesとDSPを基盤とし、32Gから200G／レーンの光・電気Ethernet、PCIe等へ対応する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "intel",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "intel-strategy-triage-remediation-v02",
+            "before": {
+              "title": "x86再活性化・外部ファウンドリ・ASIC/GPUを優先"
+            },
+            "after": {
+              "title": "x86再活性化・外部ファウンドリ・ASIC／GPUを優先"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "kokusai-electric",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "kokusai-electric-customer-end-market-triage-remediation-v02",
+            "before": {
+              "title": "NAND・DRAM・ロジック/ファウンドリ・電力デバイス向け"
+            },
+            "after": {
+              "title": "NAND・DRAM・ロジック／ファウンドリ・電力デバイス向け"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "kokusai-electric",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "kokusai-electric-strategy-triage-remediation-v02",
+            "before": {
+              "statement": "KOKUSAI ELECTRICは高付加価値製品の創出、顧客提案力、サービス事業を重点施策とし、NAND・DRAM・ロジック/ファウンドリ向けバッチALDと処理領域を強化する方針を示している。"
+            },
+            "after": {
+              "statement": "KOKUSAI ELECTRICは高付加価値製品の創出、顧客提案力、サービス事業を重点施策とし、NAND・DRAM・ロジック／ファウンドリ向けバッチALDと処理領域を強化する方針を示している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "mediatek",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "mediatek-strategy-triage-remediation-v02",
+            "before": {
+              "title": "先端プロセス・パッケージ・400G SerDes/CPOへ投資"
+            },
+            "after": {
+              "title": "先端プロセス・パッケージ・400G SerDes／CPOへ投資"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "micron",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "micron-strategy-triage-remediation-v02",
+            "before": {
+              "title": "HBM・データセンターDRAM/SSDへ重点配分"
+            },
+            "after": {
+              "title": "HBM・データセンターDRAM／SSDへ重点配分"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "monolithic-power",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "monolithic-power-customer-end-market-triage-remediation-v02",
+            "before": {
+              "title": "企業向けデータ・ストレージ/コンピューティング・車載等へ展開"
+            },
+            "after": {
+              "title": "企業向けデータ・ストレージ／コンピューティング・車載等へ展開"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "renesas",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "renesas-strategy-triage-remediation-v02",
+            "before": {
+              "statement": "ルネサスは「Back to Basics」の下で生産性向上、目的を明確にした投資、組織基盤強化を進め、組み込み半導体ソリューション、UX・デジタル化、垂直事業へ資源を集中する。SDV、AIインフラ/演算、エッジでのインテリジェンスを成長領域に位置付けている。"
+            },
+            "after": {
+              "statement": "ルネサスは「Back to Basics」の下で生産性向上、目的を明確にした投資、組織基盤強化を進め、組み込み半導体ソリューション、UX・デジタル化、垂直事業へ資源を集中する。SDV、AIインフラ／演算、エッジでのインテリジェンスを成長領域に位置付けている。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "smic",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "smic-products",
+            "before": {
+              "title": "ロジック・電力/アナログ・RF・メモリ・CIS基盤",
+              "statement": "SMICはロジックIC、電力/アナログ、高電圧ディスプレイドライバー、組み込み・単体不揮発性メモリ、ミックスドシグナル/RF、CMOSイメージセンサー等の基盤を量産する。"
+            },
+            "after": {
+              "title": "ロジック・電力／アナログ・RF・メモリ・CIS基盤",
+              "statement": "SMICはロジックIC、電力／アナログ、高電圧ディスプレイドライバー、組み込み・単体不揮発性メモリ、ミックスドシグナル／RF、CMOSイメージセンサー等の基盤を量産する。"
+            }
+          },
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "portfolio",
+            "groundingId": "smic-products",
+            "before": {
+              "statement": "SMICはロジックIC、電力/アナログ、高電圧ディスプレイドライバー、組み込み・単体不揮発性メモリ、ミックスドシグナル/RF、CMOSイメージセンサー等の基盤を量産する。"
+            },
+            "after": {
+              "statement": "SMICはロジックIC、電力／アナログ、高電圧ディスプレイドライバー、組み込み・単体不揮発性メモリ、ミックスドシグナル／RF、CMOSイメージセンサー等の基盤を量産する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "smic",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "product",
+            "groundingId": "display-product-smic-02",
+            "before": {
+              "title": "電力/アナログ",
+              "statement": "電力/アナログを提供する。"
+            },
+            "after": {
+              "title": "電力／アナログ",
+              "statement": "電力／アナログを提供する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "smic",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "product",
+            "groundingId": "display-product-smic-05",
+            "before": {
+              "title": "ミックスドシグナル/RF",
+              "statement": "ミックスドシグナル/RFを提供する。"
+            },
+            "after": {
+              "title": "ミックスドシグナル／RF",
+              "statement": "ミックスドシグナル／RFを提供する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "stmicroelectronics",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "stmicroelectronics-capacity-expansion-triage-remediation-v02",
+            "before": {
+              "statement": "STMicroelectronicsはAgrateの300mm能力を2027年までに4,000ウェハ/週、Crollesを14,000ウェハ/週へ高める計画を示し、Cataniaでは200mm SiC生産開始を予定している。"
+            },
+            "after": {
+              "statement": "STMicroelectronicsはAgrateの300mm能力を2027年までに4,000ウェハ／週、Crollesを14,000ウェハ／週へ高める計画を示し、Cataniaでは200mm SiC生産開始を予定している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "jcet",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "jcet-customer-end-market-triage-remediation-v02",
+            "before": {
+              "title": "車載・AI/HPC・ストレージ・通信向け"
+            },
+            "after": {
+              "title": "車載・AI／HPC・ストレージ・通信向け"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "jcet",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "jcet-strategy-triage-remediation-v02",
+            "before": {
+              "statement": "JCETは先端パッケージへの投資を拡大し、AI/HPC、車載等の高付加価値用途へ事業構造を移行する方針を示している。"
+            },
+            "after": {
+              "statement": "JCETは先端パッケージへの投資を拡大し、AI／HPC、車載等の高付加価値用途へ事業構造を移行する方針を示している。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "umc",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "umc-customer-end-market-triage-remediation-v02",
+            "before": {
+              "title": "モバイル・産業・車載・AI/クラウド用途"
+            },
+            "after": {
+              "title": "モバイル・産業・車載・AI／クラウド用途"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "samsung-electronics",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "samsung-electronics-value-chain",
+            "before": {
+              "statement": "AtlasではSamsung Electronics（サムスン電子）を「メモリ」に位置し、HBM/DRAM、NAND、先端ロジック製造の複数チャネルからAIインフラ投資に接続する役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではSamsung Electronics（サムスン電子）を「メモリ」に位置付け、HBM／DRAM、NAND、先端ロジック製造の複数チャネルを通じてAIインフラ投資に接続する企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "lam-research",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "lam-research-value-chain",
+            "before": {
+              "statement": "AtlasではLam Research（ラムリサーチ）を「半導体前工程装置」に位置し、3D NAND・DRAM/HBM・先端ロジックの高アスペクト比工程や積層化の恩恵を受けやすい役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではLam Research（ラムリサーチ）を「半導体前工程装置」に位置付け、3D NAND・DRAM／HBM・先端ロジックの高アスペクト比工程や積層化から恩恵を受けやすい企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "cisco",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "cisco-ai-role",
+            "before": {
+              "statement": "AtlasではCisco（シスコ）を、Silicon OneやEthernetスイッチを含むネットワーク基盤を通じ、AIクラスタのスケールアップ・スケールアウト接続を支える企業と位置付ける。"
+            },
+            "after": {
+              "statement": "AtlasではCisco（シスコ）を、Silicon OneやEthernetスイッチを含むネットワーク基盤を通じ、AIクラスターのスケールアップ・スケールアウト接続を支える企業と位置付ける。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "cisco",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "cisco-value-chain",
+            "before": {
+              "statement": "AtlasではCisco（シスコ）を「ネットワーク・光通信」に位置し、Silicon OneやEthernetスイッチを含むネットワーク基盤を通じ、AIクラスタのスケールアップ・スケールアウト接続を支える役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではCisco（シスコ）を「ネットワーク・光通信」に位置付け、Silicon OneやEthernetスイッチを含むネットワーク基盤を通じ、AIクラスターのスケールアップ・スケールアウト接続を支える企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "marvell",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "marvell-value-chain",
+            "before": {
+              "statement": "AtlasではMarvell Technology（マーベル・テクノロジー）を「演算・半導体」に位置し、カスタムAIアクセラレータと高速接続半導体を通じ、AIクラスタの計算と通信の両方に関与する役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではMarvell Technology（マーベル・テクノロジー）を「演算・半導体」に位置付け、カスタムAIアクセラレーターと高速接続半導体を通じ、AIクラスターの計算と通信の両方に関与する企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "broadcom",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "broadcom-value-chain",
+            "before": {
+              "statement": "AtlasではBroadcom（ブロードコム）を「演算・半導体」に位置し、AIクラスタのカスタム計算・スイッチング・接続需要に複数経路で関与する役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではBroadcom（ブロードコム）を「演算・半導体」に位置付け、AIクラスターのカスタム計算・スイッチング・接続需要に複数経路で関与する企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "sk-hynix",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "sk-hynix-value-chain",
+            "before": {
+              "statement": "AtlasではSK hynix（SKハイニックス）を「メモリ」に位置し、AIアクセラレータ向けHBM需要への感応度が高い役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではSK hynix（SKハイニックス）を「メモリ」に位置付け、AIアクセラレーター向けHBM需要への感応度が高い企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "marvell",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "portfolio",
+            "groundingId": "marvell-products",
+            "before": {
+              "title": "AIアクセラレータ・接続・ストレージ"
+            },
+            "after": {
+              "title": "AIアクセラレーター・接続・ストレージ"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "equinix",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "equinix-value-chain",
+            "before": {
+              "statement": "AtlasではEquinix（エクイニクス）を「データセンター・設備」に位置し、AI向け計算・ネットワーク需要の増加は追い風だが、REITとして資本コストや金利の影響も大きい役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではEquinix（エクイニクス）を「データセンター・設備」に位置付ける。AI向け計算・ネットワーク需要の増加は追い風となる一方、REITとして資本コストや金利の影響も大きい企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "fanuc",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "fanuc-value-chain",
+            "before": {
+              "statement": "Atlasではファナックを「フィジカルAI」に位置し、AIが現実空間の製造・ロボティクスへ浸透するフィジカルAIの下流側候補として位置付ける役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "Atlasではファナックを「フィジカルAI」に位置付け、AIが現実空間の製造・ロボティクスへ浸透するフィジカルAIの下流側を担う候補企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "micron",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch1-v01",
+            "kind": "claim",
+            "groundingId": "micron-value-chain",
+            "before": {
+              "statement": "AtlasではMicron Technology（マイクロン・テクノロジー）を「メモリ」に位置し、HBM・データセンターDRAM・SSD需要を通じてAIインフラ投資の影響を受ける役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではMicron Technology（マイクロン・テクノロジー）を「メモリ」に位置付け、HBM・データセンターDRAM・SSD需要を通じてAIインフラ投資の影響を受ける企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "globalfoundries",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "globalfoundries-value-chain",
+            "before": {
+              "statement": "AtlasではGlobalFoundries（グローバルファウンドリーズ）を「ファウンドリ・ロジック製造」に位置し、AIインフラ周辺の接続、電源、RF、シリコンフォトニクス向け半導体製造を担う役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではGlobalFoundries（グローバルファウンドリーズ）を「ファウンドリ・ロジック製造」に位置付け、AIインフラ周辺の接続、電源、RF、シリコンフォトニクス向け半導体を製造する企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "mobileye",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "mobileye-value-chain",
+            "before": {
+              "statement": "AtlasではMobileye（モービルアイ）を「フィジカルAI」に位置し、カメラ認識、車載SoC、地図情報を統合し、自動車向けフィジカルAIの中核を担う役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではMobileye（モービルアイ）を「フィジカルAI」に位置付け、カメラ認識、車載SoC、地図情報を統合し、自動車向けフィジカルAIの中核を担う企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "nxp",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "nxp-value-chain",
+            "before": {
+              "statement": "AtlasではNXP Semiconductors（NXPセミコンダクターズ）を「演算・半導体」に位置し、車載計算・ネットワーク、産業エッジAIの制御・接続半導体を担う役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではNXP Semiconductors（NXPセミコンダクターズ）を「演算・半導体」に位置付け、車載計算・ネットワークと産業エッジAI向けの制御・接続半導体の供給を担う企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "umc",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "umc-value-chain",
+            "before": {
+              "statement": "AtlasではUMC（聯華電子）を「ファウンドリ・ロジック製造」に位置し、AIインフラ周辺の電源、接続、制御等に使われる多様な半導体の量産を担う役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではUMC（聯華電子）を「ファウンドリ・ロジック製造」に位置付け、AIインフラ周辺の電源、接続、制御等に使われる多様な半導体を量産する企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "western-digital",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "western-digital-value-chain",
+            "before": {
+              "statement": "AtlasではWestern Digital（ウエスタンデジタル）を「メモリ」に位置し、AI学習データやクラウドデータの長期・大容量保存を担うデータセンターストレージ層に位置する役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "AtlasではWestern Digital（ウエスタンデジタル）を「メモリ」に位置付け、AI学習データやクラウドデータの長期・大容量保存を担うデータセンターストレージ層の企業と整理する。"
+            }
+          }
+        ]
+      },
+      {
+        "companyId": "yaskawa",
+        "targets": [
+          {
+            "overlayBatch": "japanese-first-copy-batch2-v01",
+            "kind": "claim",
+            "groundingId": "yaskawa-value-chain",
+            "before": {
+              "statement": "Atlasでは安川電機を「フィジカルAI」に位置し、AIによる認識・判断を実際の機械動作へ変換するモーション制御とロボットを担う役割を担う企業と整理する。"
+            },
+            "after": {
+              "statement": "Atlasでは安川電機を「フィジカルAI」に位置付け、AIによる認識・判断を実際の機械動作へ変換するモーション制御とロボットを担う企業と整理する。"
+            }
+          }
+        ]
+      }
+    ],
+    "reviewEntries": [
+      {
+        "key": "claim:corning-positioning",
+        "sha256": "cfabc8e3e3e41d72d69a629d85875e524050ed5b99a802f4c478d7d0ca615ef6"
+      }
+    ],
+    "preserveEntries": [
+      {
+        "key": "claim:fujikura-capacity",
+        "sha256": "4713afad1e89dfb0072d22e2674e4179d989c1fd6f218953b42c7fa14328a9c6"
+      },
+      {
+        "key": "claim:fujikura-customer-end-market-triage-remediation-v02",
+        "sha256": "e4b0f71cb9bd4ed620c14456fd009996300d3a576a307a99218c783cf0fabee8"
+      },
+      {
+        "key": "claim:fujikura-positioning",
+        "sha256": "3fb4176443667f6b0240eb3939beca1720786279675aa83cf7685f4f21648e62"
+      },
+      {
+        "key": "claim:fujikura-strategy-triage-remediation-v02",
+        "sha256": "c5da25af14521c412c5a29c17e1e5afe77cc6c66eaa59e0760bd86811eaced02"
+      },
+      {
+        "key": "claim:fujikura-technology",
+        "sha256": "b317231b88a0b337af890bd877d65a7f3a5130dd34f2f5659ea60a50e2775306"
+      },
+      {
+        "key": "claim:arista-positioning",
+        "sha256": "8e9da4527e97041554e7a398d9b583805e2bab663491fc7aa5833c58034da257"
+      },
+      {
+        "key": "claim:globalfoundries-customer-end-market-triage-remediation-v02",
+        "sha256": "a278288386a80fa1f336560733e24f25e220a1f3586c84c965e6f02b5132b081"
+      },
+      {
+        "key": "claim:yaskawa-customer-end-market-triage-remediation-v02",
+        "sha256": "ca02386c0b89affdd95aba913c61d20a39f411ed6133b94b6beaaaa720f49131"
+      },
+      {
+        "key": "claim:yaskawa-manufacturing-facilities-triage-remediation-v02",
+        "sha256": "202b3a79eb17086134118041804d257082ffd3a55725ff08a30feea630c1dc51"
+      },
+      {
+        "key": "claim:yaskawa-strategy-triage-remediation-v02",
+        "sha256": "c7b530ece539439ef00bc3475e1766c1da266dd8967b2eed17595fd9fcbf6952"
+      },
+      {
+        "key": "claim:nikon-customer-end-market-triage-remediation-v02",
+        "sha256": "14aa204986f5be040815f4b0a2636be7de12fb79057d63f0059dddeb29c41087"
+      },
+      {
+        "key": "claim:omron-customer-end-market-triage-remediation-v02",
+        "sha256": "fc4fb2c5f6b0821d09d76f1ce886f505cec1a58d6b97d5c19dfcb29bd6dff665"
+      },
+      {
+        "key": "claim:omron-strategy-triage-remediation-v02",
+        "sha256": "23a14cbe94a60879fcaff7afc5472e757c6d6a78d0d62b43c35b374caa586fcd"
+      },
+      {
+        "key": "claim:fanuc-strategy-triage-remediation-v02",
+        "sha256": "00207d04ff27e7b822fda92d849f6bad1e489449c56fc06c18fa5a7df986b428"
+      }
+    ],
+    "appliedMaterialsNameContract": {
+      "accessibleName": "Applied Materials（アプライド・マテリアルズ）",
+      "primaryName": "Applied Materials",
+      "secondaryName": "（アプライド・マテリアルズ）",
+      "visualName": "Applied Materials（アプライド・マテリアルズ）"
+    },
+    "numericEquivalence": [
+      {
+        "key": "claim:eaton-capacity-expansion-triage-remediation-v02",
+        "before": "50百万ドル",
+        "after": "5,000万ドル",
+        "baseUnit": "USD",
+        "beforeValue": "50000000",
+        "afterValue": "50000000"
+      },
+      {
+        "key": "claim:ge-vernova-capacity-expansion-triage-remediation-v02",
+        "before": "100百万ドル",
+        "after": "1億ドル",
+        "baseUnit": "USD",
+        "beforeValue": "100000000",
+        "afterValue": "100000000"
+      },
+      {
+        "key": "claim:johnson-controls-manufacturing-facilities-triage-remediation-v02",
+        "before": "23百万平方フィート",
+        "after": "2,300万平方フィート",
+        "baseUnit": "square-foot",
+        "beforeValue": "23000000",
+        "afterValue": "23000000"
+      },
+      {
+        "key": "claim:kla-capacity-expansion-triage-remediation-v02",
+        "before": "1.38億USD",
+        "after": "1億3,800万米ドル",
+        "baseUnit": "USD",
+        "beforeValue": "138000000",
+        "afterValue": "138000000"
+      },
+      {
+        "key": "claim:schneider-electric-capacity-expansion-triage-remediation-v02",
+        "before": "7億USD",
+        "after": "7億米ドル",
+        "baseUnit": "USD",
+        "beforeValue": "700000000",
+        "afterValue": "700000000"
+      },
+      {
+        "key": "claim:texas-instruments-capacity-expansion-triage-remediation-v02",
+        "before": "600億USD",
+        "after": "600億米ドル",
+        "baseUnit": "USD",
+        "beforeValue": "60000000000",
+        "afterValue": "60000000000"
+      },
+      {
+        "key": "claim:sumco-capacity-expansion-triage-remediation-v02",
+        "before": "799億57百万円",
+        "after": "799億5,700万円",
+        "baseUnit": "JPY",
+        "beforeValue": "79957000000",
+        "afterValue": "79957000000"
+      }
+    ],
+    "changedArtifactPaths": [
+      "amphenol/index.html",
+      "applied-materials/index.html",
+      "asmpt/index.html",
+      "besi/index.html",
+      "broadcom/index.html",
+      "cisco/index.html",
+      "corning/index.html",
+      "credo/index.html",
+      "eaton/index.html",
+      "equinix/index.html",
+      "fanuc/index.html",
+      "ge-vernova/index.html",
+      "globalfoundries/index.html",
+      "kla/index.html",
+      "lam-research/index.html",
+      "lumentum/index.html",
+      "marvell/index.html",
+      "mediatek/index.html",
+      "micron/index.html",
+      "mobileye/index.html",
+      "nxp/index.html",
+      "samsung-electronics/index.html",
+      "schneider-electric/index.html",
+      "sk-hynix/index.html",
+      "smic/index.html",
+      "stmicroelectronics/index.html",
+      "sumco/index.html",
+      "texas-instruments/index.html",
+      "umc/index.html",
+      "vertiv/index.html",
+      "western-digital/index.html",
+      "yaskawa/index.html"
+    ],
+    "unchangedTargetAssetProjectionProof": [
+      {
+        "companyId": "digital-realty",
+        "reason": "The audited stable-key fields are not serialized into this Company Compare Evidence asset; both prior and revised full strings are absent.",
+        "stableKeys": [
+          "claim:digital-realty-facilities"
+        ]
+      },
+      {
+        "companyId": "intel",
+        "reason": "The audited stable-key fields are not serialized into this Company Compare Evidence asset; both prior and revised full strings are absent.",
+        "stableKeys": [
+          "claim:intel-strategy-triage-remediation-v02"
+        ]
+      },
+      {
+        "companyId": "jcet",
+        "reason": "The audited stable-key fields are not serialized into this Company Compare Evidence asset; both prior and revised full strings are absent.",
+        "stableKeys": [
+          "claim:jcet-customer-end-market-triage-remediation-v02",
+          "claim:jcet-strategy-triage-remediation-v02"
+        ]
+      },
+      {
+        "companyId": "johnson-controls",
+        "reason": "The audited stable-key fields are not serialized into this Company Compare Evidence asset; both prior and revised full strings are absent.",
+        "stableKeys": [
+          "claim:johnson-controls-customer-markets",
+          "claim:johnson-controls-manufacturing-facilities-triage-remediation-v02"
+        ]
+      },
+      {
+        "companyId": "kioxia",
+        "reason": "The audited stable-key fields are not serialized into this Company Compare Evidence asset; both prior and revised full strings are absent.",
+        "stableKeys": [
+          "claim:kioxia-customer-end-market-triage-remediation-v02"
+        ]
+      },
+      {
+        "companyId": "kokusai-electric",
+        "reason": "The audited stable-key fields are not serialized into this Company Compare Evidence asset; both prior and revised full strings are absent.",
+        "stableKeys": [
+          "claim:kokusai-electric-customer-end-market-triage-remediation-v02",
+          "claim:kokusai-electric-strategy-triage-remediation-v02"
+        ]
+      },
+      {
+        "companyId": "monolithic-power",
+        "reason": "The audited stable-key fields are not serialized into this Company Compare Evidence asset; both prior and revised full strings are absent.",
+        "stableKeys": [
+          "claim:monolithic-power-customer-end-market-triage-remediation-v02"
+        ]
+      },
+      {
+        "companyId": "qualcomm",
+        "reason": "The audited stable-key fields are not serialized into this Company Compare Evidence asset; both prior and revised full strings are absent.",
+        "stableKeys": [
+          "claim:qualcomm-customer-end-market-triage-remediation-v02"
+        ]
+      },
+      {
+        "companyId": "renesas",
+        "reason": "The audited stable-key fields are not serialized into this Company Compare Evidence asset; both prior and revised full strings are absent.",
+        "stableKeys": [
+          "claim:renesas-customer-end-market-triage-remediation-v02",
+          "claim:renesas-strategy-triage-remediation-v02"
+        ]
+      },
+      {
+        "companyId": "rohm",
+        "reason": "The audited stable-key fields are not serialized into this Company Compare Evidence asset; both prior and revised full strings are absent.",
+        "stableKeys": [
+          "claim:rohm-customer-end-market-triage-remediation-v02"
+        ]
+      }
+    ]
+  },
+  "activeArtifactFreezeVersion": "japanese-first-copy-p2-v01",
   "artifactFreezes": [
     {
       "version": "japanese-first-presentation-foundation-v01",
@@ -646,6 +2016,125 @@
         "vertiv/index.html": "93cce70e2e87fe36afae33b6c5f2af4d600da8770c981c208f30e92931a3ee7e",
         "western-digital/index.html": "b4998babaa6bf44ccdecad44f105e4d0c9a97943fb90d1f156b47ec9abca091c",
         "yaskawa/index.html": "c6c7eca7d603a518ac365d5e694a86d39aced117c62eabfac3163cb498d61741"
+      }
+    },
+    {
+      "version": "japanese-first-copy-p2-v01",
+      "previousVersion": "drawer-presentation-consistency-v01",
+      "metadata": {
+        "baseMain": "46f3aceca5c793cd269197cada3788c97a84b04b",
+        "purpose": "Freeze the exact Company Compare Evidence shell and 100 company assets after the 62 Human Review approved P2 copy audit rows were updated by stable key.",
+        "pathBase": "dist/evidence-fragments/company-compare-evidence-v01",
+        "foundationVersion": "japanese-first-presentation-foundation-v01",
+        "previousVersion": "drawer-presentation-consistency-v01",
+        "expectedArtifactCount": 101,
+        "expectedChangedCompanyAssetCount": 32,
+        "expectedUnchangedTargetCompanyAssetCount": 10,
+        "shellMustMatchPrevious": true,
+        "shaMismatchFallbackAllowed": false
+      },
+      "sha256ByPath": {
+        "abb/index.html": "3d3debe58ef7a06941669ca487766ee51d9303faf982940c75f5d049c1c4331f",
+        "advantest/index.html": "953cc2d22eecb9d4f0c3752b8aaf60a841aa21ecef8f50ac6d43bd5b9a0f769a",
+        "air-liquide/index.html": "b63137d2c642942efd493f44ff5d1b722c73ade17fe88303caa8a35d6cd51f88",
+        "ajinomoto-fine-techno/index.html": "4628c45d2c5651816d8ed52603c3ccd28c8b43c166f3f1f2be6a4c357edbb683",
+        "amd/index.html": "95795a7ee74d1066204661ed36a9c18f6b961684d4de9769ff9b3814cd7b9aae",
+        "amkor/index.html": "5ad7b1cb9aebbf2e92447dd3a9b7ddafc7e4839ead4623b1bf294ba52d63c0ce",
+        "amphenol/index.html": "f5fb24a11f4223600878ac902b93eeb6cc6477a5f929b11a2819c324e98b7d0d",
+        "analog-devices/index.html": "bc3a39c535a856c8ff22187427a0c7c1361bada4e117a2313aee7729e6c837ff",
+        "applied-materials/index.html": "4ff6597c1485602e84f594b90c24e380b45c85c567f5c2b0f367db8772ab9519",
+        "aptiv/index.html": "d5db0fff33908af7128c8cc6e330ad1fdf9f21d1789c06f272a194a25d06c7af",
+        "arista/index.html": "eaabee38abf7775da9946c6cf2bc78756e8a1a0471fe99af804935f28e0eb509",
+        "arm/index.html": "95a302683f46193f218c2895ede1477ca22131e435fea8cabe7d15a806a147e4",
+        "ase-technology/index.html": "3dc9e16db838689e579a8caef462d08fca0be7c8105fb1a5ddd3eadb82c3b004",
+        "asm-international/index.html": "82a5504d79e3613fe1f0c28c0eeeecbb325da290bab58ee8e519f5a180db455d",
+        "asml/index.html": "f89d9c7b9109c464976821e0e124597806e5ba612d996b8eb25694093c0a296c",
+        "asmpt/index.html": "0447885cea68ef8ac0e04bcc6478f2f6f61da9689bcfae10c10ce587cd06e7fc",
+        "besi/index.html": "5724918743b29121e79524197f66a4d12d1b8964fe01bb46b855fe4535352b33",
+        "bosch/index.html": "87f6fe9161acce69cacc754f74d221b0efc1e4fce29eba413caae63230dfe593",
+        "broadcom/index.html": "d8575ba03ff68645074b83f0f6440feaf94c50af8a336ff976054c8a623bfffa",
+        "cadence/index.html": "8c4605834cbf1d1de97051c1dbfdb2290e55b7f0503d00c66af5b9d3c95436b6",
+        "canon/index.html": "07324ed3fba1ca723b28b04b3a22b4ad18a6e9b13bb825e94436e9f5cf62e8f1",
+        "carrier/index.html": "3976ef424280dd25700c48fb8a14a12bca615eee35573a39c28f17796727d255",
+        "ciena/index.html": "c9e413dab6d56acec2e130ef3d3ea3a370077d25d4a49ef27fc4ce4ef2645edb",
+        "cisco/index.html": "e239d52e3258189667b42fd5995ed8d2eddaa028bc3bad87cc9a39be4f0ae443",
+        "coherent/index.html": "48302de8ac4211ec1d9c739fbec4e173c36c65ae4978eea7297e3b6aea7574e4",
+        "corning/index.html": "b5bdb082e48e045811817a5682646be4bf29005c7fe3d0889629b023bc6b4b30",
+        "credo/index.html": "13180331e70855308eb72e60880b5b8ef00568c63a6b700a23da360a1b54ec8c",
+        "denso/index.html": "ff8ad86118bc3dc846d1b79b4acf6ca4c37791ae93c890f878e4629366de7ee5",
+        "digital-realty/index.html": "3800f1367e92314c3abf091a4ad6bb0b760ca317386d5847fd1b27feb99b31e4",
+        "disco/index.html": "5919790a415d8cd5bfe1a25f58a40f363b8639eef544526f89b29e24f0d105bf",
+        "eaton/index.html": "d2a5795019aa64b3aac09c096677f662b6ec274c4b84514df9521e165c33ab1e",
+        "entegris/index.html": "501f0a2af8d53ce024cacf81cd2edb4f8715796364782d3cd39382cc2fbe0656",
+        "equinix/index.html": "7d8d60b25d335dbe6520bb9e8f8ed0d0376c1a840adc9f04f51a83f8441f51f3",
+        "fanuc/index.html": "415eeb5c5ea1abf7783195d32d162a4d59fa2258304918970b299fdc65d44310",
+        "fujikura/index.html": "098434d73dec6af40ea95485b2cc39da86e4fc629274eca29c483355a9ea57be",
+        "furukawa-electric/index.html": "dddbdf4c4d0960bca1b7d49b8a4e95f7ace66539b52dad015ad9d5e19de693a6",
+        "ge-vernova/index.html": "3812f8ab8ff72a1e17ed3c5fbe0737949f265edfc0a64ef9302df71f08a52b68",
+        "globalfoundries/index.html": "6d30dbfa59ac46ce227493fb61097e74b8538e3614c695621c381d990997876c",
+        "globalwafers/index.html": "28e8e7438e5424d3e6a68cdf016a232f64938fb6504a83d562ae184118b1f95b",
+        "hanmi-semiconductor/index.html": "3f466d86613967dfc39f17ab839bd4b073b2f263355025ef64f70a7ef5a9ed2d",
+        "hexagon/index.html": "94dd84d6e456454391dfa43fadd34477e9d1df16c2d8bcc44ad7fcc99071290d",
+        "ibiden/index.html": "26c747477a4ca1181fa6cdb69c26bc6c571cfd3ca5064f9d2ee7f59f80bf8557",
+        "index.html": "ef0239c9b941820d9280c45c0932026c5e61d71e9b55c85579076054cd9dbdab",
+        "infineon/index.html": "543a15eaf92916618702f1696d2d7c4593f99a5c422ecbfafb5ba28ce523931c",
+        "intel/index.html": "e9d394e5fb9fbf074c230538b7ff1a73aacbf29bf6893f6f81a27caf5162af5f",
+        "jcet/index.html": "e9aa254354dfa282b8de98ced7f6416a68911847f36768c6831470a5cae2cd09",
+        "johnson-controls/index.html": "9bb92fd623d39182bf05aed668f1c06fa046f49f0c4bc2c8deb1f7ac4073abbc",
+        "keyence/index.html": "840831f4f804d538cd823790cd4eff04273a83628530c4c3e4574984bdaf2d03",
+        "kinsus/index.html": "52de24630828a19450085c43b947b1795bbda1cd04622a41b9ef441a964757d0",
+        "kioxia/index.html": "893534beacbd899f2e1babcadbb3190be5e4774d1255d369494672d7bec44b53",
+        "kla/index.html": "348571eaf63f4ec152ae7492913ed1b2ac08df7c7f3ce38e9fe7dea2fb1011c4",
+        "kokusai-electric/index.html": "b5982f7e7bc5667636fb0e224f3939a862c9eee380459b75a7d83213c83820e1",
+        "lam-research/index.html": "4ed7a4c98e126994dd219522c705cc09dfae648b60a2e7a6f4c5683e1ce2b8f8",
+        "lasertec/index.html": "9c6974b06d566acca687a539e6a5ff6f6ab6e7618338b6ab29b3f5b08af6a350",
+        "legrand/index.html": "99f57da3bdc48a10398b88d50a49edc044624213235a248a6a861055fd086bb3",
+        "linde/index.html": "1244fcc697bfadb418e5bf55d20845373608992e9d7dce4974e10892e9df55a5",
+        "lumentum/index.html": "d26add8c75112467cf251449e36c91f3a124fb227e39deef040c0ba369130c60",
+        "marvell/index.html": "5f529b7d6a35c1527f2ccdf76adb39c6256180f0c4a9d0bb86eacd2ae2bdd690",
+        "mediatek/index.html": "c4f2fe31f3706f02b9a14f53262c6259f728ce4720480f9bd080c813d77a5248",
+        "micron/index.html": "4c21110cacdbd4801dfc014bf822b8fc6ed6edb85f7c94f6b8e7a285a4bf4541",
+        "mitsubishi-electric/index.html": "d32bd2ba63d068f29d1a03a5a521c6cb1c5281bb85151f99ccad16bcc391537e",
+        "mobileye/index.html": "74f2919d8c24efceb60807fd3bead0efdc6c2e65fab24b4500d7319277847fd6",
+        "monolithic-power/index.html": "05dff511048fc3b7287f0078ed629686f9cb3360617ea636581d1c4b73638bbf",
+        "nan-ya-pcb/index.html": "a56f9a9345cac0e09a818f35db15c2a6661bd0eadbf1585613fed592234299df",
+        "nikon/index.html": "bc4685a9cac1afcc3ab2d4746d4ceb8d993c4d7be500977803b91d547efd4be4",
+        "nvent/index.html": "898b6659280559cc8d1d9ff1115cf7550eb26c4fe5dd576281788428d5017bf2",
+        "nvidia/index.html": "fea9c6617d7ec278907bba9c57b9c42685111471d6e657b3ab6c6b165f1eb8f2",
+        "nxp/index.html": "13551f0ec252d28ee326e257b26e62b5f8c8dbd8abcc59118cc3ebfc1c6e03ba",
+        "omron/index.html": "9b390d74e910b81ae8c135c3a247fc08c27d5827f2424f2a7e28b1a7ec08e05a",
+        "onsemi/index.html": "d890dda216cbb545a870e5c94eb39e27a226bfee77fba334e4192f2f3d57f2be",
+        "qualcomm/index.html": "bded254d4bd3cd11ddcc662a0d51aadc58d0ecd5c4c811f5f3f38da97f205a2a",
+        "renesas/index.html": "58b1f54e12cf5066f98d8c9ed6410ac10dfc9520894be762f1e6756ad2a1fa56",
+        "resonac-holdings/index.html": "637568e279e1a2b31c7a33c3605a36ecf93a164c0f7e5af992d765cecdce28b3",
+        "rohm/index.html": "5d6331d4e8e20a98be77a00897b49d4991c05be3ab1ceced619506ae448f485d",
+        "samsung-electronics/index.html": "aca368ccda6a81efe682acf65ed6775796cfc9db9f794d5e29b631fac8c69344",
+        "sandisk/index.html": "be6ff5638d447334f3d2ca0f7f9455cd9b03ddef34c824f0c83de009e8caa1eb",
+        "schneider-electric/index.html": "a653c9a3e6fc07c8b1b8d63ef5082ce620057c35c6f39c730b83284920b1d4ed",
+        "screen-holdings/index.html": "4ad717aaa4f5d78bcc6ec1d313e86ebd35cf3e4bd65f6576bd00b4f8ce70c51f",
+        "seagate/index.html": "256aa6f49960fcdf113ae58e755ed467c6e300bd7bd0c2a84cb72e83123d818e",
+        "shin-etsu-chemical/index.html": "c0bb8dcd390ffb5fc7239657f608d25b3b780cf6804cb5bfd6d718957bb4925a",
+        "shinko-electric/index.html": "19983467b8292eedb3bfc2661bf844b56fd14dbe95fee4618b74485621b283e5",
+        "siemens-energy/index.html": "820298d348a2f7229272d016b6ced75dfbadfffef7166925beb76040cad59caa",
+        "sk-hynix/index.html": "8b1094137ab5db102f21f4c1e5547b46adffa2ae6211e22006856cfd9f6511f4",
+        "smc/index.html": "2d890cc9cc14173b9f0f3c360e5a155aa6fe5bfeda82d26b007dbba404a417f8",
+        "smic/index.html": "71a7c16380031ada25ebcc855599c4dfdc23e892389bf41286c9ffdc0c66d3f3",
+        "stmicroelectronics/index.html": "d813fdec3e5e76f46405421286ef979aca5a64486e98964cd78012cf9041bd63",
+        "sumco/index.html": "6d9896214340edd11181309e374590ef9c7941636e4b98b27bbb741e8b7a4ba7",
+        "sumitomo-electric/index.html": "a503b29738b357480fe65574c79cf9928179aaac413d99763ccd27b013d92215",
+        "synopsys/index.html": "e2b21bc62e90a12a82a31c67be0065b67d567579012a329fe1ee3b19d8494c14",
+        "te-connectivity/index.html": "e2108402d0bff753a79a08e31e12757ba96a4f23659632333bc5b4ad7175f07a",
+        "tesla/index.html": "f7c4a5aeb87b0f046599fd06aeaf598f23457186807b9c73ac1081d20ccda606",
+        "texas-instruments/index.html": "3502f01e177164401d2b5494b8355e74d5050061028f32a4e0de5e36894ef7a0",
+        "tokyo-electron/index.html": "6c17a9e88b9cdcfdffd85646b689f65174bfc3677ce1240dca826a2e959b56fc",
+        "tower-semiconductor/index.html": "0a2db5cbd5f3ea470e2a90d437c51da88cce3a08948b8f072f27ea5f48a40175",
+        "trane-technologies/index.html": "0ddb9f3f5db5413ab66a50f3cd8941890ae77dcb4b43d5ddb813ff446a925e88",
+        "tsmc/index.html": "5c858f7a964b50f4223123414b401e55d3564c25455dde18eb039fe96137c602",
+        "umc/index.html": "3cd865cfd020a5cda46c69b7904529a502e4403ede06a07bda56fa1dc32156df",
+        "unimicron/index.html": "afd9e6b2c70f9fcb2b98f02769cbb87919248e56c22e4848c2674103825b2347",
+        "vertiv/index.html": "62cda1b026fa479463ae43a5b365672c6b65ff87e94c3e8f5bf45008a658a2c8",
+        "western-digital/index.html": "db7eef312584d254e1bc39e06aa64ef3b5b0fe153fdc48bd403da613c169cdab",
+        "yaskawa/index.html": "8a6671599d5ed71de0ba8a748b5b8ea7fe8fb6a931a4185d5c44cf07a536cf51"
       }
     }
   ]

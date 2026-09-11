@@ -373,6 +373,86 @@ for (const company of batch1CompanyAudits) {
 assert.equal(auditedCandidates, 1_957, 'company audit ledgers total 1,957 candidates');
 
 const compiledAllEntries = compileJapaneseFirstPresentationEntries([...batch1.entries, ...batch2.entries]);
+const p2Audit = fixture.p2CopyAudit;
+assert.equal(p2Audit.version, 'japanese-first-copy-p2-v01', 'P2 copy ledger is versioned');
+assert.equal(p2Audit.baseMain, '46f3aceca5c793cd269197cada3788c97a84b04b', 'P2 copy ledger records the audited main');
+assert.equal(p2Audit.auditFixRows, 62, 'P2 ledger keeps the 62 approved audit FIX rows');
+assert.equal(p2Audit.rows.length, 62, 'P2 ledger has one record per approved audit row');
+const p2ExpandedTargets = p2Audit.rows.flatMap((auditRow, auditRowIndex) => auditRow.targets.map(auditTarget => ({
+  auditRowIndex,
+  companyId: auditRow.companyId,
+  ...auditTarget,
+})));
+assert.equal(p2Audit.expandedOverlayEntries, 67, 'P2 ledger records the measured expanded overlay count');
+assert.equal(p2ExpandedTargets.length, 67, '62 audit rows expand to the measured 67 overlay entries');
+assert.deepEqual(
+  p2Audit.targetCompanyIds,
+  [...new Set(p2Audit.rows.map(auditRow => auditRow.companyId))].sort(),
+  'P2 ledger target-company set is exact and sorted',
+);
+assert.equal(p2Audit.targetCompanyIds.length, 42, 'P2 copy fixes affect exactly 42 companies');
+const p2CompositeKeys = p2ExpandedTargets.map(target => `${target.overlayBatch}:${target.kind}:${target.groundingId}`);
+assert.equal(new Set(p2CompositeKeys).size, p2CompositeKeys.length, 'P2 overlay batch, kind, and grounding ID keys are unique');
+
+const overlayPayloadByVersion = new Map(overlayPayloads.map(payload => [payload.version, payload]));
+let p2ZeroMatches = 0;
+let p2MultipleMatches = 0;
+let p2CurrentValueMismatches = 0;
+for (const target of p2ExpandedTargets) {
+  const payload = overlayPayloadByVersion.get(target.overlayBatch);
+  assert.ok(payload, `${target.overlayBatch}: P2 target overlay batch exists`);
+  const matches = payload.entries.filter(entry => entry.entityType === target.kind && entry.stableKey === target.groundingId);
+  if (matches.length === 0) p2ZeroMatches += 1;
+  if (matches.length > 1) p2MultipleMatches += 1;
+  assert.equal(matches.length, 1, `${target.overlayBatch}:${target.kind}:${target.groundingId}: resolves exactly once`);
+  const entry = matches[0];
+  assert.equal(canonicalForEntry(entry).companyId, target.companyId, `${target.kind}:${target.groundingId}: audited owner is unchanged`);
+  for (const [field, expected] of Object.entries(target.after)) {
+    if (entry[field] !== expected) p2CurrentValueMismatches += 1;
+    assert.equal(entry[field], expected, `${target.kind}:${target.groundingId}:${field}: approved P2 full copy is exact`);
+    assert.notEqual(target.before[field], expected, `${target.kind}:${target.groundingId}:${field}: before and after contracts differ`);
+    assert.ok(!entry[field].includes(target.before[field]), `${target.kind}:${target.groundingId}:${field}: audited old full copy is absent`);
+  }
+  assert.equal(entry.canonicalDigest, japaneseFirstCanonicalDigest(canonicalForEntry(entry).canonical), `${target.kind}:${target.groundingId}: canonical digest is unchanged`);
+}
+assert.equal(p2ZeroMatches, 0, 'P2 audit has no zero-match overlay target');
+assert.equal(p2MultipleMatches, 0, 'P2 audit has no unintended multi-match overlay target');
+assert.equal(p2CurrentValueMismatches, 0, 'P2 audit has no current-value mismatch');
+
+const presentationEntrySha256 = entry => createHash('sha256')
+  .update(JSON.stringify({ title: entry.title, statement: entry.statement }))
+  .digest('hex');
+assert.equal(p2Audit.reviewEntries.length, 1, 'the one Corning REVIEW entry remains outside FIX');
+assert.equal(p2Audit.reviewEntries[0].key, 'claim:corning-positioning', 'the Corning REVIEW key is exact');
+assert.equal(
+  presentationEntrySha256([...batch1.entries, ...batch2.entries].find(entry => `${entry.entityType}:${entry.stableKey}` === p2Audit.reviewEntries[0].key)),
+  p2Audit.reviewEntries[0].sha256,
+  'Corning REVIEW presentation remains byte-equivalent',
+);
+assert.equal(p2Audit.preserveEntries.length, 14, '14 overlay PRESERVE entries remain unchanged');
+for (const protectedEntry of p2Audit.preserveEntries) {
+  const entry = [...batch1.entries, ...batch2.entries].find(candidate => `${candidate.entityType}:${candidate.stableKey}` === protectedEntry.key);
+  assert.ok(entry, `${protectedEntry.key}: protected presentation entry exists`);
+  assert.equal(presentationEntrySha256(entry), protectedEntry.sha256, `${protectedEntry.key}: PRESERVE presentation remains byte-equivalent`);
+}
+assert.deepEqual(
+  companyDisplayNameParts(fixture.names.find(identity => identity.id === 'applied-materials')),
+  p2Audit.appliedMaterialsNameContract,
+  'the fifteenth PRESERVE item keeps the Applied Materials identity presentation contract',
+);
+assert.equal(p2Audit.numericEquivalence.length, 7, 'all seven display-only numeric conversions are independently fixed');
+for (const conversion of p2Audit.numericEquivalence) {
+  assert.equal(BigInt(conversion.beforeValue), BigInt(conversion.afterValue), `${conversion.key}: before and after values are arithmetically identical`);
+  const entry = [...batch1.entries, ...batch2.entries].find(candidate => `${candidate.entityType}:${candidate.stableKey}` === conversion.key);
+  assert.ok(entry, `${conversion.key}: numeric conversion target exists`);
+  const displayText = `${entry.title}\n${entry.statement}`;
+  assert.ok(displayText.includes(conversion.after), `${conversion.key}: converted Japanese display is present`);
+  assert.ok(!displayText.includes(conversion.before), `${conversion.key}: old numeric display is absent`);
+  assert.ok(['USD', 'JPY', 'square-foot'].includes(conversion.baseUnit), `${conversion.key}: conversion base unit is explicit`);
+}
+assert.equal(batch1.entries.length + batch2.entries.length, 694, 'P2 copy changes preserve all 694 overlay entries');
+assert.equal(manifest.auditCandidateCount, 2_487, 'P2 copy changes preserve all 2,487 audited decisions');
+assert.deepEqual(manifest.stableKeys, [...batch1EntryKeys, ...batch2EntryKeys].sort(), 'P2 copy changes preserve the complete stable-key set');
 const batch2EntryKeysByCompany = new Map(fixedBatch2CompanyIds.map(companyId => [companyId, []]));
 const batch2CanonicalTextByEntry = new Map();
 for (const entry of batch2.entries) {
@@ -624,18 +704,33 @@ for (const path of expectedArtifactPaths.filter(path => path !== 'index.html')) 
   assert.equal(mobileTrackingFreeze.sha256ByPath[path], batch2Freeze.sha256ByPath[path], `${path}: mobile tracking leaves Company asset SHA unchanged`);
 }
 
-assert.equal(activeFreeze.version, 'drawer-presentation-consistency-v01', 'the explicit active ID selects the drawer presentation consistency freeze');
-assert.equal(activeFreeze.metadata.baseMain, 'f13605c375f030e88b6374ed439f7721c4921e69', 'drawer presentation freeze records its approved base main');
-assert.equal(activeFreeze.metadata.previousVersion, mobileTrackingFreeze.version, 'drawer presentation freeze records its predecessor explicitly');
-const mobileTrackingToDrawerChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== mobileTrackingFreeze.sha256ByPath[path]);
+const drawerPresentationFreeze = freezes.find(freeze => freeze.version === 'drawer-presentation-consistency-v01');
+assert.ok(drawerPresentationFreeze, 'drawer presentation consistency freeze remains in history');
+assert.equal(drawerPresentationFreeze.metadata.baseMain, 'f13605c375f030e88b6374ed439f7721c4921e69', 'drawer presentation freeze records its approved base main');
+assert.equal(drawerPresentationFreeze.metadata.previousVersion, mobileTrackingFreeze.version, 'drawer presentation freeze records its predecessor explicitly');
+const mobileTrackingToDrawerChangedPaths = expectedArtifactPaths.filter(path => drawerPresentationFreeze.sha256ByPath[path] !== mobileTrackingFreeze.sha256ByPath[path]);
 const expectedDrawerPresentationChangedPaths = expectedArtifactPaths.filter(path => path !== 'index.html' && path !== 'ajinomoto-fine-techno/index.html');
 assert.deepEqual(mobileTrackingToDrawerChangedPaths, expectedDrawerPresentationChangedPaths, 'drawer presentation changes all and only assets with registered Claim presentation overlays');
-assert.equal(activeFreeze.sha256ByPath['index.html'], mobileTrackingFreeze.sha256ByPath['index.html'], 'drawer presentation leaves the Evidence shell SHA unchanged');
-assert.equal(activeFreeze.sha256ByPath['ajinomoto-fine-techno/index.html'], mobileTrackingFreeze.sha256ByPath['ajinomoto-fine-techno/index.html'], 'Ajinomoto Fine-Techno canonical fallback asset SHA remains unchanged');
+assert.equal(drawerPresentationFreeze.sha256ByPath['index.html'], mobileTrackingFreeze.sha256ByPath['index.html'], 'drawer presentation leaves the Evidence shell SHA unchanged');
+assert.equal(drawerPresentationFreeze.sha256ByPath['ajinomoto-fine-techno/index.html'], mobileTrackingFreeze.sha256ByPath['ajinomoto-fine-techno/index.html'], 'Ajinomoto Fine-Techno canonical fallback asset SHA remains unchanged');
 assert.equal(mobileTrackingToDrawerChangedPaths.length, 99, 'drawer presentation changes exactly the 99 companies with Claim overlays');
 
+assert.equal(activeFreeze.version, 'japanese-first-copy-p2-v01', 'the explicit active ID selects the P2 copy freeze');
+assert.equal(activeFreeze.previousVersion, drawerPresentationFreeze.version, 'P2 freeze records the drawer freeze predecessor explicitly');
+assert.equal(activeFreeze.metadata.baseMain, '46f3aceca5c793cd269197cada3788c97a84b04b', 'P2 freeze records the audited main');
+const drawerToP2ChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== drawerPresentationFreeze.sha256ByPath[path]);
+assert.deepEqual(drawerToP2ChangedPaths, p2Audit.changedArtifactPaths, 'P2 freeze changes exactly the independently recorded projected asset paths');
+assert.equal(drawerToP2ChangedPaths.length, 32, 'P2 copy fixes change exactly 32 serialized Company Compare assets');
+assert.equal(activeFreeze.sha256ByPath['index.html'], drawerPresentationFreeze.sha256ByPath['index.html'], 'P2 copy changes leave the Evidence shell SHA unchanged');
+assert.equal(p2Audit.unchangedTargetAssetProjectionProof.length, 10, 'ten P2 target companies have no affected fields serialized into their Company Compare asset');
+for (const proof of p2Audit.unchangedTargetAssetProjectionProof) {
+  assert.ok(p2Audit.targetCompanyIds.includes(proof.companyId), `${proof.companyId}: non-projected asset proof belongs to a P2 target`);
+  assert.ok(proof.stableKeys.length > 0, `${proof.companyId}: non-projected asset proof identifies stable keys`);
+  assert.equal(activeFreeze.sha256ByPath[`${proof.companyId}/index.html`], drawerPresentationFreeze.sha256ByPath[`${proof.companyId}/index.html`], `${proof.companyId}: non-projected Company Compare asset remains byte-identical`);
+}
+
 const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
-assert.equal(shaBlocks.length, 5, 'fixture source contains the foundation, Batch 1, Batch 2, mobile tracking P1, and drawer presentation SHA maps');
+assert.equal(shaBlocks.length, 6, 'fixture source contains the foundation, Batch 1, Batch 2, mobile tracking P1, drawer presentation, and P2 SHA maps');
 for (const [index, block] of shaBlocks.entries()) {
   const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
   assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);
