@@ -1,12 +1,17 @@
 import { defineConfig } from 'astro/config';
 
-const repo = process.env.GITHUB_REPOSITORY?.split('/')[1];
-const owner = process.env.GITHUB_REPOSITORY_OWNER;
-const onGitHubActions = process.env.GITHUB_ACTIONS === 'true' && repo && owner;
-const isUserSite = onGitHubActions && repo === `${owner}.github.io`;
+const repository = process.env.GITHUB_REPOSITORY?.split('/');
+const owner = process.env.GITHUB_REPOSITORY_OWNER || repository?.[0] || 'Kei-Titanda-22';
+const repo = repository?.[1] || 'ai-infrastructure-atlas';
+const isUserSite = repo === `${owner}.github.io`;
 
-const site = process.env.SITE_URL || (onGitHubActions ? `https://${owner}.github.io` : 'http://localhost:4321');
-const base = process.env.BASE_PATH || (onGitHubActions && !isUserSite ? `/${repo}` : '/');
+function normalizeBasePath(value) {
+  const segment = String(value).trim().replace(/^\/+|\/+$/g, '');
+  return segment ? `/${segment}` : '/';
+}
+
+const site = process.env.SITE_URL || `https://${owner}.github.io`;
+const base = normalizeBasePath(process.env.BASE_PATH || (isUserSite ? '/' : `/${repo}`));
 
 export default defineConfig({
   site,
