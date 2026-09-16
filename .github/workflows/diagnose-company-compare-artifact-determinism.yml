@@ -33,6 +33,16 @@ jobs:
       - name: Build and diagnose artifacts
         run: node scripts/diagnose-company-compare-artifact-determinism.mjs
 
+      - name: Publish diagnostic job summary
+        if: always()
+        shell: bash
+        run: |
+          report="diagnostics/company-compare-artifact-determinism-v01/report.md"
+          test -f "$report" || { echo "Required diagnostic report is missing: $report" >&2; exit 1; }
+          bytes=$(wc -c < "$report")
+          test "$bytes" -le 900000 || { echo "Diagnostic report exceeds the 900000-byte Job Summary safety limit: $bytes" >&2; exit 1; }
+          cat "$report" >> "$GITHUB_STEP_SUMMARY"
+
       - name: Upload diagnostic report
         if: always()
         uses: actions/upload-artifact@v4

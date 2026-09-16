@@ -83,6 +83,10 @@ function lineEndingKind(buffer) {
   return crlf && lf ? 'mixed' : crlf ? 'crlf' : lf ? 'lf' : 'none';
 }
 
+function hasUtf8Bom(buffer) {
+  return buffer.length >= 3 && buffer[0] === 0xef && buffer[1] === 0xbb && buffer[2] === 0xbf;
+}
+
 function firstDifferingByte(expectedBuffer, actualBuffer) {
   const upperBound = Math.min(expectedBuffer.length, actualBuffer.length);
   for (let index = 0; index < upperBound; index += 1) if (expectedBuffer[index] !== actualBuffer[index]) return index;
@@ -104,6 +108,7 @@ async function artifactMap(buildRoot, expectedPaths) {
       sha256: sha256(content),
       bytes: content.length,
       lineEndings: lineEndingKind(content),
+      bom: hasUtf8Bom(content),
       trailingNewline: content.length > 0 && content[content.length - 1] === 10,
       semantic: extractHtmlFingerprint(content.toString('utf8')),
     };
@@ -253,27 +258,58 @@ const report = {
   limitations: { freezeSemanticComparison: 'The active freeze stores only SHA-256 values. Per-path semantic comparison against the freeze requires a materialized expected build and is intentionally not inferred.' },
 };
 await writeFile(reportPath, stableJson(report));
+const fingerprintColumns = ['text', 'headings', 'links', 'ids', 'dataAttributes', 'jsonPayloads', 'evidencePresentation', 'sourceTitle', 'quote', 'locator', 'url'];
+const markdownCell = value => String(value ?? 'n/a').replaceAll('|', '\\|').replaceAll('\n', '<br>');
+const fingerprintRow = record => fingerprintColumns.map(column => markdownCell(record.semantic?.[column])).join(' | ');
+const mismatchRows = report.freezeToRunA.mismatches.length
+  ? report.freezeToRunA.mismatches.map(record => {
+    const actual = runAMap[record.relativePath];
+    return `| ${markdownCell(record.relativePath)} | ${record.expected} | ${record.actual} | ${actual.bytes} | ${actual.lineEndings} | ${actual.bom ? 'yes' : 'no'} | ${actual.trailingNewline ? 'yes' : 'no'} | ${fingerprintRow(actual)} |`;
+  })
+  : ['| None | n/a | n/a | n/a | n/a | n/a | n/a | n/a |'];
+const runABRows = report.runAtoB.mismatches.length
+  ? report.runAtoB.mismatches.map(record => `| ${markdownCell(record.relativePath)} | ${record.expected} | ${record.actual} | ${record.expectedBytes ?? 'n/a'} | ${record.actualBytes} |`)
+  : ['| None | n/a | n/a | n/a | n/a |'];
 const markdown = [
   '# Company Compare artifact determinism report',
   '',
+  '## Environment',
+  '',
+  `- OS: \`${report.environment.os}\``,
+  `- Node / npm: \`${report.environment.node}\` / \`${report.environment.npm}\``,
+  `- Locale / timezone: \`${report.environment.locale ?? 'unset'}\` / \`${report.environment.timezone}\``,
+  `- Lockfile digest: \`${report.environment.lockfileDigest}\``,
+  `- Dependency tree digest: \`${report.environment.dependencyTreeDigest}\``,
   `- Active freeze: \`${report.activeFreeze.id}\``,
   `- Expected / run A / run B paths: ${report.activeFreeze.expectedPathCount} / ${report.runA.pathCount} / ${report.runB.pathCount}`,
+  `- Run A / B map digests: \`${report.runA.mapDigest}\` / \`${report.runB.mapDigest}\``,
   `- Run A / B SHA mismatches: ${report.runAtoB.mismatches.length}`,
   `- Active freeze / run A SHA mismatches: ${report.freezeToRunA.mismatches.length}`,
-  `- Run A map digest: \`${report.runA.mapDigest}\``,
-  `- Run B map digest: \`${report.runB.mapDigest}\``,
-  `- Run A semantic fingerprint digest: \`${report.freezeToRunA.semanticFingerprintDigest}\``,
+  `- Run A Pagefind URL-set digest: \`${report.runA.pagefind.digest ?? 'unavailable'}\``,
+  `- Run B Pagefind URL-set digest: \`${report.runB.pagefind.digest ?? 'unavailable'}\``,
+  `- Shell bytes: ${report.runA.shellBytes}`,
+  `- Maximum cold-load bytes: ${report.runA.maximumColdLoad.bytes} (${report.runA.maximumColdLoad.ids.join(', ')})`,
+  `- Run A semantic fingerprint map digest: \`${report.freezeToRunA.semanticFingerprintDigest}\``,
   '',
-  '## Freeze mismatches',
+  '## Linux run A / B SHA comparison',
   '',
-  ...(report.freezeToRunA.mismatches.length ? report.freezeToRunA.mismatches.map(record => `- \`${record.relativePath}\`: expected \`${record.expected}\`, actual \`${record.actual}\`, ${record.actualBytes} B`) : ['- None']),
+  '| Path | Run A SHA-256 | Run B SHA-256 | Run A bytes | Run B bytes |',
+  '| --- | --- | --- | ---: | ---: |',
+  ...runABRows,
   '',
-  '## Run A / B byte differences',
+  '## Active freeze / Linux run A SHA comparison',
   '',
-  ...(report.runAtoB.byteDifferences.length ? report.runAtoB.byteDifferences.map(record => `- \`${record.relativePath}\` at byte ${record.offset}`) : ['- None']),
+  '| Path | Expected SHA-256 | Actual SHA-256 | Bytes | Line ending | BOM | Trailing newline | Visible text digest | Heading digest | Link / href digest | Element ID digest | data-* digest | JSON digest | Evidence presentation digest | Source title digest | Quote digest | Locator digest | URL digest |',
+  '| --- | --- | --- | ---: | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |',
+  ...mismatchRows,
   '',
-  `Generated artifact secret scan: ${report.generatedArtifactSecretScan.status}`,
+  '## Limits and safety',
+  '',
+  `- Generated artifact secret scan: ${report.generatedArtifactSecretScan.status}`,
+  '- Job Summary safety limit: 900000 B; the script rejects a larger report before upload.',
+  `- Freeze semantic comparison: ${report.limitations.freezeSemanticComparison}`,
   '',
 ].join('\n');
+assert(Buffer.byteLength(markdown, 'utf8') <= 900000, 'diagnostic report exceeds the Job Summary safety limit');
 await writeFile(reportMarkdownPath, markdown);
 console.log(`Diagnostic report written: ${normalizePath(path.relative(root, reportPath))}`);
