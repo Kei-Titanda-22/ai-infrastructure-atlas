@@ -1,0 +1,43 @@
+name: Diagnose Company Compare artifact determinism
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: company-compare-artifact-determinism-${{ github.event.pull_request.number }}
+  cancel-in-progress: false
+
+jobs:
+  diagnose:
+    name: Build and compare Company Compare artifacts
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.19.0
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Build and diagnose artifacts
+        run: node scripts/diagnose-company-compare-artifact-determinism.mjs
+
+      - name: Upload diagnostic report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: company-compare-artifact-determinism-report
+          path: diagnostics/company-compare-artifact-determinism-v01
+          if-no-files-found: error
+          retention-days: 1
