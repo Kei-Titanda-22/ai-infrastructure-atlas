@@ -797,19 +797,46 @@ for (const proof of p2Audit.unchangedTargetAssetProjectionProof) {
   assert.equal(p2Freeze.sha256ByPath[`${proof.companyId}/index.html`], drawerPresentationFreeze.sha256ByPath[`${proof.companyId}/index.html`], `${proof.companyId}: non-projected Company Compare asset remains byte-identical`);
 }
 
-assert.equal(activeFreeze.version, corningAppliedPresentation.version, 'the explicit active ID selects the Corning and Applied Materials presentation freeze');
-assert.equal(activeFreeze.previousVersion, p2Freeze.version, 'the Corning and Applied Materials freeze records its P2 predecessor explicitly');
-assert.equal(activeFreeze.metadata.baseMain, corningAppliedPresentation.baseMain, 'the Corning and Applied Materials freeze records its audited main');
-const p2ToCorningAppliedChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== p2Freeze.sha256ByPath[path]);
+const corningAppliedFreeze = freezes.find(freeze => freeze.version === corningAppliedPresentation.version);
+assert.ok(corningAppliedFreeze, 'the Corning and Applied Materials presentation freeze remains in history');
+assert.equal(corningAppliedFreeze.previousVersion, p2Freeze.version, 'the Corning and Applied Materials freeze records its P2 predecessor explicitly');
+assert.equal(corningAppliedFreeze.metadata.baseMain, corningAppliedPresentation.baseMain, 'the Corning and Applied Materials freeze records its audited main');
+const p2ToCorningAppliedChangedPaths = expectedArtifactPaths.filter(path => corningAppliedFreeze.sha256ByPath[path] !== p2Freeze.sha256ByPath[path]);
 assert.deepEqual(p2ToCorningAppliedChangedPaths, corningAppliedPresentation.expectedChangedArtifactPaths, 'the new freeze changes exactly Corning and Applied Materials assets');
 assert.equal(p2ToCorningAppliedChangedPaths.length, 2, 'only the two approved company assets receive new SHA values');
-assert.equal(activeFreeze.sha256ByPath['index.html'], p2Freeze.sha256ByPath['index.html'], 'the Corning and Applied Materials refinement leaves the Evidence shell SHA unchanged');
+assert.equal(corningAppliedFreeze.sha256ByPath['index.html'], p2Freeze.sha256ByPath['index.html'], 'the Corning and Applied Materials refinement leaves the Evidence shell SHA unchanged');
 for (const path of expectedArtifactPaths.filter(path => !corningAppliedPresentation.expectedChangedArtifactPaths.includes(path))) {
-  assert.equal(activeFreeze.sha256ByPath[path], p2Freeze.sha256ByPath[path], `${path}: non-target artifact SHA remains byte-identical`);
+  assert.equal(corningAppliedFreeze.sha256ByPath[path], p2Freeze.sha256ByPath[path], `${path}: non-target artifact SHA remains byte-identical`);
 }
-assert.equal(activeFreeze.metadata.expectedChangedCompanyAssetCount, 2, 'the active freeze records exactly two changed company assets');
-assert.equal(activeFreeze.metadata.shellMustMatchPrevious, true, 'the active freeze requires the shell to match P2');
+assert.equal(corningAppliedFreeze.metadata.expectedChangedCompanyAssetCount, 2, 'the Corning and Applied Materials freeze records exactly two changed company assets');
+assert.equal(corningAppliedFreeze.metadata.shellMustMatchPrevious, true, 'the Corning and Applied Materials freeze requires the shell to match P2');
+assert.equal(corningAppliedFreeze.metadata.shaMismatchFallbackAllowed, false, 'the Corning and Applied Materials freeze forbids SHA mismatch fallback');
+
+const githubPagesBaseDeterminism = fixture.githubPagesBaseDeterminism;
+assert.ok(githubPagesBaseDeterminism && typeof githubPagesBaseDeterminism === 'object', 'GitHub Pages base determinism audit contract is present');
+assert.equal(freezes.length, 8, 'fixture contains the seven preserved freezes plus the GitHub Pages base determinism successor');
+assert.equal(githubPagesBaseDeterminism.version, 'github-pages-base-determinism-v01', 'GitHub Pages base determinism audit records its explicit version');
+assert.equal(githubPagesBaseDeterminism.predecessorVersion, corningAppliedFreeze.version, 'GitHub Pages base determinism audit records its immediate predecessor');
+assert.equal(activeFreeze.version, githubPagesBaseDeterminism.version, 'the explicit active ID selects the GitHub Pages base determinism freeze');
+assert.equal(activeFreeze.previousVersion, corningAppliedFreeze.version, 'the active GitHub Pages base determinism freeze records its predecessor explicitly');
+assert.equal(activeFreeze.metadata.baseMain, githubPagesBaseDeterminism.baseMain, 'the active freeze records the audited main');
+assert.equal(activeFreeze.metadata.base, '/ai-infrastructure-atlas', 'the active freeze fixes the GitHub Pages repository base');
+assert.equal(activeFreeze.metadata.site, 'https://Kei-Titanda-22.github.io', 'the active freeze preserves the GitHub Pages origin');
 assert.equal(activeFreeze.metadata.shaMismatchFallbackAllowed, false, 'the active freeze forbids SHA mismatch fallback');
+const corningAppliedToBaseDeterminismChangedPaths = expectedArtifactPaths.filter(path => activeFreeze.sha256ByPath[path] !== corningAppliedFreeze.sha256ByPath[path]);
+assert.deepEqual(corningAppliedToBaseDeterminismChangedPaths, expectedArtifactPaths, 'the GitHub Pages base correction changes every serialized artifact URL deterministically');
+assert.equal(corningAppliedToBaseDeterminismChangedPaths.length, 101, 'the successor changes all and only the 101 frozen artifacts');
+const shaMapDigest = freeze => createHash('sha256').update(JSON.stringify(Object.fromEntries(expectedArtifactPaths.map(path => [path, freeze.sha256ByPath[path]])))).digest('hex');
+assert.equal(shaMapDigest(activeFreeze), githubPagesBaseDeterminism.linuxRawShaMapDigest, 'the active Windows map exactly matches the independently recorded Ubuntu raw SHA map');
+assert.equal(shaMapDigest(corningAppliedFreeze), githubPagesBaseDeterminism.repositoryBaseNormalizedShaMapDigest, 'the predecessor map is preserved as the repository-base-normalized map');
+assert.equal(githubPagesBaseDeterminism.expectedChangedArtifactCount, 101, 'the audit records the exact successor change count');
+assert.equal(githubPagesBaseDeterminism.base, '/ai-infrastructure-atlas', 'the audit records the deterministic GitHub Pages base');
+assert.equal(githubPagesBaseDeterminism.site, 'https://Kei-Titanda-22.github.io', 'the audit records the deterministic GitHub Pages site origin');
+assert.match(githubPagesBaseDeterminism.semanticFingerprintMapDigest, /^[a-f0-9]{64}$/, 'the audit records the URL-independent semantic fingerprint digest');
+const astroConfigSource = readFileSync(new URL('../astro.config.mjs', import.meta.url), 'utf8');
+assert.match(astroConfigSource, /normalizeBasePath\(process\.env\.BASE_PATH \|\| \(isUserSite \? '\/' : `\/\$\{repo\}`\)\)/, 'Astro config selects the repository base without a CI-specific branch');
+assert.doesNotMatch(astroConfigSource, /GITHUB_ACTIONS/, 'Astro config has no GITHUB_ACTIONS base-path branch');
+assert.match(astroConfigSource, /const site = process\.env\.SITE_URL \|\| `https:\/\/\$\{owner\}\.github\.io`;/, 'Astro config has a deterministic GitHub Pages origin');
 
 const historicalArtifactFreezeDigests = {
   'japanese-first-presentation-foundation-v01': '926308c93a170814b821d823ad2a636957a463e77659cdead8841928c38f15e6',
@@ -818,6 +845,7 @@ const historicalArtifactFreezeDigests = {
   'company-compare-mobile-tracking-p1-v01': 'f752009976fb966fb053b10bfc67412d502936a6433dc12b67c3acd22d82ddeb',
   'drawer-presentation-consistency-v01': '5474e44982c7c690cf2cc11251ec78d9463f6533841a387edbc6ae9f14c99099',
   'japanese-first-copy-p2-v01': 'eac22c9305ba01cffb7b2b963f57adcd55b64c7d13690a8e87d1833d9451db19',
+  'corning-applied-materials-presentation-v01': '77dd0b26993c293847701a86e855b1861fbaec28236437aefb119cda5e94ffb2',
 };
 for (const [version, expectedDigest] of Object.entries(historicalArtifactFreezeDigests)) {
   const freeze = freezes.find(candidate => candidate.version === version);
@@ -830,7 +858,7 @@ for (const [version, expectedDigest] of Object.entries(historicalArtifactFreezeD
 }
 
 const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
-assert.equal(shaBlocks.length, 7, 'fixture source contains preserved foundation through P2 history plus the Corning and Applied Materials SHA map');
+assert.equal(shaBlocks.length, 8, 'fixture source contains the seven preserved history maps plus the GitHub Pages base determinism SHA map');
 for (const [index, block] of shaBlocks.entries()) {
   const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
   assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);
