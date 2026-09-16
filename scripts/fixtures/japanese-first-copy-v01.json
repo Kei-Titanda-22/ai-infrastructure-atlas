@@ -1449,7 +1449,175 @@
       }
     ]
   },
-  "activeArtifactFreezeVersion": "japanese-first-copy-p2-v01",
+  "corningAppliedMaterialsPresentation": {
+    "version": "corning-applied-materials-presentation-v01",
+    "baseMain": "b3875e7c8c05a53da5dc8856141ed1f11dad03c0",
+    "targetCompanyIds": [
+      "applied-materials",
+      "corning"
+    ],
+    "existingOverlayKeys": [
+      "claim:applied-ai-role",
+      "claim:applied-materials-customer-end-market-triage-remediation-v02",
+      "claim:applied-technology",
+      "claim:applied-value-chain",
+      "claim:corning-positioning"
+    ],
+    "newOverlayKeys": [
+      "claim:applied-materials-capacity-expansion-gap-closure",
+      "claim:applied-materials-manufacturing-facilities-triage-remediation-v02",
+      "claim:applied-overview",
+      "claim:applied-strategy"
+    ],
+    "expectedOverlayCounts": {
+      "total": 698,
+      "claim": 542,
+      "portfolio": 38,
+      "product": 118
+    },
+    "expectedChangedArtifactPaths": [
+      "applied-materials/index.html",
+      "corning/index.html"
+    ],
+    "targets": [
+      {
+        "overlayBatch": "japanese-first-copy-batch1-v01",
+        "companyId": "corning",
+        "kind": "claim",
+        "groundingId": "corning-positioning",
+        "canonicalDigest": "d7469c01b563d18e9ec463469ae60d4ac72aad7f94b7d51c5dc85250716ee2b3",
+        "before": {
+          "title": "光ファイバ技術・規模・IPを競争優位と説明",
+          "statement": "Corningは光通信の主要製品群で主導的地位を持ち、大規模製造経験、光ファイバプロセス、技術面での主導的地位、知的財産がコスト優位性をもたらすと説明している。"
+        },
+        "after": {
+          "title": "光ファイバ技術・規模・IPを競争優位と説明",
+          "statement": "Corningは光通信の主要製品群で市場を主導する立場にあり、大規模製造の経験、光ファイバの製造プロセス、技術面での先導力、知的財産がコスト優位性をもたらすと説明している。"
+        }
+      },
+      {
+        "overlayBatch": "japanese-first-copy-batch2-v01",
+        "companyId": "applied-materials",
+        "kind": "claim",
+        "groundingId": "applied-ai-role",
+        "canonicalDigest": "605af3505ffff780fe72cdb811925e0ba26a3a70173daece17a8bdd83b8d8758",
+        "before": {
+          "title": "AIチップの製造工程を支える装置層",
+          "statement": "AtlasではApplied Materialsを、AIチップの性能・電力効率を左右する材料形成と微細加工を担うウェハ製造装置企業と位置付ける。"
+        },
+        "after": {
+          "title": "AIチップの製造工程を支える装置層",
+          "statement": "Atlasではアプライド・マテリアルズを、AIチップの性能・電力効率を左右する材料形成と微細加工を担うウェハ製造装置企業と位置付ける。"
+        }
+      },
+      {
+        "overlayBatch": "japanese-first-copy-batch2-v01",
+        "companyId": "applied-materials",
+        "kind": "claim",
+        "groundingId": "applied-value-chain",
+        "canonicalDigest": "b2754892ce3ee9f7e510d030452fa590f3eacf4d658cc0f0417bdaf1136e35f9",
+        "before": {
+          "title": "半導体工場の工程装置を供給",
+          "statement": "AtlasではApplied Materialsを、半導体メーカーやファウンドリの半導体工場へウェハ工程装置を供給する製造装置層として整理する。"
+        },
+        "after": {
+          "title": "半導体工場の工程装置を供給",
+          "statement": "Atlasではアプライド・マテリアルズを、半導体メーカーやファウンドリの半導体工場へウェハ工程装置を供給する製造装置層として整理する。"
+        }
+      },
+      {
+        "overlayBatch": "japanese-first-copy-batch2-v01",
+        "companyId": "applied-materials",
+        "kind": "claim",
+        "groundingId": "applied-technology",
+        "canonicalDigest": "182b12a4602bfce5e2ce4ff2530aed42b90309033264d01b47dadce4e57f7320",
+        "before": {
+          "title": "複数工程を統合して材料界面を最適化",
+          "statement": "Applied Materialsは統合材料ソリューション（Integrated Materials Solution）を、複数工程と計測を一つの基盤で組み合わせる技術として説明している。"
+        },
+        "after": {
+          "title": "複数工程を統合して材料界面を最適化",
+          "statement": "アプライド・マテリアルズは統合材料ソリューション（Integrated Materials Solution）を、複数工程と計測を一つの基盤で組み合わせる技術として説明している。"
+        }
+      },
+      {
+        "overlayBatch": "japanese-first-copy-batch2-v01",
+        "companyId": "applied-materials",
+        "kind": "claim",
+        "groundingId": "applied-materials-customer-end-market-triage-remediation-v02",
+        "canonicalDigest": "3b5996c8abbec34709e631380eb2b0d155d5ae9685287f467d7bef50accd1ae8",
+        "before": {
+          "title": "ファウンドリ・ロジック・メモリの設備投資需要",
+          "statement": "Applied Materialsの半導体製造装置顧客はファウンドリ、ロジック、メモリなどの半導体市場で事業を行い、その設備投資需要はスマートフォン、PC、AI・データセンターサーバー、自動車、クリーンエネルギー、ストレージなどの最終需要に左右される。"
+        },
+        "after": {
+          "title": "ファウンドリ・ロジック・メモリの設備投資需要",
+          "statement": "アプライド・マテリアルズの半導体製造装置顧客はファウンドリ、ロジック、メモリなどの半導体市場で事業を行い、その設備投資需要はスマートフォン、PC、AI・データセンターサーバー、自動車、クリーンエネルギー、ストレージなどの最終需要に左右される。"
+        }
+      },
+      {
+        "overlayBatch": "japanese-first-copy-batch2-v01",
+        "companyId": "applied-materials",
+        "kind": "claim",
+        "groundingId": "applied-overview",
+        "canonicalDigest": "7acb3184e67c700f7c6e26b89d80b41b37f0f76405e8318ad3ed87659bc9fe60",
+        "before": {
+          "title": "半導体・ディスプレイ製造装置企業",
+          "statement": "Applied Materialsは半導体および先端ディスプレイの製造に使われる材料工学ソリューションを提供する。"
+        },
+        "after": {
+          "title": "半導体・ディスプレイ製造装置企業",
+          "statement": "アプライド・マテリアルズは半導体および先端ディスプレイの製造に使われる材料工学ソリューションを提供する。"
+        }
+      },
+      {
+        "overlayBatch": "japanese-first-copy-batch2-v01",
+        "companyId": "applied-materials",
+        "kind": "claim",
+        "groundingId": "applied-strategy",
+        "canonicalDigest": "f5b0c119178f349278d8244447fb845e0beeba3de9237d09ae75ac760ed4fc4e",
+        "before": {
+          "title": "EPIC Centerで共同開発を強化",
+          "statement": "Applied MaterialsはSilicon ValleyのEPIC Centerを通じ、顧客・大学・研究機関との装置およびprocess innovationの共同開発を進めている。"
+        },
+        "after": {
+          "title": "EPIC Centerで共同開発を強化",
+          "statement": "アプライド・マテリアルズはシリコンバレーのEPIC Centerを通じ、顧客・大学・研究機関との装置およびプロセスイノベーションの共同開発を進めている。"
+        }
+      },
+      {
+        "overlayBatch": "japanese-first-copy-batch2-v01",
+        "companyId": "applied-materials",
+        "kind": "claim",
+        "groundingId": "applied-materials-capacity-expansion-gap-closure",
+        "canonicalDigest": "56d7fe61c5a6432137b9609b54d11676bda9e1dbcf7295a5fd14a7e8f6869de5",
+        "before": {
+          "title": "EPIC Centerへの投資計画",
+          "statement": "Applied Materialsは2023年、EPIC Centerの整備に向け、7年間で最大40億ドルのgross incremental capital investmentを見込むと発表した。"
+        },
+        "after": {
+          "title": "EPIC Centerへの投資計画",
+          "statement": "アプライド・マテリアルズは2023年、EPIC Centerの整備に向け、7年間で最大40億ドルの追加設備投資総額を見込むと発表した。"
+        }
+      },
+      {
+        "overlayBatch": "japanese-first-copy-batch2-v01",
+        "companyId": "applied-materials",
+        "kind": "claim",
+        "groundingId": "applied-materials-manufacturing-facilities-triage-remediation-v02",
+        "canonicalDigest": "b2255d5cc2f45983082cd212ac489b66bcdcf363aaeaedbfcf9ee45d1e7edd3a",
+        "before": {
+          "title": "米国・Singapore・台湾・Israelを中心に製造",
+          "statement": "Applied Materialsは製品を主として米国、Singapore、台湾、Israelで製造し、各地に製造・倉庫・R&D施設を保有または賃借している。"
+        },
+        "after": {
+          "title": "米国・シンガポール・台湾・イスラエルを中心に製造",
+          "statement": "アプライド・マテリアルズは製品を主として米国、シンガポール、台湾、イスラエルで製造し、各地に製造・倉庫・研究開発施設を保有または賃借している。"
+        }
+      }
+    ]
+  },
+  "activeArtifactFreezeVersion": "corning-applied-materials-presentation-v01",
   "artifactFreezes": [
     {
       "version": "japanese-first-presentation-foundation-v01",
@@ -2060,6 +2228,124 @@
         "cisco/index.html": "e239d52e3258189667b42fd5995ed8d2eddaa028bc3bad87cc9a39be4f0ae443",
         "coherent/index.html": "48302de8ac4211ec1d9c739fbec4e173c36c65ae4978eea7297e3b6aea7574e4",
         "corning/index.html": "b5bdb082e48e045811817a5682646be4bf29005c7fe3d0889629b023bc6b4b30",
+        "credo/index.html": "13180331e70855308eb72e60880b5b8ef00568c63a6b700a23da360a1b54ec8c",
+        "denso/index.html": "ff8ad86118bc3dc846d1b79b4acf6ca4c37791ae93c890f878e4629366de7ee5",
+        "digital-realty/index.html": "3800f1367e92314c3abf091a4ad6bb0b760ca317386d5847fd1b27feb99b31e4",
+        "disco/index.html": "5919790a415d8cd5bfe1a25f58a40f363b8639eef544526f89b29e24f0d105bf",
+        "eaton/index.html": "d2a5795019aa64b3aac09c096677f662b6ec274c4b84514df9521e165c33ab1e",
+        "entegris/index.html": "501f0a2af8d53ce024cacf81cd2edb4f8715796364782d3cd39382cc2fbe0656",
+        "equinix/index.html": "7d8d60b25d335dbe6520bb9e8f8ed0d0376c1a840adc9f04f51a83f8441f51f3",
+        "fanuc/index.html": "415eeb5c5ea1abf7783195d32d162a4d59fa2258304918970b299fdc65d44310",
+        "fujikura/index.html": "098434d73dec6af40ea95485b2cc39da86e4fc629274eca29c483355a9ea57be",
+        "furukawa-electric/index.html": "dddbdf4c4d0960bca1b7d49b8a4e95f7ace66539b52dad015ad9d5e19de693a6",
+        "ge-vernova/index.html": "3812f8ab8ff72a1e17ed3c5fbe0737949f265edfc0a64ef9302df71f08a52b68",
+        "globalfoundries/index.html": "6d30dbfa59ac46ce227493fb61097e74b8538e3614c695621c381d990997876c",
+        "globalwafers/index.html": "28e8e7438e5424d3e6a68cdf016a232f64938fb6504a83d562ae184118b1f95b",
+        "hanmi-semiconductor/index.html": "3f466d86613967dfc39f17ab839bd4b073b2f263355025ef64f70a7ef5a9ed2d",
+        "hexagon/index.html": "94dd84d6e456454391dfa43fadd34477e9d1df16c2d8bcc44ad7fcc99071290d",
+        "ibiden/index.html": "26c747477a4ca1181fa6cdb69c26bc6c571cfd3ca5064f9d2ee7f59f80bf8557",
+        "index.html": "ef0239c9b941820d9280c45c0932026c5e61d71e9b55c85579076054cd9dbdab",
+        "infineon/index.html": "543a15eaf92916618702f1696d2d7c4593f99a5c422ecbfafb5ba28ce523931c",
+        "intel/index.html": "e9d394e5fb9fbf074c230538b7ff1a73aacbf29bf6893f6f81a27caf5162af5f",
+        "jcet/index.html": "e9aa254354dfa282b8de98ced7f6416a68911847f36768c6831470a5cae2cd09",
+        "johnson-controls/index.html": "9bb92fd623d39182bf05aed668f1c06fa046f49f0c4bc2c8deb1f7ac4073abbc",
+        "keyence/index.html": "840831f4f804d538cd823790cd4eff04273a83628530c4c3e4574984bdaf2d03",
+        "kinsus/index.html": "52de24630828a19450085c43b947b1795bbda1cd04622a41b9ef441a964757d0",
+        "kioxia/index.html": "893534beacbd899f2e1babcadbb3190be5e4774d1255d369494672d7bec44b53",
+        "kla/index.html": "348571eaf63f4ec152ae7492913ed1b2ac08df7c7f3ce38e9fe7dea2fb1011c4",
+        "kokusai-electric/index.html": "b5982f7e7bc5667636fb0e224f3939a862c9eee380459b75a7d83213c83820e1",
+        "lam-research/index.html": "4ed7a4c98e126994dd219522c705cc09dfae648b60a2e7a6f4c5683e1ce2b8f8",
+        "lasertec/index.html": "9c6974b06d566acca687a539e6a5ff6f6ab6e7618338b6ab29b3f5b08af6a350",
+        "legrand/index.html": "99f57da3bdc48a10398b88d50a49edc044624213235a248a6a861055fd086bb3",
+        "linde/index.html": "1244fcc697bfadb418e5bf55d20845373608992e9d7dce4974e10892e9df55a5",
+        "lumentum/index.html": "d26add8c75112467cf251449e36c91f3a124fb227e39deef040c0ba369130c60",
+        "marvell/index.html": "5f529b7d6a35c1527f2ccdf76adb39c6256180f0c4a9d0bb86eacd2ae2bdd690",
+        "mediatek/index.html": "c4f2fe31f3706f02b9a14f53262c6259f728ce4720480f9bd080c813d77a5248",
+        "micron/index.html": "4c21110cacdbd4801dfc014bf822b8fc6ed6edb85f7c94f6b8e7a285a4bf4541",
+        "mitsubishi-electric/index.html": "d32bd2ba63d068f29d1a03a5a521c6cb1c5281bb85151f99ccad16bcc391537e",
+        "mobileye/index.html": "74f2919d8c24efceb60807fd3bead0efdc6c2e65fab24b4500d7319277847fd6",
+        "monolithic-power/index.html": "05dff511048fc3b7287f0078ed629686f9cb3360617ea636581d1c4b73638bbf",
+        "nan-ya-pcb/index.html": "a56f9a9345cac0e09a818f35db15c2a6661bd0eadbf1585613fed592234299df",
+        "nikon/index.html": "bc4685a9cac1afcc3ab2d4746d4ceb8d993c4d7be500977803b91d547efd4be4",
+        "nvent/index.html": "898b6659280559cc8d1d9ff1115cf7550eb26c4fe5dd576281788428d5017bf2",
+        "nvidia/index.html": "fea9c6617d7ec278907bba9c57b9c42685111471d6e657b3ab6c6b165f1eb8f2",
+        "nxp/index.html": "13551f0ec252d28ee326e257b26e62b5f8c8dbd8abcc59118cc3ebfc1c6e03ba",
+        "omron/index.html": "9b390d74e910b81ae8c135c3a247fc08c27d5827f2424f2a7e28b1a7ec08e05a",
+        "onsemi/index.html": "d890dda216cbb545a870e5c94eb39e27a226bfee77fba334e4192f2f3d57f2be",
+        "qualcomm/index.html": "bded254d4bd3cd11ddcc662a0d51aadc58d0ecd5c4c811f5f3f38da97f205a2a",
+        "renesas/index.html": "58b1f54e12cf5066f98d8c9ed6410ac10dfc9520894be762f1e6756ad2a1fa56",
+        "resonac-holdings/index.html": "637568e279e1a2b31c7a33c3605a36ecf93a164c0f7e5af992d765cecdce28b3",
+        "rohm/index.html": "5d6331d4e8e20a98be77a00897b49d4991c05be3ab1ceced619506ae448f485d",
+        "samsung-electronics/index.html": "aca368ccda6a81efe682acf65ed6775796cfc9db9f794d5e29b631fac8c69344",
+        "sandisk/index.html": "be6ff5638d447334f3d2ca0f7f9455cd9b03ddef34c824f0c83de009e8caa1eb",
+        "schneider-electric/index.html": "a653c9a3e6fc07c8b1b8d63ef5082ce620057c35c6f39c730b83284920b1d4ed",
+        "screen-holdings/index.html": "4ad717aaa4f5d78bcc6ec1d313e86ebd35cf3e4bd65f6576bd00b4f8ce70c51f",
+        "seagate/index.html": "256aa6f49960fcdf113ae58e755ed467c6e300bd7bd0c2a84cb72e83123d818e",
+        "shin-etsu-chemical/index.html": "c0bb8dcd390ffb5fc7239657f608d25b3b780cf6804cb5bfd6d718957bb4925a",
+        "shinko-electric/index.html": "19983467b8292eedb3bfc2661bf844b56fd14dbe95fee4618b74485621b283e5",
+        "siemens-energy/index.html": "820298d348a2f7229272d016b6ced75dfbadfffef7166925beb76040cad59caa",
+        "sk-hynix/index.html": "8b1094137ab5db102f21f4c1e5547b46adffa2ae6211e22006856cfd9f6511f4",
+        "smc/index.html": "2d890cc9cc14173b9f0f3c360e5a155aa6fe5bfeda82d26b007dbba404a417f8",
+        "smic/index.html": "71a7c16380031ada25ebcc855599c4dfdc23e892389bf41286c9ffdc0c66d3f3",
+        "stmicroelectronics/index.html": "d813fdec3e5e76f46405421286ef979aca5a64486e98964cd78012cf9041bd63",
+        "sumco/index.html": "6d9896214340edd11181309e374590ef9c7941636e4b98b27bbb741e8b7a4ba7",
+        "sumitomo-electric/index.html": "a503b29738b357480fe65574c79cf9928179aaac413d99763ccd27b013d92215",
+        "synopsys/index.html": "e2b21bc62e90a12a82a31c67be0065b67d567579012a329fe1ee3b19d8494c14",
+        "te-connectivity/index.html": "e2108402d0bff753a79a08e31e12757ba96a4f23659632333bc5b4ad7175f07a",
+        "tesla/index.html": "f7c4a5aeb87b0f046599fd06aeaf598f23457186807b9c73ac1081d20ccda606",
+        "texas-instruments/index.html": "3502f01e177164401d2b5494b8355e74d5050061028f32a4e0de5e36894ef7a0",
+        "tokyo-electron/index.html": "6c17a9e88b9cdcfdffd85646b689f65174bfc3677ce1240dca826a2e959b56fc",
+        "tower-semiconductor/index.html": "0a2db5cbd5f3ea470e2a90d437c51da88cce3a08948b8f072f27ea5f48a40175",
+        "trane-technologies/index.html": "0ddb9f3f5db5413ab66a50f3cd8941890ae77dcb4b43d5ddb813ff446a925e88",
+        "tsmc/index.html": "5c858f7a964b50f4223123414b401e55d3564c25455dde18eb039fe96137c602",
+        "umc/index.html": "3cd865cfd020a5cda46c69b7904529a502e4403ede06a07bda56fa1dc32156df",
+        "unimicron/index.html": "afd9e6b2c70f9fcb2b98f02769cbb87919248e56c22e4848c2674103825b2347",
+        "vertiv/index.html": "62cda1b026fa479463ae43a5b365672c6b65ff87e94c3e8f5bf45008a658a2c8",
+        "western-digital/index.html": "db7eef312584d254e1bc39e06aa64ef3b5b0fe153fdc48bd403da613c169cdab",
+        "yaskawa/index.html": "8a6671599d5ed71de0ba8a748b5b8ea7fe8fb6a931a4185d5c44cf07a536cf51"
+      }
+    },
+    {
+      "version": "corning-applied-materials-presentation-v01",
+      "previousVersion": "japanese-first-copy-p2-v01",
+      "metadata": {
+        "baseMain": "b3875e7c8c05a53da5dc8856141ed1f11dad03c0",
+        "purpose": "Freeze the exact Company Compare Evidence shell and 100 company assets after the approved Corning leadership rewrite and Applied Materials Japanese presentation-name refinement.",
+        "pathBase": "dist/evidence-fragments/company-compare-evidence-v01",
+        "foundationVersion": "japanese-first-presentation-foundation-v01",
+        "previousVersion": "japanese-first-copy-p2-v01",
+        "expectedArtifactCount": 101,
+        "expectedChangedCompanyAssetCount": 2,
+        "shellMustMatchPrevious": true,
+        "shaMismatchFallbackAllowed": false
+      },
+      "sha256ByPath": {
+        "abb/index.html": "3d3debe58ef7a06941669ca487766ee51d9303faf982940c75f5d049c1c4331f",
+        "advantest/index.html": "953cc2d22eecb9d4f0c3752b8aaf60a841aa21ecef8f50ac6d43bd5b9a0f769a",
+        "air-liquide/index.html": "b63137d2c642942efd493f44ff5d1b722c73ade17fe88303caa8a35d6cd51f88",
+        "ajinomoto-fine-techno/index.html": "4628c45d2c5651816d8ed52603c3ccd28c8b43c166f3f1f2be6a4c357edbb683",
+        "amd/index.html": "95795a7ee74d1066204661ed36a9c18f6b961684d4de9769ff9b3814cd7b9aae",
+        "amkor/index.html": "5ad7b1cb9aebbf2e92447dd3a9b7ddafc7e4839ead4623b1bf294ba52d63c0ce",
+        "amphenol/index.html": "f5fb24a11f4223600878ac902b93eeb6cc6477a5f929b11a2819c324e98b7d0d",
+        "analog-devices/index.html": "bc3a39c535a856c8ff22187427a0c7c1361bada4e117a2313aee7729e6c837ff",
+        "applied-materials/index.html": "df8aa0c25083a900f134bd067acc13c74f85a52a73becde45c26f737277b744c",
+        "aptiv/index.html": "d5db0fff33908af7128c8cc6e330ad1fdf9f21d1789c06f272a194a25d06c7af",
+        "arista/index.html": "eaabee38abf7775da9946c6cf2bc78756e8a1a0471fe99af804935f28e0eb509",
+        "arm/index.html": "95a302683f46193f218c2895ede1477ca22131e435fea8cabe7d15a806a147e4",
+        "ase-technology/index.html": "3dc9e16db838689e579a8caef462d08fca0be7c8105fb1a5ddd3eadb82c3b004",
+        "asm-international/index.html": "82a5504d79e3613fe1f0c28c0eeeecbb325da290bab58ee8e519f5a180db455d",
+        "asml/index.html": "f89d9c7b9109c464976821e0e124597806e5ba612d996b8eb25694093c0a296c",
+        "asmpt/index.html": "0447885cea68ef8ac0e04bcc6478f2f6f61da9689bcfae10c10ce587cd06e7fc",
+        "besi/index.html": "5724918743b29121e79524197f66a4d12d1b8964fe01bb46b855fe4535352b33",
+        "bosch/index.html": "87f6fe9161acce69cacc754f74d221b0efc1e4fce29eba413caae63230dfe593",
+        "broadcom/index.html": "d8575ba03ff68645074b83f0f6440feaf94c50af8a336ff976054c8a623bfffa",
+        "cadence/index.html": "8c4605834cbf1d1de97051c1dbfdb2290e55b7f0503d00c66af5b9d3c95436b6",
+        "canon/index.html": "07324ed3fba1ca723b28b04b3a22b4ad18a6e9b13bb825e94436e9f5cf62e8f1",
+        "carrier/index.html": "3976ef424280dd25700c48fb8a14a12bca615eee35573a39c28f17796727d255",
+        "ciena/index.html": "c9e413dab6d56acec2e130ef3d3ea3a370077d25d4a49ef27fc4ce4ef2645edb",
+        "cisco/index.html": "e239d52e3258189667b42fd5995ed8d2eddaa028bc3bad87cc9a39be4f0ae443",
+        "coherent/index.html": "48302de8ac4211ec1d9c739fbec4e173c36c65ae4978eea7297e3b6aea7574e4",
+        "corning/index.html": "498b737c4277fcea9eab326a5b2835634cdd1f900370ff72ae6f90efb6e60750",
         "credo/index.html": "13180331e70855308eb72e60880b5b8ef00568c63a6b700a23da360a1b54ec8c",
         "denso/index.html": "ff8ad86118bc3dc846d1b79b4acf6ca4c37791ae93c890f878e4629366de7ee5",
         "digital-realty/index.html": "3800f1367e92314c3abf091a4ad6bb0b760ca317386d5847fd1b27feb99b31e4",
