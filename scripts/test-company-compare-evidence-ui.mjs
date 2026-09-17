@@ -1413,6 +1413,8 @@ assert.throws(
 assert.match(comparePage, /!evidenceMode/, 'legacy script must be gated only for the opt-in route');
 assert.match(comparePage, /<BaseLayout title="企業比較">/, 'Compare retains the pre-Pilot non-indexable contract');
 assert.doesNotMatch(comparePage, /<BaseLayout title="企業比較" indexable>/, 'Compare must not become a Pagefind result');
+assert.match(comparePage, /id="compare-company-search"[^>]*placeholder="企業名で検索"[^>]*aria-label="企業名で検索"/, 'Company Compare search uses one concise company-name label for visual and assistive presentation');
+assert.doesNotMatch(comparePage, /placeholder="企業名・Ticker・製品・技術・領域で検索"/, 'Company Compare search removes the previous over-broad placeholder copy');
 assert.match(comparePage, /id="company-compare-evidence-mount"/, 'legacy HTML retains only the Evidence mount point');
 assert.match(comparePage, /evidence-fragments\/company-compare-evidence-v01\//, 'Evidence fragment has one internal build-time URL');
 assert.match(comparePage, /evidenceCompareViewRequested\(location\.search\)/, 'legacy route exits before requesting Evidence assets');
