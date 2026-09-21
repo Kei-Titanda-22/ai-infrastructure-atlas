@@ -68,8 +68,12 @@ const technologyIdsForTags = (companyTags: string[]) => Object.entries(filterCon
       <span>並び順</span>
       <button class="sort-button" type="button" data-sort="name" aria-pressed="true">企業名 <span class="sort-indicator">↑</span></button>
       <button class="sort-button" type="button" data-sort="country" aria-pressed="false">国・地域 <span class="sort-indicator">↕</span></button>
+      <button class="sort-button" type="button" data-sort="updated" aria-pressed="false">更新順 <span class="sort-indicator">↕</span></button>
     </div>
-    <div class="company-directory-grid" id="company-card-grid" role="list" aria-label="企業一覧">
+    <table class="data-table company-index-table" id="company-table">
+      <colgroup><col class="company-col" /><col class="country-col" /><col class="layer-col" /><col class="products-col" /><col class="technology-col" /></colgroup>
+      <thead><tr><th scope="col">企業</th><th scope="col">国・地域</th><th scope="col">主領域</th><th scope="col">主力製品</th><th scope="col">主要技術</th></tr></thead>
+      <tbody id="company-tbody">
       {companies.map(company => {
         const d = company.data;
         const companyName = companyDisplayNameParts(d);
@@ -77,7 +81,6 @@ const technologyIdsForTags = (companyTags: string[]) => Object.entries(filterCon
         const productLabels = d.products.map(product => productInfo(product).label);
         const stageIds = stageIdsForLayers(d.layers);
         const technologyIds = technologyIdsForTags(d.tags);
-        const visibleTags = d.tags.slice(0,3);
         const searchText = buildSearchText([
           company.id, d.name, d.japaneseName, d.reading, d.ticker ?? '', d.country, countryLabel(d.country),
           d.primaryLayer, layerLabel(d.primaryLayer), d.summary, d.aiRole,
@@ -85,30 +88,17 @@ const technologyIdsForTags = (companyTags: string[]) => Object.entries(filterCon
           ...stageIds.map(id => stageLabelById.get(id) || id), ...sites.flatMap(site => [site.name, site.city, site.region, site.country])
         ]);
         return (
-          <article class="company-directory-card" role="listitem" data-company-row data-search={searchText} data-tags={d.tags.join('|')} data-layer={d.primaryLayer} data-country={d.country} data-stages={stageIds.join('|')} data-technologies={technologyIds.join('|')} data-sort-name={d.japaneseName || d.name} data-sort-country={countryLabel(d.country)} data-sort-updated={d.lastReviewed}>
-            <header class="company-directory-card-head">
-              <div>
-                <h2 class="company-directory-name"><a href={withBase(`companies/${company.id}/`)} aria-label={companyName.accessibleName}>{companyName.primaryName}{companyName.secondaryName && <span class="company-directory-local">{companyName.secondaryName}</span>}</a></h2>
-                <span class="company-directory-ticker mono">{d.ticker || '非上場'}</span>
-              </div>
-            </header>
-            <dl class="company-directory-facts">
-              <div>
-                <dt>主領域</dt>
-                <dd><a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></dd>
-              </div>
-              <div>
-                <dt>AIインフラでの役割</dt>
-                <dd>{d.aiRole}</dd>
-              </div>
-            </dl>
-            <div class="company-directory-tags" aria-label="企業タグ">
-              {visibleTags.map(tag => <a class="tag tag-link" href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a>)}
-            </div>
-          </article>
+          <tr data-company-row data-search={searchText} data-tags={d.tags.join('|')} data-layer={d.primaryLayer} data-country={d.country} data-stages={stageIds.join('|')} data-technologies={technologyIds.join('|')} data-sort-name={d.japaneseName || d.name} data-sort-country={countryLabel(d.country)} data-sort-updated={d.lastReviewed}>
+            <td class="company-col" data-label="企業"><span class="company-index-name"><a href={withBase(`companies/${company.id}/`)} aria-label={companyName.accessibleName}>{companyName.primaryName}{companyName.secondaryName && <span class="company-index-local">{companyName.secondaryName}</span>}</a></span><span class="company-index-meta mono">{d.ticker || '非上場'}</span></td>
+            <td data-label="国・地域"><a class="filter-link" href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a></td>
+            <td data-label="主領域"><a class="filter-link" href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></td>
+            <td class="company-index-products" data-label="主力製品">{productLabels.slice(0,2).join(' / ')}{productLabels.length > 2 ? <span class="table-more"> +{productLabels.length - 2}</span> : null}</td>
+            <td class="company-index-tags" data-label="主要技術">{d.tags.slice(0,3).map((tag, index) => <>{index > 0 ? <span> / </span> : null}<a href={`${withBase('companies/')}?tag=${encodeURIComponent(tag)}`}>{tagLabel(tag)}</a></>)}{d.tags.length > 3 ? <span class="table-more"> +{d.tags.length - 3}</span> : null}</td>
+          </tr>
         );
       })}
-    </div>
+      </tbody>
+    </table>
   </div>
 
   <script>
@@ -120,7 +110,7 @@ const technologyIdsForTags = (companyTags: string[]) => Object.entries(filterCon
       const layer = root.querySelector('#layer-filter');
       const country = root.querySelector('#country-filter');
       const tag = root.querySelector('#tag-filter');
-      const cardGrid = root.querySelector('#company-card-grid');
+      const tbody = root.querySelector('#company-tbody');
       const rows = [...root.querySelectorAll('[data-company-row]')];
       const count = root.querySelector('#result-count');
       const sortButtons = [...root.querySelectorAll('[data-sort]')];
@@ -171,10 +161,10 @@ const technologyIdsForTags = (companyTags: string[]) => Object.entries(filterCon
         history.replaceState(null, '', `${location.pathname}${qs ? `?${qs}` : ''}`);
       };
       const sortRows = () => {
-        if (!cardGrid) return;
+        if (!tbody) return;
         const key = `sort${sortKey.charAt(0).toUpperCase()}${sortKey.slice(1)}`;
         rows.sort((a, b) => (a.dataset[key] || '').localeCompare(b.dataset[key] || '', 'ja', { numeric: true }) * sortDirection);
-        rows.forEach(row => cardGrid.append(row));
+        rows.forEach(row => tbody.append(row));
         root.querySelectorAll<HTMLButtonElement>('[data-sort]').forEach(button => {
           const active = button.dataset.sort === sortKey;
           button.setAttribute('aria-pressed', String(active));

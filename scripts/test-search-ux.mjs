@@ -10,6 +10,7 @@ const companies = await Promise.all((await readdir(companiesDirectory)).filter(n
 const facilities = JSON.parse(await readFile(new URL('../src/data/facilities.json', import.meta.url), 'utf8'));
 const companyDirectorySource = await readFile(new URL('../src/pages/companies/index.astro', import.meta.url), 'utf8');
 const companyDetailSource = await readFile(new URL('../src/pages/companies/[id].astro', import.meta.url), 'utf8');
+const companyDirectoryStyles = await readFile(new URL('../src/styles/global-visual-v01.css', import.meta.url), 'utf8');
 
 assert.equal(companies.length, 100, 'the Company Search fixture covers all one hundred Companies');
 for (const testCase of fixture.normalization) assert.equal(normalizeSearchText(testCase.input), testCase.expected, `normalizes ${testCase.input}`);
@@ -41,19 +42,25 @@ assert.equal(identities.some(company => matchesSearchTokens(company.searchText, 
 
 const directory = fixture.companyDirectory;
 assert.equal(companies.length, directory.expectedCompanyCount, 'the Company directory still renders all one hundred Companies');
-assert.match(companyDirectorySource, new RegExp(`id="${directory.cardGridId}"`), 'the Company directory has the fixture-defined card grid');
-assert.match(companyDirectorySource, new RegExp(`class="${directory.cardClass}"`), 'each Company directory entry is a scoped card');
-assert.doesNotMatch(companyDirectorySource, /<table\b/, 'the Company directory does not render a fixed-width table');
-assert.doesNotMatch(companyDirectorySource, /company-table-scroll|company-index-table|company-index-sites/, 'the Company directory has no horizontal-table contract');
+assert.match(companyDirectorySource, new RegExp(`<table class="data-table ${directory.tableClass}" id="${directory.tableId}">`), 'the Company directory has the fixture-defined semantic table');
+const headerMatch = companyDirectorySource.match(/<thead><tr>([\s\S]*?)<\/tr><\/thead>/)?.[1] ?? '';
+assert.deepEqual([...headerMatch.matchAll(/<th[^>]*>([^<]+)<\/th>/g)].map(match => match[1]), directory.headers, 'the Company directory retains the exact five scan-friendly headers');
+assert.doesNotMatch(headerMatch, /主要拠点|更新日|最終確認日/, 'the Company directory headers omit facilities and review metadata');
+assert.match(companyDirectorySource, /<tbody id="company-tbody">/, 'the Company directory keeps one table body for all Companies');
+assert.match(companyDirectorySource, /<tr data-company-row/, 'each Company directory entry is one semantic table row');
+assert.doesNotMatch(companyDirectorySource, /company-directory-grid|company-directory-card|company-directory-facts|company-directory-tags/, 'the Company directory has no card-grid contract');
+assert.match(companyDirectoryStyles, /\.global-visual-companies \.company-index-table \{[\s\S]*?min-width: 0 !important;[\s\S]*?table-layout: fixed !important;/, 'the Company table overrides legacy fixed horizontal minimum widths');
+assert.match(companyDirectoryStyles, /\.global-visual-companies \.company-index-table tbody,[\s\S]*?\.global-visual-companies \.company-index-table td \{[\s\S]*?display: block;/, 'mobile restacks the same semantic table rows');
+assert.match(companyDirectoryStyles, /\.global-visual-companies \.company-index-table td\.company-col \{[\s\S]*?width: 100% !important;/, 'mobile gives the Company cell its full row width instead of retaining the desktop column ratio');
 assert.match(companyDirectorySource, /data-sort-updated=\{d\.lastReviewed\}/, 'updated-date sort remains a non-visible canonical sort datum');
 assert.match(companyDirectorySource, /new Set\(\['name','country','updated'\]\)/, 'all existing sort keys, including updated, remain URL-compatible');
-assert.match(companyDirectorySource, /withBase\(`companies\/\$\{company\.id\}\//, 'each card retains its canonical Company detail URL');
-for (const className of directory.cardFieldClasses) assert.match(companyDirectorySource, new RegExp(`class="[^"]*${className}(?:\\s|")`), `the Company card renders ${className}`);
-for (const label of directory.factLabels) assert.match(companyDirectorySource, new RegExp(`<dt>${label}<\\/dt>`), `the Company card renders ${label}`);
-const cardTemplate = companyDirectorySource.match(/<article class="company-directory-card"[\s\S]*?<\/article>/)?.[0] ?? '';
-const cardBody = cardTemplate.replace(/^<article[^>]*>/, '');
+assert.match(companyDirectorySource, /withBase\(`companies\/\$\{company\.id\}\//, 'each table row retains its canonical Company detail URL');
+const rowTemplate = companyDirectorySource.match(/<tr data-company-row[\s\S]*?<\/tr>/)?.[0] ?? '';
+assert.equal((companyDirectorySource.match(/\{companies\.map\(company/g) ?? []).length, 1, 'desktop and mobile use one Company-row rendering path');
+for (const header of directory.headers) assert.match(rowTemplate, new RegExp(`data-label="${header}"`), `${header} is labelled when the same table row stacks on mobile`);
+assert.doesNotMatch(rowTemplate, /d\.aiRole|company-index-sites|company-directory-tags/, 'table rows omit the card-only AI role, facilities, and tag presentation');
 for (const excluded of directory.excludedVisibleLabels) {
-  assert.doesNotMatch(cardBody, new RegExp(excluded), `${excluded} is not rendered inside a Company card or its accessible descendants`);
+  assert.doesNotMatch(rowTemplate, new RegExp(excluded), `${excluded} is not rendered inside a Company table row or its accessible descendants`);
 }
 assert.match(companyDetailSource, /<dt>最終確認日<\/dt>/, 'Company detail pages retain the last-reviewed display');
 assert.match(companyDetailSource, /<th>拠点<\/th>/, 'Company detail pages retain facilities');
@@ -93,12 +100,11 @@ for (const filter of directory.filters) {
 for (const sortKey of directory.sortKeys) {
   const field = `sort${sortKey.charAt(0).toUpperCase()}${sortKey.slice(1)}`;
   const ascending = directoryRows.slice().sort((a, b) => a[field].localeCompare(b[field], 'ja', { numeric: true }));
-  assert.equal(ascending.length, directory.expectedCompanyCount, `${sortKey} still orders every Company card`);
+  assert.equal(ascending.length, directory.expectedCompanyCount, `${sortKey} still orders every Company table row`);
   for (let index = 1; index < ascending.length; index++) {
     assert.ok(ascending[index - 1][field].localeCompare(ascending[index][field], 'ja', { numeric: true }) <= 0, `${sortKey} ascending order remains deterministic`);
   }
 }
-assert.ok(directoryRows.every(row => row.tags.slice(0, directory.maxVisibleTags).length <= directory.maxVisibleTags), 'Company cards cap their deterministic tag presentation at three');
 assert.match(companyDirectorySource, /history\.replaceState/, 'filter and sort query parameters still round-trip through the existing URL path');
 
 const aliases = buildPagefindCompanyAliasMap(companies.map(company => ({
@@ -219,9 +225,9 @@ if (process.argv.includes('--dist')) {
     .replace(/<[^>]+>/g, ' ')
     .replace(/&(?:nbsp|#160);/gi, ' ')
     .replace(/\s+/g, ' ');
-  assert.match(companyDirectoryHtml, new RegExp(`id="${directory.cardGridId}"`), 'built Company directory contains the card grid');
-  assert.equal((companyDirectoryHtml.match(/data-company-row/g) ?? []).length, directory.expectedCompanyCount, 'built Company directory contains all one hundred cards');
-  assert.doesNotMatch(companyDirectoryHtml, /<table\b|company-table-scroll|company-index-table/, 'built Company directory contains no horizontal table');
+  assert.match(companyDirectoryHtml, new RegExp(`<table class="data-table ${directory.tableClass}" id="${directory.tableId}">`), 'built Company directory contains the semantic table');
+  assert.equal((companyDirectoryHtml.match(/data-company-row/g) ?? []).length, directory.expectedCompanyCount, 'built Company directory contains all one hundred table rows');
+  assert.doesNotMatch(companyDirectoryHtml, /company-directory-grid|company-directory-card|company-directory-facts|company-directory-tags/, 'built Company directory contains no card-grid presentation');
   for (const excluded of directory.excludedVisibleLabels) assert.doesNotMatch(visibleText, new RegExp(excluded), `${excluded} is absent from built Company directory visible text`);
   for (const testCase of directory.facilitySearchQueries) assert.doesNotMatch(visibleText, new RegExp(testCase.query), `${testCase.kind} search token is not restored as visible card content`);
 }

@@ -181,7 +181,7 @@
   padding-bottom: 8px;
 }
 
-/* Companies: filters and responsive cards remain within the available viewport. */
+/* Companies: a five-column table for scanning, stacked from the same rows on mobile. */
 .global-visual-companies .toolbar {
   padding: 12px 0;
   background: transparent;
@@ -200,10 +200,25 @@
   box-shadow: none;
 }
 
+.global-visual-companies .company-index-table {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0 !important;
+  table-layout: fixed !important;
+}
+
+.global-visual-companies .company-index-table .company-col { width: 27% !important; min-width: 0 !important; position: static; }
+.global-visual-companies .company-index-table .country-col { width: 11% !important; }
+.global-visual-companies .company-index-table .layer-col { width: 17% !important; }
+.global-visual-companies .company-index-table .products-col { width: 25% !important; }
+.global-visual-companies .company-index-table .technology-col { width: 20% !important; }
+
 .global-visual-companies .company-index-table th,
 .global-visual-companies .company-index-table td {
   padding-top: 8px;
   padding-bottom: 8px;
+  overflow-wrap: anywhere;
+  word-break: normal;
 }
 
 .global-visual-companies .company-directory-sort {
@@ -224,107 +239,6 @@
 .global-visual-companies .company-directory-sort .sort-button {
   min-height: 44px;
   padding: 8px 12px;
-}
-
-.global-visual-companies .company-directory-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
-  gap: 14px;
-  min-width: 0;
-}
-
-.global-visual-companies .company-directory-card {
-  display: flex;
-  min-width: 0;
-  flex-direction: column;
-  gap: 12px;
-  padding: 15px;
-  border: 1px solid var(--visual-rule);
-  background: transparent;
-}
-
-.global-visual-companies .company-directory-card-head,
-.global-visual-companies .company-directory-card-head > div,
-.global-visual-companies .company-directory-facts,
-.global-visual-companies .company-directory-facts > div {
-  min-width: 0;
-}
-
-.global-visual-companies .company-directory-name {
-  margin: 0;
-  font-size: 18px;
-  line-height: 1.42;
-}
-
-.global-visual-companies .company-directory-name a {
-  display: inline-block;
-  min-height: 44px;
-  color: var(--text);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
-  overflow-wrap: normal;
-  word-break: normal;
-}
-
-.global-visual-companies .company-directory-local,
-.global-visual-companies .company-directory-ticker {
-  display: block;
-}
-
-.global-visual-companies .company-directory-local {
-  margin-top: 3px;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-.global-visual-companies .company-directory-ticker {
-  margin-top: 4px;
-  color: var(--visual-metadata);
-  font-size: 12px;
-  line-height: 1.35;
-}
-
-.global-visual-companies .company-directory-facts {
-  display: grid;
-  gap: 10px;
-  margin: 0;
-}
-
-.global-visual-companies .company-directory-facts dt {
-  margin: 0 0 3px;
-  color: var(--visual-metadata);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.global-visual-companies .company-directory-facts dd {
-  margin: 0;
-  line-height: 1.62;
-  overflow-wrap: anywhere;
-}
-
-.global-visual-companies .company-directory-facts a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-}
-
-.global-visual-companies .company-directory-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-  margin-top: auto;
-}
-
-.global-visual-companies .company-directory-tags .tag {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  max-width: 100%;
-  white-space: normal;
-  overflow-wrap: anywhere;
 }
 
 /* Atlas: keep the map semantics, but remove quote/callout styling. */
@@ -504,13 +418,55 @@
     gap: 9px;
   }
 
-  .global-visual-companies .company-directory-grid {
-    grid-template-columns: minmax(0, 1fr);
+  .global-visual-companies .company-index-table,
+  .global-visual-companies .company-index-table tbody,
+  .global-visual-companies .company-index-table tr,
+  .global-visual-companies .company-index-table td {
+    display: block;
+    width: 100%;
   }
 
-  .global-visual-companies .company-directory-card {
-    padding: 14px;
+  .global-visual-companies .company-index-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
   }
+
+  .global-visual-companies .company-index-table tr {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--visual-rule);
+  }
+
+  .global-visual-companies .company-index-table td {
+    padding: 3px 0;
+    border: 0;
+  }
+
+  .global-visual-companies .company-index-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 2px;
+    color: var(--visual-metadata);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .global-visual-companies .company-index-table td.company-col {
+    width: 100% !important;
+    min-width: 0 !important;
+    position: static;
+    padding-top: 0;
+    background: transparent;
+  }
+
+  .global-visual-companies .company-index-table .company-col::before { content: none; }
+  .global-visual-companies .company-index-name a { display: inline-flex; align-items: center; min-height: 44px; }
 
   .global-visual-financials .financial-summary > div {
     min-height: 64px;
