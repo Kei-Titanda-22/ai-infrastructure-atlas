@@ -1,0 +1,38 @@
+[
+  {
+    "id": "ai-compute-semiconductors",
+    "name": "AI計算半導体の競争軸",
+    "perspective": "GPU・CPU、カスタムASIC、接続、モバイル／エッジの違い",
+    "companyIds": ["nvidia", "amd", "broadcom", "qualcomm"]
+  },
+  {
+    "id": "foundry-strategies",
+    "name": "ファウンドリの製造戦略",
+    "perspective": "先端／成熟プロセス、顧客構成、製造戦略の違い",
+    "companyIds": ["tsmc", "samsung-electronics", "globalfoundries", "umc"]
+  },
+  {
+    "id": "front-end-equipment",
+    "name": "前工程装置の工程別役割",
+    "perspective": "露光、成膜、エッチング、統合プロセスの工程別役割",
+    "companyIds": ["asml", "applied-materials", "lam-research", "tokyo-electron"]
+  },
+  {
+    "id": "ai-memory-supply",
+    "name": "AIメモリの供給構成",
+    "perspective": "HBM・DRAMとNANDの供給構成・投資軸",
+    "companyIds": ["samsung-electronics", "sk-hynix", "micron", "kioxia"]
+  },
+  {
+    "id": "ai-network-optics",
+    "name": "AIネットワークと光接続",
+    "perspective": "Ethernet機器、光部品、高速接続の役割",
+    "companyIds": ["arista", "cisco", "coherent", "credo"]
+  },
+  {
+    "id": "data-center-power-cooling",
+    "name": "データセンターの電力・冷却",
+    "perspective": "電力品質、配電、冷却、設備統合の役割",
+    "companyIds": ["vertiv", "eaton", "schneider-electric", "abb"]
+  }
+]

@@ -69,7 +69,10 @@ import {
   remainingBatch4Stage,
 } from '../src/lib/company-compare-first-batch.ts';
 import { assessNormalizedFinancialCompatibility } from '../src/lib/financial-comparison-contract.ts';
-import { compileJapaneseFirstPresentationEntries } from '../src/lib/japanese-first-presentation.ts';
+import {
+  companyDisplayNameParts,
+  compileJapaneseFirstPresentationEntries,
+} from '../src/lib/japanese-first-presentation.ts';
 import { formatCompanyCompareEvidencePageLead } from '../src/scripts/company-compare-evidence-ui.ts';
 import { gzipSync } from 'node:zlib';
 import {
@@ -114,6 +117,32 @@ const displayFixture = await readJson('./fixtures/company-compare-japanese-displ
 const japaneseFirstCopyFixture = await readJson('./fixtures/japanese-first-copy-v01.json');
 const artifactSizeBaselineFixture = await readJson('./fixtures/company-compare-artifact-size-baseline-v01.json');
 const onDemandSizeFixture = await readJson('./fixtures/company-compare-on-demand-size-v01.json');
+const purposePresetDefinitions = await readJson('../src/data/company-compare-evidence-presets-v01.json');
+const purposePresetFixture = displayFixture.companyComparePurposePresets;
+const purposePresets = purposePresetDefinitions;
+assert.deepEqual(purposePresets, purposePresetFixture.presets, 'purpose preset data is exact against the independent Japanese display fixture');
+assert.equal(purposePresets.length, purposePresetFixture.count, 'six purpose presets are registered');
+const purposePresetCompanyIds = purposePresets.flatMap(preset => preset.companyIds);
+assert.equal(purposePresetCompanyIds.length, purposePresetFixture.slotCount, 'purpose preset slot count is fixed at 24');
+assert.equal(new Set(purposePresetCompanyIds).size, purposePresetFixture.uniqueCompanyCount, 'purpose preset Company IDs contain the intended 23 unique Companies');
+const supportedPurposeCompanyIds = new Set(onDemandSizeFixture.companyIds);
+for (const preset of purposePresets) {
+  assert.equal(preset.companyIds.length, 4, `${preset.id}: preset has exactly four Companies`);
+  assert.equal(new Set(preset.companyIds).size, 4, `${preset.id}: preset has no duplicate Company ID`);
+  for (const companyId of preset.companyIds) assert.ok(supportedPurposeCompanyIds.has(companyId), `${preset.id}:${companyId}: registry and Evidence Compare support the Company`);
+  const exactMatch = purposePresets.find(candidate => candidate.companyIds.length === preset.companyIds.length && candidate.companyIds.every((id, index) => id === preset.companyIds[index]));
+  assert.equal(exactMatch?.id, preset.id, `${preset.id}: exact ordered IDs match the active purpose preset`);
+  const purposeSearch = serializeEvidenceCompareSearch('', { selectedIds: [...preset.companyIds], detail: 'summary', section: null });
+  const purposeParams = new URLSearchParams(purposeSearch);
+  assert.equal(purposeParams.get('ids'), preset.companyIds.join(','), `${preset.id}: URL preserves ordered IDs`);
+  assert.equal(purposeParams.get('detail'), 'summary', `${preset.id}: preset projects summary detail`);
+  assert.equal(purposePresets.find(candidate => candidate.companyIds.length === preset.companyIds.slice(1).length && candidate.companyIds.every((id, index) => id === preset.companyIds.slice(1)[index])) ?? null, null, `${preset.id}: manual removal returns to custom selection`);
+}
+for (const [companyId, expectedIdentity] of Object.entries(purposePresetFixture.resolvedIdentityByCompanyId)) {
+  const company = await readJson(`../src/data/companies/${companyId}.json`);
+  assert.equal(companyDisplayNameParts(company).visualName, expectedIdentity, `${companyId}: purpose preset identity uses the Japanese-first helper`);
+}
+assert.equal(purposePresetFixture.resolvedIdentityByCompanyId['applied-materials'], 'Applied Materials（アプライド・マテリアルズ）', 'Applied Materials formal bilingual identity remains exact');
 
 const selectActiveArtifactFreeze = fixtureValue => {
   assert.ok(fixtureValue && typeof fixtureValue === 'object' && !Array.isArray(fixtureValue), 'Japanese-first fixture is an object');
@@ -406,6 +435,17 @@ const controller = await readFile(new URL('../src/scripts/company-compare-eviden
 const compareSearchController = await readFile(new URL('../src/scripts/search-combobox-controller.ts', import.meta.url), 'utf8');
 const styles = await readFile(new URL('../src/styles/company-compare-evidence-v01.css', import.meta.url), 'utf8');
 const readModelSource = await readFile(new URL('../src/lib/company-compare-evidence-read-model.ts', import.meta.url), 'utf8');
+assert.match(comparePage, /company-compare-evidence-presets-v01\.json/, 'purpose presets have one JSON definition source');
+assert.match(comparePage, /validatePurposePresets/, 'Compare validates purpose preset JSON while reading it');
+assert.match(comparePage, /requires two to four Company IDs/, 'Compare rejects invalid purpose preset sizes');
+assert.match(comparePage, /has duplicate Company IDs/, 'Compare rejects duplicate Company IDs inside a purpose preset');
+assert.match(comparePage, /data-purpose-preset-id/, 'purpose preset controls have stable IDs');
+assert.match(comparePage, /data-evidence-set-ids/, 'purpose preset controls use the existing Evidence selection path');
+assert.match(comparePage, /aria-pressed/, 'active purpose presets expose an accessible pressed state');
+assert.match(comparePage, /compare-purpose-preset-grid/, 'purpose preset layout is scoped to Compare');
+assert.doesNotMatch(comparePage, /比較セットA|比較セットB/, 'retired experimental Set A and Set B labels are absent from Compare');
+assert.doesNotMatch(comparePage, /data-evidence-set-ids="nvidia,broadcom"/, 'retired two-Company Set A wiring is absent from Compare');
+assert.doesNotMatch(comparePage, /data-evidence-set-ids="applied-materials,lam-research,tokyo-electron"/, 'retired three-Company Set B wiring is absent from Compare');
 const parsedClaimTypeLabels = Object.fromEntries(
   [...claimComponent.matchAll(/^\s*(?:'([^']+)'|([a-z]+)):\s*'([^']+)',$/gm)]
     .map(match => [match[1] ?? match[2], match[3]])
