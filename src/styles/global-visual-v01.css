@@ -567,6 +567,10 @@
     width: 100%;
   }
 
+  .global-visual-companies .company-index-table tr[hidden] {
+    display: none !important;
+  }
+
   .global-visual-companies .company-index-table thead {
     position: absolute;
     width: 1px;
