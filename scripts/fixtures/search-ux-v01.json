@@ -36,12 +36,10 @@
   },
   "companyDirectory": {
     "expectedCompanyCount": 100,
-    "cardGridId": "company-card-grid",
-    "cardClass": "company-directory-card",
-    "cardFieldClasses": ["company-directory-name", "company-directory-ticker", "company-directory-facts", "company-directory-tags"],
-    "factLabels": ["主領域", "AIインフラでの役割"],
-    "excludedVisibleLabels": ["主要拠点", "更新日", "最終確認日"],
-    "maxVisibleTags": 3,
+    "tableId": "company-table",
+    "tableClass": "company-index-table",
+    "headers": ["企業", "国・地域", "主領域", "主力製品", "主要技術"],
+    "excludedVisibleLabels": ["主要拠点", "更新日", "最終確認日", "AIインフラでの役割"],
     "sortKeys": ["name", "country", "updated"],
     "facilitySearchQueries": [
       { "kind": "facility", "query": "四日市工場", "companyId": "kioxia" },
