@@ -29,11 +29,26 @@ const linkHref = (link: any) => link.technology
         <div class={`value-chain-stage vc-${stage.id}`}>
           <a class="value-chain-stage-head" href={stageHref(stage)}>
             <span class="value-chain-number">{stage.number}</span>
-            <span class="value-chain-title">{stage.name}</span>
+            <span class="value-chain-title-stack">
+              <span class="value-chain-title">{stage.name}</span>
+              {stage.id === 'demand' && <span class="atlas-context-label">導入文脈</span>}
+            </span>
+            <span class="atlas-stage-link-label">企業一覧へ</span>
           </a>
           <p>{stage.description}</p>
           <div class="value-chain-links">
-            {stage.links.map(link => <a href={linkHref(link)}>{link.label}</a>)}
+            <span class="atlas-primary-tech-label">主要技術</span>
+            <div class="atlas-primary-tech-links">
+              {stage.links.slice(0, 3).map(link => <a href={linkHref(link)}>{link.label}</a>)}
+            </div>
+            {stage.links.length > 3 && (
+              <details class="atlas-more-technologies" data-atlas-more-technologies open>
+                <summary>詳細技術を表示</summary>
+                <div class="atlas-more-tech-links">
+                  {stage.links.slice(3).map(link => <a href={linkHref(link)}>{link.label}</a>)}
+                </div>
+              </details>
+            )}
           </div>
           {index < valueChain.length - 1 && <div class="value-chain-arrow" aria-hidden="true">↓</div>}
         </div>
@@ -42,3 +57,20 @@ const linkHref = (link: any) => link.technology
     <DisplayTerminologyHelper />
   </div>
 </BaseLayout>
+
+<script is:inline>
+  const atlasMobileQuery = window.matchMedia('(max-width: 640px)');
+  const atlasMoreTechnologyDetails = Array.from(document.querySelectorAll('[data-atlas-more-technologies]'));
+
+  const applyAtlasDetailsViewportState = () => {
+    const viewport = atlasMobileQuery.matches ? 'mobile' : 'desktop';
+    for (const details of atlasMoreTechnologyDetails) {
+      if (details.dataset.atlasViewport === viewport) continue;
+      details.open = viewport === 'desktop';
+      details.dataset.atlasViewport = viewport;
+    }
+  };
+
+  applyAtlasDetailsViewportState();
+  atlasMobileQuery.addEventListener('change', applyAtlasDetailsViewportState);
+</script>

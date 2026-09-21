@@ -1,0 +1,27 @@
+{
+  "route": "/atlas/",
+  "order": ["demand", "compute", "memory", "materials", "manufacturing", "backend", "interconnect", "datacenter", "physical"],
+  "stageCount": 8,
+  "stages": [
+    {"id": "demand", "number": "00", "name": "AI需要", "filter": {"key": "q", "value": "AI"}, "context": true},
+    {"id": "compute", "number": "01", "name": "計算半導体", "filter": {"key": "stage", "value": "compute"}},
+    {"id": "memory", "number": "02", "name": "メモリ・ストレージ", "filter": {"key": "stage", "value": "memory"}},
+    {"id": "materials", "number": "03", "name": "半導体材料・基板", "filter": {"key": "stage", "value": "materials"}},
+    {"id": "manufacturing", "number": "04", "name": "半導体製造", "filter": {"key": "stage", "value": "manufacturing"}},
+    {"id": "backend", "number": "05", "name": "テスト・後工程", "filter": {"key": "stage", "value": "backend"}},
+    {"id": "interconnect", "number": "06", "name": "ネットワーク・光通信", "filter": {"key": "stage", "value": "interconnect"}},
+    {"id": "datacenter", "number": "07", "name": "データセンター設備", "filter": {"key": "stage", "value": "datacenter"}},
+    {"id": "physical", "number": "08", "name": "フィジカルAI", "filter": {"key": "stage", "value": "physical"}}
+  ],
+  "preservedNote": "すべての工程が完全な直列関係にあることを意味しません",
+  "primaryTechnologyCount": 3,
+  "breakpoints": {"desktopMin": 1024, "mobileMax": 640, "desktopColumns": 3, "mobileColumns": 1},
+  "selectors": {
+    "map": ".value-chain-map",
+    "stage": ".value-chain-stage",
+    "stageLink": ".value-chain-stage-head",
+    "technologyLink": ".value-chain-links a",
+    "details": ".atlas-more-technologies",
+    "summary": ".atlas-more-technologies summary"
+  }
+}
