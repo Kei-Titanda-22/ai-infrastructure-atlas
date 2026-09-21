@@ -7,6 +7,9 @@ import { buildPagefindCompanyAliasMap, createPagefindQueryPlan, createPagefindSe
 const fixture = JSON.parse(await readFile(new URL('./fixtures/search-ux-v01.json', import.meta.url), 'utf8'));
 const companiesDirectory = new URL('../src/data/companies/', import.meta.url);
 const companies = await Promise.all((await readdir(companiesDirectory)).filter(name => name.endsWith('.json')).sort().map(async name => JSON.parse(await readFile(new URL(`../src/data/companies/${name}`, import.meta.url), 'utf8'))));
+const facilities = JSON.parse(await readFile(new URL('../src/data/facilities.json', import.meta.url), 'utf8'));
+const companyDirectorySource = await readFile(new URL('../src/pages/companies/index.astro', import.meta.url), 'utf8');
+const companyDetailSource = await readFile(new URL('../src/pages/companies/[id].astro', import.meta.url), 'utf8');
 
 assert.equal(companies.length, 100, 'the Company Search fixture covers all one hundred Companies');
 for (const testCase of fixture.normalization) assert.equal(normalizeSearchText(testCase.input), testCase.expected, `normalizes ${testCase.input}`);
@@ -35,6 +38,68 @@ for (const testCase of fixture.companyQueries) {
   assert.ok(company && matchesSearchTokens(company.searchText, testCase.query), `${testCase.query} resolves ${testCase.companyId}`);
 }
 assert.equal(identities.some(company => matchesSearchTokens(company.searchText, fixture.unmatchedQuery)), false, 'unmatched input has no Company result');
+
+const directory = fixture.companyDirectory;
+assert.equal(companies.length, directory.expectedCompanyCount, 'the Company directory still renders all one hundred Companies');
+assert.match(companyDirectorySource, new RegExp(`id="${directory.cardGridId}"`), 'the Company directory has the fixture-defined card grid');
+assert.match(companyDirectorySource, new RegExp(`class="${directory.cardClass}"`), 'each Company directory entry is a scoped card');
+assert.doesNotMatch(companyDirectorySource, /<table\b/, 'the Company directory does not render a fixed-width table');
+assert.doesNotMatch(companyDirectorySource, /company-table-scroll|company-index-table|company-index-sites/, 'the Company directory has no horizontal-table contract');
+assert.match(companyDirectorySource, /data-sort-updated=\{d\.lastReviewed\}/, 'updated-date sort remains a non-visible canonical sort datum');
+assert.match(companyDirectorySource, /new Set\(\['name','country','updated'\]\)/, 'all existing sort keys, including updated, remain URL-compatible');
+assert.match(companyDirectorySource, /withBase\(`companies\/\$\{company\.id\}\//, 'each card retains its canonical Company detail URL');
+for (const className of directory.cardFieldClasses) assert.match(companyDirectorySource, new RegExp(`class="[^"]*${className}(?:\\s|")`), `the Company card renders ${className}`);
+for (const label of directory.factLabels) assert.match(companyDirectorySource, new RegExp(`<dt>${label}<\\/dt>`), `the Company card renders ${label}`);
+const cardTemplate = companyDirectorySource.match(/<article class="company-directory-card"[\s\S]*?<\/article>/)?.[0] ?? '';
+const cardBody = cardTemplate.replace(/^<article[^>]*>/, '');
+for (const excluded of directory.excludedVisibleLabels) {
+  assert.doesNotMatch(cardBody, new RegExp(excluded), `${excluded} is not rendered inside a Company card or its accessible descendants`);
+}
+assert.match(companyDetailSource, /<dt>最終確認日<\/dt>/, 'Company detail pages retain the last-reviewed display');
+assert.match(companyDetailSource, /<th>拠点<\/th>/, 'Company detail pages retain facilities');
+
+const facilitiesByCompany = new Map();
+for (const facility of facilities) {
+  const list = facilitiesByCompany.get(facility.companyId) ?? [];
+  list.push(facility);
+  facilitiesByCompany.set(facility.companyId, list);
+}
+const directoryRows = companies.map(company => ({
+  id: company.id,
+  country: company.country,
+  layer: company.primaryLayer,
+  tags: company.tags,
+  sortName: company.japaneseName || company.name,
+  sortCountry: company.country,
+  sortUpdated: company.lastReviewed,
+  searchText: buildSearchText([
+    company.id, company.name, company.japaneseName, company.reading, company.ticker ?? '', company.country,
+    company.primaryLayer, company.summary, company.aiRole, ...company.tags, ...company.products,
+    ...(facilitiesByCompany.get(company.id) ?? []).flatMap(site => [site.name, site.city, site.region, site.country]),
+  ]),
+}));
+for (const testCase of directory.facilitySearchQueries) {
+  const row = directoryRows.find(candidate => candidate.id === testCase.companyId);
+  assert.ok(row && matchesSearchTokens(row.searchText, testCase.query), `${testCase.kind} query ${testCase.query} remains searchable without being card content`);
+}
+for (const filter of directory.filters) {
+  const count = directoryRows.filter(row => (
+    filter.kind === 'country' ? row.country === filter.value
+      : filter.kind === 'layer' ? row.layer === filter.value
+        : row.tags.includes(filter.value)
+  )).length;
+  assert.equal(count, filter.expectedCount, `${filter.kind} filter keeps its expected Company count`);
+}
+for (const sortKey of directory.sortKeys) {
+  const field = `sort${sortKey.charAt(0).toUpperCase()}${sortKey.slice(1)}`;
+  const ascending = directoryRows.slice().sort((a, b) => a[field].localeCompare(b[field], 'ja', { numeric: true }));
+  assert.equal(ascending.length, directory.expectedCompanyCount, `${sortKey} still orders every Company card`);
+  for (let index = 1; index < ascending.length; index++) {
+    assert.ok(ascending[index - 1][field].localeCompare(ascending[index][field], 'ja', { numeric: true }) <= 0, `${sortKey} ascending order remains deterministic`);
+  }
+}
+assert.ok(directoryRows.every(row => row.tags.slice(0, directory.maxVisibleTags).length <= directory.maxVisibleTags), 'Company cards cap their deterministic tag presentation at three');
+assert.match(companyDirectorySource, /history\.replaceState/, 'filter and sort query parameters still round-trip through the existing URL path');
 
 const aliases = buildPagefindCompanyAliasMap(companies.map(company => ({
   href: `/companies/${company.id}/`,
@@ -146,5 +211,19 @@ assert.equal(listbox.hidden, true, 'Escape closes candidates');
 controller.refresh(true);
 input.dispatch('keydown', { key: 'Tab', keyCode: 9 });
 assert.equal(listbox.hidden, true, 'Tab closes candidates without selecting');
+
+if (process.argv.includes('--dist')) {
+  const companyDirectoryHtml = await readFile(new URL('../dist/companies/index.html', import.meta.url), 'utf8');
+  const visibleText = companyDirectoryHtml
+    .replace(/<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi, ' ')
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&(?:nbsp|#160);/gi, ' ')
+    .replace(/\s+/g, ' ');
+  assert.match(companyDirectoryHtml, new RegExp(`id="${directory.cardGridId}"`), 'built Company directory contains the card grid');
+  assert.equal((companyDirectoryHtml.match(/data-company-row/g) ?? []).length, directory.expectedCompanyCount, 'built Company directory contains all one hundred cards');
+  assert.doesNotMatch(companyDirectoryHtml, /<table\b|company-table-scroll|company-index-table/, 'built Company directory contains no horizontal table');
+  for (const excluded of directory.excludedVisibleLabels) assert.doesNotMatch(visibleText, new RegExp(excluded), `${excluded} is absent from built Company directory visible text`);
+  for (const testCase of directory.facilitySearchQueries) assert.doesNotMatch(visibleText, new RegExp(testCase.query), `${testCase.kind} search token is not restored as visible card content`);
+}
 
 console.log('PASS: search normalization and IME combobox contracts');

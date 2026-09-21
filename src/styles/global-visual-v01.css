@@ -181,7 +181,7 @@
   padding-bottom: 8px;
 }
 
-/* Companies: the filter toolbar is a control row, not a framed application card. */
+/* Companies: filters and responsive cards remain within the available viewport. */
 .global-visual-companies .toolbar {
   padding: 12px 0;
   background: transparent;
@@ -204,6 +204,127 @@
 .global-visual-companies .company-index-table td {
   padding-top: 8px;
   padding-bottom: 8px;
+}
+
+.global-visual-companies .company-directory-sort {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 7px;
+  margin: 14px 0;
+  color: var(--visual-secondary);
+  font-size: 13px;
+}
+
+.global-visual-companies .company-directory-sort > span {
+  margin-right: 2px;
+  font-weight: 700;
+}
+
+.global-visual-companies .company-directory-sort .sort-button {
+  min-height: 44px;
+  padding: 8px 12px;
+}
+
+.global-visual-companies .company-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: 14px;
+  min-width: 0;
+}
+
+.global-visual-companies .company-directory-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 12px;
+  padding: 15px;
+  border: 1px solid var(--visual-rule);
+  background: transparent;
+}
+
+.global-visual-companies .company-directory-card-head,
+.global-visual-companies .company-directory-card-head > div,
+.global-visual-companies .company-directory-facts,
+.global-visual-companies .company-directory-facts > div {
+  min-width: 0;
+}
+
+.global-visual-companies .company-directory-name {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.42;
+}
+
+.global-visual-companies .company-directory-name a {
+  display: inline-block;
+  min-height: 44px;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.global-visual-companies .company-directory-local,
+.global-visual-companies .company-directory-ticker {
+  display: block;
+}
+
+.global-visual-companies .company-directory-local {
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.global-visual-companies .company-directory-ticker {
+  margin-top: 4px;
+  color: var(--visual-metadata);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.global-visual-companies .company-directory-facts {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+}
+
+.global-visual-companies .company-directory-facts dt {
+  margin: 0 0 3px;
+  color: var(--visual-metadata);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.global-visual-companies .company-directory-facts dd {
+  margin: 0;
+  line-height: 1.62;
+  overflow-wrap: anywhere;
+}
+
+.global-visual-companies .company-directory-facts a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
+
+.global-visual-companies .company-directory-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: auto;
+}
+
+.global-visual-companies .company-directory-tags .tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 /* Atlas: keep the map semantics, but remove quote/callout styling. */
@@ -381,6 +502,14 @@
 
   .global-visual-companies .toolbar {
     gap: 9px;
+  }
+
+  .global-visual-companies .company-directory-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .global-visual-companies .company-directory-card {
+    padding: 14px;
   }
 
   .global-visual-financials .financial-summary > div {
