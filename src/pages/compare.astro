@@ -10,7 +10,7 @@ import sectorKpis from '../data/sector-kpis.json';
 import sectorKpiDefinitions from '../data/sector-kpi-definitions.json';
 import metricDefinitions from '../data/metric-definitions.json';
 import roicCalculations from '../data/roic-calculations.json';
-import comparisonTemplates from '../data/comparison-templates.json';
+import purposePresetDefinitions from '../data/company-compare-evidence-presets-v01.json';
 import sources from '../data/sources.json';
 import v02Sources from '../data/sources-v02.json';
 import documentSources from '../data/document-sources.json';
@@ -18,7 +18,40 @@ import DisplayTerminologyHelper from '../components/DisplayTerminologyHelper.ast
 import { companyDisplayNameParts } from '../lib/japanese-first-presentation.ts';
 import '../styles/compare-v03.css';
 
+type PurposePreset = { id: string; name: string; perspective: string; companyIds: readonly string[] };
+const requiredPurposePresetText = (value: unknown, field: string, context: string) => {
+  if (typeof value !== 'string' || !value.trim()) throw new Error(`Company Compare purpose preset ${context} requires ${field}`);
+  return value.trim();
+};
+const validatePurposePresets = (value: unknown): readonly PurposePreset[] => {
+  if (!Array.isArray(value) || value.length === 0) throw new Error('Company Compare purpose presets must be a non-empty array');
+  const presetIds = new Set<string>();
+  return Object.freeze(value.map((candidate, index) => {
+    if (!candidate || typeof candidate !== 'object' || Array.isArray(candidate)) throw new Error(`Company Compare purpose preset at index ${index} must be an object`);
+    const record = candidate as Record<string, unknown>;
+    const id = requiredPurposePresetText(record.id, 'id', `at index ${index}`);
+    if (presetIds.has(id)) throw new Error(`Company Compare purpose preset ID is duplicated: ${id}`);
+    presetIds.add(id);
+    const name = requiredPurposePresetText(record.name, 'name', id);
+    const perspective = requiredPurposePresetText(record.perspective, 'perspective', id);
+    if (!Array.isArray(record.companyIds) || record.companyIds.length < 2 || record.companyIds.length > 4) throw new Error(`Company Compare purpose preset ${id} requires two to four Company IDs`);
+    const companyIds = record.companyIds.map((candidateId, companyIndex) => requiredPurposePresetText(candidateId, `companyIds[${companyIndex}]`, id));
+    if (new Set(companyIds).size !== companyIds.length) throw new Error(`Company Compare purpose preset ${id} has duplicate Company IDs`);
+    return Object.freeze({ id, name, perspective, companyIds: Object.freeze(companyIds) });
+  }));
+};
+
 const companies = (await getCollection('companies')).sort((a,b) => (a.data.japaneseName || a.data.name).localeCompare(b.data.japaneseName || b.data.name, 'ja'));
+const companyById = new Map(companies.map(company => [company.id, company]));
+const purposePresets = validatePurposePresets(purposePresetDefinitions);
+const purposePresetViews = purposePresets.map(preset => ({
+  ...preset,
+  companies: preset.companyIds.map(companyId => {
+    const company = companyById.get(companyId);
+    if (!company) throw new Error(`Company Compare purpose preset cannot resolve Company: ${companyId}`);
+    return { id: company.id, displayNameParts: companyDisplayNameParts(company.data) };
+  }),
+}));
 const kpisByCompany = new Map();
 for (const kpi of sectorKpis) { const list = kpisByCompany.get(kpi.companyId) ?? []; list.push(kpi); kpisByCompany.set(kpi.companyId, list); }
 const facilitiesByCompany = new Map();
@@ -45,14 +78,38 @@ const compact = companies.map(c => ({
 }));
 const definitions = Object.fromEntries(sectorKpiDefinitions.map(d => [d.id, d]));
 const commonDefinitions = Object.fromEntries(metricDefinitions.map(d => [d.id, d]));
-const defaults = comparisonTemplates[0]?.companyIds ?? ['asml','applied-materials','lam-research','tokyo-electron','kla'];
+const defaults = purposePresets[0]?.companyIds ?? ['nvidia', 'amd', 'broadcom', 'qualcomm'];
 const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidence-v01/');
 ---
 <BaseLayout title="企業比較">
   <style is:inline>
-    #legacy-compare-templates[hidden],
-    #evidence-compare-templates[hidden] { display: none !important; }
     .compare-evidence-retry { min-width: 44px; min-height: 44px; }
+    .compare-purpose-presets { display: grid; gap: 10px; }
+    .compare-purpose-presets-title { margin: 0; font-size: 16px; }
+    .compare-purpose-preset-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .compare-purpose-preset {
+      display: grid;
+      align-content: start;
+      gap: 6px;
+      width: 100%;
+      min-height: 44px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface, #fff);
+      color: var(--text);
+      text-align: left;
+      cursor: pointer;
+    }
+    .compare-purpose-preset:hover,
+    .compare-purpose-preset:focus-visible { border-color: var(--link); outline: 3px solid color-mix(in srgb, var(--link) 28%, transparent); outline-offset: 2px; }
+    .compare-purpose-preset[aria-pressed="true"] { border: 2px solid var(--text); background: #f3f6f8; }
+    .compare-purpose-preset-name { font-weight: 800; }
+    .compare-purpose-preset-perspective { color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .compare-purpose-preset-companies { display: flex; flex-wrap: wrap; gap: 4px 8px; font-size: 13px; line-height: 1.5; }
+    .compare-purpose-preset-company { font-weight: 650; }
+    @media (min-width: 1180px) { .compare-purpose-preset-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 700px) { .compare-purpose-preset-grid { grid-template-columns: 1fr; } }
   </style>
   <header class="page-head">
     <div class="shell">
@@ -66,8 +123,8 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
     <section class="compare-builder" aria-labelledby="compare-builder-title">
       <div class="compare-builder-head">
         <div>
-          <span class="eyebrow">比較セット</span>
-          <h2 id="compare-builder-title">比較する企業を選ぶ</h2>
+          <span class="eyebrow">目的別比較</span>
+          <h2 id="compare-builder-title">比較テーマを選ぶ</h2>
           <p class="meta" id="compare-builder-meta">3〜5社を推奨。2社でも比較できます。同じ企業の重複追加はできません。</p>
         </div>
         <button class="text-button" id="copy-compare-url" type="button">比較URLをコピー</button>
@@ -81,17 +138,27 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
           <p class="search-combobox-status" id="compare-suggestions-status" aria-live="polite"></p>
         </div>
 
-        <div class="compare-template-list" id="legacy-compare-templates" aria-label="比較テンプレート">
-          <span class="compare-template-label">比較テンプレート</span>
-          {comparisonTemplates.map(template => (
-            <button class="text-button compare-template-button" type="button" data-template={template.id} data-ids={template.companyIds.join(',')} title={template.description}>{template.name}</button>
-          ))}
-        </div>
-        <div class="compare-template-list" id="evidence-compare-templates" aria-label="根拠付き比較セット" hidden>
-          <span class="compare-template-label">比較セット</span>
-          <button class="text-button compare-template-button" type="button" data-evidence-set-ids="nvidia,broadcom">比較セットA — NVIDIA / Broadcom</button>
-          <button class="text-button compare-template-button" type="button" data-evidence-set-ids="applied-materials,lam-research,tokyo-electron">比較セットB — Applied Materials / Lam Research / Tokyo Electron</button>
-        </div>
+        <section class="compare-purpose-presets" id="compare-purpose-presets" aria-labelledby="compare-purpose-presets-title">
+          <h3 class="compare-purpose-presets-title" id="compare-purpose-presets-title">比較テーマを選ぶ</h3>
+          <div class="compare-purpose-preset-grid">
+            {purposePresetViews.map(preset => (
+              <button
+                class="compare-purpose-preset"
+                type="button"
+                data-purpose-preset-id={preset.id}
+                data-ids={preset.companyIds.join(',')}
+                data-evidence-set-ids={preset.companyIds.join(',')}
+                aria-pressed="false"
+              >
+                <span class="compare-purpose-preset-name">{preset.name}</span>
+                <span class="compare-purpose-preset-perspective">{preset.perspective}</span>
+                <span class="compare-purpose-preset-companies" aria-label={`対象企業: ${preset.companies.map(company => company.displayNameParts.accessibleName).join('、')}`}>
+                  {preset.companies.map(company => <span class="compare-purpose-preset-company">{company.displayNameParts.visualName}</span>)}
+                </span>
+              </button>
+            ))}
+          </div>
+        </section>
       </div>
 
       <div class="compare-selected-wrap">
@@ -420,7 +487,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
       });
       selectedRoot.addEventListener('click',event=>{ const button=event.target.closest('[data-remove-id]'); if(button) removeCompany(button.dataset.removeId); });
       clearButton.addEventListener('click',()=>{ selectedIds=[]; render(); searchInput.focus(); });
-      root.querySelectorAll('.compare-template-button').forEach(button=>button.addEventListener('click',()=>applyTemplate((button.dataset.ids||'').split(',').filter(Boolean))));
+      root.querySelectorAll<HTMLElement>('[data-purpose-preset-id]').forEach(button=>button.addEventListener('click',()=>applyTemplate((button.dataset.ids||'').split(',').filter(Boolean))));
       copyButton.addEventListener('click',async()=>{
         try { await navigator.clipboard.writeText(location.href); copyButton.textContent='コピーしました'; setTimeout(()=>copyButton.textContent='比較URLをコピー',1600); }
         catch { copyButton.textContent='URL欄からコピーしてください'; setTimeout(()=>copyButton.textContent='比較URLをコピー',2200); }
@@ -428,6 +495,28 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
       document.addEventListener('click',event=>{ if(!root.querySelector('.compare-search-control')?.contains(event.target)){ searchCombobox.close(); } });
       render();
     }
+  </script>
+
+  <script>
+    const purposePresetButtons = [...document.querySelectorAll<HTMLElement>('[data-purpose-preset-id]')];
+    const synchronizePurposePresetState = () => {
+      const selectedIds = (new URLSearchParams(location.search).get('ids') || '').split(',').filter(Boolean);
+      purposePresetButtons.forEach(button => {
+        const presetIds = (button.dataset.ids || '').split(',').filter(Boolean);
+        const active = presetIds.length === selectedIds.length && presetIds.every((companyId, index) => companyId === selectedIds[index]);
+        button.setAttribute('aria-pressed', String(active));
+      });
+    };
+    const queuePurposePresetState = () => setTimeout(synchronizePurposePresetState, 0);
+    document.addEventListener('click', event => {
+      const target = event.target instanceof Element ? event.target : null;
+      if (target?.closest('[data-purpose-preset-id], [data-remove-id], #clear-compare, [data-search-option-id]')) queuePurposePresetState();
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Enter' && event.target instanceof HTMLElement && event.target.id === 'compare-company-search') queuePurposePresetState();
+    });
+    window.addEventListener('popstate', synchronizePurposePresetState);
+    synchronizePurposePresetState();
   </script>
 
   <script>
@@ -450,8 +539,6 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
           app.dataset.compareMode = 'evidence-loading';
           app.dataset.evidencePayloadRequested = 'true';
           legacy.hidden = true;
-          app.querySelector<HTMLElement>('#legacy-compare-templates')?.setAttribute('hidden', '');
-          app.querySelector<HTMLElement>('#evidence-compare-templates')?.removeAttribute('hidden');
           mount.setAttribute('aria-busy', 'true');
           mount.setAttribute('role', 'status');
           mount.textContent = '根拠付き比較を読み込んでいます。';

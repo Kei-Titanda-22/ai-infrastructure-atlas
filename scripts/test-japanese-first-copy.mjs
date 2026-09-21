@@ -102,6 +102,20 @@ assert.throws(
 
 assert.deepEqual(Object.fromEntries(Object.entries(fixture.fixedUi).map(([key]) => [key, japaneseFirstFixedUiLabels[key]])), fixture.fixedUi, 'fixed UI labels are exact');
 assert.notEqual(japaneseFirstFixedUiLabels['Value Chain'], '供給網上の位置', 'Value Chain is not conflated with supply chain');
+const purposePresetDefinitions = JSON.parse(readFileSync(new URL('../src/data/company-compare-evidence-presets-v01.json', import.meta.url), 'utf8'));
+const purposePresetFixture = fixture.companyComparePurposePresets;
+const purposePresets = purposePresetDefinitions;
+assert.deepEqual(purposePresets, purposePresetFixture.presets, 'purpose preset definitions are independent fixture-exact Japanese copy and ordered Company IDs');
+assert.equal(purposePresets.length, purposePresetFixture.count, 'purpose preset count is fixed');
+assert.equal(purposePresets.flatMap(preset => preset.companyIds).length, purposePresetFixture.slotCount, 'purpose preset Company slots are fixed');
+assert.equal(new Set(purposePresets.flatMap(preset => preset.companyIds)).size, purposePresetFixture.uniqueCompanyCount, 'purpose preset unique Company count is fixed');
+for (const preset of purposePresets) {
+  assert.equal(preset.companyIds.length, 4, `${preset.id}: four Company IDs are exact`);
+  assert.equal(new Set(preset.companyIds).size, 4, `${preset.id}: Company IDs are unique inside the preset`);
+  const exactMatch = purposePresets.find(candidate => candidate.companyIds.length === preset.companyIds.length && candidate.companyIds.every((id, index) => id === preset.companyIds[index]));
+  assert.equal(exactMatch?.id, preset.id, `${preset.id}: exact ordered IDs identify the active preset`);
+  assert.equal(purposePresets.find(candidate => candidate.companyIds.every((id, index) => id === [...preset.companyIds].reverse()[index])) ?? null, null, `${preset.id}: reordered IDs remain a custom selection`);
+}
 for (const [canonicalValue, label] of Object.entries(fixture.structuredTerms)) {
   assert.equal(productInfo(canonicalValue).label, label, `${canonicalValue}: structured exact mapping`);
 }
