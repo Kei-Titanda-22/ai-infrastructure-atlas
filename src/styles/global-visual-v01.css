@@ -282,6 +282,35 @@
   line-height: 1.5;
 }
 
+.global-visual-atlas .value-chain-title-stack {
+  display: block;
+  min-width: 0;
+}
+
+.global-visual-atlas .atlas-context-label,
+.global-visual-atlas .atlas-stage-link-label,
+.global-visual-atlas .atlas-primary-tech-label {
+  display: none;
+}
+
+.global-visual-atlas .atlas-primary-tech-links {
+  display: contents;
+}
+
+.global-visual-atlas .atlas-more-technologies {
+  display: block;
+}
+
+.global-visual-atlas .atlas-more-technologies summary {
+  display: none;
+}
+
+.global-visual-atlas .atlas-more-tech-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px 14px;
+}
+
 /* Financials: data strips and ruled figures replace dashboard-style frames. */
 .global-visual-financials .financial-summary {
   margin-bottom: 15px;
@@ -395,6 +424,118 @@
 
   .global-visual-home .home-intro-copy {
     font-size: 15px;
+  }
+
+  /* Atlas: the one map DOM becomes a vertical, touch-friendly engineering flow. */
+  .global-visual-atlas .value-chain-map {
+    display: block;
+    border-top: 0;
+  }
+
+  .global-visual-atlas .value-chain-stage {
+    display: block;
+    min-width: 0;
+    margin: 0 0 24px;
+    padding: 10px 12px 14px;
+    border: 1px solid var(--visual-rule);
+    border-left-width: 3px;
+    background: var(--surface);
+  }
+
+  .global-visual-atlas .value-chain-stage.vc-demand {
+    background: var(--surface-subtle);
+  }
+
+  .global-visual-atlas .value-chain-stage-head {
+    display: grid;
+    grid-template-columns: 30px minmax(0, 1fr) auto;
+    gap: 7px;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .global-visual-atlas .value-chain-number {
+    align-self: start;
+    padding-top: 2px;
+  }
+
+  .global-visual-atlas .atlas-context-label {
+    display: block;
+    margin-top: 2px;
+    color: var(--visual-metadata);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .global-visual-atlas .atlas-stage-link-label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--link);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: underline;
+    white-space: nowrap;
+  }
+
+  .global-visual-atlas .value-chain-stage p {
+    margin: 7px 0 10px;
+  }
+
+  .global-visual-atlas .value-chain-links {
+    display: block;
+    margin: 0;
+  }
+
+  .global-visual-atlas .atlas-primary-tech-label {
+    display: block;
+    margin-bottom: 3px;
+    color: var(--visual-metadata);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .global-visual-atlas .atlas-primary-tech-links,
+  .global-visual-atlas .atlas-more-tech-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2px 12px;
+  }
+
+  .global-visual-atlas .value-chain-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    min-width: 44px;
+    justify-content: center;
+  }
+
+  .global-visual-atlas .atlas-more-technologies {
+    display: block;
+    margin-top: 2px;
+  }
+
+  .global-visual-atlas .atlas-more-technologies summary {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    color: var(--link);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  .global-visual-atlas .atlas-more-technologies[open] summary {
+    margin-bottom: 2px;
+  }
+
+  .global-visual-atlas .value-chain-arrow {
+    bottom: -18px;
+    left: calc(50% - 11px);
+    width: 22px;
+    height: 22px;
+    background: var(--page);
   }
 
   .global-visual-home .db-status {
