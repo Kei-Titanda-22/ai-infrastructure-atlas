@@ -2,7 +2,7 @@
   "schemaVersion": "0.1",
   "generatedAt": "2026-09-23T00:00:00Z",
   "dataAsOf": "2026-09-23",
-  "inputDigest": "sha256:ec694a58679d99429f8e2a9b9dd8661e1faf78ab94cf13616a3498d833bed1ae",
+  "inputDigest": "sha256:d098644e4586b43b3b5ace59fd24b0461616d2cd46282d246e3f5ea4382babc8",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 242
+    "inputFileCount": 244
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 441,
-      "uniqueSourceCount": 439,
+      "registryRecordCount": 454,
+      "uniqueSourceCount": 452,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -191,8 +191,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 192,
-      "financialSourceResolved": 192
+      "financialSourceReferences": 205,
+      "financialSourceResolved": 205
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -4089,8 +4089,8 @@
       "primaryLayer": "Test & Back-end",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 5,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -4347,9 +4347,11 @@
         "resolvedSourceIds": [
           "ir-ase"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 5,
         "financialSourceIds": [
-          "earnings-ase-technology-2026-07-30-q2-2026"
+          "earnings-ase-technology-2026-07-30-q2-2026",
+          "filing-ase-technology-2025-07-31-q2-2025",
+          "filing-ase-technology-2026-02-05-q4-2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -7220,8 +7222,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 4,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -7474,8 +7476,11 @@
         "resolvedSourceIds": [
           "ir-cisco"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 6,
         "financialSourceIds": [
+          "earnings-cisco-2025-11-12-q1-fy2026",
+          "earnings-cisco-2026-02-11-q2-fy2026",
+          "earnings-cisco-2026-05-13-q3-fy2026",
           "earnings-cisco-2026-08-12-q4-fy2026"
         ],
         "orphanSourceIds": [],
@@ -11232,8 +11237,8 @@
       "primaryLayer": "Foundry & Logic Manufacturing",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 5,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -11490,8 +11495,10 @@
         "resolvedSourceIds": [
           "ir-globalfoundries"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 5,
         "financialSourceIds": [
+          "earnings-globalfoundries-2026-02-11-q4-2025",
+          "earnings-globalfoundries-2026-05-05-q1-2026",
           "earnings-globalfoundries-2026-08-04-q2-2026"
         ],
         "orphanSourceIds": [],
@@ -27807,8 +27814,8 @@
       "primaryLayer": "Foundry & Logic Manufacturing",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -28065,9 +28072,12 @@
         "resolvedSourceIds": [
           "ir-umc"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 7,
         "financialSourceIds": [
-          "earnings-umc-2026-07-29-q2-2026"
+          "earnings-umc-2026-07-29-q2-2026",
+          "results-umc-2025-07-30-q2-2025",
+          "results-umc-2025-10-29-q3-2025",
+          "results-umc-2026-01-28-q4-2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -28667,8 +28677,8 @@
       "primaryLayer": "Memory",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 4,
       "claimCount": 10,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 10,
@@ -28923,8 +28933,11 @@
         "resolvedSourceIds": [
           "ir-western-digital"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 7,
         "financialSourceIds": [
+          "earnings-western-digital-2025-04-30-q3-fy2025",
+          "earnings-western-digital-2025-10-30-q1-fy2026",
+          "earnings-western-digital-2026-01-29-q2-fy2026",
           "earnings-western-digital-2026-08-05-q4-fy2026"
         ],
         "orphanSourceIds": [],
