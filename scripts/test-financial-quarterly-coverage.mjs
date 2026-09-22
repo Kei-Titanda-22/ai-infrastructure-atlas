@@ -2,13 +2,18 @@ import assert from 'node:assert/strict';
 import { readFile, readdir } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { evidenceCompareSupportedCompanyIds } from '../src/lib/company-compare-evidence-ui.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDirectory = join(root, 'src', 'data');
 const readJson = async path => JSON.parse(await readFile(path, 'utf8'));
 const companies = await Promise.all((await readdir(join(dataDirectory, 'companies'))).filter(file => file.endsWith('.json')).sort().map(file => readJson(join(dataDirectory, 'companies', file))));
 const coverage = await readJson(join(dataDirectory, 'financial-quarterly-coverage-v01.json'));
-const history = (await Promise.all((await readdir(dataDirectory)).filter(file => file === 'financial-history.json' || /^financial-history-v0[45]-batch\d+\.json$/.test(file)).sort().map(file => readJson(join(dataDirectory, file))))).flat();
+const historyFileNames = (await readdir(dataDirectory))
+  .filter(file => file === 'financial-history.json' || /^financial-history-v0[45]-batch\d+\.json$/.test(file))
+  .sort();
+const history = (await Promise.all(historyFileNames.map(file => readJson(join(dataDirectory, file)))))
+  .flat();
 
 assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
@@ -43,4 +48,17 @@ assert.equal(coverage.find(row => row.companyId === 'furukawa-electric').coverag
 
 const financialPage = await readFile(join(root, 'src', 'pages', 'financials.astro'), 'utf8');
 assert.match(financialPage, /quarterlyChartRecords\s*=\s*quarterly\.slice\(-6\)/, 'quarterly chart is limited to the latest six records');
+const financialLoader = await readFile(join(root, 'src', 'lib', 'financial-history.ts'), 'utf8');
+const loaderImports = [...financialLoader.matchAll(/^import\s+(\w+)\s+from\s+'\.\.\/data\/(financial-history(?:-v0[45]-batch\d+)?\.json)';$/gm)];
+const loaderAggregate = financialLoader.match(/export const financialHistory = \[([\s\S]*?)\]\.map\(record => \{/);
+assert.ok(loaderAggregate, 'financial history loader has one explicit aggregate before overrides');
+const loaderBindings = [...loaderAggregate[1].matchAll(/\.\.\.(\w+)/g)].map(match => match[1]).sort();
+const importedBindings = loaderImports.map(match => match[1]).sort();
+const importedFileNames = loaderImports.map(match => match[2]).sort();
+assert.deepEqual(loaderBindings, importedBindings, 'financial loader spreads every imported history batch exactly once');
+assert.deepEqual(importedFileNames, historyFileNames, 'Astro financial loader and direct JSON audit use exactly the same history batch set');
+assert.equal(new Set(history.map(record => record.id)).size, history.length, 'all direct JSON financial record IDs are unique');
+const compareCompaniesWithoutFinancialHistory = evidenceCompareSupportedCompanyIds
+  .filter(companyId => !history.some(record => record.companyId === companyId));
+assert.deepEqual(compareCompaniesWithoutFinancialHistory, [], 'all supported Compare Evidence companies have at least one history record through the same loader batch set');
 console.log(`Financial quarterly coverage OK: ${coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length} complete companies`);
