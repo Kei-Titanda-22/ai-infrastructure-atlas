@@ -294,7 +294,7 @@ def evidence_paths() -> list[Path]:
 def financial_paths() -> list[Path]:
     return [
         DATA / "financial-history.json",
-        *sorted(DATA.glob("financial-history-v04-batch*.json")),
+        *sorted(DATA.glob("financial-history-v0[45]-batch*.json")),
         DATA / "financial-history-v04-cashflow-overrides.json",
         DATA / "financial-metric-definitions-v04.json",
     ]
@@ -393,7 +393,7 @@ def load_registry(path: Path, entity_type: str) -> dict[str, dict[str, Any]]:
 
 
 def load_financial_history() -> dict[str, dict[str, Any]]:
-    paths = [DATA / "financial-history.json", *sorted(DATA.glob("financial-history-v04-batch*.json"))]
+    paths = [DATA / "financial-history.json", *sorted(DATA.glob("financial-history-v0[45]-batch*.json"))]
     records: dict[str, dict[str, Any]] = {}
     for path in paths:
         for record in load_json(path):

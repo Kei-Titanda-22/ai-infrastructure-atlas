@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-09-01T00:00:00Z",
-  "dataAsOf": "2026-09-01",
-  "inputDigest": "sha256:14a8ebbd8465b0f091943cbed063b479dac1d56a7cd56734e62cab8f89fb4bab",
+  "generatedAt": "2026-09-22T00:00:00Z",
+  "dataAsOf": "2026-09-22",
+  "inputDigest": "sha256:761fc84a626851a355708518b7faeeb00d7b4e919aef45d5269681b77ba3895e",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 230
+    "inputFileCount": 234
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 371,
-      "uniqueSourceCount": 369,
+      "registryRecordCount": 417,
+      "uniqueSourceCount": 415,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -102,13 +102,76 @@
       ],
       "conflictingDuplicateSourceIdCount": 0,
       "conflictingDuplicateSourceIds": [],
-      "duplicateUrlCount": 2,
+      "duplicateUrlCount": 11,
       "duplicateUrls": [
         {
           "url": "https://kind.krx.co.kr/external/2026/03/12/002053/20260312004659/11011.htm",
           "sourceIds": [
             "filing-hanmi-2026-03-12",
             "krx-hanmi-semiconductor-fy2025-business-report"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm",
+          "sourceIds": [
+            "filing-nvidia-2026-02-25-fy2026-10k",
+            "sec-nvidia-10k-fy2026"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1047127/000104712726000014/amkr-20251231.htm",
+          "sourceIds": [
+            "sec-amkor-10k-fy2025",
+            "sec-amkor-2025-10k"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/2488/000000248826000018/amd-20251227.htm",
+          "sourceIds": [
+            "sec-amd-10k-fy2025",
+            "sec-amd-2025-10k"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/50863/000005086326000011/intc-20251227.htm",
+          "sourceIds": [
+            "sec-intel-10k-2025",
+            "sec-intel-2025-10k"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/6281/000000628125000153/adi-20251101.htm",
+          "sourceIds": [
+            "filing-analog-devices-2025-fy2025-10k",
+            "sec-analog-devices-10k-fy2025"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/6951/000162828025056742/amat-20251026.htm",
+          "sourceIds": [
+            "sec-applied-materials-10k-fy2025",
+            "sec-applied-materials-2025-10k"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000028/mu-20250828.htm",
+          "sourceIds": [
+            "sec-micron-10k-fy2025",
+            "sec-micron-2025-10k"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/804328/000080432825000085/qcom-20250928.htm",
+          "sourceIds": [
+            "sec-qualcomm-10k-fy2025",
+            "sec-qualcomm-fy2025-10k"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/820313/000110465926013549/aph-20251231x10k.htm",
+          "sourceIds": [
+            "sec-amphenol-10k-fy2025",
+            "sec-amphenol-2025-10k"
           ]
         },
         {
@@ -128,8 +191,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 124,
-      "financialSourceResolved": 124
+      "financialSourceReferences": 170,
+      "financialSourceResolved": 170
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -1722,8 +1785,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 4,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -1976,9 +2039,12 @@
         "resolvedSourceIds": [
           "ir-amd"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 6,
         "financialSourceIds": [
-          "earnings-amd-2026-08-04-q2-2026"
+          "earnings-amd-2026-08-04-q2-2026",
+          "sec-amd-10k-fy2025",
+          "sec-amd-10q-q1-fy2025",
+          "sec-amd-10q-q3-fy2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -2003,8 +2069,8 @@
       "primaryLayer": "Test & Back-end",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -2261,9 +2327,13 @@
         "resolvedSourceIds": [
           "ir-amkor"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
-          "earnings-amkor-2026-07-27-q2-2026"
+          "earnings-amkor-2026-07-27-q2-2026",
+          "sec-amkor-10k-fy2025",
+          "sec-amkor-10q-q1-2025",
+          "sec-amkor-10q-q1-2026",
+          "sec-amkor-10q-q3-2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -2288,8 +2358,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 8,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -2545,9 +2615,13 @@
         "resolvedSourceIds": [
           "ir-amphenol"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 8,
         "financialSourceIds": [
-          "earnings-amphenol-2026-07-29-q2-2026"
+          "earnings-amphenol-2026-07-29-q2-2026",
+          "sec-amphenol-10k-fy2025",
+          "sec-amphenol-10q-q1-2025",
+          "sec-amphenol-10q-q1-2026",
+          "sec-amphenol-10q-q3-2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -2574,8 +2648,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 5,
-      "financialSourceCount": 2,
+      "registrySourceCount": 9,
+      "financialSourceCount": 6,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -2832,10 +2906,14 @@
         "resolvedSourceIds": [
           "ir-adi"
         ],
-        "registrySourceCount": 5,
+        "registrySourceCount": 9,
         "financialSourceIds": [
           "earnings-analog-devices-2026-05-20-q2-fy2026",
-          "earnings-analog-devices-2026-08-19-q3-fy2026"
+          "earnings-analog-devices-2026-08-19-q3-fy2026",
+          "sec-analog-devices-10k-fy2025",
+          "sec-analog-devices-10q-q1-fy2026",
+          "sec-analog-devices-10q-q2-fy2025",
+          "sec-analog-devices-10q-q3-fy2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -2862,8 +2940,8 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 6,
-      "financialSourceCount": 1,
+      "registrySourceCount": 10,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -3121,9 +3199,13 @@
           "earnings-applied-materials-2026-08-13-q3-fy2026",
           "ir-applied-materials"
         ],
-        "registrySourceCount": 6,
+        "registrySourceCount": 10,
         "financialSourceIds": [
-          "earnings-applied-materials-2026-08-13-q3-fy2026"
+          "earnings-applied-materials-2026-08-13-q3-fy2026",
+          "sec-applied-materials-10k-fy2025",
+          "sec-applied-materials-10q-q1-fy2026",
+          "sec-applied-materials-10q-q2-fy2025",
+          "sec-applied-materials-10q-q2-fy2026"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -10566,8 +10648,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 8,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -10824,9 +10906,13 @@
         "resolvedSourceIds": [
           "ir-furukawa-electric"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 8,
         "financialSourceIds": [
-          "furukawa-electric-financial-summary-fy2024"
+          "furukawa-electric-financial-summary-fy2024",
+          "furukawa-electric-financial-summary-fy2025",
+          "furukawa-electric-financial-summary-h1-fy2025",
+          "furukawa-electric-financial-summary-q1-fy2026",
+          "furukawa-electric-financial-summary-q3-fy2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -12841,8 +12927,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -13099,9 +13185,13 @@
         "resolvedSourceIds": [
           "ir-intel"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
-          "earnings-intel-2026-07-23-q2-2026"
+          "earnings-intel-2026-07-23-q2-2026",
+          "sec-intel-10k-2025",
+          "sec-intel-10q-q1-2025",
+          "sec-intel-10q-q1-2026",
+          "sec-intel-10q-q3-2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -15134,8 +15224,8 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -15394,9 +15484,12 @@
           "earnings-lam-research-2026-07-29-june-2026",
           "ir-lam-research"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 7,
         "financialSourceIds": [
-          "earnings-lam-research-2026-07-29-june-2026"
+          "earnings-lam-research-2026-07-29-june-2026",
+          "sec-lam-research-10q-q1-fy2026",
+          "sec-lam-research-10q-q2-fy2026",
+          "sec-lam-research-10q-q3-fy2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -17123,8 +17216,8 @@
       "primaryLayer": "Memory",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -17383,9 +17476,12 @@
           "earnings-micron-2026-06-24-q3-fy2026",
           "ir-micron"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 6,
         "financialSourceIds": [
-          "earnings-micron-2026-06-24-q3-fy2026"
+          "earnings-micron-2026-06-24-q3-fy2026",
+          "sec-micron-10k-fy2025",
+          "sec-micron-10q-q1-fy2026",
+          "sec-micron-10q-q2-fy2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -19109,8 +19205,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 4,
       "resolvedSourceCount": 4,
-      "registrySourceCount": 6,
-      "financialSourceCount": 3,
+      "registrySourceCount": 9,
+      "financialSourceCount": 6,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -19369,11 +19465,14 @@
           "filing-nvidia-2026-02-25-fy2026-10k",
           "ir-nvidia"
         ],
-        "registrySourceCount": 6,
+        "registrySourceCount": 9,
         "financialSourceIds": [
           "earnings-nvidia-2026-08-26-q2-fy2027",
           "filing-nvidia-2025-02-26-fy2025-10k",
-          "filing-nvidia-2026-02-25-fy2026-10k"
+          "filing-nvidia-2026-02-25-fy2026-10k",
+          "sec-nvidia-10k-fy2026",
+          "sec-nvidia-10q-q1-fy2026",
+          "sec-nvidia-10q-q3-fy2026"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -20253,8 +20352,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 8,
+      "financialSourceCount": 7,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -20507,8 +20606,14 @@
         "resolvedSourceIds": [
           "ir-qualcomm"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 8,
         "financialSourceIds": [
+          "sec-qualcomm-10k-fy2025",
+          "sec-qualcomm-10q-q1-fy2026",
+          "sec-qualcomm-10q-q2-fy2025",
+          "sec-qualcomm-10q-q2-fy2026",
+          "sec-qualcomm-10q-q3-fy2025",
+          "sec-qualcomm-10q-q3-fy2026",
           "sec-qualcomm-fy2025-10k"
         ],
         "orphanSourceIds": [],
@@ -26235,8 +26340,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 7,
-      "financialSourceCount": 2,
+      "registrySourceCount": 11,
+      "financialSourceCount": 6,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -26493,10 +26598,14 @@
         "resolvedSourceIds": [
           "ir-ti"
         ],
-        "registrySourceCount": 7,
+        "registrySourceCount": 11,
         "financialSourceIds": [
           "earnings-ti-2026-04-22-q1-2026",
-          "earnings-ti-2026-07-22-q2-2026"
+          "earnings-ti-2026-07-22-q2-2026",
+          "sec-texas-instruments-10k-2025",
+          "sec-texas-instruments-10q-q1-2025",
+          "sec-texas-instruments-10q-q2-2025",
+          "sec-texas-instruments-10q-q3-2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],

@@ -85,16 +85,17 @@ export function normalizeCompareFinancialAccountingBasis(accountingBasis: string
   return compareFinancialAccountingBasisAliases[accountingBasis] ?? accountingBasis;
 }
 
-const compareNamedQuarterPeriodLabels = Object.freeze<Record<string, string>>({
-  'June 2025 quarter': '2025年6月期（四半期）',
-  'March 2026 quarter': '2026年3月期（四半期）',
-  'June 2026 quarter': '2026年6月期（四半期）',
+const compareNamedQuarterMonths = Object.freeze<Record<string, string>>({
+  March: '3月',
+  June: '6月',
+  September: '9月',
+  December: '12月',
 });
 
 export function formatCompareFinancialPeriodLabel(periodLabel: string) {
   const canonicalLabel = periodLabel.trim();
-  const namedQuarter = compareNamedQuarterPeriodLabels[canonicalLabel];
-  if (namedQuarter) return namedQuarter;
+  const namedQuarter = canonicalLabel.match(/^(March|June|September|December) (\d{4}) quarter$/);
+  if (namedQuarter) return `${namedQuarter[2]}年${compareNamedQuarterMonths[namedQuarter[1]]}期（四半期）`;
 
   const quarterFirst = canonicalLabel.match(/^Q([1-4]) FY(\d{4})$/);
   if (quarterFirst) return `${quarterFirst[2]}年度 第${quarterFirst[1]}四半期`;

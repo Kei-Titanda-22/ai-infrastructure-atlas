@@ -14,7 +14,11 @@ def load_many(paths):
     return rows
 
 
-history_paths = [DATA / 'financial-history.json', *sorted(DATA.glob('financial-history-v04-batch*.json'))]
+history_paths = [
+    DATA / 'financial-history.json',
+    *sorted(DATA.glob('financial-history-v04-batch*.json')),
+    *sorted(DATA.glob('financial-history-v05-batch*.json')),
+]
 history = load_many(history_paths)
 
 overrides = json.loads((DATA / 'financial-history-v04-cashflow-overrides.json').read_text(encoding='utf-8'))
@@ -38,31 +42,37 @@ for override in overrides:
     target.update({key: value for key, value in override.items() if key not in {'id', 'metrics'}})
     target['metrics'].update(override_metrics)
 
-v04_source_paths = sorted(DATA.glob('document-sources-v04*.json'))
-v04_policy_paths = sorted(DATA.glob('document-source-policies-v04*.json'))
-source_paths = [DATA / 'sources.json', DATA / 'sources-v02.json', DATA / 'document-sources.json', *v04_source_paths]
+versioned_source_paths = [
+    *sorted(DATA.glob('document-sources-v04*.json')),
+    *sorted(DATA.glob('document-sources-v05*.json')),
+]
+versioned_policy_paths = [
+    *sorted(DATA.glob('document-source-policies-v04*.json')),
+    *sorted(DATA.glob('document-source-policies-v05*.json')),
+]
+source_paths = [DATA / 'sources.json', DATA / 'sources-v02.json', DATA / 'document-sources.json', *versioned_source_paths]
 sources = load_many(source_paths)
 audits = json.loads((DATA / 'metric-audits.json').read_text(encoding='utf-8'))
 company_files = list((DATA / 'companies').glob('*.json'))
 company_ids = {path.stem for path in company_files}
 source_by_id = {item['id']: item for item in sources}
 
-v04_sources = load_many(v04_source_paths)
-v04_policies = load_many(v04_policy_paths)
-v04_source_ids = {item['id'] for item in v04_sources}
-v04_policy_ids = {item['sourceId'] for item in v04_policies}
-if len(v04_source_ids) != len(v04_sources):
-    errors.append('duplicate v0.4 document source id across registries')
-if len(v04_policy_ids) != len(v04_policies):
-    errors.append('duplicate v0.4 document source policy id across registries')
-if v04_source_ids != v04_policy_ids:
+versioned_sources = load_many(versioned_source_paths)
+versioned_policies = load_many(versioned_policy_paths)
+versioned_source_ids = {item['id'] for item in versioned_sources}
+versioned_policy_ids = {item['sourceId'] for item in versioned_policies}
+if len(versioned_source_ids) != len(versioned_sources):
+    errors.append('duplicate versioned document source id across registries')
+if len(versioned_policy_ids) != len(versioned_policies):
+    errors.append('duplicate versioned document source policy id across registries')
+if versioned_source_ids != versioned_policy_ids:
     errors.append(
-        f'v0.4 source-policy mismatch: missing policies={sorted(v04_source_ids - v04_policy_ids)}, '
-        f'orphan policies={sorted(v04_policy_ids - v04_source_ids)}'
+        f'versioned source-policy mismatch: missing policies={sorted(versioned_source_ids - versioned_policy_ids)}, '
+        f'orphan policies={sorted(versioned_policy_ids - versioned_source_ids)}'
     )
-for policy in v04_policies:
+for policy in versioned_policies:
     if policy.get('reviewStatus') != 'pending':
-        errors.append(f'{policy.get("sourceId")}: new v0.4 source policy must remain pending until terms review')
+        errors.append(f'{policy.get("sourceId")}: versioned source policy must remain pending until terms review')
     if policy.get('automatedRetrieval') != 'unknown':
         errors.append(f'{policy.get("sourceId")}: automated retrieval must remain unknown before review')
     if policy.get('internalPolicy') != 'manual-reference-only-until-reviewed':
@@ -247,8 +257,8 @@ if cashflow_periods < 181:
     errors.append(f'v0.4 cash-flow regression: expected at least 181 FCF/Capex periods, got {cashflow_periods}')
 if len(overrides) < 12:
     errors.append(f'v0.4 cash-flow override regression: expected at least 12 overrides, got {len(overrides)}')
-if len(v04_sources) < 118:
-    errors.append(f'v0.4 source regression: expected at least 118 document sources+policies, got {len(v04_sources)}')
+if len(versioned_sources) < 118:
+    errors.append(f'versioned source regression: expected at least 118 document sources+policies, got {len(versioned_sources)}')
 
 if errors:
     print('v0.4 financial-history validation FAILED')
@@ -261,5 +271,5 @@ print(
     f'{len(history)} periods / {len(covered_companies)} companies / '
     f'{len(multi_period_companies)} multi-period companies / '
     f'{verified_metrics} verified metrics / {cashflow_periods} FCF+Capex periods / '
-    f'{len(overrides)} cash-flow overrides / {len(v04_sources)} v0.4 document sources+policies'
+    f'{len(overrides)} cash-flow overrides / {len(versioned_sources)} versioned document sources+policies'
 )

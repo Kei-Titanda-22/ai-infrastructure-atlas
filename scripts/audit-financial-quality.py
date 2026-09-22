@@ -336,6 +336,7 @@ def load_json(path: Path) -> Any:
 def load_inputs() -> tuple[list[dict[str, Any]], dict[str, dict[str, Any]], list[Path], int]:
     history_paths = [DATA / "financial-history.json"]
     history_paths.extend(sorted(DATA.glob("financial-history-v04-batch*.json"), key=batch_number))
+    history_paths.extend(sorted(DATA.glob("financial-history-v05-batch*.json"), key=batch_number))
     records: list[dict[str, Any]] = []
     for path in history_paths:
         records.extend(load_json(path))
@@ -868,7 +869,7 @@ def build_report() -> dict[str, Any]:
         path
         for path in input_paths
         if path.name == "financial-history.json"
-        or re.fullmatch(r"financial-history-v04-batch\d+\.json", path.name)
+        or re.fullmatch(r"financial-history-v0[45]-batch\d+\.json", path.name)
     ]
     return {
         "schemaVersion": 2,

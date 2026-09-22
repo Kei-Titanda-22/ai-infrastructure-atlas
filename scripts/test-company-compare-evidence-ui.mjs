@@ -282,6 +282,8 @@ const compareFinancialHistory = [
   ...await readJson('../src/data/financial-history-v04-batch35.json'),
   ...await readJson('../src/data/financial-history-v04-batch36.json'),
   ...await readJson('../src/data/financial-history-v04-batch37.json'),
+  ...await readJson('../src/data/financial-history-v05-batch01.json'),
+  ...await readJson('../src/data/financial-history-v05-batch02.json'),
 ].map(record => {
   const override = compareCashFlowOverrideById.get(record.id);
   return override ? { ...record, ...override, metrics: { ...record.metrics, ...override.metrics } } : record;
@@ -1770,9 +1772,27 @@ if (process.argv.includes('--dist')) {
     assert.match(assetHtml, /data-terminology-content/, `${companyId}: shared terminology hook`);
   }
   const compareBytes = Buffer.byteLength(compareHtml);
-  const baselineBytes = 585_468;
-  const maximumBytes = 644_015;
-  assert.ok(compareBytes <= maximumBytes, `legacy Compare HTML ${compareBytes} B must remain within 10% of ${baselineBytes} B`);
+  const legacyCompareSizeContract = Object.freeze({
+    acceptedRawBytes: 651_683,
+    growthLimitRatio: 1.05,
+    maximumRawBytes: 684_267,
+    acceptedReason: 'Official financial-history expansion adds 22 reported records to the established Compare payload.',
+  });
+  const assertLegacyCompareSize = bytes => {
+    assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'legacy Compare HTML byte count is a non-negative integer');
+    assert.ok(bytes <= legacyCompareSizeContract.maximumRawBytes, `legacy Compare HTML ${bytes} B exceeds ${legacyCompareSizeContract.maximumRawBytes} B`);
+  };
+  assert.equal(legacyCompareSizeContract.growthLimitRatio, 1.05, 'legacy Compare HTML growth limit remains +5%');
+  assert.equal(
+    Math.floor(legacyCompareSizeContract.acceptedRawBytes * legacyCompareSizeContract.growthLimitRatio),
+    legacyCompareSizeContract.maximumRawBytes,
+    'legacy Compare HTML maximum derives from the accepted baseline',
+  );
+  assert.match(legacyCompareSizeContract.acceptedReason, /Official financial-history expansion adds 22 reported records/, 'legacy Compare HTML baseline records the approved official-financial reason');
+  assert.doesNotThrow(() => assertLegacyCompareSize(684_267), 'legacy Compare HTML exact maximum passes');
+  assert.throws(() => assertLegacyCompareSize(684_268), /exceeds 684267 B/, 'legacy Compare HTML maximum plus one fails');
+  assert.equal(compareBytes, legacyCompareSizeContract.acceptedRawBytes, 'legacy Compare HTML exactly matches the accepted post-financial-history baseline');
+  assertLegacyCompareSize(compareBytes);
   assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
   assert.doesNotMatch(compareHtml, /data-claim-id=/, 'built legacy HTML excludes Company Claim bodies');
   assert.doesNotMatch(compareHtml, /data-relation-id=/, 'built legacy HTML excludes Relation bodies');
