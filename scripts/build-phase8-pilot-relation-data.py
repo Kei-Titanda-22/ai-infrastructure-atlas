@@ -469,7 +469,7 @@ def load_normalized_financial_history() -> list[dict[str, Any]]:
         return int(match.group(1)) if match else -1
 
     paths = [DATA / "financial-history.json"] + sorted(
-        DATA.glob("financial-history-v04-batch*.json"),
+        DATA.glob("financial-history-v0[45]-batch*.json"),
         key=batch_number,
     )
     history = [deepcopy(record) for path in paths for record in load_json(path)]

@@ -282,6 +282,7 @@ const compareFinancialHistory = [
   ...await readJson('../src/data/financial-history-v04-batch35.json'),
   ...await readJson('../src/data/financial-history-v04-batch36.json'),
   ...await readJson('../src/data/financial-history-v04-batch37.json'),
+  ...await readJson('../src/data/financial-history-v05-batch01.json'),
 ].map(record => {
   const override = compareCashFlowOverrideById.get(record.id);
   return override ? { ...record, ...override, metrics: { ...record.metrics, ...override.metrics } } : record;

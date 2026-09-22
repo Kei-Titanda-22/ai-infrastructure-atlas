@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FinancialChart from '../components/FinancialChart.astro';
 import { getCollection } from 'astro:content';
+import quarterlyCoverage from '../data/financial-quarterly-coverage-v01.json';
 import { financialSourceById } from '../lib/financial-sources';
 import { withBase } from '../lib/paths';
 import {
@@ -21,6 +22,7 @@ const coveredCompanies = coveredIds
   .filter(Boolean)
   .sort((a, b) => (a!.data.japaneseName || a!.data.name).localeCompare(b!.data.japaneseName || b!.data.name, 'ja'));
 const coverage = financialCoverage();
+const quarterlyCoverageByCompany = new Map(quarterlyCoverage.map(item => [item.companyId, item]));
 const initialCompanyId = coveredIds.includes('nvidia') ? 'nvidia' : coveredIds[0];
 
 const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'operatingMargin' | 'freeCashFlow' | 'capex') => {
@@ -58,7 +60,9 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
     {coveredCompanies.map(company => {
       const history = getFinancialHistory(company!.id);
       const quarterly = history.filter(record => record.periodType === 'quarterly');
+      const quarterlyChartRecords = quarterly.slice(-6);
       const annual = history.filter(record => record.periodType === 'annual');
+      const quarterlyCoverageStatus = quarterlyCoverageByCompany.get(company!.id);
       const quarterlyHasFcf = quarterly.some(record => record.metrics.freeCashFlow.value != null);
       const quarterlyHasCapex = quarterly.some(record => record.metrics.capex.value != null);
       const annualHasFcf = annual.some(record => record.metrics.freeCashFlow.value != null);
@@ -75,14 +79,20 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
 
           {quarterly.length > 0 && (
             <div class="financial-period-block">
-              <div class="financial-period-head"><h3>四半期</h3><span>{quarterly.length}期間</span></div>
+              <div class="financial-period-head"><h3>四半期</h3><span>{quarterly.length}期間（グラフは直近最大6四半期）</span></div>
               <div class="financial-chart-grid">
-                <FinancialChart records={quarterly} metricId="revenue" title="売上高" periodType="quarterly" />
-                <FinancialChart records={quarterly} metricId="operatingMargin" title="営業利益率" periodType="quarterly" />
-                {quarterlyHasFcf ? <FinancialChart records={quarterly} metricId="freeCashFlow" title="FCF" periodType="quarterly" /> : null}
-                {quarterlyHasCapex ? <FinancialChart records={quarterly} metricId="capex" title="設備投資" periodType="quarterly" /> : null}
+                <FinancialChart records={quarterlyChartRecords} metricId="revenue" title="売上高" periodType="quarterly" />
+                <FinancialChart records={quarterlyChartRecords} metricId="operatingMargin" title="営業利益率" periodType="quarterly" />
+                {quarterlyHasFcf ? <FinancialChart records={quarterlyChartRecords} metricId="freeCashFlow" title="FCF" periodType="quarterly" /> : null}
+                {quarterlyHasCapex ? <FinancialChart records={quarterlyChartRecords} metricId="capex" title="設備投資" periodType="quarterly" /> : null}
               </div>
             </div>
+          )}
+
+          {quarterlyCoverageStatus && quarterlyCoverageStatus.coverageStatus !== 'complete-six-quarters' && (
+            <p class="financial-definition-note" data-quarterly-coverage-status={quarterlyCoverageStatus.coverageStatus}>
+              四半期実績の収録状況：{quarterlyCoverageStatus.actualQuarterCount} / {quarterlyCoverageStatus.targetQuarterCount}。{quarterlyCoverageStatus.blockerReason}
+            </p>
           )}
 
           {annual.length > 0 && (
