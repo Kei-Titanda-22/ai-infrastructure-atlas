@@ -2,9 +2,9 @@
 
 - Checked at: 2026-09-23
 - Registry companies: 100
-- Financial-history shard manifest digest: 9c05b6aa2756f93a431df12445a636a96c52e4d9d75a0b51ef306a026f73efac
-- Complete six quarters: 18
-- Partial quarterly (1–5): 32
+- Financial-history shard manifest digest: 855776967782b804d930ae21ee5f76308c060d7eb6a0786d89515ac4f969025f
+- Complete six quarters: 23
+- Partial quarterly (1–5): 27
 - Awaiting next reported quarter: 1
 - Semiannual only: 0
 - Annual only: 0
@@ -13,13 +13,17 @@
 
 ## Companies with six or more actual quarterly records
 
+- advantest
 - amd
 - amkor
 - amphenol
 - analog-devices
 - applied-materials
+- arista
 - asml
 - broadcom
+- disco
+- entegris
 - furukawa-electric
 - intel
 - kla
@@ -31,13 +35,14 @@
 - texas-instruments
 - tokyo-electron
 - tsmc
+- vertiv
 
 ## Per-company coverage
 
 | companyId | cadence | actual / target | latest period | status | blocker | official source |
 | --- | --- | ---: | --- | --- | --- | --- |
 | abb | quarterly | 2 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://new.abb.com/news/detail/137496/q2-2026-results) |
-| advantest | quarterly | 2 / 6 | FY2026 Q1 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.advantest.com/ja/investors/financial-highlights/review/) |
+| advantest | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.advantest.com/ja/investors/financial-highlights/review/) |
 | air-liquide | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.airliquide.com/sites/airliquide.com/files/2026-02/air-liquide-pr-fy-2025-with-record-performance-and-confident-in-its-transformation-dynamic-air-liquide-confirms-its-growth-outlook.pdf) |
 | ajinomoto-fine-techno | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.ajinomoto.com/cms_wp_ajnmt_global/wp-content/uploads/pdf/2026_08_06_01E.pdf) |
 | amd | quarterly | 6 / 6 | Q2 2026 (2026-06-27) | complete-six-quarters | — | [official](https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results) |
@@ -46,7 +51,7 @@
 | analog-devices | quarterly | 6 / 6 | Q3 FY2026 (2026-08-01) | complete-six-quarters | — | [official](https://investor.analog.com/news-releases/news-release-details/analog-devices-reports-record-fiscal-third-quarter-2026) |
 | applied-materials | quarterly | 6 / 6 | Q3 FY2026 (2026-07-26) | complete-six-quarters | — | [official](https://investor.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-third-quarter-2026-results) |
 | aptiv | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/1521332/000152133226000009/aptv-20251231.htm) |
-| arista | quarterly | 2 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Second-Quarter-2026-Financial-Results/default.aspx) |
+| arista | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Second-Quarter-2026-Financial-Results/default.aspx) |
 | arm | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm) |
 | ase-technology | quarterly | 3 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.sec.gov/Archives/edgar/data/1122411/000095010326011351/dp250868_6k.htm) |
 | asm-international | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.asm.com/media/3skhiimk/asm-2025-annual-report.pdf) |
@@ -65,9 +70,9 @@
 | credo | quarterly | 2 / 6 | Q4 FY2026 (2026-05-02) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx) |
 | denso | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.denso.com/global/en/about-us/investors/financial/) |
 | digital-realty | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/1297996/000110465926015365/dlr-20251231x10k.htm) |
-| disco | quarterly | 2 / 6 | FY2026 Q1 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.disco.co.jp/eg/ir/library/doc/fr/fr20260723.pdf) |
+| disco | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.disco.co.jp/eg/ir/library/doc/fr/fr20260723.pdf) |
 | eaton | quarterly | 2 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.sec.gov/Archives/edgar/data/1551182/000155118226000027/etn06302026exhibit99.htm) |
-| entegris | quarterly | 4 / 6 | Q2 2026 (2026-06-27) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://investor.entegris.com/news/news-details/2026/Entegris-Reports-Results-for-Second-Quarter-of-2026/default.aspx) |
+| entegris | quarterly | 6 / 6 | Q2 2026 (2026-06-27) | complete-six-quarters | — | [official](https://investor.entegris.com/news/news-details/2026/Entegris-Reports-Results-for-Second-Quarter-of-2026/default.aspx) |
 | equinix | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm) |
 | fanuc | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.fanuc.co.jp/en/ir/announce/pdf/2026/financialresult202603_e.pdf) |
 | fujikura | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www2.jpx.co.jp/disc/58030/140120260514532598.pdf) |
@@ -133,6 +138,6 @@
 | tsmc | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investor.tsmc.com/english/quarterly-results/2026/q2) |
 | umc | quarterly | 2 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.umc.com/upload/media/08_Investors/Financials/Quarterly_Results/Quarterly_2020-2029_English_pdf/2026/Q2_2026/UMC26Q2_report.pdf) |
 | unimicron | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.unimicron.com/money08.html) |
-| vertiv | quarterly | 2 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Second-Quarter-2026-with-Diluted-EPS-Growth-of-53-Adjusted-Diluted-EPS-Growth-of-60-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/default.aspx) |
+| vertiv | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Second-Quarter-2026-with-Diluted-EPS-Growth-of-53-Adjusted-Diluted-EPS-Growth-of-60-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/default.aspx) |
 | western-digital | quarterly | 3 / 6 | Q4 FY2026 (2026-07-03) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.sec.gov/Archives/edgar/data/106040/000162828026053305/a4ex991-pressreleaseq426.htm) |
 | yaskawa | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.yaskawa-global.com/wp-content/uploads/2026/04/20260410_en.pdf) |

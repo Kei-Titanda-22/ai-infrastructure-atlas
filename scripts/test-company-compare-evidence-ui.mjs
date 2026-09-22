@@ -1774,10 +1774,10 @@ if (process.argv.includes('--dist')) {
   }
   const compareBytes = Buffer.byteLength(compareHtml);
   const legacyCompareSizeContract = Object.freeze({
-    acceptedRawBytes: 651_683,
+    acceptedRawBytes: 691_072,
     growthLimitRatio: 1.05,
-    maximumRawBytes: 684_267,
-    acceptedReason: 'Official financial-history expansion adds 22 reported records to the established Compare payload.',
+    maximumRawBytes: 725_625,
+    acceptedReason: 'Official third-batch financial-history expansion adds 18 reported records to the established Compare payload; the preceding accepted output was 667,735 B.',
   });
   const assertLegacyCompareSize = bytes => {
     assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'legacy Compare HTML byte count is a non-negative integer');
@@ -1789,9 +1789,9 @@ if (process.argv.includes('--dist')) {
     legacyCompareSizeContract.maximumRawBytes,
     'legacy Compare HTML maximum derives from the accepted baseline',
   );
-  assert.match(legacyCompareSizeContract.acceptedReason, /Official financial-history expansion adds 22 reported records/, 'legacy Compare HTML baseline records the approved official-financial reason');
-  assert.doesNotThrow(() => assertLegacyCompareSize(684_267), 'legacy Compare HTML exact maximum passes');
-  assert.throws(() => assertLegacyCompareSize(684_268), /exceeds 684267 B/, 'legacy Compare HTML maximum plus one fails');
+  assert.match(legacyCompareSizeContract.acceptedReason, /Official third-batch financial-history expansion adds 18 reported records/, 'legacy Compare HTML baseline records the approved official-financial reason');
+  assert.doesNotThrow(() => assertLegacyCompareSize(725_625), 'legacy Compare HTML exact maximum passes');
+  assert.throws(() => assertLegacyCompareSize(725_626), /exceeds 725625 B/, 'legacy Compare HTML maximum plus one fails');
   assert.ok(compareBytes >= legacyCompareSizeContract.acceptedRawBytes, 'legacy Compare HTML remains at or above the approved pre-expansion baseline');
   assertLegacyCompareSize(compareBytes);
   assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
