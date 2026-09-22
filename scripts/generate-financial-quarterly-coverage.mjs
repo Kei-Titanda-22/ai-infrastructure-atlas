@@ -7,7 +7,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDirectory = join(root, 'src', 'data');
 const outputPath = join(dataDirectory, 'financial-quarterly-coverage-v01.json');
 const reportPath = join(root, 'docs', 'financial-quarterly-coverage-v01.md');
-const checkedAt = '2026-09-22';
+const checkedAt = '2026-09-23';
 
 const readJson = async path => JSON.parse(await readFile(path, 'utf8'));
 
