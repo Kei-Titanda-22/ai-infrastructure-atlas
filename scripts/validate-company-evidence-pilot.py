@@ -29,6 +29,48 @@ COLLECTION = {"complete", "partial", "not-started"}
 MISSING = {"not-collected", "primary-source-unchecked", "not-disclosed", "not-applicable"}
 LOCATORS = {"page", "section", "heading", "table", "note", "anchor", "quotedLabel"}
 
+# The v0.2 Pilot authoring inputs are intentionally narrow.  A financial-only
+# follow-up may refresh derived projections and documentation without becoming
+# a Pilot authoring change.  When an authoring input is changed, though, keep
+# the original guard against mixing it with unrelated canonical inputs.
+PILOT_AUTHORING_INPUT_PATHS = frozenset({
+    "src/data/company-evidence-pilot-v02.json",
+    "src/data/relationships.json",
+    "src/data/relation-evidence-bindings-v01.json",
+    "docs/company-evidence-schema-v02.json",
+})
+
+
+def pilot_scope_errors(paths: list[str]) -> list[str]:
+    """Return scope violations without consulting Git or mutating repository state.
+
+    Financial-history changes and their generated projections are valid in a
+    financial-only follow-up.  They remain forbidden when a Pilot authoring
+    input is changed in the same change set, which preserves the Pilot's
+    isolation from canonical company, claim, facility, and financial inputs.
+    """
+    normalized = {path.replace("\\", "/") for path in paths}
+    authoring_paths = sorted(normalized & PILOT_AUTHORING_INPUT_PATHS)
+    if not authoring_paths:
+        return []
+
+    mixed_inputs = sorted(
+        path
+        for path in normalized
+        if (
+            path.startswith("src/data/companies/")
+            or path.startswith("src/data/financial-history")
+            or "cashflow-overrides" in path
+            or path in {"src/data/claims.json", "src/data/facilities.json"}
+        )
+    )
+    if not mixed_inputs:
+        return []
+    return [
+        "Pilot authoring inputs must not mix with canonical company, financial-history, "
+        f"claim, or facility changes: authoring={authoring_paths}, mixed={mixed_inputs}"
+    ]
+
 
 def load(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
@@ -211,12 +253,7 @@ def main() -> int:
     if coverage_keys != expected_coverage:
         fail(errors, f"coverage must contain all 55 company/category pairs; missing={sorted(expected_coverage - coverage_keys)}")
 
-    forbidden = []
-    for path in changed_paths():
-        if path.startswith("src/data/companies/") or path.startswith("src/data/financial-history") or "cashflow-overrides" in path or path in {"src/data/claims.json", "src/data/facilities.json"}:
-            forbidden.append(path)
-    if forbidden:
-        fail(errors, f"changes outside Pilot scope: {forbidden}")
+    errors.extend(pilot_scope_errors(changed_paths()))
 
     # Legacy narrative remains read-only and cannot be promoted automatically.
     if any(claim.get("verificationStatus") == "verified" for claim in claims):
