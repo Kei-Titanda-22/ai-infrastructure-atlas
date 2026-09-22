@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-09-22T00:00:00Z",
-  "dataAsOf": "2026-09-22",
-  "inputDigest": "sha256:761fc84a626851a355708518b7faeeb00d7b4e919aef45d5269681b77ba3895e",
+  "generatedAt": "2026-09-23T00:00:00Z",
+  "dataAsOf": "2026-09-23",
+  "inputDigest": "sha256:87f4ddac5db701eef8650de1a45e57a4f3d18bf7a7c619d58073132e2377c106",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 234
+    "inputFileCount": 236
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 417,
-      "uniqueSourceCount": 415,
+      "registryRecordCount": 430,
+      "uniqueSourceCount": 428,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -191,8 +191,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 170,
-      "financialSourceResolved": 170
+      "financialSourceReferences": 182,
+      "financialSourceResolved": 182
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -4653,8 +4653,8 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 4,
+      "financialSourceCount": 2,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -4912,8 +4912,9 @@
           "earnings-asml-2026-07-15-q2-2026",
           "ir-asml"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 4,
         "financialSourceIds": [
+          "earnings-asml-2025-04-16-q1-2025",
           "earnings-asml-2026-07-15-q2-2026"
         ],
         "orphanSourceIds": [],
@@ -5795,8 +5796,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 5,
+      "financialSourceCount": 3,
       "claimCount": 10,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 10,
@@ -6053,9 +6054,11 @@
           "earnings-broadcom-2026-06-04-q2-fy2026",
           "ir-broadcom"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 5,
         "financialSourceIds": [
-          "earnings-broadcom-2026-06-04-q2-fy2026"
+          "earnings-broadcom-2025-12-11-q4-fy2025",
+          "earnings-broadcom-2026-06-04-q2-fy2026",
+          "earnings-broadcom-2026-09-02-q3-fy2026"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -14653,8 +14656,8 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 8,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -14912,8 +14915,12 @@
           "earnings-kla-2026-07-28-q4-fy2026",
           "ir-kla"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 8,
         "financialSourceIds": [
+          "earnings-kla-2025-04-30-q3-fy2025",
+          "earnings-kla-2025-10-29-q1-fy2026",
+          "earnings-kla-2026-01-29-q2-fy2026",
+          "earnings-kla-2026-04-29-q3-fy2026",
           "earnings-kla-2026-07-28-q4-fy2026"
         ],
         "orphanSourceIds": [],
@@ -23780,8 +23787,8 @@
       "primaryLayer": "Memory",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -24040,8 +24047,10 @@
           "earnings-sk-hynix-2026-07-29-q2-2026",
           "ir-sk-hynix"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 6,
         "financialSourceIds": [
+          "earnings-sk-hynix-2025-04-24-q1-2025",
+          "earnings-sk-hynix-2026-01-28-fy2025",
           "earnings-sk-hynix-2026-07-29-q2-2026"
         ],
         "orphanSourceIds": [],
@@ -26630,8 +26639,8 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 11,
-      "financialSourceCount": 5,
+      "registrySourceCount": 13,
+      "financialSourceCount": 6,
       "claimCount": 13,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 13,
@@ -26892,8 +26901,9 @@
           "earnings-tokyo-electron-2026-07-30-q1-fy2027",
           "ir-tokyo-electron"
         ],
-        "registrySourceCount": 11,
+        "registrySourceCount": 13,
         "financialSourceIds": [
+          "earnings-tokyo-electron-2025-04-30-fy2025",
           "earnings-tokyo-electron-2025-07-31-q1-fy2026",
           "earnings-tokyo-electron-2025-10-31-h1-fy2026",
           "earnings-tokyo-electron-2026-02-06-q3-fy2026",
@@ -27498,8 +27508,8 @@
       "primaryLayer": "Foundry & Logic Manufacturing",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 10,
-      "financialSourceCount": 1,
+      "registrySourceCount": 12,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 12,
@@ -27758,8 +27768,10 @@
           "earnings-tsmc-2026-07-16-q2-2026",
           "ir-tsmc"
         ],
-        "registrySourceCount": 10,
+        "registrySourceCount": 12,
         "financialSourceIds": [
+          "earnings-tsmc-2025-04-17-q1-2025",
+          "earnings-tsmc-2026-01-15-q4-2025",
           "earnings-tsmc-2026-07-16-q2-2026"
         ],
         "orphanSourceIds": [],

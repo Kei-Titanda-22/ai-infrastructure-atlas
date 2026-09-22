@@ -830,7 +830,9 @@ const githubPagesBaseDeterminism = fixture.githubPagesBaseDeterminism;
 assert.ok(githubPagesBaseDeterminism && typeof githubPagesBaseDeterminism === 'object', 'GitHub Pages base determinism audit contract is present');
 const financialHistorySixPeriodCoverage = fixture.financialHistorySixPeriodCoverage;
 assert.ok(financialHistorySixPeriodCoverage && typeof financialHistorySixPeriodCoverage === 'object', 'financial-history six-period coverage freeze contract is present');
-assert.equal(freezes.length, 9, 'fixture contains the eight preserved freezes plus the financial-history successor');
+const financialHistorySixPeriodCoverageV02 = fixture.financialHistorySixPeriodCoverageV02;
+assert.ok(financialHistorySixPeriodCoverageV02 && typeof financialHistorySixPeriodCoverageV02 === 'object', 'financial-history v02 freeze contract is present');
+assert.equal(freezes.length, 10, 'fixture contains the nine preserved freezes plus the financial-history v02 successor');
 assert.equal(githubPagesBaseDeterminism.version, 'github-pages-base-determinism-v01', 'GitHub Pages base determinism audit records its explicit version');
 assert.equal(githubPagesBaseDeterminism.predecessorVersion, corningAppliedFreeze.version, 'GitHub Pages base determinism audit records its immediate predecessor');
 const githubPagesBaseFreeze = freezes.find(freeze => freeze.version === githubPagesBaseDeterminism.version);
@@ -853,7 +855,7 @@ assert.match(githubPagesBaseDeterminism.semanticFingerprintMapDigest, /^[a-f0-9]
 
 const financialHistoryFreeze = freezes.find(freeze => freeze.version === financialHistorySixPeriodCoverage.version);
 assert.ok(financialHistoryFreeze, 'financial-history six-period coverage freeze is present');
-assert.equal(activeFreeze.version, financialHistorySixPeriodCoverage.version, 'the explicit active ID selects the financial-history six-period coverage freeze');
+assert.equal(financialHistoryFreeze.version, financialHistorySixPeriodCoverage.version, 'the financial-history v01 freeze remains in history');
 assert.equal(financialHistoryFreeze.previousVersion, githubPagesBaseFreeze.version, 'financial-history freeze records the GitHub Pages base freeze predecessor explicitly');
 assert.equal(financialHistoryFreeze.metadata.baseMain, financialHistorySixPeriodCoverage.baseMain, 'financial-history freeze records its audited main');
 assert.equal(financialHistoryFreeze.metadata.shaMismatchFallbackAllowed, false, 'financial-history freeze forbids SHA mismatch fallback');
@@ -873,6 +875,23 @@ assert.deepEqual(
   ['financial-period-rows', 'financial-metric-values', 'financial-period-labels', 'financial-verification-status', 'financial-primary-source-references', 'financial-unit-and-accounting-basis'],
   'financial-history successor allowlists only financial presentation fields',
 );
+const financialHistoryFreezeV02 = freezes.find(freeze => freeze.version === financialHistorySixPeriodCoverageV02.version);
+assert.ok(financialHistoryFreezeV02, 'financial-history v02 successor freeze is present');
+assert.equal(activeFreeze.version, financialHistoryFreezeV02.version, 'the explicit active ID selects the financial-history v02 freeze');
+assert.equal(financialHistoryFreezeV02.previousVersion, financialHistoryFreeze.version, 'v02 records the v01 predecessor');
+assert.equal(financialHistoryFreezeV02.metadata.baseMain, financialHistorySixPeriodCoverageV02.baseMain, 'v02 records its audited main');
+assert.equal(financialHistoryFreezeV02.metadata.shaMismatchFallbackAllowed, false, 'v02 rejects SHA fallback');
+assert.equal(financialHistoryFreezeV02.metadata.shellMustMatchPrevious, true, 'v02 preserves the Evidence shell');
+assert.equal(financialHistoryFreezeV02.metadata.expectedChangedCompanyAssetCount, financialHistorySixPeriodCoverageV02.expectedChangedArtifactCount, 'v02 fixes the changed company count');
+assert.equal(financialHistoryFreezeV02.metadata.expectedUnchangedArtifactCount, financialHistorySixPeriodCoverageV02.expectedUnchangedArtifactCount, 'v02 fixes the unchanged artifact count');
+const financialHistoryV02ChangedPaths = expectedArtifactPaths.filter(path => financialHistoryFreezeV02.sha256ByPath[path] !== financialHistoryFreeze.sha256ByPath[path]);
+assert.deepEqual(financialHistoryV02ChangedPaths, financialHistorySixPeriodCoverageV02.expectedChangedArtifactPaths, 'v02 changes only the six new financial company assets');
+assert.equal(financialHistoryV02ChangedPaths.length, 6, 'v02 changes exactly six assets');
+assert.equal(financialHistoryFreezeV02.sha256ByPath['index.html'], financialHistoryFreeze.sha256ByPath['index.html'], 'v02 preserves the Evidence shell byte-for-byte');
+for (const path of expectedArtifactPaths.filter(path => !financialHistoryV02ChangedPaths.includes(path))) {
+  assert.equal(financialHistoryFreezeV02.sha256ByPath[path], financialHistoryFreeze.sha256ByPath[path], `${path}: v02 leaves non-target artifact byte-identical`);
+}
+assert.equal(shaMapDigest(financialHistoryFreezeV02), financialHistoryFreezeV02.metadata.shaMapDigest, 'v02 records the reproducible SHA map digest');
 const astroConfigSource = readFileSync(new URL('../astro.config.mjs', import.meta.url), 'utf8');
 assert.match(astroConfigSource, /normalizeBasePath\(process\.env\.BASE_PATH \|\| \(isUserSite \? '\/' : `\/\$\{repo\}`\)\)/, 'Astro config selects the repository base without a CI-specific branch');
 assert.doesNotMatch(astroConfigSource, /GITHUB_ACTIONS/, 'Astro config has no GITHUB_ACTIONS base-path branch');
@@ -887,6 +906,7 @@ const historicalArtifactFreezeDigests = {
   'japanese-first-copy-p2-v01': 'eac22c9305ba01cffb7b2b963f57adcd55b64c7d13690a8e87d1833d9451db19',
   'corning-applied-materials-presentation-v01': '77dd0b26993c293847701a86e855b1861fbaec28236437aefb119cda5e94ffb2',
   'github-pages-base-determinism-v01': 'f643f29012ce91a33028a03a2e6b66fd13d6ce55e49cf52c9848f461aa12f071',
+  'financial-history-six-period-coverage-v01': '9db7fbfe250a417c46926a7db04a29ad8e32d4bf12ff2a65a75f96de37c29848',
 };
 for (const [version, expectedDigest] of Object.entries(historicalArtifactFreezeDigests)) {
   const freeze = freezes.find(candidate => candidate.version === version);
@@ -899,7 +919,7 @@ for (const [version, expectedDigest] of Object.entries(historicalArtifactFreezeD
 }
 
 const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
-assert.equal(shaBlocks.length, 9, 'fixture source contains the eight preserved history maps plus the financial-history SHA map');
+assert.equal(shaBlocks.length, 10, 'fixture source contains the nine preserved history maps plus the financial-history v02 SHA map');
 for (const [index, block] of shaBlocks.entries()) {
   const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
   assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);
