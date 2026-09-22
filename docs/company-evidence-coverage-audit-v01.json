@@ -2,7 +2,7 @@
   "schemaVersion": "0.1",
   "generatedAt": "2026-09-23T00:00:00Z",
   "dataAsOf": "2026-09-23",
-  "inputDigest": "sha256:87f4ddac5db701eef8650de1a45e57a4f3d18bf7a7c619d58073132e2377c106",
+  "inputDigest": "sha256:ec694a58679d99429f8e2a9b9dd8661e1faf78ab94cf13616a3498d833bed1ae",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 236
+    "inputFileCount": 242
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 430,
-      "uniqueSourceCount": 428,
+      "registryRecordCount": 441,
+      "uniqueSourceCount": 439,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -191,8 +191,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 182,
-      "financialSourceResolved": 182
+      "financialSourceReferences": 192,
+      "financialSourceResolved": 192
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -926,8 +926,8 @@
       "primaryLayer": "Test & Back-end",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 5,
-      "financialSourceCount": 2,
+      "registrySourceCount": 6,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -1186,9 +1186,10 @@
           "earnings-advantest-2026-07-29-q1-fy2026",
           "ir-advantest"
         ],
-        "registrySourceCount": 5,
+        "registrySourceCount": 6,
         "financialSourceIds": [
           "earnings-advantest-2026-07-29-q1-fy2026",
+          "financial-results-advantest-fy2024",
           "financial-results-advantest-fy2025"
         ],
         "orphanSourceIds": [],
@@ -3520,8 +3521,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 4,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -3776,8 +3777,11 @@
           "earnings-arista-2026-08-04-q2-2026",
           "ir-arista"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 6,
         "financialSourceIds": [
+          "earnings-arista-2025-11-04-q3-2025",
+          "earnings-arista-2026-02-12-q4-2025",
+          "earnings-arista-2026-05-05-q1-2026",
           "earnings-arista-2026-08-04-q2-2026"
         ],
         "orphanSourceIds": [],
@@ -8918,8 +8922,8 @@
       "primaryLayer": "Test & Back-end",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 6,
-      "financialSourceCount": 2,
+      "registrySourceCount": 9,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -9178,10 +9182,12 @@
           "earnings-disco-2026-07-23-q1-fy2026",
           "ir-disco"
         ],
-        "registrySourceCount": 6,
+        "registrySourceCount": 9,
         "financialSourceIds": [
           "earnings-disco-2026-07-23-q1-fy2026",
-          "financial-results-disco-fy2025"
+          "financial-results-disco-fy2025",
+          "financial-results-disco-q2-fy2025",
+          "financial-results-disco-q3-fy2025"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -9498,8 +9504,8 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 5,
-      "financialSourceCount": 2,
+      "registrySourceCount": 6,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -9756,8 +9762,9 @@
         "resolvedSourceIds": [
           "ir-entegris"
         ],
-        "registrySourceCount": 5,
+        "registrySourceCount": 6,
         "financialSourceIds": [
+          "earnings-entegris-2026-02-10-q4-2025",
           "earnings-entegris-2026-04-30-q1-2026",
           "earnings-entegris-2026-08-04-q2-2026"
         ],
@@ -28370,8 +28377,8 @@
       "primaryLayer": "Data Center & Facilities",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 6,
-      "financialSourceCount": 1,
+      "registrySourceCount": 9,
+      "financialSourceCount": 4,
       "claimCount": 10,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 10,
@@ -28627,8 +28634,11 @@
           "earnings-vertiv-2026-07-29-q2-2026",
           "ir-vertiv"
         ],
-        "registrySourceCount": 6,
+        "registrySourceCount": 9,
         "financialSourceIds": [
+          "earnings-vertiv-2025-10-22-q3-2025",
+          "earnings-vertiv-2026-02-11-q4-2025",
+          "earnings-vertiv-2026-04-22-q1-2026",
           "earnings-vertiv-2026-07-29-q2-2026"
         ],
         "orphanSourceIds": [],
