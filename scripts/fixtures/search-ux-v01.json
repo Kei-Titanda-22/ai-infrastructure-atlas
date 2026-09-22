@@ -40,6 +40,12 @@
     "tableClass": "company-index-table",
     "headers": ["企業", "国・地域", "主領域", "主力製品", "主要技術"],
     "excludedVisibleLabels": ["主要拠点", "更新日", "最終確認日", "AIインフラでの役割"],
+    "mobileFilterVisibility": {
+      "rowSelector": ".global-visual-companies .company-index-table tr[hidden]",
+      "display": "none !important",
+      "filterInputs": ["search", "country", "layer", "tag"],
+      "sortKey": "country"
+    },
     "sortKeys": ["name", "country", "updated"],
     "facilitySearchQueries": [
       { "kind": "facility", "query": "四日市工場", "companyId": "kioxia" },

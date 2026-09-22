@@ -51,6 +51,16 @@ assert.match(companyDirectorySource, /<tr data-company-row/, 'each Company direc
 assert.doesNotMatch(companyDirectorySource, /company-directory-grid|company-directory-card|company-directory-facts|company-directory-tags/, 'the Company directory has no card-grid contract');
 assert.match(companyDirectoryStyles, /\.global-visual-companies \.company-index-table \{[\s\S]*?min-width: 0 !important;[\s\S]*?table-layout: fixed !important;/, 'the Company table overrides legacy fixed horizontal minimum widths');
 assert.match(companyDirectoryStyles, /\.global-visual-companies \.company-index-table tbody,[\s\S]*?\.global-visual-companies \.company-index-table td \{[\s\S]*?display: block;/, 'mobile restacks the same semantic table rows');
+const mobileFilterVisibility = directory.mobileFilterVisibility;
+assert.match(companyDirectoryStyles, new RegExp(`${mobileFilterVisibility.rowSelector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*\\{\\s*display:\\s*${mobileFilterVisibility.display.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*;`), 'mobile rows keep the hidden attribute as a forced display-none contract');
+const mobileStackRuleIndex = companyDirectoryStyles.indexOf('.global-visual-companies .company-index-table tbody,');
+const hiddenRowRuleIndex = companyDirectoryStyles.indexOf(mobileFilterVisibility.rowSelector);
+assert.ok(hiddenRowRuleIndex > mobileStackRuleIndex, 'the mobile hidden-row rule follows the mobile display-block rule');
+assert.match(companyDirectorySource, /row\.hidden = !hit;/, 'search and every existing filter continue to use the shared hidden-row contract');
+for (const filterInput of mobileFilterVisibility.filterInputs) {
+  const selector = filterInput === 'search' ? 'input' : filterInput;
+  assert.match(companyDirectorySource, new RegExp(`${selector}\\?\\.addEventListener\\('(input|change)', apply\\)`), `${filterInput} continues to apply the shared hidden-row filter contract`);
+}
 assert.match(companyDirectoryStyles, /\.global-visual-companies \.company-index-table td\.company-col \{[\s\S]*?width: 100% !important;/, 'mobile gives the Company cell its full row width instead of retaining the desktop column ratio');
 assert.match(companyDirectorySource, /data-sort-updated=\{d\.lastReviewed\}/, 'updated-date sort remains a non-visible canonical sort datum');
 assert.match(companyDirectorySource, /new Set\(\['name','country','updated'\]\)/, 'all existing sort keys, including updated, remain URL-compatible');
@@ -105,6 +115,7 @@ for (const sortKey of directory.sortKeys) {
     assert.ok(ascending[index - 1][field].localeCompare(ascending[index][field], 'ja', { numeric: true }) <= 0, `${sortKey} ascending order remains deterministic`);
   }
 }
+assert.match(companyDirectorySource, /sortButtons\.forEach\(button => button\.addEventListener\('click',[\s\S]*?sortRows\(\); updateUrl\(\); \}\)\);/, `${mobileFilterVisibility.sortKey} sorting only reorders the existing rows without applying filters`);
 assert.match(companyDirectorySource, /history\.replaceState/, 'filter and sort query parameters still round-trip through the existing URL path');
 
 const aliases = buildPagefindCompanyAliasMap(companies.map(company => ({
