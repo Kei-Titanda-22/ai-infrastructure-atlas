@@ -36,12 +36,13 @@ import privateIndustrialHistory from '../data/financial-history-v04-batch35.json
 import cableBuildingHistory from '../data/financial-history-v04-batch36.json';
 import substrateHistory from '../data/financial-history-v04-batch37.json';
 import sixPeriodHistory from '../data/financial-history-v05-batch01.json';
+import sixPeriodHistoryBatch02 from '../data/financial-history-v05-batch02.json';
 import cashFlowOverrides from '../data/financial-history-v04-cashflow-overrides.json';
 import metricDefinitions from '../data/financial-metric-definitions-v04.json';
 
 const overrideById = new Map(cashFlowOverrides.map(item => [item.id, item]));
 
-export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory, ...legrandHistory, ...schneiderSiemensEnergyHistory, ...osatMaterialsHistory, ...edaPowerSemisHistory, ...powerSemiconductorHistory, ...equipmentExpansionHistory, ...equipmentContinuationHistory, ...equipmentPackagingHistory, ...equipmentInspectionHistory, ...equipmentBondingHistory, ...interconnectDataCenterHistory, ...physicalAiHistory, ...industrialAutomationHistory, ...omronHistory, ...mitsubishiElectricHistory, ...secExpansionHistory, ...japanExpansionHistory, ...furukawaElectricHistory, ...mediatekSmicHistory, ...industrialMaterialsHistory, ...privateIndustrialHistory, ...cableBuildingHistory, ...substrateHistory, ...sixPeriodHistory].map(record => {
+export const financialHistory = [...baseFinancialHistory, ...equipmentFinancialHistory, ...computeNetworkDcHistory, ...networkStorageHistory, ...kioxiaHistory, ...tokyoElectronHistory, ...samsungMarvellCredoHistory, ...westernDigitalHistory, ...foundryAnalogHistory, ...opticalPowerHistory, ...osatSubstrateHistory, ...materialsHistory, ...powerInfrastructureHistory, ...powerHvacHistory, ...legrandHistory, ...schneiderSiemensEnergyHistory, ...osatMaterialsHistory, ...edaPowerSemisHistory, ...powerSemiconductorHistory, ...equipmentExpansionHistory, ...equipmentContinuationHistory, ...equipmentPackagingHistory, ...equipmentBondingHistory, ...interconnectDataCenterHistory, ...physicalAiHistory, ...industrialAutomationHistory, ...omronHistory, ...mitsubishiElectricHistory, ...secExpansionHistory, ...japanExpansionHistory, ...furukawaElectricHistory, ...mediatekSmicHistory, ...industrialMaterialsHistory, ...privateIndustrialHistory, ...cableBuildingHistory, ...substrateHistory, ...sixPeriodHistory, ...sixPeriodHistoryBatch02].map(record => {
   const override = overrideById.get(record.id);
   if (!override) return record;
   return {

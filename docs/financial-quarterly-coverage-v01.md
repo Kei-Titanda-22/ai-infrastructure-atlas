@@ -2,9 +2,9 @@
 
 - Checked at: 2026-09-22
 - Registry companies: 100
-- Financial-history shard manifest digest: dd756c8818faf0f872bb245bbf9b008bd3eda162b25f4362ae097f76c8d20894
-- Complete six quarters: 10
-- Partial quarterly (1–5): 40
+- Financial-history shard manifest digest: 7cbd25fbdeec70356f17a625ee12353a7603401c46b1046568ddc195912b2cbe
+- Complete six quarters: 12
+- Partial quarterly (1–5): 38
 - Awaiting next reported quarter: 1
 - Semiannual only: 0
 - Annual only: 0
@@ -14,6 +14,8 @@
 ## Companies with six or more actual quarterly records
 
 - amd
+- amkor
+- amphenol
 - analog-devices
 - applied-materials
 - furukawa-electric
@@ -33,8 +35,8 @@
 | air-liquide | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.airliquide.com/sites/airliquide.com/files/2026-02/air-liquide-pr-fy-2025-with-record-performance-and-confident-in-its-transformation-dynamic-air-liquide-confirms-its-growth-outlook.pdf) |
 | ajinomoto-fine-techno | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.ajinomoto.com/cms_wp_ajnmt_global/wp-content/uploads/pdf/2026_08_06_01E.pdf) |
 | amd | quarterly | 6 / 6 | Q2 2026 (2026-06-27) | complete-six-quarters | — | [official](https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results) |
-| amkor | quarterly | 2 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://ir.amkor.com/news-releases/news-release-details/amkor-technology-reports-financial-results-second-quarter-2026) |
-| amphenol | quarterly | 2 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://investors.amphenol.com/news-and-events/news-details/2026/Amphenol-Reports-Record-Second-Quarter-2026-Results/default.aspx) |
+| amkor | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://ir.amkor.com/news-releases/news-release-details/amkor-technology-reports-financial-results-second-quarter-2026) |
+| amphenol | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.amphenol.com/news-and-events/news-details/2026/Amphenol-Reports-Record-Second-Quarter-2026-Results/default.aspx) |
 | analog-devices | quarterly | 6 / 6 | Q3 FY2026 (2026-08-01) | complete-six-quarters | — | [official](https://investor.analog.com/news-releases/news-release-details/analog-devices-reports-record-fiscal-third-quarter-2026) |
 | applied-materials | quarterly | 6 / 6 | Q3 FY2026 (2026-07-26) | complete-six-quarters | — | [official](https://investor.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-third-quarter-2026-results) |
 | aptiv | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/1521332/000152133226000009/aptv-20251231.htm) |
