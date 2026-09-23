@@ -1817,14 +1817,106 @@ if (process.argv.includes('--dist')) {
   assert.doesNotThrow(() => assertLegacyCompareSize(725_625), 'legacy Compare HTML exact maximum passes');
   assert.throws(() => assertLegacyCompareSize(725_626), /exceeds 725625 B/, 'legacy Compare HTML maximum plus one fails');
   assertLegacyCompareSize(711_003);
+  const viteAssetUrlRe = /^((?:https?:\/\/[^/?#]+)?(?:\/[^/?#]+)*\/_astro\/(?:[^/?#]+\/)*)([^/?#]+)\.([A-Za-z0-9_-]{8})(\.(?:css|js|mjs))([?#].*)?$/;
+  const normalizeViteAssetFingerprints = html => {
+    const normalizeTag = originalTag => {
+      if (!/^<[A-Za-z]/.test(originalTag)) return originalTag;
+      let tag = originalTag;
+      let cursor = 1;
+      while (cursor < tag.length && !/[\s/>]/.test(tag[cursor])) cursor++;
+      const replacements = [];
+      while (cursor < tag.length) {
+        while (/\s/.test(tag[cursor] || '')) cursor++;
+        if (cursor >= tag.length || tag[cursor] === '/' || tag[cursor] === '>') break;
+        const nameStart = cursor;
+        while (cursor < tag.length && !/[\s=/>]/.test(tag[cursor])) cursor++;
+        if (cursor === nameStart) { cursor++; continue; }
+        const name = tag.slice(nameStart, cursor).toLowerCase();
+        while (/\s/.test(tag[cursor] || '')) cursor++;
+        if (tag[cursor] !== '=') continue;
+        cursor++;
+        while (/\s/.test(tag[cursor] || '')) cursor++;
+        const quote = tag[cursor];
+        const valueStart = quote === '"' || quote === "'" ? ++cursor : cursor;
+        if (quote === '"' || quote === "'") {
+          while (cursor < tag.length && tag[cursor] !== quote) cursor++;
+        } else {
+          while (cursor < tag.length && !/[\s>]/.test(tag[cursor])) cursor++;
+        }
+        const valueEnd = cursor;
+        if (quote === '"' || quote === "'") cursor++;
+        if (name !== 'src' && name !== 'href') continue;
+        const match = tag.slice(valueStart, valueEnd).match(viteAssetUrlRe);
+        if (match) replacements.push([valueStart, valueEnd, `${match[1]}${match[2]}.HASHHASH${match[4]}${match[5] || ''}`]);
+      }
+      for (const [start, end, value] of replacements.reverse()) tag = tag.slice(0, start) + value + tag.slice(end);
+      return tag;
+    };
+    let normalized = '';
+    let cursor = 0;
+    const lowerHtml = html.toLowerCase();
+    while (cursor < html.length) {
+      const tagStart = html.indexOf('<', cursor);
+      if (tagStart < 0) return normalized + html.slice(cursor);
+      normalized += html.slice(cursor, tagStart);
+      if (html.startsWith('<!--', tagStart)) {
+        const commentEnd = html.indexOf('-->', tagStart + 4);
+        if (commentEnd < 0) return normalized + html.slice(tagStart);
+        normalized += html.slice(tagStart, commentEnd + 3);
+        cursor = commentEnd + 3;
+        continue;
+      }
+      let tagEnd = tagStart + 1;
+      let quote = null;
+      for (; tagEnd < html.length; tagEnd++) {
+        const character = html[tagEnd];
+        if (quote) { if (character === quote) quote = null; }
+        else if (character === '"' || character === "'") quote = character;
+        else if (character === '>') { tagEnd++; break; }
+      }
+      const tag = html.slice(tagStart, tagEnd);
+      normalized += normalizeTag(tag);
+      cursor = tagEnd;
+      const rawTextTag = /^<(script|style)\b/i.exec(tag);
+      if (rawTextTag) {
+        const closeStart = lowerHtml.indexOf(`</${rawTextTag[1].toLowerCase()}`, cursor);
+        if (closeStart < 0) return normalized + html.slice(cursor);
+        normalized += html.slice(cursor, closeStart);
+        cursor = closeStart;
+      }
+    }
+    return normalized;
+  };
   const financialPayloadRe = /(<script id="v04-financial-compare-data" type="application\/json">)[\s\S]*?(<\/script>)/;
+  const nonFinancialDigest = html => createHash('sha256')
+    .update(normalizeViteAssetFingerprints(html.replace(financialPayloadRe, '$1$2')))
+    .digest('hex');
+  const boundaryHtml = '<script src="/ai-infrastructure-atlas/_astro/compare.astro_astro_type_script_index_0_lang.ABCDEFGH.js"></script>'
+    + '<link href="/ai-infrastructure-atlas/_astro/compare.ABCDEFGH.css">'
+    + '<a href="/companies/nxp/">会社</a><p>本文</p>'
+    + '<script type="application/json">{"mode":"summary"}</script>'
+    + '<script>const literal = \'<a href="/_astro/inline.ABCDEFGH.js">\';</script>'
+    + '<script id="v04-financial-compare-data" type="application/json">{"records":[1]}</script>';
+  assert.match(normalizeViteAssetFingerprints(boundaryHtml), /compare\.astro_astro_type_script_index_0_lang\.HASHHASH\.js/, 'only the Vite fingerprint is replaced');
+  assert.match(normalizeViteAssetFingerprints(boundaryHtml), /<link href="\/ai-infrastructure-atlas\/_astro\/compare\.HASHHASH\.css">/, 'Vite asset path, logical name, extension, tag, and attribute remain intact');
+  assert.equal(nonFinancialDigest(boundaryHtml.replace('[1]', '[2]')), nonFinancialDigest(boundaryHtml), 'financial payload changes do not affect the non-financial digest');
+  assert.equal(nonFinancialDigest(boundaryHtml.replace('ABCDEFGH.js', 'ZYXWVUTS.js')), nonFinancialDigest(boundaryHtml), 'Vite fingerprint changes do not affect the non-financial digest');
+  for (const [description, changed] of [
+    ['asset logical name', boundaryHtml.replace('compare.astro_astro_type_script_index_0_lang', 'other-script')],
+    ['asset extension', boundaryHtml.replace('ABCDEFGH.js', 'ABCDEFGH.css')],
+    ['asset path', boundaryHtml.replace('/ai-infrastructure-atlas/_astro/', '/other-base/_astro/')],
+    ['ordinary body text', boundaryHtml.replace('本文', '本分')],
+    ['non-financial JSON', boundaryHtml.replace('"summary"', '"expanded"')],
+    ['ordinary URL', boundaryHtml.replace('/companies/nxp/', '/companies/amd/')],
+    ['inline script', boundaryHtml.replace('inline.ABCDEFGH.js', 'inline.ZYXWVUTS.js')],
+  ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
   assert.equal(Buffer.byteLength(financialPayload), 405_786, 'fifth-batch financial payload is exactly 22,395 B larger than the preceding 383,391 B payload');
   assert.equal(
-    createHash('sha256').update(compareHtml.replace(financialPayloadRe, '$1$2')).digest('hex'),
-    '2d166d0dda0e922158c05bbc6d801d6bc38f1dbc1d6c06cac7677010a993eae1',
-    'Compare HTML with its financial JSON body removed is byte-identical to the audited v04 baseline',
+    nonFinancialDigest(compareHtml),
+    'b2a1247e445f1a49fd8b04e2ef3d17953dee564c13da48aa66efb20f78a85b62',
+    'Compare HTML with only its financial JSON body and Vite asset fingerprints normalized matches the audited v04 baseline on Windows and Linux',
   );
   const fifthBatchCompareSizeContract = Object.freeze({
     acceptedRawBytes: 733_398,
