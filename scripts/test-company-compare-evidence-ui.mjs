@@ -1690,6 +1690,30 @@ assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.evidence-matrix tbody
 
 if (process.argv.includes('--dist')) {
   const compareHtml = await readFile(new URL('../dist/compare/index.html', import.meta.url), 'utf8');
+  const financialsHtml = await readFile(new URL('../dist/financials/index.html', import.meta.url), 'utf8');
+  const phaseFiveGraphPoints = new Map([
+    ['nxp', { labels: ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026', 'Q2 2026'], revenue: [2835, 2926, 3173, 3335, 3181, 3496], margin: [25.5, 23.5, 28.1, 22.3, 47.3, 30.6] }],
+    ['seagate', { labels: ['Q3 FY2025', 'Q4 FY2025', 'Q1 FY2026', 'Q2 FY2026', 'Q3 FY2026', 'Q4 FY2026'], revenue: [2160, 2444, 2629, 2825, 3112, 3629], margin: [20, 23.2, 26.4, 29.8, 32.1, 43] }],
+    ['carrier', { labels: ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026', 'Q2 2026'], revenue: [5218, 6113, 5579, 4837, 5341, 6351], margin: [12.1, 14.8, 9.7, 2.1, 4.8, 13] }],
+    ['trane-technologies', { labels: ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026', 'Q2 2026'], revenue: [4688.5, 5746, 5742.5, 5144.5, 4969.4, 6354], margin: [17.5, 20.3, 20.3, 15.9, 15.6, 19.3] }],
+    ['marvell', { labels: ['Q1 FY2026', 'Q2 FY2026', 'Q3 FY2026', 'Q4 FY2026', 'Q1 FY2027', 'Q2 FY2027'], revenue: [1895.3, 2006.1, 2074.5, 2218.7, 2417.8, 2739.3], margin: [14.3, 14.5, 17.2, 18.2, 14, 16.8] }],
+  ]);
+  const fifthBatchSources = await readJson('../src/data/document-sources-v05-batch08.json');
+  for (const [companyId, expected] of phaseFiveGraphPoints) {
+    const section = financialsHtml.match(new RegExp(`<section class="financial-company" data-financial-company="${companyId}"[\\s\\S]*?<\\/section>`))?.[0];
+    assert.ok(section, `${companyId}: built financial page includes its Company section`);
+    const trends = [...section.matchAll(/<div class="financial-chart-plot" data-financial-trend data-series="([^"]+)" data-metric-id="([^"]+)"/g)];
+    for (const [metricId, values] of [['revenue', expected.revenue], ['operatingMargin', expected.margin]]) {
+      const serialized = trends.find(match => match[2] === metricId)?.[1];
+      assert.ok(serialized, `${companyId}: ${metricId} trend is rendered`);
+      const points = JSON.parse(serialized.replaceAll('&quot;', '"'));
+      assert.deepEqual(points.map(point => point.period), expected.labels, `${companyId}: ${metricId} graph has the uninterrupted latest six quarters`);
+      assert.deepEqual(points.map(point => point.value), values, `${companyId}: ${metricId} graph values match official reported records`);
+    }
+    for (const source of fifthBatchSources.filter(source => source.companyId === companyId)) {
+      assert.ok(section.includes(`href="${source.url}"`), `${companyId}: table links the primary document ${source.id}`);
+    }
+  }
   const shellHtml = await readFile(new URL('../dist/evidence-fragments/company-compare-evidence-v01/index.html', import.meta.url), 'utf8');
   const builtAssetNames = await readdir(new URL('../dist/_astro/', import.meta.url));
   const controllerAssetName = builtAssetNames.find(name => /^company-compare-evidence-ui\..+\.js$/.test(name));
@@ -1792,8 +1816,125 @@ if (process.argv.includes('--dist')) {
   assert.match(legacyCompareSizeContract.acceptedReason, /Official third-batch financial-history expansion adds 18 reported records/, 'legacy Compare HTML baseline records the approved official-financial reason');
   assert.doesNotThrow(() => assertLegacyCompareSize(725_625), 'legacy Compare HTML exact maximum passes');
   assert.throws(() => assertLegacyCompareSize(725_626), /exceeds 725625 B/, 'legacy Compare HTML maximum plus one fails');
-  assert.ok(compareBytes >= legacyCompareSizeContract.acceptedRawBytes, 'legacy Compare HTML remains at or above the approved pre-expansion baseline');
-  assertLegacyCompareSize(compareBytes);
+  assertLegacyCompareSize(711_003);
+  const viteAssetUrlRe = /^((?:https?:\/\/[^/?#]+)?(?:\/[^/?#]+)*\/_astro\/(?:[^/?#]+\/)*)([^/?#]+)\.([A-Za-z0-9_-]{8})(\.(?:css|js|mjs))([?#].*)?$/;
+  const normalizeViteAssetFingerprints = html => {
+    const normalizeTag = originalTag => {
+      if (!/^<[A-Za-z]/.test(originalTag)) return originalTag;
+      let tag = originalTag;
+      let cursor = 1;
+      while (cursor < tag.length && !/[\s/>]/.test(tag[cursor])) cursor++;
+      const replacements = [];
+      while (cursor < tag.length) {
+        while (/\s/.test(tag[cursor] || '')) cursor++;
+        if (cursor >= tag.length || tag[cursor] === '/' || tag[cursor] === '>') break;
+        const nameStart = cursor;
+        while (cursor < tag.length && !/[\s=/>]/.test(tag[cursor])) cursor++;
+        if (cursor === nameStart) { cursor++; continue; }
+        const name = tag.slice(nameStart, cursor).toLowerCase();
+        while (/\s/.test(tag[cursor] || '')) cursor++;
+        if (tag[cursor] !== '=') continue;
+        cursor++;
+        while (/\s/.test(tag[cursor] || '')) cursor++;
+        const quote = tag[cursor];
+        const valueStart = quote === '"' || quote === "'" ? ++cursor : cursor;
+        if (quote === '"' || quote === "'") {
+          while (cursor < tag.length && tag[cursor] !== quote) cursor++;
+        } else {
+          while (cursor < tag.length && !/[\s>]/.test(tag[cursor])) cursor++;
+        }
+        const valueEnd = cursor;
+        if (quote === '"' || quote === "'") cursor++;
+        if (name !== 'src' && name !== 'href') continue;
+        const match = tag.slice(valueStart, valueEnd).match(viteAssetUrlRe);
+        if (match) replacements.push([valueStart, valueEnd, `${match[1]}${match[2]}.HASHHASH${match[4]}${match[5] || ''}`]);
+      }
+      for (const [start, end, value] of replacements.reverse()) tag = tag.slice(0, start) + value + tag.slice(end);
+      return tag;
+    };
+    let normalized = '';
+    let cursor = 0;
+    const lowerHtml = html.toLowerCase();
+    while (cursor < html.length) {
+      const tagStart = html.indexOf('<', cursor);
+      if (tagStart < 0) return normalized + html.slice(cursor);
+      normalized += html.slice(cursor, tagStart);
+      if (html.startsWith('<!--', tagStart)) {
+        const commentEnd = html.indexOf('-->', tagStart + 4);
+        if (commentEnd < 0) return normalized + html.slice(tagStart);
+        normalized += html.slice(tagStart, commentEnd + 3);
+        cursor = commentEnd + 3;
+        continue;
+      }
+      let tagEnd = tagStart + 1;
+      let quote = null;
+      for (; tagEnd < html.length; tagEnd++) {
+        const character = html[tagEnd];
+        if (quote) { if (character === quote) quote = null; }
+        else if (character === '"' || character === "'") quote = character;
+        else if (character === '>') { tagEnd++; break; }
+      }
+      const tag = html.slice(tagStart, tagEnd);
+      normalized += normalizeTag(tag);
+      cursor = tagEnd;
+      const rawTextTag = /^<(script|style)\b/i.exec(tag);
+      if (rawTextTag) {
+        const closeStart = lowerHtml.indexOf(`</${rawTextTag[1].toLowerCase()}`, cursor);
+        if (closeStart < 0) return normalized + html.slice(cursor);
+        normalized += html.slice(cursor, closeStart);
+        cursor = closeStart;
+      }
+    }
+    return normalized;
+  };
+  const financialPayloadRe = /(<script id="v04-financial-compare-data" type="application\/json">)[\s\S]*?(<\/script>)/;
+  const nonFinancialDigest = html => createHash('sha256')
+    .update(normalizeViteAssetFingerprints(html.replace(financialPayloadRe, '$1$2')))
+    .digest('hex');
+  const boundaryHtml = '<script src="/ai-infrastructure-atlas/_astro/compare.astro_astro_type_script_index_0_lang.ABCDEFGH.js"></script>'
+    + '<link href="/ai-infrastructure-atlas/_astro/compare.ABCDEFGH.css">'
+    + '<a href="/companies/nxp/">会社</a><p>本文</p>'
+    + '<script type="application/json">{"mode":"summary"}</script>'
+    + '<script>const literal = \'<a href="/_astro/inline.ABCDEFGH.js">\';</script>'
+    + '<script id="v04-financial-compare-data" type="application/json">{"records":[1]}</script>';
+  assert.match(normalizeViteAssetFingerprints(boundaryHtml), /compare\.astro_astro_type_script_index_0_lang\.HASHHASH\.js/, 'only the Vite fingerprint is replaced');
+  assert.match(normalizeViteAssetFingerprints(boundaryHtml), /<link href="\/ai-infrastructure-atlas\/_astro\/compare\.HASHHASH\.css">/, 'Vite asset path, logical name, extension, tag, and attribute remain intact');
+  assert.equal(nonFinancialDigest(boundaryHtml.replace('[1]', '[2]')), nonFinancialDigest(boundaryHtml), 'financial payload changes do not affect the non-financial digest');
+  assert.equal(nonFinancialDigest(boundaryHtml.replace('ABCDEFGH.js', 'ZYXWVUTS.js')), nonFinancialDigest(boundaryHtml), 'Vite fingerprint changes do not affect the non-financial digest');
+  for (const [description, changed] of [
+    ['asset logical name', boundaryHtml.replace('compare.astro_astro_type_script_index_0_lang', 'other-script')],
+    ['asset extension', boundaryHtml.replace('ABCDEFGH.js', 'ABCDEFGH.css')],
+    ['asset path', boundaryHtml.replace('/ai-infrastructure-atlas/_astro/', '/other-base/_astro/')],
+    ['ordinary body text', boundaryHtml.replace('本文', '本分')],
+    ['non-financial JSON', boundaryHtml.replace('"summary"', '"expanded"')],
+    ['ordinary URL', boundaryHtml.replace('/companies/nxp/', '/companies/amd/')],
+    ['inline script', boundaryHtml.replace('inline.ABCDEFGH.js', 'inline.ZYXWVUTS.js')],
+  ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
+  const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
+  assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
+  assert.equal(Buffer.byteLength(financialPayload), 405_786, 'fifth-batch financial payload is exactly 22,395 B larger than the preceding 383,391 B payload');
+  assert.equal(
+    nonFinancialDigest(compareHtml),
+    'b2a1247e445f1a49fd8b04e2ef3d17953dee564c13da48aa66efb20f78a85b62',
+    'Compare HTML with only its financial JSON body and Vite asset fingerprints normalized matches the audited v04 baseline on Windows and Linux',
+  );
+  const fifthBatchCompareSizeContract = Object.freeze({
+    acceptedRawBytes: 733_398,
+    growthLimitRatio: 1.05,
+    maximumRawBytes: 770_067,
+    acceptedReason: 'Official fifth-batch financial-history expansion adds 21 reported records solely to the financial payload; preceding v04 output was 711,003 B and accepted v05 output is 733,398 B.',
+  });
+  assert.equal(fifthBatchCompareSizeContract.growthLimitRatio, legacyCompareSizeContract.growthLimitRatio, 'the existing +5% growth ratio is unchanged');
+  assert.equal(Math.floor(fifthBatchCompareSizeContract.acceptedRawBytes * fifthBatchCompareSizeContract.growthLimitRatio), fifthBatchCompareSizeContract.maximumRawBytes, 'v05 maximum derives from the measured accepted v05 output');
+  assert.equal(compareBytes, 733_398, 'Compare size delta is the financial payload delta alone');
+  const assertFifthBatchCompareSize = bytes => {
+    assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v05 Compare HTML byte count is a non-negative integer');
+    assert.ok(bytes <= fifthBatchCompareSizeContract.maximumRawBytes, `v05 Compare HTML ${bytes} B exceeds ${fifthBatchCompareSizeContract.maximumRawBytes} B`);
+  };
+  assert.doesNotThrow(() => assertFifthBatchCompareSize(770_067), 'v05 Compare HTML exact maximum passes');
+  assert.throws(() => assertFifthBatchCompareSize(770_068), /exceeds 770067 B/, 'v05 Compare HTML maximum plus one fails');
+  assert.ok(compareBytes >= fifthBatchCompareSizeContract.acceptedRawBytes, 'v05 Compare HTML remains at or above the measured accepted baseline');
+  assertFifthBatchCompareSize(compareBytes);
   assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
   assert.doesNotMatch(compareHtml, /data-claim-id=/, 'built legacy HTML excludes Company Claim bodies');
   assert.doesNotMatch(compareHtml, /data-relation-id=/, 'built legacy HTML excludes Relation bodies');

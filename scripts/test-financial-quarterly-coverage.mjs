@@ -19,8 +19,8 @@ assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
 assert.deepEqual(new Set(coverage.map(row => row.companyId)), new Set(companies.map(company => company.id)), 'coverage company IDs exactly match registry');
 assert.equal(new Set(coverage.map(row => row.companyId)).size, coverage.length, 'coverage company IDs are unique');
-assert.equal(history.length, 347, 'fourth financial-history expansion yields 347 sourced periods');
-assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 28, 'five additional companies reach six reported quarters');
+assert.equal(history.length, 368, 'fifth financial-history expansion yields 368 sourced periods');
+assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 33, 'five additional companies reach six reported quarters');
 
 const quarterlyByCompany = new Map(companies.map(company => [company.id, []]));
 for (const record of history) if (record.periodType === 'quarterly') quarterlyByCompany.get(record.companyId)?.push(record);
@@ -87,6 +87,27 @@ for (const [companyId, endDates] of phaseFourEndDates) {
   const quarterly = quarterlyByCompany.get(companyId);
   assert.deepEqual(quarterly.map(record => record.endDate), endDates, `${companyId}: six official standalone quarters are chronological`);
   assert.equal(coverage.find(row => row.companyId === companyId).coverageStatus, 'complete-six-quarters', `${companyId}: coverage is complete`);
+}
+
+const phaseFiveEndDates = new Map([
+  ['nxp', ['2025-03-30', '2025-06-29', '2025-09-28', '2025-12-31', '2026-03-29', '2026-06-28']],
+  ['seagate', ['2024-12-27', '2025-03-28', '2025-06-27', '2025-10-03', '2026-01-02', '2026-04-03', '2026-07-03']],
+  ['carrier', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['trane-technologies', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['marvell', ['2025-05-03', '2025-08-02', '2025-11-01', '2026-01-31', '2026-05-02', '2026-08-01']],
+]);
+for (const [companyId, endDates] of phaseFiveEndDates) {
+  const quarterly = quarterlyByCompany.get(companyId);
+  assert.deepEqual(quarterly.map(record => record.endDate), endDates, `${companyId}: reported standalone periods include a consecutive six-quarter window`);
+  assert.deepEqual(quarterly.slice(-6).map(record => record.periodLabel),
+    companyId === 'seagate'
+      ? ['Q3 FY2025', 'Q4 FY2025', 'Q1 FY2026', 'Q2 FY2026', 'Q3 FY2026', 'Q4 FY2026']
+      : companyId === 'marvell'
+        ? ['Q1 FY2026', 'Q2 FY2026', 'Q3 FY2026', 'Q4 FY2026', 'Q1 FY2027', 'Q2 FY2027']
+        : ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026', 'Q2 2026'],
+    `${companyId}: latest six chart points are uninterrupted fiscal/calendar quarters`);
+  assert.equal(coverage.find(row => row.companyId === companyId).coverageStatus, 'complete-six-quarters', `${companyId}: coverage is complete`);
+  assert.ok(quarterly.every(record => record.currency === 'USD' && record.unit === 'million' && record.accountingBasis === 'US GAAP'), `${companyId}: reporting unit and accounting basis stay continuous`);
 }
 
 const derivedQuarterChecks = new Map([
