@@ -1690,6 +1690,30 @@ assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.evidence-matrix tbody
 
 if (process.argv.includes('--dist')) {
   const compareHtml = await readFile(new URL('../dist/compare/index.html', import.meta.url), 'utf8');
+  const financialsHtml = await readFile(new URL('../dist/financials/index.html', import.meta.url), 'utf8');
+  const phaseFiveGraphPoints = new Map([
+    ['nxp', { labels: ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026', 'Q2 2026'], revenue: [2835, 2926, 3173, 3335, 3181, 3496], margin: [25.5, 23.5, 28.1, 22.3, 47.3, 30.6] }],
+    ['seagate', { labels: ['Q3 FY2025', 'Q4 FY2025', 'Q1 FY2026', 'Q2 FY2026', 'Q3 FY2026', 'Q4 FY2026'], revenue: [2160, 2444, 2629, 2825, 3112, 3629], margin: [20, 23.2, 26.4, 29.8, 32.1, 43] }],
+    ['carrier', { labels: ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026', 'Q2 2026'], revenue: [5218, 6113, 5579, 4837, 5341, 6351], margin: [12.1, 14.8, 9.7, 2.1, 4.8, 13] }],
+    ['trane-technologies', { labels: ['Q1 2025', 'Q2 2025', 'Q3 2025', 'Q4 2025', 'Q1 2026', 'Q2 2026'], revenue: [4688.5, 5746, 5742.5, 5144.5, 4969.4, 6354], margin: [17.5, 20.3, 20.3, 15.9, 15.6, 19.3] }],
+    ['marvell', { labels: ['Q1 FY2026', 'Q2 FY2026', 'Q3 FY2026', 'Q4 FY2026', 'Q1 FY2027', 'Q2 FY2027'], revenue: [1895.3, 2006.1, 2074.5, 2218.7, 2417.8, 2739.3], margin: [14.3, 14.5, 17.2, 18.2, 14, 16.8] }],
+  ]);
+  const fifthBatchSources = await readJson('../src/data/document-sources-v05-batch08.json');
+  for (const [companyId, expected] of phaseFiveGraphPoints) {
+    const section = financialsHtml.match(new RegExp(`<section class="financial-company" data-financial-company="${companyId}"[\\s\\S]*?<\\/section>`))?.[0];
+    assert.ok(section, `${companyId}: built financial page includes its Company section`);
+    const trends = [...section.matchAll(/<div class="financial-chart-plot" data-financial-trend data-series="([^"]+)" data-metric-id="([^"]+)"/g)];
+    for (const [metricId, values] of [['revenue', expected.revenue], ['operatingMargin', expected.margin]]) {
+      const serialized = trends.find(match => match[2] === metricId)?.[1];
+      assert.ok(serialized, `${companyId}: ${metricId} trend is rendered`);
+      const points = JSON.parse(serialized.replaceAll('&quot;', '"'));
+      assert.deepEqual(points.map(point => point.period), expected.labels, `${companyId}: ${metricId} graph has the uninterrupted latest six quarters`);
+      assert.deepEqual(points.map(point => point.value), values, `${companyId}: ${metricId} graph values match official reported records`);
+    }
+    for (const source of fifthBatchSources.filter(source => source.companyId === companyId)) {
+      assert.ok(section.includes(`href="${source.url}"`), `${companyId}: table links the primary document ${source.id}`);
+    }
+  }
   const shellHtml = await readFile(new URL('../dist/evidence-fragments/company-compare-evidence-v01/index.html', import.meta.url), 'utf8');
   const builtAssetNames = await readdir(new URL('../dist/_astro/', import.meta.url));
   const controllerAssetName = builtAssetNames.find(name => /^company-compare-evidence-ui\..+\.js$/.test(name));
@@ -1792,8 +1816,33 @@ if (process.argv.includes('--dist')) {
   assert.match(legacyCompareSizeContract.acceptedReason, /Official third-batch financial-history expansion adds 18 reported records/, 'legacy Compare HTML baseline records the approved official-financial reason');
   assert.doesNotThrow(() => assertLegacyCompareSize(725_625), 'legacy Compare HTML exact maximum passes');
   assert.throws(() => assertLegacyCompareSize(725_626), /exceeds 725625 B/, 'legacy Compare HTML maximum plus one fails');
-  assert.ok(compareBytes >= legacyCompareSizeContract.acceptedRawBytes, 'legacy Compare HTML remains at or above the approved pre-expansion baseline');
-  assertLegacyCompareSize(compareBytes);
+  assertLegacyCompareSize(711_003);
+  const financialPayloadRe = /(<script id="v04-financial-compare-data" type="application\/json">)[\s\S]*?(<\/script>)/;
+  const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
+  assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
+  assert.equal(Buffer.byteLength(financialPayload), 405_786, 'fifth-batch financial payload is exactly 22,395 B larger than the preceding 383,391 B payload');
+  assert.equal(
+    createHash('sha256').update(compareHtml.replace(financialPayloadRe, '$1$2')).digest('hex'),
+    '2d166d0dda0e922158c05bbc6d801d6bc38f1dbc1d6c06cac7677010a993eae1',
+    'Compare HTML with its financial JSON body removed is byte-identical to the audited v04 baseline',
+  );
+  const fifthBatchCompareSizeContract = Object.freeze({
+    acceptedRawBytes: 733_398,
+    growthLimitRatio: 1.05,
+    maximumRawBytes: 770_067,
+    acceptedReason: 'Official fifth-batch financial-history expansion adds 21 reported records solely to the financial payload; preceding v04 output was 711,003 B and accepted v05 output is 733,398 B.',
+  });
+  assert.equal(fifthBatchCompareSizeContract.growthLimitRatio, legacyCompareSizeContract.growthLimitRatio, 'the existing +5% growth ratio is unchanged');
+  assert.equal(Math.floor(fifthBatchCompareSizeContract.acceptedRawBytes * fifthBatchCompareSizeContract.growthLimitRatio), fifthBatchCompareSizeContract.maximumRawBytes, 'v05 maximum derives from the measured accepted v05 output');
+  assert.equal(compareBytes, 733_398, 'Compare size delta is the financial payload delta alone');
+  const assertFifthBatchCompareSize = bytes => {
+    assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v05 Compare HTML byte count is a non-negative integer');
+    assert.ok(bytes <= fifthBatchCompareSizeContract.maximumRawBytes, `v05 Compare HTML ${bytes} B exceeds ${fifthBatchCompareSizeContract.maximumRawBytes} B`);
+  };
+  assert.doesNotThrow(() => assertFifthBatchCompareSize(770_067), 'v05 Compare HTML exact maximum passes');
+  assert.throws(() => assertFifthBatchCompareSize(770_068), /exceeds 770067 B/, 'v05 Compare HTML maximum plus one fails');
+  assert.ok(compareBytes >= fifthBatchCompareSizeContract.acceptedRawBytes, 'v05 Compare HTML remains at or above the measured accepted baseline');
+  assertFifthBatchCompareSize(compareBytes);
   assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
   assert.doesNotMatch(compareHtml, /data-claim-id=/, 'built legacy HTML excludes Company Claim bodies');
   assert.doesNotMatch(compareHtml, /data-relation-id=/, 'built legacy HTML excludes Relation bodies');

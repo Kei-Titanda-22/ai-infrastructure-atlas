@@ -2,7 +2,7 @@
   "schemaVersion": "0.1",
   "generatedAt": "2026-09-23T00:00:00Z",
   "dataAsOf": "2026-09-23",
-  "inputDigest": "sha256:d098644e4586b43b3b5ace59fd24b0461616d2cd46282d246e3f5ea4382babc8",
+  "inputDigest": "sha256:bb7f5a32f0d535d6931acddab1bbbad4f5b87a5ff95876a2115d4d0af19fe76b",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 244
+    "inputFileCount": 246
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 454,
-      "uniqueSourceCount": 452,
+      "registryRecordCount": 468,
+      "uniqueSourceCount": 466,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -191,8 +191,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 205,
-      "financialSourceResolved": 205
+      "financialSourceReferences": 219,
+      "financialSourceResolved": 219
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -6655,8 +6655,8 @@
       "primaryLayer": "Data Center & Facilities",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 5,
-      "financialSourceCount": 1,
+      "registrySourceCount": 8,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -6913,8 +6913,11 @@
         "resolvedSourceIds": [
           "ir-carrier"
         ],
-        "registrySourceCount": 5,
+        "registrySourceCount": 8,
         "financialSourceIds": [
+          "earnings-carrier-2025-10-28-q3-2025",
+          "earnings-carrier-2026-02-05-q4-2025",
+          "earnings-carrier-2026-04-30-q1-2026",
           "earnings-carrier-2026-07-28-q2"
         ],
         "orphanSourceIds": [],
@@ -16676,8 +16679,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 4,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -16930,8 +16933,11 @@
         "resolvedSourceIds": [
           "ir-marvell"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 6,
         "financialSourceIds": [
+          "earnings-marvell-2025-12-02-q3-fy2026",
+          "earnings-marvell-2026-03-05-q4-fy2026",
+          "earnings-marvell-2026-05-27-q1-fy2027",
           "filing-marvell-2026-08-28-q2-fy2027-10q"
         ],
         "orphanSourceIds": [],
@@ -19523,8 +19529,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 5,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -19781,8 +19787,10 @@
         "resolvedSourceIds": [
           "ir-nxp"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 5,
         "financialSourceIds": [
+          "earnings-nxp-2025-10-27-q3-2025",
+          "earnings-nxp-2026-04-28-q1-2026",
           "earnings-nxp-2026-07-28-q2-2026"
         ],
         "orphanSourceIds": [],
@@ -22662,8 +22670,8 @@
       "primaryLayer": "Memory",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -22920,8 +22928,11 @@
         "resolvedSourceIds": [
           "ir-seagate"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 7,
         "financialSourceIds": [
+          "earnings-seagate-2025-10-28-q1-fy2026",
+          "earnings-seagate-2026-01-27-q2-fy2026",
+          "earnings-seagate-2026-04-28-q3-fy2026",
           "earnings-seagate-2026-07-28-q4-fy2026"
         ],
         "orphanSourceIds": [],
@@ -27237,8 +27248,8 @@
       "primaryLayer": "Data Center & Facilities",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -27495,8 +27506,11 @@
         "resolvedSourceIds": [
           "ir-trane-technologies"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 7,
         "financialSourceIds": [
+          "earnings-trane-2025-10-30-q3-2025",
+          "earnings-trane-2026-01-29-q4-2025",
+          "earnings-trane-2026-04-30-q1-2026",
           "earnings-trane-2026-07-30-q2"
         ],
         "orphanSourceIds": [],
