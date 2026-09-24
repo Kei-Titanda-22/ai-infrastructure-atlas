@@ -840,7 +840,9 @@ const financialHistorySixPeriodCoverageV05 = fixture.financialHistorySixPeriodCo
 assert.ok(financialHistorySixPeriodCoverageV05 && typeof financialHistorySixPeriodCoverageV05 === 'object', 'financial-history v05 freeze contract is present');
 const financialHistorySixPeriodCoverageV06 = fixture.financialHistorySixPeriodCoverageV06;
 assert.ok(financialHistorySixPeriodCoverageV06 && typeof financialHistorySixPeriodCoverageV06 === 'object', 'financial-history v06 freeze contract is present');
-assert.equal(freezes.length, 14, 'fixture contains the thirteen preserved freezes plus the financial-history v06 successor');
+const financialHistorySixPeriodCoverageV07 = fixture.financialHistorySixPeriodCoverageV07;
+assert.ok(financialHistorySixPeriodCoverageV07 && typeof financialHistorySixPeriodCoverageV07 === 'object', 'financial-history v07 freeze contract is present');
+assert.equal(freezes.length, 15, 'fixture contains the fourteen preserved freezes plus the financial-history v07 successor');
 assert.equal(githubPagesBaseDeterminism.version, 'github-pages-base-determinism-v01', 'GitHub Pages base determinism audit records its explicit version');
 assert.equal(githubPagesBaseDeterminism.predecessorVersion, corningAppliedFreeze.version, 'GitHub Pages base determinism audit records its immediate predecessor');
 const githubPagesBaseFreeze = freezes.find(freeze => freeze.version === githubPagesBaseDeterminism.version);
@@ -951,7 +953,7 @@ for (const path of expectedArtifactPaths.filter(path => !financialHistoryV05Chan
 assert.equal(shaMapDigest(financialHistoryFreezeV05), financialHistoryFreezeV05.metadata.shaMapDigest, 'v05 records the reproducible SHA map digest');
 const financialHistoryFreezeV06 = freezes.find(freeze => freeze.version === financialHistorySixPeriodCoverageV06.version);
 assert.ok(financialHistoryFreezeV06, 'financial-history v06 successor freeze is present');
-assert.equal(activeFreeze.version, financialHistoryFreezeV06.version, 'the explicit active ID selects the financial-history v06 freeze');
+assert.ok(freezes.some(freeze => freeze.version === financialHistoryFreezeV06.version), 'the v06 freeze remains immutable in history');
 assert.equal(financialHistoryFreezeV06.previousVersion, financialHistoryFreezeV05.version, 'v06 records the v05 predecessor');
 assert.equal(financialHistoryFreezeV06.metadata.baseMain, financialHistorySixPeriodCoverageV06.baseMain, 'v06 records its audited main');
 assert.equal(financialHistoryFreezeV06.metadata.shaMismatchFallbackAllowed, false, 'v06 rejects SHA fallback');
@@ -966,6 +968,23 @@ for (const path of expectedArtifactPaths.filter(path => !financialHistoryV06Chan
   assert.equal(financialHistoryFreezeV06.sha256ByPath[path], financialHistoryFreezeV05.sha256ByPath[path], `${path}: v06 leaves non-target artifact byte-identical`);
 }
 assert.equal(shaMapDigest(financialHistoryFreezeV06), financialHistoryFreezeV06.metadata.shaMapDigest, 'v06 records the reproducible SHA map digest');
+const financialHistoryFreezeV07 = freezes.find(freeze => freeze.version === financialHistorySixPeriodCoverageV07.version);
+assert.ok(financialHistoryFreezeV07, 'financial-history v07 successor freeze is present');
+assert.equal(activeFreeze.version, financialHistoryFreezeV07.version, 'the explicit active ID selects the financial-history v07 freeze');
+assert.equal(financialHistoryFreezeV07.previousVersion, financialHistoryFreezeV06.version, 'v07 records the v06 predecessor');
+assert.equal(financialHistoryFreezeV07.metadata.baseMain, financialHistorySixPeriodCoverageV07.baseMain, 'v07 records its audited main');
+assert.equal(financialHistoryFreezeV07.metadata.shaMismatchFallbackAllowed, false, 'v07 rejects SHA fallback');
+assert.equal(financialHistoryFreezeV07.metadata.shellMustMatchPrevious, true, 'v07 preserves the Evidence shell');
+assert.equal(financialHistoryFreezeV07.metadata.expectedChangedCompanyAssetCount, financialHistorySixPeriodCoverageV07.expectedChangedArtifactCount, 'v07 fixes the changed company count');
+assert.equal(financialHistoryFreezeV07.metadata.expectedUnchangedArtifactCount, financialHistorySixPeriodCoverageV07.expectedUnchangedArtifactCount, 'v07 fixes the unchanged artifact count');
+const financialHistoryV07ChangedPaths = expectedArtifactPaths.filter(path => financialHistoryFreezeV07.sha256ByPath[path] !== financialHistoryFreezeV06.sha256ByPath[path]);
+assert.deepEqual(financialHistoryV07ChangedPaths, financialHistorySixPeriodCoverageV07.expectedChangedArtifactPaths, 'v07 changes only the five new financial company assets');
+assert.equal(financialHistoryV07ChangedPaths.length, 5, 'v07 changes exactly five assets');
+assert.equal(financialHistoryFreezeV07.sha256ByPath['index.html'], financialHistoryFreezeV06.sha256ByPath['index.html'], 'v07 preserves the Evidence shell byte-for-byte');
+for (const path of expectedArtifactPaths.filter(path => !financialHistoryV07ChangedPaths.includes(path))) {
+  assert.equal(financialHistoryFreezeV07.sha256ByPath[path], financialHistoryFreezeV06.sha256ByPath[path], `${path}: v07 leaves non-target artifact byte-identical`);
+}
+assert.equal(shaMapDigest(financialHistoryFreezeV07), financialHistoryFreezeV07.metadata.shaMapDigest, 'v07 records the reproducible SHA map digest');
 const astroConfigSource = readFileSync(new URL('../astro.config.mjs', import.meta.url), 'utf8');
 assert.match(astroConfigSource, /normalizeBasePath\(process\.env\.BASE_PATH \|\| \(isUserSite \? '\/' : `\/\$\{repo\}`\)\)/, 'Astro config selects the repository base without a CI-specific branch');
 assert.doesNotMatch(astroConfigSource, /GITHUB_ACTIONS/, 'Astro config has no GITHUB_ACTIONS base-path branch');
@@ -994,7 +1013,7 @@ for (const [version, expectedDigest] of Object.entries(historicalArtifactFreezeD
 }
 
 const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
-assert.equal(shaBlocks.length, 14, 'fixture source contains thirteen preserved history maps plus the financial-history v06 SHA map');
+assert.equal(shaBlocks.length, 15, 'fixture source contains fourteen preserved history maps plus the financial-history v07 SHA map');
 for (const [index, block] of shaBlocks.entries()) {
   const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
   assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);
