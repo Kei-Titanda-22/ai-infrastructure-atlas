@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-09-23T00:00:00Z",
-  "dataAsOf": "2026-09-23",
-  "inputDigest": "sha256:bb7f5a32f0d535d6931acddab1bbbad4f5b87a5ff95876a2115d4d0af19fe76b",
+  "generatedAt": "2026-09-25T00:00:00Z",
+  "dataAsOf": "2026-09-25",
+  "inputDigest": "sha256:4cba22932338f879e21f1734166ef21e7f129d9fb29b85440795777901a4619e",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 246
+    "inputFileCount": 248
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 468,
-      "uniqueSourceCount": 466,
+      "registryRecordCount": 472,
+      "uniqueSourceCount": 470,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -191,8 +191,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 219,
-      "financialSourceResolved": 219
+      "financialSourceReferences": 223,
+      "financialSourceResolved": 223
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -6943,8 +6943,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 4,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -7197,9 +7197,12 @@
         "resolvedSourceIds": [
           "ir-ciena"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 6,
         "financialSourceIds": [
-          "earnings-ciena-2026-06-04-q2-fy2026"
+          "earnings-ciena-2025-12-11-q4-fy2025",
+          "earnings-ciena-2026-03-05-q1-fy2026",
+          "earnings-ciena-2026-06-04-q2-fy2026",
+          "earnings-ciena-2026-09-03-q3-fy2026"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -25240,8 +25243,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 4,
+      "financialSourceCount": 2,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -25498,8 +25501,9 @@
         "resolvedSourceIds": [
           "ir-sumitomo-electric"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 4,
         "financialSourceIds": [
+          "factbook-sumitomo-electric-2026-07-31-fy2026-q1",
           "sumitomo-electric-financial-highlights-fy2025"
         ],
         "orphanSourceIds": [],

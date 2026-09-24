@@ -7,7 +7,7 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDirectory = join(root, 'src', 'data');
 const outputPath = join(dataDirectory, 'financial-quarterly-coverage-v01.json');
 const reportPath = join(root, 'docs', 'financial-quarterly-coverage-v01.md');
-const checkedAt = '2026-09-23';
+const baselineCheckedAt = '2026-09-23';
 
 const readJson = async path => JSON.parse(await readFile(path, 'utf8'));
 
@@ -36,6 +36,7 @@ const coverageEntry = company => {
     .at(-1);
   const source = sourceById.get(latest?.sourceId ?? fallbackRecord?.sourceId);
   if (!source?.url) throw new Error(`${company.id}: no official source URL resolves from normalized history`);
+  const checkedAt = source.retrievedAt > baselineCheckedAt ? source.retrievedAt : baselineCheckedAt;
 
   if (company.id === 'kioxia') {
     return {
@@ -112,10 +113,11 @@ const count = status => coverage.filter(row => row.coverageStatus === status).le
 const completeCompanies = coverage.filter(row => row.coverageStatus === 'complete-six-quarters').map(row => row.companyId);
 const coverageJson = `${JSON.stringify(coverage, null, 2)}\n`;
 const historyDigest = createHash('sha256').update(historyFiles.map(file => file).join('\n')).digest('hex');
+const latestCheckedAt = coverage.map(row => row.checkedAt).sort().at(-1);
 const report = [
   '# Financial quarterly coverage v0.1',
   '',
-  `- Checked at: ${checkedAt}`,
+  `- Checked at: ${latestCheckedAt}`,
   `- Registry companies: ${coverage.length}`,
   `- Financial-history shard manifest digest: ${historyDigest}`,
   `- Complete six quarters: ${count('complete-six-quarters')}`,

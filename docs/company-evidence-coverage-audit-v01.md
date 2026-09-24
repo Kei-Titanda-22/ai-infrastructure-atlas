@@ -1,7 +1,7 @@
 # 100-company Company Evidence Coverage Audit v0.1
 
-- Data as of: `2026-09-23`
-- Input digest: `sha256:bb7f5a32f0d535d6931acddab1bbbad4f5b87a5ff95876a2115d4d0af19fe76b`
+- Data as of: `2026-09-25`
+- Input digest: `sha256:4cba22932338f879e21f1734166ef21e7f129d9fb29b85440795777901a4619e`
 - Scope: 100 companies × 11 categories = 1,100 pairs
 - Company Evidence enrichment: **Arm / ASML only**
 - This is a coverage audit, not a Company Evaluation Score.
@@ -73,9 +73,9 @@ A/B/C/D/Eを別集計した結果：
 
 ## Source quality
 
-- Registry records / unique Sources: 468 / 466
+- Registry records / unique Sources: 472 / 470
 - Company `sourceIds` references / resolved: 121 / 121
-- Financial Source references / resolved: 219 / 219
+- Financial Source references / resolved: 223 / 223
 - Orphan Source references: 0
 - Company/source mismatches: 0
 - Compatible duplicate Source IDs: 2

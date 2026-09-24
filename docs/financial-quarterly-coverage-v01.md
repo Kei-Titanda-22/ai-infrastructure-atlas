@@ -1,15 +1,15 @@
 # Financial quarterly coverage v0.1
 
-- Checked at: 2026-09-23
+- Checked at: 2026-09-25
 - Registry companies: 100
-- Financial-history shard manifest digest: f78106e6f50e77e1d3fadcde7b91dc3d8305c37cd586d6f79cdd7683e909e84e
-- Complete six quarters: 33
-- Partial quarterly (1–5): 17
+- Financial-history shard manifest digest: 5049f302a83806634a30746b1ee98c26d2cebcb241a53d914774c4c1d0c1aabf
+- Complete six quarters: 35
+- Partial quarterly (1–5): 16
 - Awaiting next reported quarter: 1
 - Semiannual only: 0
 - Annual only: 0
 - Private/no quarterly disclosure: 0
-- Needs review: 49
+- Needs review: 48
 
 ## Companies with six or more actual quarterly records
 
@@ -24,6 +24,7 @@
 - asml
 - broadcom
 - carrier
+- ciena
 - cisco
 - disco
 - entegris
@@ -39,6 +40,7 @@
 - qualcomm
 - seagate
 - sk-hynix
+- sumitomo-electric
 - texas-instruments
 - tokyo-electron
 - trane-technologies
@@ -73,7 +75,7 @@
 | cadence | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/813672/000081367226000016/cdns-20251231.htm) |
 | canon | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://global.canon/ja/ir/annual/canon-annual-report-2025.pdf) |
 | carrier | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1783180/000178318026000030/a99-q22026earningsexhibit.htm) |
-| ciena | quarterly | 2 / 6 | Q2 FY2026 (2026-05-02) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.sec.gov/Archives/edgar/data/936395/000162828026040614/ex9912026q2earningspressre.htm) |
+| ciena | quarterly | 6 / 6 | Q3 FY2026 (2026-08-01) | complete-six-quarters | — | [official](https://investor.ciena.com/news/news-details/2026/Ciena-Reports-Fiscal-Third-Quarter-2026-Financial-Results/default.aspx) |
 | cisco | quarterly | 6 / 6 | Q4 FY2026 (2026-07-25) | complete-six-quarters | — | [official](https://investor.cisco.com/news/news-details/2026/CISCO-REPORTS-FOURTH-QUARTER-AND-FISCAL-YEAR-2026-EARNINGS/default.aspx) |
 | coherent | quarterly | 2 / 6 | Q4 FY2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://ir.coherent.com/news-releases/news-release-details/coherent-corp-reports-fourth-quarter-and-full-year-fiscal-2026) |
 | corning | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/24741/000002474126000124/glw-20251231.htm) |
@@ -137,7 +139,7 @@
 | smic | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0326/2026032601294.pdf) |
 | stmicroelectronics | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://investors.st.com/static-files/e4d9410f-f7ef-4df7-9325-f5fc4cafba8d) |
 | sumco | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sumcosi.com/english/ir/library/shareholders/27/pdf/nc_e_27.pdf) |
-| sumitomo-electric | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://sumitomoelectric.com/ir/highlights) |
+| sumitomo-electric | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://sumitomoelectric.com/sites/default/files/2026-07/download_documents/fb2026_1g.pdf) |
 | synopsys | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/883241/000088324125000028/snps-20251031.htm) |
 | te-connectivity | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/1385157/000110465925109150/tel-20250926x10k.htm) |
 | tesla | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm) |

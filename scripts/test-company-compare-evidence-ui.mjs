@@ -1912,7 +1912,7 @@ if (process.argv.includes('--dist')) {
   ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
-  assert.equal(Buffer.byteLength(financialPayload), 405_786, 'fifth-batch financial payload is exactly 22,395 B larger than the preceding 383,391 B payload');
+  assert.equal(Buffer.byteLength(financialPayload), 419_415, 'sixth-batch financial payload adds exactly 13,629 B of official quarter records to the preceding 405,786 B payload');
   assert.equal(
     nonFinancialDigest(compareHtml),
     'b2a1247e445f1a49fd8b04e2ef3d17953dee564c13da48aa66efb20f78a85b62',
@@ -1926,7 +1926,7 @@ if (process.argv.includes('--dist')) {
   });
   assert.equal(fifthBatchCompareSizeContract.growthLimitRatio, legacyCompareSizeContract.growthLimitRatio, 'the existing +5% growth ratio is unchanged');
   assert.equal(Math.floor(fifthBatchCompareSizeContract.acceptedRawBytes * fifthBatchCompareSizeContract.growthLimitRatio), fifthBatchCompareSizeContract.maximumRawBytes, 'v05 maximum derives from the measured accepted v05 output');
-  assert.equal(compareBytes, 733_398, 'Compare size delta is the financial payload delta alone');
+  assert.equal(compareBytes - fifthBatchCompareSizeContract.acceptedRawBytes, Buffer.byteLength(financialPayload) - 405_786, 'Compare HTML growth is exactly the added financial payload; the accepted v05 baseline and +5% cap remain unchanged');
   const assertFifthBatchCompareSize = bytes => {
     assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v05 Compare HTML byte count is a non-negative integer');
     assert.ok(bytes <= fifthBatchCompareSizeContract.maximumRawBytes, `v05 Compare HTML ${bytes} B exceeds ${fifthBatchCompareSizeContract.maximumRawBytes} B`);
@@ -2198,11 +2198,32 @@ if (process.argv.includes('--dist')) {
   assert.equal((remainingBatch4FinancialHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 20, 'all twenty Remaining rollout Batch 4 Companies expose canonical expanded Financial history');
   for (const companyId of remainingBatch4CompanyIds) {
     const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
-    const expected = displayFixture.remainingBatch4FinancialRow.companies[companyId];
+    const expected = displayFixture.sixthBatchPrimaryFinancialRow[companyId] ?? displayFixture.remainingBatch4FinancialRow.companies[companyId];
     assert.match(financialTemplate, /data-has-content="true"/, `${companyId}: Remaining rollout Batch 4 primary Financial slot is available`);
     assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: Remaining rollout Batch 4 primary Financial value is canonical`);
     assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: Remaining rollout Batch 4 primary Financial period and basis are canonical`);
     assert.ok(financialTemplate.includes('一次資料を開く'), `${companyId}: Remaining rollout Batch 4 primary Financial Source remains linked`);
+  }
+  const sixthBatchFinancialHistory = [...compareFinancialHistory, ...await readJson('../src/data/financial-history-v05-batch09.json')];
+  for (const [companyId, expected] of Object.entries(displayFixture.sixthBatchPrimaryFinancialRow)) {
+    const records = sixthBatchFinancialHistory.filter(record => record.companyId === companyId).sort((left, right) => left.endDate.localeCompare(right.endDate));
+    const latest = records.at(-1);
+    assert.equal(records.length, expected.recordCount, `${companyId}: all annual and quarterly records remain available`);
+    assert.deepEqual({
+      displayValue: `${Number(latest.metrics.operatingMargin.value).toLocaleString('ja-JP', { maximumFractionDigits: 1 })}%`,
+      periodLabel: latest.periodLabel,
+      accountingBasis: latest.accountingBasis,
+      sourceId: latest.sourceId,
+    }, {
+      displayValue: expected.displayValue,
+      periodLabel: expected.periodLabel,
+      accountingBasis: expected.accountingBasis,
+      sourceId: expected.sourceId,
+    }, `${companyId}: latest sixth-batch primary row comes from canonical financial history`);
+    const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
+    assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: primary row shows the reported latest quarter`);
+    assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: primary row preserves period and accounting basis`);
+    assert.ok(financialTemplate.includes('一次資料を開く'), `${companyId}: primary row links its official source`);
   }
   const expandedFinancialHtml = pilotIds.map(companyId => {
     const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);
