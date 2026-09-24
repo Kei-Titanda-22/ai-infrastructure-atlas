@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-09-23T00:00:00Z",
-  "dataAsOf": "2026-09-23",
-  "inputDigest": "sha256:bb7f5a32f0d535d6931acddab1bbbad4f5b87a5ff95876a2115d4d0af19fe76b",
+  "generatedAt": "2026-09-25T00:00:00Z",
+  "dataAsOf": "2026-09-25",
+  "inputDigest": "sha256:d49613d2c8d641c479d3aed622aa2f2a7f01c784a51ca94c1fc315f8b32f31fe",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 246
+    "inputFileCount": 248
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 468,
-      "uniqueSourceCount": 466,
+      "registryRecordCount": 486,
+      "uniqueSourceCount": 484,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -191,8 +191,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 219,
-      "financialSourceResolved": 219
+      "financialSourceReferences": 237,
+      "financialSourceResolved": 237
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -6943,8 +6943,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 4,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -7197,9 +7197,12 @@
         "resolvedSourceIds": [
           "ir-ciena"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 6,
         "financialSourceIds": [
-          "earnings-ciena-2026-06-04-q2-fy2026"
+          "earnings-ciena-2025-12-11-q4-fy2025",
+          "earnings-ciena-2026-03-05-q1-fy2026",
+          "earnings-ciena-2026-06-04-q2-fy2026",
+          "earnings-ciena-2026-09-03-q3-fy2026"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -7509,8 +7512,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -7767,8 +7770,10 @@
         "resolvedSourceIds": [
           "ir-coherent"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 6,
         "financialSourceIds": [
+          "earnings-coherent-2026-02-04-q2-fy2026",
+          "earnings-coherent-2026-05-06-q3-fy2026",
           "earnings-coherent-2026-08-12-q4-fy2026"
         ],
         "orphanSourceIds": [],
@@ -8079,8 +8084,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 2,
+      "registrySourceCount": 7,
+      "financialSourceCount": 6,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -8333,8 +8338,12 @@
         "resolvedSourceIds": [
           "ir-credo"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
+          "earnings-credo-2025-03-04-q3-fy2025",
+          "earnings-credo-2025-09-03-q1-fy2026",
+          "earnings-credo-2025-12-01-q2-fy2026",
+          "earnings-credo-2026-03-02-q3-fy2026",
           "earnings-credo-2026-06-01-q4-fy2026",
           "filing-credo-2026-06-15-fy2026-10k"
         ],
@@ -16393,8 +16402,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 2,
+      "registrySourceCount": 7,
+      "financialSourceCount": 6,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -16650,8 +16659,12 @@
         "resolvedSourceIds": [
           "ir-lumentum"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
+          "earnings-lumentum-2025-05-06-q3-fy2025",
+          "earnings-lumentum-2025-11-04-q1-fy2026",
+          "earnings-lumentum-2026-02-03-q2-fy2026",
+          "earnings-lumentum-2026-05-05-q3-fy2026",
           "earnings-lumentum-2026-08-11-q4-fy2026",
           "filing-lumentum-2026-08-24-fy2026-10k"
         ],
@@ -21524,8 +21537,8 @@
       "primaryLayer": "Memory",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 6,
-      "financialSourceCount": 2,
+      "registrySourceCount": 10,
+      "financialSourceCount": 6,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -21784,8 +21797,12 @@
           "earnings-samsung-guidance-2026-07-07-q2-2026",
           "ir-samsung"
         ],
-        "registrySourceCount": 6,
+        "registrySourceCount": 10,
         "financialSourceIds": [
+          "earnings-samsung-2025-04-30-q1-2025",
+          "earnings-samsung-2025-07-31-q2-2025",
+          "earnings-samsung-2025-10-30-q3-2025",
+          "earnings-samsung-2026-01-29-q4-2025",
           "earnings-samsung-2026-04-30-q1-2026",
           "earnings-samsung-2026-07-30-q2-2026"
         ],
@@ -25240,8 +25257,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 4,
+      "financialSourceCount": 2,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -25498,8 +25515,9 @@
         "resolvedSourceIds": [
           "ir-sumitomo-electric"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 4,
         "financialSourceIds": [
+          "factbook-sumitomo-electric-2026-07-31-fy2026-q1",
           "sumitomo-electric-financial-highlights-fy2025"
         ],
         "orphanSourceIds": [],
