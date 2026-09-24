@@ -19,8 +19,8 @@ assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
 assert.deepEqual(new Set(coverage.map(row => row.companyId)), new Set(companies.map(company => company.id)), 'coverage company IDs exactly match registry');
 assert.equal(new Set(coverage.map(row => row.companyId)).size, coverage.length, 'coverage company IDs are unique');
-assert.equal(history.length, 394, 'sixth financial-history expansion yields 394 sourced periods');
-assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 39, 'six additional companies reach six reported quarters');
+assert.equal(history.length, 423, 'seventh financial-history expansion yields 423 sourced periods');
+assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 44, 'five additional companies reach six reported quarters');
 
 const quarterlyByCompany = new Map(companies.map(company => [company.id, []]));
 for (const record of history) if (record.periodType === 'quarterly') quarterlyByCompany.get(record.companyId)?.push(record);
@@ -90,6 +90,23 @@ for (const [companyId, endDates] of sixthBatchPeriods) {
   assert.equal(new Set(quarterly.map(record => record.unit)).size, 1, `${companyId}: stable unit`);
   assert.equal(new Set(quarterly.map(record => record.accountingBasis)).size, 1, `${companyId}: stable accounting basis`);
 }
+const seventhBatchPeriods = new Map([
+  ['besi', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['onsemi', ['2025-04-04', '2025-07-04', '2025-10-03', '2025-12-31', '2026-04-03', '2026-07-03']],
+  ['cadence', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['monolithic-power', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['linde', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+]);
+for (const [companyId, endDates] of seventhBatchPeriods) {
+  const quarterly = quarterlyByCompany.get(companyId);
+  assert.deepEqual(quarterly.slice(-6).map(record => record.endDate), endDates, `${companyId}: latest six standalone quarters are continuous`);
+  assert.equal(coverage.find(row => row.companyId === companyId).coverageStatus, 'complete-six-quarters', `${companyId}: complete coverage`);
+  assert.equal(new Set(quarterly.map(record => record.currency)).size, 1, `${companyId}: stable currency`);
+  assert.equal(new Set(quarterly.map(record => record.unit)).size, 1, `${companyId}: stable unit`);
+  assert.equal(new Set(quarterly.map(record => record.accountingBasis)).size, 1, `${companyId}: stable accounting basis`);
+  assert.ok(quarterly.every(record => record.metrics.revenue.value != null && record.metrics.operatingProfit.value != null && record.metrics.operatingMargin.value != null), `${companyId}: actual quarterly revenue, operating income, and margin are present`);
+}
+assert.equal((await readJson(join(dataDirectory, 'financial-history-v05-batch10.json'))).length, 29, 'seventh batch contains 29 sourced standalone quarters');
 assert.equal(coverage.find(row => row.companyId === 'nvidia').checkedAt, '2026-09-23', 'unreviewed baseline companies retain their original coverage check date');
 assert.equal(coverage.find(row => row.companyId === 'fujikura').coverageStatus, 'needs-review', 'Fujikura remains unfilled without verified comparable six-quarter series');
 
