@@ -19,8 +19,8 @@ assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
 assert.deepEqual(new Set(coverage.map(row => row.companyId)), new Set(companies.map(company => company.id)), 'coverage company IDs exactly match registry');
 assert.equal(new Set(coverage.map(row => row.companyId)).size, coverage.length, 'coverage company IDs are unique');
-assert.equal(history.length, 378, 'sixth financial-history expansion yields 378 sourced periods');
-assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 35, 'two additional companies reach six reported quarters');
+assert.equal(history.length, 394, 'sixth financial-history expansion yields 394 sourced periods');
+assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 39, 'six additional companies reach six reported quarters');
 
 const quarterlyByCompany = new Map(companies.map(company => [company.id, []]));
 for (const record of history) if (record.periodType === 'quarterly') quarterlyByCompany.get(record.companyId)?.push(record);
@@ -76,6 +76,10 @@ for (const [companyId, endDates] of phaseThreeEndDates) {
 const sixthBatchPeriods = new Map([
   ['sumitomo-electric', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
   ['ciena', ['2025-05-03', '2025-08-02', '2025-11-01', '2026-01-31', '2026-05-02', '2026-08-01']],
+  ['coherent', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['credo', ['2025-02-01', '2025-05-03', '2025-08-02', '2025-11-01', '2026-01-31', '2026-05-02']],
+  ['lumentum', ['2025-03-29', '2025-06-28', '2025-09-27', '2025-12-27', '2026-03-28', '2026-06-27']],
+  ['samsung-electronics', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
 ]);
 for (const [companyId, endDates] of sixthBatchPeriods) {
   const quarterly = quarterlyByCompany.get(companyId);

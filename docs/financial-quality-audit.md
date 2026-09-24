@@ -2,7 +2,7 @@
 
 データ基準日: **2026-09-25**
 
-入力SHA-256: `4ea6d19e47660226ef7d12ea988e66a43fc2a0ae1a1f4a548dbb3b1965751c60`
+入力SHA-256: `5d2ff4263eb447329ea935e2ba74c98a3bb146731eb20c7f1c8c15314025b2d6`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
@@ -13,18 +13,18 @@
 | 項目 | 件数 |
 | --- | ---: |
 | 企業 | 100 |
-| 期間 | 378 |
-| 指標 | 1890 |
+| 期間 | 394 |
+| 指標 | 1970 |
 | cash-flow override | 12 |
 
 ## 指標の検証状態
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `verified` | 1491 | 一次資料と値・算式を検証済み |
+| `verified` | 1539 | 一次資料と値・算式を検証済み |
 | `source-linked` | 3 | Sourceに紐付くがverifiedではない値 |
 | `needs-review` | 0 | 値はあるが再確認が必要 |
-| `missing` | 396 | 欠損理由ステータスを持つ値なし指標 |
+| `missing` | 428 | 欠損理由ステータスを持つ値なし指標 |
 
 ## FCF / Capex充足
 
@@ -33,7 +33,7 @@
 | `both-present` | 181 | FCF and Capex both have values |
 | `fcf-missing-only` | 0 | FCF is missing while Capex has a value |
 | `capex-missing-only` | 0 | Capex is missing while FCF has a value |
-| `both-missing` | 197 | FCF and Capex are both missing |
+| `both-missing` | 213 | FCF and Capex are both missing |
 
 ## Capex定義
 
@@ -47,14 +47,14 @@
 | `broader-non-current-assets` | 4 | A broader non-current/fixed/long-term asset cash-investment line |
 | `net-capex` | 28 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 6 | REIT or investment-property/real-estate investment definition |
-| `not-collected` | 193 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
+| `not-collected` | 209 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
 | `unclassified` | 0 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `direct-gaap-ifrs-operating-income` | 329 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
+| `direct-gaap-ifrs-operating-income` | 345 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
 | `ebit` | 2 | Reported EBIT used as the operating-profit measure |
 | `reconstructed-operating-income` | 24 | Atlas reconstructs operating income from reported operating line items |
 | `source-linked` | 1 | Value is retained as source-linked rather than verified |
@@ -67,7 +67,7 @@
 | `atlas-formula-aligned` | 8 | Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas |
 | `atlas-definition-difference` | 0 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
 | `unresolved` | 0 | Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely |
-| `not-applicable` | 370 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
+| `not-applicable` | 386 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
 
 ## 特殊比較フラグ
 
@@ -144,9 +144,9 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | carrier | Carrier（キャリア） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | discontinued-operations |
 | ciena | Ciena（シエナ） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | — |
 | cisco | Cisco（シスコ） | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | special-operating-profit-definition |
-| coherent | Coherent（コヒレント） | 4 | 16 | 0 | 0 | 4 | 2 | 0 | 0 | 2 | ppe-only |
+| coherent | Coherent（コヒレント） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | ppe-only |
 | corning | Corning（コーニング） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only, adjusted-company-fcf-not-used |
-| credo | Credo（クレド） | 4 | 16 | 0 | 0 | 4 | 2 | 0 | 0 | 2 | ppe-only |
+| credo | Credo（クレド） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | ppe-only |
 | denso | デンソー | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | digital-realty | Digital Realty（デジタル・リアルティ） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | disco | ディスコ | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
@@ -175,7 +175,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | lasertec | レーザーテック | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | legrand | Legrand（ルグラン） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | linde | Linde（リンデ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only |
-| lumentum | Lumentum（ルメンタム） | 4 | 14 | 0 | 0 | 6 | 2 | 0 | 0 | 2 | ppe-only, special-operating-profit-definition |
+| lumentum | Lumentum（ルメンタム） | 8 | 26 | 0 | 0 | 14 | 2 | 0 | 0 | 6 | ppe-only, special-operating-profit-definition |
 | marvell | Marvell Technology（マーベル・テクノロジー） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | — |
 | mediatek | MediaTek（メディアテック） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | micron | Micron Technology（マイクロン・テクノロジー） | 6 | 20 | 0 | 0 | 10 | 1 | 0 | 0 | 5 | reconstructed-operating-income, ppe-only |
@@ -193,7 +193,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | renesas | ルネサス エレクトロニクス | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | resonac-holdings | レゾナック・ホールディングス | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | rohm | ローム | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only |
-| samsung-electronics | Samsung Electronics（サムスン電子） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
+| samsung-electronics | Samsung Electronics（サムスン電子） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | — |
 | sandisk | Sandisk（サンディスク） | 4 | 20 | 0 | 0 | 0 | 4 | 0 | 0 | 0 | net-basis-capex, company-reported-fcf |
 | schneider-electric | Schneider Electric（シュナイダーエレクトリック） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
 | screen-holdings | SCREENホールディングス | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |

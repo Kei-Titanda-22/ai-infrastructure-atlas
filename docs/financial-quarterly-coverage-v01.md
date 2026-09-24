@@ -3,8 +3,8 @@
 - Checked at: 2026-09-25
 - Registry companies: 100
 - Financial-history shard manifest digest: 5049f302a83806634a30746b1ee98c26d2cebcb241a53d914774c4c1d0c1aabf
-- Complete six quarters: 35
-- Partial quarterly (1–5): 16
+- Complete six quarters: 39
+- Partial quarterly (1–5): 12
 - Awaiting next reported quarter: 1
 - Semiannual only: 0
 - Annual only: 0
@@ -26,6 +26,8 @@
 - carrier
 - ciena
 - cisco
+- coherent
+- credo
 - disco
 - entegris
 - furukawa-electric
@@ -33,11 +35,13 @@
 - intel
 - kla
 - lam-research
+- lumentum
 - marvell
 - micron
 - nvidia
 - nxp
 - qualcomm
+- samsung-electronics
 - seagate
 - sk-hynix
 - sumitomo-electric
@@ -77,9 +81,9 @@
 | carrier | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1783180/000178318026000030/a99-q22026earningsexhibit.htm) |
 | ciena | quarterly | 6 / 6 | Q3 FY2026 (2026-08-01) | complete-six-quarters | — | [official](https://investor.ciena.com/news/news-details/2026/Ciena-Reports-Fiscal-Third-Quarter-2026-Financial-Results/default.aspx) |
 | cisco | quarterly | 6 / 6 | Q4 FY2026 (2026-07-25) | complete-six-quarters | — | [official](https://investor.cisco.com/news/news-details/2026/CISCO-REPORTS-FOURTH-QUARTER-AND-FISCAL-YEAR-2026-EARNINGS/default.aspx) |
-| coherent | quarterly | 2 / 6 | Q4 FY2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://ir.coherent.com/news-releases/news-release-details/coherent-corp-reports-fourth-quarter-and-full-year-fiscal-2026) |
+| coherent | quarterly | 6 / 6 | Q4 FY2026 (2026-06-30) | complete-six-quarters | — | [official](https://ir.coherent.com/news-releases/news-release-details/coherent-corp-reports-fourth-quarter-and-full-year-fiscal-2026) |
 | corning | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/24741/000002474126000124/glw-20251231.htm) |
-| credo | quarterly | 2 / 6 | Q4 FY2026 (2026-05-02) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx) |
+| credo | quarterly | 6 / 6 | Q4 FY2026 (2026-05-02) | complete-six-quarters | — | [official](https://investors.credosemi.com/news-events/news/news-details/2026/Credo-Technology-Group-Holding-Ltd-Reports-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx) |
 | denso | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.denso.com/global/en/about-us/investors/financial/) |
 | digital-realty | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/1297996/000110465926015365/dlr-20251231x10k.htm) |
 | disco | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.disco.co.jp/eg/ir/library/doc/fr/fr20260723.pdf) |
@@ -108,7 +112,7 @@
 | lasertec | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://info.gbiz.go.jp/hojin/edinetDownload?docId=S100WQ7F) |
 | legrand | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.legrandgroup.com/sites/default/files/Documents_PDF_Legrand/Finance/2024/1Y/Legrand_Press_Release_Results_12M2024-v2_1739806167.pdf) |
 | linde | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/1707925/000162828026011430/lin-20251231.htm) |
-| lumentum | quarterly | 2 / 6 | Q4 FY2026 (2026-06-27) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.sec.gov/Archives/edgar/data/1633978/000162828026055726/lite_ex991xq4fy26.htm) |
+| lumentum | quarterly | 6 / 6 | Q4 FY2026 (2026-06-27) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1633978/000162828026055726/lite_ex991xq4fy26.htm) |
 | marvell | quarterly | 6 / 6 | Q2 FY2027 (2026-08-01) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1835632/000183563226000025/mrvl-20260801.htm) |
 | mediatek | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.mediatek.com/hubfs/MediaTek%20Assets/Pdfs/Financial%20Reports/2025/Q4%20Consolidated%20Report.pdf) |
 | micron | quarterly | 6 / 6 | Q3 FY2026 (2026-05-28) | complete-six-quarters | — | [official](https://investors.micron.com/news/press-release/2026/Micron-Technology-Inc--Reports-Record-Results-for-the-Third-Quarter-of-Fiscal-2026/default.aspx) |
@@ -126,7 +130,7 @@
 | renesas | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.renesas.com/en/document/rep/financial-report-2025) |
 | resonac-holdings | quarterly | 2 / 6 | Q1 2026 (2026-03-31) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://am.resonac.com/wp-content/uploads/2026/05/ResonacHD_2026Q1_Consolidated-Financial-Statements.pdf) |
 | rohm | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://fscdn.rohm.com/en/financial/financial-report/2603_financialresults_en.pdf) |
-| samsung-electronics | quarterly | 2 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results) |
+| samsung-electronics | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results) |
 | sandisk | quarterly | 2 / 6 | Q4 FY2026 (2026-07-03) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-fourth-quarter-2026-financial-results) |
 | schneider-electric | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.se.com/ww/en/assets/564/document/528238/accounts-fy-results-2025.pdf?p_File_Name=2025+Full+Year+Financial+Results+Accounts&p_enDocType=EDMS) |
 | screen-holdings | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://hdjp-corporateweb-files.screen.co.jp/1017/7865/4129/FY2026Q4_Fr_E.pdf) |

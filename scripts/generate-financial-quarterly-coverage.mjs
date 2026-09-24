@@ -36,7 +36,11 @@ const coverageEntry = company => {
     .at(-1);
   const source = sourceById.get(latest?.sourceId ?? fallbackRecord?.sourceId);
   if (!source?.url) throw new Error(`${company.id}: no official source URL resolves from normalized history`);
-  const checkedAt = source.retrievedAt > baselineCheckedAt ? source.retrievedAt : baselineCheckedAt;
+  const checkedAt = quarterly.reduce((latestCheckedAt, record) => {
+    const recordSource = sourceById.get(record.sourceId);
+    if (!recordSource?.retrievedAt) throw new Error(`${company.id}: missing quarterly source retrieval date for ${record.id}`);
+    return recordSource.retrievedAt > latestCheckedAt ? recordSource.retrievedAt : latestCheckedAt;
+  }, source.retrievedAt > baselineCheckedAt ? source.retrievedAt : baselineCheckedAt);
 
   if (company.id === 'kioxia') {
     return {

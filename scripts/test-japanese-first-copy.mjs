@@ -959,8 +959,8 @@ assert.equal(financialHistoryFreezeV06.metadata.shellMustMatchPrevious, true, 'v
 assert.equal(financialHistoryFreezeV06.metadata.expectedChangedCompanyAssetCount, financialHistorySixPeriodCoverageV06.expectedChangedArtifactCount, 'v06 fixes the changed company count');
 assert.equal(financialHistoryFreezeV06.metadata.expectedUnchangedArtifactCount, financialHistorySixPeriodCoverageV06.expectedUnchangedArtifactCount, 'v06 fixes the unchanged artifact count');
 const financialHistoryV06ChangedPaths = expectedArtifactPaths.filter(path => financialHistoryFreezeV06.sha256ByPath[path] !== financialHistoryFreezeV05.sha256ByPath[path]);
-assert.deepEqual(financialHistoryV06ChangedPaths, financialHistorySixPeriodCoverageV06.expectedChangedArtifactPaths, 'v06 changes only the two new financial company assets');
-assert.equal(financialHistoryV06ChangedPaths.length, 2, 'v06 changes exactly two assets');
+assert.deepEqual(financialHistoryV06ChangedPaths, financialHistorySixPeriodCoverageV06.expectedChangedArtifactPaths, 'v06 changes only the six new financial company assets');
+assert.equal(financialHistoryV06ChangedPaths.length, 6, 'v06 changes exactly six assets');
 assert.equal(financialHistoryFreezeV06.sha256ByPath['index.html'], financialHistoryFreezeV05.sha256ByPath['index.html'], 'v06 preserves the Evidence shell byte-for-byte');
 for (const path of expectedArtifactPaths.filter(path => !financialHistoryV06ChangedPaths.includes(path))) {
   assert.equal(financialHistoryFreezeV06.sha256ByPath[path], financialHistoryFreezeV05.sha256ByPath[path], `${path}: v06 leaves non-target artifact byte-identical`);

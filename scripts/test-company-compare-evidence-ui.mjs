@@ -1912,7 +1912,7 @@ if (process.argv.includes('--dist')) {
   ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
-  assert.equal(Buffer.byteLength(financialPayload), 419_415, 'sixth-batch financial payload adds exactly 13,629 B of official quarter records to the preceding 405,786 B payload');
+  assert.equal(Buffer.byteLength(financialPayload), 439_848, 'sixth-batch financial payload adds exactly 34,062 B of official quarter records to the preceding 405,786 B payload');
   assert.equal(
     nonFinancialDigest(compareHtml),
     'b2a1247e445f1a49fd8b04e2ef3d17953dee564c13da48aa66efb20f78a85b62',
@@ -2206,7 +2206,8 @@ if (process.argv.includes('--dist')) {
   }
   const sixthBatchFinancialHistory = [...compareFinancialHistory, ...await readJson('../src/data/financial-history-v05-batch09.json')];
   for (const [companyId, expected] of Object.entries(displayFixture.sixthBatchPrimaryFinancialRow)) {
-    const records = sixthBatchFinancialHistory.filter(record => record.companyId === companyId).sort((left, right) => left.endDate.localeCompare(right.endDate));
+    const records = sixthBatchFinancialHistory.filter(record => record.companyId === companyId).sort((left, right) =>
+      left.endDate.localeCompare(right.endDate) || Number(left.periodType === 'quarterly') - Number(right.periodType === 'quarterly'));
     const latest = records.at(-1);
     assert.equal(records.length, expected.recordCount, `${companyId}: all annual and quarterly records remain available`);
     assert.deepEqual({
