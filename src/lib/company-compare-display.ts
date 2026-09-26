@@ -136,8 +136,8 @@ export function resolveCompareFinancialTablePresentation(records: readonly Compa
 }
 
 export const compareGenericTermTranslations = Object.freeze({
-  compute: '演算',
-  interconnect: '相互接続',
+  compute: '計算半導体',
+  interconnect: '高速接続',
   system: 'システム',
   software: 'ソフトウェア',
   'switching silicon': 'スイッチ用半導体',
@@ -145,7 +145,9 @@ export const compareGenericTermTranslations = Object.freeze({
   'Value Chain': 'バリューチェーン上の位置',
   scope: '対象範囲',
   freshness: '更新状況',
-  'developer ecosystem': '開発者エコシステム',
+  'developer ecosystem': '開発者基盤',
+  switch: 'スイッチ',
+  networking: 'ネットワーク',
   'Integrated Materials Solution': '統合材料ソリューション',
   Tualatin: 'チュアラティン',
   'United States': '米国',
@@ -333,7 +335,7 @@ export const compareClaimDisplayCopy = Object.freeze<Record<string, CompareDispl
   'nvidia-strategy-triage-remediation-v02': claimCopy(
     'nvidia-strategy-triage-remediation-v02',
     '基盤と開発環境を拡張',
-    'GPU、CPU、DPU、相互接続、システム、ソフトウェアの一体化を進め、開発者エコシステム、NVIDIA AI Enterprise、DGX Cloudを拡張する方針を示している。',
+    'GPU、CPU、DPU、高速接続、システム、ソフトウェアを一体化し、開発者基盤とNVIDIA AI Enterprise、DGX Cloudを拡張する方針を示している。',
   ),
   'nvidia-risks': claimCopy(
     'nvidia-risks',
@@ -566,10 +568,10 @@ export const compareTechnologyIdsByClaimId = Object.freeze<Record<string, readon
   ],
 });
 
-export const compareCompanyPresentationTokens = Object.freeze(['01', '02', '03', '04']);
+export const compareCompanyPresentationTokens = Object.freeze(['01', '02', '03', '04', '05']);
 
 export function companyPresentationTokenForOrder(index: number) {
   const label = compareCompanyPresentationTokens[index];
-  if (!label) throw new Error(`Company Compare presentation order is outside 1-4: ${index + 1}`);
+  if (!label) throw new Error(`Company Compare presentation order is outside 1-5: ${index + 1}`);
   return { index: index + 1, label, token: `company-${index + 1}` } as const;
 }

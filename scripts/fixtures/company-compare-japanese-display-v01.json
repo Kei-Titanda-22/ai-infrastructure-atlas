@@ -121,8 +121,8 @@
     "見ていく必要がある"
   ],
   "genericTermTranslations": {
-    "compute": "演算",
-    "interconnect": "相互接続",
+    "compute": "計算半導体",
+    "interconnect": "高速接続",
     "system": "システム",
     "software": "ソフトウェア",
     "switching silicon": "スイッチ用半導体",
@@ -130,7 +130,9 @@
     "Value Chain": "供給網上の位置",
     "scope": "対象範囲",
     "freshness": "更新状況",
-    "developer ecosystem": "開発者エコシステム",
+    "developer ecosystem": "開発者基盤",
+    "switch": "スイッチ",
+    "networking": "ネットワーク",
     "Integrated Materials Solution": "統合材料ソリューション",
     "Tualatin": "チュアラティン",
     "United States": "米国",
@@ -260,7 +262,7 @@
     "finalLocationsPerCompany": 11,
     "anchorsPerIdentity": 1
   },
-  "presentationTokens": ["01", "02", "03", "04"],
+  "presentationTokens": ["01", "02", "03", "04", "05"],
   "financialDetailTable": {
     "metricIds": ["revenue", "operatingProfit", "operatingMargin", "freeCashFlow", "capex", "roic"],
     "columnHeadingAlignment": "center",
@@ -673,10 +675,18 @@
     "responsiveViewports": [1024, 390, 360],
     "details": ["summary", "expanded"],
     "selectedCompanyCounts": [2, 3, 4],
+    "legacySelectedCompanyCounts": [2, 4, 5],
+    "orderPalette": [
+      {"token":"company-1","background":"#f5f8fb","border":"#7892ab"},
+      {"token":"company-2","background":"#f8f7f2","border":"#9a8e68"},
+      {"token":"company-3","background":"#f4f8f5","border":"#6f9279"},
+      {"token":"company-4","background":"#f8f5f7","border":"#94778a"},
+      {"token":"company-5","background":"#f4f7f8","border":"#728f98"}
+    ],
     "sectionStickyTop": "6rem",
     "companyStickyTop": "calc(6rem + 48px)",
-    "sectionBoundary": "2px solid var(--border-strong)",
-    "identityCues": ["company-name", "selection-order", "border", "spacing"],
+    "sectionBoundary": "3px solid #27313a",
+    "identityCues": ["company-name", "selection-order", "pastel-background", "dark-section-border", "spacing"],
     "markerButtonMinimumTargetPx": 44,
     "markerHitOffsetPx": 21,
     "desktopUnchangedMinWidthPx": 601

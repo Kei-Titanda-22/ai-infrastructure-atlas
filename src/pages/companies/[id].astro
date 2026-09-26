@@ -135,14 +135,14 @@ const toc = (isEvidencePilot ? [
       <div>
         <div class="breadcrumb"><a href={withBase('companies/')}>企業一覧</a> / {layerLabel(d.primaryLayer)}</div>
         <div class="company-heading-wrap">
-          {brandAsset?.displayAllowed && brandAsset.assetUrl ? <img class="company-logo" src={brandAsset.assetUrl} alt={`${d.name} ロゴ`} /> : null}
+          {brandAsset?.displayAllowed && brandAsset.assetUrl ? <img class="company-logo" src={brandAsset.assetUrl} alt={`${companyName.accessibleName} ロゴ`} /> : null}
           <div>
             <div class="company-title-line"><h1 aria-label={companyName.accessibleName}>{companyName.primaryName}{companyName.secondaryName && <small>{companyName.secondaryName}</small>}</h1></div>
             <div class="company-meta-line">
               {d.ticker ? <><span class="mono">{d.ticker}</span><span>·</span><span>{d.exchange}</span><span>·</span></> : <><span>非上場</span><span>·</span></>}
               <a href={`${withBase('companies/')}?country=${encodeURIComponent(d.country)}`}>{countryLabel(d.country)}</a>
               {isEvidencePilot && <><span>·</span><a href={`${withBase('companies/')}?layer=${encodeURIComponent(d.primaryLayer)}`}>{layerLabel(d.primaryLayer)}</a></>}
-              {isEvidencePilot && <><span>·</span><span class="company-last-reviewed">最終確認 {d.lastReviewed}</span></>}
+              {isEvidencePilot && <><span>·</span><span class="company-last-reviewed">最終確認日 {d.lastReviewed}</span></>}
             </div>
             <div class="company-ja">{d.officialName} · 読み：{d.reading}</div>
           </div>

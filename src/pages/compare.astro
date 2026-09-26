@@ -163,13 +163,14 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
 
       <div class="compare-selected-wrap">
         <div class="compare-selected-head">
-          <div class="compare-selected-title">選択中</div>
+          <div class="compare-selected-title">比較順と企業</div>
           <div class="compare-selected-status-row">
             <p id="compare-selection-status" class="meta"></p>
             <button class="text-button compare-clear" id="clear-compare" type="button" hidden>すべて解除</button>
           </div>
         </div>
-        <div id="compare-selected" class="compare-selected" aria-live="polite"></div>
+        <p class="compare-selected-legend-note">番号と淡い背景色は、下の比較項目でも同じ企業を示します。</p>
+        <div id="compare-selected" class="compare-selected" role="list" aria-label="比較順と企業の凡例" aria-live="polite"></div>
       </div>
     </section>
 
@@ -329,7 +330,7 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
         if(options.note){ th.append(text('div',options.note,'compare-row-note')); }
         if(options.definition){ th.append(text('div',options.definition,'compare-row-definition')); }
         tr.append(th);
-        picked.forEach(c=>{ const td=document.createElement('td'); appendValue(td,renderer(c)); tr.append(td); });
+        picked.forEach((c,index)=>{ const td=document.createElement('td'); td.dataset.companyToken=`company-${index+1}`; td.dataset.companyOrder=String(index+1); appendValue(td,renderer(c)); tr.append(td); });
         tbody.append(tr);
       };
       const makeMetricCell = metric => {
@@ -386,8 +387,8 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
         const picked=pickedCompanies();
         if(!picked.length){ selectedRoot.append(text('p','比較企業が未選択です。','meta')); }
         picked.forEach((company,index)=>{
-          const row=document.createElement('div'); row.className='compare-selected-row';
-          const indexEl=text('span',String(index+1).padStart(2,'0'),'compare-selected-index mono'); row.append(indexEl);
+          const row=document.createElement('div'); row.className='compare-selected-row'; row.setAttribute('role','listitem'); row.dataset.companyToken=`company-${index+1}`; row.dataset.companyOrder=String(index+1);
+          const indexEl=text('span',String(index+1).padStart(2,'0'),'compare-selected-index mono'); indexEl.setAttribute('aria-label',`比較順 ${index+1}`); row.append(indexEl);
           const info=document.createElement('div'); info.className='compare-selected-info';
           const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-selected-name'; a.textContent=company.displayNameParts?.primaryName || company.name; a.setAttribute('aria-label',company.displayNameParts?.accessibleName || company.name); const localName=localCompanyName(company); if(localName) a.append(text('span',localName,'compare-selected-local')); info.append(a);
           info.append(text('span',`${company.ticker} · ${company.primaryLayer}`,'compare-selected-meta')); row.append(info);
@@ -419,13 +420,13 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
       const renderAnalysis = picked => {
         clear(analysisHead); clear(analysisBody);
         const lead=text('th','分析項目'); analysisHead.append(lead);
-        picked.forEach(company=>{ const th=document.createElement('th'); const a=document.createElement('a'); a.href=company.href; a.textContent=tableCompanyName(company); a.setAttribute('aria-label',company.displayNameParts?.accessibleName || company.name); a.className='company-link'; th.append(a); analysisHead.append(th); });
+        picked.forEach((company,index)=>{ const th=document.createElement('th'); th.dataset.companyToken=`company-${index+1}`; th.dataset.companyOrder=String(index+1); const a=document.createElement('a'); a.href=company.href; a.textContent=tableCompanyName(company); a.setAttribute('aria-label',company.displayNameParts?.accessibleName || company.name); a.className='company-link'; th.append(a); analysisHead.append(th); });
         const hasAnyScore=picked.some(company=>company.scores && Object.keys(company.scores).length);
         analysisDetails.hidden=!hasAnyScore;
         if(!hasAnyScore) return;
         scoreRows.forEach(row=>{
           const tr=document.createElement('tr'); tr.append(text('th',row.label));
-          picked.forEach(company=>{ const td=document.createElement('td'); td.style.whiteSpace='pre-line'; td.textContent=scoreText(company.scores?.[row.key]); tr.append(td); }); analysisBody.append(tr);
+          picked.forEach((company,index)=>{ const td=document.createElement('td'); td.dataset.companyToken=`company-${index+1}`; td.dataset.companyOrder=String(index+1); td.style.whiteSpace='pre-line'; td.textContent=scoreText(company.scores?.[row.key]); tr.append(td); }); analysisBody.append(tr);
         });
       };
       const renderMissingSummary = labels => {
@@ -435,8 +436,9 @@ const evidenceFragmentUrl = withBase('evidence-fragments/company-compare-evidenc
       const renderTable = () => {
         const picked=pickedCompanies(); clear(tbody); clear(theadRow);
         const lead=text('th','指標'); theadRow.append(lead);
-        picked.forEach(company=>{
+        picked.forEach((company,index)=>{
           const th=document.createElement('th');
+          th.dataset.companyToken=`company-${index+1}`; th.dataset.companyOrder=String(index+1);
           const a=document.createElement('a'); a.href=company.href; a.className='company-link compare-company-head'; a.textContent=tableCompanyName(company); a.setAttribute('aria-label',company.displayNameParts?.accessibleName || company.name); th.append(a);
           th.append(text('span',`${company.ticker} · ${company.country}`,'compare-company-sub')); theadRow.append(th);
         });

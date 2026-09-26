@@ -118,7 +118,7 @@ const companyContext = {
   </template>
 
   <template data-company-slot="company-identity" data-company-label={companyContext.name} data-has-content="true">
-    <div class="evidence-company-context"><span data-company-order-label>--</span><strong aria-label={companyContext.accessibleName}>{companyContext.primaryName}{companyContext.secondaryName && <small>{companyContext.secondaryName}</small>}</strong></div>
+    <div class="evidence-company-context"><span data-company-order-label>--</span><strong aria-label={companyContext.accessibleName}>{companyContext.primaryName}{companyContext.secondaryName && <small>{companyContext.secondaryName}</small>}</strong><span class="evidence-company-context-meta">{company.identity.ticker || '非上場'} · {companyContext.country}</span></div>
     <div class="evidence-identity">
       <span>{company.identity.ticker || '非上場'} · {companyContext.country}</span>
       <span>{company.identity.primaryLayer}</span>
@@ -138,7 +138,7 @@ const companyContext = {
       data-company-label={companyContext.name}
       data-has-content={String(dimension.hasContent)}
     >
-      <div class="evidence-company-context"><span data-company-order-label>--</span><strong aria-label={companyContext.accessibleName}>{companyContext.primaryName}{companyContext.secondaryName && <small>{companyContext.secondaryName}</small>}</strong></div>
+      <div class="evidence-company-context"><span data-company-order-label>--</span><strong aria-label={companyContext.accessibleName}>{companyContext.primaryName}{companyContext.secondaryName && <small>{companyContext.secondaryName}</small>}</strong><span class="evidence-company-context-meta">{company.identity.ticker || '非上場'} · {companyContext.country}</span></div>
       {dimension.hasContent ? <>
         {(typeGroups.fact || typeGroups.company || typeGroups.analysis) && <div class="evidence-epistemic-notes">
           {typeGroups.fact && <span>事実</span>}
@@ -326,7 +326,7 @@ const companyContext = {
     data-company-label={companyContext.name}
     data-has-content={String(Boolean(operatingMarginReference?.displayValue))}
   >
-    <div class="evidence-company-context"><span data-company-order-label>--</span><strong aria-label={companyContext.accessibleName}>{companyContext.primaryName}{companyContext.secondaryName && <small>{companyContext.secondaryName}</small>}</strong></div>
+    <div class="evidence-company-context"><span data-company-order-label>--</span><strong aria-label={companyContext.accessibleName}>{companyContext.primaryName}{companyContext.secondaryName && <small>{companyContext.secondaryName}</small>}</strong><span class="evidence-company-context-meta">{company.identity.ticker || '非上場'} · {companyContext.country}</span></div>
     {operatingMarginReference?.displayValue ? <div class="evidence-financial-value">
       <span>営業利益率</span>
       <strong>{operatingMarginReference.displayValue}</strong>
