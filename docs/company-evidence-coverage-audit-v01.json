@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-09-25T00:00:00Z",
-  "dataAsOf": "2026-09-25",
-  "inputDigest": "sha256:cb3077ef87b77a68c3d2187c1ccc89c1d37e2eaab3ab1a77774b40063f253a21",
+  "generatedAt": "2026-09-26T00:00:00Z",
+  "dataAsOf": "2026-09-26",
+  "inputDigest": "sha256:7610be36f1c1fc7efde752f70af9388f83c5cf48892d13ac61d587baa986b4ac",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 250
+    "inputFileCount": 252
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 504,
-      "uniqueSourceCount": 502,
+      "registryRecordCount": 543,
+      "uniqueSourceCount": 541,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -102,7 +102,7 @@
       ],
       "conflictingDuplicateSourceIdCount": 0,
       "conflictingDuplicateSourceIds": [],
-      "duplicateUrlCount": 11,
+      "duplicateUrlCount": 18,
       "duplicateUrls": [
         {
           "url": "https://kind.krx.co.kr/external/2026/03/12/002053/20260312004659/11011.htm",
@@ -123,6 +123,55 @@
           "sourceIds": [
             "sec-amkor-10k-fy2025",
             "sec-amkor-2025-10k"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1101239/000110123926000032/eqix-20251231.htm",
+          "sourceIds": [
+            "sec-eqix-2025-fy",
+            "sec-equinix-2025-10k"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-20251231.htm",
+          "sourceIds": [
+            "sec-tesla-2025-10k",
+            "sec-tsla-2025-fy"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1385157/000110465925109150/tel-20250926x10k.htm",
+          "sourceIds": [
+            "sec-te-connectivity-2025-10k",
+            "sec-tel-2025-fy"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1720635/000162828026008608/nvt-20251231.htm",
+          "sourceIds": [
+            "sec-nvent-2025-10k",
+            "sec-nvt-2025-fy"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1973239/000197323926000097/arm-20260331.htm",
+          "sourceIds": [
+            "sec-arm-2026-fy",
+            "sec-arm-fy2026-20f"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1996810/000199681026000015/gev-20251231.htm",
+          "sourceIds": [
+            "sec-ge-vernova-2025-10k",
+            "sec-gev-2025-fy"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/24741/000002474126000124/glw-20251231.htm",
+          "sourceIds": [
+            "sec-corning-2025-10k",
+            "sec-glw-2025-fy"
           ]
         },
         {
@@ -191,8 +240,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 255,
-      "financialSourceResolved": 255
+      "financialSourceReferences": 292,
+      "financialSourceResolved": 292
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -3807,8 +3856,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 5,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -4061,8 +4110,12 @@
         "resolvedSourceIds": [
           "ir-arm"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
+          "sec-arm-2025-q2",
+          "sec-arm-2025-q3",
+          "sec-arm-2026-fy",
+          "sec-arm-2026-q1",
           "sec-arm-fy2026-20f"
         ],
         "orphanSourceIds": [],
@@ -7808,8 +7861,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -8065,9 +8118,13 @@
         "resolvedSourceIds": [
           "ir-corning"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
-          "sec-corning-2025-10k"
+          "sec-corning-2025-10k",
+          "sec-glw-2025-fy",
+          "sec-glw-2025-q3",
+          "sec-glw-2026-q1",
+          "sec-glw-2026-q2"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -9817,8 +9874,8 @@
       "primaryLayer": "Data Center & Facilities",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 3,
-      "financialSourceCount": 2,
+      "registrySourceCount": 7,
+      "financialSourceCount": 6,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -10077,9 +10134,13 @@
           "earnings-equinix-2026-07-29-q2-2026",
           "ir-equinix"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
           "earnings-equinix-2026-07-29-q2-2026",
+          "sec-eqix-2025-fy",
+          "sec-eqix-2025-q3",
+          "sec-eqix-2026-q1",
+          "sec-eqix-2026-q2",
           "sec-equinix-2025-10k"
         ],
         "orphanSourceIds": [],
@@ -10971,8 +11032,8 @@
       "primaryLayer": "Data Center & Facilities",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -11229,9 +11290,12 @@
         "resolvedSourceIds": [
           "ir-ge-vernova"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 7,
         "financialSourceIds": [
-          "filing-ge-vernova-2026-q2-10q"
+          "filing-ge-vernova-2026-q2-10q",
+          "sec-gev-2025-fy",
+          "sec-gev-2025-q3",
+          "sec-gev-2026-q1"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -11543,8 +11607,8 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -11801,9 +11865,12 @@
         "resolvedSourceIds": [
           "ir-globalwafers"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 7,
         "financialSourceIds": [
-          "filing-globalwafers-2026-q1"
+          "filing-globalwafers-2026-q1",
+          "gwi-2025-9m",
+          "gwi-2025-fy",
+          "gwi-2026-h1"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -12395,8 +12462,8 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 8,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -12653,8 +12720,12 @@
         "resolvedSourceIds": [
           "ir-ibiden"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 8,
         "financialSourceIds": [
+          "ibd-2024-fy",
+          "ibd-2025-9m",
+          "ibd-2025-fy",
+          "ibd-2025-h1",
           "results-ibiden-2026-08-04-q1-fy2026"
         ],
         "orphanSourceIds": [],
@@ -18974,8 +19045,8 @@
       "primaryLayer": "Data Center & Facilities",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 5,
-      "financialSourceCount": 1,
+      "registrySourceCount": 8,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -19232,9 +19303,12 @@
         "resolvedSourceIds": [
           "ir-nvent"
         ],
-        "registrySourceCount": 5,
+        "registrySourceCount": 8,
         "financialSourceIds": [
-          "earnings-nvent-2026-07-31-q2"
+          "earnings-nvent-2026-07-31-q2",
+          "sec-nvt-2025-fy",
+          "sec-nvt-2025-q3",
+          "sec-nvt-2026-q1"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -22993,8 +23067,8 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 8,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -23251,9 +23325,13 @@
         "resolvedSourceIds": [
           "ir-shin-etsu"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 8,
         "financialSourceIds": [
-          "results-shin-etsu-2026-07-24-q1-fy2026"
+          "results-shin-etsu-2026-07-24-q1-fy2026",
+          "sec-2024-fy",
+          "sec-2025-9m",
+          "sec-2025-fy",
+          "sec-2025-h1"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -25841,8 +25919,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -26098,9 +26176,13 @@
         "resolvedSourceIds": [
           "ir-te-connectivity"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
-          "sec-te-connectivity-2025-10k"
+          "sec-te-connectivity-2025-10k",
+          "sec-tel-2025-fy",
+          "sec-tel-2026-q1",
+          "sec-tel-2026-q2",
+          "sec-tel-2026-q3"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -26125,8 +26207,8 @@
       "primaryLayer": "Physical AI",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -26383,9 +26465,13 @@
         "resolvedSourceIds": [
           "ir-tesla"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 6,
         "financialSourceIds": [
-          "sec-tesla-2025-10k"
+          "sec-tesla-2025-10k",
+          "sec-tsla-2025-fy",
+          "sec-tsla-2025-q3",
+          "sec-tsla-2026-q1",
+          "sec-tsla-2026-q2"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
