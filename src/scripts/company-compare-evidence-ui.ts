@@ -223,10 +223,13 @@ async function initializeCompanyCompareEvidenceUi(): Promise<boolean> {
     picked.forEach((company, index) => {
       const row = document.createElement('div');
       row.className = 'compare-selected-row';
+      row.setAttribute('role', 'listitem');
       const presentation = companyPresentationTokenForOrder(index);
       row.dataset.companyToken = presentation.token;
       row.dataset.companyOrder = String(presentation.index);
-      row.append(text('span', presentation.label, 'compare-selected-index mono'));
+      const indexLabel = text('span', presentation.label, 'compare-selected-index mono');
+      indexLabel.setAttribute('aria-label', `比較順 ${presentation.index}`);
+      row.append(indexLabel);
       const info = document.createElement('div');
       info.className = 'compare-selected-info';
       info.append(createCompanyNameLink(company, ['company-link', 'compare-selected-name']));

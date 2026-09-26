@@ -437,6 +437,7 @@ const companyClaimComponent = await readFile(new URL('../src/components/CompanyE
 const controller = await readFile(new URL('../src/scripts/company-compare-evidence-ui.ts', import.meta.url), 'utf8');
 const compareSearchController = await readFile(new URL('../src/scripts/search-combobox-controller.ts', import.meta.url), 'utf8');
 const styles = await readFile(new URL('../src/styles/company-compare-evidence-v01.css', import.meta.url), 'utf8');
+const compareStyles = await readFile(new URL('../src/styles/compare-v03.css', import.meta.url), 'utf8');
 const readModelSource = await readFile(new URL('../src/lib/company-compare-evidence-read-model.ts', import.meta.url), 'utf8');
 assert.match(comparePage, /company-compare-evidence-presets-v01\.json/, 'purpose presets have one JSON definition source');
 assert.match(comparePage, /validatePurposePresets/, 'Compare validates purpose preset JSON while reading it');
@@ -592,7 +593,7 @@ assert.deepEqual(
   'Pilot Claim-to-Product display mapping is fixture-locked',
 );
 assert.deepEqual(comparePreservedProperNouns.slice(0, displayFixture.preservedProperNouns.length), displayFixture.preservedProperNouns, 'Pilot allowed proper nouns are fixture-locked');
-assert.deepEqual(compareCompanyPresentationTokens, displayFixture.presentationTokens, 'four presentation-order tokens are fixed');
+assert.deepEqual(compareCompanyPresentationTokens, displayFixture.presentationTokens, 'five presentation-order tokens are fixed');
 const projectedClaimIds = [...new Set(projection.sets.flatMap(setRecord => setRecord.companies.flatMap(company =>
   company.dimensions.flatMap(dimension => dimension.initialClaimIds),
 )))].sort();
@@ -895,11 +896,11 @@ assert.equal(compareClaimDisplayCopy['applied-technology'].title, '統合材料�
 assert.match(compareClaimDisplayCopy['applied-technology'].statement, /^統合材料ソリューション（Integrated Materials Solution）/);
 assert.match(compareClaimDisplayCopy['lam-research-capacity-expansion-triage-remediation-v02'].statement, /^米国オレゴン州チュアラティン/);
 assert.deepEqual(
-  [0, 1, 2, 3].map(index => companyPresentationTokenForOrder(index).label),
+  [0, 1, 2, 3, 4].map(index => companyPresentationTokenForOrder(index).label),
   displayFixture.presentationTokens,
-  'selection order deterministically assigns the four company identity tokens',
+  'selection order deterministically assigns the five company identity tokens',
 );
-assert.throws(() => companyPresentationTokenForOrder(4), /outside 1-4/, 'a fifth presentation token is rejected');
+assert.throws(() => companyPresentationTokenForOrder(5), /outside 1-5/, 'a sixth presentation token is rejected');
 
 assert.equal(evidenceCompareViewRequested('?ids=nvidia,broadcom'), false, 'legacy route does not request the Evidence payload');
 assert.equal(evidenceCompareViewRequested('?ids=nvidia,broadcom&view=evidence'), true, 'opt-in route requests the Evidence payload');
@@ -1672,9 +1673,29 @@ assert.equal((component.match(/shellPresentationFinancialSets\.map/g) ?? []).len
 assert.doesNotMatch(component, /model\.presentationFinancialSets\.map/, 'the shell never emits singleton or rollout-wide presentation sets directly');
 assert.match(controller, /financialSetForSelection[\s\S]*uiData\.sets\.find/, 'Financial row visibility resolves from the common presentation-set payload');
 assert.doesNotMatch(controller, /matchEvidencePilotSet/, 'runtime Financial visibility is not restricted to the two Pilot buttons');
-for (let index = 1; index <= 4; index += 1) {
+for (let index = 1; index <= 5; index += 1) {
   assert.match(styles, new RegExp(`data-company-token="company-${index}"`), `company-${index}: stable visual token exists`);
 }
+assert.match(comparePage, /id="compare-selected"[^>]*role="list"[^>]*aria-label="比較順と企業の凡例"/, 'one selected-Company DOM serves as a readable legend on every width');
+assert.match(comparePage, /row\.dataset\.companyToken=`company-\$\{index\+1\}`/, 'legacy five-Company rows derive color from current URL order');
+assert.match(comparePage, /td\.dataset\.companyToken=`company-\$\{index\+1\}`/, 'legacy Compare cells reuse the selection-order color');
+assert.match(controller, /row\.setAttribute\('role', 'listitem'\)/, 'Evidence selected Companies expose list semantics');
+assert.match(controller, /indexLabel\.setAttribute\('aria-label', `比較順 \$\{presentation\.index\}`\)/, 'Evidence selection number is announced');
+assert.match(controller, /cell\.dataset\.companyToken = presentation\.token/, 'Evidence sections derive identical color tokens from current order');
+assert.match(companyAssetComponent, /evidence-company-context-meta/, 'each Evidence item repeats ticker or region with its Company identity');
+assert.match(compareStyles, /compare-selected-legend-note/, 'mobile legend explains number and color without duplicated Companies');
+assert.match(compareStyles, /compare-table :is\(th, td\)\[data-company-token\]/, 'legacy five-Company table follows selection-order color');
+assert.match(compareStyles, /compare-table thead th\[data-company-token\] \{ background: var\(--company-ident-bg, var\(--surface\)\) !important; \}/, 'legacy Company headers retain the same palette despite the existing global table-header override');
+assert.match(styles, /data-company-token="company-5"/, 'fifth selected Company has a dedicated pastel token');
+assert.deepEqual(displayFixture.mobileTracking.legacySelectedCompanyCounts, [2, 4, 5], 'legacy Compare retains its five-company selection capacity');
+assert.equal(displayFixture.mobileTracking.orderPalette.length, 5, 'five comparison slots have distinct ordered palette entries');
+for (const { token, background, border } of displayFixture.mobileTracking.orderPalette) {
+  const declaration = new RegExp(`\\[data-company-token="${token}"\\]\\s*\\{[^}]*--company-ident-bg:\\s*${background};[^}]*--company-ident-border:\\s*${border}`);
+  assert.match(styles, declaration, `${token}: Evidence rows use the expected pastel and border`);
+  assert.match(compareStyles, declaration, `${token}: legacy Compare rows use the same pastel and border`);
+}
+assert.match(styles, /border-top: 3px solid #27313a/, 'mobile major section has a dark non-color-only divider');
+assert.equal(displayFixture.mobileTracking.sectionBoundary, '3px solid #27313a', 'fixture records the stronger mobile major-section boundary');
 for (const sectionLabel of displayFixture.majorSections) {
   assert.ok(`${presentationSource}\n${readModelSource}`.includes(sectionLabel), `${sectionLabel}: major section label is present`);
 }
@@ -1683,8 +1704,8 @@ assert.deepEqual(displayFixture.mobileTracking.details, ['summary', 'expanded'],
 assert.deepEqual(displayFixture.mobileTracking.selectedCompanyCounts, [2, 3, 4], 'mobile tracking covers every supported multi-company selection count');
 assert.equal(displayFixture.mobileTracking.breakpointMaxPx, 600, 'mobile tracking is confined to the existing mobile breakpoint');
 assert.equal(displayFixture.mobileTracking.desktopUnchangedMinWidthPx, 601, 'desktop table tracking remains outside the mobile contract');
-assert.deepEqual(displayFixture.mobileTracking.identityCues, ['company-name', 'selection-order', 'border', 'spacing'], 'company tracking does not depend on color alone');
-assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.evidence-matrix tbody > tr > th \{[\s\S]*?position: sticky;[\s\S]*?top: 6rem;[\s\S]*?z-index: 5;[\s\S]*?border-top: 2px solid var\(--border-strong\)/, 'mobile section labels are sticky and retain a strong structural boundary below the global header');
+assert.deepEqual(displayFixture.mobileTracking.identityCues, ['company-name', 'selection-order', 'pastel-background', 'dark-section-border', 'spacing'], 'company tracking retains visible name and number independently of color');
+assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.evidence-matrix tbody > tr > th \{[\s\S]*?position: sticky;[\s\S]*?top: 6rem;[\s\S]*?z-index: 5;[\s\S]*?border-top: 0/, 'mobile section labels are sticky beneath the dark major-section divider');
 assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.evidence-company-context \{[\s\S]*?position: sticky;[\s\S]*?top: calc\(6rem \+ 48px\);[\s\S]*?z-index: 4;[\s\S]*?border-bottom: 2px solid var\(--company-ident-border, var\(--border-strong\)\)/, 'mobile Company identity remains sticky beneath the current section without color-only tracking');
 assert.match(styles, /@media \(max-width: 600px\)[\s\S]*?\.evidence-matrix tbody > tr \{[\s\S]*?position: relative/, 'each mobile section establishes a bounded sticky containing block');
 
@@ -1725,6 +1746,13 @@ if (process.argv.includes('--dist')) {
     companyId,
     await readFile(new URL(`../dist/evidence-fragments/company-compare-evidence-v01/${companyId}/index.html`, import.meta.url), 'utf8'),
   ])));
+  const forbiddenEnglishUiLabel = /<(?:h[1-6]|dt|label)[^>]*>\s*(?:Value Chain|Scope|freshness|compute|interconnect|system|software|switch|networking)\s*</i;
+  assert.doesNotMatch(compareHtml, forbiddenEnglishUiLabel, 'built Compare UI does not use untranslated field labels');
+  for (const companyId of supportedIds) {
+    const detailHtml = await readFile(new URL(`../dist/companies/${companyId}/index.html`, import.meta.url), 'utf8');
+    assert.doesNotMatch(detailHtml, forbiddenEnglishUiLabel, `${companyId}: built detail UI does not use untranslated field labels`);
+    assert.doesNotMatch(assetHtmlById[companyId], forbiddenEnglishUiLabel, `${companyId}: built Evidence UI does not use untranslated field labels`);
+  }
   const fragmentHtml = pilotIds.map(companyId => assetHtmlById[companyId]).join('\n');
   // Historical pre-Japanese-first baseline, retained as release history only.
   // The fixture's explicit active version is the unconditional artifact guard.
@@ -1913,10 +1941,12 @@ if (process.argv.includes('--dist')) {
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
   assert.equal(Buffer.byteLength(financialPayload), 544_877, 'eighth-batch financial payload adds exactly 67,375 B for 50 official standalone quarters');
+  const normalizedNonFinancialHtml = normalizeViteAssetFingerprints(compareHtml.replace(financialPayloadRe, '$1$2'));
+  assert.equal(Buffer.byteLength(normalizedNonFinancialHtml), 327_875, 'human UX review adds 190 B of explicit comparison-order and legend markup to the v08 non-financial HTML');
   assert.equal(
     nonFinancialDigest(compareHtml),
-    'b2a1247e445f1a49fd8b04e2ef3d17953dee564c13da48aa66efb20f78a85b62',
-    'Compare HTML with only its financial JSON body and Vite asset fingerprints normalized matches the audited v04 baseline on Windows and Linux',
+    '09b3f701b72f5d59e6a7fc0e38e2268f2fdd779348492f3f78ad25a87e08df4a',
+    'Compare non-financial HTML changes only for the declared comparison-order legend; the scoped Vite fingerprint normalization remains unchanged',
   );
   const fifthBatchCompareSizeContract = Object.freeze({
     acceptedRawBytes: 733_398,
@@ -1926,7 +1956,7 @@ if (process.argv.includes('--dist')) {
   });
   assert.equal(fifthBatchCompareSizeContract.growthLimitRatio, legacyCompareSizeContract.growthLimitRatio, 'the existing +5% growth ratio is unchanged');
   assert.equal(Math.floor(fifthBatchCompareSizeContract.acceptedRawBytes * fifthBatchCompareSizeContract.growthLimitRatio), fifthBatchCompareSizeContract.maximumRawBytes, 'v05 maximum derives from the measured accepted v05 output');
-  assert.equal(compareBytes - fifthBatchCompareSizeContract.acceptedRawBytes, Buffer.byteLength(financialPayload) - 405_786, 'Compare HTML growth is exactly the added financial payload; the accepted v05 baseline and +5% cap remain unchanged');
+  assert.equal(872_489 - fifthBatchCompareSizeContract.acceptedRawBytes, Buffer.byteLength(financialPayload) - 405_786, 'historical v05-to-v08 Compare growth is exactly the added financial payload');
   const assertFifthBatchCompareSize = bytes => {
     assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v05 Compare HTML byte count is a non-negative integer');
     assert.ok(bytes <= fifthBatchCompareSizeContract.maximumRawBytes, `v05 Compare HTML ${bytes} B exceeds ${fifthBatchCompareSizeContract.maximumRawBytes} B`);
@@ -1957,7 +1987,7 @@ if (process.argv.includes('--dist')) {
   });
   assert.equal(eighthBatchCompareSizeContract.growthLimitRatio, seventhBatchCompareSizeContract.growthLimitRatio, 'the +5% growth ratio remains unchanged');
   assert.equal(Math.floor(eighthBatchCompareSizeContract.acceptedRawBytes * eighthBatchCompareSizeContract.growthLimitRatio), eighthBatchCompareSizeContract.maximumRawBytes, 'v08 maximum derives from measured output');
-  assert.equal(compareBytes - seventhBatchCompareSizeContract.acceptedRawBytes, Buffer.byteLength(financialPayload) - 477_502, 'v08 Compare growth is only financial JSON payload');
+  assert.equal(872_489 - seventhBatchCompareSizeContract.acceptedRawBytes, Buffer.byteLength(financialPayload) - 477_502, 'historical v08 Compare growth is only financial JSON payload');
   const assertEighthBatchCompareSize = bytes => {
     assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v08 Compare HTML byte count is a non-negative integer');
     assert.ok(bytes <= eighthBatchCompareSizeContract.maximumRawBytes, `v08 Compare HTML ${bytes} B exceeds ${eighthBatchCompareSizeContract.maximumRawBytes} B`);
@@ -1965,7 +1995,7 @@ if (process.argv.includes('--dist')) {
   assert.doesNotThrow(() => assertEighthBatchCompareSize(916_113), 'v08 exact maximum passes');
   assert.throws(() => assertEighthBatchCompareSize(916_114), /exceeds 916113 B/, 'v08 maximum plus one fails');
   assert.ok(compareBytes < 1_000_000, 'large-payload hard stop remains enforced');
-  assert.equal(compareBytes, eighthBatchCompareSizeContract.acceptedRawBytes, 'v08 Compare output matches the audited accepted baseline');
+  assert.equal(compareBytes, 872_679, 'human UX review Compare output has only the audited 190 B non-financial increase');
   assertEighthBatchCompareSize(compareBytes);
   assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
   assert.doesNotMatch(compareHtml, /data-claim-id=/, 'built legacy HTML excludes Company Claim bodies');
@@ -2352,4 +2382,4 @@ if (process.argv.includes('--dist')) {
   console.log(`Company Compare on-demand artifacts OK: ${compareBytes} B legacy HTML / ${Buffer.byteLength(shellHtml)} B shell / 4087975 combinations / max ${maximumCombination.ids.join('+')} ${maximumCombination.rawBytes} B raw ${maximumCombination.gzipBytes} B gzip / ${renderedMarkerButtons} Pilot markers / ${claimMarkers + relationMarkers} Pilot unique grounding entries`);
 }
 
-console.log(`Company Compare Evidence UI tests OK: Set A/B / routing / URL state / 57 rendered markers / ${claimMarkerCount + relationMarkerCount} unique grounding entries / Financial 0/2/2 / semantic snapshot`);
+console.log(`Company Compare Evidence UI tests OK: six purpose presets / routing / URL state / 57 rendered markers / ${claimMarkerCount + relationMarkerCount} unique grounding entries / Financial 0/2/2 / semantic snapshot`);

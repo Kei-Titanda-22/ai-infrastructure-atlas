@@ -513,7 +513,10 @@ for (const target of corningAppliedPresentation.targets) {
   assert.equal(canonical.companyId, target.companyId, `${target.kind}:${target.groundingId}: approved owner is exact`);
   assert.equal(entry.canonicalDigest, target.canonicalDigest, `${target.kind}:${target.groundingId}: fixture canonical digest is exact`);
   assert.equal(entry.canonicalDigest, japaneseFirstCanonicalDigest(canonical.canonical), `${target.kind}:${target.groundingId}: canonical digest is current`);
-  assert.deepEqual({ title: entry.title, statement: entry.statement }, target.after, `${target.kind}:${target.groundingId}: approved full presentation copy is exact`);
+  const expectedCurrent = target.companyId === 'applied-materials'
+    ? { ...target.after, statement: target.after.statement.replace('アプライド・マテリアルズ', fixture.humanUxReviewV01.appliedMaterialsDisplayName) }
+    : target.after;
+  assert.deepEqual({ title: entry.title, statement: entry.statement }, expectedCurrent, `${target.kind}:${target.groundingId}: current full presentation copy is exact`);
   assert.notDeepEqual(target.before, target.after, `${target.kind}:${target.groundingId}: independent before and after copy differ`);
   for (const [field, previous] of Object.entries(target.before)) {
     if (target.after[field] !== previous) {
@@ -527,10 +530,11 @@ const corningTarget = corningAppliedPresentation.targets.find(target => target.g
 assert.equal(corningTarget.after.statement, 'Corningは光通信の主要製品群で市場を主導する立場にあり、大規模製造の経験、光ファイバの製造プロセス、技術面での先導力、知的財産がコスト優位性をもたらすと説明している。', 'Corning preserves distinct market leadership and technology leadership in the approved full sentence');
 const appliedTargets = corningAppliedPresentation.targets.filter(target => target.companyId === 'applied-materials');
 assert.equal(appliedTargets.length, 8, 'Applied Materials has exactly eight approved presentation Claim targets');
+assert.deepEqual(appliedTargets.map(target => target.groundingId), fixture.humanUxReviewV01.appliedMaterialsClaimIds, 'the newer identity update names exactly the eight reviewed Applied Materials claims');
 for (const target of appliedTargets) {
   const entry = overlayPayloadByVersion.get(target.overlayBatch).entries.find(candidate => candidate.entityType === target.kind && candidate.stableKey === target.groundingId);
-  assert.ok(!`${entry.title}\n${entry.statement}`.match(/\bApplied Materials\b/), `${target.groundingId}: Japanese presentation has no standalone English Applied Materials name`);
-  assert.ok(`${entry.title}\n${entry.statement}`.includes('アプライド・マテリアルズ'), `${target.groundingId}: Japanese presentation uses the approved short name`);
+  assert.ok(entry.statement.includes(fixture.humanUxReviewV01.appliedMaterialsDisplayName), `${target.groundingId}: Japanese presentation uses the approved bilingual name`);
+  assert.ok(!entry.statement.replaceAll(fixture.humanUxReviewV01.appliedMaterialsDisplayName, '').includes('Applied Materials'), `${target.groundingId}: no standalone English Applied Materials name remains`);
 }
 const allEntityTypeCounts = [...batch1.entries, ...batch2.entries].reduce((counts, entry) => ({ ...counts, [entry.entityType]: (counts[entry.entityType] ?? 0) + 1 }), {});
 assert.deepEqual(allEntityTypeCounts, { claim: 542, portfolio: 38, product: 118 }, 'Claim, Portfolio, and Product overlay counts are exact');
@@ -844,7 +848,7 @@ const financialHistorySixPeriodCoverageV07 = fixture.financialHistorySixPeriodCo
 assert.ok(financialHistorySixPeriodCoverageV07 && typeof financialHistorySixPeriodCoverageV07 === 'object', 'financial-history v07 freeze contract is present');
 const financialHistorySixPeriodCoverageV08 = fixture.financialHistorySixPeriodCoverageV08;
 assert.ok(financialHistorySixPeriodCoverageV08 && typeof financialHistorySixPeriodCoverageV08 === 'object', 'financial-history v08 freeze contract is present');
-assert.equal(freezes.length, 16, 'fixture contains fifteen preserved freezes plus the financial-history v08 successor');
+assert.equal(freezes.length, 17, 'fixture contains the preserved financial-history v08 freeze plus the human UX successor');
 assert.equal(githubPagesBaseDeterminism.version, 'github-pages-base-determinism-v01', 'GitHub Pages base determinism audit records its explicit version');
 assert.equal(githubPagesBaseDeterminism.predecessorVersion, corningAppliedFreeze.version, 'GitHub Pages base determinism audit records its immediate predecessor');
 const githubPagesBaseFreeze = freezes.find(freeze => freeze.version === githubPagesBaseDeterminism.version);
@@ -989,7 +993,7 @@ for (const path of expectedArtifactPaths.filter(path => !financialHistoryV07Chan
 assert.equal(shaMapDigest(financialHistoryFreezeV07), financialHistoryFreezeV07.metadata.shaMapDigest, 'v07 records the reproducible SHA map digest');
 const financialHistoryFreezeV08 = freezes.find(freeze => freeze.version === financialHistorySixPeriodCoverageV08.version);
 assert.ok(financialHistoryFreezeV08, 'financial-history v08 successor freeze is present');
-assert.equal(activeFreeze.version, financialHistoryFreezeV08.version, 'the explicit active ID selects the financial-history v08 freeze');
+assert.ok(financialHistoryFreezeV08, 'the financial-history v08 freeze remains preserved as the predecessor');
 assert.equal(financialHistoryFreezeV08.previousVersion, financialHistoryFreezeV07.version, 'v08 records the v07 predecessor');
 assert.equal(financialHistoryFreezeV08.metadata.baseMain, financialHistorySixPeriodCoverageV08.baseMain, 'v08 records its audited main');
 assert.equal(financialHistoryFreezeV08.metadata.shaMismatchFallbackAllowed, false, 'v08 rejects SHA fallback');
@@ -1004,6 +1008,17 @@ for (const path of expectedArtifactPaths.filter(path => !financialHistoryV08Chan
   assert.equal(financialHistoryFreezeV08.sha256ByPath[path], financialHistoryFreezeV07.sha256ByPath[path], `${path}: v08 leaves non-target artifact byte-identical`);
 }
 assert.equal(shaMapDigest(financialHistoryFreezeV08), financialHistoryFreezeV08.metadata.shaMapDigest, 'v08 records the reproducible SHA map digest');
+const humanUxFreeze = freezes.find(freeze => freeze.version === 'company-compare-human-ux-review-v01');
+assert.ok(humanUxFreeze, 'the Japanese-first human UX successor freeze is present');
+assert.equal(activeFreeze.version, humanUxFreeze.version, 'the explicit active ID selects the human UX successor freeze');
+assert.equal(humanUxFreeze.previousVersion, financialHistoryFreezeV08.version, 'the financial-history v08 freeze remains the unchanged predecessor');
+assert.equal(humanUxFreeze.metadata.baseMain, '20d1220bf673be5f7f4ca428d391dfca67f1bc89', 'the successor records the audited main');
+assert.equal(humanUxFreeze.metadata.shaMismatchFallbackAllowed, false, 'the successor rejects SHA fallback');
+const humanUxChangedPaths = expectedArtifactPaths.filter(path => humanUxFreeze.sha256ByPath[path] !== financialHistoryFreezeV08.sha256ByPath[path]);
+assert.deepEqual(humanUxChangedPaths, expectedArtifactPaths, 'all 101 Evidence artifacts change for the scoped CSS fingerprint and company identity context');
+assert.equal(humanUxChangedPaths.length, humanUxFreeze.metadata.expectedChangedArtifactCount, 'the successor records its exact changed path count');
+assert.equal(expectedArtifactPaths.length - humanUxChangedPaths.length, humanUxFreeze.metadata.expectedUnchangedArtifactCount, 'the successor records its exact unchanged path count');
+assert.equal(shaMapDigest(humanUxFreeze), humanUxFreeze.metadata.shaMapDigest, 'the successor SHA map digest is reproducible');
 const astroConfigSource = readFileSync(new URL('../astro.config.mjs', import.meta.url), 'utf8');
 assert.match(astroConfigSource, /normalizeBasePath\(process\.env\.BASE_PATH \|\| \(isUserSite \? '\/' : `\/\$\{repo\}`\)\)/, 'Astro config selects the repository base without a CI-specific branch');
 assert.doesNotMatch(astroConfigSource, /GITHUB_ACTIONS/, 'Astro config has no GITHUB_ACTIONS base-path branch');
@@ -1032,7 +1047,7 @@ for (const [version, expectedDigest] of Object.entries(historicalArtifactFreezeD
 }
 
 const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
-assert.equal(shaBlocks.length, 16, 'fixture source contains fifteen preserved history maps plus the financial-history v08 SHA map');
+assert.equal(shaBlocks.length, 17, 'fixture source contains sixteen preserved history maps plus the human UX successor SHA map');
 for (const [index, block] of shaBlocks.entries()) {
   const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
   assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);
