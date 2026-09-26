@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "classificationRuleVersion": 8,
-  "dataAsOf": "2026-09-25",
-  "inputDigestSha256": "4c0e0f79a87138d27875a848798145a4d43bd077c12aa116b13e1410a4f5e9b3",
+  "dataAsOf": "2026-09-26",
+  "inputDigestSha256": "ded0603113833b271a66c2260394c5e11f689e39676d768ac12fce9d6939d56d",
   "inputs": {
     "historyFiles": [
       "src/data/financial-history.json",
@@ -51,7 +51,8 @@
       "src/data/financial-history-v05-batch07.json",
       "src/data/financial-history-v05-batch08.json",
       "src/data/financial-history-v05-batch09.json",
-      "src/data/financial-history-v05-batch10.json"
+      "src/data/financial-history-v05-batch10.json",
+      "src/data/financial-history-v05-batch11.json"
     ],
     "companyFiles": 100,
     "cashFlowOverrides": 12
@@ -120,16 +121,16 @@
   },
   "summary": {
     "companies": 100,
-    "periods": 423,
-    "metrics": 2115,
+    "periods": 473,
+    "metrics": 2365,
     "metricStatusCounts": {
-      "verified": 1626,
+      "verified": 1776,
       "source-linked": 3,
       "needs-review": 0,
-      "missing": 486
+      "missing": 586
     },
     "missingReasonCounts": {
-      "not-collected": 486,
+      "not-collected": 586,
       "primary-source-unchecked": 0,
       "not-calculable": 0,
       "not-disclosed": 0,
@@ -139,7 +140,7 @@
       "both-present": 181,
       "fcf-missing-only": 0,
       "capex-missing-only": 0,
-      "both-missing": 242
+      "both-missing": 292
     },
     "capexDefinitions": {
       "gross-productive-assets-cash-purchases": 8,
@@ -149,28 +150,28 @@
       "company-reported-cash-capex": 2,
       "broader-non-current-assets": 4,
       "net-capex": 28,
-      "reit-or-real-estate-investment": 6,
-      "not-collected": 238,
+      "reit-or-real-estate-investment": 12,
+      "not-collected": 282,
       "unclassified": 0
     },
     "operatingProfitDefinitions": {
-      "direct-gaap-ifrs-operating-income": 374,
+      "direct-gaap-ifrs-operating-income": 423,
       "ebit": 2,
       "reconstructed-operating-income": 24,
       "source-linked": 1,
-      "special-case": 22
+      "special-case": 23
     },
     "adjustedNonGaapFcfAssessments": {
       "atlas-formula-aligned": 8,
       "atlas-definition-difference": 0,
       "unresolved": 0,
-      "not-applicable": 415
+      "not-applicable": 465
     },
     "specialFlags": {
       "goodwill-impairment": 2,
       "discontinued-operations": 8,
       "non-consolidated-subsidiary": 2,
-      "reit": 2,
+      "reit": 8,
       "reconstructed-operating-income": 24,
       "net-basis-capex": 28,
       "broad-capex": 10,
@@ -193,7 +194,7 @@
       "fcf-capex-scope-mismatch": 0,
       "derived-single-quarter": 8,
       "unclassified-capex-definition": 0,
-      "special-operating-profit-definition": 22
+      "special-operating-profit-definition": 23
     }
   },
   "actionQueues": {
@@ -870,18 +871,18 @@
       "companyId": "arm",
       "name": "Arm",
       "japaneseName": "Arm（アーム）",
-      "periods": 2,
+      "periods": 8,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 28,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 12
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 6
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -892,11 +893,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 6,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 8,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -906,7 +907,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 8
       },
       "specialFlags": [
         "ppe-only"
@@ -1509,18 +1510,18 @@
       "companyId": "corning",
       "name": "Corning",
       "japaneseName": "Corning（コーニング）",
-      "periods": 2,
+      "periods": 8,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 28,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 12
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 6
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -1531,11 +1532,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 6,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 8,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -1545,7 +1546,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 8
       },
       "specialFlags": [
         "ppe-only",
@@ -1827,18 +1828,18 @@
       "companyId": "equinix",
       "name": "Equinix",
       "japaneseName": "Equinix（エクイニクス）",
-      "periods": 2,
+      "periods": 8,
       "metricStatusCounts": {
-        "verified": 6,
+        "verified": 24,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 4
+        "missing": 16
       },
       "cashFlowCoverage": {
         "both-present": 0,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 2
+        "both-missing": 8
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -1848,12 +1849,12 @@
         "company-reported-cash-capex": 0,
         "broader-non-current-assets": 0,
         "net-capex": 0,
-        "reit-or-real-estate-investment": 2,
+        "reit-or-real-estate-investment": 8,
         "not-collected": 0,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 8,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -1863,7 +1864,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 8
       },
       "specialFlags": [
         "reit"
@@ -2010,18 +2011,18 @@
       "companyId": "ge-vernova",
       "name": "GE Vernova",
       "japaneseName": "GE Vernova（GEベルノバ）",
-      "periods": 2,
+      "periods": 6,
       "metricStatusCounts": {
-        "verified": 6,
+        "verified": 18,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 4
+        "missing": 12
       },
       "cashFlowCoverage": {
         "both-present": 0,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 2
+        "both-missing": 6
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -2032,23 +2033,25 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 2,
+        "not-collected": 6,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 5,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
-        "special-case": 0
+        "special-case": 1
       },
       "adjustedNonGaapFcfAssessments": {
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 6
       },
-      "specialFlags": []
+      "specialFlags": [
+        "special-operating-profit-definition"
+      ]
     },
     {
       "companyId": "globalfoundries",
@@ -2098,18 +2101,18 @@
       "companyId": "globalwafers",
       "name": "GlobalWafers",
       "japaneseName": "GlobalWafers（グローバルウェーハズ）",
-      "periods": 2,
+      "periods": 6,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 22,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 8
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 4
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -2120,11 +2123,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 4,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 6,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -2134,7 +2137,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 6
       },
       "specialFlags": [
         "ppe-only"
@@ -2234,18 +2237,18 @@
       "companyId": "ibiden",
       "name": "IBIDEN",
       "japaneseName": "イビデン",
-      "periods": 2,
+      "periods": 6,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 22,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 8
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 4
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -2256,11 +2259,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 4,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 6,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -2270,7 +2273,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 6
       },
       "specialFlags": [
         "ppe-only"
@@ -3273,18 +3276,18 @@
       "companyId": "nvent",
       "name": "nVent",
       "japaneseName": "nVent（エヌベント）",
-      "periods": 2,
+      "periods": 6,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 22,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 8
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 4
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -3295,11 +3298,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 4,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 6,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -3309,7 +3312,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 6
       },
       "specialFlags": [
         "ppe-only",
@@ -3914,18 +3917,18 @@
       "companyId": "shin-etsu-chemical",
       "name": "Shin-Etsu Chemical",
       "japaneseName": "信越化学工業",
-      "periods": 2,
+      "periods": 6,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 22,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 8
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 4
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -3936,11 +3939,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 4,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 6,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -3950,7 +3953,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 6
       },
       "specialFlags": [
         "asset-scope-unresolved",
@@ -4364,18 +4367,18 @@
       "companyId": "te-connectivity",
       "name": "TE Connectivity",
       "japaneseName": "TE Connectivity（TEコネクティビティ）",
-      "periods": 2,
+      "periods": 8,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 28,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 12
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 6
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -4386,11 +4389,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 6,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 8,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -4400,7 +4403,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 8
       },
       "specialFlags": [
         "ppe-only",
@@ -4411,18 +4414,18 @@
       "companyId": "tesla",
       "name": "Tesla",
       "japaneseName": "Tesla（テスラ）",
-      "periods": 2,
+      "periods": 8,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 28,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 12
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 6
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -4433,11 +4436,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 2,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 6,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 8,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -4447,7 +4450,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 8
       },
       "specialFlags": [
         "net-basis-capex"
@@ -6312,6 +6315,110 @@
       ]
     },
     {
+      "id": "arm-q4-fy2025",
+      "companyId": "arm",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q4",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "arm-q1-fy2026",
+      "companyId": "arm",
+      "periodType": "quarterly",
+      "periodLabel": "FY2026 Q1",
+      "endDate": "2025-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "arm-q2-fy2026",
+      "companyId": "arm",
+      "periodType": "quarterly",
+      "periodLabel": "FY2026 Q2",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "arm-q3-fy2026",
+      "companyId": "arm",
+      "periodType": "quarterly",
+      "periodLabel": "FY2026 Q3",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "arm-fy2026",
       "companyId": "arm",
       "periodType": "annual",
@@ -6335,6 +6442,58 @@
       "specialFlags": [
         "ppe-only"
       ]
+    },
+    {
+      "id": "arm-q4-fy2026",
+      "companyId": "arm",
+      "periodType": "quarterly",
+      "periodLabel": "FY2026 Q4",
+      "endDate": "2026-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "arm-q1-fy2027",
+      "companyId": "arm",
+      "periodType": "quarterly",
+      "periodLabel": "FY2027 Q1",
+      "endDate": "2026-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "ase-technology-q1-2025",
@@ -8163,6 +8322,84 @@
       ]
     },
     {
+      "id": "corning-q1-2025",
+      "companyId": "corning",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2025",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "corning-q2-2025",
+      "companyId": "corning",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2025",
+      "endDate": "2025-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "corning-q3-2025",
+      "companyId": "corning",
+      "periodType": "quarterly",
+      "periodLabel": "Q3 2025",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "corning-fy2025",
       "companyId": "corning",
       "periodType": "annual",
@@ -8190,6 +8427,84 @@
       "capexDefinitionEvidenceSourceIds": [
         "sec-corning-2025-10k"
       ]
+    },
+    {
+      "id": "corning-q4-2025",
+      "companyId": "corning",
+      "periodType": "quarterly",
+      "periodLabel": "Q4 2025",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "corning-q1-2026",
+      "companyId": "corning",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2026",
+      "endDate": "2026-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "corning-q2-2026",
+      "companyId": "corning",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2026",
+      "endDate": "2026-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "credo-q3-fy2025",
@@ -8936,11 +9251,179 @@
       ]
     },
     {
+      "id": "equinix-q1-2025",
+      "companyId": "equinix",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2025",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "reit-or-real-estate-investment",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "reit"
+      ]
+    },
+    {
+      "id": "equinix-q2-2025",
+      "companyId": "equinix",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2025",
+      "endDate": "2025-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "reit-or-real-estate-investment",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "reit"
+      ]
+    },
+    {
+      "id": "equinix-q3-2025",
+      "companyId": "equinix",
+      "periodType": "quarterly",
+      "periodLabel": "Q3 2025",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "reit-or-real-estate-investment",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "reit"
+      ]
+    },
+    {
       "id": "equinix-fy2025",
       "companyId": "equinix",
       "periodType": "annual",
       "periodLabel": "FY2025",
       "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "reit-or-real-estate-investment",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "reit"
+      ]
+    },
+    {
+      "id": "equinix-q4-2025",
+      "companyId": "equinix",
+      "periodType": "quarterly",
+      "periodLabel": "Q4 2025",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "reit-or-real-estate-investment",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "reit"
+      ]
+    },
+    {
+      "id": "equinix-q1-2026",
+      "companyId": "equinix",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2026",
+      "endDate": "2026-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "reit-or-real-estate-investment",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "reit"
+      ]
+    },
+    {
+      "id": "equinix-q2-2026",
+      "companyId": "equinix",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2026",
+      "endDate": "2026-06-30",
       "metricStatuses": {
         "revenue": "verified",
         "operatingProfit": "verified",
@@ -9304,11 +9787,117 @@
       "specialFlags": []
     },
     {
+      "id": "ge-vernova-q1-2025",
+      "companyId": "ge-vernova",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2025",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "special-operating-profit-definition"
+      ]
+    },
+    {
       "id": "ge-vernova-q2-2025",
       "companyId": "ge-vernova",
       "periodType": "quarterly",
       "periodLabel": "Q2 2025",
       "endDate": "2025-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "ge-vernova-q3-2025",
+      "companyId": "ge-vernova",
+      "periodType": "quarterly",
+      "periodLabel": "Q3 2025",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "ge-vernova-q4-2025",
+      "companyId": "ge-vernova",
+      "periodType": "quarterly",
+      "periodLabel": "Q4 2025",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "ge-vernova-q1-2026",
+      "companyId": "ge-vernova",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2026",
+      "endDate": "2026-03-31",
       "metricStatuses": {
         "revenue": "verified",
         "operatingProfit": "verified",
@@ -9531,6 +10120,84 @@
       ]
     },
     {
+      "id": "globalwafers-q2-2025",
+      "companyId": "globalwafers",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2025",
+      "endDate": "2025-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "globalwafers-q3-2025",
+      "companyId": "globalwafers",
+      "periodType": "quarterly",
+      "periodLabel": "Q3 2025",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "globalwafers-q4-2025",
+      "companyId": "globalwafers",
+      "periodType": "quarterly",
+      "periodLabel": "Q4 2025",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "globalwafers-q1-2026",
       "companyId": "globalwafers",
       "periodType": "quarterly",
@@ -9554,6 +10221,32 @@
       "specialFlags": [
         "ppe-only"
       ]
+    },
+    {
+      "id": "globalwafers-q2-2026",
+      "companyId": "globalwafers",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2026",
+      "endDate": "2026-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "hanmi-semiconductor-fy2024",
@@ -9652,6 +10345,32 @@
       ]
     },
     {
+      "id": "ibiden-q4-fy2024",
+      "companyId": "ibiden",
+      "periodType": "quarterly",
+      "periodLabel": "FY2024 Q4",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "ibiden-q1-fy2025",
       "companyId": "ibiden",
       "periodType": "quarterly",
@@ -9675,6 +10394,84 @@
       "specialFlags": [
         "ppe-only"
       ]
+    },
+    {
+      "id": "ibiden-q2-fy2025",
+      "companyId": "ibiden",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q2",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "ibiden-q3-fy2025",
+      "companyId": "ibiden",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q3",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "ibiden-q4-fy2025",
+      "companyId": "ibiden",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q4",
+      "endDate": "2026-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "ibiden-q1-fy2026",
@@ -11965,6 +12762,32 @@
       "specialFlags": []
     },
     {
+      "id": "nvent-q1-2025",
+      "companyId": "nvent",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2025",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "nvent-q2-2025",
       "companyId": "nvent",
       "periodType": "quarterly",
@@ -11992,6 +12815,84 @@
       "capexDefinitionEvidenceSourceIds": [
         "filing-nvent-2026-q2-10q"
       ]
+    },
+    {
+      "id": "nvent-q3-2025",
+      "companyId": "nvent",
+      "periodType": "quarterly",
+      "periodLabel": "Q3 2025",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "nvent-q4-2025",
+      "companyId": "nvent",
+      "periodType": "quarterly",
+      "periodLabel": "Q4 2025",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "nvent-q1-2026",
+      "companyId": "nvent",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2026",
+      "endDate": "2026-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "nvent-q2-2026",
@@ -13614,6 +14515,32 @@
       ]
     },
     {
+      "id": "shin-etsu-chemical-q4-fy2024",
+      "companyId": "shin-etsu-chemical",
+      "periodType": "quarterly",
+      "periodLabel": "FY2024 Q4",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "shin-etsu-chemical-q1-fy2025",
       "companyId": "shin-etsu-chemical",
       "periodType": "quarterly",
@@ -13646,6 +14573,84 @@
         "formal-quarterly-cash-flow-statement-not-prepared",
         "ppe-versus-ppe-plus-intangible-scope-not-disclosed"
       ]
+    },
+    {
+      "id": "shin-etsu-chemical-q2-fy2025",
+      "companyId": "shin-etsu-chemical",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q2",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "shin-etsu-chemical-q3-fy2025",
+      "companyId": "shin-etsu-chemical",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q3",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "shin-etsu-chemical-q4-fy2025",
+      "companyId": "shin-etsu-chemical",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q4",
+      "endDate": "2026-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "shin-etsu-chemical-q1-fy2026",
@@ -14427,6 +15432,58 @@
       ]
     },
     {
+      "id": "te-connectivity-q2-fy2025",
+      "companyId": "te-connectivity",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q2",
+      "endDate": "2025-03-28",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "te-connectivity-q3-fy2025",
+      "companyId": "te-connectivity",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q3",
+      "endDate": "2025-06-27",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "te-connectivity-fy2025",
       "companyId": "te-connectivity",
       "periodType": "annual",
@@ -14456,6 +15513,110 @@
       ]
     },
     {
+      "id": "te-connectivity-q4-fy2025",
+      "companyId": "te-connectivity",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q4",
+      "endDate": "2025-09-26",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "te-connectivity-q1-fy2026",
+      "companyId": "te-connectivity",
+      "periodType": "quarterly",
+      "periodLabel": "FY2026 Q1",
+      "endDate": "2025-12-26",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "te-connectivity-q2-fy2026",
+      "companyId": "te-connectivity",
+      "periodType": "quarterly",
+      "periodLabel": "FY2026 Q2",
+      "endDate": "2026-03-27",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "te-connectivity-q3-fy2026",
+      "companyId": "te-connectivity",
+      "periodType": "quarterly",
+      "periodLabel": "FY2026 Q3",
+      "endDate": "2026-06-26",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "tesla-fy2024",
       "companyId": "tesla",
       "periodType": "annual",
@@ -14481,6 +15642,84 @@
       ]
     },
     {
+      "id": "tesla-q1-2025",
+      "companyId": "tesla",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2025",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "tesla-q2-2025",
+      "companyId": "tesla",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2025",
+      "endDate": "2025-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "tesla-q3-2025",
+      "companyId": "tesla",
+      "periodType": "quarterly",
+      "periodLabel": "Q3 2025",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "tesla-fy2025",
       "companyId": "tesla",
       "periodType": "annual",
@@ -14504,6 +15743,84 @@
       "specialFlags": [
         "net-basis-capex"
       ]
+    },
+    {
+      "id": "tesla-q4-2025",
+      "companyId": "tesla",
+      "periodType": "quarterly",
+      "periodLabel": "Q4 2025",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "tesla-q1-2026",
+      "companyId": "tesla",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2026",
+      "endDate": "2026-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "tesla-q2-2026",
+      "companyId": "tesla",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2026",
+      "endDate": "2026-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "texas-instruments-q1-2025",
