@@ -19,8 +19,8 @@ assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
 assert.deepEqual(new Set(coverage.map(row => row.companyId)), new Set(companies.map(company => company.id)), 'coverage company IDs exactly match registry');
 assert.equal(new Set(coverage.map(row => row.companyId)).size, coverage.length, 'coverage company IDs are unique');
-assert.equal(history.length, 473, 'eighth financial-history expansion yields 473 sourced periods');
-assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 54, 'ten additional companies reach six reported quarters');
+assert.equal(history.length, 518, 'ninth financial-history expansion yields 518 sourced periods');
+assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 62, 'eight additional companies reach six reported quarters');
 
 const quarterlyByCompany = new Map(companies.map(company => [company.id, []]));
 for (const record of history) if (record.periodType === 'quarterly') quarterlyByCompany.get(record.companyId)?.push(record);
@@ -117,11 +117,51 @@ assert.equal(new Set(eighthSources.map(source => source.id)).size, eighthSources
 assert.deepEqual(new Set(eighthPolicies.map(policy => policy.sourceId)), new Set(eighthSources.map(source => source.id)), 'every new source has exactly one policy');
 const sourceManifest = await readJson(join(dataDirectory, 'source-registry-manifest.json'));
 const priorSourceIds = new Set((await Promise.all(sourceManifest.shards
-  .filter(shard => shard !== 'document-sources-v05-batch11.json')
+  .filter(shard => shard !== 'document-sources-v05-batch11.json' && shard !== 'document-sources-v05-batch12.json')
   .map(shard => readJson(join(dataDirectory, shard))))).flat().map(source => source.id));
 assert.ok(eighthSources.every(source => !priorSourceIds.has(source.id)), 'new source IDs never collide with prior source registry entries');
 assert.ok(eighthSources.every(source => /^https:\/\//.test(source.url) && source.publishedAt && source.retrievedAt), 'every new source has an official URL and dates');
 assert.ok(eighthBatch.every(record => eighthSources.some(source => source.id === record.sourceId && source.companyId === record.companyId)), 'every new quarterly record resolves to its company official primary source');
+const ninthBatch = await readJson(join(dataDirectory, 'financial-history-v05-batch12.json'));
+const ninthSources = await readJson(join(dataDirectory, 'document-sources-v05-batch12.json'));
+const ninthPolicies = await readJson(join(dataDirectory, 'document-source-policies-v05-batch12.json'));
+assert.equal(ninthBatch.length, 45, 'ninth batch contains 45 sourced standalone quarters');
+assert.equal(ninthSources.length, 31, 'ninth batch registers 31 official primary documents');
+assert.equal(new Set(ninthBatch.map(record => record.id)).size, ninthBatch.length, 'ninth-batch record IDs are unique');
+assert.equal(new Set(ninthSources.map(source => source.id)).size, ninthSources.length, 'ninth-batch source IDs are unique');
+assert.deepEqual(new Set(ninthPolicies.map(policy => policy.sourceId)), new Set(ninthSources.map(source => source.id)), 'ninth-batch sources have one policy each');
+assert.ok(ninthSources.every(source => !priorSourceIds.has(source.id) && !eighthSources.some(previous => previous.id === source.id)), 'ninth-batch source IDs do not collide');
+assert.ok(ninthBatch.every(record => ninthSources.some(source => source.id === record.sourceId && source.companyId === record.companyId)), 'ninth-batch records resolve to official company sources');
+assert.ok(ninthBatch.every(record => record.periodType === 'quarterly' && record.metrics.revenue.value != null && record.metrics.operatingProfit.value != null && record.metrics.operatingMargin.value != null), 'ninth-batch records contain sourced actual standalone sales and operating results');
+const ninthBatchPeriods = new Map([
+  ['tower-semiconductor', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['mediatek', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['asm-international', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['nan-ya-pcb', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['renesas', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['infineon', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['screen-holdings', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['eaton', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+]);
+for (const [companyId, endDates] of ninthBatchPeriods) {
+  const quarterly = quarterlyByCompany.get(companyId);
+  assert.deepEqual(quarterly.slice(-6).map(record => record.endDate), endDates, `${companyId}: latest six official standalone quarters are continuous`);
+  assert.equal(coverage.find(row => row.companyId === companyId).coverageStatus, 'complete-six-quarters', `${companyId}: complete coverage`);
+  for (const field of ['currency', 'unit', 'accountingBasis']) assert.equal(new Set(quarterly.slice(-6).map(record => record[field])).size, 1, `${companyId}: stable ${field}`);
+}
+for (const [id, revenue, operatingProfit] of [
+  ['nan-ya-pcb-q4-2025', (40172990 - 29008401) / 1000, (1982415 - 1019461) / 1000],
+  ['screen-holdings-fy2025-q4', 625269 - 459964, 135683 - 100619],
+  ['screen-holdings-fy2026-q2', 274299 - 135785, 46454 - 24386],
+  ['screen-holdings-fy2026-q3', 425352 - 274299, 77439 - 46454],
+  ['screen-holdings-fy2026-q4', 605748 - 425352, 122522 - 77439],
+  ['eaton-q4-2025', 27448 - 20393, 5209 - 3823],
+]) {
+  const record = ninthBatch.find(item => item.id === id);
+  assert.ok(record, `${id}: cumulative-difference record exists`);
+  assert.equal(record.metrics.revenue.value, revenue, `${id}: revenue difference reproduces`);
+  assert.equal(record.metrics.operatingProfit.value, operatingProfit, `${id}: operating-profit difference reproduces`);
+}
 const eighthById = new Map(eighthBatch.map(record => [record.id, record]));
 for (const [id, revenue, operatingProfit] of [
   ['ge-vernova-q4-2025', 38068 - 27112, 1388 - 787],
@@ -168,9 +208,9 @@ for (const [companyId, endDates] of eighthBatchPeriods) {
   assert.ok(quarterly.every(record => record.metrics.revenue.value != null && record.metrics.operatingProfit.value != null && record.metrics.operatingMargin.value != null), `${companyId}: revenue and operating profit share six periods`);
 }
 assert.equal(new Set(history.map(record => record.id)).size, history.length, 'record IDs remain unique across all batches');
-assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 6, 'six companies remain partially covered');
+assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 4, 'four companies remain partially covered');
 assert.equal(coverage.filter(row => row.coverageStatus === 'awaiting-next-quarter').length, 1, 'Kioxia remains pending an actual publication');
-assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 39, '39 companies remain under review');
+assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 33, '33 companies remain under review');
 assert.equal(coverage.find(row => row.companyId === 'nvidia').checkedAt, '2026-09-23', 'unreviewed baseline companies retain their original coverage check date');
 assert.equal(coverage.find(row => row.companyId === 'fujikura').coverageStatus, 'needs-review', 'Fujikura remains unfilled without verified comparable six-quarter series');
 

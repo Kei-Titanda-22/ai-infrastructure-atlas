@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-09-26T00:00:00Z",
-  "dataAsOf": "2026-09-26",
-  "inputDigest": "sha256:7610be36f1c1fc7efde752f70af9388f83c5cf48892d13ac61d587baa986b4ac",
+  "generatedAt": "2026-10-03T00:00:00Z",
+  "dataAsOf": "2026-10-03",
+  "inputDigest": "sha256:9a733dc0e493a0f3a8e6e057def03b307225bac7dda4706876b7b048f078b3b0",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 252
+    "inputFileCount": 254
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 543,
-      "uniqueSourceCount": 541,
+      "registryRecordCount": 574,
+      "uniqueSourceCount": 572,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -102,8 +102,15 @@
       ],
       "conflictingDuplicateSourceIdCount": 0,
       "conflictingDuplicateSourceIds": [],
-      "duplicateUrlCount": 18,
+      "duplicateUrlCount": 20,
       "duplicateUrls": [
+        {
+          "url": "https://hdjp-corporateweb-files.screen.co.jp/1017/7865/4129/FY2026Q4_Fr_E.pdf",
+          "sourceIds": [
+            "financial-report-screen-fy2026",
+            "screen-2026-fy"
+          ]
+        },
         {
           "url": "https://kind.krx.co.kr/external/2026/03/12/002053/20260312004659/11011.htm",
           "sourceIds": [
@@ -144,6 +151,13 @@
           "sourceIds": [
             "sec-te-connectivity-2025-10k",
             "sec-tel-2025-fy"
+          ]
+        },
+        {
+          "url": "https://www.sec.gov/Archives/edgar/data/1551182/000155118226000007/etn-20251231.htm",
+          "sourceIds": [
+            "etn-2025-fy",
+            "sec-eaton-2025-10k"
           ]
         },
         {
@@ -240,8 +254,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 292,
-      "financialSourceResolved": 292
+      "financialSourceReferences": 322,
+      "financialSourceResolved": 322
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -4428,8 +4442,8 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 4,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -4685,9 +4699,11 @@
         "resolvedSourceIds": [
           "ir-asm-international"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 4,
         "financialSourceIds": [
-          "annual-report-asm-2025"
+          "annual-report-asm-2025",
+          "asm-2025-q1",
+          "asm-2026-q2"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -9297,8 +9313,8 @@
       "primaryLayer": "Data Center & Facilities",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 5,
-      "financialSourceCount": 2,
+      "registrySourceCount": 8,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -9557,9 +9573,12 @@
           "filing-eaton-2026-07-31-q2-10q",
           "ir-eaton"
         ],
-        "registrySourceCount": 5,
+        "registrySourceCount": 8,
         "financialSourceIds": [
           "earnings-eaton-2026-07-31-q2-2026",
+          "etn-2025-fy",
+          "etn-2025-q3",
+          "etn-2026-q1",
           "filing-eaton-2026-07-31-q2-10q"
         ],
         "orphanSourceIds": [],
@@ -12750,8 +12769,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -13008,9 +13027,13 @@
         "resolvedSourceIds": [
           "ir-infineon"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 6,
         "financialSourceIds": [
-          "annual-report-infineon-2025"
+          "annual-report-infineon-2025",
+          "ifx-2025-q3",
+          "ifx-2025-q4",
+          "ifx-2026-q2",
+          "ifx-2026-q3"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -17057,8 +17080,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 4,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -17311,9 +17334,12 @@
         "resolvedSourceIds": [
           "ir-mediatek"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 6,
         "financialSourceIds": [
-          "mediatek-q4-2025-consolidated-financial-statements"
+          "mediatek-q4-2025-consolidated-financial-statements",
+          "mtk-2025-q3",
+          "mtk-2026-q1",
+          "mtk-2026-q2"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -18478,8 +18504,8 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -18736,9 +18762,13 @@
         "resolvedSourceIds": [
           "corporate-nanya-pcb"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
-          "filing-nan-ya-pcb-2025-q2"
+          "filing-nan-ya-pcb-2025-q2",
+          "nanya-2025-fy",
+          "nanya-2025-q3",
+          "nanya-2026-q1",
+          "nanya-2026-q2"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -20773,8 +20803,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 10,
+      "financialSourceCount": 7,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -21031,9 +21061,15 @@
         "resolvedSourceIds": [
           "ir-renesas"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 10,
         "financialSourceIds": [
-          "financial-report-renesas-2025"
+          "financial-report-renesas-2025",
+          "ren-2025-fy",
+          "ren-2025-q1",
+          "ren-2025-q2",
+          "ren-2025-q3",
+          "ren-2026-q1",
+          "ren-2026-q2"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -22495,8 +22531,8 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 9,
+      "financialSourceCount": 6,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -22753,9 +22789,14 @@
         "resolvedSourceIds": [
           "ir-screen-holdings"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 9,
         "financialSourceIds": [
-          "financial-report-screen-fy2026"
+          "financial-report-screen-fy2026",
+          "screen-2025-fy",
+          "screen-2026-fy",
+          "screen-2026-h1",
+          "screen-2026-q3",
+          "screen-2027-q1"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -27087,8 +27128,8 @@
       "primaryLayer": "Foundry & Logic Manufacturing",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 5,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -27343,9 +27384,12 @@
         "resolvedSourceIds": [
           "ir-tower"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 5,
         "financialSourceIds": [
-          "sec-tower-fy2025-20f"
+          "sec-tower-fy2025-20f",
+          "tower-2025-q3",
+          "tower-2026-q1",
+          "tower-2026-q2"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
