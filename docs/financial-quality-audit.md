@@ -1,8 +1,8 @@
 # 100社財務品質監査
 
-データ基準日: **2026-09-26**
+データ基準日: **2026-10-03**
 
-入力SHA-256: `ded0603113833b271a66c2260394c5e11f689e39676d768ac12fce9d6939d56d`
+入力SHA-256: `274a5ca43e8b74ef8ce13b1618a8628fa0e4ff1536991b152d74b13ca5831a5c`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
@@ -13,18 +13,18 @@
 | 項目 | 件数 |
 | --- | ---: |
 | 企業 | 100 |
-| 期間 | 473 |
-| 指標 | 2365 |
+| 期間 | 518 |
+| 指標 | 2590 |
 | cash-flow override | 12 |
 
 ## 指標の検証状態
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `verified` | 1776 | 一次資料と値・算式を検証済み |
+| `verified` | 1911 | 一次資料と値・算式を検証済み |
 | `source-linked` | 3 | Sourceに紐付くがverifiedではない値 |
 | `needs-review` | 0 | 値はあるが再確認が必要 |
-| `missing` | 586 | 欠損理由ステータスを持つ値なし指標 |
+| `missing` | 676 | 欠損理由ステータスを持つ値なし指標 |
 
 ## FCF / Capex充足
 
@@ -33,7 +33,7 @@
 | `both-present` | 181 | FCF and Capex both have values |
 | `fcf-missing-only` | 0 | FCF is missing while Capex has a value |
 | `capex-missing-only` | 0 | Capex is missing while FCF has a value |
-| `both-missing` | 292 | FCF and Capex are both missing |
+| `both-missing` | 337 | FCF and Capex are both missing |
 
 ## Capex定義
 
@@ -47,18 +47,18 @@
 | `broader-non-current-assets` | 4 | A broader non-current/fixed/long-term asset cash-investment line |
 | `net-capex` | 28 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 12 | REIT or investment-property/real-estate investment definition |
-| `not-collected` | 282 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
+| `not-collected` | 327 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
 | `unclassified` | 0 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `direct-gaap-ifrs-operating-income` | 423 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
+| `direct-gaap-ifrs-operating-income` | 465 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
 | `ebit` | 2 | Reported EBIT used as the operating-profit measure |
 | `reconstructed-operating-income` | 24 | Atlas reconstructs operating income from reported operating line items |
 | `source-linked` | 1 | Value is retained as source-linked rather than verified |
-| `special-case` | 23 | Missing, period-derived, or otherwise not safely classified as a direct reported measure |
+| `special-case` | 26 | Missing, period-derived, or otherwise not safely classified as a direct reported measure |
 
 ## Adjusted / Non-GAAP FCF判定
 
@@ -67,7 +67,7 @@
 | `atlas-formula-aligned` | 8 | Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas |
 | `atlas-definition-difference` | 0 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
 | `unresolved` | 0 | Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely |
-| `not-applicable` | 465 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
+| `not-applicable` | 510 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
 
 ## 特殊比較フラグ
 
@@ -99,7 +99,7 @@
 | `fcf-capex-scope-mismatch` | 0 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
 | `derived-single-quarter` | 8 | A single-quarter value is derived from cumulative periods |
 | `unclassified-capex-definition` | 0 | A populated Capex value remains definition-unclassified |
-| `special-operating-profit-definition` | 23 | Operating-profit definition is classified as a special case |
+| `special-operating-profit-definition` | 26 | Operating-profit definition is classified as a special case |
 
 ## 要確認キュー
 
@@ -133,7 +133,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | arista | Arista Networks（アリスタ・ネットワークス） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | — |
 | arm | Arm（アーム） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | ppe-only |
 | ase-technology | ASE Technology（ASEテクノロジー） | 6 | 24 | 0 | 0 | 6 | 3 | 0 | 0 | 3 | net-basis-capex, special-operating-profit-definition |
-| asm-international | ASM International（ASMインターナショナル） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
+| asm-international | ASM International（ASMインターナショナル） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | asml | ASML（エーエスエムエル） | 6 | 28 | 0 | 0 | 2 | 5 | 0 | 0 | 1 | company-reported-fcf, non-gaap-fcf-atlas-formula-aligned, cash-flow-inputs-missing |
 | asmpt | ASMPT（エーエスエムピーティー） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | discontinued-operations |
 | besi | Besi（BEセミコンダクター・インダストリーズ） | 7 | 25 | 0 | 0 | 10 | 2 | 0 | 0 | 5 | — |
@@ -150,7 +150,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | denso | デンソー | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | digital-realty | Digital Realty（デジタル・リアルティ） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | disco | ディスコ | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
-| eaton | Eaton（イートン） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | reconstructed-operating-income, ppe-only |
+| eaton | Eaton（イートン） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | reconstructed-operating-income, ppe-only, special-operating-profit-definition |
 | entegris | Entegris（インテグリス） | 6 | 26 | 0 | 0 | 4 | 4 | 0 | 0 | 2 | ppe-only |
 | equinix | Equinix（エクイニクス） | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | reit |
 | fanuc | ファナック | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only |
@@ -162,7 +162,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | hanmi-semiconductor | HANMI Semiconductor（ハンミ・セミコンダクター） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | hexagon | Hexagon（ヘキサゴン） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
 | ibiden | イビデン | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | ppe-only |
-| infineon | Infineon（インフィニオン） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
+| infineon | Infineon（インフィニオン） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | intel | Intel（インテル） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | reconstructed-operating-income |
 | jcet | JCET（長電科技） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | broad-capex |
 | johnson-controls | Johnson Controls（ジョンソンコントロールズ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | reconstructed-operating-income, broad-capex, continuing-operations-scope |
@@ -177,12 +177,12 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | linde | Linde（リンデ） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | ppe-only |
 | lumentum | Lumentum（ルメンタム） | 8 | 26 | 0 | 0 | 14 | 2 | 0 | 0 | 6 | ppe-only, special-operating-profit-definition |
 | marvell | Marvell Technology（マーベル・テクノロジー） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | — |
-| mediatek | MediaTek（メディアテック） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
+| mediatek | MediaTek（メディアテック） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | micron | Micron Technology（マイクロン・テクノロジー） | 6 | 20 | 0 | 0 | 10 | 1 | 0 | 0 | 5 | reconstructed-operating-income, ppe-only |
 | mitsubishi-electric | 三菱電機 | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | mobileye | Mobileye（モービルアイ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | goodwill-impairment, ppe-only |
 | monolithic-power | Monolithic Power Systems（モノリシック・パワー・システムズ） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
-| nan-ya-pcb | Nan Ya PCB（南亜電路板） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
+| nan-ya-pcb | Nan Ya PCB（南亜電路板） | 7 | 21 | 0 | 0 | 14 | 0 | 0 | 0 | 7 | — |
 | nikon | ニコン | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
 | nvent | nVent（エヌベント） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | ppe-only, company-fcf-formula-includes-asset-sale-proceeds |
 | nvidia | NVIDIA（エヌビディア） | 9 | 33 | 0 | 0 | 12 | 3 | 0 | 0 | 6 | reconstructed-operating-income |
@@ -190,13 +190,13 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | omron | オムロン | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | discontinued-operations |
 | onsemi | onsemi（オンセミ） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | ppe-only |
 | qualcomm | Qualcomm（クアルコム） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | reconstructed-operating-income, broad-capex, continuing-operations-cfo-reconstructed |
-| renesas | ルネサス エレクトロニクス | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
+| renesas | ルネサス エレクトロニクス | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | resonac-holdings | レゾナック・ホールディングス | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | rohm | ローム | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only |
 | samsung-electronics | Samsung Electronics（サムスン電子） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | — |
 | sandisk | Sandisk（サンディスク） | 4 | 20 | 0 | 0 | 0 | 4 | 0 | 0 | 0 | net-basis-capex, company-reported-fcf |
 | schneider-electric | Schneider Electric（シュナイダーエレクトリック） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
-| screen-holdings | SCREENホールディングス | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
+| screen-holdings | SCREENホールディングス | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | seagate | Seagate（シーゲイト） | 9 | 35 | 0 | 0 | 10 | 4 | 0 | 0 | 5 | ppe-only, company-reported-fcf |
 | shin-etsu-chemical | 信越化学工業 | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | asset-scope-unresolved, rounded-source-value, informal-comparative-source |
 | shinko-electric | 新光電気工業 | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
@@ -212,7 +212,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | tesla | Tesla（テスラ） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | net-basis-capex |
 | texas-instruments | Texas Instruments（テキサス・インスツルメンツ） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | reconstructed-operating-income, ppe-only, government-incentive-excluded-from-fcf |
 | tokyo-electron | 東京エレクトロン | 8 | 38 | 0 | 0 | 2 | 7 | 0 | 0 | 1 | reconstructed-operating-income, ppe-only, derived-single-quarter, special-operating-profit-definition |
-| tower-semiconductor | Tower Semiconductor（タワーセミコンダクター） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
+| tower-semiconductor | Tower Semiconductor（タワーセミコンダクター） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | net-basis-capex |
 | trane-technologies | Trane Technologies（トレイン・テクノロジーズ） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | — |
 | tsmc | TSMC（台湾積体電路製造） | 6 | 24 | 0 | 0 | 6 | 3 | 0 | 0 | 3 | derived-single-quarter |
 | umc | UMC（聯華電子） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | ppe-only |
