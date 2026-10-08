@@ -1,0 +1,53 @@
+{
+  "version": "japanese-first-terminology-v02",
+  "baseMainSha": "2eee0aa034d938f85073033f8dbbaa48e66b5a96",
+  "auditedCompanyCount": 100,
+  "auditedClaimCount": 1062,
+  "newOverlayCount": 56,
+  "newOverlayCompanyCount": 37,
+  "projectedCompareClaimCount": 23,
+  "changedCompareArtifactCount": 20,
+  "generalPhrasesToRemove": [
+    "Value Chain",
+    "Compute & Silicon",
+    "Custom accelerators / ASIC",
+    "end market",
+    "global operations hub",
+    "technology leader",
+    "manufacturing sites",
+    "production facilities",
+    "cost competitiveness",
+    "customer needs",
+    "product lineup",
+    "R&D investment",
+    "de facto standard",
+    "interconnect semiconductor",
+    "semiconductor portfolio",
+    "mass-production capability",
+    "スコープ",
+    "鮮度"
+  ],
+  "specializedTermsExplainedOnce": [
+    {"term": "scale-up", "explanation": "クラスタ内の拡張"},
+    {"term": "scale-out", "explanation": "クラスタ間の拡張"},
+    {"term": "scale-across", "explanation": "拠点をまたぐ拡張"},
+    {"term": "Automation of Test", "explanation": "試験工程の自動化"}
+  ],
+  "protectedFormalNames": [
+    "GPU", "CPU", "DPU", "ASIC", "HBM", "DRAM", "NAND", "Ethernet", "CUDA",
+    "NVIDIA AI Enterprise", "DGX Cloud", "Spectrum-X Ethernet", "BlueField DPU",
+    "WIDE TC bonder", "hybrid bonder", "Mozaic", "Green", "Peace of Mind",
+    "Circular Digital-Engineering", "Serendie"
+  ],
+  "identityContract": {
+    "companyId": "applied-materials",
+    "displayName": "Applied Materials（アプライド・マテリアルズ）"
+  },
+  "representativeClaims": [
+    {"id": "nvidia-value-chain", "title": "半導体設計からAIクラスタ基盤までを担う"},
+    {"id": "tsmc-customer-market", "title": "HPCを含む幅広い最終市場"},
+    {"id": "broadcom-strategy-triage-remediation-v02", "title": "中核事業への成長投資"},
+    {"id": "lasertec-positioning", "title": "EUVマスクブランク検査の事実上の標準"},
+    {"id": "tokyo-electron-strategy-triage-remediation-v02", "title": "連続する4つの主要工程と研究開発投資"}
+  ]
+}
