@@ -39,20 +39,23 @@ const escapeRegex = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const fixturePath = new URL('./fixtures/japanese-first-copy-v01.json', import.meta.url);
 const fixtureSource = readFileSync(fixturePath, 'utf8');
 const fixture = JSON.parse(fixtureSource);
+const terminologyFixture = readJson('./fixtures/japanese-first-terminology-v02.json');
 const overlayDataFiles = readdirSync(new URL('../src/data/', import.meta.url))
   .filter(file => /^japanese-first-copy-batch\d+-v\d+\.json$/.test(file))
   .sort();
 const overlayPayloads = overlayDataFiles.map(file => readJson(`../src/data/${file}`));
 const batch1 = overlayPayloads.find(payload => payload.version === 'japanese-first-copy-batch1-v01');
 const batch2 = overlayPayloads.find(payload => payload.version === 'japanese-first-copy-batch2-v01');
+const batch3 = overlayPayloads.find(payload => payload.version === 'japanese-first-copy-batch3-v01');
 const manifest = readJson('../src/data/japanese-first-copy-manifest-v01.json');
 
 assert.ok(batch1, 'Batch 1 presentation data is registered by the generic file contract');
 assert.ok(batch2, 'Batch 2 presentation data is registered by the existing generic file contract');
+assert.ok(batch3, 'Batch 3 general-language presentation data is registered by the generic file contract');
 assert.deepEqual(
   overlayDataFiles,
-  ['japanese-first-copy-batch1-v01.json', 'japanese-first-copy-batch2-v01.json'],
-  'the generic loader discovers the two approved presentation overlays without source changes',
+  ['japanese-first-copy-batch1-v01.json', 'japanese-first-copy-batch2-v01.json', 'japanese-first-copy-batch3-v01.json'],
+  'the generic loader discovers the historical and new presentation overlays without source changes',
 );
 
 const fixedBatch1CompanyIds = [
@@ -212,6 +215,57 @@ const evidenceManifest = readJson('../src/data/company-evidence-manifest.json');
 const evidenceClaims = evidenceManifest.shards.flatMap(shard => readJson(`../src/data/${shard}`).claims);
 const claimById = new Map(evidenceClaims.map(claim => [claim.id, claim]));
 assert.equal(claimById.size, 1_062, 'the frozen canonical Claim set remains complete');
+
+assert.equal(terminologyFixture.version, 'japanese-first-terminology-v02');
+assert.equal(batch3.baseMainSha, terminologyFixture.baseMainSha, 'the new presentation batch records its audited base');
+assert.equal(new Set(evidenceClaims.map(claim => claim.companyId)).size, terminologyFixture.auditedCompanyCount, 'all Company detail surfaces are included in the terminology audit');
+assert.equal(evidenceClaims.length, terminologyFixture.auditedClaimCount, 'the full rendered Claim catalog is audited');
+assert.equal(batch3.entries.length, terminologyFixture.newOverlayCount, 'new full-sentence translations are fixture-counted');
+const allPresentationEntries = [...batch1.entries, ...batch2.entries, ...batch3.entries];
+const finalPresentationMap = compileJapaneseFirstPresentationEntries(allPresentationEntries);
+const reviewedCompanyIds = [...new Set(batch3.entries.map(entry => {
+  const claim = claimById.get(entry.stableKey);
+  assert.ok(claim, `${entry.stableKey}: new presentation Claim resolves in the canonical catalog`);
+  assert.equal(entry.entityType, 'claim', `${entry.stableKey}: new presentation is Claim-only`);
+  assert.equal(entry.decision, 'translate', `${entry.stableKey}: general-language copy is translated`);
+  assert.deepEqual(Object.keys(entry).sort(), ['canonicalDigest', 'decision', 'entityType', 'stableKey', 'statement', 'title'], `${entry.stableKey}: no canonical or Source fields are copied into presentation data`);
+  assert.equal(entry.canonicalDigest, japaneseFirstCanonicalDigest({ id: claim.id, title: claim.title, statement: claim.statement }), `${entry.stableKey}: canonical digest is exact`);
+  assert.match(`${entry.title} ${entry.statement}`, /[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}]/u, `${entry.stableKey}: explanation is Japanese-first`);
+  const before = JSON.stringify(claim);
+  const detail = resolveJapaneseFirstClaimPresentation(claim, undefined, finalPresentationMap);
+  const compare = resolveJapaneseFirstClaimPresentation(claim, { title: '比較用の旧文言', statement: '比較用の旧文言。' }, finalPresentationMap);
+  assert.deepEqual([detail.title, detail.statement], [entry.title, entry.statement], `${entry.stableKey}: detail page uses the new display-only copy`);
+  assert.deepEqual([compare.title, compare.statement], [detail.title, detail.statement], `${entry.stableKey}: Summary and Expanded Compare match the detail page`);
+  assert.equal(JSON.stringify(claim), before, `${entry.stableKey}: canonical Claim, ID, and Evidence links are unchanged`);
+  return claim.companyId;
+}))].sort();
+assert.deepEqual(batch3.companyIds, reviewedCompanyIds, 'the new overlay lists exactly its 37 audited owners');
+assert.equal(reviewedCompanyIds.length, terminologyFixture.newOverlayCompanyCount);
+for (const sample of terminologyFixture.representativeClaims) {
+  const claim = claimById.get(sample.id);
+  assert.equal(resolveJapaneseFirstClaimPresentation(claim, undefined, finalPresentationMap).title, sample.title, `${sample.id}: Japanese-first title is fixture-exact`);
+}
+for (const term of terminologyFixture.specializedTermsExplainedOnce) {
+  const matching = batch3.entries.filter(entry => `${entry.title} ${entry.statement}`.includes(term.term));
+  assert.ok(matching.length >= 1, `${term.term}: approved specialist term remains`);
+  for (const entry of matching) assert.equal(entry.statement.split(term.explanation).length - 1, 1, `${entry.stableKey}: ${term.term} is explained once`);
+}
+const resolvedClaimText = evidenceClaims.map(claim => {
+  const display = resolveJapaneseFirstClaimPresentation(claim, undefined, finalPresentationMap);
+  return { id: claim.id, text: `${display.title} ${display.statement}` };
+});
+for (const phrase of terminologyFixture.generalPhrasesToRemove) {
+  const offenders = resolvedClaimText.filter(record => record.text.toLocaleLowerCase('en').includes(phrase.toLocaleLowerCase('en')));
+  assert.deepEqual(offenders.map(record => record.id), [], `${phrase}: general English or unclear Japanese is absent from all 100 displayed Company Claims`);
+}
+const protectedSource = Object.freeze({ title: 'NVIDIA AI Enterprise and DGX Cloud — official source title', url: 'https://example.org/official-source', ticker: 'NVDA' });
+const protectedSourceBefore = JSON.stringify(protectedSource);
+resolveJapaneseFirstClaimPresentation(claimById.get('nvidia-value-chain'), undefined, finalPresentationMap);
+assert.equal(JSON.stringify(protectedSource), protectedSourceBefore, 'formal Source titles, URLs, and tickers are outside the Claim presentation overlay');
+for (const formalName of terminologyFixture.protectedFormalNames) {
+  assert.ok(!terminologyFixture.generalPhrasesToRemove.includes(formalName), `${formalName}: brand, product, and abbreviation are explicit exceptions rather than a blanket Latin-script ban`);
+}
+assert.equal(companyDisplayNameParts(fixture.names.find(identity => identity.id === terminologyFixture.identityContract.companyId)).accessibleName, terminologyFixture.identityContract.displayName, 'Applied Materials keeps the existing Japanese-first identity helper');
 
 const projectionCompanies = [
   ...firstBatchCompanies,
@@ -848,7 +902,7 @@ const financialHistorySixPeriodCoverageV07 = fixture.financialHistorySixPeriodCo
 assert.ok(financialHistorySixPeriodCoverageV07 && typeof financialHistorySixPeriodCoverageV07 === 'object', 'financial-history v07 freeze contract is present');
 const financialHistorySixPeriodCoverageV08 = fixture.financialHistorySixPeriodCoverageV08;
 assert.ok(financialHistorySixPeriodCoverageV08 && typeof financialHistorySixPeriodCoverageV08 === 'object', 'financial-history v08 freeze contract is present');
-assert.equal(freezes.length, 18, 'fixture preserves the human UX predecessor and adds the ninth financial successor');
+assert.equal(freezes.length, 19, 'fixture preserves all eighteen predecessor maps and adds the terminology successor');
 assert.equal(githubPagesBaseDeterminism.version, 'github-pages-base-determinism-v01', 'GitHub Pages base determinism audit records its explicit version');
 assert.equal(githubPagesBaseDeterminism.predecessorVersion, corningAppliedFreeze.version, 'GitHub Pages base determinism audit records its immediate predecessor');
 const githubPagesBaseFreeze = freezes.find(freeze => freeze.version === githubPagesBaseDeterminism.version);
@@ -1010,8 +1064,7 @@ for (const path of expectedArtifactPaths.filter(path => !financialHistoryV08Chan
 assert.equal(shaMapDigest(financialHistoryFreezeV08), financialHistoryFreezeV08.metadata.shaMapDigest, 'v08 records the reproducible SHA map digest');
 const humanUxFreeze = freezes.find(freeze => freeze.version === 'company-compare-human-ux-review-v01');
 assert.ok(humanUxFreeze, 'the Japanese-first human UX successor freeze is present');
-assert.equal(activeFreeze.previousVersion, humanUxFreeze.version, 'the explicit active ID selects a successor to the human UX freeze');
-assert.equal(humanUxFreeze.previousVersion, financialHistoryFreezeV08.version, 'the financial-history v08 freeze remains the unchanged predecessor');
+assert.equal(humanUxFreeze.previousVersion, financialHistoryFreezeV08.version, 'the explicit human UX successor preserves the financial-history v08 predecessor');
 assert.equal(humanUxFreeze.metadata.baseMain, '20d1220bf673be5f7f4ca428d391dfca67f1bc89', 'the successor records the audited main');
 assert.equal(humanUxFreeze.metadata.shaMismatchFallbackAllowed, false, 'the successor rejects SHA fallback');
 const humanUxChangedPaths = expectedArtifactPaths.filter(path => humanUxFreeze.sha256ByPath[path] !== financialHistoryFreezeV08.sha256ByPath[path]);
@@ -1021,7 +1074,6 @@ assert.equal(expectedArtifactPaths.length - humanUxChangedPaths.length, humanUxF
 assert.equal(shaMapDigest(humanUxFreeze), humanUxFreeze.metadata.shaMapDigest, 'the successor SHA map digest is reproducible');
 const financialHistoryFreezeV09 = freezes.find(freeze => freeze.version === 'financial-history-six-period-coverage-v09');
 assert.ok(financialHistoryFreezeV09, 'the ninth financial-history successor freeze is present');
-assert.equal(activeFreeze.version, financialHistoryFreezeV09.version, 'the ninth financial-history freeze is active');
 assert.equal(financialHistoryFreezeV09.previousVersion, humanUxFreeze.version, 'the human UX freeze remains the unchanged predecessor');
 assert.equal(financialHistoryFreezeV09.metadata.baseMain, 'dd1439382c902fa7dade0e1d81119dbc5e8596e6', 'the ninth freeze records its audited main');
 assert.equal(financialHistoryFreezeV09.metadata.shaMismatchFallbackAllowed, false, 'the ninth freeze rejects SHA fallback');
@@ -1044,6 +1096,63 @@ for (const path of expectedArtifactPaths.filter(path => !ninthChangedPaths.inclu
   assert.equal(financialHistoryFreezeV09.sha256ByPath[path], humanUxFreeze.sha256ByPath[path], `${path}: non-target artifact remains byte-identical`);
 }
 assert.equal(shaMapDigest(financialHistoryFreezeV09), financialHistoryFreezeV09.metadata.shaMapDigest, 'the ninth SHA map digest is reproducible');
+const terminologyFreeze = freezes.find(freeze => freeze.version === 'japanese-first-terminology-v02');
+assert.ok(terminologyFreeze, 'the Japanese-first terminology successor freeze is present');
+assert.equal(activeFreeze.version, terminologyFreeze.version, 'the Japanese-first terminology freeze is active');
+assert.equal(terminologyFreeze.previousVersion, financialHistoryFreezeV09.version, 'the ninth financial-history freeze remains the unchanged predecessor');
+assert.equal(terminologyFreeze.metadata.baseMain, terminologyFixture.baseMainSha, 'the terminology freeze records the audited main');
+assert.equal(terminologyFreeze.metadata.shaMismatchFallbackAllowed, false, 'the terminology freeze rejects SHA fallback');
+assert.equal(terminologyFreeze.metadata.shellMustMatchPrevious, true, 'the terminology freeze preserves the Evidence shell');
+const terminologyChangedPaths = expectedArtifactPaths.filter(path => terminologyFreeze.sha256ByPath[path] !== financialHistoryFreezeV09.sha256ByPath[path]);
+assert.deepEqual(terminologyChangedPaths, [
+  'abb/index.html',
+  'analog-devices/index.html',
+  'asm-international/index.html',
+  'broadcom/index.html',
+  'denso/index.html',
+  'globalfoundries/index.html',
+  'hexagon/index.html',
+  'keyence/index.html',
+  'kioxia/index.html',
+  'lasertec/index.html',
+  'mobileye/index.html',
+  'nvidia/index.html',
+  'nxp/index.html',
+  'sandisk/index.html',
+  'smc/index.html',
+  'tokyo-electron/index.html',
+  'tsmc/index.html',
+  'umc/index.html',
+  'western-digital/index.html',
+  'yaskawa/index.html',
+], 'only the 20 projected terminology Company assets change');
+assert.equal(terminologyChangedPaths.length, terminologyFixture.changedCompareArtifactCount, 'the focused fixture records the changed Company asset count');
+assert.equal(terminologyChangedPaths.length, terminologyFreeze.metadata.expectedChangedArtifactCount, 'the successor records its exact changed count');
+assert.equal(expectedArtifactPaths.length - terminologyChangedPaths.length, terminologyFreeze.metadata.expectedUnchangedArtifactCount, 'the successor records 81 byte-identical artifacts');
+assert.equal(terminologyFreeze.sha256ByPath['index.html'], financialHistoryFreezeV09.sha256ByPath['index.html'], 'the Evidence shell is byte-identical');
+for (const path of expectedArtifactPaths.filter(path => !terminologyChangedPaths.includes(path))) {
+  assert.equal(terminologyFreeze.sha256ByPath[path], financialHistoryFreezeV09.sha256ByPath[path], `${path}: non-target artifact remains byte-identical`);
+}
+assert.equal(shaMapDigest(terminologyFreeze), terminologyFreeze.metadata.shaMapDigest, 'the terminology SHA map digest is reproducible');
+if (process.argv.includes('--dist')) {
+  const htmlText = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+  const projectedCompanyIds = new Set();
+  let projectedClaims = 0;
+  for (const entry of batch3.entries) {
+    const companyId = claimById.get(entry.stableKey).companyId;
+    const detailHtml = readFileSync(new URL(`../dist/companies/${companyId}/index.html`, import.meta.url), 'utf8');
+    assert.ok(detailHtml.includes(htmlText(entry.title)), `${entry.stableKey}: generated Company detail contains the Japanese title`);
+    assert.ok(detailHtml.includes(htmlText(entry.statement)), `${entry.stableKey}: generated Company detail contains the Japanese statement`);
+    const assetHtml = readFileSync(new URL(`../dist/evidence-fragments/company-compare-evidence-v01/${companyId}/index.html`, import.meta.url), 'utf8');
+    if (!assetHtml.includes(`data-claim-id="${entry.stableKey}"`)) continue;
+    projectedClaims++;
+    projectedCompanyIds.add(companyId);
+    assert.ok(assetHtml.includes(htmlText(entry.title)), `${entry.stableKey}: generated Compare asset contains the Japanese title`);
+    assert.ok(assetHtml.includes(htmlText(entry.statement)), `${entry.stableKey}: generated Compare asset contains the Japanese statement`);
+  }
+  assert.equal(projectedClaims, terminologyFixture.projectedCompareClaimCount, 'the Compare read model projects exactly the reviewed 23 Claims');
+  assert.equal(projectedCompanyIds.size, terminologyFixture.changedCompareArtifactCount, 'the reviewed 23 Claims belong to exactly 20 Company assets');
+}
 const astroConfigSource = readFileSync(new URL('../astro.config.mjs', import.meta.url), 'utf8');
 assert.match(astroConfigSource, /normalizeBasePath\(process\.env\.BASE_PATH \|\| \(isUserSite \? '\/' : `\/\$\{repo\}`\)\)/, 'Astro config selects the repository base without a CI-specific branch');
 assert.doesNotMatch(astroConfigSource, /GITHUB_ACTIONS/, 'Astro config has no GITHUB_ACTIONS base-path branch');
@@ -1072,7 +1181,7 @@ for (const [version, expectedDigest] of Object.entries(historicalArtifactFreezeD
 }
 
 const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
-assert.equal(shaBlocks.length, 18, 'fixture source contains seventeen preserved history maps plus the ninth financial successor SHA map');
+assert.equal(shaBlocks.length, 19, 'fixture source preserves eighteen history maps plus the terminology successor SHA map');
 for (const [index, block] of shaBlocks.entries()) {
   const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
   assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);
