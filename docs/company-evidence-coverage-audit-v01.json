@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-10-03T00:00:00Z",
-  "dataAsOf": "2026-10-03",
-  "inputDigest": "sha256:9a733dc0e493a0f3a8e6e057def03b307225bac7dda4706876b7b048f078b3b0",
+  "generatedAt": "2026-10-09T00:00:00Z",
+  "dataAsOf": "2026-10-09",
+  "inputDigest": "sha256:33f96cfe617f9c525ae593e8729d2e00a51d9e8132c922ebdccb96906a939197",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 254
+    "inputFileCount": 256
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 574,
-      "uniqueSourceCount": 572,
+      "registryRecordCount": 601,
+      "uniqueSourceCount": 599,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -102,7 +102,7 @@
       ],
       "conflictingDuplicateSourceIdCount": 0,
       "conflictingDuplicateSourceIds": [],
-      "duplicateUrlCount": 20,
+      "duplicateUrlCount": 21,
       "duplicateUrls": [
         {
           "url": "https://hdjp-corporateweb-files.screen.co.jp/1017/7865/4129/FY2026Q4_Fr_E.pdf",
@@ -116,6 +116,13 @@
           "sourceIds": [
             "filing-hanmi-2026-03-12",
             "krx-hanmi-semiconductor-fy2025-business-report"
+          ]
+        },
+        {
+          "url": "https://www.keyence.co.jp/investor/financial-info/",
+          "sourceIds": [
+            "keyence-financial-highlights-fy2025",
+            "ky-financial-trend"
           ]
         },
         {
@@ -254,8 +261,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 322,
-      "financialSourceResolved": 322
+      "financialSourceReferences": 347,
+      "financialSourceResolved": 347
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -6447,8 +6454,8 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 5,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -6705,9 +6712,12 @@
         "resolvedSourceIds": [
           "ir-canon"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 5,
         "financialSourceIds": [
-          "annual-report-canon-2025"
+          "annual-report-canon-2025",
+          "ca-2025-fy",
+          "ca-2025-q3",
+          "ca-2026-q2"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -8452,8 +8462,8 @@
       "primaryLayer": "Physical AI",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 10,
+      "financialSourceCount": 7,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -8710,8 +8720,14 @@
         "resolvedSourceIds": [
           "ir-denso"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 10,
         "financialSourceIds": [
+          "den-2025-fy",
+          "den-2026-fy",
+          "den-2026-h1",
+          "den-2026-q1",
+          "den-2026-q3",
+          "den-2027-q1",
           "denso-financial-data-fy2026"
         ],
         "orphanSourceIds": [],
@@ -10186,8 +10202,8 @@
       "primaryLayer": "Physical AI",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 4,
-      "financialSourceCount": 2,
+      "registrySourceCount": 7,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -10446,10 +10462,13 @@
           "earnings-fanuc-2026-07-31-q1-fy2027",
           "ir-fanuc"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 7,
         "financialSourceIds": [
           "earnings-fanuc-2026-07-31-q1-fy2027",
-          "fanuc-financial-results-fy2025"
+          "fanuc-financial-results-fy2025",
+          "fn-2025-q3",
+          "fn-2026-fy",
+          "fn-2026-q1"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -10474,8 +10493,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 8,
-      "financialSourceCount": 2,
+      "registrySourceCount": 13,
+      "financialSourceCount": 7,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -10732,8 +10751,13 @@
         "resolvedSourceIds": [
           "ir-fujikura"
         ],
-        "registrySourceCount": 8,
+        "registrySourceCount": 13,
         "financialSourceIds": [
+          "fj-2026-fy",
+          "fj-2026-h1",
+          "fj-2026-q1",
+          "fj-2026-q3",
+          "fj-2027-q1",
           "jpx-fujikura-fy2026-financial-results",
           "product-fujikura-2026-03-09-4000-fiber-swr-wtc"
         ],
@@ -13918,8 +13942,8 @@
       "primaryLayer": "Physical AI",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 5,
+      "financialSourceCount": 2,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -14172,9 +14196,10 @@
         "resolvedSourceIds": [
           "ir-keyence"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 5,
         "financialSourceIds": [
-          "keyence-financial-highlights-fy2025"
+          "keyence-financial-highlights-fy2025",
+          "ky-financial-trend"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -15075,8 +15100,8 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 5,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -15333,9 +15358,11 @@
         "resolvedSourceIds": [
           "ir-kokusai-electric"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 5,
         "financialSourceIds": [
-          "financial-results-kokusai-fy2026"
+          "financial-results-kokusai-fy2026",
+          "kei-2025-fy",
+          "kei-2027-q1"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -17653,8 +17680,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 6,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -17911,8 +17938,13 @@
         "resolvedSourceIds": [
           "ir-mitsubishi-electric"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 7,
         "financialSourceIds": [
+          "mel-2026-fy",
+          "mel-2026-h1",
+          "mel-2026-q1",
+          "mel-2026-q3",
+          "mel-2027-q1",
           "mitsubishi-electric-annual-securities-report-fy2026"
         ],
         "orphanSourceIds": [],
