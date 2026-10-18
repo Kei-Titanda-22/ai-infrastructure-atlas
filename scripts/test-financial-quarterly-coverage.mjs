@@ -20,8 +20,8 @@ assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
 assert.deepEqual(new Set(coverage.map(row => row.companyId)), new Set(companies.map(company => company.id)), 'coverage company IDs exactly match registry');
 assert.equal(new Set(coverage.map(row => row.companyId)).size, coverage.length, 'coverage company IDs are unique');
-assert.equal(history.length, 560, 'tenth financial-history expansion yields 560 sourced periods');
-assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 69, 'seven additional companies reach six reported quarters');
+assert.equal(history.length, 568, 'v11 adds eight sourced actual quarters without removing the 560 existing periods');
+assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 70, 'Sandisk reaches six reported quarters');
 
 const quarterlyByCompany = new Map(companies.map(company => [company.id, []]));
 for (const record of history) if (record.periodType === 'quarterly') quarterlyByCompany.get(record.companyId)?.push(record);
@@ -50,9 +50,9 @@ assert.deepEqual(furukawa.map(record => record.endDate), ['2025-03-31', '2025-06
 assert.equal(coverage.find(row => row.companyId === 'furukawa-electric').coverageStatus, 'complete-six-quarters', 'Furukawa coverage is complete');
 
 const phaseTwoEndDates = new Map([
-  ['asml', ['2025-03-30', '2025-06-29', '2025-09-28', '2025-12-31', '2026-03-29', '2026-06-28']],
+  ['asml', ['2025-03-30', '2025-06-29', '2025-09-28', '2025-12-31', '2026-03-29', '2026-06-28', '2026-09-27']],
   ['tokyo-electron', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
-  ['tsmc', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
+  ['tsmc', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30', '2026-09-30']],
   ['sk-hynix', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
   ['broadcom', ['2025-05-04', '2025-08-03', '2025-11-02', '2026-02-01', '2026-05-03', '2026-08-02']],
   ['kla', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
@@ -78,7 +78,7 @@ const sixthBatchPeriods = new Map([
   ['sumitomo-electric', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
   ['ciena', ['2025-05-03', '2025-08-02', '2025-11-01', '2026-01-31', '2026-05-02', '2026-08-01']],
   ['coherent', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
-  ['credo', ['2025-02-01', '2025-05-03', '2025-08-02', '2025-11-01', '2026-01-31', '2026-05-02']],
+  ['credo', ['2025-02-01', '2025-05-03', '2025-08-02', '2025-11-01', '2026-01-31', '2026-05-02', '2026-08-01']],
   ['lumentum', ['2025-03-29', '2025-06-28', '2025-09-27', '2025-12-27', '2026-03-28', '2026-06-27']],
   ['samsung-electronics', ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30']],
 ]);
@@ -86,7 +86,7 @@ for (const [companyId, endDates] of sixthBatchPeriods) {
   const quarterly = quarterlyByCompany.get(companyId);
   assert.deepEqual(quarterly.map(record => record.endDate), endDates, `${companyId}: six consecutive official standalone quarters`);
   assert.equal(coverage.find(row => row.companyId === companyId).coverageStatus, 'complete-six-quarters', `${companyId}: complete coverage`);
-  assert.equal(coverage.find(row => row.companyId === companyId).checkedAt, '2026-09-25', `${companyId}: coverage check date follows its official source retrieval`);
+  assert.equal(coverage.find(row => row.companyId === companyId).checkedAt, companyId === 'credo' ? '2026-10-18' : '2026-09-25', `${companyId}: coverage check date follows its official source retrieval`);
   assert.equal(new Set(quarterly.map(record => record.currency)).size, 1, `${companyId}: stable currency`);
   assert.equal(new Set(quarterly.map(record => record.unit)).size, 1, `${companyId}: stable unit`);
   assert.equal(new Set(quarterly.map(record => record.accountingBasis)).size, 1, `${companyId}: stable accounting basis`);
@@ -300,7 +300,7 @@ for (const [companyId, endDates] of tenthPeriods) {
   for (const field of ['currency', 'unit', 'accountingBasis']) assert.equal(new Set(quarterly.slice(-6).map(record => record[field])).size, 1, `${companyId}: stable ${field}`);
   assert.ok(quarterly.slice(-6).every(record => record.metrics.revenue.value != null && record.metrics.operatingProfit.value != null && record.metrics.operatingMargin.value != null), `${companyId}: sales, operating profit and margin are nonempty`);
 }
-assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 4, 'four companies remain partially covered');
+assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 3, 'three companies remain partially covered');
 assert.equal(coverage.filter(row => row.coverageStatus === 'awaiting-next-quarter').length, 1, 'Kioxia remains pending an actual publication');
 assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 26, '26 companies remain under review');
 assert.equal(coverage.find(row => row.companyId === 'nvidia').checkedAt, '2026-09-23', 'unreviewed baseline companies retain their original coverage check date');
@@ -384,6 +384,24 @@ const assertUniformFinancialDisplayUnits = records => {
 assert.doesNotThrow(() => assertUniformFinancialDisplayUnits(loadedHistory), 'the production Compare presentation accepts all 100 loaded company histories');
 assert.throws(() => assertUniformFinancialDisplayUnits(loadedHistory.map(record => record.id === 'denso-fy2027-q1' ? { ...record, unit: 'billion' } : record)), /mixed currency or unit/, 'the production guard rejects the reported DENSO unit regression');
 assert.throws(() => assertUniformFinancialDisplayUnits(loadedHistory.map(record => record.id === 'fanuc-fy2026-q1' ? { ...record, unit: 'billion' } : record)), /mixed currency or unit/, 'the production guard rejects the second FANUC unit regression');
+const v11Batch = await readJson(join(dataDirectory, 'financial-history-v05-batch14.json'));
+const v11Sources = await readJson(join(dataDirectory, 'document-sources-v05-batch14.json'));
+const v11Policies = await readJson(join(dataDirectory, 'document-source-policies-v05-batch14.json'));
+assert.equal(v11Batch.length, 8, 'v11 includes four latest-period updates and four Sandisk gap quarters');
+assert.equal(new Set(v11Batch.map(record => record.id)).size, v11Batch.length, 'v11 record IDs are distinct');
+assert.equal(new Set(v11Sources.map(source => source.id)).size, v11Sources.length, 'v11 source IDs are distinct');
+assert.deepEqual(new Set(v11Policies.map(policy => policy.sourceId)), new Set(v11Sources.map(source => source.id)), 'v11 source policy coverage is exact');
+assert.ok(v11Batch.every(record => record.periodType === 'quarterly' && record.startDate && record.endDate && record.endDate >= record.startDate), 'v11 records are dated standalone quarters');
+assert.ok(v11Batch.every(record => v11Sources.some(source => source.id === record.sourceId && source.companyId === record.companyId && /^https:\/\//.test(source.url))), 'v11 records resolve to official company primary sources');
+for (const record of v11Batch) {
+  assert.equal(record.metrics.operatingMargin.value, Math.round(record.metrics.operatingProfit.value / record.metrics.revenue.value * 1000) / 10, `${record.id}: margin derives from same-period actual revenue and operating profit`);
+  assert.equal(record.metrics.freeCashFlow.value, null, `${record.id}: cash flow is not inferred`);
+  assert.equal(record.metrics.capex.value, null, `${record.id}: capex is not inferred`);
+}
+assert.deepEqual(quarterlyByCompany.get('sandisk').slice(-6).map(record => record.periodLabel), ['Q3 FY2025', 'Q4 FY2025', 'Q1 FY2026', 'Q2 FY2026', 'Q3 FY2026', 'Q4 FY2026'], 'Sandisk has a continuous six-quarter chart window');
+assert.equal(coverage.find(row => row.companyId === 'sandisk').coverageStatus, 'complete-six-quarters', 'Sandisk becomes complete without forecasting FY2027 Q1');
+assert.equal(coverage.find(row => row.companyId === 'sandisk').checkedAt, '2026-10-18', 'only genuinely reviewed Sandisk sources advance its check date');
+assert.ok(!history.some(record => record.companyId === 'sandisk' && record.periodLabel === 'Q1 FY2027'), 'Sandisk FY2027 Q1 is not treated as actual before its release');
 assert.equal(new Set(history.map(record => record.id)).size, history.length, 'all direct JSON financial record IDs are unique');
 const compareCompaniesWithoutFinancialHistory = evidenceCompareSupportedCompanyIds
   .filter(companyId => !history.some(record => record.companyId === companyId));

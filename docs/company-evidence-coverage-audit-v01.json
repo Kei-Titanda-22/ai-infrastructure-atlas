@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-10-09T00:00:00Z",
-  "dataAsOf": "2026-10-09",
-  "inputDigest": "sha256:33f96cfe617f9c525ae593e8729d2e00a51d9e8132c922ebdccb96906a939197",
+  "generatedAt": "2026-10-18T00:00:00Z",
+  "dataAsOf": "2026-10-18",
+  "inputDigest": "sha256:dbe6a267d6a9eaa3dada2d792da4182acc6175c4b91a6638d4dbb527ea07725e",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 256
+    "inputFileCount": 258
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 601,
-      "uniqueSourceCount": 599,
+      "registryRecordCount": 609,
+      "uniqueSourceCount": 607,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -261,8 +261,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 347,
-      "financialSourceResolved": 347
+      "financialSourceReferences": 355,
+      "financialSourceResolved": 355
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -4735,8 +4735,8 @@
       "primaryLayer": "Wafer Fab Equipment",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 4,
-      "financialSourceCount": 2,
+      "registrySourceCount": 5,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -4994,10 +4994,11 @@
           "earnings-asml-2026-07-15-q2-2026",
           "ir-asml"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 5,
         "financialSourceIds": [
           "earnings-asml-2025-04-16-q1-2025",
-          "earnings-asml-2026-07-15-q2-2026"
+          "earnings-asml-2026-07-15-q2-2026",
+          "earnings-asml-2026-10-14-q3-2026"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -8175,8 +8176,8 @@
       "primaryLayer": "Network & Optical",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 7,
-      "financialSourceCount": 6,
+      "registrySourceCount": 8,
+      "financialSourceCount": 7,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -8429,13 +8430,14 @@
         "resolvedSourceIds": [
           "ir-credo"
         ],
-        "registrySourceCount": 7,
+        "registrySourceCount": 8,
         "financialSourceIds": [
           "earnings-credo-2025-03-04-q3-fy2025",
           "earnings-credo-2025-09-03-q1-fy2026",
           "earnings-credo-2025-12-01-q2-fy2026",
           "earnings-credo-2026-03-02-q3-fy2026",
           "earnings-credo-2026-06-01-q4-fy2026",
+          "earnings-credo-2026-09-01-q1-fy2027",
           "filing-credo-2026-06-15-fy2026-10k"
         ],
         "orphanSourceIds": [],
@@ -17390,8 +17392,8 @@
       "primaryLayer": "Memory",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 6,
-      "financialSourceCount": 4,
+      "registrySourceCount": 7,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -17650,9 +17652,10 @@
           "earnings-micron-2026-06-24-q3-fy2026",
           "ir-micron"
         ],
-        "registrySourceCount": 6,
+        "registrySourceCount": 7,
         "financialSourceIds": [
           "earnings-micron-2026-06-24-q3-fy2026",
+          "earnings-micron-2026-09-30-q4-fy2026",
           "sec-micron-10k-fy2025",
           "sec-micron-10q-q1-fy2026",
           "sec-micron-10q-q2-fy2025"
@@ -21993,8 +21996,8 @@
       "primaryLayer": "Memory",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -22251,8 +22254,12 @@
         "resolvedSourceIds": [
           "ir-sandisk"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
+          "earnings-sandisk-2025-05-07-q3-fy2025",
+          "earnings-sandisk-2025-11-06-q1-fy2026",
+          "earnings-sandisk-2026-01-29-q2-fy2026",
+          "earnings-sandisk-2026-04-30-q3-fy2026",
           "earnings-sandisk-2026-08-05-q4-fy2026"
         ],
         "orphanSourceIds": [],
@@ -27734,8 +27741,8 @@
       "primaryLayer": "Foundry & Logic Manufacturing",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 12,
-      "financialSourceCount": 3,
+      "registrySourceCount": 13,
+      "financialSourceCount": 4,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 12,
@@ -27994,11 +28001,12 @@
           "earnings-tsmc-2026-07-16-q2-2026",
           "ir-tsmc"
         ],
-        "registrySourceCount": 12,
+        "registrySourceCount": 13,
         "financialSourceIds": [
           "earnings-tsmc-2025-04-17-q1-2025",
           "earnings-tsmc-2026-01-15-q4-2025",
-          "earnings-tsmc-2026-07-16-q2-2026"
+          "earnings-tsmc-2026-07-16-q2-2026",
+          "earnings-tsmc-2026-10-15-q3-2026"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
