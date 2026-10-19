@@ -71,7 +71,7 @@ const pilotOverviewClaim = pilotClaims.find(claim => claim.category === 'company
 const pilotFinancialHistory = isEvidencePilot ? getFinancialHistory(company.id) : [];
 const pilotQuarterlyHistory = pilotFinancialHistory.filter(record => record.periodType === 'quarterly');
 const pilotAnnualHistory = pilotFinancialHistory.filter(record => record.periodType === 'annual');
-const pilotChartHistory = pilotQuarterlyHistory.length > 0 ? pilotQuarterlyHistory : pilotAnnualHistory;
+const pilotChartHistory = pilotQuarterlyHistory.length > 0 ? pilotQuarterlyHistory.slice(-6) : pilotAnnualHistory;
 const pilotChartPeriodType = pilotQuarterlyHistory.length > 0 ? 'quarterly' : 'annual';
 const kpiDefinitionById = new Map(sectorKpiDefinitions.map(definition => [definition.id, definition]));
 const metricLabels: Record<string, string> = {

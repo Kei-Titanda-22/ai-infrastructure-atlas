@@ -1,0 +1,162 @@
+[
+  {
+    "id": "micron-q4-fy2026",
+    "companyId": "micron",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 FY2026",
+    "startDate": "2026-05-29",
+    "endDate": "2026-09-03",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "earnings-micron-2026-09-30-q4-fy2026",
+    "verifiedAt": "2026-10-18",
+    "metrics": {
+      "revenue": { "value": 54229, "status": "verified", "basis": "Company Q4 FY2026 consolidated statements of operations, three months ended September 3, 2026; GAAP revenue in USD million, not full-year revenue." },
+      "operatingProfit": { "value": 43751, "status": "verified", "basis": "Same standalone quarter and US GAAP consolidated statement; operating income in USD million." },
+      "operatingMargin": { "value": 80.7, "status": "verified", "basis": "43,751 / 54,229 × 100 = 80.7% (one decimal); agrees with the company's GAAP quarterly table." },
+      "freeCashFlow": { "value": null, "status": "not-collected", "basis": "Not normalized in this batch; no cumulative cash-flow difference used." },
+      "capex": { "value": null, "status": "not-collected", "basis": "Not normalized in this batch; no cumulative cash-flow difference used." }
+    }
+  },
+  {
+    "id": "credo-q1-fy2027",
+    "companyId": "credo",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 FY2027",
+    "startDate": "2026-05-03",
+    "endDate": "2026-08-01",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "earnings-credo-2026-09-01-q1-fy2027",
+    "verifiedAt": "2026-10-18",
+    "metrics": {
+      "revenue": { "value": 479.003, "status": "verified", "basis": "Official standalone three months ended August 1, 2026: USD 479,003 thousand / 1,000 = USD 479.003 million; GAAP consolidated revenue." },
+      "operatingProfit": { "value": 120.7, "status": "verified", "basis": "Same standalone quarter: GAAP consolidated operating income USD 120,700 thousand / 1,000 = USD 120.700 million." },
+      "operatingMargin": { "value": 25.2, "status": "verified", "basis": "120.700 / 479.003 × 100 = 25.2% (one decimal); agrees with company GAAP margin." },
+      "freeCashFlow": { "value": null, "status": "not-collected", "basis": "Standalone-quarter free cash flow not collected." },
+      "capex": { "value": null, "status": "not-collected", "basis": "Standalone-quarter capex not collected." }
+    }
+  },
+  {
+    "id": "tsmc-q3-2026",
+    "companyId": "tsmc",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "TWD",
+    "unit": "billion",
+    "accountingBasis": "TIFRS consolidated",
+    "sourceId": "earnings-tsmc-2026-10-15-q3-2026",
+    "verifiedAt": "2026-10-18",
+    "metrics": {
+      "revenue": { "value": 1494.24, "status": "verified", "basis": "Official Q3 2026 Management Report p.1 summary, consolidated net revenue NT$1,494.24 billion for the standalone quarter." },
+      "operatingProfit": { "value": 876.45, "status": "verified", "basis": "Same report p.1 summary, TIFRS consolidated operating income NT$876.45 billion for Q3 2026." },
+      "operatingMargin": { "value": 58.7, "status": "verified", "basis": "876.45 / 1,494.24 × 100 = 58.7% (one decimal); company reports 58.7%." },
+      "freeCashFlow": { "value": null, "status": "not-collected", "basis": "Standalone-quarter free cash flow not normalized in this batch." },
+      "capex": { "value": null, "status": "not-collected", "basis": "Standalone-quarter capex not normalized in this batch." }
+    }
+  },
+  {
+    "id": "sandisk-q3-fy2025",
+    "companyId": "sandisk",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 FY2025",
+    "startDate": "2024-12-28",
+    "endDate": "2025-03-28",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "earnings-sandisk-2025-05-07-q3-fy2025",
+    "verifiedAt": "2026-10-18",
+    "metrics": {
+      "revenue": { "value": 1695, "status": "verified", "basis": "Sandisk's GAAP consolidated standalone Q3 FY2025 statement, three months ended March 28, 2025: USD 1,695 million. The quarter spans the February 2025 separation; official FY2026 Q3 comparative reports the same GAAP revenue, but the pre/post-separation context remains a comparison caveat." },
+      "operatingProfit": { "value": -1881, "status": "verified", "basis": "Same GAAP consolidated standalone quarter: operating loss USD 1,881 million, including a goodwill impairment; official FY2026 Q3 comparative reports the same loss. Do not substitute non-GAAP operating income." },
+      "operatingMargin": { "value": -111.0, "status": "verified", "basis": "-1,881 / 1,695 × 100 = -111.0% (one decimal); GAAP impairment is retained, not treated as missing." },
+      "freeCashFlow": { "value": null, "status": "not-collected", "basis": "Standalone-quarter free cash flow not normalized in this batch." },
+      "capex": { "value": null, "status": "not-collected", "basis": "Standalone-quarter capex not normalized in this batch." }
+    }
+  },
+  {
+    "id": "sandisk-q1-fy2026",
+    "companyId": "sandisk",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 FY2026",
+    "startDate": "2025-06-28",
+    "endDate": "2025-10-03",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "earnings-sandisk-2025-11-06-q1-fy2026",
+    "verifiedAt": "2026-10-18",
+    "metrics": {
+      "revenue": { "value": 2308, "status": "verified", "basis": "Official GAAP consolidated Q1 FY2026 standalone three months ended October 3, 2025: USD 2,308 million." },
+      "operatingProfit": { "value": 176, "status": "verified", "basis": "Same GAAP standalone quarter: operating income USD 176 million." },
+      "operatingMargin": { "value": 7.6, "status": "verified", "basis": "176 / 2,308 × 100 = 7.6% (one decimal)." },
+      "freeCashFlow": { "value": null, "status": "not-collected", "basis": "Standalone-quarter free cash flow not normalized in this batch." },
+      "capex": { "value": null, "status": "not-collected", "basis": "Standalone-quarter capex not normalized in this batch." }
+    }
+  },
+  {
+    "id": "sandisk-q2-fy2026",
+    "companyId": "sandisk",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 FY2026",
+    "startDate": "2025-10-04",
+    "endDate": "2026-01-02",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "earnings-sandisk-2026-01-29-q2-fy2026",
+    "verifiedAt": "2026-10-18",
+    "metrics": {
+      "revenue": { "value": 3025, "status": "verified", "basis": "Official GAAP consolidated Q2 FY2026 standalone three months ended January 2, 2026: USD 3,025 million; not six-month cumulative revenue." },
+      "operatingProfit": { "value": 1065, "status": "verified", "basis": "Same GAAP standalone quarter: operating income USD 1,065 million; not the six-month cumulative value." },
+      "operatingMargin": { "value": 35.2, "status": "verified", "basis": "1,065 / 3,025 × 100 = 35.2% (one decimal)." },
+      "freeCashFlow": { "value": null, "status": "not-collected", "basis": "Standalone-quarter free cash flow not normalized in this batch." },
+      "capex": { "value": null, "status": "not-collected", "basis": "Standalone-quarter capex not normalized in this batch." }
+    }
+  },
+  {
+    "id": "sandisk-q3-fy2026",
+    "companyId": "sandisk",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 FY2026",
+    "startDate": "2026-01-03",
+    "endDate": "2026-04-03",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "earnings-sandisk-2026-04-30-q3-fy2026",
+    "verifiedAt": "2026-10-18",
+    "metrics": {
+      "revenue": { "value": 5950, "status": "verified", "basis": "Official GAAP consolidated Q3 FY2026 standalone three months ended April 3, 2026: USD 5,950 million; not nine-month cumulative revenue." },
+      "operatingProfit": { "value": 4111, "status": "verified", "basis": "Same GAAP standalone quarter: operating income USD 4,111 million; not nine-month cumulative or non-GAAP operating income." },
+      "operatingMargin": { "value": 69.1, "status": "verified", "basis": "4,111 / 5,950 × 100 = 69.1% (one decimal)." },
+      "freeCashFlow": { "value": null, "status": "not-collected", "basis": "Standalone-quarter free cash flow not normalized in this batch." },
+      "capex": { "value": null, "status": "not-collected", "basis": "Standalone-quarter capex not normalized in this batch." }
+    }
+  },
+  {
+    "id": "asml-q3-2026",
+    "companyId": "asml",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-06-29",
+    "endDate": "2026-09-27",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "earnings-asml-2026-10-14-q3-2026",
+    "verifiedAt": "2026-10-18",
+    "metrics": {
+      "revenue": { "value": 11662, "status": "verified", "basis": "Official US GAAP Q3 2026 financial statements p.2 or p.6: three months ended September 27, 2026, total net sales €11,662.0 million." },
+      "operatingProfit": { "value": 5172.8, "status": "verified", "basis": "Same standalone US GAAP consolidated statements p.2 or p.6: income from operations €5,172.8 million." },
+      "operatingMargin": { "value": 44.4, "status": "verified", "basis": "5,172.8 / 11,662.0 × 100 = 44.4% (one decimal); company reports 44.4%." },
+      "freeCashFlow": { "value": null, "status": "not-collected", "basis": "Standalone-quarter free cash flow not normalized in this batch." },
+      "capex": { "value": null, "status": "not-collected", "basis": "Standalone-quarter capex not normalized in this batch." }
+    }
+  }
+]
