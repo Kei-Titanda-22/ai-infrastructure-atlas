@@ -1,8 +1,8 @@
 # 100社財務品質監査
 
-データ基準日: **2026-10-18**
+データ基準日: **2026-10-20**
 
-入力SHA-256: `387c9be6f618127a06067d1ae73b9001525168f446c665d69510bf4f829a6148`
+入力SHA-256: `e709302f04ae98806b42b63800a8d5c45d60f22af57cbd2484ceb75838d15c54`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
@@ -13,18 +13,18 @@
 | 項目 | 件数 |
 | --- | ---: |
 | 企業 | 100 |
-| 期間 | 568 |
-| 指標 | 2840 |
+| 期間 | 580 |
+| 指標 | 2900 |
 | cash-flow override | 12 |
 
 ## 指標の検証状態
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `verified` | 2061 | 一次資料と値・算式を検証済み |
+| `verified` | 2097 | 一次資料と値・算式を検証済み |
 | `source-linked` | 3 | Sourceに紐付くがverifiedではない値 |
 | `needs-review` | 0 | 値はあるが再確認が必要 |
-| `missing` | 776 | 欠損理由ステータスを持つ値なし指標 |
+| `missing` | 800 | 欠損理由ステータスを持つ値なし指標 |
 
 ## FCF / Capex充足
 
@@ -33,7 +33,7 @@
 | `both-present` | 181 | FCF and Capex both have values |
 | `fcf-missing-only` | 0 | FCF is missing while Capex has a value |
 | `capex-missing-only` | 0 | Capex is missing while FCF has a value |
-| `both-missing` | 387 | FCF and Capex are both missing |
+| `both-missing` | 399 | FCF and Capex are both missing |
 
 ## Capex定義
 
@@ -47,14 +47,14 @@
 | `broader-non-current-assets` | 4 | A broader non-current/fixed/long-term asset cash-investment line |
 | `net-capex` | 28 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 12 | REIT or investment-property/real-estate investment definition |
-| `not-collected` | 377 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
+| `not-collected` | 389 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
 | `unclassified` | 0 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `direct-gaap-ifrs-operating-income` | 475 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
+| `direct-gaap-ifrs-operating-income` | 487 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
 | `ebit` | 2 | Reported EBIT used as the operating-profit measure |
 | `reconstructed-operating-income` | 24 | Atlas reconstructs operating income from reported operating line items |
 | `source-linked` | 1 | Value is retained as source-linked rather than verified |
@@ -67,13 +67,13 @@
 | `atlas-formula-aligned` | 8 | Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas |
 | `atlas-definition-difference` | 0 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
 | `unresolved` | 0 | Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely |
-| `not-applicable` | 560 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
+| `not-applicable` | 572 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
 
 ## 特殊比較フラグ
 
 | フラグ | 期間数 | 定義 |
 | --- | ---: | --- |
-| `goodwill-impairment` | 3 | Reported result includes or discusses goodwill impairment |
+| `goodwill-impairment` | 4 | Reported result includes or discusses goodwill impairment |
 | `discontinued-operations` | 8 | Continuing/discontinued-operation boundaries affect comparison |
 | `non-consolidated-subsidiary` | 2 | Non-consolidated subsidiary company-only disclosure |
 | `reit` | 8 | REIT financial/capital-investment structure |
@@ -148,7 +148,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | corning | Corning（コーニング） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | ppe-only, adjusted-company-fcf-not-used |
 | credo | Credo（クレド） | 9 | 31 | 0 | 0 | 14 | 2 | 0 | 0 | 7 | ppe-only |
 | denso | デンソー | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | special-operating-profit-definition |
-| digital-realty | Digital Realty（デジタル・リアルティ） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
+| digital-realty | Digital Realty（デジタル・リアルティ） | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | — |
 | disco | ディスコ | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | eaton | Eaton（イートン） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | reconstructed-operating-income, ppe-only, special-operating-profit-definition |
 | entegris | Entegris（インテグリス） | 6 | 26 | 0 | 0 | 4 | 4 | 0 | 0 | 2 | ppe-only |
@@ -180,7 +180,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | mediatek | MediaTek（メディアテック） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | micron | Micron Technology（マイクロン・テクノロジー） | 7 | 23 | 0 | 0 | 12 | 1 | 0 | 0 | 6 | reconstructed-operating-income, ppe-only |
 | mitsubishi-electric | 三菱電機 | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | special-operating-profit-definition |
-| mobileye | Mobileye（モービルアイ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | goodwill-impairment, ppe-only |
+| mobileye | Mobileye（モービルアイ） | 4 | 16 | 0 | 0 | 4 | 2 | 0 | 0 | 2 | goodwill-impairment, ppe-only |
 | monolithic-power | Monolithic Power Systems（モノリシック・パワー・システムズ） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | nan-ya-pcb | Nan Ya PCB（南亜電路板） | 7 | 21 | 0 | 0 | 14 | 0 | 0 | 0 | 7 | — |
 | nikon | ニコン | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
@@ -191,7 +191,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | onsemi | onsemi（オンセミ） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | ppe-only |
 | qualcomm | Qualcomm（クアルコム） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | reconstructed-operating-income, broad-capex, continuing-operations-cfo-reconstructed |
 | renesas | ルネサス エレクトロニクス | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
-| resonac-holdings | レゾナック・ホールディングス | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
+| resonac-holdings | レゾナック・ホールディングス | 3 | 9 | 0 | 0 | 6 | 0 | 0 | 0 | 3 | — |
 | rohm | ローム | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | ppe-only |
 | samsung-electronics | Samsung Electronics（サムスン電子） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | — |
 | sandisk | Sandisk（サンディスク） | 8 | 32 | 0 | 0 | 8 | 4 | 0 | 0 | 4 | goodwill-impairment, net-basis-capex, company-reported-fcf |
@@ -204,10 +204,10 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | sk-hynix | SK hynix（SKハイニックス） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | special-operating-profit-definition |
 | smc | SMC | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | smic | SMIC（中芯国際） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
-| stmicroelectronics | STMicroelectronics（STマイクロエレクトロニクス） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
+| stmicroelectronics | STMicroelectronics（STマイクロエレクトロニクス） | 4 | 16 | 0 | 0 | 4 | 2 | 0 | 0 | 2 | net-basis-capex |
 | sumco | SUMCO | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
 | sumitomo-electric | 住友電気工業 | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | — |
-| synopsys | Synopsys（シノプシス） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
+| synopsys | Synopsys（シノプシス） | 3 | 13 | 0 | 0 | 2 | 2 | 0 | 0 | 1 | net-basis-capex |
 | te-connectivity | TE Connectivity（TEコネクティビティ） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | ppe-only, company-net-capex-fcf-not-used |
 | tesla | Tesla（テスラ） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | net-basis-capex |
 | texas-instruments | Texas Instruments（テキサス・インスツルメンツ） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | reconstructed-operating-income, ppe-only, government-incentive-excluded-from-fcf |
