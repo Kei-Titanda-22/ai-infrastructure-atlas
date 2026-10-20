@@ -1940,7 +1940,7 @@ if (process.argv.includes('--dist')) {
   ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
-  assert.equal(Buffer.byteLength(financialPayload), 681_969, 'v12 financial payload adds exactly 14,273 B for twelve official standalone quarters');
+  assert.equal(Buffer.byteLength(financialPayload), 689_023, 'v12 financial payload adds exactly 21,327 B for eighteen official standalone quarters');
   const normalizedNonFinancialHtml = normalizeViteAssetFingerprints(compareHtml.replace(financialPayloadRe, '$1$2'));
   assert.equal(Buffer.byteLength(normalizedNonFinancialHtml), 327_875, 'human UX review adds 190 B of explicit comparison-order and legend markup to the v08 non-financial HTML');
   assert.equal(
@@ -2027,7 +2027,7 @@ if (process.argv.includes('--dist')) {
   };
   assert.doesNotThrow(() => assertTenthBatchCompareSize(1_035_235), 'v10 exact maximum passes');
   assert.throws(() => assertTenthBatchCompareSize(1_035_236), /exceeds 1035235 B/, 'v10 maximum plus one fails');
-  assert.equal(compareBytes, 1_009_771, 'v12 diagnostic output matches the measured twelve-record addition');
+  assert.equal(compareBytes, 1_016_825, 'v12 diagnostic output matches the measured eighteen-record addition');
   assert.equal(compareBytes - 995_498, Buffer.byteLength(financialPayload) - 667_696, 'v12 legacy growth is exactly the added financial JSON payload');
   assertTenthBatchCompareSize(compareBytes);
   assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
@@ -2353,7 +2353,7 @@ if (process.argv.includes('--dist')) {
     .filter(file => file === 'financial-history.json' || /^financial-history-v0[45]-batch\d+\.json$/.test(file))
     .sort()
     .map(file => readJson(`../src/data/${file}`)))).flat();
-  assert.equal(allHistoryThroughTenthBatch.length, 580, 'v12 runtime input includes 580 records across all batches');
+  assert.equal(allHistoryThroughTenthBatch.length, 586, 'v12 runtime input includes 586 records across all batches');
   for (const [companyId, expected] of Object.entries(displayFixture.tenthBatchPrimaryFinancialRow)) {
     const records = allHistoryThroughTenthBatch.filter(record => record.companyId === companyId).sort((left, right) =>
       left.endDate.localeCompare(right.endDate) || Number(left.periodType === 'quarterly') - Number(right.periodType === 'quarterly'));

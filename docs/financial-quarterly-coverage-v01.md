@@ -3,13 +3,13 @@
 - Checked at: 2026-10-20
 - Registry companies: 100
 - Financial-history shard manifest digest: 17af13b7a90286e406dffbddeeee76d7747d2824390e9a7a8bd106fe421915e6
-- Complete six quarters: 71
+- Complete six quarters: 72
 - Partial quarterly (1–5): 6
 - Awaiting next reported quarter: 1
 - Semiannual only: 0
 - Annual only: 0
 - Private/no quarterly disclosure: 0
-- Needs review: 22
+- Needs review: 21
 
 ## Companies with six or more actual quarterly records
 
@@ -24,6 +24,7 @@
 - ase-technology
 - asm-international
 - asml
+- asmpt
 - besi
 - broadcom
 - cadence
@@ -104,7 +105,7 @@
 | ase-technology | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1122411/000095010326011351/dp250868_6k.htm) |
 | asm-international | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.asm.com/downloads/presentations-other/2026-q2-investor-presentation) |
 | asml | quarterly | 7 / 6 | Q3 2026 (2026-09-27) | complete-six-quarters | — | [official](https://www.investor.asml.com/static-files/d310262b-d037-485d-83b5-92c93cc462f0) |
-| asmpt | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.asmpt.com/site/assets/files/84854/e_00522ar-20260405.pdf) |
+| asmpt | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.asmpt.com/site/assets/files/85468/q2_2026_en_announcement.pdf) |
 | besi | quarterly | 7 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.besi.com/fileadmin/data/Investor_Relations/_Semi__Annual_Reports/Half_Year_2026_Report.pdf) |
 | bosch | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://assets.bosch.com/media/global/bosch_group/our_figures/pdf/bosch-annual-report-2025.pdf) |
 | broadcom | quarterly | 6 / 6 | Q3 FY2026 (2026-08-02) | complete-six-quarters | — | [official](https://investors.broadcom.com/node/64671/pdf) |

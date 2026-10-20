@@ -20,8 +20,8 @@ assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
 assert.deepEqual(new Set(coverage.map(row => row.companyId)), new Set(companies.map(company => company.id)), 'coverage company IDs exactly match registry');
 assert.equal(new Set(coverage.map(row => row.companyId)).size, coverage.length, 'coverage company IDs are unique');
-assert.equal(history.length, 580, 'v12 adds twelve sourced actual quarters without removing the 568 existing periods');
-assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 71, 'Digital Realty reaches six reported quarters');
+assert.equal(history.length, 586, 'v12 adds eighteen sourced actual quarters without removing the 568 existing periods');
+assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 72, 'Digital Realty and ASMPT reach six reported quarters');
 
 const quarterlyByCompany = new Map(companies.map(company => [company.id, []]));
 for (const record of history) if (record.periodType === 'quarterly') quarterlyByCompany.get(record.companyId)?.push(record);
@@ -302,7 +302,7 @@ for (const [companyId, endDates] of tenthPeriods) {
 }
 assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 6, 'six companies have one to five collected actual quarters');
 assert.equal(coverage.filter(row => row.coverageStatus === 'awaiting-next-quarter').length, 1, 'Kioxia remains pending an actual publication');
-assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 22, '22 companies remain without collected quarterly actuals');
+assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 21, '21 companies remain without collected quarterly actuals after ASMPT reaches six quarters');
 assert.equal(coverage.find(row => row.companyId === 'nvidia').checkedAt, '2026-09-23', 'unreviewed baseline companies retain their original coverage check date');
 assert.equal(coverage.find(row => row.companyId === 'fujikura').coverageStatus, 'complete-six-quarters', 'Fujikura is complete from the comparable official series');
 
@@ -405,7 +405,7 @@ assert.ok(!history.some(record => record.companyId === 'sandisk' && record.perio
 const v12Batch = await readJson(join(dataDirectory, 'financial-history-v05-batch15.json'));
 const v12Sources = await readJson(join(dataDirectory, 'document-sources-v05-batch15.json'));
 const v12Policies = await readJson(join(dataDirectory, 'document-source-policies-v05-batch15.json'));
-assert.equal(v12Batch.length, 12, 'v12 adds twelve actual single-quarter records');
+assert.equal(v12Batch.length, 18, 'v12 adds eighteen actual single-quarter records');
 assert.equal(new Set(v12Batch.map(record => record.id)).size, v12Batch.length, 'v12 record IDs are unique');
 assert.equal(new Set(v12Sources.map(source => source.id)).size, v12Sources.length, 'v12 source IDs are unique');
 assert.deepEqual(new Set(v12Policies.map(policy => policy.sourceId)), new Set(v12Sources.map(source => source.id)), 'v12 source policies cover exactly the new sources');
@@ -418,6 +418,12 @@ for (const record of v12Batch) {
 }
 assert.deepEqual(quarterlyByCompany.get('digital-realty').map(record => record.endDate), ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30'], 'Digital Realty has six consecutive GAAP quarters');
 assert.equal(coverage.find(row => row.companyId === 'digital-realty').coverageStatus, 'complete-six-quarters', 'Digital Realty becomes complete');
+const asmptQuarterly = quarterlyByCompany.get('asmpt');
+assert.deepEqual(asmptQuarterly.map(record => record.endDate), ['2025-03-31', '2025-06-30', '2025-09-30', '2025-12-31', '2026-03-31', '2026-06-30'], 'ASMPT has six chronological standalone quarters on the restated continuing-operations basis');
+assert.deepEqual(asmptQuarterly.map(record => record.metrics.revenue.value), [3004.968, 3244.331, 3527.972, 3958.972, 3966.8, 4935.8], 'ASMPT revenue uses official restated standalone HKFRS figures in HKD million');
+assert.deepEqual(asmptQuarterly.map(record => record.metrics.operatingProfit.value), [187.326, 196.548, 80.589, 161.041, 385.177, 786.474], 'ASMPT uses reported rather than adjusted operating profit');
+assert.ok(asmptQuarterly.every(record => record.currency === 'HKD' && record.unit === 'million' && record.accountingBasis === 'HKFRS'), 'ASMPT quarters match existing annual currency, unit and accounting basis');
+assert.equal(coverage.find(row => row.companyId === 'asmpt').coverageStatus, 'complete-six-quarters', 'ASMPT moves to complete coverage');
 assert.equal(v12Batch.find(record => record.id === 'resonac-holdings-q2-2026').metrics.revenue.value, 676852 - 307892, 'Resonac Q2 sales reproduce official same-year H1 minus Q1');
 assert.equal(v12Batch.find(record => record.id === 'resonac-holdings-q2-2026').metrics.operatingProfit.value, 73310 - 22144, 'Resonac Q2 operating profit reproduces official same-year H1 minus Q1');
 assert.deepEqual(quarterlyByCompany.get('mobileye').map(record => record.periodLabel), ['Q1 2026', 'Q2 2026'], 'Mobileye has only two collected standalone quarters, without gap filling');

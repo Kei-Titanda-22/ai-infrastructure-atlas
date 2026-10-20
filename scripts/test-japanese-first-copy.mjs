@@ -1187,14 +1187,15 @@ assert.equal(financialHistoryFreezeV12.metadata.shaMismatchFallbackAllowed, fals
 assert.equal(financialHistoryFreezeV12.metadata.shellMustMatchPrevious, true, 'v12 preserves the Evidence shell');
 const financialHistoryV12ChangedPaths = expectedArtifactPaths.filter(path => financialHistoryFreezeV12.sha256ByPath[path] !== financialHistoryFreezeV11.sha256ByPath[path]);
 assert.deepEqual(financialHistoryV12ChangedPaths, [
+  'asmpt/index.html',
   'digital-realty/index.html',
   'mobileye/index.html',
   'resonac-holdings/index.html',
   'stmicroelectronics/index.html',
   'synopsys/index.html',
-], 'v12 changes only five Company assets backed by official standalone quarters');
-assert.equal(financialHistoryV12ChangedPaths.length, financialHistoryFreezeV12.metadata.expectedChangedArtifactCount, 'v12 records five changed assets');
-assert.equal(expectedArtifactPaths.length - financialHistoryV12ChangedPaths.length, financialHistoryFreezeV12.metadata.expectedUnchangedArtifactCount, 'v12 records 96 byte-identical artifacts');
+], 'v12 changes only six Company assets backed by official standalone quarters');
+assert.equal(financialHistoryV12ChangedPaths.length, financialHistoryFreezeV12.metadata.expectedChangedArtifactCount, 'v12 records six changed assets');
+assert.equal(expectedArtifactPaths.length - financialHistoryV12ChangedPaths.length, financialHistoryFreezeV12.metadata.expectedUnchangedArtifactCount, 'v12 records 95 byte-identical artifacts');
 for (const path of expectedArtifactPaths.filter(path => !financialHistoryV12ChangedPaths.includes(path))) {
   assert.equal(financialHistoryFreezeV12.sha256ByPath[path], financialHistoryFreezeV11.sha256ByPath[path], `${path}: v12 non-target artifact remains byte-identical`);
 }
