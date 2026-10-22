@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-10-18T00:00:00Z",
-  "dataAsOf": "2026-10-18",
-  "inputDigest": "sha256:dbe6a267d6a9eaa3dada2d792da4182acc6175c4b91a6638d4dbb527ea07725e",
+  "generatedAt": "2026-10-20T00:00:00Z",
+  "dataAsOf": "2026-10-20",
+  "inputDigest": "sha256:48636257148452f2b9093a128d6851420a185a5b09b60966116d4ebe2668a6df",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 258
+    "inputFileCount": 260
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 609,
-      "uniqueSourceCount": 607,
+      "registryRecordCount": 619,
+      "uniqueSourceCount": 617,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -261,8 +261,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 355,
-      "financialSourceResolved": 355
+      "financialSourceReferences": 365,
+      "financialSourceResolved": 365
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -5024,8 +5024,8 @@
       "primaryLayer": "Test & Back-end",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 6,
+      "financialSourceCount": 4,
       "claimCount": 10,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 10,
@@ -5279,9 +5279,12 @@
         "resolvedSourceIds": [
           "ir-asmpt"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 6,
         "financialSourceIds": [
-          "annual-report-asmpt-2025"
+          "annual-report-asmpt-2025",
+          "filing-asmpt-2026-03-04-fy2025",
+          "filing-asmpt-2026-04-22-q1",
+          "filing-asmpt-2026-07-29-q2"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -8754,8 +8757,8 @@
       "primaryLayer": "Data Center & Facilities",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 4,
+      "financialSourceCount": 3,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -9011,8 +9014,10 @@
         "resolvedSourceIds": [
           "ir-digital-realty"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 4,
         "financialSourceIds": [
+          "earnings-digital-realty-2026-04-23-q1",
+          "earnings-digital-realty-2026-07-23-q2",
           "sec-digital-realty-2025-10k"
         ],
         "orphanSourceIds": [],
@@ -17973,8 +17978,8 @@
       "primaryLayer": "Physical AI",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 4,
+      "financialSourceCount": 3,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -18227,8 +18232,10 @@
         "resolvedSourceIds": [
           "ir-mobileye"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 4,
         "financialSourceIds": [
+          "earnings-mobileye-2026-04-23-q1",
+          "earnings-mobileye-2026-07-23-q2",
           "sec-mobileye-2025-10k"
         ],
         "orphanSourceIds": [],
@@ -21130,8 +21137,8 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 5,
+      "financialSourceCount": 2,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -21388,8 +21395,9 @@
         "resolvedSourceIds": [
           "corporate-resonac"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 5,
         "financialSourceIds": [
+          "filing-resonac-2026-08-06-h1",
           "results-resonac-2026-05-13-q1"
         ],
         "orphanSourceIds": [],
@@ -24862,8 +24870,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 5,
+      "financialSourceCount": 2,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -25120,8 +25128,9 @@
         "resolvedSourceIds": [
           "ir-stmicro"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 5,
         "financialSourceIds": [
+          "earnings-stmicroelectronics-2026-07-23-q2",
           "form20f-stmicroelectronics-2025"
         ],
         "orphanSourceIds": [],
@@ -25718,8 +25727,8 @@
       "primaryLayer": "Compute & Silicon",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 3,
+      "financialSourceCount": 2,
       "claimCount": 9,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 9,
@@ -25972,8 +25981,9 @@
         "resolvedSourceIds": [
           "ir-synopsys"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 3,
         "financialSourceIds": [
+          "earnings-synopsys-2026-08-26-q3-fy2026",
           "sec-synopsys-2025-10k"
         ],
         "orphanSourceIds": [],
