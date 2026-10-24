@@ -1,15 +1,15 @@
 # Financial quarterly coverage v0.1
 
-- Checked at: 2026-10-20
+- Checked at: 2026-10-24
 - Registry companies: 100
-- Financial-history shard manifest digest: 17af13b7a90286e406dffbddeeee76d7747d2824390e9a7a8bd106fe421915e6
-- Complete six quarters: 72
-- Partial quarterly (1–5): 6
+- Financial-history shard manifest digest: e19bc882fd34b3fb919e1e2e7b62a1294975dd0339a4b505769538f52586399b
+- Complete six quarters: 77
+- Partial quarterly (1–5): 10
 - Awaiting next reported quarter: 1
 - Semiannual only: 0
 - Annual only: 0
 - Private/no quarterly disclosure: 0
-- Needs review: 21
+- Needs review: 12
 
 ## Companies with six or more actual quarterly records
 
@@ -50,10 +50,12 @@
 - ibiden
 - infineon
 - intel
+- jcet
 - keyence
 - kla
 - kokusai-electric
 - lam-research
+- lasertec
 - linde
 - lumentum
 - marvell
@@ -62,6 +64,7 @@
 - mitsubishi-electric
 - monolithic-power
 - nan-ya-pcb
+- nikon
 - nvent
 - nvidia
 - nxp
@@ -74,6 +77,8 @@
 - seagate
 - shin-etsu-chemical
 - sk-hynix
+- smc
+- smic
 - sumitomo-electric
 - te-connectivity
 - tesla
@@ -90,7 +95,7 @@
 
 | companyId | cadence | actual / target | latest period | status | blocker | official source |
 | --- | --- | ---: | --- | --- | --- | --- |
-| abb | quarterly | 2 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://new.abb.com/news/detail/137496/q2-2026-results) |
+| abb | quarterly | 3 / 6 | Q3 2026 (2026-09-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.abb.com/global/en/news/139696/q3-2026-results) |
 | advantest | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.advantest.com/ja/investors/financial-highlights/review/) |
 | air-liquide | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.airliquide.com/sites/airliquide.com/files/2026-02/air-liquide-pr-fy-2025-with-record-performance-and-confident-in-its-transformation-dynamic-air-liquide-confirms-its-growth-outlook.pdf) |
 | ajinomoto-fine-techno | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.ajinomoto.com/cms_wp_ajnmt_global/wp-content/uploads/pdf/2026_08_06_01E.pdf) |
@@ -129,20 +134,20 @@
 | ge-vernova | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1996810/000199681026000148/gev-20260630.htm) |
 | globalfoundries | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.gf.com/news-releases/news-release-details/globalfoundries-reports-second-quarter-2026-financial-results) |
 | globalwafers | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sas-globalwafers.com/wp-content/uploads/2026/05/GlobalWafers_2026Q2-consolidated-financial-statement_EN.pdf) |
-| hanmi-semiconductor | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://kind.krx.co.kr/external/2026/03/12/002053/20260312004659/11011.htm) |
+| hanmi-semiconductor | quarterly | 2 / 6 | Q1 2026 (2026-03-31) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://kind.krx.co.kr/external/2026/05/15/001759/20260515003902/11013.htm) |
 | hexagon | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://mb.cision.com/Main/387/4300053/3907199.pdf) |
 | ibiden | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.ibiden.com/ir/items/tannshinn2026Q1.pdf) |
 | infineon | quarterly | 6 / 6 | FY2026 Q3 (2026-06-30) | complete-six-quarters | — | [official](https://www.infineon.com/press-release/2026/infpr202608-125) |
 | intel | quarterly | 6 / 6 | Q2 2026 (2026-06-27) | complete-six-quarters | — | [official](https://www.intc.com/news-events/press-releases/detail/1776/intel-reports-second-quarter-2026-financial-results) |
-| jcet | quarterly | 2 / 6 | Q1 2024 (2024-03-31) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.jcetglobal.com/uploads/%26e9%2695%26bf%26e7%2694%26b5%26e7%26a7%2691%26e6%268a%26802024%26e5%26b9%26b4%26e7%26ac%26ac%26e4%26b8%2680%26e5%26ad%26a3%26e5%26ba%26a6%26e6%268a%26a5%26e5%2691%268a.pdf) |
-| johnson-controls | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sec.gov/Archives/edgar/data/833444/000083344425000097/jci-20250930.htm) |
+| jcet | quarterly | 9 / 6 | Q3 2026 (2026-09-30) | complete-six-quarters | — | [official](https://static.cninfo.com.cn/finalpage/2026-10-23/1225617213.PDF) |
+| johnson-controls | quarterly | 1 / 6 | FY2026 Q3 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.sec.gov/Archives/edgar/data/833444/000083344426000087/jci-20260630.htm) |
 | keyence | quarterly | 6 / 6 | FY2026 Q1 (2026-06-20) | complete-six-quarters | — | [official](https://www.keyence.co.jp/investor/financial-info/) |
 | kinsus | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.kinsus.com.tw/en-global/Download/annual-general-meeting) |
 | kioxia | quarterly | 5 / 6 | FY2027 Q1 (2026-06-30) | awaiting-next-quarter | FY2027 Q2は現時点で公式実績が未公表のため収録しない。公式IRカレンダー上の発表予定は実績値ではない。 | [official](https://ssl4.eir-parts.net/doc/285A/tdnet/2859905/00.pdf) |
 | kla | quarterly | 6 / 6 | Q4 FY2026 (2026-06-30) | complete-six-quarters | — | [official](https://ir.kla.com/news-events/press-releases/detail/518/kla-corporation-reports-fiscal-2026-fourth-quarter-and-full) |
 | kokusai-electric | quarterly | 6 / 6 | FY2027 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://ssl4.eir-parts.net/doc/6525/tdnet/2864411/00.pdf) |
 | lam-research | quarterly | 6 / 6 | June 2026 quarter (2026-06-28) | complete-six-quarters | — | [official](https://investor.lamresearch.com/2026-07-29-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-June-28%2C-2026) |
-| lasertec | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://info.gbiz.go.jp/hojin/edinetDownload?docId=S100WQ7F) |
+| lasertec | quarterly | 6 / 6 | FY2026 Q4 (2026-06-30) | complete-six-quarters | — | [official](https://www2.jpx.co.jp/disc/69200/140120260806511603.pdf) |
 | legrand | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.legrandgroup.com/sites/default/files/Documents_PDF_Legrand/Finance/2024/1Y/Legrand_Press_Release_Results_12M2024-v2_1739806167.pdf) |
 | linde | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.linde.com/news-and-media/2026/linde-reports-second-quarter-2026-results) |
 | lumentum | quarterly | 6 / 6 | Q4 FY2026 (2026-06-27) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1633978/000162828026055726/lite_ex991xq4fy26.htm) |
@@ -153,7 +158,7 @@
 | mobileye | quarterly | 2 / 6 | Q2 2026 (2026-06-27) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://ir.mobileye.com/news-releases/news-release-details/mobileye-releases-second-quarter-2026-results-updates-guidance) |
 | monolithic-power | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://media.monolithicpower.com/investor-relations/filings/MPWR_Q2_26_10-Q.pdf) |
 | nan-ya-pcb | quarterly | 7 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.nanyapcb.com.tw/nypcb/images/InvestorRelations/FinancialReport/115Q2ENG(Consolidated).pdf) |
-| nikon | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.nikon.com/content/dam/web-assets/nikoncom/company/local/global/en/ir/ir_library/result/pdf/2026/26_4qf_c_e.pdf) |
+| nikon | quarterly | 6 / 6 | FY2027 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.nikon.com/content/dam/web-assets/nikoncom/company/local/global/en/ir/ir_library/result/pdf/2027/27_1qf_c_e.pdf) |
 | nvent | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1720635/000162828026051203/q22026nvtpressrelease.htm) |
 | nvidia | quarterly | 6 / 6 | Q2 FY2027 (2026-07-26) | complete-six-quarters | — | [official](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) |
 | nxp | quarterly | 6 / 6 | Q2 2026 (2026-06-28) | complete-six-quarters | — | [official](https://investors.nxp.com/news-releases/news-release-details/nxp-semiconductors-reports-second-quarter-2026-results/) |
@@ -162,7 +167,7 @@
 | qualcomm | quarterly | 6 / 6 | Q3 FY2026 (2026-06-28) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/804328/000080432826000086/qcom-20260628.htm) |
 | renesas | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.renesas.com/en/about/newsroom/renesas-reports-financial-results-second-quarter-ended-june-30-2026) |
 | resonac-holdings | quarterly | 3 / 6 | Q2 2026 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www2.jpx.co.jp/disc/40040/140120260806511574.pdf) |
-| rohm | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://fscdn.rohm.com/en/financial/financial-report/2603_financialresults_en.pdf) |
+| rohm | quarterly | 5 / 6 | FY2027 Q1 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://fscdn.rohm.com/jp/financial/financial-report/2606_financialresults_jp.pdf) |
 | samsung-electronics | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results) |
 | sandisk | quarterly | 6 / 6 | Q4 FY2026 (2026-07-03) | complete-six-quarters | — | [official](https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-fourth-quarter-2026-financial-results) |
 | schneider-electric | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.se.com/ww/en/assets/564/document/528238/accounts-fy-results-2025.pdf?p_File_Name=2025+Full+Year+Financial+Results+Accounts&p_enDocType=EDMS) |
@@ -170,10 +175,10 @@
 | seagate | quarterly | 7 / 6 | Q4 FY2026 (2026-07-03) | complete-six-quarters | — | [official](https://investors.seagate.com/news/news-details/2026/Seagate-Technology-Reports-Fiscal-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx) |
 | shin-etsu-chemical | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.shinetsu.co.jp/wp-content/uploads/2026/07/20260724_con_E.pdf) |
 | shinko-electric | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.shinko.co.jp/english/ir/docs/bn2024_summary.pdf) |
-| siemens-energy | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://assets.siemens-energy.com/dam/32b27e9a-af91-4915-8b51-b3af012d0d98/A-Siemens_Energy_Annual_Report_2025-pdf_Original%20file.pdf) |
+| siemens-energy | quarterly | 1 / 6 | FY2026 Q3 (2026-06-30) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://assets.siemens-energy.com/dam/30018eed-275d-4e73-811e-b49d004cdc3d/2026-08-05-Earnings_Release_Q3_FY26_EN-pdf_Original%20file.pdf) |
 | sk-hynix | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://news.skhynix.com/en/q2-2026-business-results/) |
-| smc | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.smcworld.com/ir/en-jp/financial-results.html) |
-| smic | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0326/2026032601294.pdf) |
+| smc | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://contents.xj-storage.jp/xcontents/AS00674b/e2a4f297/57ba/4a73/9049/a2b4c7cf9942/140120260806513096.pdf) |
+| smic | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0813/2026081300353.pdf) |
 | stmicroelectronics | quarterly | 2 / 6 | Q2 2026 (2026-06-27) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://investors.st.com/static-files/bdacd978-231f-4e8c-bfde-f5cc6c53250d) |
 | sumco | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sumcosi.com/english/ir/library/shareholders/27/pdf/nc_e_27.pdf) |
 | sumitomo-electric | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://sumitomoelectric.com/sites/default/files/2026-07/download_documents/fb2026_1g.pdf) |
@@ -189,4 +194,4 @@
 | unimicron | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.unimicron.com/money08.html) |
 | vertiv | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Second-Quarter-2026-with-Diluted-EPS-Growth-of-53-Adjusted-Diluted-EPS-Growth-of-60-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/default.aspx) |
 | western-digital | quarterly | 6 / 6 | Q4 FY2026 (2026-07-03) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/106040/000162828026053305/a4ex991-pressreleaseq426.htm) |
-| yaskawa | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.yaskawa-global.com/wp-content/uploads/2026/04/20260410_en.pdf) |
+| yaskawa | quarterly | 2 / 6 | FY2027 Q2 (2026-08-31) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://www.fse.or.jp/files/lis_tkj/26100965061.pdf) |

@@ -1940,7 +1940,7 @@ if (process.argv.includes('--dist')) {
   ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
-  assert.equal(Buffer.byteLength(financialPayload), 689_023, 'v12 financial payload adds exactly 21,327 B for eighteen official standalone quarters');
+  assert.equal(Buffer.byteLength(financialPayload), 747_701, 'v13 financial payload adds exactly 58,678 B for 43 official standalone quarters');
   const normalizedNonFinancialHtml = normalizeViteAssetFingerprints(compareHtml.replace(financialPayloadRe, '$1$2'));
   assert.equal(Buffer.byteLength(normalizedNonFinancialHtml), 327_875, 'human UX review adds 190 B of explicit comparison-order and legend markup to the v08 non-financial HTML');
   assert.equal(
@@ -2027,9 +2027,24 @@ if (process.argv.includes('--dist')) {
   };
   assert.doesNotThrow(() => assertTenthBatchCompareSize(1_035_235), 'v10 exact maximum passes');
   assert.throws(() => assertTenthBatchCompareSize(1_035_236), /exceeds 1035235 B/, 'v10 maximum plus one fails');
-  assert.equal(compareBytes, 1_016_825, 'v12 diagnostic output matches the measured eighteen-record addition');
-  assert.equal(compareBytes - 995_498, Buffer.byteLength(financialPayload) - 667_696, 'v12 legacy growth is exactly the added financial JSON payload');
-  assertTenthBatchCompareSize(compareBytes);
+  assert.equal(1_016_825 - 995_498, 689_023 - 667_696, 'the historical v12 diagnostic growth remains exactly financial payload');
+  const thirteenthBatchCompareSizeContract = Object.freeze({
+    acceptedRawBytes: 1_075_503,
+    growthLimitRatio: 1.05,
+    maximumRawBytes: 1_129_278,
+    acceptedReason: 'Official thirteenth-batch financial history adds 43 standalone quarters to eleven companies; the legacy diagnostic HTML grows 58,678 B solely in its financial JSON payload from the v12 1,016,825 B baseline. Production on-demand limits remain unchanged.',
+  });
+  assert.equal(thirteenthBatchCompareSizeContract.growthLimitRatio, tenthBatchCompareSizeContract.growthLimitRatio, 'v13 retains the diagnostic +5% ratio');
+  assert.equal(Math.floor(thirteenthBatchCompareSizeContract.acceptedRawBytes * thirteenthBatchCompareSizeContract.growthLimitRatio), thirteenthBatchCompareSizeContract.maximumRawBytes, 'v13 maximum derives from measured output');
+  assert.equal(thirteenthBatchCompareSizeContract.acceptedRawBytes - 1_016_825, Buffer.byteLength(financialPayload) - 689_023, 'v13 diagnostic growth is exactly the added financial JSON payload');
+  const assertThirteenthBatchCompareSize = bytes => {
+    assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v13 diagnostic byte count is a non-negative integer');
+    assert.ok(bytes <= thirteenthBatchCompareSizeContract.maximumRawBytes, `v13 legacy Compare HTML ${bytes} B exceeds ${thirteenthBatchCompareSizeContract.maximumRawBytes} B`);
+  };
+  assert.doesNotThrow(() => assertThirteenthBatchCompareSize(1_129_278), 'v13 exact maximum passes');
+  assert.throws(() => assertThirteenthBatchCompareSize(1_129_279), /exceeds 1129278 B/, 'v13 maximum plus one fails');
+  assert.equal(compareBytes, thirteenthBatchCompareSizeContract.acceptedRawBytes, 'v13 diagnostic output matches the measured 43-record addition');
+  assertThirteenthBatchCompareSize(compareBytes);
   assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
   assert.doesNotMatch(compareHtml, /data-claim-id=/, 'built legacy HTML excludes Company Claim bodies');
   assert.doesNotMatch(compareHtml, /data-relation-id=/, 'built legacy HTML excludes Relation bodies');
@@ -2233,7 +2248,7 @@ if (process.argv.includes('--dist')) {
   assert.match(stageFinancialHtml, />2026年 第2四半期</, 'Stage 1 quarter labels are localized from existing canonical periods');
   for (const companyId of firstBatchStage1CompanyIds) {
     const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
-    const expected = displayFixture.twelfthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eleventhBatchPrimaryFinancialRow[companyId] ?? displayFixture.stage1FinancialRow.companies[companyId];
+    const expected = displayFixture.thirteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.twelfthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eleventhBatchPrimaryFinancialRow[companyId] ?? displayFixture.stage1FinancialRow.companies[companyId];
     assert.match(financialTemplate, /data-has-content="true"/, `${companyId}: primary Financial slot is available`);
     assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: primary Financial value is canonical`);
     assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: primary Financial period and basis are canonical`);
@@ -2248,7 +2263,7 @@ if (process.argv.includes('--dist')) {
   assert.equal((stage2FinancialHtml.match(/会計基準：国際財務報告基準（IFRS）/g) ?? []).length, 2, 'Kioxia and Advantest use the reviewed IFRS presentation label');
   for (const companyId of firstBatchStage2CompanyIds) {
     const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
-    const expected = displayFixture.stage2FinancialRow.companies[companyId];
+    const expected = displayFixture.thirteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.stage2FinancialRow.companies[companyId];
     assert.match(financialTemplate, /data-has-content="true"/, `${companyId}: Stage 2 primary Financial slot is available`);
     assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: Stage 2 primary Financial value is canonical`);
     assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: Stage 2 primary Financial period and basis are canonical`);
@@ -2264,7 +2279,7 @@ if (process.argv.includes('--dist')) {
   assert.equal((stage3FinancialHtml.match(/売上高<br>（百万ユーロ）/g) ?? []).length, 2, 'ASM International and Air Liquide use the shared EUR:million presentation label');
   for (const companyId of firstBatchStage3CompanyIds) {
     const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
-    const expected = displayFixture.tenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.ninthBatchPrimaryFinancialRow[companyId] ?? displayFixture.stage3FinancialRow.companies[companyId];
+    const expected = displayFixture.thirteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.tenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.ninthBatchPrimaryFinancialRow[companyId] ?? displayFixture.stage3FinancialRow.companies[companyId];
     assert.match(financialTemplate, /data-has-content="true"/, `${companyId}: Stage 3 primary Financial slot is available`);
     assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: Stage 3 primary Financial value is canonical`);
     assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: Stage 3 primary Financial period and basis are canonical`);
@@ -2280,7 +2295,7 @@ if (process.argv.includes('--dist')) {
   assert.match(stage4FinancialHtml, /売上高<br>（百万ユーロ）/, 'Bosch uses the shared EUR:million presentation label');
   for (const companyId of firstBatchStage4CompanyIds) {
     const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
-    const expected = displayFixture.twelfthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eleventhBatchPrimaryFinancialRow[companyId] ?? displayFixture.stage4FinancialRow.companies[companyId];
+    const expected = displayFixture.thirteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.twelfthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eleventhBatchPrimaryFinancialRow[companyId] ?? displayFixture.stage4FinancialRow.companies[companyId];
     assert.match(financialTemplate, /data-has-content="true"/, `${companyId}: Stage 4 primary Financial slot is available`);
     assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: Stage 4 primary Financial value is canonical`);
     assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: Stage 4 primary Financial period and basis are canonical`);
@@ -2294,7 +2309,7 @@ if (process.argv.includes('--dist')) {
   assert.equal((remainingBatch4FinancialHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 20, 'all twenty Remaining rollout Batch 4 Companies expose canonical expanded Financial history');
   for (const companyId of remainingBatch4CompanyIds) {
     const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
-    const expected = displayFixture.twelfthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eleventhBatchPrimaryFinancialRow[companyId] ?? displayFixture.tenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.ninthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eighthBatchPrimaryFinancialRow[companyId] ?? displayFixture.sixthBatchPrimaryFinancialRow[companyId] ?? displayFixture.remainingBatch4FinancialRow.companies[companyId];
+    const expected = displayFixture.thirteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.twelfthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eleventhBatchPrimaryFinancialRow[companyId] ?? displayFixture.tenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.ninthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eighthBatchPrimaryFinancialRow[companyId] ?? displayFixture.sixthBatchPrimaryFinancialRow[companyId] ?? displayFixture.remainingBatch4FinancialRow.companies[companyId];
     assert.match(financialTemplate, /data-has-content="true"/, `${companyId}: Remaining rollout Batch 4 primary Financial slot is available`);
     assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: Remaining rollout Batch 4 primary Financial value is canonical`);
     assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: Remaining rollout Batch 4 primary Financial period and basis are canonical`);
@@ -2350,7 +2365,7 @@ if (process.argv.includes('--dist')) {
     assert.ok(financialTemplate.includes('一次資料を開く'), `${companyId}: primary row links its official source`);
   }
   const allHistoryThroughTenthBatch = (await Promise.all((await readdir(new URL('../src/data/', import.meta.url)))
-    .filter(file => file === 'financial-history.json' || /^financial-history-v0[45]-batch\d+\.json$/.test(file))
+    .filter(file => file === 'financial-history.json' || (/^financial-history-v0[45]-batch\d+\.json$/.test(file) && file !== 'financial-history-v05-batch16.json'))
     .sort()
     .map(file => readJson(`../src/data/${file}`)))).flat();
   assert.equal(allHistoryThroughTenthBatch.length, 586, 'v12 runtime input includes 586 records across all batches');
@@ -2460,6 +2475,30 @@ if (process.argv.includes('--dist')) {
     assert.ok(primaryTemplate.includes(`<strong>${expected.displayValue}</strong>`) && primaryTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: v12 current period and margin appear`);
     assert.ok(primaryTemplate.includes(sourceById.get(expected.sourceId)?.url ?? '\u0000'), `${companyId}: v12 primary source URL resolves`);
     assert.equal((expandedTemplate.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) ?? []).length, expected.recordCount, `${companyId}: v12 table retains every record`);
+  }
+  const allHistoryThroughThirteenthBatch = [...allHistoryThroughTenthBatch, ...await readJson('../src/data/financial-history-v05-batch16.json')];
+  assert.equal(allHistoryThroughThirteenthBatch.length, 629, 'v13 runtime input includes 629 records across all batches');
+  for (const [companyId, expected] of Object.entries(displayFixture.thirteenthBatchPrimaryFinancialRow)) {
+    const records = allHistoryThroughThirteenthBatch.filter(record => record.companyId === companyId)
+      .sort((left, right) => left.endDate.localeCompare(right.endDate) || Number(left.periodType === 'quarterly') - Number(right.periodType === 'quarterly'));
+    const latest = records.at(-1);
+    assert.equal(records.length, expected.recordCount, `${companyId}: v13 retains all annual and quarterly records`);
+    assert.deepEqual({
+      displayValue: `${Number(latest.metrics.operatingMargin.value).toLocaleString('ja-JP', { maximumFractionDigits: 1 })}%`,
+      periodLabel: latest.periodLabel,
+      accountingBasis: latest.accountingBasis,
+      sourceId: latest.sourceId,
+    }, {
+      displayValue: expected.displayValue,
+      periodLabel: expected.periodLabel,
+      accountingBasis: expected.accountingBasis,
+      sourceId: expected.sourceId,
+    }, `${companyId}: v13 primary Financial value comes from the latest official record`);
+    const primaryTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
+    const expandedTemplate = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/)?.[1] ?? '';
+    assert.ok(primaryTemplate.includes(`<strong>${expected.displayValue}</strong>`) && primaryTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: v13 current period and margin appear`);
+    assert.ok(primaryTemplate.includes(sourceById.get(expected.sourceId)?.url ?? '\u0000'), `${companyId}: v13 primary source URL resolves`);
+    assert.equal((expandedTemplate.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) ?? []).length, expected.recordCount, `${companyId}: v13 table retains every record`);
   }
   const expandedFinancialHtml = pilotIds.map(companyId => {
     const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);

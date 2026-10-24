@@ -1,0 +1,107 @@
+{
+  "schemaVersion": "1.0.0",
+  "baselineMain": "4fe0e56f84e308ea47d38ecc37e60835f76ac7b4",
+  "branch": "codex/financial-history-six-period-coverage-v13",
+  "evidenceDirectory": "../ai-infrastructure-atlas-financial-history-six-period-coverage-v13-evidence",
+  "sourceInputMapSha256": "ce42349a3020031b72e630f28f9556614a66c527a45355523764f8b453fe6e81",
+  "pagesWorkflow": {
+    "file": ".github/workflows/deploy.yml",
+    "change": "Only Setup Node node-version: 22.19.0 to 22.23.4",
+    "sha256": "7cad641e68e1f1b55edafd104e94f7c0d85e9ff44d9ae093af482441250192f4",
+    "scope": "Pages build job only; does not update the bundled Codex or GitHub Action runtimes"
+  },
+  "runtime": {
+    "previousNode": "24.19.0",
+    "validatedNode": "22.23.4",
+    "validatedNpm": "10.9.9",
+    "portableExecutable": "node-v22.23.4/node-v22.23.4-win-x64/node.exe",
+    "officialRelease": "https://nodejs.org/en/blog/release/v22.23.4",
+    "officialArchiveSha256": "cbc74b5e0982c9dbb41525fd8fb5dcd32fbee237863f7829072f4639a1ce5f20",
+    "officialShasumsMatched": true,
+    "astro": "7.2.9",
+    "pagefind": "1.5.2",
+    "python": "3.12.14; existing Codex runtime explicitly first on process PATH"
+  },
+  "savedEvidence": {
+    "previousRun1Map": ["run1-map.json", "87f73e417c7c7c848de8eb1953af40d52bbace61b733ba74f98cf7b17b6e1e71"],
+    "previousRun2Map": ["run2-map.json", "3e5813d8e114836a6c04bd8ad98b8aaf67d4b9083f80f54d60fb4ec2652958b4"],
+    "previousDistArchive": ["pre-node22-dist.zip", "0081879c595745c36d2582d01d33f8fd985c5186643e302c7c6648c5b0959cdd"],
+    "node22Run1Log": ["node22-run1-build-escalated.log", "3ae26503306b1e0a7d2546c88d59890504e752e3322bdc4601f6dd022476fca5"],
+    "node22Run1Map": ["node22-run1-map.json", "941b51ca6f08b2a8ae2587ec9631a563822dd46b562b3bd67b55746e269e61d3"],
+    "node22Run2Log": ["node22-run2-build.log", "1d12a7cce506d3cf49581f35034f87f6805223d2e0ab5fec8a5aa947b9ed1b3a"],
+    "node22Run2Map": ["node22-run2-map.json", "a8a7d5711e8e37e18af98696d73073d56a71a478df6bb9f1633e7dddb1b78b59"],
+    "node22ValidateLog": ["node22-validate-final.log", "7065b7d6dc3f5a3adbcf9f1bbe181a111b20d644233df711e3b93022fe8c61e5"],
+    "node22JapaneseDistLog": ["node22-japanese-dist.log", "8dca48a4384168816fb87d34dafa21042b85681448001d66d5470c19f6aa5646"]
+  },
+  "commandsAndExitCodes": {
+    "validate": "npm run validate: 0 with Node 22.23.4 and Python 3.12.14 on process PATH",
+    "cleanBuildRun1": "Remove only this worktree's dist; npm run build: 0; started 2026-10-24T21:27:35.0244669Z",
+    "cleanBuildRun2": "Remove only this worktree's dist; npm run build: 0; started 2026-10-24T21:28:10.6795942Z",
+    "japaneseDist": "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist: 0 after run 2"
+  },
+  "artifactParity": {
+    "activeFreeze": "financial-history-six-period-coverage-v13",
+    "freezeMatches": "101/101 in both Node 22.23.4 builds",
+    "routes": 210,
+    "companyDetailPages": 100,
+    "pagefindUrlCount": 105,
+    "artifactMapSha256": "a3a5b405f99e4a56f1e895b91be0d834b7228a7540f1dc18697573366b7cec5d",
+    "detailMapSha256": "bb10740c4e5927ecdd0030d079b58ddcec99465aa33c324f1c678535e6d4d3d0",
+    "pagefindUrlSetSha256": "0f9b1da3f48cc450ebb445b383d747b2ffd61ee76cf0168c3e711e5be626263f",
+    "compareHtmlBytes": 1075503,
+    "compareHtmlSha256": "fea2448c788bdbf418a0142187cf55c48b6c265d693963948cc7141ba060b8b4",
+    "compareDiagnosticLimitBytes": 1129278,
+    "matchesPreviousNodeOutput": true,
+    "v12FinancialPayloadIncreaseBytes": 58678,
+    "v12CompareHtmlIncreaseBytes": 58678,
+    "changedCompanyAssets": ["abb", "hanmi-semiconductor", "jcet", "johnson-controls", "lasertec", "nikon", "rohm", "siemens-energy", "smc", "smic", "yaskawa"],
+    "unchangedArtifactsIncludingShell": 90,
+    "nonFinancialHtmlMatchesPredecessor": "101/101",
+    "productionDeliverySizeLimitsChanged": false
+  },
+  "financialAndAudit": {
+    "records": 629,
+    "companies": 100,
+    "newRecords": 43,
+    "newRecordCompanies": 11,
+    "coverage": {"complete": 77, "partial": 10, "awaitingNextQuarter": 1, "needsReview": 12},
+    "auditCutoffJst": "2026-10-24T13:19:37+09:00",
+    "targetCompanies": 23,
+    "numericOriginalStatements": 12,
+    "adoptedFromOriginalStatements": 11,
+    "numericOriginalNotAdopted": "aptiv: continuing-operations Q2 2026 cannot be connected to pre-separation annual records without comparable restatement",
+    "publicationTimingOnly": 5,
+    "specificUnresolved": 6,
+    "inheritedWithoutNewReview": 77,
+    "auditReport": "docs/financial-latest-period-audit-v13.md"
+  },
+  "secretScan": {
+    "command": "python scripts/check-secrets.py",
+    "scannedFileCount": 577,
+    "scannedPathSetSha256": "7044af8ec5caba6f4325fe3bef8e359e08cd3dc27351354603061acf38a0fd2a",
+    "scope": "The script's text extensions and .env names under the worktree; exclude .git, node_modules, dist, .astro and .env.example; path set independently enumerated with equivalent directory pruning",
+    "result": "No obvious committed secrets detected; final validation exit 0"
+  },
+  "browserQa": {
+    "method": "Chrome Browser Use against the dedicated Astro Preview; DOM observations and representative screenshots, not static HTML alone",
+    "url": "http://127.0.0.1:4391/ai-infrastructure-atlas/",
+    "servedShellAndRepresentativeDetailsMatchFinalDistSha256": true,
+    "viewportWidths": [1024, 390, 360],
+    "updatedCompanyPagesCheckedAtEveryWidth": 11,
+    "revenueAndMarginPeriodsMatched": "11/11 at each width",
+    "displayPointCountsByCompany": {"abb": 3, "hanmi-semiconductor": 2, "jcet": 6, "johnson-controls": 1, "lasertec": 6, "nikon": 6, "rohm": 5, "siemens-energy": 1, "smc": 6, "smic": 6, "yaskawa": 2},
+    "historyTableAndSourceLinks": "11/11; visible source links equal visible history rows",
+    "documentHorizontalOverflow": 0,
+    "siteConsoleErrors": 0,
+    "regressionsChecked": ["company-name and facility search", "country filter and sort", "visible count", "comparison preset, selection order, add/remove/clear, four-company cap, URL/back restoration, summary/expanded", "Evidence marker 44px, drawer, Escape, focus return", "Atlas desktop grid, mobile cards and stage filter navigation"],
+    "notIndependentlyOpened": "External financial source URLs; links and their association to table rows were inspected in the Preview"
+  },
+  "executionCaveats": [
+    "An initial Node 22 validate run selected the WindowsApps Python stub and failed to start; the final run with the existing Python runtime on process PATH exited 0.",
+    "An initial Node 22 Pagefind invocation was denied by the ordinary sandbox; two clean builds with the same runtime and dependencies under permitted execution exited 0.",
+    "Pagefind auxiliary filter/meta bytes may vary; the 105-URL set, Astro artifacts and frozen 101 paths are verified separately.",
+    "The historical triage v01 MATERIAL display is not a new failed exit; v02 validation passed.",
+    "This is pre-merge Node 22.23.4 validation; the Pages deployment runtime and public result require a later authorized merge."
+  ],
+  "recheck": "Verify SHA-256 of saved files above; compare node22-run1-map.json and node22-run2-map.json artifactSha256ByPath, companyDetailSha256ByPath, routePaths, pagefindPaths, compareSha256 and inputMapDigest; compare these fields with run2-map.json and the final dist."
+}
