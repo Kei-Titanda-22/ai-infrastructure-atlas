@@ -1,0 +1,390 @@
+{
+  "schemaVersion": "v14-evidence-1",
+  "baselineMainSha": "4405f3ef8d984f340e3257101f58361158038aee",
+  "branch": "codex/financial-history-six-period-coverage-v14",
+  "auditAsOfJst": "2026-10-29T16:45:37+09:00",
+  "evidenceDirectory": "C:\\Users\\mkato\\Documents\\Codex\\2026-08-31\\github-plugin-github-openai-curated-remote\\work\\ai-infrastructure-atlas-financial-history-six-period-coverage-v14-evidence",
+  "sourceInputMapSha256": "8060b0aa403eb1985323d48bc06f7b0fbbaddbfbd778ca2f9f0019be5d047795",
+  "environment": {
+    "node": "22.23.4",
+    "astro": "7.2.9",
+    "pagefind": "1.5.2",
+    "python": "3.12.14",
+    "dependencyReference": "node_modules junction to verified v13 dependencies, restored after formal secret scan",
+    "nodeVersionScope": "v14 build processes only"
+  },
+  "builds": [
+    {
+      "mapFile": "run1-map.json",
+      "exitCodes": {
+        "astro": 0,
+        "pagefind": 0,
+        "compare": 0,
+        "japanese": 0
+      },
+      "startedAt": "2026-10-29T17:36:06.7944033+09:00",
+      "id": "run1",
+      "endedAt": "2026-10-29T08:36:28.26Z",
+      "commands": [
+        "astro build",
+        "pagefind --site dist",
+        "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+        "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"
+      ]
+    },
+    {
+      "mapFile": "run2-map.json",
+      "exitCodes": {
+        "astro": 0,
+        "pagefind": 0,
+        "compare": 0,
+        "japanese": 0
+      },
+      "startedAt": "2026-10-29T17:36:28.2765854+09:00",
+      "id": "run2",
+      "endedAt": "2026-10-29T08:36:48.174Z",
+      "commands": [
+        "astro build",
+        "pagefind --site dist",
+        "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+        "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"
+      ]
+    }
+  ],
+  "savedEvidence": [
+    {
+      "name": "run1-map.json",
+      "sha256": "792171f415ed4dfc36d4c1f1580e5de438669aefd98a48265e7b96b5a669e77f"
+    },
+    {
+      "name": "run2-map.json",
+      "sha256": "5f292bada32ed6a16faebbf13624479c63b03cd137e5eeee4a301d6af3ee1304"
+    },
+    {
+      "name": "run1-astro.log",
+      "sha256": "33fe3363bc4583fa0728b0acfe457bfd87cf2395117ebce6a5dc0b5c27006c79"
+    },
+    {
+      "name": "run2-astro.log",
+      "sha256": "e8a542662f5a40535df8dcac6ba21b668015c3866bee479abdf72facef096b75"
+    },
+    {
+      "name": "run1-pagefind.log",
+      "sha256": "52ca1522832f2fdd2045d1644c531b24b2cea5eb733b94c8118563e42988fca2"
+    },
+    {
+      "name": "run2-pagefind.log",
+      "sha256": "aafbf05e99bb03f17318affe2fe40e2da4cddcc8d90639e2a48e6736ff9a6301"
+    },
+    {
+      "name": "run1-compare.log",
+      "sha256": "8c8ac49222ca2708fcc0a877b5e3633b4799cbd0835bb83def9e4818b9e06a96"
+    },
+    {
+      "name": "run2-compare.log",
+      "sha256": "8c8ac49222ca2708fcc0a877b5e3633b4799cbd0835bb83def9e4818b9e06a96"
+    },
+    {
+      "name": "run1-japanese.log",
+      "sha256": "8dca48a4384168816fb87d34dafa21042b85681448001d66d5470c19f6aa5646"
+    },
+    {
+      "name": "run2-japanese.log",
+      "sha256": "8dca48a4384168816fb87d34dafa21042b85681448001d66d5470c19f6aa5646"
+    },
+    {
+      "name": "validate-data.log",
+      "sha256": "4a4a59a3462e2fa6bcf3162bcc7c7da1866cac5f1095bc419c0bd7ebe6cc0c9a"
+    },
+    {
+      "name": "secret-scan-final.log",
+      "sha256": "dac90eff68533c7ed0b5df1a17d7f044942b0d1a27edef6d5479017b0163eed2"
+    }
+  ],
+  "artifacts": {
+    "activeFreeze": "financial-history-six-period-coverage-v14",
+    "compareArtifactCount": 101,
+    "freezeMatchCount": 101,
+    "compareArtifactMapSha256": "5f81bcd4af8a2e2832028389a67672e86f5b09d3b98d0d1e2fd11ee5525cca4d",
+    "companyDetailCount": 100,
+    "companyDetailMapSha256": "ffb50e19e0fe39b6383aaffeb2867cbf1ca22241454ba4be65ceb61541b2cf99",
+    "changedCompanyDetailPages": [
+      "rohm",
+      "abb",
+      "resonac-holdings",
+      "mobileye",
+      "stmicroelectronics",
+      "yaskawa",
+      "synopsys",
+      "legrand",
+      "johnson-controls",
+      "siemens-energy"
+    ],
+    "routeCount": 210,
+    "routeSetSha256": "3a5ed3a8b844b2efcb850fcef38b324dda32fe3318cd07b0526ce616555d57fc",
+    "pagefindUrlCount": 105,
+    "pagefindUrlSetSha256": "0f9b1da3f48cc450ebb445b383d747b2ffd61ee76cf0168c3e711e5be626263f",
+    "compareHtmlBytes": 1126742,
+    "compareHtmlSha256": "51d28946f6ae756bdf0268f4734bccbbd8ac97b50e1302347c4b55983d23977f",
+    "compareHtmlLimitBytes": 1129278,
+    "changedCompareAssets": [
+      "rohm",
+      "abb",
+      "resonac-holdings",
+      "mobileye",
+      "stmicroelectronics",
+      "yaskawa",
+      "synopsys",
+      "legrand",
+      "johnson-controls",
+      "siemens-energy"
+    ],
+    "unchangedCompareArtifacts": 91,
+    "unchangedIncludesShell": true,
+    "nonFinancialShaMapSha256": "8af7196936203df409acb35b65f7fc4b66ea3369857220981bd96b9ee8c73c86",
+    "productionSizeLimitsUnchangedAndPassed": true,
+    "previewParity": [
+      "shell index.html",
+      "evidence-fragments/company-compare-evidence-v01/rohm/index.html",
+      "companies/rohm/index.html"
+    ]
+  },
+  "data": {
+    "addedCompanyCount": 10,
+    "addedRecordCount": 40,
+    "financialRecordCount": 669,
+    "companyCount": 100,
+    "coverage": {
+      "needsReview": 11,
+      "complete": 87,
+      "awaitingNextQuarter": 1,
+      "partial": 1
+    },
+    "auditTargetCount": 17,
+    "numericStatement": 10,
+    "publicationTiming": 1,
+    "specificBlocker": 6,
+    "inherited": 83,
+    "allCompanyLatestConfirmationClaimed": false
+  },
+  "qa": {
+    "tool": "Computer Use in-app browser",
+    "previewBaseUrl": "http://127.0.0.1:4392/ai-infrastructure-atlas/",
+    "qaRecordedAtJst": "2026-10-29T18:10:39+09:00",
+    "companies": [
+      {
+        "annualExcluded": true,
+        "sameConsecutiveQuarterPeriods": true,
+        "clippedTextCount": 0,
+        "testedWidthsPx": [
+          1024,
+          390,
+          360
+        ],
+        "siteConsoleErrorCount": 0,
+        "operatingMarginPoints": 6,
+        "documentOverflowPx": 0,
+        "companyId": "rohm",
+        "fullHistoryAndPrimarySourceLinksInFinancialTable": true,
+        "revenuePoints": 6
+      },
+      {
+        "annualExcluded": true,
+        "sameConsecutiveQuarterPeriods": true,
+        "clippedTextCount": 0,
+        "testedWidthsPx": [
+          1024,
+          390,
+          360
+        ],
+        "siteConsoleErrorCount": 0,
+        "operatingMarginPoints": 6,
+        "documentOverflowPx": 0,
+        "companyId": "abb",
+        "fullHistoryAndPrimarySourceLinksInFinancialTable": true,
+        "revenuePoints": 6
+      },
+      {
+        "annualExcluded": true,
+        "sameConsecutiveQuarterPeriods": true,
+        "clippedTextCount": 0,
+        "testedWidthsPx": [
+          1024,
+          390,
+          360
+        ],
+        "siteConsoleErrorCount": 0,
+        "operatingMarginPoints": 6,
+        "documentOverflowPx": 0,
+        "companyId": "resonac-holdings",
+        "fullHistoryAndPrimarySourceLinksInFinancialTable": true,
+        "revenuePoints": 6
+      },
+      {
+        "annualExcluded": true,
+        "sameConsecutiveQuarterPeriods": true,
+        "clippedTextCount": 0,
+        "testedWidthsPx": [
+          1024,
+          390,
+          360
+        ],
+        "siteConsoleErrorCount": 0,
+        "operatingMarginPoints": 6,
+        "documentOverflowPx": 0,
+        "companyId": "mobileye",
+        "fullHistoryAndPrimarySourceLinksInFinancialTable": true,
+        "revenuePoints": 6
+      },
+      {
+        "annualExcluded": true,
+        "sameConsecutiveQuarterPeriods": true,
+        "clippedTextCount": 0,
+        "testedWidthsPx": [
+          1024,
+          390,
+          360
+        ],
+        "siteConsoleErrorCount": 0,
+        "operatingMarginPoints": 6,
+        "documentOverflowPx": 0,
+        "companyId": "stmicroelectronics",
+        "fullHistoryAndPrimarySourceLinksInFinancialTable": true,
+        "revenuePoints": 6
+      },
+      {
+        "annualExcluded": true,
+        "sameConsecutiveQuarterPeriods": true,
+        "clippedTextCount": 0,
+        "testedWidthsPx": [
+          1024,
+          390,
+          360
+        ],
+        "siteConsoleErrorCount": 0,
+        "operatingMarginPoints": 6,
+        "documentOverflowPx": 0,
+        "companyId": "yaskawa",
+        "fullHistoryAndPrimarySourceLinksInFinancialTable": true,
+        "revenuePoints": 6
+      },
+      {
+        "annualExcluded": true,
+        "sameConsecutiveQuarterPeriods": true,
+        "clippedTextCount": 0,
+        "testedWidthsPx": [
+          1024,
+          390,
+          360
+        ],
+        "siteConsoleErrorCount": 0,
+        "operatingMarginPoints": 6,
+        "documentOverflowPx": 0,
+        "companyId": "synopsys",
+        "fullHistoryAndPrimarySourceLinksInFinancialTable": true,
+        "revenuePoints": 6
+      },
+      {
+        "annualExcluded": true,
+        "sameConsecutiveQuarterPeriods": true,
+        "clippedTextCount": 0,
+        "testedWidthsPx": [
+          1024,
+          390,
+          360
+        ],
+        "siteConsoleErrorCount": 0,
+        "operatingMarginPoints": 6,
+        "documentOverflowPx": 0,
+        "companyId": "legrand",
+        "fullHistoryAndPrimarySourceLinksInFinancialTable": true,
+        "revenuePoints": 6
+      },
+      {
+        "annualExcluded": true,
+        "sameConsecutiveQuarterPeriods": true,
+        "clippedTextCount": 0,
+        "testedWidthsPx": [
+          1024,
+          390,
+          360
+        ],
+        "siteConsoleErrorCount": 0,
+        "operatingMarginPoints": 6,
+        "documentOverflowPx": 0,
+        "companyId": "johnson-controls",
+        "fullHistoryAndPrimarySourceLinksInFinancialTable": true,
+        "revenuePoints": 6
+      },
+      {
+        "annualExcluded": true,
+        "sameConsecutiveQuarterPeriods": true,
+        "clippedTextCount": 0,
+        "testedWidthsPx": [
+          1024,
+          390,
+          360
+        ],
+        "siteConsoleErrorCount": 0,
+        "operatingMarginPoints": 6,
+        "documentOverflowPx": 0,
+        "companyId": "siemens-energy",
+        "fullHistoryAndPrimarySourceLinksInFinancialTable": true,
+        "revenuePoints": 6
+      }
+    ],
+    "edgeCases": [
+      {
+        "quarterlyPoints": 2,
+        "companyId": "hanmi-semiconductor"
+      },
+      {
+        "quarterlyPoints": 5,
+        "companyId": "kioxia"
+      },
+      {
+        "chartMode": "annual",
+        "companyId": "air-liquide"
+      }
+    ],
+    "regressions": [
+      "company name and Japanese region search",
+      "country filter and country sort",
+      "visible row count equals displayed result count at 390 and 360px",
+      "comparison six presets visible",
+      "free selection and four-company cap",
+      "all ten updated companies rendered in Compare expanded financial history across three selected groups, with all history rows and primary-source links",
+      "selection order and direct URL restoration",
+      "summary and expanded",
+      "Evidence marker 44x44px, drawer, Escape, focus return",
+      "mobile body 16px and section border 3px",
+      "Atlas desktop three-column stage content and mobile cards, details and stage filter",
+      "Pagefind search SiC returned 8 results"
+    ],
+    "externalPrimarySourceLinksOpenedCount": 0,
+    "siteConsoleErrorCount": 0,
+    "documentOverflowPx": 0,
+    "clippedTextCount": 0
+  },
+  "gates": {
+    "validateDataExitCode": 0,
+    "compareAndJapaneseDistExitCode": 0,
+    "atlasMobileMapExitCode": 0,
+    "searchUxExitCode": 0,
+    "v14AuditFreshnessExitCode": 0,
+    "secretScanExitCode": 0,
+    "secretScanTargetCount": 583,
+    "secretScanTargetPathSetSha256": "a3b71bb15a4a4921ff7b90c2b1db8f602a07a67640c29dc25f2e6a5358533ee7",
+    "gitDiffCheckExitCode": 0,
+    "triageV01HistoricalMaterialCount": 22,
+    "triageV02ExactCount": 87,
+    "initialValidateSecretScanInterruptedByDependencyJunction": true,
+    "formalSecretScanAfterTemporaryJunctionRemovalPassed": true
+  },
+  "caveats": [
+    "Pagefind auxiliary files may vary in bytes; 101 frozen artifacts and 105 URL set were compared separately.",
+    "The 83 non-target companies retain prior audit judgments; the 17 target audit is not an all-company latest-period certification.",
+    "External primary-source URLs were checked as rendered links; none was opened during this browser QA."
+  ],
+  "recheck": "Compare sourceInputMapSha256 and SHA-256 of savedEvidence; compare run1/run2 map digests and all 101 frozen artifacts, 100 company pages, Compare SHA and Pagefind URL set with the current dist."
+}
