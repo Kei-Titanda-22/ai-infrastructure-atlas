@@ -1,0 +1,1602 @@
+[
+  {
+    "id": "rohm-fy2025-q4",
+    "companyId": "rohm",
+    "periodType": "quarterly",
+    "periodLabel": "FY2025 Q4",
+    "startDate": "2025-01-01",
+    "endDate": "2025-03-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "rohm-fy2025-annual-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 103824,
+        "status": "verified",
+        "basis": "FY2025 consolidated annual net sales JPY 448,466 million (annual PDF p1 consolidated results) − first nine months JPY 344,642 million (9m PDF p1) = standalone Q4 JPY 103,824 million. Annual: https://fscdn.rohm.com/en/financial/financial-report/2503_41811104_financialresults_en.pdf; 9m: https://micro.rohm.com/en/financial/financial-report/2412_12221513_financialresults_eng.pdf. Both source figures rounded down to JPY million."
+      },
+      "operatingProfit": {
+        "value": -28981,
+        "status": "verified",
+        "basis": "FY2025 consolidated annual operating loss JPY -40,061 million − first nine months loss JPY -11,080 million = Q4 loss JPY -28,981 million; same sources and Japanese GAAP consolidated scope. Difference inherits source rounding, not a newly reported exact-million quarter."
+      },
+      "operatingMargin": {
+        "value": -27.9,
+        "status": "verified",
+        "basis": "-28981 / 103824 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "abb-q3-2025",
+    "companyId": "abb",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2025",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "results-abb-2026-10-20-q3",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 8491,
+        "status": "verified",
+        "basis": "Issuer-filed Q3 2026 release key figures Q3 2025 comparative column: revenues USD 8,491 million, continuing ABB Group perimeter after Robotics discontinued-operations presentation."
+      },
+      "operatingProfit": {
+        "value": 1602,
+        "status": "verified",
+        "basis": "Same Q3 2025 comparative column, income from operations USD 1,602 million; not Operational EBITA."
+      },
+      "operatingMargin": {
+        "value": 18.9,
+        "status": "verified",
+        "basis": "1602 / 8491 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "abb-q4-2025",
+    "companyId": "abb",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 2025",
+    "startDate": "2025-10-01",
+    "endDate": "2025-12-31",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "abb-q4-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 9052,
+        "status": "verified",
+        "basis": "Q4 2025 Financial Information p3 and consolidated income statement: ABB Group revenues USD 9,052 million, reported three-month current column."
+      },
+      "operatingProfit": {
+        "value": 1505,
+        "status": "verified",
+        "basis": "Same Q4 2025 source p3: income from operations USD 1,505 million, not Operational EBITA. Robotics classified as discontinued; current ABB Group continuing scope."
+      },
+      "operatingMargin": {
+        "value": 16.6,
+        "status": "verified",
+        "basis": "1505 / 9052 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "abb-q1-2026",
+    "companyId": "abb",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2026",
+    "startDate": "2026-01-01",
+    "endDate": "2026-03-31",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "abb-q1-2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 8734,
+        "status": "verified",
+        "basis": "Q1 2026 Financial Information p3: ABB Group revenues USD 8,734 million reported current quarter."
+      },
+      "operatingProfit": {
+        "value": 1780,
+        "status": "verified",
+        "basis": "Same source p3: income from operations USD 1,780 million; Robotics discontinued classification and continuing ABB scope."
+      },
+      "operatingMargin": {
+        "value": 20.4,
+        "status": "verified",
+        "basis": "1780 / 8734 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "resonac-holdings-q2-2025",
+    "companyId": "resonac-holdings",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2025",
+    "startDate": "2025-04-01",
+    "endDate": "2025-06-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "resonac-h1-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 320932,
+        "status": "verified",
+        "basis": "2025 H1 consolidated revenue JPY 642,054 million (H1 PDF p1) − existing Q1 2025 JPY 321,122 million = Q2 JPY 320,932 million; same IFRS series and million-yen rounding."
+      },
+      "operatingProfit": {
+        "value": 18629,
+        "status": "verified",
+        "basis": "2025 H1 IFRS operating profit JPY 32,611 million − existing Q1 JPY 13,982 million = Q2 JPY 18,629 million. Not core operating profit."
+      },
+      "operatingMargin": {
+        "value": 5.8,
+        "status": "verified",
+        "basis": "18629 / 320932 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "resonac-holdings-q3-2025",
+    "companyId": "resonac-holdings",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2025",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "resonac-9m-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 344209,
+        "status": "verified",
+        "basis": "2025 nine-month consolidated revenue JPY 986,263 million (9m PDF p1) − H1 JPY 642,054 million (https://am.resonac.com/wp-content/uploads/2025/08/ResonacHD_2025Q2_Consolidated-Financial-Statements.pdf p1) = Q3 JPY 344,209 million."
+      },
+      "operatingProfit": {
+        "value": -11141,
+        "status": "verified",
+        "basis": "2025 nine-month IFRS operating profit JPY 21,470 million − H1 JPY 32,611 million = Q3 loss JPY -11,141 million; same IFRS reporting series, not core profit."
+      },
+      "operatingMargin": {
+        "value": -3.2,
+        "status": "verified",
+        "basis": "-11141 / 344209 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "resonac-holdings-q4-2025",
+    "companyId": "resonac-holdings",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 2025",
+    "startDate": "2025-10-01",
+    "endDate": "2025-12-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "resonac-fy2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 360862,
+        "status": "verified",
+        "basis": "2025 annual consolidated revenue JPY 1,347,125 million (annual PDF p3/p14) − nine months JPY 986,263 million (https://am.resonac.com/wp-content/uploads/2025/11/ResonacHD_2025Q3_Consolidated-Financial-Statements.pdf p1) = Q4 JPY 360,862 million."
+      },
+      "operatingProfit": {
+        "value": 25206,
+        "status": "verified",
+        "basis": "2025 annual IFRS operating profit JPY 46,676 million − nine months JPY 21,470 million = Q4 JPY 25,206 million; not core operating profit."
+      },
+      "operatingMargin": {
+        "value": 7,
+        "status": "verified",
+        "basis": "25206 / 360862 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "mobileye-q1-2025",
+    "companyId": "mobileye",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2025",
+    "startDate": "2024-12-29",
+    "endDate": "2025-03-29",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "mobileye-q1-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 438,
+        "status": "verified",
+        "basis": "Q1 2025 issuer release GAAP condensed consolidated statements, three months ended 2025-03-29: revenue USD 438 million."
+      },
+      "operatingProfit": {
+        "value": -117,
+        "status": "verified",
+        "basis": "Q1 2025 same GAAP statement and column: operating loss USD -117 million, not adjusted operating income; goodwill impairment is retained in reported GAAP where applicable."
+      },
+      "operatingMargin": {
+        "value": -26.7,
+        "status": "verified",
+        "basis": "-117 / 438 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "mobileye-q2-2025",
+    "companyId": "mobileye",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2025",
+    "startDate": "2025-03-30",
+    "endDate": "2025-06-28",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "mobileye-q2-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 506,
+        "status": "verified",
+        "basis": "Q2 2025 issuer release GAAP condensed consolidated statements, three months ended 2025-06-28: revenue USD 506 million."
+      },
+      "operatingProfit": {
+        "value": -74,
+        "status": "verified",
+        "basis": "Q2 2025 same GAAP statement and column: operating loss USD -74 million, not adjusted operating income; goodwill impairment is retained in reported GAAP where applicable."
+      },
+      "operatingMargin": {
+        "value": -14.6,
+        "status": "verified",
+        "basis": "-74 / 506 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "mobileye-q3-2025",
+    "companyId": "mobileye",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2025",
+    "startDate": "2025-06-29",
+    "endDate": "2025-09-27",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "mobileye-q3-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 504,
+        "status": "verified",
+        "basis": "Q3 2025 issuer release GAAP condensed consolidated statements, three months ended 2025-09-27: revenue USD 504 million."
+      },
+      "operatingProfit": {
+        "value": -109,
+        "status": "verified",
+        "basis": "Q3 2025 same GAAP statement and column: operating loss USD -109 million, not adjusted operating income; goodwill impairment is retained in reported GAAP where applicable."
+      },
+      "operatingMargin": {
+        "value": -21.6,
+        "status": "verified",
+        "basis": "-109 / 504 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "mobileye-q4-2025",
+    "companyId": "mobileye",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 2025",
+    "startDate": "2025-09-28",
+    "endDate": "2025-12-27",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "mobileye-q4-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 446,
+        "status": "verified",
+        "basis": "Q4 2025 issuer release GAAP condensed consolidated statements, three months ended 2025-12-27: revenue USD 446 million."
+      },
+      "operatingProfit": {
+        "value": -140,
+        "status": "verified",
+        "basis": "Q4 2025 same GAAP statement and column: operating loss USD -140 million, not adjusted operating income; goodwill impairment is retained in reported GAAP where applicable."
+      },
+      "operatingMargin": {
+        "value": -31.4,
+        "status": "verified",
+        "basis": "-140 / 446 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "stmicroelectronics-q1-2025",
+    "companyId": "stmicroelectronics",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2025",
+    "startDate": "2025-01-01",
+    "endDate": "2025-03-29",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "st-q1-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2517,
+        "status": "verified",
+        "basis": "Q1 2025 issuer Form 6-K / consolidated statements of income, three-month current column: net revenues USD 2517 million, including other revenues."
+      },
+      "operatingProfit": {
+        "value": 3,
+        "status": "verified",
+        "basis": "Q1 2025 same US GAAP consolidated statement: operating income (loss) USD 3 million, including restructuring/impairment, not adjusted income."
+      },
+      "operatingMargin": {
+        "value": 0.1,
+        "status": "verified",
+        "basis": "3 / 2517 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "stmicroelectronics-q2-2025",
+    "companyId": "stmicroelectronics",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2025",
+    "startDate": "2025-03-30",
+    "endDate": "2025-06-28",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "st-q2-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2766,
+        "status": "verified",
+        "basis": "Q2 2025 issuer Form 6-K / consolidated statements of income, three-month current column: net revenues USD 2766 million, including other revenues."
+      },
+      "operatingProfit": {
+        "value": -133,
+        "status": "verified",
+        "basis": "Q2 2025 same US GAAP consolidated statement: operating income (loss) USD -133 million, including restructuring/impairment, not adjusted income."
+      },
+      "operatingMargin": {
+        "value": -4.8,
+        "status": "verified",
+        "basis": "-133 / 2766 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "stmicroelectronics-q3-2025",
+    "companyId": "stmicroelectronics",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2025",
+    "startDate": "2025-06-29",
+    "endDate": "2025-09-27",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "st-q3-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 3187,
+        "status": "verified",
+        "basis": "Q3 2025 issuer Form 6-K / consolidated statements of income, three-month current column: net revenues USD 3187 million, including other revenues."
+      },
+      "operatingProfit": {
+        "value": 180,
+        "status": "verified",
+        "basis": "Q3 2025 same US GAAP consolidated statement: operating income (loss) USD 180 million, including restructuring/impairment, not adjusted income."
+      },
+      "operatingMargin": {
+        "value": 5.6,
+        "status": "verified",
+        "basis": "180 / 3187 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "stmicroelectronics-q4-2025",
+    "companyId": "stmicroelectronics",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 2025",
+    "startDate": "2025-09-28",
+    "endDate": "2025-12-31",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "st-q4-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 3329,
+        "status": "verified",
+        "basis": "Q4 2025 issuer Form 6-K / consolidated statements of income, three-month current column: net revenues USD 3329 million, including other revenues."
+      },
+      "operatingProfit": {
+        "value": 125,
+        "status": "verified",
+        "basis": "Q4 2025 same US GAAP consolidated statement: operating income (loss) USD 125 million, including restructuring/impairment, not adjusted income."
+      },
+      "operatingMargin": {
+        "value": 3.8,
+        "status": "verified",
+        "basis": "125 / 3329 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "yaskawa-fy2026-q1",
+    "companyId": "yaskawa",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q1",
+    "startDate": "2025-03-01",
+    "endDate": "2025-05-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "yaskawa-q1-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 125642,
+        "status": "verified",
+        "basis": "FY ended February 2026 first-quarter consolidated IFRS PDF p1, Mar-May 2025 revenue JPY 125,642 million, source reports rounded JPY million."
+      },
+      "operatingProfit": {
+        "value": 10503,
+        "status": "verified",
+        "basis": "Same standalone Q1 consolidated statement: operating profit JPY 10,503 million. Fiscal period is Mar-May 2025."
+      },
+      "operatingMargin": {
+        "value": 8.4,
+        "status": "verified",
+        "basis": "10503 / 125642 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "yaskawa-fy2026-q2",
+    "companyId": "yaskawa",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2025-06-01",
+    "endDate": "2025-08-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "yaskawa-h1-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 134553,
+        "status": "verified",
+        "basis": "Same FY first-half cumulative revenue JPY 260,195 million (H1 PDF p1) − Q1 JPY 125,642 million (https://www.yaskawa-global.com/wp-content/uploads/2025/07/20250704_en.pdf p1) = standalone Q2 JPY 134,553 million."
+      },
+      "operatingProfit": {
+        "value": 12831,
+        "status": "verified",
+        "basis": "Same FY first-half cumulative operating profit JPY 23,334 million − Q1 JPY 10,503 million = Q2 JPY 12,831 million, IFRS consolidated."
+      },
+      "operatingMargin": {
+        "value": 9.5,
+        "status": "verified",
+        "basis": "12831 / 134553 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "yaskawa-fy2026-q3",
+    "companyId": "yaskawa",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q3",
+    "startDate": "2025-09-01",
+    "endDate": "2025-11-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "yaskawa-9m-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 135032,
+        "status": "verified",
+        "basis": "Same FY nine-month revenue JPY 395,227 million (9m PDF p1) − H1 JPY 260,195 million (https://www.yaskawa-global.com/wp-content/uploads/2025/10/20251003_en.pdf p1) = Q3 JPY 135,032 million."
+      },
+      "operatingProfit": {
+        "value": 9861,
+        "status": "verified",
+        "basis": "Same FY nine-month operating profit JPY 33,195 million − H1 JPY 23,334 million = Q3 JPY 9,861 million, IFRS consolidated."
+      },
+      "operatingMargin": {
+        "value": 7.3,
+        "status": "verified",
+        "basis": "9861 / 135032 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "yaskawa-fy2026-q4",
+    "companyId": "yaskawa",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q4",
+    "startDate": "2025-12-01",
+    "endDate": "2026-02-28",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "yaskawa-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 146895,
+        "status": "verified",
+        "basis": "Same FY annual revenue JPY 542,122 million (annual PDF p1) − 9m JPY 395,227 million (https://www.yaskawa-global.com/wp-content/uploads/2026/01/20260109_en.pdf p1) = Q4 JPY 146,895 million."
+      },
+      "operatingProfit": {
+        "value": 14112,
+        "status": "verified",
+        "basis": "Same FY annual operating profit JPY 47,307 million − 9m JPY 33,195 million = Q4 JPY 14,112 million, IFRS consolidated. Existing annual record label is retained; quarterly labels follow existing FY2027 Q1/Q2 sequence."
+      },
+      "operatingMargin": {
+        "value": 9.6,
+        "status": "verified",
+        "basis": "14112 / 146895 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "synopsys-q2-fy2025",
+    "companyId": "synopsys",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 FY2025",
+    "startDate": "2025-02-01",
+    "endDate": "2025-04-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "synopsys-q2-fy2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 1604.266,
+        "status": "verified",
+        "basis": "Q2 FY2025 GAAP condensed consolidated statement, three months ended 2025-04-30, total revenue USD 1604266 thousand / 1,000 = USD 1604.266 million."
+      },
+      "operatingProfit": {
+        "value": 376.426,
+        "status": "verified",
+        "basis": "Q2 FY2025 same GAAP statement, operating income USD 376426 thousand / 1,000 = USD 376.426 million. Acquisition impact remains in reported consolidated results; non-GAAP excludes are not used."
+      },
+      "operatingMargin": {
+        "value": 23.5,
+        "status": "verified",
+        "basis": "376.426 / 1604.266 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "synopsys-q3-fy2025",
+    "companyId": "synopsys",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 FY2025",
+    "startDate": "2025-05-01",
+    "endDate": "2025-07-31",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "synopsys-q3-fy2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 1739.737,
+        "status": "verified",
+        "basis": "Q3 FY2025 GAAP condensed consolidated statement, three months ended 2025-07-31, total revenue USD 1739737 thousand / 1,000 = USD 1739.737 million."
+      },
+      "operatingProfit": {
+        "value": 165.269,
+        "status": "verified",
+        "basis": "Q3 FY2025 same GAAP statement, operating income USD 165269 thousand / 1,000 = USD 165.269 million. Acquisition impact remains in reported consolidated results; non-GAAP excludes are not used."
+      },
+      "operatingMargin": {
+        "value": 9.5,
+        "status": "verified",
+        "basis": "165.269 / 1739.737 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "synopsys-q4-fy2025",
+    "companyId": "synopsys",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 FY2025",
+    "startDate": "2025-08-01",
+    "endDate": "2025-10-31",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "synopsys-q4-fy2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2254.86,
+        "status": "verified",
+        "basis": "Q4 FY2025 GAAP condensed consolidated statement, three months ended 2025-10-31, total revenue USD 2254860 thousand / 1,000 = USD 2254.86 million."
+      },
+      "operatingProfit": {
+        "value": 121.393,
+        "status": "verified",
+        "basis": "Q4 FY2025 same GAAP statement, operating income USD 121393 thousand / 1,000 = USD 121.393 million. Acquisition impact remains in reported consolidated results; non-GAAP excludes are not used."
+      },
+      "operatingMargin": {
+        "value": 5.4,
+        "status": "verified",
+        "basis": "121.393 / 2254.86 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "synopsys-q1-fy2026",
+    "companyId": "synopsys",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 FY2026",
+    "startDate": "2025-11-01",
+    "endDate": "2026-01-31",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "synopsys-q1-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2408.798,
+        "status": "verified",
+        "basis": "Q1 FY2026 GAAP condensed consolidated statement, three months ended 2026-01-31, total revenue USD 2408798 thousand / 1,000 = USD 2408.798 million."
+      },
+      "operatingProfit": {
+        "value": 203.046,
+        "status": "verified",
+        "basis": "Q1 FY2026 same GAAP statement, operating income USD 203046 thousand / 1,000 = USD 203.046 million. Acquisition impact remains in reported consolidated results; non-GAAP excludes are not used."
+      },
+      "operatingMargin": {
+        "value": 8.4,
+        "status": "verified",
+        "basis": "203.046 / 2408.798 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "synopsys-q2-fy2026",
+    "companyId": "synopsys",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 FY2026",
+    "startDate": "2026-02-01",
+    "endDate": "2026-04-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "synopsys-q2-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2275.985,
+        "status": "verified",
+        "basis": "Q2 FY2026 GAAP condensed consolidated statement, three months ended 2026-04-30, total revenue USD 2275985 thousand / 1,000 = USD 2275.985 million."
+      },
+      "operatingProfit": {
+        "value": 120.426,
+        "status": "verified",
+        "basis": "Q2 FY2026 same GAAP statement, operating income USD 120426 thousand / 1,000 = USD 120.426 million. Acquisition impact remains in reported consolidated results; non-GAAP excludes are not used."
+      },
+      "operatingMargin": {
+        "value": 5.3,
+        "status": "verified",
+        "basis": "120.426 / 2275.985 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "legrand-q1-2025",
+    "companyId": "legrand",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2025",
+    "startDate": "2025-01-01",
+    "endDate": "2025-03-31",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "legrand-q1-2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2277.8,
+        "status": "verified",
+        "basis": "Q1 2026 issuer consolidated financial information p2, March 31 2025 comparative three-month column: net sales EUR 2,277.8 million."
+      },
+      "operatingProfit": {
+        "value": 434.2,
+        "status": "verified",
+        "basis": "Same p2 March 31 2025 comparative: unadjusted IFRS operating profit EUR 434.2 million, not adjusted operating profit."
+      },
+      "operatingMargin": {
+        "value": 19.1,
+        "status": "verified",
+        "basis": "434.2 / 2277.8 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "legrand-q2-2025",
+    "companyId": "legrand",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2025",
+    "startDate": "2025-04-01",
+    "endDate": "2025-06-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "legrand-h1-2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2496.5,
+        "status": "verified",
+        "basis": "2025 H1 comparative net sales EUR 4,774.3 million (2026 H1 report p6) − 2025 Q1 EUR 2,277.8 million (https://www.legrand.com/sites/default/files/Documents_PDF_Legrand/Finance/2026/3m/Legrand_Consolidated_Financial_Statements_Q12026_EN_1778074216.pdf p2) = Q2 EUR 2,496.5 million."
+      },
+      "operatingProfit": {
+        "value": 496.8,
+        "status": "verified",
+        "basis": "2025 H1 comparative unadjusted IFRS operating profit EUR 931.0 million − Q1 EUR 434.2 million = Q2 EUR 496.8 million; same consolidated perimeter."
+      },
+      "operatingMargin": {
+        "value": 19.9,
+        "status": "verified",
+        "basis": "496.8 / 2496.5 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "legrand-q3-2025",
+    "companyId": "legrand",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2025",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "legrand-9m-2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2197.1,
+        "status": "verified",
+        "basis": "2025 nine-month net sales EUR 6,971.4 million (9m PDF p2) − H1 EUR 4,774.3 million (https://www.legrand.com/sites/default/files/Documents_PDF_Legrand/Finance/2026/6m/Legrand_Half_year_financial_report_2026-EN%20V2_1785412247.pdf p6) = Q3 EUR 2,197.1 million."
+      },
+      "operatingProfit": {
+        "value": 401.5,
+        "status": "verified",
+        "basis": "Nine-month unadjusted IFRS operating profit EUR 1,332.5 million − H1 EUR 931.0 million = Q3 EUR 401.5 million."
+      },
+      "operatingMargin": {
+        "value": 18.3,
+        "status": "verified",
+        "basis": "401.5 / 2197.1 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "legrand-q4-2025",
+    "companyId": "legrand",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 2025",
+    "startDate": "2025-10-01",
+    "endDate": "2025-12-31",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "legrand-fy2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2509.2,
+        "status": "verified",
+        "basis": "2025 annual net sales EUR 9,480.6 million (annual PDF p360) − nine-month EUR 6,971.4 million (https://www.legrand.com/sites/default/files/Documents_PDF_Legrand/Finance/2025/9m/Legrand_Consolidated_Financial_Statements_Q32025_EN_1762350196.pdf p2) = Q4 EUR 2,509.2 million."
+      },
+      "operatingProfit": {
+        "value": 476,
+        "status": "verified",
+        "basis": "2025 annual unadjusted IFRS operating profit EUR 1,808.5 million − nine-month EUR 1,332.5 million = Q4 EUR 476.0 million."
+      },
+      "operatingMargin": {
+        "value": 19,
+        "status": "verified",
+        "basis": "476 / 2509.2 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "legrand-q1-2026",
+    "companyId": "legrand",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2026",
+    "startDate": "2026-01-01",
+    "endDate": "2026-03-31",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "legrand-q1-2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2537.6,
+        "status": "verified",
+        "basis": "2026 Q1 issuer consolidated financial information p2, March 31 2026 current column: net sales EUR 2,537.6 million."
+      },
+      "operatingProfit": {
+        "value": 485.2,
+        "status": "verified",
+        "basis": "Same p2: unadjusted IFRS operating profit EUR 485.2 million."
+      },
+      "operatingMargin": {
+        "value": 19.1,
+        "status": "verified",
+        "basis": "485.2 / 2537.6 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "legrand-q2-2026",
+    "companyId": "legrand",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2026",
+    "startDate": "2026-04-01",
+    "endDate": "2026-06-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "legrand-h1-2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 2862.7,
+        "status": "verified",
+        "basis": "2026 H1 net sales EUR 5,400.3 million (H1 report p6) − Q1 EUR 2,537.6 million (https://www.legrand.com/sites/default/files/Documents_PDF_Legrand/Finance/2026/3m/Legrand_Consolidated_Financial_Statements_Q12026_EN_1778074216.pdf p2) = Q2 EUR 2,862.7 million."
+      },
+      "operatingProfit": {
+        "value": 545.3,
+        "status": "verified",
+        "basis": "2026 H1 unadjusted IFRS operating profit EUR 1,030.5 million − Q1 EUR 485.2 million = Q2 EUR 545.3 million."
+      },
+      "operatingMargin": {
+        "value": 19,
+        "status": "verified",
+        "basis": "545.3 / 2862.7 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "johnson-controls-fy2025-q2",
+    "companyId": "johnson-controls",
+    "periodType": "quarterly",
+    "periodLabel": "FY2025 Q2",
+    "startDate": "2025-01-01",
+    "endDate": "2025-03-31",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP consolidated continuing operations",
+    "sourceId": "jci-q2-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 5676,
+        "status": "verified",
+        "basis": "FY2026 Q2 SEC 10-Q Exhibit R2, March 31 2025 comparative three-month continuing-operations column: net sales USD 5,676 million."
+      },
+      "operatingProfit": {
+        "value": 580,
+        "status": "verified",
+        "basis": "Same comparative column: gross profit 2,069 − SG&A 1,427 − restructuring and impairment 62 = reported operating income USD 580 million. Excludes discontinued R&LC HVAC."
+      },
+      "operatingMargin": {
+        "value": 10.2,
+        "status": "verified",
+        "basis": "580 / 5676 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "johnson-controls-fy2025-q3",
+    "companyId": "johnson-controls",
+    "periodType": "quarterly",
+    "periodLabel": "FY2025 Q3",
+    "startDate": "2025-04-01",
+    "endDate": "2025-06-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP consolidated continuing operations",
+    "sourceId": "jci-q3-fy2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 6052,
+        "status": "verified",
+        "basis": "FY2025 Q3 SEC 10-Q consolidated statement, June 30 2025 three-month continuing-operations column: net sales USD 6,052 million."
+      },
+      "operatingProfit": {
+        "value": 778,
+        "status": "verified",
+        "basis": "Same three-month column: gross profit 2,246 − SG&A 1,417 − restructuring and impairment 51 = operating income USD 778 million."
+      },
+      "operatingMargin": {
+        "value": 12.9,
+        "status": "verified",
+        "basis": "778 / 6052 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "johnson-controls-fy2025-q4",
+    "companyId": "johnson-controls",
+    "periodType": "quarterly",
+    "periodLabel": "FY2025 Q4",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP consolidated continuing operations",
+    "sourceId": "jci-fy2025-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 6442,
+        "status": "verified",
+        "basis": "FY2025 annual continuing-operations net sales USD 23,596 million (FY2025 10-K R3) − FY2025 nine-month USD 17,154 million (https://www.sec.gov/Archives/edgar/data/833444/000083344425000063/jci-20250630.htm consolidated statement) = Q4 USD 6,442 million."
+      },
+      "operatingProfit": {
+        "value": 430,
+        "status": "verified",
+        "basis": "Annual reported operating income = gross 8,592 − SG&A 5,764 − restructuring 546 = 2,282; nine-month operating income = gross 6,241 − SG&A 4,243 − restructuring 146 = 1,852; Q4 = 2,282 − 1,852 = USD 430 million, same FY continuing-operations series."
+      },
+      "operatingMargin": {
+        "value": 6.7,
+        "status": "verified",
+        "basis": "430 / 6442 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "johnson-controls-fy2026-q1",
+    "companyId": "johnson-controls",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q1",
+    "startDate": "2025-10-01",
+    "endDate": "2025-12-31",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP consolidated continuing operations",
+    "sourceId": "jci-q1-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 5797,
+        "status": "verified",
+        "basis": "FY2026 Q1 SEC 10-Q consolidated statement, Dec 31 2025 three-month current continuing-operations column: net sales USD 5,797 million."
+      },
+      "operatingProfit": {
+        "value": 766,
+        "status": "verified",
+        "basis": "Same column: gross profit 2,074 − SG&A 1,221 − restructuring and impairment 87 = reported operating income USD 766 million."
+      },
+      "operatingMargin": {
+        "value": 13.2,
+        "status": "verified",
+        "basis": "766 / 5797 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "johnson-controls-fy2026-q2",
+    "companyId": "johnson-controls",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-01-01",
+    "endDate": "2026-03-31",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP consolidated continuing operations",
+    "sourceId": "jci-q2-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 6142,
+        "status": "verified",
+        "basis": "FY2026 Q2 SEC 10-Q consolidated statement, Mar 31 2026 three-month current continuing-operations column: net sales USD 6,142 million."
+      },
+      "operatingProfit": {
+        "value": 804,
+        "status": "verified",
+        "basis": "Same column: gross profit 2,262 − SG&A 1,401 − restructuring and impairment 57 = reported operating income USD 804 million."
+      },
+      "operatingMargin": {
+        "value": 13.1,
+        "status": "verified",
+        "basis": "804 / 6142 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "siemens-energy-fy2025-q2",
+    "companyId": "siemens-energy",
+    "periodType": "quarterly",
+    "periodLabel": "FY2025 Q2",
+    "startDate": "2025-01-01",
+    "endDate": "2025-03-31",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "siemens-q2-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 9962,
+        "status": "verified",
+        "basis": "FY2026 Q2 Earnings Release consolidated IFRS income statement pIII, FY2025 Q2 comparative standalone column: revenue EUR 9,962 million."
+      },
+      "operatingProfit": {
+        "value": 557,
+        "status": "verified",
+        "basis": "Same FY2025 Q2 comparative column, unadjusted operating income EUR 557 million; not Profit before Special Items."
+      },
+      "operatingMargin": {
+        "value": 5.6,
+        "status": "verified",
+        "basis": "557 / 9962 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "siemens-energy-fy2025-q3",
+    "companyId": "siemens-energy",
+    "periodType": "quarterly",
+    "periodLabel": "FY2025 Q3",
+    "startDate": "2025-04-01",
+    "endDate": "2025-06-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "results-siemens-energy-2026-08-05-q3",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 9745,
+        "status": "verified",
+        "basis": "FY2026 Q3 Earnings Release consolidated IFRS income statement pIII, FY2025 Q3 comparative standalone column: revenue EUR 9,745 million."
+      },
+      "operatingProfit": {
+        "value": 909,
+        "status": "verified",
+        "basis": "Same FY2025 Q3 comparative column, unadjusted operating income EUR 909 million; not reported Profit or adjusted Profit before Special Items."
+      },
+      "operatingMargin": {
+        "value": 9.3,
+        "status": "verified",
+        "basis": "909 / 9745 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "siemens-energy-fy2025-q4",
+    "companyId": "siemens-energy",
+    "periodType": "quarterly",
+    "periodLabel": "FY2025 Q4",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "results-siemens-energy-2026-08-05-q3",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 10428,
+        "status": "verified",
+        "basis": "Existing FY2025 annual consolidated revenue EUR 39,077 million (annual financial statement) − FY2025 nine-month comparative revenue EUR 28,649 million (FY2026 Q3 release pIII, https://assets.siemens-energy.com/dam/30018eed-275d-4e73-811e-b49d004cdc3d/2026-08-05-Earnings_Release_Q3_FY26_EN-pdf_Original%20file.pdf) = Q4 EUR 10,428 million."
+      },
+      "operatingProfit": {
+        "value": 283,
+        "status": "verified",
+        "basis": "Existing FY2025 annual unadjusted IFRS operating income EUR 2,149 million − FY2025 nine-month comparative operating income EUR 1,866 million (FY2026 Q3 release pIII) = Q4 EUR 283 million."
+      },
+      "operatingMargin": {
+        "value": 2.7,
+        "status": "verified",
+        "basis": "283 / 10428 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "siemens-energy-fy2026-q1",
+    "companyId": "siemens-energy",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q1",
+    "startDate": "2025-10-01",
+    "endDate": "2025-12-31",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "siemens-q1-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 9675,
+        "status": "verified",
+        "basis": "FY2026 Q1 Earnings Release consolidated IFRS income statement pIII, current standalone quarter: revenue EUR 9,675 million."
+      },
+      "operatingProfit": {
+        "value": 962,
+        "status": "verified",
+        "basis": "Same IFRS consolidated statement: unadjusted operating income EUR 962 million, not Profit before Special Items."
+      },
+      "operatingMargin": {
+        "value": 9.9,
+        "status": "verified",
+        "basis": "962 / 9675 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "siemens-energy-fy2026-q2",
+    "companyId": "siemens-energy",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-01-01",
+    "endDate": "2026-03-31",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "siemens-q2-fy2026-v14",
+    "verifiedAt": "2026-10-29",
+    "metrics": {
+      "revenue": {
+        "value": 10294,
+        "status": "verified",
+        "basis": "FY2026 Q2 Earnings Release consolidated IFRS income statement pIII, current standalone quarter: revenue EUR 10,294 million."
+      },
+      "operatingProfit": {
+        "value": 1062,
+        "status": "verified",
+        "basis": "Same IFRS consolidated statement: unadjusted operating income EUR 1,062 million, not Profit before Special Items."
+      },
+      "operatingMargin": {
+        "value": 10.3,
+        "status": "verified",
+        "basis": "1062 / 10294 × 100, rounded to one decimal percentage point; same standalone quarter and reporting basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone quarter cash capex not established; no estimate."
+      }
+    }
+  }
+]

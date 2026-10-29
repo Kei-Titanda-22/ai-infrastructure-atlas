@@ -1940,7 +1940,7 @@ if (process.argv.includes('--dist')) {
   ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
-  assert.equal(Buffer.byteLength(financialPayload), 747_701, 'v13 financial payload adds exactly 58,678 B for 43 official standalone quarters');
+  assert.equal(Buffer.byteLength(financialPayload), 798_940, 'v14 financial payload adds 51,239 B for 40 official standalone quarters');
   const normalizedNonFinancialHtml = normalizeViteAssetFingerprints(compareHtml.replace(financialPayloadRe, '$1$2'));
   assert.equal(Buffer.byteLength(normalizedNonFinancialHtml), 327_875, 'human UX review adds 190 B of explicit comparison-order and legend markup to the v08 non-financial HTML');
   assert.equal(
@@ -2036,14 +2036,15 @@ if (process.argv.includes('--dist')) {
   });
   assert.equal(thirteenthBatchCompareSizeContract.growthLimitRatio, tenthBatchCompareSizeContract.growthLimitRatio, 'v13 retains the diagnostic +5% ratio');
   assert.equal(Math.floor(thirteenthBatchCompareSizeContract.acceptedRawBytes * thirteenthBatchCompareSizeContract.growthLimitRatio), thirteenthBatchCompareSizeContract.maximumRawBytes, 'v13 maximum derives from measured output');
-  assert.equal(thirteenthBatchCompareSizeContract.acceptedRawBytes - 1_016_825, Buffer.byteLength(financialPayload) - 689_023, 'v13 diagnostic growth is exactly the added financial JSON payload');
+  assert.equal(thirteenthBatchCompareSizeContract.acceptedRawBytes - 1_016_825, 747_701 - 689_023, 'v13 diagnostic growth is exactly the added financial JSON payload');
   const assertThirteenthBatchCompareSize = bytes => {
     assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v13 diagnostic byte count is a non-negative integer');
     assert.ok(bytes <= thirteenthBatchCompareSizeContract.maximumRawBytes, `v13 legacy Compare HTML ${bytes} B exceeds ${thirteenthBatchCompareSizeContract.maximumRawBytes} B`);
   };
   assert.doesNotThrow(() => assertThirteenthBatchCompareSize(1_129_278), 'v13 exact maximum passes');
   assert.throws(() => assertThirteenthBatchCompareSize(1_129_279), /exceeds 1129278 B/, 'v13 maximum plus one fails');
-  assert.equal(compareBytes, thirteenthBatchCompareSizeContract.acceptedRawBytes, 'v13 diagnostic output matches the measured 43-record addition');
+  assert.equal(compareBytes - thirteenthBatchCompareSizeContract.acceptedRawBytes, Buffer.byteLength(financialPayload) - 747_701, 'v14 diagnostic growth is exactly the 40-record financial payload increment');
+  assert.equal(compareBytes, 1_126_742, 'v14 diagnostic output matches the independently measured HTML size');
   assertThirteenthBatchCompareSize(compareBytes);
   assert.match(compareHtml, /id="company-compare-evidence-mount"/, 'built legacy HTML has the empty Evidence mount');
   assert.doesNotMatch(compareHtml, /data-claim-id=/, 'built legacy HTML excludes Company Claim bodies');
@@ -2365,7 +2366,7 @@ if (process.argv.includes('--dist')) {
     assert.ok(financialTemplate.includes('一次資料を開く'), `${companyId}: primary row links its official source`);
   }
   const allHistoryThroughTenthBatch = (await Promise.all((await readdir(new URL('../src/data/', import.meta.url)))
-    .filter(file => file === 'financial-history.json' || (/^financial-history-v0[45]-batch\d+\.json$/.test(file) && file !== 'financial-history-v05-batch16.json'))
+    .filter(file => file === 'financial-history.json' || (/^financial-history-v0[45]-batch\d+\.json$/.test(file) && !['financial-history-v05-batch16.json','financial-history-v05-batch17.json'].includes(file)))
     .sort()
     .map(file => readJson(`../src/data/${file}`)))).flat();
   assert.equal(allHistoryThroughTenthBatch.length, 586, 'v12 runtime input includes 586 records across all batches');
@@ -2454,6 +2455,7 @@ if (process.argv.includes('--dist')) {
     assert.ok(primaryTemplate.includes(sourceById.get(expected.sourceId)?.url ?? '\u0000'), `${companyId}: v11 primary source URL resolves`);
     assert.equal((expandedTemplate.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) ?? []).length, expected.recordCount, `${companyId}: v11 table retains every record`);
   }
+  const v14Adopted = new Set((await readJson('../src/data/financial-history-v05-batch17.json')).map(record => record.companyId));
   for (const [companyId, expected] of Object.entries(displayFixture.twelfthBatchPrimaryFinancialRow)) {
     const records = allHistoryThroughTenthBatch.filter(record => record.companyId === companyId)
       .sort((left, right) => left.endDate.localeCompare(right.endDate) || Number(left.periodType === 'quarterly') - Number(right.periodType === 'quarterly'));
@@ -2470,6 +2472,7 @@ if (process.argv.includes('--dist')) {
       accountingBasis: expected.accountingBasis,
       sourceId: expected.sourceId,
     }, `${companyId}: v12 primary Financial value comes from the latest official record`);
+    if (v14Adopted.has(companyId)) continue;
     const primaryTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
     const expandedTemplate = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/)?.[1] ?? '';
     assert.ok(primaryTemplate.includes(`<strong>${expected.displayValue}</strong>`) && primaryTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: v12 current period and margin appear`);
@@ -2494,11 +2497,37 @@ if (process.argv.includes('--dist')) {
       accountingBasis: expected.accountingBasis,
       sourceId: expected.sourceId,
     }, `${companyId}: v13 primary Financial value comes from the latest official record`);
+    if (v14Adopted.has(companyId)) continue;
     const primaryTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
     const expandedTemplate = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/)?.[1] ?? '';
     assert.ok(primaryTemplate.includes(`<strong>${expected.displayValue}</strong>`) && primaryTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: v13 current period and margin appear`);
     assert.ok(primaryTemplate.includes(sourceById.get(expected.sourceId)?.url ?? '\u0000'), `${companyId}: v13 primary source URL resolves`);
     assert.equal((expandedTemplate.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) ?? []).length, expected.recordCount, `${companyId}: v13 table retains every record`);
+  }
+  const allHistoryThroughFourteenthBatch = [...allHistoryThroughThirteenthBatch, ...await readJson('../src/data/financial-history-v05-batch17.json')];
+  assert.equal(allHistoryThroughFourteenthBatch.length, 669, 'v14 runtime input includes 669 records across all batches');
+  assert.deepEqual(new Set(Object.keys(displayFixture.fourteenthBatchPrimaryFinancialRow)), v14Adopted, 'v14 display fixture covers exactly the ten adopted companies');
+  for (const [companyId, expected] of Object.entries(displayFixture.fourteenthBatchPrimaryFinancialRow)) {
+    const records = allHistoryThroughFourteenthBatch.filter(record => record.companyId === companyId)
+      .sort((left, right) => left.endDate.localeCompare(right.endDate) || Number(left.periodType === 'quarterly') - Number(right.periodType === 'quarterly'));
+    const latest = records.at(-1);
+    assert.equal(records.length, expected.recordCount, `${companyId}: v14 table retains annual and all quarterly records`);
+    assert.deepEqual({
+      displayValue: `${Number(latest.metrics.operatingMargin.value).toLocaleString('ja-JP', { maximumFractionDigits: 1 })}%`,
+      periodLabel: latest.periodLabel,
+      accountingBasis: latest.accountingBasis,
+      sourceId: latest.sourceId,
+    }, {
+      displayValue: expected.displayValue,
+      periodLabel: expected.periodLabel,
+      accountingBasis: expected.accountingBasis,
+      sourceId: expected.sourceId,
+    }, `${companyId}: v14 primary row matches its sourced latest record`);
+    const primaryTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
+    const expandedTemplate = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/)?.[1] ?? '';
+    assert.ok(primaryTemplate.includes(`<strong>${expected.displayValue}</strong>`) && primaryTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: v14 current period and margin appear`);
+    assert.ok(primaryTemplate.includes(sourceById.get(expected.sourceId)?.url ?? '\u0000'), `${companyId}: v14 primary source URL resolves`);
+    assert.equal((expandedTemplate.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) ?? []).length, expected.recordCount, `${companyId}: v14 detailed table retains every record`);
   }
   const expandedFinancialHtml = pilotIds.map(companyId => {
     const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);
