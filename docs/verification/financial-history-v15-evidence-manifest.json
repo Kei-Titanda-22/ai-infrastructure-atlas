@@ -13,7 +13,7 @@
     "dependencyReference": "Existing verified v13 node_modules junction; restored after formal secret scan",
     "nodeVersionScope": "v15 validation and build processes only"
   },
-  "sourceInputMapSha256": "09d2601b5010204752036222dd0d3616dfcb489d0c1c95fe1e91d3f3150f0eba",
+  "sourceInputMapSha256": "fb5857695825377cb48308706105dd29f891b4811da6fe42d212d34087ebe26a",
   "secretScan": {
     "command": "python scripts/check-secrets.py",
     "exitCode": 0,
@@ -27,42 +27,81 @@
   "builds": [
     {
       "id": "run1",
-      "startedAt": "2026-10-31T11:52:55.1619843+09:00",
-      "endedAtUtc": "2026-10-31T02:53:16.285Z",
-      "commands": ["astro build", "pagefind --site dist", "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist", "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"],
-      "exitCodes": { "astro": 0, "pagefind": 0, "compare": 0, "japanese": 0 },
+      "startedAt": "2026-10-31T12:43:09.7119714+09:00",
+      "endedAtUtc": "2026-10-31T03:43:27.862Z",
+      "commands": [
+        "astro build",
+        "pagefind --site dist",
+        "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+        "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"
+      ],
+      "exitCodes": {
+        "astro": 0,
+        "pagefind": 0,
+        "compare": 0,
+        "japanese": 0
+      },
       "mapFile": "run1-map.json",
-      "mapSha256": "3a844f446409838916d2256ae560f6bec8899e779ba6e95ab985c47906f8e0d6"
+      "mapSha256": "40fe519b53d2295cb777a29e86119cf0b302d3d0ed78bb9d83464ef28f74c664"
     },
     {
       "id": "run2",
-      "startedAt": "2026-10-31T11:53:16.2998529+09:00",
-      "endedAtUtc": "2026-10-31T02:53:36.995Z",
-      "commands": ["astro build", "pagefind --site dist", "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist", "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"],
-      "exitCodes": { "astro": 0, "pagefind": 0, "compare": 0, "japanese": 0 },
+      "startedAt": "2026-10-31T12:43:27.8764594+09:00",
+      "endedAtUtc": "2026-10-31T03:43:45.450Z",
+      "commands": [
+        "astro build",
+        "pagefind --site dist",
+        "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+        "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"
+      ],
+      "exitCodes": {
+        "astro": 0,
+        "pagefind": 0,
+        "compare": 0,
+        "japanese": 0
+      },
       "mapFile": "run2-map.json",
-      "mapSha256": "62bd656bc4b6830950fa9ec1f6327eaefe8091c94ee90a5d20518972bdd7e495"
+      "mapSha256": "3018b94d199772d86477c16b58d4135064aced833570c3bff47e400388b5f44b"
     }
   ],
   "savedEvidence": {
-    "current-map.json": "40ba7be67e7d7a711d0033e4a516182f8591e7a1f2dce6f13885bb99e4ed8abf",
-    "run1-astro.log": "b8f7251885502122a8ab6f37de85ebd0374c75249bf1118a04c6b101744bffeb",
-    "run1-pagefind.log": "868ecec364dffe74f95b36c535794ffb2be4837413f62164272d3c8f630db97d",
+    "current-map.json": "f839dd901099ae3c46980eeac1a2898f93aa8475d5ab6f4a7087bfc181430288",
+    "run1-astro.log": "55306b37adf1fdd9cb39a434a40db2a0cae02f2fa4f42eba577bb598a9976197",
+    "run1-pagefind.log": "5dc373e1549059e957145cac3d4f1ee242ab36fe140cb2b5e32b38b39baa4f5d",
     "run1-compare.log": "8232d1adf696de8f07d0176ab27fcfe772367281bc9b5fcf63948edd8452c630",
     "run1-japanese.log": "8dca48a4384168816fb87d34dafa21042b85681448001d66d5470c19f6aa5646",
-    "run2-astro.log": "7ca2d5a63fb1262686a7483f33791c65894326afb990d7ef1af4c4aca3f170ec",
-    "run2-pagefind.log": "bb7d3b3578c34dc52b3a6ffd5a6173f9cb4367c89e2dae47e5b45a19080bee85",
+    "run2-astro.log": "aa0ea30ef636fc0775696577e39643cffafb1082cf2167d59c21b6cfb605a00a",
+    "run2-pagefind.log": "ee5b3132075414be4ffb336c6a93a32d8b50f33e7c28dccba566f8d0f14c4f45",
     "run2-compare.log": "8232d1adf696de8f07d0176ab27fcfe772367281bc9b5fcf63948edd8452c630",
     "run2-japanese.log": "8dca48a4384168816fb87d34dafa21042b85681448001d66d5470c19f6aa5646",
-    "validate-data.log": "21f3c0d2229a1d50ce544f8e29a55b5c768c0155f950d70d4f885b570309cb2c",
-    "secret-scan-final.log": "dac90eff68533c7ed0b5df1a17d7f044942b0d1a27edef6d5479017b0163eed2"
+    "secret-scan-final.log": "dac90eff68533c7ed0b5df1a17d7f044942b0d1a27edef6d5479017b0163eed2",
+    "chart-validate-data.log": "0a8cd2ce4bd80e384c6bf2d3d391c4cfaa56c7fdc26702362b207b9fed3c9487",
+    "chart-period-labels.log": "b12c42919a536d7020aaf1d429652a902fb8b30c69781be06c6535d100050419",
+    "chart-secret-scan.log": "936e8883c5cc5935194764ec826bed17c76b7aeeb1b9547e7484307d528c592d",
+    "chart-secret-scan-targets.txt": "4078bd462a18555d7272bfe7cafe586dfcc15d3b386967f85e696296b48658dd",
+    "chart-secret-scan-runner.py": "6ad8802b1f2be6c4f263cd11e335bbadc259e8bae9519d36d745ae621daafee0",
+    "chart-diff-report.json": "ff57503c3ef54bba99a45cdf80a4aa448a6202efe35615bc8e706669116ff6a2",
+    "pre-chart/dist-before-chart.zip": "6294645d96ac6442f37a037f80396d8591ec5ceb8f5662579cd7eba82e23910f",
+    "pre-chart/financial-history-v15-evidence-manifest.json": "a47aef2552568c8bd1287dcad07ed4d6a338e0917e494ae8d052234b69e03252",
+    "pre-chart/validate-data.log": "21f3c0d2229a1d50ce544f8e29a55b5c768c0155f950d70d4f885b570309cb2c"
   },
   "results": {
     "financialRecords": 693,
     "companyCount": 100,
     "newRecords": 24,
-    "adoptedCompanyIds": ["hanmi-semiconductor", "kinsus", "kioxia", "sumco", "unimicron"],
-    "coverage": { "complete": 92, "partial": 0, "awaitingNextQuarter": 0, "needsReview": 8 },
+    "adoptedCompanyIds": [
+      "hanmi-semiconductor",
+      "kinsus",
+      "kioxia",
+      "sumco",
+      "unimicron"
+    ],
+    "coverage": {
+      "complete": 92,
+      "partial": 0,
+      "awaitingNextQuarter": 0,
+      "needsReview": 8
+    },
     "activeFreeze": "financial-history-six-period-coverage-v15",
     "compareArtifactCount": 101,
     "freezeMatch": true,
@@ -71,12 +110,12 @@
     "unchangedIncludesShell": true,
     "nonFinancialHtmlMatch": "101/101",
     "companyDetailCount": 100,
-    "changedCompanyDetails": 5,
-    "unchangedCompanyDetails": 95,
+    "changedCompanyDetails": 100,
+    "unchangedCompanyDetails": 0,
     "routeCount": 210,
     "pagefindUrlCount": 105,
     "artifactMapSha256": "1932f9229030af27b3668dbe5ffbd3c36e772b547dd87093824f64e69f4a06ce",
-    "companyDetailMapSha256": "84d9854b103ce1b9dbadf400e6b5157d0ca327af6fb0f89de54494bc77f95861",
+    "companyDetailMapSha256": "7898ade1f99f19efa8d23a2e4fc950e7d5b51658aa4dcafafcd6f569e87f0107",
     "routeSetSha256": "3a5ed3a8b844b2efcb850fcef38b324dda32fe3318cd07b0526ce616555d57fc",
     "pagefindUrlSetSha256": "0f9b1da3f48cc450ebb445b383d747b2ffd61ee76cf0168c3e711e5be626263f",
     "compareHtmlBytes": 1159812,
@@ -86,18 +125,36 @@
     "newDiagnosticSizeLimitBytes": 1217802,
     "onDemandSizeCapsChanged": false,
     "twoBuildMapsMatch": true,
-    "currentDistMapMatch": true
+    "currentDistMapMatch": true,
+    "companyDetailsChangedOnlyByChartScriptFingerprint": 100,
+    "financialContentChangedCompanyDetailsFromV14": 5
   },
   "previewQa": {
     "url": "http://127.0.0.1:4393/ai-infrastructure-atlas/",
     "servedAssetSha256MatchesFinalDist": true,
     "servedKioxiaAssetSha256": "333fc85ccc22da7b63a30659186766917d2c55ed50c67b2c8ef361471ddc8ffe",
-    "viewportWidths": [1024, 390, 360],
-    "companies": ["kioxia", "hanmi-semiconductor", "sumco", "kinsus", "unimicron"],
+    "viewportWidths": [
+      1024,
+      390,
+      360
+    ],
+    "companies": [
+      "kioxia",
+      "hanmi-semiconductor",
+      "sumco",
+      "kinsus",
+      "unimicron"
+    ],
     "companyWidthChecks": 15,
     "bothChartsUseSameSixQuarterPeriods": true,
     "annualValuesExcludedFromQuarterlyCharts": true,
-    "financialTableRowsAndSourceLinks": { "kioxia": 8, "hanmi-semiconductor": 8, "sumco": 8, "kinsus": 8, "unimicron": 9 },
+    "financialTableRowsAndSourceLinks": {
+      "kioxia": 8,
+      "hanmi-semiconductor": 8,
+      "sumco": 8,
+      "kinsus": 8,
+      "unimicron": 9
+    },
     "annualOnlyRepresentative": "air-liquide: FY2024 and FY2025 charts preserved",
     "companyList": "Name search, country filter and sort, mobile visible row count and display:none checks passed",
     "compare": "Purpose preset, free selection, four-company limit, selection order, URL state, summary/expanded and full clear passed",
@@ -108,14 +165,89 @@
     "documentHorizontalOverflowPixels": 0,
     "headingOrChartTitleClippingCount": 0,
     "siteConsoleErrorCount": 0,
-    "observations": ["At 1024 px, two adjacent Kioxia chart x-axis labels overlap by about 9.6 px; no clipping or document overflow. No UI or CSS change is in this batch.", "External source links were checked against record URLs; not every external document was opened in browser QA."]
+    "observations": [
+      "Before the chart fix, both Kioxia plots at 1024 px had two adjacent FY-label collisions of about 9.62 px; the original result and dist are preserved in pre-chart/.",
+      "After the fix, Kioxia at 1024/390/360 px and after a 1024→390→360→1024 resize had zero label collisions after layout settled.",
+      "All five updated companies were checked in Chrome at 1024/390/360 px: 15 company-width cases, both charts six points with identical periods, zero document overflow and no financial-card clipping.",
+      "The chart tooltip retains the full period and value, Escape hides it, and Air Liquide annual bars remain unchanged.",
+      "Compare preset, free selection, URL restoration, Evidence 44×44 marker/drawer/Escape/focus return, company search/filter/sort, Atlas stage filter, and Pagefind search were exercised or reused from matching pre-chart assets.",
+      "External source links were checked against record URLs; not every external document was opened in browser QA."
+    ],
+    "labelCollisionCountAfterFix": 0
   },
   "caveats": [
     "An initial sandboxed Pagefind run indexed 105 pages but failed with Windows AccessDenied (exit 101); the same commands succeeded twice with approved elevated execution. The failed attempt is not counted as a pass.",
     "After staging, git diff --cached --check identified CRLF-only trailing whitespace in the three new batch18 JSON files. Their line endings were normalized to LF; the final Node 22.23.4 clean build was repeated twice, and the pre-normalization logs and maps remain in evidence/pre-lf.",
     "The historical triage v01 output includes 22 MATERIAL entries; validate:data exited 0 and triage v02 passed 87/87.",
     "Pagefind auxiliary files may differ by byte; the 101 frozen artifacts and 105 URL set match across both final builds.",
-    "The 87 other companies inherit previous audit decisions and were not freshly checked for their latest quarter."
+    "The 87 other companies inherit previous audit decisions and were not freshly checked for their latest quarter.",
+    "The first chart-follow-up validate invocation reached validate:secrets but was interrupted because the unchanged script traversed the existing node_modules junction. validate:data subsequently exited 0; the unchanged secret detector ran with excluded directories pruned before traversal, scanning 593 files with zero findings and exit 0.",
+    "The browser URL policy blocked a data-URL method of saving a screenshot. The before/after screenshots were shown in Computer Use output but are not claimed as files in the evidence directory."
   ],
-  "recheck": "Hash the listed evidence files, then compare run1-map.json, run2-map.json and current-map.json on inputMapDigest, artifactMapDigest, companyDetailMapDigest, routeSetDigest, pagefindUrlSetDigest, compareSha256 and compareBytes. Recompute current-map.json with capture-v15.mjs."
+  "recheck": "Hash savedEvidence paths, then compare run1-map.json, run2-map.json and current-map.json on inputMapDigest, artifactMapDigest, companyDetailMapDigest, routeSetDigest, pagefindUrlSetDigest, compareSha256 and compareBytes. Compare chart-diff-report.json against pre-chart/dist-before-chart.zip. The 100 company-detail HTML changes must normalize solely to the exact chart script fingerprint substitution.",
+  "chartLabelFollowUp": {
+    "originalCommitRetained": "cdac91d924f94de7a20287faf54c45a1bc658ea1",
+    "changeScope": "Chart period-label visibility and endpoint staggering only; financial data, points, values, tooltip/aria, and history table unchanged",
+    "before": {
+      "plotWidthPx": 472.5,
+      "firstCollisionPx": 9.618209838867188,
+      "lastCollisionPx": 9.6181640625,
+      "bothPlotsAffected": true,
+      "evidenceArchiveSha256": "6294645d96ac6442f37a037f80396d8591ec5ceb8f5662579cd7eba82e23910f",
+      "previousInputMapSha256": "09d2601b5010204752036222dd0d3616dfcb489d0c1c95fe1e91d3f3150f0eba"
+    },
+    "after": {
+      "plotWidthPx": 472.5,
+      "collisionCount": 0,
+      "kioxiaVisibleLabelsAt1024": [
+        "FY2026 Q1",
+        "FY2026 Q3",
+        "FY2026 Q4",
+        "FY2027 Q2"
+      ],
+      "kioxiaDataPointsPerPlot": 6,
+      "updatedCompanies": [
+        "kioxia",
+        "hanmi-semiconductor",
+        "sumco",
+        "kinsus",
+        "unimicron"
+      ],
+      "viewportWidths": [
+        1024,
+        390,
+        360
+      ],
+      "companyWidthCases": 15,
+      "observedSiteConsoleErrors": 0,
+      "observedDocumentOverflowPx": 0
+    },
+    "screenshots": "Before/after 1024 px screenshots were captured in the Computer Use tool output. A local JPEG could not be persisted through the browser API; a data-URL save attempt was blocked by browser URL policy and was not retried.",
+    "productionPreview": "http://127.0.0.1:4393/ai-infrastructure-atlas/",
+    "servedDist": "Kioxia HTML, chart script, and Compare asset each returned HTTP 200 with SHA-256 matching final dist",
+    "artifacts": {
+      "compare101UnchangedFromPreChart": true,
+      "companyDetail100OnlyChartScriptFingerprintChanged": true,
+      "scriptFingerprintBefore": "Cz07El_w",
+      "scriptFingerprintAfter": "BuL4o1sT",
+      "detailDiffReport": "chart-diff-report.json",
+      "activeFreeze101of101": true,
+      "routes": 210,
+      "pagefindUrls": 105,
+      "compareHtmlBytes": 1159812,
+      "compareSizeLimitBytes": 1217802
+    },
+    "gates": {
+      "validateDataExitCode": 0,
+      "financialChartPeriodLabelsExitCode": 0,
+      "searchUxExitCode": 0,
+      "atlasMobileMapExitCode": 0,
+      "japaneseFirstDistExitCode": 0,
+      "secretScanEquivalentExitCode": 0,
+      "secretScanTargetCount": 593,
+      "secretScanFindings": 0,
+      "diffCheckExitCode": 0
+    },
+    "qualityAudit": "The formal generator corrected only the input digest in JSON and Markdown; all financial facts and classifications are unchanged"
+  }
 }

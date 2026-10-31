@@ -2,7 +2,7 @@
 
 データ基準日: **2026-10-31**
 
-入力SHA-256: `0c50e56ec32aa0ca2678f97e401fa25b5e1c8b81ada9539df7aa8464de3489ee`
+入力SHA-256: `9991cf2d7332b14630d85ac203936bb0496b82d0b5724b6f2b22a6a2d0fd37c0`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
