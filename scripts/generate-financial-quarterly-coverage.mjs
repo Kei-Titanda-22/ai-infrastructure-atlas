@@ -42,7 +42,7 @@ const coverageEntry = company => {
     return recordSource.retrievedAt > latestCheckedAt ? recordSource.retrievedAt : latestCheckedAt;
   }, source.retrievedAt > baselineCheckedAt ? source.retrievedAt : baselineCheckedAt);
 
-  if (company.id === 'kioxia') {
+  if (company.id === 'kioxia' && quarterly.length < 6) {
     return {
       companyId: company.id,
       disclosureCadence: 'quarterly',

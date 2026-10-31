@@ -1,0 +1,962 @@
+[
+  {
+    "id": "kioxia-fy2027-q2",
+    "companyId": "kioxia",
+    "periodType": "quarterly",
+    "periodLabel": "FY2027 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "kioxia-fy2027-q2-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 2480035,
+        "status": "verified",
+        "basis": "Issuer FY2027 Q2 PDF physical p14 / printed p12, consolidated three-month July–September 2026 revenue JPY 2,480,035 million. Cross-check: H1 4,247,152 − existing FY2027 Q1 1,767,117 = 2,480,035."
+      },
+      "operatingProfit": {
+        "value": 1994710,
+        "status": "verified",
+        "basis": "Same PDF p14 consolidated three-month operating profit JPY 1,994,710 million (IFRS, not Non-GAAP). Cross-check: H1 3,264,727 − existing Q1 1,270,017 = 1,994,710."
+      },
+      "operatingMargin": {
+        "value": 80.4,
+        "status": "verified",
+        "basis": "1994710 / 2480035 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "hanmi-semiconductor-q2-2025",
+    "companyId": "hanmi-semiconductor",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2025",
+    "startDate": "2025-04-01",
+    "endDate": "2025-06-30",
+    "currency": "KRW",
+    "unit": "million",
+    "accountingBasis": "K-IFRS consolidated",
+    "sourceId": "hanmi-h1-2026-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 180047.311088,
+        "status": "verified",
+        "basis": "DART 2026 H1 comparative consolidated comprehensive-income statement, 2025 Apr–Jun 3-month column: KRW 180,047,311,088 won / 1,000,000 = 180,047.311088 million. Q1 comparative H1 minus Q2 matches existing 2025 Q1."
+      },
+      "operatingProfit": {
+        "value": 86308.097687,
+        "status": "verified",
+        "basis": "Same comparative 3-month column operating income KRW 86,308,097,687 won / 1,000,000 = 86,308.097687 million; H1 comparative minus Q2 matches existing 2025 Q1."
+      },
+      "operatingMargin": {
+        "value": 47.9,
+        "status": "verified",
+        "basis": "86308.097687 / 180047.311088 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "hanmi-semiconductor-q3-2025",
+    "companyId": "hanmi-semiconductor",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2025",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "KRW",
+    "unit": "million",
+    "accountingBasis": "K-IFRS consolidated",
+    "sourceId": "hanmi-q3-2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 166231.357101,
+        "status": "verified",
+        "basis": "DART 2025 Q3 consolidated comprehensive-income statement, July–September three-month revenue KRW 166,231,357,101 won / 1,000,000 = 166,231.357101 million; 9m total 493,670,454,672 won."
+      },
+      "operatingProfit": {
+        "value": 67822.011689,
+        "status": "verified",
+        "basis": "Same Q3 three-month operating income KRW 67,822,011,689 won / 1,000,000 = 67,822.011689 million; 9m total 223,762,328,162 won."
+      },
+      "operatingMargin": {
+        "value": 40.8,
+        "status": "verified",
+        "basis": "67822.011689 / 166231.357101 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "hanmi-semiconductor-q4-2025",
+    "companyId": "hanmi-semiconductor",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 2025",
+    "startDate": "2025-10-01",
+    "endDate": "2025-12-31",
+    "currency": "KRW",
+    "unit": "million",
+    "accountingBasis": "K-IFRS consolidated",
+    "sourceId": "hanmi-fy2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 83014.164855,
+        "status": "verified",
+        "basis": "DART FY2025 consolidated revenue KRW 576,684,619,527 won − same-year Q3 nine-month 493,670,454,672 won = Q4 83,014,164,855 won / 1,000,000 = 83,014.164855 million. Q3 source: https://dart.fss.or.kr/report/viewer.do?rcpNo=20251114003005&dcmNo=10884784&eleId=21&offset=226712&length=38821&dtd=dart4.xsd"
+      },
+      "operatingProfit": {
+        "value": 27627.81398,
+        "status": "verified",
+        "basis": "FY2025 consolidated operating income KRW 251,390,142,142 won − same-year Q3 nine-month 223,762,328,162 won = Q4 27,627,813,980 won / 1,000,000 = 27,627.813980 million; same K-IFRS scope and filing series."
+      },
+      "operatingMargin": {
+        "value": 33.3,
+        "status": "verified",
+        "basis": "27627.81398 / 83014.164855 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "hanmi-semiconductor-q2-2026",
+    "companyId": "hanmi-semiconductor",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2026",
+    "startDate": "2026-04-01",
+    "endDate": "2026-06-30",
+    "currency": "KRW",
+    "unit": "million",
+    "accountingBasis": "K-IFRS consolidated",
+    "sourceId": "hanmi-h1-2026-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 251163.039356,
+        "status": "verified",
+        "basis": "DART 2026 H1 consolidated comprehensive-income statement, April–June three-month revenue KRW 251,163,039,356 won / 1,000,000 = 251,163.039356 million. H1 302,065,115,926 − Q2 = existing Q1 50,902,076,570 won."
+      },
+      "operatingProfit": {
+        "value": 130346.798331,
+        "status": "verified",
+        "basis": "Same three-month operating income KRW 130,346,798,331 won / 1,000,000 = 130,346.798331 million. H1 138,803,055,438 − Q2 = existing Q1 8,456,257,107 won."
+      },
+      "operatingMargin": {
+        "value": 51.9,
+        "status": "verified",
+        "basis": "130346.798331 / 251163.039356 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "sumco-q1-2025",
+    "companyId": "sumco",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2025",
+    "startDate": "2025-01-01",
+    "endDate": "2025-03-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "sumco-q1-2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 102472,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. Q1 2025 standalone; revenue standalone 102472. Cumulative inputs are from the same fiscal-year original reporting series; difference retains published rounding precision."
+      },
+      "operatingProfit": {
+        "value": 5990,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. Q1 2025 standalone; operating profit/loss standalone 5990. Negative amounts remain losses, not missing. No adjusted measure or quarter allocation."
+      },
+      "operatingMargin": {
+        "value": 5.8,
+        "status": "verified",
+        "basis": "5990 / 102472 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "sumco-q2-2025",
+    "companyId": "sumco",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2025",
+    "startDate": "2025-04-01",
+    "endDate": "2025-06-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "sumco-h1-2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 102900,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. 2025 H1 205,372 revenue / 7,457 operating profit − Q1 102,472 / 5,990; revenue standalone 102900. Cumulative inputs are from the same fiscal-year original reporting series; difference retains published rounding precision."
+      },
+      "operatingProfit": {
+        "value": 1467,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. 2025 H1 205,372 revenue / 7,457 operating profit − Q1 102,472 / 5,990; operating profit/loss standalone 1467. Negative amounts remain losses, not missing. No adjusted measure or quarter allocation."
+      },
+      "operatingMargin": {
+        "value": 1.4,
+        "status": "verified",
+        "basis": "1467 / 102900 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "sumco-q3-2025",
+    "companyId": "sumco",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2025",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "sumco-q3-2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 99064,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. 2025 9m 304,436 revenue / 5,869 operating profit − H1 205,372 / 7,457; revenue standalone 99064. Cumulative inputs are from the same fiscal-year original reporting series; difference retains published rounding precision."
+      },
+      "operatingProfit": {
+        "value": -1588,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. 2025 9m 304,436 revenue / 5,869 operating profit − H1 205,372 / 7,457; operating profit/loss standalone -1588. Negative amounts remain losses, not missing. No adjusted measure or quarter allocation."
+      },
+      "operatingMargin": {
+        "value": -1.6,
+        "status": "verified",
+        "basis": "-1588 / 99064 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "sumco-q4-2025",
+    "companyId": "sumco",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 2025",
+    "startDate": "2025-10-01",
+    "endDate": "2025-12-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "sumco-fy2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 105234,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. FY2025 409,670 revenue / 1,342 operating profit − 9m 304,436 / 5,869; revenue standalone 105234. Cumulative inputs are from the same fiscal-year original reporting series; difference retains published rounding precision."
+      },
+      "operatingProfit": {
+        "value": -4527,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. FY2025 409,670 revenue / 1,342 operating profit − 9m 304,436 / 5,869; operating profit/loss standalone -4527. Negative amounts remain losses, not missing. No adjusted measure or quarter allocation."
+      },
+      "operatingMargin": {
+        "value": -4.3,
+        "status": "verified",
+        "basis": "-4527 / 105234 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "sumco-q1-2026",
+    "companyId": "sumco",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2026",
+    "startDate": "2026-01-01",
+    "endDate": "2026-03-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "sumco-q1-2026-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 101402,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. Q1 2026 standalone; revenue standalone 101402. Cumulative inputs are from the same fiscal-year original reporting series; difference retains published rounding precision."
+      },
+      "operatingProfit": {
+        "value": -5273,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. Q1 2026 standalone; operating profit/loss standalone -5273. Negative amounts remain losses, not missing. No adjusted measure or quarter allocation."
+      },
+      "operatingMargin": {
+        "value": -5.2,
+        "status": "verified",
+        "basis": "-5273 / 101402 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "sumco-q2-2026",
+    "companyId": "sumco",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2026",
+    "startDate": "2026-04-01",
+    "endDate": "2026-06-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "sumco-h1-2026-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 113614,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. 2026 H1 215,016 revenue / -6,363 operating loss − Q1 101,402 / -5,273; revenue standalone 113614. Cumulative inputs are from the same fiscal-year original reporting series; difference retains published rounding precision."
+      },
+      "operatingProfit": {
+        "value": -1090,
+        "status": "verified",
+        "basis": "issuer consolidated-results headline table p1; JPY million, rounded down below one million. 2026 H1 215,016 revenue / -6,363 operating loss − Q1 101,402 / -5,273; operating profit/loss standalone -1090. Negative amounts remain losses, not missing. No adjusted measure or quarter allocation."
+      },
+      "operatingMargin": {
+        "value": -1.0,
+        "status": "verified",
+        "basis": "-1090 / 113614 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "kinsus-q1-2025",
+    "companyId": "kinsus",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2025",
+    "startDate": "2025-01-01",
+    "endDate": "2025-03-31",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "kinsus-q1-2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 8619.744,
+        "status": "verified",
+        "basis": "Issuer consolidated statement, row 4000 Operating revenues, original NT$ thousand; direct three-month p8. Standalone original 8,619,744 thousand / 1,000 = 8,619.744 TWD million."
+      },
+      "operatingProfit": {
+        "value": 501.092,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month p8. Standalone original 501,092 thousand / 1,000 = 501.092 TWD million. Same scope and profit definition."
+      },
+      "operatingMargin": {
+        "value": 5.8,
+        "status": "verified",
+        "basis": "501.092 / 8619.744 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "kinsus-q2-2025",
+    "companyId": "kinsus",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2025",
+    "startDate": "2025-04-01",
+    "endDate": "2025-06-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "kinsus-q2-2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 9563.726,
+        "status": "verified",
+        "basis": "Issuer consolidated statement, row 4000 Operating revenues, original NT$ thousand; direct three-month p8. Standalone original 9,563,726 thousand / 1,000 = 9,563.726 TWD million."
+      },
+      "operatingProfit": {
+        "value": 619.997,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month p8. Standalone original 619,997 thousand / 1,000 = 619.997 TWD million. Same scope and profit definition."
+      },
+      "operatingMargin": {
+        "value": 6.5,
+        "status": "verified",
+        "basis": "619.997 / 9563.726 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "kinsus-q3-2025",
+    "companyId": "kinsus",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2025",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "kinsus-q3-2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 10356.188,
+        "status": "verified",
+        "basis": "Issuer consolidated statement, row 4000 Operating revenues, original NT$ thousand; direct three-month p8; nine-month 28,539,658 / 1,749,080. Standalone original 10,356,188 thousand / 1,000 = 10,356.188 TWD million."
+      },
+      "operatingProfit": {
+        "value": 627.991,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month p8; nine-month 28,539,658 / 1,749,080. Standalone original 627,991 thousand / 1,000 = 627.991 TWD million. Same scope and profit definition."
+      },
+      "operatingMargin": {
+        "value": 6.1,
+        "status": "verified",
+        "basis": "627.991 / 10356.188 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "kinsus-q4-2025",
+    "companyId": "kinsus",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 2025",
+    "startDate": "2025-10-01",
+    "endDate": "2025-12-31",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "kinsus-fy2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 10811.438,
+        "status": "verified",
+        "basis": "Issuer consolidated statement, row 4000 Operating revenues, original NT$ thousand; FY2025 p11 39,351,096 / 2,669,813 − 2025 Q3 nine-month 28,539,658 / 1,749,080; Q3 PDF 114/114Q3(E).pdf. Standalone original 10,811,438 thousand / 1,000 = 10,811.438 TWD million."
+      },
+      "operatingProfit": {
+        "value": 920.733,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; FY2025 p11 39,351,096 / 2,669,813 − 2025 Q3 nine-month 28,539,658 / 1,749,080; Q3 PDF 114/114Q3(E).pdf. Standalone original 920,733 thousand / 1,000 = 920.733 TWD million. Same scope and profit definition."
+      },
+      "operatingMargin": {
+        "value": 8.5,
+        "status": "verified",
+        "basis": "920.733 / 10811.438 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "kinsus-q1-2026",
+    "companyId": "kinsus",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2026",
+    "startDate": "2026-01-01",
+    "endDate": "2026-03-31",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "kinsus-q1-2026-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 11104.965,
+        "status": "verified",
+        "basis": "Issuer consolidated statement, row 4000 Operating revenues, original NT$ thousand; direct three-month p7. Standalone original 11,104,965 thousand / 1,000 = 11,104.965 TWD million."
+      },
+      "operatingProfit": {
+        "value": 890.638,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month p7. Standalone original 890,638 thousand / 1,000 = 890.638 TWD million. Same scope and profit definition."
+      },
+      "operatingMargin": {
+        "value": 8.0,
+        "status": "verified",
+        "basis": "890.638 / 11104.965 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "kinsus-q2-2026",
+    "companyId": "kinsus",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2026",
+    "startDate": "2026-04-01",
+    "endDate": "2026-06-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "kinsus-q2-2026-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 12496.254,
+        "status": "verified",
+        "basis": "Issuer consolidated statement, row 4000 Operating revenues, original NT$ thousand; direct three-month p7. Standalone original 12,496,254 thousand / 1,000 = 12,496.254 TWD million."
+      },
+      "operatingProfit": {
+        "value": 1678.639,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month p7. Standalone original 1,678,639 thousand / 1,000 = 1,678.639 TWD million. Same scope and profit definition."
+      },
+      "operatingMargin": {
+        "value": 13.4,
+        "status": "verified",
+        "basis": "1678.639 / 12496.254 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "unimicron-q1-2025",
+    "companyId": "unimicron",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2025",
+    "startDate": "2025-01-01",
+    "endDate": "2025-03-31",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "unimicron-q1-2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 30089.532,
+        "status": "verified",
+        "basis": "Issuer 3037 consolidated comprehensive-income statement, row 4000 Operating revenues, original NT$ thousand; direct three-month 2025 current column. Standalone 30,089,532 thousand / 1,000 = 30,089.532 TWD million."
+      },
+      "operatingProfit": {
+        "value": 1266.815,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month 2025 current column. Standalone 1,266,815 thousand / 1,000 = 1,266.815 TWD million; no adjusted/segment substitution."
+      },
+      "operatingMargin": {
+        "value": 4.2,
+        "status": "verified",
+        "basis": "1266.815 / 30089.532 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "unimicron-q2-2025",
+    "companyId": "unimicron",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2025",
+    "startDate": "2025-04-01",
+    "endDate": "2025-06-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "unimicron-q2-2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 32466.045,
+        "status": "verified",
+        "basis": "Issuer 3037 consolidated comprehensive-income statement, row 4000 Operating revenues, original NT$ thousand; direct three-month 2025 current column; H1 62,555,577 / 2,776,172. Standalone 32,466,045 thousand / 1,000 = 32,466.045 TWD million."
+      },
+      "operatingProfit": {
+        "value": 1509.357,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month 2025 current column; H1 62,555,577 / 2,776,172. Standalone 1,509,357 thousand / 1,000 = 1,509.357 TWD million; no adjusted/segment substitution."
+      },
+      "operatingMargin": {
+        "value": 4.6,
+        "status": "verified",
+        "basis": "1509.357 / 32466.045 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "unimicron-q3-2025",
+    "companyId": "unimicron",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2025",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "unimicron-q3-2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 33994.419,
+        "status": "verified",
+        "basis": "Issuer 3037 consolidated comprehensive-income statement, row 4000 Operating revenues, original NT$ thousand; direct three-month 2025 current column; 9m 96,549,996 / 4,308,716. Standalone 33,994,419 thousand / 1,000 = 33,994.419 TWD million."
+      },
+      "operatingProfit": {
+        "value": 1532.544,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month 2025 current column; 9m 96,549,996 / 4,308,716. Standalone 1,532,544 thousand / 1,000 = 1,532.544 TWD million; no adjusted/segment substitution."
+      },
+      "operatingMargin": {
+        "value": 4.5,
+        "status": "verified",
+        "basis": "1532.544 / 33994.419 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "unimicron-q4-2025",
+    "companyId": "unimicron",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 2025",
+    "startDate": "2025-10-01",
+    "endDate": "2025-12-31",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "unimicron-fy2025-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 34690.886,
+        "status": "verified",
+        "basis": "Issuer 3037 consolidated comprehensive-income statement, row 4000 Operating revenues, original NT$ thousand; FY2025 131,240,882 / 6,674,372 − 2025 9m 96,549,996 / 4,308,716; Q3 source https://www.unimicron.com/files/money/Earnings/ch/114年第三季_ch.pdf. Standalone 34,690,886 thousand / 1,000 = 34,690.886 TWD million."
+      },
+      "operatingProfit": {
+        "value": 2365.656,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; FY2025 131,240,882 / 6,674,372 − 2025 9m 96,549,996 / 4,308,716; Q3 source https://www.unimicron.com/files/money/Earnings/ch/114年第三季_ch.pdf. Standalone 2,365,656 thousand / 1,000 = 2,365.656 TWD million; no adjusted/segment substitution."
+      },
+      "operatingMargin": {
+        "value": 6.8,
+        "status": "verified",
+        "basis": "2365.656 / 34690.886 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "unimicron-q1-2026",
+    "companyId": "unimicron",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 2026",
+    "startDate": "2026-01-01",
+    "endDate": "2026-03-31",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "unimicron-q1-2026-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 37446.455,
+        "status": "verified",
+        "basis": "Issuer 3037 consolidated comprehensive-income statement, row 4000 Operating revenues, original NT$ thousand; direct three-month 2026 current column. Standalone 37,446,455 thousand / 1,000 = 37,446.455 TWD million."
+      },
+      "operatingProfit": {
+        "value": 2756.634,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month 2026 current column. Standalone 2,756,634 thousand / 1,000 = 2,756.634 TWD million; no adjusted/segment substitution."
+      },
+      "operatingMargin": {
+        "value": 7.4,
+        "status": "verified",
+        "basis": "2756.634 / 37446.455 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "unimicron-q2-2026",
+    "companyId": "unimicron",
+    "periodType": "quarterly",
+    "periodLabel": "Q2 2026",
+    "startDate": "2026-04-01",
+    "endDate": "2026-06-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "unimicron-q2-2026-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 42889.818,
+        "status": "verified",
+        "basis": "Issuer 3037 consolidated comprehensive-income statement, row 4000 Operating revenues, original NT$ thousand; direct three-month 2026 current column; H1 80,336,273 / 9,407,786. Standalone 42,889,818 thousand / 1,000 = 42,889.818 TWD million."
+      },
+      "operatingProfit": {
+        "value": 6651.152,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month 2026 current column; H1 80,336,273 / 9,407,786. Standalone 6,651,152 thousand / 1,000 = 6,651.152 TWD million; no adjusted/segment substitution."
+      },
+      "operatingMargin": {
+        "value": 15.5,
+        "status": "verified",
+        "basis": "6651.152 / 42889.818 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "unimicron-q3-2026",
+    "companyId": "unimicron",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+    "sourceId": "unimicron-q3-2026-v15",
+    "verifiedAt": "2026-10-31",
+    "metrics": {
+      "revenue": {
+        "value": 52649.835,
+        "status": "verified",
+        "basis": "Issuer 3037 consolidated comprehensive-income statement, row 4000 Operating revenues, original NT$ thousand; direct three-month 2026 current column; 9m 132,986,108 / 19,935,519. Standalone 52,649,835 thousand / 1,000 = 52,649.835 TWD million."
+      },
+      "operatingProfit": {
+        "value": 10527.733,
+        "status": "verified",
+        "basis": "Same statement, row 6900 Operating income, original NT$ thousand; direct three-month 2026 current column; 9m 132,986,108 / 19,935,519. Standalone 10,527,733 thousand / 1,000 = 10,527.733 TWD million; no adjusted/segment substitution."
+      },
+      "operatingMargin": {
+        "value": 20.0,
+        "status": "verified",
+        "basis": "10527.733 / 52649.835 × 100, rounded to one decimal percentage point; same quarter and basis."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  }
+]

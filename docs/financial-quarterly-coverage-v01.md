@@ -1,15 +1,15 @@
 # Financial quarterly coverage v0.1
 
-- Checked at: 2026-10-29
+- Checked at: 2026-10-31
 - Registry companies: 100
-- Financial-history shard manifest digest: f5de03ee66bbf64067c51210318d84416fc493f676810ffa03a6e96f596b4cdc
-- Complete six quarters: 87
-- Partial quarterly (1–5): 1
-- Awaiting next reported quarter: 1
+- Financial-history shard manifest digest: ace74405b23a15ab3d04a3c19b405c08a2bffbf1bccce11c24b910f13f8b70fa
+- Complete six quarters: 92
+- Partial quarterly (1–5): 0
+- Awaiting next reported quarter: 0
 - Semiannual only: 0
 - Annual only: 0
 - Private/no quarterly disclosure: 0
-- Needs review: 11
+- Needs review: 8
 
 ## Companies with six or more actual quarterly records
 
@@ -48,12 +48,15 @@
 - ge-vernova
 - globalfoundries
 - globalwafers
+- hanmi-semiconductor
 - ibiden
 - infineon
 - intel
 - jcet
 - johnson-controls
 - keyence
+- kinsus
+- kioxia
 - kla
 - kokusai-electric
 - lam-research
@@ -87,6 +90,7 @@
 - smc
 - smic
 - stmicroelectronics
+- sumco
 - sumitomo-electric
 - synopsys
 - te-connectivity
@@ -97,6 +101,7 @@
 - trane-technologies
 - tsmc
 - umc
+- unimicron
 - vertiv
 - western-digital
 - yaskawa
@@ -144,7 +149,7 @@
 | ge-vernova | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1996810/000199681026000148/gev-20260630.htm) |
 | globalfoundries | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.gf.com/news-releases/news-release-details/globalfoundries-reports-second-quarter-2026-financial-results) |
 | globalwafers | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sas-globalwafers.com/wp-content/uploads/2026/05/GlobalWafers_2026Q2-consolidated-financial-statement_EN.pdf) |
-| hanmi-semiconductor | quarterly | 2 / 6 | Q1 2026 (2026-03-31) | partial-quarterly | 一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。 | [official](https://kind.krx.co.kr/external/2026/05/15/001759/20260515003902/11013.htm) |
+| hanmi-semiconductor | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://dart.fss.or.kr/report/viewer.do?rcpNo=20260814003665&dcmNo=11538002&eleId=21&offset=244111&length=37196&dtd=dart4.xsd) |
 | hexagon | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://mb.cision.com/Main/387/4300053/3907199.pdf) |
 | ibiden | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.ibiden.com/ir/items/tannshinn2026Q1.pdf) |
 | infineon | quarterly | 6 / 6 | FY2026 Q3 (2026-06-30) | complete-six-quarters | — | [official](https://www.infineon.com/press-release/2026/infpr202608-125) |
@@ -152,8 +157,8 @@
 | jcet | quarterly | 9 / 6 | Q3 2026 (2026-09-30) | complete-six-quarters | — | [official](https://static.cninfo.com.cn/finalpage/2026-10-23/1225617213.PDF) |
 | johnson-controls | quarterly | 6 / 6 | FY2026 Q3 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/833444/000083344426000087/jci-20260630.htm) |
 | keyence | quarterly | 6 / 6 | FY2026 Q1 (2026-06-20) | complete-six-quarters | — | [official](https://www.keyence.co.jp/investor/financial-info/) |
-| kinsus | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.kinsus.com.tw/en-global/Download/annual-general-meeting) |
-| kioxia | quarterly | 5 / 6 | FY2027 Q1 (2026-06-30) | awaiting-next-quarter | FY2027 Q2は現時点で公式実績が未公表のため収録しない。公式IRカレンダー上の発表予定は実績値ではない。 | [official](https://ssl4.eir-parts.net/doc/285A/tdnet/2859905/00.pdf) |
+| kinsus | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.kinsus.com.tw/upload/media/ir/financial-information/financial-report/115/115Q2(E).pdf) |
+| kioxia | quarterly | 6 / 6 | FY2027 Q2 (2026-09-30) | complete-six-quarters | — | [official](https://ssl4.eir-parts.net/doc/285A/tdnet/2902676/00.pdf) |
 | kla | quarterly | 6 / 6 | Q4 FY2026 (2026-06-30) | complete-six-quarters | — | [official](https://ir.kla.com/news-events/press-releases/detail/518/kla-corporation-reports-fiscal-2026-fourth-quarter-and-full) |
 | kokusai-electric | quarterly | 6 / 6 | FY2027 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://ssl4.eir-parts.net/doc/6525/tdnet/2864411/00.pdf) |
 | lam-research | quarterly | 6 / 6 | June 2026 quarter (2026-06-28) | complete-six-quarters | — | [official](https://investor.lamresearch.com/2026-07-29-Lam-Research-Corporation-Reports-Financial-Results-for-the-Quarter-Ended-June-28%2C-2026) |
@@ -190,7 +195,7 @@
 | smc | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://contents.xj-storage.jp/xcontents/AS00674b/e2a4f297/57ba/4a73/9049/a2b4c7cf9942/140120260806513096.pdf) |
 | smic | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0813/2026081300353.pdf) |
 | stmicroelectronics | quarterly | 6 / 6 | Q2 2026 (2026-06-27) | complete-six-quarters | — | [official](https://investors.st.com/static-files/bdacd978-231f-4e8c-bfde-f5cc6c53250d) |
-| sumco | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.sumcosi.com/english/ir/library/shareholders/27/pdf/nc_e_27.pdf) |
+| sumco | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://ssl4.eir-parts.net/doc/3436/tdnet/2864795/00.pdf) |
 | sumitomo-electric | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://sumitomoelectric.com/sites/default/files/2026-07/download_documents/fb2026_1g.pdf) |
 | synopsys | quarterly | 6 / 6 | Q3 FY2026 (2026-07-31) | complete-six-quarters | — | [official](https://investor.synopsys.com/news/news-details/2026/Synopsys-Posts-Financial-Results-for-Third-Quarter-Fiscal-Year-2026/) |
 | te-connectivity | quarterly | 6 / 6 | FY2026 Q3 (2026-06-26) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1385157/000110465926086509/tel-20260626x10q.htm) |
@@ -201,7 +206,7 @@
 | trane-technologies | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1466258/000162828026050743/exhibit991-q22026earningsr.htm) |
 | tsmc | quarterly | 7 / 6 | Q3 2026 (2026-09-30) | complete-six-quarters | — | [official](https://investor.tsmc.com/english/encrypt/files/encrypt_file/qr/phase4_reports/2026-10/f53a64fd40fc0b453f94e077e5aba8cad506f27b/3Q26%20ManagementReport.pdf) |
 | umc | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.umc.com/upload/media/08_Investors/Financials/Quarterly_Results/Quarterly_2020-2029_English_pdf/2026/Q2_2026/UMC26Q2_report.pdf) |
-| unimicron | needs-review | 0 / 6 | — (—) | needs-review | 既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。 | [official](https://www.unimicron.com/money08.html) |
+| unimicron | quarterly | 7 / 6 | Q3 2026 (2026-09-30) | complete-six-quarters | — | [official](https://doc.twse.com.tw/server-java/t57sb01?step=9&kind=A&co_id=3037&filename=202603_3037_AI1.pdf) |
 | vertiv | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-Second-Quarter-2026-with-Diluted-EPS-Growth-of-53-Adjusted-Diluted-EPS-Growth-of-60-Raises-Full-Year-2026-Guidance-Across-All-Key-Metrics/default.aspx) |
 | western-digital | quarterly | 6 / 6 | Q4 FY2026 (2026-07-03) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/106040/000162828026053305/a4ex991-pressreleaseq426.htm) |
 | yaskawa | quarterly | 6 / 6 | FY2027 Q2 (2026-08-31) | complete-six-quarters | — | [official](https://www.fse.or.jp/files/lis_tkj/26100965061.pdf) |

@@ -1,8 +1,8 @@
 # 100社財務品質監査
 
-データ基準日: **2026-10-29**
+データ基準日: **2026-10-31**
 
-入力SHA-256: `fa1aa3c59754e863fdf230d51647d8e1c923abe7b492b0da4f68f85a23a524f1`
+入力SHA-256: `0c50e56ec32aa0ca2678f97e401fa25b5e1c8b81ada9539df7aa8464de3489ee`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
@@ -13,18 +13,18 @@
 | 項目 | 件数 |
 | --- | ---: |
 | 企業 | 100 |
-| 期間 | 669 |
-| 指標 | 3345 |
+| 期間 | 693 |
+| 指標 | 3465 |
 | cash-flow override | 12 |
 
 ## 指標の検証状態
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `verified` | 2364 | 一次資料と値・算式を検証済み |
+| `verified` | 2436 | 一次資料と値・算式を検証済み |
 | `source-linked` | 3 | Sourceに紐付くがverifiedではない値 |
 | `needs-review` | 0 | 値はあるが再確認が必要 |
-| `missing` | 978 | 欠損理由ステータスを持つ値なし指標 |
+| `missing` | 1026 | 欠損理由ステータスを持つ値なし指標 |
 
 ## FCF / Capex充足
 
@@ -33,7 +33,7 @@
 | `both-present` | 181 | FCF and Capex both have values |
 | `fcf-missing-only` | 0 | FCF is missing while Capex has a value |
 | `capex-missing-only` | 0 | Capex is missing while FCF has a value |
-| `both-missing` | 488 | FCF and Capex are both missing |
+| `both-missing` | 512 | FCF and Capex are both missing |
 
 ## Capex定義
 
@@ -47,14 +47,14 @@
 | `broader-non-current-assets` | 4 | A broader non-current/fixed/long-term asset cash-investment line |
 | `net-capex` | 28 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 12 | REIT or investment-property/real-estate investment definition |
-| `not-collected` | 478 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
+| `not-collected` | 502 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
 | `unclassified` | 0 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `direct-gaap-ifrs-operating-income` | 573 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
+| `direct-gaap-ifrs-operating-income` | 597 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
 | `ebit` | 2 | Reported EBIT used as the operating-profit measure |
 | `reconstructed-operating-income` | 25 | Atlas reconstructs operating income from reported operating line items |
 | `source-linked` | 1 | Value is retained as source-linked rather than verified |
@@ -67,7 +67,7 @@
 | `atlas-formula-aligned` | 8 | Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas |
 | `atlas-definition-difference` | 0 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
 | `unresolved` | 0 | Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely |
-| `not-applicable` | 661 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
+| `not-applicable` | 685 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
 
 ## 特殊比較フラグ
 
@@ -159,7 +159,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | ge-vernova | GE Vernova（GEベルノバ） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | special-operating-profit-definition |
 | globalfoundries | GlobalFoundries（グローバルファウンドリーズ） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | — |
 | globalwafers | GlobalWafers（グローバルウェーハズ） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | ppe-only |
-| hanmi-semiconductor | HANMI Semiconductor（ハンミ・セミコンダクター） | 4 | 16 | 0 | 0 | 4 | 2 | 0 | 0 | 2 | special-operating-profit-definition |
+| hanmi-semiconductor | HANMI Semiconductor（ハンミ・セミコンダクター） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | special-operating-profit-definition |
 | hexagon | Hexagon（ヘキサゴン） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
 | ibiden | イビデン | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | ppe-only |
 | infineon | Infineon（インフィニオン） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
@@ -167,8 +167,8 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | jcet | JCET（長電科技） | 9 | 31 | 0 | 0 | 14 | 2 | 0 | 0 | 7 | broad-capex |
 | johnson-controls | Johnson Controls（ジョンソンコントロールズ） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | discontinued-operations, reconstructed-operating-income, broad-capex, continuing-operations-scope |
 | keyence | キーエンス | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | special-operating-profit-definition |
-| kinsus | Kinsus（景碩科技） | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
-| kioxia | キオクシアホールディングス | 7 | 35 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | derived-single-quarter, special-operating-profit-definition |
+| kinsus | Kinsus（景碩科技） | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | — |
+| kioxia | キオクシアホールディングス | 8 | 38 | 0 | 0 | 2 | 7 | 0 | 0 | 1 | derived-single-quarter, special-operating-profit-definition |
 | kla | KLA（ケーエルエー） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | reconstructed-operating-income, ppe-only |
 | kokusai-electric | KOKUSAI ELECTRIC（国際電気） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | special-operating-profit-definition |
 | lam-research | Lam Research（ラムリサーチ） | 8 | 34 | 0 | 0 | 6 | 5 | 0 | 0 | 3 | — |
@@ -205,7 +205,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | smc | SMC | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | — |
 | smic | SMIC（中芯国際） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | derived-single-quarter |
 | stmicroelectronics | STMicroelectronics（STマイクロエレクトロニクス） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | net-basis-capex |
-| sumco | SUMCO | 2 | 6 | 0 | 0 | 4 | 0 | 0 | 0 | 2 | — |
+| sumco | SUMCO | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | — |
 | sumitomo-electric | 住友電気工業 | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | — |
 | synopsys | Synopsys（シノプシス） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | net-basis-capex |
 | te-connectivity | TE Connectivity（TEコネクティビティ） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | ppe-only, company-net-capex-fcf-not-used |
@@ -216,7 +216,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | trane-technologies | Trane Technologies（トレイン・テクノロジーズ） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | — |
 | tsmc | TSMC（台湾積体電路製造） | 7 | 27 | 0 | 0 | 8 | 3 | 0 | 0 | 4 | derived-single-quarter |
 | umc | UMC（聯華電子） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | ppe-only |
-| unimicron | Unimicron（欣興電子） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
+| unimicron | Unimicron（欣興電子） | 9 | 31 | 0 | 0 | 14 | 2 | 0 | 0 | 7 | — |
 | vertiv | Vertiv（ヴァーティブ） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | — |
 | western-digital | Western Digital（ウエスタンデジタル） | 8 | 34 | 0 | 0 | 6 | 5 | 0 | 0 | 3 | net-basis-capex, special-operating-profit-definition |
 | yaskawa | 安川電機 | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
