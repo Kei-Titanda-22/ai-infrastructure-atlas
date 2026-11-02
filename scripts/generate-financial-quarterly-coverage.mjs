@@ -12,6 +12,7 @@ const baselineCheckedAt = '2026-09-23';
 const readJson = async path => JSON.parse(await readFile(path, 'utf8'));
 
 const sourceManifest = await readJson(join(dataDirectory, 'source-registry-manifest.json'));
+const reviewedBlockers = await readJson(join(dataDirectory, 'financial-quarterly-blockers-v16.json'));
 const sources = (await Promise.all(sourceManifest.shards.map(async shard => readJson(join(dataDirectory, shard))))).flat();
 const sourceById = new Map(sources.map(source => [source.id, source]));
 const companyFiles = (await readdir(join(dataDirectory, 'companies'))).filter(file => file.endsWith('.json')).sort();
@@ -81,7 +82,7 @@ const coverageEntry = company => {
       latestPeriodLabel: latest?.periodLabel ?? null,
       latestEndDate: latest?.endDate ?? null,
       coverageStatus: 'partial-quarterly',
-      blockerReason: '一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。',
+      blockerReason: reviewedBlockers.reasons[company.id] ?? '一次資料で検証済みの単独四半期は6件未満。未収録期を予想・均等割り・為替換算で補完しない。',
       officialSourceUrl: source.url,
       checkedAt,
     };
@@ -95,7 +96,7 @@ const coverageEntry = company => {
     latestPeriodLabel: null,
     latestEndDate: null,
     coverageStatus: 'needs-review',
-    blockerReason: '既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。',
+    blockerReason: reviewedBlockers.reasons[company.id] ?? '既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。',
     officialSourceUrl: source.url,
     checkedAt,
   };

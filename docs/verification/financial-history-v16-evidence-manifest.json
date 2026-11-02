@@ -1,0 +1,211 @@
+{
+  "schemaVersion": "v16-evidence-1",
+  "baselineMainSha": "7a6d8d8fe44b8760a9e507f38beb111629ede4b8",
+  "branch": "codex/financial-history-six-period-coverage-v16",
+  "auditAsOfJst": "2026-11-02T13:45:29+09:00",
+  "evidenceDirectory": "C:\\Users\\mkato\\Documents\\Codex\\2026-08-31\\github-plugin-github-openai-curated-remote\\work\\ai-infrastructure-atlas-financial-history-six-period-coverage-v16-evidence",
+  "environment": {
+    "nodeExecutable": "C:/Users/mkato/Documents/Codex/2026-08-31/github-plugin-github-openai-curated-remote/work/ai-infrastructure-atlas-financial-history-six-period-coverage-v13-evidence/node-v22.23.4/node-v22.23.4-win-x64/node.exe",
+    "node": "v22.23.4",
+    "astro": "7.2.9",
+    "pagefind": "1.5.2",
+    "pythonExecutable": "C:/Users/mkato/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+    "dependencyReference": "Unchanged verified v13 node_modules junction"
+  },
+  "sourceInputMapSha256": "6863dba54795a5532661db66ddcd7444266a4b7c2e30af7c66da1e40671af5fe",
+  "builds": [
+    {
+      "id": "run1",
+      "startedAt": "2026-11-02T14:08:38.5237198+09:00",
+      "endedAt": "2026-11-02T05:09:00.021Z",
+      "commands": [
+        "astro build",
+        "pagefind --site dist",
+        "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+        "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"
+      ],
+      "exitCodes": {
+        "astro": 0,
+        "pagefind": 0,
+        "compare": 0,
+        "japanese": 0
+      },
+      "mapFile": "run1-map.json",
+      "mapSha256": "a084d409237653d597776bc857d2d74c606a8eb8ee40d2d4f2e401fc7c50f167"
+    },
+    {
+      "id": "run2",
+      "startedAt": "2026-11-02T14:09:00.0397569+09:00",
+      "endedAt": "2026-11-02T05:09:21.240Z",
+      "commands": [
+        "astro build",
+        "pagefind --site dist",
+        "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+        "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"
+      ],
+      "exitCodes": {
+        "astro": 0,
+        "pagefind": 0,
+        "compare": 0,
+        "japanese": 0
+      },
+      "mapFile": "run2-map.json",
+      "mapSha256": "d625d5fd9e5ea8282ff88757577fff91bd37438b183b22042e6b35143d29008f"
+    }
+  ],
+  "savedEvidence": {
+    "run1-map.json": "a084d409237653d597776bc857d2d74c606a8eb8ee40d2d4f2e401fc7c50f167",
+    "run2-map.json": "d625d5fd9e5ea8282ff88757577fff91bd37438b183b22042e6b35143d29008f",
+    "current-map.json": "37ff6ee18b98905f2459c3993342af9a172218b94dbb37b893319738feec7afb",
+    "run1-astro.log": "abefe47404c1d436bdc9a9c6deea3ef1bafaa6e7cc9c0e0c71ddb47a893e50f3",
+    "run1-pagefind.log": "8296b4a499e13e2d164e396d0a438b48d1f5746e219b831c9826306c4ec38b12",
+    "run1-compare.log": "90f3e99a760771d3a7656f6d779a6d4e475cbab64a93dd3f5212ddc9b10de84e",
+    "run1-japanese.log": "8dca48a4384168816fb87d34dafa21042b85681448001d66d5470c19f6aa5646",
+    "run2-astro.log": "c62527b7b2d2b402433b7db269c81b9b18520470f9833b3ca585ead170ad0b9c",
+    "run2-pagefind.log": "5a67759d9e6a4ab2823226edb8b4a57cc3a91d092b920f1b487025a83f5d1399",
+    "run2-compare.log": "90f3e99a760771d3a7656f6d779a6d4e475cbab64a93dd3f5212ddc9b10de84e",
+    "run2-japanese.log": "8dca48a4384168816fb87d34dafa21042b85681448001d66d5470c19f6aa5646",
+    "validate-data-final.log": "e0103d3c64dd1e3dea3e72f0af5bd8d7e66bdddcf0feb51def812a93343803ae",
+    "secret-scan-final.log": "80a0970d26373d3079cbb0b1b6219523901700c9594db3209e047f4259dfdbd0",
+    "secret-scan-targets.txt": "1018e9e20dc23c95a3041ffc0d4064a4534ad1613415ead762b80c7b93d38e7a",
+    "detail-scope-final.log": "cde858be19d44f18ced31e30e4c735f721f7bfa1e9b46c7b5f1a394b3b80c66b",
+    "preview-qa-v16.json": "e38f9726eec6b5c5eab84d8f36f41f2f69830d368a296d08f810c437699196c8"
+  },
+  "results": {
+    "financialRecords": 700,
+    "companyCount": 100,
+    "newRecordCount": 7,
+    "newRecordsByCompany": {
+      "aptiv": 1,
+      "shinko-electric": 6
+    },
+    "coverage": {
+      "complete": 93,
+      "partial": 1,
+      "awaitingNextQuarter": 0,
+      "needsReview": 6
+    },
+    "activeFreeze": "financial-history-six-period-coverage-v16",
+    "freezeMatch": "101/101",
+    "changedCompareAssets": [
+      "aptiv/index.html",
+      "shinko-electric/index.html"
+    ],
+    "unchangedCompareArtifactCount": 99,
+    "unchangedIncludesShell": true,
+    "nonFinancialHtmlDigest": "8af7196936203df409acb35b65f7fc4b66ea3369857220981bd96b9ee8c73c86",
+    "nonFinancialHtmlMatch": "101/101 vs predecessor",
+    "changedCompanyDetailPages": [
+      "aptiv/index.html",
+      "shinko-electric/index.html"
+    ],
+    "unchangedCompanyDetailPageCount": 98,
+    "changedDetailSectionScope": "financials and sources only",
+    "artifactMapSha256": "0659051171303ef43ca0ebac473ceb127d0c9f132b19e1dd02eacafa5191d012",
+    "companyDetailMapSha256": "7a24c8d8c8028438d94fc014867ca7f46786b947c5ec784e01a409ea578523b0",
+    "routeCount": 210,
+    "routeSetSha256": "3a5ed3a8b844b2efcb850fcef38b324dda32fe3318cd07b0526ce616555d57fc",
+    "pagefindUrlCount": 105,
+    "pagefindUrlSetSha256": "0f9b1da3f48cc450ebb445b383d747b2ffd61ee76cf0168c3e711e5be626263f",
+    "compareHtmlBytes": 1169129,
+    "compareHtmlSha256": "dda303cc54d444c2e8d06b2ce9d8b25270962e3c008fbeffd54c72e208f911cc",
+    "compareDiagnosticLimitBytes": 1217802,
+    "comparePreviousBytes": 1159812,
+    "compareIncreaseBytes": 9317,
+    "financialPayloadIncreaseBytes": 9317,
+    "onDemandLimitsChanged": false,
+    "twoBuildMapsMatch": true,
+    "currentDistMapMatch": true
+  },
+  "auditScope": {
+    "directlyReviewedCompanyCount": 8,
+    "adoptedCompanyCount": 2,
+    "heldCompanyCount": 6,
+    "inheritedCompanyCount": 92,
+    "reviewDepthCounts": {
+      "numericStatement": 2,
+      "numericButScopeBlocked": 1,
+      "statementScopeReviewed": 3,
+      "retrievalBlocked": 1,
+      "retrievalAndScopeBlocked": 1
+    },
+    "latestReportedPeriodStatusIsSeparateFromSixQuarterCompleteness": true
+  },
+  "validation": {
+    "validateDataExitCode": 0,
+    "secretScanEquivalentExitCode": 0,
+    "secretScanTargetCount": 601,
+    "secretScanFindings": 0,
+    "triageSemanticRecordsUnchanged": 779,
+    "triageSampleRecordsAndOrderUnchanged": 87,
+    "detailScopeExitCode": 0,
+    "compareDistExitCodes": [
+      0,
+      0
+    ],
+    "japaneseDistExitCodes": [
+      0,
+      0
+    ]
+  },
+  "previewQa": {
+    "schemaVersion": "v16-preview-qa-1",
+    "previewUrl": "http://127.0.0.1:4393/ai-infrastructure-atlas/",
+    "servedAsset": "shinko-electric company asset returned HTTP 200 with SHA-256 equal to final dist",
+    "browser": "Chrome Computer Use",
+    "viewports": [
+      1024,
+      390,
+      360
+    ],
+    "companyChecks": {
+      "aptiv": {
+        "quarterlyPointsPerChart": 1,
+        "quarterlyPeriods": [
+          "Q3 2025"
+        ],
+        "financialTableRows": 3,
+        "sourceLink": "https://www.sec.gov/Archives/edgar/data/1521332/000152133225000051/aptv-20250930.htm",
+        "newQuarterOperatingProfitUsdMillion": -175
+      },
+      "shinko-electric": {
+        "quarterlyPointsPerChart": 6,
+        "quarterlyPeriods": [
+          "FY2023 Q3",
+          "FY2023 Q4",
+          "FY2024 Q1",
+          "FY2024 Q2",
+          "FY2024 Q3",
+          "FY2024 Q4"
+        ],
+        "financialTableRows": 8,
+        "sourceLinkExample": "https://www.shinko.co.jp/ir/docs/bn2025_q1.pdf"
+      }
+    },
+    "observations": [
+      "Both revenue and operating-margin charts used identical quarterly periods. The quarterly graphs did not include annual table rows.",
+      "Aptiv and Shinko detail pages had no document horizontal overflow at 1024, 390 or 360 px; the financial section computed font size was 16 px.",
+      "The displayed financial history tables retained the existing annual rows and official source links. Link destinations were checked in the DOM; external source pages were not opened in this browser QA.",
+      "Company list search for Shinko returned 1 visible row and 1/100. Japan country filter and country sort returned 27 visible rows and 27/100.",
+      "Compare purpose preset selected 4 companies. Free selection preserved Aptiv, Shinko, NVIDIA and AMD URL order and four distinct pale backgrounds. Attempting a fifth company left the selection at 4/4. Direct URL restored Shinko then Aptiv order; back and forward navigation changed the visible selection with the URL.",
+      "Compare summary/expanded toggle, all-clear, 44 by 44 px Evidence marker, drawer, Escape and focus return to the marker worked.",
+      "Atlas stage navigation opened the company list with stage=compute. At 390 px the stage cards were vertically aligned with no document overflow. Pagefind search for Shinko returned the company detail and financial history results.",
+      "At 1024 px the Kioxia revenue and margin FY axis labels had no bounding-box overlap. The chart-label regression test also covers resize and font-layout behavior."
+    ],
+    "documentHorizontalOverflowPixels": 0,
+    "siteConsoleErrorCount": 0,
+    "visibleTextClippingObserved": false,
+    "limitations": [
+      "External primary-source links were matched to the records but were not opened in this local browser QA.",
+      "The 92 non-target companies inherit their previous audit judgment and were not freshly checked for latest-period publication."
+    ]
+  },
+  "caveats": [
+    "The initial sandboxed Pagefind attempt indexed 105 pages but failed with Windows AccessDenied; the two final approved runs exited 0. The failed attempt is not a pass.",
+    "The full npm validate command reached validate:secrets but was interrupted while traversing the unchanged node_modules junction. npm run validate:data exited 0. The unchanged repository secret patterns and exclusions were applied with ignored directories pruned before traversal; 601 target files, zero findings, exit 0.",
+    "Historical triage v01 prints 22 MATERIAL while its check exits 0; the current v02 validation is 87/87 exact.",
+    "Pagefind auxiliary files may vary by byte; the frozen 101 artifacts and URL set of 105 match across both builds.",
+    "The other 92 companies retain historical latest-period judgments and were not directly checked at the v16 cutoff."
+  ],
+  "recheck": "Hash each savedEvidence file. Compare run1-map.json, run2-map.json and current-map.json on inputMapDigest, artifactMapDigest, companyDetailMapDigest, routeSetDigest, pagefindUrlSetDigest, compareSha256 and compareBytes. Recompute 101 frozen asset hashes, 100 detail hashes and Compare size from dist. Check changed paths against the v15 fixture and detail-scope-final.log."
+}

@@ -1,8 +1,8 @@
 # 100社財務品質監査
 
-データ基準日: **2026-10-31**
+データ基準日: **2026-11-02**
 
-入力SHA-256: `9991cf2d7332b14630d85ac203936bb0496b82d0b5724b6f2b22a6a2d0fd37c0`
+入力SHA-256: `c6ffcd0abd548a86de0e6a4a402b71f80f04a228c087bedd12bd638390ee9dc8`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
@@ -13,18 +13,18 @@
 | 項目 | 件数 |
 | --- | ---: |
 | 企業 | 100 |
-| 期間 | 693 |
-| 指標 | 3465 |
+| 期間 | 700 |
+| 指標 | 3500 |
 | cash-flow override | 12 |
 
 ## 指標の検証状態
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `verified` | 2436 | 一次資料と値・算式を検証済み |
+| `verified` | 2457 | 一次資料と値・算式を検証済み |
 | `source-linked` | 3 | Sourceに紐付くがverifiedではない値 |
 | `needs-review` | 0 | 値はあるが再確認が必要 |
-| `missing` | 1026 | 欠損理由ステータスを持つ値なし指標 |
+| `missing` | 1040 | 欠損理由ステータスを持つ値なし指標 |
 
 ## FCF / Capex充足
 
@@ -33,7 +33,7 @@
 | `both-present` | 181 | FCF and Capex both have values |
 | `fcf-missing-only` | 0 | FCF is missing while Capex has a value |
 | `capex-missing-only` | 0 | Capex is missing while FCF has a value |
-| `both-missing` | 512 | FCF and Capex are both missing |
+| `both-missing` | 519 | FCF and Capex are both missing |
 
 ## Capex定義
 
@@ -47,18 +47,18 @@
 | `broader-non-current-assets` | 4 | A broader non-current/fixed/long-term asset cash-investment line |
 | `net-capex` | 28 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 12 | REIT or investment-property/real-estate investment definition |
-| `not-collected` | 502 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
+| `not-collected` | 509 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
 | `unclassified` | 0 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `direct-gaap-ifrs-operating-income` | 597 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
+| `direct-gaap-ifrs-operating-income` | 600 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
 | `ebit` | 2 | Reported EBIT used as the operating-profit measure |
 | `reconstructed-operating-income` | 25 | Atlas reconstructs operating income from reported operating line items |
 | `source-linked` | 1 | Value is retained as source-linked rather than verified |
-| `special-case` | 68 | Missing, period-derived, or otherwise not safely classified as a direct reported measure |
+| `special-case` | 72 | Missing, period-derived, or otherwise not safely classified as a direct reported measure |
 
 ## Adjusted / Non-GAAP FCF判定
 
@@ -67,13 +67,13 @@
 | `atlas-formula-aligned` | 8 | Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas |
 | `atlas-definition-difference` | 0 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
 | `unresolved` | 0 | Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely |
-| `not-applicable` | 685 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
+| `not-applicable` | 692 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
 
 ## 特殊比較フラグ
 
 | フラグ | 期間数 | 定義 |
 | --- | ---: | --- |
-| `goodwill-impairment` | 8 | Reported result includes or discusses goodwill impairment |
+| `goodwill-impairment` | 9 | Reported result includes or discusses goodwill impairment |
 | `discontinued-operations` | 10 | Continuing/discontinued-operation boundaries affect comparison |
 | `non-consolidated-subsidiary` | 2 | Non-consolidated subsidiary company-only disclosure |
 | `reit` | 8 | REIT financial/capital-investment structure |
@@ -99,7 +99,7 @@
 | `fcf-capex-scope-mismatch` | 0 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
 | `derived-single-quarter` | 9 | A single-quarter value is derived from cumulative periods |
 | `unclassified-capex-definition` | 0 | A populated Capex value remains definition-unclassified |
-| `special-operating-profit-definition` | 68 | Operating-profit definition is classified as a special case |
+| `special-operating-profit-definition` | 72 | Operating-profit definition is classified as a special case |
 
 ## 要確認キュー
 
@@ -129,7 +129,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | amphenol | Amphenol（アンフェノール） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | ppe-only, special-operating-profit-definition |
 | analog-devices | Analog Devices（アナログ・デバイセズ） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | reconstructed-operating-income, net-basis-capex, ppe-only, government-incentive-netting-unresolved |
 | applied-materials | Applied Materials（アプライド・マテリアルズ） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | reconstructed-operating-income, ppe-only |
-| aptiv | Aptiv（アプティブ） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | goodwill-impairment, broad-capex |
+| aptiv | Aptiv（アプティブ） | 3 | 13 | 0 | 0 | 2 | 2 | 0 | 0 | 1 | goodwill-impairment, broad-capex, special-operating-profit-definition |
 | arista | Arista Networks（アリスタ・ネットワークス） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | — |
 | arm | Arm（アーム） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | ppe-only |
 | ase-technology | ASE Technology（ASEテクノロジー） | 6 | 24 | 0 | 0 | 6 | 3 | 0 | 0 | 3 | net-basis-capex, special-operating-profit-definition |
@@ -199,7 +199,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | screen-holdings | SCREENホールディングス | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | seagate | Seagate（シーゲイト） | 9 | 35 | 0 | 0 | 10 | 4 | 0 | 0 | 5 | ppe-only, company-reported-fcf |
 | shin-etsu-chemical | 信越化学工業 | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | asset-scope-unresolved, rounded-source-value, informal-comparative-source |
-| shinko-electric | 新光電気工業 | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | — |
+| shinko-electric | 新光電気工業 | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | special-operating-profit-definition |
 | siemens-energy | Siemens Energy（シーメンス・エナジー） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | sk-hynix | SK hynix（SKハイニックス） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | special-operating-profit-definition |
 | smc | SMC | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | — |

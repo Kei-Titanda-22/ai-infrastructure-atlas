@@ -1,0 +1,282 @@
+[
+  {
+    "id": "aptiv-q3-2025-v16",
+    "companyId": "aptiv",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2025",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "aptiv-2025-q3-10q-v16",
+    "verifiedAt": "2026-11-02",
+    "metrics": {
+      "revenue": {
+        "value": 5212,
+        "status": "verified",
+        "basis": "SEC 2025 Q3 Form 10-Q p.4, consolidated operations, three months ended September 30 2025 current column, Net sales USD 5,212 million. Pre-EDS-spin issuer-wide scope matches FY2025 annual before the 2026 spin-off."
+      },
+      "operatingProfit": {
+        "value": -175,
+        "status": "verified",
+        "basis": "Same SEC statement p.4, three-month current column, Operating (loss) income USD (175) million, including USD 648 million goodwill impairment. GAAP loss retained; no adjusted substitution."
+      },
+      "operatingMargin": {
+        "value": -3.4,
+        "status": "verified",
+        "basis": "-175 / 5212 × 100, rounded to one decimal percentage point; same quarter, issuer and accounting scope."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "shinko-electric-fy2023-q3-v16",
+    "companyId": "shinko-electric",
+    "periodType": "quarterly",
+    "periodLabel": "FY2023 Q3",
+    "startDate": "2023-10-01",
+    "endDate": "2023-12-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "shinko-fy2025-q3-v16",
+    "verifiedAt": "2026-11-02",
+    "metrics": {
+      "revenue": {
+        "value": 51529,
+        "status": "verified",
+        "basis": "Issuer FY2025 Q3 release printed p.6, comparative FY2024 nine months revenue 156,638 JPY million (https://www.shinko.co.jp/ir/docs/bn2025_q3.pdf) minus issuer FY2025 H1 release printed p.6, comparative FY2024 six months 105,109 (https://www.shinko.co.jp/ir/docs/bn2025_q2.pdf) = 51,529. Both comparative columns cover the same FY2024 Japanese-GAAP consolidated series."
+      },
+      "operatingProfit": {
+        "value": 6526,
+        "status": "verified",
+        "basis": "Same comparative consolidated operating-profit columns: 17,996 (https://www.shinko.co.jp/ir/docs/bn2025_q3.pdf) minus 11,470 (https://www.shinko.co.jp/ir/docs/bn2025_q2.pdf) = 6,526 JPY million."
+      },
+      "operatingMargin": {
+        "value": 12.7,
+        "status": "verified",
+        "basis": "6526 / 51529 × 100, rounded to one decimal percentage point; same quarter, issuer and accounting scope."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "shinko-electric-fy2023-q4-v16",
+    "companyId": "shinko-electric",
+    "periodType": "quarterly",
+    "periodLabel": "FY2023 Q4",
+    "startDate": "2024-01-01",
+    "endDate": "2024-03-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "shinko-fy2025-fy-v16",
+    "verifiedAt": "2026-11-02",
+    "metrics": {
+      "revenue": {
+        "value": 53334,
+        "status": "verified",
+        "basis": "Issuer FY2025 annual release printed p.1, FY2024 comparative annual revenue 209,972 JPY million (https://www.shinko.co.jp/ir/docs/bn2025.pdf) minus FY2025 Q3 release printed p.6, FY2024 comparative nine months 156,638 (https://www.shinko.co.jp/ir/docs/bn2025_q3.pdf) = 53,334. Same FY2024 Japanese-GAAP consolidated series."
+      },
+      "operatingProfit": {
+        "value": 6814,
+        "status": "verified",
+        "basis": "Same annual/comparative nine-month consolidated operating-profit columns: 24,810 (https://www.shinko.co.jp/ir/docs/bn2025.pdf) minus 17,996 (https://www.shinko.co.jp/ir/docs/bn2025_q3.pdf) = 6,814 JPY million."
+      },
+      "operatingMargin": {
+        "value": 12.8,
+        "status": "verified",
+        "basis": "6814 / 53334 × 100, rounded to one decimal percentage point; same quarter, issuer and accounting scope."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "shinko-electric-fy2024-q1-v16",
+    "companyId": "shinko-electric",
+    "periodType": "quarterly",
+    "periodLabel": "FY2024 Q1",
+    "startDate": "2024-04-01",
+    "endDate": "2024-06-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "shinko-fy2025-q1-v16",
+    "verifiedAt": "2026-11-02",
+    "metrics": {
+      "revenue": {
+        "value": 53358,
+        "status": "verified",
+        "basis": "Issuer FY2025 Q1 release printed p.6, current three-month consolidated sales row, JPY 53,358 million, Japanese GAAP."
+      },
+      "operatingProfit": {
+        "value": 7254,
+        "status": "verified",
+        "basis": "Same release printed p.6, current three-month consolidated operating-profit row, JPY 7,254 million."
+      },
+      "operatingMargin": {
+        "value": 13.6,
+        "status": "verified",
+        "basis": "7254 / 53358 × 100, rounded to one decimal percentage point; same quarter, issuer and accounting scope."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "shinko-electric-fy2024-q2-v16",
+    "companyId": "shinko-electric",
+    "periodType": "quarterly",
+    "periodLabel": "FY2024 Q2",
+    "startDate": "2024-07-01",
+    "endDate": "2024-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "shinko-fy2025-h1-v16",
+    "verifiedAt": "2026-11-02",
+    "metrics": {
+      "revenue": {
+        "value": 54972,
+        "status": "verified",
+        "basis": "Issuer FY2025 H1 release printed p.6, current H1 consolidated revenue 108,330 (https://www.shinko.co.jp/ir/docs/bn2025_q2.pdf) minus same-year FY2025 Q1 current three-month 53,358 (https://www.shinko.co.jp/ir/docs/bn2025_q1.pdf) = 54,972 JPY million."
+      },
+      "operatingProfit": {
+        "value": 5470,
+        "status": "verified",
+        "basis": "Same-year consolidated operating profit 12,724 (https://www.shinko.co.jp/ir/docs/bn2025_q2.pdf) minus Q1 7,254 (https://www.shinko.co.jp/ir/docs/bn2025_q1.pdf) = 5,470 JPY million."
+      },
+      "operatingMargin": {
+        "value": 10,
+        "status": "verified",
+        "basis": "5470 / 54972 × 100, rounded to one decimal percentage point; same quarter, issuer and accounting scope."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "shinko-electric-fy2024-q3-v16",
+    "companyId": "shinko-electric",
+    "periodType": "quarterly",
+    "periodLabel": "FY2024 Q3",
+    "startDate": "2024-10-01",
+    "endDate": "2024-12-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "shinko-fy2025-q3-v16",
+    "verifiedAt": "2026-11-02",
+    "metrics": {
+      "revenue": {
+        "value": 51561,
+        "status": "verified",
+        "basis": "Issuer FY2025 Q3 release printed p.6, current nine-month consolidated revenue 159,891 (https://www.shinko.co.jp/ir/docs/bn2025_q3.pdf) minus same-year H1 108,330 (https://www.shinko.co.jp/ir/docs/bn2025_q2.pdf) = 51,561 JPY million."
+      },
+      "operatingProfit": {
+        "value": 6397,
+        "status": "verified",
+        "basis": "Same-year consolidated operating profit 19,121 (https://www.shinko.co.jp/ir/docs/bn2025_q3.pdf) minus H1 12,724 (https://www.shinko.co.jp/ir/docs/bn2025_q2.pdf) = 6,397 JPY million. FY2025 tax-accounting policy change in p.9 does not alter revenue or operating profit; no correction restatement."
+      },
+      "operatingMargin": {
+        "value": 12.4,
+        "status": "verified",
+        "basis": "6397 / 51561 × 100, rounded to one decimal percentage point; same quarter, issuer and accounting scope."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  },
+  {
+    "id": "shinko-electric-fy2024-q4-v16",
+    "companyId": "shinko-electric",
+    "periodType": "quarterly",
+    "periodLabel": "FY2024 Q4",
+    "startDate": "2025-01-01",
+    "endDate": "2025-03-31",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "shinko-fy2025-fy-v16",
+    "verifiedAt": "2026-11-02",
+    "metrics": {
+      "revenue": {
+        "value": 55131,
+        "status": "verified",
+        "basis": "Issuer FY2025 annual release printed p.1, current consolidated annual revenue 215,022 (https://www.shinko.co.jp/ir/docs/bn2025.pdf) minus same-year Q3 nine-month 159,891 (https://www.shinko.co.jp/ir/docs/bn2025_q3.pdf) = 55,131 JPY million."
+      },
+      "operatingProfit": {
+        "value": 6233,
+        "status": "verified",
+        "basis": "Same-year consolidated operating profit 25,354 (https://www.shinko.co.jp/ir/docs/bn2025.pdf) minus Q3 nine-month 19,121 (https://www.shinko.co.jp/ir/docs/bn2025_q3.pdf) = 6,233 JPY million. FY2025 tax-accounting policy note does not alter these rows."
+      },
+      "operatingMargin": {
+        "value": 11.3,
+        "status": "verified",
+        "basis": "6233 / 55131 × 100, rounded to one decimal percentage point; same quarter, issuer and accounting scope."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash flow not established; no estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Standalone cash capex not established; no estimate."
+      }
+    }
+  }
+]
