@@ -1,0 +1,179 @@
+{
+  "schemaVersion": "v17-evidence-1",
+  "baselineMainSha": "85b3a5fb84e56532c76a2a9a93f307c02c262034",
+  "branch": "codex/financial-history-six-period-coverage-v17",
+  "auditAsOfJst": "2026-11-02T16:30:46+09:00",
+  "evidenceDirectory": "C:\\Users\\mkato\\Documents\\Codex\\2026-08-31\\github-plugin-github-openai-curated-remote\\work\\ai-infrastructure-atlas-financial-history-six-period-coverage-v17-evidence",
+  "environment": {
+    "nodeExecutable": "C:/Users/mkato/Documents/Codex/2026-08-31/github-plugin-github-openai-curated-remote/work/ai-infrastructure-atlas-financial-history-six-period-coverage-v13-evidence/node-v22.23.4/node-v22.23.4-win-x64/node.exe",
+    "node": "v22.23.4",
+    "astro": "7.2.9",
+    "pagefind": "1.5.2",
+    "pythonExecutable": "C:/Users/mkato/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+    "dependencyReference": "Unchanged verified v13 node_modules junction"
+  },
+  "sourceInputMapSha256": "e89590a449964c71f8d0d12400b72f888c8eea9df4d833ba01dd974a9bf2865d",
+  "builds": [
+    {
+      "id": "run1",
+      "startedAt": "2026-11-02T16:52:13.9583646+09:00",
+      "endedAt": "2026-11-02T07:52:35.195Z",
+      "commands": [
+        "astro build",
+        "pagefind --site dist",
+        "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+        "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"
+      ],
+      "exitCodes": {
+        "astro": 0,
+        "pagefind": 0,
+        "compare": 0,
+        "japanese": 0
+      },
+      "mapFile": "run1-map.json",
+      "mapSha256": "3ed1de20e0bb681adb6dde38b8df76fcb9af08ab9f7f5f4dece1e938bd450797"
+    },
+    {
+      "id": "run2",
+      "startedAt": "2026-11-02T16:52:35.2103809+09:00",
+      "endedAt": "2026-11-02T07:52:55.289Z",
+      "commands": [
+        "astro build",
+        "pagefind --site dist",
+        "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+        "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"
+      ],
+      "exitCodes": {
+        "astro": 0,
+        "pagefind": 0,
+        "compare": 0,
+        "japanese": 0
+      },
+      "mapFile": "run2-map.json",
+      "mapSha256": "c6a3b43308c9a16e85a3b6a793dd9786847f139e0bf0f01bb8f539f9090cabc0"
+    }
+  ],
+  "savedEvidenceSha256": {
+    "run-final.ps1": "16bab91c99193b86ad66f2e58dce14c7f5b28b49823e1378d0e6654fd13a7490",
+    "capture-v17.mjs": "edb1321aea3710a3053e22616fb6874440210a28c1b17fb29f8cbab12ab23b71",
+    "run1-map.json": "3ed1de20e0bb681adb6dde38b8df76fcb9af08ab9f7f5f4dece1e938bd450797",
+    "run2-map.json": "c6a3b43308c9a16e85a3b6a793dd9786847f139e0bf0f01bb8f539f9090cabc0",
+    "run1-astro.log": "c7709f8c8f8c04f7dd50248a3025659bf35999c3d70c894a8107ddc59a89794c",
+    "run1-pagefind.log": "475a929dd41b42d333d8dc75a22b002c5319f83bdb8a1840881a0aa217deb08a",
+    "run1-compare.log": "f20536aa714104759ea755e9679719189c2ee10c9d0dac01eb35f8db41f5eaa0",
+    "run1-japanese.log": "8dca48a4384168816fb87d34dafa21042b85681448001d66d5470c19f6aa5646",
+    "run2-astro.log": "e8d101388b17aefb5ae537950112ee0eaebc5320d3a53a668ad553b5cbdfaeaf",
+    "run2-pagefind.log": "aaa818b9bd33057ab0d0ccd2e7d1ba6281b1e45279d0d2152e76ae5217182c44",
+    "run2-compare.log": "f20536aa714104759ea755e9679719189c2ee10c9d0dac01eb35f8db41f5eaa0",
+    "run2-japanese.log": "8dca48a4384168816fb87d34dafa21042b85681448001d66d5470c19f6aa5646",
+    "verify-current-dist.mjs": "70d30a7b3ff6862b358686ce76c37d3d76deada3d8d12d764c4c3816c6b6ffb6",
+    "verify-current-dist.json": "c40981498a67bb3be4729b65bbea2323420cedbb0afaf2e092a7728ef9b899e6",
+    "preview-qa-v17.json": "a2734ae3c6a7a0ffe86111f18b9fdd10c1510d3de814656a0d8d04baf5e04958",
+    "validate-data-v17.log": "0c88c968c0f9fbaf97dc1ece1f53ca3be3b270dc82170af9b98e74f2963c4d8e",
+    "focused-japanese.log": "8dca48a4384168816fb87d34dafa21042b85681448001d66d5470c19f6aa5646",
+    "focused-search.log": "c5f05b47fcbd7bda1187c265b4b9b35f0e04ec5980c5e2a55f57d45cdc12546b",
+    "focused-atlas.log": "e2f7ea00a3b203478b823d8b5c920f74d1010aed53d823b70bfcdf40df38adb0",
+    "focused-chart-labels.log": "0a132ebc58b9ee04850b856fa3f7583672de9577cad186ed735fda9b722aaafc",
+    "focused-latest-audit.log": "5ddb7763264f25f1758c40fb74c8698e188015bbe8c1e86a83b2cfd29337c55f",
+    "secret-scan-runner.py": "4428b0f14884fd9676c34f267fbc929c9deb339a302a2e24a284fee65f21bf91",
+    "secret-scan-targets.txt": "dc937392c516cdf383fed83cc14ba12d1df12db0bb1458473ad1f324be0a248a",
+    "secret-scan-v17.log": "c94a05622e3a0a74abe2eaafef0fb1f88259d69b6d83288d9eec2aaf338eda65",
+    "diff-check-v17.log": "5bc1399a70034dff67a052d09a1a4fc2a36d1e652fee85822cc42a4556ec692c",
+    "compare-detail-scope.mjs": "0a5aa44fea239563535f524c3578f61e656813841428dce5d54cd715ad9f8242",
+    "served-shell.html": "9452c599375923efc98c5c3901a62b9cdc306b4c588dec96d3b98b88462cc007",
+    "served-aptiv.html": "d6f1fdb7f7930dedd47dfbbfe8265ba2ff9f96e3e4b787d2d2da3751ab7c8939",
+    "served-detail.html": "1df087fb36d98cb38e848ea0e1c5f25cd525f111a2e77cea5f84ffc4202c3b94"
+  },
+  "results": {
+    "financialRecords": 706,
+    "companyCount": 100,
+    "newlyAdopted": {
+      "aptiv": [
+        "Q3 2024",
+        "Q4 2024",
+        "Q1 2025",
+        "Q2 2025",
+        "Q4 2025",
+        "Q1 2026"
+      ]
+    },
+    "existingAptivQ3_2025Preserved": true,
+    "coverage": {
+      "complete": 94,
+      "partial": 0,
+      "awaitingNextQuarter": 0,
+      "needsReview": 6
+    },
+    "activeFreeze": "financial-history-six-period-coverage-v17",
+    "freezeMatch": "101/101",
+    "artifactMapSha256": "1497434f4a0f2ea1d85844951b5f1c47c6b54290c4befac971f10f8e6cca45fe",
+    "companyDetailMapSha256": "a18d63497640534d21076c1d01d76ba2572ca83865e878b7d2c2492366aaa615",
+    "routeCount": 210,
+    "routeSetSha256": "3a5ed3a8b844b2efcb850fcef38b324dda32fe3318cd07b0526ce616555d57fc",
+    "pagefindUrlCount": 105,
+    "pagefindUrlSetSha256": "0f9b1da3f48cc450ebb445b383d747b2ffd61ee76cf0168c3e711e5be626263f",
+    "compareHtmlBytes": 1177281,
+    "compareHtmlSha256": "892be0521c2666cb2f5562654bd50a30f72c830af193bb1ce2eab9bdab0f60e2",
+    "compareDiagnosticLimitBytes": 1217802,
+    "onDemandLimitsChanged": false,
+    "changedComparePathsVsV16": [
+      "aptiv/index.html",
+      "index.html"
+    ],
+    "unchangedComparePathCountVsV16": 99,
+    "shellChange": "Only two financial comparison compatibility/quality messages changed when Aptiv latest period became Q1 2026; other shell content is unchanged.",
+    "changedCompanyDetailPagesVsV16": [
+      "aptiv/index.html"
+    ],
+    "unchangedCompanyDetailPageCountVsV16": 99,
+    "detailChangeScope": "financials and sources only; all other Aptiv detail HTML is byte-identical to v16",
+    "legacyHtmlIncreaseBytes": 8152,
+    "financialPayloadIncreaseBytes": 8152,
+    "chartScriptChanged": false,
+    "twoBuildMapsMatch": true,
+    "currentDistMapMatch": true
+  },
+  "auditScope": {
+    "directlyOriginalStatementReviewed": [
+      "aptiv"
+    ],
+    "inheritedIncomplete": [
+      "air-liquide",
+      "ajinomoto-fine-techno",
+      "bosch",
+      "hexagon",
+      "omron",
+      "schneider-electric"
+    ],
+    "inheritedNonTargetCompanyCount": 93,
+    "latestReportedPeriodIsSeparateFromSixQuarterCompleteness": true,
+    "aptivLatestCaptured": "Q1 2026 pre-EDS-spin issuer-wide",
+    "aptivLatestOfficialReviewed": "Q2 2026 continuing operations, not adopted without an official bridge to the recorded series"
+  },
+  "validation": {
+    "validateDataExitCode": 0,
+    "focusedJapaneseSearchAtlasChartAndAuditExitCodes": [
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "secretScanMethod": "Unchanged repository check-secrets.py patterns and exclusions with ignored junction directories pruned before traversal",
+    "secretScanTargetCount": 608,
+    "secretScanFindings": 0,
+    "secretScanExitCode": 0,
+    "fullValidate": "Not claimed as passed; validate:data passed and the same secret detection logic passed via pruned traversal.",
+    "triageSemanticDecisionsUnchanged": 779,
+    "triageSampleAndOrderUnchanged": 87,
+    "previewQaFile": "preview-qa-v17.json",
+    "previewQaFileSha256": "a2734ae3c6a7a0ffe86111f18b9fdd10c1510d3de814656a0d8d04baf5e04958"
+  },
+  "caveats": [
+    "An initial sandboxed Pagefind attempt failed with Windows AccessDenied after Astro succeeded. Both final approved clean builds exited 0.",
+    "Historical triage v01 displays 22 MATERIAL while its check exits 0; current v02 exact validation is 87/87.",
+    "Pagefind auxiliary file bytes are not asserted deterministic; the 101 frozen assets, 100 detail pages, Compare body and 105-URL set match across both builds.",
+    "External primary-source URLs were verified in records and links but not all opened in local browser QA."
+  ],
+  "recheck": "Rehash each savedEvidenceSha256 file. Compare both run maps on inputMapDigest, artifactMapDigest, companyDetailMapDigest, routeSetDigest, pagefindUrlSetDigest, compareSha256 and compareBytes. Run verify-current-dist.mjs against the final dist and compare the 101 frozen asset paths, 100 detail paths and 105 Pagefind URLs."
+}

@@ -2,7 +2,7 @@
   "schemaVersion": "0.1",
   "generatedAt": "2026-11-02T00:00:00Z",
   "dataAsOf": "2026-11-02",
-  "inputDigest": "sha256:3ff22846a9308158b00ba660782728c525e2c402ed590ef71373fe27abca9c75",
+  "inputDigest": "sha256:3b772dc3efd6c62ffdbde0823ccadba3f0dd62b2fc71ea27aeb2a3639bc12590",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 268
+    "inputFileCount": 270
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 719,
-      "uniqueSourceCount": 717,
+      "registryRecordCount": 723,
+      "uniqueSourceCount": 721,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -275,8 +275,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 7,
-      "financialSourceReferences": 462,
-      "financialSourceResolved": 462
+      "financialSourceReferences": 466,
+      "financialSourceResolved": 466
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -3323,8 +3323,8 @@
       "primaryLayer": "Physical AI",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 2,
+      "registrySourceCount": 7,
+      "financialSourceCount": 6,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -3581,9 +3581,13 @@
         "resolvedSourceIds": [
           "ir-aptiv"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 7,
         "financialSourceIds": [
+          "aptiv-2025-q1-10q-v17",
+          "aptiv-2025-q2-10q-v17",
           "aptiv-2025-q3-10q-v16",
+          "aptiv-2025-q4-results-v17",
+          "aptiv-2026-q1-10q-v17",
           "sec-aptiv-2025-10k"
         ],
         "orphanSourceIds": [],
