@@ -1849,6 +1849,25 @@
     "expectedChangedArtifactCount": 10,
     "expectedUnchangedArtifactCount": 91
   },
+  "financialV17ShellTransition": {
+    "setId": "first-batch-stage-2",
+    "fragments": [
+      {
+        "element": "section",
+        "setAttribute": "data-financial-set-id",
+        "expectedOccurrences": 1,
+        "beforeInnerHtml": "",
+        "afterInnerHtml": "<p><strong>営業利益率：条件注意</strong> — 会計基準が異なる、最新収録期間が異なる</p>"
+      },
+      {
+        "element": "div",
+        "setAttribute": "data-quality-set-id",
+        "expectedOccurrences": 1,
+        "beforeInnerHtml": "<p><strong>比較不能：営業利益率</strong> — 四半期と通期が混在しています。主要比較には表示しません。</p><p><strong>比較不能：売上高成長率</strong> — 正規化指標定義がありません。主要比較には表示しません。</p>",
+        "afterInnerHtml": "<p><strong>比較不能：売上高成長率</strong> — 正規化指標定義がありません。主要比較には表示しません。</p>"
+      }
+    ]
+  },
   "activeArtifactFreezeVersion": "financial-history-six-period-coverage-v17",
   "artifactFreezes": [
     {

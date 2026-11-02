@@ -1303,13 +1303,53 @@ for (const path of expectedArtifactPaths.filter(path => !financialHistoryV17Chan
   assert.equal(financialHistoryFreezeV17.sha256ByPath[path], financialHistoryFreezeV16.sha256ByPath[path], `${path}: v17 non-target artifact is byte-identical`);
 }
 assert.equal(shaMapDigest(financialHistoryFreezeV17), financialHistoryFreezeV17.metadata.shaMapDigest, 'v17 records the reproducible 101-path SHA map digest');
+const shellTransitionV17 = fixture.financialV17ShellTransition;
+assert.equal(shellTransitionV17?.setId, 'first-batch-stage-2', 'the shell exception belongs only to the reviewed comparison set');
+assert.deepEqual(
+  shellTransitionV17.fragments.map(fragment => [fragment.element, fragment.setAttribute, fragment.expectedOccurrences]),
+  [['section', 'data-financial-set-id', 1], ['div', 'data-quality-set-id', 1]],
+  'the shell exception names only the financial and quality elements once each',
+);
+const shellFragment = (fragment, version) => `<${fragment.element} ${fragment.setAttribute}="${shellTransitionV17.setId}" hidden>${fragment[version]}</${fragment.element}>`;
+const sha256Text = value => createHash('sha256').update(value).digest('hex');
+const occurrenceCount = (text, fragment) => text.split(fragment).length - 1;
+const restoreV17ShellToV16 = html => {
+  let restored = html;
+  for (const fragment of shellTransitionV17.fragments) {
+    const current = shellFragment(fragment, 'afterInnerHtml');
+    const previous = shellFragment(fragment, 'beforeInnerHtml');
+    assert.equal(occurrenceCount(restored, current), fragment.expectedOccurrences, `${fragment.setAttribute}: allowed HTML occurs exactly once`);
+    restored = restored.replace(current, previous);
+  }
+  assert.equal(sha256Text(restored), financialHistoryFreezeV16.sha256ByPath['index.html'], 'restoring only two reviewed shell fragments reproduces the v16 shell SHA');
+  return restored;
+};
+let shellLimitedDiffEvidence = null;
 if (process.argv.includes('--dist')) {
   const artifactRoot = new URL('../dist/evidence-fragments/company-compare-evidence-v01/', import.meta.url);
   const financialTemplateRe = /<template\b[^>]*data-company-slot="(?:expanded-)?financial"[\s\S]*?<\/template>/g;
+  const shellHtml = readFileSync(new URL('index.html', artifactRoot), 'utf8');
+  assert.equal(sha256Text(shellHtml), financialHistoryFreezeV17.sha256ByPath['index.html'], 'v17 shell still matches the active exact SHA freeze');
+  const restoredShell = restoreV17ShellToV16(shellHtml);
+  for (const fragment of shellTransitionV17.fragments) {
+    const current = shellFragment(fragment, 'afterInnerHtml');
+    assert.throws(() => restoreV17ShellToV16(shellHtml.replace(current, '')), /allowed HTML occurs exactly once/, 'a missing allowed fragment fails');
+    assert.throws(() => restoreV17ShellToV16(shellHtml.replace(current, current + current)), /allowed HTML occurs exactly once/, 'a duplicated allowed fragment fails');
+  }
+  assert.ok(shellHtml.includes('企業の役割と違いを根拠から比較'), 'the reviewed shell body text is present');
+  assert.throws(() => restoreV17ShellToV16(shellHtml.replace('企業の役割と違いを根拠から比較', '企業の役割と違いを根拠から比較変更')), /reproduces the v16 shell SHA/, 'an unrelated body change fails');
+  assert.match(shellHtml, /href="[^"]+"/, 'the reviewed shell has a URL to protect');
+  assert.throws(() => restoreV17ShellToV16(shellHtml.replace(/href="([^"]+)"/, (_, url) => `href="${url}#unexpected"`)), /reproduces the v16 shell SHA/, 'an unrelated URL change fails');
+  assert.ok(shellHtml.includes('data-detail="summary"'), 'the reviewed shell has an attribute to protect');
+  assert.throws(() => restoreV17ShellToV16(shellHtml.replace('data-detail="summary"', 'data-detail="expanded"')), /reproduces the v16 shell SHA/, 'an unrelated attribute change fails');
   const nonFinancialShaByPath = Object.fromEntries(expectedArtifactPaths.map(path => {
     const html = readFileSync(new URL(path, artifactRoot), 'utf8');
     const financialTemplates = [...html.matchAll(financialTemplateRe)];
     assert.equal(financialTemplates.length, path === 'index.html' ? 0 : 2, `${path}: only the primary and expanded Financial templates are omitted`);
+    if (path !== 'index.html') {
+      assert.equal((html.match(/<template\b[^>]*data-company-slot="financial"/g) ?? []).length, 1, `${path}: one primary Financial template`);
+      assert.equal((html.match(/<template\b[^>]*data-company-slot="expanded-financial"/g) ?? []).length, 1, `${path}: one expanded Financial template`);
+    }
     const nonFinancialHtml = html.replace(financialTemplateRe, '<template>FINANCIAL REMOVED</template>');
     return [path, createHash('sha256').update(nonFinancialHtml).digest('hex')];
   }));
@@ -1318,6 +1358,23 @@ if (process.argv.includes('--dist')) {
     financialHistoryFreezeV17.metadata.nonFinancialShaMapDigest,
     'v17 records the exact non-financial-template map, including the separately explained shell financial decision',
   );
+  const predecessorNonFinancialShaByPath = { ...nonFinancialShaByPath, 'index.html': sha256Text(restoredShell) };
+  const restoredNonFinancialDigest = sha256Text(JSON.stringify(predecessorNonFinancialShaByPath));
+  assert.equal(
+    restoredNonFinancialDigest,
+    financialHistoryFreezeV16.metadata.nonFinancialShaMapDigest,
+    'only the two reviewed shell messages and the two Financial templates per Company asset differ from v16',
+  );
+  shellLimitedDiffEvidence = {
+    setId: shellTransitionV17.setId,
+    expectedFragmentOccurrences: shellTransitionV17.fragments.map(fragment => ({ attribute: fragment.setAttribute, count: fragment.expectedOccurrences })),
+    v16ShellSha256: financialHistoryFreezeV16.sha256ByPath['index.html'],
+    v17ShellSha256: sha256Text(shellHtml),
+    restoredShellSha256: sha256Text(restoredShell),
+    v16NonFinancialDigest: financialHistoryFreezeV16.metadata.nonFinancialShaMapDigest,
+    restoredNonFinancialDigest,
+    negativeBoundaryCasesPassed: 7,
+  };
   const htmlText = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
   const projectedCompanyIds = new Set();
   let projectedClaims = 0;
@@ -1425,6 +1482,7 @@ for (const [id, parts] of partsById) {
 
 console.log(JSON.stringify({
   status: 'PASS',
+  ...(shellLimitedDiffEvidence ? { shellLimitedDiffEvidence } : {}),
   companies: fixedBatch1CompanyIds.length + fixedBatch2CompanyIds.length,
   auditedCandidates: auditedCandidates + batch2AuditedCandidates,
   overlayEntries: batch1.entries.length + batch2.entries.length,

@@ -79,6 +79,10 @@
     "secret-scan-targets.txt": "dc937392c516cdf383fed83cc14ba12d1df12db0bb1458473ad1f324be0a248a",
     "secret-scan-v17.log": "c94a05622e3a0a74abe2eaafef0fb1f88259d69b6d83288d9eec2aaf338eda65",
     "diff-check-v17.log": "5bc1399a70034dff67a052d09a1a4fc2a36d1e652fee85822cc42a4556ec692c",
+    "shell-limited-gate-v17.log": "72cc1ff5b17236603599e25f1f114e93853daa9fc58ac2f51c2077b9c17c51bf",
+    "shell-limited-compare-v17.log": "f20536aa714104759ea755e9679719189c2ee10c9d0dac01eb35f8db41f5eaa0",
+    "shell-limited-dist-verify-v17.log": "e5c790f6e24079445478caa970c2ce9d2fde3aeb77686c5252e26dc73ac60dea",
+    "shell-limited-diff-v17.json": "e3cadf10cc21a2b8f7ab9164a6d82b33c6ce73513ab1b35787dc2d8893454868",
     "compare-detail-scope.mjs": "0a5aa44fea239563535f524c3578f61e656813841428dce5d54cd715ad9f8242",
     "served-shell.html": "9452c599375923efc98c5c3901a62b9cdc306b4c588dec96d3b98b88462cc007",
     "served-aptiv.html": "d6f1fdb7f7930dedd47dfbbfe8265ba2ff9f96e3e4b787d2d2da3751ab7c8939",
@@ -149,6 +153,26 @@
     "latestReportedPeriodIsSeparateFromSixQuarterCompleteness": true,
     "aptivLatestCaptured": "Q1 2026 pre-EDS-spin issuer-wide",
     "aptivLatestOfficialReviewed": "Q2 2026 continuing operations, not adopted without an official bridge to the recorded series"
+  },
+  "shellLimitedDiffFollowup": {
+    "evidenceFile": "shell-limited-diff-v17.json",
+    "changedElements": [
+      "section[data-financial-set-id=first-batch-stage-2]",
+      "div[data-quality-set-id=first-batch-stage-2]"
+    ],
+    "newFragmentOccurrences": [1, 1],
+    "v16ShellSha256": "7977a25318e4b84185e99ccd62400a54f976a73968566c0a31543869d7e891e7",
+    "v17ShellSha256": "9452c599375923efc98c5c3901a62b9cdc306b4c588dec96d3b98b88462cc007",
+    "restoredShellSha256": "7977a25318e4b84185e99ccd62400a54f976a73968566c0a31543869d7e891e7",
+    "v16NonFinancialDigest": "8af7196936203df409acb35b65f7fc4b66ea3369857220981bd96b9ee8c73c86",
+    "limitedRestorationNonFinancialDigest": "8af7196936203df409acb35b65f7fc4b66ea3369857220981bd96b9ee8c73c86",
+    "negativeBoundaryCasesPassed": 7,
+    "focusedJapaneseDistExitCode": 0,
+    "focusedCompareDistExitCode": 0,
+    "currentDistMismatchCount": 0,
+    "productInputMapUnchanged": true,
+    "previousBuildsAndPreviewQaReused": true,
+    "interpretation": "Aptiv moved from FY2025 annual to Q1 2026 quarterly as its latest recorded period. The existing comparison contract no longer blocks mixed period types; differing IFRS/US-GAAP bases and latest period labels/end dates remain a caution. The two reviewed shell message changes are the only shell byte differences from v16."
   },
   "validation": {
     "validateDataExitCode": 0,
