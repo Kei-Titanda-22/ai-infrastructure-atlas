@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-10-29T00:00:00Z",
-  "dataAsOf": "2026-10-29",
-  "inputDigest": "sha256:f48d6d5ae3e79478034b3988003a3cbca5ec2cffb1865a0658f2b40f8c90188f",
+  "generatedAt": "2026-10-31T00:00:00Z",
+  "dataAsOf": "2026-10-31",
+  "inputDigest": "sha256:38e55e76eaadd009d28597b37b00950332d958a589c8dad340dbdcb1b368453e",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 264
+    "inputFileCount": 266
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 691,
-      "uniqueSourceCount": 689,
+      "registryRecordCount": 714,
+      "uniqueSourceCount": 712,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -275,8 +275,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 5,
-      "financialSourceReferences": 434,
-      "financialSourceResolved": 434
+      "financialSourceReferences": 457,
+      "financialSourceResolved": 457
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -11961,8 +11961,8 @@
       "primaryLayer": "Test & Back-end",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 2,
+      "registrySourceCount": 6,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -12219,9 +12219,12 @@
         "resolvedSourceIds": [
           "filing-hanmi-2026-03-12"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 6,
         "financialSourceIds": [
           "filing-hanmi-semiconductor-2026-05-15-q1",
+          "hanmi-fy2025-v15",
+          "hanmi-h1-2026-v15",
+          "hanmi-q3-2025-v15",
           "krx-hanmi-semiconductor-fy2025-business-report"
         ],
         "orphanSourceIds": [],
@@ -14258,8 +14261,8 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 5,
-      "financialSourceCount": 1,
+      "registrySourceCount": 11,
+      "financialSourceCount": 7,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -14516,9 +14519,15 @@
         "resolvedSourceIds": [
           "corporate-kinsus"
         ],
-        "registrySourceCount": 5,
+        "registrySourceCount": 11,
         "financialSourceIds": [
-          "kinsus-annual-report-2025"
+          "kinsus-annual-report-2025",
+          "kinsus-fy2025-v15",
+          "kinsus-q1-2025-v15",
+          "kinsus-q1-2026-v15",
+          "kinsus-q2-2025-v15",
+          "kinsus-q2-2026-v15",
+          "kinsus-q3-2025-v15"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -14546,8 +14555,8 @@
       "primaryLayer": "Memory",
       "sourceCount": 2,
       "resolvedSourceCount": 2,
-      "registrySourceCount": 9,
-      "financialSourceCount": 5,
+      "registrySourceCount": 10,
+      "financialSourceCount": 6,
       "claimCount": 11,
       "legacyClaimCount": 3,
       "evidenceBindingCount": 11,
@@ -14807,13 +14816,14 @@
           "earnings-kioxia-2026-07-31-q1-fy2027",
           "ir-kioxia"
         ],
-        "registrySourceCount": 9,
+        "registrySourceCount": 10,
         "financialSourceIds": [
           "earnings-kioxia-2025-08-08-q1-fy2026",
           "earnings-kioxia-2025-11-13-h1-fy2026",
           "earnings-kioxia-2026-02-12-q3-fy2026",
           "earnings-kioxia-2026-05-15-fy2026",
-          "earnings-kioxia-2026-07-31-q1-fy2027"
+          "earnings-kioxia-2026-07-31-q1-fy2027",
+          "kioxia-fy2027-q2-v15"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -25229,8 +25239,8 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 9,
+      "financialSourceCount": 7,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -25487,9 +25497,15 @@
         "resolvedSourceIds": [
           "ir-sumco"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 9,
         "financialSourceIds": [
-          "shareholder-report-sumco-2025"
+          "shareholder-report-sumco-2025",
+          "sumco-fy2025-v15",
+          "sumco-h1-2025-v15",
+          "sumco-h1-2026-v15",
+          "sumco-q1-2025-v15",
+          "sumco-q1-2026-v15",
+          "sumco-q3-2025-v15"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -28410,8 +28426,8 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 3,
-      "financialSourceCount": 1,
+      "registrySourceCount": 10,
+      "financialSourceCount": 8,
       "claimCount": 10,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 10,
@@ -28666,9 +28682,16 @@
         "resolvedSourceIds": [
           "corporate-unimicron"
         ],
-        "registrySourceCount": 3,
+        "registrySourceCount": 10,
         "financialSourceIds": [
-          "unimicron-audited-financials-2025"
+          "unimicron-audited-financials-2025",
+          "unimicron-fy2025-v15",
+          "unimicron-q1-2025-v15",
+          "unimicron-q1-2026-v15",
+          "unimicron-q2-2025-v15",
+          "unimicron-q2-2026-v15",
+          "unimicron-q3-2025-v15",
+          "unimicron-q3-2026-v15"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],

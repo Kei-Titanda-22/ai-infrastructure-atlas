@@ -20,8 +20,8 @@ assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
 assert.deepEqual(new Set(coverage.map(row => row.companyId)), new Set(companies.map(company => company.id)), 'coverage company IDs exactly match registry');
 assert.equal(new Set(coverage.map(row => row.companyId)).size, coverage.length, 'coverage company IDs are unique');
-assert.equal(history.length, 669, 'v14 adds 40 sourced actual quarters without removing the 629 existing periods');
-assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 87, 'v14 reaches 87 companies with at least six reported quarters');
+assert.equal(history.length, 693, 'v15 adds 24 sourced actual quarters without removing the 669 existing periods');
+assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 92, 'v15 reaches 92 companies with at least six reported quarters');
 
 const quarterlyByCompany = new Map(companies.map(company => [company.id, []]));
 for (const record of history) if (record.periodType === 'quarterly') quarterlyByCompany.get(record.companyId)?.push(record);
@@ -40,9 +40,9 @@ for (const row of coverage) {
 }
 
 const kioxia = coverage.find(row => row.companyId === 'kioxia');
-assert.equal(kioxia.coverageStatus, 'awaiting-next-quarter', 'Kioxia waits for the next published actual quarter');
-assert.equal(kioxia.actualQuarterCount, 5, 'Kioxia retains five reported quarters');
-assert.ok(!history.some(record => record.companyId === 'kioxia' && record.periodLabel === 'FY2027 Q2'), 'Kioxia FY2027 Q2 is not inserted before publication');
+assert.equal(kioxia.coverageStatus, 'complete-six-quarters', 'Kioxia FY2027 Q2 is a published actual quarter');
+assert.equal(kioxia.actualQuarterCount, 6, 'Kioxia reaches six reported quarters');
+assert.ok(history.some(record => record.companyId === 'kioxia' && record.periodLabel === 'FY2027 Q2'), 'published Kioxia FY2027 Q2 is collected');
 
 const furukawa = quarterlyByCompany.get('furukawa-electric');
 assert.equal(furukawa.length, 6, 'Furukawa Electric has six quarterly records');
@@ -300,9 +300,9 @@ for (const [companyId, endDates] of tenthPeriods) {
   for (const field of ['currency', 'unit', 'accountingBasis']) assert.equal(new Set(quarterly.slice(-6).map(record => record[field])).size, 1, `${companyId}: stable ${field}`);
   assert.ok(quarterly.slice(-6).every(record => record.metrics.revenue.value != null && record.metrics.operatingProfit.value != null && record.metrics.operatingMargin.value != null), `${companyId}: sales, operating profit and margin are nonempty`);
 }
-assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 1, 'one company retains one to five collected actual quarters');
-assert.equal(coverage.filter(row => row.coverageStatus === 'awaiting-next-quarter').length, 1, 'Kioxia remains pending an actual publication');
-assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 11, 'eleven companies remain without collected quarterly actuals after v14 statement audit');
+assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 0, 'all previously partial companies now have six actual quarters');
+assert.equal(coverage.filter(row => row.coverageStatus === 'awaiting-next-quarter').length, 0, 'Kioxia actual Q2 publication closes the awaiting category');
+assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 8, 'eight companies remain without collected quarterly actuals after v15 statement audit');
 assert.equal(coverage.find(row => row.companyId === 'nvidia').checkedAt, '2026-09-23', 'unreviewed baseline companies retain their original coverage check date');
 assert.equal(coverage.find(row => row.companyId === 'fujikura').coverageStatus, 'complete-six-quarters', 'Fujikura is complete from the comparable official series');
 
@@ -504,6 +504,41 @@ const v14Audit = await readJson(join(root, 'docs', 'financial-latest-period-audi
 assert.equal(v14Audit.targetCount, 17, 'v14 audit covers the exact target set');
 assert.deepEqual(v14Audit.counts, {'numeric-statement':10,'publication-timing':1,'specific-blocker':6,inherited:83}, 'v14 distinguishes direct review from inherited status');
 assert.equal(v14Audit.addedRecordCount, 40, 'v14 audit added-record count matches batch');
+const v15Batch = await readJson(join(dataDirectory, 'financial-history-v05-batch18.json'));
+const v15Sources = await readJson(join(dataDirectory, 'document-sources-v05-batch18.json'));
+const v15Policies = await readJson(join(dataDirectory, 'document-source-policies-v05-batch18.json'));
+assert.equal(v15Batch.length, 24, 'v15 adds twenty-four verified standalone quarters');
+assert.deepEqual(new Set(v15Batch.map(record => record.companyId)), new Set(['kioxia','hanmi-semiconductor','sumco','kinsus','unimicron']), 'v15 adopts only five of the thirteen scoped companies');
+assert.equal(new Set(v15Batch.map(record => record.id)).size, v15Batch.length, 'v15 record IDs are unique');
+assert.equal(new Set(v15Sources.map(source => source.id)).size, v15Sources.length, 'v15 source IDs are unique');
+assert.deepEqual(new Set(v15Policies.map(policy => policy.sourceId)), new Set(v15Sources.map(source => source.id)), 'v15 source policies cover exactly the added sources');
+for (const record of v15Batch) {
+  assert.equal(record.periodType, 'quarterly', record.id + ': standalone quarter only');
+  assert.equal(record.metrics.operatingMargin.value, Math.round(record.metrics.operatingProfit.value / record.metrics.revenue.value * 1000) / 10, record.id + ': same-period operating margin');
+  assert.equal(record.metrics.freeCashFlow.value, null, record.id + ': no estimated FCF');
+  assert.equal(record.metrics.capex.value, null, record.id + ': no estimated capex');
+  assert.ok(record.metrics.revenue.basis && record.metrics.operatingProfit.basis, record.id + ': original row and calculation are retained');
+  assert.ok(allSources.some(source => source.id === record.sourceId && source.companyId === record.companyId && /^https:\/\//.test(source.url)), record.id + ': official issuer or regulator source resolves');
+}
+for (const companyId of new Set(v15Batch.map(record => record.companyId))) {
+  const companyHistory = history.filter(record => record.companyId === companyId);
+  assert.equal(new Set(companyHistory.map(record => record.currency + ':' + record.unit)).size, 1, companyId + ': annual and quarterly currencies and units are uniform');
+  assert.equal(new Set(companyHistory.map(record => record.accountingBasis)).size, 1, companyId + ': annual and quarterly accounting basis is uniform');
+  const quarters = quarterlyByCompany.get(companyId);
+  assert.ok(quarters.length >= 6, companyId + ': at least six actual quarters');
+  const latest = quarters.slice(-6);
+  for (let index = 1; index < latest.length; index++) {
+    const previousEnd = Date.parse(latest[index - 1].endDate + 'T00:00:00Z');
+    const currentEnd = Date.parse(latest[index].endDate + 'T00:00:00Z');
+    assert.ok(currentEnd > previousEnd && currentEnd - previousEnd <= 100 * 86400000, companyId + ': latest six quarters are consecutive');
+    if (latest[index].startDate) assert.ok(latest[index].startDate > latest[index - 1].endDate, companyId + ': explicit periods do not overlap');
+  }
+}
+assert.deepEqual(quarterlyByCompany.get('unimicron').slice(-6).map(record => record.endDate), ['2025-06-30','2025-09-30','2025-12-31','2026-03-31','2026-06-30','2026-09-30'], 'Unimicron graph uses the latest six of seven quarters');
+assert.equal(v15Batch.find(record => record.id === 'hanmi-semiconductor-q4-2025').metrics.revenue.value, (576684619527 - 493670454672) / 1e6, 'Hanmi Q4 revenue derives from annual minus same-series nine months');
+assert.equal(v15Batch.find(record => record.id === 'kinsus-q4-2025').metrics.operatingProfit.value, (2669813 - 1749080) / 1000, 'Kinsus Q4 operating profit derives from annual minus same-series nine months');
+assert.equal(v15Batch.find(record => record.id === 'unimicron-q4-2025').metrics.revenue.value, (131240882 - 96549996) / 1000, 'Unimicron Q4 revenue derives from annual minus nine months');
+assert.equal(v15Batch.find(record => record.id === 'kioxia-fy2027-q2').metrics.operatingProfit.value, 3264727 - 1270017, 'Kioxia three-month operating profit cross-checks against H1 minus Q1');
 assert.equal(new Set(history.map(record => record.id)).size, history.length, 'all direct JSON financial record IDs are unique');
 const compareCompaniesWithoutFinancialHistory = evidenceCompareSupportedCompanyIds
   .filter(companyId => !history.some(record => record.companyId === companyId));

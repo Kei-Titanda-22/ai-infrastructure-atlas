@@ -3,6 +3,7 @@ import {
   formatFinancialAxisValue,
   type FinancialChartMetricId,
 } from '../lib/financial-chart-format';
+import { layoutFinancialPeriodLabels } from '../lib/financial-chart-label-layout';
 
 type ChartPoint = {
   period: string;
@@ -21,6 +22,7 @@ type ChartPoint = {
 const SVG_NS = 'http://www.w3.org/2000/svg';
 const registeredPlots = new WeakSet<HTMLElement>();
 let resizeObserver: ResizeObserver | null = null;
+let fontObserverRegistered = false;
 
 function svgElement<K extends keyof SVGElementTagNameMap>(
   name: K,
@@ -134,11 +136,7 @@ function renderFinancialChart(plot: HTMLElement) {
     svg.append(line, label);
   });
 
-  const labelIndexes = isNarrow && points.length > 3
-    ? new Set([0, Math.floor((points.length - 1) / 2), points.length - 1])
-    : new Set(points.map((_, index) => index));
-  points.forEach((point, index) => {
-    if (!labelIndexes.has(index)) return;
+  const periodLabels = points.map((point, index) => {
     const label = svgElement('text', {
       class: 'chart-period',
       x: xFor(index),
@@ -147,6 +145,17 @@ function renderFinancialChart(plot: HTMLElement) {
     });
     label.textContent = point.period;
     svg.append(label);
+    return label;
+  });
+  const bounds = periodLabels.map(label => {
+    const box = label.getBBox();
+    return { left: box.x, right: box.x + box.width };
+  });
+  const { visibleIndexes, staggerEndpoints } = layoutFinancialPeriodLabels(bounds);
+  const visibleIndexSet = new Set(visibleIndexes);
+  if (staggerEndpoints) periodLabels[0].setAttribute('y', String(height - 29));
+  periodLabels.forEach((label, index) => {
+    if (!visibleIndexSet.has(index)) label.remove();
   });
 
   if (points.length > 1) {
@@ -220,4 +229,12 @@ export function initializeFinancialCharts() {
     });
   }
   document.querySelectorAll<HTMLElement>('[data-financial-trend]').forEach(registerPlot);
+  if (!fontObserverRegistered && document.fonts) {
+    fontObserverRegistered = true;
+    const renderAfterFontChange = () => {
+      document.querySelectorAll<HTMLElement>('[data-financial-trend]').forEach(renderFinancialChart);
+    };
+    void document.fonts.ready.then(renderAfterFontChange);
+    document.fonts.addEventListener('loadingdone', renderAfterFontChange);
+  }
 }
