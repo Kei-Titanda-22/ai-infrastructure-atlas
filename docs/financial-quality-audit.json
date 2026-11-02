@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "classificationRuleVersion": 8,
-  "dataAsOf": "2026-10-31",
-  "inputDigestSha256": "9991cf2d7332b14630d85ac203936bb0496b82d0b5724b6f2b22a6a2d0fd37c0",
+  "dataAsOf": "2026-11-02",
+  "inputDigestSha256": "c6ffcd0abd548a86de0e6a4a402b71f80f04a228c087bedd12bd638390ee9dc8",
   "inputs": {
     "historyFiles": [
       "src/data/financial-history.json",
@@ -59,7 +59,8 @@
       "src/data/financial-history-v05-batch15.json",
       "src/data/financial-history-v05-batch16.json",
       "src/data/financial-history-v05-batch17.json",
-      "src/data/financial-history-v05-batch18.json"
+      "src/data/financial-history-v05-batch18.json",
+      "src/data/financial-history-v05-batch19.json"
     ],
     "companyFiles": 100,
     "cashFlowOverrides": 12
@@ -128,16 +129,16 @@
   },
   "summary": {
     "companies": 100,
-    "periods": 693,
-    "metrics": 3465,
+    "periods": 700,
+    "metrics": 3500,
     "metricStatusCounts": {
-      "verified": 2436,
+      "verified": 2457,
       "source-linked": 3,
       "needs-review": 0,
-      "missing": 1026
+      "missing": 1040
     },
     "missingReasonCounts": {
-      "not-collected": 1026,
+      "not-collected": 1040,
       "primary-source-unchecked": 0,
       "not-calculable": 0,
       "not-disclosed": 0,
@@ -147,7 +148,7 @@
       "both-present": 181,
       "fcf-missing-only": 0,
       "capex-missing-only": 0,
-      "both-missing": 512
+      "both-missing": 519
     },
     "capexDefinitions": {
       "gross-productive-assets-cash-purchases": 8,
@@ -158,24 +159,24 @@
       "broader-non-current-assets": 4,
       "net-capex": 28,
       "reit-or-real-estate-investment": 12,
-      "not-collected": 502,
+      "not-collected": 509,
       "unclassified": 0
     },
     "operatingProfitDefinitions": {
-      "direct-gaap-ifrs-operating-income": 597,
+      "direct-gaap-ifrs-operating-income": 600,
       "ebit": 2,
       "reconstructed-operating-income": 25,
       "source-linked": 1,
-      "special-case": 68
+      "special-case": 72
     },
     "adjustedNonGaapFcfAssessments": {
       "atlas-formula-aligned": 8,
       "atlas-definition-difference": 0,
       "unresolved": 0,
-      "not-applicable": 685
+      "not-applicable": 692
     },
     "specialFlags": {
-      "goodwill-impairment": 8,
+      "goodwill-impairment": 9,
       "discontinued-operations": 10,
       "non-consolidated-subsidiary": 2,
       "reit": 8,
@@ -201,7 +202,7 @@
       "fcf-capex-scope-mismatch": 0,
       "derived-single-quarter": 9,
       "unclassified-capex-definition": 0,
-      "special-operating-profit-definition": 68
+      "special-operating-profit-definition": 72
     }
   },
   "actionQueues": {
@@ -787,18 +788,18 @@
       "companyId": "aptiv",
       "name": "Aptiv",
       "japaneseName": "Aptiv（アプティブ）",
-      "periods": 2,
+      "periods": 3,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 13,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 2
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 1
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 2,
@@ -809,7 +810,7 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 1,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
@@ -817,17 +818,18 @@
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
-        "special-case": 0
+        "special-case": 1
       },
       "adjustedNonGaapFcfAssessments": {
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 3
       },
       "specialFlags": [
         "goodwill-impairment",
-        "broad-capex"
+        "broad-capex",
+        "special-operating-profit-definition"
       ]
     },
     {
@@ -3990,18 +3992,18 @@
       "companyId": "shinko-electric",
       "name": "SHINKO Electric Industries",
       "japaneseName": "新光電気工業",
-      "periods": 2,
+      "periods": 8,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 28,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 12
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 6
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -4012,23 +4014,25 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 6,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 5,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
-        "special-case": 0
+        "special-case": 3
       },
       "adjustedNonGaapFcfAssessments": {
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 8
       },
-      "specialFlags": []
+      "specialFlags": [
+        "special-operating-profit-definition"
+      ]
     },
     {
       "companyId": "siemens-energy",
@@ -6235,6 +6239,35 @@
       ],
       "capexDefinitionEvidenceSourceIds": [
         "sec-aptiv-2025-10k"
+      ]
+    },
+    {
+      "id": "aptiv-q3-2025-v16",
+      "companyId": "aptiv",
+      "periodType": "quarterly",
+      "periodLabel": "Q3 2025",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "goodwill-impairment",
+        "special-operating-profit-definition"
       ]
     },
     {
@@ -19085,6 +19118,34 @@
       ]
     },
     {
+      "id": "shinko-electric-fy2023-q3-v16",
+      "companyId": "shinko-electric",
+      "periodType": "quarterly",
+      "periodLabel": "FY2023 Q3",
+      "endDate": "2023-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "special-operating-profit-definition"
+      ]
+    },
+    {
       "id": "shinko-electric-fy2023",
       "companyId": "shinko-electric",
       "periodType": "annual",
@@ -19108,6 +19169,114 @@
       "specialFlags": []
     },
     {
+      "id": "shinko-electric-fy2023-q4-v16",
+      "companyId": "shinko-electric",
+      "periodType": "quarterly",
+      "periodLabel": "FY2023 Q4",
+      "endDate": "2024-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "special-operating-profit-definition"
+      ]
+    },
+    {
+      "id": "shinko-electric-fy2024-q1-v16",
+      "companyId": "shinko-electric",
+      "periodType": "quarterly",
+      "periodLabel": "FY2024 Q1",
+      "endDate": "2024-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "special-case",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": [
+        "special-operating-profit-definition"
+      ]
+    },
+    {
+      "id": "shinko-electric-fy2024-q2-v16",
+      "companyId": "shinko-electric",
+      "periodType": "quarterly",
+      "periodLabel": "FY2024 Q2",
+      "endDate": "2024-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "shinko-electric-fy2024-q3-v16",
+      "companyId": "shinko-electric",
+      "periodType": "quarterly",
+      "periodLabel": "FY2024 Q3",
+      "endDate": "2024-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "shinko-electric-fy2024",
       "companyId": "shinko-electric",
       "periodType": "annual",
@@ -19127,6 +19296,32 @@
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "complete",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "shinko-electric-fy2024-q4-v16",
+      "companyId": "shinko-electric",
+      "periodType": "quarterly",
+      "periodLabel": "FY2024 Q4",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": []
     },

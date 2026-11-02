@@ -31,7 +31,7 @@
     "latestPeriodLabel": null,
     "latestEndDate": null,
     "coverageStatus": "needs-review",
-    "blockerReason": "既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。",
+    "blockerReason": "2026年Q3の会社発表は売上高、同年半期原表は6か月の営業利益を開示。Q3単独の未調整連結営業利益、または同系列の9か月累計利益が未確認のため、半期利益を分割しない。",
     "officialSourceUrl": "https://www.airliquide.com/sites/airliquide.com/files/2026-02/air-liquide-pr-fy-2025-with-record-performance-and-confident-in-its-transformation-dynamic-air-liquide-confirms-its-growth-outlook.pdf",
     "checkedAt": "2026-09-23"
   },
@@ -43,7 +43,7 @@
     "latestPeriodLabel": null,
     "latestEndDate": null,
     "coverageStatus": "needs-review",
-    "blockerReason": "既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。",
+    "blockerReason": "子会社公式サイトへの今回の取得経路はHTTP 403。親会社の連結損益は別発行体であり、既存の子会社単体年次に対応する3か月の売上高・営業利益原表を未取得。取得不能を非開示とは判定しない。",
     "officialSourceUrl": "https://www.ajinomoto.com/cms_wp_ajnmt_global/wp-content/uploads/pdf/2026_08_06_01E.pdf",
     "checkedAt": "2026-09-23"
   },
@@ -109,15 +109,15 @@
   },
   {
     "companyId": "aptiv",
-    "disclosureCadence": "needs-review",
-    "actualQuarterCount": 0,
+    "disclosureCadence": "quarterly",
+    "actualQuarterCount": 1,
     "targetQuarterCount": 6,
-    "latestPeriodLabel": null,
-    "latestEndDate": null,
-    "coverageStatus": "needs-review",
-    "blockerReason": "既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。",
-    "officialSourceUrl": "https://www.sec.gov/Archives/edgar/data/1521332/000152133226000009/aptv-20251231.htm",
-    "checkedAt": "2026-09-23"
+    "latestPeriodLabel": "Q3 2025",
+    "latestEndDate": "2025-09-30",
+    "coverageStatus": "partial-quarterly",
+    "blockerReason": "分離前の2025年Q3の連結US GAAP単独値のみ確認。2026年Q2の継続事業原表はElectrical Distribution Systems分離後の範囲で、既存の分離前年次との再表示接続表を未確認。最新6期の同一系列は構成しない。",
+    "officialSourceUrl": "https://www.sec.gov/Archives/edgar/data/1521332/000152133225000051/aptv-20250930.htm",
+    "checkedAt": "2026-11-02"
   },
   {
     "companyId": "arista",
@@ -211,7 +211,7 @@
     "latestPeriodLabel": null,
     "latestEndDate": null,
     "coverageStatus": "needs-review",
-    "blockerReason": "既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。",
+    "blockerReason": "会社IRの2026年半期報告と年次報告を確認。3か月単独の連結売上高・未調整営業利益を同じ期間で示す原表を未取得。半期値を均等分割しない。",
     "officialSourceUrl": "https://assets.bosch.com/media/global/bosch_group/our_figures/pdf/bosch-annual-report-2025.pdf",
     "checkedAt": "2026-09-23"
   },
@@ -487,7 +487,7 @@
     "latestPeriodLabel": null,
     "latestEndDate": null,
     "coverageStatus": "needs-review",
-    "blockerReason": "既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。",
+    "blockerReason": "2026年Q3発表は調整後EBITAC・EBIT1を掲載。連結未調整IFRS営業利益を示す添付原表PDFは今回の取得経路でHTTP 403。Octave分離後の比較列と既存年次の範囲も未照合で、調整後利益を代用しない。",
     "officialSourceUrl": "https://mb.cision.com/Main/387/4300053/3907199.pdf",
     "checkedAt": "2026-09-23"
   },
@@ -811,7 +811,7 @@
     "latestPeriodLabel": null,
     "latestEndDate": null,
     "coverageStatus": "needs-review",
-    "blockerReason": "既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。",
+    "blockerReason": "既存年次はDMBを非継続事業へ再分類したUS GAAP。旧四半期原表はその再分類前、2026年度Q1以降はIFRS。年次と同じ範囲・基準の四半期再表示系列が未確定のため混在させない。",
     "officialSourceUrl": "https://www.omron.com/global/en/assets/file/ir/irlib/20260513_financial_results.pdf",
     "checkedAt": "2026-09-23"
   },
@@ -907,7 +907,7 @@
     "latestPeriodLabel": null,
     "latestEndDate": null,
     "coverageStatus": "needs-review",
-    "blockerReason": "既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。",
+    "blockerReason": "2026年Q1・Q3は会社の四半期売上資料、H1は6か月利益資料。Q1・Q3の未調整IFRS連結営業利益、または同じ系列の累計差分に必要な原表を未確認。調整後EBITAや半期按分を使わない。",
     "officialSourceUrl": "https://www.se.com/ww/en/assets/564/document/528238/accounts-fy-results-2025.pdf?p_File_Name=2025+Full+Year+Financial+Results+Accounts&p_enDocType=EDMS",
     "checkedAt": "2026-09-23"
   },
@@ -949,15 +949,15 @@
   },
   {
     "companyId": "shinko-electric",
-    "disclosureCadence": "needs-review",
-    "actualQuarterCount": 0,
+    "disclosureCadence": "quarterly",
+    "actualQuarterCount": 6,
     "targetQuarterCount": 6,
-    "latestPeriodLabel": null,
-    "latestEndDate": null,
-    "coverageStatus": "needs-review",
-    "blockerReason": "既存の公式通期資料はあるが、四半期開示頻度、会計基準、通貨、改訂系列の連続性をまだ確定できていない。推定値は収録しない。",
-    "officialSourceUrl": "https://www.shinko.co.jp/english/ir/docs/bn2024_summary.pdf",
-    "checkedAt": "2026-09-23"
+    "latestPeriodLabel": "FY2024 Q4",
+    "latestEndDate": "2025-03-31",
+    "coverageStatus": "complete-six-quarters",
+    "blockerReason": null,
+    "officialSourceUrl": "https://www.shinko.co.jp/ir/docs/bn2025.pdf",
+    "checkedAt": "2026-11-02"
   },
   {
     "companyId": "siemens-energy",

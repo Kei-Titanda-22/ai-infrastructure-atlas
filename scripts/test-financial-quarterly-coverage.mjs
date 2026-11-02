@@ -20,8 +20,8 @@ assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
 assert.deepEqual(new Set(coverage.map(row => row.companyId)), new Set(companies.map(company => company.id)), 'coverage company IDs exactly match registry');
 assert.equal(new Set(coverage.map(row => row.companyId)).size, coverage.length, 'coverage company IDs are unique');
-assert.equal(history.length, 693, 'v15 adds 24 sourced actual quarters without removing the 669 existing periods');
-assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 92, 'v15 reaches 92 companies with at least six reported quarters');
+assert.equal(history.length, 700, 'v16 adds seven sourced actual quarters without removing the 693 existing periods');
+assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 93, 'v16 reaches 93 companies with at least six reported quarters');
 
 const quarterlyByCompany = new Map(companies.map(company => [company.id, []]));
 for (const record of history) if (record.periodType === 'quarterly') quarterlyByCompany.get(record.companyId)?.push(record);
@@ -300,9 +300,9 @@ for (const [companyId, endDates] of tenthPeriods) {
   for (const field of ['currency', 'unit', 'accountingBasis']) assert.equal(new Set(quarterly.slice(-6).map(record => record[field])).size, 1, `${companyId}: stable ${field}`);
   assert.ok(quarterly.slice(-6).every(record => record.metrics.revenue.value != null && record.metrics.operatingProfit.value != null && record.metrics.operatingMargin.value != null), `${companyId}: sales, operating profit and margin are nonempty`);
 }
-assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 0, 'all previously partial companies now have six actual quarters');
+assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 1, 'Aptiv has one verified pre-spin quarter');
 assert.equal(coverage.filter(row => row.coverageStatus === 'awaiting-next-quarter').length, 0, 'Kioxia actual Q2 publication closes the awaiting category');
-assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 8, 'eight companies remain without collected quarterly actuals after v15 statement audit');
+assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 6, 'six companies remain without collected quarterly actuals after v16 statement audit');
 assert.equal(coverage.find(row => row.companyId === 'nvidia').checkedAt, '2026-09-23', 'unreviewed baseline companies retain their original coverage check date');
 assert.equal(coverage.find(row => row.companyId === 'fujikura').coverageStatus, 'complete-six-quarters', 'Fujikura is complete from the comparable official series');
 
@@ -543,4 +543,34 @@ assert.equal(new Set(history.map(record => record.id)).size, history.length, 'al
 const compareCompaniesWithoutFinancialHistory = evidenceCompareSupportedCompanyIds
   .filter(companyId => !history.some(record => record.companyId === companyId));
 assert.deepEqual(compareCompaniesWithoutFinancialHistory, [], 'all supported Compare Evidence companies have at least one history record through the same loader batch set');
+const v16Batch = await readJson(join(dataDirectory, 'financial-history-v05-batch19.json'));
+const v16Sources = await readJson(join(dataDirectory, 'document-sources-v05-batch19.json'));
+const v16Policies = await readJson(join(dataDirectory, 'document-source-policies-v05-batch19.json'));
+const v16Blockers = await readJson(join(dataDirectory, 'financial-quarterly-blockers-v16.json'));
+assert.equal(v16Batch.length, 7, 'v16 has seven issuer-statement-based quarters');
+assert.deepEqual(new Set(v16Batch.map(record => record.companyId)), new Set(['aptiv', 'shinko-electric']));
+assert.deepEqual(new Set(v16Sources.map(source => source.id)), new Set(v16Policies.map(policy => policy.sourceId)), 'each v16 primary source has one policy');
+assert.ok(v16Batch.every(record => v16Sources.some(source => source.id === record.sourceId && source.companyId === record.companyId)), 'v16 records resolve to their own issuer source');
+assert.deepEqual(quarterlyByCompany.get('shinko-electric').map(record => record.endDate), ['2023-12-31','2024-03-31','2024-06-30','2024-09-30','2024-12-31','2025-03-31'], 'Shinko has six consecutive pre-delisting quarters');
+assert.deepEqual(quarterlyByCompany.get('aptiv').map(record => record.endDate), ['2025-09-30'], 'Aptiv keeps only the verified pre-spin quarter');
+for (const [id, revenue, profit] of [
+  ['shinko-electric-fy2023-q3-v16',156638-105109,17996-11470],
+  ['shinko-electric-fy2023-q4-v16',209972-156638,24810-17996],
+  ['shinko-electric-fy2024-q1-v16',53358,7254],
+  ['shinko-electric-fy2024-q2-v16',108330-53358,12724-7254],
+  ['shinko-electric-fy2024-q3-v16',159891-108330,19121-12724],
+  ['shinko-electric-fy2024-q4-v16',215022-159891,25354-19121],
+  ['aptiv-q3-2025-v16',5212,-175],
+]) {
+  const record = v16Batch.find(item => item.id === id);
+  assert.equal(record.metrics.revenue.value,revenue,`${id}: issuer revenue arithmetic`);
+  assert.equal(record.metrics.operatingProfit.value,profit,`${id}: issuer operating-profit arithmetic`);
+  assert.equal(record.metrics.operatingMargin.value,Math.round(profit/revenue*1000)/10,`${id}: same-period margin`);
+}
+assert.deepEqual(Object.keys(v16Blockers.reasons).sort(), ['air-liquide','ajinomoto-fine-techno','aptiv','bosch','hexagon','omron','schneider-electric','shinko-electric'], 'only eight v16 targets receive specific audit metadata');
+for (const companyId of Object.keys(v16Blockers.reasons)) {
+  const row = coverage.find(item => item.companyId === companyId);
+  if (row.coverageStatus !== 'complete-six-quarters') assert.equal(row.blockerReason,v16Blockers.reasons[companyId],`${companyId}: published blocker matches v16 audit`);
+}
+assert.equal(coverage.find(row=>row.companyId==='nvidia').checkedAt,'2026-09-23','non-target check date does not move');
 console.log(`Financial quarterly coverage OK: ${coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length} complete companies`);

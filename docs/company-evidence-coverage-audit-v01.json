@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-10-31T00:00:00Z",
-  "dataAsOf": "2026-10-31",
-  "inputDigest": "sha256:38e55e76eaadd009d28597b37b00950332d958a589c8dad340dbdcb1b368453e",
+  "generatedAt": "2026-11-02T00:00:00Z",
+  "dataAsOf": "2026-11-02",
+  "inputDigest": "sha256:3ff22846a9308158b00ba660782728c525e2c402ed590ef71373fe27abca9c75",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 266
+    "inputFileCount": 268
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 714,
-      "uniqueSourceCount": 712,
+      "registryRecordCount": 719,
+      "uniqueSourceCount": 717,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -267,16 +267,16 @@
         }
       ],
       "publishedAtNullUniqueSources": 279,
-      "staleIshUniqueSources": 5,
+      "staleIshUniqueSources": 7,
       "staleIshThresholdDays": 730,
       "companySourceIdReferences": 121,
       "companySourceIdResolved": 121,
       "orphanSourceIdReferences": 0,
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
-      "staleIshReferences": 5,
-      "financialSourceReferences": 457,
-      "financialSourceResolved": 457
+      "staleIshReferences": 7,
+      "financialSourceReferences": 462,
+      "financialSourceResolved": 462
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -3323,8 +3323,8 @@
       "primaryLayer": "Physical AI",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 2,
-      "financialSourceCount": 1,
+      "registrySourceCount": 3,
+      "financialSourceCount": 2,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -3581,8 +3581,9 @@
         "resolvedSourceIds": [
           "ir-aptiv"
         ],
-        "registrySourceCount": 2,
+        "registrySourceCount": 3,
         "financialSourceIds": [
+          "aptiv-2025-q3-10q-v16",
           "sec-aptiv-2025-10k"
         ],
         "orphanSourceIds": [],
@@ -23510,8 +23511,8 @@
       "primaryLayer": "半導体材料・基板",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 8,
+      "financialSourceCount": 5,
       "claimCount": 11,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 11,
@@ -23768,9 +23769,13 @@
         "resolvedSourceIds": [
           "ir-shinko-archive"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 8,
         "financialSourceIds": [
-          "results-shinko-2025-04-24-fy2024"
+          "results-shinko-2025-04-24-fy2024",
+          "shinko-fy2025-fy-v16",
+          "shinko-fy2025-h1-v16",
+          "shinko-fy2025-q1-v16",
+          "shinko-fy2025-q3-v16"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
@@ -23779,7 +23784,9 @@
           "results-shinko-2025-04-24-fy2024"
         ],
         "staleIshSourceIds": [
-          "official-shinko-bga-capacity-2022"
+          "official-shinko-bga-capacity-2022",
+          "shinko-fy2025-h1-v16",
+          "shinko-fy2025-q1-v16"
         ],
         "multiCategorySourceIds": []
       },
