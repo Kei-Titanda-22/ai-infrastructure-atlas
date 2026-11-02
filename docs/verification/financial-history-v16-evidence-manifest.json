@@ -190,7 +190,7 @@
       "Compare purpose preset selected 4 companies. Free selection preserved Aptiv, Shinko, NVIDIA and AMD URL order and four distinct pale backgrounds. Attempting a fifth company left the selection at 4/4. Direct URL restored Shinko then Aptiv order; back and forward navigation changed the visible selection with the URL.",
       "Compare summary/expanded toggle, all-clear, 44 by 44 px Evidence marker, drawer, Escape and focus return to the marker worked.",
       "Atlas stage navigation opened the company list with stage=compute. At 390 px the stage cards were vertically aligned with no document overflow. Pagefind search for Shinko returned the company detail and financial history results.",
-      "At 1024 px the Kioxia revenue and margin FY axis labels had no bounding-box overlap. The chart-label regression test also covers resize and font-layout behavior."
+      "In the v16 Chrome check at 1024 px, the Kioxia revenue and margin FY axis labels had no bounding-box overlap. The chart-label regression test checks layout logic with supplied text bounds at multiple widths; it does not execute browser ResizeObserver or font-loading events. The 1024-to-390-to-360-to-1024 resize observation after layout settled belongs to the preserved v15 browser QA, not a new v16 browser check."
     ],
     "documentHorizontalOverflowPixels": 0,
     "siteConsoleErrorCount": 0,
@@ -207,5 +207,17 @@
     "Pagefind auxiliary files may vary by byte; the frozen 101 artifacts and URL set of 105 match across both builds.",
     "The other 92 companies retain historical latest-period judgments and were not directly checked at the v16 cutoff."
   ],
+  "documentationCorrection": {
+    "scope": "Omron audit source locations and comparison blocker; chart-label test versus browser QA evidence",
+    "officialOmronSource": "https://www.omron.com/global/en/assets/file/ir/irlib/20260513_data_e.pdf",
+    "omronSourceLocations": "p2 annual actuals and following-year plan; pp11-12 DMB reclassification and reference-scope notes; p13 pre-reclassification quarterly reference figures, including FY25 Q4/H2/full-year values not disclosed under US GAAP",
+    "unitClarification": "JPY billion is not an adoption blocker by itself; any exact conversion to JPY million must retain the published rounding precision. The unresolved evidence concerns matching accounting basis and reporting scope to existing annual records and connecting an IFRS series.",
+    "chartTestScope": "scripts/test-financial-chart-period-labels.mjs tests layout logic using supplied text boundaries and multiple widths; it does not run browser ResizeObserver or font-loading events.",
+    "browserEvidenceScope": "v16 observed zero Kioxia label overlap at 1024 px. The resize cycle after layout settled is inherited v15 Chrome evidence. The original v16 preview-qa-v16.json and all earlier build logs and SHA maps remain unchanged.",
+    "postCorrectionVerificationFile": "documentation-correction-v16.json",
+    "postCorrectionVerificationSha256": "18e41a13d326f6abe966f81baa6d95643b1a70a1baa848e704a57ecdc697681b",
+    "productInputChanged": false,
+    "buildAndPreviewRepeated": false
+  },
   "recheck": "Hash each savedEvidence file. Compare run1-map.json, run2-map.json and current-map.json on inputMapDigest, artifactMapDigest, companyDetailMapDigest, routeSetDigest, pagefindUrlSetDigest, compareSha256 and compareBytes. Recompute 101 frozen asset hashes, 100 detail hashes and Compare size from dist. Check changed paths against the v15 fixture and detail-scope-final.log."
 }
