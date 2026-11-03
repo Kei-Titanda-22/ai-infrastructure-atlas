@@ -56,7 +56,7 @@
 - [Official material](https://mb.cision.com/Main/387/4210938/3590765.pdf), published 2025-07-25; PDF physical/printed p15, Condensed income statement, Q2 2025 actual / Q2 2024 comparative three-month columns. 2025 1369.9 / 313.2; 2024 1353.4 / 360.5 EUR million. Operating net sales 1370.7 is adjusted and excluded.
 - [Official material](https://mb.cision.com/Main/387/4255763/3742997.pdf), published 2025-10-24; PDF physical/printed p15, Condensed income statement, Q3 2025 actual / Q3 2024 comparative three-month columns. 2025 1303.1 / -12.9; 2024 1299.8 / 334.4 EUR million. EBIT1 349.3 is adjusted and excluded.
 - [Official material](https://mb.cision.com/Main/387/4300053/3907199.pdf), published 2026-01-30; PDF physical/printed p15, Condensed income statement, Q4 2025 actual / Q4 2024 comparative three-month columns. 2025 1428.8 / 356.9; 2024 1448.0 / 401.4 EUR million. Existing annual source reused.
-- [Official material](https://mb.cision.com/Main/387/4413836/4335597.pdf), published 2026-10-23; PDF physical/printed p16, post-Octave continuing Condensed income statement and discontinued Octave note. Q3 2026 continuing 1049.1 / 541.7; FY2025 continuing 3999.3 / 692.8 plus Octave discontinued 1425.3 / 231.6 reconciles to retained full-group annual.
+- [Official material](https://mb.cision.com/Main/387/4413836/4335597.pdf), published 2026-10-23; PDF physical/printed p16, post-Octave continuing Condensed income statement; physical/printed p25, Discontinued Operations note and Octave Condensed income statement. Q3 2026 continuing 1049.1 / 541.7; FY2025 continuing 3999.3 / 692.8 plus Octave discontinued 1425.3 / 231.6 reconciles to retained full-group annual.
 
 ### omron
 

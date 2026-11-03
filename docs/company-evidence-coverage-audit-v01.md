@@ -1,7 +1,7 @@
 # 100-company Company Evidence Coverage Audit v0.1
 
 - Data as of: `2026-11-03`
-- Input digest: `sha256:45738fd05a19cc48b8d77b540c15c619656a52e371114b13c97e5a3aab187711`
+- Input digest: `sha256:d0c9eb1b53130fb7221e42506024bcca4e7d7115c4caead3309c6d042f581137`
 - Scope: 100 companies × 11 categories = 1,100 pairs
 - Company Evidence enrichment: **Arm / ASML only**
 - This is a coverage audit, not a Company Evaluation Score.

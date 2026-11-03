@@ -799,6 +799,27 @@ assert.deepEqual(
   { amountUnitLabel: '百万円', accountingBasisLabel: '日本会計基準（単体）', periodLabels: ['2025年度', '2026年度'] },
   'raw accounting-basis aliases share an exact display identity without changing the underlying records',
 );
+assert.equal(
+  normalizeCompareFinancialAccountingBasis('IFRS (EU), IAS 34 year-end report'),
+  'IFRS as adopted by the EU, consolidated',
+  'only the reviewed Hexagon year-end provenance alias resolves to the shared EU IFRS consolidated identity',
+);
+const hexagonBasisRecords = [
+  { periodLabel: 'Q1 2025', currency: 'EUR', unit: 'million', accountingBasis: 'IFRS as adopted by the EU, consolidated' },
+  { periodLabel: 'Q4 2025', currency: 'EUR', unit: 'million', accountingBasis: 'IFRS (EU), IAS 34 year-end report' },
+];
+assert.equal(
+  resolveCompareFinancialTablePresentation(hexagonBasisRecords).accountingBasisLabel,
+  'EU採択の国際財務報告基準（IFRS・連結）',
+  'interim and year-end raw provenance share one reviewed EU IFRS consolidated display label',
+);
+for (const accountingBasis of ['US GAAP', 'IFRS consolidated', 'IFRS as adopted by the EU, non-consolidated']) {
+  assert.throws(
+    () => resolveCompareFinancialTablePresentation([hexagonBasisRecords[0], { ...hexagonBasisRecords[1], accountingBasis }]),
+    /mixed accounting basis/,
+    `${accountingBasis}: unrelated standard or consolidation scope is still rejected`,
+  );
+}
 assert.throws(
   () => resolveCompareFinancialTablePresentation([{ ...financialGuardRecord, accountingBasis: 'Japanese GAAP non-consolidated (unreviewed transcription)' }]),
   /accounting basis label is unsupported/,
@@ -1940,7 +1961,7 @@ if (process.argv.includes('--dist')) {
   ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
-  assert.equal(Buffer.byteLength(financialPayload), 860_981, 'v18 adds 11,502 B for eight Hexagon quarters to the diagnostic financial payload');
+  assert.equal(Buffer.byteLength(financialPayload), 861_017, 'v18 adds eight Hexagon quarters and the corrected interim accounting-basis metadata to the diagnostic financial payload');
   const normalizedNonFinancialHtml = normalizeViteAssetFingerprints(compareHtml.replace(financialPayloadRe, '$1$2'));
   assert.equal(Buffer.byteLength(normalizedNonFinancialHtml), 327_875, 'human UX review adds 190 B of explicit comparison-order and legend markup to the v08 non-financial HTML');
   assert.equal(
@@ -2057,7 +2078,8 @@ if (process.argv.includes('--dist')) {
   assert.equal(compareBytes - fifteenthBatchCompareSizeContract.acceptedRawBytes, Buffer.byteLength(financialPayload) - 832_010, 'v16 and v17 diagnostic growth is confined to the financial payload');
   assert.equal(compareBytes - 1_169_129, Buffer.byteLength(financialPayload) - 841_327, 'v17 incremental growth is exactly six Aptiv records in the financial payload');
   assert.equal(compareBytes - 1_177_281, Buffer.byteLength(financialPayload) - 849_479, 'v18 incremental growth matches only the eight-record financial payload');
-  assert.equal(compareBytes, 1_188_783, 'v18 diagnostic output matches the independently measured HTML size');
+  assert.equal(compareBytes - 1_188_783, Buffer.byteLength(financialPayload) - 860_981, 'the 36 B metadata correction changes only the financial payload');
+  assert.equal(compareBytes, 1_188_819, 'corrected v18 diagnostic output matches the independently measured HTML size');
   const assertFifteenthBatchCompareSize = bytes => {
     assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v15 diagnostic byte count is a non-negative integer');
     assert.ok(bytes <= fifteenthBatchCompareSizeContract.maximumRawBytes, `v15 legacy Compare HTML ${bytes} B exceeds ${fifteenthBatchCompareSizeContract.maximumRawBytes} B`);

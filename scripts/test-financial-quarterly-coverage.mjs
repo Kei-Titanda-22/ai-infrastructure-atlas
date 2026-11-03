@@ -3,7 +3,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { evidenceCompareSupportedCompanyIds } from '../src/lib/company-compare-evidence-ui.ts';
-import { resolveCompareFinancialTablePresentation } from '../src/lib/company-compare-display.ts';
+import { normalizeCompareFinancialAccountingBasis, resolveCompareFinancialTablePresentation } from '../src/lib/company-compare-display.ts';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dataDirectory = join(root, 'src', 'data');
@@ -610,7 +610,9 @@ assert.deepEqual(v18Batch.map(record => record.sourceId), [
 for (const record of v18Batch) {
   assert.equal(record.currency, 'EUR');
   assert.equal(record.unit, 'million');
-  assert.equal(record.accountingBasis, 'IFRS (EU), IAS 34 year-end report');
+  assert.equal(record.accountingBasis, /^Q[1-3] /.test(record.periodLabel)
+    ? 'IFRS as adopted by the EU, consolidated'
+    : 'IFRS (EU), IAS 34 year-end report');
   assert.equal(record.metrics.operatingMargin.value, Math.round(record.metrics.operatingProfit.value/record.metrics.revenue.value*1000)/10);
   assert.equal(record.metrics.freeCashFlow.value, null);
   assert.equal(record.metrics.capex.value, null);
@@ -620,7 +622,11 @@ for (const record of v18Batch) {
 }
 const hexagonHistory = history.filter(record => record.companyId === 'hexagon');
 assert.equal(hexagonHistory.length, 10, 'Hexagon table retains eight quarters and two annual records');
-assert.equal(new Set(hexagonHistory.map(record => record.currency+':'+record.unit+':'+record.accountingBasis)).size,1);
+assert.equal(new Set(hexagonHistory.map(record => record.accountingBasis)).size, 2, 'interim and year-end provenance remain distinct in raw metadata');
+assert.equal(hexagonHistory.filter(record => record.accountingBasis === 'IFRS as adopted by the EU, consolidated').length, 6);
+assert.equal(hexagonHistory.filter(record => record.accountingBasis === 'IFRS (EU), IAS 34 year-end report').length, 4);
+assert.equal(new Set(hexagonHistory.map(record => record.currency+':'+record.unit+':'+normalizeCompareFinancialAccountingBasis(record.accountingBasis))).size,1);
+assert.equal(resolveCompareFinancialTablePresentation(hexagonHistory).accountingBasisLabel, 'EU採択の国際財務報告基準（IFRS・連結）');
 const hexagonQuarters = hexagonHistory.filter(record => record.periodType === 'quarterly').sort((a,b)=>a.endDate.localeCompare(b.endDate));
 assert.deepEqual(hexagonQuarters.slice(-6).map(record => record.periodLabel), ['Q3 2024','Q4 2024','Q1 2025','Q2 2025','Q3 2025','Q4 2025']);
 assert.deepEqual(hexagonQuarters.map(record => record.endDate), ['2024-03-31','2024-06-30','2024-09-30','2024-12-31','2025-03-31','2025-06-30','2025-09-30','2025-12-31']);

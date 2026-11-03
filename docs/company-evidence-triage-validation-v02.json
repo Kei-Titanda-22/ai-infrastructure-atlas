@@ -1,7 +1,7 @@
 {
   "schemaVersion": "0.2",
   "baselineMain": "d8b6e223ec49bd454a0fd1276989723b0810a2d0",
-  "triageInputDigest": "sha256:b0018a92fb03ad3bcee7f71e56df65cc2618c4ff0886f85a73a5d136b11bcedc",
+  "triageInputDigest": "sha256:2f55312cbf1f443f21e87510680ee24f6a3167c8f14b81bb7a0d5b80735819b5",
   "sampleSeed": "triage-validation-v02",
   "sampleMethod": "Sort ascending by sha256(companyId + ':' + category + ':' + sampleSeed), tie-break by record id; take fixed SUFFICIENT_PARTIAL category quotas, all remaining DEFERRED when under 24, all NOT_APPLICABLE and NOT_DISCLOSED, then six non-overlapping former-DEFERRED/current-SUFFICIENT_PARTIAL records per remediated category.",
   "sampleCount": 87,
@@ -3913,7 +3913,7 @@
   },
   "hardStop": {
     "triggered": false,
-    "materialRate": 0.0,
+    "materialRate": 0,
     "criticalCount": 0,
     "materialCount": 0,
     "unresolvedSystemicPatternCount": 0,

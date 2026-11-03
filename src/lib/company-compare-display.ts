@@ -79,6 +79,7 @@ export const compareFinancialAccountingBasisLabels = Object.freeze<Record<string
 
 const compareFinancialAccountingBasisAliases = Object.freeze<Record<string, string>>({
   'Japanese GAAP non-consolidated (official-gazette announcement transcription)': 'Japanese GAAP non-consolidated',
+  'IFRS (EU), IAS 34 year-end report': 'IFRS as adopted by the EU, consolidated',
 });
 
 export function normalizeCompareFinancialAccountingBasis(accountingBasis: string) {

@@ -8,6 +8,7 @@ const read = async path => JSON.parse(await readFile(join(root, path), 'utf8'));
 const previous = await read('docs/financial-latest-period-audit-v17.json');
 const coverage = await read('src/data/financial-quarterly-coverage-v01.json');
 const additions = await read('src/data/financial-history-v05-batch21.json');
+const existingHexagon = (await read('src/data/financial-history-v04-batch34.json')).filter(record => record.companyId === 'hexagon');
 const newSources = await read('src/data/document-sources-v05-batch21.json');
 const oldSources = await read('src/data/document-sources-v04-batch34.json');
 const sourceById = new Map([...oldSources, ...newSources].map(source => [source.id, source]));
@@ -17,6 +18,8 @@ assert.equal(previous.records.length, 100);
 assert.deepEqual(previous.records.filter(row => row.loadedCoverageStatus === 'needs-review').map(row => row.companyId).sort(), targets);
 assert.equal(additions.length, 8);
 assert.ok(additions.every(record => record.companyId === 'hexagon'));
+assert.equal(existingHexagon.length, 2);
+const hexagonAccountingBases = [...new Set([...existingHexagon, ...additions].map(record => record.accountingBasis))].sort();
 
 const reviewed = {
   hexagon: {
@@ -31,7 +34,7 @@ const reviewed = {
       {url:'https://mb.cision.com/Main/387/4210938/3590765.pdf',publishedAt:'2025-07-25',location:'PDF physical/printed p15, Condensed income statement, Q2 2025 actual / Q2 2024 comparative three-month columns',finding:'2025 1369.9 / 313.2; 2024 1353.4 / 360.5 EUR million. Operating net sales 1370.7 is adjusted and excluded.'},
       {url:'https://mb.cision.com/Main/387/4255763/3742997.pdf',publishedAt:'2025-10-24',location:'PDF physical/printed p15, Condensed income statement, Q3 2025 actual / Q3 2024 comparative three-month columns',finding:'2025 1303.1 / -12.9; 2024 1299.8 / 334.4 EUR million. EBIT1 349.3 is adjusted and excluded.'},
       {url:'https://mb.cision.com/Main/387/4300053/3907199.pdf',publishedAt:'2026-01-30',location:'PDF physical/printed p15, Condensed income statement, Q4 2025 actual / Q4 2024 comparative three-month columns',finding:'2025 1428.8 / 356.9; 2024 1448.0 / 401.4 EUR million. Existing annual source reused.'},
-      {url:'https://mb.cision.com/Main/387/4413836/4335597.pdf',publishedAt:'2026-10-23',location:'PDF physical/printed p16, post-Octave continuing Condensed income statement and discontinued Octave note',finding:'Q3 2026 continuing 1049.1 / 541.7; FY2025 continuing 3999.3 / 692.8 plus Octave discontinued 1425.3 / 231.6 reconciles to retained full-group annual.'},
+      {url:'https://mb.cision.com/Main/387/4413836/4335597.pdf',publishedAt:'2026-10-23',location:'PDF physical/printed p16, post-Octave continuing Condensed income statement; physical/printed p25, Discontinued Operations note and Octave Condensed income statement',finding:'Q3 2026 continuing 1049.1 / 541.7; FY2025 continuing 3999.3 / 692.8 plus Octave discontinued 1425.3 / 231.6 reconciles to retained full-group annual.'},
     ],
   },
   omron: {
@@ -84,7 +87,8 @@ const records = previous.records.map(old => {
   })) : [];
   assert.ok(addedV18Periods.every(record => record.sourceUrl));
   return {
-    ...old,loadedQuarterlyCount:loaded.actualQuarterCount,loadedLatestPeriod:loaded.latestPeriodLabel,
+    ...old,loadedAccountingBases:id === 'hexagon' ? hexagonAccountingBases : old.loadedAccountingBases,
+    loadedQuarterlyCount:loaded.actualQuarterCount,loadedLatestPeriod:loaded.latestPeriodLabel,
     loadedLatestEndDate:loaded.latestEndDate,loadedCoverageStatus:loaded.coverageStatus,
     reviewProvenanceV18:'direct-v18',reviewDepthV18:info.category,
     reviewedAtV18:'2026-11-03',v18Outcome:id === 'hexagon' ? 'adopted-historical' : 'held',

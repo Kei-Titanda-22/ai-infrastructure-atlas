@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "v18-evidence-1",
+  "schemaVersion": "v18-evidence-2",
   "baselineMainSha": "06400907de4ba917b5713d26736d88ed15166055",
   "branch": "codex/financial-history-six-period-coverage-v18",
   "auditAsOfJst": "2026-11-03T21:37:29+09:00",
@@ -203,5 +203,254 @@
     "evidence": "Hash every file in savedEvidenceSha256 against the adjacent evidence directory.",
     "dist": "Run verify-current-v18.mjs with worktree and evidence paths; compare run1-map.json and run2-map.json.",
     "audit": "Run generate-financial-latest-period-audit-v18.mjs --check and generate-financial-quarterly-coverage.mjs --check."
+  },
+  "metadataCorrection": {
+    "scope": "Follow-up to commit 7231c78eb0c0a1ee98cfdec2bcf57082b5cd0a63; original 51 evidence files and initial build results are preserved as historical evidence",
+    "correctionEvidenceDirectory": "..\\ai-infrastructure-atlas-financial-history-six-period-coverage-v18-evidence\\correction-v18",
+    "auditAsOfJst": "2026-11-03T21:37:29+09:00",
+    "changes": {
+      "interimHexagonRawBasis": "IFRS as adopted by the EU, consolidated",
+      "interimRecordCount": 6,
+      "yearEndAndAnnualRawBasis": "IFRS (EU), IAS 34 year-end report",
+      "yearEndAndAnnualRecordCount": 4,
+      "displayAliasExact": "IFRS (EU), IAS 34 year-end report -> IFRS as adopted by the EU, consolidated",
+      "numbersPeriodsCurrencyUnitsSourcesDatesAndMissingMetricsUnchanged": true,
+      "aptivBlocker": "Seven pre-spin quarters from 2024 Q3 to 2026 Q1; graph latest six 2024 Q4 to 2026 Q1; unresolved connection to EDS post-spin 2026 Q2 and later",
+      "hexagonQ32026Source": "Consolidated continuing income statement PDF physical/printed page 16; Octave discontinued-operations note PDF physical/printed page 25"
+    },
+    "environment": {
+      "nodeExecutable": "C:/Users/mkato/Documents/Codex/2026-08-31/github-plugin-github-openai-curated-remote/work/ai-infrastructure-atlas-financial-history-six-period-coverage-v13-evidence/node-v22.23.4/node-v22.23.4-win-x64/node.exe",
+      "node": "v22.23.4",
+      "npm": "10.9.9",
+      "astro": "7.2.9",
+      "pagefind": "1.5.2",
+      "pythonExecutable": "C:/Users/mkato/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe",
+      "python": "3.12.14",
+      "dependencyReference": "Unchanged verified v13 node_modules junction; junction remains intact"
+    },
+    "sourceInputMapDigest": "28dcd76ac9ad190798ac0ae0509f2461c5f9c2bd6ec43d8388da0670752b59b1",
+    "builds": [
+      {
+        "id": "run1",
+        "startedAt": "2026-11-03T23:58:43.9951315+09:00",
+        "endedAt": "2026-11-03T14:59:05.635Z",
+        "commands": [
+          "astro build",
+          "pagefind --site dist",
+          "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+          "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"
+        ],
+        "exitCodes": {
+          "astro": 0,
+          "pagefind": 0,
+          "compare": 0,
+          "japanese": 0
+        },
+        "mapFile": "run1-map.json",
+        "mapSha256": "cd9986dbf1619e6b0b5ed1c5ec1f8b2c874a969997455f84aa44e42c415c4e83"
+      },
+      {
+        "id": "run2",
+        "startedAt": "2026-11-03T23:59:05.6522666+09:00",
+        "endedAt": "2026-11-03T14:59:27.709Z",
+        "commands": [
+          "astro build",
+          "pagefind --site dist",
+          "node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+          "node --experimental-strip-types scripts/test-japanese-first-copy.mjs --dist"
+        ],
+        "exitCodes": {
+          "astro": 0,
+          "pagefind": 0,
+          "compare": 0,
+          "japanese": 0
+        },
+        "mapFile": "run2-map.json",
+        "mapSha256": "1af36e5fb654359bd3dd9d48aea6b699a752cdd4c73e3fa7b007388b795f6e57"
+      }
+    ],
+    "savedEvidenceSha256": {
+      "before-compare.html": "1cbc4d33f0a8886ff48d5ea23876f729bbe43422a19765e4a9a16d92251252f8",
+      "before-hexagon-asset.html": "8f3ec932ddbd37b7ecca2c597c6201b3e0ab2a8055c6130ec5a86fd11a56825e",
+      "before-hexagon-detail.html": "e1def89207a57b189f8b69ce23f20bdf42519dcc29da0c65881167f723bd8dab",
+      "before-shell.html": "9452c599375923efc98c5c3901a62b9cdc306b4c588dec96d3b98b88462cc007",
+      "capture-v18.mjs": "edb1321aea3710a3053e22616fb6874440210a28c1b17fb29f8cbab12ab23b71",
+      "derive-freeze.mjs": "bc8122accb29a349467ec1d21d20fa68d0661b45f3fcfa3da95a0ca3dd1bb1e0",
+      "final-independent-verification.json": "ec21c7cd87768bd450f371c31a49963fac342de3c98100aa0a1a3bdadcc59dab",
+      "followup-gates.json": "d3c03eece7bb6af5e840d238d5bfab8b3a13c0844de8618bda90eddc02dc35db",
+      "freeze-derivation.json": "d96d5f000e8157ed7c7f1f942165885648ea0ce230c1e663364fa96f9220f231",
+      "gate-audit.log": "6159cd3a4b68453c502b03e2002b9e42607d7d6030a3f418a7557a6ba8ed2ec4",
+      "gate-chart-labels.log": "828aba2dd648f8bd5191a4f61fd72d569a04d8dd584f45ea2891f0ad76e86db0",
+      "gate-compare-dist.log": "51afc9be5a7458c7dece3d37d74cb8e86cdfa19a7eb90b494dcc332fa7d9b9d0",
+      "gate-coverage.log": "e63c6435c47a06d28b95e07c9d0d87009bdc941cd757d7213cff24b3cfa98aa8",
+      "gate-evidence-coverage.log": "89e78ef298038fb8bb12da4574ce044f4e10cc960406344d25ba0965ada6859e",
+      "gate-financial-focused.log": "7db4bf2d97dcfc1e8b35ce5913ef52bec6e216f84e77fa69525590328fe7350e",
+      "gate-gap-triage.log": "7a8e05fa977e3d80580bcf5ae4d88c2605950e0b4fe3bba351c063e827fc68a3",
+      "gate-japanese-dist.log": "72cc1ff5b17236603599e25f1f114e93853daa9fc58ac2f51c2077b9c17c51bf",
+      "gate-quality.log": "a7a56455e3bdfb728c0bf049c8bc298230716ceb003b01db582c846d76663e19",
+      "gate-triage-v02.log": "0d6ab302f83f1491e9a6b703d09a5eab4bdb54fd33398ae6a966d9abca8e2cf5",
+      "preview-byte-verification.json": "9653ac95fdc60862b9faa6533d0a1a29fb0a6d7d4d4d21d901ca5512944215b6",
+      "preview-correction.mjs": "19fe459ceed057722cbc43cb9ec34d2a4475e501fb75ea859aced73dca050587",
+      "preview-qa-correction.json": "d8c478d16fd2cbb69e5be0037214a1980a849d040baebd2c9b3d3258b16bd55c",
+      "run-final-console.log": "057cb5c69699a53f899b5c431267bea047cdc8a3dedf39b01e3f5f27a7b8f985",
+      "run-final-correction.ps1": "093d26c6e039b7c797eee17ad1fe4b51075523acb1513b19444c775ed5f211a8",
+      "run-followup-gates.ps1": "7efa3f8e1b73bb7fd49334877ef13276313184bb49d2ab97094b3656423f06b3",
+      "run1-astro.log": "9027e3b6b0ed4b2e69cc874c4811dec25e6b1535fd803c936d54c08e7f1b5495",
+      "run1-compare.log": "51afc9be5a7458c7dece3d37d74cb8e86cdfa19a7eb90b494dcc332fa7d9b9d0",
+      "run1-japanese.log": "72cc1ff5b17236603599e25f1f114e93853daa9fc58ac2f51c2077b9c17c51bf",
+      "run1-map.json": "cd9986dbf1619e6b0b5ed1c5ec1f8b2c874a969997455f84aa44e42c415c4e83",
+      "run1-pagefind.log": "2bd2e44bd74710d124ad87868ab689576e05b70225d25c77c117d685948772bc",
+      "run2-astro.log": "6cbb71166dd6ada988d43b81b9595bd492cc99a9144d2add7dc85dac6ab92913",
+      "run2-compare.log": "51afc9be5a7458c7dece3d37d74cb8e86cdfa19a7eb90b494dcc332fa7d9b9d0",
+      "run2-japanese.log": "72cc1ff5b17236603599e25f1f114e93853daa9fc58ac2f51c2077b9c17c51bf",
+      "run2-map.json": "1af36e5fb654359bd3dd9d48aea6b699a752cdd4c73e3fa7b007388b795f6e57",
+      "run2-pagefind.log": "9c8d80b676c59867af89473f29dd61e26a9dd366d0203226affca2e395f7119a",
+      "secret-scan-summary-v18.json": "97094b340b3f5a50086babd589b71c963996d2ebc242a8a91b15db19f94e580e",
+      "secret-scan-targets-v18.txt": "d5dae2579e49aa23c913cc3e9317db138cddb81595dcf4c1261f1390ebffdd84",
+      "secret-scan.log": "38c7a429db3a8dbebeb08140fb42d7b7833b6db6d1fa283b0bc40f698583e321",
+      "validate-data.log": "fea3c89e98290488d488d3e66f8864d6d730d582a82c9f22dd8dcedbba9c97c5",
+      "verify-correction.mjs": "0f59b4906df1e1c48ac59bbda474a5fdae05af52736aa8cedd96b4f4fa4997fd",
+      "verify-preview.mjs": "76d86da9c286a5001b2c5e2095ea539452310bc22ddb24373b944897cc416d2b",
+      "write-correction-manifest.mjs": "16e8f24db8b3fc2f6a2998f838f64bdaaad16bb0c191f94ab4dcb4569e1838fa",
+      "../correction-q3-2026-note.png": "cfa428d8cf44521c648c494e3e236f52431a7bd3d3c3c5cbc96163c5c3dbdae3"
+    },
+    "results": {
+      "financialRecords": 714,
+      "companyCount": 100,
+      "coverage": {
+        "complete": 95,
+        "partial": 0,
+        "awaiting": 0,
+        "needsReview": 5
+      },
+      "activeFreeze": "financial-history-six-period-coverage-v18-metadata-correction",
+      "freezeMatches": true,
+      "artifactCount": 101,
+      "artifactMapDigest": "27bf59509dcb6e91de6f9c5d619f3933f3337e0887b463be2e6bd8a00f0bd5d7",
+      "companyDetailCount": 100,
+      "companyDetailMapDigest": "6882a6c34aea20d1604e43638a159fd5cce92ebe9126da73e98fc0f2a8a9bdfc",
+      "routes": 210,
+      "pagefindUrls": 105,
+      "pagefindUrlSetDigest": "0f9b1da3f48cc450ebb445b383d747b2ffd61ee76cf0168c3e711e5be626263f",
+      "compareBytes": 1188819,
+      "compareSha256": "635c1311f5a084a09af13dd6993d7bceb2ea2eba3fa5a844b9272e272a9b9a4c",
+      "comparePreviousBytes": 1188783,
+      "compareGrowthBytes": 36,
+      "compareLimitBytes": 1217802,
+      "changedCompareArtifacts": [
+        "hexagon/index.html"
+      ],
+      "unchangedCompareArtifactsIncludingShell": 100,
+      "changedCompanyDetails": [],
+      "shellSha256": "9452c599375923efc98c5c3901a62b9cdc306b4c588dec96d3b98b88462cc007",
+      "nonFinancialDigest": "ad9431df8cc34f6ba6521c9757cbbd46a703539c5569efdcc1cb34b5772276d3",
+      "inputAndCurrentDistMatchBothBuilds": true,
+      "previewBytesMatchDist": true
+    },
+    "gates": {
+      "validateData": {
+        "exitCode": 0,
+        "log": "validate-data.log"
+      },
+      "formalValidate": {
+        "status": "Not confirmed PASS for correction; original full attempt was interrupted on dependency junction and was not rewritten"
+      },
+      "alternativeSecretScan": {
+        "exitCode": 0,
+        "files": 616,
+        "findings": 0,
+        "log": "secret-scan.log",
+        "summary": "secret-scan-summary-v18.json",
+        "note": "Same detection patterns/exclusions as formal scan; excluded directories pruned before junction traversal"
+      },
+      "focusedCoverage": "PASS 714 records, six interim/four year-end raw bases, canonical display alias, eight values and annual totals",
+      "compareAndCapacity": "PASS both final builds; unchanged on-demand delivery limits",
+      "japaneseFirstAndV17ShellGate": "PASS both final builds; original limited shell restore and seven negative cases retained",
+      "triageV02": "87/87 matched; human judgments and order unchanged",
+      "followupFocusedGateRecord": "followup-gates.json",
+      "followupFocusedGateCount": 10,
+      "followupFocusedGateExitCodes": [
+        {
+          "name": "audit",
+          "exitCode": 0,
+          "log": "gate-audit.log"
+        },
+        {
+          "name": "coverage",
+          "exitCode": 0,
+          "log": "gate-coverage.log"
+        },
+        {
+          "name": "financial-focused",
+          "exitCode": 0,
+          "log": "gate-financial-focused.log"
+        },
+        {
+          "name": "compare-dist",
+          "exitCode": 0,
+          "log": "gate-compare-dist.log"
+        },
+        {
+          "name": "japanese-dist",
+          "exitCode": 0,
+          "log": "gate-japanese-dist.log"
+        },
+        {
+          "name": "chart-labels",
+          "exitCode": 0,
+          "log": "gate-chart-labels.log"
+        },
+        {
+          "name": "quality",
+          "exitCode": 0,
+          "log": "gate-quality.log"
+        },
+        {
+          "name": "evidence-coverage",
+          "exitCode": 0,
+          "log": "gate-evidence-coverage.log"
+        },
+        {
+          "name": "gap-triage",
+          "exitCode": 0,
+          "log": "gate-gap-triage.log"
+        },
+        {
+          "name": "triage-v02",
+          "exitCode": 0,
+          "log": "gate-triage-v02.log"
+        }
+      ]
+    },
+    "qa": {
+      "record": "preview-qa-correction.json",
+      "previewBase": "http://127.0.0.1:4394/ai-infrastructure-atlas/",
+      "servedBytes": "preview-byte-verification.json",
+      "widths": [
+        1024,
+        390,
+        360
+      ],
+      "externalLinksOpened": false,
+      "screenshotFilesSaved": false
+    },
+    "verification": {
+      "file": "final-independent-verification.json",
+      "pass": true,
+      "oldEvidenceFiles": 51,
+      "originalEvidenceMismatches": []
+    },
+    "limitations": [
+      "Original 51-file evidence and first v18 build measurements remain historical; correction build maps/logs are separately saved.",
+      "Formal npm run validate overall PASS was not confirmed locally; validate:data and alternative secret scan are separate results.",
+      "Pagefind helper bytes may vary; 105 URL set and frozen 101 artifacts match in both correction builds.",
+      "No 2026 post-Octave Hexagon data adopted; five other needs-review companies retain specific evidence gaps.",
+      "External primary-source links were associated with rows but not opened in correction Preview QA."
+    ],
+    "recheck": {
+      "evidence": "Recompute SHA-256 of each file under metadataCorrection.savedEvidenceSha256 relative to correctionEvidenceDirectory (../ note image relative to correction folder).",
+      "dist": "Run correction-v18/verify-correction.mjs with worktree and evidence paths; compare run1-map.json and run2-map.json.",
+      "audit": "Run generate-financial-latest-period-audit-v18.mjs --check, coverage --check and focused tests."
+    }
   }
 }
