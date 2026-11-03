@@ -12,7 +12,7 @@ const baselineCheckedAt = '2026-09-23';
 const readJson = async path => JSON.parse(await readFile(path, 'utf8'));
 
 const sourceManifest = await readJson(join(dataDirectory, 'source-registry-manifest.json'));
-const reviewedBlockers = await readJson(join(dataDirectory, 'financial-quarterly-blockers-v16.json'));
+const reviewedBlockers = await readJson(join(dataDirectory, 'financial-quarterly-blockers-v18.json'));
 const sources = (await Promise.all(sourceManifest.shards.map(async shard => readJson(join(dataDirectory, shard))))).flat();
 const sourceById = new Map(sources.map(source => [source.id, source]));
 const companyFiles = (await readdir(join(dataDirectory, 'companies'))).filter(file => file.endsWith('.json')).sort();

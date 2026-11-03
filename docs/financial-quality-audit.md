@@ -1,8 +1,8 @@
 # 100社財務品質監査
 
-データ基準日: **2026-11-02**
+データ基準日: **2026-11-03**
 
-入力SHA-256: `7ac1c210fe9abad160fd4e9705e463ab3e8b804405b9dddc6611739c4c78b230`
+入力SHA-256: `8eb8092e8d9c53b2add10b8ed01521900907603d12481e407a5f81f6968b0022`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
@@ -13,18 +13,18 @@
 | 項目 | 件数 |
 | --- | ---: |
 | 企業 | 100 |
-| 期間 | 706 |
-| 指標 | 3530 |
+| 期間 | 714 |
+| 指標 | 3570 |
 | cash-flow override | 12 |
 
 ## 指標の検証状態
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `verified` | 2475 | 一次資料と値・算式を検証済み |
+| `verified` | 2499 | 一次資料と値・算式を検証済み |
 | `source-linked` | 3 | Sourceに紐付くがverifiedではない値 |
 | `needs-review` | 0 | 値はあるが再確認が必要 |
-| `missing` | 1052 | 欠損理由ステータスを持つ値なし指標 |
+| `missing` | 1068 | 欠損理由ステータスを持つ値なし指標 |
 
 ## FCF / Capex充足
 
@@ -33,7 +33,7 @@
 | `both-present` | 181 | FCF and Capex both have values |
 | `fcf-missing-only` | 0 | FCF is missing while Capex has a value |
 | `capex-missing-only` | 0 | Capex is missing while FCF has a value |
-| `both-missing` | 525 | FCF and Capex are both missing |
+| `both-missing` | 533 | FCF and Capex are both missing |
 
 ## Capex定義
 
@@ -47,14 +47,14 @@
 | `broader-non-current-assets` | 4 | A broader non-current/fixed/long-term asset cash-investment line |
 | `net-capex` | 28 | Capex or PP&E cash spending disclosed on a net basis |
 | `reit-or-real-estate-investment` | 12 | REIT or investment-property/real-estate investment definition |
-| `not-collected` | 515 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
+| `not-collected` | 523 | No Capex value is collected and no REIT/real-estate definition supersedes the missing classification |
 | `unclassified` | 0 | A value exists, but basis text does not safely map to another definition category |
 
 ## Operating Profit定義
 
 | 分類 | 件数 | 定義 |
 | --- | ---: | --- |
-| `direct-gaap-ifrs-operating-income` | 606 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
+| `direct-gaap-ifrs-operating-income` | 614 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
 | `ebit` | 2 | Reported EBIT used as the operating-profit measure |
 | `reconstructed-operating-income` | 25 | Atlas reconstructs operating income from reported operating line items |
 | `source-linked` | 1 | Value is retained as source-linked rather than verified |
@@ -67,7 +67,7 @@
 | `atlas-formula-aligned` | 8 | Adjusted/Non-GAAP label is present, but the disclosed formula is operating cash flow minus the same cash-Capex scope used by Atlas |
 | `atlas-definition-difference` | 0 | Adjusted/Non-GAAP FCF includes a definition difference such as sale proceeds, net Capex, incentives, or an additional scope component |
 | `unresolved` | 0 | Adjusted/Non-GAAP FCF is populated but basis text does not close the formula safely |
-| `not-applicable` | 698 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
+| `not-applicable` | 706 | The record is not a populated company-reported adjusted/Non-GAAP FCF |
 
 ## 特殊比較フラグ
 
@@ -160,7 +160,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | globalfoundries | GlobalFoundries（グローバルファウンドリーズ） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | — |
 | globalwafers | GlobalWafers（グローバルウェーハズ） | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | ppe-only |
 | hanmi-semiconductor | HANMI Semiconductor（ハンミ・セミコンダクター） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | special-operating-profit-definition |
-| hexagon | Hexagon（ヘキサゴン） | 2 | 10 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | net-basis-capex |
+| hexagon | Hexagon（ヘキサゴン） | 10 | 34 | 0 | 0 | 16 | 2 | 0 | 0 | 8 | net-basis-capex |
 | ibiden | イビデン | 6 | 22 | 0 | 0 | 8 | 2 | 0 | 0 | 4 | ppe-only |
 | infineon | Infineon（インフィニオン） | 8 | 28 | 0 | 0 | 12 | 2 | 0 | 0 | 6 | — |
 | intel | Intel（インテル） | 6 | 18 | 0 | 0 | 12 | 0 | 0 | 0 | 6 | reconstructed-operating-income |

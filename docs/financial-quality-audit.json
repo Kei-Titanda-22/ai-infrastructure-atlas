@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "classificationRuleVersion": 8,
-  "dataAsOf": "2026-11-02",
-  "inputDigestSha256": "7ac1c210fe9abad160fd4e9705e463ab3e8b804405b9dddc6611739c4c78b230",
+  "dataAsOf": "2026-11-03",
+  "inputDigestSha256": "8eb8092e8d9c53b2add10b8ed01521900907603d12481e407a5f81f6968b0022",
   "inputs": {
     "historyFiles": [
       "src/data/financial-history.json",
@@ -61,7 +61,8 @@
       "src/data/financial-history-v05-batch17.json",
       "src/data/financial-history-v05-batch18.json",
       "src/data/financial-history-v05-batch19.json",
-      "src/data/financial-history-v05-batch20.json"
+      "src/data/financial-history-v05-batch20.json",
+      "src/data/financial-history-v05-batch21.json"
     ],
     "companyFiles": 100,
     "cashFlowOverrides": 12
@@ -130,16 +131,16 @@
   },
   "summary": {
     "companies": 100,
-    "periods": 706,
-    "metrics": 3530,
+    "periods": 714,
+    "metrics": 3570,
     "metricStatusCounts": {
-      "verified": 2475,
+      "verified": 2499,
       "source-linked": 3,
       "needs-review": 0,
-      "missing": 1052
+      "missing": 1068
     },
     "missingReasonCounts": {
-      "not-collected": 1052,
+      "not-collected": 1068,
       "primary-source-unchecked": 0,
       "not-calculable": 0,
       "not-disclosed": 0,
@@ -149,7 +150,7 @@
       "both-present": 181,
       "fcf-missing-only": 0,
       "capex-missing-only": 0,
-      "both-missing": 525
+      "both-missing": 533
     },
     "capexDefinitions": {
       "gross-productive-assets-cash-purchases": 8,
@@ -160,11 +161,11 @@
       "broader-non-current-assets": 4,
       "net-capex": 28,
       "reit-or-real-estate-investment": 12,
-      "not-collected": 515,
+      "not-collected": 523,
       "unclassified": 0
     },
     "operatingProfitDefinitions": {
-      "direct-gaap-ifrs-operating-income": 606,
+      "direct-gaap-ifrs-operating-income": 614,
       "ebit": 2,
       "reconstructed-operating-income": 25,
       "source-linked": 1,
@@ -174,7 +175,7 @@
       "atlas-formula-aligned": 8,
       "atlas-definition-difference": 0,
       "unresolved": 0,
-      "not-applicable": 698
+      "not-applicable": 706
     },
     "specialFlags": {
       "goodwill-impairment": 9,
@@ -2211,18 +2212,18 @@
       "companyId": "hexagon",
       "name": "Hexagon",
       "japaneseName": "Hexagon（ヘキサゴン）",
-      "periods": 2,
+      "periods": 10,
       "metricStatusCounts": {
-        "verified": 10,
+        "verified": 34,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 0
+        "missing": 16
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 0
+        "both-missing": 8
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -2233,11 +2234,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 2,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 0,
+        "not-collected": 8,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 10,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -2247,7 +2248,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 10
       },
       "specialFlags": [
         "net-basis-capex"
@@ -12080,6 +12081,84 @@
       "specialFlags": []
     },
     {
+      "id": "hexagon-q1-2024-v18",
+      "companyId": "hexagon",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2024",
+      "endDate": "2024-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "hexagon-q2-2024-v18",
+      "companyId": "hexagon",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2024",
+      "endDate": "2024-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "hexagon-q3-2024-v18",
+      "companyId": "hexagon",
+      "periodType": "quarterly",
+      "periodLabel": "Q3 2024",
+      "endDate": "2024-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "hexagon-fy2024",
       "companyId": "hexagon",
       "periodType": "annual",
@@ -12105,6 +12184,110 @@
       ]
     },
     {
+      "id": "hexagon-q4-2024-v18",
+      "companyId": "hexagon",
+      "periodType": "quarterly",
+      "periodLabel": "Q4 2024",
+      "endDate": "2024-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "hexagon-q1-2025-v18",
+      "companyId": "hexagon",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2025",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "hexagon-q2-2025-v18",
+      "companyId": "hexagon",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2025",
+      "endDate": "2025-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "hexagon-q3-2025-v18",
+      "companyId": "hexagon",
+      "periodType": "quarterly",
+      "periodLabel": "Q3 2025",
+      "endDate": "2025-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "hexagon-fy2025",
       "companyId": "hexagon",
       "periodType": "annual",
@@ -12128,6 +12311,32 @@
       "specialFlags": [
         "net-basis-capex"
       ]
+    },
+    {
+      "id": "hexagon-q4-2025-v18",
+      "companyId": "hexagon",
+      "periodType": "quarterly",
+      "periodLabel": "Q4 2025",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "ibiden-q4-fy2024",

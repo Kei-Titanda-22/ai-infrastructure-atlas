@@ -1,15 +1,15 @@
 # Financial quarterly coverage v0.1
 
-- Checked at: 2026-11-02
+- Checked at: 2026-11-03
 - Registry companies: 100
-- Financial-history shard manifest digest: 7f0e2a22ae44ee55d472933e16f7ba862ccd5b153ce9be7bd46b84d60b453fc5
-- Complete six quarters: 94
+- Financial-history shard manifest digest: 2790abf9ca6995b9e3c14802bb3273b1a47dd3677caef3b0175642c8a0dc46a0
+- Complete six quarters: 95
 - Partial quarterly (1–5): 0
 - Awaiting next reported quarter: 0
 - Semiannual only: 0
 - Annual only: 0
 - Private/no quarterly disclosure: 0
-- Needs review: 6
+- Needs review: 5
 
 ## Companies with six or more actual quarterly records
 
@@ -50,6 +50,7 @@
 - globalfoundries
 - globalwafers
 - hanmi-semiconductor
+- hexagon
 - ibiden
 - infineon
 - intel
@@ -114,8 +115,8 @@
 | --- | --- | ---: | --- | --- | --- | --- |
 | abb | quarterly | 6 / 6 | Q3 2026 (2026-09-30) | complete-six-quarters | — | [official](https://www.abb.com/global/en/news/139696/q3-2026-results) |
 | advantest | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.advantest.com/ja/investors/financial-highlights/review/) |
-| air-liquide | needs-review | 0 / 6 | — (—) | needs-review | 2026年Q3の会社発表は売上高、同年半期原表は6か月の営業利益を開示。Q3単独の未調整連結営業利益、または同系列の9か月累計利益が未確認のため、半期利益を分割しない。 | [official](https://www.airliquide.com/sites/airliquide.com/files/2026-02/air-liquide-pr-fy-2025-with-record-performance-and-confident-in-its-transformation-dynamic-air-liquide-confirms-its-growth-outlook.pdf) |
-| ajinomoto-fine-techno | needs-review | 0 / 6 | — (—) | needs-review | 子会社公式サイトへの今回の取得経路はHTTP 403。親会社の連結損益は別発行体であり、既存の子会社単体年次に対応する3か月の売上高・営業利益原表を未取得。取得不能を非開示とは判定しない。 | [official](https://www.ajinomoto.com/cms_wp_ajnmt_global/wp-content/uploads/pdf/2026_08_06_01E.pdf) |
+| air-liquide | needs-review | 0 / 6 | — (—) | needs-review | 2026年Q3の公式原表は3か月売上高7,259百万EUR、2026年半期原表は6か月の未調整営業利益2,770.4百万EUR。Q3単独の営業利益または同一系列9か月累計利益の原表が未確認で、半期値を按分しない。 | [official](https://www.airliquide.com/sites/airliquide.com/files/2026-02/air-liquide-pr-fy-2025-with-record-performance-and-confident-in-its-transformation-dynamic-air-liquide-confirms-its-growth-outlook.pdf) |
+| ajinomoto-fine-techno | needs-review | 0 / 6 | — (—) | needs-review | 子会社単体の四半期損益原表を未取得。親会社2026年合併方針資料のAFT売上高98,383百万円・営業利益53,012百万円は子会社単体の年次値であり、親会社連結Q1とも異なる。子会社サイト取得はHTTP 403で、非開示とは断定しない。 | [official](https://www.ajinomoto.com/cms_wp_ajnmt_global/wp-content/uploads/pdf/2026_08_06_01E.pdf) |
 | amd | quarterly | 6 / 6 | Q2 2026 (2026-06-27) | complete-six-quarters | — | [official](https://ir.amd.com/news-events/press-releases/detail/1295/amd-reports-second-quarter-2026-financial-results) |
 | amkor | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://ir.amkor.com/news-releases/news-release-details/amkor-technology-reports-financial-results-second-quarter-2026) |
 | amphenol | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.amphenol.com/news-and-events/news-details/2026/Amphenol-Reports-Record-Second-Quarter-2026-Results/default.aspx) |
@@ -129,7 +130,7 @@
 | asml | quarterly | 7 / 6 | Q3 2026 (2026-09-27) | complete-six-quarters | — | [official](https://www.investor.asml.com/static-files/d310262b-d037-485d-83b5-92c93cc462f0) |
 | asmpt | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.asmpt.com/site/assets/files/85468/q2_2026_en_announcement.pdf) |
 | besi | quarterly | 7 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.besi.com/fileadmin/data/Investor_Relations/_Semi__Annual_Reports/Half_Year_2026_Report.pdf) |
-| bosch | needs-review | 0 / 6 | — (—) | needs-review | 会社IRの2026年半期報告と年次報告を確認。3か月単独の連結売上高・未調整営業利益を同じ期間で示す原表を未取得。半期値を均等分割しない。 | [official](https://assets.bosch.com/media/global/bosch_group/our_figures/pdf/bosch-annual-report-2025.pdf) |
+| bosch | needs-review | 0 / 6 | — (—) | needs-review | 会社の2026年半期連結原表は売上高46,410百万EUR・EBIT1,977百万EURを開示するが、1月～6月の6か月値。対応する3か月の連結売上高・未調整営業利益の原表を未確認で、半期値を均等分割しない。 | [official](https://assets.bosch.com/media/global/bosch_group/our_figures/pdf/bosch-annual-report-2025.pdf) |
 | broadcom | quarterly | 6 / 6 | Q3 FY2026 (2026-08-02) | complete-six-quarters | — | [official](https://investors.broadcom.com/node/64671/pdf) |
 | cadence | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.cadence.com/en_US/home/company/newsroom/press-releases/pr-ir/2026/cadence-reports-second-quarter-2026-financial-results.html) |
 | canon | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://global.canon/en/ir/results/2026/rslt2026q2-s.pdf) |
@@ -152,7 +153,7 @@
 | globalfoundries | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.gf.com/news-releases/news-release-details/globalfoundries-reports-second-quarter-2026-financial-results) |
 | globalwafers | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sas-globalwafers.com/wp-content/uploads/2026/05/GlobalWafers_2026Q2-consolidated-financial-statement_EN.pdf) |
 | hanmi-semiconductor | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://dart.fss.or.kr/report/viewer.do?rcpNo=20260814003665&dcmNo=11538002&eleId=21&offset=244111&length=37196&dtd=dart4.xsd) |
-| hexagon | needs-review | 0 / 6 | — (—) | needs-review | 2026年Q3発表は調整後EBITAC・EBIT1を掲載。連結未調整IFRS営業利益を示す添付原表PDFは今回の取得経路でHTTP 403。Octave分離後の比較列と既存年次の範囲も未照合で、調整後利益を代用しない。 | [official](https://mb.cision.com/Main/387/4300053/3907199.pdf) |
+| hexagon | quarterly | 8 / 6 | Q4 2025 (2025-12-31) | complete-six-quarters | — | [official](https://mb.cision.com/Main/387/4300053/3907199.pdf) |
 | ibiden | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.ibiden.com/ir/items/tannshinn2026Q1.pdf) |
 | infineon | quarterly | 6 / 6 | FY2026 Q3 (2026-06-30) | complete-six-quarters | — | [official](https://www.infineon.com/press-release/2026/infpr202608-125) |
 | intel | quarterly | 6 / 6 | Q2 2026 (2026-06-27) | complete-six-quarters | — | [official](https://www.intc.com/news-events/press-releases/detail/1776/intel-reports-second-quarter-2026-financial-results) |
@@ -179,7 +180,7 @@
 | nvent | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1720635/000162828026051203/q22026nvtpressrelease.htm) |
 | nvidia | quarterly | 6 / 6 | Q2 FY2027 (2026-07-26) | complete-six-quarters | — | [official](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) |
 | nxp | quarterly | 6 / 6 | Q2 2026 (2026-06-28) | complete-six-quarters | — | [official](https://investors.nxp.com/news-releases/news-release-details/nxp-semiconductors-reports-second-quarter-2026-results/) |
-| omron | needs-review | 0 / 6 | — (—) | needs-review | 既存年次はDMBを非継続事業へ再分類したUS GAAP。旧四半期原表はその再分類前、2026年度Q1以降はIFRS。年次と同じ範囲・基準の四半期再表示系列が未確定のため混在させない。 | [official](https://www.omron.com/global/en/assets/file/ir/irlib/20260513_financial_results.pdf) |
+| omron | needs-review | 0 / 6 | — (—) | needs-review | 既存年次はDMB再分類後のUS GAAP連結系列。財務データ集p.2は再分類後の年次実績・計画、p.13は再分類前の四半期参考表で、FY25 Q4・下期・通期にはUS GAAP開示値ではないとの注記がある。2026年度Q1以降のIFRS系列と接続する公式な範囲・基準の橋渡しが未確定。十億円表示自体は障害ではない。 | [official](https://www.omron.com/global/en/assets/file/ir/irlib/20260513_financial_results.pdf) |
 | onsemi | quarterly | 6 / 6 | Q2 2026 (2026-07-03) | complete-six-quarters | — | [official](https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-second-quarter-2026-results) |
 | qualcomm | quarterly | 6 / 6 | Q3 FY2026 (2026-06-28) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/804328/000080432826000086/qcom-20260628.htm) |
 | renesas | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.renesas.com/en/about/newsroom/renesas-reports-financial-results-second-quarter-ended-june-30-2026) |
@@ -187,7 +188,7 @@
 | rohm | quarterly | 6 / 6 | FY2027 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://fscdn.rohm.com/jp/financial/financial-report/2606_financialresults_jp.pdf) |
 | samsung-electronics | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results) |
 | sandisk | quarterly | 6 / 6 | Q4 FY2026 (2026-07-03) | complete-six-quarters | — | [official](https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-fourth-quarter-2026-financial-results) |
-| schneider-electric | needs-review | 0 / 6 | — (—) | needs-review | 2026年Q1・Q3は会社の四半期売上資料、H1は6か月利益資料。Q1・Q3の未調整IFRS連結営業利益、または同じ系列の累計差分に必要な原表を未確認。調整後EBITAや半期按分を使わない。 | [official](https://www.se.com/ww/en/assets/564/document/528238/accounts-fy-results-2025.pdf?p_File_Name=2025+Full+Year+Financial+Results+Accounts&p_enDocType=EDMS) |
+| schneider-electric | needs-review | 0 / 6 | — (—) | needs-review | 公式結果一覧の2026年Q1・Q3は四半期売上発表、H1は6か月利益資料。Q1・Q3の未調整IFRS連結営業利益または同一系列の累計差分原表が未確認。H1原表PDFは今回取得できず、半期利益を按分・調整後EBITAで代用しない。 | [official](https://www.se.com/ww/en/assets/564/document/528238/accounts-fy-results-2025.pdf?p_File_Name=2025+Full+Year+Financial+Results+Accounts&p_enDocType=EDMS) |
 | screen-holdings | quarterly | 6 / 6 | FY2027 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://hdjp-corporateweb-files.screen.co.jp/3217/8660/2948/FY2027Q1_Fr_E_rev.pdf) |
 | seagate | quarterly | 7 / 6 | Q4 FY2026 (2026-07-03) | complete-six-quarters | — | [official](https://investors.seagate.com/news/news-details/2026/Seagate-Technology-Reports-Fiscal-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx) |
 | shin-etsu-chemical | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.shinetsu.co.jp/wp-content/uploads/2026/07/20260724_con_E.pdf) |

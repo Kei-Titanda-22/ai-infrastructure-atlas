@@ -20,8 +20,8 @@ assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
 assert.deepEqual(new Set(coverage.map(row => row.companyId)), new Set(companies.map(company => company.id)), 'coverage company IDs exactly match registry');
 assert.equal(new Set(coverage.map(row => row.companyId)).size, coverage.length, 'coverage company IDs are unique');
-assert.equal(history.length, 706, 'v17 adds six sourced quarters without removing the 700 existing periods');
-assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 94, 'v17 reaches 94 companies with at least six reported quarters');
+assert.equal(history.length, 714, 'v18 adds eight sourced quarters without removing the 706 existing periods');
+assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 95, 'v18 reaches 95 companies with at least six reported quarters');
 
 const quarterlyByCompany = new Map(companies.map(company => [company.id, []]));
 for (const record of history) if (record.periodType === 'quarterly') quarterlyByCompany.get(record.companyId)?.push(record);
@@ -302,7 +302,7 @@ for (const [companyId, endDates] of tenthPeriods) {
 }
 assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 0, 'Aptiv now has consecutive pre-spin quarters');
 assert.equal(coverage.filter(row => row.coverageStatus === 'awaiting-next-quarter').length, 0, 'Kioxia actual Q2 publication closes the awaiting category');
-assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 6, 'six companies remain without collected quarterly actuals after v16 statement audit');
+assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 5, 'five companies remain without collected quarterly actuals after Hexagon adoption');
 assert.equal(coverage.find(row => row.companyId === 'nvidia').checkedAt, '2026-09-23', 'unreviewed baseline companies retain their original coverage check date');
 assert.equal(coverage.find(row => row.companyId === 'fujikura').coverageStatus, 'complete-six-quarters', 'Fujikura is complete from the comparable official series');
 
@@ -569,8 +569,7 @@ for (const [id, revenue, profit] of [
 }
 assert.deepEqual(Object.keys(v16Blockers.reasons).sort(), ['air-liquide','ajinomoto-fine-techno','aptiv','bosch','hexagon','omron','schneider-electric','shinko-electric'], 'only eight v16 targets receive specific audit metadata');
 for (const companyId of Object.keys(v16Blockers.reasons)) {
-  const row = coverage.find(item => item.companyId === companyId);
-  if (row.coverageStatus !== 'complete-six-quarters') assert.equal(row.blockerReason,v16Blockers.reasons[companyId],`${companyId}: published blocker matches v16 audit`);
+  assert.ok(v16Blockers.reasons[companyId], `${companyId}: historical v16 blocker is retained`);
 }
 const v17Batch = await readJson(join(dataDirectory, 'financial-history-v05-batch20.json'));
 const v17Sources = await readJson(join(dataDirectory, 'document-sources-v05-batch20.json'));
@@ -589,6 +588,57 @@ assert.equal(4825+5208+5212+5153,20398,'FY2025 pre-spin quarterly revenue reconc
 assert.equal(448+486-175+425,1184,'FY2025 pre-spin quarterly operating income reconciles to retained annual');
 assert.ok(aptivQuarters.every(record => record.metrics.operatingMargin.value === Math.round(record.metrics.operatingProfit.value/record.metrics.revenue.value*1000)/10));
 assert.equal(coverage.find(row => row.companyId === 'aptiv').coverageStatus, 'complete-six-quarters');
-assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length,94);
+assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length,95);
 assert.equal(coverage.find(row=>row.companyId==='nvidia').checkedAt,'2026-09-23','non-target check date does not move');
+const v18Batch = await readJson(join(dataDirectory, 'financial-history-v05-batch21.json'));
+const v18Sources = await readJson(join(dataDirectory, 'document-sources-v05-batch21.json'));
+const v18Policies = await readJson(join(dataDirectory, 'document-source-policies-v05-batch21.json'));
+const v18Blockers = await readJson(join(dataDirectory, 'financial-quarterly-blockers-v18.json'));
+assert.equal(v18Batch.length, 8, 'v18 adds exactly eight original-table Hexagon quarters');
+assert.ok(v18Batch.every(record => record.companyId === 'hexagon' && record.periodType === 'quarterly'));
+assert.deepEqual(new Set(v18Sources.map(source => source.id)), new Set(v18Policies.map(policy => policy.sourceId)));
+assert.equal(v18Sources.length, 3, 'Q4 source already exists and is not duplicated');
+assert.equal(new Set(history.map(record => record.id)).size, history.length, 'all 714 record IDs remain unique');
+assert.deepEqual(v18Batch.map(record => [record.periodLabel,record.metrics.revenue.value,record.metrics.operatingProfit.value]), [
+  ['Q1 2024',1299.9,335.9],['Q2 2024',1353.4,360.5],['Q3 2024',1299.8,334.4],['Q4 2024',1448.0,401.4],
+  ['Q1 2025',1322.8,267.2],['Q2 2025',1369.9,313.2],['Q3 2025',1303.1,-12.9],['Q4 2025',1428.8,356.9],
+]);
+assert.deepEqual(v18Batch.map(record => record.sourceId), [
+  'hexagon-q1-2025-results-v18','hexagon-q2-2025-results-v18','hexagon-q3-2025-results-v18','hexagon-fy2025-year-end-report',
+  'hexagon-q1-2025-results-v18','hexagon-q2-2025-results-v18','hexagon-q3-2025-results-v18','hexagon-fy2025-year-end-report',
+]);
+for (const record of v18Batch) {
+  assert.equal(record.currency, 'EUR');
+  assert.equal(record.unit, 'million');
+  assert.equal(record.accountingBasis, 'IFRS (EU), IAS 34 year-end report');
+  assert.equal(record.metrics.operatingMargin.value, Math.round(record.metrics.operatingProfit.value/record.metrics.revenue.value*1000)/10);
+  assert.equal(record.metrics.freeCashFlow.value, null);
+  assert.equal(record.metrics.capex.value, null);
+  assert.ok(allSources.some(source => source.id === record.sourceId && source.companyId === 'hexagon' && /^https:\/\//.test(source.url)));
+  assert.match(record.metrics.revenue.basis, /Condensed income statement.*Net sales/);
+  assert.match(record.metrics.operatingProfit.basis, /Operating earnings.*unadjusted/);
+}
+const hexagonHistory = history.filter(record => record.companyId === 'hexagon');
+assert.equal(hexagonHistory.length, 10, 'Hexagon table retains eight quarters and two annual records');
+assert.equal(new Set(hexagonHistory.map(record => record.currency+':'+record.unit+':'+record.accountingBasis)).size,1);
+const hexagonQuarters = hexagonHistory.filter(record => record.periodType === 'quarterly').sort((a,b)=>a.endDate.localeCompare(b.endDate));
+assert.deepEqual(hexagonQuarters.slice(-6).map(record => record.periodLabel), ['Q3 2024','Q4 2024','Q1 2025','Q2 2025','Q3 2025','Q4 2025']);
+assert.deepEqual(hexagonQuarters.map(record => record.endDate), ['2024-03-31','2024-06-30','2024-09-30','2024-12-31','2025-03-31','2025-06-30','2025-09-30','2025-12-31']);
+for (let year=2024;year<=2025;year++) {
+  const quarters=hexagonQuarters.filter(record=>record.endDate.startsWith(String(year)));
+  const annual=hexagonHistory.find(record=>record.periodType==='annual'&&record.endDate.startsWith(String(year)));
+  for (const metric of ['revenue','operatingProfit']) {
+    const sum=Math.round(quarters.reduce((total,record)=>total+record.metrics[metric].value,0)*10)/10;
+    assert.equal(sum,annual.metrics[metric].value,`${year} ${metric}: four quarters reconcile to retained annual`);
+  }
+}
+assert.deepEqual(Object.keys(v18Blockers.reasons).sort(), ['air-liquide','ajinomoto-fine-techno','aptiv','bosch','omron','schneider-electric','shinko-electric']);
+for (const companyId of Object.keys(v18Blockers.reasons)) {
+  const row=coverage.find(item=>item.companyId===companyId);
+  if(row.coverageStatus!=='complete-six-quarters') assert.equal(row.blockerReason,v18Blockers.reasons[companyId]);
+}
+assert.equal(coverage.find(row=>row.companyId==='hexagon').coverageStatus,'complete-six-quarters');
+assert.equal(coverage.filter(row=>row.coverageStatus==='complete-six-quarters').length,95);
+assert.equal(coverage.filter(row=>row.coverageStatus==='needs-review').length,5);
+assert.equal(history.length,714,'v18 full financial history has 714 records');
 console.log(`Financial quarterly coverage OK: ${coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length} complete companies`);
