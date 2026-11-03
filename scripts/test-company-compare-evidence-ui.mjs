@@ -799,6 +799,27 @@ assert.deepEqual(
   { amountUnitLabel: '百万円', accountingBasisLabel: '日本会計基準（単体）', periodLabels: ['2025年度', '2026年度'] },
   'raw accounting-basis aliases share an exact display identity without changing the underlying records',
 );
+assert.equal(
+  normalizeCompareFinancialAccountingBasis('IFRS (EU), IAS 34 year-end report'),
+  'IFRS as adopted by the EU, consolidated',
+  'only the reviewed Hexagon year-end provenance alias resolves to the shared EU IFRS consolidated identity',
+);
+const hexagonBasisRecords = [
+  { periodLabel: 'Q1 2025', currency: 'EUR', unit: 'million', accountingBasis: 'IFRS as adopted by the EU, consolidated' },
+  { periodLabel: 'Q4 2025', currency: 'EUR', unit: 'million', accountingBasis: 'IFRS (EU), IAS 34 year-end report' },
+];
+assert.equal(
+  resolveCompareFinancialTablePresentation(hexagonBasisRecords).accountingBasisLabel,
+  'EU採択の国際財務報告基準（IFRS・連結）',
+  'interim and year-end raw provenance share one reviewed EU IFRS consolidated display label',
+);
+for (const accountingBasis of ['US GAAP', 'IFRS consolidated', 'IFRS as adopted by the EU, non-consolidated']) {
+  assert.throws(
+    () => resolveCompareFinancialTablePresentation([hexagonBasisRecords[0], { ...hexagonBasisRecords[1], accountingBasis }]),
+    /mixed accounting basis/,
+    `${accountingBasis}: unrelated standard or consolidation scope is still rejected`,
+  );
+}
 assert.throws(
   () => resolveCompareFinancialTablePresentation([{ ...financialGuardRecord, accountingBasis: 'Japanese GAAP non-consolidated (unreviewed transcription)' }]),
   /accounting basis label is unsupported/,
@@ -1940,7 +1961,7 @@ if (process.argv.includes('--dist')) {
   ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
-  assert.equal(Buffer.byteLength(financialPayload), 849_479, 'v17 adds 8,152 B solely to the diagnostic financial payload');
+  assert.equal(Buffer.byteLength(financialPayload), 861_017, 'v18 adds eight Hexagon quarters and the corrected interim accounting-basis metadata to the diagnostic financial payload');
   const normalizedNonFinancialHtml = normalizeViteAssetFingerprints(compareHtml.replace(financialPayloadRe, '$1$2'));
   assert.equal(Buffer.byteLength(normalizedNonFinancialHtml), 327_875, 'human UX review adds 190 B of explicit comparison-order and legend markup to the v08 non-financial HTML');
   assert.equal(
@@ -2056,7 +2077,9 @@ if (process.argv.includes('--dist')) {
   assert.equal(fifteenthBatchCompareSizeContract.acceptedRawBytes - 1_126_742, 832_010 - 798_940, 'historical v15 diagnostic growth is exactly the 24-record financial payload increment');
   assert.equal(compareBytes - fifteenthBatchCompareSizeContract.acceptedRawBytes, Buffer.byteLength(financialPayload) - 832_010, 'v16 and v17 diagnostic growth is confined to the financial payload');
   assert.equal(compareBytes - 1_169_129, Buffer.byteLength(financialPayload) - 841_327, 'v17 incremental growth is exactly six Aptiv records in the financial payload');
-  assert.equal(compareBytes, 1_177_281, 'v17 diagnostic output matches the independently measured HTML size');
+  assert.equal(compareBytes - 1_177_281, Buffer.byteLength(financialPayload) - 849_479, 'v18 incremental growth matches only the eight-record financial payload');
+  assert.equal(compareBytes - 1_188_783, Buffer.byteLength(financialPayload) - 860_981, 'the 36 B metadata correction changes only the financial payload');
+  assert.equal(compareBytes, 1_188_819, 'corrected v18 diagnostic output matches the independently measured HTML size');
   const assertFifteenthBatchCompareSize = bytes => {
     assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v15 diagnostic byte count is a non-negative integer');
     assert.ok(bytes <= fifteenthBatchCompareSizeContract.maximumRawBytes, `v15 legacy Compare HTML ${bytes} B exceeds ${fifteenthBatchCompareSizeContract.maximumRawBytes} B`);
@@ -2282,7 +2305,7 @@ if (process.argv.includes('--dist')) {
   assert.equal((stage2FinancialHtml.match(/会計基準：国際財務報告基準（IFRS）/g) ?? []).length, 2, 'Kioxia and Advantest use the reviewed IFRS presentation label');
   for (const companyId of firstBatchStage2CompanyIds) {
     const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
-    const expected = displayFixture.seventeenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.fifteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.thirteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.stage2FinancialRow.companies[companyId];
+    const expected = displayFixture.eighteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.seventeenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.fifteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.thirteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.stage2FinancialRow.companies[companyId];
     assert.match(financialTemplate, /data-has-content="true"/, `${companyId}: Stage 2 primary Financial slot is available`);
     assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: Stage 2 primary Financial value is canonical`);
     assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: Stage 2 primary Financial period and basis are canonical`);
@@ -2328,7 +2351,7 @@ if (process.argv.includes('--dist')) {
   assert.equal((remainingBatch4FinancialHtml.match(/class="evidence-financial-scroll"/g) ?? []).length, 20, 'all twenty Remaining rollout Batch 4 Companies expose canonical expanded Financial history');
   for (const companyId of remainingBatch4CompanyIds) {
     const financialTemplate = assetHtmlById[companyId].match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
-    const expected = displayFixture.fifteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.thirteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.twelfthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eleventhBatchPrimaryFinancialRow[companyId] ?? displayFixture.tenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.ninthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eighthBatchPrimaryFinancialRow[companyId] ?? displayFixture.sixthBatchPrimaryFinancialRow[companyId] ?? displayFixture.remainingBatch4FinancialRow.companies[companyId];
+    const expected = displayFixture.eighteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.fifteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.thirteenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.twelfthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eleventhBatchPrimaryFinancialRow[companyId] ?? displayFixture.tenthBatchPrimaryFinancialRow[companyId] ?? displayFixture.ninthBatchPrimaryFinancialRow[companyId] ?? displayFixture.eighthBatchPrimaryFinancialRow[companyId] ?? displayFixture.sixthBatchPrimaryFinancialRow[companyId] ?? displayFixture.remainingBatch4FinancialRow.companies[companyId];
     assert.match(financialTemplate, /data-has-content="true"/, `${companyId}: Remaining rollout Batch 4 primary Financial slot is available`);
     assert.ok(financialTemplate.includes(`<strong>${expected.displayValue}</strong>`), `${companyId}: Remaining rollout Batch 4 primary Financial value is canonical`);
     assert.ok(financialTemplate.includes(`${expected.periodLabel} · ${expected.accountingBasis}`), `${companyId}: Remaining rollout Batch 4 primary Financial period and basis are canonical`);
@@ -2384,7 +2407,7 @@ if (process.argv.includes('--dist')) {
     assert.ok(financialTemplate.includes('一次資料を開く'), `${companyId}: primary row links its official source`);
   }
   const allHistoryThroughTenthBatch = (await Promise.all((await readdir(new URL('../src/data/', import.meta.url)))
-    .filter(file => file === 'financial-history.json' || (/^financial-history-v0[45]-batch\d+\.json$/.test(file) && !['financial-history-v05-batch16.json','financial-history-v05-batch17.json','financial-history-v05-batch18.json','financial-history-v05-batch19.json','financial-history-v05-batch20.json'].includes(file)))
+    .filter(file => file === 'financial-history.json' || (/^financial-history-v0[45]-batch\d+\.json$/.test(file) && !['financial-history-v05-batch16.json','financial-history-v05-batch17.json','financial-history-v05-batch18.json','financial-history-v05-batch19.json','financial-history-v05-batch20.json','financial-history-v05-batch21.json'].includes(file)))
     .sort()
     .map(file => readJson(`../src/data/${file}`)))).flat();
   assert.equal(allHistoryThroughTenthBatch.length, 586, 'v12 runtime input includes 586 records across all batches');
@@ -2620,6 +2643,27 @@ if (process.argv.includes('--dist')) {
     assert.ok(primaryTemplate.includes(sourceById.get(expected.sourceId)?.url ?? '\u0000'), `${companyId}: current SEC source URL resolves`);
     assert.equal((expandedTemplate.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) ?? []).length, expected.recordCount);
   }
+  const v18Batch = await readJson('../src/data/financial-history-v05-batch21.json');
+  assert.equal(v18Batch.length, 8, 'v18 has eight Hexagon quarters');
+  assert.deepEqual(new Set(v18Batch.map(record => record.companyId)), new Set(Object.keys(displayFixture.eighteenthBatchPrimaryFinancialRow)));
+  const hexagonRecords = [...allHistoryThroughSeventeenthBatch, ...v18Batch]
+    .filter(record => record.companyId === 'hexagon')
+    .sort((left, right) => left.endDate.localeCompare(right.endDate) || Number(left.periodType === 'quarterly') - Number(right.periodType === 'quarterly'));
+  const hexagonExpected = displayFixture.eighteenthBatchPrimaryFinancialRow.hexagon;
+  const hexagonLatest = hexagonRecords.at(-1);
+  assert.equal(hexagonRecords.length, hexagonExpected.recordCount, 'Hexagon detailed table retains eight quarters and two annual records');
+  assert.deepEqual({
+    displayValue:`${Number(hexagonLatest.metrics.operatingMargin.value).toLocaleString('ja-JP',{maximumFractionDigits:1})}%`,
+    periodLabel:hexagonLatest.periodLabel,accountingBasis:hexagonLatest.accountingBasis,sourceId:hexagonLatest.sourceId,
+  }, {
+    displayValue:hexagonExpected.displayValue,periodLabel:hexagonExpected.periodLabel,
+    accountingBasis:hexagonExpected.accountingBasis,sourceId:hexagonExpected.sourceId,
+  }, 'Hexagon primary row uses unadjusted Q4 actual');
+  const hexagonPrimary = assetHtmlById.hexagon.match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
+  const hexagonExpanded = assetHtmlById.hexagon.match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/)?.[1] ?? '';
+  assert.ok(hexagonPrimary.includes(`<strong>${hexagonExpected.displayValue}</strong>`) && hexagonPrimary.includes(`${hexagonExpected.periodLabel} · ${hexagonExpected.accountingBasis}`));
+  assert.equal((hexagonExpanded.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) ?? []).length, 10);
+  assert.ok(hexagonExpanded.includes('2024年 第1四半期') && hexagonExpanded.includes('2024年 第2四半期') && hexagonExpanded.includes('2024年度') && hexagonExpanded.includes('2025年度'), 'graph-excluded quarters and annual history remain in the localized table');
   const expandedFinancialHtml = pilotIds.map(companyId => {
     const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);
     assert.ok(match, `${companyId}: detailed Financial template is present`);

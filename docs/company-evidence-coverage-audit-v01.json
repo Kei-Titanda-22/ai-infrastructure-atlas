@@ -1,8 +1,8 @@
 {
   "schemaVersion": "0.1",
-  "generatedAt": "2026-11-02T00:00:00Z",
-  "dataAsOf": "2026-11-02",
-  "inputDigest": "sha256:3b772dc3efd6c62ffdbde0823ccadba3f0dd62b2fc71ea27aeb2a3639bc12590",
+  "generatedAt": "2026-11-03T00:00:00Z",
+  "dataAsOf": "2026-11-03",
+  "inputDigest": "sha256:d0c9eb1b53130fb7221e42506024bcca4e7d7115c4caead3309c6d042f581137",
   "companyCount": 100,
   "categoryCount": 11,
   "pairCount": 1100,
@@ -27,7 +27,7 @@
     "priorityRule": "Coverage deficit is primary; existing AI importance signals, broad-source leverage, and migration ease only break ties. Top one-fifth of non-C companies is A; mature Pilot baseline is C; the remainder is B.",
     "priorityIsCompanyEvaluation": false,
     "coverageQualityFloor": false,
-    "inputFileCount": 270
+    "inputFileCount": 272
   },
   "summary": {
     "coverage": {
@@ -93,8 +93,8 @@
       }
     },
     "sourceQuality": {
-      "registryRecordCount": 723,
-      "uniqueSourceCount": 721,
+      "registryRecordCount": 726,
+      "uniqueSourceCount": 724,
       "duplicateSourceIdCount": 2,
       "duplicateSourceIds": [
         "earnings-arista-2026-08-04-q2-2026",
@@ -275,8 +275,8 @@
       "companyIdMismatchReferences": 0,
       "publishedAtNullReferences": 268,
       "staleIshReferences": 7,
-      "financialSourceReferences": 466,
-      "financialSourceResolved": 466
+      "financialSourceReferences": 469,
+      "financialSourceResolved": 469
     },
     "locatorAudit": {
       "bindingCount": 1063,
@@ -12254,8 +12254,8 @@
       "primaryLayer": "Physical AI",
       "sourceCount": 1,
       "resolvedSourceCount": 1,
-      "registrySourceCount": 4,
-      "financialSourceCount": 1,
+      "registrySourceCount": 7,
+      "financialSourceCount": 4,
       "claimCount": 10,
       "legacyClaimCount": 0,
       "evidenceBindingCount": 10,
@@ -12510,9 +12510,12 @@
         "resolvedSourceIds": [
           "ir-hexagon"
         ],
-        "registrySourceCount": 4,
+        "registrySourceCount": 7,
         "financialSourceIds": [
-          "hexagon-fy2025-year-end-report"
+          "hexagon-fy2025-year-end-report",
+          "hexagon-q1-2025-results-v18",
+          "hexagon-q2-2025-results-v18",
+          "hexagon-q3-2025-results-v18"
         ],
         "orphanSourceIds": [],
         "companyIdMismatchSourceIds": [],
