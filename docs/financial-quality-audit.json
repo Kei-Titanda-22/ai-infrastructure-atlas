@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "classificationRuleVersion": 8,
   "dataAsOf": "2026-11-02",
-  "inputDigestSha256": "c6ffcd0abd548a86de0e6a4a402b71f80f04a228c087bedd12bd638390ee9dc8",
+  "inputDigestSha256": "7ac1c210fe9abad160fd4e9705e463ab3e8b804405b9dddc6611739c4c78b230",
   "inputs": {
     "historyFiles": [
       "src/data/financial-history.json",
@@ -60,7 +60,8 @@
       "src/data/financial-history-v05-batch16.json",
       "src/data/financial-history-v05-batch17.json",
       "src/data/financial-history-v05-batch18.json",
-      "src/data/financial-history-v05-batch19.json"
+      "src/data/financial-history-v05-batch19.json",
+      "src/data/financial-history-v05-batch20.json"
     ],
     "companyFiles": 100,
     "cashFlowOverrides": 12
@@ -129,16 +130,16 @@
   },
   "summary": {
     "companies": 100,
-    "periods": 700,
-    "metrics": 3500,
+    "periods": 706,
+    "metrics": 3530,
     "metricStatusCounts": {
-      "verified": 2457,
+      "verified": 2475,
       "source-linked": 3,
       "needs-review": 0,
-      "missing": 1040
+      "missing": 1052
     },
     "missingReasonCounts": {
-      "not-collected": 1040,
+      "not-collected": 1052,
       "primary-source-unchecked": 0,
       "not-calculable": 0,
       "not-disclosed": 0,
@@ -148,7 +149,7 @@
       "both-present": 181,
       "fcf-missing-only": 0,
       "capex-missing-only": 0,
-      "both-missing": 519
+      "both-missing": 525
     },
     "capexDefinitions": {
       "gross-productive-assets-cash-purchases": 8,
@@ -159,11 +160,11 @@
       "broader-non-current-assets": 4,
       "net-capex": 28,
       "reit-or-real-estate-investment": 12,
-      "not-collected": 509,
+      "not-collected": 515,
       "unclassified": 0
     },
     "operatingProfitDefinitions": {
-      "direct-gaap-ifrs-operating-income": 600,
+      "direct-gaap-ifrs-operating-income": 606,
       "ebit": 2,
       "reconstructed-operating-income": 25,
       "source-linked": 1,
@@ -173,7 +174,7 @@
       "atlas-formula-aligned": 8,
       "atlas-definition-difference": 0,
       "unresolved": 0,
-      "not-applicable": 692
+      "not-applicable": 698
     },
     "specialFlags": {
       "goodwill-impairment": 9,
@@ -788,18 +789,18 @@
       "companyId": "aptiv",
       "name": "Aptiv",
       "japaneseName": "Aptiv（アプティブ）",
-      "periods": 3,
+      "periods": 9,
       "metricStatusCounts": {
-        "verified": 13,
+        "verified": 31,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 2
+        "missing": 14
       },
       "cashFlowCoverage": {
         "both-present": 2,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 1
+        "both-missing": 7
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 2,
@@ -810,11 +811,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 1,
+        "not-collected": 7,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 8,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -824,7 +825,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 3
+        "not-applicable": 9
       },
       "specialFlags": [
         "goodwill-impairment",
@@ -6214,6 +6215,32 @@
       ]
     },
     {
+      "id": "aptiv-q3-2024-v17",
+      "companyId": "aptiv",
+      "periodType": "quarterly",
+      "periodLabel": "Q3 2024",
+      "endDate": "2024-09-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
       "id": "aptiv-fy2024",
       "companyId": "aptiv",
       "periodType": "annual",
@@ -6240,6 +6267,84 @@
       "capexDefinitionEvidenceSourceIds": [
         "sec-aptiv-2025-10k"
       ]
+    },
+    {
+      "id": "aptiv-q4-2024-v17",
+      "companyId": "aptiv",
+      "periodType": "quarterly",
+      "periodLabel": "Q4 2024",
+      "endDate": "2024-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "aptiv-q1-2025-v17",
+      "companyId": "aptiv",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2025",
+      "endDate": "2025-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "aptiv-q2-2025-v17",
+      "companyId": "aptiv",
+      "periodType": "quarterly",
+      "periodLabel": "Q2 2025",
+      "endDate": "2025-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "aptiv-q3-2025-v16",
@@ -6298,6 +6403,58 @@
       "capexDefinitionEvidenceSourceIds": [
         "sec-aptiv-2025-10k"
       ]
+    },
+    {
+      "id": "aptiv-q4-2025-v17",
+      "companyId": "aptiv",
+      "periodType": "quarterly",
+      "periodLabel": "Q4 2025",
+      "endDate": "2025-12-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
+    },
+    {
+      "id": "aptiv-q1-2026-v17",
+      "companyId": "aptiv",
+      "periodType": "quarterly",
+      "periodLabel": "Q1 2026",
+      "endDate": "2026-03-31",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "arista-q1-2025",

@@ -902,7 +902,7 @@ const financialHistorySixPeriodCoverageV07 = fixture.financialHistorySixPeriodCo
 assert.ok(financialHistorySixPeriodCoverageV07 && typeof financialHistorySixPeriodCoverageV07 === 'object', 'financial-history v07 freeze contract is present');
 const financialHistorySixPeriodCoverageV08 = fixture.financialHistorySixPeriodCoverageV08;
 assert.ok(financialHistorySixPeriodCoverageV08 && typeof financialHistorySixPeriodCoverageV08 === 'object', 'financial-history v08 freeze contract is present');
-assert.equal(freezes.length, 26, 'fixture preserves all twenty-five predecessor maps and adds the v16 financial successor');
+assert.equal(freezes.length, 27, 'fixture preserves all twenty-six predecessor maps and adds the v17 financial successor');
 assert.equal(githubPagesBaseDeterminism.version, 'github-pages-base-determinism-v01', 'GitHub Pages base determinism audit records its explicit version');
 assert.equal(githubPagesBaseDeterminism.predecessorVersion, corningAppliedFreeze.version, 'GitHub Pages base determinism audit records its immediate predecessor');
 const githubPagesBaseFreeze = freezes.find(freeze => freeze.version === githubPagesBaseDeterminism.version);
@@ -1135,7 +1135,7 @@ for (const path of expectedArtifactPaths.filter(path => !terminologyChangedPaths
 assert.equal(shaMapDigest(terminologyFreeze), terminologyFreeze.metadata.shaMapDigest, 'the terminology SHA map digest is reproducible');
 const financialHistoryFreezeV10 = freezes.find(freeze => freeze.version === 'financial-history-six-period-coverage-v10');
 assert.ok(financialHistoryFreezeV10, 'the tenth financial-history successor freeze is present');
-assert.ok(activeFreeze.version === 'financial-history-six-period-coverage-v16', 'the sixteenth financial-history freeze is active');
+assert.ok(activeFreeze.version === 'financial-history-six-period-coverage-v17', 'the seventeenth financial-history freeze is active');
 assert.equal(financialHistoryFreezeV10.previousVersion, terminologyFreeze.version, 'v10 directly succeeds the Japanese-first terminology freeze');
 assert.equal(financialHistoryFreezeV10.metadata.baseMain, 'ad13e2a85e91c9ecd5850495f7427f04c646658a', 'v10 records the audited Japanese-first main');
 assert.equal(financialHistoryFreezeV10.metadata.shaMismatchFallbackAllowed, false, 'v10 rejects SHA fallback');
@@ -1290,21 +1290,91 @@ for (const path of expectedArtifactPaths.filter(path => !financialHistoryV16Chan
 }
 assert.equal(financialHistoryFreezeV16.metadata.nonFinancialShaMapDigest, financialHistoryFreezeV15.metadata.nonFinancialShaMapDigest, 'v16 keeps all non-financial templates unchanged');
 assert.equal(shaMapDigest(financialHistoryFreezeV16), financialHistoryFreezeV16.metadata.shaMapDigest, 'v16 records the reproducible 101-path SHA map digest');
+const financialHistoryFreezeV17 = freezes.find(freeze => freeze.version === 'financial-history-six-period-coverage-v17');
+assert.ok(financialHistoryFreezeV17, 'the seventeenth financial-history successor freeze is present');
+assert.equal(financialHistoryFreezeV17.previousVersion, financialHistoryFreezeV16.version, 'v17 directly succeeds v16');
+assert.equal(financialHistoryFreezeV17.metadata.baseMain, '85b3a5fb84e56532c76a2a9a93f307c02c262034', 'v17 records the audited main');
+assert.equal(financialHistoryFreezeV17.metadata.shaMismatchFallbackAllowed, false, 'v17 rejects SHA fallback');
+const financialHistoryV17ChangedPaths = expectedArtifactPaths.filter(path => financialHistoryFreezeV17.sha256ByPath[path] !== financialHistoryFreezeV16.sha256ByPath[path]);
+assert.deepEqual(financialHistoryV17ChangedPaths, ['aptiv/index.html', 'index.html'], 'v17 changes the Aptiv asset and the shell financial comparison decision');
+assert.equal(financialHistoryV17ChangedPaths.length, financialHistoryFreezeV17.metadata.expectedChangedArtifactCount);
+assert.equal(expectedArtifactPaths.length - financialHistoryV17ChangedPaths.length, financialHistoryFreezeV17.metadata.expectedUnchangedArtifactCount);
+for (const path of expectedArtifactPaths.filter(path => !financialHistoryV17ChangedPaths.includes(path))) {
+  assert.equal(financialHistoryFreezeV17.sha256ByPath[path], financialHistoryFreezeV16.sha256ByPath[path], `${path}: v17 non-target artifact is byte-identical`);
+}
+assert.equal(shaMapDigest(financialHistoryFreezeV17), financialHistoryFreezeV17.metadata.shaMapDigest, 'v17 records the reproducible 101-path SHA map digest');
+const shellTransitionV17 = fixture.financialV17ShellTransition;
+assert.equal(shellTransitionV17?.setId, 'first-batch-stage-2', 'the shell exception belongs only to the reviewed comparison set');
+assert.deepEqual(
+  shellTransitionV17.fragments.map(fragment => [fragment.element, fragment.setAttribute, fragment.expectedOccurrences]),
+  [['section', 'data-financial-set-id', 1], ['div', 'data-quality-set-id', 1]],
+  'the shell exception names only the financial and quality elements once each',
+);
+const shellFragment = (fragment, version) => `<${fragment.element} ${fragment.setAttribute}="${shellTransitionV17.setId}" hidden>${fragment[version]}</${fragment.element}>`;
+const sha256Text = value => createHash('sha256').update(value).digest('hex');
+const occurrenceCount = (text, fragment) => text.split(fragment).length - 1;
+const restoreV17ShellToV16 = html => {
+  let restored = html;
+  for (const fragment of shellTransitionV17.fragments) {
+    const current = shellFragment(fragment, 'afterInnerHtml');
+    const previous = shellFragment(fragment, 'beforeInnerHtml');
+    assert.equal(occurrenceCount(restored, current), fragment.expectedOccurrences, `${fragment.setAttribute}: allowed HTML occurs exactly once`);
+    restored = restored.replace(current, previous);
+  }
+  assert.equal(sha256Text(restored), financialHistoryFreezeV16.sha256ByPath['index.html'], 'restoring only two reviewed shell fragments reproduces the v16 shell SHA');
+  return restored;
+};
+let shellLimitedDiffEvidence = null;
 if (process.argv.includes('--dist')) {
   const artifactRoot = new URL('../dist/evidence-fragments/company-compare-evidence-v01/', import.meta.url);
   const financialTemplateRe = /<template\b[^>]*data-company-slot="(?:expanded-)?financial"[\s\S]*?<\/template>/g;
+  const shellHtml = readFileSync(new URL('index.html', artifactRoot), 'utf8');
+  assert.equal(sha256Text(shellHtml), financialHistoryFreezeV17.sha256ByPath['index.html'], 'v17 shell still matches the active exact SHA freeze');
+  const restoredShell = restoreV17ShellToV16(shellHtml);
+  for (const fragment of shellTransitionV17.fragments) {
+    const current = shellFragment(fragment, 'afterInnerHtml');
+    assert.throws(() => restoreV17ShellToV16(shellHtml.replace(current, '')), /allowed HTML occurs exactly once/, 'a missing allowed fragment fails');
+    assert.throws(() => restoreV17ShellToV16(shellHtml.replace(current, current + current)), /allowed HTML occurs exactly once/, 'a duplicated allowed fragment fails');
+  }
+  assert.ok(shellHtml.includes('企業の役割と違いを根拠から比較'), 'the reviewed shell body text is present');
+  assert.throws(() => restoreV17ShellToV16(shellHtml.replace('企業の役割と違いを根拠から比較', '企業の役割と違いを根拠から比較変更')), /reproduces the v16 shell SHA/, 'an unrelated body change fails');
+  assert.match(shellHtml, /href="[^"]+"/, 'the reviewed shell has a URL to protect');
+  assert.throws(() => restoreV17ShellToV16(shellHtml.replace(/href="([^"]+)"/, (_, url) => `href="${url}#unexpected"`)), /reproduces the v16 shell SHA/, 'an unrelated URL change fails');
+  assert.ok(shellHtml.includes('data-detail="summary"'), 'the reviewed shell has an attribute to protect');
+  assert.throws(() => restoreV17ShellToV16(shellHtml.replace('data-detail="summary"', 'data-detail="expanded"')), /reproduces the v16 shell SHA/, 'an unrelated attribute change fails');
   const nonFinancialShaByPath = Object.fromEntries(expectedArtifactPaths.map(path => {
     const html = readFileSync(new URL(path, artifactRoot), 'utf8');
     const financialTemplates = [...html.matchAll(financialTemplateRe)];
     assert.equal(financialTemplates.length, path === 'index.html' ? 0 : 2, `${path}: only the primary and expanded Financial templates are omitted`);
+    if (path !== 'index.html') {
+      assert.equal((html.match(/<template\b[^>]*data-company-slot="financial"/g) ?? []).length, 1, `${path}: one primary Financial template`);
+      assert.equal((html.match(/<template\b[^>]*data-company-slot="expanded-financial"/g) ?? []).length, 1, `${path}: one expanded Financial template`);
+    }
     const nonFinancialHtml = html.replace(financialTemplateRe, '<template>FINANCIAL REMOVED</template>');
     return [path, createHash('sha256').update(nonFinancialHtml).digest('hex')];
   }));
   assert.equal(
     createHash('sha256').update(JSON.stringify(nonFinancialShaByPath)).digest('hex'),
-    financialHistoryFreezeV14.metadata.nonFinancialShaMapDigest,
-    'v14 keeps all 101 non-financial artifact templates at the audited predecessor digest',
+    financialHistoryFreezeV17.metadata.nonFinancialShaMapDigest,
+    'v17 records the exact non-financial-template map, including the separately explained shell financial decision',
   );
+  const predecessorNonFinancialShaByPath = { ...nonFinancialShaByPath, 'index.html': sha256Text(restoredShell) };
+  const restoredNonFinancialDigest = sha256Text(JSON.stringify(predecessorNonFinancialShaByPath));
+  assert.equal(
+    restoredNonFinancialDigest,
+    financialHistoryFreezeV16.metadata.nonFinancialShaMapDigest,
+    'only the two reviewed shell messages and the two Financial templates per Company asset differ from v16',
+  );
+  shellLimitedDiffEvidence = {
+    setId: shellTransitionV17.setId,
+    expectedFragmentOccurrences: shellTransitionV17.fragments.map(fragment => ({ attribute: fragment.setAttribute, count: fragment.expectedOccurrences })),
+    v16ShellSha256: financialHistoryFreezeV16.sha256ByPath['index.html'],
+    v17ShellSha256: sha256Text(shellHtml),
+    restoredShellSha256: sha256Text(restoredShell),
+    v16NonFinancialDigest: financialHistoryFreezeV16.metadata.nonFinancialShaMapDigest,
+    restoredNonFinancialDigest,
+    negativeBoundaryCasesPassed: 7,
+  };
   const htmlText = value => value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
   const projectedCompanyIds = new Set();
   let projectedClaims = 0;
@@ -1351,7 +1421,7 @@ for (const [version, expectedDigest] of Object.entries(historicalArtifactFreezeD
 }
 
 const shaBlocks = [...fixtureSource.matchAll(/"sha256ByPath"\s*:\s*\{([\s\S]*?)\n\s{4}\}/g)];
-assert.equal(shaBlocks.length, 26, 'fixture source preserves all predecessor SHA maps plus the v16 successor SHA map');
+assert.equal(shaBlocks.length, 27, 'fixture source preserves all predecessor SHA maps plus the v17 successor SHA map');
 for (const [index, block] of shaBlocks.entries()) {
   const rawPaths = [...block[1].matchAll(/^\s*"([^"]+)"\s*:/gm)].map(match => match[1]);
   assert.equal(rawPaths.length, 101, `freeze ${index}: raw JSON contains 101 paths`);
@@ -1412,6 +1482,7 @@ for (const [id, parts] of partsById) {
 
 console.log(JSON.stringify({
   status: 'PASS',
+  ...(shellLimitedDiffEvidence ? { shellLimitedDiffEvidence } : {}),
   companies: fixedBatch1CompanyIds.length + fixedBatch2CompanyIds.length,
   auditedCandidates: auditedCandidates + batch2AuditedCandidates,
   overlayEntries: batch1.entries.length + batch2.entries.length,

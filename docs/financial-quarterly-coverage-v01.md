@@ -2,9 +2,9 @@
 
 - Checked at: 2026-11-02
 - Registry companies: 100
-- Financial-history shard manifest digest: d1843c27a893243c761723332d900f8e5101c6aef2d88f3c44e56aec8b553300
-- Complete six quarters: 93
-- Partial quarterly (1–5): 1
+- Financial-history shard manifest digest: 7f0e2a22ae44ee55d472933e16f7ba862ccd5b153ce9be7bd46b84d60b453fc5
+- Complete six quarters: 94
+- Partial quarterly (1–5): 0
 - Awaiting next reported quarter: 0
 - Semiannual only: 0
 - Annual only: 0
@@ -20,6 +20,7 @@
 - amphenol
 - analog-devices
 - applied-materials
+- aptiv
 - arista
 - arm
 - ase-technology
@@ -120,7 +121,7 @@
 | amphenol | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.amphenol.com/news-and-events/news-details/2026/Amphenol-Reports-Record-Second-Quarter-2026-Results/default.aspx) |
 | analog-devices | quarterly | 6 / 6 | Q3 FY2026 (2026-08-01) | complete-six-quarters | — | [official](https://investor.analog.com/news-releases/news-release-details/analog-devices-reports-record-fiscal-third-quarter-2026) |
 | applied-materials | quarterly | 6 / 6 | Q3 FY2026 (2026-07-26) | complete-six-quarters | — | [official](https://investor.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-third-quarter-2026-results) |
-| aptiv | quarterly | 1 / 6 | Q3 2025 (2025-09-30) | partial-quarterly | 分離前の2025年Q3の連結US GAAP単独値のみ確認。2026年Q2の継続事業原表はElectrical Distribution Systems分離後の範囲で、既存の分離前年次との再表示接続表を未確認。最新6期の同一系列は構成しない。 | [official](https://www.sec.gov/Archives/edgar/data/1521332/000152133225000051/aptv-20250930.htm) |
+| aptiv | quarterly | 7 / 6 | Q1 2026 (2026-03-31) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1521332/000152133226000048/aptv-20260331.htm) |
 | arista | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://investors.arista.com/Communications/Press-Releases-and-Events/Press-Release-Detail/2026/Arista-Networks-Inc--Reports-Second-Quarter-2026-Financial-Results/default.aspx) |
 | arm | quarterly | 6 / 6 | FY2027 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1973239/000197323926000114/arm-20260630.htm) |
 | ase-technology | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1122411/000095010326011351/dp250868_6k.htm) |
