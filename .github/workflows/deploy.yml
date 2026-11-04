@@ -27,8 +27,14 @@ jobs:
           node-version: 22.23.4
           package-manager-cache: false
 
+      - name: Confirm npm version
+        run: test "$(npm --version)" = "10.9.9"
+
       - name: Install dependencies
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
+
+      - name: Record build environment
+        run: npm run report:build-environment
 
       - name: Validate constitutional data rules
         run: npm run validate
