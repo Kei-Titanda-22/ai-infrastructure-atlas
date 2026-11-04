@@ -1,0 +1,42 @@
+[
+  {
+    "id": "omron-fy2025-q1-v19",
+    "companyId": "omron",
+    "periodType": "quarterly",
+    "periodLabel": "FY2025 Q1",
+    "startDate": "2025-04-01",
+    "endDate": "2025-06-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "omron-fy2026-q1-jpx-v19",
+    "verifiedAt": "2026-11-04",
+    "metrics": {
+      "revenue": {
+        "value": 166526,
+        "status": "verified",
+        "basis": "JPX FY2026 Q1 release published 2026-08-05, PDF physical p.24 / printed p.22, consolidated income statement, FY2025 Q1 US GAAP comparative three-month column. Net sales from continuing operations after DMB reclassification, JPY million. Adjacent IFRS column 166480 is excluded."
+      },
+      "operatingProfit": {
+        "value": 5815,
+        "status": "verified",
+        "basis": "Same JPX original, PDF physical p.24 / printed p.22, FY2025 Q1 US GAAP comparative three-month column, operating income from continuing operations, JPY million. Adjacent IFRS column 5784 is excluded. DMB discontinued-operation note: physical p.16 / printed p.14."
+      },
+      "operatingMargin": {
+        "value": 3.5,
+        "status": "verified",
+        "basis": "5815 / 166526 × 100 = 3.491..., rounded to one decimal percentage point under the existing display contract."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone continuing-operations free cash flow is not established; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone continuing-operations capex is not established; no allocation or estimate."
+      }
+    }
+  }
+]

@@ -20,7 +20,7 @@ assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
 assert.deepEqual(new Set(coverage.map(row => row.companyId)), new Set(companies.map(company => company.id)), 'coverage company IDs exactly match registry');
 assert.equal(new Set(coverage.map(row => row.companyId)).size, coverage.length, 'coverage company IDs are unique');
-assert.equal(history.length, 714, 'v18 adds eight sourced quarters without removing the 706 existing periods');
+assert.equal(history.length, 715, 'v19 adds one sourced Omron quarter without changing the 714 existing periods');
 assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length, 95, 'v18 reaches 95 companies with at least six reported quarters');
 
 const quarterlyByCompany = new Map(companies.map(company => [company.id, []]));
@@ -300,9 +300,9 @@ for (const [companyId, endDates] of tenthPeriods) {
   for (const field of ['currency', 'unit', 'accountingBasis']) assert.equal(new Set(quarterly.slice(-6).map(record => record[field])).size, 1, `${companyId}: stable ${field}`);
   assert.ok(quarterly.slice(-6).every(record => record.metrics.revenue.value != null && record.metrics.operatingProfit.value != null && record.metrics.operatingMargin.value != null), `${companyId}: sales, operating profit and margin are nonempty`);
 }
-assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 0, 'Aptiv now has consecutive pre-spin quarters');
+assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 1, 'Omron has one connected historical quarter and remains partial');
 assert.equal(coverage.filter(row => row.coverageStatus === 'awaiting-next-quarter').length, 0, 'Kioxia actual Q2 publication closes the awaiting category');
-assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 5, 'five companies remain without collected quarterly actuals after Hexagon adoption');
+assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 4, 'four companies remain without collected quarterly actuals after Omron adoption');
 assert.equal(coverage.find(row => row.companyId === 'nvidia').checkedAt, '2026-09-23', 'unreviewed baseline companies retain their original coverage check date');
 assert.equal(coverage.find(row => row.companyId === 'fujikura').coverageStatus, 'complete-six-quarters', 'Fujikura is complete from the comparable official series');
 
@@ -639,12 +639,37 @@ for (let year=2024;year<=2025;year++) {
   }
 }
 assert.deepEqual(Object.keys(v18Blockers.reasons).sort(), ['air-liquide','ajinomoto-fine-techno','aptiv','bosch','omron','schneider-electric','shinko-electric']);
-for (const companyId of Object.keys(v18Blockers.reasons)) {
+const v19Blockers = await readJson(join(dataDirectory, 'financial-quarterly-blockers-v19.json'));
+for (const companyId of Object.keys(v19Blockers.reasons)) {
   const row=coverage.find(item=>item.companyId===companyId);
-  if(row.coverageStatus!=='complete-six-quarters') assert.equal(row.blockerReason,v18Blockers.reasons[companyId]);
+  if(row.coverageStatus!=='complete-six-quarters') assert.equal(row.blockerReason,v19Blockers.reasons[companyId]);
 }
 assert.equal(coverage.find(row=>row.companyId==='hexagon').coverageStatus,'complete-six-quarters');
 assert.equal(coverage.filter(row=>row.coverageStatus==='complete-six-quarters').length,95);
-assert.equal(coverage.filter(row=>row.coverageStatus==='needs-review').length,5);
-assert.equal(history.length,714,'v18 full financial history has 714 records');
+assert.equal(coverage.filter(row=>row.coverageStatus==='needs-review').length,4);
+const omronBatch = await readJson(join(dataDirectory, 'financial-history-v05-batch22.json'));
+const omronSource = await readJson(join(dataDirectory, 'document-sources-v05-batch22.json'));
+const omronPolicy = await readJson(join(dataDirectory, 'document-source-policies-v05-batch22.json'));
+assert.equal(omronBatch.length,1);
+assert.deepEqual([omronBatch[0].id, omronBatch[0].periodLabel, omronBatch[0].startDate, omronBatch[0].endDate],['omron-fy2025-q1-v19','FY2025 Q1','2025-04-01','2025-06-30']);
+assert.deepEqual([omronBatch[0].metrics.revenue.value,omronBatch[0].metrics.operatingProfit.value,omronBatch[0].metrics.operatingMargin.value],[166526,5815,3.5]);
+assert.equal(omronBatch[0].accountingBasis,'US GAAP');
+assert.equal(omronBatch[0].currency,'JPY');
+assert.equal(omronBatch[0].unit,'million');
+assert.equal(omronBatch[0].sourceId,omronSource[0].id);
+assert.equal(omronPolicy[0].sourceId,omronSource[0].id);
+assert.equal(omronSource[0].url,'https://www2.jpx.co.jp/disc/66450/140120260804509051.pdf');
+assert.ok(omronBatch[0].metrics.revenue.basis.includes('physical p.24 / printed p.22'));
+assert.ok(omronBatch[0].metrics.operatingProfit.basis.includes('physical p.16 / printed p.14'));
+assert.ok(omronBatch[0].metrics.freeCashFlow.value === null && omronBatch[0].metrics.capex.value === null);
+const omronHistory=history.filter(record=>record.companyId==='omron');
+assert.equal(omronHistory.length,3);
+assert.equal(omronHistory.filter(record=>record.periodType==='annual').length,2);
+assert.equal(omronHistory.filter(record=>record.periodType==='quarterly').length,1);
+assert.deepEqual(omronHistory.filter(record=>record.periodType==='annual').map(record=>[record.metrics.revenue.value,record.metrics.operatingProfit.value]),[[715379,53446],[767351,59935]]);
+assert.equal(new Set(omronHistory.map(record=>record.accountingBasis+':'+record.currency+':'+record.unit)).size,1);
+assert.equal(coverage.find(row=>row.companyId==='omron').coverageStatus,'partial-quarterly');
+assert.equal(coverage.find(row=>row.companyId==='omron').checkedAt,'2026-11-04');
+assert.equal(coverage.find(row=>row.companyId==='nvidia').checkedAt,'2026-09-23');
+assert.equal(history.length,715,'v19 full financial history has 715 records');
 console.log(`Financial quarterly coverage OK: ${coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length} complete companies`);

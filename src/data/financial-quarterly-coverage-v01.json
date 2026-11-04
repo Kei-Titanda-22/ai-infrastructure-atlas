@@ -805,15 +805,15 @@
   },
   {
     "companyId": "omron",
-    "disclosureCadence": "needs-review",
-    "actualQuarterCount": 0,
+    "disclosureCadence": "quarterly",
+    "actualQuarterCount": 1,
     "targetQuarterCount": 6,
-    "latestPeriodLabel": null,
-    "latestEndDate": null,
-    "coverageStatus": "needs-review",
-    "blockerReason": "既存年次はDMB再分類後のUS GAAP連結系列。財務データ集p.2は再分類後の年次実績・計画、p.13は再分類前の四半期参考表で、FY25 Q4・下期・通期にはUS GAAP開示値ではないとの注記がある。2026年度Q1以降のIFRS系列と接続する公式な範囲・基準の橋渡しが未確定。十億円表示自体は障害ではない。",
-    "officialSourceUrl": "https://www.omron.com/global/en/assets/file/ir/irlib/20260513_financial_results.pdf",
-    "checkedAt": "2026-09-23"
+    "latestPeriodLabel": "FY2025 Q1",
+    "latestEndDate": "2025-06-30",
+    "coverageStatus": "partial-quarterly",
+    "blockerReason": "FY2025 Q1（2025-04-01～06-30）のDMB再分類後US GAAP連結継続事業の売上高166,526百万円・営業利益5,815百万円をJPX提出資料の比較列から収録。残るFY2025 Q2～Q4の同一系列の単独または累計原表が未確認。FY2026 Q1以降のIFRS系列は既存US GAAP年次へ無注記で接続しない。1期の部分収録は6期完備や最新期収録を意味しない。",
+    "officialSourceUrl": "https://www2.jpx.co.jp/disc/66450/140120260804509051.pdf",
+    "checkedAt": "2026-11-04"
   },
   {
     "companyId": "onsemi",

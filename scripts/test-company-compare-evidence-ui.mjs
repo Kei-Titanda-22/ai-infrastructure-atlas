@@ -1961,7 +1961,7 @@ if (process.argv.includes('--dist')) {
   ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
-  assert.equal(Buffer.byteLength(financialPayload), 861_017, 'v18 adds eight Hexagon quarters and the corrected interim accounting-basis metadata to the diagnostic financial payload');
+  assert.equal(Buffer.byteLength(financialPayload), 862_566, 'v19 adds one Omron quarter to the diagnostic financial payload');
   const normalizedNonFinancialHtml = normalizeViteAssetFingerprints(compareHtml.replace(financialPayloadRe, '$1$2'));
   assert.equal(Buffer.byteLength(normalizedNonFinancialHtml), 327_875, 'human UX review adds 190 B of explicit comparison-order and legend markup to the v08 non-financial HTML');
   assert.equal(
@@ -2079,7 +2079,8 @@ if (process.argv.includes('--dist')) {
   assert.equal(compareBytes - 1_169_129, Buffer.byteLength(financialPayload) - 841_327, 'v17 incremental growth is exactly six Aptiv records in the financial payload');
   assert.equal(compareBytes - 1_177_281, Buffer.byteLength(financialPayload) - 849_479, 'v18 incremental growth matches only the eight-record financial payload');
   assert.equal(compareBytes - 1_188_783, Buffer.byteLength(financialPayload) - 860_981, 'the 36 B metadata correction changes only the financial payload');
-  assert.equal(compareBytes, 1_188_819, 'corrected v18 diagnostic output matches the independently measured HTML size');
+  assert.equal(compareBytes - 1_188_819, Buffer.byteLength(financialPayload) - 861_017, 'v19 diagnostic growth is confined to the single Omron financial record');
+  assert.equal(compareBytes, 1_190_368, 'v19 diagnostic output matches the independently measured HTML size');
   const assertFifteenthBatchCompareSize = bytes => {
     assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v15 diagnostic byte count is a non-negative integer');
     assert.ok(bytes <= fifteenthBatchCompareSizeContract.maximumRawBytes, `v15 legacy Compare HTML ${bytes} B exceeds ${fifteenthBatchCompareSizeContract.maximumRawBytes} B`);
@@ -2407,7 +2408,7 @@ if (process.argv.includes('--dist')) {
     assert.ok(financialTemplate.includes('一次資料を開く'), `${companyId}: primary row links its official source`);
   }
   const allHistoryThroughTenthBatch = (await Promise.all((await readdir(new URL('../src/data/', import.meta.url)))
-    .filter(file => file === 'financial-history.json' || (/^financial-history-v0[45]-batch\d+\.json$/.test(file) && !['financial-history-v05-batch16.json','financial-history-v05-batch17.json','financial-history-v05-batch18.json','financial-history-v05-batch19.json','financial-history-v05-batch20.json','financial-history-v05-batch21.json'].includes(file)))
+    .filter(file => file === 'financial-history.json' || (/^financial-history-v0[45]-batch\d+\.json$/.test(file) && !['financial-history-v05-batch16.json','financial-history-v05-batch17.json','financial-history-v05-batch18.json','financial-history-v05-batch19.json','financial-history-v05-batch20.json','financial-history-v05-batch21.json','financial-history-v05-batch22.json'].includes(file)))
     .sort()
     .map(file => readJson(`../src/data/${file}`)))).flat();
   assert.equal(allHistoryThroughTenthBatch.length, 586, 'v12 runtime input includes 586 records across all batches');
@@ -2664,6 +2665,14 @@ if (process.argv.includes('--dist')) {
   assert.ok(hexagonPrimary.includes(`<strong>${hexagonExpected.displayValue}</strong>`) && hexagonPrimary.includes(`${hexagonExpected.periodLabel} · ${hexagonExpected.accountingBasis}`));
   assert.equal((hexagonExpanded.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) ?? []).length, 10);
   assert.ok(hexagonExpanded.includes('2024年 第1四半期') && hexagonExpanded.includes('2024年 第2四半期') && hexagonExpanded.includes('2024年度') && hexagonExpanded.includes('2025年度'), 'graph-excluded quarters and annual history remain in the localized table');
+  const omronExpected = displayFixture.nineteenthBatchPrimaryFinancialRow.omron;
+  const omronAsset = assetHtmlById.omron;
+  const omronPrimary = omronAsset.match(/<template data-company-slot="financial"[\s\S]*?<\/template>/)?.[0] ?? '';
+  const omronExpanded = omronAsset.match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/)?.[1] ?? '';
+  assert.ok(omronPrimary.includes(`<strong>${omronExpected.displayValue}</strong>`) && omronPrimary.includes(`${omronExpected.periodLabel} · ${omronExpected.accountingBasis}`), 'older quarter does not displace the latest annual primary row');
+  assert.equal((omronExpanded.match(/<tbody>[\s\S]*?<\/tbody>/)?.[0].match(/<tr>/g) ?? []).length, omronExpected.recordCount);
+  assert.ok(omronExpanded.includes('2025年度 第1四半期') && omronExpanded.includes('2024年度') && omronExpanded.includes('2025年度'), 'Omron table retains one quarter and both annual periods');
+  assert.ok(omronExpanded.includes('https://www2.jpx.co.jp/disc/66450/140120260804509051.pdf'), 'Omron quarter links to the formal JPX original');
   const expandedFinancialHtml = pilotIds.map(companyId => {
     const match = assetHtmlById[companyId].match(/<template data-company-slot="expanded-financial">([\s\S]*?)<\/template>/);
     assert.ok(match, `${companyId}: detailed Financial template is present`);
