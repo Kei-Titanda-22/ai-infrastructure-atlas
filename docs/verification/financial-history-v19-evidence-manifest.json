@@ -103,5 +103,129 @@
     "Pagefind auxiliary file bytes may differ despite the verified 105 URL set and 101 freeze artifacts.",
     "Browser QA opened no external primary-source URL targets.",
     "The first and third build attempts failed at Pagefind and are retained separately from the two complete successes."
-  ]
+  ],
+  "schneiderCorrection": {
+    "recordedAt": "2026-11-04T15:12:20.382Z",
+    "scope": "Correct Schneider Electric H1 original-table verification and remaining quarterly evidence gap; financial records, source records, dates and coverage counts unchanged.",
+    "sourceRecheck": {
+      "checkedAtJst": "2026-11-05T00:01:51+09:00",
+      "url": "https://www.se.com/ww/en/assets/pdf/accounts-hy-results-2026",
+      "method": "Official PDF opened through web PDF viewer; physical page index 1 (p.2), extracted printed footer 2.",
+      "table": "Consolidated statement of income",
+      "column": "First half 2026",
+      "period": "2026-01-01 to 2026-06-30",
+      "currency": "EUR",
+      "unit": "million",
+      "revenue": 21226,
+      "operatingIncome": 3613,
+      "excludedMetrics": {
+        "adjustedEbita": 4093,
+        "ebita": 3819
+      },
+      "localDownloadRecheck": {
+        "checkedAtJst": "2026-11-05T00:11:06+09:00",
+        "httpStatus": 403,
+        "savedPdf": false
+      },
+      "conclusion": "Six-month income is confirmed; standalone unadjusted quarterly profit or a valid same-series cumulative subtraction is still missing. Hold decision and audit cutoff are unchanged."
+    },
+    "environment": {
+      "node": "22.23.4",
+      "npm": "10.9.9",
+      "lockfileSha256": "68bccf4cd414b45c7f99b582c6eb46457afd002087e70994ca2e085838997f4b"
+    },
+    "sourceInputCount": 475,
+    "sourceInputDigest": "b989877a315ee8fc06311fcbaff95c2cf634bf8ae74e16fc55ceea95318f12d7",
+    "priorSourceInputDigest": "39ae4e3e845cba309ef0f0efe3579cd1bc802015571fa6b6abb2eae4b13d8fe2",
+    "changedInputPaths": [
+      "src/data/financial-quarterly-blockers-v19.json",
+      "src/data/financial-quarterly-coverage-v01.json"
+    ],
+    "builds": [
+      {
+        "runId": "run6",
+        "startedAt": "2026-11-05T00:05:11.8710485+09:00",
+        "endedAt": "2026-11-04T15:05:38.857Z",
+        "commands": [
+          "npm run build (astro build && pagefind --site dist && compare --dist)",
+          "npm run test:japanese-first-copy -- --dist"
+        ],
+        "exitCodes": {
+          "astro": 0,
+          "pagefindFirst": 0,
+          "pagefindRetry": null,
+          "compare": 0,
+          "japanese": 0
+        },
+        "map": "run6-map.json"
+      },
+      {
+        "runId": "run7",
+        "startedAt": "2026-11-05T00:06:30.8609819+09:00",
+        "endedAt": "2026-11-04T15:06:53.011Z",
+        "commands": [
+          "npm run build (astro build && pagefind --site dist && compare --dist)",
+          "npm run test:japanese-first-copy -- --dist"
+        ],
+        "exitCodes": {
+          "astro": 0,
+          "pagefindFirst": 0,
+          "pagefindRetry": null,
+          "compare": 0,
+          "japanese": 0
+        },
+        "map": "run7-map.json"
+      }
+    ],
+    "failedAttempt": "run5: Astro succeeded, Pagefind PermissionDenied (exit 101); preserved separately and excluded from the two successful clean builds. Cause not established.",
+    "results": {
+      "financialRecords": 715,
+      "companies": 100,
+      "coverage": {
+        "complete": 95,
+        "partial": 1,
+        "awaiting": 0,
+        "needsReview": 4
+      },
+      "freezeMatches": "101/101",
+      "companyDetailMatches": "100/100",
+      "routes": 210,
+      "pagefindUrls": 105,
+      "compareBytes": 1190368,
+      "compareSha256": "356f52aed427e685966577a57ada8775ae022fe20085b3726382be5668da2ac1",
+      "diagnosticCapBytes": 1217802,
+      "unchangedAgainstPriorV19": "101 Compare artifacts, 100 company details, Compare HTML, route/URL sets",
+      "commonJsCss": "14 files match the preserved v18 Pages artifact byte-for-byte; correction-output-recheck-v19.json records exact paths and SHA.",
+      "generatedTextChange": "Schneider blocker paragraph in financials HTML and derived Pagefind indexed content. Prior full financials HTML bytes were not saved; no prior raw SHA comparison is claimed for that page.",
+      "formalValidateExitCode": 0,
+      "qa": "New targeted Schneider and Omron financials checks at 1024/390/360; prior Preview QA retained for unchanged artifact/script/display contracts. See schneider-correction-v19.json."
+    },
+    "evidenceSha256ByPath": {
+      "schneider-correction-v19.json": "e695b3f2ce7c742bf47cb702c5f223c3a145d09c0bfb151e4fd01635ef3b6fe7",
+      "source-input-correction-v19.json": "8871a3dcb2ce77eb1633de543d8056020fe9a6ea603a5dd204ff9e49a3331920",
+      "correction-output-recheck-v19.json": "b56bd450f0207c8259ae8d6913fcbb6284dd3a898971d688ad62a1f2bec267e3",
+      "correction-dist-sha256-v19.json": "0138e2edfd36a02aa8a0f0345d605296f99fdc4d74e8965d76a5093c0b2c4ae0",
+      "correction-coverage-check.log": "e63c6435c47a06d28b95e07c9d0d87009bdc941cd757d7213cff24b3cfa98aa8",
+      "correction-coverage-check-result.json": "7a9ca5799532fd8eae960b75b0cdc085215e9581fb45bce86da127c694b06438",
+      "correction-audit-check.log": "8d9cffbb753f67c9019ccc80ed9b5801f2eb9b1f742ab35c1b6cb20bad73d8b5",
+      "correction-audit-check-result.json": "e1cd486c11bdf1eddc0d5c250d41f513ed545619cea9fbe84120d1ea7287071f",
+      "correction-coverage-focused.log": "f7985fb2ed7aa80e03dce7016ac6b514ed62767c77d8ac81fed7ddc852868630",
+      "correction-coverage-focused-result.json": "c71b7ab79d2a1a966f1470b30f9e04f18f6cba129de08184433f7b535d1b935b",
+      "correction-validate.log": "66f532d51ef6920d222134b72fc6f6a8847bd5d5d84208ed2d32779410d2987c",
+      "correction-validate-result.json": "23b86bf5c1b996e905580c7ff64722ffc6fd1a5f9199cd3e46e5f8848316cb6d",
+      "correction-diff-check.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "correction-diff-check-result.json": "45d19e718e95e90bab682478507be853f0f11ec42011459b82a0ec1ac07d2b07",
+      "run5-build.log": "f45da7d72e6b97a22d06e839e87864338c8740b081898d337d1eabd06dea10b9",
+      "run5-failed-result.json": "9a257649fc7c9942ee852bcccc1e45c694422e4344a8216581602f00ef35e846",
+      "run6-build.log": "e32349b1a4df5c3aef17164f518cde15120d931ab679aa882a14cc9bc68827ea",
+      "run6-japanese.log": "0c5c651fa5e4c7d651cbfdcbedeb14826b5ce0d6a4268ebacd1df454879546d2",
+      "run6-map.json": "5443e4b191c66ae9ce9ccc7158f75847cc77e5e897652605b67f4d834bc86738",
+      "run7-build.log": "e56a7a55288d0a6dc0c5cf22838ec78a1c93a81ec4fd1035fd8fdb85a086f1c7",
+      "run7-japanese.log": "0c5c651fa5e4c7d651cbfdcbedeb14826b5ce0d6a4268ebacd1df454879546d2",
+      "run7-map.json": "72fc9f181798748a741075194126f44891ee309e05410c38b90fc80636b1175a",
+      "correction-final-secrets.log": "6690c3cce65a4f716cfc69e154370bf344a479d09edd41fe19772146bd558931",
+      "correction-final-secrets-result.json": "fffe96753447502c9a965c956a39f6f039853f346e940d9d381d248998195d87"
+    },
+    "history": "Top-level build/results and their 24 evidence references remain the pre-correction history. Use this schneiderCorrection object for final input and builds."
+  }
 }

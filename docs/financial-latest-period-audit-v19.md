@@ -34,7 +34,7 @@
 ### schneider-electric
 
 - Latest official period reviewed: Q3 2026 revenue only; published 2026-10-16.
-- Specific remaining evidence: 公式結果一覧の2026年Q1・Q3は四半期売上発表、H1は6か月利益資料。Q1・Q3の未調整IFRS連結営業利益または同一系列の累計差分原表が未確認。H1原表PDFは今回取得できず、半期利益を按分・調整後EBITAで代用しない。
+- Specific remaining evidence: 2026年H1 accountsの連結損益原表をWeb閲覧で確認。PDF物理／印刷2ページのFirst half 2026列は、売上高21,226百万EUR、未調整Operating income 3,613百万EURで、対象は6か月。ローカルPDF取得は当時HTTP 403だった。対応する単独四半期の未調整営業利益、または同一系列の累計差分を成立させる原表が不足するため保留する。半期値の按分やAdjusted EBITAによる代用は行わない。
 
 ## Scope
 
