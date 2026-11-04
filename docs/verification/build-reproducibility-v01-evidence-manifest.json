@@ -1,0 +1,347 @@
+{
+  "schemaVersion": "build-reproducibility-v01",
+  "baseline": {
+    "mainSha": "fbcf570d36e8d6b35688f937c4c374aa9a6a11fe",
+    "mainTree": "5301bcfd50e25a114342bbd7766cd0bbd5cb7ed8",
+    "financeRecords": 714,
+    "companies": 100,
+    "coverage": [
+      95,
+      0,
+      0,
+      5
+    ]
+  },
+  "environment": {
+    "node": "v22.23.4",
+    "npm": "10.9.9",
+    "os": "win32",
+    "architecture": "x64",
+    "packageJsonSha256": "1ad15875a3e51913a81aaae376f16d8aff3420858706c98f8b34b051af98a82a",
+    "packageLockSha256": "68bccf4cd414b45c7f99b582c6eb46457afd002087e70994ca2e085838997f4b",
+    "installed": {
+      "astro": [
+        {
+          "package": "astro",
+          "version": "7.2.9",
+          "installedAt": "node_modules/astro",
+          "lockVersion": "7.2.9"
+        }
+      ],
+      "vite": [
+        {
+          "package": "vite",
+          "version": "8.3.5",
+          "installedAt": "node_modules/vite",
+          "lockVersion": "8.3.5"
+        }
+      ],
+      "esbuild": [
+        {
+          "package": "esbuild",
+          "version": "0.28.2",
+          "installedAt": "node_modules/esbuild",
+          "lockVersion": "0.28.2"
+        }
+      ],
+      "rollup": [],
+      "rolldown": [
+        {
+          "package": "rolldown",
+          "version": "1.2.16",
+          "installedAt": "node_modules/rolldown",
+          "lockVersion": "1.2.16"
+        }
+      ],
+      "pagefind": [
+        {
+          "package": "pagefind",
+          "version": "1.5.2",
+          "installedAt": "node_modules/pagefind",
+          "lockVersion": "1.5.2"
+        }
+      ]
+    },
+    "nativeInstalled": [
+      {
+        "package": "@esbuild/win32-x64",
+        "version": "0.28.2",
+        "installedAt": "node_modules/@esbuild/win32-x64",
+        "lockVersion": "0.28.2"
+      },
+      {
+        "package": "@rolldown/binding-win32-x64-msvc",
+        "version": "1.2.16",
+        "installedAt": "node_modules/@rolldown/binding-win32-x64-msvc",
+        "lockVersion": "1.2.16"
+      }
+    ],
+    "nodeExe": "C:\\Users\\mkato\\Documents\\Codex\\2026-08-31\\github-plugin-github-openai-curated-remote\\work\\ai-infrastructure-atlas-financial-history-six-period-coverage-v13-evidence\\node-v22.23.4\\node-v22.23.4-win-x64\\node.exe",
+    "pythonExe": "C:\\Users\\mkato\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "pythonVersion": "3.12.14"
+  },
+  "exitCodes": {
+    "install1": 0,
+    "install2": 0,
+    "formalValidate": 0,
+    "focusedJapanese": 0,
+    "focusedSearch": 0,
+    "focusedAtlas": 0,
+    "focusedChart": 0,
+    "initialSandboxBuild": 101,
+    "finalBuild1": 0,
+    "finalBuild2": 0,
+    "finalSecretScan": 0
+  },
+  "buildComparison": {
+    "inputDigest": "02d043d160e4e21d3eed1e6b12d4502178d59b01344488d0b5d25f6b2b319fff",
+    "inputEqual": true,
+    "freezeCount": 101,
+    "freezeMatchesBoth": true,
+    "freezeDigest": "27bf59509dcb6e91de6f9c5d619f3933f3337e0887b463be2e6bd8a00f0bd5d7",
+    "freezeEqual": true,
+    "detailCount": 100,
+    "detailDigest": "6882a6c34aea20d1604e43638a159fd5cce92ebe9126da73e98fc0f2a8a9bdfc",
+    "detailEqual": true,
+    "routes": 210,
+    "routeDigest": "3a5ed3a8b844b2efcb850fcef38b324dda32fe3318cd07b0526ce616555d57fc",
+    "routeEqual": true,
+    "pagefindUrls": 105,
+    "pagefindDigest": "0f9b1da3f48cc450ebb445b383d747b2ffd61ee76cf0168c3e711e5be626263f",
+    "pagefindEqual": true,
+    "compareBytes": 1188819,
+    "compareSha256": "9984ecd7c18b6374ca07e84f7666d410ec6f0086a5f031d689f435969be8f769",
+    "compareEqual": true,
+    "compareCapBytes": 1217802,
+    "matchesV18DeployedArtifact": true,
+    "v18PriorLocalCompareSha256": "635c1311f5a084a09af13dd6993d7bceb2ea2eba3fa5a844b9272e272a9b9a4c"
+  },
+  "preview": {
+    "url": "http://127.0.0.1:4393/ai-infrastructure-atlas/",
+    "qaFile": "preview-qa.json",
+    "widths": [
+      1024,
+      390,
+      360
+    ],
+    "servedSampleHashesMatchDist": true
+  },
+  "evidenceRoot": "C:\\Users\\mkato\\Documents\\Codex\\2026-08-31\\github-plugin-github-openai-curated-remote\\work\\ai-infrastructure-atlas-build-reproducibility-v01-evidence",
+  "evidenceFiles": [
+    {
+      "name": "build-1-map.json",
+      "bytes": 92864,
+      "sha256": "29a0346cc618ccd97ded21c470b91f97943cca8408553615b7ecf6c1102a49dc"
+    },
+    {
+      "name": "build-1-success-summary.txt",
+      "bytes": 262,
+      "sha256": "c6055ee3369c43a86873c1839ed2f92336b1fa0ed203a8f6663cd6148348f6b6"
+    },
+    {
+      "name": "build-1-success.log",
+      "bytes": 28021,
+      "sha256": "143e5364022966d01b56316b5f5f81cbb396187f7393930778bd324ac0f79964"
+    },
+    {
+      "name": "build-1-summary.txt",
+      "bytes": 264,
+      "sha256": "7a91c5bab5fa05e3071d10b4a8f824ea95b921cadff207629519666d7547f278"
+    },
+    {
+      "name": "build-1.log",
+      "bytes": 27897,
+      "sha256": "219c11b764d57492a1c022e47fa055fbb458734bc2d998779cc4a4318d2abffb"
+    },
+    {
+      "name": "build-2-map.json",
+      "bytes": 92680,
+      "sha256": "f32efee68965cdada5ad2918c05ab75db6239445d54e5f16e42d83e04d77ff8f"
+    },
+    {
+      "name": "build-2-summary.txt",
+      "bytes": 262,
+      "sha256": "61dcbb357eb12c50605089852de56e6e7e1bedf6fa864da482f025947355b6e7"
+    },
+    {
+      "name": "build-2.log",
+      "bytes": 27868,
+      "sha256": "219067522d6b91956633676f9e8d708767f998c96f1d6c47deba812c1563b92a"
+    },
+    {
+      "name": "compare-js-map.json",
+      "bytes": 3423,
+      "sha256": "747e1eff20319336c00d939c9f2d99c8c8d3214e4d006ec8d6c772f36541d174"
+    },
+    {
+      "name": "environment-1.json",
+      "bytes": 1704,
+      "sha256": "3114358a39981a0f26011080f170fea8df8919cc71cd986986758ab11ef659e4"
+    },
+    {
+      "name": "environment-1.log",
+      "bytes": 1714,
+      "sha256": "76f210073f0721c6b7b547c07506d91ebd7f3625871b33988a1a96d03b3bb84c"
+    },
+    {
+      "name": "environment-2.json",
+      "bytes": 1704,
+      "sha256": "202ebaa7ca378905a98f4678ed4d356d407133c960fce961909400cfaf398d82"
+    },
+    {
+      "name": "environment-2.log",
+      "bytes": 1714,
+      "sha256": "ca71de5a22072d6b82fc02c7634e887d4f848324fe3ac6f05640a9d26b7d40da"
+    },
+    {
+      "name": "final-recheck.json",
+      "bytes": 434,
+      "sha256": "42ea6285bfc937802fa5687fd7c39acb44586080b503f1cf8f7faa0288806071"
+    },
+    {
+      "name": "focused-atlas-1-summary.txt",
+      "bytes": 97,
+      "sha256": "ea98e696697c637b95db6912a1b71b35d963f6e1a0afb3317b7ce83ea9e75cb6"
+    },
+    {
+      "name": "focused-atlas-1.log",
+      "bytes": 200,
+      "sha256": "1aa742932c9b0f13af85ac217dd59bfb2c0bbecadfb19f2accc843a9e6074e90"
+    },
+    {
+      "name": "focused-chart-1-summary.txt",
+      "bytes": 97,
+      "sha256": "40dbacb41d507d5f8b8904ba6f5a557265d5bd9dae700cb70a4f569a4bfff133"
+    },
+    {
+      "name": "focused-chart-1.log",
+      "bytes": 91,
+      "sha256": "828aba2dd648f8bd5191a4f61fd72d569a04d8dd584f45ea2891f0ad76e86db0"
+    },
+    {
+      "name": "focused-japanese-1-summary.txt",
+      "bytes": 100,
+      "sha256": "129453af801bb970aa01703ddf4f500077c0fc09aea82424f0239ca29d1b57e0"
+    },
+    {
+      "name": "focused-japanese-1.log",
+      "bytes": 726,
+      "sha256": "ceca5338ab5b550fb1fa1ed5f00e5a9958624bd61226b33f4b9db6ffdd0d43ad"
+    },
+    {
+      "name": "focused-search-1-summary.txt",
+      "bytes": 98,
+      "sha256": "b5bde0777deb6a6e9097da4b32af325a4e422085baa1f795b7107d63b3cacf53"
+    },
+    {
+      "name": "focused-search-1.log",
+      "bytes": 169,
+      "sha256": "22ce6f653f11fd611617e6e7ae975403fe639a005fdef325b4a17551ba23b996"
+    },
+    {
+      "name": "install-1-summary.txt",
+      "bytes": 262,
+      "sha256": "da1e0d178eaadb1a8ca8b4159748f50c8a553c502836e1dfe94854e922e1c6d2"
+    },
+    {
+      "name": "install-1.log",
+      "bytes": 241,
+      "sha256": "f83433af88a52cadb714dfeed0635de93a6fa090b0b5822b065c77e3f24ad990"
+    },
+    {
+      "name": "install-2-summary.txt",
+      "bytes": 262,
+      "sha256": "5b6d9688f06bf0e26198f9d55e1a2b41d965ff2c753877a5bf1bd1a17d1c99a9"
+    },
+    {
+      "name": "install-2.log",
+      "bytes": 241,
+      "sha256": "f3733e4faf4bf056e44e1ee680e123a3260007247d82914418794a3ad8c3f38b"
+    },
+    {
+      "name": "japanese-dist-2-summary.txt",
+      "bytes": 86,
+      "sha256": "8028a7db99e0882d63a89ece3c180fe544f87aefa0af8ec1b1792872bf15385d"
+    },
+    {
+      "name": "japanese-dist-2.log",
+      "bytes": 1187,
+      "sha256": "72cc1ff5b17236603599e25f1f114e93853daa9fc58ac2f51c2077b9c17c51bf"
+    },
+    {
+      "name": "lock-generation-summary.txt",
+      "bytes": 111,
+      "sha256": "52b7e318321abcf733ef914794cf8040a580583a6f0164ddbca3f82568a038f8"
+    },
+    {
+      "name": "lock-generation.log",
+      "bytes": 234,
+      "sha256": "223012d92478d3f48d0677b3d240ed621245b93cf169cbe8efc113bbae2fc34c"
+    },
+    {
+      "name": "preview-process.txt",
+      "bytes": 21,
+      "sha256": "fe9501afc49422a52ab9478a21cdd4843375b91075da3df253482b21cfb81d68"
+    },
+    {
+      "name": "preview-qa.json",
+      "bytes": 3154,
+      "sha256": "88e3f998f8a7305a93199922b9cfb69635ff460f009e5dd282b0ca54548578c9"
+    },
+    {
+      "name": "preview-stderr-2.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "preview-stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "preview-stdout-2.log",
+      "bytes": 203,
+      "sha256": "e950cc3ac2d767b2d9c62e5ba6b3b5c0c2811c395cc2d8efda2480d2b9fac5b6"
+    },
+    {
+      "name": "preview-stdout.log",
+      "bytes": 203,
+      "sha256": "6af8996b6a8b5b9f7b933df6a50677e012f34809feef3e4cb6d883a1c61bd51c"
+    },
+    {
+      "name": "secret-scan-final.log",
+      "bytes": 357,
+      "sha256": "6690c3cce65a4f716cfc69e154370bf344a479d09edd41fe19772146bd558931"
+    },
+    {
+      "name": "validate-1-summary.txt",
+      "bytes": 108,
+      "sha256": "d99e2bd6243a74fb184065a56fda4f7f4f5ddcead81c2609d8ce6921bfa78385"
+    },
+    {
+      "name": "validate-1.log",
+      "bytes": 8461,
+      "sha256": "8135fadaae3a28df25400720ce68c29d29cdb905f77ddbe05a8c69261bfe9b8c"
+    },
+    {
+      "name": "workflow-parse.json",
+      "bytes": 667,
+      "sha256": "76a5f215b568322f9a4a24f3db567a6a05c96a5cf654987eb23d9216e39e819f"
+    }
+  ],
+  "recheck": [
+    "Rehash evidenceFiles relative to evidenceRoot.",
+    "Verify lock SHA and run npm ci twice under Node 22.23.4 and npm 10.9.9.",
+    "Compare build-1-map.json and build-2-map.json for input, freeze, detail, route, Pagefind URL and Compare digests.",
+    "Check compare-js-map.json and preview-qa.json separately."
+  ],
+  "limitations": [
+    "Old Pages #325 exact transitive versions were not recorded.",
+    "Linux PR workflow has not run.",
+    "Initial sandbox Pagefind PermissionDenied is retained separately from two successful clean builds.",
+    "Pagefind auxiliary byte stability is not asserted.",
+    "First successful build JS SHA was directly observed; first-run JS copies were not saved."
+  ],
+  "workflowYamlParse": "workflow-parse.json (installed js-yaml parser; success)",
+  "finalRecheck": "final-recheck.json: product input 471/471, freeze 101/101, company details 100/100"
+}

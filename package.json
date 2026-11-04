@@ -3,8 +3,10 @@
   "version": "0.4.0",
   "private": true,
   "type": "module",
-  "engines": {"node": ">=22.19.0"},
+  "engines": {"node": ">=22.23.4", "npm": "10.9.9"},
+  "packageManager": "npm@10.9.9",
   "scripts": {
+    "report:build-environment": "node scripts/report-build-environment.mjs",
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist && node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
     "preview": "astro preview",

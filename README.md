@@ -64,7 +64,7 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 ## Commands
 
 ```bash
-npm install
+npm ci --no-audit --no-fund
 npm run validate
 npm run audit:financial-quality
 npm run audit:financial-quality:write
@@ -72,6 +72,8 @@ npm run dev
 npm run build
 npm run preview
 ```
+
+Node.js 22.23.4 と npm 10.9.9 を使用します。通常のセットアップと CI は Git 管理された `package-lock.json` から `npm ci` で依存を復元します。依存を意図的に変更する場合だけ `npm install` で lockfile を更新し、`package.json` とともにレビューしてください。実行環境の記録には `npm run report:build-environment` を使用します。
 
 ## Documents
 

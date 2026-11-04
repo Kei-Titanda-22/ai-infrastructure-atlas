@@ -1,0 +1,63 @@
+name: Verify locked build
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.23.4
+          package-manager-cache: false
+
+      - name: Confirm npm version
+        run: test "$(npm --version)" = "10.9.9"
+
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Record installed environment
+        run: |
+          mkdir -p build-verification-evidence
+          npm run report:build-environment -- --output build-verification-evidence/environment.json
+          git ls-files -z | sort -z | xargs -0 sha256sum > build-verification-evidence/tracked-source-sha256.txt
+
+      - name: Validate
+        run: |
+          set -o pipefail
+          npm run validate 2>&1 | tee build-verification-evidence/validate.log
+
+      - name: Build
+        run: |
+          set -o pipefail
+          npm run build 2>&1 | tee build-verification-evidence/build.log
+
+      - name: Focused regressions
+        run: |
+          set -o pipefail
+          {
+            npm run test:japanese-first-copy
+            npm run test:search-ux
+            npm run test:atlas-mobile-map
+            node scripts/test-financial-chart-period-labels.mjs
+          } 2>&1 | tee build-verification-evidence/focused.log
+
+      - name: Record artifact SHA map
+        run: find dist -type f -print0 | sort -z | xargs -0 sha256sum > build-verification-evidence/dist-sha256.txt
+
+      - name: Upload verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: locked-build-verification
+          path: build-verification-evidence/
+          if-no-files-found: warn
