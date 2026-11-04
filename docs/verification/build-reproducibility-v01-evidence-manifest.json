@@ -343,5 +343,81 @@
     "First successful build JS SHA was directly observed; first-run JS copies were not saved."
   ],
   "workflowYamlParse": "workflow-parse.json (installed js-yaml parser; success)",
-  "finalRecheck": "final-recheck.json: product input 471/471, freeze 101/101, company details 100/100"
+  "finalRecheck": "final-recheck.json: product input 471/471, freeze 101/101, company details 100/100",
+  "ciCorrection": {
+    "basedOnCommit": "45e80de8693a978bf9618f959a9860c7ed07935f",
+    "historicalEvidenceFilesUnchanged": 40,
+    "productInputDigest": "02d043d160e4e21d3eed1e6b12d4502178d59b01344488d0b5d25f6b2b319fff",
+    "productInputsUnchanged": true,
+    "lockfileUnchanged": true,
+    "finalDistUnchanged": true,
+    "workflowAndDocumentSha256": {
+      ".github/workflows/build-verification.yml": "194cc808fe076ca320affe9eede2b70be718e65a47949ce41251d20624c68754",
+      ".github/workflows/deploy.yml": "7117147c3397a90fb04c0380bb41979f9b51b7ae13cd0c16239062c02a38f971",
+      "docs/build-reproducibility-v01.md": "40caf46e7556038e66225bd68da4a819542c2cc78563fc8214d7ed1e04f9d1f3"
+    },
+    "prWorkflow": {
+      "generatedHtmlGate": "npm run test:japanese-first-copy -- --dist",
+      "generatedHtmlGateExitCode": 0,
+      "v17ShellLimitedRestoreAndSevenNegativeCases": "PASS",
+      "revisionFields": [
+        "prHeadSha",
+        "workflowSha",
+        "checkedOutSha"
+      ],
+      "artifactDist": "locked-build-dist contains dist/ including hidden files",
+      "artifactEvidence": "locked-build-verification contains environment, logs and SHA lists",
+      "uploadsRunOnFailedFocusedGate": true,
+      "linuxCiStatus": "not yet run"
+    },
+    "pagesWorkflow": {
+      "npmVersionRequiredBeforeInstall": "10.9.9",
+      "node": "22.23.4",
+      "otherBuildDeployStepsUnchanged": true
+    },
+    "secretScanExitCode": 0,
+    "recheck": {
+      "originalEvidenceFiles": 40,
+      "productInputs": 471,
+      "freeze": 101,
+      "companyDetails": 100,
+      "compareBytes": 1188819,
+      "compareSha256": "9984ecd7c18b6374ca07e84f7666d410ec6f0086a5f031d689f435969be8f769",
+      "pagefindUrls": 105,
+      "routes": 210
+    },
+    "newEvidenceFiles": [
+      {
+        "name": "ci-correction-japanese-dist.log",
+        "bytes": 1328,
+        "sha256": "0c5c651fa5e4c7d651cbfdcbedeb14826b5ce0d6a4268ebacd1df454879546d2"
+      },
+      {
+        "name": "ci-correction-japanese-dist-summary.json",
+        "bytes": 319,
+        "sha256": "f2d9fb6ccf3c671f1caaeb18758f4f2cf2f7c6eb21506c4c4ca35b0696a887e1"
+      },
+      {
+        "name": "ci-correction-workflow-check.json",
+        "bytes": 1261,
+        "sha256": "e27eb73cef221c42c73288c5241f8e2d33644075de307ac4a06829a49605c460"
+      },
+      {
+        "name": "ci-correction-recheck.json",
+        "bytes": 903,
+        "sha256": "4a595b49c178bdde5de792e1a7981df21bbd7d2482ce143aee8914cfd03ac78b"
+      },
+      {
+        "name": "ci-correction-secret-scan.log",
+        "bytes": 144,
+        "sha256": "4e31d9daadb795d1afd13823277032b0e49e29a352f81d3194a4efa0e3f69415"
+      },
+      {
+        "name": "ci-correction-secret-scan-summary.json",
+        "bytes": 209,
+        "sha256": "f1ae7df6f59d8886133e8416509d3557e16d1b523a72ff33e7f070d68affac9e"
+      }
+    ],
+    "note": "Original 40 evidence files, build logs and SHA maps remain historical. This correction did not rebuild or rerun Preview QA."
+  }
 }

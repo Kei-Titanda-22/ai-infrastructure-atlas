@@ -13,6 +13,18 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v7
 
+      - name: Record source revisions
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          WORKFLOW_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          mkdir -p build-verification-evidence
+          checked_out_sha="$(git rev-parse HEAD)"
+          printf '{"prHeadSha":"%s","workflowSha":"%s","checkedOutSha":"%s"}\n' \
+            "$PR_HEAD_SHA" "$WORKFLOW_SHA" "$checked_out_sha" \
+            > build-verification-evidence/revisions.json
+
       - name: Setup Node
         uses: actions/setup-node@v7
         with:
@@ -41,18 +53,25 @@ jobs:
           set -o pipefail
           npm run build 2>&1 | tee build-verification-evidence/build.log
 
-      - name: Focused regressions
-        run: |
-          set -o pipefail
-          {
-            npm run test:japanese-first-copy
-            npm run test:search-ux
-            npm run test:atlas-mobile-map
-            node scripts/test-financial-chart-period-labels.mjs
-          } 2>&1 | tee build-verification-evidence/focused.log
-
       - name: Record artifact SHA map
         run: find dist -type f -print0 | sort -z | xargs -0 sha256sum > build-verification-evidence/dist-sha256.txt
+
+      - name: Focused regressions
+        run: |
+          set -euo pipefail
+          npm run test:japanese-first-copy -- --dist 2>&1 | tee build-verification-evidence/focused.log
+          npm run test:search-ux 2>&1 | tee -a build-verification-evidence/focused.log
+          npm run test:atlas-mobile-map 2>&1 | tee -a build-verification-evidence/focused.log
+          node scripts/test-financial-chart-period-labels.mjs 2>&1 | tee -a build-verification-evidence/focused.log
+
+      - name: Upload generated dist for byte comparison
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: locked-build-dist
+          path: dist/
+          include-hidden-files: true
+          if-no-files-found: warn
 
       - name: Upload verification evidence
         if: always()
