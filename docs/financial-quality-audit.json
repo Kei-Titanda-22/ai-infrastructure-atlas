@@ -1,8 +1,8 @@
 {
   "schemaVersion": 2,
   "classificationRuleVersion": 8,
-  "dataAsOf": "2026-11-03",
-  "inputDigestSha256": "059d816099b79f5fbdc277379c909a82b3d96f6b020d62aa3f974494afdfad8c",
+  "dataAsOf": "2026-11-04",
+  "inputDigestSha256": "57824f8d1a174d5f06bfca17b02244431ab95227bd4bc9ff55e145b09b7a42ee",
   "inputs": {
     "historyFiles": [
       "src/data/financial-history.json",
@@ -62,7 +62,8 @@
       "src/data/financial-history-v05-batch18.json",
       "src/data/financial-history-v05-batch19.json",
       "src/data/financial-history-v05-batch20.json",
-      "src/data/financial-history-v05-batch21.json"
+      "src/data/financial-history-v05-batch21.json",
+      "src/data/financial-history-v05-batch22.json"
     ],
     "companyFiles": 100,
     "cashFlowOverrides": 12
@@ -131,16 +132,16 @@
   },
   "summary": {
     "companies": 100,
-    "periods": 714,
-    "metrics": 3570,
+    "periods": 715,
+    "metrics": 3575,
     "metricStatusCounts": {
-      "verified": 2499,
+      "verified": 2502,
       "source-linked": 3,
       "needs-review": 0,
-      "missing": 1068
+      "missing": 1070
     },
     "missingReasonCounts": {
-      "not-collected": 1068,
+      "not-collected": 1070,
       "primary-source-unchecked": 0,
       "not-calculable": 0,
       "not-disclosed": 0,
@@ -150,7 +151,7 @@
       "both-present": 181,
       "fcf-missing-only": 0,
       "capex-missing-only": 0,
-      "both-missing": 533
+      "both-missing": 534
     },
     "capexDefinitions": {
       "gross-productive-assets-cash-purchases": 8,
@@ -161,11 +162,11 @@
       "broader-non-current-assets": 4,
       "net-capex": 28,
       "reit-or-real-estate-investment": 12,
-      "not-collected": 523,
+      "not-collected": 524,
       "unclassified": 0
     },
     "operatingProfitDefinitions": {
-      "direct-gaap-ifrs-operating-income": 614,
+      "direct-gaap-ifrs-operating-income": 615,
       "ebit": 2,
       "reconstructed-operating-income": 25,
       "source-linked": 1,
@@ -175,7 +176,7 @@
       "atlas-formula-aligned": 8,
       "atlas-definition-difference": 0,
       "unresolved": 0,
-      "not-applicable": 706
+      "not-applicable": 707
     },
     "specialFlags": {
       "goodwill-impairment": 9,
@@ -3443,18 +3444,18 @@
       "companyId": "omron",
       "name": "OMRON",
       "japaneseName": "オムロン",
-      "periods": 2,
+      "periods": 3,
       "metricStatusCounts": {
-        "verified": 6,
+        "verified": 9,
         "source-linked": 0,
         "needs-review": 0,
-        "missing": 4
+        "missing": 6
       },
       "cashFlowCoverage": {
         "both-present": 0,
         "fcf-missing-only": 0,
         "capex-missing-only": 0,
-        "both-missing": 2
+        "both-missing": 3
       },
       "capexDefinitions": {
         "gross-productive-assets-cash-purchases": 0,
@@ -3465,11 +3466,11 @@
         "broader-non-current-assets": 0,
         "net-capex": 0,
         "reit-or-real-estate-investment": 0,
-        "not-collected": 2,
+        "not-collected": 3,
         "unclassified": 0
       },
       "operatingProfitDefinitions": {
-        "direct-gaap-ifrs-operating-income": 2,
+        "direct-gaap-ifrs-operating-income": 3,
         "ebit": 0,
         "reconstructed-operating-income": 0,
         "source-linked": 0,
@@ -3479,7 +3480,7 @@
         "atlas-formula-aligned": 0,
         "atlas-definition-difference": 0,
         "unresolved": 0,
-        "not-applicable": 2
+        "not-applicable": 3
       },
       "specialFlags": [
         "discontinued-operations"
@@ -17450,6 +17451,32 @@
       "specialFlags": [
         "discontinued-operations"
       ]
+    },
+    {
+      "id": "omron-fy2025-q1-v19",
+      "companyId": "omron",
+      "periodType": "quarterly",
+      "periodLabel": "FY2025 Q1",
+      "endDate": "2025-06-30",
+      "metricStatuses": {
+        "revenue": "verified",
+        "operatingProfit": "verified",
+        "operatingMargin": "verified",
+        "freeCashFlow": "not-collected",
+        "capex": "not-collected"
+      },
+      "missingMetrics": [
+        "freeCashFlow",
+        "capex"
+      ],
+      "cashFlowCoverage": "both-missing",
+      "capexDefinition": "not-collected",
+      "operatingProfitDefinition": "direct-gaap-ifrs-operating-income",
+      "adjustedNonGaapFcfAssessment": "not-applicable",
+      "adjustedNonGaapFcfAssessmentReasons": [],
+      "cashFlowInputsStatus": "not-applicable",
+      "fcfCapexScopeMismatchReasons": [],
+      "specialFlags": []
     },
     {
       "id": "omron-fy2025",

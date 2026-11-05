@@ -1,15 +1,15 @@
 # Financial quarterly coverage v0.1
 
-- Checked at: 2026-11-03
+- Checked at: 2026-11-04
 - Registry companies: 100
-- Financial-history shard manifest digest: 2790abf9ca6995b9e3c14802bb3273b1a47dd3677caef3b0175642c8a0dc46a0
+- Financial-history shard manifest digest: 7bd5bbca640c030ecfc0e73cdf9a985f267d04c3f65209f1c9bb40eb03f14565
 - Complete six quarters: 95
-- Partial quarterly (1–5): 0
+- Partial quarterly (1–5): 1
 - Awaiting next reported quarter: 0
 - Semiannual only: 0
 - Annual only: 0
 - Private/no quarterly disclosure: 0
-- Needs review: 5
+- Needs review: 4
 
 ## Companies with six or more actual quarterly records
 
@@ -180,7 +180,7 @@
 | nvent | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/1720635/000162828026051203/q22026nvtpressrelease.htm) |
 | nvidia | quarterly | 6 / 6 | Q2 FY2027 (2026-07-26) | complete-six-quarters | — | [official](https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Second-Quarter-Fiscal-2027/default.aspx) |
 | nxp | quarterly | 6 / 6 | Q2 2026 (2026-06-28) | complete-six-quarters | — | [official](https://investors.nxp.com/news-releases/news-release-details/nxp-semiconductors-reports-second-quarter-2026-results/) |
-| omron | needs-review | 0 / 6 | — (—) | needs-review | 既存年次はDMB再分類後のUS GAAP連結系列。財務データ集p.2は再分類後の年次実績・計画、p.13は再分類前の四半期参考表で、FY25 Q4・下期・通期にはUS GAAP開示値ではないとの注記がある。2026年度Q1以降のIFRS系列と接続する公式な範囲・基準の橋渡しが未確定。十億円表示自体は障害ではない。 | [official](https://www.omron.com/global/en/assets/file/ir/irlib/20260513_financial_results.pdf) |
+| omron | quarterly | 1 / 6 | FY2025 Q1 (2025-06-30) | partial-quarterly | FY2025 Q1（2025-04-01～06-30）のDMB再分類後US GAAP連結継続事業の売上高166,526百万円・営業利益5,815百万円をJPX提出資料の比較列から収録。残るFY2025 Q2～Q4の同一系列の単独または累計原表が未確認。FY2026 Q1以降のIFRS系列は既存US GAAP年次へ無注記で接続しない。1期の部分収録は6期完備や最新期収録を意味しない。 | [official](https://www2.jpx.co.jp/disc/66450/140120260804509051.pdf) |
 | onsemi | quarterly | 6 / 6 | Q2 2026 (2026-07-03) | complete-six-quarters | — | [official](https://investor.onsemi.com/news-releases/news-release-details/onsemi-reports-second-quarter-2026-results) |
 | qualcomm | quarterly | 6 / 6 | Q3 FY2026 (2026-06-28) | complete-six-quarters | — | [official](https://www.sec.gov/Archives/edgar/data/804328/000080432826000086/qcom-20260628.htm) |
 | renesas | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://www.renesas.com/en/about/newsroom/renesas-reports-financial-results-second-quarter-ended-june-30-2026) |
@@ -188,7 +188,7 @@
 | rohm | quarterly | 6 / 6 | FY2027 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://fscdn.rohm.com/jp/financial/financial-report/2606_financialresults_jp.pdf) |
 | samsung-electronics | quarterly | 6 / 6 | Q2 2026 (2026-06-30) | complete-six-quarters | — | [official](https://news.samsung.com/global/samsung-electronics-announces-second-quarter-2026-results) |
 | sandisk | quarterly | 6 / 6 | Q4 FY2026 (2026-07-03) | complete-six-quarters | — | [official](https://investor.sandisk.com/news-releases/news-release-details/sandisk-reports-fiscal-fourth-quarter-2026-financial-results) |
-| schneider-electric | needs-review | 0 / 6 | — (—) | needs-review | 公式結果一覧の2026年Q1・Q3は四半期売上発表、H1は6か月利益資料。Q1・Q3の未調整IFRS連結営業利益または同一系列の累計差分原表が未確認。H1原表PDFは今回取得できず、半期利益を按分・調整後EBITAで代用しない。 | [official](https://www.se.com/ww/en/assets/564/document/528238/accounts-fy-results-2025.pdf?p_File_Name=2025+Full+Year+Financial+Results+Accounts&p_enDocType=EDMS) |
+| schneider-electric | needs-review | 0 / 6 | — (—) | needs-review | 2026年H1 accountsの連結損益原表をWeb閲覧で確認。PDF物理／印刷2ページのFirst half 2026列は、売上高21,226百万EUR、未調整Operating income 3,613百万EURで、対象は6か月。ローカルPDF取得は当時HTTP 403だった。対応する単独四半期の未調整営業利益、または同一系列の累計差分を成立させる原表が不足するため保留する。半期値の按分やAdjusted EBITAによる代用は行わない。 | [official](https://www.se.com/ww/en/assets/564/document/528238/accounts-fy-results-2025.pdf?p_File_Name=2025+Full+Year+Financial+Results+Accounts&p_enDocType=EDMS) |
 | screen-holdings | quarterly | 6 / 6 | FY2027 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://hdjp-corporateweb-files.screen.co.jp/3217/8660/2948/FY2027Q1_Fr_E_rev.pdf) |
 | seagate | quarterly | 7 / 6 | Q4 FY2026 (2026-07-03) | complete-six-quarters | — | [official](https://investors.seagate.com/news/news-details/2026/Seagate-Technology-Reports-Fiscal-Fourth-Quarter-and-Fiscal-Year-2026-Financial-Results/default.aspx) |
 | shin-etsu-chemical | quarterly | 6 / 6 | FY2026 Q1 (2026-06-30) | complete-six-quarters | — | [official](https://www.shinetsu.co.jp/wp-content/uploads/2026/07/20260724_con_E.pdf) |
