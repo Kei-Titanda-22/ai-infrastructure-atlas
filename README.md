@@ -34,6 +34,8 @@ GitHub is the source-control and CI/CD platform. The browser-accessible GitHub P
 - v0.5 — 自動更新
 - v1.0 — AI Infrastructure Atlas
 
+四半期履歴拡充は、2026年11月5日を基準とする[終了記録（v20）](docs/financial-quarterly-history-closeout-v20.md)で締めくくります。公開確認後は、留保を引き継ぎ、一次資料の追加・決算公表・具体的な誤りを契機とする保守更新に移行します。
+
 ## Current coverage
 
 - 100 companies

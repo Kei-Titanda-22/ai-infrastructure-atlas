@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FinancialChart from '../components/FinancialChart.astro';
 import { getCollection } from 'astro:content';
 import quarterlyCoverage from '../data/financial-quarterly-coverage-v01.json';
+import quarterlyCloseout from '../data/financial-quarterly-closeout-v20.json';
 import { financialSourceById } from '../lib/financial-sources';
 import { withBase } from '../lib/paths';
 import {
@@ -23,6 +24,7 @@ const coveredCompanies = coveredIds
   .sort((a, b) => (a!.data.japaneseName || a!.data.name).localeCompare(b!.data.japaneseName || b!.data.name, 'ja'));
 const coverage = financialCoverage();
 const quarterlyCoverageByCompany = new Map(quarterlyCoverage.map(item => [item.companyId, item]));
+const quarterlyCloseoutByCompany = new Map(quarterlyCloseout.companies.map(item => [item.companyId, item]));
 const initialCompanyId = coveredIds.includes('nvidia') ? 'nvidia' : coveredIds[0];
 
 const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'operatingMargin' | 'freeCashFlow' | 'capex') => {
@@ -63,6 +65,7 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
       const quarterlyChartRecords = quarterly.slice(-6);
       const annual = history.filter(record => record.periodType === 'annual');
       const quarterlyCoverageStatus = quarterlyCoverageByCompany.get(company!.id);
+      const quarterlyCloseoutReview = quarterlyCloseoutByCompany.get(company!.id);
       const quarterlyHasFcf = quarterly.some(record => record.metrics.freeCashFlow.value != null);
       const quarterlyHasCapex = quarterly.some(record => record.metrics.capex.value != null);
       const annualHasFcf = annual.some(record => record.metrics.freeCashFlow.value != null);
@@ -92,6 +95,13 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
           {quarterlyCoverageStatus && quarterlyCoverageStatus.coverageStatus !== 'complete-six-quarters' && (
             <p class="financial-definition-note" data-quarterly-coverage-status={quarterlyCoverageStatus.coverageStatus}>
               四半期実績の収録状況：{quarterlyCoverageStatus.actualQuarterCount} / {quarterlyCoverageStatus.targetQuarterCount}。{quarterlyCoverageStatus.blockerReason}
+            </p>
+          )}
+          {quarterlyCloseoutReview && (
+            <p class="financial-definition-note" data-quarterly-closeout-review>
+              不足範囲の確認日：<time datetime={quarterlyCloseout.reviewDate}>{quarterlyCloseout.reviewDate}</time>（JST）。
+              {quarterlyCloseoutReview.summary}
+              <a class="source-link" href={quarterlyCloseoutReview.sourceUrl} target="_blank" rel="noreferrer">{quarterlyCloseoutReview.sourceLabel} ↗</a>
             </p>
           )}
 
