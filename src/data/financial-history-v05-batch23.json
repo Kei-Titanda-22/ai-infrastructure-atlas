@@ -1,0 +1,3282 @@
+[
+  {
+    "id": "advantest-fy2026-q2-refresh-202611-v01",
+    "companyId": "advantest",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "advantest-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 477727,
+        "status": "verified",
+        "basis": "H1 p1 and p7; Q1 J_FR_FY2026_1Q.pdf p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Revenue calculation: 845200 - 367473 = 477727."
+      },
+      "operatingProfit": {
+        "value": 266819,
+        "status": "verified",
+        "basis": "H1 p1 and p7; Q1 J_FR_FY2026_1Q.pdf p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Operating profit calculation: 456809 - (189990) = 266819. Stored Q1 published JPY billion precision is 367500/190000; use exact original Q1 JPY million 367473/189990 for subtraction. Preserve stored Q1 and explicitly retain precision difference 27/10 JPY million."
+      },
+      "operatingMargin": {
+        "value": 55.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 266819 / 477727 × 100 = 55.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "amd-q3-2026-refresh-202611-v01",
+    "companyId": "amd",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-06-28",
+    "endDate": "2026-09-26",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "amd-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 13377,
+        "status": "verified",
+        "basis": "Printed p3 Condensed Consolidated Statements of Operations; Three Months Ended September 26 2026; Net revenue / Operating income Scope: consolidated continuing operations; ZT manufacturing discontinued separate below operating income. Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 2832,
+        "status": "verified",
+        "basis": "Printed p3 Condensed Consolidated Statements of Operations; Three Months Ended September 26 2026; Net revenue / Operating income Scope: consolidated continuing operations; ZT manufacturing discontinued separate below operating income. Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 21.2,
+        "status": "verified",
+        "basis": "Atlas calculation: 2832 / 13377 × 100 = 21.2%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "amkor-q3-2026-refresh-202611-v01",
+    "companyId": "amkor",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "amkor-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1991,
+        "status": "verified",
+        "basis": "Quarterly Results table Q3 2026 column Net sales / Operating income; USD millions Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 225,
+        "status": "verified",
+        "basis": "Quarterly Results table Q3 2026 column Net sales / Operating income; USD millions Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 11.3,
+        "status": "verified",
+        "basis": "Atlas calculation: 225 / 1991 × 100 = 11.3%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "amphenol-q3-2026-refresh-202611-v01",
+    "companyId": "amphenol",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "amphenol-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 10229.7,
+        "status": "verified",
+        "basis": "Condensed Consolidated Statements of Income; dollars millions; Three Months Ended September 30 2026; Net sales / Operating income; table0 rows6,16 Scope: consolidated, acquisitions included from acquisition dates. Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 3020.8,
+        "status": "verified",
+        "basis": "Condensed Consolidated Statements of Income; dollars millions; Three Months Ended September 30 2026; Net sales / Operating income; table0 rows6,16 Scope: consolidated, acquisitions included from acquisition dates. Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 29.5,
+        "status": "verified",
+        "basis": "Atlas calculation: 3020.8 / 10229.7 × 100 = 29.5%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "applied-materials-fy2026-refresh-202611-v01",
+    "companyId": "applied-materials",
+    "periodType": "annual",
+    "periodLabel": "FY2026",
+    "startDate": "2025-10-27",
+    "endDate": "2026-10-25",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "applied-materials-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 34446,
+        "status": "verified",
+        "basis": "Unaudited consolidated condensed statements of operations; Three Months Ended October25 2026; Revenue / Income from operations Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 11087,
+        "status": "verified",
+        "basis": "Unaudited consolidated condensed statements of operations; Three Months Ended October25 2026; Revenue / Income from operations Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 32.2,
+        "status": "verified",
+        "basis": "Atlas calculation: 11087 / 34446 × 100 = 32.2%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "applied-materials-q4-fy2026-refresh-202611-v01",
+    "companyId": "applied-materials",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 FY2026",
+    "startDate": "2026-07-27",
+    "endDate": "2026-10-25",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "applied-materials-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 10409,
+        "status": "verified",
+        "basis": "Unaudited consolidated condensed statements of operations; Three Months Ended October25 2026; Revenue / Income from operations Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 3658,
+        "status": "verified",
+        "basis": "Unaudited consolidated condensed statements of operations; Three Months Ended October25 2026; Revenue / Income from operations Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 35.1,
+        "status": "verified",
+        "basis": "Atlas calculation: 3658 / 10409 × 100 = 35.1%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "arista-q3-2026-refresh-202611-v01",
+    "companyId": "arista",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "arista-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 3657.6,
+        "status": "verified",
+        "basis": "Condensed Consolidated Income Statements; millions; Three Months Ended September 30 2026; Total revenue / Income from operations Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 1642.4,
+        "status": "verified",
+        "basis": "Condensed Consolidated Income Statements; millions; Three Months Ended September 30 2026; Total revenue / Income from operations Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 44.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 1642.4 / 3657.6 × 100 = 44.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "arm-fy2027-q2-refresh-202611-v01",
+    "companyId": "arm",
+    "periodType": "quarterly",
+    "periodLabel": "FY2027 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "arm-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1443,
+        "status": "verified",
+        "basis": "physical p10 / printed p10 condensed consolidated income statements, three-month September 30 2026 column; not non-GAAP 638 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 201,
+        "status": "verified",
+        "basis": "physical p10 / printed p10 condensed consolidated income statements, three-month September 30 2026 column; not non-GAAP 638 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 13.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 201 / 1443 × 100 = 13.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "ase-technology-q3-2026-refresh-202611-v01",
+    "companyId": "ase-technology",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "Taiwan-IFRS",
+    "sourceId": "ase-technology-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 244161,
+        "status": "verified",
+        "basis": "Consolidated statements of comprehensive income, three months September 30 2026; TWD million current column Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 33142,
+        "status": "verified",
+        "basis": "Consolidated statements of comprehensive income, three months September 30 2026; TWD million current column Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 13.6,
+        "status": "verified",
+        "basis": "Atlas calculation: 33142 / 244161 × 100 = 13.6%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "asm-international-q3-2026-refresh-202611-v01",
+    "companyId": "asm-international",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "asm-international-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1159.4,
+        "status": "verified",
+        "basis": "physical p8 Annex 2 consolidated income statement; current three months September 30; reported operating result 378.9, not adjusted 386.7 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 378.9,
+        "status": "verified",
+        "basis": "physical p8 Annex 2 consolidated income statement; current three months September 30; reported operating result 378.9, not adjusted 386.7 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 32.7,
+        "status": "verified",
+        "basis": "Atlas calculation: 378.9 / 1159.4 × 100 = 32.7%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "asmpt-q3-2026-refresh-202611-v01",
+    "companyId": "asmpt",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "HKD",
+    "unit": "million",
+    "accountingBasis": "HKFRS",
+    "sourceId": "asmpt-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 5247.045,
+        "status": "verified",
+        "basis": "physical/printed p7 revenue HKD thousand 5,247,045; p13 reconciliation HKFRS Operating profit 798,571; divide both by 1000. Same continuing operations as prior Q2; not adjusted 922,350 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 798.571,
+        "status": "verified",
+        "basis": "physical/printed p7 revenue HKD thousand 5,247,045; p13 reconciliation HKFRS Operating profit 798,571; divide both by 1000. Same continuing operations as prior Q2; not adjusted 922,350 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 15.2,
+        "status": "verified",
+        "basis": "Atlas calculation: 798.571 / 5247.045 × 100 = 15.2%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "besi-q3-2026-refresh-202611-v01",
+    "companyId": "besi",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "besi-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 283.4,
+        "status": "verified",
+        "basis": "physical/printed p6 Consolidated statements of income; current quarter EUR thousand 283400/129679 divided by 1000 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 129.679,
+        "status": "verified",
+        "basis": "physical/printed p6 Consolidated statements of income; current quarter EUR thousand 283400/129679 divided by 1000 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 45.8,
+        "status": "verified",
+        "basis": "Atlas calculation: 129.679 / 283.4 × 100 = 45.8%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "cadence-q3-2026-refresh-202611-v01",
+    "companyId": "cadence",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "cadence-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1633.311,
+        "status": "verified",
+        "basis": "Condensed Consolidated Income Statements; Three Months Ended September30 2026; Total revenue1,633,311 / Income from operations428,716 USD thousands; table4 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 428.716,
+        "status": "verified",
+        "basis": "Condensed Consolidated Income Statements; Three Months Ended September30 2026; Total revenue1,633,311 / Income from operations428,716 USD thousands; table4 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 26.2,
+        "status": "verified",
+        "basis": "Atlas calculation: 428.716 / 1633.311 × 100 = 26.2%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "canon-q3-2026-refresh-202611-v01",
+    "companyId": "canon",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "canon-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1158815,
+        "status": "verified",
+        "basis": "Physical p2 / printed p1 consolidated TOTAL row, FY2026 Q3 (not year-to-date or forecast) Source precision: published JPY million. Revenue calculation: 9M3433357 - H12274542 =1158815."
+      },
+      "operatingProfit": {
+        "value": 97089,
+        "status": "verified",
+        "basis": "Physical p2 / printed p1 consolidated TOTAL row, FY2026 Q3 (not year-to-date or forecast) Source precision: published JPY million. Operating profit calculation: 9M327684 - H1230595 =97089."
+      },
+      "operatingMargin": {
+        "value": 8.4,
+        "status": "verified",
+        "basis": "Atlas calculation: 97089 / 1158815 × 100 = 8.4%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "carrier-q3-2026-refresh-202611-v01",
+    "companyId": "carrier",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "carrier-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 6263,
+        "status": "verified",
+        "basis": "Total Company (Unaudited); Three Months Ended September30 2026; Net sales6263 / Operating profit(loss)(2273) Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": -2273,
+        "status": "verified",
+        "basis": "Total Company (Unaudited); Three Months Ended September30 2026; Net sales6263 / Operating profit(loss)(2273) Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": -36.3,
+        "status": "verified",
+        "basis": "Atlas calculation: -2273 / 6263 × 100 = -36.3%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "cisco-q1-fy2027-refresh-202611-v01",
+    "companyId": "cisco",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 FY2027",
+    "startDate": "2026-07-26",
+    "endDate": "2026-10-24",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "cisco-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 18517,
+        "status": "verified",
+        "basis": "Consolidated Statements of Operations; Three Months Ended October 24 2026; Total revenue / Operating income; table3 rows28,41 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 5598,
+        "status": "verified",
+        "basis": "Consolidated Statements of Operations; Three Months Ended October 24 2026; Total revenue / Operating income; table3 rows28,41 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 30.2,
+        "status": "verified",
+        "basis": "Atlas calculation: 5598 / 18517 × 100 = 30.2%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "coherent-q1-fy2027-refresh-202611-v01",
+    "companyId": "coherent",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 FY2027",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "coherent-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 2370.3,
+        "status": "verified",
+        "basis": "Table2 condensed consolidated statements of earnings; Revenues2370.3; table6 GAAP operating income377.9; current Sep30 2026 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 377.9,
+        "status": "verified",
+        "basis": "Table2 condensed consolidated statements of earnings; Revenues2370.3; table6 GAAP operating income377.9; current Sep30 2026 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 15.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 377.9 / 2370.3 × 100 = 15.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "corning-q3-2026-refresh-202611-v01",
+    "companyId": "corning",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "corning-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 4855,
+        "status": "verified",
+        "basis": "Consolidated financial statements and Reconciliation of Non-GAAP Measures; three months Sep30 2026; As reported-GAAP Net sales4855 / Operating income911 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 911,
+        "status": "verified",
+        "basis": "Consolidated financial statements and Reconciliation of Non-GAAP Measures; three months Sep30 2026; As reported-GAAP Net sales4855 / Operating income911 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 18.8,
+        "status": "verified",
+        "basis": "Atlas calculation: 911 / 4855 × 100 = 18.8%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "denso-fy2027-q2-refresh-202611-v01",
+    "companyId": "denso",
+    "periodType": "quarterly",
+    "periodLabel": "FY2027 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "denso-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1929600,
+        "status": "verified",
+        "basis": "Issuer actual H1 consolidated revenue3843.5/operatingprofit170.1 JPY billion, April1–September30; July31 Q1 issuer actual1913.9/84.2 JPY billion. Primary TDnet H1 physicalp1 corroborates3843550/170147 at finer precision; not used to manufacture finer quarter precision. Source precision: Both issuer release endpoints published one decimal JPY billion; retained100 JPY million source precision. Do not subtract whole-million H1 with rounded Q1 or imply exact single-million precision.. Revenue calculation: (3843.5 -1913.9) JPY billion *1000 =1929600 JPY million."
+      },
+      "operatingProfit": {
+        "value": 85900,
+        "status": "verified",
+        "basis": "Issuer actual H1 consolidated revenue3843.5/operatingprofit170.1 JPY billion, April1–September30; July31 Q1 issuer actual1913.9/84.2 JPY billion. Primary TDnet H1 physicalp1 corroborates3843550/170147 at finer precision; not used to manufacture finer quarter precision. Source precision: Both issuer release endpoints published one decimal JPY billion; retained100 JPY million source precision. Do not subtract whole-million H1 with rounded Q1 or imply exact single-million precision.. Operating profit calculation: (170.1 -84.2) JPY billion *1000 =85900 JPY million."
+      },
+      "operatingMargin": {
+        "value": 4.5,
+        "status": "verified",
+        "basis": "Atlas calculation: 85900 / 1929600 × 100 = 4.5%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "digital-realty-q3-2026-refresh-202611-v01",
+    "companyId": "digital-realty",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "digital-realty-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1902.418,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations; current Three Months Sep30 2026; Total Operating Revenues1,902,418 and Operating Income302,131 USDthousands Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 302.131,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations; current Three Months Sep30 2026; Total Operating Revenues1,902,418 and Operating Income302,131 USDthousands Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 15.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 302.131 / 1902.418 × 100 = 15.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "disco-fy2026-q2-refresh-202611-v01",
+    "companyId": "disco",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "disco-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 142750,
+        "status": "verified",
+        "basis": "H1 physical p6 / printed p4; Q1 fr20260723.pdf p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Revenue calculation: 257058 - 114308 = 142750."
+      },
+      "operatingProfit": {
+        "value": 67606,
+        "status": "verified",
+        "basis": "H1 physical p6 / printed p4; Q1 fr20260723.pdf p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Operating profit calculation: 116639 - (49033) = 67606. No consolidated-scope/accounting-series change disclosed."
+      },
+      "operatingMargin": {
+        "value": 47.4,
+        "status": "verified",
+        "basis": "Atlas calculation: 67606 / 142750 × 100 = 47.4%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "eaton-q3-2026-refresh-202611-v01",
+    "companyId": "eaton",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "eaton-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 8947,
+        "status": "verified",
+        "basis": "Condensed Consolidated Statements of Income; Three months ended Sep30 2026; sales8947 − cost5842 − SG&A1278 − R&D238 =1588 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 1589,
+        "status": "verified",
+        "basis": "Consolidated statements of income, current three months September30 2026, PDF physicalp6/printedp6. Same retained US GAAP subtotal: net sales8947 - cost of products5842 - selling/administration1278 - R&D238 =1589 USD million. Rounded pretax+interest+other gives1588 and is not substituted. No adjusted segment income."
+      },
+      "operatingMargin": {
+        "value": 17.8,
+        "status": "verified",
+        "basis": "Atlas calculation:1589 /8947 ×100 =17.8%, existing one-decimal rounding contract."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "entegris-q3-2026-refresh-202611-v01",
+    "companyId": "entegris",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-06-28",
+    "endDate": "2026-09-26",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "entegris-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1005.7,
+        "status": "verified",
+        "basis": "Entegris and Subsidiaries Consolidated Statements of Operations; table1 currentquarter Sep26 2026 Net sales1005.7 / Operating income230.6 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 230.6,
+        "status": "verified",
+        "basis": "Entegris and Subsidiaries Consolidated Statements of Operations; table1 currentquarter Sep26 2026 Net sales1005.7 / Operating income230.6 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 22.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 230.6 / 1005.7 × 100 = 22.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "equinix-q3-2026-refresh-202611-v01",
+    "companyId": "equinix",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "equinix-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 2571,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations; table2 current Three Months Ended Sep30 2026; Revenues / Income from operations Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 600,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations; table2 current Three Months Ended Sep30 2026; Revenues / Income from operations Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 23.3,
+        "status": "verified",
+        "basis": "Atlas calculation: 600 / 2571 × 100 = 23.3%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "fanuc-fy2026-q2-refresh-202611-v01",
+    "companyId": "fanuc",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "fanuc-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 242673,
+        "status": "verified",
+        "basis": "H1 physical p9 / printed p7 consolidated statement; Q1 financialresult202606_e.pdf p1 Source precision: nearest JPY million, both source endpoints. Revenue calculation: 473708 - 231035 =242673."
+      },
+      "operatingProfit": {
+        "value": 63170,
+        "status": "verified",
+        "basis": "H1 physical p9 / printed p7 consolidated statement; Q1 financialresult202606_e.pdf p1 Source precision: nearest JPY million, both source endpoints. Operating profit calculation: 116662 -53492 =63170. Stored Q1 from investor presentation is rounded JPY billion231.0/53.5; preserved. Source-endpoint difference is used instead of subtracting those rounded stored values."
+      },
+      "operatingMargin": {
+        "value": 26.0,
+        "status": "verified",
+        "basis": "Atlas calculation: 63170 / 242673 × 100 = 26.0%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "fujikura-fy2026-q2-refresh-202611-v01",
+    "companyId": "fujikura",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP consolidated",
+    "sourceId": "fujikura-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 465424,
+        "status": "verified",
+        "basis": "H1 p1 and Q1 issuer-linked tdnet2866589 p1 Source precision: published nearest JPY million. Revenue calculation: 867433 - 402009 = 465424."
+      },
+      "operatingProfit": {
+        "value": 130185,
+        "status": "verified",
+        "basis": "H1 p1 and Q1 issuer-linked tdnet2866589 p1 Source precision: published nearest JPY million. Operating profit calculation: 235013 - 104828 = 130185. 6-for-1 share split changes per-share amounts, not group revenue or operating profit."
+      },
+      "operatingMargin": {
+        "value": 28.0,
+        "status": "verified",
+        "basis": "Atlas calculation: 130185 / 465424 × 100 = 28.0%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "furukawa-electric-fy2026-q2-refresh-202611-v01",
+    "companyId": "furukawa-electric",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "furukawa-electric-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 372470,
+        "status": "verified",
+        "basis": "H1 current consolidated income statement; Q1 20260806.pdf p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Revenue calculation: 737691 - 365221 = 372470."
+      },
+      "operatingProfit": {
+        "value": 32161,
+        "status": "verified",
+        "basis": "H1 current consolidated income statement; Q1 20260806.pdf p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Operating profit calculation: 57618 - (25457) = 32161. Prior-year comparative PPA finalization is not used to alter stored current-year figures."
+      },
+      "operatingMargin": {
+        "value": 8.6,
+        "status": "verified",
+        "basis": "Atlas calculation: 32161 / 372470 × 100 = 8.6%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "ge-vernova-q3-2026-refresh-202611-v01",
+    "companyId": "ge-vernova",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "ge-vernova-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 12642,
+        "status": "verified",
+        "basis": "10-Q printed p6 consolidated income statement, three months September 30 2026 current column; not adjusted EBITDA Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 1394,
+        "status": "verified",
+        "basis": "10-Q printed p6 consolidated income statement, three months September 30 2026 current column; not adjusted EBITDA Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 11.0,
+        "status": "verified",
+        "basis": "Atlas calculation: 1394 / 12642 × 100 = 11.0%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "globalfoundries-q3-2026-refresh-202611-v01",
+    "companyId": "globalfoundries",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "globalfoundries-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1899,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations, three months September 30 2026; operating profit 230 vs non-IFRS 339; net loss -270 includes non-operating government stock charge Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 230,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations, three months September 30 2026; operating profit 230 vs non-IFRS 339; net loss -270 includes non-operating government stock charge Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 12.1,
+        "status": "verified",
+        "basis": "Atlas calculation: 230 / 1899 × 100 = 12.1%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "globalwafers-q3-2026-refresh-202611-v01",
+    "companyId": "globalwafers",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "Taiwan-IFRS",
+    "sourceId": "globalwafers-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 14871,
+        "status": "verified",
+        "basis": "physical/printed p17 actual consolidated Q3 vs Q2 financial summary: 營業收入14871 / 營業淨利1454, not EBIT1561 Source precision: current investor summary published whole TWD million; retains published precision, not fabricated thousand-level precision. Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 1454,
+        "status": "verified",
+        "basis": "physical/printed p17 actual consolidated Q3 vs Q2 financial summary: 營業收入14871 / 營業淨利1454, not EBIT1561 Source precision: current investor summary published whole TWD million; retains published precision, not fabricated thousand-level precision. Reported standalone unadjusted operating profit/loss for the stated period. Stored Q2 revenue15214.310 and operatingprofit1422.811 round to current comparative15214/1423. No prior value is overwritten."
+      },
+      "operatingMargin": {
+        "value": 9.8,
+        "status": "verified",
+        "basis": "Atlas calculation: 1454 / 14871 × 100 = 9.8%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "ibiden-fy2026-q2-refresh-202611-v01",
+    "companyId": "ibiden",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "ibiden-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 139327,
+        "status": "verified",
+        "basis": "H1 physical p1 explicitly April 1–September 30; Q1 tannshinn2026Q1.pdf p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Revenue calculation: 262546 - 123219 = 139327."
+      },
+      "operatingProfit": {
+        "value": 33236,
+        "status": "verified",
+        "basis": "H1 physical p1 explicitly April 1–September 30; Q1 tannshinn2026Q1.pdf p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Operating profit calculation: 60116 - (26880) = 33236. Do not treat the document title Second Quarter as a standalone three-month table."
+      },
+      "operatingMargin": {
+        "value": 23.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 33236 / 139327 × 100 = 23.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "infineon-fy2026-refresh-202611-v01",
+    "companyId": "infineon",
+    "periodType": "annual",
+    "periodLabel": "FY2026",
+    "startDate": "2025-10-01",
+    "endDate": "2026-09-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "infineon-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 16353,
+        "status": "verified",
+        "basis": "p11 reconciliation reported operating profit; current quarter and fiscal year columns Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 2214,
+        "status": "verified",
+        "basis": "p11 reconciliation reported operating profit; current quarter and fiscal year columns Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 13.5,
+        "status": "verified",
+        "basis": "Atlas calculation: 2214 / 16353 × 100 = 13.5%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "infineon-fy2026-q4-refresh-202611-v01",
+    "companyId": "infineon",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q4",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "infineon-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 4706,
+        "status": "verified",
+        "basis": "p11 reconciliation reported operating profit; current quarter and fiscal year columns Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 775,
+        "status": "verified",
+        "basis": "p11 reconciliation reported operating profit; current quarter and fiscal year columns Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 16.5,
+        "status": "verified",
+        "basis": "Atlas calculation: 775 / 4706 × 100 = 16.5%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "intel-q3-2026-refresh-202611-v01",
+    "companyId": "intel",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-06-28",
+    "endDate": "2026-09-26",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "intel-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 16513,
+        "status": "verified",
+        "basis": "Consolidated statements of income; table4 Net revenue / Operating income(loss), current Three Months Ended September26 2026 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 2522,
+        "status": "verified",
+        "basis": "Consolidated statements of income; table4 Net revenue / Operating income(loss), current Three Months Ended September26 2026 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 15.3,
+        "status": "verified",
+        "basis": "Atlas calculation: 2522 / 16513 × 100 = 15.3%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "johnson-controls-fy2026-refresh-202611-v01",
+    "companyId": "johnson-controls",
+    "periodType": "annual",
+    "periodLabel": "FY2026",
+    "startDate": "2025-10-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP consolidated continuing operations",
+    "sourceId": "johnson-controls-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 25666,
+        "status": "verified",
+        "basis": "Consolidated Statements of Income, current quarter and current full fiscal year columns; same unadjusted subtotal reconstruction as stored records Source precision: whole USD million. Revenue calculation: 17701 + 7965 = 25666."
+      },
+      "operatingProfit": {
+        "value": 3694,
+        "status": "verified",
+        "basis": "Consolidated Statements of Income, current quarter and current full fiscal year columns; same unadjusted subtotal reconstruction as stored records Source precision: whole USD million. Operating profit calculation: 9515 - 5510 - 311 = 3694. Reconciliation: 3694 - 279 + 11 = 3426."
+      },
+      "operatingMargin": {
+        "value": 14.4,
+        "status": "verified",
+        "basis": "Atlas calculation: 3694 / 25666 × 100 = 14.4%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "johnson-controls-fy2026-q4-refresh-202611-v01",
+    "companyId": "johnson-controls",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q4",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP consolidated continuing operations",
+    "sourceId": "johnson-controls-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 7113,
+        "status": "verified",
+        "basis": "Consolidated Statements of Income, current quarter and current full fiscal year columns; same unadjusted subtotal reconstruction as stored records Source precision: whole USD million. Revenue calculation: 5014 + 2099 = 7113."
+      },
+      "operatingProfit": {
+        "value": 1137,
+        "status": "verified",
+        "basis": "Consolidated Statements of Income, current quarter and current full fiscal year columns; same unadjusted subtotal reconstruction as stored records Source precision: whole USD million. Operating profit calculation: 2705 - 1481 - 87 = 1137. Reconciliation: 1137 - net financing charges 82 + equity income 8 = continuing pretax 1063."
+      },
+      "operatingMargin": {
+        "value": 16.0,
+        "status": "verified",
+        "basis": "Atlas calculation: 1137 / 7113 × 100 = 16.0%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "keyence-fy2026-q2-refresh-202611-v01",
+    "companyId": "keyence",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-06-21",
+    "endDate": "2026-09-20",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "keyence-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 388778,
+        "status": "verified",
+        "basis": "Official consolidated financial highlights tables, FY2027/03 current cumulative Q2 and Q1 columns; same source as stored Q1 Source precision: highlights table whole JPY million; source uses nearest-million figures vs floor in PDF. Revenue calculation: 735400 - 346622 = 388778."
+      },
+      "operatingProfit": {
+        "value": 221187,
+        "status": "verified",
+        "basis": "Official consolidated financial highlights tables, FY2027/03 current cumulative Q2 and Q1 columns; same source as stored Q1 Source precision: highlights table whole JPY million; source uses nearest-million figures vs floor in PDF. Operating profit calculation: 408263 - 187076 = 221187. Earnings-release PDF floors H1 to735399/408262 and Q1revenue346621. Do not mix these rounding series; current addition uses both financial-highlights endpoints, stored Q1 unchanged."
+      },
+      "operatingMargin": {
+        "value": 56.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 221187 / 388778 × 100 = 56.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "kla-q1-fy2027-refresh-202611-v01",
+    "companyId": "kla",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 FY2027",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "kla-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 4136.015,
+        "status": "verified",
+        "basis": "Condensed Consolidated Unaudited Statements of Operations; table3 Sep30 2026; totalrevenue4,136,015 −cost1,577,791 −R&D395,096 −SG&A301,458 =1,861,670 USDthousands Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 1861.67,
+        "status": "verified",
+        "basis": "Condensed Consolidated Unaudited Statements of Operations; table3 Sep30 2026; totalrevenue4,136,015 −cost1,577,791 −R&D395,096 −SG&A301,458 =1,861,670 USDthousands Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 45.0,
+        "status": "verified",
+        "basis": "Atlas calculation: 1861.67 / 4136.015 × 100 = 45.0%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "kokusai-electric-fy2027-q2-refresh-202611-v01",
+    "companyId": "kokusai-electric",
+    "periodType": "quarterly",
+    "periodLabel": "FY2027 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "kokusai-electric-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 88629,
+        "status": "verified",
+        "basis": "physical p36 detailed quarterly income figures; FY27/3 Q2 current column revenue 88629 / IFRS operating profit 20888, not adjusted 22525 Source precision: published nearest JPY million. Revenue calculation: H1 164043 - Q1 75414 = 88629."
+      },
+      "operatingProfit": {
+        "value": 20888,
+        "status": "verified",
+        "basis": "physical p36 detailed quarterly income figures; FY27/3 Q2 current column revenue 88629 / IFRS operating profit 20888, not adjusted 22525 Source precision: published nearest JPY million. Operating profit calculation: H1 36814 - Q1 15926 = 20888."
+      },
+      "operatingMargin": {
+        "value": 23.6,
+        "status": "verified",
+        "basis": "Atlas calculation: 20888 / 88629 × 100 = 23.6%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "lam-research-september-2026-quarter-refresh-202611-v01",
+    "companyId": "lam-research",
+    "periodType": "quarterly",
+    "periodLabel": "September 2026 quarter",
+    "startDate": "2026-06-29",
+    "endDate": "2026-09-27",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "lam-research-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 8219.418,
+        "status": "verified",
+        "basis": "physical p4 condensed consolidated statements of operations, September 27 2026 three months; raw USD thousand 8,219,418 / 3,283,727 divided 1000 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 3283.727,
+        "status": "verified",
+        "basis": "physical p4 condensed consolidated statements of operations, September 27 2026 three months; raw USD thousand 8,219,418 / 3,283,727 divided 1000 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 40.0,
+        "status": "verified",
+        "basis": "Atlas calculation: 3283.727 / 8219.418 × 100 = 40.0%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "lasertec-fy2027-q1-refresh-202611-v01",
+    "companyId": "lasertec",
+    "periodType": "quarterly",
+    "periodLabel": "FY2027 Q1",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "lasertec-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 40369,
+        "status": "verified",
+        "basis": "Japanese original p1 and consolidated statement, July–September current quarter. November 2 English correction concerns comprehensive-income attribution only. Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 15769,
+        "status": "verified",
+        "basis": "Japanese original p1 and consolidated statement, July–September current quarter. November 2 English correction concerns comprehensive-income attribution only. Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 39.1,
+        "status": "verified",
+        "basis": "Atlas calculation: 15769 / 40369 × 100 = 39.1%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "legrand-q3-2026-refresh-202611-v01",
+    "companyId": "legrand",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "legrand-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 2929.1,
+        "status": "verified",
+        "basis": "Q3 cumulative statement physical/printed p2 and H1 financial report p6 Source precision: one decimal EUR million. Revenue calculation: 8329.4 - 5400.3 = 2929.1."
+      },
+      "operatingProfit": {
+        "value": 564.5,
+        "status": "verified",
+        "basis": "Q3 cumulative statement physical/printed p2 and H1 financial report p6 Source precision: one decimal EUR million. Operating profit calculation: 1595.0 - 1030.5 = 564.5."
+      },
+      "operatingMargin": {
+        "value": 19.3,
+        "status": "verified",
+        "basis": "Atlas calculation: 564.5 / 2929.1 × 100 = 19.3%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "linde-q3-2026-refresh-202611-v01",
+    "companyId": "linde",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "linde-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 9404,
+        "status": "verified",
+        "basis": "physical/printed p5 consolidated statement of income; three months September 30; operating profit includes 425 cost reduction charges Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 2150,
+        "status": "verified",
+        "basis": "physical/printed p5 consolidated statement of income; three months September 30; operating profit includes 425 cost reduction charges Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 22.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 2150 / 9404 × 100 = 22.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "lumentum-q1-fy2027-refresh-202611-v01",
+    "companyId": "lumentum",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 FY2027",
+    "startDate": "2026-06-28",
+    "endDate": "2026-09-26",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "lumentum-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1262.6,
+        "status": "verified",
+        "basis": "Condensed Consolidated Statements of Operations; current Sep26 2026; Net revenue / Income from operations; table2 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 359.8,
+        "status": "verified",
+        "basis": "Condensed Consolidated Statements of Operations; current Sep26 2026; Net revenue / Income from operations; table2 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 28.5,
+        "status": "verified",
+        "basis": "Atlas calculation: 359.8 / 1262.6 × 100 = 28.5%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "mediatek-q3-2026-refresh-202611-v01",
+    "companyId": "mediatek",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "IFRS as endorsed by Taiwan FSC",
+    "sourceId": "mediatek-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 168057.788,
+        "status": "verified",
+        "basis": "physical/printed p6, current three months September 30; auditor report p3 dated October 30 Source precision: exact division by 1000. Revenue calculation: 168057788 / 1000."
+      },
+      "operatingProfit": {
+        "value": 27102.213,
+        "status": "verified",
+        "basis": "physical/printed p6, current three months September 30; auditor report p3 dated October 30 Source precision: exact division by 1000. Operating profit calculation: 27102213 / 1000."
+      },
+      "operatingMargin": {
+        "value": 16.1,
+        "status": "verified",
+        "basis": "Atlas calculation: 27102.213 / 168057.788 × 100 = 16.1%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "mitsubishi-electric-fy2027-q2-refresh-202611-v01",
+    "companyId": "mitsubishi-electric",
+    "periodType": "quarterly",
+    "periodLabel": "FY2027 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "mitsubishi-electric-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1628038,
+        "status": "verified",
+        "basis": "H1 current IFRS consolidated cumulative statement and Q1 0731_co1.pdf current unadjusted statement Source precision: published JPY million rounded down. Revenue calculation: 3125147 -1497109 =1628038."
+      },
+      "operatingProfit": {
+        "value": 218611,
+        "status": "verified",
+        "basis": "H1 current IFRS consolidated cumulative statement and Q1 0731_co1.pdf current unadjusted statement Source precision: published JPY million rounded down. Operating profit calculation: 358112 -139501 =218611. Both current-year endpoints apply changed depreciation estimate from April2026; no adjusted operating-profit substitution."
+      },
+      "operatingMargin": {
+        "value": 13.4,
+        "status": "verified",
+        "basis": "Atlas calculation: 218611 / 1628038 × 100 = 13.4%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "mobileye-q3-2026-refresh-202611-v01",
+    "companyId": "mobileye",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-06-28",
+    "endDate": "2026-09-26",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "mobileye-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 492,
+        "status": "verified",
+        "basis": "GAAP condensed consolidated statements of operations; three months September 26 2026; not year-to-date goodwill impairment or adjusted operating income Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": -82,
+        "status": "verified",
+        "basis": "GAAP condensed consolidated statements of operations; three months September 26 2026; not year-to-date goodwill impairment or adjusted operating income Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": -16.7,
+        "status": "verified",
+        "basis": "Atlas calculation: -82 / 492 × 100 = -16.7%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "monolithic-power-q3-2026-refresh-202611-v01",
+    "companyId": "monolithic-power",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "monolithic-power-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1202.409,
+        "status": "verified",
+        "basis": "PDFphysical5/printed5 Condensed Consolidated Statements of Operations; Three Months Ended September30 2026; Revenue1,202,409 / Operating income357,687 USDthousands Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 357.687,
+        "status": "verified",
+        "basis": "PDFphysical5/printed5 Condensed Consolidated Statements of Operations; Three Months Ended September30 2026; Revenue1,202,409 / Operating income357,687 USDthousands Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 29.7,
+        "status": "verified",
+        "basis": "Atlas calculation: 357.687 / 1202.409 × 100 = 29.7%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "nan-ya-pcb-q3-2026-refresh-202611-v01",
+    "companyId": "nan-ya-pcb",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "Taiwan-IFRS",
+    "sourceId": "nan-ya-pcb-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 16378.267,
+        "status": "verified",
+        "basis": "physical/printed p5, ROC115 July–September column; physical p9 / printed p8 Note 2 board approved publication November 5 Source precision: exact division by 1000. Revenue calculation: 16378267 / 1000."
+      },
+      "operatingProfit": {
+        "value": 4322.646,
+        "status": "verified",
+        "basis": "physical/printed p5, ROC115 July–September column; physical p9 / printed p8 Note 2 board approved publication November 5 Source precision: exact division by 1000. Operating profit calculation: 4322646 / 1000."
+      },
+      "operatingMargin": {
+        "value": 26.4,
+        "status": "verified",
+        "basis": "Atlas calculation: 4322.646 / 16378.267 × 100 = 26.4%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "nikon-fy2027-q2-refresh-202611-v01",
+    "companyId": "nikon",
+    "periodType": "quarterly",
+    "periodLabel": "FY2027 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "nikon-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 170476,
+        "status": "verified",
+        "basis": "H1 physical p7; Q1 English 27_1qf_c_e.pdf p1 and p7 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Revenue calculation: 334658 - 164182 = 170476."
+      },
+      "operatingProfit": {
+        "value": 9901,
+        "status": "verified",
+        "basis": "H1 physical p7; Q1 English 27_1qf_c_e.pdf p1 and p7 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Operating profit calculation: 8904 - (-997) = 9901. Segment naming changes do not change consolidated total; negative Q1 operating profit is preserved in subtraction."
+      },
+      "operatingMargin": {
+        "value": 5.8,
+        "status": "verified",
+        "basis": "Atlas calculation: 9901 / 170476 × 100 = 5.8%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "nvent-q3-2026-refresh-202611-v01",
+    "companyId": "nvent",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "nvent-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1515,
+        "status": "verified",
+        "basis": "Company consolidated third quarter performance and consolidated statements; net sales 1515 and GAAP operating income 282, not adjusted 335; continuing operations Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 282,
+        "status": "verified",
+        "basis": "Company consolidated third quarter performance and consolidated statements; net sales 1515 and GAAP operating income 282, not adjusted 335; continuing operations Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 18.6,
+        "status": "verified",
+        "basis": "Atlas calculation: 282 / 1515 × 100 = 18.6%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "nvidia-q3-fy2027-refresh-202611-v01",
+    "companyId": "nvidia",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 FY2027",
+    "startDate": "2026-07-27",
+    "endDate": "2026-10-25",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "nvidia-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 115844,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of income; Three Months Ended October 25 2026; Revenue and Operating income; table 2 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 77520,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of income; Three Months Ended October 25 2026; Revenue and Operating income; table 2 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 66.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 77520 / 115844 × 100 = 66.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "nxp-q3-2026-refresh-202611-v01",
+    "companyId": "nxp",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-06-29",
+    "endDate": "2026-09-27",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "nxp-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 3786,
+        "status": "verified",
+        "basis": "Condensed consolidated statement of operations, September27 2026 3months; Revenue3786 / Operating income(loss)1228 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 1228,
+        "status": "verified",
+        "basis": "Condensed consolidated statement of operations, September27 2026 3months; Revenue3786 / Operating income(loss)1228 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 32.4,
+        "status": "verified",
+        "basis": "Atlas calculation: 1228 / 3786 × 100 = 32.4%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "omron-fy2025-q2-refresh-202611-v01",
+    "companyId": "omron",
+    "periodType": "quarterly",
+    "periodLabel": "FY2025 Q2",
+    "startDate": "2025-07-01",
+    "endDate": "2025-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "omron-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 179321,
+        "status": "verified",
+        "basis": "Physicalp23/printedp20 reconciliation of net income for April1–September30 2025, U.S.GAAP column: net sales345847, operating income16265; continuing operations beforetax20951 and separately discontinued loss2738. Physicalp19/printedp16 DMB note. Source precision: whole JPY million, both U.S.GAAP columns after DMB discontinuation reclassification. Scope: consolidated continuing operations excluding reclassified DMB. Revenue calculation: 345847 -166526 =179321."
+      },
+      "operatingProfit": {
+        "value": 10450,
+        "status": "verified",
+        "basis": "Physicalp23/printedp20 reconciliation of net income for April1–September30 2025, U.S.GAAP column: net sales345847, operating income16265; continuing operations beforetax20951 and separately discontinued loss2738. Physicalp19/printedp16 DMB note. Source precision: whole JPY million, both U.S.GAAP columns after DMB discontinuation reclassification. Scope: consolidated continuing operations excluding reclassified DMB. Operating profit calculation: 16265 -5815 =10450. Historical comparative quarter derived solely from U.S.GAAP reconciliation column; adjacent IFRS H12025 revenue345915/operatingprofit15513 not adopted. Current FY2026 IFRS series remains separate and not mixed."
+      },
+      "operatingMargin": {
+        "value": 5.8,
+        "status": "verified",
+        "basis": "Atlas calculation: 10450 / 179321 × 100 = 5.8%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "onsemi-q3-2026-refresh-202611-v01",
+    "companyId": "onsemi",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-04",
+    "endDate": "2026-10-02",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "onsemi-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1722.3,
+        "status": "verified",
+        "basis": "Unaudited consolidated statements of operations; Quarters ended Oct2 2026; Revenue1722.3 / Operating income378.3 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 378.3,
+        "status": "verified",
+        "basis": "Unaudited consolidated statements of operations; Quarters ended Oct2 2026; Revenue1722.3 / Operating income378.3 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 22.0,
+        "status": "verified",
+        "basis": "Atlas calculation: 378.3 / 1722.3 × 100 = 22.0%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "qualcomm-fy2026-refresh-202611-v01",
+    "companyId": "qualcomm",
+    "periodType": "annual",
+    "periodLabel": "FY2026",
+    "startDate": "2025-09-29",
+    "endDate": "2026-09-27",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "qualcomm-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 43120,
+        "status": "verified",
+        "basis": "PDFphysical6/printed6 Consolidated Statements of Operations; Three Months Ended September27 2026 Total revenues / Operating income Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 8658,
+        "status": "verified",
+        "basis": "PDFphysical6/printed6 Consolidated Statements of Operations; Three Months Ended September27 2026 Total revenues / Operating income Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 20.1,
+        "status": "verified",
+        "basis": "Atlas calculation: 8658 / 43120 × 100 = 20.1%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "qualcomm-q4-fy2026-refresh-202611-v01",
+    "companyId": "qualcomm",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 FY2026",
+    "startDate": "2026-06-29",
+    "endDate": "2026-09-27",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "qualcomm-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 10322,
+        "status": "verified",
+        "basis": "PDFphysical6/printed6 Consolidated Statements of Operations; Three Months Ended September27 2026 Total revenues / Operating income Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 1356,
+        "status": "verified",
+        "basis": "PDFphysical6/printed6 Consolidated Statements of Operations; Three Months Ended September27 2026 Total revenues / Operating income Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 13.1,
+        "status": "verified",
+        "basis": "Atlas calculation: 1356 / 10322 × 100 = 13.1%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "renesas-q3-2026-refresh-202611-v01",
+    "companyId": "renesas",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "renesas-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 435900,
+        "status": "verified",
+        "basis": "Summary of Consolidated Financial Results (IFRS basis), current three months; Note1 precision; Note6 Timing Business gain Source precision: published nearest0.1 JPY billion =100 JPY million. Revenue calculation: 435.9 JPY billion *1000."
+      },
+      "operatingProfit": {
+        "value": 565300,
+        "status": "verified",
+        "basis": "Summary of Consolidated Financial Results (IFRS basis), current three months; Note1 precision; Note6 Timing Business gain Source precision: published nearest0.1 JPY billion =100 JPY million. Operating profit calculation: 565.3 JPY billion *1000. IFRS operating profit includes gain on sale of Timing Business, source Note6; 129.7% operating margin is intentional reported unadjusted value, not substituted with non-GAAP operating profit150.5."
+      },
+      "operatingMargin": {
+        "value": 129.7,
+        "status": "verified",
+        "basis": "Atlas calculation: 565300 / 435900 × 100 = 129.7%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "rohm-fy2027-q2-refresh-202611-v01",
+    "companyId": "rohm",
+    "periodType": "quarterly",
+    "periodLabel": "FY2027 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "rohm-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 143744,
+        "status": "verified",
+        "basis": "H1 current consolidated results; Q1 2606_financialresults_jp.pdf current column Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Revenue calculation: 279483 - 135739 = 143744."
+      },
+      "operatingProfit": {
+        "value": 7852,
+        "status": "verified",
+        "basis": "H1 current consolidated results; Q1 2606_financialresults_jp.pdf current column Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Operating profit calculation: 17487 - (9635) = 7852. Current quarter is H1 minus Q1; rounded-billions factbook used only as corroboration."
+      },
+      "operatingMargin": {
+        "value": 5.5,
+        "status": "verified",
+        "basis": "Atlas calculation: 7852 / 143744 × 100 = 5.5%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "samsung-electronics-q3-2026-refresh-202611-v01",
+    "companyId": "samsung-electronics",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "KRW",
+    "unit": "trillion",
+    "accountingBasis": "K-IFRS consolidated",
+    "sourceId": "samsung-electronics-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 195.3,
+        "status": "verified",
+        "basis": "Issuer final results release consolidated actual quarterly headline; not earlier earnings guidance and not segment amounts Source precision: official release one decimal KRW trillion; same stored unit, no additional precision inferred. Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 107.4,
+        "status": "verified",
+        "basis": "Issuer final results release consolidated actual quarterly headline; not earlier earnings guidance and not segment amounts Source precision: official release one decimal KRW trillion; same stored unit, no additional precision inferred. Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 55.0,
+        "status": "verified",
+        "basis": "Atlas calculation: 107.4 / 195.3 × 100 = 55.0%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "sandisk-q1-fy2027-refresh-202611-v01",
+    "companyId": "sandisk",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 FY2027",
+    "startDate": "2026-07-04",
+    "endDate": "2026-10-02",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "sandisk-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 11031,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations; Three Months Ended Oct2 2026 Revenue11031 / Operating income8780 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 8780,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations; Three Months Ended Oct2 2026 Revenue11031 / Operating income8780 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 79.6,
+        "status": "verified",
+        "basis": "Atlas calculation: 8780 / 11031 × 100 = 79.6%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "screen-holdings-fy2027-q2-refresh-202611-v01",
+    "companyId": "screen-holdings",
+    "periodType": "quarterly",
+    "periodLabel": "FY2027 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "screen-holdings-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 186678,
+        "status": "verified",
+        "basis": "H1 p1 and physical p8 / printed p6; FY2027 Q1 revised report physical p2 / printed p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Revenue calculation: 308453 - 121775 = 186678."
+      },
+      "operatingProfit": {
+        "value": 40155,
+        "status": "verified",
+        "basis": "H1 p1 and physical p8 / printed p6; FY2027 Q1 revised report physical p2 / printed p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Operating profit calculation: 54523 - (14368) = 40155. Q1 review-completion dated August 13 leaves original July 28 figures unchanged."
+      },
+      "operatingMargin": {
+        "value": 21.5,
+        "status": "verified",
+        "basis": "Atlas calculation: 40155 / 186678 × 100 = 21.5%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "seagate-q1-fy2027-refresh-202611-v01",
+    "companyId": "seagate",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 FY2027",
+    "startDate": "2026-07-04",
+    "endDate": "2026-10-02",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "seagate-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 4233,
+        "status": "verified",
+        "basis": "Condensed Consolidated Statements of Operations; Three Months Ended Oct2 2026; Revenue / Income from operations Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 2064,
+        "status": "verified",
+        "basis": "Condensed Consolidated Statements of Operations; Three Months Ended Oct2 2026; Revenue / Income from operations Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 48.8,
+        "status": "verified",
+        "basis": "Atlas calculation: 2064 / 4233 × 100 = 48.8%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "shin-etsu-chemical-fy2026-q2-refresh-202611-v01",
+    "companyId": "shin-etsu-chemical",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "shin-etsu-chemical-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 758260,
+        "status": "verified",
+        "basis": "H1 p1 current cumulative column; Q1 20260724_con_E.pdf p1 and p14 Source precision: published JPY million rounded down. Revenue calculation: 1420684 - 662424 = 758260."
+      },
+      "operatingProfit": {
+        "value": 212120,
+        "status": "verified",
+        "basis": "H1 p1 current cumulative column; Q1 20260724_con_E.pdf p1 and p14 Source precision: published JPY million rounded down. Operating profit calculation: 385918 - 173798 = 212120."
+      },
+      "operatingMargin": {
+        "value": 28.0,
+        "status": "verified",
+        "basis": "Atlas calculation: 212120 / 758260 × 100 = 28.0%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "siemens-energy-fy2026-refresh-202611-v01",
+    "companyId": "siemens-energy",
+    "periodType": "annual",
+    "periodLabel": "FY2026",
+    "startDate": "2025-10-01",
+    "endDate": "2026-09-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "siemens-energy-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 44243,
+        "status": "verified",
+        "basis": "physical p9 consolidated statements of income; Q4 FY2026 and FY2026 current columns; not Profit before special items Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 5211,
+        "status": "verified",
+        "basis": "physical p9 consolidated statements of income; Q4 FY2026 and FY2026 current columns; not Profit before special items Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 11.8,
+        "status": "verified",
+        "basis": "Atlas calculation: 5211 / 44243 × 100 = 11.8%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "siemens-energy-fy2026-q4-refresh-202611-v01",
+    "companyId": "siemens-energy",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q4",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "EUR",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "siemens-energy-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 12826,
+        "status": "verified",
+        "basis": "physical p9 consolidated statements of income; Q4 FY2026 and FY2026 current columns; not Profit before special items Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 1671,
+        "status": "verified",
+        "basis": "physical p9 consolidated statements of income; Q4 FY2026 and FY2026 current columns; not Profit before special items Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 13.0,
+        "status": "verified",
+        "basis": "Atlas calculation: 1671 / 12826 × 100 = 13.0%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "sk-hynix-q3-2026-refresh-202611-v01",
+    "companyId": "sk-hynix",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "KRW",
+    "unit": "trillion",
+    "accountingBasis": "K-IFRS consolidated",
+    "sourceId": "sk-hynix-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 104.6155,
+        "status": "verified",
+        "basis": "Issuer consolidated quarterly results headline and current-quarter actuals; trillion won revenue 104.6155, operating profit 83.3338; exact conversion ×1000000 to KRW million Source precision: source 0.0001 KRW trillion, same stored unit. Revenue calculation: 104.6155 KRW trillion (no currency conversion)."
+      },
+      "operatingProfit": {
+        "value": 83.3338,
+        "status": "verified",
+        "basis": "Issuer consolidated quarterly results headline and current-quarter actuals; trillion won revenue 104.6155, operating profit 83.3338; exact conversion ×1000000 to KRW million Source precision: source 0.0001 KRW trillion, same stored unit. Operating profit calculation: 83.3338 KRW trillion. Officially announced preliminary actual results; audit review not finalized, not forecast. Same consolidated K-IFRS quarter and prior Q2 headline matches stored values."
+      },
+      "operatingMargin": {
+        "value": 79.7,
+        "status": "verified",
+        "basis": "Atlas calculation: 83.3338 / 104.6155 × 100 = 79.7%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "smc-fy2026-q2-refresh-202611-v01",
+    "companyId": "smc",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "smc-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 282649,
+        "status": "verified",
+        "basis": "H1 p1 current April–September; Q1 PDF 140120260806513033.pdf p1 Source precision: published JPY million rounded down. Revenue calculation: 553636 - 270987 = 282649."
+      },
+      "operatingProfit": {
+        "value": 83959,
+        "status": "verified",
+        "basis": "H1 p1 current April–September; Q1 PDF 140120260806513033.pdf p1 Source precision: published JPY million rounded down. Operating profit calculation: 157945 - 73986 = 83959."
+      },
+      "operatingMargin": {
+        "value": 29.7,
+        "status": "verified",
+        "basis": "Atlas calculation: 83959 / 282649 × 100 = 29.7%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "smic-q3-2026-refresh-202611-v01",
+    "companyId": "smic",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "IFRS",
+    "sourceId": "smic-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 3190.038,
+        "status": "verified",
+        "basis": "Consolidated income statement current quarter ended September 30; revenue USD thousand 3,190,038 / profit from operations 710,063 divided 1000 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 710.063,
+        "status": "verified",
+        "basis": "Consolidated income statement current quarter ended September 30; revenue USD thousand 3,190,038 / profit from operations 710,063 divided 1000 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 22.3,
+        "status": "verified",
+        "basis": "Atlas calculation: 710.063 / 3190.038 × 100 = 22.3%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "stmicroelectronics-q3-2026-refresh-202611-v01",
+    "companyId": "stmicroelectronics",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-06-28",
+    "endDate": "2026-09-26",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "stmicroelectronics-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 3757,
+        "status": "verified",
+        "basis": "6-K physical/printed p8 comparative quarter statements, current September 26 2026; not non-US-GAAP operating income 429 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 367,
+        "status": "verified",
+        "basis": "6-K physical/printed p8 comparative quarter statements, current September 26 2026; not non-US-GAAP operating income 429 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 9.8,
+        "status": "verified",
+        "basis": "Atlas calculation: 367 / 3757 × 100 = 9.8%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "sumco-q3-2026-refresh-202611-v01",
+    "companyId": "sumco",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "sumco-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 117508,
+        "status": "verified",
+        "basis": "Review-completion report physical p9 cumulative consolidated income; H1 tdnet2864795 p7; transaction note physical p12 / printed p9 Source precision: published JPY million. Revenue calculation: 332524 -215016 =117508."
+      },
+      "operatingProfit": {
+        "value": 1966,
+        "status": "verified",
+        "basis": "Review-completion report physical p9 cumulative consolidated income; H1 tdnet2864795 p7; transaction note physical p12 / printed p9 Source precision: published JPY million. Operating profit calculation: -4397 -(-6363) =1966. FST deemed disposal date September30 2026. Jan–September income statement still includes FST revenue45319 and profit1454; Q4 forecast excludes it. Current-quarter endpoints share pre-removal P&L series; do not use Q4 forecast."
+      },
+      "operatingMargin": {
+        "value": 1.7,
+        "status": "verified",
+        "basis": "Atlas calculation: 1966 / 117508 × 100 = 1.7%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "sumitomo-electric-fy2026-q2-refresh-202611-v01",
+    "companyId": "sumitomo-electric",
+    "periodType": "quarterly",
+    "periodLabel": "FY2026 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "billion",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "sumitomo-electric-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 1434.321,
+        "status": "verified",
+        "basis": "H1 physical p9 consolidated income statement; Q1 factbook p2 current quarter 1330591/97059 JPY million Source precision: nearest JPY million, exact divide 1000 to existing JPY billion. Revenue calculation: (2764912 - 1330591) / 1000 = 1434.321."
+      },
+      "operatingProfit": {
+        "value": 122.508,
+        "status": "verified",
+        "basis": "H1 physical p9 consolidated income statement; Q1 factbook p2 current quarter 1330591/97059 JPY million Source precision: nearest JPY million, exact divide 1000 to existing JPY billion. Operating profit calculation: (219567 - 97059) / 1000 = 122.508."
+      },
+      "operatingMargin": {
+        "value": 8.5,
+        "status": "verified",
+        "basis": "Atlas calculation: 122.508 / 1434.321 × 100 = 8.5%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "te-connectivity-fy2026-refresh-202611-v01",
+    "companyId": "te-connectivity",
+    "periodType": "annual",
+    "periodLabel": "FY2026",
+    "startDate": "2025-09-27",
+    "endDate": "2026-09-25",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "te-connectivity-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 19885,
+        "status": "verified",
+        "basis": "Consolidated statements of operations; Three Months Ended Sep25 2026; Net sales / Operating income Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 3991,
+        "status": "verified",
+        "basis": "Consolidated statements of operations; Three Months Ended Sep25 2026; Net sales / Operating income Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 20.1,
+        "status": "verified",
+        "basis": "Atlas calculation: 3991 / 19885 × 100 = 20.1%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "te-connectivity-q4-fy2026-refresh-202611-v01",
+    "companyId": "te-connectivity",
+    "periodType": "quarterly",
+    "periodLabel": "Q4 FY2026",
+    "startDate": "2026-06-27",
+    "endDate": "2026-09-25",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "te-connectivity-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 5312,
+        "status": "verified",
+        "basis": "Consolidated statements of operations; Three Months Ended Sep25 2026; Net sales / Operating income Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 1093,
+        "status": "verified",
+        "basis": "Consolidated statements of operations; Three Months Ended Sep25 2026; Net sales / Operating income Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 20.6,
+        "status": "verified",
+        "basis": "Atlas calculation: 1093 / 5312 × 100 = 20.6%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "tesla-q3-2026-refresh-202611-v01",
+    "companyId": "tesla",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "tesla-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 28046,
+        "status": "verified",
+        "basis": "10-Q consolidated statement of operations, three months September 30 2026: revenue 28046, income from operations 718; 5494 gross profit -4776 operating expenses =718 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 718,
+        "status": "verified",
+        "basis": "10-Q consolidated statement of operations, three months September 30 2026: revenue 28046, income from operations 718; 5494 gross profit -4776 operating expenses =718 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 2.6,
+        "status": "verified",
+        "basis": "Atlas calculation: 718 / 28046 × 100 = 2.6%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "texas-instruments-q3-2026-refresh-202611-v01",
+    "companyId": "texas-instruments",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "texas-instruments-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 6055,
+        "status": "verified",
+        "basis": "Consolidated statements of income; Three months ended Sep30 2026 Revenue6055 / Operating profit2874 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 2874,
+        "status": "verified",
+        "basis": "Consolidated statements of income; Three months ended Sep30 2026 Revenue6055 / Operating profit2874 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 47.5,
+        "status": "verified",
+        "basis": "Atlas calculation: 2874 / 6055 × 100 = 47.5%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "tokyo-electron-fy2027-q2-refresh-202611-v01",
+    "companyId": "tokyo-electron",
+    "periodType": "quarterly",
+    "periodLabel": "FY2027 Q2",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "JPY",
+    "unit": "million",
+    "accountingBasis": "Japanese GAAP",
+    "sourceId": "tokyo-electron-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 935067,
+        "status": "verified",
+        "basis": "H1 p1 and p9; Q1 fy27q1tanshin-e.pdf p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Revenue calculation: 1667455 - 732388 = 935067."
+      },
+      "operatingProfit": {
+        "value": 295369,
+        "status": "verified",
+        "basis": "H1 p1 and p9; Q1 fy27q1tanshin-e.pdf p1 Source precision: Published whole JPY million; no precision created beyond source; original rounding remains.. Operating profit calculation: 506776 - (211407) = 295369. Same Japanese GAAP consolidated reporting; quarter presentation JPY billions corroborates reported rounded precision."
+      },
+      "operatingMargin": {
+        "value": 31.6,
+        "status": "verified",
+        "basis": "Atlas calculation: 295369 / 935067 × 100 = 31.6%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "tower-semiconductor-q3-2026-refresh-202611-v01",
+    "companyId": "tower-semiconductor",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "tower-semiconductor-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 526.161,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations (unaudited), current September 30 2026 three-month column: revenue526161, operating profit127135 USD thousand; not rounded headline excluding non-recurring items Source precision: USD thousand converted exactly to million. Revenue calculation: 526161 /1000."
+      },
+      "operatingProfit": {
+        "value": 127.135,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations (unaudited), current September 30 2026 three-month column: revenue526161, operating profit127135 USD thousand; not rounded headline excluding non-recurring items Source precision: USD thousand converted exactly to million. Operating profit calculation: 127135 /1000."
+      },
+      "operatingMargin": {
+        "value": 24.2,
+        "status": "verified",
+        "basis": "Atlas calculation: 127.135 / 526.161 × 100 = 24.2%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "trane-technologies-q3-2026-refresh-202611-v01",
+    "companyId": "trane-technologies",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "trane-technologies-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 6759.7,
+        "status": "verified",
+        "basis": "Condensed Consolidated Statements of Earnings; currentquarter Sep30 2026 Net revenues / Operating income; table5 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 1343.1,
+        "status": "verified",
+        "basis": "Condensed Consolidated Statements of Earnings; currentquarter Sep30 2026 Net revenues / Operating income; table5 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 19.9,
+        "status": "verified",
+        "basis": "Atlas calculation: 1343.1 / 6759.7 × 100 = 19.9%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "umc-q3-2026-refresh-202611-v01",
+    "companyId": "umc",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "TWD",
+    "unit": "million",
+    "accountingBasis": "TIFRS recognized by Taiwan FSC",
+    "sourceId": "umc-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 74239,
+        "status": "verified",
+        "basis": "Physical p2 current quarter NTD columns; p3 consolidated comprehensive income quarter vs nine months. Ignore convenience USD translated columns. Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 18643,
+        "status": "verified",
+        "basis": "Physical p2 current quarter NTD columns; p3 consolidated comprehensive income quarter vs nine months. Ignore convenience USD translated columns. Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 25.1,
+        "status": "verified",
+        "basis": "Atlas calculation: 18643 / 74239 × 100 = 25.1%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "vertiv-q3-2026-refresh-202611-v01",
+    "companyId": "vertiv",
+    "periodType": "quarterly",
+    "periodLabel": "Q3 2026",
+    "startDate": "2026-07-01",
+    "endDate": "2026-09-30",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "vertiv-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 4312.8,
+        "status": "verified",
+        "basis": "Unaudited condensed consolidated statements of earnings(loss); Sep30 2026 currentquarter Net sales / Operating profit(loss); table2 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 983.8,
+        "status": "verified",
+        "basis": "Unaudited condensed consolidated statements of earnings(loss); Sep30 2026 currentquarter Net sales / Operating profit(loss); table2 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 22.8,
+        "status": "verified",
+        "basis": "Atlas calculation: 983.8 / 4312.8 × 100 = 22.8%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  },
+  {
+    "id": "western-digital-q1-fy2027-refresh-202611-v01",
+    "companyId": "western-digital",
+    "periodType": "quarterly",
+    "periodLabel": "Q1 FY2027",
+    "startDate": "2026-07-04",
+    "endDate": "2026-10-02",
+    "currency": "USD",
+    "unit": "million",
+    "accountingBasis": "US GAAP",
+    "sourceId": "western-digital-financial-results-refresh-202611-v01",
+    "verifiedAt": "2026-11-23",
+    "metrics": {
+      "revenue": {
+        "value": 4381,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations; Three Months Ended Oct2 2026 Revenue4381 / Operating income2046 Reported standalone unadjusted revenue for the stated period."
+      },
+      "operatingProfit": {
+        "value": 2046,
+        "status": "verified",
+        "basis": "Condensed consolidated statements of operations; Three Months Ended Oct2 2026 Revenue4381 / Operating income2046 Reported standalone unadjusted operating profit/loss for the stated period."
+      },
+      "operatingMargin": {
+        "value": 46.7,
+        "status": "verified",
+        "basis": "Atlas calculation: 2046 / 4381 × 100 = 46.7%, rounded to one decimal percentage point using the existing contract; same period, scope and units."
+      },
+      "freeCashFlow": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period free cash flow not normalized in this revenue/operating-profit maintenance update; no allocation or estimate."
+      },
+      "capex": {
+        "value": null,
+        "status": "not-collected",
+        "basis": "Comparable standalone-period cash capital expenditure not normalized in this update; no allocation or estimate."
+      }
+    }
+  }
+]

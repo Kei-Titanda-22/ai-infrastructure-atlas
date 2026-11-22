@@ -6,12 +6,72 @@
     "slotCount": 24,
     "uniqueCompanyCount": 23,
     "presets": [
-      {"id": "ai-compute-semiconductors", "name": "AI計算半導体の競争軸", "perspective": "GPU・CPU、カスタムASIC、接続、モバイル／エッジの違い", "companyIds": ["nvidia", "amd", "broadcom", "qualcomm"]},
-      {"id": "foundry-strategies", "name": "ファウンドリの製造戦略", "perspective": "先端／成熟プロセス、顧客構成、製造戦略の違い", "companyIds": ["tsmc", "samsung-electronics", "globalfoundries", "umc"]},
-      {"id": "front-end-equipment", "name": "前工程装置の工程別役割", "perspective": "露光、成膜、エッチング、統合プロセスの工程別役割", "companyIds": ["asml", "applied-materials", "lam-research", "tokyo-electron"]},
-      {"id": "ai-memory-supply", "name": "AIメモリの供給構成", "perspective": "HBM・DRAMとNANDの供給構成・投資軸", "companyIds": ["samsung-electronics", "sk-hynix", "micron", "kioxia"]},
-      {"id": "ai-network-optics", "name": "AIネットワークと光接続", "perspective": "Ethernet機器、光部品、高速接続の役割", "companyIds": ["arista", "cisco", "coherent", "credo"]},
-      {"id": "data-center-power-cooling", "name": "データセンターの電力・冷却", "perspective": "電力品質、配電、冷却、設備統合の役割", "companyIds": ["vertiv", "eaton", "schneider-electric", "abb"]}
+      {
+        "id": "ai-compute-semiconductors",
+        "name": "AI計算半導体の競争軸",
+        "perspective": "GPU・CPU、カスタムASIC、接続、モバイル／エッジの違い",
+        "companyIds": [
+          "nvidia",
+          "amd",
+          "broadcom",
+          "qualcomm"
+        ]
+      },
+      {
+        "id": "foundry-strategies",
+        "name": "ファウンドリの製造戦略",
+        "perspective": "先端／成熟プロセス、顧客構成、製造戦略の違い",
+        "companyIds": [
+          "tsmc",
+          "samsung-electronics",
+          "globalfoundries",
+          "umc"
+        ]
+      },
+      {
+        "id": "front-end-equipment",
+        "name": "前工程装置の工程別役割",
+        "perspective": "露光、成膜、エッチング、統合プロセスの工程別役割",
+        "companyIds": [
+          "asml",
+          "applied-materials",
+          "lam-research",
+          "tokyo-electron"
+        ]
+      },
+      {
+        "id": "ai-memory-supply",
+        "name": "AIメモリの供給構成",
+        "perspective": "HBM・DRAMとNANDの供給構成・投資軸",
+        "companyIds": [
+          "samsung-electronics",
+          "sk-hynix",
+          "micron",
+          "kioxia"
+        ]
+      },
+      {
+        "id": "ai-network-optics",
+        "name": "AIネットワークと光接続",
+        "perspective": "Ethernet機器、光部品、高速接続の役割",
+        "companyIds": [
+          "arista",
+          "cisco",
+          "coherent",
+          "credo"
+        ]
+      },
+      {
+        "id": "data-center-power-cooling",
+        "name": "データセンターの電力・冷却",
+        "perspective": "電力品質、配電、冷却、設備統合の役割",
+        "companyIds": [
+          "vertiv",
+          "eaton",
+          "schneider-electric",
+          "abb"
+        ]
+      }
     ],
     "resolvedIdentityByCompanyId": {
       "abb": "ABB（エービービー）",
@@ -167,55 +227,122 @@
   "productDescriptions": {
     "product-category-coater-developer-equipment": {
       "description": "半導体製造で、材料の塗布と現像を行う装置。",
-      "groundingIds": ["tokyo-electron-products", "tokyo-electron-overview"]
+      "groundingIds": [
+        "tokyo-electron-products",
+        "tokyo-electron-overview"
+      ]
     },
     "product-category-connectivity-semiconductor": {
       "description": "機器やシステム間の接続を支える半導体。",
-      "groundingIds": ["broadcom-products", "broadcom-overview", "rel-broadcom-produces-connectivity-semiconductor"]
+      "groundingIds": [
+        "broadcom-products",
+        "broadcom-overview",
+        "rel-broadcom-produces-connectivity-semiconductor"
+      ]
     },
     "product-category-cpu": {
       "description": "データセンター向け基盤で、計算処理を担うプロセッサー。",
-      "groundingIds": ["nvidia-products", "nvidia-overview", "rel-nvidia-produces-cpu"]
+      "groundingIds": [
+        "nvidia-products",
+        "nvidia-overview",
+        "rel-nvidia-produces-cpu"
+      ]
     },
     "product-category-custom-accelerator-asic": {
       "description": "顧客用途に合わせて設計し、カスタム演算を担う半導体。",
-      "groundingIds": ["broadcom-products", "broadcom-positioning", "broadcom-ai-role", "rel-broadcom-produces-custom-accelerator-asic"]
+      "groundingIds": [
+        "broadcom-products",
+        "broadcom-positioning",
+        "broadcom-ai-role",
+        "rel-broadcom-produces-custom-accelerator-asic"
+      ]
     },
     "product-category-dpu": {
       "description": "データセンターで、ネットワーク処理を担うプロセッサー。",
-      "groundingIds": ["nvidia-products", "nvidia-networking", "rel-nvidia-produces-dpu"]
+      "groundingIds": [
+        "nvidia-products",
+        "nvidia-networking",
+        "rel-nvidia-produces-dpu"
+      ]
     },
     "product-category-ethernet-switching-silicon": {
       "description": "Ethernetネットワークで、接続とスイッチングを担う半導体。",
-      "groundingIds": ["broadcom-products", "broadcom-ai-role", "rel-broadcom-produces-ethernet-switching-silicon"]
+      "groundingIds": [
+        "broadcom-products",
+        "broadcom-ai-role",
+        "rel-broadcom-produces-ethernet-switching-silicon"
+      ]
     },
     "product-category-gpu": {
       "description": "アクセラレーテッド・コンピューティングの演算を担うプロセッサー。",
-      "groundingIds": ["nvidia-products", "nvidia-overview", "rel-nvidia-produces-gpu"]
+      "groundingIds": [
+        "nvidia-products",
+        "nvidia-overview",
+        "rel-nvidia-produces-gpu"
+      ]
     },
     "product-category-semiconductor-deposition-equipment": {
       "description": "半導体製造で、ウェーハ上へ材料を堆積させる装置。",
-      "groundingIds": ["applied-products", "lam-research-products", "tokyo-electron-products", "rel-applied-materials-produces-semiconductor-deposition-equipment", "rel-lam-research-produces-semiconductor-deposition-equipment"]
+      "groundingIds": [
+        "applied-products",
+        "lam-research-products",
+        "tokyo-electron-products",
+        "rel-applied-materials-produces-semiconductor-deposition-equipment",
+        "rel-lam-research-produces-semiconductor-deposition-equipment"
+      ]
     },
     "product-category-semiconductor-etch-equipment": {
       "description": "ウェーハ材料を除去するエッチング装置。",
-      "groundingIds": ["lam-research-products", "tokyo-electron-products", "rel-lam-research-produces-semiconductor-etch-equipment"]
+      "groundingIds": [
+        "lam-research-products",
+        "tokyo-electron-products",
+        "rel-lam-research-produces-semiconductor-etch-equipment"
+      ]
     },
     "product-category-wafer-cleaning-equipment": {
       "description": "ウェーハを洗浄する半導体製造装置。",
-      "groundingIds": ["lam-research-products", "tokyo-electron-products", "rel-lam-research-produces-wafer-cleaning-equipment"]
+      "groundingIds": [
+        "lam-research-products",
+        "tokyo-electron-products",
+        "rel-lam-research-produces-wafer-cleaning-equipment"
+      ]
     },
     "product-category-wafer-fabrication-equipment": {
       "description": "半導体製造のウェーハ前工程で使用する装置群。",
-      "groundingIds": ["applied-value-chain", "lam-research-value-chain", "tokyo-electron-value-chain", "rel-lam-research-produces-wafer-fabrication-equipment"]
+      "groundingIds": [
+        "applied-value-chain",
+        "lam-research-value-chain",
+        "tokyo-electron-value-chain",
+        "rel-lam-research-produces-wafer-fabrication-equipment"
+      ]
     }
   },
   "productIdsByClaimId": {
-    "nvidia-products": ["product-category-gpu", "product-category-cpu", "product-category-dpu"],
-    "broadcom-products": ["product-category-custom-accelerator-asic", "product-category-ethernet-switching-silicon", "product-category-connectivity-semiconductor"],
-    "applied-products": ["product-category-semiconductor-deposition-equipment"],
-    "lam-research-products": ["product-category-wafer-fabrication-equipment", "product-category-semiconductor-deposition-equipment", "product-category-semiconductor-etch-equipment", "product-category-wafer-cleaning-equipment"],
-    "tokyo-electron-products": ["product-category-coater-developer-equipment", "product-category-semiconductor-etch-equipment", "product-category-semiconductor-deposition-equipment", "product-category-wafer-cleaning-equipment"]
+    "nvidia-products": [
+      "product-category-gpu",
+      "product-category-cpu",
+      "product-category-dpu"
+    ],
+    "broadcom-products": [
+      "product-category-custom-accelerator-asic",
+      "product-category-ethernet-switching-silicon",
+      "product-category-connectivity-semiconductor"
+    ],
+    "applied-products": [
+      "product-category-semiconductor-deposition-equipment"
+    ],
+    "lam-research-products": [
+      "product-category-wafer-fabrication-equipment",
+      "product-category-semiconductor-deposition-equipment",
+      "product-category-semiconductor-etch-equipment",
+      "product-category-wafer-cleaning-equipment"
+    ],
+    "tokyo-electron-products": [
+      "product-category-coater-developer-equipment",
+      "product-category-semiconductor-etch-equipment",
+      "product-category-semiconductor-deposition-equipment",
+      "product-category-wafer-cleaning-equipment"
+    ]
   },
   "preservedProperNouns": [
     "Atlas",
@@ -254,17 +381,51 @@
   },
   "companyIdentityLink": {
     "className": "company-name-link",
-    "bilingualCompanyIds": ["nvidia", "broadcom", "applied-materials", "lam-research"],
-    "singleLineCompanyIds": ["tokyo-electron"],
-    "longNameRegressionCompanyIds": ["besi", "kioxia", "amd", "kokusai-electric", "screen-holdings", "schneider-electric", "digital-realty", "applied-materials", "asm-international"],
-    "responsiveViewports": [1024, 390, 360],
+    "bilingualCompanyIds": [
+      "nvidia",
+      "broadcom",
+      "applied-materials",
+      "lam-research"
+    ],
+    "singleLineCompanyIds": [
+      "tokyo-electron"
+    ],
+    "longNameRegressionCompanyIds": [
+      "besi",
+      "kioxia",
+      "amd",
+      "kokusai-electric",
+      "screen-holdings",
+      "schneider-electric",
+      "digital-realty",
+      "applied-materials",
+      "asm-international"
+    ],
+    "responsiveViewports": [
+      1024,
+      390,
+      360
+    ],
     "finalColumnBorder": "1px solid var(--border)",
     "finalLocationsPerCompany": 11,
     "anchorsPerIdentity": 1
   },
-  "presentationTokens": ["01", "02", "03", "04", "05"],
+  "presentationTokens": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05"
+  ],
   "financialDetailTable": {
-    "metricIds": ["revenue", "operatingProfit", "operatingMargin", "freeCashFlow", "capex", "roic"],
+    "metricIds": [
+      "revenue",
+      "operatingProfit",
+      "operatingMargin",
+      "freeCashFlow",
+      "capex",
+      "roic"
+    ],
     "columnHeadingAlignment": "center",
     "columnHeadingVerticalAlignment": "middle",
     "numericAlignment": "right",
@@ -284,55 +445,55 @@
       "kioxia": "百万円",
       "amphenol": "百万ドル",
       "aptiv": "百万ドル",
-      "advantest": "百万円"
-      ,"asm-international": "百万ユーロ"
-      ,"air-liquide": "百万ユーロ"
-      ,"analog-devices": "百万ドル"
-      ,"abb": "百万ドル"
-      ,"globalfoundries": "百万ドル"
-      ,"micron": "百万ドル"
-      ,"arista": "百万ドル"
-      ,"bosch": "百万ユーロ"
-      ,"intel": "百万ドル"
-      ,"monolithic-power": "百万ドル"
-      ,"qualcomm": "百万ドル"
-      ,"stmicroelectronics": "百万ドル"
-      ,"carrier": "百万ドル"
-      ,"equinix": "百万ドル"
-      ,"nvent": "百万ドル"
-      ,"trane-technologies": "百万ドル"
-      ,"coherent": "百万ドル"
-      ,"furukawa-electric": "百万円"
-      ,"denso": "百万円"
-      ,"omron": "百万円"
-      ,"yaskawa": "百万円"
-      ,"kla": "百万ドル"
-      ,"nikon": "百万円"
-      ,"ibiden": "百万円"
-      ,"shin-etsu-chemical": "百万円"
-      ,"sandisk": "百万ドル"
-      ,"amkor": "百万ドル"
-      ,"ajinomoto-fine-techno": "百万円"
-      ,"arm": "百万ドル"
-      ,"ase-technology": "百万台湾ドル"
-      ,"asmpt": "百万香港ドル"
-      ,"fujikura": "百万円"
-      ,"globalwafers": "百万台湾ドル"
-      ,"hanmi-semiconductor": "百万韓国ウォン"
-      ,"hexagon": "百万ユーロ"
-      ,"jcet": "百万元"
-      ,"johnson-controls": "百万ドル"
-      ,"kinsus": "百万台湾ドル"
-      ,"mediatek": "百万台湾ドル"
-      ,"mobileye": "百万ドル"
-      ,"nan-ya-pcb": "百万台湾ドル"
-      ,"samsung-electronics": "兆韓国ウォン"
-      ,"sk-hynix": "兆韓国ウォン"
-      ,"smic": "百万ドル"
-      ,"sumitomo-electric": "十億円"
-      ,"tower-semiconductor": "百万ドル"
-      ,"umc": "百万台湾ドル"
-      ,"unimicron": "百万台湾ドル"
+      "advantest": "百万円",
+      "asm-international": "百万ユーロ",
+      "air-liquide": "百万ユーロ",
+      "analog-devices": "百万ドル",
+      "abb": "百万ドル",
+      "globalfoundries": "百万ドル",
+      "micron": "百万ドル",
+      "arista": "百万ドル",
+      "bosch": "百万ユーロ",
+      "intel": "百万ドル",
+      "monolithic-power": "百万ドル",
+      "qualcomm": "百万ドル",
+      "stmicroelectronics": "百万ドル",
+      "carrier": "百万ドル",
+      "equinix": "百万ドル",
+      "nvent": "百万ドル",
+      "trane-technologies": "百万ドル",
+      "coherent": "百万ドル",
+      "furukawa-electric": "百万円",
+      "denso": "百万円",
+      "omron": "百万円",
+      "yaskawa": "百万円",
+      "kla": "百万ドル",
+      "nikon": "百万円",
+      "ibiden": "百万円",
+      "shin-etsu-chemical": "百万円",
+      "sandisk": "百万ドル",
+      "amkor": "百万ドル",
+      "ajinomoto-fine-techno": "百万円",
+      "arm": "百万ドル",
+      "ase-technology": "百万台湾ドル",
+      "asmpt": "百万香港ドル",
+      "fujikura": "百万円",
+      "globalwafers": "百万台湾ドル",
+      "hanmi-semiconductor": "百万韓国ウォン",
+      "hexagon": "百万ユーロ",
+      "jcet": "百万元",
+      "johnson-controls": "百万ドル",
+      "kinsus": "百万台湾ドル",
+      "mediatek": "百万台湾ドル",
+      "mobileye": "百万ドル",
+      "nan-ya-pcb": "百万台湾ドル",
+      "samsung-electronics": "兆韓国ウォン",
+      "sk-hynix": "兆韓国ウォン",
+      "smic": "百万ドル",
+      "sumitomo-electric": "十億円",
+      "tower-semiconductor": "百万ドル",
+      "umc": "百万台湾ドル",
+      "unimicron": "百万台湾ドル"
     },
     "accountingBasisByCompany": {
       "asml": "米国会計基準",
@@ -347,55 +508,55 @@
       "kioxia": "国際財務報告基準（IFRS）",
       "amphenol": "米国会計基準",
       "aptiv": "米国会計基準",
-      "advantest": "国際財務報告基準（IFRS）"
-      ,"asm-international": "国際財務報告基準（IFRS）"
-      ,"air-liquide": "国際財務報告基準（IFRS・連結）"
-      ,"analog-devices": "米国会計基準"
-      ,"abb": "米国会計基準"
-      ,"globalfoundries": "国際財務報告基準（IFRS）"
-      ,"micron": "米国会計基準"
-      ,"arista": "米国会計基準"
-      ,"bosch": "EU採択の国際財務報告基準（IFRS・連結）"
-      ,"intel": "米国会計基準"
-      ,"monolithic-power": "米国会計基準"
-      ,"qualcomm": "米国会計基準"
-      ,"stmicroelectronics": "米国会計基準"
-      ,"carrier": "米国会計基準"
-      ,"equinix": "米国会計基準"
-      ,"nvent": "米国会計基準"
-      ,"trane-technologies": "米国会計基準"
-      ,"coherent": "米国会計基準"
-      ,"furukawa-electric": "日本会計基準"
-      ,"denso": "国際財務報告基準（IFRS）"
-      ,"omron": "米国会計基準"
-      ,"yaskawa": "国際財務報告基準（IFRS）"
-      ,"kla": "米国会計基準"
-      ,"nikon": "国際財務報告基準（IFRS）"
-      ,"ibiden": "日本会計基準"
-      ,"shin-etsu-chemical": "日本会計基準"
-      ,"sandisk": "米国会計基準"
-      ,"amkor": "米国会計基準"
-      ,"ajinomoto-fine-techno": "日本会計基準（単体）"
-      ,"arm": "米国会計基準"
-      ,"ase-technology": "台湾版国際財務報告基準（Taiwan-IFRS）"
-      ,"asmpt": "香港財務報告基準（HKFRS）"
-      ,"fujikura": "日本会計基準（連結）"
-      ,"globalwafers": "台湾版国際財務報告基準（Taiwan-IFRS）"
-      ,"hanmi-semiconductor": "韓国採択の国際財務報告基準（K-IFRS・連結）"
-      ,"hexagon": "EU採択の国際財務報告基準（IFRS・連結）"
-      ,"jcet": "中国企業会計準則（PRC GAAP）"
-      ,"johnson-controls": "米国会計基準（連結・継続事業）"
-      ,"kinsus": "台湾金融監督管理委員会採択の国際財務報告基準（IFRS・連結）"
-      ,"mediatek": "台湾金融監督管理委員会採択の国際財務報告基準（IFRS）"
-      ,"mobileye": "米国会計基準"
-      ,"nan-ya-pcb": "台湾版国際財務報告基準（Taiwan-IFRS）"
-      ,"samsung-electronics": "韓国採択の国際財務報告基準（K-IFRS・連結）"
-      ,"sk-hynix": "韓国採択の国際財務報告基準（K-IFRS・連結）"
-      ,"smic": "国際財務報告基準（IFRS）"
-      ,"sumitomo-electric": "日本会計基準"
-      ,"tower-semiconductor": "米国会計基準"
-      ,"umc": "台湾金融監督管理委員会認定の台湾版国際財務報告基準（TIFRS）"
-      ,"unimicron": "台湾金融監督管理委員会採択の国際財務報告基準（IFRS・連結）"
+      "advantest": "国際財務報告基準（IFRS）",
+      "asm-international": "国際財務報告基準（IFRS）",
+      "air-liquide": "国際財務報告基準（IFRS・連結）",
+      "analog-devices": "米国会計基準",
+      "abb": "米国会計基準",
+      "globalfoundries": "国際財務報告基準（IFRS）",
+      "micron": "米国会計基準",
+      "arista": "米国会計基準",
+      "bosch": "EU採択の国際財務報告基準（IFRS・連結）",
+      "intel": "米国会計基準",
+      "monolithic-power": "米国会計基準",
+      "qualcomm": "米国会計基準",
+      "stmicroelectronics": "米国会計基準",
+      "carrier": "米国会計基準",
+      "equinix": "米国会計基準",
+      "nvent": "米国会計基準",
+      "trane-technologies": "米国会計基準",
+      "coherent": "米国会計基準",
+      "furukawa-electric": "日本会計基準",
+      "denso": "国際財務報告基準（IFRS）",
+      "omron": "米国会計基準",
+      "yaskawa": "国際財務報告基準（IFRS）",
+      "kla": "米国会計基準",
+      "nikon": "国際財務報告基準（IFRS）",
+      "ibiden": "日本会計基準",
+      "shin-etsu-chemical": "日本会計基準",
+      "sandisk": "米国会計基準",
+      "amkor": "米国会計基準",
+      "ajinomoto-fine-techno": "日本会計基準（単体）",
+      "arm": "米国会計基準",
+      "ase-technology": "台湾版国際財務報告基準（Taiwan-IFRS）",
+      "asmpt": "香港財務報告基準（HKFRS）",
+      "fujikura": "日本会計基準（連結）",
+      "globalwafers": "台湾版国際財務報告基準（Taiwan-IFRS）",
+      "hanmi-semiconductor": "韓国採択の国際財務報告基準（K-IFRS・連結）",
+      "hexagon": "EU採択の国際財務報告基準（IFRS・連結）",
+      "jcet": "中国企業会計準則（PRC GAAP）",
+      "johnson-controls": "米国会計基準（連結・継続事業）",
+      "kinsus": "台湾金融監督管理委員会採択の国際財務報告基準（IFRS・連結）",
+      "mediatek": "台湾金融監督管理委員会採択の国際財務報告基準（IFRS）",
+      "mobileye": "米国会計基準",
+      "nan-ya-pcb": "台湾版国際財務報告基準（Taiwan-IFRS）",
+      "samsung-electronics": "韓国採択の国際財務報告基準（K-IFRS・連結）",
+      "sk-hynix": "韓国採択の国際財務報告基準（K-IFRS・連結）",
+      "smic": "国際財務報告基準（IFRS）",
+      "sumitomo-electric": "日本会計基準",
+      "tower-semiconductor": "米国会計基準",
+      "umc": "台湾金融監督管理委員会認定の台湾版国際財務報告基準（TIFRS）",
+      "unimicron": "台湾金融監督管理委員会採択の国際財務報告基準（IFRS・連結）"
     },
     "periodLabels": {
       "FY2024": "2024年度",
@@ -452,57 +613,62 @@
       "kioxia": 7,
       "amphenol": 6,
       "aptiv": 2,
-      "advantest": 4
-      ,"asm-international": 2
-      ,"air-liquide": 2
-      ,"analog-devices": 6
-      ,"abb": 2
-      ,"globalfoundries": 2
-      ,"micron": 6
-      ,"arista": 2
-      ,"bosch": 2
-      ,"intel": 6
-      ,"monolithic-power": 2
-      ,"qualcomm": 8
-      ,"stmicroelectronics": 2
-      ,"carrier": 2
-      ,"equinix": 2
-      ,"nvent": 2
-      ,"trane-technologies": 2
-      ,"coherent": 4
-      ,"furukawa-electric": 9
-      ,"denso": 2
-      ,"omron": 2
-      ,"yaskawa": 2
-      ,"kla": 6
-      ,"nikon": 2
-      ,"ibiden": 2
-      ,"shin-etsu-chemical": 2
-      ,"sandisk": 4
-      ,"amkor": 6
-      ,"ajinomoto-fine-techno": 2
-      ,"arm": 2
-      ,"ase-technology": 3
-      ,"asmpt": 2
-      ,"fujikura": 2
-      ,"globalwafers": 2
-      ,"hanmi-semiconductor": 2
-      ,"hexagon": 2
-      ,"jcet": 2
-      ,"johnson-controls": 2
-      ,"kinsus": 2
-      ,"mediatek": 2
-      ,"mobileye": 2
-      ,"nan-ya-pcb": 2
-      ,"samsung-electronics": 2
-      ,"sk-hynix": 6
-      ,"smic": 2
-      ,"sumitomo-electric": 2
-      ,"tower-semiconductor": 2
-      ,"umc": 2
-      ,"unimicron": 2
+      "advantest": 4,
+      "asm-international": 2,
+      "air-liquide": 2,
+      "analog-devices": 6,
+      "abb": 2,
+      "globalfoundries": 2,
+      "micron": 6,
+      "arista": 2,
+      "bosch": 2,
+      "intel": 6,
+      "monolithic-power": 2,
+      "qualcomm": 8,
+      "stmicroelectronics": 2,
+      "carrier": 2,
+      "equinix": 2,
+      "nvent": 2,
+      "trane-technologies": 2,
+      "coherent": 4,
+      "furukawa-electric": 9,
+      "denso": 2,
+      "omron": 2,
+      "yaskawa": 2,
+      "kla": 6,
+      "nikon": 2,
+      "ibiden": 2,
+      "shin-etsu-chemical": 2,
+      "sandisk": 4,
+      "amkor": 6,
+      "ajinomoto-fine-techno": 2,
+      "arm": 2,
+      "ase-technology": 3,
+      "asmpt": 2,
+      "fujikura": 2,
+      "globalwafers": 2,
+      "hanmi-semiconductor": 2,
+      "hexagon": 2,
+      "jcet": 2,
+      "johnson-controls": 2,
+      "kinsus": 2,
+      "mediatek": 2,
+      "mobileye": 2,
+      "nan-ya-pcb": 2,
+      "samsung-electronics": 2,
+      "sk-hynix": 6,
+      "smic": 2,
+      "sumitomo-electric": 2,
+      "tower-semiconductor": 2,
+      "umc": 2,
+      "unimicron": 2
     },
-    "forbiddenDetailedEnglishLabels": ["USD · million", "JPY · million", "US GAAP", "Japanese GAAP"],
+    "forbiddenDetailedEnglishLabels": [
+      "USD · million",
+      "JPY · million",
+      "US GAAP",
+      "Japanese GAAP"
+    ],
     "maxDigitFixtures": {
       "applied-materials": "7,302",
       "lam-research": "18,435.591",
@@ -541,10 +707,30 @@
     "compatibility": "blocked",
     "blockedMetricId": "revenueGrowth",
     "companies": {
-      "kioxia": {"displayValue": "71.9%", "periodLabel": "FY2027 Q1", "accountingBasis": "IFRS", "sourceId": "earnings-kioxia-2026-07-31-q1-fy2027"},
-      "amphenol": {"displayValue": "29.5%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-amphenol-2026-07-29-q2-2026"},
-      "aptiv": {"displayValue": "5.8%", "periodLabel": "FY2025", "accountingBasis": "US GAAP", "sourceId": "sec-aptiv-2025-10k"},
-      "advantest": {"displayValue": "51.7%", "periodLabel": "FY2026 Q1", "accountingBasis": "IFRS", "sourceId": "earnings-advantest-2026-07-29-q1-fy2026"}
+      "kioxia": {
+        "displayValue": "71.9%",
+        "periodLabel": "FY2027 Q1",
+        "accountingBasis": "IFRS",
+        "sourceId": "earnings-kioxia-2026-07-31-q1-fy2027"
+      },
+      "amphenol": {
+        "displayValue": "29.5%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "US GAAP",
+        "sourceId": "earnings-amphenol-2026-07-29-q2-2026"
+      },
+      "aptiv": {
+        "displayValue": "5.8%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "US GAAP",
+        "sourceId": "sec-aptiv-2025-10k"
+      },
+      "advantest": {
+        "displayValue": "51.7%",
+        "periodLabel": "FY2026 Q1",
+        "accountingBasis": "IFRS",
+        "sourceId": "earnings-advantest-2026-07-29-q1-fy2026"
+      }
     }
   },
   "stage3FinancialRow": {
@@ -553,10 +739,30 @@
     "compatibility": "blocked",
     "blockedMetricId": "revenueGrowth",
     "companies": {
-      "asm-international": {"displayValue": "29.6%", "periodLabel": "FY2025", "accountingBasis": "IFRS", "sourceId": "annual-report-asm-2025"},
-      "air-liquide": {"displayValue": "19.6%", "periodLabel": "FY2025", "accountingBasis": "IFRS consolidated", "sourceId": "air-liquide-fy2025-performance-report"},
-      "analog-devices": {"displayValue": "40.1%", "periodLabel": "Q3 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-analog-devices-2026-08-19-q3-fy2026"},
-      "abb": {"displayValue": "16.7%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "financial-info-abb-2026-07-16-q2"}
+      "asm-international": {
+        "displayValue": "29.6%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "IFRS",
+        "sourceId": "annual-report-asm-2025"
+      },
+      "air-liquide": {
+        "displayValue": "19.6%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "IFRS consolidated",
+        "sourceId": "air-liquide-fy2025-performance-report"
+      },
+      "analog-devices": {
+        "displayValue": "40.1%",
+        "periodLabel": "Q3 FY2026",
+        "accountingBasis": "US GAAP",
+        "sourceId": "earnings-analog-devices-2026-08-19-q3-fy2026"
+      },
+      "abb": {
+        "displayValue": "16.7%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "US GAAP",
+        "sourceId": "financial-info-abb-2026-07-16-q2"
+      }
     }
   },
   "stage4FinancialRow": {
@@ -565,10 +771,30 @@
     "compatibility": "blocked",
     "blockedMetricId": "revenueGrowth",
     "companies": {
-      "globalfoundries": {"displayValue": "9.7%", "periodLabel": "Q2 2026", "accountingBasis": "IFRS", "sourceId": "earnings-globalfoundries-2026-08-04-q2-2026"},
-      "micron": {"displayValue": "80.4%", "periodLabel": "Q3 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-micron-2026-06-24-q3-fy2026"},
-      "arista": {"displayValue": "45.4%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-arista-2026-08-04-q2-2026"},
-      "bosch": {"displayValue": "1.5%", "periodLabel": "FY2025", "accountingBasis": "IFRS as adopted by the EU, consolidated", "sourceId": "bosch-annual-report-2025"}
+      "globalfoundries": {
+        "displayValue": "9.7%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "IFRS",
+        "sourceId": "earnings-globalfoundries-2026-08-04-q2-2026"
+      },
+      "micron": {
+        "displayValue": "80.4%",
+        "periodLabel": "Q3 FY2026",
+        "accountingBasis": "US GAAP",
+        "sourceId": "earnings-micron-2026-06-24-q3-fy2026"
+      },
+      "arista": {
+        "displayValue": "45.4%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "US GAAP",
+        "sourceId": "earnings-arista-2026-08-04-q2-2026"
+      },
+      "bosch": {
+        "displayValue": "1.5%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "IFRS as adopted by the EU, consolidated",
+        "sourceId": "bosch-annual-report-2025"
+      }
     }
   },
   "remainingBatch4FinancialRow": {
@@ -577,26 +803,126 @@
     "compatibility": "blocked",
     "blockedMetricId": "revenueGrowth",
     "companies": {
-      "arm": {"displayValue": "18.3%", "periodLabel": "FY2026", "accountingBasis": "US GAAP", "sourceId": "sec-arm-fy2026-20f"},
-      "ase-technology": {"displayValue": "11.1%", "periodLabel": "Q2 2026", "accountingBasis": "Taiwan-IFRS", "sourceId": "earnings-ase-technology-2026-07-30-q2-2026"},
-      "asmpt": {"displayValue": "4.6%", "periodLabel": "FY2025", "accountingBasis": "HKFRS", "sourceId": "annual-report-asmpt-2025"},
-      "fujikura": {"displayValue": "16%", "periodLabel": "FY2026", "accountingBasis": "Japanese GAAP consolidated", "sourceId": "jpx-fujikura-fy2026-financial-results"},
-      "globalwafers": {"displayValue": "10.5%", "periodLabel": "Q1 2026", "accountingBasis": "Taiwan-IFRS", "sourceId": "filing-globalwafers-2026-q1"},
-      "hanmi-semiconductor": {"displayValue": "43.6%", "periodLabel": "FY2025", "accountingBasis": "K-IFRS consolidated", "sourceId": "krx-hanmi-semiconductor-fy2025-business-report"},
-      "hexagon": {"displayValue": "17%", "periodLabel": "FY2025", "accountingBasis": "IFRS (EU), IAS 34 year-end report", "sourceId": "hexagon-fy2025-year-end-report"},
-      "jcet": {"displayValue": "2.5%", "periodLabel": "Q1 2024", "accountingBasis": "PRC GAAP", "sourceId": "report-jcet-2024-q1"},
-      "johnson-controls": {"displayValue": "9.7%", "periodLabel": "FY2025", "accountingBasis": "US GAAP consolidated continuing operations", "sourceId": "sec-johnson-controls-2025-10k"},
-      "kinsus": {"displayValue": "6.8%", "periodLabel": "FY2025", "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated", "sourceId": "kinsus-annual-report-2025"},
-      "mediatek": {"displayValue": "17.4%", "periodLabel": "FY2025", "accountingBasis": "IFRS as endorsed by Taiwan FSC", "sourceId": "mediatek-q4-2025-consolidated-financial-statements"},
-      "mobileye": {"displayValue": "-23.2%", "periodLabel": "FY2025", "accountingBasis": "US GAAP", "sourceId": "sec-mobileye-2025-10k"},
-      "nan-ya-pcb": {"displayValue": "3.8%", "periodLabel": "Q2 2025", "accountingBasis": "Taiwan-IFRS", "sourceId": "filing-nan-ya-pcb-2025-q2"},
-      "samsung-electronics": {"displayValue": "52.2%", "periodLabel": "Q2 2026", "accountingBasis": "K-IFRS consolidated", "sourceId": "earnings-samsung-2026-07-30-q2-2026"},
-      "sk-hynix": {"displayValue": "76%", "periodLabel": "Q2 2026", "accountingBasis": "K-IFRS consolidated", "sourceId": "earnings-sk-hynix-2026-07-29-q2-2026"},
-      "smic": {"displayValue": "11.9%", "periodLabel": "FY2025", "accountingBasis": "IFRS", "sourceId": "hkex-smic-2025-annual-report"},
-      "sumitomo-electric": {"displayValue": "8.2%", "periodLabel": "FY2025", "accountingBasis": "Japanese GAAP", "sourceId": "sumitomo-electric-financial-highlights-fy2025"},
-      "tower-semiconductor": {"displayValue": "12.4%", "periodLabel": "FY2025", "accountingBasis": "US GAAP", "sourceId": "sec-tower-fy2025-20f"},
-      "umc": {"displayValue": "21.8%", "periodLabel": "Q2 2026", "accountingBasis": "TIFRS recognized by Taiwan FSC", "sourceId": "earnings-umc-2026-07-29-q2-2026"},
-      "unimicron": {"displayValue": "5.1%", "periodLabel": "FY2025", "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated", "sourceId": "unimicron-audited-financials-2025"}
+      "arm": {
+        "displayValue": "18.3%",
+        "periodLabel": "FY2026",
+        "accountingBasis": "US GAAP",
+        "sourceId": "sec-arm-fy2026-20f"
+      },
+      "ase-technology": {
+        "displayValue": "11.1%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "Taiwan-IFRS",
+        "sourceId": "earnings-ase-technology-2026-07-30-q2-2026"
+      },
+      "asmpt": {
+        "displayValue": "4.6%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "HKFRS",
+        "sourceId": "annual-report-asmpt-2025"
+      },
+      "fujikura": {
+        "displayValue": "16%",
+        "periodLabel": "FY2026",
+        "accountingBasis": "Japanese GAAP consolidated",
+        "sourceId": "jpx-fujikura-fy2026-financial-results"
+      },
+      "globalwafers": {
+        "displayValue": "10.5%",
+        "periodLabel": "Q1 2026",
+        "accountingBasis": "Taiwan-IFRS",
+        "sourceId": "filing-globalwafers-2026-q1"
+      },
+      "hanmi-semiconductor": {
+        "displayValue": "43.6%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "K-IFRS consolidated",
+        "sourceId": "krx-hanmi-semiconductor-fy2025-business-report"
+      },
+      "hexagon": {
+        "displayValue": "17%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "IFRS (EU), IAS 34 year-end report",
+        "sourceId": "hexagon-fy2025-year-end-report"
+      },
+      "jcet": {
+        "displayValue": "2.5%",
+        "periodLabel": "Q1 2024",
+        "accountingBasis": "PRC GAAP",
+        "sourceId": "report-jcet-2024-q1"
+      },
+      "johnson-controls": {
+        "displayValue": "9.7%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "US GAAP consolidated continuing operations",
+        "sourceId": "sec-johnson-controls-2025-10k"
+      },
+      "kinsus": {
+        "displayValue": "6.8%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+        "sourceId": "kinsus-annual-report-2025"
+      },
+      "mediatek": {
+        "displayValue": "17.4%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "IFRS as endorsed by Taiwan FSC",
+        "sourceId": "mediatek-q4-2025-consolidated-financial-statements"
+      },
+      "mobileye": {
+        "displayValue": "-23.2%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "US GAAP",
+        "sourceId": "sec-mobileye-2025-10k"
+      },
+      "nan-ya-pcb": {
+        "displayValue": "3.8%",
+        "periodLabel": "Q2 2025",
+        "accountingBasis": "Taiwan-IFRS",
+        "sourceId": "filing-nan-ya-pcb-2025-q2"
+      },
+      "samsung-electronics": {
+        "displayValue": "52.2%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "K-IFRS consolidated",
+        "sourceId": "earnings-samsung-2026-07-30-q2-2026"
+      },
+      "sk-hynix": {
+        "displayValue": "76%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "K-IFRS consolidated",
+        "sourceId": "earnings-sk-hynix-2026-07-29-q2-2026"
+      },
+      "smic": {
+        "displayValue": "11.9%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "IFRS",
+        "sourceId": "hkex-smic-2025-annual-report"
+      },
+      "sumitomo-electric": {
+        "displayValue": "8.2%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "Japanese GAAP",
+        "sourceId": "sumitomo-electric-financial-highlights-fy2025"
+      },
+      "tower-semiconductor": {
+        "displayValue": "12.4%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "US GAAP",
+        "sourceId": "sec-tower-fy2025-20f"
+      },
+      "umc": {
+        "displayValue": "21.8%",
+        "periodLabel": "Q2 2026",
+        "accountingBasis": "TIFRS recognized by Taiwan FSC",
+        "sourceId": "earnings-umc-2026-07-29-q2-2026"
+      },
+      "unimicron": {
+        "displayValue": "5.1%",
+        "periodLabel": "FY2025",
+        "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+        "sourceId": "unimicron-audited-financials-2025"
+      }
     }
   },
   "summaryMarkerCounts": {
@@ -645,65 +971,347 @@
     "根拠の追跡・データ品質"
   ],
   "sixthBatchPrimaryFinancialRow": {
-    "ciena": {"displayValue": "18%", "periodLabel": "Q3 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-ciena-2026-09-03-q3-fy2026", "recordCount": 6},
-    "coherent": {"displayValue": "12.4%", "periodLabel": "Q4 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-coherent-2026-08-12-q4-fy2026", "recordCount": 8},
-    "credo": {"displayValue": "35.7%", "periodLabel": "Q4 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-credo-2026-06-01-q4-fy2026", "recordCount": 8},
-    "lumentum": {"displayValue": "27.8%", "periodLabel": "Q4 FY2026", "accountingBasis": "US GAAP", "sourceId": "earnings-lumentum-2026-08-11-q4-fy2026", "recordCount": 8},
-    "samsung-electronics": {"displayValue": "52.2%", "periodLabel": "Q2 2026", "accountingBasis": "K-IFRS consolidated", "sourceId": "earnings-samsung-2026-07-30-q2-2026", "recordCount": 6},
-    "sumitomo-electric": {"displayValue": "7.3%", "periodLabel": "FY2026 Q1", "accountingBasis": "Japanese GAAP", "sourceId": "factbook-sumitomo-electric-2026-07-31-fy2026-q1", "recordCount": 8}
+    "ciena": {
+      "displayValue": "18%",
+      "periodLabel": "Q3 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-ciena-2026-09-03-q3-fy2026",
+      "recordCount": 6
+    },
+    "coherent": {
+      "displayValue": "12.4%",
+      "periodLabel": "Q4 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-coherent-2026-08-12-q4-fy2026",
+      "recordCount": 8
+    },
+    "credo": {
+      "displayValue": "35.7%",
+      "periodLabel": "Q4 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-credo-2026-06-01-q4-fy2026",
+      "recordCount": 8
+    },
+    "lumentum": {
+      "displayValue": "27.8%",
+      "periodLabel": "Q4 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-lumentum-2026-08-11-q4-fy2026",
+      "recordCount": 8
+    },
+    "samsung-electronics": {
+      "displayValue": "52.2%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "K-IFRS consolidated",
+      "sourceId": "earnings-samsung-2026-07-30-q2-2026",
+      "recordCount": 6
+    },
+    "sumitomo-electric": {
+      "displayValue": "7.3%",
+      "periodLabel": "FY2026 Q1",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "factbook-sumitomo-electric-2026-07-31-fy2026-q1",
+      "recordCount": 8
+    }
   },
   "seventhBatchPrimaryFinancialRow": {
-    "besi": {"displayValue": "43.5%", "periodLabel": "Q2 2026", "accountingBasis": "IFRS", "sourceId": "report-besi-2026-07-23-h1", "recordCount": 7},
-    "onsemi": {"displayValue": "16.1%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-onsemi-2026-08-03-q2", "recordCount": 8},
-    "cadence": {"displayValue": "28.4%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-cadence-2026-07-27-q2", "recordCount": 8},
-    "monolithic-power": {"displayValue": "31%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "filing-monolithic-power-2026-08-05-q2", "recordCount": 8},
-    "linde": {"displayValue": "27.5%", "periodLabel": "Q2 2026", "accountingBasis": "US GAAP", "sourceId": "earnings-linde-2026-07-31-q2", "recordCount": 8}
+    "besi": {
+      "displayValue": "43.5%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "report-besi-2026-07-23-h1",
+      "recordCount": 7
+    },
+    "onsemi": {
+      "displayValue": "16.1%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-onsemi-2026-08-03-q2",
+      "recordCount": 8
+    },
+    "cadence": {
+      "displayValue": "28.4%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-cadence-2026-07-27-q2",
+      "recordCount": 8
+    },
+    "monolithic-power": {
+      "displayValue": "31%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "filing-monolithic-power-2026-08-05-q2",
+      "recordCount": 8
+    },
+    "linde": {
+      "displayValue": "27.5%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-linde-2026-07-31-q2",
+      "recordCount": 8
+    }
   },
   "eighthBatchPrimaryFinancialRow": {
-    "ge-vernova": {"displayValue":"5.9%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"filing-ge-vernova-2026-q2-10q","recordCount":6},
-    "globalwafers": {"displayValue":"9.4%","periodLabel":"Q2 2026","accountingBasis":"Taiwan-IFRS","sourceId":"gwi-2026-h1","recordCount":6},
-    "ibiden": {"displayValue":"21.8%","periodLabel":"FY2026 Q1","accountingBasis":"Japanese GAAP","sourceId":"results-ibiden-2026-08-04-q1-fy2026","recordCount":6},
-    "nvent": {"displayValue":"20.4%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"earnings-nvent-2026-07-31-q2","recordCount":6},
-    "shin-etsu-chemical": {"displayValue":"26.2%","periodLabel":"FY2026 Q1","accountingBasis":"Japanese GAAP","sourceId":"results-shin-etsu-2026-07-24-q1-fy2026","recordCount":6},
-    "corning": {"displayValue":"15.5%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"sec-glw-2026-q2","recordCount":8},
-    "equinix": {"displayValue":"25.3%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"sec-eqix-2026-q2","recordCount":8},
-    "tesla": {"displayValue":"1.4%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"sec-tsla-2026-q2","recordCount":8},
-    "te-connectivity": {"displayValue":"19%","periodLabel":"FY2026 Q3","accountingBasis":"US GAAP","sourceId":"sec-tel-2026-q3","recordCount":8},
-    "arm": {"displayValue":"7.1%","periodLabel":"FY2027 Q1","accountingBasis":"US GAAP","sourceId":"sec-arm-2026-q1","recordCount":8}
+    "ge-vernova": {
+      "displayValue": "5.9%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "filing-ge-vernova-2026-q2-10q",
+      "recordCount": 6
+    },
+    "globalwafers": {
+      "displayValue": "9.4%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "Taiwan-IFRS",
+      "sourceId": "gwi-2026-h1",
+      "recordCount": 6
+    },
+    "ibiden": {
+      "displayValue": "21.8%",
+      "periodLabel": "FY2026 Q1",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "results-ibiden-2026-08-04-q1-fy2026",
+      "recordCount": 6
+    },
+    "nvent": {
+      "displayValue": "20.4%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-nvent-2026-07-31-q2",
+      "recordCount": 6
+    },
+    "shin-etsu-chemical": {
+      "displayValue": "26.2%",
+      "periodLabel": "FY2026 Q1",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "results-shin-etsu-2026-07-24-q1-fy2026",
+      "recordCount": 6
+    },
+    "corning": {
+      "displayValue": "15.5%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "sec-glw-2026-q2",
+      "recordCount": 8
+    },
+    "equinix": {
+      "displayValue": "25.3%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "sec-eqix-2026-q2",
+      "recordCount": 8
+    },
+    "tesla": {
+      "displayValue": "1.4%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "sec-tsla-2026-q2",
+      "recordCount": 8
+    },
+    "te-connectivity": {
+      "displayValue": "19%",
+      "periodLabel": "FY2026 Q3",
+      "accountingBasis": "US GAAP",
+      "sourceId": "sec-tel-2026-q3",
+      "recordCount": 8
+    },
+    "arm": {
+      "displayValue": "7.1%",
+      "periodLabel": "FY2027 Q1",
+      "accountingBasis": "US GAAP",
+      "sourceId": "sec-arm-2026-q1",
+      "recordCount": 8
+    }
   },
   "ninthBatchPrimaryFinancialRow": {
-    "tower-semiconductor": {"displayValue":"19.6%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"tower-2026-q2","recordCount":8},
-    "mediatek": {"displayValue":"15%","periodLabel":"Q2 2026","accountingBasis":"IFRS as endorsed by Taiwan FSC","sourceId":"mtk-2026-q2","recordCount":8},
-    "asm-international": {"displayValue":"32.2%","periodLabel":"Q2 2026","accountingBasis":"IFRS","sourceId":"asm-2026-q2","recordCount":8},
-    "nan-ya-pcb": {"displayValue":"21.4%","periodLabel":"Q2 2026","accountingBasis":"Taiwan-IFRS","sourceId":"nanya-2026-q2","recordCount":7},
-    "renesas": {"displayValue":"24.4%","periodLabel":"Q2 2026","accountingBasis":"IFRS","sourceId":"ren-2026-q2","recordCount":8},
-    "infineon": {"displayValue":"14.2%","periodLabel":"FY2026 Q3","accountingBasis":"IFRS","sourceId":"ifx-2026-q3","recordCount":8},
-    "screen-holdings": {"displayValue":"11.8%","periodLabel":"FY2027 Q1","accountingBasis":"Japanese GAAP","sourceId":"screen-2027-q1","recordCount":8},
-    "eaton": {"displayValue":"16.3%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"earnings-eaton-2026-07-31-q2-2026","recordCount":6}
+    "tower-semiconductor": {
+      "displayValue": "19.6%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "tower-2026-q2",
+      "recordCount": 8
+    },
+    "mediatek": {
+      "displayValue": "15%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "IFRS as endorsed by Taiwan FSC",
+      "sourceId": "mtk-2026-q2",
+      "recordCount": 8
+    },
+    "asm-international": {
+      "displayValue": "32.2%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "asm-2026-q2",
+      "recordCount": 8
+    },
+    "nan-ya-pcb": {
+      "displayValue": "21.4%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "Taiwan-IFRS",
+      "sourceId": "nanya-2026-q2",
+      "recordCount": 7
+    },
+    "renesas": {
+      "displayValue": "24.4%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "ren-2026-q2",
+      "recordCount": 8
+    },
+    "infineon": {
+      "displayValue": "14.2%",
+      "periodLabel": "FY2026 Q3",
+      "accountingBasis": "IFRS",
+      "sourceId": "ifx-2026-q3",
+      "recordCount": 8
+    },
+    "screen-holdings": {
+      "displayValue": "11.8%",
+      "periodLabel": "FY2027 Q1",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "screen-2027-q1",
+      "recordCount": 8
+    },
+    "eaton": {
+      "displayValue": "16.3%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-eaton-2026-07-31-q2-2026",
+      "recordCount": 6
+    }
   },
   "tenthBatchPrimaryFinancialRow": {
-    "fujikura": {"displayValue":"26.1%","periodLabel":"FY2027 Q1","accountingBasis":"Japanese GAAP consolidated","sourceId":"fj-2027-q1","recordCount":8},
-    "kokusai-electric": {"displayValue":"21.1%","periodLabel":"FY2027 Q1","accountingBasis":"IFRS","sourceId":"kei-2027-q1","recordCount":8},
-    "fanuc": {"displayValue":"23.2%","periodLabel":"FY2026 Q1","accountingBasis":"Japanese GAAP","sourceId":"fn-2026-q1","recordCount":8},
-    "canon": {"displayValue":"13.5%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"ca-2026-q2","recordCount":8},
-    "keyence": {"displayValue":"54%","periodLabel":"FY2026 Q1","accountingBasis":"Japanese GAAP","sourceId":"ky-financial-trend","recordCount":8},
-    "mitsubishi-electric": {"displayValue":"9.3%","periodLabel":"FY2027 Q1","accountingBasis":"IFRS","sourceId":"mel-2027-q1","recordCount":8},
-    "denso": {"displayValue":"4.4%","periodLabel":"FY2027 Q1","accountingBasis":"IFRS","sourceId":"den-2027-q1","recordCount":8}
+    "fujikura": {
+      "displayValue": "26.1%",
+      "periodLabel": "FY2027 Q1",
+      "accountingBasis": "Japanese GAAP consolidated",
+      "sourceId": "fj-2027-q1",
+      "recordCount": 8
+    },
+    "kokusai-electric": {
+      "displayValue": "21.1%",
+      "periodLabel": "FY2027 Q1",
+      "accountingBasis": "IFRS",
+      "sourceId": "kei-2027-q1",
+      "recordCount": 8
+    },
+    "fanuc": {
+      "displayValue": "23.2%",
+      "periodLabel": "FY2026 Q1",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "fn-2026-q1",
+      "recordCount": 8
+    },
+    "canon": {
+      "displayValue": "13.5%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "ca-2026-q2",
+      "recordCount": 8
+    },
+    "keyence": {
+      "displayValue": "54%",
+      "periodLabel": "FY2026 Q1",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "ky-financial-trend",
+      "recordCount": 8
+    },
+    "mitsubishi-electric": {
+      "displayValue": "9.3%",
+      "periodLabel": "FY2027 Q1",
+      "accountingBasis": "IFRS",
+      "sourceId": "mel-2027-q1",
+      "recordCount": 8
+    },
+    "denso": {
+      "displayValue": "4.4%",
+      "periodLabel": "FY2027 Q1",
+      "accountingBasis": "IFRS",
+      "sourceId": "den-2027-q1",
+      "recordCount": 8
+    }
   },
   "eleventhBatchPrimaryFinancialRow": {
-    "asml": {"displayValue":"44.4%","periodLabel":"Q3 2026","accountingBasis":"US GAAP","sourceId":"earnings-asml-2026-10-14-q3-2026","recordCount":7},
-    "credo": {"displayValue":"25.2%","periodLabel":"Q1 FY2027","accountingBasis":"US GAAP","sourceId":"earnings-credo-2026-09-01-q1-fy2027","recordCount":9},
-    "micron": {"displayValue":"80.7%","periodLabel":"Q4 FY2026","accountingBasis":"US GAAP","sourceId":"earnings-micron-2026-09-30-q4-fy2026","recordCount":7},
-    "sandisk": {"displayValue":"78.5%","periodLabel":"Q4 FY2026","accountingBasis":"US GAAP","sourceId":"earnings-sandisk-2026-08-05-q4-fy2026","recordCount":8},
-    "tsmc": {"displayValue":"58.7%","periodLabel":"Q3 2026","accountingBasis":"TIFRS consolidated","sourceId":"earnings-tsmc-2026-10-15-q3-2026","recordCount":7}
+    "asml": {
+      "displayValue": "44.4%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-asml-2026-10-14-q3-2026",
+      "recordCount": 7
+    },
+    "credo": {
+      "displayValue": "25.2%",
+      "periodLabel": "Q1 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-credo-2026-09-01-q1-fy2027",
+      "recordCount": 9
+    },
+    "micron": {
+      "displayValue": "80.7%",
+      "periodLabel": "Q4 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-micron-2026-09-30-q4-fy2026",
+      "recordCount": 7
+    },
+    "sandisk": {
+      "displayValue": "78.5%",
+      "periodLabel": "Q4 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-sandisk-2026-08-05-q4-fy2026",
+      "recordCount": 8
+    },
+    "tsmc": {
+      "displayValue": "58.7%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "TIFRS consolidated",
+      "sourceId": "earnings-tsmc-2026-10-15-q3-2026",
+      "recordCount": 7
+    }
   },
   "twelfthBatchPrimaryFinancialRow": {
-    "asmpt": {"displayValue":"15.9%","periodLabel":"Q2 2026","accountingBasis":"HKFRS","sourceId":"filing-asmpt-2026-07-29-q2","recordCount":8},
-    "digital-realty": {"displayValue":"24.3%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"earnings-digital-realty-2026-07-23-q2","recordCount":8},
-    "mobileye": {"displayValue":"-5.9%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"earnings-mobileye-2026-07-23-q2","recordCount":4},
-    "resonac-holdings": {"displayValue":"13.9%","periodLabel":"Q2 2026","accountingBasis":"IFRS","sourceId":"filing-resonac-2026-08-06-h1","recordCount":3},
-    "stmicroelectronics": {"displayValue":"5.4%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"earnings-stmicroelectronics-2026-07-23-q2","recordCount":4},
-    "synopsys": {"displayValue":"14.4%","periodLabel":"Q3 FY2026","accountingBasis":"US GAAP","sourceId":"earnings-synopsys-2026-08-26-q3-fy2026","recordCount":3}
+    "asmpt": {
+      "displayValue": "15.9%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "HKFRS",
+      "sourceId": "filing-asmpt-2026-07-29-q2",
+      "recordCount": 8
+    },
+    "digital-realty": {
+      "displayValue": "24.3%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-digital-realty-2026-07-23-q2",
+      "recordCount": 8
+    },
+    "mobileye": {
+      "displayValue": "-5.9%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-mobileye-2026-07-23-q2",
+      "recordCount": 4
+    },
+    "resonac-holdings": {
+      "displayValue": "13.9%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "filing-resonac-2026-08-06-h1",
+      "recordCount": 3
+    },
+    "stmicroelectronics": {
+      "displayValue": "5.4%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-stmicroelectronics-2026-07-23-q2",
+      "recordCount": 4
+    },
+    "synopsys": {
+      "displayValue": "14.4%",
+      "periodLabel": "Q3 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-synopsys-2026-08-26-q3-fy2026",
+      "recordCount": 3
+    }
   },
   "thirteenthBatchPrimaryFinancialRow": {
     "abb": {
@@ -785,56 +1393,920 @@
     }
   },
   "fourteenthBatchPrimaryFinancialRow": {
-    "abb": {"displayValue":"19%","periodLabel":"Q3 2026","accountingBasis":"US GAAP","sourceId":"results-abb-2026-10-20-q3","recordCount":6},
-    "johnson-controls": {"displayValue":"14.9%","periodLabel":"FY2026 Q3","accountingBasis":"US GAAP consolidated continuing operations","sourceId":"sec-johnson-controls-2026-06-30-10q","recordCount":8},
-    "legrand": {"displayValue":"19%","periodLabel":"Q2 2026","accountingBasis":"IFRS","sourceId":"legrand-h1-2026-v14","recordCount":8},
-    "mobileye": {"displayValue":"-5.9%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"earnings-mobileye-2026-07-23-q2","recordCount":8},
-    "resonac-holdings": {"displayValue":"13.9%","periodLabel":"Q2 2026","accountingBasis":"IFRS","sourceId":"filing-resonac-2026-08-06-h1","recordCount":6},
-    "rohm": {"displayValue":"7.1%","periodLabel":"FY2027 Q1","accountingBasis":"Japanese GAAP","sourceId":"results-rohm-2026-08-05-q1","recordCount":8},
-    "siemens-energy": {"displayValue":"13.2%","periodLabel":"FY2026 Q3","accountingBasis":"IFRS","sourceId":"results-siemens-energy-2026-08-05-q3","recordCount":8},
-    "stmicroelectronics": {"displayValue":"5.4%","periodLabel":"Q2 2026","accountingBasis":"US GAAP","sourceId":"earnings-stmicroelectronics-2026-07-23-q2","recordCount":8},
-    "synopsys": {"displayValue":"14.4%","periodLabel":"Q3 FY2026","accountingBasis":"US GAAP","sourceId":"earnings-synopsys-2026-08-26-q3-fy2026","recordCount":8},
-    "yaskawa": {"displayValue":"9.3%","periodLabel":"FY2027 Q2","accountingBasis":"IFRS","sourceId":"filing-yaskawa-2026-10-09-h1-fy2027","recordCount":8}
+    "abb": {
+      "displayValue": "19%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "results-abb-2026-10-20-q3",
+      "recordCount": 6
+    },
+    "johnson-controls": {
+      "displayValue": "14.9%",
+      "periodLabel": "FY2026 Q3",
+      "accountingBasis": "US GAAP consolidated continuing operations",
+      "sourceId": "sec-johnson-controls-2026-06-30-10q",
+      "recordCount": 8
+    },
+    "legrand": {
+      "displayValue": "19%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "legrand-h1-2026-v14",
+      "recordCount": 8
+    },
+    "mobileye": {
+      "displayValue": "-5.9%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-mobileye-2026-07-23-q2",
+      "recordCount": 8
+    },
+    "resonac-holdings": {
+      "displayValue": "13.9%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "filing-resonac-2026-08-06-h1",
+      "recordCount": 6
+    },
+    "rohm": {
+      "displayValue": "7.1%",
+      "periodLabel": "FY2027 Q1",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "results-rohm-2026-08-05-q1",
+      "recordCount": 8
+    },
+    "siemens-energy": {
+      "displayValue": "13.2%",
+      "periodLabel": "FY2026 Q3",
+      "accountingBasis": "IFRS",
+      "sourceId": "results-siemens-energy-2026-08-05-q3",
+      "recordCount": 8
+    },
+    "stmicroelectronics": {
+      "displayValue": "5.4%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-stmicroelectronics-2026-07-23-q2",
+      "recordCount": 8
+    },
+    "synopsys": {
+      "displayValue": "14.4%",
+      "periodLabel": "Q3 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-synopsys-2026-08-26-q3-fy2026",
+      "recordCount": 8
+    },
+    "yaskawa": {
+      "displayValue": "9.3%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "IFRS",
+      "sourceId": "filing-yaskawa-2026-10-09-h1-fy2027",
+      "recordCount": 8
+    }
   },
   "fifteenthBatchPrimaryFinancialRow": {
-    "hanmi-semiconductor": {"displayValue":"51.9%","periodLabel":"Q2 2026","accountingBasis":"K-IFRS consolidated","sourceId":"hanmi-h1-2026-v15","recordCount":8},
-    "kinsus": {"displayValue":"13.4%","periodLabel":"Q2 2026","accountingBasis":"IFRS as endorsed by Taiwan FSC, consolidated","sourceId":"kinsus-q2-2026-v15","recordCount":8},
-    "kioxia": {"displayValue":"80.4%","periodLabel":"FY2027 Q2","accountingBasis":"IFRS","sourceId":"kioxia-fy2027-q2-v15","recordCount":8},
-    "sumco": {"displayValue":"-1%","periodLabel":"Q2 2026","accountingBasis":"Japanese GAAP","sourceId":"sumco-h1-2026-v15","recordCount":8},
-    "unimicron": {"displayValue":"20%","periodLabel":"Q3 2026","accountingBasis":"IFRS as endorsed by Taiwan FSC, consolidated","sourceId":"unimicron-q3-2026-v15","recordCount":9}
+    "hanmi-semiconductor": {
+      "displayValue": "51.9%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "K-IFRS consolidated",
+      "sourceId": "hanmi-h1-2026-v15",
+      "recordCount": 8
+    },
+    "kinsus": {
+      "displayValue": "13.4%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+      "sourceId": "kinsus-q2-2026-v15",
+      "recordCount": 8
+    },
+    "kioxia": {
+      "displayValue": "80.4%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "IFRS",
+      "sourceId": "kioxia-fy2027-q2-v15",
+      "recordCount": 8
+    },
+    "sumco": {
+      "displayValue": "-1%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "sumco-h1-2026-v15",
+      "recordCount": 8
+    },
+    "unimicron": {
+      "displayValue": "20%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+      "sourceId": "unimicron-q3-2026-v15",
+      "recordCount": 9
+    }
   },
   "sixteenthBatchPrimaryFinancialRow": {
-    "aptiv": {"displayValue":"5.8%","periodLabel":"FY2025","accountingBasis":"US GAAP","sourceId":"sec-aptiv-2025-10k","recordCount":3},
-    "shinko-electric": {"displayValue":"11.3%","periodLabel":"FY2024 Q4","accountingBasis":"Japanese GAAP","sourceId":"shinko-fy2025-fy-v16","recordCount":8}
+    "aptiv": {
+      "displayValue": "5.8%",
+      "periodLabel": "FY2025",
+      "accountingBasis": "US GAAP",
+      "sourceId": "sec-aptiv-2025-10k",
+      "recordCount": 3
+    },
+    "shinko-electric": {
+      "displayValue": "11.3%",
+      "periodLabel": "FY2024 Q4",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "shinko-fy2025-fy-v16",
+      "recordCount": 8
+    }
   },
   "seventeenthBatchPrimaryFinancialRow": {
-    "aptiv": {"displayValue":"7.4%","periodLabel":"Q1 2026","accountingBasis":"US GAAP","sourceId":"aptiv-2026-q1-10q-v17","recordCount":9}
+    "aptiv": {
+      "displayValue": "7.4%",
+      "periodLabel": "Q1 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "aptiv-2026-q1-10q-v17",
+      "recordCount": 9
+    }
   },
   "eighteenthBatchPrimaryFinancialRow": {
-    "hexagon": {"displayValue":"25%","periodLabel":"Q4 2025","accountingBasis":"IFRS (EU), IAS 34 year-end report","sourceId":"hexagon-fy2025-year-end-report","recordCount":10}
+    "hexagon": {
+      "displayValue": "25%",
+      "periodLabel": "Q4 2025",
+      "accountingBasis": "IFRS (EU), IAS 34 year-end report",
+      "sourceId": "hexagon-fy2025-year-end-report",
+      "recordCount": 10
+    }
   },
   "nineteenthBatchPrimaryFinancialRow": {
-    "omron": {"displayValue":"7.8%","periodLabel":"FY2025","accountingBasis":"US GAAP","sourceId":"omron-financial-results-fy2025","recordCount":3,"quarterlyCount":1}
+    "omron": {
+      "displayValue": "7.8%",
+      "periodLabel": "FY2025",
+      "accountingBasis": "US GAAP",
+      "sourceId": "omron-financial-results-fy2025",
+      "recordCount": 3,
+      "quarterlyCount": 1
+    }
   },
   "mobileTracking": {
     "breakpointMaxPx": 600,
-    "responsiveViewports": [1024, 390, 360],
-    "details": ["summary", "expanded"],
-    "selectedCompanyCounts": [2, 3, 4],
-    "legacySelectedCompanyCounts": [2, 4, 5],
+    "responsiveViewports": [
+      1024,
+      390,
+      360
+    ],
+    "details": [
+      "summary",
+      "expanded"
+    ],
+    "selectedCompanyCounts": [
+      2,
+      3,
+      4
+    ],
+    "legacySelectedCompanyCounts": [
+      2,
+      4,
+      5
+    ],
     "orderPalette": [
-      {"token":"company-1","background":"#f5f8fb","border":"#7892ab"},
-      {"token":"company-2","background":"#f8f7f2","border":"#9a8e68"},
-      {"token":"company-3","background":"#f4f8f5","border":"#6f9279"},
-      {"token":"company-4","background":"#f8f5f7","border":"#94778a"},
-      {"token":"company-5","background":"#f4f7f8","border":"#728f98"}
+      {
+        "token": "company-1",
+        "background": "#f5f8fb",
+        "border": "#7892ab"
+      },
+      {
+        "token": "company-2",
+        "background": "#f8f7f2",
+        "border": "#9a8e68"
+      },
+      {
+        "token": "company-3",
+        "background": "#f4f8f5",
+        "border": "#6f9279"
+      },
+      {
+        "token": "company-4",
+        "background": "#f8f5f7",
+        "border": "#94778a"
+      },
+      {
+        "token": "company-5",
+        "background": "#f4f7f8",
+        "border": "#728f98"
+      }
     ],
     "sectionStickyTop": "6rem",
     "companyStickyTop": "calc(6rem + 48px)",
     "sectionBoundary": "3px solid #27313a",
-    "identityCues": ["company-name", "selection-order", "pastel-background", "dark-section-border", "spacing"],
+    "identityCues": [
+      "company-name",
+      "selection-order",
+      "pastel-background",
+      "dark-section-border",
+      "spacing"
+    ],
     "markerButtonMinimumTargetPx": 44,
     "markerHitOffsetPx": 21,
     "desktopUnchangedMinWidthPx": 601
+  },
+  "resultsRefreshPrimaryFinancialRow": {
+    "abb": {
+      "displayValue": "19%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "results-abb-2026-10-20-q3",
+      "recordCount": 6
+    },
+    "advantest": {
+      "displayValue": "55.9%",
+      "periodLabel": "FY2026 Q2",
+      "accountingBasis": "IFRS",
+      "sourceId": "advantest-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "air-liquide": {
+      "displayValue": "19.6%",
+      "periodLabel": "FY2025",
+      "accountingBasis": "IFRS consolidated",
+      "sourceId": "air-liquide-fy2025-performance-report",
+      "recordCount": 2
+    },
+    "ajinomoto-fine-techno": {
+      "displayValue": "53.9%",
+      "periodLabel": "FY2026",
+      "accountingBasis": "Japanese GAAP non-consolidated",
+      "sourceId": "ajinomoto-aft-merger-policy-2026",
+      "recordCount": 2
+    },
+    "amd": {
+      "displayValue": "21.2%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "amd-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "amkor": {
+      "displayValue": "11.3%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "amkor-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "amphenol": {
+      "displayValue": "29.5%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "amphenol-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "analog-devices": {
+      "displayValue": "40.1%",
+      "periodLabel": "Q3 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-analog-devices-2026-08-19-q3-fy2026",
+      "recordCount": 6
+    },
+    "applied-materials": {
+      "displayValue": "35.1%",
+      "periodLabel": "Q4 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "applied-materials-financial-results-refresh-202611-v01",
+      "recordCount": 8
+    },
+    "aptiv": {
+      "displayValue": "7.4%",
+      "periodLabel": "Q1 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "aptiv-2026-q1-10q-v17",
+      "recordCount": 9
+    },
+    "arista": {
+      "displayValue": "44.9%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "arista-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "arm": {
+      "displayValue": "13.9%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "US GAAP",
+      "sourceId": "arm-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "ase-technology": {
+      "displayValue": "13.6%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "Taiwan-IFRS",
+      "sourceId": "ase-technology-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "asm-international": {
+      "displayValue": "32.7%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "asm-international-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "asml": {
+      "displayValue": "44.4%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-asml-2026-10-14-q3-2026",
+      "recordCount": 7
+    },
+    "asmpt": {
+      "displayValue": "15.2%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "HKFRS",
+      "sourceId": "asmpt-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "besi": {
+      "displayValue": "45.8%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "besi-financial-results-refresh-202611-v01",
+      "recordCount": 8
+    },
+    "bosch": {
+      "displayValue": "1.5%",
+      "periodLabel": "FY2025",
+      "accountingBasis": "IFRS as adopted by the EU, consolidated",
+      "sourceId": "bosch-annual-report-2025",
+      "recordCount": 2
+    },
+    "broadcom": {
+      "displayValue": "53.9%",
+      "periodLabel": "Q3 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-broadcom-2026-09-02-q3-fy2026",
+      "recordCount": 6
+    },
+    "cadence": {
+      "displayValue": "26.2%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "cadence-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "canon": {
+      "displayValue": "8.4%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "canon-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "carrier": {
+      "displayValue": "-36.3%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "carrier-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "ciena": {
+      "displayValue": "18%",
+      "periodLabel": "Q3 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-ciena-2026-09-03-q3-fy2026",
+      "recordCount": 6
+    },
+    "cisco": {
+      "displayValue": "30.2%",
+      "periodLabel": "Q1 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "cisco-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "coherent": {
+      "displayValue": "15.9%",
+      "periodLabel": "Q1 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "coherent-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "corning": {
+      "displayValue": "18.8%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "corning-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "credo": {
+      "displayValue": "25.2%",
+      "periodLabel": "Q1 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-credo-2026-09-01-q1-fy2027",
+      "recordCount": 9
+    },
+    "denso": {
+      "displayValue": "4.5%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "IFRS",
+      "sourceId": "denso-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "digital-realty": {
+      "displayValue": "15.9%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "digital-realty-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "disco": {
+      "displayValue": "47.4%",
+      "periodLabel": "FY2026 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "disco-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "eaton": {
+      "displayValue": "17.8%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "eaton-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "entegris": {
+      "displayValue": "22.9%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "entegris-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "equinix": {
+      "displayValue": "23.3%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "equinix-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "fanuc": {
+      "displayValue": "26%",
+      "periodLabel": "FY2026 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "fanuc-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "fujikura": {
+      "displayValue": "28%",
+      "periodLabel": "FY2026 Q2",
+      "accountingBasis": "Japanese GAAP consolidated",
+      "sourceId": "fujikura-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "furukawa-electric": {
+      "displayValue": "8.6%",
+      "periodLabel": "FY2026 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "furukawa-electric-financial-results-refresh-202611-v01",
+      "recordCount": 10
+    },
+    "ge-vernova": {
+      "displayValue": "11%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "ge-vernova-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "globalfoundries": {
+      "displayValue": "12.1%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "globalfoundries-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "globalwafers": {
+      "displayValue": "9.8%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "Taiwan-IFRS",
+      "sourceId": "globalwafers-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "hanmi-semiconductor": {
+      "displayValue": "51.9%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "K-IFRS consolidated",
+      "sourceId": "hanmi-h1-2026-v15",
+      "recordCount": 8
+    },
+    "hexagon": {
+      "displayValue": "25%",
+      "periodLabel": "Q4 2025",
+      "accountingBasis": "IFRS (EU), IAS 34 year-end report",
+      "sourceId": "hexagon-fy2025-year-end-report",
+      "recordCount": 10
+    },
+    "ibiden": {
+      "displayValue": "23.9%",
+      "periodLabel": "FY2026 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "ibiden-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "infineon": {
+      "displayValue": "13.5%",
+      "periodLabel": "FY2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "infineon-financial-results-refresh-202611-v01",
+      "recordCount": 10
+    },
+    "intel": {
+      "displayValue": "15.3%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "intel-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "jcet": {
+      "displayValue": "7.4%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "PRC GAAP",
+      "sourceId": "filing-jcet-2026-10-23-q3",
+      "recordCount": 9
+    },
+    "johnson-controls": {
+      "displayValue": "14.4%",
+      "periodLabel": "FY2026",
+      "accountingBasis": "US GAAP consolidated continuing operations",
+      "sourceId": "johnson-controls-financial-results-refresh-202611-v01",
+      "recordCount": 10
+    },
+    "keyence": {
+      "displayValue": "56.9%",
+      "periodLabel": "FY2026 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "keyence-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "kinsus": {
+      "displayValue": "13.4%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+      "sourceId": "kinsus-q2-2026-v15",
+      "recordCount": 8
+    },
+    "kioxia": {
+      "displayValue": "80.4%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "IFRS",
+      "sourceId": "kioxia-fy2027-q2-v15",
+      "recordCount": 8
+    },
+    "kla": {
+      "displayValue": "45%",
+      "periodLabel": "Q1 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "kla-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "kokusai-electric": {
+      "displayValue": "23.6%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "IFRS",
+      "sourceId": "kokusai-electric-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "lam-research": {
+      "displayValue": "40%",
+      "periodLabel": "September 2026 quarter",
+      "accountingBasis": "US GAAP",
+      "sourceId": "lam-research-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "lasertec": {
+      "displayValue": "39.1%",
+      "periodLabel": "FY2027 Q1",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "lasertec-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "legrand": {
+      "displayValue": "19.3%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "legrand-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "linde": {
+      "displayValue": "22.9%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "linde-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "lumentum": {
+      "displayValue": "28.5%",
+      "periodLabel": "Q1 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "lumentum-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "marvell": {
+      "displayValue": "16.8%",
+      "periodLabel": "Q2 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "filing-marvell-2026-08-28-q2-fy2027-10q",
+      "recordCount": 6
+    },
+    "mediatek": {
+      "displayValue": "16.1%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "IFRS as endorsed by Taiwan FSC",
+      "sourceId": "mediatek-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "micron": {
+      "displayValue": "80.7%",
+      "periodLabel": "Q4 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-micron-2026-09-30-q4-fy2026",
+      "recordCount": 7
+    },
+    "mitsubishi-electric": {
+      "displayValue": "13.4%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "IFRS",
+      "sourceId": "mitsubishi-electric-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "mobileye": {
+      "displayValue": "-16.7%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "mobileye-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "monolithic-power": {
+      "displayValue": "29.7%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "monolithic-power-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "nan-ya-pcb": {
+      "displayValue": "26.4%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "Taiwan-IFRS",
+      "sourceId": "nan-ya-pcb-financial-results-refresh-202611-v01",
+      "recordCount": 8
+    },
+    "nikon": {
+      "displayValue": "5.8%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "IFRS",
+      "sourceId": "nikon-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "nvent": {
+      "displayValue": "18.6%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "nvent-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "nvidia": {
+      "displayValue": "66.9%",
+      "periodLabel": "Q3 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "nvidia-financial-results-refresh-202611-v01",
+      "recordCount": 10
+    },
+    "nxp": {
+      "displayValue": "32.4%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "nxp-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "omron": {
+      "displayValue": "7.8%",
+      "periodLabel": "FY2025",
+      "accountingBasis": "US GAAP",
+      "sourceId": "omron-financial-results-fy2025",
+      "recordCount": 4
+    },
+    "onsemi": {
+      "displayValue": "22%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "onsemi-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "qualcomm": {
+      "displayValue": "13.1%",
+      "periodLabel": "Q4 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "qualcomm-financial-results-refresh-202611-v01",
+      "recordCount": 10
+    },
+    "renesas": {
+      "displayValue": "129.7%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "renesas-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "resonac-holdings": {
+      "displayValue": "13.9%",
+      "periodLabel": "Q2 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "filing-resonac-2026-08-06-h1",
+      "recordCount": 6
+    },
+    "rohm": {
+      "displayValue": "5.5%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "rohm-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "samsung-electronics": {
+      "displayValue": "55%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "K-IFRS consolidated",
+      "sourceId": "samsung-electronics-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "sandisk": {
+      "displayValue": "79.6%",
+      "periodLabel": "Q1 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "sandisk-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "schneider-electric": {
+      "displayValue": "16.7%",
+      "periodLabel": "FY2025",
+      "accountingBasis": "IFRS",
+      "sourceId": "accounts-schneider-electric-2026-02-26-fy2025",
+      "recordCount": 2
+    },
+    "screen-holdings": {
+      "displayValue": "21.5%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "screen-holdings-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "seagate": {
+      "displayValue": "48.8%",
+      "periodLabel": "Q1 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "seagate-financial-results-refresh-202611-v01",
+      "recordCount": 10
+    },
+    "shin-etsu-chemical": {
+      "displayValue": "28%",
+      "periodLabel": "FY2026 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "shin-etsu-chemical-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "shinko-electric": {
+      "displayValue": "11.3%",
+      "periodLabel": "FY2024 Q4",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "shinko-fy2025-fy-v16",
+      "recordCount": 8
+    },
+    "siemens-energy": {
+      "displayValue": "11.8%",
+      "periodLabel": "FY2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "siemens-energy-financial-results-refresh-202611-v01",
+      "recordCount": 10
+    },
+    "sk-hynix": {
+      "displayValue": "79.7%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "K-IFRS consolidated",
+      "sourceId": "sk-hynix-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "smc": {
+      "displayValue": "29.7%",
+      "periodLabel": "FY2026 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "smc-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "smic": {
+      "displayValue": "22.3%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "IFRS",
+      "sourceId": "smic-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "stmicroelectronics": {
+      "displayValue": "9.8%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "stmicroelectronics-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "sumco": {
+      "displayValue": "1.7%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "sumco-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "sumitomo-electric": {
+      "displayValue": "8.5%",
+      "periodLabel": "FY2026 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "sumitomo-electric-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "synopsys": {
+      "displayValue": "14.4%",
+      "periodLabel": "Q3 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "earnings-synopsys-2026-08-26-q3-fy2026",
+      "recordCount": 8
+    },
+    "te-connectivity": {
+      "displayValue": "20.6%",
+      "periodLabel": "Q4 FY2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "te-connectivity-financial-results-refresh-202611-v01",
+      "recordCount": 10
+    },
+    "tesla": {
+      "displayValue": "2.6%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "tesla-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "texas-instruments": {
+      "displayValue": "47.5%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "texas-instruments-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "tokyo-electron": {
+      "displayValue": "31.6%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "Japanese GAAP",
+      "sourceId": "tokyo-electron-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "tower-semiconductor": {
+      "displayValue": "24.2%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "tower-semiconductor-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "trane-technologies": {
+      "displayValue": "19.9%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "trane-technologies-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "tsmc": {
+      "displayValue": "58.7%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "TIFRS consolidated",
+      "sourceId": "earnings-tsmc-2026-10-15-q3-2026",
+      "recordCount": 7
+    },
+    "umc": {
+      "displayValue": "25.1%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "TIFRS recognized by Taiwan FSC",
+      "sourceId": "umc-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "unimicron": {
+      "displayValue": "20%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "IFRS as endorsed by Taiwan FSC, consolidated",
+      "sourceId": "unimicron-q3-2026-v15",
+      "recordCount": 9
+    },
+    "vertiv": {
+      "displayValue": "22.8%",
+      "periodLabel": "Q3 2026",
+      "accountingBasis": "US GAAP",
+      "sourceId": "vertiv-financial-results-refresh-202611-v01",
+      "recordCount": 7
+    },
+    "western-digital": {
+      "displayValue": "46.7%",
+      "periodLabel": "Q1 FY2027",
+      "accountingBasis": "US GAAP",
+      "sourceId": "western-digital-financial-results-refresh-202611-v01",
+      "recordCount": 9
+    },
+    "yaskawa": {
+      "displayValue": "9.3%",
+      "periodLabel": "FY2027 Q2",
+      "accountingBasis": "IFRS",
+      "sourceId": "filing-yaskawa-2026-10-09-h1-fy2027",
+      "recordCount": 8
+    }
   }
 }

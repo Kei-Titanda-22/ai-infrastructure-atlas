@@ -4,6 +4,7 @@ import FinancialChart from '../components/FinancialChart.astro';
 import { getCollection } from 'astro:content';
 import quarterlyCoverage from '../data/financial-quarterly-coverage-v01.json';
 import quarterlyCloseout from '../data/financial-quarterly-closeout-v20.json';
+import resultsRefresh from '../data/financial-results-refresh-202611-v01.json';
 import { financialSourceById } from '../lib/financial-sources';
 import { withBase } from '../lib/paths';
 import {
@@ -25,6 +26,8 @@ const coveredCompanies = coveredIds
 const coverage = financialCoverage();
 const quarterlyCoverageByCompany = new Map(quarterlyCoverage.map(item => [item.companyId, item]));
 const quarterlyCloseoutByCompany = new Map(quarterlyCloseout.companies.map(item => [item.companyId, item]));
+const refreshByCompany = new Map(resultsRefresh.companies.map(item => [item.companyId, item]));
+const refreshStatusLabels: Record<string, string> = { adopt: '実績追加', 'already-current': '収録最新期を確認', 'announcement-pending': '次回発表待ち', 'already-current-next-release-waiting': '次回発表待ち', 'connection-held': '系列の接続保留', 'held-period-evidence': '単独四半期の証拠不足', 'original-unretrieved': '原表取得未完了', 'adopt-historical-hold-latest': '歴史的実績追加・最新系列は保留' };
 const initialCompanyId = coveredIds.includes('nvidia') ? 'nvidia' : coveredIds[0];
 
 const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'operatingMargin' | 'freeCashFlow' | 'capex') => {
@@ -65,6 +68,7 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
       const quarterlyChartRecords = quarterly.slice(-6);
       const annual = history.filter(record => record.periodType === 'annual');
       const quarterlyCoverageStatus = quarterlyCoverageByCompany.get(company!.id);
+      const currentReview = refreshByCompany.get(company!.id);
       const quarterlyCloseoutReview = quarterlyCloseoutByCompany.get(company!.id);
       const quarterlyHasFcf = quarterly.some(record => record.metrics.freeCashFlow.value != null);
       const quarterlyHasCapex = quarterly.some(record => record.metrics.capex.value != null);
@@ -97,9 +101,20 @@ const metricCell = (record: any, metricId: 'revenue' | 'operatingProfit' | 'oper
               四半期実績の収録状況：{quarterlyCoverageStatus.actualQuarterCount} / {quarterlyCoverageStatus.targetQuarterCount}。{quarterlyCoverageStatus.blockerReason}
             </p>
           )}
+          {currentReview && (
+            <p class="financial-definition-note" data-results-refresh-review>
+              最新開示の照合日：<time datetime={currentReview.auditDateJst}>{currentReview.auditDateJst}</time>（JST）。
+              判定：{refreshStatusLabels[currentReview.status] ?? currentReview.status}。
+              今回確認した開示：{currentReview.latestDisclosure?.periodLabel ?? '最新期未確定'}（対象期末 {currentReview.latestDisclosure?.endDate ?? '未確定'}、公表・資料日 {currentReview.latestDisclosure?.publishedAt ?? '日付未確定'}）。
+              {currentReview.latestDisclosure?.publicationDateQualification}
+              {currentReview.displaySummary}
+              連続6期の充足と、公表済み最新期の収録は別判定です。
+              <a class="source-link" href={currentReview.source.url} target="_blank" rel="noreferrer">今回確認した公式資料 ↗</a>
+            </p>
+          )}
           {quarterlyCloseoutReview && (
             <p class="financial-definition-note" data-quarterly-closeout-review>
-              不足範囲の確認日：<time datetime={quarterlyCloseout.reviewDate}>{quarterlyCloseout.reviewDate}</time>（JST）。
+              過去の不足範囲監査（v20）の確認日：<time datetime={quarterlyCloseout.reviewDate}>{quarterlyCloseout.reviewDate}</time>（JST）。
               {quarterlyCloseoutReview.summary}
               <a class="source-link" href={quarterlyCloseoutReview.sourceUrl} target="_blank" rel="noreferrer">{quarterlyCloseoutReview.sourceLabel} ↗</a>
             </p>

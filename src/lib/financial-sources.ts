@@ -56,6 +56,7 @@ import v05Batch19DocumentSources from '../data/document-sources-v05-batch19.json
 import v05Batch20DocumentSources from '../data/document-sources-v05-batch20.json';
 import v05Batch21DocumentSources from '../data/document-sources-v05-batch21.json';
 import v05Batch22DocumentSources from '../data/document-sources-v05-batch22.json';
+import financialResultsRefreshSources from '../data/document-sources-v05-batch23.json';
 
 export const financialSources = [
   ...sources,
@@ -116,6 +117,7 @@ export const financialSources = [
   ...v05Batch20DocumentSources,
   ...v05Batch21DocumentSources,
   ...v05Batch22DocumentSources,
+  ...financialResultsRefreshSources,
 ];
 
 export const financialSourceById = new Map(financialSources.map(source => [source.id, source]));

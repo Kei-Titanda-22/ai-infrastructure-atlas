@@ -9,7 +9,8 @@ import { withBase } from '../../lib/paths';
 import { layerLabel, countryLabel, tagLabel, facilityTypeLabel, productInfo } from '../../lib/display-v02';
 import { getMetricAudit, getMetricState, formatMetricValue, auditFormula } from '../../lib/metrics';
 import { allSources, resolveSources, sourceById } from '../../lib/source-registry';
-import { getFinancialHistory } from '../../lib/financial-history';
+import { getFinancialHistory, formatFinancialMetric, unitLabel } from '../../lib/financial-history';
+import { latestNormalizedFinancialRecord } from '../../lib/financial-comparison-contract';
 import facilities from '../../data/facilities.json';
 import brandAssets from '../../data/brand-assets.json';
 import claims from '../../data/claims.json';
@@ -73,6 +74,9 @@ const pilotQuarterlyHistory = pilotFinancialHistory.filter(record => record.peri
 const pilotAnnualHistory = pilotFinancialHistory.filter(record => record.periodType === 'annual');
 const pilotChartHistory = pilotQuarterlyHistory.length > 0 ? pilotQuarterlyHistory.slice(-6) : pilotAnnualHistory;
 const pilotChartPeriodType = pilotQuarterlyHistory.length > 0 ? 'quarterly' : 'annual';
+const showCurrentFinancialResult = pilotFinancialHistory.length > 0;
+const currentFinancialRecord = showCurrentFinancialResult ? latestNormalizedFinancialRecord(company.id, pilotFinancialHistory) : null;
+const currentFinancialSource = currentFinancialRecord ? sourceById.get(currentFinancialRecord.sourceId) : null;
 const kpiDefinitionById = new Map(sectorKpiDefinitions.map(definition => [definition.id, definition]));
 const metricLabels: Record<string, string> = {
   peTTM:'PER（実績）', peFY1:'PER（予想1期先）', pb:'PBR', roic:'ROIC',
@@ -249,11 +253,21 @@ const toc = (isEvidencePilot ? [
         <section class="company-section" id="financials">
           <div class="section-classification">客観データ</div>
           <h2>{isEvidencePilot ? '財務・主要KPI' : '財務'}</h2>
+          {currentFinancialRecord && (
+            <p class="section-intro" data-current-financial-result>
+              現在の収録最新期：{currentFinancialRecord.periodLabel}（期末 {currentFinancialRecord.endDate}、{currentFinancialRecord.periodType === 'annual' ? '通期' : '単独四半期'}）。
+              売上高 {formatFinancialMetric(currentFinancialRecord, 'revenue')}、営業利益 {formatFinancialMetric(currentFinancialRecord, 'operatingProfit')}（{unitLabel(currentFinancialRecord)}）、営業利益率 {formatFinancialMetric(currentFinancialRecord, 'operatingMargin')}。
+              {currentFinancialRecord.accountingBasis}。
+              {currentFinancialSource && <a class="source-link" href={currentFinancialSource.url} target="_blank" rel="noreferrer">最新収録値の一次資料 ↗</a>}
+              <a class="text-link" href={withBase(`financials/?company=${company.id}`)}>全履歴・検証日・今回の照合結果 →</a>
+            </p>
+          )}
           {!isEvidencePilot && <p class="section-intro">値だけでなく、決算期間・基準日・定義・一次資料・検証状態を一体で表示します。欠損も理由を隠しません。</p>}
           {isEvidencePilot && pilotChartHistory.length > 0 && <div class="pilot-financial-charts" aria-label={`${pilotChartPeriodType === 'quarterly' ? '四半期' : '通期'}財務推移`}>
             <FinancialChart records={pilotChartHistory} metricId="revenue" title="売上高" periodType={pilotChartPeriodType} />
             <FinancialChart records={pilotChartHistory} metricId="operatingMargin" title="営業利益率" periodType={pilotChartPeriodType} />
           </div>}
+          {showCurrentFinancialResult && visibleFinancialAuditRows.length > 0 && <p class="section-intro">以下は基準日別の既存KPI・検証履歴です。上記の収録最新期とは、対象期間が異なる指標を含みます。</p>}
           {isEvidencePilot && visibleFinancialAuditRows.length > 0 && <div class="table-scroll pilot-financial-brief-wrap" aria-label="主要財務指標の要約表"><table class="metrics-table pilot-financial-brief"><thead><tr><th>指標</th><th>値</th><th>期間・基準日</th></tr></thead><tbody>
             {visibleFinancialAuditRows.map(row => <tr><th>{row.label}</th><td class="provenance-value">{row.value}</td><td class="provenance-detail">{row.metric.period}<br /><span class="table-muted">{row.metric.asOf}</span></td></tr>)}
           </tbody></table></div>}
