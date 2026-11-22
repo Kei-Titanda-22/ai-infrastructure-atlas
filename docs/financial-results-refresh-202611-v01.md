@@ -62,7 +62,7 @@
 | nikon | adopt | FY2027 Q2 (2026-09-30) | FY2026 | [FY2027 Q2](https://www.jp.nikon.com/content/dam/web-assets/nikoncom/company/local/jp/ja/ir/ir_library/result/pdf/2027/27_2qf_c_j.pdf) | 2026-11-05 | complete-six-quarters |
 | legrand | adopt | Q3 2026 (2026-09-30) | FY2024 | [Q3 2026](https://www.legrand.com/sites/default/files/Documents_PDF_Legrand/Finance/2026/9m/Legrand_Consolidated_Financial_Statements_Q32026_EN_1793791546.pdf) | 2026-11-05 | complete-six-quarters |
 | mediatek | adopt | Q3 2026 (2026-09-30) | FY2025 | [Q3 2026](https://www.mediatek.com/hubfs/MediaTek-Assets/Pdfs/Financial%20Reports/2026/Q3%20Consolidated%20Report.pdf) | 2026-10-30 | complete-six-quarters |
-| nan-ya-pcb | adopt | Q3 2026 (2026-09-30) | 未確定 | [Q3 2026](https://www.nanyapcb.com.tw/nypcb/images/InvestorRelations/FinancialReport/115Q3.pdf) | 2026-11-05 | complete-six-quarters |
+| nan-ya-pcb | adopt | Q3 2026 (2026-09-30) | 未確定 | [Q3 2026](https://www.nanyapcb.com.tw/nypcb/images/InvestorRelations/FinancialReport/115Q3.pdf) | 未確定 | complete-six-quarters |
 | besi | adopt | Q3 2026 (2026-09-30) | 未確定 | [Q3 2026](https://www.besi.com/fileadmin/user_upload/PR_Q3-2026.pdf) | 2026-10-22 | complete-six-quarters |
 | nvent | adopt | Q3 2026 (2026-09-30) | 未確定 | [Q3 2026](https://www.sec.gov/Archives/edgar/data/1720635/000162828026068391/q32026nvtpressrelease.htm) | 2026-10-30 | complete-six-quarters |
 | ge-vernova | adopt | Q3 2026 (2026-09-30) | 未確定 | [Q3 2026](https://www.sec.gov/Archives/edgar/data/1996810/000199681026000163/gev-20260930.htm) | 2026-10-28 | complete-six-quarters |
@@ -186,9 +186,11 @@
 ### applied-materials
 
 - 発行体：Applied Materials, Inc. (AMAT)。照合日：2026-11-23。
-- [Applied Materials, Inc. Q4 FY2026 official financial disclosure](https://investor.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-fourth-quarter-and-fiscal-year-2026)。原表位置：Unaudited consolidated condensed statements of operations; Three Months Ended October25 2026; Revenue / Income from operations。
+- [Applied Materials, Inc. Q4 FY2026 official financial disclosure](https://investor.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-fourth-quarter-and-fiscal-year-2026)。原表位置：UNAUDITED CONSOLIDATED CONDENSED STATEMENTS OF OPERATIONS; Official HTML statement of operations, Revenue and Income from operations rows; current 2026 columns; quarterly column Three Months Ended October 25, 2026; annual column Twelve Months Ended October 25, 2026。
 - 接続／保留：USD million. Q1+Q2+Q3+Q4 revenues7012+7910+9115+10409=34446 and operating1831+2523+3075+3658=11087; equal full-year current column. Segment results not substituted.。
 - 追加：2件。既存全履歴8件を保持。最新6点上限：applied-materials-q3-fy2025, applied-materials-q4-fy2025, applied-materials-q1-fy2026, applied-materials-q2-fy2026, applied-materials-q3-fy2026, applied-materials-q4-fy2026-refresh-202611-v01。
+- 採用列 (Q4 FY2026)：Three Months Ended October 25, 2026、current-period、2026-07-27～2026-10-25。原表：UNAUDITED CONSOLIDATED CONDENSED STATEMENTS OF OPERATIONS／Official HTML statement of operations, Revenue and Income from operations rows; current 2026 columns。
+- 採用列 (FY2026)：Twelve Months Ended October 25, 2026、current-period、2025-10-27～2026-10-25。原表：UNAUDITED CONSOLIDATED CONDENSED STATEMENTS OF OPERATIONS／Official HTML statement of operations, Revenue and Income from operations rows; current 2026 columns。
 - Q4 FY2026 (2026-07-27–2026-10-25)：売上高 10409、未調整営業利益 3658、営業利益率 35.1%。US GAAP／USD million／consolidated。方式 standalone-current-column。{}
 - FY2026 (2025-10-27–2026-10-25)：売上高 34446、未調整営業利益 11087、営業利益率 32.2%。US GAAP／USD million／consolidated。方式 reported-twelve-month-current-column。{}
 - 資料保存・取得失敗・Web確認の証跡：JSONのsourceAcquisitionEvidenceとwebTraceEvidence。公表済み最新期の収録判定：true。
@@ -295,9 +297,11 @@
 ### qualcomm
 
 - 発行体：QUALCOMM Incorporated (QCOM)。照合日：2026-11-23。
-- [QUALCOMM Incorporated Q4 FY2026 official financial disclosure](https://investor.qualcomm.com/files/content_files/FY2026-4th-Quarter-Earnings-Release.pdf)。原表位置：PDFphysical6/printed6 Consolidated Statements of Operations; Three Months Ended September27 2026 Total revenues / Operating income。
+- [QUALCOMM Incorporated Q4 FY2026 official financial disclosure](https://investor.qualcomm.com/files/content_files/FY2026-4th-Quarter-Earnings-Release.pdf)。原表位置：CONSOLIDATED STATEMENTS OF OPERATIONS; PDF physical6 / printed6; Total revenues and Operating income rows; current 2026 columns; quarterly column Three Months Ended September 27, 2026; annual column Twelve Months Ended September 27, 2026。
 - 接続／保留：USGAAP consolidated; visual confirmed GAAP1356 vsnon-GAAP2769. NoQCT/QTLsegmentEBTsubstitution.。
 - 追加：2件。既存全履歴10件を保持。最新6点上限：qualcomm-q3-fy2025, qualcomm-q4-fy2025, qualcomm-q1-fy2026, qualcomm-q2-fy2026, qualcomm-q3-fy2026, qualcomm-q4-fy2026-refresh-202611-v01。
+- 採用列 (Q4 FY2026)：Three Months Ended September 27, 2026、current-period、2026-06-29～2026-09-27。原表：CONSOLIDATED STATEMENTS OF OPERATIONS／PDF physical6 / printed6; Total revenues and Operating income rows; current 2026 columns。
+- 採用列 (FY2026)：Twelve Months Ended September 27, 2026、current-period、2025-09-29～2026-09-27。原表：CONSOLIDATED STATEMENTS OF OPERATIONS／PDF physical6 / printed6; Total revenues and Operating income rows; current 2026 columns。
 - Q4 FY2026 (2026-06-29–2026-09-27)：売上高 10322、未調整営業利益 1356、営業利益率 13.1%。US GAAP／USD million／consolidated。方式 standalone-current-column。{}
 - FY2026 (2025-09-29–2026-09-27)：売上高 43120、未調整営業利益 8658、営業利益率 20.1%。US GAAP／USD million／consolidated。方式 reported-twelve-month-current-column。{}
 - 資料保存・取得失敗・Web確認の証跡：JSONのsourceAcquisitionEvidenceとwebTraceEvidence。公表済み最新期の収録判定：true。
@@ -305,7 +309,7 @@
 ### eaton
 
 - 発行体：Eaton Corporation plc (ETN)。照合日：2026-11-23。
-- [Eaton Corporation plc Q3 2026 official financial disclosure](https://www.eaton.com/content/dam/eaton/company/investor-relations/quarterly-earnings/filings/2026/q3/q3-2026-earnings-complete.pdf)。原表位置：Condensed Consolidated Statements of Income; Three months ended Sep30 2026; sales8947 − cost5842 − SG&A1278 − R&D238 =1588。
+- [Eaton Corporation plc Q3 2026 official financial disclosure](https://www.eaton.com/content/dam/eaton/company/investor-relations/quarterly-earnings/filings/2026/q3/q3-2026-earnings-complete.pdf)。原表位置：Consolidated Statements of Income; PDF physical6 / printed6; Three months ended September30 2026 current column; net sales8947 - cost of products5842 - selling/administration1278 - research/development238 =1589 USD million.。
 - 接続／保留：USGAAP existing unadjusted operating subtotal contract; cross-check pretax1370+interest198+other20=1588; no segment operating profit2263 substituted. Explicit current subtotal:8947-5842-1278-238=1589. Do not reverse rounded pretax1370 plus interest198 plus other20 (1588); source line-item rounding residual1 is documented, not hidden.。
 - 追加：1件。既存全履歴7件を保持。最新6点上限：eaton-q2-2025, eaton-q3-2025, eaton-q4-2025, eaton-q1-2026, eaton-q2-2026, eaton-q3-2026-refresh-202611-v01。
 - Q3 2026 (2026-07-01–2026-09-30)：売上高 8947、未調整営業利益 1589、営業利益率 17.8%。US GAAP／USD million／consolidated。方式 same-period-unadjusted-subtotal-reconstruction。{"revenue":"8947 USD million, direct current three-month column","operatingProfit":"8947 -5842 -1278 -238 =1589 USD million","precision":"Whole USD million source line items. Independent subtotal matches the retained series definition. Rounded pretax1370 + interest198 + other20 =1588 differs by1 and is not used."}
@@ -341,9 +345,11 @@
 ### te-connectivity
 
 - 発行体：TE Connectivity plc (TEL)。照合日：2026-11-23。
-- [TE Connectivity plc Q4 FY2026 official financial disclosure](https://investors.te.com/news-releases/press-release-details/2026/TE-Connectivity-delivers-12-sales-increase-and-over-20-EPS-growth-in-fiscal-fourth-quarter/)。原表位置：Consolidated statements of operations; Three Months Ended Sep25 2026; Net sales / Operating income。
+- [TE Connectivity plc Q4 FY2026 official financial disclosure](https://investors.te.com/news-releases/press-release-details/2026/TE-Connectivity-delivers-12-sales-increase-and-over-20-EPS-growth-in-fiscal-fourth-quarter/)。原表位置：CONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED); Official HTML consolidated operations table, Net sales and Operating income rows; current 2026 columns; quarterly column For the Quarters Ended September 25, 2026; annual column For the Years Ended September 25, 2026。
 - 接続／保留：USGAAP consolidated standalone and annualcurrentcolumns; no adjustedoperatingincome.。
 - 追加：2件。既存全履歴10件を保持。最新6点上限：te-connectivity-q3-fy2025, te-connectivity-q4-fy2025, te-connectivity-q1-fy2026, te-connectivity-q2-fy2026, te-connectivity-q3-fy2026, te-connectivity-q4-fy2026-refresh-202611-v01。
+- 採用列 (Q4 FY2026)：For the Quarters Ended September 25, 2026、current-period、2026-06-27～2026-09-25。原表：CONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED)／Official HTML consolidated operations table, Net sales and Operating income rows; current 2026 columns。
+- 採用列 (FY2026)：For the Years Ended September 25, 2026、current-period、2025-09-27～2026-09-25。原表：CONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED)／Official HTML consolidated operations table, Net sales and Operating income rows; current 2026 columns。
 - Q4 FY2026 (2026-06-27–2026-09-25)：売上高 5312、未調整営業利益 1093、営業利益率 20.6%。US GAAP／USD million／consolidated。方式 standalone-current-column。{}
 - FY2026 (2025-09-27–2026-09-25)：売上高 19885、未調整営業利益 3991、営業利益率 20.1%。US GAAP／USD million／consolidated。方式 reported-full-year-current-column。{}
 - 資料保存・取得失敗・Web確認の証跡：JSONのsourceAcquisitionEvidenceとwebTraceEvidence。公表済み最新期の収録判定：true。
@@ -414,9 +420,11 @@
 ### infineon
 
 - 発行体：Infineon Technologies AG (IFX)。照合日：2026-11-23。
-- [infineon FY2026 Q4 official results](https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf)。原表位置：p11 reconciliation reported operating profit; current quarter and fiscal year columns。
+- [infineon FY2026 Q4 official results](https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf)。原表位置：Consolidated Statement of Profit or Loss; PDF physical8 / printed8, Revenue and Operating profit rows; current FY2026 columns; physical11 / printed11 operating-profit reconciliation corroborates the unadjusted value; quarterly column Q4 FY 2026; annual column FY 2026。
 - 接続／保留：Same issuer and consolidated unadjusted accounting series; source values and comparative scope checked.。
 - 追加：2件。既存全履歴10件を保持。最新6点上限：infineon-fy2025-q3, infineon-fy2025-q4, infineon-fy2026-q1, infineon-fy2026-q2, infineon-fy2026-q3, infineon-fy2026-q4-refresh-202611-v01。
+- 採用列 (FY2026 Q4)：Q4 FY 2026、current-period、2026-07-01～2026-09-30。原表：Consolidated Statement of Profit or Loss／PDF physical8 / printed8, Revenue and Operating profit rows; current FY2026 columns; physical11 / printed11 operating-profit reconciliation corroborates the unadjusted value。
+- 採用列 (FY2026)：FY 2026、current-period、2025-10-01～2026-09-30。原表：Consolidated Statement of Profit or Loss／PDF physical8 / printed8, Revenue and Operating profit rows; current FY2026 columns; physical11 / printed11 operating-profit reconciliation corroborates the unadjusted value。
 - FY2026 Q4 (2026-07-01–2026-09-30)：売上高 4706、未調整営業利益 775、営業利益率 16.5%。IFRS／EUR million／consolidated。方式 standalone-current-column。{}
 - FY2026 (2025-10-01–2026-09-30)：売上高 16353、未調整営業利益 2214、営業利益率 13.5%。IFRS／EUR million／consolidated。方式 standalone-current-column。{}
 - 資料保存・取得失敗・Web確認の証跡：JSONのsourceAcquisitionEvidenceとwebTraceEvidence。公表済み最新期の収録判定：true。
@@ -424,9 +432,11 @@
 ### siemens-energy
 
 - 発行体：Siemens Energy AG (ENR)。照合日：2026-11-23。
-- [siemens-energy FY2026 Q4 official results](https://assets.siemens-energy.com/dam/23e549e5-fb37-4db4-99d3-b4ff00539ccb/ER_Q4_26_EN_final-pdf_Original%20file.pdf)。原表位置：physical p9 consolidated statements of income; Q4 FY2026 and FY2026 current columns; not Profit before special items。
+- [siemens-energy FY2026 Q4 official results](https://assets.siemens-energy.com/dam/23e549e5-fb37-4db4-99d3-b4ff00539ccb/ER_Q4_26_EN_final-pdf_Original%20file.pdf)。原表位置：Consolidated Statements of Income; PDF physical9 / printedIII, Revenue and Operating income (loss) rows; current 2026 columns, not Profit before special items; quarterly column Q4 FY 2026; annual column Fiscal year 2026。
 - 接続／保留：Same issuer and consolidated unadjusted accounting series; source values and comparative scope checked.。
 - 追加：2件。既存全履歴10件を保持。最新6点上限：siemens-energy-fy2025-q3, siemens-energy-fy2025-q4, siemens-energy-fy2026-q1, siemens-energy-fy2026-q2, siemens-energy-q3-fy2026, siemens-energy-fy2026-q4-refresh-202611-v01。
+- 採用列 (FY2026 Q4)：Q4 FY 2026、current-period、2026-07-01～2026-09-30。原表：Consolidated Statements of Income／PDF physical9 / printedIII, Revenue and Operating income (loss) rows; current 2026 columns, not Profit before special items。
+- 採用列 (FY2026)：Fiscal year 2026、current-period、2025-10-01～2026-09-30。原表：Consolidated Statements of Income／PDF physical9 / printedIII, Revenue and Operating income (loss) rows; current 2026 columns, not Profit before special items。
 - FY2026 Q4 (2026-07-01–2026-09-30)：売上高 12826、未調整営業利益 1671、営業利益率 13%。IFRS／EUR million／consolidated。方式 standalone-current-column。{}
 - FY2026 (2025-10-01–2026-09-30)：売上高 44243、未調整営業利益 5211、営業利益率 11.8%。IFRS／EUR million／consolidated。方式 standalone-current-column。{}
 - 資料保存・取得失敗・Web確認の証跡：JSONのsourceAcquisitionEvidenceとwebTraceEvidence。公表済み最新期の収録判定：true。
@@ -589,6 +599,7 @@
 - 発行体：Nan Ya Printed Circuit Board Corporation (8046)。照合日：2026-11-23。
 - [nan-ya-pcb Q3 2026 consolidated results](https://www.nanyapcb.com.tw/nypcb/images/InvestorRelations/FinancialReport/115Q3.pdf)。原表位置：physical/printed p5, ROC115 July–September column; physical p9 / printed p8 Note 2 board approved publication November 5。
 - 接続／保留：Same consolidated issuer, accounting basis and current fiscal-year scope. No adjusted, segment or parent-company substitution.。
+- 日付の区別：PDF自体の公表日は未確定。資料日（会計師核閲報告日、物理・印刷3ページ）と公表承認日（物理9／印刷8ページ）は2026-11-05。TWSEの当該Q3財務報告に関する公表記録は2026-11-05 16:26:17（台湾時間）で、固定基準前の決算開示を確認。正確なPDF掲載日とは区別する。
 - 追加：1件。既存全履歴8件を保持。最新6点上限：nan-ya-pcb-q2-2025, nan-ya-pcb-q3-2025, nan-ya-pcb-q4-2025, nan-ya-pcb-q1-2026, nan-ya-pcb-q2-2026, nan-ya-pcb-q3-2026-refresh-202611-v01。
 - Q3 2026 (2026-07-01–2026-09-30)：売上高 16378.267、未調整営業利益 4322.646、営業利益率 26.4%。Taiwan-IFRS／TWD million／consolidated。方式 standalone-current-column。{"revenue":"16378267 / 1000","operatingProfit":"4322646 / 1000","inputUnit":"TWD thousand","precision":"exact division by 1000"}
 - 資料保存・取得失敗・Web確認の証跡：JSONのsourceAcquisitionEvidenceとwebTraceEvidence。公表済み最新期の収録判定：true。
@@ -623,9 +634,11 @@
 ### johnson-controls
 
 - 発行体：Johnson Controls International plc (JCI)。照合日：2026-11-23。
-- [johnson-controls FY2026 Q4 official consolidated financial results](https://www.sec.gov/Archives/edgar/data/833444/000083344426000101/q4exh991xq4fy26earningsrel.htm)。原表位置：Consolidated Statements of Income, current quarter and current full fiscal year columns; same unadjusted subtotal reconstruction as stored records。
+- [johnson-controls FY2026 Q4 official consolidated financial results](https://www.sec.gov/Archives/edgar/data/833444/000083344426000101/q4exh991xq4fy26earningsrel.htm)。原表位置：Consolidated Statements of Income; Official SEC Exhibit99.1 HTML financial statements, Net sales products/systems plus services and Gross profit less SG&A and restructuring/impairment; unadjusted continuing operations, current 2026 columns; quarterly column Three Months Ended September 30, 2026; annual column Twelve Months Ended September 30, 2026。
 - 接続／保留：Same consolidated issuer and unadjusted accounting series as existing records; no alternative adjusted or segment measure.。
 - 追加：2件。既存全履歴10件を保持。最新6点上限：johnson-controls-fy2025-q3, johnson-controls-fy2025-q4, johnson-controls-fy2026-q1, johnson-controls-fy2026-q2, johnson-controls-q3-fy2026, johnson-controls-fy2026-q4-refresh-202611-v01。
+- 採用列 (FY2026 Q4)：Three Months Ended September 30, 2026、current-period、2026-07-01～2026-09-30。原表：Consolidated Statements of Income／Official SEC Exhibit99.1 HTML financial statements, Net sales products/systems plus services and Gross profit less SG&A and restructuring/impairment; unadjusted continuing operations, current 2026 columns。
+- 採用列 (FY2026)：Twelve Months Ended September 30, 2026、current-period、2025-10-01～2026-09-30。原表：Consolidated Statements of Income／Official SEC Exhibit99.1 HTML financial statements, Net sales products/systems plus services and Gross profit less SG&A and restructuring/impairment; unadjusted continuing operations, current 2026 columns。
 - FY2026 Q4 (2026-07-01–2026-09-30)：売上高 7113、未調整営業利益 1137、営業利益率 16%。US GAAP consolidated continuing operations／USD million／consolidated。方式 unadjusted-operating-subtotal。{"revenue":"5014 + 2099 = 7113","operatingProfit":"2705 - 1481 - 87 = 1137","reconciliation":"1137 - net financing charges 82 + equity income 8 = continuing pretax 1063","precision":"whole USD million"}
 - FY2026 (2025-10-01–2026-09-30)：売上高 25666、未調整営業利益 3694、営業利益率 14.4%。US GAAP consolidated continuing operations／USD million／consolidated。方式 unadjusted-operating-subtotal。{"revenue":"17701 + 7965 = 25666","operatingProfit":"9515 - 5510 - 311 = 3694","reconciliation":"3694 - 279 + 11 = 3426","precision":"whole USD million"}
 - 資料保存・取得失敗・Web確認の証跡：JSONのsourceAcquisitionEvidenceとwebTraceEvidence。公表済み最新期の収録判定：true。
@@ -992,6 +1005,7 @@
 - 発行体：Kinsus Interconnect Technology Corp. (3189)。照合日：2026-11-23。
 - [Kinsus3189 board financial-report approvals](https://www.kinsus.com.tw/zh-tw/html/corporate_governance_implementation/index)。原表位置：Official corporate-governance table says115Q3 financial report approvedOctober14; TWSE3189 profile generatedNovember22 confirmsQ3 actuals。
 - 接続／保留：Company IR/financial-report routes returned401; public TWSE Java request returnedHTML rather than requestedPDF. No bypass attempted. Board approval/date and current-quarter existence confirmed, but matching revenue and operating-income original unacquired. Monthly sales and EPS/pre-tax profit summary not used.。
+- 日付の区別：2026-10-14は公式表の取締役会承認日。決算原表の実際の掲載日は未確定。
 - 追加：0件。既存全履歴8件を保持。最新6点上限：kinsus-q1-2025, kinsus-q2-2025, kinsus-q3-2025, kinsus-q4-2025, kinsus-q1-2026, kinsus-q2-2026。
 - 資料保存・取得失敗・Web確認の証跡：JSONのsourceAcquisitionEvidenceとwebTraceEvidence。公表済み最新期の収録判定：false。
 

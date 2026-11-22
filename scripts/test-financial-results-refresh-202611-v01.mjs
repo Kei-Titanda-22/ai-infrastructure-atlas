@@ -515,7 +515,7 @@ assert.deepEqual(new Set(sources.map(s=>s.id)),new Set(policies.map(p=>p.sourceI
 for(const record of batch){
  const source=sources.find(s=>s.id===record.sourceId);
  assert.equal(source.companyId,record.companyId);
- assert.ok(source.publishedAt && source.publishedAt<='2026-11-23');
+ assertPublicationSemantics(source,audit.companies.find(row=>row.companyId===record.companyId));
  assert.equal(record.verifiedAt,'2026-11-23');
  assert.ok(record.startDate<record.endDate);
  assert.equal(record.metrics.operatingMargin.value,Math.round(record.metrics.operatingProfit.value/record.metrics.revenue.value*1000)/10);
@@ -567,9 +567,98 @@ for(const annual of batch.filter(record=>record.periodType==='annual')){
 }
 assert.equal(audit.companies.find(row=>row.companyId==='kinsus').latestDisclosure.publishedAt,null,'board approval is not silently labeled the publication date');
 assert.equal(audit.companies.find(row=>row.companyId==='kinsus').latestDisclosure.boardApprovedAt,'2026-10-14');
-assert.ok(audit.companies.find(row=>row.companyId==='nan-ya-pcb').source.publishedAtBasis.includes('not independently verified'));
+assert.equal(audit.companies.find(row=>row.companyId==='nan-ya-pcb').latestDisclosure.publishedAt,null);
 assert.equal(loader.getFinancialHistory('aptiv').find(r=>r.periodLabel==='Q3 2025').metrics.operatingProfit.value,-175);
 assert.equal(loader.getFinancialHistory('hexagon').find(r=>r.periodLabel==='Q3 2025').metrics.operatingProfit.value,-12.9);
+// Provenance checks use period type, duration, source columns and raw values.
+// Invalid controls catch plausible-looking but mismatched provenance metadata.
+function assertPublicationSemantics(source,row){
+ if(source.companyId!=='nan-ya-pcb'){
+  assert.ok(source.publishedAt && source.publishedAt<='2026-11-23',source.companyId+': dated publication evidence required');
+  return;
+ }
+ assert.equal(source.publishedAt,null,'PDF publication date remains unknown');
+ assert.equal(row.source.publishedAt,null);assert.equal(row.latestDisclosure.publishedAt,null);
+ assert.equal(row.source.reportDate,'2026-11-05','auditor report date, physical3/printed3');
+ assert.equal(row.source.authorizedForPublicationAt,'2026-11-05','authorization physical9/printed8 is a different date role');
+ const event=row.source.publicationCutoffEvidence;
+ assert.equal(event.kind,'official-public-financial-report-announcement','authorization alone is not publication evidence');
+ assert.equal(event.url,'https://www.twse.com.tw/pdf/ch/8046_ch.pdf');
+ assert.equal(event.issuerCode,'8046');assert.equal(event.periodEnd,'2026-09-30');assert.equal(event.physicalPage,5);
+ assert.equal(event.subject,'公告本公司115年第3季合併財務報告業經董事會決議通過');
+ assert.match(event.sha256,/^[a-f0-9]{64}$/);
+ assert.ok(Date.parse(event.announcedAt)<=Date.parse(audit.cutoffJst),'official public announcement must precede fixed cutoff');
+ assert.equal(row.latestDisclosure.publicationConfirmedBeforeCutoff,true);
+}
+const annualColumns={
+ 'applied-materials':['Twelve Months Ended October 25, 2026','2025-10-27','2026-10-25',34446,11087],
+ qualcomm:['Twelve Months Ended September 27, 2026','2025-09-29','2026-09-27',43120,8658],
+ 'te-connectivity':['For the Years Ended September 25, 2026','2025-09-27','2026-09-25',19885,3991],
+ infineon:['FY 2026','2025-10-01','2026-09-30',16353,2214],
+ 'siemens-energy':['Fiscal year 2026','2025-10-01','2026-09-30',44243,5211],
+ 'johnson-controls':['Twelve Months Ended September 30, 2026','2025-10-01','2026-09-30',25666,3694],
+};
+function assertSelection(record,selection){
+ assert.equal(selection.periodType,record.periodType);assert.equal(selection.columnRole,'current-period');
+ assert.equal(selection.startDate,record.startDate);assert.equal(selection.endDate,record.endDate);
+ assert.equal(selection.revenue,record.metrics.revenue.value);assert.equal(selection.operatingProfit,record.metrics.operatingProfit.value);
+ assert.equal(selection.currency,record.currency);assert.equal(selection.unit,record.unit);assert.equal(selection.accountingBasis,record.accountingBasis);
+ const duration=(Date.parse(selection.endDate)-Date.parse(selection.startDate))/86400000+1;
+ if(record.periodType==='annual'){
+  assert.deepEqual([selection.columnHeader,selection.startDate,selection.endDate,selection.revenue,selection.operatingProfit],annualColumns[record.companyId]);
+  assert.ok(duration>=360&&duration<=371);
+  assert.doesNotMatch(selection.columnHeader,/three months|quarters ended|^Q4/i);
+  for(const metric of ['revenue','operatingProfit']){
+   assert.ok(record.metrics[metric].basis.includes(selection.columnHeader));
+   assert.ok(record.metrics[metric].basis.includes(selection.startDate));assert.ok(record.metrics[metric].basis.includes(selection.endDate));
+   assert.doesNotMatch(record.metrics[metric].basis,/Three Months Ended|For the Quarters Ended/);
+  }
+ }else{
+  assert.ok(duration>=80&&duration<=100);assert.match(selection.columnHeader,/Three Months Ended|For the Quarters Ended|^Q4 /i);
+  assert.doesNotMatch(selection.columnHeader,/Twelve Months Ended|For the Years Ended|^Fiscal year/);
+ }
+}
+let selectionCount=0;
+for(const row of audit.companies)for(const candidate of row.candidates){
+ if(!candidate.sourceSelection)continue;
+ const record=batch.find(record=>record.companyId===row.companyId&&record.periodLabel===candidate.periodLabel);
+ assertSelection(record,candidate.sourceSelection);selectionCount++;
+}
+assert.equal(selectionCount,12,'six annual and six quarterly source-column selections');
+function assertEatonSubtotal(row,record){
+ const calculation=row.candidates[0].operatingSubtotal;
+ assert.equal(calculation.operation,'subtract');assert.deepEqual(calculation.operands,[8947,5842,1278,238]);
+ const result=calculation.operands.slice(1).reduce((value,cost)=>value-cost,calculation.operands[0]);
+ assert.equal(calculation.result,result);assert.equal(record.metrics.operatingProfit.value,result);assert.equal(record.metrics.revenue.value,calculation.operands[0]);
+ assert.equal(record.metrics.operatingMargin.value,Math.round(result/8947*1000)/10);
+ const inline=row.source.position.match(/8947.*?5842.*?1278.*?238\s*=\s*(\d+)/);
+ assert.ok(inline);assert.equal(Number(inline[1]),result,'source-position arithmetic must agree');
+ const basis=record.metrics.revenue.basis.match(/8947\s*[-−]\s*5842\s*[-−]\s*1278\s*[-−]\s*238\s*=\s*(\d+)/);
+ assert.ok(basis);assert.equal(Number(basis[1]),result,'revenue-basis arithmetic must agree');
+ const rejected=calculation.rejectedRoundedReverseCalculation;
+ assert.equal(rejected.operands.reduce((a,b)=>a+b,0),1588);assert.equal(rejected.result,1588);assert.equal(rejected.adopted,false);
+ assert.notEqual(rejected.result,result,'rejected reverse calculation is not substituted');
+}
+const eatonRow=audit.companies.find(row=>row.companyId==='eaton');assertEatonSubtotal(eatonRow,current('eaton'));
+const nanYaRow=audit.companies.find(row=>row.companyId==='nan-ya-pcb'),nanYaSource=sources.find(source=>source.companyId==='nan-ya-pcb');
+assertPublicationSemantics(nanYaSource,nanYaRow);
+const annualRecord=batch.find(record=>record.companyId==='qualcomm'&&record.periodType==='annual');
+const annualSelection=structuredClone(audit.companies.find(row=>row.companyId==='qualcomm').candidates.find(row=>row.periodType==='annual').sourceSelection);
+let negativeCases=0;function rejects(action){assert.throws(action);negativeCases++;}
+rejects(()=>assertSelection(annualRecord,{...annualSelection,periodType:'quarterly'}));
+rejects(()=>assertSelection(annualRecord,{...annualSelection,columnHeader:'Three Months Ended September 27, 2026'}));
+rejects(()=>assertSelection(annualRecord,{...annualSelection,startDate:'2026-06-29'}));
+rejects(()=>assertSelection(annualRecord,{...annualSelection,operatingProfit:1356}));
+let bad=structuredClone(eatonRow);bad.candidates[0].operatingSubtotal.result=1588;rejects(()=>assertEatonSubtotal(bad,current('eaton')));
+bad=structuredClone(eatonRow);bad.source.position=bad.source.position.replace('=1589','=1588');rejects(()=>assertEatonSubtotal(bad,current('eaton')));
+bad=structuredClone(nanYaRow);bad.source.publicationCutoffEvidence.kind='board-authorization-only';rejects(()=>assertPublicationSemantics(nanYaSource,bad));
+bad=structuredClone(nanYaRow);bad.source.publicationCutoffEvidence.announcedAt='2026-11-24T16:26:17+08:00';rejects(()=>assertPublicationSemantics(nanYaSource,bad));
+rejects(()=>assertPublicationSemantics({...nanYaSource,publishedAt:'2026-11-05'},nanYaRow));
+const other=sources.find(source=>source.companyId==='qualcomm');
+rejects(()=>assertPublicationSemantics({...other,publishedAt:null},audit.companies.find(row=>row.companyId==='qualcomm')));
+assert.equal(negativeCases,10);
+console.log('Provenance metadata: six annual / six quarterly columns, Eaton subtotal / rejected reverse value, NanYa date roles / cutoff announcement, 10 invalid cases PASS');
+
 const generated=await generate();
 for(const [path,text] of generated.outputs)assert.equal(await readFile(new URL('../'+path,import.meta.url),'utf8'),text,path+': official generator freshness');
 assert.deepEqual([generated.result.counts.completeSixQuarters,generated.result.counts.partialQuarterly,generated.result.counts.awaiting,generated.result.counts.needsReview],[95,1,0,4]);

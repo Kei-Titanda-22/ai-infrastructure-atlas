@@ -1967,7 +1967,8 @@ if (process.argv.includes('--dist')) {
   ]) assert.notEqual(nonFinancialDigest(changed), nonFinancialDigest(boundaryHtml), `${description} changes the non-financial digest`);
   const financialPayload = compareHtml.match(financialPayloadRe)?.[0];
   assert.ok(financialPayload, 'Compare retains the isolated financial JSON payload');
-  assert.equal(Buffer.byteLength(financialPayload), 994_090, '82 adopted records add 131524 B to the retained 862566 B financial payload');
+  assert.equal(994_090-862_566,131_524,'historical 82-record financial payload increment retained');
+  assert.equal(Buffer.byteLength(financialPayload), 995728, 'metadata correction payload measured from original-basis and date updates');
   const normalizedNonFinancialHtml = normalizeViteAssetFingerprints(compareHtml.replace(financialPayloadRe, '$1$2'));
   assert.equal(Buffer.byteLength(normalizedNonFinancialHtml), 327_875, 'human UX review adds 190 B of explicit comparison-order and legend markup to the v08 non-financial HTML');
   assert.equal(
@@ -2087,7 +2088,9 @@ if (process.argv.includes('--dist')) {
   assert.equal(compareBytes - 1_188_783, Buffer.byteLength(financialPayload) - 860_981, 'the 36 B metadata correction changes only the financial payload');
   assert.equal(compareBytes - 1_188_819, Buffer.byteLength(financialPayload) - 861_017, 'v19 diagnostic growth is confined to the single Omron financial record');
   assert.equal(1_190_368 - 1_188_819, 862_566 - 861_017, 'historical v19 single-quarter diagnostic increment remains preserved');
-  assert.equal(compareBytes, 1_321_892, 'maintenance diagnostic output matches independently measured HTML');
+  assert.equal(1_321_892-1_190_368,994_090-862_566,'historical maintenance increment retained');
+  assert.equal(compareBytes, 1323530, 'metadata-corrected diagnostic output matches independently measured HTML');
+  assert.equal(compareBytes-1_321_892,Buffer.byteLength(financialPayload)-994_090,'correction byte increment is only financial provenance payload');
   const assertFifteenthBatchCompareSize = bytes => {
     assert.ok(Number.isSafeInteger(bytes) && bytes >= 0, 'v15 diagnostic byte count is a non-negative integer');
     assert.ok(bytes <= fifteenthBatchCompareSizeContract.maximumRawBytes, `v15 legacy Compare HTML ${bytes} B exceeds ${fifteenthBatchCompareSizeContract.maximumRawBytes} B`);

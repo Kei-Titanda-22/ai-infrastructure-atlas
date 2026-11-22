@@ -2,7 +2,7 @@
 
 データ基準日: **2026-11-23**
 
-入力SHA-256: `9d21a987c808aa5d012207900123a67cf4c86eaaf89c36dc787a3f696b037569`
+入力SHA-256: `6e191eb101d373932d4fb3a9fb1f1fab07a47f22ec09cdb1e03252f3406414d2`
 
 生成: `python scripts/audit-financial-quality.py --write`
 
@@ -56,9 +56,9 @@
 | --- | ---: | --- |
 | `direct-gaap-ifrs-operating-income` | 694 | Direct reported GAAP/IFRS operating income/profit/loss/earnings |
 | `ebit` | 2 | Reported EBIT used as the operating-profit measure |
-| `reconstructed-operating-income` | 27 | Atlas reconstructs operating income from reported operating line items |
+| `reconstructed-operating-income` | 26 | Atlas reconstructs operating income from reported operating line items |
 | `source-linked` | 1 | Value is retained as source-linked rather than verified |
-| `special-case` | 73 | Missing, period-derived, or otherwise not safely classified as a direct reported measure |
+| `special-case` | 74 | Missing, period-derived, or otherwise not safely classified as a direct reported measure |
 
 ## Adjusted / Non-GAAP FCF判定
 
@@ -77,7 +77,7 @@
 | `discontinued-operations` | 11 | Continuing/discontinued-operation boundaries affect comparison |
 | `non-consolidated-subsidiary` | 2 | Non-consolidated subsidiary company-only disclosure |
 | `reit` | 9 | REIT financial/capital-investment structure |
-| `reconstructed-operating-income` | 27 | Operating income is reconstructed |
+| `reconstructed-operating-income` | 26 | Operating income is reconstructed |
 | `net-basis-capex` | 28 | Capex is disclosed on a net basis |
 | `broad-capex` | 10 | Capex uses a broader non-current-asset definition |
 | `ppe-only` | 64 | Cash Capex is limited to PP&E and excludes separately classified intangible-asset purchases |
@@ -99,7 +99,7 @@
 | `fcf-capex-scope-mismatch` | 0 | The populated FCF subtracts a cash-investment component outside the stored Capex value's scope |
 | `derived-single-quarter` | 9 | A single-quarter value is derived from cumulative periods |
 | `unclassified-capex-definition` | 0 | A populated Capex value remains definition-unclassified |
-| `special-operating-profit-definition` | 73 | Operating-profit definition is classified as a special case |
+| `special-operating-profit-definition` | 74 | Operating-profit definition is classified as a special case |
 
 ## 要確認キュー
 
@@ -165,7 +165,7 @@ V/S/R/M = verified / source-linked / needs-review / missing。CF列は FCF+Capex
 | infineon | Infineon（インフィニオン） | 10 | 34 | 0 | 0 | 16 | 2 | 0 | 0 | 8 | — |
 | intel | Intel（インテル） | 7 | 21 | 0 | 0 | 14 | 0 | 0 | 0 | 7 | reconstructed-operating-income |
 | jcet | JCET（長電科技） | 9 | 31 | 0 | 0 | 14 | 2 | 0 | 0 | 7 | broad-capex |
-| johnson-controls | Johnson Controls（ジョンソンコントロールズ） | 10 | 34 | 0 | 0 | 16 | 2 | 0 | 0 | 8 | discontinued-operations, reconstructed-operating-income, broad-capex, continuing-operations-scope |
+| johnson-controls | Johnson Controls（ジョンソンコントロールズ） | 10 | 34 | 0 | 0 | 16 | 2 | 0 | 0 | 8 | discontinued-operations, reconstructed-operating-income, broad-capex, continuing-operations-scope, special-operating-profit-definition |
 | keyence | キーエンス | 9 | 27 | 0 | 0 | 18 | 0 | 0 | 0 | 9 | special-operating-profit-definition |
 | kinsus | Kinsus（景碩科技） | 8 | 24 | 0 | 0 | 16 | 0 | 0 | 0 | 8 | — |
 | kioxia | キオクシアホールディングス | 8 | 38 | 0 | 0 | 2 | 7 | 0 | 0 | 1 | derived-single-quarter, special-operating-profit-definition |

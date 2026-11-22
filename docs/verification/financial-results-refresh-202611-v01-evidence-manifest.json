@@ -456,5 +456,281 @@
       }
     ],
     "buildsAndQaReused": true
+  },
+  "authoritativeFinalEvidenceSection": "provenanceMetadataCorrection",
+  "provenanceMetadataCorrection": {
+    "recordedAtJst": "2026-11-23T07:25:00.183374+09:00",
+    "predecessorCommit": "ae4e12a0e2c4023de452fe2c0d43995b7b460905",
+    "predecessorTree": "f2b4bca30c992e850214dabf0ba3a9870dc92996",
+    "baselineMain": "fce8a843c73cc2e9783214b5aa77b8bd7d200428",
+    "researchCutoffUnchanged": "2026-11-23T04:17:19+09:00",
+    "historyPolicy": "All original top-level evidence describes the predecessor commit and remains historical. Corrected final results are in this section. Original1270 and finalization30 evidence files/index sidecars were independently rehashed before editing; no originals overwritten.",
+    "correctionEvidenceBase": "metadata-correction-v01",
+    "index": {
+      "path": "metadata-correction-v01/evidence-index.json",
+      "sha256": "98d9072429f6f84d8d8dc1fb7a4367c2993842cf75eae6f352f5ea9373b419bf"
+    },
+    "sidecar": {
+      "path": "metadata-correction-v01/evidence-index.sha256",
+      "sha256": "8ab9293158b6774b94c9e1ef8527e0026c4c4f93d81e99d59a79b8338e66242e"
+    },
+    "separateProcessVerification": {
+      "path": "metadata-correction-v01/evidence-index-verification.json",
+      "sha256": "25c40228b345e80c391c06e1896dbc4619962ad399eb4e5becb1a5a6469c538b"
+    },
+    "indexedFiles": 432,
+    "metadataChanges": {
+      "eaton": "Revenue8947, operating profit1589 and margin17.8 retained. Source position and revenue basis now agree with8947-5842-1278-238=1589; rounded1370+198+20=1588 is explicitly rejected and never adopted.",
+      "annuals": [
+        "applied-materials",
+        "qualcomm",
+        "te-connectivity",
+        "infineon",
+        "johnson-controls",
+        "siemens-energy"
+      ],
+      "annualMeaning": "All six annual revenue/unadjusted-operating values rechecked against current full-fiscal-year columns. Annual source selections carry independent kind/date/value/unit/scope fields; matching quarter selections remain quarter columns. Only13 metric basis strings changed; all82 financial values, periods, accounting bases, currencies, units, dates and missing FCF/Capex retained.",
+      "nanYa": {
+        "sourcePublishedAt": null,
+        "reportDate": "2026-11-05",
+        "reportDateMeaning": "Auditor review report, physical/printed3",
+        "authorizedForPublicationAt": "2026-11-05",
+        "authorizationMeaning": "Note2, physical9 / printed8",
+        "officialAnnouncement": "2026-11-05T16:26:17+08:00",
+        "announcementMeaning": "TWSE official8046 profile physical5 gives public timestamp for the Q3 consolidated financial-report approval announcement. It corroborates pre-cutoff disclosure of the approved issuer/period report; exact linked-PDF upload date remains unknown. Authorization alone is not used as publication proof.",
+        "cutoffEligibility": "Adoption retained based on the approved original plus independently timestamped official public announcement. Retrieval/reconfirmation time is later and separately stored.",
+        "evidence": {
+          "path": "metadata-correction-v01/nanya-twse-profile.pdf",
+          "sha256": "74f0404c076f558b83be5fdecefb734c6aabe49b7fe408cbebb53abc0083b8a5"
+        }
+      },
+      "reviewProof": {
+        "path": "metadata-correction-v01/annual-source-column-audit.json",
+        "sha256": "556e55f46fa36c727863e9a543218fb1814f4fdd97d43bfb4ea567cadc3da9a8"
+      }
+    },
+    "productInput": {
+      "count": 482,
+      "digest": "73c581db4adba9ec4cb8d5c9131ddb46e7c26ea36508a6b720fd221afa7915a0",
+      "map": {
+        "path": "metadata-correction-v01/final-product-input.json",
+        "sha256": "f8ef97de4978dc2d545ae1792fafd7b417dffc38f074fc69752c29c71e13fe3f"
+      },
+      "changedFromPredecessor": true,
+      "oldBuildsNotReusedAsCorrectedFinalEvidence": true
+    },
+    "runtime": {
+      "node": "22.23.4",
+      "npm": "10.9.9",
+      "lockfileSha256": "68bccf4cd414b45c7f99b582c6eb46457afd002087e70994ca2e085838997f4b",
+      "environment": {
+        "path": "metadata-correction-v01/build-environment.json",
+        "sha256": "a2bc1b486756ce4c251d3fe47403b3213a65aafd42c1c406a7bf4d608bdda685"
+      },
+      "dependencies": "Same dedicated physical node_modules; no install, dependency, workflow, permission or security-setting change."
+    },
+    "builds": {
+      "standardNpmRunBuildAttemptsOnCorrectedInput": 0,
+      "precreatedOutputCleanPipelines": [
+        {
+          "number": 1,
+          "result": {
+            "path": "metadata-correction-v01/clean-pipeline1-result.json",
+            "sha256": "92c0fd8b26adbe8d0ee49edd7960cf559ad7f0b9d4d091527f0770226a0dab19"
+          },
+          "log": {
+            "path": "metadata-correction-v01/clean-pipeline1.log",
+            "sha256": "d8c5ac4102f0bd095524cb0e806debf672f7eac20b50416eb03322886508d586"
+          },
+          "map": {
+            "path": "metadata-correction-v01/clean-pipeline1-map.json",
+            "sha256": "c8f80eaae34a14ded1b3364e0dbc9b226788647090512054407bc95d43a40447"
+          },
+          "decodedFragments": {
+            "path": "metadata-correction-v01/clean-pipeline1-pagefind-fragments.json",
+            "sha256": "56e5f5f3c05be9abc8dc16bc297f8ec6f652fec7f57492eb9d586cab461978da"
+          },
+          "exitCode": 0
+        },
+        {
+          "number": 2,
+          "result": {
+            "path": "metadata-correction-v01/clean-pipeline2-result.json",
+            "sha256": "22ffd44e8aad0fbd33b2d2db356ea6033e6d1ff1bac40fcf11b727f99011d88e"
+          },
+          "log": {
+            "path": "metadata-correction-v01/clean-pipeline2.log",
+            "sha256": "e568e5f545677c796e594bd581eeb7b97e118870475839ddcfcc597164d96f4e"
+          },
+          "map": {
+            "path": "metadata-correction-v01/clean-pipeline2-map.json",
+            "sha256": "fdc34f383b52a09227df48b9f1bcf7d895f134da354585f59e0ed92c72d74b64"
+          },
+          "decodedFragments": {
+            "path": "metadata-correction-v01/clean-pipeline2-pagefind-fragments.json",
+            "sha256": "56e5f5f3c05be9abc8dc16bc297f8ec6f652fec7f57492eb9d586cab461978da"
+          },
+          "exitCode": 0
+        }
+      ],
+      "commandDifference": "All standard Astro/Pagefind/Compare-dist stages preserved, with explicit output-directory precreation between Astro and Pagefind. Not two standard npm run build successes.",
+      "oldStandardHistory": "Predecessor standard attempts1/3 failedPagefind,2 succeeded; old logs stay unchanged and apply to old input only.",
+      "futureProductionCondition": "Automatically triggered Linux PR standard Verify locked build must succeed before production reflection. This has not executed for the corrected head; no manual workflow run."
+    },
+    "validation": {
+      "formalValidate": {
+        "path": "metadata-correction-v01/formal-validation-result.json",
+        "sha256": "2d18585fa177ad2c68feadbf513c1ced34c9f9b500b43241eb7a523728a5c617"
+      },
+      "formalValidateLog": {
+        "path": "metadata-correction-v01/formal-validate.log",
+        "sha256": "037dcab210f55b34aef466dcbf8a2f7c665ed881f41ff17d2e2dd23a0c8fa5ad"
+      },
+      "focusedSemanticChecks": "Six annual + six quarter selections, duration/source-column/raw-value/series alignment, Eaton computed subtotal and rejected reverse value, NanYa date roles/official public announcement before cutoff. All other sources still require their publication dates.",
+      "invalidCasesDetected": 10,
+      "focusedLog": {
+        "path": "metadata-correction-v01/focused-provenance-initial.log",
+        "sha256": "3480f2bc845dc7595a93f55f7f6688fde940f26200a4f03bab96d9498f1b1c24"
+      },
+      "japaneseDistLog": {
+        "path": "metadata-correction-v01/final-japanese-dist.log",
+        "sha256": "668959891c5ef5cf925d819914f91d86440ba2fd60ecb5002dcac3a751549cce"
+      },
+      "all100Machine": "Final Compare-dist gate verified100 histories,797 rows/source links, old715 record digest, latest graph windows and annual separation.",
+      "secretScan": "Official scanner succeeded inside formal validate; final changed manifest is rescanned and actual target set captured in finalization receipt.",
+      "stageWhitespace": "git diff --check before pipelines; cached diff --check before commit. Finalization receipt records actual outcomes."
+    },
+    "results": {
+      "records": 797,
+      "companies": 100,
+      "newRecordsThisCorrection": 0,
+      "coverage": {
+        "complete": 95,
+        "partial": 1,
+        "awaiting": 0,
+        "needsReview": 4
+      },
+      "activeFreeze": "financial-results-refresh-202611-v01",
+      "freeze101Unchanged": true,
+      "newFreezeRequired": false,
+      "old31FreezeObjectsAndFixtureRawPreserved": true,
+      "companyDetails100RawUnchanged": true,
+      "commonJsCss14RawUnchanged": true,
+      "chartScriptUnchanged": true,
+      "routes": 210,
+      "pagefindUrls": 105,
+      "decodedFragmentsEqualBetweenPipelines": true,
+      "allDistFiles": 365,
+      "compare": {
+        "bytes": 1323530,
+        "sha256": "88988f063be92724a2a680e1fc922c7bdc21213d593808ed321e235825b848bf",
+        "predecessorBytes": 1321892,
+        "metadataPayloadOnlyDelta": 1638,
+        "existingMaximumUnchanged": 1387986,
+        "productionLimitsUnchanged": true,
+        "shellBytes": 24593,
+        "max4CompanyRawBytes": 294247,
+        "max4CompanyGzipBytes": 26798,
+        "all4CompanySetsVerified": 4087975
+      },
+      "betweenPipelinesRawDifference": {
+        "different": [
+          "pagefind/pagefind-entry.json"
+        ],
+        "onlyPipeline1": [
+          "pagefind/filter/ja_923d6a9.pf_filter",
+          "pagefind/filter/ja_c0bf43d.pf_filter",
+          "pagefind/pagefind.ja_bf98c27d82.pf_meta"
+        ],
+        "onlyPipeline2": [
+          "pagefind/filter/ja_3190c7f.pf_filter",
+          "pagefind/filter/ja_528172f.pf_filter",
+          "pagefind/pagefind.ja_e1374a8c5b.pf_meta"
+        ]
+      },
+      "predecessorRawComparison": {
+        "path": "metadata-correction-v01/all-dist-comparison-to-predecessor.json",
+        "sha256": "ed9fca07540dfb8b260da4d690aeb7271008b464805af511a917443ba0479a52"
+      },
+      "exactDisplayPayloadProof": {
+        "path": "metadata-correction-v01/exact-display-and-payload-differences.json",
+        "sha256": "5da0cd2fbbee683c6e67f792da44ac6bf081cac45f00808599fe77dc7c02e24c"
+      },
+      "independentProof": {
+        "path": "metadata-correction-v01/final-independent-verification.json",
+        "sha256": "31de5b01940110732f38c71213b9eb22f155c4ffd40be028df1092fcfc0cb6de"
+      }
+    },
+    "previewQa": {
+      "url": "http://127.0.0.1:4437/ai-infrastructure-atlas/",
+      "rawHttpByteProof": {
+        "path": "metadata-correction-v01/preview-byte-verification.json",
+        "sha256": "8ae32554f1df6e7d510d3452dfd32b59e2efca1f5b41f4c689cf2dd1ddb18f6a"
+      },
+      "matches": 365,
+      "newDateExplanationWidths": [
+        1024,
+        390,
+        360
+      ],
+      "additionalValuesObserved": [
+        "eaton",
+        "applied-materials",
+        "qualcomm",
+        "te-connectivity"
+      ],
+      "cases": 7,
+      "documentOverflowsObserved": 0,
+      "siteConsoleErrorsObserved": 0,
+      "externalPrimaryUrlsOpenedDuringPreviewQa": 0,
+      "evidence": {
+        "path": "metadata-correction-v01/browser-qa-correction.json",
+        "sha256": "084b0b917a451d35dcfb8647ba5af187020593a76bf65d32369b6c53dd8aaee2"
+      },
+      "inheritance": "Only byte-identical101 on-demand artifacts,100 detail pages,14 JS/CSS and financials outside exact one NanYa paragraph. Updated /financials/ search fragment is mechanically verified; do not infer complete old/new Pagefind raw identity or all-path behavioral identity. Diagnostic basis strings checked mechanically, not claimed newly visible in on-demand table UI.",
+      "screenshots": [
+        {
+          "path": "metadata-correction-v01/nanya-date-1024.jpg",
+          "sha256": "716fbdbc98edda79a65978147d0dcdd3c3d97c5db7e659d08982665ad06e7aff"
+        },
+        {
+          "path": "metadata-correction-v01/nanya-date-390.jpg",
+          "sha256": "fda08ca877f8e2ee696d265f2871f6993216904db6607aa6b1cc6a9084d011c7"
+        },
+        {
+          "path": "metadata-correction-v01/nanya-date-360.jpg",
+          "sha256": "b569eb1fd701049779a24bea3d86057dbaf3fc413fdb59e04a458956ec8aefbc"
+        }
+      ]
+    },
+    "triageHumanJudgmentsAndOrderPreserved": {
+      "decisions": 779,
+      "sample": 87
+    },
+    "actualFollowupPaths": [
+      "docs/company-evidence-coverage-audit-v01.json",
+      "docs/company-evidence-coverage-audit-v01.md",
+      "docs/company-evidence-gap-triage-v02.json",
+      "docs/company-evidence-triage-validation-v02.json",
+      "docs/financial-quality-audit.json",
+      "docs/financial-quality-audit.md",
+      "docs/financial-results-refresh-202611-v01.json",
+      "docs/financial-results-refresh-202611-v01.md",
+      "docs/verification/financial-results-refresh-202611-v01-evidence-manifest.json",
+      "scripts/generate-financial-results-refresh-202611-v01.mjs",
+      "scripts/test-company-compare-evidence-ui.mjs",
+      "scripts/test-financial-results-refresh-202611-v01.mjs",
+      "src/data/document-sources-v05-batch23.json",
+      "src/data/financial-history-v05-batch23.json",
+      "src/data/financial-results-refresh-202611-v01.json"
+    ],
+    "attemptNotes": {
+      "path": "metadata-correction-v01/correction-attempt-notes.json",
+      "sha256": "6f0d6d2826df927a883b09453762846a0c30780b39dccd1db61fe6fe406572b5"
+    },
+    "draftBody": {
+      "path": "metadata-correction-v01/draft-pr-corrected.md",
+      "sha256": "e4f372934e25ca23804b495b701c7b154e72cb95b4090852d80622a7cf1ac4ed"
+    }
   }
 }

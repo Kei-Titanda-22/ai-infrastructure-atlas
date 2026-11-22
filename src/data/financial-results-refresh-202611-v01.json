@@ -1239,7 +1239,7 @@
       },
       "source": {
         "url": "https://investor.appliedmaterials.com/news-releases/news-release-details/applied-materials-announces-fourth-quarter-and-fiscal-year-2026",
-        "position": "Unaudited consolidated condensed statements of operations; Three Months Ended October25 2026; Revenue / Income from operations",
+        "position": "UNAUDITED CONSOLIDATED CONDENSED STATEMENTS OF OPERATIONS; Official HTML statement of operations, Revenue and Income from operations rows; current 2026 columns; quarterly column Three Months Ended October 25, 2026; annual column Twelve Months Ended October 25, 2026",
         "publishedAt": "2026-11-12",
         "title": "Applied Materials, Inc. Q4 FY2026 official financial disclosure"
       },
@@ -1258,7 +1258,21 @@
           "method": "standalone-current-column",
           "recordId": "applied-materials-q4-fy2026-refresh-202611-v01",
           "sourceId": "applied-materials-financial-results-refresh-202611-v01",
-          "operatingMargin": 35.1
+          "operatingMargin": 35.1,
+          "sourceSelection": {
+            "periodType": "quarterly",
+            "columnHeader": "Three Months Ended October 25, 2026",
+            "columnRole": "current-period",
+            "startDate": "2026-07-27",
+            "endDate": "2026-10-25",
+            "table": "UNAUDITED CONSOLIDATED CONDENSED STATEMENTS OF OPERATIONS",
+            "position": "Official HTML statement of operations, Revenue and Income from operations rows; current 2026 columns",
+            "revenue": 10409,
+            "operatingProfit": 3658,
+            "currency": "USD",
+            "unit": "million",
+            "accountingBasis": "US GAAP"
+          }
         },
         {
           "periodType": "annual",
@@ -1274,7 +1288,21 @@
           "method": "reported-twelve-month-current-column",
           "recordId": "applied-materials-fy2026-refresh-202611-v01",
           "sourceId": "applied-materials-financial-results-refresh-202611-v01",
-          "operatingMargin": 32.2
+          "operatingMargin": 32.2,
+          "sourceSelection": {
+            "periodType": "annual",
+            "columnHeader": "Twelve Months Ended October 25, 2026",
+            "columnRole": "current-period",
+            "startDate": "2025-10-27",
+            "endDate": "2026-10-25",
+            "table": "UNAUDITED CONSOLIDATED CONDENSED STATEMENTS OF OPERATIONS",
+            "position": "Official HTML statement of operations, Revenue and Income from operations rows; current 2026 columns",
+            "revenue": 34446,
+            "operatingProfit": 11087,
+            "currency": "USD",
+            "unit": "million",
+            "accountingBasis": "US GAAP"
+          }
         }
       ],
       "connection": "USD million. Q1+Q2+Q3+Q4 revenues7012+7910+9115+10409=34446 and operating1831+2523+3075+3658=11087; equal full-year current column. Segment results not substituted.",
@@ -3238,7 +3266,7 @@
       },
       "source": {
         "url": "https://investor.qualcomm.com/files/content_files/FY2026-4th-Quarter-Earnings-Release.pdf",
-        "position": "PDFphysical6/printed6 Consolidated Statements of Operations; Three Months Ended September27 2026 Total revenues / Operating income",
+        "position": "CONSOLIDATED STATEMENTS OF OPERATIONS; PDF physical6 / printed6; Total revenues and Operating income rows; current 2026 columns; quarterly column Three Months Ended September 27, 2026; annual column Twelve Months Ended September 27, 2026",
         "publishedAt": "2026-11-04",
         "title": "QUALCOMM Incorporated Q4 FY2026 official financial disclosure"
       },
@@ -3257,7 +3285,21 @@
           "method": "standalone-current-column",
           "recordId": "qualcomm-q4-fy2026-refresh-202611-v01",
           "sourceId": "qualcomm-financial-results-refresh-202611-v01",
-          "operatingMargin": 13.1
+          "operatingMargin": 13.1,
+          "sourceSelection": {
+            "periodType": "quarterly",
+            "columnHeader": "Three Months Ended September 27, 2026",
+            "columnRole": "current-period",
+            "startDate": "2026-06-29",
+            "endDate": "2026-09-27",
+            "table": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+            "position": "PDF physical6 / printed6; Total revenues and Operating income rows; current 2026 columns",
+            "revenue": 10322,
+            "operatingProfit": 1356,
+            "currency": "USD",
+            "unit": "million",
+            "accountingBasis": "US GAAP"
+          }
         },
         {
           "periodType": "annual",
@@ -3273,7 +3315,21 @@
           "method": "reported-twelve-month-current-column",
           "recordId": "qualcomm-fy2026-refresh-202611-v01",
           "sourceId": "qualcomm-financial-results-refresh-202611-v01",
-          "operatingMargin": 20.1
+          "operatingMargin": 20.1,
+          "sourceSelection": {
+            "periodType": "annual",
+            "columnHeader": "Twelve Months Ended September 27, 2026",
+            "columnRole": "current-period",
+            "startDate": "2025-09-29",
+            "endDate": "2026-09-27",
+            "table": "CONSOLIDATED STATEMENTS OF OPERATIONS",
+            "position": "PDF physical6 / printed6; Total revenues and Operating income rows; current 2026 columns",
+            "revenue": 43120,
+            "operatingProfit": 8658,
+            "currency": "USD",
+            "unit": "million",
+            "accountingBasis": "US GAAP"
+          }
         }
       ],
       "connection": "USGAAP consolidated; visual confirmed GAAP1356 vsnon-GAAP2769. NoQCT/QTLsegmentEBTsubstitution.",
@@ -3432,7 +3488,7 @@
       },
       "source": {
         "url": "https://www.eaton.com/content/dam/eaton/company/investor-relations/quarterly-earnings/filings/2026/q3/q3-2026-earnings-complete.pdf",
-        "position": "Condensed Consolidated Statements of Income; Three months ended Sep30 2026; sales8947 − cost5842 − SG&A1278 − R&D238 =1588",
+        "position": "Consolidated Statements of Income; PDF physical6 / printed6; Three months ended September30 2026 current column; net sales8947 - cost of products5842 - selling/administration1278 - research/development238 =1589 USD million.",
         "publishedAt": "2026-11-03",
         "title": "Eaton Corporation plc Q3 2026 official financial disclosure"
       },
@@ -3456,6 +3512,29 @@
             "revenue": "8947 USD million, direct current three-month column",
             "operatingProfit": "8947 -5842 -1278 -238 =1589 USD million",
             "precision": "Whole USD million source line items. Independent subtotal matches the retained series definition. Rounded pretax1370 + interest198 + other20 =1588 differs by1 and is not used."
+          },
+          "operatingSubtotal": {
+            "operation": "subtract",
+            "operands": [
+              8947,
+              5842,
+              1278,
+              238
+            ],
+            "result": 1589,
+            "unit": "USD million",
+            "sourceColumn": "Three months ended September30 2026",
+            "rejectedRoundedReverseCalculation": {
+              "operation": "add",
+              "operands": [
+                1370,
+                198,
+                20
+              ],
+              "result": 1588,
+              "adopted": false,
+              "reason": "Rounded pretax plus net interest and other expense differs by1 from same retained operating subtotal; not substituted."
+            }
           }
         }
       ],
@@ -4128,7 +4207,7 @@
       },
       "source": {
         "url": "https://investors.te.com/news-releases/press-release-details/2026/TE-Connectivity-delivers-12-sales-increase-and-over-20-EPS-growth-in-fiscal-fourth-quarter/",
-        "position": "Consolidated statements of operations; Three Months Ended Sep25 2026; Net sales / Operating income",
+        "position": "CONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED); Official HTML consolidated operations table, Net sales and Operating income rows; current 2026 columns; quarterly column For the Quarters Ended September 25, 2026; annual column For the Years Ended September 25, 2026",
         "publishedAt": "2026-10-28",
         "title": "TE Connectivity plc Q4 FY2026 official financial disclosure"
       },
@@ -4147,7 +4226,21 @@
           "method": "standalone-current-column",
           "recordId": "te-connectivity-q4-fy2026-refresh-202611-v01",
           "sourceId": "te-connectivity-financial-results-refresh-202611-v01",
-          "operatingMargin": 20.6
+          "operatingMargin": 20.6,
+          "sourceSelection": {
+            "periodType": "quarterly",
+            "columnHeader": "For the Quarters Ended September 25, 2026",
+            "columnRole": "current-period",
+            "startDate": "2026-06-27",
+            "endDate": "2026-09-25",
+            "table": "CONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED)",
+            "position": "Official HTML consolidated operations table, Net sales and Operating income rows; current 2026 columns",
+            "revenue": 5312,
+            "operatingProfit": 1093,
+            "currency": "USD",
+            "unit": "million",
+            "accountingBasis": "US GAAP"
+          }
         },
         {
           "periodType": "annual",
@@ -4163,7 +4256,21 @@
           "method": "reported-full-year-current-column",
           "recordId": "te-connectivity-fy2026-refresh-202611-v01",
           "sourceId": "te-connectivity-financial-results-refresh-202611-v01",
-          "operatingMargin": 20.1
+          "operatingMargin": 20.1,
+          "sourceSelection": {
+            "periodType": "annual",
+            "columnHeader": "For the Years Ended September 25, 2026",
+            "columnRole": "current-period",
+            "startDate": "2025-09-27",
+            "endDate": "2026-09-25",
+            "table": "CONSOLIDATED STATEMENTS OF OPERATIONS (UNAUDITED)",
+            "position": "Official HTML consolidated operations table, Net sales and Operating income rows; current 2026 columns",
+            "revenue": 19885,
+            "operatingProfit": 3991,
+            "currency": "USD",
+            "unit": "million",
+            "accountingBasis": "US GAAP"
+          }
         }
       ],
       "connection": "USGAAP consolidated standalone and annualcurrentcolumns; no adjustedoperatingincome.",
@@ -5440,7 +5547,7 @@
       "source": {
         "url": "https://www.infineon.com/assets/row/public/documents/corporate/press/2026/infpr202611-025e.pdf",
         "title": "infineon FY2026 Q4 official results",
-        "position": "p11 reconciliation reported operating profit; current quarter and fiscal year columns",
+        "position": "Consolidated Statement of Profit or Loss; PDF physical8 / printed8, Revenue and Operating profit rows; current FY2026 columns; physical11 / printed11 operating-profit reconciliation corroborates the unadjusted value; quarterly column Q4 FY 2026; annual column FY 2026",
         "publishedAt": "2026-11-10"
       },
       "candidates": [
@@ -5458,7 +5565,21 @@
           "method": "standalone-current-column",
           "recordId": "infineon-fy2026-q4-refresh-202611-v01",
           "sourceId": "infineon-financial-results-refresh-202611-v01",
-          "operatingMargin": 16.5
+          "operatingMargin": 16.5,
+          "sourceSelection": {
+            "periodType": "quarterly",
+            "columnHeader": "Q4 FY 2026",
+            "columnRole": "current-period",
+            "startDate": "2026-07-01",
+            "endDate": "2026-09-30",
+            "table": "Consolidated Statement of Profit or Loss",
+            "position": "PDF physical8 / printed8, Revenue and Operating profit rows; current FY2026 columns; physical11 / printed11 operating-profit reconciliation corroborates the unadjusted value",
+            "revenue": 4706,
+            "operatingProfit": 775,
+            "currency": "EUR",
+            "unit": "million",
+            "accountingBasis": "IFRS"
+          }
         },
         {
           "periodType": "annual",
@@ -5474,7 +5595,21 @@
           "method": "standalone-current-column",
           "recordId": "infineon-fy2026-refresh-202611-v01",
           "sourceId": "infineon-financial-results-refresh-202611-v01",
-          "operatingMargin": 13.5
+          "operatingMargin": 13.5,
+          "sourceSelection": {
+            "periodType": "annual",
+            "columnHeader": "FY 2026",
+            "columnRole": "current-period",
+            "startDate": "2025-10-01",
+            "endDate": "2026-09-30",
+            "table": "Consolidated Statement of Profit or Loss",
+            "position": "PDF physical8 / printed8, Revenue and Operating profit rows; current FY2026 columns; physical11 / printed11 operating-profit reconciliation corroborates the unadjusted value",
+            "revenue": 16353,
+            "operatingProfit": 2214,
+            "currency": "EUR",
+            "unit": "million",
+            "accountingBasis": "IFRS"
+          }
         }
       ],
       "connection": "Same issuer and consolidated unadjusted accounting series; source values and comparative scope checked.",
@@ -5634,7 +5769,7 @@
       "source": {
         "url": "https://assets.siemens-energy.com/dam/23e549e5-fb37-4db4-99d3-b4ff00539ccb/ER_Q4_26_EN_final-pdf_Original%20file.pdf",
         "title": "siemens-energy FY2026 Q4 official results",
-        "position": "physical p9 consolidated statements of income; Q4 FY2026 and FY2026 current columns; not Profit before special items",
+        "position": "Consolidated Statements of Income; PDF physical9 / printedIII, Revenue and Operating income (loss) rows; current 2026 columns, not Profit before special items; quarterly column Q4 FY 2026; annual column Fiscal year 2026",
         "publishedAt": "2026-11-11"
       },
       "candidates": [
@@ -5652,7 +5787,21 @@
           "method": "standalone-current-column",
           "recordId": "siemens-energy-fy2026-q4-refresh-202611-v01",
           "sourceId": "siemens-energy-financial-results-refresh-202611-v01",
-          "operatingMargin": 13
+          "operatingMargin": 13,
+          "sourceSelection": {
+            "periodType": "quarterly",
+            "columnHeader": "Q4 FY 2026",
+            "columnRole": "current-period",
+            "startDate": "2026-07-01",
+            "endDate": "2026-09-30",
+            "table": "Consolidated Statements of Income",
+            "position": "PDF physical9 / printedIII, Revenue and Operating income (loss) rows; current 2026 columns, not Profit before special items",
+            "revenue": 12826,
+            "operatingProfit": 1671,
+            "currency": "EUR",
+            "unit": "million",
+            "accountingBasis": "IFRS"
+          }
         },
         {
           "periodType": "annual",
@@ -5668,7 +5817,21 @@
           "method": "standalone-current-column",
           "recordId": "siemens-energy-fy2026-refresh-202611-v01",
           "sourceId": "siemens-energy-financial-results-refresh-202611-v01",
-          "operatingMargin": 11.8
+          "operatingMargin": 11.8,
+          "sourceSelection": {
+            "periodType": "annual",
+            "columnHeader": "Fiscal year 2026",
+            "columnRole": "current-period",
+            "startDate": "2025-10-01",
+            "endDate": "2026-09-30",
+            "table": "Consolidated Statements of Income",
+            "position": "PDF physical9 / printedIII, Revenue and Operating income (loss) rows; current 2026 columns, not Profit before special items",
+            "revenue": 44243,
+            "operatingProfit": 5211,
+            "currency": "EUR",
+            "unit": "million",
+            "accountingBasis": "IFRS"
+          }
         }
       ],
       "connection": "Same issuer and consolidated unadjusted accounting series; source values and comparative scope checked.",
@@ -8627,15 +8790,35 @@
         "periodLabel": "Q3 2026",
         "startDate": "2026-07-01",
         "endDate": "2026-09-30",
-        "publishedAt": "2026-11-05",
-        "publicationDateQualification": "2026-11-05は原表注記の公表承認日。サイト掲載日時は別途確定していません。"
+        "publishedAt": null,
+        "publicationDateQualification": "PDF自体の公表日は未確定。資料日（会計師核閲報告日、物理・印刷3ページ）と公表承認日（物理9／印刷8ページ）は2026-11-05。TWSEの当該Q3財務報告に関する公表記録は2026-11-05 16:26:17（台湾時間）で、固定基準前の決算開示を確認。正確なPDF掲載日とは区別する。",
+        "reportDate": "2026-11-05",
+        "authorizedForPublicationAt": "2026-11-05",
+        "publicationConfirmedBeforeCutoff": true
       },
       "source": {
         "url": "https://www.nanyapcb.com.tw/nypcb/images/InvestorRelations/FinancialReport/115Q3.pdf",
         "title": "nan-ya-pcb Q3 2026 consolidated results",
         "position": "physical/printed p5, ROC115 July–September column; physical p9 / printed p8 Note 2 board approved publication November 5",
-        "publishedAt": "2026-11-05",
-        "publishedAtBasis": "PDF physical p9 / printed p8 Note2: report authorized for publication by board on2026-11-05; actual web-upload timestamp is not independently verified. PublishedAt records the issuer report date, not a measured upload timestamp."
+        "publishedAt": null,
+        "publishedAtBasis": "Exact publication/upload date of the linked financial-report PDF is unconfirmed. Board authorization and auditor report date are separate facts, not substituted for publication date.",
+        "reportDate": "2026-11-05",
+        "reportDateBasis": "Auditor review report signature date, PDF physical3 / printed3; not the publication date.",
+        "authorizedForPublicationAt": "2026-11-05",
+        "publicationCutoffEvidence": {
+          "kind": "official-public-financial-report-announcement",
+          "url": "https://www.twse.com.tw/pdf/ch/8046_ch.pdf",
+          "issuerCode": "8046",
+          "announcedAt": "2026-11-05T16:26:17+08:00",
+          "subject": "公告本公司115年第3季合併財務報告業經董事會決議通過",
+          "periodEnd": "2026-09-30",
+          "physicalPage": 5,
+          "printedPage": null,
+          "savedPath": "metadata-correction-v01/nanya-twse-profile.pdf",
+          "sha256": "74f0404c076f558b83be5fdecefb734c6aabe49b7fe408cbebb53abc0083b8a5",
+          "checkedAtJst": "2026-11-23T07:07:15.789910+09:00",
+          "scope": "Official timestamp for public announcement concerning the approved Q3 consolidated financial report; corroborates disclosure before the fixed cutoff. It does not establish the exact linked-PDF upload date."
+        }
       },
       "candidates": [
         {
@@ -8784,7 +8967,13 @@
       "latestPublishedPeriodCaptured": true,
       "originalNumberReview": "adopted-comparable-original",
       "addedSourceId": "nan-ya-pcb-financial-results-refresh-202611-v01",
-      "displaySummary": "同じ会計基準・通貨単位・事業範囲の実績を追加しました。公表精度を保持し、調整後利益・予想値は代用していません。"
+      "displaySummary": "同じ会計基準・通貨単位・事業範囲の実績を追加しました。公表精度を保持し、調整後利益・予想値は代用していません。",
+      "metadataCorrection": {
+        "adoptionChanged": false,
+        "cutoffEligibility": "Retained on same approved issuer/period original plus independently timestamped official public announcement, not authorization date alone.",
+        "checkedAtJst": "2026-11-23T07:07:15.789910+09:00",
+        "cutoffUnchanged": "2026-11-23T04:17:19+09:00"
+      }
     },
     {
       "companyId": "besi",
@@ -9253,7 +9442,7 @@
       "source": {
         "url": "https://www.sec.gov/Archives/edgar/data/833444/000083344426000101/q4exh991xq4fy26earningsrel.htm",
         "title": "johnson-controls FY2026 Q4 official consolidated financial results",
-        "position": "Consolidated Statements of Income, current quarter and current full fiscal year columns; same unadjusted subtotal reconstruction as stored records",
+        "position": "Consolidated Statements of Income; Official SEC Exhibit99.1 HTML financial statements, Net sales products/systems plus services and Gross profit less SG&A and restructuring/impairment; unadjusted continuing operations, current 2026 columns; quarterly column Three Months Ended September 30, 2026; annual column Twelve Months Ended September 30, 2026",
         "publishedAt": "2026-10-27"
       },
       "candidates": [
@@ -9277,7 +9466,21 @@
           },
           "recordId": "johnson-controls-fy2026-q4-refresh-202611-v01",
           "sourceId": "johnson-controls-financial-results-refresh-202611-v01",
-          "operatingMargin": 16
+          "operatingMargin": 16,
+          "sourceSelection": {
+            "periodType": "quarterly",
+            "columnHeader": "Three Months Ended September 30, 2026",
+            "columnRole": "current-period",
+            "startDate": "2026-07-01",
+            "endDate": "2026-09-30",
+            "table": "Consolidated Statements of Income",
+            "position": "Official SEC Exhibit99.1 HTML financial statements, Net sales products/systems plus services and Gross profit less SG&A and restructuring/impairment; unadjusted continuing operations, current 2026 columns",
+            "revenue": 7113,
+            "operatingProfit": 1137,
+            "currency": "USD",
+            "unit": "million",
+            "accountingBasis": "US GAAP consolidated continuing operations"
+          }
         },
         {
           "periodType": "annual",
@@ -9299,7 +9502,21 @@
           },
           "recordId": "johnson-controls-fy2026-refresh-202611-v01",
           "sourceId": "johnson-controls-financial-results-refresh-202611-v01",
-          "operatingMargin": 14.4
+          "operatingMargin": 14.4,
+          "sourceSelection": {
+            "periodType": "annual",
+            "columnHeader": "Twelve Months Ended September 30, 2026",
+            "columnRole": "current-period",
+            "startDate": "2025-10-01",
+            "endDate": "2026-09-30",
+            "table": "Consolidated Statements of Income",
+            "position": "Official SEC Exhibit99.1 HTML financial statements, Net sales products/systems plus services and Gross profit less SG&A and restructuring/impairment; unadjusted continuing operations, current 2026 columns",
+            "revenue": 25666,
+            "operatingProfit": 3694,
+            "currency": "USD",
+            "unit": "million",
+            "accountingBasis": "US GAAP consolidated continuing operations"
+          }
         }
       ],
       "connection": "Same consolidated issuer and unadjusted accounting series as existing records; no alternative adjusted or segment measure.",

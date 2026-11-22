@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "classificationRuleVersion": 8,
   "dataAsOf": "2026-11-23",
-  "inputDigestSha256": "9d21a987c808aa5d012207900123a67cf4c86eaaf89c36dc787a3f696b037569",
+  "inputDigestSha256": "6e191eb101d373932d4fb3a9fb1f1fab07a47f22ec09cdb1e03252f3406414d2",
   "inputs": {
     "historyFiles": [
       "src/data/financial-history.json",
@@ -169,9 +169,9 @@
     "operatingProfitDefinitions": {
       "direct-gaap-ifrs-operating-income": 694,
       "ebit": 2,
-      "reconstructed-operating-income": 27,
+      "reconstructed-operating-income": 26,
       "source-linked": 1,
-      "special-case": 73
+      "special-case": 74
     },
     "adjustedNonGaapFcfAssessments": {
       "atlas-formula-aligned": 8,
@@ -184,7 +184,7 @@
       "discontinued-operations": 11,
       "non-consolidated-subsidiary": 2,
       "reit": 9,
-      "reconstructed-operating-income": 27,
+      "reconstructed-operating-income": 26,
       "net-basis-capex": 28,
       "broad-capex": 10,
       "ppe-only": 64,
@@ -206,7 +206,7 @@
       "fcf-capex-scope-mismatch": 0,
       "derived-single-quarter": 9,
       "unclassified-capex-definition": 0,
-      "special-operating-profit-definition": 73
+      "special-operating-profit-definition": 74
     }
   },
   "actionQueues": {
@@ -2470,9 +2470,9 @@
       "operatingProfitDefinitions": {
         "direct-gaap-ifrs-operating-income": 5,
         "ebit": 0,
-        "reconstructed-operating-income": 5,
+        "reconstructed-operating-income": 4,
         "source-linked": 0,
-        "special-case": 0
+        "special-case": 1
       },
       "adjustedNonGaapFcfAssessments": {
         "atlas-formula-aligned": 0,
@@ -2484,7 +2484,8 @@
         "discontinued-operations",
         "reconstructed-operating-income",
         "broad-capex",
-        "continuing-operations-scope"
+        "continuing-operations-scope",
+        "special-operating-profit-definition"
       ]
     },
     {
@@ -14240,13 +14241,13 @@
       ],
       "cashFlowCoverage": "both-missing",
       "capexDefinition": "not-collected",
-      "operatingProfitDefinition": "reconstructed-operating-income",
+      "operatingProfitDefinition": "special-case",
       "adjustedNonGaapFcfAssessment": "not-applicable",
       "adjustedNonGaapFcfAssessmentReasons": [],
       "cashFlowInputsStatus": "not-applicable",
       "fcfCapexScopeMismatchReasons": [],
       "specialFlags": [
-        "reconstructed-operating-income"
+        "special-operating-profit-definition"
       ]
     },
     {
