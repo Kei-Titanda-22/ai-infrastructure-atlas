@@ -13,8 +13,16 @@ const coverage = await readJson(join(dataDirectory, 'financial-quarterly-coverag
 const historyFileNames = (await readdir(dataDirectory))
   .filter(file => file === 'financial-history.json' || /^financial-history-v0[45]-batch\d+\.json$/.test(file))
   .sort();
-const history = (await Promise.all(historyFileNames.map(file => readJson(join(dataDirectory, file)))))
+const allHistory = (await Promise.all(historyFileNames.map(file => readJson(join(dataDirectory, file)))))
   .flat();
+// Keep the explicitly dated v01-v19 regression snapshots against their retained
+// records. Current-loader coverage and the maintenance additions are checked below
+// and in test-financial-results-refresh-202611-v01.mjs.
+const refreshBatch = await readJson(join(dataDirectory, 'financial-history-v05-batch23.json'));
+const refreshIds = new Set(refreshBatch.map(record => record.id));
+const refreshedCompanies = new Set(refreshBatch.map(record => record.companyId));
+const history = allHistory.filter(record => !refreshIds.has(record.id));
+assert.equal(allHistory.length, 797, 'current loader retains 715 and adds 82 verified maintenance records');
 
 assert.equal(companies.length, 100, 'registry contains 100 companies');
 assert.equal(coverage.length, 100, 'coverage contains 100 companies');
@@ -28,7 +36,7 @@ for (const record of history) if (record.periodType === 'quarterly') quarterlyBy
 for (const records of quarterlyByCompany.values()) records.sort((left, right) => left.endDate.localeCompare(right.endDate));
 
 for (const row of coverage) {
-  const quarterly = quarterlyByCompany.get(row.companyId) ?? [];
+  const quarterly = allHistory.filter(record => record.companyId === row.companyId && record.periodType === 'quarterly').sort((a,b) => a.endDate.localeCompare(b.endDate));
   assert.equal(row.actualQuarterCount, quarterly.length, `${row.companyId}: actual count derives from records`);
   assert.equal(row.targetQuarterCount, 6, `${row.companyId}: target is six actual quarters`);
   assert.match(row.officialSourceUrl, /^https:\/\//, `${row.companyId}: official URL is recorded`);
@@ -86,7 +94,7 @@ for (const [companyId, endDates] of sixthBatchPeriods) {
   const quarterly = quarterlyByCompany.get(companyId);
   assert.deepEqual(quarterly.map(record => record.endDate), endDates, `${companyId}: six consecutive official standalone quarters`);
   assert.equal(coverage.find(row => row.companyId === companyId).coverageStatus, 'complete-six-quarters', `${companyId}: complete coverage`);
-  assert.equal(coverage.find(row => row.companyId === companyId).checkedAt, companyId === 'credo' ? '2026-10-18' : '2026-09-25', `${companyId}: coverage check date follows its official source retrieval`);
+  assert.equal(coverage.find(row => row.companyId === companyId).checkedAt, refreshedCompanies.has(companyId) ? '2026-11-23' : companyId === 'credo' ? '2026-10-18' : '2026-09-25', `${companyId}: coverage check date follows its official source retrieval`);
   assert.equal(new Set(quarterly.map(record => record.currency)).size, 1, `${companyId}: stable currency`);
   assert.equal(new Set(quarterly.map(record => record.unit)).size, 1, `${companyId}: stable unit`);
   assert.equal(new Set(quarterly.map(record => record.accountingBasis)).size, 1, `${companyId}: stable accounting basis`);
@@ -303,7 +311,7 @@ for (const [companyId, endDates] of tenthPeriods) {
 assert.equal(coverage.filter(row => row.coverageStatus === 'partial-quarterly').length, 1, 'Omron has one connected historical quarter and remains partial');
 assert.equal(coverage.filter(row => row.coverageStatus === 'awaiting-next-quarter').length, 0, 'Kioxia actual Q2 publication closes the awaiting category');
 assert.equal(coverage.filter(row => row.coverageStatus === 'needs-review').length, 4, 'four companies remain without collected quarterly actuals after Omron adoption');
-assert.equal(coverage.find(row => row.companyId === 'nvidia').checkedAt, '2026-09-23', 'unreviewed baseline companies retain their original coverage check date');
+assert.equal(coverage.find(row => row.companyId === 'nvidia').checkedAt, '2026-11-23', 'source retrieval date advances only on newly adopted records');
 assert.equal(coverage.find(row => row.companyId === 'fujikura').coverageStatus, 'complete-six-quarters', 'Fujikura is complete from the comparable official series');
 
 const phaseFourEndDates = new Map([
@@ -373,7 +381,7 @@ const loadedHistory = loaderInput.map(record => {
   const override = overrideById.get(record.id);
   return override ? { ...record, ...override, metrics: { ...record.metrics, ...override.metrics } } : record;
 });
-assert.equal(loadedHistory.length, history.length, 'actual loader order and overrides retain all records');
+assert.equal(loadedHistory.length, allHistory.length, 'actual loader order and overrides retain all records');
 assert.deepEqual(new Set(loadedHistory.map(record => record.companyId)), new Set(companies.map(company => company.id)), 'actual loader covers all 100 companies');
 const assertUniformFinancialDisplayUnits = records => {
   for (const company of companies) {
@@ -400,7 +408,7 @@ for (const record of v11Batch) {
 }
 assert.deepEqual(quarterlyByCompany.get('sandisk').slice(-6).map(record => record.periodLabel), ['Q3 FY2025', 'Q4 FY2025', 'Q1 FY2026', 'Q2 FY2026', 'Q3 FY2026', 'Q4 FY2026'], 'Sandisk has a continuous six-quarter chart window');
 assert.equal(coverage.find(row => row.companyId === 'sandisk').coverageStatus, 'complete-six-quarters', 'Sandisk becomes complete without forecasting FY2027 Q1');
-assert.equal(coverage.find(row => row.companyId === 'sandisk').checkedAt, '2026-10-18', 'only genuinely reviewed Sandisk sources advance its check date');
+assert.equal(coverage.find(row => row.companyId === 'sandisk').checkedAt, '2026-11-23', 'newly adopted Sandisk source advances its coverage retrieval date');
 assert.ok(!history.some(record => record.companyId === 'sandisk' && record.periodLabel === 'Q1 FY2027'), 'Sandisk FY2027 Q1 is not treated as actual before its release');
 const v12Batch = await readJson(join(dataDirectory, 'financial-history-v05-batch15.json'));
 const v12Sources = await readJson(join(dataDirectory, 'document-sources-v05-batch15.json'));
@@ -589,7 +597,7 @@ assert.equal(448+486-175+425,1184,'FY2025 pre-spin quarterly operating income re
 assert.ok(aptivQuarters.every(record => record.metrics.operatingMargin.value === Math.round(record.metrics.operatingProfit.value/record.metrics.revenue.value*1000)/10));
 assert.equal(coverage.find(row => row.companyId === 'aptiv').coverageStatus, 'complete-six-quarters');
 assert.equal(coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length,95);
-assert.equal(coverage.find(row=>row.companyId==='nvidia').checkedAt,'2026-09-23','non-target check date does not move');
+assert.equal(coverage.find(row=>row.companyId==='nvidia').checkedAt,'2026-11-23','non-target check date does not move');
 const v18Batch = await readJson(join(dataDirectory, 'financial-history-v05-batch21.json'));
 const v18Sources = await readJson(join(dataDirectory, 'document-sources-v05-batch21.json'));
 const v18Policies = await readJson(join(dataDirectory, 'document-source-policies-v05-batch21.json'));
@@ -642,7 +650,8 @@ assert.deepEqual(Object.keys(v18Blockers.reasons).sort(), ['air-liquide','ajinom
 const v19Blockers = await readJson(join(dataDirectory, 'financial-quarterly-blockers-v19.json'));
 for (const companyId of Object.keys(v19Blockers.reasons)) {
   const row=coverage.find(item=>item.companyId===companyId);
-  if(row.coverageStatus!=='complete-six-quarters') assert.equal(row.blockerReason,v19Blockers.reasons[companyId]);
+  assert.ok(v19Blockers.reasons[companyId], 'historical v19 reason remains preserved');
+  if(row.coverageStatus!=='complete-six-quarters') assert.equal(row.blockerReason,(await readJson(join(dataDirectory, 'financial-quarterly-blockers-refresh-202611-v01.json'))).reasons[companyId]);
 }
 assert.equal(coverage.find(row=>row.companyId==='hexagon').coverageStatus,'complete-six-quarters');
 assert.equal(coverage.filter(row=>row.coverageStatus==='complete-six-quarters').length,95);
@@ -669,7 +678,8 @@ assert.equal(omronHistory.filter(record=>record.periodType==='quarterly').length
 assert.deepEqual(omronHistory.filter(record=>record.periodType==='annual').map(record=>[record.metrics.revenue.value,record.metrics.operatingProfit.value]),[[715379,53446],[767351,59935]]);
 assert.equal(new Set(omronHistory.map(record=>record.accountingBasis+':'+record.currency+':'+record.unit)).size,1);
 assert.equal(coverage.find(row=>row.companyId==='omron').coverageStatus,'partial-quarterly');
-assert.equal(coverage.find(row=>row.companyId==='omron').checkedAt,'2026-11-04');
-assert.equal(coverage.find(row=>row.companyId==='nvidia').checkedAt,'2026-09-23');
+assert.equal(coverage.find(row=>row.companyId==='omron').checkedAt,'2026-11-23');
+assert.equal(coverage.find(row=>row.companyId==='nvidia').checkedAt,'2026-11-23');
 assert.equal(history.length,715,'v19 full financial history has 715 records');
-console.log(`Financial quarterly coverage OK: ${coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length} complete companies`);
+await import('./test-financial-results-refresh-202611-v01.mjs');
+console.log(`Financial quarterly coverage OK: ${coverage.filter(row => row.coverageStatus === 'complete-six-quarters').length} complete companies; historical v01-v19 snapshots and current maintenance loader both checked`);

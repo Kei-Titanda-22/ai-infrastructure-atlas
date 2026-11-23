@@ -1,0 +1,736 @@
+{
+  "schemaVersion": "financial-results-refresh-202611-v01-evidence",
+  "createdAtJst": "2026-11-23T06:47:44.770718+09:00",
+  "repository": "Kei-Titanda-22/ai-infrastructure-atlas",
+  "baselineMain": "fce8a843c73cc2e9783214b5aa77b8bd7d200428",
+  "baselineTree": "e746662f268206feb12f8674a58dc4fbfcc44723",
+  "branch": "codex/financial-results-refresh-202611-v01",
+  "researchCutoffJst": "2026-11-23T04:17:19+09:00",
+  "cutoffPolicy": "Fixed once. Later retrieval/adoption/QA times are not changes to eligibility cutoff.",
+  "evidenceBaseDirectory": "C:\\Users\\mkato\\Documents\\Codex\\2026-08-31\\github-plugin-github-openai-curated-remote\\work\\ai-infrastructure-atlas-financial-results-refresh-202611-v01-evidence",
+  "evidenceIndex": {
+    "path": "evidence-index-final-v1.json",
+    "sha256": "36051bbc8e5dca98ec10f4fba50bfd3f2daf303c705a3dedd66d72e71b7f2cc1"
+  },
+  "evidenceIndexSidecar": {
+    "path": "evidence-index-final-v1.sha256",
+    "sha256": "dec3029b303c9dbf5335ce23ab91ae69854a7f1a3c9b2d3833761ac68815ec4f"
+  },
+  "independentIndexVerification": {
+    "path": "evidence-index-final-v1-verification.json",
+    "sha256": "02a5a7b41169be2d635c92b88ded874aee39241cd20012548161b5142fce29de"
+  },
+  "indexedFiles": 1270,
+  "rawHashProtocol": "Write explicit UTF-8 bytes, close, reread stored bytes for SHA-256. Separate process rereads JSON, sidecar and every referenced file. No self-reference or newline normalization. Later finalization receipts are indexed separately without altering this immutable snapshot.",
+  "scope": {
+    "canonicalLoaderCompanies": 100,
+    "sourceRouteDecisions": 100,
+    "untouchedCompanies": 0,
+    "numericalOriginalAdoptedOrCurrentReviewed": 82,
+    "currentPeriodConfirmedNumericalProofInherited": [
+      "unimicron"
+    ],
+    "originalNumericalReviewNotCompleted": 18,
+    "updatedCompanies": 76,
+    "newQuarters": 76,
+    "newAnnuals": 6,
+    "preservedOldRecords": 715,
+    "finalRecords": 797,
+    "companyCount": 100,
+    "sixQuarterCoverage": {
+      "complete": 95,
+      "partial": 1,
+      "awaiting": 0,
+      "needsReview": 4
+    },
+    "recency": {
+      "newLatestPeriodAdopted": 75,
+      "alreadyCurrent": 7,
+      "waitingForNextAnnouncement": 7,
+      "historicalAdditionLatestHeld": 1,
+      "scopeConnectionHeld": 4,
+      "sameQuarterEvidenceHeld": 3,
+      "originalUnretrieved": 3
+    },
+    "meaning": "Six-period coverage, latest-disclosure capture, original-table review and retrieval are independent judgements."
+  },
+  "audit": {
+    "report": "docs/financial-results-refresh-202611-v01.md",
+    "ledger": "docs/financial-results-refresh-202611-v01.json",
+    "sourceFileMap": {
+      "path": "source-file-sha256-final.json",
+      "sha256": "5b49db4c7425427e91538a6ec348a348221fd3458da88b67dd8a0faa36524d3e"
+    },
+    "savedSourceAndTraceFiles": 965,
+    "preimplementationTable": {
+      "path": "adoption-table-preimplementation.md",
+      "sha256": "82929c435f23c89e09616000689eecc3c7077c68abdea102417b287ccd8c07ca"
+    },
+    "preimplementationDraftCorrection": {
+      "path": "eaton-adoption-calculation-correction.json",
+      "sha256": "7ead1c777b7a77180a2da8aed1e0bc508cfa4d65efcd036b96fb0f15daf93742"
+    },
+    "sourceDateQualifications": {
+      "path": "source-date-qualification-final.json",
+      "sha256": "91bbe9e8280836203ade2c467cfae2fee5bd67eeffe13212f32b355415de460c"
+    },
+    "holds": {
+      "historicalOnly": "Omron FY2025 Q2 US GAAP continuing operations; latest IFRS not mixed.",
+      "connection": [
+        "aptiv",
+        "hexagon",
+        "resonac-holdings",
+        "shinko-electric"
+      ],
+      "quarterEvidence": [
+        "air-liquide",
+        "bosch",
+        "schneider-electric"
+      ],
+      "unretrieved": [
+        "ajinomoto-fine-techno",
+        "hanmi-semiconductor",
+        "kinsus"
+      ]
+    },
+    "sourcePolicy": "New policies remain pending/unknown/manual-reference-only-until-reviewed; no standing automatic retrieval permission inferred. Saved originals, Web-read-only originals and failed downloads are distinct.",
+    "dateLimits": "Kinsus October14 is board approval, publication date unconfirmed. NanYa November5 is authorization-for-publication in PDF Note2, not independently verified Web upload time.",
+    "annualRounding": "Six new annuals checked against quarters at original precision; one-million presentation residuals for Qualcomm, Infineon, Siemens Energy explicitly retained. No rewriting old quarters."
+  },
+  "environment": {
+    "runtime": {
+      "node": "v22.23.4",
+      "npm": "10.9.9",
+      "os": "win32",
+      "architecture": "x64"
+    },
+    "executables": {
+      "path": "final-runtime-executables.json",
+      "sha256": "ad3ece300ac25ad1065e6cda0a41111681d7cd27e940721b09439f1d53bb16a0"
+    },
+    "installedEnvironment": {
+      "path": "final-build-environment.json",
+      "sha256": "f0e7665d222fc93433c9a025ccae59a02c9bbc8ebc0d81aa1b10dedcfe7bd9b0"
+    },
+    "lockfileSha256": "68bccf4cd414b45c7f99b582c6eb46457afd002087e70994ca2e085838997f4b",
+    "dependencies": "Dedicated physical node_modules installed by npm ci --no-audit --no-fund; existing junctions untouched. No package/lock/workflow version edits."
+  },
+  "finalInput": {
+    "count": 482,
+    "digest": "68d16f35a1a122b563a28d865bbf71b26ed1e2c2517ec8b31197bfd84656c8ce",
+    "map": {
+      "path": "final-product-v3-input.json",
+      "sha256": "4df0442f21299e821d106153856efb1a4f71734a10da982f60d962e5a8fc94d4"
+    },
+    "mapMethod": "capture-build-map.py; exact path/hash map and digest serialization retained in helper. Manifest/QA docs are outside product input set."
+  },
+  "finalBuilds": [
+    {
+      "run": 8,
+      "result": {
+        "path": "final-build8-result.json",
+        "sha256": "14ce214db2d7eba64f1739ff316c95463a9042fe13db7705fa79a024fd05abe5"
+      },
+      "log": {
+        "path": "final-build8-precreated-output.log",
+        "sha256": "d601eceb1e6099155caa36c8516ffd1097d8fdcdd617f7926a317749e7808116"
+      },
+      "map": {
+        "path": "final-build8-map.json",
+        "sha256": "3ee2c77387b5252d9e41e40daec6e740a511a9c873ee3afb603acb5a441b0d55"
+      },
+      "pagefindFragments": {
+        "path": "final-build8-pagefind-fragments.json",
+        "sha256": "19209201c4d617a8a9842c8ea25045133ccef0ccc8cbf7f371b184439c36d4d0"
+      },
+      "exitCode": 0
+    },
+    {
+      "run": 9,
+      "result": {
+        "path": "final-build9-result.json",
+        "sha256": "386590906d78b76974a071739b0b1d0c508b0e3778fafa0da01b67fab7371262"
+      },
+      "log": {
+        "path": "final-build9-precreated-output.log",
+        "sha256": "26d2007a5ad8170ea4c8a58000a616b817a5fac9d1f5bd76350d3dc6cf85e977"
+      },
+      "map": {
+        "path": "final-build9-map.json",
+        "sha256": "110427257240af478cdf2657e82ae704f646b89a62fa93650ec84d870e9cd218"
+      },
+      "pagefindFragments": {
+        "path": "final-build9-pagefind-fragments.json",
+        "sha256": "19209201c4d617a8a9842c8ea25045133ccef0ccc8cbf7f371b184439c36d4d0"
+      },
+      "exitCode": 0
+    }
+  ],
+  "buildQualification": {
+    "command": "astro build; create dedicated dist/pagefind fragment,index,filter directories; pagefind --site dist; node --experimental-strip-types scripts/test-company-compare-evidence-ui.mjs --dist",
+    "notClaimed": "Two successes of the unmodified npm run build command.",
+    "preview": "Dedicated preview stopped and port bind checked before each clean pipeline. dist and .astro cleaned within own worktree only.",
+    "standardNpmAttempts": {
+      "failed": [
+        1,
+        3
+      ],
+      "success": [
+        2
+      ],
+      "failureExit": 101
+    },
+    "earlierSuccessfulPipelines": [
+      4,
+      5,
+      6,
+      7
+    ],
+    "earlierPipelineMeaning": "Earlier product revisions, preserved as history rather than final build evidence.",
+    "recoveryOnly": {
+      "path": "pagefind-single-worker-recovery-result.json",
+      "sha256": "92836a33a5638418ee71d830e672d4ac80983873ca3120916a7fe336bef31300"
+    },
+    "diagnosis": {
+      "path": "pagefind-output-diagnosis.json",
+      "sha256": "0c883aed115159c34e3befd798037327b2b67decde4dc0207b5497b246cc527f"
+    },
+    "rootCause": "Default Windows Pagefind create_dir_all PermissionDenied not proven; directory preparation is an observed mitigation. No ACL/security setting/dependency/workflow change."
+  },
+  "validation": {
+    "formalValidate": {
+      "command": "npm run validate",
+      "exitCode": 0,
+      "result": {
+        "path": "final-v3-validate-result.json",
+        "sha256": "2336c22ded7320291fe1ff34db6d9e3f52778bb2819617729604558f4ddb1291"
+      },
+      "log": {
+        "path": "final-v3-validate.log",
+        "sha256": "09c4b751478a16395dd4276f450edfe49032d5a0bc432f3d5a52db951885f7e4"
+      }
+    },
+    "japaneseDist": {
+      "path": "final-v3-japanese-dist.log",
+      "sha256": "668959891c5ef5cf925d819914f91d86440ba2fd60ecb5002dcac3a751549cce"
+    },
+    "chartLabels": {
+      "path": "final-v3-chart-labels.log",
+      "sha256": "73c90a4ce12509b58e790b59e678617006c01078168b3d603dced6148f83ca28"
+    },
+    "chartWindow": {
+      "path": "final-v3-chart-window.log",
+      "sha256": "4cbd51a8852002e73f6d893bf53cf154185cb14e27559d71b92bfcb4db650d95"
+    },
+    "searchContract": {
+      "path": "final-search-ux.log",
+      "sha256": "22ce6f653f11fd611617e6e7ae975403fe639a005fdef325b4a17551ba23b996"
+    },
+    "atlasContract": {
+      "path": "final-atlas-mobile.log",
+      "sha256": "1aa742932c9b0f13af85ac217dd59bfb2c0bbecadfb19f2accc843a9e6074e90"
+    },
+    "freshness": [
+      {
+        "path": "final-refresh-freshness.log",
+        "sha256": "60b63a0ea55e5913c419ea2dd7089156efc4bdc46c61526814f9a7079c0dc5df"
+      },
+      {
+        "path": "final-coverage-freshness.log",
+        "sha256": "e63c6435c47a06d28b95e07c9d0d87009bdc941cd757d7213cff24b3cfa98aa8"
+      }
+    ],
+    "allCompanyMachineCheck": "Final build Compare --dist checks all100 loader histories, 82 exact additions, all797 table rows and sources, graph windows/annual separation, current canonical detail values and all715 retained records.",
+    "triage": {
+      "humanDecisionsPreserved": 779,
+      "sampleOrderPreserved": 87,
+      "currentV02": "87/87 PASS",
+      "legacyV01": "Known MATERIAL22/HARD_STOP report is separate legacy output."
+    },
+    "secretScan": "Official scanner PASS inside formal final validate. Actual pre-manifest set640 stored with rules/exclusions; final manifest is scanned again with actual target count recorded in finalization evidence.",
+    "preManifestSecretTargets": {
+      "path": "secret-scan-targets-before-manifest-v4.json",
+      "sha256": "c38609b0c0ad968e3f2043c8d47a1e67594ad7b66aa27b4251444397417e9763"
+    }
+  },
+  "results": {
+    "activeFreeze": "financial-results-refresh-202611-v01",
+    "freezeMatches": 101,
+    "companyDetails": 100,
+    "routes": 210,
+    "pagefindUrls": 105,
+    "pagefindDecodedFragments": 105,
+    "commonJsCss": 14,
+    "fullDistFiles": 365,
+    "compare": {
+      "bytes": 1321892,
+      "sha256": "3c58cd9722c0765665323a19bcfb3ed7ff5e4b3abe9610ab80059eff9fcf356c",
+      "previousBytes": 1190368,
+      "financialPayloadIncreaseBytes": 131524,
+      "oldMaximumRetained": 1217802,
+      "newDiagnosticMaximum": 1387986,
+      "newMaximumFormula": "floor(measuredBytes*1.05)",
+      "boundaryTest": "New maximum PASS and +1 byte FAIL; previous contracts retained.",
+      "productionLimits": "Unchanged",
+      "shellBytes": 24593,
+      "maximumFourCompanyColdLoadRawBytes": 294247,
+      "maximumFourCompanyColdLoadGzipBytes": 26798,
+      "combinationsChecked": 4087975
+    },
+    "pagefindRawDifferences": {
+      "different": [
+        "pagefind/pagefind-entry.json"
+      ],
+      "onlyBuild8": [
+        "pagefind/filter/ja_3544276.pf_filter",
+        "pagefind/filter/ja_d554305.pf_filter",
+        "pagefind/pagefind.ja_8e46d2b093.pf_meta"
+      ],
+      "onlyBuild9": [
+        "pagefind/filter/ja_46d3ed7.pf_filter",
+        "pagefind/filter/ja_bcbd2b3.pf_filter",
+        "pagefind/pagefind.ja_f4224a1071.pf_meta"
+      ]
+    },
+    "rawMeaning": "105 URL set and decoded fragment equality do not imply whole-dist raw byte equality. No claim of Windows/Linux full reproducibility."
+  },
+  "baselineDifferences": {
+    "compareChangedCompanyAssets": 76,
+    "unchangedCompareArtifactsIncludingShell": 25,
+    "shellByteUnchanged": true,
+    "companyAssetNonfinancialRegions": "All100 unchanged under existing exactly-two Financial template removal. No expanded normalization.",
+    "detailHtmlChanged": 100,
+    "detailFinancialGraphDataChanged": 76,
+    "nonTargetGraphBytesUnchanged": 24,
+    "detailRestoration": "Only two financial figures and exact new current-summary/historical-KPI explanation restored/removed; all100 whole pages equal baseline.",
+    "sharedJsChanged": 2,
+    "sharedJsReason": "Four Pilot financialRecordIds, each twice, and dependent import URL only; exact restoration matches baseline raw SHA. Execution logic not broadened.",
+    "remainingCommonJsCssUnchanged": 12,
+    "chartScriptUnchanged": true,
+    "oldFreezeObjectsUnchanged": 30,
+    "v17ShellRestorationAndSevenInvalidCases": "Preserved and PASS",
+    "proofs": [
+      {
+        "path": "final-artifact-raw-identities.json",
+        "sha256": "229ae39c37a0a1117b9dca03e404c1567383de4cd34f02e83d82b5ad6346a05b"
+      },
+      {
+        "path": "final-detail-limited-restoration-v4.json",
+        "sha256": "79da6a9c29fbdcb893778ce131ca76141ffcdac7570fa9921fef9aa5e9e1573b"
+      },
+      {
+        "path": "calibration-artifact-analysis-v2.json",
+        "sha256": "a5dbbd086fda3018d9f18976acf756c7d83f2100dfc50f265384b1f17c597186"
+      },
+      {
+        "path": "calibration-financial-reference-chunk.json",
+        "sha256": "0f7eb55c7402f71f95de5a8b924c645825d50c4df9f3d7ed4c076a147414d31b"
+      },
+      {
+        "path": "calibration-compare-js-diff.json",
+        "sha256": "bc9a8c8e49bdf8950ed8acc57162d54b6c40dacc4302815a63aa43f28f01476e"
+      }
+    ]
+  },
+  "previewQa": {
+    "url": "http://127.0.0.1:4437/ai-infrastructure-atlas/",
+    "servedByteProof": {
+      "path": "preview-4437-final-v3-byte-verification.json",
+      "sha256": "29661aed770f8c773f18aba657d6033d95145c8ed52067f7d89ffdb0f25a6fea"
+    },
+    "servedFilesExact": 365,
+    "financialRepresentativeCompanies": [
+      "nvidia",
+      "disco",
+      "carrier",
+      "keyence",
+      "applied-materials",
+      "omron",
+      "aptiv",
+      "hexagon",
+      "kioxia",
+      "air-liquide",
+      "nan-ya-pcb",
+      "kinsus"
+    ],
+    "widths": [
+      1024,
+      390,
+      360
+    ],
+    "financialCases": 36,
+    "individualDetailCases": 9,
+    "kioxiaResize": "1024→390→360→1024, fonts loaded; six points retained, visible labels selected with0 overlaps/axis clipping.",
+    "regression": "List search/country/sort and visible counts; Compare preset/free selection/4-limit/order/URL restore/summary-detail/caution; Evidence44x44 Escape focus return; Atlas stage transition; English/Japanese search/results/clear/no-results.",
+    "documentOverflowObserved": 0,
+    "chartLabelOverlapsObserved": 0,
+    "siteConsoleErrorsObserved": 0,
+    "screenshotsSaved": 57,
+    "externalPrimarySourcePagesOpenedDuringPreviewQa": 0,
+    "limitations": "100 companies mechanically inspected, representative browser cases only. Earlier wrong chart-x-label selector results are preserved and corrected by actual svg text.chart-period measurements. UI locator timeouts are not site failures. No claim of every browser path or every source URL being opened.",
+    "evidence": [
+      {
+        "path": "browser-qa/financial-representatives-final.json",
+        "sha256": "def8afac8510c9de1c8250648adc780fdd8b9bb5b72e906bddfc166955254569"
+      },
+      {
+        "path": "browser-qa/detail-current-summary-final.json",
+        "sha256": "b41b28e75ef848c63adbc382a263bf893bb95b3884eee8c1f47ee9f4202127f0"
+      },
+      {
+        "path": "browser-qa/kioxia-label-measurement-corrected.json",
+        "sha256": "04b1a64b7607800d3c029ce6fb718d9594ec83d985553332e42913a06fbbfcef"
+      },
+      {
+        "path": "browser-qa/regression-final.json",
+        "sha256": "104bd334c2ffd5b8152a21d03fc74f199afa7d0397f8f515fc999a7f6fbb47e0"
+      },
+      {
+        "path": "final-browser-evidence-overview.json",
+        "sha256": "68c153882df2fbbffdbf17871afe12dc784aad9dd7cb873e0b00b57a07072c76"
+      }
+    ]
+  },
+  "independentFinalComparison": {
+    "path": "final-build-comparison-v4.json",
+    "sha256": "b01f3a183e3506787246781ae36ba526c6c42525eb225057a4be43d9868dbb9d"
+  },
+  "changedPathAllowlist": [
+    "src/data/financial-history-v05-batch23.json",
+    "src/data/document-sources-v05-batch23.json",
+    "src/data/document-source-policies-v05-batch23.json",
+    "src/lib/financial-history.ts",
+    "src/lib/financial-sources.ts",
+    "src/data/source-registry-manifest.json",
+    "src/data/financial-results-refresh-202611-v01.json",
+    "src/data/financial-quarterly-blockers-refresh-202611-v01.json",
+    "scripts/generate-financial-results-refresh-202611-v01.mjs",
+    "docs/financial-results-refresh-202611-v01.json",
+    "docs/financial-results-refresh-202611-v01.md",
+    "scripts/generate-financial-quarterly-coverage.mjs",
+    "src/data/financial-quarterly-coverage-v01.json",
+    "docs/financial-quarterly-coverage-v01.md",
+    "docs/financial-quality-audit.json",
+    "docs/financial-quality-audit.md",
+    "docs/company-evidence-coverage-audit-v01.json",
+    "docs/company-evidence-coverage-audit-v01.md",
+    "docs/company-evidence-gap-triage-v02.json",
+    "docs/company-evidence-triage-validation-v02.json",
+    "scripts/fixtures/company-compare-japanese-display-v01.json",
+    "scripts/fixtures/japanese-first-copy-v01.json",
+    "scripts/test-company-compare-evidence-ui.mjs",
+    "scripts/test-financial-quarterly-coverage.mjs",
+    "scripts/test-japanese-first-copy.mjs",
+    "scripts/test-financial-results-refresh-202611-v01.mjs",
+    "src/pages/financials.astro",
+    "docs/verification/financial-results-refresh-202611-v01-evidence-manifest.json",
+    "src/data/company-compare-evidence-pilot-v01.json",
+    "src/pages/companies/[id].astro"
+  ],
+  "unexecuted": "Linux PR CI, Draft PR creation and production deployment. No Ready, merge or deploy in this task.",
+  "reverify": [
+    "Run separate verify-evidence-index-final-v1.py against saved raw files.",
+    "Recompute current product map using capture-build-map.py and compare final-build8/9-map.json; no rebuild needed when identical.",
+    "Recompute current dist raw map and compare final-build9-map.json; inspect Pagefind raw differences separately.",
+    "Finalization index/receipt records post-manifest official secret scan, Git checks and commit without altering old evidence."
+  ],
+  "postFormattingVerification": {
+    "reason": "Cached whitespace check caught newly added generated Markdown. Generator now trims line ends; original failure logs retained. No product/build input changed.",
+    "formalValidateExitCode": 0,
+    "evidence": [
+      {
+        "path": "post-format-verification.json",
+        "sha256": "7e720cedfff25eb75a580d5a0027c9aeea1e57f6aeca5589831f0fcf2b45b815"
+      },
+      {
+        "path": "post-format-formal-validate.log",
+        "sha256": "464a1cf973357e63042b81b7aaeab24f7e25452e3640a2afc40dd5a07362412b"
+      },
+      {
+        "path": "post-format-audit-freshness.log",
+        "sha256": "d22c8b4774246c37fb4846e3d52a1cbf5cf67258343e1ee8ee9e2a04a6353cd0"
+      },
+      {
+        "path": "stage-whitespace-failure.log",
+        "sha256": "05976032137aea50daf851d7c77fa467dfd76fce14e0ca893300669f5bc76521"
+      }
+    ],
+    "buildsAndQaReused": true
+  },
+  "authoritativeFinalEvidenceSection": "provenanceMetadataCorrection",
+  "provenanceMetadataCorrection": {
+    "recordedAtJst": "2026-11-23T07:25:00.183374+09:00",
+    "predecessorCommit": "ae4e12a0e2c4023de452fe2c0d43995b7b460905",
+    "predecessorTree": "f2b4bca30c992e850214dabf0ba3a9870dc92996",
+    "baselineMain": "fce8a843c73cc2e9783214b5aa77b8bd7d200428",
+    "researchCutoffUnchanged": "2026-11-23T04:17:19+09:00",
+    "historyPolicy": "All original top-level evidence describes the predecessor commit and remains historical. Corrected final results are in this section. Original1270 and finalization30 evidence files/index sidecars were independently rehashed before editing; no originals overwritten.",
+    "correctionEvidenceBase": "metadata-correction-v01",
+    "index": {
+      "path": "metadata-correction-v01/evidence-index.json",
+      "sha256": "98d9072429f6f84d8d8dc1fb7a4367c2993842cf75eae6f352f5ea9373b419bf"
+    },
+    "sidecar": {
+      "path": "metadata-correction-v01/evidence-index.sha256",
+      "sha256": "8ab9293158b6774b94c9e1ef8527e0026c4c4f93d81e99d59a79b8338e66242e"
+    },
+    "separateProcessVerification": {
+      "path": "metadata-correction-v01/evidence-index-verification.json",
+      "sha256": "25c40228b345e80c391c06e1896dbc4619962ad399eb4e5becb1a5a6469c538b"
+    },
+    "indexedFiles": 432,
+    "metadataChanges": {
+      "eaton": "Revenue8947, operating profit1589 and margin17.8 retained. Source position and revenue basis now agree with8947-5842-1278-238=1589; rounded1370+198+20=1588 is explicitly rejected and never adopted.",
+      "annuals": [
+        "applied-materials",
+        "qualcomm",
+        "te-connectivity",
+        "infineon",
+        "johnson-controls",
+        "siemens-energy"
+      ],
+      "annualMeaning": "All six annual revenue/unadjusted-operating values rechecked against current full-fiscal-year columns. Annual source selections carry independent kind/date/value/unit/scope fields; matching quarter selections remain quarter columns. Only13 metric basis strings changed; all82 financial values, periods, accounting bases, currencies, units, dates and missing FCF/Capex retained.",
+      "nanYa": {
+        "sourcePublishedAt": null,
+        "reportDate": "2026-11-05",
+        "reportDateMeaning": "Auditor review report, physical/printed3",
+        "authorizedForPublicationAt": "2026-11-05",
+        "authorizationMeaning": "Note2, physical9 / printed8",
+        "officialAnnouncement": "2026-11-05T16:26:17+08:00",
+        "announcementMeaning": "TWSE official8046 profile physical5 gives public timestamp for the Q3 consolidated financial-report approval announcement. It corroborates pre-cutoff disclosure of the approved issuer/period report; exact linked-PDF upload date remains unknown. Authorization alone is not used as publication proof.",
+        "cutoffEligibility": "Adoption retained based on the approved original plus independently timestamped official public announcement. Retrieval/reconfirmation time is later and separately stored.",
+        "evidence": {
+          "path": "metadata-correction-v01/nanya-twse-profile.pdf",
+          "sha256": "74f0404c076f558b83be5fdecefb734c6aabe49b7fe408cbebb53abc0083b8a5"
+        }
+      },
+      "reviewProof": {
+        "path": "metadata-correction-v01/annual-source-column-audit.json",
+        "sha256": "556e55f46fa36c727863e9a543218fb1814f4fdd97d43bfb4ea567cadc3da9a8"
+      }
+    },
+    "productInput": {
+      "count": 482,
+      "digest": "73c581db4adba9ec4cb8d5c9131ddb46e7c26ea36508a6b720fd221afa7915a0",
+      "map": {
+        "path": "metadata-correction-v01/final-product-input.json",
+        "sha256": "f8ef97de4978dc2d545ae1792fafd7b417dffc38f074fc69752c29c71e13fe3f"
+      },
+      "changedFromPredecessor": true,
+      "oldBuildsNotReusedAsCorrectedFinalEvidence": true
+    },
+    "runtime": {
+      "node": "22.23.4",
+      "npm": "10.9.9",
+      "lockfileSha256": "68bccf4cd414b45c7f99b582c6eb46457afd002087e70994ca2e085838997f4b",
+      "environment": {
+        "path": "metadata-correction-v01/build-environment.json",
+        "sha256": "a2bc1b486756ce4c251d3fe47403b3213a65aafd42c1c406a7bf4d608bdda685"
+      },
+      "dependencies": "Same dedicated physical node_modules; no install, dependency, workflow, permission or security-setting change."
+    },
+    "builds": {
+      "standardNpmRunBuildAttemptsOnCorrectedInput": 0,
+      "precreatedOutputCleanPipelines": [
+        {
+          "number": 1,
+          "result": {
+            "path": "metadata-correction-v01/clean-pipeline1-result.json",
+            "sha256": "92c0fd8b26adbe8d0ee49edd7960cf559ad7f0b9d4d091527f0770226a0dab19"
+          },
+          "log": {
+            "path": "metadata-correction-v01/clean-pipeline1.log",
+            "sha256": "d8c5ac4102f0bd095524cb0e806debf672f7eac20b50416eb03322886508d586"
+          },
+          "map": {
+            "path": "metadata-correction-v01/clean-pipeline1-map.json",
+            "sha256": "c8f80eaae34a14ded1b3364e0dbc9b226788647090512054407bc95d43a40447"
+          },
+          "decodedFragments": {
+            "path": "metadata-correction-v01/clean-pipeline1-pagefind-fragments.json",
+            "sha256": "56e5f5f3c05be9abc8dc16bc297f8ec6f652fec7f57492eb9d586cab461978da"
+          },
+          "exitCode": 0
+        },
+        {
+          "number": 2,
+          "result": {
+            "path": "metadata-correction-v01/clean-pipeline2-result.json",
+            "sha256": "22ffd44e8aad0fbd33b2d2db356ea6033e6d1ff1bac40fcf11b727f99011d88e"
+          },
+          "log": {
+            "path": "metadata-correction-v01/clean-pipeline2.log",
+            "sha256": "e568e5f545677c796e594bd581eeb7b97e118870475839ddcfcc597164d96f4e"
+          },
+          "map": {
+            "path": "metadata-correction-v01/clean-pipeline2-map.json",
+            "sha256": "fdc34f383b52a09227df48b9f1bcf7d895f134da354585f59e0ed92c72d74b64"
+          },
+          "decodedFragments": {
+            "path": "metadata-correction-v01/clean-pipeline2-pagefind-fragments.json",
+            "sha256": "56e5f5f3c05be9abc8dc16bc297f8ec6f652fec7f57492eb9d586cab461978da"
+          },
+          "exitCode": 0
+        }
+      ],
+      "commandDifference": "All standard Astro/Pagefind/Compare-dist stages preserved, with explicit output-directory precreation between Astro and Pagefind. Not two standard npm run build successes.",
+      "oldStandardHistory": "Predecessor standard attempts1/3 failedPagefind,2 succeeded; old logs stay unchanged and apply to old input only.",
+      "futureProductionCondition": "Automatically triggered Linux PR standard Verify locked build must succeed before production reflection. This has not executed for the corrected head; no manual workflow run."
+    },
+    "validation": {
+      "formalValidate": {
+        "path": "metadata-correction-v01/formal-validation-result.json",
+        "sha256": "2d18585fa177ad2c68feadbf513c1ced34c9f9b500b43241eb7a523728a5c617"
+      },
+      "formalValidateLog": {
+        "path": "metadata-correction-v01/formal-validate.log",
+        "sha256": "037dcab210f55b34aef466dcbf8a2f7c665ed881f41ff17d2e2dd23a0c8fa5ad"
+      },
+      "focusedSemanticChecks": "Six annual + six quarter selections, duration/source-column/raw-value/series alignment, Eaton computed subtotal and rejected reverse value, NanYa date roles/official public announcement before cutoff. All other sources still require their publication dates.",
+      "invalidCasesDetected": 10,
+      "focusedLog": {
+        "path": "metadata-correction-v01/focused-provenance-initial.log",
+        "sha256": "3480f2bc845dc7595a93f55f7f6688fde940f26200a4f03bab96d9498f1b1c24"
+      },
+      "japaneseDistLog": {
+        "path": "metadata-correction-v01/final-japanese-dist.log",
+        "sha256": "668959891c5ef5cf925d819914f91d86440ba2fd60ecb5002dcac3a751549cce"
+      },
+      "all100Machine": "Final Compare-dist gate verified100 histories,797 rows/source links, old715 record digest, latest graph windows and annual separation.",
+      "secretScan": "Official scanner succeeded inside formal validate; final changed manifest is rescanned and actual target set captured in finalization receipt.",
+      "stageWhitespace": "git diff --check before pipelines; cached diff --check before commit. Finalization receipt records actual outcomes."
+    },
+    "results": {
+      "records": 797,
+      "companies": 100,
+      "newRecordsThisCorrection": 0,
+      "coverage": {
+        "complete": 95,
+        "partial": 1,
+        "awaiting": 0,
+        "needsReview": 4
+      },
+      "activeFreeze": "financial-results-refresh-202611-v01",
+      "freeze101Unchanged": true,
+      "newFreezeRequired": false,
+      "old31FreezeObjectsAndFixtureRawPreserved": true,
+      "companyDetails100RawUnchanged": true,
+      "commonJsCss14RawUnchanged": true,
+      "chartScriptUnchanged": true,
+      "routes": 210,
+      "pagefindUrls": 105,
+      "decodedFragmentsEqualBetweenPipelines": true,
+      "allDistFiles": 365,
+      "compare": {
+        "bytes": 1323530,
+        "sha256": "88988f063be92724a2a680e1fc922c7bdc21213d593808ed321e235825b848bf",
+        "predecessorBytes": 1321892,
+        "metadataPayloadOnlyDelta": 1638,
+        "existingMaximumUnchanged": 1387986,
+        "productionLimitsUnchanged": true,
+        "shellBytes": 24593,
+        "max4CompanyRawBytes": 294247,
+        "max4CompanyGzipBytes": 26798,
+        "all4CompanySetsVerified": 4087975
+      },
+      "betweenPipelinesRawDifference": {
+        "different": [
+          "pagefind/pagefind-entry.json"
+        ],
+        "onlyPipeline1": [
+          "pagefind/filter/ja_923d6a9.pf_filter",
+          "pagefind/filter/ja_c0bf43d.pf_filter",
+          "pagefind/pagefind.ja_bf98c27d82.pf_meta"
+        ],
+        "onlyPipeline2": [
+          "pagefind/filter/ja_3190c7f.pf_filter",
+          "pagefind/filter/ja_528172f.pf_filter",
+          "pagefind/pagefind.ja_e1374a8c5b.pf_meta"
+        ]
+      },
+      "predecessorRawComparison": {
+        "path": "metadata-correction-v01/all-dist-comparison-to-predecessor.json",
+        "sha256": "ed9fca07540dfb8b260da4d690aeb7271008b464805af511a917443ba0479a52"
+      },
+      "exactDisplayPayloadProof": {
+        "path": "metadata-correction-v01/exact-display-and-payload-differences.json",
+        "sha256": "5da0cd2fbbee683c6e67f792da44ac6bf081cac45f00808599fe77dc7c02e24c"
+      },
+      "independentProof": {
+        "path": "metadata-correction-v01/final-independent-verification.json",
+        "sha256": "31de5b01940110732f38c71213b9eb22f155c4ffd40be028df1092fcfc0cb6de"
+      }
+    },
+    "previewQa": {
+      "url": "http://127.0.0.1:4437/ai-infrastructure-atlas/",
+      "rawHttpByteProof": {
+        "path": "metadata-correction-v01/preview-byte-verification.json",
+        "sha256": "8ae32554f1df6e7d510d3452dfd32b59e2efca1f5b41f4c689cf2dd1ddb18f6a"
+      },
+      "matches": 365,
+      "newDateExplanationWidths": [
+        1024,
+        390,
+        360
+      ],
+      "additionalValuesObserved": [
+        "eaton",
+        "applied-materials",
+        "qualcomm",
+        "te-connectivity"
+      ],
+      "cases": 7,
+      "documentOverflowsObserved": 0,
+      "siteConsoleErrorsObserved": 0,
+      "externalPrimaryUrlsOpenedDuringPreviewQa": 0,
+      "evidence": {
+        "path": "metadata-correction-v01/browser-qa-correction.json",
+        "sha256": "084b0b917a451d35dcfb8647ba5af187020593a76bf65d32369b6c53dd8aaee2"
+      },
+      "inheritance": "Only byte-identical101 on-demand artifacts,100 detail pages,14 JS/CSS and financials outside exact one NanYa paragraph. Updated /financials/ search fragment is mechanically verified; do not infer complete old/new Pagefind raw identity or all-path behavioral identity. Diagnostic basis strings checked mechanically, not claimed newly visible in on-demand table UI.",
+      "screenshots": [
+        {
+          "path": "metadata-correction-v01/nanya-date-1024.jpg",
+          "sha256": "716fbdbc98edda79a65978147d0dcdd3c3d97c5db7e659d08982665ad06e7aff"
+        },
+        {
+          "path": "metadata-correction-v01/nanya-date-390.jpg",
+          "sha256": "fda08ca877f8e2ee696d265f2871f6993216904db6607aa6b1cc6a9084d011c7"
+        },
+        {
+          "path": "metadata-correction-v01/nanya-date-360.jpg",
+          "sha256": "b569eb1fd701049779a24bea3d86057dbaf3fc413fdb59e04a458956ec8aefbc"
+        }
+      ]
+    },
+    "triageHumanJudgmentsAndOrderPreserved": {
+      "decisions": 779,
+      "sample": 87
+    },
+    "actualFollowupPaths": [
+      "docs/company-evidence-coverage-audit-v01.json",
+      "docs/company-evidence-coverage-audit-v01.md",
+      "docs/company-evidence-gap-triage-v02.json",
+      "docs/company-evidence-triage-validation-v02.json",
+      "docs/financial-quality-audit.json",
+      "docs/financial-quality-audit.md",
+      "docs/financial-results-refresh-202611-v01.json",
+      "docs/financial-results-refresh-202611-v01.md",
+      "docs/verification/financial-results-refresh-202611-v01-evidence-manifest.json",
+      "scripts/generate-financial-results-refresh-202611-v01.mjs",
+      "scripts/test-company-compare-evidence-ui.mjs",
+      "scripts/test-financial-results-refresh-202611-v01.mjs",
+      "src/data/document-sources-v05-batch23.json",
+      "src/data/financial-history-v05-batch23.json",
+      "src/data/financial-results-refresh-202611-v01.json"
+    ],
+    "attemptNotes": {
+      "path": "metadata-correction-v01/correction-attempt-notes.json",
+      "sha256": "6f0d6d2826df927a883b09453762846a0c30780b39dccd1db61fe6fe406572b5"
+    },
+    "draftBody": {
+      "path": "metadata-correction-v01/draft-pr-corrected.md",
+      "sha256": "e4f372934e25ca23804b495b701c7b154e72cb95b4090852d80622a7cf1ac4ed"
+    }
+  }
+}
